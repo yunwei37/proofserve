@@ -526,3 +526,20 @@ wallmedians; effects<0.71%. No randomizedCI/equivalencetest/globalcorrection.
 Fullnativewall22157.171566/CPU31763.322688/groupinclqueue26850.310155
 seconds are matrixcosts, not one-source build or noqueue-throughput.
 Rootrawaudit0.056s/16636KiB/0native calls; no heavy perf decoding.
+
+## Cross-module on-CPU attribution and residual limits — step0227
+[Self-review](tmp/build-and-evaluate/step-0227-20261031T232923+0000/step-report.md).
+Six non-Grid completed baseline recordings have independent flat native
+sample/period totals rechecked; operation partitions and all medians are
+recomputed. Grid totals inherit the already-completed step0223 audit.
+UMoments9 kernel accounting59.36%/futex34.10%, Envelope pagefault37.65%/
+accounting20.66%/futex1.11%, each conditional native kernel-cycle period.
+M's finished small final tables are currently uncommitted by their owner;
+root freezes exact snapshots and never stages/mutates owner's paths.
+210 artifact parity receipts (90olean/60ilean/60C) are alltrue; root does not
+repeat large binary comparisons. No new native or perfdecode is launched.
+
+No-M trace getrusage rows are not observed, not exact zeros. Futex counts
+remain large, but no no-M perf-record arm exists; no exact residual CPU
+attribution follows. No combined noM+j1 arm, no failure equivalence or
+population correction. Other-kernel about32% in Envelope stays unresolved.

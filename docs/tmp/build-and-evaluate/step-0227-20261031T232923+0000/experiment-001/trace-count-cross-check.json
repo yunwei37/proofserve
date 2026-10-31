@@ -1,0 +1,23 @@
+[
+  {
+    "module": "Grid",
+    "baseline_observed_getrusage_median": 4010856.0,
+    "baseline_observed_futex_median": 52366009.0,
+    "noM_observed_futex_median": 50521174.0,
+    "noM_getrusage": "not observed; no exact zero imputation"
+  },
+  {
+    "module": "UMoments9",
+    "baseline_observed_getrusage_median": 1022147.0,
+    "baseline_observed_futex_median": 19003914.0,
+    "noM_observed_futex_median": 18166388.0,
+    "noM_getrusage": "not observed; no exact zero imputation"
+  },
+  {
+    "module": "EnvelopePsiB",
+    "baseline_observed_getrusage_median": 600149.0,
+    "baseline_observed_futex_median": 65492.0,
+    "noM_observed_futex_median": 63602.0,
+    "noM_getrusage": "not observed; no exact zero imputation"
+  }
+]

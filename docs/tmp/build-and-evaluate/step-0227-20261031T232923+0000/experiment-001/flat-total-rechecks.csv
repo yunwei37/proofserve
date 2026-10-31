@@ -1,0 +1,7 @@
+module,rep,flat_path,flat_bytes,native_samples,all_native_periods,kernel_periods,user_periods,helper_samples,comparison_equal,requested_max_stack,observed_max_stack
+UMoments9,1,/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/final-analysis/UMoments9-baseline-record-r1-flat.txt,3982331,33891,598985105962,271819271086,327165834876,5,True,48,72
+UMoments9,2,/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/final-analysis/UMoments9-baseline-record-r2-flat.txt,3758279,33591,597653980402,275117927791,322536052611,5,True,48,69
+UMoments9,3,/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/final-analysis/UMoments9-baseline-record-r3-flat.txt,3969000,33887,602706114986,277081672681,325624442305,5,True,48,76
+EnvelopePsiB,1,/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/final-analysis/EnvelopePsiB-baseline-record-r1-flat.txt,685553,6900,215392233298,12908965166,202483268132,5,True,48,68
+EnvelopePsiB,2,/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/final-analysis/EnvelopePsiB-baseline-record-r2-flat.txt,638584,6695,208655687259,9689810843,198965876416,6,True,48,65
+EnvelopePsiB,3,/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/final-analysis/EnvelopePsiB-baseline-record-r3-flat.txt,664963,6678,207297518859,8388230535,198909288324,6,True,48,68

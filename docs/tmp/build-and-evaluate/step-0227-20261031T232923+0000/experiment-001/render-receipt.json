@@ -1,0 +1,13 @@
+{
+  "pages": 16,
+  "affected_pages": [
+    7,
+    8
+  ],
+  "contacts": [
+    "/workspaces/.agent-state/gpu-smt-captures/step-0227-20261031T232923+0000-paper/contact1.jpg"
+  ],
+  "PDF_bytes": 184124,
+  "unchanged_title_abstract_RQs_section_titles": true,
+  "logical_budget_not_heartbeat_invariance_claim": true
+}

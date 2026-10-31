@@ -649,9 +649,63 @@ The two tested glibc threshold controls also provide no lower wall medians:
 their changes are below 0.71\% in magnitude.
 Those ordered, three-repeat negative controls are not equivalence tests or
 evidence that allocator behavior is irrelevant in every verifier.
-Grid's kernel callchains remain the direct attribution evidence;
-the completed cross-module timings establish variation in the memory-policy
-effect, not equivalent callchain shares for the other modules.
+Independent flat-report checks now also match all decoded native sample
+and period totals for the six completed non-Grid baseline recordings.
+Table~\ref{tab:kernel-operation-samples} uses the same operation classifier
+in three recordings per module. UMoments9 spends a median 59.36\% of
+kernel sampled periods in resource accounting and 34.10\% in futex paths.
+EnvelopePsiB instead has a 37.65\% page-fault share, 20.66\% resource
+accounting and 1.11\% futex. Its low absolute system-CPU budget is not
+contradictory: each percentage is conditional on that module's kernel
+samples, not on its complete verification time.
+The table supports a workload-dependent attribution rather than assigning
+Grid's accounting fraction to every computational proof.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+Module & Resource accounting & Futex & Page faults & Mapping/advice & Other kernel\\
+\midrule
+Grid &74.98&20.42&0.78&0.14&3.35\\
+UMoments9 &59.36&34.10&0.98&0.11&5.13\\
+EnvelopePsiB &20.66&1.11&37.65&7.65&31.95\\
+\bottomrule
+\end{tabular}
+\caption{Percentages of native kernel sampled cycle periods: the median
+of three guarded baseline recordings per module, not wall-time shares.
+Resource-accounting ranges are 74.92--75.26\%, 58.38--59.43\% and
+15.84--23.03\%, respectively. Mapping/advice includes mmap, munmap and
+madvise callchains. Scheduler/wakeup and PMU paths are retained separately
+in the underlying data; independently computed category medians need not
+sum to 100\%. These are the baseline-record cells already included in
+the 90-cell matrix, not nine additional native measurements.}
+\label{tab:kernel-operation-samples}
+\end{table*}
+
+\paragraph{Removing accounting leaves synchronization evidence, not a complete residual profile.}
+The three baseline trace summaries per module observe median
+\texttt{getrusage} counts of 4,010,856, 1,022,147 and 600,149.
+None of the nine no-\texttt{-M} trace summaries contains that row.
+Absence is recorded as not observed rather than an exact zero syscall
+census. Grid's baseline traces lose events in two repetitions and its
+first no-\texttt{-M} trace loses 348; the other trace captures report no
+lost events. Even a loss-free report is not a proof of complete
+entry/exit pairing.
+
+In no-\texttt{-M} plain runs, system-CPU medians remain 107.412 seconds
+for Grid, 42.305 for UMoments9 and 1.960 for EnvelopePsiB.
+Separate no-\texttt{-M} traces still observe median futex counts of
+50.52 million and 18.17 million for Grid and UMoments9, close to their
+guarded counts of 52.37 million and 19.00 million.
+This identifies synchronization as a remaining path worth testing;
+it does not measure its share of the residual on-CPU budget.
+There is no no-\texttt{-M} perf-record arm in this matrix.
+Cumulative syscall elapsed seconds include sleeping, preemption and
+overlapping threads; they cannot be added to system CPU or used to
+subtract baseline sample fractions from a different execution.
+The single-worker control retains \texttt{-M}; without a combined
+no-\texttt{-M}/one-worker condition, the interaction remains unknown.
 
 Our W-line source-cost measurements also enable \texttt{-M}, including
 \texttt{-M9216} at the standard-artifact point.
@@ -675,9 +729,9 @@ is 7.25\% above the no-\texttt{-M} plain median, while system CPU is
 126.98\% higher. These medians retain their own no-\texttt{-M} denominator;
 a guard-dependent instrumentation effect cannot be replaced with one
 universal overhead correction.
-\missing{Broader module coverage, non-Grid kernel-callchain attribution,
-randomized-order uncertainty, population cost-estimation impact and
-resource-failure outcome equivalence.}
+\missing{Broader module coverage, no-memory-option on-CPU residual
+attribution, randomized-order uncertainty, population cost-estimation
+impact and resource-failure outcome equivalence.}
 
 
 \paragraph{Native profiles expose different work inside the same compiler.}
@@ -749,7 +803,7 @@ closure, whereas the other three panel sources are inside.
 Consequently, a default-root-only profile would omit two of these
 expensive computational cases, even before weighting or extrapolation.
 
-\missing{System-CPU attribution beyond the selected Grid configuration
+\missing{System-CPU attribution beyond these three selected modules
 and broader repeated profile-overhead uncertainty.}
 
 \paragraph{System-design implication.}
@@ -770,8 +824,10 @@ changes the resource contract.
 The three accepted no-\texttt{-M} plain repetitions establish neither
 failure equivalence nor a generally preferable memory policy.
 Budget enforcement belongs in the measured acceptance path: for this
-guarded Grid point, resource-accounting checks, rather than allocator
-syscalls, are the identified kernel-cost target.
+guarded Grid and UMoments9 points, resource-accounting checks and
+synchronization dominate the classified kernel samples.
+EnvelopePsiB's low-system-time, page-fault-heavy counterexample rules
+out treating this as a universal verifier bottleneck.
 Process-wide usage accounting also makes requested worker count different
 from the OS thread group whose resources are aggregated.
 The completed one-worker controls do not remove the expensive behavior;

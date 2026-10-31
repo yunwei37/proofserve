@@ -1,0 +1,6 @@
+{
+  "page": 9,
+  "image": "/workspaces/.agent-state/gpu-smt-captures/step-0227-20261031T232923+0000-paper/design-page.png",
+  "two_exact_phrase_lookups_failed": "pdftotext wraps/hyphenates phrase; StopIteration before rendering; no paper mutation",
+  "selected_by": "observed page9 design implication after listing actual page contents"
+}
