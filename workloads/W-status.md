@@ -11,7 +11,10 @@
  3ready original draws, P0–7/nonblocking waiter-yield,15GiBchargedcgroup,
  16GiBWsampledRSS,one native, noM. Read actualPID/birth/terminal, not thisnote.
  Population29/42/CI still pending; old pair costs are not borrowed.
-- Untimed import-set/closure class audit running E8–15. No native workload.
+- W059 complete import audit:143637directsets/141573graphclosures;
+ top100coverage4.94246%/4.95043%; unweighted/static, not CPU speedup.
+ All partitions checked; independent BFS200classes/310members agrees.
+ Sourcegraph external3529frontier names unexpanded; no state-cache key.
 - Original42frame, conditional6remainder draws, hard nonresponses retained.
  All old source/raw/failed/cancelled/interrupted outputs remain onPVC.
 - Onlyworkloads/ changed. No user desktop/browser, extraagent or infra changes.

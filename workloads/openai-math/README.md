@@ -167,3 +167,5 @@ The only observed public workflow is lock-prs.yml; no public build CI was found
 at the pin. Whole-project acceptance/axiom closure and the population1.6%/73%runtime
 hypothesis remain unknown; native costs exist for the stated subset.
 Review is same-chat self-review, not an independent audit.
+
+Exact import-name-set population and limitations: [import-set-reuse](import-set-reuse/README.md).

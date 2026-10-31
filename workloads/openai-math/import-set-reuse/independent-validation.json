@@ -1,0 +1,27 @@
+{
+  "partitions": [
+    {
+      "kind": "direct_import_set",
+      "class_count": 143637,
+      "partition_mass_verified": 163097,
+      "all_class_frequencies_verified": true
+    },
+    {
+      "kind": "internal_transitive_closure_plus_external_frontier",
+      "class_count": 141573,
+      "partition_mass_verified": 163097,
+      "all_class_frequencies_verified": true
+    },
+    {
+      "kind": "ordered_direct_import_names",
+      "class_count": 143745,
+      "partition_mass_verified": 163097,
+      "all_class_frequencies_verified": true
+    }
+  ],
+  "reference_BFS_classes": 200,
+  "reference_BFS_members": 310,
+  "largest100_plus_uniform100_seed20261101": true,
+  "all_passed": true,
+  "native_runs": 0
+}

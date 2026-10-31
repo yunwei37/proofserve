@@ -1,0 +1,62 @@
+{
+  "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+  "modules": 163097,
+  "external_frontier_names": 3529,
+  "topological_modules": 163097,
+  "exact_integer_bitsets": true,
+  "native_runs": 0,
+  "affinity": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "analysis_leader_peak_rss_kib": 2260116,
+  "findings": [
+    {
+      "kind": "direct_import_set",
+      "modules": 163097,
+      "distinct_classes": 143637,
+      "top1_modules": 4415,
+      "top100_modules": 8061,
+      "top100_fraction": 0.04942457555932973,
+      "empty_import_class_modules": 1,
+      "singleton_classes": 135421,
+      "ideal_one_process_per_class_loads": 143637,
+      "ideal_same_class_reuse_fraction": 0.1193154993654083,
+      "scope": "names in pinned source graph; not elaborated state/options/import modifiers or external-library closure"
+    },
+    {
+      "kind": "internal_transitive_closure_plus_external_frontier",
+      "modules": 163097,
+      "distinct_classes": 141573,
+      "top1_modules": 4415,
+      "top100_modules": 8074,
+      "top100_fraction": 0.04950428272745667,
+      "empty_import_class_modules": 1,
+      "singleton_classes": 131884,
+      "ideal_one_process_per_class_loads": 141573,
+      "ideal_same_class_reuse_fraction": 0.13197054513571682,
+      "scope": "names in pinned source graph; not elaborated state/options/import modifiers or external-library closure"
+    },
+    {
+      "kind": "ordered_direct_import_names",
+      "modules": 163097,
+      "distinct_classes": 143745,
+      "top1_modules": 4415,
+      "top100_modules": 8061,
+      "top100_fraction": 0.04942457555932973,
+      "empty_import_class_modules": 1,
+      "singleton_classes": 135617,
+      "ideal_one_process_per_class_loads": 143745,
+      "ideal_same_class_reuse_fraction": 0.11865331673789214,
+      "scope": "names in pinned source graph; not elaborated state/options/import modifiers or external-library closure"
+    }
+  ],
+  "keys_are_exact_sets_not_digest_fingerprints": true,
+  "raw_capture": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-import-set-classes-20261031"
+}

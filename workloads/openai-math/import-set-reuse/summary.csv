@@ -1,0 +1,4 @@
+kind,modules,distinct_classes,top1_modules,top100_modules,top100_fraction,empty_import_class_modules,singleton_classes,ideal_one_process_per_class_loads,ideal_same_class_reuse_fraction,scope
+direct_import_set,163097,143637,4415,8061,0.04942457555932973,1,135421,143637,0.1193154993654083,names in pinned source graph; not elaborated state/options/import modifiers or external-library closure
+internal_transitive_closure_plus_external_frontier,163097,141573,4415,8074,0.04950428272745667,1,131884,141573,0.13197054513571682,names in pinned source graph; not elaborated state/options/import modifiers or external-library closure
+ordered_direct_import_names,163097,143745,4415,8061,0.04942457555932973,1,135617,143745,0.11865331673789214,names in pinned source graph; not elaborated state/options/import modifiers or external-library closure
