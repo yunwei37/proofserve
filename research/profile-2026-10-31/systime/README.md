@@ -1,64 +1,40 @@
-# M: attribution of OS time in native Lean compilation
+# M: OS-time attribution in native Lean compilation
 
-[Experiment plan](plan.md). Actual source inputs, raw counters, stack data,
-syscall summaries, artifacts and memory records stay on the existing PVC:
- /workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/
+**The frozen 90-cell matrix is complete.** See the [final attribution](final/README.md),
+[all configuration medians and ranges](final/native-results.md), and
+[W's paired-panel handoff](final/w-handoff-design.md).
 
-Current preflight is qualified; **no completed original-module measurement yet**.
-UMoments9 baseline triplet is queued on the shared P-core lock; process identity
-in preflight.json is a point-in-time observation, not a perpetual running claim.
-No historical W timing is pooled with privileged/new-cgroup/perf measurements.
+Grid and UMoments9 have substantial native memory-guard accounting cost;
+EnvelopePsiB is the low-system-time control. Removing native -M while retaining
+the same outer protection reduces their wall medians by50.85%,37.76%,1.44%.
+All90 decisions/diagnostics/.olean outputs match; all210 artifact comparisons
+match. This is a three-module benchmark-policy result, not an engine gain or
+a measured full-library correction. All review is same-thread 自审.
 
-Installed perf6.12.113 and retained its .deb. Hardware user/kernel counters,
-syscall trace and self-child signals actually work. Native cgroup control passed:
-only the owned child moved into a temporary15GiB group under this same Workspace
-Pod; parent limits/other pods untouched, group removed after natural return.
-All timed controls use taskset0–7 and shared pcore.lock; preparation uses8–23.
+[Plan](plan.md), [frozen matrix](matrix.csv), [step005](step-005-report.md),
+[outer audit](step-005-audit.md). The earlier [Grid interim](grid-interim/README.md)
+and setup/queue steps retain their original observation boundaries.
 
-Two invalid setup points remain outside the valid run directory: one wrong
-affinity helper run, deliberately stopped; three imports failed under a15GiB
-address-space limit. None completes the module or counts as a repetition.
-The current runner asserts P affinity and uses a temporary cgroup, no fixed AS.
+All timed/profiled runs used CPU0–7 under the existing pcore.lock, with a
+constant temporary15GiB native cgroup and at most1200s native self wall.
+Analysis/preparation uses E cores. Source, raw perf.data, syscall captures,
+artifact bytes, native/process identities and memory records remain outsideGit:
 
-Source/SDK evidence changes the attribution hypotheses: this SDK uses **mimalloc**
-for Lean objects, so GLIBC_TUNABLES need not affect the dominant allocator.
-The stock memory-limit check calls getrusage at a default source threshold200
-checks and falls back to /proc/self/statm near/above the peak threshold.
-Actual SDK disassembly confirms compare0xc8 and a direct getrusage@plt call.
-These are hypotheses to test with native stacks/syscalls and single-variable
-experiments, not proofs of the observed kernel-time cause.
+    /workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/
 
-Primary source (pinned SDK tag):
-- https://github.com/leanprover/lean4/blob/v4.34.1/src/runtime/memory.cpp
-- https://github.com/leanprover/lean4/blob/v4.34.1/src/include/lean/lean.h
-- https://github.com/leanprover/lean4/blob/v4.34.1/src/runtime/object.cpp
+Reproduce the small tables without launching Lean:
 
-run.py records native wait4 user/system/wall/RSS separately from observer cost.
-analyze.py produces per-run/median/range tables; analyze_stacks.py attributes
-period-weighted on-CPU samples only, preserving unmatched frames. Stack parsing
-still requires actual first-capture qualification. Missing work is pending,
-not a negative result. No system-time attribution or acceleration claimed yet.
-All review is 自审; root owns characterization-paper integration.
+    taskset -c 8-15 python3 research/profile-2026-10-31/systime/analyze_final.py
 
-[Historical concentration](historical-attribution-prior.md): exact26-module
-systemCPU28.256%; UMoments9+BarrierData41 account for84.113%of that systemCPU.
-All historical peakRSS/native-M ratios <=0.9003. These are retained-point
-descriptions, not new perf samples or proof of the runtime overhead cause.
+Plain, stat, record and trace clocks remain separate. Trace elapsed can overlap
+across threads; record percentages refer to sampled cycles. Grid has trace
+event loss; no-M has no recorded-stack arm, so residual system-time percentages
+are not fabricated. See the final report for these and the caller-unwind limits.
 
-## Frozen queued matrix
-See matrix.csv and step-003-report.md:90unique native cells,30triplets.
-The actual finite controller is captured under PVC matrix-v3, queued through
-the same P-core lock after existing M/O producers. Each native task<=1200s;
-the overall requested matrix spans hours and is not claimed<30minutes.
-Existing UMoments9 baseline cells are retained; missing repetitions only fill
-after the original producer retires. No parallel M native process or replay
-of healthy work. Timing/perf/raw data stay separate; ordinary errors/timeouts
-remain data. Direct -M/no-M syscall triplets distinguish getrusage counts.
-
-## First complete Grid baseline attribution
-[Grid interim result](grid-interim/README.md), step004:3plain/stat/record/trace
-runs each accepted with exact diagnostics and.olean bytes. About75%of recorded
-kernel cycle periods serve native resource-accounting checks,20%futex paths.
-Profiler systemCPU perturbation is material. First no-M control is n1with
-identical artifacts; full counterfactual triplet is prioritized, not yet claimed.
-Third record's application caller gap and trace losses remain explicit.
+Historical failed setup controls stay preserved on PVC: one wrong-affinity
+helper was stopped; three imports failed under15GiB address-space caps.
+They are excluded from the90 valid matrix cells. The qualified runs have no
+fixed AS cap, no parent quota change, no host sysctl/module change.
+[Historical26-module concentration](historical-attribution-prior.md) remains a
+different resource/artifact/observation point and is not pooled with this matrix.
+Root owns characterization-paper integration; M edits only this directory.

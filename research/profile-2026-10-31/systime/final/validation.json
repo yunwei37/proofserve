@@ -1,0 +1,14 @@
+{
+  "observed_utc": "2026-10-31T23:26:15.147779+00:00",
+  "matrix_cells": 90,
+  "native_triplets": 30,
+  "artifact_comparisons": 210,
+  "artifact_and_diagnostic_equal": true,
+  "native_birth_wall_intervals_overlap_screen": [],
+  "explicit_command_affinity_and_memory_and_factor_checks": 90,
+  "all_nine_record_native_totals_match_independent_flat_report": true,
+  "all_record_category_sums_one": true,
+  "stats_complete_triplets": true,
+  "remaining_recorded_native_identities": 0,
+  "review": "same-thread self-review"
+}
