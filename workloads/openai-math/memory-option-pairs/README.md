@@ -1,3 +1,8 @@
+# Historical paired protocol — superseded for new timing
+
+Current policy: never run an M arm. Completed26pairs are methodology only;
+no M result enters the new cost estimator. Grid/Amplitudes continue noM-only.
+
 # Matched native memory-option comparison
 
 Population question: how much measured openai/math compiler cost is caused by

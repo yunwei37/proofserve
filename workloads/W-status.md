@@ -1,21 +1,20 @@
 # W current state
-## Current frontier (W057: shared-lock sampling resumed; memory-option pair running)
-- User released M/O priority hold. M matrix-v3 terminal is90/90complete.
-- Original21 endpoints replayed unchanged M9216/native point:21compile,
- 122.483641wall/204.018564CPU; sampled7.50GB capture-ownedtree, retired.
-- Initial new replay lacked output subdirectories:21file-write errors retained,
- excluded from scientific verdicts/costs. Separate fixed point succeeded.
-- Fresh paired26random endpoints+Grid+Amplitudes prepared;A26finite group
- running on actualP0–7lock. Raw workloads/openai4341-memory-option-pairs-20261031.
- Each arm checks waiters/nonblocking take; no automatic deferred-lock retry.
- Both arms share15GiB charged-memory cgroup;1s16GiB sampledW-RSS allowance.
- Within pair only-Mdiffers; no new global inflation result yet.
-- Original42sample and conditional6draw design remain intact. Missing hard
- draws are not zero/easy replacements. FullCPU/globalCI still unknown.
-- Only workloads/ changed; no new agent, generated candidates, oracle work,
- host/container settings or other lane modifications.
-- Software workload audit W054–056 remains complete; Mathlib4.29compiledcache
- absent. Large sources/SDK/raw outsideGit on existingPVC.
+## Current frontier (W058: all new timing noM, old-Mmethodology only)
+- Latest user:完全不用-M. No old-Mcost enters new library estimate.
+- Completed old26pairs preserve52returns;26verdict/diagnostic/artifactbytes
+ identical. Wall432.134416/350.212707,CPU650.293756/555.744907(M/noM).
+ These are methodology sensitivity only, never full-library correction.
+- Old controller already retired at23:42:42UTC; no running-Mchild killed.
+ Public paired CLI rejectsM; old prepared-Mplans annotated not-to-launch.
+- Fresh noM31case group launched23:44:46UTC, actualcontroller129179/birth754286997.
+ Capture workloads/openai4341-noM-standard-a-20261031.26A+Grid+Amplitudes+
+ 3ready original draws, P0–7/nonblocking waiter-yield,15GiBchargedcgroup,
+ 16GiBWsampledRSS,one native, noM. Read actualPID/birth/terminal, not thisnote.
+ Population29/42/CI still pending; old pair costs are not borrowed.
+- Untimed import-set/closure class audit running E8–15. No native workload.
+- Original42frame, conditional6remainder draws, hard nonresponses retained.
+ All old source/raw/failed/cancelled/interrupted outputs remain onPVC.
+- Onlyworkloads/ changed. No user desktop/browser, extraagent or infra changes.
 
 ## Historical step notes (retained unchanged below)
 W004ea41025 build-planning models and53-target stratified frame are preserved.

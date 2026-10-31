@@ -1,0 +1,314 @@
+[
+  {
+    "index": 0,
+    "module": "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 1,
+    "module": "OAI.Analysis.Cotype.FiniteRankWalsh",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 2,
+    "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 3,
+    "module": "OAI.Analysis.Laughlin.FiniteFlux.Row0705207",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 4,
+    "module": "OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 5,
+    "module": "OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 6,
+    "module": "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Zeros30",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 7,
+    "module": "OAI.GroupTheory.PolycyclicRecognition.Analysis.TranslationCovering",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 8,
+    "module": "OAI.Geometry.CylinderCovering.Radial.Assembly",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 9,
+    "module": "OAI.NumberTheory.Catalan.Analysis.ManuscriptNormLogPGroup006",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 10,
+    "module": "OAI.Analysis.MutuallyUnbiased.TaoCertificate.Rows45",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 11,
+    "module": "OAI.Analysis.CircleDomains.Rigidity.MaskedCircleEnergy",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 12,
+    "module": "OAI.Analysis.MutuallyUnbiased.GramAssembly.Block0Data",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 13,
+    "module": "OAI.Analysis.PlanarPacking.Certificate.WUCert48",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 14,
+    "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 15,
+    "module": "OAI.NumberTheory.Catalan.Determinants.FixedCompactRow48",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 16,
+    "module": "OAI.Analysis.MutuallyUnbiased.PairSemantics.Canonical240",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 17,
+    "module": "OAI.Analysis.Triangular.Envelope.EnvelopePsiB",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 18,
+    "module": "OAI.NumberTheory.DirichletL.Eisenstein.SourceProjection",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 19,
+    "module": "OAI.NumberTheory.DirichletL.Cusp.ResiduesModThree",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 20,
+    "module": "OAI.GameTheory.SnakyTwentyOne.Cards.Height12Part04",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 21,
+    "module": "OAI.Computability.Logspace.EstimatorBounds",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 22,
+    "module": "OAI.Probability.TraceReconstruction.Binomial",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 23,
+    "module": "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 24,
+    "module": "OAI.Analysis.PlanarPacking.Certificate.UMoments9",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  {
+    "index": 25,
+    "module": "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50",
+    "settings": {
+      "memory.max": "16106127360",
+      "memory.high": "max",
+      "memory.swap.max": "max",
+      "memory.oom.group": "0"
+    },
+    "M_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "noM_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  }
+]

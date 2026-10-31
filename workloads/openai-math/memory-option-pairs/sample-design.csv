@@ -1,0 +1,29 @@
+index,module,role,stratum,source_bytes,original_M_MiB,heartbeat,output_scope,arm_order,population_weight_status
+0,OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion,original_probability_sample,0-50;1-10;0,2072,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+1,OAI.Analysis.Cotype.FiniteRankWalsh,original_probability_sample,0-50;1-10;0,3788,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+2,OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17,original_probability_sample,0-50;1-10;1,1438,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+3,OAI.Analysis.Laughlin.FiniteFlux.Row0705207,original_probability_sample,0-50;1-10;1,362,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+4,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,original_probability_sample,0-50;11-100;0,1484,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+5,OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,original_probability_sample,0-50;11-100;0,4053,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+6,OAI.Analysis.MutuallyUnbiased.MixedSemantics.Zeros30,original_probability_sample,0-50;11-100;1,1873,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+7,OAI.GroupTheory.PolycyclicRecognition.Analysis.TranslationCovering,original_probability_sample,50-90;1-10;0,5418,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+8,OAI.Geometry.CylinderCovering.Radial.Assembly,original_probability_sample,50-90;1-10;0,9878,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+9,OAI.NumberTheory.Catalan.Analysis.ManuscriptNormLogPGroup006,original_probability_sample,50-90;1-10;1,9920,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+10,OAI.Analysis.MutuallyUnbiased.TaoCertificate.Rows45,original_probability_sample,50-90;1-10;1,11778,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+11,OAI.Analysis.CircleDomains.Rigidity.MaskedCircleEnergy,original_probability_sample,50-90;11-100;0,6449,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+12,OAI.Analysis.MutuallyUnbiased.GramAssembly.Block0Data,original_probability_sample,50-90;11-100;1,11594,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+13,OAI.Analysis.PlanarPacking.Certificate.WUCert48,original_probability_sample,50-90;11-100;1,8739,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+14,OAI.Analysis.Conductivity.Variational.VariationalDN,original_probability_sample,90-99;1-10;0,15702,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+15,OAI.NumberTheory.Catalan.Determinants.FixedCompactRow48,original_probability_sample,90-99;1-10;0,15150,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+16,OAI.Analysis.MutuallyUnbiased.PairSemantics.Canonical240,original_probability_sample,90-99;1-10;1,40391,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+17,OAI.Analysis.Triangular.Envelope.EnvelopePsiB,original_probability_sample,90-99;1-10;1,71701,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+18,OAI.NumberTheory.DirichletL.Eisenstein.SourceProjection,original_probability_sample,90-99;101+;1,29251,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+19,OAI.NumberTheory.DirichletL.Cusp.ResiduesModThree,original_probability_sample,90-99;101+;1,30791,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+20,OAI.GameTheory.SnakyTwentyOne.Cards.Height12Part04,original_probability_sample,90-99;11-100;1,66987,9216,authored_or_native_default,olean_ilean_c,noM/M,original stratum; incomplete overall frame
+21,OAI.Computability.Logspace.EstimatorBounds,original_probability_sample,99-100;1-10;0,106587,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+22,OAI.Probability.TraceReconstruction.Binomial,original_probability_sample,99-100;1-10;0,99800,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+23,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,original_probability_sample,99-100;1-10;1,362956,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+24,OAI.Analysis.PlanarPacking.Certificate.UMoments9,original_probability_sample,99-100;1-10;1,297479,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+25,OAI.MathematicalPhysics.Transonic.Certificates.Barrier50,original_probability_sample,99-100;11-100;1,202735,9216,authored_or_native_default,olean_ilean_c,M/noM,original stratum; incomplete overall frame
+26,OAI.Analysis.PlanarPacking.Grid,purposeful_heavy,purposeful_certificate_not_population_sample,1815532,8192,100000,olean_only,M/noM,purposeful; no population weight
+27,OAI.Analysis.PlanarPacking.Certificate.Amplitudes,purposeful_heavy,purposeful_certificate_not_population_sample,2690420,8192,100000,olean_only,noM/M,purposeful; no population weight

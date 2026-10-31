@@ -163,4 +163,6 @@ if __name__ == "__main__":
     parser.add_argument("--arm", choices=["M", "noM"], required=True)
     parser.add_argument("--wall-limit", type=float)
     args = parser.parse_args()
+    if args.arm == "M":
+        parser.error("current user policy forbids -M; historical frozen captures are methodology only")
     raise SystemExit(run(args.point, args.index, args.arm, args.wall_limit))

@@ -1,5 +1,16 @@
 # OpenAI math: source coverage and native stratified measurements
 
+## Current timing convention (2026-10-31 direct user decision)
+
+All new timed runs omit the Lean -M option. Memory protection is external:
+owned temporary cgroups, with resource events and sampling scope preserved.
+All earlier-Mcosts/profiles are legacy methodology evidence, excluded from
+new whole-library CPU estimates. No old data is deleted or retrospectively
+relabeled as a native workload property.
+See memory-option-methodology-26/ and the fresh noM capture documented in
+W058. The original42draw frame and missing hard draws remain unchanged.
+
+
 Pinned repository: [openai/math](https://github.com/openai/math/tree/4eaee87548250b2682affda7d05d947c05554bae),
 commit4eaee87548250b2682affda7d05d947c05554bae (2026-10-30T00:35:35Z).
 Lean4.34.1; Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612.

@@ -65,7 +65,8 @@ def main():
                         help="chronological files from the same pinned SDK/library")
     parser.add_argument("--threads", type=int, default=8)
     parser.add_argument("--heartbeat-budget", default="100000")
-    parser.add_argument("--memory-mib", type=int, default=8192)
+    parser.add_argument("--memory-mib", type=int, default=0,
+                        help="current timing omits -M (0); nonzero is legacy methodology only")
     parser.add_argument("--outputs", default="olean_only",
                         help="output artifact mode; legacy W captures emit only .olean")
     parser.add_argument("--locked-only", action="store_true",
@@ -141,8 +142,8 @@ def main():
             source_line=chosen.get("line", ""), sorry_warning=chosen.get("sorry_warning", ""),
             pcore_lock=chosen.get("pcore_lock", "")))
     write_csv(args.out / "sample-costs.csv", sample_rows)
-    interval = confidence_interval(cells)
-    summary = dict(
+    interval = confidence_interval(cells) if args.memory_mib == 0 else None
+    summary = dict(resource_convention="no_M_outer_cgroup" if args.memory_mib == 0 else "legacy_M_methodology_only",
         scope="conditional internal compiler CPU; output facets explicit; full Lake total unmeasured",
         compilation_outputs=args.outputs,
         population_modules=sum(int(s["population_modules"]) for s in strata),
@@ -150,7 +151,7 @@ def main():
         complete_cells=sum(c["estimate"] is not None for c in cells),
         strata=len(strata), threads=args.threads, heartbeat_budget=args.heartbeat_budget,
         memory_mib=args.memory_mib,
-        status="conditional_approximate_interval" if interval else "not_estimable_incomplete_or_failed_sample",
+        status="legacy_methodology_not_population_estimate" if args.memory_mib != 0 else "conditional_approximate_interval" if interval else "not_estimable_incomplete_or_failed_sample",
         estimate_cpu_h="", lower_cpu_h="", upper_cpu_h="",
         excluded_other_point_rows=excluded["other_or_unknown_resource_point"],
         noninvoked_target_records=excluded["not_invoked"],
