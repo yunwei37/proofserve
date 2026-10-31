@@ -46,3 +46,9 @@ the same transfer finished and image was then inspected successfully.
 Only derived root paper/records published, M uncommitted source preserved.
 
 Design implication page9 additionally rendered and visually self-reviewed: conditional kernel-sample claim and safety-contract caveats readable. Two text-phrase lookups failed before render due PDF text wrapping; actual page listing selected9. Design-render receipt retains that failure; no scientific data or paper change from lookup failures.
+
+## Fact-only heartbeat maintenance
+After2bda47c push, existing monitoring prompt updated to227 and completed
+nonGrid attribution; explicit noM residual/noM+j1 gaps retained. Owningtool
+readback changes onlyprompt/updated_at, sameACTIVE/hourly/thread intent.
+No newtimer/runner/resource or clusterCronJob. Private appidentifier omitted.
