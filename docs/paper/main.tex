@@ -590,14 +590,68 @@ The source, explicit environment and native command are unchanged apart
 from \texttt{-M} and output destination; outer protection remains in place.
 The result supports the observation that this in-process limit can account
 for about half the observed latency of this accepted compute-heavy module.
-It is still a Grid-only, ordered single-factor comparison with a changed
-resource policy, not a randomized population effect, exclusive phase timer
-or failure-equivalence result.
+These Grid ratios describe an ordered single-factor comparison with a
+changed resource policy, not a randomized population effect, exclusive
+phase timer or failure-equivalence result.
 The wide system-CPU range is retained rather than selecting the fastest
 or lowest-system-cost run.
-Only closed, retired cells enter this update; completion of the entire
-matrix or the active worker-count subgroup is not inferred.
-UMoments9 and EnvelopePsiB counterfactuals remain unestablished here.
+\paragraph{A completed three-module matrix bounds the generalization.}
+The full planned matrix now has 90 completed cells and retired native
+identities/controllers: 30 conditions, each repeated three times, across
+three deliberately selected computational modules.
+All native processes return zero; native diagnostics match and retained
+byte comparisons report the same \texttt{.olean} within each module.
+The matrix contains the earlier Grid cells rather than 90 additional runs.
+Failed setup attempts outside this frozen matrix remain separately retained.
+
+Table~\ref{tab:memory-policy-matrix} compares the plain conditions.
+Removing \texttt{-M} lowers UMoments9's wall median from 141.739 to
+88.211 seconds (37.77\%), but EnvelopePsiB's from 64.447 to 63.518
+seconds (1.44\%). Thus two measured computational modules show substantial
+memory-option effects while the third shows a small one.
+Each comparison keeps its own module's settings: Grid emits only
+\texttt{.olean} with \texttt{-M8192} and 100,000 heartbeats;
+the other two emit \texttt{.olean}/\texttt{.ilean}/\texttt{.c}, use
+\texttt{-M9216} in guarded conditions, and retain authored/default heartbeats.
+The rows must not be pooled into one uniform cost point or used to correct
+the library's unmeasured population.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+Module & Guarded baseline & No \texttt{-M} & One worker & mmap threshold & trim threshold\\
+\midrule
+Grid & 621.936 & 305.693 & 710.292 & 622.072 & 623.923\\
+UMoments9 & 141.739 & 88.211 & 174.765 & 142.735 & 141.862\\
+EnvelopePsiB & 64.447 & 63.518 & 64.968 & 64.568 & 64.555\\
+\bottomrule
+\end{tabular}
+\caption{Wall seconds, medians of three unprofiled executions per cell.
+Compare columns within a row; the module settings and output facets differ
+between rows. All use external 15\,GiB native protection and P0--7 affinity.
+The last two controls separately set the glibc mmap or trim threshold
+to 128\,MiB. One-worker settings change both \texttt{-j} and
+\texttt{LEAN\_NUM\_THREADS}; no-\texttt{-M} changes the internal memory policy.
+These purposeful modules are not a population-weighted sample.}
+\label{tab:memory-policy-matrix}
+\end{table*}
+
+Reducing requested workers alone does not reproduce the memory-option
+benefit. With \texttt{-j1} and \texttt{LEAN\_NUM\_THREADS=1}, Grid takes
+710.292 seconds and UMoments9 174.765 seconds, respectively 14.21\%
+and 23.30\% slower than their eight-worker baseline medians.
+EnvelopePsiB takes 64.968 seconds, 0.81\% slower.
+This does not establish the number of live OS threads or attribute the
+residual system CPU; it rules out this worker-setting change as an
+effective fix in these runs.
+The two tested glibc threshold controls also provide no lower wall medians:
+their changes are below 0.71\% in magnitude.
+Those ordered, three-repeat negative controls are not equivalence tests or
+evidence that allocator behavior is irrelevant in every verifier.
+Grid's kernel callchains remain the direct attribution evidence;
+the completed cross-module timings establish variation in the memory-policy
+effect, not equivalent callchain shares for the other modules.
 
 Our W-line source-cost measurements also enable \texttt{-M}, including
 \texttt{-M9216} at the standard-artifact point.
@@ -621,9 +675,9 @@ is 7.25\% above the no-\texttt{-M} plain median, while system CPU is
 126.98\% higher. These medians retain their own no-\texttt{-M} denominator;
 a guard-dependent instrumentation effect cannot be replaced with one
 universal overhead correction.
-\missing{Completed worker-count analysis, UMoments9/EnvelopePsiB
-counterfactuals, cross-module cost-estimation impact and budget-policy
-outcome equivalence.}
+\missing{Broader module coverage, non-Grid kernel-callchain attribution,
+randomized-order uncertainty, population cost-estimation impact and
+resource-failure outcome equivalence.}
 
 
 \paragraph{Native profiles expose different work inside the same compiler.}
@@ -719,9 +773,11 @@ Budget enforcement belongs in the measured acceptance path: for this
 guarded Grid point, resource-accounting checks, rather than allocator
 syscalls, are the identified kernel-cost target.
 Process-wide usage accounting also makes requested worker count different
-from the OS thread group whose resources are aggregated; the worker-count
-counterfactual is still pending.
-Other modules retain their own attribution obligations.
+from the OS thread group whose resources are aggregated.
+The completed one-worker controls do not remove the expensive behavior;
+actual thread/call-path measurements remain necessary to explain it.
+The different no-memory-option effects across the three modules favor
+workload-qualified policy choices over one universal correction.
 The separate user-cycle panel motivates normalization and cleanup studies,
 but cannot supply a whole-flow accelerator ceiling.
 
@@ -1135,10 +1191,11 @@ purposeful stresses and dependency work cannot be pooled into a whole-library
 point estimate, and cold preparation costs remain outside the compiler
 clocks. Second, generated-software availability and performance must be
 established independently of published task scaffolds and benchmark scores.
-Third, selected Grid callchains now identify native memory accounting
-at the guarded point, with three completed plain counterfactual
-repetitions supporting that interpretation. Worker-count analysis and
-cross-module attribution remain incomplete. This does not establish that unguarded stock Lean has
+Third, selected Grid callchains identify native memory accounting
+at the guarded point; the completed 90-cell matrix adds three-module
+memory-option and worker-setting comparisons.
+Kernel-callchain attribution beyond Grid, effects on resource failures and
+generalization beyond these purposeful modules remain incomplete. This does not establish that unguarded stock Lean has
 the same system share, nor replace missing results with estimated speedups.
 
 The artifacts preserve unsuccessful prototypes, signal-limited captures,

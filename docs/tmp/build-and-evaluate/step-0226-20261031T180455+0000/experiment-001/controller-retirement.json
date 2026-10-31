@@ -1,0 +1,39 @@
+{
+  "controllers": [
+    {
+      "name": "matrix-v3",
+      "pid": 11027,
+      "birth": "747568388",
+      "retired": true
+    },
+    {
+      "name": "priority-grid-v1",
+      "pid": 62867,
+      "birth": "748852933",
+      "retired": true
+    }
+  ],
+  "sources": {
+    "UMoments9": {
+      "source": "/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/sources/lean/OAI/Analysis/PlanarPacking/Certificate/UMoments9.lean",
+      "public_source_path": "lean/OAI/Analysis/PlanarPacking/Certificate/UMoments9.lean",
+      "bytes": 297479,
+      "artifact_bytes": 8526872
+    },
+    "Grid": {
+      "source": "/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/sources/lean/OAI/Analysis/PlanarPacking/Grid.lean",
+      "public_source_path": "lean/OAI/Analysis/PlanarPacking/Grid.lean",
+      "bytes": 1815532,
+      "artifact_bytes": 84076976
+    },
+    "EnvelopePsiB": {
+      "source": "/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/sources/lean/OAI/Analysis/Triangular/Envelope/EnvelopePsiB.lean",
+      "public_source_path": "lean/OAI/Analysis/Triangular/Envelope/EnvelopePsiB.lean",
+      "bytes": 71701,
+      "artifact_bytes": 2268344
+    }
+  },
+  "unique_identities": 90,
+  "all_nonempty_recorded_native_cgroups_retired": true,
+  "exact_binary_parity": "M filecmp shallow=False receipts all true; root size+native diagnostic checks, no extra multi-GiB binary reread"
+}

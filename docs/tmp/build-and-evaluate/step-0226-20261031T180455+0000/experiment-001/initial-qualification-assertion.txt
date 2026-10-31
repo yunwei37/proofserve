@@ -1,0 +1,2 @@
+Initial full-matrix audit stops before manuscript edits when assuming observer_rc0 alongside native0. Examine all actual observer/native/stop/parity fields separately; no native rerun or old data mutation.
+Correction: traceback line33 is the shared heartbeat/output-flag assertion, not observer status. All90observer_rc0/no stop verified. Check declared per-module heartbeat settings rather than forcing Grid settings onto other modules.

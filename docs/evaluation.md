@@ -507,3 +507,22 @@ Sysmedian107.411798range101.353828–213.345772 vs436.150621,
 NoMstatwall+7.248272%/sys+
 126.981651% versusownplainmedians, notuniversal
 observercorrection. Wcostguardbias/othermoduleeffect/failuresemanticsunknown.
+
+## Retired 90-cell matrix and variable policy effects — step0226
+[Self-review](tmp/build-and-evaluate/step-0226-20261031T180455+0000/step-report.md).
+Actualterminal90/90/no stop,90uniqueplan keys/rawpaths/PIDbirths; main/
+prioritycontrollerretired. Root90native/result/command/log/size checks pass;
+allnative/observer0,alloleanparityreceipts true. No raw data or driver changed.
+Failedinitialrootqualification is retained: it wrongly assumed allmodules
+shareGridHB/artifacts/M8192. ActualGrid is olean-only/HB100000/M8192;
+UMoments9/Envelope use3facets/authoreddefault/M9216. The first diagnostic
+guess aboutobserverstatus was corrected; all90observers actuallyreturn0.
+Per-modulefactorARGV/explicitEnv parityrecomputed andscope kept separate.
+
+NoMplainmedians Grid305.692852vs621.935656;UM88.211287vs141.739139;
+Envelope63.517679vs64.446537. One-worker710.291849/174.764628/64.967556,
+higherthan8workerbaselines. Two128MiBglibcthreshold controls have no lower
+wallmedians; effects<0.71%. No randomizedCI/equivalencetest/globalcorrection.
+Fullnativewall22157.171566/CPU31763.322688/groupinclqueue26850.310155
+seconds are matrixcosts, not one-source build or noqueue-throughput.
+Rootrawaudit0.056s/16636KiB/0native calls; no heavy perf decoding.

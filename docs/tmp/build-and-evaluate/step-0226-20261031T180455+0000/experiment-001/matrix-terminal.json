@@ -1,0 +1,8 @@
+{
+  "planned": 90,
+  "completed": 90,
+  "complete": true,
+  "stop": null,
+  "elapsed_wall_including_queue_s": 26850.310154914856,
+  "scope": "per-cell self<=1200s; shared-lock queue waits separately retained; overall finite90-cell requested matrix"
+}

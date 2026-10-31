@@ -1,0 +1,87 @@
+{
+  "raw_root": "/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime",
+  "planned_and_collected_unique_cells": 90,
+  "unique_sources": 3,
+  "conditions": 30,
+  "repeats_per_condition": 3,
+  "all_native_returns_zero": true,
+  "all_native_identity_retirement_checked": true,
+  "all_native_logs_equal_within_module": true,
+  "M_reported_filecmp_parity_all_true": true,
+  "all_90_artifact_sizes_checked": true,
+  "root_new_native_calls": 0,
+  "plain_ratios": {
+    "Grid": {
+      "noM": {
+        "wall_s": 0.4915184539137283,
+        "user_s": 0.9644387744407643,
+        "system_s": 0.24627225739981234
+      },
+      "threads1": {
+        "wall_s": 1.1420664529308338,
+        "user_s": 0.9686938823056273,
+        "system_s": 1.0542974143787818
+      },
+      "mmap_high": {
+        "wall_s": 1.00021959384332,
+        "user_s": 0.9928742543414038,
+        "system_s": 1.0101061853125277
+      },
+      "trim_high": {
+        "wall_s": 1.003194771618145,
+        "user_s": 0.9918979159041947,
+        "system_s": 1.0156753118551676
+      }
+    },
+    "UMoments9": {
+      "noM": {
+        "wall_s": 0.6223495337335117,
+        "user_s": 0.984966180167272,
+        "system_s": 0.420543961775025
+      },
+      "threads1": {
+        "wall_s": 1.2330019086622126,
+        "user_s": 0.9628717565760471,
+        "system_s": 0.9632706881631122
+      },
+      "mmap_high": {
+        "wall_s": 1.007022842991381,
+        "user_s": 1.0044846114465933,
+        "system_s": 1.0045533732826302
+      },
+      "trim_high": {
+        "wall_s": 1.00086510688156,
+        "user_s": 0.9994282486222243,
+        "system_s": 1.0054311343830575
+      }
+    },
+    "EnvelopePsiB": {
+      "noM": {
+        "wall_s": 0.9855871491199041,
+        "user_s": 0.991987808414574,
+        "system_s": 0.7343758604426219
+      },
+      "threads1": {
+        "wall_s": 1.0080845173254058,
+        "user_s": 0.9894547103656817,
+        "system_s": 0.9982685318971113
+      },
+      "mmap_high": {
+        "wall_s": 1.0018786861493276,
+        "user_s": 0.9996277741477322,
+        "system_s": 1.001745328838459
+      },
+      "trim_high": {
+        "wall_s": 1.0016891416908553,
+        "user_s": 0.9994867867113533,
+        "system_s": 1.0053034171208555
+      }
+    }
+  },
+  "native_CPU_sum_s": 31763.322688,
+  "native_wall_sum_s": 22157.17156628892,
+  "group_elapsed_including_queue_s": 26850.310154914856,
+  "sampling_design": "three purposeful accepted computational modules, ordered conditions; not population-weighted",
+  "root_analysis_s": 0.05563421733677387,
+  "root_analysis_maxrss_kib": 16636
+}
