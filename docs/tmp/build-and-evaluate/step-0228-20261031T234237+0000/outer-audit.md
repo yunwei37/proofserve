@@ -40,3 +40,8 @@ strict29/42 and12/21cellcoverage independentlyderived. Main/evaluation/
 two reports plus evidence only; otherlane files unmodified/unstaged.
 Do not pool21's12.54%system share into old26's28.26%; these are different
 capture cohorts. Fullpopulation/guardpair/replaytrust results stillopen.
+
+## Fact-only heartbeat maintenance
+Afterc383155 publication, existingprompt facts updated to228/strict29of42.
+Readback onlyprompt/updated_at changed; originalACTIVE/hourly/thread retained.
+No runner/resource/goal/infrastructure/CronJob change or newtimer.

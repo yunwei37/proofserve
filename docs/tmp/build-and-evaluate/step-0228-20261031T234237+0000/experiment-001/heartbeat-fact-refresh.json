@@ -1,0 +1,10 @@
+{
+  "changed_fields": [
+    "prompt",
+    "updated_at"
+  ],
+  "same_rrule": "FREQ=HOURLY;INTERVAL=1",
+  "same_status": "ACTIVE",
+  "same_target": true,
+  "new_entities": 0
+}
