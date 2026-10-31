@@ -1,0 +1,28 @@
+{
+  "native_rows": 21,
+  "statuses": {
+    "compile_ok": 21
+  },
+  "native_wall_s": 122.48364059254527,
+  "native_user_cpu_s": 178.430169,
+  "native_system_cpu_s": 25.588395,
+  "all_sources_exact": true,
+  "all_expected_artifacts_present": true,
+  "all_native_pid_births_retired": true,
+  "controller": {
+    "exit_code": 0,
+    "elapsed_s": 123.10163456201553,
+    "sampled_tree_peak_bytes": 7500951552,
+    "max_native_lean_processes": 1,
+    "sampling_interval_s": 1,
+    "pcore_lock": true,
+    "old_censored_process_no_longer_alive": true,
+    "W_RSS_budget_bytes": 17179869184
+  },
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-locked-cached-originals-resumed-20261031T1830-fixed",
+  "preserved_failed_point": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-locked-cached-originals-resumed-20261031T1830",
+  "failed_rows": 21,
+  "failed_cost_excluded": true,
+  "frame_new_draws": 0,
+  "strict_coverage": "29/42 observations;12/21 complete cells; no global estimate"
+}
