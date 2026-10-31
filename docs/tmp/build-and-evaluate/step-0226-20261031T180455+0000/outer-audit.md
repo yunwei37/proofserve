@@ -29,3 +29,10 @@ This is self-review, not independent review or scientificacceptance.
 The copied rawmatrixCSV retains CRLF and trips stagedwhitespacecheck.
 Preserve exact original bytes as verified .csv.gz, leave Mraw untouched;
 failed check receipt retained. Derived analysisCSVs remain explicitLF.
+
+## Completed fact-only heartbeat synchronization
+Afterb07ebe3publication, existingmonitorfactsupdatedto226/fullretired90cells,
+keeping actual module-specific nativepoints. Owningautomationtoolreadback
+changes onlyprompt/updated_at; samehourlycadence/thread/status/notification
+fields. Functional instructionprefix/suffix preserved; no newtimer/goal/
+runner/resourcepolicy/clusterCronJob. No privateappthreadidentifier copied.

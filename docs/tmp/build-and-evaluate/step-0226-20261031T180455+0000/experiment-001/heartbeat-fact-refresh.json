@@ -1,0 +1,12 @@
+{
+  "automation_id": "gpu-smt-osdi",
+  "changed_fields": [
+    "updated_at",
+    "prompt"
+  ],
+  "hourly_cadence_preserved": true,
+  "existing_thread_target_preserved": true,
+  "status_preserved": true,
+  "notification_fields_unchanged": true,
+  "change_scope": "completed fact snapshot only, step0225 to step0226; scope/runner/resources unchanged"
+}
