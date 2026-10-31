@@ -543,3 +543,14 @@ No-M trace getrusage rows are not observed, not exact zeros. Futex counts
 remain large, but no no-M perf-record arm exists; no exact residual CPU
 attribution follows. No combined noM+j1 arm, no failure equivalence or
 population correction. Other-kernel about32% in Envelope stays unresolved.
+
+## Strict locked original-sample coverage — step0228
+[Self-review](tmp/build-and-evaluate/step-0228-20261031T234237+0000/step-report.md).
+W7930025's21replay results and complete capture/native terminal checked.
+Original source bytes/artifact sizes/21native PIDbirths/launcher/CLI retirement
+independently confirmed. Sumwall122.483640593,user178.430169,sys25.588395;
+capture123.101634562,1sown-tree peak7500951552bytes/one native.
+Eight priorlocked plus21disjoint original draws =>29/42,12/21completecells.
+Thirteen missing draws notimputed; no fullCPU/globalCI or coldclosure cost.
+Initial21output-write failures retained outside successful costpoint.
+No newrootnative, source/flag/capture changes or Wpath edits.

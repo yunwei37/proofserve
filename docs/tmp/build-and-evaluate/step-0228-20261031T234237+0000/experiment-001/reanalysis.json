@@ -1,0 +1,26 @@
+{
+  "root_analysis_s": 0.038514348678290844,
+  "root_analysis_maxrss_kib": 13288,
+  "native_wall_s": 122.48364059254527,
+  "native_user_cpu_s": 178.430169,
+  "native_system_cpu_s": 25.588395,
+  "system_fraction": 0.12542189543104518,
+  "strict_completed": 29,
+  "strict_missing": 13,
+  "complete_strata": 12,
+  "planned_strata": 21,
+  "new_draws": 0,
+  "new_root_native_calls": 0,
+  "controller_retired": true,
+  "capture": {
+    "exit_code": 0,
+    "elapsed_s": 123.10163456201553,
+    "sampled_tree_peak_bytes": 7500951552,
+    "max_native_lean_processes": 1,
+    "sampling_interval_s": 1,
+    "pcore_lock": true,
+    "old_censored_process_no_longer_alive": true,
+    "W_RSS_budget_bytes": 17179869184
+  },
+  "scope": "isolated cached-dependency native endpoint costs; no complete library makespan or guard-policy difference"
+}
