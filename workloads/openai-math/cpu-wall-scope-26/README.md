@@ -58,3 +58,17 @@ captures/workloads/openai4341-noM-standard-a-20261031/results.jsonl.
 The O-line startup/replay tables have different memberships and trust/time
 scopes;they are not silently treated as this26pair. Current31target replay is
 an independent matched-target measurement pending actual native completion.
+
+## Same current14strata: changing the clock also changes the cost share
+
+Using the same completed no-Moriginal draws and inclusion weights over the
+14complete strata(103,468modules),the CPUestimates are24.146735certificate/
+116.704826ordinary hours,certificate share17.1434%. Weighting the native serial
+process elapsed times instead gives18.790827/108.086603hours,share14.8102%.
+The point-share difference is2.3332percentage points. This is descriptive,
+not a significant-difference test or whole-library estimate.
+
+The weighted complete-stratum discrepancy is not the26cohort's1.589factor.
+Neither a cohort-average correction nor a producer profile fraction converts
+one clock into the other. Covered14-clock-choice.csv and per-stratum CSV
+retain both measurements. Missing59,629modules still prevent a globalshare.

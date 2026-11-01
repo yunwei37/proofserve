@@ -1,0 +1,3 @@
+clock,certificate_hours,ordinary_hours,certificate_share,covered_population_modules,complete_strata,scope
+native_CPU_user_plus_system,24.146734908888888,116.70482585097221,0.17143391793901977,103468,14,complete observed strata only; not whole-library
+sum_native_process_elapsed_serial_j8,18.790827089602956,108.08660256936409,0.14810220493992263,103468,14,"hypothetical serial native process work,not parallel makespan or queued pipeline"
