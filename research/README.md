@@ -51,3 +51,9 @@ rootstep0246reuses4completeOclosures. Grid4OAI nodes9.76%compilerwork but52.70%
 timed replaycallwall; Amplitudes8nodes8.69%/46.93%. Samecapture, correlated
 dependencies, not population or fullprocessCPU shares. SmallCSV/rawfreeze in
 rootstep; original /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/.
+
+[Existing module-task baseline audit](../docs/tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md):
+pinned LeanChecker dispatches module-local tasks independently; shared-prefix
+strict-import DAG is not its speedup bound. Four-cohort fixedweight model/path
+diagnostics are retained only in rootstep; no native competing-path throughput
+was measured. ExactCLIselection/trust/resource boundaries remain explicit.

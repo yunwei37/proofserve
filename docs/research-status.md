@@ -186,6 +186,15 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   Shared dependencies/onepass/Oresource deviation retained; 5085exactsource
   result paths/noM/P0–7 and all4complete timed graphs audited.
 
+- [Rootstep0247 native baseline audit](tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md):
+  Lean4.34.1 leanchecker spawns module-local replayFromImports tasks before
+  collecting results. Imports are stock-loaded, not barriers awaiting their
+  separate verification tasks. Strict checked-import DAG work/span is not a
+  stock-checker upper bound. Native matched module-task throughput comparison
+  remains missing; existing serial-vs-stream numbers unchanged.
+  CLI prefix selection is not automatically an exactclosure frame.
+  Four-cohort model/path/graph data retained as diagnostics only,0newnative.
+
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):
   7808same statuses/3014accepted IDs,19.28%less elapsed at one point;

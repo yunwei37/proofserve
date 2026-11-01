@@ -552,6 +552,26 @@ Parallelism requires independently checkable claims and a checked connection
 to the unchanged original proposition.
 A source split, numeric evaluator or worker success flag alone is insufficient.
 
+\paragraph{The existing module-parallel baseline has a different boundary.}
+The bundled checker already launches \texttt{replayFromImports} tasks for
+selected modules before collecting their results~\cite{lean434CheckerSource2026}.
+Each task loads its imports through the stock importer and checks its local
+declarations; task dispatch does not wait for imported modules' checking
+tasks to finish.
+Our shared stream instead reuses a checked prefix.
+A dependency-DAG model that requires every imported module to finish checking
+before the next module starts therefore adds a barrier absent from the
+existing task dispatcher.
+Such a model is not an upper bound on the bundled checker.
+Module-local tasks also repeat environment preparation, so shared-stream
+call weights alone cannot predict their process costs.
+The CLI selects module-name prefixes, which need not equal an explicitly
+chosen artifact closure.
+\missing{Native same-closure module-local task comparison with matched workers,
+memory protection, acceptance scope and complete lifecycle accounting.}
+The stream speedups below compare the stated serial baselines; they do not
+establish superiority over this unmeasured native module-parallel path.
+
 \paragraph{Prototype: generated claims and checked assembly.}
 M freezes a real Grid \texttt{PointBox.calc} equality and structurally forms
 18 scalar-equality leaves.

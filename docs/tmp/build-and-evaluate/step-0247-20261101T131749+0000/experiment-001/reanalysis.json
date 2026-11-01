@@ -1,0 +1,56 @@
+{
+  "models": [
+    {
+      "cohort": "math",
+      "modules": 1330,
+      "replay_work_s": 65.472302899,
+      "fully_checked_imports_span_s": 20.356252027,
+      "strict_import_model_W_over_S": 3.216324046890324,
+      "largest_single_module_replay_s": 5.727161258,
+      "independent_task_fixed_weight_W_over_max": 11.43189443243716,
+      "critical_path_modules": 147,
+      "native_baseline_speedup": "not measured"
+    },
+    {
+      "cohort": "ordinary-oai",
+      "modules": 3333,
+      "replay_work_s": 172.280618743,
+      "fully_checked_imports_span_s": 32.201677545,
+      "strict_import_model_W_over_S": 5.350051049428953,
+      "largest_single_module_replay_s": 5.74722545,
+      "independent_task_fixed_weight_W_over_max": 29.976311220399403,
+      "critical_path_modules": 240,
+      "native_baseline_speedup": "not measured"
+    },
+    {
+      "cohort": "compute-grid",
+      "modules": 3793,
+      "replay_work_s": 559.137563093,
+      "fully_checked_imports_span_s": 348.419671615,
+      "strict_import_model_W_over_S": 1.604781843979352,
+      "largest_single_module_replay_s": 255.486529166,
+      "independent_task_fixed_weight_W_over_max": 2.1885207213007525,
+      "critical_path_modules": 243,
+      "native_baseline_speedup": "not measured"
+    },
+    {
+      "cohort": "compute-amplitudes",
+      "modules": 5083,
+      "replay_work_s": 897.198845558,
+      "fully_checked_imports_span_s": 461.070627343,
+      "strict_import_model_W_over_S": 1.9459032789146968,
+      "largest_single_module_replay_s": 257.783894583,
+      "independent_task_fixed_weight_W_over_max": 3.4804301758623803,
+      "critical_path_modules": 244,
+      "native_baseline_speedup": "not measured"
+    }
+  ],
+  "upstream_source": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/src/lean/LeanChecker.lean",
+  "source_scope": "Lean4.34.1 installed official LeanChecker source; module-local replayFromImports task API",
+  "decision": "reject interpreting fully-checked-import weighted DAG as an upper bound on stock leanchecker or on arbitrary proof checking; expose missing native module-task comparison",
+  "why": "upstream spawns independent module-local replay tasks before collecting task results; imported declarations loaded through stock importer are assumed within each task",
+  "input_scope": "CLI target selection is prefix-based; exact closure ID set must not be silently broadened for a comparison",
+  "new_native_runs": 0,
+  "root_analysis_s": 0.8334833104163408,
+  "root_analysis_maxrss_kib": 50312
+}

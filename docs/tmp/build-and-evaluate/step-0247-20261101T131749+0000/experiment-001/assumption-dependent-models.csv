@@ -1,0 +1,5 @@
+cohort,modules,replay_work_s,fully_checked_imports_span_s,strict_import_model_W_over_S,largest_single_module_replay_s,independent_task_fixed_weight_W_over_max,critical_path_modules,native_baseline_speedup
+math,1330,65.472302899,20.356252027,3.216324046890324,5.727161258,11.43189443243716,147,not measured
+ordinary-oai,3333,172.280618743,32.201677545,5.350051049428953,5.74722545,29.976311220399403,240,not measured
+compute-grid,3793,559.137563093,348.419671615,1.604781843979352,255.486529166,2.1885207213007525,243,not measured
+compute-amplitudes,5083,897.198845558,461.070627343,1.9459032789146968,257.783894583,3.4804301758623803,244,not measured

@@ -459,3 +459,33 @@ not a causal inference that all omittedsourcework is imports. No old-Mclock.
 OriginalO11.875GiBcap/source7.57GiBpeak exceeds listedO4share; historicaldeviation
 preserved, no newlimit or retroactiveapproval. Priorinput/context/axiom/exclusion
 limitations stay. No native experiment or claim of independent reviewer.
+
+## Native module-task baseline and rejected DAG interpretation — rootstep0247
+[Root source audit](tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md), **自审**,0newnative/agent.
+Question: can the import DAG of complete timed stream captures bound existing
+module-parallel checking? Installedofficial Lean4.34.1 src/lean/LeanChecker.lean
+shows replayFromImports stock-loads imports, finalizes a module-local environment,
+then replays local constants. Main launches IO.asTask for each selectedmodule
+before any task.get resultcollection. There is no completed-import-check barrier
+between these task starts. CLI target-prefix enumeration can broaden an exact
+closure frame. Source frozen with original license, cited pinnedpaperref retained.
+
+Four originalO complete timedgraphs reconstructed with deduplicatedimports,
+module/timer/closure sets equal, everyimport precedes its consumer in this
+observed serialexecution. Integer-ns dynamicprogramming gives strict-import
+model work/span: Math65.472302899/20.356252027s; NearPin172.280618743/32.201677545;
+Grid559.137563093/348.419671615; Amplitudes897.198845558/461.070627343.
+Ratios3.2163/5.3501/1.6048/1.9459 belong ONLY to that fixed-weight strictbarrier
+model. Independenttask zeroedge W/maxcall values11.4319/29.9763/2.1885/3.4804
+are also mathematicaldiagnostics, not runtimepredictions for stockchecker.
+Callweights exclude repeatedmoduleimports/preparation/resourcecontention and
+come from sharedstream, so neither model establishes native stockthroughput
+or hardware limits. No scheduling simulation can replace that baseline.
+
+Disposition: reject presenting strictDAG bound as a stockchecker/global ceiling.
+No new modelratios enter paper; paper instead identifies the precise existing
+module-task family/selection/trust differences and nativecomparison placeholder.
+Preserve every existing measuredpositive/negative/timeout result, serialbaseline
+scope, upstreamparallelchecking priorart and addedimplementationTCB limitations.
+No promise change/new experiment assignment/budgetchange/foreigncodeedit.
+Raw4timedlogs, exactupstreamsource, computedpaths/edges/models retained in step.

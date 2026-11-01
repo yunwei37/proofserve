@@ -192,3 +192,14 @@ small despite expensive generated-node replay. Not fullprocessCPU shares,
 causalimport decomposition, independentrepeats or full-library regime weights.
 Same5085node sourceunion/oldcapture/Oresource-deviation,0rootnative.
 Keep per-cohort/namespace boundaries explicit; Wpopulation weights remain open.
+
+## Preserve the stronger existing baseline family
+[Rootstep0247](tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md) inspects actualLean4.34.1 bundled checker:
+independent module-local replay tasks do not await prior import-check tasks.
+Do not claim a strict checked-import dependency DAG bounds this native path;
+sharing a checkedprefix is an implementation choice with different costs.
+A matched same-IDclosure/worker/resource/native-lifecycle module-task comparison
+remains unmeasured. CLIprefix matching may broaden inputs, so code existence
+or a replay-only weighted model cannot fill that comparison. Existing measured
+serialreferences and boundedstream gains remain valid at their stated boundary.
+Root did not launch/assign a new capture or edit another line; no RQ/story change.
