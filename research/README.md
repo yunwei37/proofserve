@@ -18,10 +18,10 @@ result families are indexed below; plans/code aren't completed measurements.
 - [openai/math](../workloads/openai-math/README.md):163097modules/1.354Mlexical
   decide+kernel, not executions or cost weights.
 - [Fresh noM31](../workloads/openai-math/noM-standard-artifacts-a/README.md):
-  W reports29/42random costs/12complete strata plus2purposeful modules.
+  Rootstep0238collectsW48:46deps+2draws;31/42random costs/14complete strata.
 - [Conditional marked-file costs](../workloads/openai-math/cost-regimes-noM/README.md):
-  11.70%compilationCPU estimate only within101596modules/12complete strata;
-  61501modules/3036marked missing, nominaljoint0–100%interval, no globalshare.
+  17.1434%markedcompilationCPU estimate only within103468modules/14complete strata;
+  59629modules/1164marked missing; no finiteglobalCPUestimate/informativeglobalshare.
 - [NoM26dependency prefix](../workloads/openai-math/noM-original-c-prefix26/README.md):
   successful prerequisites, no new random endpoint, yielded lock.
 - [Generated software](../workloads/ai-verification-software/README.md):
@@ -39,3 +39,5 @@ freshsame-maskMathlib/openaicomparison7/4vs1354379/5848,10668.32xsites/MB;
 3.5856%positivegeneratedfiles, notCPUshare. Rawfixedarchive andsourcecensus:
 /workspaces/.agent-state/gpu-smt-captures/step-0231-20261101T001556+0000-static/source.tar.gz. Two scans agree; no-M31results independentlyaudited.
 Old8/5Mathlibfigureincludesadocumentationcomment. Nativeweights remainopen.
+
+[Collected W48/current original-frame reduction](../docs/tmp/build-and-evaluate/step-0238-20261101T061522+0000/step-report.md): complete48processes, not48draws. Small per-draw andstratum tables in thatstep; fullraw /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101/.

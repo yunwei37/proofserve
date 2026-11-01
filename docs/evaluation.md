@@ -241,3 +241,22 @@ Healthyv10Envelope-stream-r1 observedlivePID223364/birth756513330 and
 223366/birth756513331, lockholder223361; noresult atread. Preservecapture.
 W48originalqueue terminalcomplete48compile_ok/controllerretired observed;
 notautomatically48probabilitydraws. Exactcoverage reduction followsseparately.
+
+## W48 complete native capture and original-frame update — step0238
+[Root reduction/self-review](tmp/build-and-evaluate/step-0238-20261101T061522+0000/step-report.md), **自审**.
+48/48compile_ok nativecalls completeat2026-11-01T04:08:18UTC. Controller191267/
+birth754946357andall48nativeidentity/cgroupsretired. All48exactsource/noM/j8/
+P0–7lock/unprofiled/authored-defaultHB/15GiBcharged/standard3outputs checked.
+Raw48logsno errors/sorrywarnings; allartifactnames/sizes match. Noresourceevents.
+46dependenciesreceive nopopulationweight,2originaldraws addOriginalBlock81
+(3.586462880wall/3.643856CPU) andKeySound82(23.285536421wall/26.319027CPU).
+Native48wall179.255830344s vsqueue-inclusive9217.807695043s, notpurequeuewait
+orcontinuousbuildmakespan. RootnoM29+2=31/42randomdraws, CPU632.590445/
+wall393.895779906s.14/21complete strata cover103468modules,4684marked.
+Conditionalmarked24.146734909CPUh/other116.704825851h=17.143391794%.
+Earlier12stratum11.7027%changedcoverage, notsamepopulationtemporaltrend.
+11draws/59629modules/1164marked remainincomplete; no finiteglobalCPUtotal
+orinformativeglobalshareinterval. No nominaltCI recomputationclaimed.
+Sourceproxylabelsnotkernelphaseclassification. Mgrainpanelstill29draws+2purposeful,
+notexpandedwithunreplayedartifacts. Otherqueueorprepared36neverautoresumed.
+Allraw/source/log/memory preserved, rootstepownsderivedtablesonly.

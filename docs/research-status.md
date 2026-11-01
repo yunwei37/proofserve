@@ -39,8 +39,8 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   not runtime. Same-scanner Mathlib masked7sites/4files versus openai1354379/5848;
   density10668.32x, positivegeneratedfiles3.5856%, not CPUweights.
 - [Fresh noM31](../workloads/openai-math/noM-standard-artifacts-a/README.md):
-  W reports31successful native calls:29/42random costs/12complete strata,
-  plus2purposeful modules.13draws remain missing; no fullCPU/globalCI.
+  Rootnowaudits31/42original random costs/14complete strata;
+  plus2purposeful modules.11source draws remain missing; no fullCPU/globalCI.
 - [NoM26dependency prefix](../workloads/openai-math/noM-original-c-prefix26/README.md):
   no new random endpoint; lock deferral is not proof/resource failure.
 - [Replay scopes](../research/profile-2026-10-31/startup-replay/repaired-replay-analysis.md):
@@ -71,8 +71,8 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   not a resource-conforming4GiB comparison. Original publication's pending
   oracle snapshot stays historical; root audit advances actual final coverage.
 - [Conditional strata](../workloads/openai-math/cost-regimes-noM/README.md):
-  12complete strata/101596modules yield proxy-marked11.70%compilationCPU,
-  not kernel time or full-library share.61501modules/3036positive missing;
+  14complete strata/103468modules yield proxy-marked17.1434%compilationCPU,
+  not kernel time or full-library share.59629modules/1164positive missing;
   nominal joint interval0–100%, no precise global estimate.
 
 - [Native grain](../research/chunked-kernel-check/step-006-report.md):
@@ -138,10 +138,12 @@ All root reviews are **自审**, not independent or venue acceptance.
 The supplied word supplement is preserved and deduplicated; unavailable
 complete cross-chat conversation history is not claimed recovered.
 
-## Newly observed W terminal awaiting independent population reduction
+## W48 terminal collected and original-frame reduction complete
 The original48job suffix queue has complete=true,48native compile_ok rows and
 controller191267/birth754946357 retired. Nativewall179.255830s is48local
 compiler processes, not48newrandomdraws or9217.807695s queue-inclusive time.
-Do not restart that completed queue. Original42draw coverage must be reduced
-from per-row probability_sample_target and exact module IDs before updating
-population weights; no missing draw is silently replaced with a dependency.
+Rootstep0238verifies46dependencies+2originaldraws, all48identities/scopes and
+threeartifacts.31/42randomdraws,14/21complete strata/103468modules, conditional
+markedCPU24.146735h/other116.704826h=17.1434%marked. Missing59629modules/
+1164marked and11draws; no finiteglobalCPUestimate/informativeglobalshare.
+Do not restart thecompletedqueue. Rawqueue/setup/nativecosts remainseparate.

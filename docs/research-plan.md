@@ -75,7 +75,7 @@ The completed Barrier declaration replay and appropriately coarse within-goal
 partitioning have separate boundaries; code/short controls/queue submission do
 not establish other modules or whole-library curves. The small Grid component-preserving variant
 improves its kernel subclock but remains slower whole-path. Global regime
-weights and missing13draws still open; do not borrow compilation denominators.
+grain-panel weights and its missing13draws still open; source costs now31/42. Do not borrow compilation denominators.
 
 ## Completed module-level case; remaining boundaries
 [Barrier result](../research/chunked-kernel-check/parallel-result.md) now has
@@ -109,3 +109,12 @@ Additionalchecked-token/Cinsertioncode remains trustedimplementation.
 Do not substitute boundedcontrols for fullrepair-version replay/timing.
 W's original48jobqueue has now reached complete48/48compile_ok and retired;
 reduce exactoriginaldraw coverage next, without restarting thequeue.
+
+## Original-frame coverage after the completed W48 queue
+Rootstep0238checks48native receipts, exact42drawframe and prior29costs.
+Only2newdraws (OriginalBlock81/KeySound82) receivepopulationweights;46depsdo not.
+Now31/42draws,14/21complete strata,103468coveredmodules. Conditionalmarked
+CPU24.146735h/other116.704826h,share17.1434%; notglobal/kernel-timeweights.
+Missing11draws/59629modules/1164marked; no old-M/purposeful/dependencyfill.
+EarlierMchecking-grainpanelremains29draws+2purposeful, notretroactivelyexpanded.
+No Woldqueue restart; newcapture choices belongtotheexistingWlane.
