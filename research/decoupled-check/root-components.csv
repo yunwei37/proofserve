@@ -1,0 +1,2 @@
+cohort,module,class_tag,root_compiler_s,root_read_map_replay_s,root_kernel_replay_s,component_over_construction,scope
+math,Mathlib.Data.Nat.Basic,ordinary,0.41071774903684855,0.026843838,0.026772106,0.06535835878276504,increment after checked dependencies; excludes process startup and shared base

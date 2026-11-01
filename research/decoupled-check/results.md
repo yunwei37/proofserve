@@ -1,14 +1,14 @@
 # Decoupled native checking: measured status
-Updated 2026-11-01T00:29:05Z. Review: self-review.
+Updated 2026-11-01T00:35:37Z. Review: self-review.
 Raw observations: /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031. P cores0-7; shared lock; no Lean -M;
 11.875GiB child cgroup plus128MiB parent reserve within O12GiB.
 Fixed native kernel and compiler: Lean4.34.1, release5045d0056413266e57c625dcd7c365b10e377c52.
 
 ## Complete closure accounting
-- math (Mathlib.Data.Nat.Basic): constructed 1330/1330; source compiler work 622.379412s; matched stream ; ratio ; matched oracle modules 0; parity complete=False.
-- compute-grid (OAI.Analysis.PlanarPacking.Grid): constructed 1330/3793; source compiler work 622.379412s; matched stream ; ratio ; matched oracle modules 0; parity complete=False.
-- compute-amplitudes (OAI.Analysis.PlanarPacking.Certificate.Amplitudes): constructed 1330/5083; source compiler work 622.379412s; matched stream ; ratio ; matched oracle modules 0; parity complete=False.
-- ordinary-oai (OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion): constructed 1330/3333; source compiler work 622.379412s; matched stream ; ratio ; matched oracle modules 0; parity complete=False.
+- math (Mathlib.Data.Nat.Basic): constructed 1330/1330; source compiler work 622.379412s; matched stream 65.69264411274344; ratio 0.10555079879889155; matched oracle modules 1330; parity complete=True.
+- compute-grid (OAI.Analysis.PlanarPacking.Grid): constructed 1330/3793; source compiler work 622.379412s; matched stream ; ratio ; matched oracle modules 1330; parity complete=False.
+- compute-amplitudes (OAI.Analysis.PlanarPacking.Certificate.Amplitudes): constructed 1330/5083; source compiler work 622.379412s; matched stream ; ratio ; matched oracle modules 1330; parity complete=False.
+- ordinary-oai (OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion): constructed 1330/3333; source compiler work 622.379412s; matched stream ; ratio ; matched oracle modules 1330; parity complete=False.
 
 A blank ratio is pending, not zero. The primary numerator consumes the exact
 newly constructed olean artifacts, not the original distributed cache.
@@ -29,6 +29,7 @@ is that root's read/map/kernel-replay component **after dependencies are checked
 It is not standalone process latency: shared library verification remains in
 the whole-closure table. Neither component fraction nor sampled C++ producer
 cycle fraction is a guaranteed end-to-end speedup.
+- Mathlib.Data.Nat.Basic: component 0.026844s / producer 0.410718s = 0.065358.
 
 ## Correctness and trust scope
 The preflight checks a real13-module closure against bundled leanchecker and

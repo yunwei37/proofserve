@@ -1,0 +1,7 @@
+namespace,modules,kernel_component_s,source_compiler_work_s,kernel_component_over_compiler_work,scope
+Init,649,49.721922879000054,254.75914108753204,0.19517228181388876,"Mathlib.Data.Nat.Basic closure; per-module kernel timer, shared checked dependencies"
+Lean,438,5.798459592,231.46535780932754,0.025051090352693525,"Mathlib.Data.Nat.Basic closure; per-module kernel timer, shared checked dependencies"
+Std,113,8.829380724000004,65.11347908806056,0.13559989187582808,"Mathlib.Data.Nat.Basic closure; per-module kernel timer, shared checked dependencies"
+Mathlib,80,0.8489162,49.606739638373256,0.017112920667403053,"Mathlib.Data.Nat.Basic closure; per-module kernel timer, shared checked dependencies"
+Batteries,40,0.265123747,18.613911607302725,0.014243311808571446,"Mathlib.Data.Nat.Basic closure; per-module kernel timer, shared checked dependencies"
+ImportGraph,10,0.008499757000000002,2.8207829603925347,0.003013261608336287,"Mathlib.Data.Nat.Basic closure; per-module kernel timer, shared checked dependencies"
