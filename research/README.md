@@ -66,3 +66,10 @@ are not a reproducibility guarantee; O's cost-prediction report is now integrate
 and same-corpus novelty overlap in actual paper. Mv2 raw reconstruction1536rows/16selected inputs,
 10qualification rows/17native phases;8off/trace acceptance changes repeat one sync-path input at1000,
 not stock frontend pass-set loss.35PID/birth identities/cgroups retired. General guarantees remain unproven.
+
+[Root0256](../docs/tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md): independent narrow-class27/29
+conditional trace match and separate9batch/12call native routing point.
+Type route0.333whole roots equalsFIFO;known-panel upper1root but45.04%budget idle,
+unseen NearPin class-bound transfer fails. Not pooled with60CPU-s source jobs.
+M budget ladder0/100violations;48JSON-only cache comparisons preserve verdict,
+notcoldruntime. Raw/source/failed/partial texts archived in experiment-001;34recorded identities retired.

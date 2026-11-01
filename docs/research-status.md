@@ -115,3 +115,29 @@ C remains a measured finite engineering application with incomplete general/full
 Paper now root0255:17pages/177246bytes, full compile/all-page static self-review,
 12prior numeric table bodies unchanged plus2distinct prediction/policy tables.
 No new rootnative/agent, no old capture restart; prepared v3/v4 or ongoing Falconer work is not a result.
+
+## Regime label and checker routing: new finite evidence
+[Root0256](tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md) independently reconstructs31retained trace call sums:
+among29original dynamic draws, fixed marker label givesTP14/TN13/FP1/FN1,
+27/29conditional accuracy;13dynamic draws remain missing. Operational reference
+is decision-helper>=50%kernel-callCPU, not all computational proof forms or production cost.
+Both errors shareCatalanproject.0.482%kernelCPU exposure is not a causal wrong-route penalty.
+
+New separate compiled-artifact120CPU-s point:9batches/12native calls;5completeMathlib
+roots exactly1330reference IDs and7SIGXCPU interruptions. FIFO/type/upper mean complete
+roots0.333/0.333/1, interrupts1/1.333/0,unused0.649/0.610/54.049CPU-s.
+Known-root upper admission helps this panel, leaving45.04%idle; class envelope fails
+retained NearPin transfer172.726>71.744CPU-s. Routing faster wall does not increase
+completion count under CPU work budget. Same-root historical bounds are not
+unseen-input safety, novel classification or a production scheduler.
+Recorded sample1,389,350,912B/charged322,310,144B differ;Ochildcap11.5GiB+driver512MiB
+still exceedslistedO4, driverpeakunknown. No retroactive share compliance.
+
+M v3's160ladder rows yield0violations in100lower-pass/larger-budget comparisons;
+8unsupported adapter controls excluded.48cache pairs preserve verdict/diagnostics,
+but only7requestJSONpages treated, notcoldSDK/Mathlib. GeneralBstillunproven.
+Both completed matrices'34PID/birth identities/cgroups retired. Real Falconerholder
+and M/W kernel-lock waiters protected; no newrootnative/agent or queue restart.
+Paper integration of this evidence is root0256, final compile/static review recorded there.
+
+Current paper root0256:18pages184684bytes, full compile/all-page static self-review;14oldtable bodies+1new policy table, no newrootnative/agent. General/global/cluster/software/axiom gaps remain.

@@ -1,0 +1,6 @@
+{
+  "compile_rc": 0,
+  "postcompile_assertion_failed": "Overfull or undefined warning",
+  "initial_PDF_log_preserved": "/workspaces/.agent-state/gpu-smt-captures/step-0256-20261101T205729+0000-paper/initial-layout",
+  "native_rerun": false
+}

@@ -1,0 +1,269 @@
+{
+  "class": {
+    "n": 29,
+    "projects": 20,
+    "counts": {
+      "TP": 14,
+      "TN": 13,
+      "FP": 1,
+      "FN": 1
+    },
+    "correct": 27,
+    "accuracy_conditional": 0.9310344827586207,
+    "missing_original_draws": 13,
+    "known42_accuracy_range": [
+      0.6428571428571429,
+      0.9523809523809523
+    ],
+    "wrong_modules": [
+      "OAI.NumberTheory.Catalan.Analysis.ManuscriptNormLogPGroup006",
+      "OAI.NumberTheory.Catalan.Determinants.FixedCompactRow48"
+    ],
+    "kernel_cpu_s": 213.362303335,
+    "wrong_kernel_cpu_s": 1.028413619,
+    "kernel_error_exposure_fraction": 0.004820034293430402,
+    "independent_project_bootstrap_accuracy_95pct": [
+      0.7777777777777778,
+      1.0
+    ]
+  },
+  "policies": [
+    {
+      "policy": "fifo",
+      "n": 3,
+      "completed_mean": 0.3333333333333333,
+      "completed_min": 0,
+      "completed_max": 1,
+      "interruptions_mean": 1,
+      "interruptions_min": 1,
+      "interruptions_max": 1,
+      "discarded_root_cpu_s_mean": 97.33548866666666,
+      "discarded_root_cpu_s_min": 53.998650999999995,
+      "discarded_root_cpu_s_max": 119.011717,
+      "total_cpu_s_mean": 119.350529,
+      "total_cpu_s_min": 119.044642,
+      "total_cpu_s_max": 119.94153499999999,
+      "unused_budget_cpu_s_mean": 0.6494710000000063,
+      "unused_budget_cpu_s_min": 0.05846500000001288,
+      "unused_budget_cpu_s_max": 0.9553580000000107,
+      "wall_s_mean": 119.49392744371046,
+      "wall_s_min": 119.18486554734409,
+      "wall_s_max": 120.10701671708375
+    },
+    {
+      "policy": "type_route",
+      "n": 3,
+      "completed_mean": 0.3333333333333333,
+      "completed_min": 0,
+      "completed_max": 1,
+      "interruptions_mean": 1.3333333333333333,
+      "interruptions_min": 1,
+      "interruptions_max": 2,
+      "discarded_root_cpu_s_mean": 97.33030166666667,
+      "discarded_root_cpu_s_min": 52.966541,
+      "discarded_root_cpu_s_max": 119.912367,
+      "total_cpu_s_mean": 119.38959033333333,
+      "total_cpu_s_min": 119.04511699999999,
+      "total_cpu_s_max": 119.966559,
+      "unused_budget_cpu_s_mean": 0.6104096666666702,
+      "unused_budget_cpu_s_min": 0.03344099999999675,
+      "unused_budget_cpu_s_max": 0.9548830000000164,
+      "wall_s_mean": 76.87075701231758,
+      "wall_s_min": 68.7428586203605,
+      "wall_s_max": 92.33452223427594
+    },
+    {
+      "policy": "upper_admission",
+      "n": 3,
+      "completed_mean": 1,
+      "completed_min": 1,
+      "completed_max": 1,
+      "interruptions_mean": 0,
+      "interruptions_min": 0,
+      "interruptions_max": 0,
+      "discarded_root_cpu_s_mean": 0.0,
+      "discarded_root_cpu_s_min": 0.0,
+      "discarded_root_cpu_s_max": 0.0,
+      "total_cpu_s_mean": 65.950763,
+      "total_cpu_s_min": 65.81489599999999,
+      "total_cpu_s_max": 66.218701,
+      "unused_budget_cpu_s_mean": 54.049237000000005,
+      "unused_budget_cpu_s_min": 53.781299000000004,
+      "unused_budget_cpu_s_max": 54.18510400000001,
+      "wall_s_mean": 65.98984635404001,
+      "wall_s_min": 65.84981203172356,
+      "wall_s_max": 66.26836234331131
+    }
+  ],
+  "native_calls": 12,
+  "successful_whole_roots": 5,
+  "SIGXCPU": 7,
+  "retired_recorded_identities_including_controllers": 34,
+  "identities": [
+    [
+      267528,
+      "761574778"
+    ],
+    [
+      272035,
+      "761627741"
+    ],
+    [
+      272036,
+      "761627741"
+    ],
+    [
+      272191,
+      "761634335"
+    ],
+    [
+      272192,
+      "761634337"
+    ],
+    [
+      272483,
+      "761639751"
+    ],
+    [
+      272484,
+      "761639753"
+    ],
+    [
+      272524,
+      "761646361"
+    ],
+    [
+      272525,
+      "761646363"
+    ],
+    [
+      272547,
+      "761648985"
+    ],
+    [
+      272548,
+      "761648987"
+    ],
+    [
+      272572,
+      "761655612"
+    ],
+    [
+      272573,
+      "761655613"
+    ],
+    [
+      272601,
+      "761662461"
+    ],
+    [
+      272602,
+      "761662462"
+    ],
+    [
+      272613,
+      "761662565"
+    ],
+    [
+      272614,
+      "761662566"
+    ],
+    [
+      272631,
+      "761669150"
+    ],
+    [
+      272632,
+      "761669151"
+    ],
+    [
+      272668,
+      "761681069"
+    ],
+    [
+      272670,
+      "761681071"
+    ],
+    [
+      272715,
+      "761687655"
+    ],
+    [
+      272716,
+      "761687656"
+    ],
+    [
+      272890,
+      "761699573"
+    ],
+    [
+      272891,
+      "761699575"
+    ],
+    [
+      277382,
+      "761789543"
+    ],
+    [
+      280913,
+      "761844367"
+    ],
+    [
+      281183,
+      "761845311"
+    ],
+    [
+      281194,
+      "761846251"
+    ],
+    [
+      281202,
+      "761846842"
+    ],
+    [
+      281209,
+      "761847455"
+    ],
+    [
+      281217,
+      "761848037"
+    ],
+    [
+      281225,
+      "761848622"
+    ],
+    [
+      281232,
+      "761849258"
+    ]
+  ],
+  "sampled_RSS_peak_bytes": 1389350912,
+  "charged_peak_bytes": 322310144,
+  "O_declared_share_deviation": {
+    "child_cap": 12348030976,
+    "parent_reserve": 536870912,
+    "listed_share": 4294967296,
+    "parent_peak": "unrecorded",
+    "aggregate_lane_compliance": "not established"
+  },
+  "M_ladders": [
+    {
+      "key": "ladder-j1",
+      "rows": 80,
+      "qualifying_pairs": 50,
+      "violations": 0
+    },
+    {
+      "key": "ladder-j8",
+      "rows": 80,
+      "qualifying_pairs": 50,
+      "violations": 0
+    }
+  ],
+  "M_unsupported_control_rows": 8,
+  "M_input_only_cache_pairs": 48,
+  "M_parent_counter_changes": 15,
+  "new_root_native": 0,
+  "analysis_seconds": 0.9079840192571282,
+  "analysis_maxrss_kib": 25524
+}

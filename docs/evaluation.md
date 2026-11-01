@@ -504,3 +504,18 @@ Raw4timedlogs, exactupstreamsource, computedpaths/edges/models retained in step.
 [Step](tmp/build-and-evaluate/step-0255-20261101T200059+0000/step-report.md) · [Outer audit](tmp/build-and-evaluate/step-0255-20261101T200059+0000/outer-audit.md).
 No new root native or agent. Incorporates root0254 O finite forecasts/policy negatives and same-corpus closest work into actual paper; root independently reconstructs corrected Mv2 1536rows/16selected sources plus10qualification rows,17native phases/35retired identities. Budget1000 eight off/trace acceptance changes repeat one sync-path input; no stock path acceptance loss or thread-count difference observed. Universal B remains unproven.
 17pages177246bytes final PDF,2.731s compiler/190554112B sampled own-tree RSS on E22–23. All17pages reviewed via5contacts; no observed clipping/overlap/empty body pages.12prior table bodies unchanged;2new tables separate cost forecasts from source policy budget. Full compile/static self-review is not scientific or venue acceptance.
+
+## 2026-11-01 root0256 — classify, route, admit at distinct boundaries, 自审
+[Step](tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md) · [Audit](tmp/build-and-evaluate/step-0256-20261101T205729+0000/outer-audit.md).
+0newrootnative/agent; reparse31existing kernel traces,12newO native calls/9batches and8M native phases.
+Fixed source class conditional27/29 match to helper>=50%kernelcallCPU;13missing dynamic draws,
+botherrorsCatalan,0.482%exposure not causal extra work. O120CPU-s root policy meansFIFO/type/upper
+complete0.333/0.333/1;upper benefitsknownpanel butunused54.049s/failedNearPinupper transfer.
+34recorded identities retired, noOOM/RSS/wallstop;7SIGXCPU notmathematical rejection.
+M0/100finite budget monotonicity violations,8intended controls unsupported;48JSONcachepairs same
+verdict/diagnostics,notcoldruntime. Source60s prediction point remains separate. SATzilla2012
+primarydescription directlychecked:classificationwithoutregression prior art.
+Initial compile succeeds but9.93684pttableoverflow retained; only header words shortened before finalcompile,
+no native rerun or budget/model change. Full paper compile/static review recorded below after viewing.
+
+Finalroot0256paper18pages184684bytes, compile2.811327s/sample190275584B/E22–23;5contacts all18pages self-reviewed.14oldtable bodies unchanged+1newpolicytable. Current28renderings/17748440B removed after review, initial/finalPDF/log preserved. No native rerun.

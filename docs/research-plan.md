@@ -95,3 +95,14 @@ acceptance loss, no population rate or universal mechanism.
 C's finite application remains measured, general automation unproven.
 No first same-corpus characterization/recomputation claim, replacement agent, queue or runtime budget.
 Further work follows actual new owner evidence; completed A/v1/v2 points are not restarted.
+
+[Root0256](tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md) distinguishes classification consistency from forecasting
+and routing utility. Existing completed29dynamic observations validate only a
+narrow reference label, not whole-library regime accuracy. The finite three-root
+native admission point is now complete: acknowledge known-panel availability
+benefit and failed class-envelope transfer together. Do not rerun it or impute
+route costs on unmeasured roots. Mv3 finite ladder/input-file treatment complete;
+full private-runtime cache/region controls follow actual new terminal, not this
+tiny control. Original source11draw/dynamic13draw gaps remain.
+
+Current paper root0256:18pages184684bytes, full compile/all-page static self-review;14oldtable bodies+1new policy table, no newrootnative/agent. General/global/cluster/software/axiom gaps remain.

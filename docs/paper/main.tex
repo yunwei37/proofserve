@@ -99,7 +99,9 @@ proof-task scheduling precedents~\cite{satzilla2008,coqAsyncManual2023}.
 Our source-only forecasts have substantial held-out errors on the completed
 subset, and one native budgeted ordering test completes no more modules
 than FIFO. Upper admission avoids interruptions with fewer completions.
-These are limits and tradeoffs, not a new predictor or safe resource bound.
+A separate known-root artifact trial improves admission availability but
+fails unseen-root transfer. These are limits and scoped tradeoffs, not a new
+predictor or safe resource bound.
 
 \textbf{B: reproducible budgeted outcomes.}
 \unproven{complete-work accounting and cross-condition replay.}
@@ -345,6 +347,36 @@ Confidence intervals resample project blocks of fixed held-out errors,
 rather than the complete training procedure.
 \partialev{completed-subset forecasts; missing/censored heavy inputs and
 general calibration remain unresolved.}
+
+\paragraph{A source label can match observed kernel work without bounding cost.}
+\measured{\expref{0256-20261101T205729+0000}{0256}; independent reconstruction of retained call traces.}
+The fixed explicit-marker rule agrees with a narrower dynamic reference on
+27 of 29 observed original draws. The reference is whether decision-shaped
+helpers consume at least half of that module's measured kernel-call CPU,
+not all possible large reductions or production-cost dominance.
+The confusion counts are 14 true positives, 13 true negatives,
+one false positive and one false negative.
+Both errors belong to the Catalan project: one marked module has 43.79\%
+helper CPU, while an unmarked ordinary \texttt{decide} elaborates to helpers
+using 61.67\%. Expensive unrecognized proof forms can escape this definition.
+
+A conditional project-block bootstrap spans 77.78--100\% accuracy over
+20 observed projects. Thirteen original dynamic draws remain absent:
+even unweighted accuracy on the 42-draw frame can range from 27/42 to
+40/42 without assumptions about them. The primary panel deliberately
+oversamples marker-positive sources; 93.10\% is not population accuracy.
+The two extra purposeful hot modules both match, but stay outside that rate.
+Agreement with W's same source rule is scanner consistency, not independent
+dynamic evidence.
+
+Mislabeled modules contain 1.0284 of 213.3623 kernel-call CPU seconds (0.482\%).
+This is exposed work, not additional CPU caused by choosing a wrong checker:
+that penalty needs both routes on those inputs.
+Classification, numeric forecasting and safe admission are separate obligations.
+Cost-sensitive algorithm selection without runtime regression is itself
+established prior work~\cite{satzilla2012}.
+\partialev{operational label only; missing-label, population and routing-penalty
+evidence remain unresolved.}
 
 \paragraph{Native checking work has different useful granularities.}
 \measured{\expref{0234-20261101T030854+0000}{0234}; conditional replay panel.}
@@ -683,6 +715,70 @@ Per-child PID/birth records are not emitted by this runner; complete
 \texttt{wait4} outputs establish returns, not an invented independent
 identity audit. There is one observed policy order, not replicated
 service-level benefit or a bounded-error admission mechanism.
+
+\paragraph{A correct regime label is insufficient for CPU-budgeted routing.}
+\measured{\expref{0256-20261101T205729+0000}{0256}; separate compiled-artifact admission experiment.}
+A second native point uses three selected root requests: Nat.Basic,
+BarrierData41 and Grid, each including its complete dependency closure.
+A fixed source label routes the ordinary root to serial checking and
+the two marked roots to the qualified four-worker original-kernel checker,
+without proof rewriting. FIFO uses serial checking for all three.
+Upper admission adds historical type envelopes from these same roots;
+this is recurrent known-work calibration, not a bound learned from class alone.
+
+Nine batches rotate three cyclic arrivals and policy order, allocating
+120 CPU seconds per policy in each arrival. Queue wait, source production,
+offline features and plan generation are excluded. Only whole completed roots
+count; partial dependency accepts do not complete a request.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+Policy & Done & Cuts & Discarded & Unused\\
+\midrule
+FIFO &0.33&1.00&97.34&0.65\\
+Type route &0.33&1.33&97.33&0.61\\
+Upper admission &1.00&0.00&0.00&54.05\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0256-20261101T205729+0000}{0256}} Means across three cyclic arrivals per
+policy, each with a 120-CPU-second budget. Done counts whole roots;
+discarded and unused CPU are seconds. These are descriptive observations,
+not three same-arrival repetitions or a population confidence interval.}
+\label{tab:class-admission}
+\end{table}
+
+Type routing completes no more roots than FIFO, although mean batch wall
+is 76.87 rather than 119.49 seconds. Spending the same work sooner before
+interruption is not higher successful-completion throughput.
+All five completed native requests are the ordinary root, with exactly
+the reference's 1,330 accepted IDs; seven calls receive \texttt{SIGXCPU}.
+Neither computational root completes at this budget. Their prior full-pair
+parity is not newly established by interrupted requests.
+One routed batch dispatches a second interrupted request because discrete
+CPU limits leave a whole-second allowance; this quantization is retained.
+No observed batch exceeds its recorded CPU allocation.
+
+Upper admission finishes the ordinary root in every arrival and avoids
+discarded-root work, but defers both computational roots and leaves
+45.04\% of allocated CPU unused. The existing ordinary NearPin closure takes
+172.73 CPU seconds, already exceeding the frozen ordinary envelope of 71.74.
+Class membership therefore fails as an unseen-work upper bound.
+Completed parallel full-pair costs also consume more CPU than serial;
+a label's wall-time opportunity need not improve a CPU-budget objective.
+The three selected requests have one reference each, not a pass-at-$k$ study
+or a representative service mix.
+
+Commands retain no \texttt{-M}, P0--7 and the shared lock. All recorded native
+identities and child cgroups retire, with no OOM, sampled-RSS stop or wall timeout.
+The existing O child cap remains 11.5\,GiB with a 512\,MiB driver allowance,
+above its listed 4\,GiB share. Peak sampled child RSS is 1,389,350,912 bytes
+and charged memory is 322,310,144 bytes; the driver peak is unrecorded.
+This does not establish whole-lane 4\,GiB compliance.
+\partialev{known-panel availability benefit; unseen admission guarantees,
+representative mixes and end-to-end feature cost missing.}
 
 \paragraph{System-design implication.}
 \partialev{implication of scoped observations; general benefit unproven.}
@@ -1309,7 +1405,7 @@ That is neither full-source accepted-set loss nor a current no-\texttt{-M}
 observer-cost estimate.
 A C-timing control preserves diagnostics but changes allocation-heartbeat
 deltas; equal error flags do not establish exact budget accounting.
-\missing{No-\texttt{-M} repeated observer/outcome stability and software coverage.}
+\missing{General cross-machine observer/outcome stability and broad software coverage.}
 
 \measured{\expref{0255-20261101T200059+0000}{0255};
 finite corrected-adapter matrix.}
@@ -1331,6 +1427,21 @@ path. Allocation observations are partial, not a complete candidate work
 budget, and these selected observations imply neither population frequency
 nor cross-machine stability. The 17 native phases and recorded identities
 retire without resource stops; no new deterministic-budget mechanism follows.
+
+\measured{\expref{0256-20261101T205729+0000}{0256}; separate finite budget ladder and input-file control.}
+Sixteen selected sources on the synchronous, observer-off path yield
+160 observations at five budgets and one/eight available threads.
+All 100 lower-budget-accepted/larger-budget comparisons retain acceptance.
+This supports only those chains, not monotonicity for arbitrary sources,
+observers or machines. Eight intended budget-aware controls fail in the
+adapter's imported-constant realization before their intended logic runs;
+they supply no monotonicity counterexample.
+A separate three-pair input-JSON residency treatment preserves verdicts
+and diagnostics in 48 comparisons. Only seven request-file pages are
+evicted or warmed: SDK/Mathlib cache state is not cold.
+Fifteen parent-thread counts differ by one; asynchronous work is outside
+that counter, and these observations do not isolate caching as the cause.
+A private-runtime cache experiment remains a separate unfinished point.
 
 The retained candidate contrasts have different failure/cost boundaries.
 One miniF2F point spends73.21\% of summed physical worker-attempt time on
@@ -1498,7 +1609,9 @@ The fixed release has concentrated kernel-decision syntax and selected
 cheap-witness versus costly-recomputation cases at declared cost boundaries.
 \partialev{population runtime weights, causality and generality missing.}
 A has bounded negative/tradeoff observations but no per-instance bound or
-completion gain in its native point; B remains unproven as a general guarantee.
+completion gain in the source-compilation point. Historically calibrated
+artifact admission improves known-panel availability without unseen-root safety;
+B remains unproven as a general guarantee.
 C is a measured finite-index application of established decomposition
 and checking, with additional implementation trust and incomplete full costs.
 \missing{Final no-\texttt{-M} regime weights, matched native module-task

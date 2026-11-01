@@ -1,0 +1,11 @@
+{
+  "url": "https://www.cs.ubc.ca/~kevinlb/papers/2012-SATzilla2012-Solver-Description.pdf",
+  "accessed_utc": "2026-11-01",
+  "read_sections": [
+    "I",
+    "II"
+  ],
+  "claim": "cost-sensitive algorithm selection without runtime regression precedes this application",
+  "source_kind": "primary solver description",
+  "not_new_native": true
+}
