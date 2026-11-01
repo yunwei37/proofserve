@@ -57,3 +57,32 @@ finish. Shared Mathlib dependency construction is reported separately in the
 existing cohort tables. A target near-one ratio and a smaller whole-closure
 ratio can coexist because the latter amortizes mathematical dependencies.
 No expected Grid or Amplitudes ratio is filled in.
+
+## Actual qualification attempts and extension accounting
+
+boundary-v1 actually failed during Lean parsing, before fixture compilation or
+replay: record-layout indentation and a do-block unsafe term were rejected.
+Original stdout/stderr, command, memory.events and the failed terminal remain
+on the PVC. boundary-v2 corrects those syntax positions and joins after observed
+existing waiters. Until qualified.json exists, no native parity is claimed.
+
+After successful context controls, the same bounded qualification slot prepares
+the stock external manifest and full source frame; this still is not source
+construction or kernel acceptance of Falconer. The finite project continuation
+waits for actual completion/retirement of the existing four-cohort capture,
+then uses fresh bounded P-core windows. It does not replace or restart it.
+
+Common source nodes may reuse only successful exact artifacts and measured
+compiler cells from this SAME pinned capture, with their costs explicitly
+charged once to every containing closure. New nodes are measured normally.
+The full denominator requires every closure member; it is neither a borrowed
+historical total nor a fresh reconstruction of common nodes. No partial ratio
+is finalized before complete matched input and module-local acceptance parity.
+Primary timing and memory-checkpoint profiling are separate runs; any context
+fallback count is reported. The source window and finite continuation have
+self limits and stop on actual failure without weakening the input.
+
+O-owned reconstructed outputs currently total about3.94GB, including0.647GB C
+and2.793GB olean parts across3,793 modules. Shared exact-node reuse avoids a
+second copy of those artifacts; future new members still consume PVC space.
+No foreign data, active owner, quota or storage configuration is altered.

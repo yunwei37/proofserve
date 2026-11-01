@@ -56,6 +56,15 @@ def main():
  if not all(x['qualified']for x in result):raise RuntimeError('boundary result differs; retain actual evidence')
  (ROOT/'qualified.json').write_text(json.dumps(dict(status='qualified',cases=len(cases),native_runs=len(result),
   scope='small synthetic sibling-context controls; not full AI library parity or performance'),indent=2))
+ # Read the stock external graph only after native context controls qualify.
+ # This is preparation, not acceptance or a time denominator.
+ import runpy
+ plan=json.loads((ROOT.parent/'falconer-plan.json').read_text())
+ base=ROOT.parent.parent
+ r=checked('falconer-external-manifest',[base/'stream-check','manifest','none']+plan['external_frontier'],300)
+ planner=runpy.run_path(str(ROOT/'plan-falconer.py'),run_name='falconer_plan')
+ planner['prepare'](ROOT/(r['key']+'.stdout'),ROOT.parent/'falconer-project')
+
 if __name__=='__main__':
  try:main()
  finally:

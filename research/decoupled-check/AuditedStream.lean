@@ -110,11 +110,15 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
   let parts ← moduleParts mod
   let some (first, _) := parts[0]? | throw <| IO.userError "empty module"
   let some (data, _) := parts[parts.size - 1]? | throw <| IO.userError "empty module"
-  modify fun s => { s with regions := s.regions ++ parts.map (·.2),
+  modify fun s => { s with
+    regions := s.regions ++ parts.map (·.2),
     imports := s.imports.insert mod (first.imports.map (·.module)) }
   for imp in first.imports do visit mode mutation mutateOnly imp.module
   let chosen := if mutateOnly == some mod then mutation else "none"
   let (map, skipped) := constantsOf data chosen
+  event [("event", toJson "module_header"), ("module", toJson mod.toString),
+    ("imports", toJson (first.imports.map (·.module.toString))),
+    ("constants", toJson data.constants.size)]
   let s ← get
   let visible := closure s.imports (first.imports.map (·.module)).toList
   let mut reason : Option String := none
@@ -137,7 +141,7 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
   else insertMap := map
   if let some why := reason then
     try
-      unsafe localReplay mod chosen
+      let _ ← unsafe localReplay mod chosen
       event [("event", toJson "accept"), ("module", toJson mod.toString),
         ("context", toJson "module_local"), ("fallback_reason", toJson why)]
       modify fun s => { s with segregated := s.segregated.insert mod, fallbacks := s.fallbacks + 1 }
@@ -161,7 +165,8 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
       event [("event", toJson "reject"), ("module", toJson mod.toString),
         ("context", toJson "shared"), ("error", toJson e.toString)]
       throw e
-  modify fun s => { s with pending := s.pending.erase mod, visited := s.visited.insert mod,
+  modify fun s => { s with
+    pending := s.pending.erase mod, visited := s.visited.insert mod,
     modules := s.modules + 1, constants := s.constants + data.constants.size,
     skipped := s.skipped + skipped }
   let s ← get

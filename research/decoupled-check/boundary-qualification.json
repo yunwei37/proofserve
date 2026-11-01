@@ -1,0 +1,9 @@
+{
+  "attempt": "boundary-v1",
+  "stage": "Lean adapter compilation",
+  "returncode": 1,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+  "evidence_root": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/boundary-v1",
+  "fixtures_executed": 0,
+  "status": "retained native preparation failure, not a replay result"
+}

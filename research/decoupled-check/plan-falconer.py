@@ -11,6 +11,8 @@ def prepare(external_manifest, output):
  q=json.loads(PLAN.read_text())
  old=json.loads((BASE/'build-frame.json').read_text())
  roots=sorted({r['source_root']for r in old if not r['module'].startswith('OAI.')})
+ package_root=Path('/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages')
+ roots=sorted(set(roots)|{str(p)for p in package_root.iterdir()if p.is_dir()})
  graph={}
  for line in Path(external_manifest).read_text().splitlines():
   e=json.loads(line)
