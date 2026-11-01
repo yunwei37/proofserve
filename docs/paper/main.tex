@@ -41,6 +41,9 @@ A dependency-aware prototype reduces independent replay wall time
 The meaning of \emph{verified} is a separate boundary: the default build
 omits 33.30\% of kernel-decision sites, outcomes depend on settings and
 observation, and whole-library axiom closure remains unestablished.
+\measured{\expref{0254-20261101T195608+0000}{0254}}
+At one source-compilation budget point, predicted ordering completes no more
+modules than FIFO; upper admission reduces interruptions and completions.
 The contribution is a characterization and its tested implications, not a
 general accelerator or a replacement trusted kernel.
 \end{abstract}
@@ -90,11 +93,13 @@ a qualifying result. These labels assess evidence, not novelty or general
 soundness. An established technique can produce a new empirical observation.
 
 \textbf{A: cost prediction and admission.}
-\unproven{held-out prediction and admission benefit.}
+\partialev{\expref{0254-20261101T195608+0000}{0254}; bounded trials, no per-instance guarantee.}
 Prediction-based resource decisions already have algorithm-selection and
 proof-task scheduling precedents~\cite{satzilla2008,coqAsyncManual2023}.
-Our candidate is to evaluate those ideas on this workload, not to introduce
-prediction or claim a safe pre-execution resource bound.
+Our source-only forecasts have substantial held-out errors on the completed
+subset, and one native budgeted ordering test completes no more modules
+than FIFO. Upper admission avoids interruptions with fewer completions.
+These are limits and tradeoffs, not a new predictor or safe resource bound.
 
 \textbf{B: reproducible budgeted outcomes.}
 \unproven{complete-work accounting and cross-condition replay.}
@@ -296,6 +301,50 @@ CPU estimate or informative global share interval.
 \missing{Representative no-\texttt{-M} phase profiles and full-library
 regime-specific cost weights after completing the original sample.}
 The 3.5856\% source-file concentration must not become a cost fraction.
+
+\paragraph{Source features do not establish bounded prediction error.}
+\measured{\expref{0254-20261101T195608+0000}{0254}; 31 completed source-compiler observations.}
+Five fixed log-ridge models predict native compiler CPU from source-only
+features, with no Lean execution or post-production proof/artifact features.
+Their penalty, transforms, marker-based domains and splits are frozen before
+fitting. Project folds hold whole source projects out; ordinary module
+cross-validation can leak shared project structure.
+Table~\ref{tab:prediction} shows project-held-out errors.
+Adding explicit computation markers and their interactions does not
+consistently improve prediction; paired project-bootstrap intervals for the
+error differences include zero. This does not establish a harmful effect
+either, or refute the distinction between checking work regimes.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+CPU forecast & Median error & P90 error\\
+\midrule
+Constant &86.50\%&366.74\%\\
+Source bytes &34.03\%&100.55\%\\
+Source/imports &48.08\%&77.62\%\\
+Static source features &34.95\%&77.38\%\\
+Static plus marker regime &50.07\%&93.02\%\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0254-20261101T195608+0000}{0254}} Absolute relative errors on the 31 completed
+original draws, project-grouped five-fold validation. These are compiler CPU
+forecasts, not independent-kernel costs, population estimates or error bounds.}
+\label{tab:prediction}
+\end{table}
+
+The original eleven missing costs remain missing.
+An auxiliary set has 6,214 compiler modules and 5,085 conditional replay-wall
+labels, mostly dependencies; it does not make the primary sample complete
+or turn compiler CPU into kernel replay cost.
+The separate calibration-fit upper estimates cover 28 of 31 observed inputs.
+Small dependent projects and nonresponse prevent guaranteed future coverage,
+let alone a deterministic per-request bound.
+Confidence intervals resample project blocks of fixed held-out errors,
+rather than the complete training procedure.
+\partialev{completed-subset forecasts; missing/censored heavy inputs and
+general calibration remain unresolved.}
 
 \paragraph{Native checking work has different useful granularities.}
 \measured{\expref{0234-20261101T030854+0000}{0234}; conditional replay panel.}
@@ -585,6 +634,55 @@ The complete passing-set comparisons do not establish universal shared-context
 transparency: duplicate theorem names, conflicting definitions and undeclared
 sibling visibility require separate qualification.
 A context-auditing continuation is not part of these timing results.
+
+\paragraph{Predictive admission trades completion for fewer budget cuts.}
+\measured{\expref{0254-20261101T195608+0000}{0254}; one ordered source-compilation policy point.}
+A separate native test gives FIFO, predicted-cost ordering and upper admission
+60 CPU seconds each, compiling the same 31 eligible original source modules
+one child at a time. These are distinct module proofs, not alternative
+candidates for one theorem.
+Frozen held-out forecasts are precomputed; extraction and forecasting cost
+are excluded. Each policy charges child and driver CPU.
+The test uses P0--7, eight compiler threads, no \texttt{-M}, normal
+\texttt{.olean}/\texttt{.ilean}/C outputs, and retained filesystem caches.
+Approximate operating-system CPU limits are not Lean heartbeat semantics.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+Policy & Done & CPU (s) & Cuts & Deferred\\
+\midrule
+FIFO &15&59.44&1&15\\
+Predicted order &15&59.46&1&15\\
+Upper admission &13&41.85&0&18\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0254-20261101T195608+0000}{0254}} One fixed-order native 60-CPU-second
+budget per policy. Completion counts are not a production throughput gain.
+A cut is an operating-system budget interruption, not a mathematical rejection.}
+\label{tab:admission}
+\end{table}
+
+All 43 completed calls exit zero; two other calls receive \texttt{SIGXCPU}.
+Upper admission leaves 18.15 allocated CPU seconds unused and completes fewer
+modules. Different selected IDs and ordered warm runs prevent a causal
+latency comparison from their wall clocks.
+A matched offline replay at the same budget and arrival order also yields
+15/15/13 completions. A separate larger-budget, randomized-arrival simulation
+favors predicted ordering, but is neither this native test nor evidence
+of a simulator/native contradiction.
+No general pass-at-$k$ follows from one reference proof per distinct module.
+
+The native child cap is 11.5\,GiB, with a 512\,MiB parent allowance,
+exceeding the listed O-line 4\,GiB share; this is not retroactively qualified
+as a 4\,GiB experiment. Maximum \texttt{wait4} RSS is 6.76\,GiB while the
+charged peak is 937,037,824 bytes, measured at different accounting boundaries.
+All 45 recorded temporary cgroups are absent after completion.
+Per-child PID/birth records are not emitted by this runner; complete
+\texttt{wait4} outputs establish returns, not an invented independent
+identity audit. There is one observed policy order, not replicated
+service-level benefit or a bounded-error admission mechanism.
 
 \paragraph{System-design implication.}
 \partialev{implication of scoped observations; general benefit unproven.}
@@ -1213,6 +1311,27 @@ A C-timing control preserves diagnostics but changes allocation-heartbeat
 deltas; equal error flags do not establish exact budget accounting.
 \missing{No-\texttt{-M} repeated observer/outcome stability and software coverage.}
 
+\measured{\expref{0255-20261101T200059+0000}{0255};
+finite corrected-adapter matrix.}
+A fresh no-\texttt{-M} matrix contains 1,536 configuration observations of
+16 selected retained miniF2F inputs, with two budgets, stock/synchronous
+frontends, three observers, four thread counts and reversed-order repeats.
+Ten corrected qualification controls distinguish valid, false, sorry,
+parse-error and extra-axiom inputs; they do not establish general transparency.
+At budget 1,000, off/trace comparison has eight acceptance-flag changes
+among 256 pairs. All come from one input repeated across configurations,
+and all occur in the synchronous accounting path: accepted without tracing,
+budget-exhausted with tracing.
+The stock/synchronous comparison has eight changes among 384 pairs at
+that budget; at 3,000 it has none.
+Thread-count comparisons show no acceptance differences at either budget.
+Thus this is not a demonstrated trace-induced stock-frontend pass-set loss.
+It does defeat observer-independent accounting for the tested synchronous
+path. Allocation observations are partial, not a complete candidate work
+budget, and these selected observations imply neither population frequency
+nor cross-machine stability. The 17 native phases and recorded identities
+retire without resource stops; no new deterministic-budget mechanism follows.
+
 The retained candidate contrasts have different failure/cost boundaries.
 One miniF2F point spends73.21\% of summed physical worker-attempt time on
 budget-source attempts, not that share of concurrent makespan.
@@ -1249,6 +1368,19 @@ All failed, partial and withdrawn evidence remains, including interrupted
 state-reuse records whose missing entries aren't zero cache opportunity.
 
 \section{Related work}
+\paragraph{Closest same-corpus cost study.}
+A public technical report already studies another revision of
+\texttt{openai/math}, including build/check costs, source-based forecasts,
+computation-heavy checking outliers, parallel external checking, default-root
+coverage and verification meanings~\cite{openaiMathTooling2026}.
+Its machine load and timing/acceptance boundaries differ from ours; we
+do not transfer its numbers or dismiss the conceptual overlap.
+We claim neither the first cost characterization of this corpus nor
+the first observation that checking may recompute.
+The empirical increment examined here is controlled boundary matching,
+explicit missingness and tested limitations of proposed responses.
+
+
 \paragraph{Parallel proof checking and deterministic budgets.}
 Wenzel's Isabelle proof futures check promised propositions and
 well-founded fulfilment dependencies~\cite{wenzelParallel2009}.
@@ -1349,7 +1481,7 @@ dynamic dependencies~\cite{salsaDependencies,adapton} and age-based scheduling
 The streaming and chunking prototypes test different regime-specific
 implications; external search with native checking is prior art.
 
-The gap addressed here is a boundary-consistent, two-regime characterization of released
+The empirical increment examined here is a boundary-consistent, two-regime study of released
 AI-generated formal artifacts, with a research-level library as the primary
 population and rejected/resource-limited attempts retained as contrasts.
 It joins source/build coverage to explicitly scoped native costs, treats
@@ -1365,7 +1497,8 @@ findings remain explicit open results.
 The fixed release has concentrated kernel-decision syntax and selected
 cheap-witness versus costly-recomputation cases at declared cost boundaries.
 \partialev{population runtime weights, causality and generality missing.}
-A and B remain unproven applications of prior prediction/budget ideas.
+A has bounded negative/tradeoff observations but no per-instance bound or
+completion gain in its native point; B remains unproven as a general guarantee.
 C is a measured finite-index application of established decomposition
 and checking, with additional implementation trust and incomplete full costs.
 \missing{Final no-\texttt{-M} regime weights, matched native module-task

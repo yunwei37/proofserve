@@ -55,9 +55,14 @@ scaled into newpoints. No native status is inferred from this static index.
 [M prior-work](reproducible-verdict/prior-work.md) and
 [W method audit](../workloads/openai-math/cost-method-prior-art-20261101/README.md).
 M's [six classification controls](reproducible-verdict/step-002-report.md)
-are not a reproducibility guarantee; O's cost-prediction report remains missing.
+are not a reproducibility guarantee; O's cost-prediction report is now integrated in root0254.
 [Root cleanup](../docs/cleanup-20261101.md) retains PDFs and all native evidence.
 
 [Root0253 v1matrix](../docs/tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md): finite768rows,0acceptance changes, observer counts/labels and parser-adapter differences separated. Rawfreeze in its experiment-001; correctedv2 not pooled. No new rootnative.
 
-[Cost prediction](cost-prediction/analysis.md) and [root0254](../docs/tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md):31completed original costs, fixed source-only forecasts;60CPU-s native counts15/15/13. Strong A unsupported; raw at cost-prediction-20261101-v2, rootfreeze linked. All three novelty reports actually received. Bv2terminal complete, not yet root-row-qualified.
+[Cost prediction](cost-prediction/analysis.md) and [root0254](../docs/tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md):31completed original costs, fixed source-only forecasts;60CPU-s native counts15/15/13. Strong A unsupported; raw at cost-prediction-20261101-v2, rootfreeze linked. All three novelty reports actually received. Bv2terminal complete; root0255 row-qualified it separately.
+
+[Root0255 paper/Bv2](../docs/tmp/build-and-evaluate/step-0255-20261101T200059+0000/step-report.md):17pages177246bytes; A finite negative/tradeoff
+and same-corpus novelty overlap in actual paper. Mv2 raw reconstruction1536rows/16selected inputs,
+10qualification rows/17native phases;8off/trace acceptance changes repeat one sync-path input at1000,
+not stock frontend pass-set loss.35PID/birth identities/cgroups retired. General guarantees remain unproven.

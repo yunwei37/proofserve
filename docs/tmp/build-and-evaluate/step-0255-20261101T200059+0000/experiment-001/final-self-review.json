@@ -1,0 +1,19 @@
+{
+  "all_pages_static_self_reviewed": 17,
+  "contacts": 5,
+  "PDF_bytes": 177246,
+  "old_tables_unchanged": 12,
+  "new_tables": 2,
+  "citation_keys_resolved": 49,
+  "evidence_labels": {
+    "measured": 33,
+    "partialev": 14,
+    "unproven": 1
+  },
+  "images_removed": 27,
+  "removed_bytes": 16439805,
+  "PVC_free_bytes_observed": 37269622784,
+  "all_PDF_logs_native_data_retained": true,
+  "new_root_native": 0,
+  "review_type": "self-review"
+}

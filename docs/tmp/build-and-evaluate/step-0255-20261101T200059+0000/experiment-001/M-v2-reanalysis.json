@@ -1,0 +1,517 @@
+{
+  "rows": 1536,
+  "sources": 16,
+  "qualification_rows": 10,
+  "native_phases": 17,
+  "verdict_counts": {
+    "budget_exhausted": 360,
+    "lean_error": 512,
+    "accepted": 664
+  },
+  "comparisons": {
+    "b1000_threads_off": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 96,
+      "sync_count_mismatches": 0,
+      "differences": []
+    },
+    "b1000_threads_native": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 96,
+      "sync_count_mismatches": 0,
+      "differences": []
+    },
+    "b1000_threads_trace": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 96,
+      "sync_count_mismatches": 0,
+      "differences": []
+    },
+    "b1000_observer_native": {
+      "pairs": 256,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 128,
+      "sync_count_mismatches": 4,
+      "differences": []
+    },
+    "b1000_observer_trace": {
+      "pairs": 256,
+      "verdict_mismatches": 8,
+      "acceptance_mismatches": 8,
+      "sync_count_pairs": 128,
+      "sync_count_mismatches": 128,
+      "differences": [
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 0,
+          "threads": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 0,
+          "threads": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 0,
+          "threads": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 0,
+          "threads": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 1,
+          "threads": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 1,
+          "threads": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 1,
+          "threads": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 1,
+          "threads": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        }
+      ]
+    },
+    "b1000_frontend": {
+      "pairs": 384,
+      "verdict_mismatches": 8,
+      "acceptance_mismatches": 8,
+      "sync_count_pairs": 0,
+      "sync_count_mismatches": 0,
+      "differences": [
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 0,
+          "threads": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 0,
+          "threads": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 0,
+          "threads": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 0,
+          "threads": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 1,
+          "threads": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 1,
+          "threads": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 1,
+          "threads": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-1041",
+          "budget": 1000,
+          "repeat": 1,
+          "threads": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "a": "accepted",
+          "b": "budget_exhausted"
+        }
+      ]
+    },
+    "b3000_threads_off": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 96,
+      "sync_count_mismatches": 0,
+      "differences": []
+    },
+    "b3000_threads_native": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 96,
+      "sync_count_mismatches": 0,
+      "differences": []
+    },
+    "b3000_threads_trace": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 96,
+      "sync_count_mismatches": 0,
+      "differences": []
+    },
+    "b3000_observer_native": {
+      "pairs": 256,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 128,
+      "sync_count_mismatches": 0,
+      "differences": []
+    },
+    "b3000_observer_trace": {
+      "pairs": 256,
+      "verdict_mismatches": 16,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 128,
+      "sync_count_mismatches": 128,
+      "differences": [
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 0,
+          "threads": 1,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 0,
+          "threads": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 0,
+          "threads": 2,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 0,
+          "threads": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 0,
+          "threads": 4,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 0,
+          "threads": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 0,
+          "threads": 8,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 0,
+          "threads": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 1,
+          "threads": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 1,
+          "threads": 8,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 1,
+          "threads": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 1,
+          "threads": 4,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 1,
+          "threads": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 1,
+          "threads": 2,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 1,
+          "threads": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        },
+        {
+          "id": "minif2f-2797",
+          "budget": 3000,
+          "repeat": 1,
+          "threads": 1,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "a": "lean_error",
+          "b": "budget_exhausted"
+        }
+      ]
+    },
+    "b3000_frontend": {
+      "pairs": 384,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 0,
+      "sync_count_mismatches": 0,
+      "differences": []
+    }
+  },
+  "retired_identities": 35,
+  "controller": {
+    "pid": 247273,
+    "birth": "761159154",
+    "argv": [
+      "flock",
+      "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "990",
+      "taskset",
+      "-c",
+      "0-7",
+      "python3",
+      "-u",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v2/run_matrix.py"
+    ]
+  },
+  "new_root_native": 0,
+  "no_universal_context_or_budget_claim": true
+}

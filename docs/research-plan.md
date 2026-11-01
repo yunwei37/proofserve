@@ -86,8 +86,12 @@ All root reviews are **自审**; project/paper acceptance is not declared.
 [Current-record consolidation](tmp/build-and-evaluate/step-0248-20261101T141922+0000/step-report.md); exact prior text
 is retained in [its entry archive](tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-docs-research-plan.md.gz).
 
-Current direct audit task: apply the [source-grounded novelty verdict](novelty-20261101.md), integrate actual M/W handoffs and the missing O prediction report when available. A/B application properties remain unproven; C finite measurements do not imply general automation or unchanged implementation trust. No replacement agent, queue or runtime budget.
-
-M v1 diagnosis is complete and must not restart. [Root0253](tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md) preserves parser-adapter failure and exact denominators; correctedv2 follows its actual terminal. No cross-machine/global guarantee or A-result inferred.
-
-[O A integration/root0254](tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md) closes the missing O-report dependency. A is a finite negative/tradeoff result, not a bounded predictor/new scheduler. Same-corpus closest work also limits broad characterization priority. Integrate qualified observations into paper without posthoc tuning/newcapture. M v2 terminal complete, audit raw next rather than restoring queue.
+Current direct audit task is implemented in [root0255](tmp/build-and-evaluate/step-0255-20261101T200059+0000/step-report.md):
+actual M/W/O novelty reports and primary-source overlap are reflected in the paper.
+A now has measured bounded negative/tradeoff evidence, without deterministic bounds
+or general admission benefit. B correctedv2 is terminal and root-row-qualified:
+8acceptance changes repeat one input on the synchronous trace path; no observed stock
+acceptance loss, no population rate or universal mechanism.
+C's finite application remains measured, general automation unproven.
+No first same-corpus characterization/recomputation claim, replacement agent, queue or runtime budget.
+Further work follows actual new owner evidence; completed A/v1/v2 points are not restarted.

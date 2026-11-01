@@ -499,3 +499,8 @@ Raw4timedlogs, exactupstreamsource, computedpaths/edges/models retained in step.
 
 ## 2026-11-01 — root0254 A audit/result (自审)
 [Report](tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md):155LOO refits/45native outputs recomputed, A bounded-error/general admission claim unsupported; native60CPU-s15/15/13 completions. Same-corpus primary report overlaps core cost intuition; priority claim withheld. Oresource/identity gaps and unmatched simulation boundaries explicit.0rootnative/agent; paper unchanged in this step.
+
+## 2026-11-01 root0255 — actual paper and corrected B terminal, 自审
+[Step](tmp/build-and-evaluate/step-0255-20261101T200059+0000/step-report.md) · [Outer audit](tmp/build-and-evaluate/step-0255-20261101T200059+0000/outer-audit.md).
+No new root native or agent. Incorporates root0254 O finite forecasts/policy negatives and same-corpus closest work into actual paper; root independently reconstructs corrected Mv2 1536rows/16selected sources plus10qualification rows,17native phases/35retired identities. Budget1000 eight off/trace acceptance changes repeat one sync-path input; no stock path acceptance loss or thread-count difference observed. Universal B remains unproven.
+17pages177246bytes final PDF,2.731s compiler/190554112B sampled own-tree RSS on E22–23. All17pages reviewed via5contacts; no observed clipping/overlap/empty body pages.12prior table bodies unchanged;2new tables separate cost forecasts from source policy budget. Full compile/static self-review is not scientific or venue acceptance.

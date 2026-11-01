@@ -263,3 +263,14 @@ than a general resource/accelerator story.
 
 ## 2026-11-01 — user explicitly requests novelty verdict and claim downgrades
 The user asks root to audit core primary sources and decide A/B/C strength, then edit the paper. Root confirms generic prediction/resource decisions, deterministic work budgets and parallel proof decomposition/composition have prior art. A/B application benefits stay unproven; C is a measured finite-index engineering application with incomplete full costs and added implementation trust. Keep the two-regime characterization, title/fourRQ meanings/section hierarchy, scoped measured observations and missing global evidence. Abstract qualification/evidence grades are directly authorized, replacing the old abstract-freeze wording. No invented novelty, general automatic splitter, unchanged-TCB guarantee or new native result. Initial Narrative and prior evolution remain untouched. [Audit](novelty-20261101.md).
+
+## 2026-11-01 — direct novelty request, complete O handoff and closer overlap
+The author-requested novelty audit now includes actual M/W/O reports. Root254
+recomputes O finite prediction/native results: strong A unsupported, rough
+forecasts and completion/interruption tradeoff measured. A same-corpus public
+technical report already discusses costly computation, forecasts, build/check
+coverage and trust. Root qualifies broad priority implications, not only
+mechanism novelty. Title/fourRQ/sections remain; controlled scoped evidence and
+negative results are potential empirical increments, no first-characterization
+claim. Root255 applies this scientific-strength correction to the actual paper.
+Initial Narrative and all prior evolution preserved.

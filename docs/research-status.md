@@ -95,15 +95,23 @@ Unavailable complete cross-chat history is not claimed recovered.
 is retained in [its entry archive](tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-docs-research-status.md.gz).
 
 ## Direct novelty decision, 2026-11-01
-[Root primary-source A/B/C verdict](novelty-20261101.md) and the actual M/W
-handoffs downgrade generic mechanisms/methods; the paper now marks evidence
-near principal claims and links experiments. A/B benefit remains unproven;
-C is a measured finite engineering case with partial general/fullcost evidence.
-M's six qualification controls do not complete stability claims. O's specific
-cost-prediction report remains unavailable; its context/Falconer work is distinct.
-No old capture is restarted or prepared result promoted.
+[Primary-source verdict](novelty-20261101.md) and actual M/W/O handoffs are now integrated.
+A's generic mechanism is precedented and its strong prediction/admission benefit unsupported:
+[0254](tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md) recomputes31completed source costs and45native outcomes;
+FIFO/predicted/upper complete15/15/13 at60CPU-s. Upper cuts0 rather than1 but completes fewer.
+No per-request bound, global population guarantee or production gain follows.
+Same-corpus prior work also limits broad characterization priority.
 
-[M v1 bounded matrix/root0253](tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md):768rows/16selected sources,0acceptance mismatches;16/256trace operational-label differences and128/128sync count changes.48/384frontend labels reflect the v1parser adapter defect. Not universal stability or novel deterministic budget. Correctedv2 is separate/in progress; paper remains0252.
+[B v1/root0253](tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md)
+retains its parser-adapter defect and768row history; do not pool into correctedv2.
+[Root0255](tmp/build-and-evaluate/step-0255-20261101T200059+0000/step-report.md) qualifies v2's1536rows/16selected inputs,10qualification rows and8task controls:
+17rc0native phases,35PID/birth identities and all cgroups retired.
+At budget1000 off/trace8/256acceptance-flag changes all repeat one input on the synchronous path;
+stock has no observed acceptance loss. Frontend8/384at1000,0at3000; no thread-count acceptance change.
+This refutes observer-independent accounting for the tested synchronous adapter, not Lean soundness
+or stock-frontend acceptance stability. B global/cross-machine guarantees remain unproven;
+C remains a measured finite engineering application with incomplete general/fullcost evidence.
 
-## O prediction audit now complete
-[Root0254](tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md) integrates O A audit/results: strong bounded-error/admission-benefit claim unsupported; native60s completes15/15/13, no sorting gain, upper trades coverage for fewer cuts. Same-corpus prior report overlaps the core cost/coverage intuition; no priority claim. Existing controlled characterization stays scoped. M v2 actual terminal is complete17phases; row audit pending, no restart. Paper still0252 until separate integration.
+Paper now root0255:17pages/177246bytes, full compile/all-page static self-review,
+12prior numeric table bodies unchanged plus2distinct prediction/policy tables.
+No new rootnative/agent, no old capture restart; prepared v3/v4 or ongoing Falconer work is not a result.
