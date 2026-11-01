@@ -1,0 +1,18 @@
+index,query,session_utc_date,per_query_timestamp
+1,proof checking cost prediction Lean,2026-11-01,not separately recorded
+2,Lean build time prediction static features import Mathlib,2026-11-01,not separately recorded
+3,SMT solver runtime prediction Hutter empirical hardness models SATzilla,2026-11-01,not separately recorded
+4,Kimina DeepSeek Prover verifier scheduling timeout memory admission,2026-11-01,not separately recorded
+5,proof checking prediction runtime model theorem,2026-11-01,not separately recorded
+6,Lean cost model verification prediction,2026-11-01,not separately recorded
+7,verification cost estimation SMT,2026-11-01,not separately recorded
+8,compiler compilation time prediction source features,2026-11-01,not separately recorded
+9,Lean import-only flag compiler --only-imports Mathlib cache build benchmark timing,2026-11-01,not separately recorded
+10,conformal prediction algorithm runtime SMT interval prediction 2024,2026-11-01,not separately recorded
+11,Automatic amortized resource analysis verified cost upper bounds functional programming Hoffman,2026-11-01,not separately recorded
+12,Lean runtime prediction verification,2026-11-01,not separately recorded
+13,SMT solver runtime prediction intervals conformal SCITEPRESS 2024 123936,2026-11-01,not separately recorded
+14,compilation time prediction static features machine learning compiler build times,2026-11-01,not separately recorded
+15,site:arxiv.org Lean proof runtime prediction static cost,2026-11-01,not separately recorded
+16,site:cs.cmu.edu Hoffmann resource aware ML automatic amortized resource analysis bounds,2026-11-01,not separately recorded
+17,site:lean-lang.org only-imports,2026-11-01,not separately recorded
