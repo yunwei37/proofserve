@@ -1,0 +1,16 @@
+{
+  "pages": 10,
+  "all_pages_visually_self_reviewed": true,
+  "title_four_RQ_sections_unchanged": true,
+  "abstract_changed_only_by_result_slot_fill": true,
+  "all_rest_abstract_unchanged": true,
+  "closure_component_and_wave_tables_readable": true,
+  "no_clipping_overlap_or_overfull_observed": true,
+  "root_links_resolve": true,
+  "all_gzip_snapshots_readable": true,
+  "exactly_two_root_markdown_reports": true,
+  "pdf_bytes": 126767,
+  "current_pdf_identical_to_rendered": true,
+  "independent_review": false,
+  "native_runs_started_by_root": 0
+}

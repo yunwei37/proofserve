@@ -1,0 +1,5 @@
+{
+  "before": "\\missing{Matched independent-checking and whole-path parallel results.}",
+  "after": "Four selected matched closure checks cost 6.76--14.55\\% of serial\nsource compiler work. These aggregates hide costly recomputation within\ncomputational targets.\nA dependency-aware prototype reduces independent replay wall time\n3.33-fold on one compiled module, with 27.8\\% more native CPU.",
+  "scope": "existing result placeholder only; remaining abstract text unchanged"
+}

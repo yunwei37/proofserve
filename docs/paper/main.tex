@@ -26,7 +26,11 @@ Runtime-weighted prevalence remains
 We examine repeated imports and production/checking coupling, and test
 single-process streaming and automatically chunked original-kernel checking
 as design-implication prototypes.
-\missing{Matched independent-checking and whole-path parallel results.}
+Four selected matched closure checks cost 6.76--14.55\% of serial
+source compiler work. These aggregates hide costly recomputation within
+computational targets.
+A dependency-aware prototype reduces independent replay wall time
+3.33-fold on one compiled module, with 27.8\% more native CPU.
 The meaning of \emph{verified} is a separate boundary: the default build
 omits 33.30\% of kernel-decision sites, outcomes depend on settings and
 observation, and whole-library axiom closure remains unestablished.
@@ -337,8 +341,8 @@ including lookup, imports, replay and cleanup.
 It is not an exclusive kernel timer or a contemporaneous construction pair.
 It cannot establish a current construction/replay ratio or its cause
 by division against an earlier, differently configured build.
-\missing{Matched no-\texttt{-M} build, import-only, checking and cleanup
-costs; independent-process ratio.}
+\missing{Matched no-\texttt{-M} import-only/checking/cleanup components
+and a comparable independent-process baseline decomposition.}
 Repeated imports and coupling are explanations to test, not a residual
 assigned to an unmeasured stage.
 
@@ -366,19 +370,22 @@ All commands omit \texttt{-M} and use P0--7 with external cgroup protection.
 
 \begin{table}[t]
 \centering\small
+\setlength{\tabcolsep}{3pt}
 \begin{tabular}{lrrr}
 \toprule
 Closure (modules) & Source (s) & Check (s) & Ratio\\
 \midrule
 \texttt{Nat.Basic} (1,330) &622.379&65.693&10.56\%\\
+NearPin (3,333) &2556.623&172.811&6.76\%\\
 Grid (3,793) &3878.707&563.082&14.52\%\\
+Amplitudes (5,083) &6173.195&898.034&14.55\%\\
 \bottomrule
 \end{tabular}
 \caption{One-pass no-\texttt{-M}, same-artifact closure comparisons.
-Source work sums compiler subprocess wall, including repeated imports and
-artifact emission; checking is one stream's process wall.
-These are different tasks, not parallel Lake or serving speedups.
-Grid's source point exceeds the listed O-line memory share.}
+Source work sums compiler subprocess wall; checking is one stream's process
+wall. Shared dependencies are counted once within each closure, so rows are
+not independent trials. These are different tasks, not parallel Lake or
+serving speedups. Computational closures exceed the listed O-line share.}
 \label{tab:stream}
 \end{table}
 
@@ -424,23 +431,59 @@ Its exact accepted set matches 119 completed module-oracle chunks, including
 42 previously completed chunks for identical shared dependencies.
 The stream reports 382,707 entries and 3,554 upstream unsafe/partial exclusions.
 This advances the earlier observation whose module-local parity was pending.
+The predeclared Amplitudes and \texttt{NearPinDeletion} cases now also
+complete both construction and exact module-oracle acceptance parity,
+with 5,083 and 3,333 modules, respectively.
+Their matched stream/source-work fractions are 14.55\% and 6.76\%.
+All four cases use one 5,085-node source union: shared immutable dependencies
+are built once and charged to each containing closure.
+There are 161 completed oracle chunks covering those 5,085 unique modules,
+not four disjoint samples or repeated confidence trials.
 
 Within that process, Grid's own kernel replay takes 255.487 seconds, versus
 318.231 seconds for its source compiler invocation: 80.28\%.
 The target replay subclock excludes shared-process startup and dependency
 checking; source compilation includes target imports and artifact emission.
 This component ratio is not standalone checking latency or a sampled CPU share.
-The smaller whole-closure fraction includes source work for mathematical
-dependencies and cannot establish that this computational target is cheap
-to validate. Neither comparison establishes an all-module classifier.
+Table~\ref{tab:components} uses a common read/map/replay subclock for the
+four targets. The selected AI mathematical lemma \texttt{NearPinDeletion}
+needs 4.47\,ms at that boundary versus 0.962 seconds of source compiler
+wall; Amplitudes needs 110.026 versus 133.615 seconds.
+The contrast supports two different cost regimes on these inputs, without
+assigning every remaining producer millisecond to imports.
+The smaller whole-closure fraction includes source work for dependencies
+and cannot establish that a computational target itself is cheap to validate.
+No source-only or timing classifier for every module follows.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Target & Source (s) & Component (s) & Ratio\\
+\midrule
+\texttt{Nat.Basic} &0.410718&0.026844&6.54\%\\
+NearPinDeletion &0.962274&0.004473&0.46\%\\
+Grid &318.231&255.489&80.28\%\\
+Amplitudes &133.615&110.026&82.35\%\\
+\bottomrule
+\end{tabular}
+\caption{Matched target read/map/kernel-replay components after dependency
+checking, versus target source compiler process wall. Components exclude
+shared-base checking and startup; these are not standalone latency ratios.}
+\label{tab:components}
+\end{table}
 
 The actual O native cgroup limit is 11.875\,GiB.
 Grid source compilation reaches 7,940,196\,KiB peak RSS (7.57\,GiB),
 exceeding the listed 4\,GiB O-line share; the streamed closure reaches
 2,328,540\,KiB. This is an observed resource deviation, not a qualified
 4\,GiB comparison or authority to increase that share.
-\missing{Repeated generated-library mathematical/computational cohorts,
-causal component attribution, uncertainty and full axiom coverage.}
+\missing{Repeated generated-library closure comparisons, causal
+component attribution, uncertainty and full axiom coverage.}
+The complete passing-set comparisons do not establish universal shared-context
+transparency: duplicate theorem names, conflicting definitions and undeclared
+sibling visibility require separate qualification.
+A context-auditing continuation is not part of these timing results.
 
 \paragraph{System-design implication.}
 Expose the cheap checking boundary if one exists: separate production and
@@ -536,6 +579,60 @@ Aggregate heartbeat equivalence to the monolithic request is not implemented.
 \missing{Final resource-qualified parallel comparison, corrupt-leaf and
 budget/failure equivalence, shape coverage and heterogeneous-module transfer.}
 One frozen equality is not full Grid or a general extraction algorithm.
+
+\paragraph{Declaration-level replay on a complete module.}
+The measured subsecond calls motivate a second prototype: dependency-aware
+replay of the original declarations, without rewriting their proof terms.
+BarrierData41 has 3,425 supported safe, acyclic declarations.
+The prototype creates ready frontiers, checks jobs with the stock kernel,
+exports checked module fragments and normally imports them for successor
+frontiers. It explicitly rejects unsupported or cyclic input.
+The final native audit compares every typed \texttt{ConstantInfo}, including
+theorem bodies, and returns names in the original array order.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Replay path & Pipeline wall (s) & Native CPU (s)\\
+\midrule
+Direct stock API &46.992&46.956\\
+Wave, 1 worker &53.321&53.205\\
+Wave, 2 workers &31.072&54.556\\
+Wave, 4 workers &20.233&58.335\\
+Wave, 8 workers &14.127&60.016\\
+\bottomrule
+\end{tabular}
+\caption{BarrierData41 independent compiled-module replay, three ordered
+repetitions per path. Wall spans first stage-configuration write through
+final audit retirement, including graph planning, native processes, imports,
+exports and driver gaps. Lease wait and initial directory/environment setup
+are excluded; CPU sums native processes, excluding the Python coordinator.}
+\label{tab:waves}
+\end{table}
+
+All 15 cells accept the same 3,425 typed constants and ordered names;
+all 99 native stages exit zero and their recorded identities/cgroups retire.
+Eight workers reduce the measured pipeline median from 46.992 to 14.127
+seconds, 3.326-fold against the direct stock-API baseline
+(Table~\ref{tab:waves}); per-repetition ratios range from 3.284 to 3.359.
+Native CPU increases 27.8\%.
+One-worker wave replay is 13.5\% slower than direct stock replay, so a
+wave-one-only baseline would overstate the gain.
+The point uses P0--7, no \texttt{-M}, and an external 14\,GiB charged-memory cap.
+
+The output contract is the final typed-constant/name audit.
+Intermediate serialization is a cost of this implementation, not an extra
+required output imposed on the direct baseline.
+Original proof terms and the original kernel are retained under this local
+checked-fragment protocol; this is not a proof for arbitrary coordinators,
+untrusted object transfer or changed failure/budget semantics.
+The import-relative dependency trust matches the stock module API.
+Upstream checking already dispatches independent modules as tasks
+~\cite{lean434CheckerSource2026}; this case isolates parallelism inside one
+module, without establishing whole-library or source-elaboration speedup.
+Other modules, warm-service throughput and repeated failure behavior remain
+\missing{unmeasured at the matched resource/trust boundary}.
 
 A cluster cannot silently trust remote object files or worker verdicts as
 new proof assertions. Specify what the acceptance authority checks,

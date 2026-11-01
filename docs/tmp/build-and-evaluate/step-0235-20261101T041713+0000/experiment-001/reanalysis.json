@@ -1,0 +1,139 @@
+{
+  "utc": "2026-11-01T04:19:32Z",
+  "M": {
+    "complete_cells": 15,
+    "native_stages": 99,
+    "typed_constants": 3425,
+    "all_final_audits_names_order_and_typed_values_equal": true,
+    "all_stage_identities_and_cgroups_retired": true,
+    "controller_retired": true,
+    "medians": {
+      "0": {
+        "wall_s": 46.99213726166636,
+        "native_CPU_s": 46.956202999999995,
+        "minimum_wall_s": 46.812552890740335,
+        "maximum_wall_s": 47.15071753412485
+      },
+      "1": {
+        "wall_s": 53.32100732810795,
+        "native_CPU_s": 53.204713999999996,
+        "minimum_wall_s": 53.15875095594674,
+        "maximum_wall_s": 53.93945849966258
+      },
+      "2": {
+        "wall_s": 31.071765556000173,
+        "native_CPU_s": 54.55599,
+        "minimum_wall_s": 30.884094949811697,
+        "maximum_wall_s": 32.89246866945177
+      },
+      "4": {
+        "wall_s": 20.233003304339945,
+        "native_CPU_s": 58.335383,
+        "minimum_wall_s": 20.158439221791923,
+        "maximum_wall_s": 20.34180990047753
+      },
+      "8": {
+        "wall_s": 14.127149116247892,
+        "native_CPU_s": 60.016343,
+        "minimum_wall_s": 13.989472556859255,
+        "maximum_wall_s": 14.358574757352471
+      }
+    },
+    "wall_speedup_ratio_of_medians": 3.3263708675390027,
+    "CPU_increase_fraction": 0.27813449907778964,
+    "paired_8worker_speedups": [
+      3.3591071479407124,
+      3.2838020716492626,
+      3.31365886390343
+    ],
+    "max_sampled_tree_bytes": 3131117568,
+    "max_charged_peak_bytes": 526700544,
+    "charged_cap_GiB": 14,
+    "boundary": "first stage-config write through final audit retirement; excludes initial output-directory/environment setup and lease wait; includes planning/import/export/driver gaps",
+    "scope": "one compiled Barrier module over trusted declared imports; direct stock API baseline, not stock CLI throughput"
+  },
+  "O": {
+    "cohorts": [
+      {
+        "name": "math",
+        "root": "Mathlib.Data.Nat.Basic",
+        "modules": 1330,
+        "source_work_s": 622.3794121909887,
+        "matched_stream_s": 65.69264411274344,
+        "closure_ratio": 0.10555079879889155,
+        "root_source_s": 0.41071774903684855,
+        "root_read_map_replay_s": 0.026843838,
+        "root_kernel_s": 0.026772106,
+        "root_component_ratio": 0.06535835878276504,
+        "entries": 132484,
+        "unsafe_partial": 2269,
+        "stream_wait4_RSS_KiB": 754252,
+        "source_max_wait4_RSS_KiB": 753736
+      },
+      {
+        "name": "compute-grid",
+        "root": "OAI.Analysis.PlanarPacking.Grid",
+        "modules": 3793,
+        "source_work_s": 3878.7067395858467,
+        "matched_stream_s": 563.082232083194,
+        "closure_ratio": 0.14517267478265647,
+        "root_source_s": 318.230851566419,
+        "root_read_map_replay_s": 255.488732184,
+        "root_kernel_s": 255.486529166,
+        "root_component_ratio": 0.8028408651342722,
+        "entries": 382707,
+        "unsafe_partial": 3554,
+        "stream_wait4_RSS_KiB": 2328540,
+        "source_max_wait4_RSS_KiB": 7940196
+      },
+      {
+        "name": "compute-amplitudes",
+        "root": "OAI.Analysis.PlanarPacking.Certificate.Amplitudes",
+        "modules": 5083,
+        "source_work_s": 6173.19460767135,
+        "matched_stream_s": 898.033542227,
+        "closure_ratio": 0.14547306529281048,
+        "root_source_s": 133.615322179161,
+        "root_read_map_replay_s": 110.026430792,
+        "root_kernel_s": 110.024965725,
+        "root_component_ratio": 0.823456688930246,
+        "entries": 490532,
+        "unsafe_partial": 3751,
+        "stream_wait4_RSS_KiB": 3266324,
+        "source_max_wait4_RSS_KiB": 7940196
+      },
+      {
+        "name": "ordinary-oai",
+        "root": "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion",
+        "modules": 3333,
+        "source_work_s": 2556.623338226229,
+        "matched_stream_s": 172.8108643181622,
+        "closure_ratio": 0.06759340014397952,
+        "root_source_s": 0.9622739339247346,
+        "root_read_map_replay_s": 0.004472574,
+        "root_kernel_s": 0.004415718,
+        "root_component_ratio": 0.004647921805133119,
+        "entries": 327000,
+        "unsafe_partial": 3405,
+        "stream_wait4_RSS_KiB": 1828784,
+        "source_max_wait4_RSS_KiB": 2562384
+      }
+    ],
+    "unique_source_calls": 5085,
+    "unique_oracle_acceptances": 5085,
+    "complete_oracle_chunks": 161,
+    "original_four_cohort_plan_complete": true,
+    "reported_original_controller_identity_retired": {
+      "pid": 153406,
+      "birth": "754528646"
+    },
+    "all_completed_native_scopes_removed": true,
+    "source_max_RSS_KiB": 7940196,
+    "actual_native_cap_bytes": 12750684160,
+    "listed_O_share_bytes": 4294967296,
+    "share_deviation_retained": true
+  },
+  "root_analysis_s": 2.8107471438124776,
+  "root_analysis_maxrss_kib": 132232,
+  "new_native_runs": 0
+}

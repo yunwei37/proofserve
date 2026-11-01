@@ -11,8 +11,8 @@ Mathematical proofs may have a cheaper checking boundary, while imports and
 elaboration coupling can obstruct cheap independent verification.
 The old75–94%/~2% user-cycle panel and1.28build/replay ratio were measured
 under-M. They motivate questions, not current noMphase shares or cost bounds.
-No-M population phase weights, remaining AI-mathematical closure comparisons
-and resource-qualified parallel improvements remain missing. Complete Mathlib and Grid closure observations are below, with explicit
+No-M population phase weights, repeated/broader AI-mathematical comparisons
+and transfer beyond the one completed parallel module remain missing. Four complete selected closure observations are below, with explicit
 resource deviations; no general serving benefit is inferred.
 All current native measurements omit-M; memory protection is external cgroup.
 Old-Mcosts/profiles remain historical methodology, never corrected by Grid's
@@ -87,6 +87,18 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   15/15accept; k4local kernel78.75ms vs151.03ms original, whole native5.838s
   vs1.982s.27different artifact byte pairs have equal typedConstantInfo,
   not extension-state or byte equivalence. Still no whole-path gain.
+
+- [Barrier declaration waves](../research/chunked-kernel-check/parallel-result.md):
+  complete15cells/99native stages, exact3425typedconstants/bodies/names.
+  DirectstockAPI46.992s; 8workers14.127s=3.326x, nativeCPU+27.8%.
+  Wave1slower53.321s. Localcompiledmodule/trustedimports, notsource/library/
+  serving throughput; safeacyclicordinaryforms only, external14GiBchargedcap.
+- [Complete four-closure matrix](../research/decoupled-check/results.md):
+  sameunion5085source modules/161completeoraclechunks. AddedAmplitudes5083
+  closure14.5473%/targetcomponent82.3457%; NearPin3333closure6.7593%/
+  component0.4648%. Sharedbase andtargetsubclocks staydistinct; singlewarm pass.
+  Originalfiniteplan finished, laterOcontinuations separate. O4share deviation
+  and unresolvedshared-context qualification retained.
 
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):

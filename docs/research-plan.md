@@ -51,8 +51,8 @@ remain open. M initial timing has unequal output boundaries; correctedV3 now com
 15acceptances and finds no flat-partition whole-path gain. Its dedicated
 charged-memory cap is not established, so final resource qualification remains
 open. The component-preserving small-goal control now also has15accepting cells,
-with a lower kernel subclock but no whole-path gain. New declaration-wave and
-Envelope curves remain separately unmeasured.
+with a lower kernel subclock but no whole-path gain. The Barrier declaration-wave case is now complete;
+Envelope within-goal curves remain a separate actual-terminal obligation.
 Root also verifies completeGrid closure14.52% and target component80.28%;
 its native source peak7.57GiB exceeds listedO4share. These observed points do
 not authorize new resource limits or establish service/global gains.
@@ -71,8 +71,20 @@ CPU oracle remains frozen; closed narrowGPU paths aren't restarted.
 [Native per-declaration point](../research/chunked-kernel-check/step-006-report.md)
 is complete at31artifacts/34native units. Three computational hot modules have
 many subsecond decision-shaped declarations; Envelope has genuinely >=1s calls.
-Test dependency-aware declaration replay and appropriately coarse within-goal
-partitioning at their separate boundaries; code/short controls/queue submission
-do not establish their full curves. The small Grid component-preserving variant
+The completed Barrier declaration replay and appropriately coarse within-goal
+partitioning have separate boundaries; code/short controls/queue submission do
+not establish other modules or whole-library curves. The small Grid component-preserving variant
 improves its kernel subclock but remains slower whole-path. Global regime
 weights and missing13draws still open; do not borrow compilation denominators.
+
+## Completed module-level case; remaining boundaries
+[Barrier result](../research/chunked-kernel-check/parallel-result.md) now has
+15complete cells, directstock baseline46.992s vs8workers14.127s, CPU+27.8%.
+This qualifies one localmodule case, not source frontend, whole-library,
+failurebudget transparency or novelty of proof parallelism. Originalchecker
+module tasks are an existing global baseline. Other targets/cluster remain open.
+[O four-closure matrix](../research/decoupled-check/results.md) is complete
+at5085unique constructednodes, with matchedfullgraphs and moduleoracles.
+Next O context-auditing/fullFalconer work is a separate continuation; never
+restore or rerun the original completed finitefourcase queue. Keep sourcephase
+weights/missingdraws, repeatedcausal costs and publicsoftware coverage explicit.

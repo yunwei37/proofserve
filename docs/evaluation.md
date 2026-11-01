@@ -22,8 +22,8 @@ nativeP0–7/sharedlock. No new agents. CPU oracle frozen; narrowGPU routes clos
 | RQ | Two-regime characterization question | Current frontier |
 |---|---|---|
 | RQ1 | Cost locations and runtime-weighted regime prevalence | matchedlexicalcensus complete; noM29/42costs, fullphaseweights missing |
-| RQ2 | Why cheap mathematical checking isn't cheap independent verification | Mathlib1330 closure10.56%, Grid3793 closure14.52%/target80.28%; other AIclosures and attribution open |
-| RQ3 | Original-kernel computation across cores/cluster | flat15cell negative diagnostic complete; final cgroup qualification, other variants and cluster open |
+| RQ2 | Why cheap mathematical checking isn't cheap independent verification | four complete selected closures6.76–14.55%; target components0.46–82.35%; repeats/causal attribution open |
+| RQ3 | Original-kernel computation across cores/cluster | Barrier15cell/99stage direct-stock comparison3.326x at8workers, CPU+27.8%; transfer/failures/cluster open |
 | RQ4 | Build/outcome/axiom meaning of verified | defaultroot33.30%siteomission, historicalsetting/observer sensitivity; axiomclosure missing |
 
 ## Superseded -M setting
@@ -163,3 +163,31 @@ k45.838481s. All27unequal-bytepairs match nativeexactConstantInfo, not extension
 state; no explanation ofserializationvariance asserted. Bothsmallgoalpoints
 remain negativewholepath/resource-limited diagnostics. Newdependency-wave and
 Envelopecurve plans not countedas measured results. No newnativecallbyroot.
+
+## Barrier waves and complete four-closure O matrix — step0235
+[Root report](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md), **自审**.
+M15cells/99native stages/3425typedconstants+originalnames exactaudits independently
+rechecked, allstagePIDbirth/cgroups retired, 14GiBcharged/P0–7/noM. DirectstockAPI
+46.992137s/46.956203CPU; waves1/2/4/8wall53.321007/31.071766/20.233003/14.127149s,
+CPU53.204714/54.555990/58.335383/60.016343s. Medianratio3.3263709/CPU+27.81345%;
+paired8ratios3.283802–3.359107. Wallfirststage-config throughfinalaudit inclgraph/
+imports/native/export/gaps; excludesinitialdirs/envsetup+leasewait. NativeCPU
+excludesPythondriver. Safeacyclicordinary declarations only, imports trusted,
+checkedworkerfrags/normalimport. No artifactbyteequivalence or untrustedremote
+workerprotocol proved. Originalkernel/prooftermsretained in localtrace; no
+sourcecompiler/library/service/novelparallelchecking claim. Singleorderedpoint,
+three repeats perpath, no confidenceinterval/generalization.
+
+Ooriginalfourcohort finiteplan allcomplete.5085unique sourcebuilds and161oracle
+chunks exact5085moduleacceptances; eachcase matches its fullwanted graph and
+newlygeneratedobjects. Amplitudes source6173.194607671/stream898.033542227s=
+14.5473065%; NearPin source2556.623338226/stream172.810864318s=6.7593400%.
+Root read/map/replay:Amplitudes110.026430792/source133.615322179s=82.34567%;
+NearPin0.004472574/source0.962273934s=0.4647922%. Entries/excluded490532/3751,
+327000/3405 respectively. Sharednodes not independent samples or disjoint costs.
+OriginalO reportedcontroller153406/birth754528646retired; latercontinuations
+not inferred retired. Actualnativecap11.875GiB andsourcepeak7.57GiB deviation
+fromO4share retained. Sharedcontext transparentreplay still requiresseparate
+name/conflict/visibility qualification; initialboundarycompilefailure retained,
+not converted to a successful control. Abstract fills only its existing result
+slot; title/fourRQ/restabstract/sectionorganization unchanged.
