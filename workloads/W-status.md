@@ -26,6 +26,23 @@
 - Onlyworkloads/edited;no candidate generation,newagent or infrastructure
  mutation. CPUoracle frozen. Existingimportsourceaudit top100about4.94%.
 
+## W066–W068 follow-up
+- f29316a:20queries/9primary sources; HT and native CPU/build measurements
+ are standard. Mathlib/AFP/Rocq already measureCPU;no wall-only distinction.
+ See openai-math/cost-method-prior-art-20261101. GlobalCPU/V/B/CIs stillblank.
+- Deep original PreparedModularCanonicalDetectorPositive requires3451uncached
+ closure nodes. Next128topological source cases prepared (489833bytes),
+ no launch. See remaining-noM-sample-preparation/next-deep128.md.
+- Matched target-only native recheck31prepared onPVC;80723096targetartifact
+ bytes frozen. Source compilation is default;small runner replay extension/
+ Python contracts qualified. No native timing/acceptance yet. Imports trusted
+ like leanchecker,not full-library empty-env stream;whole-closure byte
+ identity unverified. See paired-kernel-cost-preparation/README.md.
+- Current sole native remains hard36frozen point;last observed11compile
+ dependency returns,no terminal. Do not launch pending31or128until actual
+ current native/controller retirement. Native work/cost coverage not inferred
+ from prepared states. Latest directuser rules override oldfrontier notes.
+
 ## Historical step notes (retained unchanged below)
 W004ea41025 build-planning models and53-target stratified frame are preserved.
 W005 qualifies actual Lean4.34.1/Mathlibd13f23b7 and8matching dependencies.

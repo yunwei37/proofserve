@@ -15,6 +15,22 @@ def dump(path, value):
     path.write_text(json.dumps(value, indent=2) + "\n")
 
 
+def accepted_replay(raw, module):
+    """Accept only this exact target and a complete one-module response."""
+    try:
+        events = [json.loads(line) for line in raw.splitlines() if line.strip()]
+    except (ValueError, TypeError):
+        return False, []
+    valid = (len(events) == 2 and all(isinstance(e, dict) for e in events)
+             and events[0].get("event") == "accept"
+             and events[0].get("module") == module
+             and events[0].get("mutation") == "none"
+             and events[1].get("event") == "one_complete"
+             and type(events[1].get("parts")) is int
+             and events[1]["parts"] > 0)
+    return valid, events
+
+
 def run(point, index, arm, wall_limit=None):
     assert os.sched_getaffinity(0) == set(range(8))
     plan = json.loads((point / "plan.json").read_text())
@@ -23,8 +39,13 @@ def run(point, index, arm, wall_limit=None):
         case["self_wall_s"] = min(case["self_wall_s"], wall_limit)
     out = point / "runs" / (str(index).zfill(2) + "-" + arm)
     out.mkdir(parents=True, exist_ok=False)
-    source = Path(case["args"][-1])
+    replay = case.get("operation") == "kernel_target_replay"
+    source = Path(case["source_copy"] if replay else case["args"][-1])
     assert source.read_bytes() == Path(case["pinned_source"]).read_bytes()
+    if replay:
+        assert case["args"][1:] == ["one", "none", case["module"]]
+        for pair in case["matched_artifact_parts"]:
+            assert Path(pair["input"]).read_bytes() == Path(pair["producer_copy"]).read_bytes()
     # Both arms use identical output paths, snapshotted only after retirement.
     common = point / "working" / str(index).zfill(2)
     common.mkdir(parents=True, exist_ok=True)
@@ -105,10 +126,13 @@ def run(point, index, arm, wall_limit=None):
         rc = child.returncode
         artifacts = list(common.iterdir())
         expected = [Path(args[args.index(flag) + 1]) for flag in ["-o", "-i", "-c"] if flag in args]
+        replay_ok, replay_events = accepted_replay(raw, case["module"]) if replay else (False, [])
         classification = ("rss_watchdog_failure" if any(x.get("rss_watchdog_kill") for x in samples)
             else "cgroup_memory_failure" if int(dict(x.split() for x in events.splitlines())["oom_kill"])
             else "wall_budget_exceeded" if rc == -signal.SIGALRM
             else "native_process_failure" if rc < 0 or "INTERNAL PANIC" in raw
+            else "accepted" if replay and rc == 0 and replay_ok
+            else "verification_contract_failure" if replay and rc == 0
             else "compile_with_sorry" if rc == 0 and "declaration uses 'sorry'" in raw
             else "compile_ok" if rc == 0 and all(x.exists() for x in expected)
             else "missing_artifact" if rc == 0
@@ -130,6 +154,15 @@ def run(point, index, arm, wall_limit=None):
             native_retired=not Path("/proc", str(child.pid)).exists(),
             cgroup_retired=not (cg / "cgroup.procs").read_text().strip(),
             raw=str(out), args=args)
+        if replay:
+            result.update(operation="kernel_target_replay",
+                compilation_outputs="none_kernel_replay",
+                heartbeat_budget="not_applicable_compiled_checker",
+                verification_scope="target declarations only; imported environment trusted like stock leanchecker",
+                verification_events=replay_events,
+                matched_artifact_parts=case["matched_artifact_parts"])
+        else:
+            result["operation"] = "source_compile"
         if classification == "compile_ok" and case.get("publish_cache"):
             cache = Path(case["publish_cache"])
             cache.mkdir(parents=True, exist_ok=True)

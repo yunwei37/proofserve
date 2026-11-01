@@ -1,0 +1,12 @@
+{
+  "UTC": "2026-11-01T18:57:58.821923+00:00",
+  "cases": 31,
+  "original_frame": 42,
+  "matched_leaf_artifact_bytes": 80723096,
+  "checker_binary_bytes": 122345776,
+  "native_launched": false,
+  "noM": true,
+  "mode": "one none; exact target only",
+  "scope": "per-module replay with trusted imported environment; not a full-library empty-environment check or population acceptance claim",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original31-kernel-replay-prepared-20261101"
+}
