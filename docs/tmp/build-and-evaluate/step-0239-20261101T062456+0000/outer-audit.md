@@ -1,0 +1,10 @@
+# Step0239 outer audit — 自审
+Direction: unchangedtwo-regimecharacterization/RQ3. Oneincompletecapture isnot
+a completedperformanceexperiment, mathematicalrejectionoruniversalnegative.
+Checkedrawresult/command/memoryallPIDbirths/actualcgroupabsence/controller
+retirement. KeptinitialEBUSY andnearzero-parentCPU; fullnativeCPUunknown.
+SampleRSS15.698GB andcharged9.738GB different, 14GiBsamplerovershootexplicit.
+0rootnative/newagents/foreignedits/budgetchanges/restarts. Existingpaper
+unchangedandpreviouslycompiled/rendered, soredundantbuildskipped.
+Canonicaldocsupdated, exactlytwoMarkdownrootreports. Ownstage/mainordinary
+push follows; fullpaper/goalnotcomplete. Mnextqualifiedrun mustbeversion-scoped.

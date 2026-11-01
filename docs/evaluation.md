@@ -260,3 +260,17 @@ orinformativeglobalshareinterval. No nominaltCI recomputationclaimed.
 Sourceproxylabelsnotkernelphaseclassification. Mgrainpanelstill29draws+2purposeful,
 notexpandedwithunreplayedartifacts. Otherqueueorprepared36neverautoresumed.
 Allraw/source/log/memory preserved, rootstepownsderivedtablesonly.
+
+## Combined Envelope stream interrupted by sampled RSS — step0239
+[Raw failure self-review](tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md), **自审**.
+No newnative. Fullcontroller/rawresult/stdout/stderr/memory frozen withoutediting.
+Capture return-9/wall1313.599639746s, sample15697940480B, charged9738059776B,
+14GiBchargedcapand1sRSSstop, noOOMevent. RecordedparentCPU0.001918s/RSS9516KiB
+are timeout-parent wait4 values afterkill, not validfullnativeCPU/peak. TotalCPU
+unknown; sampledRSS isseparate. Native/controlleridentitiesfromallrawsamples
+nowgone; initialcgroupremovalEBUSY recordedbut scope nowgone. No orphaninferred.
+No complete pairedcurve/targetacceptance/axiomparity orspeedupclaim; partialevents
+not admittedas completecells. OriginalEnvelopev3smallcase15cells staysvalid.
+Notgenericimpossibility orkernelresourcefailure. RootdoesnotchangeMimplementation,
+kill/widen/restart, norborrowearlierdenominators. PublishedcurrentPDF132808bytes
+remainsunchanged, missingrepair-version/performanceplaceholders correct.

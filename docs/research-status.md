@@ -117,7 +117,7 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   retired. Prior18cell1330modulepositivecurve ishistoricalv4, not repaired
   performance. Checked-token coordinator/internalABI C insertion areextra
   trustedimplementationcode; not unchangedTCB. Rootstep0237freezesreceipts.
-  NewfiniteEnvelope-streampoint actuallyrunning atread; preserve it.
+  NewfiniteEnvelope-streampoint laterhitRSSstop; see rootstep0239, no fullcurve.
 
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):
@@ -147,3 +147,5 @@ threeartifacts.31/42randomdraws,14/21complete strata/103468modules, conditional
 markedCPU24.146735h/other116.704826h=17.1434%marked. Missing59629modules/
 1164marked and11draws; no finiteglobalCPUestimate/informativeglobalshare.
 Do not restart thecompletedqueue. Rawqueue/setup/nativecosts remainseparate.
+
+[Rootstep0239 failed combined-stream capture](tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md): Envelope-stream-r1 return-9 after1313.600s/sample15,697,940,480B vs14GiBsampledstop; charged9,738,059,776B. No kernelOOMevent. Allsampled native identities/controller nowretired; initialcgroupcleanup-pending record retained, cgroup nowabsent. TotalnativeCPUunknown (timeout-parent wait4nearzero is not descendantCPU). Notmathematicalrejection/completecurve/speedup. No automaticrerun or budgetincrease; originalsmallEnvelopev3curve unaffected.

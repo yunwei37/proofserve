@@ -1,0 +1,17 @@
+{
+  "native_returncode": -9,
+  "classification": "sampled_own_RSS_budget interruption; not mathematical rejection",
+  "whole_wall_s": 1313.5996397463605,
+  "sampled_RSS_bytes": 15697940480,
+  "charged_peak_bytes": 9738059776,
+  "charged_cap_GiB": 14,
+  "all_sampled_native_identities_retired": true,
+  "cgroup_initially_cleanup_pending_but_now_absent": true,
+  "controller_retired": true,
+  "total_native_CPU_s": null,
+  "CPU_reason": "killed timeout parent wait4 near-zero excludes unreaped descendant work; not valid CPU cost",
+  "complete_curve": false,
+  "new_native_runs": 0,
+  "root_analysis_s": 0.4439231203868985,
+  "root_analysis_maxrss_kib": 21100
+}

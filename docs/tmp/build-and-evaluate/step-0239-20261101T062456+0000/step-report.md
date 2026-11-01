@@ -1,0 +1,32 @@
+# Step0239: retain an incomplete combined-stream resource boundary
+Phase BUILD_AND_EVALUATE. auto-research-orchestrator, reviews 自审.
+No newnative/agent/foreignsource/runtime mutation.
+
+## EXPERIMENT_GATE
+RQ3memory/lifecycleboundary for thenewcombinedstream, not thecompletedolder
+Envelopev3smallcurve. AtrueRSSguardfailureappearedduringrootintegration.
+Readactualresult/log/command/entirememoryidentityset andcontrollerterminal.
+Return-9/wall1313.599640s fromsampledRSSstop, no kernelOOMevent.
+SampledRSS15697940480B,charged9738059776B,externalchargedcap14GiB.
+Samplecanovershoot; no kernelhardRSSclaim. Processwall isnotcompletecurve.
+InitialcleanupEBUSY retainedinraw; cgroupnowabsent, allsampledPID/births and
+launchcontrollerretired. No aliveorphanorrootrepairaction necessary.
+Parentwait4CPU0.001918s andRSS9516KiB arenotdescendantaccountingafterkill.
+FullnativeCPUunknown, not zero. No kernelreject/falsehoodinference.
+
+## WRITE_GATE
+No newcurve ormetric admittedtopaper: fullpairing/acceptance notcomplete.
+CurrentPDF/TeXunchanged, existingmissingplaceholdersremaincorrect.
+Canonicalstatus/plan/index/evaluationretainfailureandrealretirement.
+Do notreplaceprevioussuccessfulsmallcaseoruseitsdenominator.
+No budgetincrease/restart orlaneimplementationeditbyroot.
+
+## REVIEW_GATE — 自审
+Rawcapture/output/memory/controller preserved; no prefixacceptedasset treated
+aswholecompletedtarget. Actualsampleidentityretirementchecked, notjustparent.
+No universalnegativealgorithmclaim fromoneprocessbudgetstop.
+Scopeisnewcombinedinmemoryprototypewithadditionaltrustedcoordinationcode.
+Root0native, no newAI/service/scheduler/CronJob. Mownerhandlesnextimplementation
+choice; rootrecordsactualfailurewithoutsteeringexistingagent.
+TwoMarkdownreports, ownmaincommit/push, existingpaperbuild notrepeated because
+TeX/PDFareunchangedfromstep0238verified11pageartifact.

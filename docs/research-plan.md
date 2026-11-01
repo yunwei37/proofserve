@@ -118,3 +118,5 @@ CPU24.146735h/other116.704826h,share17.1434%; notglobal/kernel-timeweights.
 Missing11draws/59629modules/1164marked; no old-M/purposeful/dependencyfill.
 EarlierMchecking-grainpanelremains29draws+2purposeful, notretroactivelyexpanded.
 No Woldqueue restart; newcapture choices belongtotheexistingWlane.
+
+[Rootstep0239 failed combined-stream capture](tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md): Envelope-stream-r1 return-9 after1313.600s/sample15,697,940,480B vs14GiBsampledstop; charged9,738,059,776B. No kernelOOMevent. Allsampled native identities/controller nowretired; initialcgroupcleanup-pending record retained, cgroup nowabsent. TotalnativeCPUunknown (timeout-parent wait4nearzero is not descendantCPU). Notmathematicalrejection/completecurve/speedup. No automaticrerun or budgetincrease; originalsmallEnvelopev3curve unaffected.

@@ -41,3 +41,5 @@ freshsame-maskMathlib/openaicomparison7/4vs1354379/5848,10668.32xsites/MB;
 Old8/5Mathlibfigureincludesadocumentationcomment. Nativeweights remainopen.
 
 [Collected W48/current original-frame reduction](../docs/tmp/build-and-evaluate/step-0238-20261101T061522+0000/step-report.md): complete48processes, not48draws. Small per-draw andstratum tables in thatstep; fullraw /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101/.
+
+[Rootstep0239 failed combined-stream capture](../docs/tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md): Envelope-stream-r1 return-9 after1313.600s/sample15,697,940,480B vs14GiBsampledstop; charged9,738,059,776B. No kernelOOMevent. Allsampled native identities/controller nowretired; initialcgroupcleanup-pending record retained, cgroup nowabsent. TotalnativeCPUunknown (timeout-parent wait4nearzero is not descendantCPU). Notmathematicalrejection/completecurve/speedup. No automaticrerun or budgetincrease; originalsmallEnvelopev3curve unaffected.
