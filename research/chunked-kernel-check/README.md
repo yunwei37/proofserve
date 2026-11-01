@@ -94,20 +94,22 @@ declaration-estimate.json. Barrier's measured dependency frontier supports
 testing declaration parallelism, while Envelope supplies a genuine >=1s
 within-goal partition target. Neither mechanism has a measured curve yet.
 
-## Next measured mechanisms
-[ParallelReplay.lean](ParallelReplay.lean) implements dependency-wave original
-kernel replay with checked standard modules. Real short controls accept the
-same typed constants as stock replay and reject3malformed proof variants
-and an uncommitted dependency. The finite Barrier stock/1/2/4/8 curve is the
-only submitted M task, behind existing O/W lease callers; it is **not a result**.
-See [step007](step-007-report.md), [step008](step-008-report.md),
-parallel-plan.md and parallel-launch.json.
+## Declaration-level parallel replay — completed real module
+BarrierData41 completed15/15cells with the same3425typed constants and
+proof bodies. Direct stock serial replay median46.99s; wave1/2/4/8worker
+medians53.32/31.07/20.23/14.13s. Eightworkers give3.33x wall speedup while
+native CPU rises27.8%. Wave1is slower than direct stock.
+[Full result and limits](parallel-result.md) include all three-repetition
+ranges, process/import/export/audit cost and exact acceptance checks. This is
+compiled-module independent replay over trusted imports, **not** source-build,
+whole-library or service speedup. Parallel checking itself is existing work.
 
-The automatically generated [EnvelopeBase.lean](EnvelopeBase.lean) keeps
-each whole Fin31 predicate computation within one chunk. Merge lemmas and
-target-type equivalence compile in original Lean. Its >=1s target curve is
-prepared but **not submitted**. No speedup is transferred from preparation or
-from the earlier small Grid target.
+## Eligible large-goal curve — actual waiter, result pending
+The automatically generated [EnvelopeBase.lean](EnvelopeBase.lean) retains
+whole Fin31 predicates within chunks. Merge/type-equivalence preparation
+passed. Its sole next task has an actual/proc/locks ->entry for PID216219
+at03:35:08UTC, after Barrier retired. See envelope-launch.json and
+[step009](step-009-report.md). No Envelope performance claim yet.
 
 ## Reproduction and raw data
 

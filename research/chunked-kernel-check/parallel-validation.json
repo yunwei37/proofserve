@@ -1,0 +1,11 @@
+{
+  "complete_cells": 15,
+  "accepted": 15,
+  "typed_constants_and_original_name_order_equal": true,
+  "declarations": 3425,
+  "source": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/parallel-barrier-v1",
+  "scope": "single compiled-module replay over trusted imports; not source frontend or full library",
+  "trust": "stock original kernel check plus checked module export/normal import; no unchecked join",
+  "ordering": "physical insertion order inside independent frontier differs; final audit visits original array order",
+  "baseline": "k0 direct official serial replay; k1 is wave-pipeline overhead control, not strong baseline"
+}

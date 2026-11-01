@@ -12,11 +12,12 @@ def main():
  prefix=args.prefix
  term=json.loads((point/'terminal.json').read_text())
  locations={(r['k'],r['rep']):pathlib.Path(r['raw']) for r in json.loads((point/'manifest.json').read_text())} if (point/'manifest.json').exists() else {}
+ assert set(locations)=={(k,rep) for k in [0,1,2,4,8] for rep in [1,2,3]},'exact Envelope manifest required'
  assert term['complete'] and term['completed']==15,'pending/failed is not complete evidence'
  rows=[];artifacts=[]
  for k in [0,1,2,4,8]:
   for rep in [1,2,3]:
-   p=locations.get((k,rep),RAW/'runs'/f'grid-v3-k{k}-r{rep}')
+   p=locations[(k,rep)]
    r=json.loads((p/'result.json').read_text());text=(p/'stdout').read_text()
    assert r['returncode']==0 and r['native_retired'] and r['cgroup_retired'] and not r['stop_reasons']
    command=json.loads((p/'command.json').read_text())

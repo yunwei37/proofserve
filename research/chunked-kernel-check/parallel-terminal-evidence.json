@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "planned": 15,
+  "completed": 15,
+  "all_complete_accept": true,
+  "first_cell_command_file_mtime_utc": "2026-11-01T02:53:11.144096+00:00",
+  "terminal_file_mtime_utc": "2026-11-01T03:01:30.695461+00:00",
+  "raw_stage_receipts": 99,
+  "all_raw_stages_returned_zero": true,
+  "diagnostic": "old task was not missing or rejected by nonblocking flock; it completed and retired before03:32 observation",
+  "sampled_own_tree_peak_bytes": 3131117568,
+  "charged_child_peak_bytes": 526700544
+}
