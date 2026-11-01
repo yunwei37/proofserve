@@ -8,8 +8,11 @@ from pathlib import Path
 from native import ROOT,run,environment
 def main():
  label=sys.argv[1];mode=sys.argv[2];workers=int(sys.argv[3]);repeat=int(sys.argv[4])
- assert mode in ['audit','parallel'] and workers in [1,2,4,8]
- assert mode!='audit' or workers==1
+ limit=int(sys.argv[5])if len(sys.argv)>5 else 1680
+ assert 0 < limit <= 1680
+ assert mode in ['reference','audit','parallel','chunk'] and workers in [1,2,4,8]
+ assert mode not in ['reference','audit'] or workers==1
+ assert mode!='chunk' or label=='envelope'
  assets=Path('/workspaces/.agent-state/gpu-smt-captures/parallel-stream-assets')
  frame=json.loads((assets/'assets.json').read_text())
  suffix={'barrier':'.BarrierData41','envelope':'.EnvelopePsiB','grid':'.Grid'}[label]
@@ -21,9 +24,12 @@ def main():
  # No leaf-curve option, prepared chunk input or profiling environment is inherited.
  for option in ['PARALLEL_CURVE_MODULES','PARALLEL_CHUNK_ASSETS','PARALLEL_CHUNK_ASSETS_CURVE','DECOUPLED_MEMORY_PROFILE']:
   e.pop(option,None)
+ if mode=='chunk':e['PARALLEL_CHUNK_ASSETS']=str(assets/'all-envelope')
+ binary=Path('/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/stream-check') if mode=='reference' else ROOT/'parallel-stream'
+ native_mode='stream' if mode=='reference' else 'parallel' if mode=='chunk'else mode
  os.sched_setaffinity(0,set(range(8)))
  key=label+'-full-'+mode+str(workers)+'-r'+str(repeat)
- rr=run(key,[ROOT/'parallel-stream',mode,'none',roots[0]],1680,True,e)
+ rr=run(key,[binary,native_mode,'none',roots[0]],limit,True,e)
  events=[]
  for line in(ROOT/'runs'/key/'stdout').read_text().splitlines():
   if line.startswith('{'):
@@ -41,7 +47,8 @@ def main():
  summary=dict(result=rr,accepted=accepted,complete_event=completion,
   completed=complete,accepted_set_equal_to_same_input_curve=equality,
   scope='one_full_cold_closure_single_configuration',
-  source='qualified v14 original mathematical kernel; no chunk rewrite')
+  source='O original stream reference' if mode=='reference'else 'qualified v14 original mathematical kernel',
+  chunk_rewrite_enabled=mode=='chunk',certificate_generation_excluded=mode=='chunk')
  (ROOT/(key+'-summary.json')).write_text(json.dumps(summary,indent=2))
  if not complete or equality is False:raise RuntimeError('incomplete/acceptance difference; preserve raw')
 if __name__=='__main__':

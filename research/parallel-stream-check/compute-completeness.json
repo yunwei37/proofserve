@@ -4,8 +4,8 @@
     "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v12",
     "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14"
   ],
-  "complete_native_runs": 3,
-  "actual_cells": 19,
+  "complete_native_runs": 4,
+  "actual_cells": 24,
   "completed_cells_before_failed_run_end": 0,
   "failed_runs": [
     {
