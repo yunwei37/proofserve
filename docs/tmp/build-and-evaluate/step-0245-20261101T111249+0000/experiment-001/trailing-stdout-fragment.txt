@@ -1,0 +1,1 @@
+{"constants":135,"event":"accept","imports":["Init","Init","Mathlib"],"module":"OAI.Analysis.Triangular.Basic","skipped_unsafe_partial":0,"theorem_examples":["OAI.AtomicTriangular.Construction.Acoefficient._proof_4","OAI.A

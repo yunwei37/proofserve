@@ -963,7 +963,21 @@ Its 331.132 seconds of target trials leave 1,334.398 seconds of nontrial
 residual, including prefix verification, reading, startup and cleanup.
 That residual is not an import-only clock, and the complete process runs
 all nine paths rather than one chosen configuration.
-A separate whole-closure serial comparison is still unmeasured.
+A separate original-stream serial attempt reaches its 1,680-second
+native limit, returning timeout status 124 after 1,680.158 seconds.
+It retains 10,744 complete acceptance records from the 10,752-module graph,
+plus one truncated 222-byte record; there is no completion event.
+The eight modules without complete acceptance records are unobserved at
+this boundary, not eight mathematical rejections.
+Cgroup CPU is 1,679.367 seconds, sampled RSS peaks at 7.830\,GB and charged
+memory at 1.836\,GB; no memory stop or kernel OOM occurs.
+The native process, sampled children, controller and cgroup retire.
+This is a time-censored original-stream attempt, not a completed serial
+reference or an acceptance-set discrepancy on completed inputs.
+It neither supplies a full-closure speedup nor identifies which checking
+call consumed the remaining budget.
+The earlier 1,665.530-second process includes a parallel prefix and all
+nine target paths, so dividing these two process clocks is invalid.
 
 The one-second RSS samples peak at 13.971\,GiB, below the 14\,GiB sampled
 stop; \texttt{wait4} nevertheless records 14.019\,GiB between observations.

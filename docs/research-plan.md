@@ -151,7 +151,7 @@ Declaration8 isstrongbaseline17.539s;chunk8=13.299s,1.31878x/+5.1857%CPU.
 Notonlyserial4.655x;chunk2regressesrelativeDecl2.110source targetmetadatamatch,
 10proofsrewritten;150children/40merges checked,rewrittenparentaxiomspropext.
 Whole1665.530sincludesprefix+all9. Separatewhole-cohortserial/singleconfiguration
-coldcost/repeatsstillunmeasured. Sample14GiBguardisnothardRSS; wait4peak14.019
+coldcost/repeatsstilluncompleted; originalserialattempt later times out (rootstep0245). Sample14GiBguardisnothardRSS; wait4peak14.019
 vs sampled13.971GiBexplicit. v10failedsource/prefixpointunchanged.
 No automaticrerun or capincrease; actualMfull-cost/newpairedplansownnextwork.
 
@@ -169,3 +169,14 @@ Next M work belongs to its real current protocol; do not restart completed
 pairs or borrow the incremental target ratios for full closure claims.
 Envelope whole-closure serial/best-mode pairing, repetitions, W missing draws,
 axiom closures, broader software and cluster evidence remain open.
+
+## Time-censored Envelope full reference
+[Rootstep0245](tmp/build-and-evaluate/step-0245-20261101T111249+0000/step-report.md) collects the original serial one-configuration
+attempt rc124/1680.158s,10744complete acceptrecords/10752expected plus a222byte
+truncated record. No complete event, no mathreject/RSSstop/OOM observed.
+Retired members/controller/cgroup verified, no recovery work or budget mutation.
+Complete parity and full selected-configuration ratio remain open; do not
+classify missing records as rejected modules or divide by the earlier
+parallel-prefix/all-nine-trials process. Preserve raw/partial rows.
+Further finite native plans belong to existing M; root does not requeue this
+finished attempt or enlarge its limit. Analysis/publication remain low-load.

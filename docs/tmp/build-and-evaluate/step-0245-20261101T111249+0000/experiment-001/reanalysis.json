@@ -1,0 +1,46 @@
+{
+  "outcome": "native_wall_timeout",
+  "returncode": 124,
+  "native_limit_s": 1680,
+  "wall_s": 1680.1580975055695,
+  "wait4_CPU_s": 1679.367547,
+  "cgroup_CPU_s": 1679.366903,
+  "CPU_ledger_difference_s": 0.0006439999999718893,
+  "complete_accept_records": 10744,
+  "expected_modules": 10752,
+  "missing_complete_accept_IDs": [
+    "OAI.Analysis.Triangular.Basic",
+    "OAI.Analysis.Triangular.Certificate.WaveExpData",
+    "OAI.Analysis.Triangular.Certificate.WaveIntervals",
+    "OAI.Analysis.Triangular.Envelope.Analytic",
+    "OAI.Analysis.Triangular.Envelope.Basic",
+    "OAI.Analysis.Triangular.Envelope.EnvelopeBoxes",
+    "OAI.Analysis.Triangular.Envelope.EnvelopePsiB",
+    "OAI.Analysis.Triangular.Envelope.EnvelopeWaves"
+  ],
+  "trailing_partial_line_bytes": 222,
+  "complete_event": false,
+  "explicit_native_rejection_observed": false,
+  "complete_parity": "not established; incomplete output",
+  "speedup": "unknown; no completed single-configuration pair",
+  "native_memory_budget_stop": false,
+  "kernel_OOM": false,
+  "sampled_RSS_bytes": 7830253568,
+  "wait4_maxRSS_KiB": 7644824,
+  "charged_peak_bytes": 1835962368,
+  "sampled_members": [
+    [
+      230956,
+      "758066583"
+    ],
+    [
+      230958,
+      "758066584"
+    ]
+  ],
+  "all_sampled_members_controller_and_cgroup_retired": true,
+  "clock": "Popen-to-wait4; post-wait sampler/cgroup cleanup outside clock",
+  "root_new_native_runs": 0,
+  "root_analysis_s": 0.5321338195353746,
+  "root_analysis_maxrss_kib": 42924
+}

@@ -396,3 +396,35 @@ Source byteidentical to root0241 qualified8c62fc3. Earlier v12 requested8/achiev
 about4 is scheduling-defective historical data, not pooled current performance.
 No isolated causal gate/lookup-patch attribution, no repeated confidence.
 No additional universal context/axiom/failure/HB/cluster proof.
+
+## Envelope original single-configuration timeout — rootstep0245
+[Root self-review](tmp/build-and-evaluate/step-0245-20261101T111249+0000/step-report.md), **自审**. Raw
+/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14/runs/envelope-full-reference1-r1.
+The original Oserial stream alone, no curve/chunk/profiling environment,
+P0–7/noM/14GiBcharged plus independent one-second RSS sampling,1680s limit.
+Return124/wall1680.158097506s; wait4user1672.827604+system6.539943=
+1679.367547s; cgroup1679.366903s separately retained, difference0.000644s.
+Peakwait4RSS7644824KiB, sample7830253568B, charged1835962368B.
+No sampled-RSS stop, kernelOOM or explicit mathematical rejection.
+Result stop_reasons=[] describes sampledguard only; rc124 is a real timeout.
+
+10744unique complete JSON acceptance records, all a subset of the previously
+established10752input IDs, no completion event. Last complete ID Mathlib.
+The next222byte non-newline-terminated fragment starts an acceptance record
+for OAI.Analysis.Triangular.Basic but is not parseable/complete; preserve it
+verbatim, do not reconstruct an extra acceptance. Eight expected IDs have no
+complete records, including the target. This is neither8proof failures nor
+a demonstrated disagreement on completed inputs. stdout/stderr/summary/log/
+memory/command/result/driver/launch/terminal archived without modifying raw.
+Cgroup and native parent230956/birth758066583, sampled child230958/birth758066584,
+controller230953/birth758066581 all retired. No active orphan/cgroup.
+Summarycompleted=false/complete_event=null; its accepted_set_equal=false
+reflects incomplete output, not another context/soundness counterexample.
+Python full.py raises its generic incomplete/acceptance-difference error after
+this nonzero native result; that collector error is preserved, not recast as a
+Lean kernel rejection. Exact point of truncation does not identify CPU hot call.
+Native clockPopen→wait4; later sampler/cgroup cleanup verified outside clock.
+
+No complete originalserial reference, single-config parallel/chunk pair or
+full speedup; comparing to1665.529676s earlier prefix+9variant process invalid.
+No oldv10RSSfailure replacement, no cap/timeout extension/restart or rootnative.

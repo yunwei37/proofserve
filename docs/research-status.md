@@ -166,6 +166,16 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   observed CPU/wall7.95. One prefix/five trials, not a full single-mode cost.
   Old v12 underfilled-eight timing retained historically, not pooled.
 
+- [Rootstep0245 Envelope full-reference timeout](tmp/build-and-evaluate/step-0245-20261101T111249+0000/step-report.md):
+  original serial stream reaches1680s native limit,rc124/wall1680.158s.
+  10744complete accept records of10752expected; one222byte incomplete trailing
+  record, no completion. Eight without complete records are unknown, not
+  failures or a demonstrated parity defect. CgroupCPU1679.366903s; sampledRSS
+  7830253568B/wait4peak7644824KiB/charged1835962368B separately retained.
+  No RSSstop/OOM; sampled identities/controller/cgroup retired.
+  Single-config full speedup/serial accept-set parity remain unknown.
+  Do not divide by prior1665.530s prefix+all9trials or restart/raise budget.
+
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):
   7808same statuses/3014accepted IDs,19.28%less elapsed at one point;
