@@ -14,6 +14,20 @@
     "qualified": true
   },
   {
+    "key": "duplicate-local-deps-1",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
+    "key": "duplicate-local-deps-8",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
     "key": "corrupt-1",
     "expected_accept": false,
     "returncode": 1,

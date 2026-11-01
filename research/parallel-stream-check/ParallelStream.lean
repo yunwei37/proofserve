@@ -136,8 +136,6 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
       throw e
   else
     try
-      for h : i in [:duplicateProofs.size] do
-        validateDuplicate s.checked duplicateProofs[i] (Name.num (Name.num `_proofserveDuplicate s.modules) i)
       let workers := ((← IO.getEnv "PARALLEL_WORKERS").getD "1").toNat?.getD 1
       let fault := (← IO.getEnv "PARALLEL_FAULT").getD "none"
       let before ← IO.monoNanosNow
@@ -147,6 +145,8 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
           let checked ← s.checked.replay insertMap
           pure (checked,0,0,"serial")
       let (checked,waves,jobs,path) ← result
+      for h : i in [:duplicateProofs.size] do
+        validateDuplicate checked duplicateProofs[i] (Name.num (Name.num `_proofserveDuplicate s.modules) i)
       event [("event",toJson "kernel_work"),("module",toJson mod.toString),
         ("waves",toJson waves),("jobs",toJson jobs),("path",toJson path),
         ("elapsed_ns",toJson ((← IO.monoNanosNow)-before))]

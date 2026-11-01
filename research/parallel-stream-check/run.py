@@ -19,6 +19,7 @@ def controls():
  'DupB':'namespace Shared\ntheorem t : True := True.intro\nend Shared\n',
  'ExtraA':'namespace Shared\ntheorem externalProof : True := True.intro\nend Shared\n',
  'ExtraB':'namespace LocalB\ntheorem result : True := True.intro\nend LocalB\n',
+ 'DupDeps':'namespace Shared\ntheorem helper : True := True.intro\ntheorem t : True := helper\nend Shared\n',
  'DefA':'namespace Shared\ndef f : Nat := 0\nend Shared\n',
  'DefB':'namespace Shared\ndef f : Nat := 1\nend Shared\n',
  'PrivateA':'private theorem helper : True := True.intro\ntheorem privateA : True := helper\n',
@@ -30,6 +31,7 @@ def controls():
   if r['returncode']:raise RuntimeError('compile fixture')
  controls=[
  ('ordinary','none',None,['DupA','DupB'],True,None),
+ ('duplicate-local-deps','none',None,['DupA','DupDeps'],True,None),
  ('corrupt','bvar','DupB',['DupA','DupB'],False,None),
  ('sibling','sibling','ExtraB',['ExtraA','ExtraB'],False,None),
  ('definitions','none',None,['DefA','DefB'],True,None),
@@ -71,6 +73,9 @@ def matrix():
 if __name__=='__main__':
  try:
   if sys.argv[1]=='controls':controls()
+  elif sys.argv[1]=='both':
+   controls()
+   matrix()
   elif sys.argv[1]=='matrix':matrix()
  finally:
   (ROOT/(sys.argv[1]+'-terminal.json')).write_text(json.dumps(dict(utc=time.strftime('%FT%TZ',time.gmtime()))))
