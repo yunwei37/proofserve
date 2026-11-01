@@ -1,0 +1,84 @@
+import Lean
+import Lean.Util.CollectAxioms
+open Lean Elab
+
+set_option maxHeartbeats 2000000
+
+/-- Count each command on its executing thread, before allocating receipt JSON.
+    This path deliberately disables asynchronous elaboration; its counters are
+    not silently presented as stock async whole-process accounting. -/
+partial def countedCommands
+    (counts : Array Nat := #[]) (messages : Array Message := #[]) :
+    Frontend.FrontendM (Array Nat × Array Message) := do
+  let a ← IO.getNumHeartbeats
+  let done ← Frontend.processCommand
+  let b ← IO.getNumHeartbeats
+  let st ← get
+  let counts := counts.push (b-a)
+  let messages := messages ++ st.commandState.messages.toArray
+  if done then return (counts,messages)
+  countedCommands counts messages
+
+def field [FromJson α] (j : Json) (key : String) (fallback : α) : α :=
+  (j.getObjValAs? α key).toOption.getD fallback
+
+unsafe def main (args : List String) : IO UInt32 := do
+  let [path] := args | throw <| IO.userError "usage: lean --run Probe.lean requests.json"
+  initSearchPath (← findSysroot)
+  enableInitializersExecution
+  let reqs ← IO.ofExcept <| (← IO.ofExcept <| Json.parse (← IO.FS.readFile path)).getArr?
+  let base ← importModules #[{module := `Mathlib}] {} 0 (loadExts := true)
+  for j in reqs do
+    let id := field j "id" "unknown"
+    let source := field j "code" ""
+    let mode := field j "mode" "sync"
+    let observer := field j "observer" "off"
+    let budget := field j "budget" (3000 : Nat)
+    let target := (field j "target" "").toName
+    let opts := ({} : Options) |>.set `maxHeartbeats budget
+      |>.set `maxRecDepth (4000 : Nat) |>.setBool `Elab.async (mode == "stock")
+      |>.setBool `trace.profiler (observer == "trace")
+      |>.set `trace.profiler.threshold (0 : Nat)
+      |>.setBool `profiler (observer == "native")
+    let ctx := Parser.mkInputContext source id
+    let before ← IO.getNumHeartbeats
+    let (env,msgs,units) ← if mode == "stock" then do
+      let st ← IO.processCommands ctx {} (Command.mkState base {} opts)
+      pure (st.commandState.env,st.commandState.messages.toArray,#[])
+    else do
+      let ((units,msgs),st) ← ((countedCommands).run {inputCtx := ctx}).run
+        {commandState := Command.mkState base {} opts,parserState := {},cmdPos := 0}
+      pure (st.commandState.env,msgs,units)
+    -- Force all checked environment tasks before classifying anything.
+    let ci := env.constants.find? target
+    let after ← IO.getNumHeartbeats
+    let mut errors : Array String := #[]
+    let mut warnings : Array String := #[]
+    for m in msgs do
+      if m.severity == .error then errors := errors.push (← m.data.toString)
+      if m.severity == .warning then warnings := warnings.push (← m.data.toString)
+    let axioms ← (if ci.isSome then collectAxioms target else pure #[] : CoreM _).toIO
+      {fileName := id,fileMap := ctx.fileMap} {env}
+    let ax := axioms.1.map Name.toString
+    let isTheorem := match ci with | some (.thmInfo _) => true | _ => false
+    let sorryUsed := ax.contains "sorryAx"
+    let newAxioms := env.constants.map₂.toList.filterMap fun (n,c) =>
+      if base.contains n then none else match c with
+        | .axiomInfo _ => some n.toString
+        | _ => none
+    let verdict := if errors.any (·.contains "heartbeats") then "budget_exhausted"
+      else if !errors.isEmpty then "lean_error"
+      else if !isTheorem || sorryUsed || !newAxioms.isEmpty then "incomplete"
+      else "accepted"
+    IO.println <| "REPRO " ++ (Json.mkObj [
+      ("id",toJson id),("mode",toJson mode),("observer",toJson observer),
+      ("budget",toJson budget),("verdict",toJson verdict),
+      ("main_thread_raw_heartbeats",toJson (after-before)),
+      ("command_raw_heartbeats",toJson units),("errors",toJson errors),
+      ("warnings",toJson warnings),("target",toJson target.toString),
+      ("theorem_present",toJson isTheorem),("axioms",toJson ax),
+      ("new_axioms",toJson newAxioms),
+      ("accounting",toJson (if mode == "stock" then "main-thread-only-not-total"
+        else "synchronous-command-deltas-not-arbitrary-child-tasks"))]).compress
+    (← IO.getStdout).flush
+  return 0
