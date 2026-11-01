@@ -1,0 +1,72 @@
+[
+  {
+    "module": "OAI.Analysis.PlanarPacking.Certificate.UMoments9",
+    "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/24-noM/artifacts/UMoments9.olean",
+    "role": "original_probability_sample",
+    "stratum": "99-100;1-10;1",
+    "inclusion_probability": "0.008968609865470852",
+    "source_sites": 1164,
+    "source_compile_wall_s": 90.28347251098603,
+    "source_compile_cpu_s": 163.845944,
+    "source_raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/24-noM",
+    "source_has_M_flag": false,
+    "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/PlanarPacking/Certificate/UMoments9.lean",
+    "regime": "computation"
+  },
+  {
+    "module": "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41",
+    "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/23-noM/artifacts/BarrierData41.olean",
+    "role": "original_probability_sample",
+    "stratum": "99-100;1-10;1",
+    "inclusion_probability": "0.008968609865470852",
+    "source_sites": 1320,
+    "source_compile_wall_s": 63.02955825999379,
+    "source_compile_cpu_s": 113.882318,
+    "source_raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/23-noM",
+    "source_has_M_flag": false,
+    "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/MathematicalPhysics/Transonic/Certificates/BarrierData41.lean",
+    "regime": "computation"
+  },
+  {
+    "module": "OAI.Analysis.Triangular.Envelope.EnvelopePsiB",
+    "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/17-noM/artifacts/EnvelopePsiB.olean",
+    "role": "original_probability_sample",
+    "stratum": "90-99;1-10;1",
+    "inclusion_probability": "0.004310344827586207",
+    "source_sites": 40,
+    "source_compile_wall_s": 64.86812825128436,
+    "source_compile_cpu_s": 66.08314,
+    "source_raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/17-noM",
+    "source_has_M_flag": false,
+    "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Triangular/Envelope/EnvelopePsiB.lean",
+    "regime": "computation"
+  },
+  {
+    "module": "OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative",
+    "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/05-noM/artifacts/InteriorH1Derivative.olean",
+    "role": "original_probability_sample",
+    "stratum": "0-50;11-100;0",
+    "inclusion_probability": "4.4197918278049104e-05",
+    "source_sites": 0,
+    "source_compile_wall_s": 8.419583400711417,
+    "source_compile_cpu_s": 8.435903,
+    "source_raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/05-noM",
+    "source_has_M_flag": false,
+    "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/PDE/Weak/Elliptic/InteriorH1Derivative.lean",
+    "regime": "mathematical"
+  },
+  {
+    "module": "OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle",
+    "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/04-noM/artifacts/ReindexSingle.olean",
+    "role": "original_probability_sample",
+    "stratum": "0-50;11-100;0",
+    "inclusion_probability": "4.4197918278049104e-05",
+    "source_sites": 0,
+    "source_compile_wall_s": 2.118681530468166,
+    "source_compile_cpu_s": 2.153143,
+    "source_raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/04-noM",
+    "source_has_M_flag": false,
+    "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/NumberTheory/PadicHodge/IntegralComparison/OrderedCech/ReindexSingle.lean",
+    "regime": "mathematical"
+  }
+]

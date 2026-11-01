@@ -21,7 +21,7 @@ def analyze(point,out):
    if pair['cold'].keys()!=pair['warm'].keys():raise ValueError('unmatched inputs')
    for key,c in pair['cold'].items():
     w=pair['warm'][key]
-    fields=[k for k in ['verdict','errors','axioms','new_axioms']if c[k]!=w[k]]
+    fields=[k for k in ['verdict','errors','warnings','axioms','new_axioms','theorem_present']if c[k]!=w[k]]
     vector_same=(c['command_raw_heartbeats']==w['command_raw_heartbeats'])if c['mode']=='sync'else None
     comparisons.append(dict(id=key[0],mode=key[1],budget=key[2],repeat=rep,threads=threads,
       fields=fields,verdict_cold=c['verdict'],verdict_warm=w['verdict'],
