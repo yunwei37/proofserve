@@ -7,7 +7,7 @@
   "available_case_weighted_nomination_share_of_large_goal_cpu": 0.9997203487901152,
   "available_case_weighted_nomination_share_of_all_checker_cpu": 0.2822412667977406,
   "scope": "31 retained panel; weighted original29only;13original draws absent; source nomination not measured chunk acceptance or speedup",
-  "actual_compiled_schema_control": "EnvelopeB16 only; other9nominees source classified; full native chunk curve queued",
+  "actual_compiled_schema_control": "EnvelopeB16 schema qualified; other9source-only; actual runtime evidence separate in envelope-validation.json",
   "weight_sensitivity": {
     "envelope_module_inverse_probability": 232.0,
     "weighted_large_share_with_envelope": 0.28232021798827595,

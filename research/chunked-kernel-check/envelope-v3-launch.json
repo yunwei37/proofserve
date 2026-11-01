@@ -1,0 +1,33 @@
+{
+  "point": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v3",
+  "pid": 219119,
+  "birth": "755987829",
+  "time": "2026-11-01T04:28:14.878271+00:00",
+  "command": [
+    "flock",
+    "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+    "taskset",
+    "-c",
+    "0-7",
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=10",
+    "1740",
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v3/envelope_matrix.py"
+  ],
+  "code_commit": "0d67cd6",
+  "blocking_flock": true,
+  "old_failed_and_retired": true,
+  "protocol": "sequential native producer and merger; original baseline one phase",
+  "actual_lock_evidence": {
+    "time": "2026-11-01T04:28:14.889145+00:00",
+    "lines": [
+      "7: FLOCK  ADVISORY  WRITE 219119 08:10:1443914 0 EOF"
+    ],
+    "proc_locks": "7: FLOCK  ADVISORY  WRITE 219119 08:10:1443914 0 EOF\n",
+    "queued": false,
+    "holder": true
+  }
+}

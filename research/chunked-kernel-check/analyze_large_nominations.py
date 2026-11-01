@@ -35,7 +35,7 @@ def analyze(source):
   available_case_weighted_nomination_share_of_large_goal_cpu=w_nom/w_total,
   available_case_weighted_nomination_share_of_all_checker_cpu=w_nom/denom,
   scope='31 retained panel; weighted original29only;13original draws absent; source nomination not measured chunk acceptance or speedup',
-  actual_compiled_schema_control='EnvelopeB16 only; other9nominees source classified; full native chunk curve queued',
+  actual_compiled_schema_control='EnvelopeB16 schema qualified; other9source-only; actual runtime evidence separate in envelope-validation.json',
   weight_sensitivity=dict(envelope_module_inverse_probability=weight('OAI.Analysis.Triangular.Envelope.EnvelopePsiB'),
    weighted_large_share_with_envelope=w_total/denom,
    weighted_large_share_after_omitting_envelope=rlarge/rden,

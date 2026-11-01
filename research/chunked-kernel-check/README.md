@@ -104,18 +104,16 @@ ranges, process/import/export/audit cost and exact acceptance checks. This is
 compiled-module independent replay over trusted imports, **not** source-build,
 whole-library or service speedup. Parallel checking itself is existing work.
 
-## Eligible large-goal curve — repaired construction, result pending
-The first actual waiter acquired the lease but failed its initial construction
-control before any performance cell: a normal predicate def blocked Decidable
-search. Failed raw data remain intact. The generator now uses a transparent
-abbrev; original target/merge equivalence,16instance/construction cases and
-a genuine original-kernel false rejection all pass. The v2curve passed its true kernel negative and original check, then hit the
-unchanged RSS guard during late merge; a checked10.5KBchild was retained.
-The next protocol retires the producer before a thin kernel-only merger,
-including both startup/import phases in total cost. Simple direct Nat bridge
-proofs preserve the original[propext] axiom set. See
-[step013](step-013-report.md) and [step014](step-014-report.md).
-No complete Envelope curve or speedup yet.
+## Eligible large-goal curve — completed, small variable runtime gain
+EnvelopePsiB's Fin31target completed15/15checks with the original kernel,
+same target and exact[propext]dependencies, no sorry/new axioms.
+Eightchunks reduce pure checker median6.125s to0.973s (6.29x), while full
+native runtime only falls9.848s to8.982s (1.096x), with53.6%more CPU.
+One of3paired repetitions is slower; all ranges are retained.
+[Complete curve and failure history](envelope-result.md) includes sequential
+producer/merger startup/import/export costs and the excluded offline
+transformation compilation. All84olean parts match same-k repetition bytes.
+This is neither whole-library nor verification-service speedup.
 
 The conditional28.23%weighted large-helper estimate is highly sensitive to
 one file: dropping Envelope changes it to0.01118%. Thirteen original draws
@@ -133,7 +131,7 @@ Source scanning and metadata preparation use E8–15. All timed native cells
 use P0–7 and the shared existing `pcore.lock`, without `-M`, with a
 180 s self alarm, finite heartbeats and a 14 GiB sampled own-tree stop
 (reserving 2 GiB within M's 16 GiB allowance). Sampling is not a hard RSS quota.
-The finite matrix controller releases the common lock after each retired cell.
+The current finite Barrier/Envelope controllers hold the common lease for their\nwhole bounded window; native children retire between stages.
 
 `classify_shapes.py` uses the pinned archive and W's exact source frame.
 `refine_record_hints.py` resolves only declared record types and known

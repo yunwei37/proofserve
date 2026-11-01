@@ -7,7 +7,7 @@ def write(name,rows):
   w=csv.DictWriter(f,lineterminator='\n',fieldnames=list(dict.fromkeys(k for r in rows for k in r)));w.writeheader();w.writerows(rows)
 def main():
  os.sched_setaffinity(0,set(range(8,16)))
- ap=argparse.ArgumentParser();ap.add_argument('--point',type=pathlib.Path);ap.add_argument('--prefix',default='envelope');args=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--point',type=pathlib.Path,required=True);ap.add_argument('--prefix',default='envelope');args=ap.parse_args()
  point=args.point or RAW/'envelope-curve-v1'
  prefix=args.prefix
  term=json.loads((point/'terminal.json').read_text())
@@ -48,6 +48,11 @@ def main():
    else:assert 'CK_ORIGINAL_AXIOMS [propext]' in text
    out=pathlib.Path(json.loads((p/'cell.json').read_text())['outputs'])
    paths=[out/'EnvelopeOriginal.olean'] if k==0 else [out/f'EnvelopeK{k}Part{i}.olean' for i in range(k)]+[out/'EnvelopeCombined.olean']
+   expected={a.name for a in paths}
+   paths=sorted(out.glob('*.olean*'))
+   assert expected.issubset({a.name for a in paths}),'missing primary artifacts'
+   reference_out=pathlib.Path(json.loads((locations[(k,1)]/'cell.json').read_text())['outputs'])
+   assert {a.name for a in paths}=={a.name for a in reference_out.glob('*.olean*')},'olean part set differs across repetitions'
    for a in paths:
     assert a.exists()
     refrow=locations[(k,1)]
@@ -65,10 +70,30 @@ def main():
    vals=[r[metric] for r in rr if r.get(metric) is not None]
    if vals:summaries.append(dict(k=k,metric=metric,n=len(vals),median=statistics.median(vals),min=min(vals),max=max(vals)))
  write(prefix+'-summary.csv',summaries)
+ pairs=[]
+ for row in rows:
+  if row['k']==0:continue
+  original=next(x for x in rows if x['k']==0 and x['rep']==row['rep'])
+  pairs.append(dict(k=row['k'],rep=row['rep'],original_wall_s=original['native_wall_s'],
+   chunk_wall_s=row['native_wall_s'],wall_speedup=original['native_wall_s']/row['native_wall_s'],
+   kernel_speedup=original['pure_kernel_span_s']/row['pure_kernel_span_s'],
+   extra_nonkernel_wall_s=(row['native_wall_s']-row['pure_kernel_span_s'])-(original['native_wall_s']-original['pure_kernel_span_s']),
+   native_cpu_ratio=row['native_cpu_s']/original['native_cpu_s']))
+ write(prefix+'-paired.csv',pairs)
  quality=dict(completed_native_cells=15,accepted=15,target_identical_to_original_extracted_input=True,
   axioms=['propext'],new_axioms=0,sorry=False,same_k_repeat_artifacts_equal=all(a['equal_same_k_rep1'] for a in artifacts),
   native_heartbeats='finite per child; no claim of aggregate budget transparency',
   source_frame='one real measured >=1s Envelope Fin31 goal; not whole-module compilation')
+ leaves=[json.loads(f.read_text()) for f in (point/'runs').glob('*/result.json')]
+ leaves=[x for x in leaves if x.get('kind')!='sequential_native_phases']
+ assert all(x['native_retired'] and x['cgroup_retired'] for x in leaves)
+ quality.update(all_olean_parts_compared=True,olean_part_comparisons=len(artifacts),
+  raw_native_phases=len(leaves),positive_native_phases=sum(x['returncode']==0 for x in leaves),
+  negative_kernel_rejection_phases=sum(x['key'].startswith('invalid-target') and x['returncode']==1 for x in leaves),
+  all_native_retired_and_scopes_removed=True,code_commit=json.loads((point/'launch.json').read_text())['code_commit'],
+  max_sampled_own_tree_bytes=max(x['sampled_tree_peak_bytes'] for x in leaves),
+  max_charged_child_bytes=max(x['charged_peak_bytes'] for x in leaves),
+  setup_scope='offline source generation/Base/merge-lemma compilation and original OAI production build excluded; full two native-phase runtime included')
  (HERE/(prefix+'-validation.json')).write_text(json.dumps(quality,indent=2)+'\n')
  print(json.dumps(quality))
 if __name__=='__main__':main()

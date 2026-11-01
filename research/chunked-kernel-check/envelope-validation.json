@@ -1,0 +1,23 @@
+{
+  "completed_native_cells": 15,
+  "accepted": 15,
+  "target_identical_to_original_extracted_input": true,
+  "axioms": [
+    "propext"
+  ],
+  "new_axioms": 0,
+  "sorry": false,
+  "same_k_repeat_artifacts_equal": true,
+  "native_heartbeats": "finite per child; no claim of aggregate budget transparency",
+  "source_frame": "one real measured >=1s Envelope Fin31 goal; not whole-module compilation",
+  "all_olean_parts_compared": true,
+  "olean_part_comparisons": 84,
+  "raw_native_phases": 28,
+  "positive_native_phases": 27,
+  "negative_kernel_rejection_phases": 1,
+  "all_native_retired_and_scopes_removed": true,
+  "code_commit": "0d67cd6",
+  "max_sampled_own_tree_bytes": 9086930944,
+  "max_charged_child_bytes": 2588258304,
+  "setup_scope": "offline source generation/Base/merge-lemma compilation and original OAI production build excluded; full two native-phase runtime included"
+}
