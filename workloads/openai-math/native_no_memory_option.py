@@ -133,11 +133,13 @@ def run(point, index, arm, wall_limit=None):
             else "native_process_failure" if rc < 0 or "INTERNAL PANIC" in raw
             else "accepted" if replay and rc == 0 and replay_ok
             else "verification_contract_failure" if replay and rc == 0
+            else "verification_missing_object" if replay and rc != 0 and "object file '" in raw and "does not exist" in raw
             else "compile_with_sorry" if rc == 0 and "declaration uses 'sorry'" in raw
             else "compile_ok" if rc == 0 and all(x.exists() for x in expected)
             else "missing_artifact" if rc == 0
             else "native_memory_failure" if any(x in raw.lower() for x in ["memory_exception", "excessive memory", "bad_alloc", "out of memory"])
             else "budget_exceeded" if any(x in raw.lower() for x in ["heartbeats", "deterministic timeout", "maximum recursion depth"])
+            else "verification_rejected_or_error" if replay
             else "lean_error")
         (out / "artifacts").mkdir()
         for path in artifacts:

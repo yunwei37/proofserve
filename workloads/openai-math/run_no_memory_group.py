@@ -73,6 +73,9 @@ def main():
         rows.append(result)
         with (point/"results.jsonl").open("a") as f:
             f.write(json.dumps(result)+"\n")
+        if result["status"] in {"verification_missing_object", "verification_contract_failure"}:
+            stop = "operational verification setup/response failure; raw row retained"
+            break
     terminal = dict(rows=len(rows), planned_jobs=len(plan["cases"]),
         native_rows=sum(x.get("native_invoked", False) for x in rows),
         elapsed_including_queue_s=time.monotonic()-start, native_wall_sum_s=native_wall,
