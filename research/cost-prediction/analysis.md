@@ -130,8 +130,14 @@ policies. At25% total observed CPU(158.15s), mean completions are FIFO7.83,
 regime sorting22, regime upper admission21 and oracle24. FIFO/sorting/oracle
 have one budget interruption; upper admission has none and defers10 jobs.
 This counterfactual result is not native throughput. See[simulation.csv](simulation.csv).
-It overstates the gain actually observed below, so it cannot substitute for
-execution evidence.
+That158.15s/permuted-arrival result must not be compared directly with the
+native60s/original-order result. An additional matched60s replay uses exactly
+the native arrival order and frozen forecasts: FIFO15, sorting15, upper13,
+oracle17 completions, with1/1/0/1 interruptions. Thus the matched replay's
+three executable policies agree with observed native completion counts.
+See[matched-offline.csv](matched-offline.csv). Budget and arrival order,
+rather than a demonstrated simulator/native discrepancy, explain why quoting
+the25%-budget replay as a native gain would be misleading.
 
 ## Actual bounded native experiment
 
@@ -166,8 +172,10 @@ pass@k for k>1 is not identifiable. They are not miniF2F candidate pass@32.
 A single sequential policy order, warm filesystem effects, changed fresh-
 compile environment, and absent failed/heavy primary cases limit causal
 throughput claims. No claim of beating a warm service or replicated native
-speedup is made. Native evidence contradicts a simple reading of the much
-larger offline gain, rather than being omitted in favor of that gain.
+speedup is made. The matched60s replay agrees with native completion counts. Completed
+native-call CPU divided by its original label has median1.0144(range0.904–1.143);
+those observed call differences do not create a measured sorting gain here.
+The separate25%-budget/random-arrival result is not a substitute for this test.
 
 Raw commands, outputs, cgroup memory events and exact IDs are on PVC at
 /workspaces/.agent-state/gpu-smt-captures/cost-prediction-20261101-v2/native-policy-v1.

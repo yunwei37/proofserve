@@ -58,4 +58,29 @@ def main():
   scope='OOF grouped-calibration forecasts only; old true costs not supplied to native policy; accepted IDs still observed natively'),indent=2))
  (OUT/'simulation-terminal.json').write_text(json.dumps(dict(status='complete',trace_replays=len(traces),summary_rows=len(summaries),
   scope='counterfactual CPU-work replay, not an actual run; separate native prototype plan B60'),indent=2))
-if __name__=='__main__':main()
+
+def matched_native_replay():
+ """Same input order and B60 as native; original labels remain counterfactual."""
+ plan=json.loads((OUT/'native-policy-plan.json').read_text())
+ labels={r['module']:float(r['cpu_s']) for r in csv.DictReader((OUT/'intervals.csv').open()) if r['model']=='regime'}
+ results=[]
+ for policy in ['fifo','predicted_cost','upper_admission','oracle']:
+  jobs=plan['candidates'] if policy=='fifo' else sorted(plan['candidates'],key=lambda r:labels[r['module']] if policy=='oracle' else r['point'])
+  remaining=float(plan['cpu_budget_s']);done=interrupted=deferred=0
+  for job in jobs:
+   if policy=='upper_admission' and job['upper']>remaining:
+    deferred+=1;continue
+   cost=labels[job['module']]
+   if cost<=remaining:
+    done+=1;remaining-=cost
+   else:
+    interrupted+=1;remaining=0;break
+  results.append(dict(policy=policy,budget_cpu_s=plan['cpu_budget_s'],
+   completed=done,interrupted=interrupted,admission_deferrals=deferred,
+   total_uncompleted=len(jobs)-done,cpu_spent=plan['cpu_budget_s']-remaining))
+ with (OUT/'matched-offline.csv').open('w',newline='') as f:
+  w=csv.DictWriter(f,fieldnames=results[0]);w.writeheader();w.writerows(results)
+
+if __name__=='__main__':
+ main()
+ matched_native_replay()

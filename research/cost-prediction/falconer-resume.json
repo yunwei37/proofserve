@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-01T19:45:19.515695+00:00",
+  "pid": 244727,
+  "birth": "761148374",
+  "signal": "SIGCONT",
+  "reason": "cost-prediction study complete and c51cd8c pushed; continue same finite Falconer plan",
+  "locks_before": "",
+  "progress_before": {
+    "windows": 2,
+    "built": 1010,
+    "reused": 5077,
+    "oracle_verified": 0,
+    "recovered_operational_failures": 1
+  },
+  "verified_resumed_window": 3,
+  "checkpoint_commit": "55240dc",
+  "scope": "partial source construction; not completed full Falconer comparison"
+}

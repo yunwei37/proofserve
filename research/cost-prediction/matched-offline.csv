@@ -1,0 +1,5 @@
+policy,budget_cpu_s,completed,interrupted,admission_deferrals,total_uncompleted,cpu_spent
+fifo,60,15,1,0,16,60
+predicted_cost,60,15,1,0,16,60
+upper_admission,60,13,0,18,18,41.13289700000001
+oracle,60,17,1,0,14,60
