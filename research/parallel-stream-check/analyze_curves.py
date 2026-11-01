@@ -2,12 +2,13 @@
 import csv,json,statistics
 from pathlib import Path
 def dump(path,rows):
- if not rows:return
+ if not rows:
+  path.write_text('');return
  with path.open('w')as f:
   w=csv.DictWriter(f,fieldnames=rows[0].keys(),lineterminator='\n');w.writeheader();w.writerows(rows)
 def main(raw,out):
  raws=[raw]if isinstance(raw,Path)else list(raw)
- rows=[];runs=[];failures=[]
+ rows=[];partial=[];runs=[];failures=[]
  files=[(root,file)for root in raws for file in sorted(root.glob('*-stream-r*-summary.json'))]
  for raw,file in files:
   record=json.loads(file.read_text());r=record['result'];complete=record['completed']
@@ -22,14 +23,18 @@ def main(raw,out):
    sampled_tree_peak_mib=r['sampled_tree_peak_bytes']/1024**2,
    accepted_modules=len(record['accepted']),fallback_events=sum('fallback_reason'in e for e in events),
    native_retired=r['native_retired'],cgroup_retired=r.get('cgroup_retired',False)))
-  if not complete:failures.append(dict(capture=raw.name,key=r['key'],returncode=r['returncode'],completed_cells=len(record['curves'])));continue
-  baseline=next(e for e in record['curves']if e['kind']=='serial')
-  baseWall=int(baseline['elapsed_ns'])/1e9;baseCPU=int(baseline['cpu_ns'])/1e9
+  if not complete:
+   failures.append(dict(capture=raw.name,key=r['key'],returncode=r['returncode'],completed_cells=len(record['curves']),stop_reasons=r['stop_reasons']))
+  baseline=next((e for e in record['curves']if e['kind']=='serial'),None)
+  baseWall=int(baseline['elapsed_ns'])/1e9 if baseline else None
+  baseCPU=int(baseline['cpu_ns'])/1e9 if baseline else None
   for cell in record['curves']:
    wall=int(cell['elapsed_ns'])/1e9;cpu=int(cell['cpu_ns'])/1e9
-   rows.append(dict(capture=raw.name,module=cell['module'],key=r['key'],variant=cell['kind'],workers=cell['workers'],
-    wall_s=wall,cpu_s=cpu,speedup_to_same_process_serial=baseWall/wall,
-    cpu_ratio_to_serial=cpu/baseCPU,mean_cores=cpu/wall,
+   destination=rows if complete else partial
+   destination.append(dict(capture=raw.name,module=cell['module'],key=r['key'],variant=cell['kind'],workers=cell['workers'],
+    native_run_complete=complete,
+    wall_s=wall,cpu_s=cpu,speedup_to_same_process_serial=baseWall/wall if baseWall is not None else 'unknown_no_baseline',
+    cpu_ratio_to_serial=cpu/baseCPU if baseCPU is not None else 'unknown_no_baseline',mean_cores=cpu/wall,
     chunk_parents=cell['actual_chunk_parents'],chunk_subjobs=cell['actual_chunk_subjobs'],
     waves=cell['waves'],jobs=cell['jobs'],route=cell['route'],
     all_source_constants_match=not cell['kind'].startswith('chunk'),
@@ -37,6 +42,7 @@ def main(raw,out):
     scope='incremental_root_same_verified_prefix',
     chunk_payload_read_included=cell['kind'].startswith('chunk')))
  dump(out/'compute-cells.csv',rows);dump(out/'compute-runs.csv',runs)
+ dump(out/'compute-partial-cells.csv',partial)
  summary=[]
  for capture,module,variant in dict.fromkeys((r['capture'],r['module'],r['variant'])for r in rows):
   group=[r for r in rows if r['capture']==capture and r['module']==module and r['variant']==variant]
@@ -48,7 +54,8 @@ def main(raw,out):
   summary.append(x)
  dump(out/'compute-summary.csv',summary)
  (out/'compute-completeness.json').write_text(json.dumps(dict(raw=[str(x)for x in raws],complete_native_runs=sum(r['complete']for r in runs),
-  actual_cells=len(rows),failed_runs=failures,
+  actual_cells=len(rows),completed_cells_before_failed_run_end=len(partial),failed_runs=failures,
+  partial_policy='partial cells preserved separately; never pooled into complete-run summaries',
   caveat='Whole process runs all variants and prefix; incremental cells are not cold module invocation speedups',
   no_per_variant_peak_rss='only whole-process peak RSS is measured'),indent=2)+'\n')
  print(json.dumps(summary,indent=2))

@@ -50,3 +50,11 @@ three-repeat mathematical matrix is [v14-math-results.md](v14-math-results.md):
 serial68.605 s, parallel8=45.050 s (1.523x), with36.3% more CPU.
 Computational final curves remain pending; do not substitute the short controls.
 The cost staircase is [v14-cost-staircase.csv](v14-cost-staircase.csv).
+
+The first cold Envelope integration is now complete:
+[envelope-stream-results.md](envelope-stream-results.md). Leaf serial61.913s,
+declaration8=17.539s, pooled-chunk8=13.299s; one repetition, original kernel,
+all10,752modules accepted. Complete prefix+all-nine process1665.530s is a
+different cost. Source proof generation remains excluded; no full-closure
+single-config speedup is inferred. [Barrier](barrier-stream-results.md)
+completes its first repaired curve as well; fresh repaired Grid is pending.

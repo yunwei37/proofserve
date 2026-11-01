@@ -1,0 +1,1 @@
+capture,module,key,variant,workers,native_run_complete,wall_s,cpu_s,speedup_to_same_process_serial,cpu_ratio_to_serial,mean_cores,chunk_parents,chunk_subjobs,waves,jobs,route,all_source_constants_match,constant_comparison_scope,scope,chunk_payload_read_included

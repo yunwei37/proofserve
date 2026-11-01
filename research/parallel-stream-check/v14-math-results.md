@@ -35,3 +35,8 @@ not mean all workers are busy throughout serial fallback modules or narrow front
 The optional Fin proof rewrite is inactive in this mathematical cohort.
 
 Historical v4 tables remain unchanged and are not pooled with this repaired version.
+
+Total CPU here means aggregate process CPU seconds. It is not an instruction
+count or a controlled-frequency estimate of algorithmic work. No causal split
+between synchronization, allocation, reference counting, cache effects and
+clock frequency is available from this non-profiled matrix.

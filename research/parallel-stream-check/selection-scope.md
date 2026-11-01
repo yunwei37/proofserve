@@ -10,6 +10,12 @@ and EnvelopePsiB originated in W's probability sample, but choosing these three
 for a mechanism demonstration does not make the three-module scaling result a
 population speedup estimate. Do not average or extrapolate their speedups to the
 1.35million lexical decide markers.
+The earlier31-module profiling panel gives10.09% unweighted large-helper share.
+Its29-available-sample conditional weighting gives28.23%, but removing Envelope
+alone changes that estimate to0.01118%;13original draws are absent/censored.
+See ../chunked-kernel-check/step-011-report.md. That sensitivity is not a new
+experiment or a reliable whole-library coverage claim.
+
 
 ## Two different parallel jobs
 
@@ -53,3 +59,19 @@ availability equivalence for arbitrary corrupted auxiliary payloads.
 
 The cold Envelope resource failure cannot be filled by the short stock-imported
 positive certificate control or by a future trusted-prefix leaf diagnostic.
+
+## Granularity and scheduler limitation
+
+The ordinary baseline can already parallelize distinct expensive parent
+theorems. Splitting all eligible parents therefore competes with that baseline,
+not only with one serial large goal. A broad frontier of many short goals is
+handled without splitting. For Envelope the k=1/2/4/8 curve must report whether
+extra subgoals improve load balance enough to pay for repeated guard/reduction
+work and lost per-checker caches; no multiplicative declaration-times-chunk
+speedup is assumed.
+
+The frozen implementation handles ordinary jobs first, then one pooled batch
+of all selected parents' children, then their checked merges. No nested k-by-k
+pool is created. The ordinary and certificate batches within a frontier do not
+overlap, which can leave performance below a unified mixed-job queue. This is
+an implementation limit, not a measured cause or evidence for an unrun policy.

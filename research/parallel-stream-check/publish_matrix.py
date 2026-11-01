@@ -48,6 +48,10 @@ def publish(raw):
   'not mean all workers are busy throughout serial fallback modules or narrow frontiers.',
   'The optional Fin proof rewrite is inactive in this mathematical cohort.',
   '',
+  'Total CPU means aggregate process CPU seconds, not instruction count or controlled-frequency work.',
+  'This non-profiled matrix cannot attribute extra CPU seconds to synchronization, allocation,',
+  'reference counting, cache effects or clock frequency.',
+  '',
   'Historical v4 tables remain unchanged and are not pooled with this repaired version.']
  (M/'v14-math-results.md').write_text('\n'.join(lines)+'\n')
  source=list(csv.DictReader((REPO/'research/decoupled-check/cohort-costs.csv').open()))

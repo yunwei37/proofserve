@@ -1,0 +1,25 @@
+lemma,fin_bound,source_line,predicate_source,qualification
+lambdaTable0_calc,31,41,lambdaBox 0 j = lambdaTable0 j,lexical shape; no per-declaration CPU or recovery measured
+phaseHTable0_calc,31,79,wavePhaseBox 0 1 j = phaseHTable0 j,lexical shape; no per-declaration CPU or recovery measured
+lambdaTable1_calc,31,117,lambdaBox 1 j = lambdaTable1 j,lexical shape; no per-declaration CPU or recovery measured
+phaseHTable1_calc,31,155,wavePhaseBox 1 1 j = phaseHTable1 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_1_calc,31,204,((phaseHTable0 j).mul (CI.point 1)).exp = waveExp0_1 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_3_calc,31,245,((phaseHTable0 j).mul (CI.point 3)).exp = waveExp0_3 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_4_calc,31,286,((phaseHTable0 j).mul (CI.point 4)).exp = waveExp0_4 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_7_calc,31,327,((phaseHTable0 j).mul (CI.point 7)).exp = waveExp0_7 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_9_calc,31,368,((phaseHTable0 j).mul (CI.point 9)).exp = waveExp0_9 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_12_calc,31,409,((phaseHTable0 j).mul (CI.point 12)).exp = waveExp0_12 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_13_calc,31,450,((phaseHTable0 j).mul (CI.point 13)).exp = waveExp0_13 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_16_calc,31,491,((phaseHTable0 j).mul (CI.point 16)).exp = waveExp0_16 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_19_calc,31,532,((phaseHTable0 j).mul (CI.point 19)).exp = waveExp0_19 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp0_21_calc,31,573,((phaseHTable0 j).mul (CI.point 21)).exp = waveExp0_21 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_1_calc,31,614,((phaseHTable1 j).mul (CI.point 1)).exp = waveExp1_1 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_3_calc,31,655,((phaseHTable1 j).mul (CI.point 3)).exp = waveExp1_3 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_4_calc,31,696,((phaseHTable1 j).mul (CI.point 4)).exp = waveExp1_4 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_7_calc,31,737,((phaseHTable1 j).mul (CI.point 7)).exp = waveExp1_7 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_9_calc,31,778,((phaseHTable1 j).mul (CI.point 9)).exp = waveExp1_9 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_12_calc,31,819,((phaseHTable1 j).mul (CI.point 12)).exp = waveExp1_12 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_13_calc,31,860,((phaseHTable1 j).mul (CI.point 13)).exp = waveExp1_13 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_16_calc,31,901,((phaseHTable1 j).mul (CI.point 16)).exp = waveExp1_16 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_19_calc,31,942,((phaseHTable1 j).mul (CI.point 19)).exp = waveExp1_19 j,lexical shape; no per-declaration CPU or recovery measured
+waveExp1_21_calc,31,983,((phaseHTable1 j).mul (CI.point 21)).exp = waveExp1_21 j,lexical shape; no per-declaration CPU or recovery measured

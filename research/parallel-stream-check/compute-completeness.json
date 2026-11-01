@@ -4,16 +4,21 @@
     "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v12",
     "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14"
   ],
-  "complete_native_runs": 2,
-  "actual_cells": 10,
+  "complete_native_runs": 3,
+  "actual_cells": 19,
+  "completed_cells_before_failed_run_end": 0,
   "failed_runs": [
     {
       "capture": "parallel-stream-check-v10",
       "key": "envelope-stream-r1",
       "returncode": -9,
-      "completed_cells": 0
+      "completed_cells": 0,
+      "stop_reasons": [
+        "sampled_own_RSS_budget"
+      ]
     }
   ],
+  "partial_policy": "partial cells preserved separately; never pooled into complete-run summaries",
   "caveat": "Whole process runs all variants and prefix; incremental cells are not cold module invocation speedups",
   "no_per_variant_peak_rss": "only whole-process peak RSS is measured"
 }

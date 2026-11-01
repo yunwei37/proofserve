@@ -23,7 +23,7 @@ this is not an instruction-count or clock-cycle attribution.
 
 The whole finite process checks the prefix and all five variants:468.112s wall,
 867.563s cgroup CPU,3,196.184MiB wait4peak RSS. Its sampled tree peak is
-3,198.068MiB. These are whole-process metrics, not per-variant memory or a
+3,197.973MiB. These are whole-process metrics, not per-variant memory or a
 complete single-production-configuration cost. Native group/controller retired;
 no memory threshold, OOM event or native failure.
 
