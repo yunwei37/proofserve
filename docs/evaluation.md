@@ -333,3 +333,27 @@ charged886595584B, noOOM/stop. Parent227736/birth757291977/controller227733/
 birth757291974 andcgroupactuallyretired.1observation/path,no CI/randomization.
 Oldfragment3.32637ratio hasdifferentoutput/lifecycle, notcomparabletuningcurve.
 0rootnative, rawresults/commands/stdout/memory/source retained.
+
+## Complete v14 Envelope prefix and nine target paths — step0243
+[Root self-review](tmp/build-and-evaluate/step-0243-20261101T091434+0000/step-report.md), **自审**.
+Oneactualrc0process/full10752uniqueaccept/header/importgraph/785706entries/
+4444skips/0module-localfallback.10751prefix independentlychecked4requestedworkers,
+notuniform8throughout. Nineorderedtargettrials,110entriesmetadata names/types/
+levelscompareto serial; ordinaryCIproofbodiesunchanged. Chunkpaths rewrite10
+sourcequalifiedparentproofs;incomingcompleteCIeligibilityguardsmatchreferences.
+k1/2/4/8 actual10/20/40/80children,150total/40merges,parentsunion[propext]/nosorry.
+Notfullmodule/repositoryaxiomclosureaudit. Strongdecl8=17.538824342/chunk8=
+13.299241787s,ratio1.318783779/wall-24.17256%/CPU+5.1856531%;vsserial
+61.912856321s ratio4.655367375/CPU+66.24619%. Chunk2worseDecl2retained.
+Entireprocess1665.529675605s/2772.428955nativeCPU/cgroup2772.428331s includes
+prefix/all9. Targetsum331.131704245s, residual1334.397971360snotpureimportcost.
+No full-single-configcoldtime orindependentwhole-cohortserialacceptancecomparison.
+No preparation/producer/scannertime incheckingratios. Oneobservation/mode,noCI.
+
+wait4RSS14699648KiB=14.0187GiB,sample15001427968B=13.9712GiB,charged8910696448B
+distinct. No sampledRSSstop/OOM,cap14GiBcharged; wait4exceedssampledthreshold
+betweenobservations, nativepeakunder16GiBshare, notfull-laneresidencyproof.
+Parent228392/birth757362780/controller228389/birth757362777andcgroupretired.
+Sourcebyteequalsqualifiedv14;priorv10failedsource/prefix8remainsunchanged.
+Noisolatedcausalpatch-memoryfix/robustnessclaim. WaveExpData44.990saggregate
+isadditionalancestor, nottimeattributedtotenleafgoals.0rootnative.

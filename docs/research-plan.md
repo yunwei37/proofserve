@@ -148,3 +148,13 @@ CPU+48.615%. Whole468.112s includesallfive/prefix, notselectedcoldmode.
 Oneobservation/path andnewTCB codeexplicit. Earlierfragmentpipeline3.326x is
 differentoutput/lifecycle; don'tinterpret ratiosascontrolledsuccessivetuning.
 No restartofcompletedBarrier; furtherMwork fromactualnewplan/terminal only.
+
+## Completed cold-prefix Envelope target sequence
+Rootstep0243collects v14oneprocess10752modules/nineorderedleafvariants.
+Declaration8 isstrongbaseline17.539s;chunk8=13.299s,1.31878x/+5.1857%CPU.
+Notonlyserial4.655x;chunk2regressesrelativeDecl2.110source targetmetadatamatch,
+10proofsrewritten;150children/40merges checked,rewrittenparentaxiomspropext.
+Whole1665.530sincludesprefix+all9. Separatewhole-cohortserial/singleconfiguration
+coldcost/repeatsstillunmeasured. Sample14GiBguardisnothardRSS; wait4peak14.019
+vs sampled13.971GiBexplicit. v10failedsource/prefixpointunchanged.
+No automaticrerun or capincrease; actualMfull-cost/newpairedplansownnextwork.

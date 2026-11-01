@@ -147,6 +147,18 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   Actualidentity/cgroup/controllerretired,no stop/noM/P0–7/14GiBcharged.
   NotoldBarrierfragment3.326x'slifecycle, notcausalgate/cold/globalgain.
 
+- [Rootstep0243 full-prefix Envelope v14](tmp/build-and-evaluate/step-0243-20261101T091434+0000/step-report.md):
+  onecomplete10752moduleprocess,10751prefix4workers,9orderedleafvariants.
+  110source names/types/levels matchserial; ordinaryproofsretained,10parents
+  intentionallyrewritten afterfullincomingCI eligibility.150children/40merges
+  originalkernelchecked; rewrittenparentsaxiomunion[propext]/nosorry.
+  Leafserial61.913s/decl8=17.539/chunk8=13.299s:chunk8vsstrongdecl8=1.31878x,
+  wall-24.17%/CPU+5.1857%;vsserial4.655x/CPU+66.25%. Chunk2losestoDecl2.
+  Whole1665.530s/2772.428cgroupCPUincludesprefix/allnine,notonesinglemode.
+  Sample13.971GiBbelow14stop,wait4peak14.019GiBabovebetween-samplethreshold;
+  charged8910696448Bbelow14GiBcap, noOOM/stop; nativebelow16GiBlaneshare.
+  Allidentities/scopesretired. No full-cohortserialparity/repeats/causalmemoryfix.
+
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):
   7808same statuses/3014accepted IDs,19.28%less elapsed at one point;
