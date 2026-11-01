@@ -86,3 +86,10 @@ O-owned reconstructed outputs currently total about3.94GB, including0.647GB C
 and2.793GB olean parts across3,793 modules. Shared exact-node reuse avoids a
 second copy of those artifacts; future new members still consume PVC space.
 No foreign data, active owner, quota or storage configuration is altered.
+
+The unstarted boundary-v2 preparation was assigned E8–15 before its first
+native invocation, per the user's untimed-preparation rule. It retains the
+shared lock solely to prevent overlapping O-line Lean processes. These
+qualification cells have measured=false and yield no paper timings. All
+construction/stream/profile timing remains P0–7. The earlier v1 compile
+failure's actual P-core affinity remains in its original record.

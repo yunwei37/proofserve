@@ -6,6 +6,9 @@ import os,json,sys,time
 from pathlib import Path
 from native_audit import run,ROOT,SDK,environment
 assert sorted(os.sched_getaffinity(0))==list(range(8))
+# Native qualification/preparation carries no timing result. Keep that work on
+# E cores while retaining the shared lock to avoid a second owning-line Lean.
+os.sched_setaffinity(0,set(range(8,16)))
 source=ROOT/'AuditedStream.lean'
 records=[]
 def checked(key,cmd,limit=120,env=None,cwd=None):
