@@ -1,0 +1,7138 @@
+{
+  "sources": 16,
+  "rows": 768,
+  "verdict_counts": {
+    "lean_error": 224,
+    "budget_exhausted": 16,
+    "accepted": 480,
+    "incomplete": 48
+  },
+  "comparisons": {
+    "threads_off": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "heartbeat_mismatches": 0,
+      "differences": []
+    },
+    "threads_native": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "heartbeat_mismatches": 0,
+      "differences": []
+    },
+    "threads_trace": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "heartbeat_mismatches": 0,
+      "differences": []
+    },
+    "observer_native": {
+      "pairs": 256,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "heartbeat_mismatches": 4,
+      "differences": [
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "native",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            14940,
+            2198449,
+            8434
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "native",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            14940,
+            2198449,
+            8434
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "native",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            14940,
+            2198449,
+            8434
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "native",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            14940,
+            2198449,
+            8434
+          ]
+        }
+      ]
+    },
+    "observer_trace": {
+      "pairs": 256,
+      "verdict_mismatches": 16,
+      "acceptance_mismatches": 0,
+      "heartbeat_mismatches": 128,
+      "differences": [
+        {
+          "id": "minif2f-1041",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            833556,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1167564,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            127699,
+            8434
+          ],
+          "units_b": [
+            16179,
+            167344,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            78793,
+            8434
+          ],
+          "units_b": [
+            16179,
+            96725,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1388222,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1995138,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [],
+          "units_b": []
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors",
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3024262,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            173824,
+            8434
+          ],
+          "units_b": [
+            16179,
+            252287,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            147705,
+            8434
+          ],
+          "units_b": [
+            16179,
+            201088,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1353980,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1863316,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1815895,
+            8434
+          ],
+          "units_b": [
+            16179,
+            2586240,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            2207133,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3155041,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12281
+          ],
+          "units_b": [
+            16179,
+            298823,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12727
+          ],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1203633,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1708511,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            44359,
+            8434
+          ],
+          "units_b": [
+            16179,
+            63308,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            163671,
+            8434
+          ],
+          "units_b": [
+            16179,
+            223483,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1345179,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1897710,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            833556,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1167564,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            127699,
+            8434
+          ],
+          "units_b": [
+            16179,
+            167344,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            78793,
+            8434
+          ],
+          "units_b": [
+            16179,
+            96725,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1388222,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1995138,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [],
+          "units_b": []
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors",
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3024262,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            173824,
+            8434
+          ],
+          "units_b": [
+            16179,
+            252287,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            147705,
+            8434
+          ],
+          "units_b": [
+            16179,
+            201088,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1353980,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1863316,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1815895,
+            8434
+          ],
+          "units_b": [
+            16179,
+            2586240,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            2207133,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3155041,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12281
+          ],
+          "units_b": [
+            16179,
+            298823,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12727
+          ],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1203633,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1708511,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            44359,
+            8434
+          ],
+          "units_b": [
+            16179,
+            63308,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            163671,
+            8434
+          ],
+          "units_b": [
+            16179,
+            223483,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1345179,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1897710,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            833556,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1167564,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            127699,
+            8434
+          ],
+          "units_b": [
+            16179,
+            167344,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            78793,
+            8434
+          ],
+          "units_b": [
+            16179,
+            96725,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1388222,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1995138,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [],
+          "units_b": []
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors",
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3024262,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            173824,
+            8434
+          ],
+          "units_b": [
+            16179,
+            252287,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            147705,
+            8434
+          ],
+          "units_b": [
+            16179,
+            201088,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1353980,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1863316,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1815895,
+            8434
+          ],
+          "units_b": [
+            16179,
+            2586240,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            2207133,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3155041,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12281
+          ],
+          "units_b": [
+            16179,
+            298823,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12727
+          ],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1203633,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1708511,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            44359,
+            8434
+          ],
+          "units_b": [
+            16179,
+            63308,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            163671,
+            8434
+          ],
+          "units_b": [
+            16179,
+            223483,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1345179,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1897710,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            833556,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1167564,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            127699,
+            8434
+          ],
+          "units_b": [
+            16179,
+            167344,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            78793,
+            8434
+          ],
+          "units_b": [
+            16179,
+            96725,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1388222,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1995138,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [],
+          "units_b": []
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors",
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3024262,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            173824,
+            8434
+          ],
+          "units_b": [
+            16179,
+            252287,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            147705,
+            8434
+          ],
+          "units_b": [
+            16179,
+            201088,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1353980,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1863316,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1815895,
+            8434
+          ],
+          "units_b": [
+            16179,
+            2586240,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            2207133,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3155041,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12281
+          ],
+          "units_b": [
+            16179,
+            298823,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12727
+          ],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1203633,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1708511,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            44359,
+            8434
+          ],
+          "units_b": [
+            16179,
+            63308,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            163671,
+            8434
+          ],
+          "units_b": [
+            16179,
+            223483,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1345179,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1897710,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            833556,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1169055,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            127699,
+            8434
+          ],
+          "units_b": [
+            16179,
+            167428,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            78793,
+            8434
+          ],
+          "units_b": [
+            16179,
+            98576,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1388222,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1995487,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [],
+          "units_b": []
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors",
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            14940,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            21744,
+            3025604,
+            9754
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            173824,
+            8434
+          ],
+          "units_b": [
+            16179,
+            252341,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            147705,
+            8434
+          ],
+          "units_b": [
+            16179,
+            201887,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1353980,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1863381,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1815895,
+            8434
+          ],
+          "units_b": [
+            16179,
+            2586319,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            2207133,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3157010,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12281
+          ],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12727
+          ],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1203633,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1722205,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            44359,
+            8434
+          ],
+          "units_b": [
+            16179,
+            63334,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            163671,
+            8434
+          ],
+          "units_b": [
+            16179,
+            223597,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1345179,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1900323,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            833556,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1169055,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            127699,
+            8434
+          ],
+          "units_b": [
+            16179,
+            167428,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            78793,
+            8434
+          ],
+          "units_b": [
+            16179,
+            98576,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1388222,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1995487,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [],
+          "units_b": []
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors",
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            14940,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            21744,
+            3025604,
+            9754
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            173824,
+            8434
+          ],
+          "units_b": [
+            16179,
+            252341,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            147705,
+            8434
+          ],
+          "units_b": [
+            16179,
+            201887,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1353980,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1863381,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1815895,
+            8434
+          ],
+          "units_b": [
+            16179,
+            2586319,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            2207133,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3157010,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12281
+          ],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12727
+          ],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1203633,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1722205,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            44359,
+            8434
+          ],
+          "units_b": [
+            16179,
+            63334,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            163671,
+            8434
+          ],
+          "units_b": [
+            16179,
+            223597,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1345179,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1900323,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            833556,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1169055,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            127699,
+            8434
+          ],
+          "units_b": [
+            16179,
+            167428,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            78793,
+            8434
+          ],
+          "units_b": [
+            16179,
+            98576,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1388222,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1995487,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [],
+          "units_b": []
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors",
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            14940,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            21744,
+            3025604,
+            9754
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            173824,
+            8434
+          ],
+          "units_b": [
+            16179,
+            252341,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            147705,
+            8434
+          ],
+          "units_b": [
+            16179,
+            201887,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1353980,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1863381,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1815895,
+            8434
+          ],
+          "units_b": [
+            16179,
+            2586319,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            2207133,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3157010,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12281
+          ],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12727
+          ],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1203633,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1722205,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            44359,
+            8434
+          ],
+          "units_b": [
+            16179,
+            63334,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            163671,
+            8434
+          ],
+          "units_b": [
+            16179,
+            223597,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1345179,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1900323,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            833556,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1169055,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            127699,
+            8434
+          ],
+          "units_b": [
+            16179,
+            167428,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            78793,
+            8434
+          ],
+          "units_b": [
+            16179,
+            98576,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1388222,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1995487,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "stock",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [],
+          "units_b": []
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors",
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            14940,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            21744,
+            3025604,
+            9754
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            173824,
+            8434
+          ],
+          "units_b": [
+            16179,
+            252341,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            147705,
+            8434
+          ],
+          "units_b": [
+            16179,
+            201887,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1353980,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1863381,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1815895,
+            8434
+          ],
+          "units_b": [
+            16179,
+            2586319,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            2207133,
+            8434
+          ],
+          "units_b": [
+            16179,
+            3157010,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12281
+          ],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            14940,
+            190239,
+            12727
+          ],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1203633,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1722205,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14940,
+            44359,
+            8434
+          ],
+          "units_b": [
+            16179,
+            63334,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            163671,
+            8434
+          ],
+          "units_b": [
+            16179,
+            223597,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            14940,
+            1345179,
+            8434
+          ],
+          "units_b": [
+            16179,
+            1900323,
+            9710
+          ]
+        }
+      ]
+    },
+    "frontend": {
+      "pairs": 384,
+      "verdict_mismatches": 48,
+      "acceptance_mismatches": 0,
+      "heartbeat_mismatches": 0,
+      "differences": [
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12281
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "native",
+          "observer_b": "native",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            14940,
+            190239,
+            12727
+          ]
+        },
+        {
+          "id": "minif2f-6063",
+          "repeat": 1,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "stock",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "verdict",
+            "errors"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "incomplete",
+          "units_a": [],
+          "units_b": [
+            16179,
+            298823,
+            14003
+          ]
+        }
+      ]
+    },
+    "repeat_and_order": {
+      "pairs": 384,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "heartbeat_mismatches": 64,
+      "differences": [
+        {
+          "id": "minif2f-1041",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1167564,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1169055,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            167344,
+            9710
+          ],
+          "units_b": [
+            16179,
+            167428,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            96725,
+            9710
+          ],
+          "units_b": [
+            16179,
+            98576,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1995138,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1995487,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            14940,
+            2198449,
+            8434
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "budget_exhausted",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            16179,
+            3024262,
+            9710
+          ],
+          "units_b": [
+            21744,
+            3025604,
+            9754
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            252287,
+            9710
+          ],
+          "units_b": [
+            16179,
+            252341,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            201088,
+            9710
+          ],
+          "units_b": [
+            16179,
+            201887,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1863316,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1863381,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            2586240,
+            9710
+          ],
+          "units_b": [
+            16179,
+            2586319,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            3155041,
+            9710
+          ],
+          "units_b": [
+            16179,
+            3157010,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            16179,
+            298823,
+            13557
+          ],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1708511,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1722205,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            63308,
+            9710
+          ],
+          "units_b": [
+            16179,
+            63334,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            223483,
+            9710
+          ],
+          "units_b": [
+            16179,
+            223597,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 0,
+          "threads_a": 1,
+          "threads_b": 1,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1897710,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1900323,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1167564,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1169055,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            167344,
+            9710
+          ],
+          "units_b": [
+            16179,
+            167428,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            96725,
+            9710
+          ],
+          "units_b": [
+            16179,
+            98576,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1995138,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1995487,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            14940,
+            2198449,
+            8434
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "budget_exhausted",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            16179,
+            3024262,
+            9710
+          ],
+          "units_b": [
+            21744,
+            3025604,
+            9754
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            252287,
+            9710
+          ],
+          "units_b": [
+            16179,
+            252341,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            201088,
+            9710
+          ],
+          "units_b": [
+            16179,
+            201887,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1863316,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1863381,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            2586240,
+            9710
+          ],
+          "units_b": [
+            16179,
+            2586319,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            3155041,
+            9710
+          ],
+          "units_b": [
+            16179,
+            3157010,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            16179,
+            298823,
+            13557
+          ],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1708511,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1722205,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            63308,
+            9710
+          ],
+          "units_b": [
+            16179,
+            63334,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            223483,
+            9710
+          ],
+          "units_b": [
+            16179,
+            223597,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 0,
+          "threads_a": 2,
+          "threads_b": 2,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1897710,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1900323,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1167564,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1169055,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            167344,
+            9710
+          ],
+          "units_b": [
+            16179,
+            167428,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            96725,
+            9710
+          ],
+          "units_b": [
+            16179,
+            98576,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1995138,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1995487,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            14940,
+            2198449,
+            8434
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "budget_exhausted",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            16179,
+            3024262,
+            9710
+          ],
+          "units_b": [
+            21744,
+            3025604,
+            9754
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            252287,
+            9710
+          ],
+          "units_b": [
+            16179,
+            252341,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            201088,
+            9710
+          ],
+          "units_b": [
+            16179,
+            201887,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1863316,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1863381,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            2586240,
+            9710
+          ],
+          "units_b": [
+            16179,
+            2586319,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            3155041,
+            9710
+          ],
+          "units_b": [
+            16179,
+            3157010,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            16179,
+            298823,
+            13557
+          ],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1708511,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1722205,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            63308,
+            9710
+          ],
+          "units_b": [
+            16179,
+            63334,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            223483,
+            9710
+          ],
+          "units_b": [
+            16179,
+            223597,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 0,
+          "threads_a": 4,
+          "threads_b": 4,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1897710,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1900323,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1041",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1167564,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1169055,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-1593",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            167344,
+            9710
+          ],
+          "units_b": [
+            16179,
+            167428,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2397",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            96725,
+            9710
+          ],
+          "units_b": [
+            16179,
+            98576,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2693",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1995138,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1995487,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "off",
+          "observer_b": "off",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            14950,
+            2198449,
+            8434
+          ],
+          "units_b": [
+            14940,
+            2198449,
+            8434
+          ]
+        },
+        {
+          "id": "minif2f-2797",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "budget_exhausted",
+          "verdict_b": "budget_exhausted",
+          "units_a": [
+            16179,
+            3024262,
+            9710
+          ],
+          "units_b": [
+            21744,
+            3025604,
+            9754
+          ]
+        },
+        {
+          "id": "minif2f-3859",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            252287,
+            9710
+          ],
+          "units_b": [
+            16179,
+            252341,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-4004",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            201088,
+            9710
+          ],
+          "units_b": [
+            16179,
+            201887,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5239",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1863316,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1863381,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5765",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            2586240,
+            9710
+          ],
+          "units_b": [
+            16179,
+            2586319,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-5777",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            3155041,
+            9710
+          ],
+          "units_b": [
+            16179,
+            3157010,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-6049",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "incomplete",
+          "verdict_b": "incomplete",
+          "units_a": [
+            16179,
+            298823,
+            13557
+          ],
+          "units_b": [
+            16179,
+            299406,
+            13557
+          ]
+        },
+        {
+          "id": "minif2f-6881",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1708511,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1722205,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7486",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "lean_error",
+          "verdict_b": "lean_error",
+          "units_a": [
+            16179,
+            63308,
+            9710
+          ],
+          "units_b": [
+            16179,
+            63334,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-7702",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            223483,
+            9710
+          ],
+          "units_b": [
+            16179,
+            223597,
+            9710
+          ]
+        },
+        {
+          "id": "minif2f-945",
+          "repeat": 0,
+          "threads_a": 8,
+          "threads_b": 8,
+          "mode_a": "sync",
+          "mode_b": "sync",
+          "observer_a": "trace",
+          "observer_b": "trace",
+          "fields": [
+            "command_raw_heartbeats"
+          ],
+          "verdict_a": "accepted",
+          "verdict_b": "accepted",
+          "units_a": [
+            16179,
+            1897710,
+            9710
+          ],
+          "units_b": [
+            16179,
+            1900323,
+            9710
+          ]
+        }
+      ]
+    }
+  },
+  "task_controls": [
+    {
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130,
+      "repeat": 0,
+      "threads": 1
+    },
+    {
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130,
+      "repeat": 0,
+      "threads": 2
+    },
+    {
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5012,
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130,
+      "repeat": 0,
+      "threads": 4
+    },
+    {
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130,
+      "repeat": 0,
+      "threads": 8
+    },
+    {
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130,
+      "repeat": 1,
+      "threads": 1
+    },
+    {
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130,
+      "repeat": 1,
+      "threads": 2
+    },
+    {
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5012,
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130,
+      "repeat": 1,
+      "threads": 4
+    },
+    {
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130,
+      "repeat": 1,
+      "threads": 8
+    }
+  ],
+  "native_cells": [
+    {
+      "key": "matrix-r0-j1",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/matrix-r0-j1.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-matrix-r0-j1.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243186,
+      "birth": "761120706",
+      "returncode": 0,
+      "wall_s": 13.4953109389171,
+      "user_s": 11.678247,
+      "system_s": 1.815632,
+      "peak_rss_kib": 8823960,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9036947456,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2383925248,
+      "cgroup_cpu_stat": "usage_usec 13493295\nuser_usec 11679121\nsystem_usec 1814174\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 13.493295,
+      "cgroup_user_s": 11.679121,
+      "cgroup_system_s": 1.814174,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "tasks-r0-j1",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/TaskProbe.lean",
+        "5000"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-tasks-r0-j1.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243351,
+      "birth": "761122056",
+      "returncode": 0,
+      "wall_s": 0.687250729650259,
+      "user_s": 0.454076,
+      "system_s": 0.22154,
+      "peak_rss_kib": 1617772,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 1560576,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 169717760,
+      "cgroup_cpu_stat": "usage_usec 674871\nuser_usec 454259\nsystem_usec 220611\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.674871,
+      "cgroup_user_s": 0.454259,
+      "cgroup_system_s": 0.220611,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "matrix-r0-j2",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j2",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/matrix-r0-j2.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-matrix-r0-j2.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243358,
+      "birth": "761122125",
+      "returncode": 0,
+      "wall_s": 13.63549112342298,
+      "user_s": 11.987149,
+      "system_s": 1.822629,
+      "peak_rss_kib": 8829572,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9043181568,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2384560128,
+      "cgroup_cpu_stat": "usage_usec 13809090\nuser_usec 11987342\nsystem_usec 1821748\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 13.80909,
+      "cgroup_user_s": 11.987342,
+      "cgroup_system_s": 1.821748,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "tasks-r0-j2",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j2",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/TaskProbe.lean",
+        "5000"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-tasks-r0-j2.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243374,
+      "birth": "761123488",
+      "returncode": 0,
+      "wall_s": 0.6871146019548178,
+      "user_s": 0.455362,
+      "system_s": 0.22672499999999998,
+      "peak_rss_kib": 1617776,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 2113536,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 169971712,
+      "cgroup_cpu_stat": "usage_usec 681486\nuser_usec 455656\nsystem_usec 225829\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.681486,
+      "cgroup_user_s": 0.455656,
+      "cgroup_system_s": 0.225829,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "matrix-r0-j4",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j4",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/matrix-r0-j4.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-matrix-r0-j4.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243382,
+      "birth": "761123557",
+      "returncode": 0,
+      "wall_s": 13.61079063732177,
+      "user_s": 11.873848,
+      "system_s": 1.911239,
+      "peak_rss_kib": 8840980,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9044959232,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2400870400,
+      "cgroup_cpu_stat": "usage_usec 13784499\nuser_usec 11872846\nsystem_usec 1911653\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 13.784499,
+      "cgroup_user_s": 11.872846,
+      "cgroup_system_s": 1.911653,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "tasks-r0-j4",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j4",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/TaskProbe.lean",
+        "5000"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-tasks-r0-j4.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243406,
+      "birth": "761124918",
+      "returncode": 0,
+      "wall_s": 0.7620783532038331,
+      "user_s": 0.510293,
+      "system_s": 0.260576,
+      "peak_rss_kib": 1619632,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 1708032,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 174432256,
+      "cgroup_cpu_stat": "usage_usec 770063\nuser_usec 511032\nsystem_usec 259030\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.770063,
+      "cgroup_user_s": 0.511032,
+      "cgroup_system_s": 0.25903,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "matrix-r0-j8",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j8",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/matrix-r0-j8.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-matrix-r0-j8.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243416,
+      "birth": "761124995",
+      "returncode": 0,
+      "wall_s": 13.640647627413273,
+      "user_s": 12.023669,
+      "system_s": 1.804889,
+      "peak_rss_kib": 8848472,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9062813696,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2418704384,
+      "cgroup_cpu_stat": "usage_usec 13827985\nuser_usec 12022942\nsystem_usec 1805042\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 13.827985,
+      "cgroup_user_s": 12.022942,
+      "cgroup_system_s": 1.805042,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "tasks-r0-j8",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j8",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/TaskProbe.lean",
+        "5000"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-tasks-r0-j8.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243430,
+      "birth": "761126359",
+      "returncode": 0,
+      "wall_s": 0.6713798493146896,
+      "user_s": 0.45328399999999996,
+      "system_s": 0.22450499999999998,
+      "peak_rss_kib": 1619684,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 1953792,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 172634112,
+      "cgroup_cpu_stat": "usage_usec 677110\nuser_usec 451739\nsystem_usec 225371\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.67711,
+      "cgroup_user_s": 0.451739,
+      "cgroup_system_s": 0.225371,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "matrix-r1-j8",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j8",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/matrix-r1-j8.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-matrix-r1-j8.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243440,
+      "birth": "761126426",
+      "returncode": 0,
+      "wall_s": 13.824150991626084,
+      "user_s": 12.164496,
+      "system_s": 1.846242,
+      "peak_rss_kib": 8842492,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9056649216,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2407792640,
+      "cgroup_cpu_stat": "usage_usec 14010075\nuser_usec 12165431\nsystem_usec 1844643\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 14.010075,
+      "cgroup_user_s": 12.165431,
+      "cgroup_system_s": 1.844643,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "tasks-r1-j8",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j8",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/TaskProbe.lean",
+        "5000"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-tasks-r1-j8.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243489,
+      "birth": "761127809",
+      "returncode": 0,
+      "wall_s": 0.6806256920099258,
+      "user_s": 0.453839,
+      "system_s": 0.23352799999999999,
+      "peak_rss_kib": 1619780,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 1880064,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 172834816,
+      "cgroup_cpu_stat": "usage_usec 686714\nuser_usec 452493\nsystem_usec 234220\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.686714,
+      "cgroup_user_s": 0.452493,
+      "cgroup_system_s": 0.23422,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "matrix-r1-j4",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j4",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/matrix-r1-j4.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-matrix-r1-j4.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243498,
+      "birth": "761127877",
+      "returncode": 0,
+      "wall_s": 13.903861360624433,
+      "user_s": 12.208545,
+      "system_s": 1.875805,
+      "peak_rss_kib": 8837328,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9050984448,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2401718272,
+      "cgroup_cpu_stat": "usage_usec 14083678\nuser_usec 12208588\nsystem_usec 1875090\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 14.083678,
+      "cgroup_user_s": 12.208588,
+      "cgroup_system_s": 1.87509,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "tasks-r1-j4",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j4",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/TaskProbe.lean",
+        "5000"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-tasks-r1-j4.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243528,
+      "birth": "761129269",
+      "returncode": 0,
+      "wall_s": 0.6860401816666126,
+      "user_s": 0.44493699999999997,
+      "system_s": 0.24961599999999998,
+      "peak_rss_kib": 1619640,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 2297856,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 172556288,
+      "cgroup_cpu_stat": "usage_usec 693756\nuser_usec 445127\nsystem_usec 248629\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.693756,
+      "cgroup_user_s": 0.445127,
+      "cgroup_system_s": 0.248629,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "matrix-r1-j2",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j2",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/matrix-r1-j2.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-matrix-r1-j2.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243538,
+      "birth": "761129338",
+      "returncode": 0,
+      "wall_s": 14.006438230164349,
+      "user_s": 12.312453,
+      "system_s": 1.851261,
+      "peak_rss_kib": 8838292,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9051885568,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2399731712,
+      "cgroup_cpu_stat": "usage_usec 14162986\nuser_usec 12311596\nsystem_usec 1851390\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 14.162986,
+      "cgroup_user_s": 12.311596,
+      "cgroup_system_s": 1.85139,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "tasks-r1-j2",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j2",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/TaskProbe.lean",
+        "5000"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-tasks-r1-j2.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243580,
+      "birth": "761130739",
+      "returncode": 0,
+      "wall_s": 0.6987992944195867,
+      "user_s": 0.46097699999999997,
+      "system_s": 0.23965499999999998,
+      "peak_rss_kib": 1617776,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 2088960,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 169869312,
+      "cgroup_cpu_stat": "usage_usec 700005\nuser_usec 460003\nsystem_usec 240001\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.700005,
+      "cgroup_user_s": 0.460003,
+      "cgroup_system_s": 0.240001,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "matrix-r1-j1",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/matrix-r1-j1.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-matrix-r1-j1.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243589,
+      "birth": "761130809",
+      "returncode": 0,
+      "wall_s": 13.982170963659883,
+      "user_s": 11.965916,
+      "system_s": 2.016178,
+      "peak_rss_kib": 8833752,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9047629824,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2391023616,
+      "cgroup_cpu_stat": "usage_usec 13981265\nuser_usec 11965227\nsystem_usec 2016038\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 13.981265,
+      "cgroup_user_s": 11.965227,
+      "cgroup_system_s": 2.016038,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "tasks-r1-j1",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "100",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/TaskProbe.lean",
+        "5000"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 100,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-243185-tasks-r1-j1.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 243619,
+      "birth": "761132207",
+      "returncode": 0,
+      "wall_s": 0.6957113593816757,
+      "user_s": 0.450001,
+      "system_s": 0.234875,
+      "peak_rss_kib": 1617788,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 2293760,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 169713664,
+      "cgroup_cpu_stat": "usage_usec 684214\nuser_usec 449454\nsystem_usec 234759\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.684214,
+      "cgroup_user_s": 0.449454,
+      "cgroup_system_s": 0.234759,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    }
+  ],
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1"
+}

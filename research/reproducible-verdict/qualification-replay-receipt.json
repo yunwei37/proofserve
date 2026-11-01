@@ -1,0 +1,249 @@
+{
+  "schema": "lean-budget-observation-v1",
+  "environment": {
+    "semantics": {
+      "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+      "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+      "probe_source": "e28ccc1",
+      "unit_scope": "per-Core-context-native-budget"
+    },
+    "machine": {
+      "node": "phobos-vt",
+      "kernel": "7.0.0-29-generic"
+    }
+  },
+  "budget_scope": "stock Lean maxHeartbeats per Core context, NOT a global candidate quota",
+  "unit": "1000 small-allocation heartbeats per user-facing unit; command deltas are raw",
+  "trusted_status": "observational receipt; rerun original Lean, do not trust verdict on receipt alone",
+  "native_result": {
+    "key": "qualification",
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "180",
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "-j1",
+      "--run",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/Probe.lean",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/qualification.json"
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "measured": true,
+    "wall_limit_s": 180,
+    "own_rss_sample_stop_gib": 14,
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-240888-qualification.scope",
+    "cgroup_charged_memory_max_gib": 14,
+    "pid": 240889,
+    "birth": "761094370",
+    "returncode": 0,
+    "wall_s": 5.032693024724722,
+    "user_s": 3.186349,
+    "system_s": 1.791491,
+    "peak_rss_kib": 8782808,
+    "native_retired": true,
+    "sampled_tree_peak_bytes": 8794349568,
+    "stop_reasons": [],
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "charged_peak_bytes": 2312953856,
+    "cgroup_cpu_stat": "usage_usec 4977105\nuser_usec 3184788\nsystem_usec 1792317\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+    "cgroup_usage_s": 4.977105,
+    "cgroup_user_s": 3.184788,
+    "cgroup_system_s": 1.792317,
+    "wait4_usage_complete": true,
+    "cgroup_retired": true
+  },
+  "observations": [
+    {
+      "request": {
+        "id": "true",
+        "code": "theorem repro_true : 2 + 2 = 4 := by decide",
+        "target": "repro_true",
+        "mode": "stock",
+        "observer": "off",
+        "budget": 3000
+      },
+      "result": {
+        "accounting": "main-thread-only-not-total",
+        "axioms": [],
+        "budget": 3000,
+        "command_raw_heartbeats": [],
+        "errors": [],
+        "id": "true",
+        "main_thread_raw_heartbeats": 1386,
+        "mode": "stock",
+        "new_axioms": [],
+        "observer": "off",
+        "target": "repro_true",
+        "theorem_present": true,
+        "verdict": "accepted",
+        "warnings": []
+      }
+    },
+    {
+      "request": {
+        "id": "false",
+        "code": "theorem repro_false : 2 + 2 = 5 := by decide",
+        "target": "repro_false",
+        "mode": "stock",
+        "observer": "off",
+        "budget": 3000
+      },
+      "result": {
+        "accounting": "main-thread-only-not-total",
+        "axioms": [
+          "sorryAx"
+        ],
+        "budget": 3000,
+        "command_raw_heartbeats": [],
+        "errors": [
+          "Tactic `decide` proved that the proposition\n  2 + 2 = 5\nis false"
+        ],
+        "id": "false",
+        "main_thread_raw_heartbeats": 957,
+        "mode": "stock",
+        "new_axioms": [],
+        "observer": "off",
+        "target": "repro_false",
+        "theorem_present": true,
+        "verdict": "lean_error",
+        "warnings": []
+      }
+    },
+    {
+      "request": {
+        "id": "sorry",
+        "code": "theorem repro_sorry : False := by sorry",
+        "target": "repro_sorry",
+        "mode": "stock",
+        "observer": "off",
+        "budget": 3000
+      },
+      "result": {
+        "accounting": "main-thread-only-not-total",
+        "axioms": [
+          "sorryAx"
+        ],
+        "budget": 3000,
+        "command_raw_heartbeats": [],
+        "errors": [],
+        "id": "sorry",
+        "main_thread_raw_heartbeats": 661,
+        "mode": "stock",
+        "new_axioms": [],
+        "observer": "off",
+        "target": "repro_sorry",
+        "theorem_present": true,
+        "verdict": "incomplete",
+        "warnings": [
+          "declaration uses `sorry`"
+        ]
+      }
+    },
+    {
+      "request": {
+        "id": "true",
+        "code": "theorem repro_true : 2 + 2 = 4 := by decide",
+        "target": "repro_true",
+        "mode": "sync",
+        "observer": "off",
+        "budget": 3000
+      },
+      "result": {
+        "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+        "axioms": [],
+        "budget": 3000,
+        "command_raw_heartbeats": [
+          66635,
+          8434
+        ],
+        "errors": [],
+        "id": "true",
+        "main_thread_raw_heartbeats": 75133,
+        "mode": "sync",
+        "new_axioms": [],
+        "observer": "off",
+        "target": "repro_true",
+        "theorem_present": true,
+        "verdict": "accepted",
+        "warnings": []
+      }
+    },
+    {
+      "request": {
+        "id": "false",
+        "code": "theorem repro_false : 2 + 2 = 5 := by decide",
+        "target": "repro_false",
+        "mode": "sync",
+        "observer": "off",
+        "budget": 3000
+      },
+      "result": {
+        "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+        "axioms": [
+          "sorryAx"
+        ],
+        "budget": 3000,
+        "command_raw_heartbeats": [
+          54836,
+          8434
+        ],
+        "errors": [
+          "Tactic `decide` proved that the proposition\n  2 + 2 = 5\nis false"
+        ],
+        "id": "false",
+        "main_thread_raw_heartbeats": 63309,
+        "mode": "sync",
+        "new_axioms": [],
+        "observer": "off",
+        "target": "repro_false",
+        "theorem_present": true,
+        "verdict": "lean_error",
+        "warnings": []
+      }
+    },
+    {
+      "request": {
+        "id": "sorry",
+        "code": "theorem repro_sorry : False := by sorry",
+        "target": "repro_sorry",
+        "mode": "sync",
+        "observer": "off",
+        "budget": 3000
+      },
+      "result": {
+        "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+        "axioms": [
+          "sorryAx"
+        ],
+        "budget": 3000,
+        "command_raw_heartbeats": [
+          18213,
+          8433
+        ],
+        "errors": [],
+        "id": "sorry",
+        "main_thread_raw_heartbeats": 26685,
+        "mode": "sync",
+        "new_axioms": [],
+        "observer": "off",
+        "target": "repro_sorry",
+        "theorem_present": true,
+        "verdict": "incomplete",
+        "warnings": [
+          "declaration uses `sorry`"
+        ]
+      }
+    }
+  ],
+  "missing": []
+}

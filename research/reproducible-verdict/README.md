@@ -19,3 +19,28 @@ Captures and generated artifacts live outside Git on the existing PVC:
 No global cache eviction, host security changes, new Workspace or old queue restart.
 
 See [prior-work.md](prior-work.md) and [Probe.lean](Probe.lean).
+
+## Native request and replay
+
+A request contains id, exact code, target theorem, budget (Lean user units),
+mode and observer. Stock mode preserves the stock asynchronous frontend.
+Sync mode is an explicitly different accounting path; v1 loses parser messages,
+and v2 captures them. No transparency guarantee is inferred from small controls.
+
+On a machine with the same Lean4.34.1 and matching Mathlib:
+    LEAN_PATH=<matching compiled imports> lean -j1 --run Probe.lean requests.json
+
+For our timed measurements that command is wrapped by the shared P-core lock and
+finite native.py collector. Probe runs the original Lean elaborator/kernel,
+forces checked theorem information, checks transitive sorryAx and new axioms,
+and outputs REPRO JSON (verdict, raw command counts, errors and axiom policy).
+Budget scope is stock maxHeartbeats per Core context, NOT a global candidate cap.
+
+replay.py bundles requests + native rows + environment + process terminal into
+rerunnable evidence. Its compare command reports verdict, unit, diagnostic and
+axiom divergence. It never accepts a receipt as a proof of success or failure.
+The supplied qualification receipt contains real results; tests check metadata
+integrity only. No producer failure cache or service behavior is enabled.
+
+See matrix-v1-results.md for actual counter/observer findings and the adapter
+defect. The broad cross-machine/cross-observer hypothesis remains unproved.

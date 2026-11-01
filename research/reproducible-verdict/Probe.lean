@@ -11,11 +11,23 @@ partial def countedCommands
     (counts : Array Nat := #[]) (messages : Array Message := #[]) :
     Frontend.FrontendM (Array Nat × Array Message) := do
   let a ← IO.getNumHeartbeats
-  let done ← Frontend.processCommand
+  -- Keep parser diagnostics before elabCommandTopLevel resets its message log.
+  -- v1's legacy frontend call lost them; its captures stay unmodified.
+  Frontend.updateCmdPos
+  let st0 ← get
+  let ictx ← Frontend.getInputContext
+  let scope := st0.commandState.scopes.head!
+  let pmctx := {env := st0.commandState.env,options := scope.opts, currNamespace := scope.currNamespace,openDecls := scope.openDecls}
+  let (cmd,ps,parseMsgs) := Parser.parseCommand ictx pmctx st0.parserState {}
+  modify fun st => {st with commands := st.commands.push cmd}
+  Frontend.setParserState ps
+  Frontend.setMessages parseMsgs
+  Frontend.elabCommandAtFrontend cmd
+  let done := Parser.isTerminalCommand cmd
   let b ← IO.getNumHeartbeats
   let st ← get
   let counts := counts.push (b-a)
-  let messages := messages ++ st.commandState.messages.toArray
+  let messages := messages ++ parseMsgs.toArray ++ st.commandState.messages.toArray
   if done then return (counts,messages)
   countedCommands counts messages
 
