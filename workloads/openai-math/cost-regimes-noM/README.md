@@ -29,25 +29,25 @@ purposeful cases with population_weight blank,never treating them as draws.
 
 ## Estimates apply only to completed strata
 
-29/42original costs,12/21complete strata are available. Those12cover101,596
-modules.61,501modules lie in incomplete strata:3,036primary-positive and
-58,465ordinary. Over half the positive population is outside this estimate.
+31/42original costs,14/21complete strata are available. Those14cover103,468
+modules.59,629modules lie in incomplete strata:1,164primary-positive and
+58,465ordinary. Those incomplete strata still prevent any whole-library estimate.
 
 For completed strata only:
-- certificate native CPU estimate15.467757hours;
+- certificate native CPU estimate24.146735hours;
 - ordinary native CPU estimate116.704826hours;
-- certificate share11.7027%,ordinary88.2973%;
-- nominal delta-method95%certificate-share interval[0%,28.8801%];
+- certificate share17.1434%,ordinary82.8566%;
+- nominal delta-method95%certificate-share interval[0%,43.6646%];
 - conservative joint95%Bonferroni interval[0%,100%].
 
 Two draws/cell do not give precise time weights. These are conditional
 complete-stratum estimates,not whole-library CPU hours,proof-check-only CPU,
 accepted-library build totals,or calibrated whole-corpus intervals.
 Global point/CI fields remain blank. No-Mpair/legacy-Mtimes or partial costs
-fill missing draws. Missing3,036positive modules can change the conclusion.
+fill missing draws. Missing1,164positive modules can change the conclusion.
 
-Sensitivity covered-stratum point shares:11.6974%at D>=0.1,7.9685%at D>=1,
-13.8267%including plain decide. Some sensitivity domains have positive known
+Sensitivity covered-stratum point shares:17.1385%at D>=0.1,13.4320%at D>=1,
+19.1365%including plain decide. Some sensitivity domains have positive known
 population but no observed member in a completedcell. Their misleading
 zero-width domain/delta intervals are suppressed;bounds remain[0,1].
 
@@ -110,7 +110,7 @@ cleanup,not exclusively final proof validation.
       --legacy-profiles native-profile-five/case-summary.csv --out NEW_PVC_DIR
 
 Full labels gzip,source snapshot,analysis logs and smalltables:
-PVC workloads/openai4341-cost-regimes-20261101-v2.
+PVC workloads/openai4341-cost-regimes-20261101-v3.
 v1and original unsupported-domain plug-in intervals remain unchanged.
 Independent arithmetic from the existing estimator reconciles primary domain
 totals/variances;all four partitions and fullbytes1,785,499,363checked.
@@ -120,3 +120,7 @@ Original hard draws continue noM-only.48jobs submit sequentially,one stockflock
 request at a time,after each prior native/cgroup retires. Every command releases
 P0–7 before the next submission;no batchheldlock,profilepriority or strictFIFO
 claim. Queue/setup/copy/cleanup are separate from native CPU cost.
+
+W065 update: suffix48 adds two unchanged original random draws and completes
+two more strata. Previous v1/v2raw results remain; only current small tables
+are refreshed. 31/42draws and14/21cells are not a full-library result.

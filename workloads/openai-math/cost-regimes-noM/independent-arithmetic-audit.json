@@ -1,9 +1,11 @@
 {
-  "primary_CPU_totals_reconciled_with_existing_independent_estimator": true,
-  "primary_domain_variances_reconciled": true,
-  "all_four_population_partitions_exact": true,
-  "all163097_module_labels_unique": true,
-  "source_byte_total": 1785499363,
-  "complete_stratum_population": 101596,
-  "full_library_CPU_share_established": false
+  "review": "self-review; separate arithmetic path, not independent agent",
+  "primary_C_CPU_h": 24.146734908888888,
+  "primary_O_CPU_h": 116.70482585097221,
+  "primary_share": 0.17143391793901977,
+  "original_draws": 31,
+  "complete_cells": 14,
+  "global_claim": false,
+  "all_legacy_clocks_excluded": true,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-cost-regimes-20261101-v3"
 }

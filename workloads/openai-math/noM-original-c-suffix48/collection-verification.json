@@ -1,0 +1,18 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101",
+  "returned": 48,
+  "statuses": {
+    "compile_ok": 48
+  },
+  "new_probability_targets": 2,
+  "native_wall_s": 179.2558303438127,
+  "native_CPU_s": 201.060628,
+  "max_sampled_native_plus_controller_RSS_bytes": 7869591552,
+  "max_leader_HWM_kib": 7703044,
+  "max_charged_cgroup_peak_bytes": 1511088128,
+  "all_identity_retired": true,
+  "all_cgroups_retired": true,
+  "all_exact_sources_and_three_artifacts": true,
+  "no_oom_or_sorry": true,
+  "group_elapsed_including_queue_s": 9217.807695043273
+}

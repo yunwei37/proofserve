@@ -1,30 +1,30 @@
 # W current state
-## Current frontier (W062:48queued individually;conditional two-domain costs)
-- New user:profilepriority ended. Queue one timed task,wait realreturn,thennext.
- 48controller191267/birth754946357 launched01:34:40UTC,raw
- workloads/openai4341-noM-original-c-suffix48-prepared-20261101. One stockflock
- request at a time,no batchheldlock. Firstreturn/nextqueue actually observed.
- Recheck actualPID/birth/terminal;never infer from thisnote. No second Wnative.
-- All new timing noM/P0–7/j8/owned15GiBchargedcgroup/16GiBsampler.
- Per native600dep/1200target s,native-work group1700s;contention notnativecost.
- Do not restore legacyMplans or profilepriority/nonblocking-deferstop.
-- W060fresh31noMcompiles:29/42random costs,12/21complete cells. No fullCPU/CI.
- Grid317.191522s,Amplitudes127.044006s;31capture retired/collected.
-- RQ1labels all163097modules,5848primarypositive.
- 12complete strata(101596modules):certificateCPU15.467757h/ordinary116.704826h,
- share11.7027%;nominaldelta95%0–28.8801%,Bonferroni0–100%.
- Conditional coveredstrata only,NOTwholelibrary. Missing61501modules include
- 3036positive;globalcost/share/CIblank. See openai-math/cost-regimes-noM.
-- FiveCppprofiles are legacy-Mmethodology,not currentnoMvalidation. Density
- 1/KiBmisseslegacyEnvelopePsiB. Source labels do not establish kernel dominance.
- Full163097labels/raw onPVC;smallclassification/stratum/shareCSVpublished.
-- Import audit143637directsets/141573graphclosures,top100about4.94%;
- sourcegraph only,notstatecache safety or CPUshare.
-- W063other11source plan:9587uncached modules/107644656bytes,allsourcepresent.
- Next hard LowBlock15_1+Dihedral36jobs copied onPVC at
- workloads/openai4341-noM-hard-two-prepared-20261101,NOTlaunched/queued.
- Original42draws/conditional6extension preserved. Onlyworkloads/edited.
- No generation,extraagent,desktop or infrastructure mutation.
+
+## Current frontier (W065:31/42no-M random costs; hard original draws queued)
+- W064 authorized cleanup removes16.879GiB old regenerable WSDK/caches/archive
+ copies. All raw/native/profiles preserved. ActualPVCdf71%/38GiBfree then;
+ other lanes cleaned concurrently. See cleanup-20261101.md and exactCSV.
+- Suffix48completed48/48compile_ok/retired:179.255830nativewall/
+ 201.060628CPU seconds;9,217.807695s elapsedincluding contention.
+ 31/42original random costs,14/21complete cells;globalCPU/CIblank.
+- Primary sourceproxy classification all163097modules/5848positive.
+ 14complete cells cover103468modules:certificateCPU24.146735h/
+ ordinary116.704826h;conditionalshare17.1434%,nominaldelta95%0–43.6646%,
+ conservativeBonferroni0–100%. Missing59629modules/1164positive.
+ Sourceclasses are not measured kernel dominance; no-MCppprofiles pending.
+- Current sole Wgroup:openai4341-noM-hard-two-prepared-20261101,
+ 36cases for original LowBlock15_1 thenDihedralIntervals. Actually launched
+ 2026-11-01T18:24:59UTC/controller237124/birth761008293;recheck actualidentity/
+ current/terminal. Firstrequest waiting observed;do not duplicate/restart.
+- NoM/P0–7j8/15GiBownedchargedcgroup/16GiBsampler;600dep/1200target,
+ 1700native-work groupallowance;waiting excluded from nativecost/allowance.
+ One stockflock command queued at a time,wait return,release,then next.
+ No oldpriority hold/nonblockingdefer/whole-batch lock.
+- Remaining11original target sources prepared;9587physicalmissingclosure
+ modules/107644656bytes allsourcepresent at W063. Inputcacheonly,not oldCPU.
+ Currentwhole-library estimate still unavailable;original draws not replaced.
+- Onlyworkloads/edited;no candidate generation,newagent or infrastructure
+ mutation. CPUoracle frozen. Existingimportsourceaudit top100about4.94%.
 
 ## Historical step notes (retained unchanged below)
 W004ea41025 build-planning models and53-target stratified frame are preserved.
