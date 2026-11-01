@@ -1,3 +1,4 @@
 cohort,module,class_tag,root_compiler_s,root_read_map_replay_s,root_kernel_replay_s,component_over_construction,scope
 math,Mathlib.Data.Nat.Basic,ordinary,0.41071774903684855,0.026843838,0.026772106,0.06535835878276504,increment after checked dependencies; excludes process startup and shared base
 compute-grid,OAI.Analysis.PlanarPacking.Grid,computational,318.230851566419,255.488732184,255.486529166,0.8028408651342722,increment after checked dependencies; excludes process startup and shared base
+compute-amplitudes,OAI.Analysis.PlanarPacking.Certificate.Amplitudes,computational,133.615322179161,110.026430792,110.024965725,0.823456688930246,increment after checked dependencies; excludes process startup and shared base
