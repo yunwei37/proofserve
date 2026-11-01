@@ -21,7 +21,9 @@ def main():
    r=json.loads((p/'result.json').read_text());text=(p/'stdout').read_text()
    assert r['returncode']==0 and r['native_retired'] and r['cgroup_retired'] and not r['stop_reasons']
    command=json.loads((p/'command.json').read_text())
-   assert command['affinity']==list(range(8)) and command['measured'] and not any(a.startswith('-M') for a in command['argv'])
+   commands=command['phase_commands'] if command.get('kind')=='sequential_native_phases' else [command]
+   assert all(c['affinity']==list(range(8)) and c['measured'] and not any(a.startswith('-M') for a in c['argv']) for c in commands)
+   assert r.get('cpu_accounting_complete',True)
    phases=[tuple(map(int,m)) for m in re.findall(r'^CK_KERNEL (\d+) (\d+) (\d+) (\d+)$',text,re.M)]
    assert len(phases)==max(1,k)
    assert all(end>=start and cpu>=0 for _,start,end,cpu in phases)
@@ -34,6 +36,10 @@ def main():
      peak_rss_kib=r['peak_rss_kib'],pure_kernel_span_s=span,pure_kernel_worker_thread_cpu_s=cpu,
      pure_kernel_average_active_cores=cpu/span,check_and_write_span_s=int(m[2])/1e9,
      check_and_write_process_cpu_s=int(m[3])/1e9,merge_stage_wall_s=int(m[4])/1e9,merge_stage_cpu_s=int(m[5])/1e9)
+   if k and command.get('kind')=='sequential_native_phases':
+    merge=re.search(r'CK_MERGE_RESULT (\d+) (\d+)',text);assert merge
+    row['merge_stage_wall_s']=int(merge[1])/1e9
+    row['merge_stage_cpu_s']=int(merge[2])/1e9
    if k:
     assert f'CK_VALID k={k} target_identical=true axioms=[propext] new_axioms=0 sorry=false children={k}' in text
     parts=re.search(r'CK_MERGE_PARTS (\d+) (\d+) (\d+) (\d+)',text);assert parts

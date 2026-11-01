@@ -109,8 +109,13 @@ The first actual waiter acquired the lease but failed its initial construction
 control before any performance cell: a normal predicate def blocked Decidable
 search. Failed raw data remain intact. The generator now uses a transparent
 abbrev; original target/merge equivalence,16instance/construction cases and
-a genuine original-kernel false rejection all pass. The repaired v2curve is now an actual kernel-lock waiter (PID217380);
-no Envelope performance claim yet. See [step011](step-011-report.md) and [actual v2admission](envelope-v2-launch.json).
+a genuine original-kernel false rejection all pass. The v2curve passed its true kernel negative and original check, then hit the
+unchanged RSS guard during late merge; a checked10.5KBchild was retained.
+The next protocol retires the producer before a thin kernel-only merger,
+including both startup/import phases in total cost. Simple direct Nat bridge
+proofs preserve the original[propext] axiom set. See
+[step013](step-013-report.md) and [step014](step-014-report.md).
+No complete Envelope curve or speedup yet.
 
 The conditional28.23%weighted large-helper estimate is highly sensitive to
 one file: dropping Envelope changes it to0.01118%. Thirteen original draws

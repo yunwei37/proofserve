@@ -75,6 +75,12 @@ elab "chunked_kernel_run" : command => do
     | .ok (kt0,kt1,kcpu) => IO.println s!"CK_KERNEL {i} {kt0} {kt1} {kcpu}"
   let after ← IO.monoNanosNow
   let cpuAfter ← cpuNs
+  if (← IO.getEnv "CK_PHASE") == some "produce" then
+    IO.println s!"CK_RESULT chunks {after-before} {cpuAfter-cpuBefore} 0 0"
+    IO.println s!"CK_SETUP {preparedWall-setupWall} {preparedCPU-setupCPU}"
+    let output ← IO.getStdout
+    output.flush
+    return
   -- Ordinary .olean import: each new file was produced after original kernel success.
   let imports := decls.map fun (modName, _) => ({ module := modName } : Import)
   let mergeStart ← IO.monoNanosNow
