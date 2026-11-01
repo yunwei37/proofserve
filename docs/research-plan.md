@@ -1,205 +1,86 @@
 # Research plan: two verification-cost regimes
 
-Updated2026-11-01UTC. [Status](research-status.md) · [Evidence](evaluation.md) ·
-[User words](user-instruction.md) · [Research index](../research/README.md).
+Current frontier2026-11-01UTC. [Status](research-status.md) ·
+[Evidence](evaluation.md) · [Result index](../research/README.md) ·
+[User words](user-instruction.md). Prior detailed plans remain in root reports.
 
-## User-selected questions
-1. Where do AI-generated artifact verification costs fall, and how prevalent
-   are computation-replaying and witness-checking regimes in the entire library?
-2. Why does independent checking fail to realize the potential low cost of
-   mathematical-proof checking? Separate imports, elaboration/proof production,
-   checking, observation and cleanup, preserving trust scope.
-3. Can computational checking scale across cores or a cluster without expanding
-   the trusted base? Charge decomposition, transfer, checking and assembly.
-4. What does “verified” establish? Report default-build omissions, settings/
-   observer-sensitive outcomes, admissions and unknown axiom closures.
+## Frozen questions and scope
+1. Where does checking work fall, and what are the population-weighted costs
+   of computational replay and mathematical witness checking?
+2. Which import/preparation/production boundaries obstruct cheap checking?
+3. What original-kernel parallelism survives complete costs and trust boundaries?
+4. What does verified establish about build coverage, outcome reproducibility
+   and axiom/declaration closure?
 
-Reproduce Mathlib/openai counts with the same masked scanner/source boundaries.
-Lexical concentration isn't a native cost share. Production, source compilation
-and independent checking have different denominators; a user-cycle sample isn't
-a pure final-kernel clock or generation-time ratio.
+The user-selected title, abstract, fourRQ meanings and section hierarchy stay
+fixed. Mechanisms are measured design cases; familiar caching, warm processes,
+scheduling and parallel checking are not claimed as novelty.
+Missing results stay explicit; no lower-scope substitute or prediction fills them.
 
-## Work and ownership
-- W: [workloads/](../workloads/W-status.md). Preserve42draws/inclusion weights;
-  noMcosts and uncertainty determine weights. Missing hard draws stay missing.
-  Public generated outputs only, no generation or new competitor reproduction.
-- O: [decoupled checker](../research/decoupled-check/README.md).
-  One-process streaming with stock-kernel acceptance, comparable replay scopes,
-  total import/init/finalization costs and differential diagnostic checks.
-- M: [chunked checker](../research/chunked-kernel-check/README.md).
-  Separate monolithic k0, same decomposition k1 and k2/4/8.
-  Untrusted code generation may propose chunks; original kernel checks each
-  claim and the complete assembly. Include dependencies, axioms and memory.
-- Root: paper, reproducible static comparison, user records and evidence index.
-  No new agent or implementation edits in another lane.
+## Existing owners
+| Owner | Existing work / paths |
+|---|---|
+| W | workloads/: original probability draws, noM costs/weights, public output characterization |
+| M | research/chunked-kernel-check/ and research/parallel-stream-check/: kernel parallel cases |
+| O | research/decoupled-check/ and engine/service/open-source paths |
+| Root | Paper and root records/status/plan/index; read-only on other lines |
 
-## Designs follow characterization
-Streaming addresses repeated environment preparation and coupling only if the
-new measurements support that cost boundary. Chunking addresses kernel
-recomputation only if parallel leaf checking amortizes decomposition/assembly.
-These are prototypes testing design implications, not promised accelerators.
-Prepared contexts, certificates and ordinary scheduling are prior techniques.
-Multi-core results do not constitute multi-machine results.
+No new agent/Workspace/queue/schedule. Same phobos-vt/PVC;40GiB shares
+W16/M16/O4/root4 and at most8cores each. Root E22–23 small work only.
+Native timing uses P0–7/existing pcore.lock, preparation Ecores.
+Data/toolchains/builds remain on PVC outside Git; preserve healthy runs/waiters.
+All current Lean commands omit -M; externalcgroup/charged memory and sampledRSS
+are recorded separately. HistoricalO resource-share deviation stays disclosed.
+No stronger resource/failure-equivalence claim is created by matching settings.
 
-All current native measurements omit-M; only external cgroup memory protection.
-Legacy-M75–94%/~2%profile and1.28replay/build values remain historical motivation.
-Current population/profile replacements remain missing; never scale old costs
-or fill missing strata. The first complete same-artifact Mathlib control is
-[1330modules/10.56%checking-to-construction](../research/decoupled-check/math-closed-result.md).
-The four selected AI/control closure observations are complete; broader
-AI-generated coverage, repeated comparisons and causal attribution remain open. M initial timing has unequal output boundaries; correctedV3 now completes
-15acceptances and finds no flat-partition whole-path gain. Its dedicated
-charged-memory cap is not established, so final resource qualification remains
-open. The component-preserving small-goal control now also has15accepting cells,
-with a lower kernel subclock but no whole-path gain. The Barrier declaration-wave case is now complete;
-Envelope within-goal curves are complete at their documented helper boundaries;
-full selected-configuration comparisons retain separate completion obligations.
-Root also verifies completeGrid closure14.52% and target component80.28%;
-its native source peak7.57GiB exceeds listedO4share. These observed points do
-not authorize new resource limits or establish service/global gains.
-Pin SDK/imports/axioms, keep diagnostics and compare complete native acceptance.
-The original kernel/trust base remains the acceptance authority.
+## What is finished and must not be repeated
+- Fixed whole-source census and default-root coverage, including corrected
+  maskedMathlib7sites/4files. Lexical concentration is not a runtime weight.
+- W48 suffix continuation:48successfulcompiler cells,46dependencies+2draws.
+  Root coverage31/42draws/14complete strata; no old queue restart.
+- O four complete matched closures/source union5085 and161oracle chunks.
+  No automatic restoration of this finite completed matrix.
+- Published M small-helper, declaration-wave, repairedMathlib matrix,
+  computational full pairs and incremental target sequences.
+- Failed v10RSS and timed-out original Envelope reference are terminal,
+  preserved partial outcomes; no automatic retry or increased deadline.
 
-## Resources and retained history
-Same gpu-smt-dev/phobos-vt/PVC;40GiB W16/M16/O4/root4,<=8cores each.
-Shared P0–7 timing lock; Ecores prepare/analyze. Raw output/sources/toolchains/
-datasets/builds live on PVC outside Git. No runtime/permission/CronJob change.
-Never restart a healthy capture using a stale note; retain failures/partial data.
-CPU oracle remains frozen; closed narrowGPU paths aren't restarted.
-[Prior plan, exact archive](tmp/build-and-evaluate/step-0230-20261101T001154+0000/experiment-001/research-plan.md-before.gz).
+See [current result table](research-status.md) for the final version/boundary of
+each case, and [evaluation](evaluation.md) for all retained failed/partial runs.
 
-## Measured grain now constrains the mechanism
-[Native per-declaration point](../research/chunked-kernel-check/step-006-report.md)
-is complete at31artifacts/34native units. Three computational hot modules have
-many subsecond decision-shaped declarations; Envelope has genuinely >=1s calls.
-The completed Barrier declaration replay and appropriately coarse within-goal
-partitioning have separate boundaries; code/short controls/queue submission do
-not establish other modules or whole-library curves. The small Grid component-preserving variant
-improves its kernel subclock but remains slower whole-path. Global regime
-grain-panel weights and its missing13draws still open; source costs now31/42. Do not borrow compilation denominators.
+## Evidence still needed within the existing questions
+| Question | Actual unresolved evidence | Owner / integration boundary |
+|---|---|---|
+| RQ1 |11original source draws/59629modules incomplete; native phase weights and uncertainty; no informative globalCPU/share estimate yet. Grain panel separately lacks13draws. | W; root does not fill with old-M/purposeful/dependency costs |
+| RQ2 |Repeated/broader mathematical and software cases; causal preparation/production decomposition; context and axiom qualification beyond existing positives. | O/W; observed namespace shares are selected work compositions |
+| RQ3 |Matched native module-local parallel baseline; complete selected-config Envelope pairing/repetitions; general failure/budget/object-transfer/cluster evidence. | M; existing lines' actual new plans, not root-launched heavy work |
+| RQ4 |Whole declaration/axiom closure, observer/settings replication and released-software native coverage. | Existing W/M/O scope; no replacement model outputs generated |
 
-## Completed module-level case; remaining boundaries
-[Barrier result](../research/chunked-kernel-check/parallel-result.md) now has
-15complete cells, directstock baseline46.992s vs8workers14.127s, CPU+27.8%.
-This qualifies one localmodule case, not source frontend, whole-library,
-failurebudget transparency or novelty of proof parallelism. Originalchecker
-module tasks are an existing global baseline. Other targets/cluster remain open.
-[O four-closure matrix](../research/decoupled-check/results.md) is complete
-at5085unique constructednodes, with matchedfullgraphs and moduleoracles.
-Next O context-auditing/fullFalconer work is a separate continuation; never
-restore or rerun the original completed finitefourcase queue. Keep sourcephase
-weights/missingdraws, repeatedcausal costs and publicsoftware coverage explicit.
+Original leanchecker already dispatches module-local replayFromImports tasks
+independently. Strict checked-import DAG work/span adds a barrier absent there;
+it is not a stockchecker upper bound or a native baseline result.
+CLI prefix selection also differs from an exactclosure frame.
+[Source audit](tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md).
+Current measured stream gains compare their stated serial reference boundaries,
+not this unmeasured module-task path or general serving/source throughput.
 
-## Completed large-helper curve and its limit
-[Envelope](../research/chunked-kernel-check/envelope-result.md) completes15cells
-with the same extractedtarget/axioms.8chunks shortenchecker span6.292x but
-prepared-runtime only1.096x; CPU+53.6% and one pairedrepeat0.949x. The fixed
-import/assembly interface absorbs most localgain. Distinguish this prepared
-transformation from complete source-transform production, sourcecompilation,
-Barrier's module-replay contract and whole-library throughput. Both current
-Mcurves are complete; no pending oldcurve/controller should be restarted.
-Next integration remains original Wmissingdraws, Ocontext qualification and
-actual new results. Root does not create another capture or alter lane code.
+## Interpretation and routing
+Completeclosure fractions can hide expensive generated-node replay:
+Grid/Amplitudes OAI nodes account for<10%compiler work but about half the
+timed replay-call wall. This is source-provenance composition, not a semantic
+classifier, global weight, CPU share or causal import attribution.
+Dependencies overlap; the four O cases are not independent statistical repeats.
+Within-goal chunking must beat declaration parallelism at equal stated resources,
+then include preparation/assembly and the chosen configuration's full lifecycle.
+Do not multiply incremental and full-pipeline ratios or mix protocol versions.
+The original kernel remains the mathematical acceptance authority; added
+coordinator/Cadapter/selector trust remains an explicit implementation boundary.
+No completecluster or universalcontext/budget equivalence follows from controls.
 
-## Context counterexample and version-qualified performance
-[Combined stream](../research/parallel-stream-check/math-results.md) has an actual
-v4acceptance mismatch on a cyclicincomingmodule hidden by an earlier sibling.
-The samebinary module-localpath rejects; repaired1/8workers reject and20native
-controls pass. The18cellpositivecurve belongs tov4, notthe repaired version.
-Additionalchecked-token/Cinsertioncode remains trustedimplementation.
-Do not substitute boundedcontrols for fullrepair-version replay/timing.
-W's original48jobqueue reached complete48/48compile_ok and retired; rootstep0238
-already reduced exactoriginaldraw coverage. Do not restart or re-reduce it
-without new evidence.
+Next root action: integrate real new lane results, or undertake independent
+source-grounded analysis with paper-decision value. No minute polling, duplicate
+native controls, CPU-oracle extension or oldqueue restoration.
+All root reviews are **自审**; project/paper acceptance is not declared.
 
-## Original-frame coverage after the completed W48 queue
-Rootstep0238checks48native receipts, exact42drawframe and prior29costs.
-Only2newdraws (OriginalBlock81/KeySound82) receivepopulationweights;46depsdo not.
-Now31/42draws,14/21complete strata,103468coveredmodules. Conditionalmarked
-CPU24.146735h/other116.704826h,share17.1434%; notglobal/kernel-timeweights.
-Missing11draws/59629modules/1164marked; no old-M/purposeful/dependencyfill.
-EarlierMchecking-grainpanelremains29draws+2purposeful, notretroactivelyexpanded.
-No Woldqueue restart; newcapture choices belongtotheexistingWlane.
-
-[Rootstep0239 failed combined-stream capture](tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md): Envelope-stream-r1 return-9 after1313.600s/sample15,697,940,480B vs14GiBsampledstop; charged9,738,059,776B. No kernelOOMevent. Allsampled native identities/controller nowretired; initialcgroupcleanup-pending record retained, cgroup nowabsent. TotalnativeCPUunknown (timeout-parent wait4nearzero is not descendantCPU). Notmathematicalrejection/completecurve/speedup. No automaticrerun or budgetincrease; originalsmallEnvelopev3curve unaffected.
-
-## Historical qualification retained
-Rootstep0240's v12Grid requested-eight observation is scheduling-defective;
-use the repaired v14 curve in rootstep0244 for current target timings.
-Keep the original data and all-ten source-qualified certificate controls.
-Do not reuse the old partial CPU occupancy as current eight-worker evidence.
-
-## Repaired exact-closure pairing completed
-Rootstep0241collectsv14matrix18cells,3fixed-orderrepsper6modes,
-1330sameartifactmodules. Freshreference68.605s/eight45.050s=1.52287x,
-CPU+36.2547%; notOsourcecompiler/service/whole-librarygain.
-The selectedrepair-versioncomparison isnowcomplete, broaderAI/otherclosures,
-coldcertificatebootstrap/axiom/failure/cluster obligationsstillopen.
-V4numbers remainversion-qualifiedhistory.20ordinarynativeand3certificate
-controls requalified butnotuniversalcorrectness. Preserve healthynewBarrier
-ortrusted-prefixdiagnostics; neitherpreparation norpartialdata fillsa coldrun.
-
-## Barrier prepared-stream sequence collected
-Rootstep0242collectsthecompletedv14Barrierprocess4449moduleclosure/5ordered
-targettrials. Same3425typedCIs,8incremental10.186s vsserial53.960s=5.2973x,
-CPU+48.615%. Whole468.112s includesallfive/prefix, notselectedcoldmode.
-Oneobservation/path andnewTCB codeexplicit. Earlierfragmentpipeline3.326x is
-differentoutput/lifecycle; don'tinterpret ratiosascontrolledsuccessivetuning.
-No restartofcompletedBarrier; furtherMwork fromactualnewplan/terminal only.
-
-## Completed cold-prefix Envelope target sequence
-Rootstep0243collects v14oneprocess10752modules/nineorderedleafvariants.
-Declaration8 isstrongbaseline17.539s;chunk8=13.299s,1.31878x/+5.1857%CPU.
-Notonlyserial4.655x;chunk2regressesrelativeDecl2.110source targetmetadatamatch,
-10proofsrewritten;150children/40merges checked,rewrittenparentaxiomspropext.
-Whole1665.530sincludesprefix+all9. Separatewhole-cohortserial/singleconfiguration
-coldcost/repeatsstilluncompleted; originalserialattempt later times out (rootstep0245). Sample14GiBguardisnothardRSS; wait4peak14.019
-vs sampled13.971GiBexplicit. v10failedsource/prefixpointunchanged.
-No automaticrerun or capincrease; actualMfull-cost/newpairedplansownnextwork.
-
-## Complete computational closure costs now measured
-[Rootstep0244](tmp/build-and-evaluate/step-0244-20261101T101651+0000/step-report.md) independently reduces four completed native arms.
-Barrier original serial474.851s/uniform4=304.862s (1.55759x,CPU+24.629%);
-Grid557.568/296.293s (1.88181x,CPU+33.562%). Equal800s per-arm/noM/P0–7/14GiB
-charged, native/identity/cgroup retirement checked. Grid reference preserved
-across a disclosed controller-metadata repair gap; no rerun or continuous clock.
-Complete native wall excludes queue/setup/post-wait sampler/cgroup cleanup.
-Repaired v14Grid leaf8=65.856s vs265.010serial,4.024x but CPU+97.76%.
-The earlier v12 underfilled-eight point is historical. One ordered observation
-per computational mode, no repeated confidence or full8worker/global gain.
-Next M work belongs to its real current protocol; do not restart completed
-pairs or borrow the incremental target ratios for full closure claims.
-Envelope whole-closure serial/best-mode pairing, repetitions, W missing draws,
-axiom closures, broader software and cluster evidence remain open.
-
-## Time-censored Envelope full reference
-[Rootstep0245](tmp/build-and-evaluate/step-0245-20261101T111249+0000/step-report.md) collects the original serial one-configuration
-attempt rc124/1680.158s,10744complete acceptrecords/10752expected plus a222byte
-truncated record. No complete event, no mathreject/RSSstop/OOM observed.
-Retired members/controller/cgroup verified, no recovery work or budget mutation.
-Complete parity and full selected-configuration ratio remain open; do not
-classify missing records as rejected modules or divide by the earlier
-parallel-prefix/all-nine-trials process. Preserve raw/partial rows.
-Further finite native plans belong to existing M; root does not requeue this
-finished attempt or enlarge its limit. Analysis/publication remain low-load.
-
-## Explain closure composition without changing denominators
-[Rootstep0246](tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md) derives provenance shares from the existing4Oclosures.
-Grid4OAI nodes9.76%sourcework/52.70%timed replaycallwall; Amplitudes8nodes
-8.69%/46.93%. Generatednode replay/sourcework77.84%/78.49%; selectedNearPin
-2nodes0.569%. This explains why a wholeclosure check/source fraction can be
-small despite expensive generated-node replay. Not fullprocessCPU shares,
-causalimport decomposition, independentrepeats or full-library regime weights.
-Same5085node sourceunion/oldcapture/Oresource-deviation,0rootnative.
-Keep per-cohort/namespace boundaries explicit; Wpopulation weights remain open.
-
-## Preserve the stronger existing baseline family
-[Rootstep0247](tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md) inspects actualLean4.34.1 bundled checker:
-independent module-local replay tasks do not await prior import-check tasks.
-Do not claim a strict checked-import dependency DAG bounds this native path;
-sharing a checkedprefix is an implementation choice with different costs.
-A matched same-IDclosure/worker/resource/native-lifecycle module-task comparison
-remains unmeasured. CLIprefix matching may broaden inputs, so code existence
-or a replay-only weighted model cannot fill that comparison. Existing measured
-serialreferences and boundedstream gains remain valid at their stated boundary.
-Root did not launch/assign a new capture or edit another line; no RQ/story change.
+[Current-record consolidation](tmp/build-and-evaluate/step-0248-20261101T141922+0000/step-report.md); exact prior text
+is retained in [its entry archive](tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-docs-research-plan.md.gz).

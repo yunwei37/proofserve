@@ -1,0 +1,19 @@
+{
+  "before_lines": {
+    "docs/research-status.md": 227,
+    "docs/research-plan.md": 205,
+    "research/README.md": 59
+  },
+  "after_lines": {
+    "docs/research-status.md": 94,
+    "docs/research-plan.md": 86,
+    "research/README.md": 51
+  },
+  "local_links_checked": 77,
+  "broken_links": [],
+  "paper_source_and_PDF_unchanged": true,
+  "new_native_runs": 0,
+  "new_scientific_results": false,
+  "root_maintenance_s": 0.015393736772239208,
+  "root_maxrss_kib": 13396
+}

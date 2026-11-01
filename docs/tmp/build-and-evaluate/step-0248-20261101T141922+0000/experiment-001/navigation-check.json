@@ -1,0 +1,408 @@
+{
+  "summary": {
+    "before_lines": {
+      "docs/research-status.md": 227,
+      "docs/research-plan.md": 205,
+      "research/README.md": 59
+    },
+    "after_lines": {
+      "docs/research-status.md": 94,
+      "docs/research-plan.md": 86,
+      "research/README.md": 51
+    },
+    "local_links_checked": 77,
+    "broken_links": [],
+    "paper_source_and_PDF_unchanged": true,
+    "new_native_runs": 0,
+    "new_scientific_results": false,
+    "root_maintenance_s": 0.015393736772239208,
+    "root_maxrss_kib": 13396
+  },
+  "links": [
+    {
+      "from_file": "docs/research-status.md",
+      "target": "paper/main.tex",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "research-plan.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "../research/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "evaluation.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "../research/profile-2026-10-31/systime/final/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0238-20261101T061522+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0236-20261101T051231+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0241-20261101T080929+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0244-20261101T101651+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0244-20261101T101651+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0242-20261101T081822+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0243-20261101T091434+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0237-20261101T060743+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0245-20261101T111249+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "../workloads/ai-verification-software/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "../artifacts/candidate-scheduling-2026-10-25/source-cost-crossfit-20261026/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "evaluation.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0248-20261101T141922+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-status.md",
+      "target": "tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-docs-research-status.md.gz",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-plan.md",
+      "target": "research-status.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-plan.md",
+      "target": "evaluation.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-plan.md",
+      "target": "../research/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-plan.md",
+      "target": "user-instruction.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-plan.md",
+      "target": "research-status.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-plan.md",
+      "target": "evaluation.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-plan.md",
+      "target": "tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-plan.md",
+      "target": "tmp/build-and-evaluate/step-0248-20261101T141922+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "docs/research-plan.md",
+      "target": "tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-docs-research-plan.md.gz",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/research-status.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/research-plan.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/paper/main.tex",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/evaluation.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "mechanisms-2026-10-30/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "mechanisms-2026-10-30/native-cohort-result.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "mechanisms-2026-10-30/prior-work.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "profile-2026-10-31/systime/final/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "profile-2026-10-31/systime/final/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "profile-2026-10-31/startup-replay/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "decoupled-check/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "decoupled-check/results.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "decoupled-check/root-components.csv",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "chunked-kernel-check/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "chunked-kernel-check/step-006-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "chunked-kernel-check/parallel-result.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "chunked-kernel-check/envelope-result.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "parallel-stream-check/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "parallel-stream-check/v14-math-results.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "parallel-stream-check/full-barrier-results.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "parallel-stream-check/full-grid-results.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "parallel-stream-check/envelope-stream-results.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0238-20261101T061522+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0241-20261101T080929+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0243-20261101T091434+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0245-20261101T111249+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../workloads/W-status.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../workloads/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../workloads/openai-math/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../workloads/openai-math/noM-standard-artifacts-a/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../workloads/openai-math/cost-regimes-noM/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../workloads/ai-verification-software/README.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0248-20261101T141922+0000/step-report.md",
+      "exists": true
+    },
+    {
+      "from_file": "research/README.md",
+      "target": "../docs/tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-research-README.md.gz",
+      "exists": true
+    }
+  ]
+}
