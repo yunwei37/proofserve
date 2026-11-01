@@ -1,0 +1,17 @@
+{
+  "large_goals": 12,
+  "source_nominated_goals": 10,
+  "nominated_checker_cpu_s": 55.781997969,
+  "all_large_checker_cpu_s": 59.402095081,
+  "unweighted_share_of_large_goal_cpu": 0.9390577536522293,
+  "available_case_weighted_nomination_share_of_large_goal_cpu": 0.9997203487901152,
+  "available_case_weighted_nomination_share_of_all_checker_cpu": 0.2822412667977406,
+  "scope": "31 retained panel; weighted original29only;13original draws absent; source nomination not measured chunk acceptance or speedup",
+  "actual_compiled_schema_control": "EnvelopeB16 only; other9nominees source classified; full native chunk curve queued",
+  "weight_sensitivity": {
+    "envelope_module_inverse_probability": 232.0,
+    "weighted_large_share_with_envelope": 0.28232021798827595,
+    "weighted_large_share_after_omitting_envelope": 0.00011176905325225777,
+    "scope": "leave-one-module-out sensitivity of available-case statistic only; not an experiment or bound; one high-leverage sample"
+  }
+}

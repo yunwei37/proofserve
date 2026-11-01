@@ -16,7 +16,7 @@ def generate(directory,source,top_goals):
  lines=['import OAI.Analysis.Triangular.Envelope.EnvelopePsiB','namespace MEnvelopeBase',
   'open OAI OAI.AtomicTriangular OAI.AtomicTriangular.Interval OAI.AtomicTriangular.FiniteCertificate',
   'set_option maxHeartbeats 2000000','set_option maxRecDepth 20000',
-  f'def predicate (j : Fin {n}) : Prop := {body}',
+  f'abbrev predicate (j : Fin {n}) : Prop := {body}',
   f'def rootGoal : Prop := ∀ j : Fin {n}, predicate j']
  bounds={}
  for k in [1,2,4,8]:

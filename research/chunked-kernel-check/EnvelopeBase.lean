@@ -3,7 +3,7 @@ namespace MEnvelopeBase
 open OAI OAI.AtomicTriangular OAI.AtomicTriangular.Interval OAI.AtomicTriangular.FiniteCertificate
 set_option maxHeartbeats 2000000
 set_option maxRecDepth 20000
-def predicate (j : Fin 31) : Prop := (CI.ofReal (((envelopePhase01 j).re.neg).neg.mul (RI.point 16))).exp.re=envelopeExpB16 j
+abbrev predicate (j : Fin 31) : Prop := (CI.ofReal (((envelopePhase01 j).re.neg).neg.mul (RI.point 16))).exp.re=envelopeExpB16 j
 def rootGoal : Prop := ∀ j : Fin 31, predicate j
 def goal_1_0 : Prop := ∀ j : Fin 31, 0 ≤ j.val → j.val < 31 → predicate j
 theorem merge_1 (p0 : goal_1_0) : rootGoal := by

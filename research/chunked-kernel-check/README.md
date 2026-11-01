@@ -104,12 +104,19 @@ ranges, process/import/export/audit cost and exact acceptance checks. This is
 compiled-module independent replay over trusted imports, **not** source-build,
 whole-library or service speedup. Parallel checking itself is existing work.
 
-## Eligible large-goal curve — actual waiter, result pending
-The automatically generated [EnvelopeBase.lean](EnvelopeBase.lean) retains
-whole Fin31 predicates within chunks. Merge/type-equivalence preparation
-passed. Its sole next task has an actual/proc/locks ->entry for PID216219
-at03:35:08UTC, after Barrier retired. See envelope-launch.json and
-[step009](step-009-report.md). No Envelope performance claim yet.
+## Eligible large-goal curve — repaired construction, result pending
+The first actual waiter acquired the lease but failed its initial construction
+control before any performance cell: a normal predicate def blocked Decidable
+search. Failed raw data remain intact. The generator now uses a transparent
+abbrev; original target/merge equivalence,16instance/construction cases and
+a genuine original-kernel false rejection all pass. A fresh curve is next;
+no Envelope performance claim yet. See [step011](step-011-report.md).
+
+The conditional28.23%weighted large-helper estimate is highly sensitive to
+one file: dropping Envelope changes it to0.01118%. Thirteen original draws
+are missing. This is not a robust whole-library fraction. Ten supported-source
+nominations consume93.91%of observed large-helper CPU, but remain one family,
+with only the largest target prepared for an actual curve.
 
 ## Reproduction and raw data
 

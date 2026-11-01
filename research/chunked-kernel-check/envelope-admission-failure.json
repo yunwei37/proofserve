@@ -1,0 +1,54 @@
+{
+  "point": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v1",
+  "failure": {
+    "error": "AssertionError('failure did not reach kernel')"
+  },
+  "completed_performance_cells": 0,
+  "actual_native_result": {
+    "key": "invalid-target",
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "120",
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "--root=/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v1",
+      "-j2",
+      "--load-dynlib=/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v1/clock.so",
+      "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v1/EnvelopeDriver.lean"
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "measured": true,
+    "wall_limit_s": 120,
+    "own_rss_sample_stop_gib": 14,
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-216995-invalid-target.scope",
+    "cgroup_charged_memory_max_gib": 14,
+    "pid": 216996,
+    "birth": "755778731",
+    "returncode": 1,
+    "wall_s": 3.467350526712835,
+    "user_s": 2.45961,
+    "system_s": 1.020818,
+    "peak_rss_kib": 7224120,
+    "native_retired": true,
+    "sampled_tree_peak_bytes": 7385268224,
+    "stop_reasons": [],
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "charged_peak_bytes": 723312640,
+    "cgroup_retired": true
+  },
+  "actual_diagnostic": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v1/EnvelopeDriver.lean:104:0: error: failed to synthesize\n  Decidable (\u2200 (j : Fin 31), 15 \u2264 \u2191j \u2192 \u2191j < 31 \u2192 MEnvelopeBase.predicate j)\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\n",
+  "classification": "construction failure before kernel, not negative performance",
+  "repair": "predicate def -> abbrev; original target equivalence rechecked",
+  "repaired_qualification_raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-preparation-v5",
+  "construction_control_marker": "ENVELOPE_CONSTRUCTION_16_CLOSED FALSE_REJECTED_BY_ORIGINAL_KERNEL"
+}
