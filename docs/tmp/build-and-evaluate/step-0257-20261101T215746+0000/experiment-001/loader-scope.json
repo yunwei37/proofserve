@@ -1,0 +1,10 @@
+{
+  "recorded_loader_environment": {
+    "LD_LIBRARY_PATH": null,
+    "LD_PRELOAD": null
+  },
+  "ELF_RUNPATH": "$ORIGIN/../lib:$ORIGIN/../lib/lean",
+  "source_of_path": "readelf dynamic section of copied executable, no Lean run",
+  "system_libraries": "libc/pthread/dl/m not claimed evicted",
+  "per_open_file_trace": "not collected"
+}

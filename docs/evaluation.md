@@ -519,3 +519,16 @@ Initial compile succeeds but9.93684pttableoverflow retained; only header words s
 no native rerun or budget/model change. Full paper compile/static review recorded below after viewing.
 
 Finalroot0256paper18pages184684bytes, compile2.811327s/sample190275584B/E22–23;5contacts all18pages self-reviewed.14oldtable bodies unchanged+1newpolicytable. Current28renderings/17748440B removed after review, initial/finalPDF/log preserved. No native rerun.
+
+## 2026-11-01 root0257 — actual private cache matrix and cost sensitivity, 自审
+[Step](tmp/build-and-evaluate/step-0257-20261101T215746+0000/step-report.md) · [Audit](tmp/build-and-evaluate/step-0257-20261101T215746+0000/outer-audit.md).0newrootnative/agent.
+Mv8raw9rc0phases/512rows256pairs,0verdict/diagnostic/axiomdifferences,
+128syncvectorssame/42stockparentcounterchanges.101743privatefiles/2238400pages,
+cold0/warmallresident;samemachinefinitepoint,notglobalOS/cache/observerguarantee.
+Retainedv6ProbeIRcompilefailure12.079s/0candidaterows.53recordedPIDbirth retired,
+including31historicalsourceand22Mrecords. Corrected0256memoryschema coverage now
+checksall16Mv3sampledprocesses; nooutcomechange. Initialcompleted-onlyviewassertion retained.
+Wsame14strata CPUshare17.1434%/nativeelapsed14.8102%,11missingdrawsHTsensitivity10.842083h
+peruniform+1s,known165.187936honlysubtotal;globalstillmissing.
+
+Final0257PDF19pages188474bytes,compile2.832672s/sample190291968B/E22–23/all19pages5contacts self-reviewed.15prior table bodies/title/fullabstract/4RQ/sections unchanged. 29rootdisposableimages/18234040bytes removed;raw/PDF/logs preserved. No native rerun.

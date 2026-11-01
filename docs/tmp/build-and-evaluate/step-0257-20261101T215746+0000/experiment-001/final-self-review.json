@@ -1,0 +1,19 @@
+{
+  "review": "self-review, not independent review or venue acceptance",
+  "pages": 19,
+  "PDF_bytes": 188474,
+  "contacts": 5,
+  "old_tables_unchanged": 15,
+  "new_tables": 0,
+  "citation_keys": 50,
+  "canonical_links": 119,
+  "labels": {
+    "measured": 39,
+    "partialev": 16,
+    "unproven": 1
+  },
+  "removed_images": 29,
+  "removed_bytes": 18234040,
+  "PVC_free_bytes": 25729204224,
+  "new_root_native": 0
+}

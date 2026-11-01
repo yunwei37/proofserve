@@ -1,0 +1,9 @@
+{
+  "scope": "root offline audit only",
+  "detail": "prior34 count included M controllers/native parents but omitted memory.jsonl processes arrays; all16 Mv3 sampled identities now checked; no outcome or clock changes",
+  "current_total": 53,
+  "current_M_native_and_controllers": 22,
+  "prior_Mv3_sampled_processes": 16,
+  "native_rerun": false,
+  "all_retired_now": true
+}

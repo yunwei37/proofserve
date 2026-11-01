@@ -73,3 +73,9 @@ Type route0.333whole roots equalsFIFO;known-panel upper1root but45.04%budget idl
 unseen NearPin class-bound transfer fails. Not pooled with60CPU-s source jobs.
 M budget ladder0/100violations;48JSON-only cache comparisons preserve verdict,
 notcoldruntime. Raw/source/failed/partial texts archived in experiment-001;34recorded identities retired.
+
+[Root0257](../docs/tmp/build-and-evaluate/step-0257-20261101T215746+0000/step-report.md): Mv8private-input cache512rows/256pairs,
+0verdict/diagnostic/axiom changes;128sync vectors same/42asyncparent counts vary.
+Retains v6probecompile failure/0candidate rows. Actual inputresidency cold0/warmall
+2238400pages; notglobalcoldboot. Wsame14strata CPUshare17.1434% versus serial-native-elapsed14.8102%;
+missing11draws exactHTsensitivity10.842083h peruniform1CPU-s, not globaltotal.

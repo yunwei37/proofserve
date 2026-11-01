@@ -304,6 +304,25 @@ CPU estimate or informative global share interval.
 regime-specific cost weights after completing the original sample.}
 The 3.5856\% source-file concentration must not become a cost fraction.
 
+\paragraph{Clock choice and nonresponse alter the estimand.}
+\measured{\expref{0257-20261101T215746+0000}{0257}; same completed source strata, offline arithmetic.}
+Over the same 14 complete strata, the marked-source share is 17.14\%
+of weighted compiler CPU but 14.81\% of summed native process elapsed
+time, a 2.33-percentage-point difference. The latter describes serially
+adding native process durations, not parallel Lake makespan or queue latency.
+Neither is a kernel-phase share or a whole-library estimate.
+
+The seven incomplete strata contain 59,629 of 163,097 modules (36.56\%),
+not that many necessarily unbuilt files. Eleven original draw costs are absent.
+The 31 known terms in the eventual complete-sample Horvitz--Thompson point
+sum to 165.188 CPU hours. This is an algebraic subtotal, not a lower confidence
+bound or a global estimate with missing costs set to zero.
+Increasing every missing draw cost by one CPU second would increase that
+eventual point by 10.842 CPU hours. This is weight sensitivity, not a
+prediction of the missing costs; without assumptions they supply no finite
+upper total. Sampling probabilities are preserved rather than replacing
+difficult draws with cheaper modules.
+
 \paragraph{Source features do not establish bounded prediction error.}
 \measured{\expref{0254-20261101T195608+0000}{0254}; 31 completed source-compiler observations.}
 Five fixed log-ridge models predict native compiler CPU from source-only
@@ -1441,7 +1460,36 @@ and diagnostics in 48 comparisons. Only seven request-file pages are
 evicted or warmed: SDK/Mathlib cache state is not cold.
 Fifteen parent-thread counts differ by one; asynchronous work is outside
 that counter, and these observations do not isolate caching as the cause.
-A private-runtime cache experiment remains a separate unfinished point.
+A later private-runtime cache point now completes this narrower treatment.
+
+\measured{\expref{0257-20261101T215746+0000}{0257}; same-machine private-input residency experiment.}
+After six runtime qualification controls, eight independent native phases
+produce 512 configuration rows and 256 matched cold/warm comparisons.
+Sixteen retained sources use budgets 1,000/3,000, stock/synchronous paths,
+one/eight available threads and two reversed treatment orders.
+All comparisons preserve verdicts, diagnostics and axiom-policy results.
+All 128 synchronous command-counter vectors match; 42 stock parent-thread
+counter pairs differ, by up to 24 raw units. Those parent counters exclude
+asynchronous candidate work and do not isolate a causal cache effect.
+
+The treatment uses private SDK/import copies: 101,743 files totaling
+8,846,348,681 bytes. Metadata and inode checks distinguish them from live
+original inputs; no whole-library bytewise comparison is claimed.
+After treating all selected files and the source/request inputs,
+residency checks report zero versus all 2,238,400 pages resident.
+This is cold/warm private input residency, not a cold operating-system boot,
+global eviction or cross-machine replay.
+Cold native phases take 66.18--72.51 seconds and warm phases 8.83--15.04
+seconds; these are complete harness/import/frontend clocks, not kernel-only
+speedups. Preparation and file treatment are outside those native clocks.
+No OOM or sampled-RSS stop occurs; all nine phases and recorded identities retire.
+
+The predecessor fails while compiling the probe because its private executable
+input closure lacks required IR-signature inputs. It exits 1 after 12.079
+seconds, with zero candidate rows; its failure is preserved separately.
+The corrected point's stability is finite positive evidence for this
+same-machine treatment, not observer-independent accounting, complete
+candidate budgets or universal verdict reproducibility.
 
 The retained candidate contrasts have different failure/cost boundaries.
 One miniF2F point spends73.21\% of summed physical worker-attempt time on

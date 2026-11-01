@@ -1,0 +1,464 @@
+{
+  "cache_rows": 512,
+  "cache_pairs": 256,
+  "qualification_rows": 6,
+  "comparisons": {
+    "parent_differences": 42,
+    "sync_pairs": 128,
+    "sync_command_differences": 0,
+    "semantic_differences": 0,
+    "parent_difference_distribution": {
+      "('stock', 1)": 14,
+      "('stock', -1)": 20,
+      "('stock', 8)": 3,
+      "('stock', 24)": 1,
+      "('stock', 9)": 2,
+      "('stock', -9)": 2
+    }
+  },
+  "conditions": [
+    {
+      "pages": 2238400,
+      "resident": 0,
+      "fraction": 0.0,
+      "label": "private-r0-j1-cold",
+      "scope": "private SDK/lib and Mathlib runtime inputs; system libc/page tables not globally evicted"
+    },
+    {
+      "pages": 2238400,
+      "resident": 2238400,
+      "fraction": 1.0,
+      "label": "private-r0-j1-warm",
+      "scope": "private SDK/lib and Mathlib runtime inputs; system libc/page tables not globally evicted"
+    },
+    {
+      "pages": 2238400,
+      "resident": 0,
+      "fraction": 0.0,
+      "label": "private-r0-j8-cold",
+      "scope": "private SDK/lib and Mathlib runtime inputs; system libc/page tables not globally evicted"
+    },
+    {
+      "pages": 2238400,
+      "resident": 2238400,
+      "fraction": 1.0,
+      "label": "private-r0-j8-warm",
+      "scope": "private SDK/lib and Mathlib runtime inputs; system libc/page tables not globally evicted"
+    },
+    {
+      "pages": 2238400,
+      "resident": 2238400,
+      "fraction": 1.0,
+      "label": "private-r1-j1-warm",
+      "scope": "private SDK/lib and Mathlib runtime inputs; system libc/page tables not globally evicted"
+    },
+    {
+      "pages": 2238400,
+      "resident": 0,
+      "fraction": 0.0,
+      "label": "private-r1-j1-cold",
+      "scope": "private SDK/lib and Mathlib runtime inputs; system libc/page tables not globally evicted"
+    },
+    {
+      "pages": 2238400,
+      "resident": 2238400,
+      "fraction": 1.0,
+      "label": "private-r1-j8-warm",
+      "scope": "private SDK/lib and Mathlib runtime inputs; system libc/page tables not globally evicted"
+    },
+    {
+      "pages": 2238400,
+      "resident": 0,
+      "fraction": 0.0,
+      "label": "private-r1-j8-cold",
+      "scope": "private SDK/lib and Mathlib runtime inputs; system libc/page tables not globally evicted"
+    }
+  ],
+  "runtime_files_distinct_from_live_originals": 101743,
+  "runtime_bytes_size_matched": 8846348681,
+  "bytewise_library_comparison_performed": false,
+  "native_phases": [
+    {
+      "key": "runtime-qualification",
+      "wall_s": 55.697907271794975,
+      "CPU_s": 8.909505,
+      "wait4_RSS_kib": 8705332,
+      "sampled_RSS_bytes": 8905506816,
+      "charged_bytes": 8870076416
+    },
+    {
+      "key": "private-r0-j1-cold",
+      "wall_s": 66.18207242060453,
+      "CPU_s": 13.188869,
+      "wait4_RSS_kib": 8712580,
+      "sampled_RSS_bytes": 8923643904,
+      "charged_bytes": 10790518784
+    },
+    {
+      "key": "private-r0-j1-warm",
+      "wall_s": 15.03787374868989,
+      "CPU_s": 10.601861,
+      "wait4_RSS_kib": 8769972,
+      "sampled_RSS_bytes": 8982208512,
+      "charged_bytes": 2428080128
+    },
+    {
+      "key": "private-r0-j8-cold",
+      "wall_s": 72.36314766854048,
+      "CPU_s": 13.992131,
+      "wait4_RSS_kib": 8732036,
+      "sampled_RSS_bytes": 8943116288,
+      "charged_bytes": 10811412480
+    },
+    {
+      "key": "private-r0-j8-warm",
+      "wall_s": 9.63403367716819,
+      "CPU_s": 9.607886,
+      "wait4_RSS_kib": 8800004,
+      "sampled_RSS_bytes": 9012813824,
+      "charged_bytes": 2334613504
+    },
+    {
+      "key": "private-r1-j1-warm",
+      "wall_s": 9.327076912857592,
+      "CPU_s": 9.303922,
+      "wait4_RSS_kib": 8796164,
+      "sampled_RSS_bytes": 9009053696,
+      "charged_bytes": 2328145920
+    },
+    {
+      "key": "private-r1-j1-cold",
+      "wall_s": 70.78059062175453,
+      "CPU_s": 13.647641,
+      "wait4_RSS_kib": 8713080,
+      "sampled_RSS_bytes": 8919490560,
+      "charged_bytes": 10787807232
+    },
+    {
+      "key": "private-r1-j8-warm",
+      "wall_s": 8.834228533320129,
+      "CPU_s": 8.968789000000001,
+      "wait4_RSS_kib": 8808924,
+      "sampled_RSS_bytes": 9022205952,
+      "charged_bytes": 2346520576
+    },
+    {
+      "key": "private-r1-j8-cold",
+      "wall_s": 72.51396260410547,
+      "CPU_s": 13.961110000000001,
+      "wait4_RSS_kib": 8727284,
+      "sampled_RSS_bytes": 8938491904,
+      "charged_bytes": 10805981184
+    }
+  ],
+  "v6_failure": {
+    "native_returncode": 1,
+    "candidate_rows": 0,
+    "wall_s": 12.078959802165627,
+    "CPU_s": 2.196638,
+    "reason_observed": "Probe IR compilation missing executable CollectAxioms input, before candidate outputs"
+  },
+  "clock_choice": {
+    "CPU": {
+      "certificate": 24.146734908888888,
+      "ordinary": 116.70482585097221,
+      "share": 0.17143391793901977
+    },
+    "serial_native_elapsed": {
+      "certificate": 18.790827089602956,
+      "ordinary": 108.08660256936409,
+      "share": 0.14810220493992263
+    }
+  },
+  "conditional_share_gap_percentage_points": 2.333171299909714,
+  "known_HT_terms_CPU_h": 165.18793599652776,
+  "uniform_missing_draw_sensitivity_CPU_h_per_second": 10.842083333333333,
+  "missing_draws": 11,
+  "missing_strata_population": 59629,
+  "missing_population_fraction": 0.3656045175570366,
+  "retired_recorded_identities_including_historical_source": 53,
+  "identities": [
+    [
+      129181,
+      "754287008"
+    ],
+    [
+      129195,
+      "754287131"
+    ],
+    [
+      129210,
+      "754287537"
+    ],
+    [
+      129229,
+      "754287758"
+    ],
+    [
+      129242,
+      "754287875"
+    ],
+    [
+      129256,
+      "754288094"
+    ],
+    [
+      129271,
+      "754288944"
+    ],
+    [
+      129287,
+      "754289291"
+    ],
+    [
+      129300,
+      "754289431"
+    ],
+    [
+      129315,
+      "754289864"
+    ],
+    [
+      129332,
+      "754290077"
+    ],
+    [
+      129366,
+      "754290897"
+    ],
+    [
+      129380,
+      "754291245"
+    ],
+    [
+      129399,
+      "754291678"
+    ],
+    [
+      129419,
+      "754291901"
+    ],
+    [
+      129473,
+      "754292583"
+    ],
+    [
+      129487,
+      "754292869"
+    ],
+    [
+      129564,
+      "754293844"
+    ],
+    [
+      129634,
+      "754300339"
+    ],
+    [
+      129657,
+      "754300928"
+    ],
+    [
+      129703,
+      "754302086"
+    ],
+    [
+      129730,
+      "754303695"
+    ],
+    [
+      129752,
+      "754304857"
+    ],
+    [
+      129782,
+      "754306271"
+    ],
+    [
+      130633,
+      "754312582"
+    ],
+    [
+      131877,
+      "754321619"
+    ],
+    [
+      135091,
+      "754366749"
+    ],
+    [
+      135127,
+      "754367124"
+    ],
+    [
+      135141,
+      "754367299"
+    ],
+    [
+      218264,
+      "755863550"
+    ],
+    [
+      218355,
+      "755865812"
+    ],
+    [
+      282206,
+      "761859263"
+    ],
+    [
+      290937,
+      "761993790"
+    ],
+    [
+      290939,
+      "761993792"
+    ],
+    [
+      292324,
+      "762016923"
+    ],
+    [
+      301575,
+      "762135408"
+    ],
+    [
+      301577,
+      "762135409"
+    ],
+    [
+      301622,
+      "762141370"
+    ],
+    [
+      301624,
+      "762141372"
+    ],
+    [
+      301638,
+      "762150046"
+    ],
+    [
+      301639,
+      "762150047"
+    ],
+    [
+      301647,
+      "762151891"
+    ],
+    [
+      301649,
+      "762151892"
+    ],
+    [
+      301667,
+      "762161228"
+    ],
+    [
+      301669,
+      "762161229"
+    ],
+    [
+      301680,
+      "762162687"
+    ],
+    [
+      301681,
+      "762162689"
+    ],
+    [
+      301688,
+      "762163967"
+    ],
+    [
+      301690,
+      "762163968"
+    ],
+    [
+      301704,
+      "762173121"
+    ],
+    [
+      301706,
+      "762173122"
+    ],
+    [
+      301716,
+      "762174345"
+    ],
+    [
+      301717,
+      "762174346"
+    ]
+  ],
+  "new_root_native": 0,
+  "root_analysis_seconds": 8.511783302761614,
+  "root_analysis_maxrss_kib": 48428,
+  "step0256_followup_all_sampled_Mv3_identities_retired": [
+    [
+      280913,
+      "761844367"
+    ],
+    [
+      280915,
+      "761844368"
+    ],
+    [
+      281183,
+      "761845311"
+    ],
+    [
+      281185,
+      "761845312"
+    ],
+    [
+      281194,
+      "761846251"
+    ],
+    [
+      281196,
+      "761846252"
+    ],
+    [
+      281202,
+      "761846842"
+    ],
+    [
+      281204,
+      "761846844"
+    ],
+    [
+      281209,
+      "761847455"
+    ],
+    [
+      281211,
+      "761847456"
+    ],
+    [
+      281217,
+      "761848037"
+    ],
+    [
+      281219,
+      "761848040"
+    ],
+    [
+      281225,
+      "761848622"
+    ],
+    [
+      281227,
+      "761848624"
+    ],
+    [
+      281232,
+      "761849258"
+    ],
+    [
+      281234,
+      "761849259"
+    ]
+  ],
+  "step0256_identity_coverage_correction": "prior34 count included M controllers/native parents but omitted memory.jsonl processes arrays; all16 Mv3 sampled identities now checked; no outcome or clock changes"
+}

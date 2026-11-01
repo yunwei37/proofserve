@@ -141,3 +141,25 @@ and M/W kernel-lock waiters protected; no newrootnative/agent or queue restart.
 Paper integration of this evidence is root0256, final compile/static review recorded there.
 
 Current paper root0256:18pages184684bytes, full compile/all-page static self-review;14oldtable bodies+1new policy table, no newrootnative/agent. General/global/cluster/software/axiom gaps remain.
+
+## Private-input cache and cost estimand: root0257
+[Root0257](tmp/build-and-evaluate/step-0257-20261101T215746+0000/step-report.md) qualifies actual Mv8 complete9rc0phases:
+512rows/256cache pairs,0verdict/diagnostic/axiom-policy differences,
+128sync count vectors same;42stock parent counts vary, nottotalcandidatework.
+101743private runtime files/8846348681bytes have different inodes from original
+inputs;2238400selectedpages cold0/warmallresident. Cold native66.18–72.51s versus
+warm8.83–15.04s is harness/import/frontendwall, notpurekernel/cache speedup.
+Same-machine finite stability only; generalBremains unproven.
+Retainedv6failure rc1/12.079s/0candidate rows precedes correctedinputclosure,
+notLean rejection or a completed cache comparison.
+
+Root recomputes Wsame14strata CPUmarkedshare17.1434% versus summed-native-elapsed14.8102%.
+7incompletecells/59629modules and11missingdraws remain. Known165.187936HTterm hours
+are a subtotal, not lowerconfidencebound; uniform+1CPU-s/missingdraw sensitivity10.842083h
+is not imputedcost/globalCPU. Original31/42 and grain29random+2purposeful/13missing unchanged.
+Mcache controller292324 retired; next matched-regime301735 is a real kernel-lockwaiter,
+W301743 also waits behind healthy O301572. No restart or hot modification.
+
+Paper root0257:19pages188474bytes, full compile/all-page static self-review;all15prior table bodies/title/fullabstract/4RQ/sections/four implications unchanged. Root0newnative/agent. GeneralB/globalweights/software/axiom/cluster gaps remain.
+
+Root audit metadata correction:0256count34covered Mparents/controllers but not memory-process arrays;0257now checks all16sampledMv3processes retired as well. No clock/verdict changes or backdated audit; original report/raw retained.

@@ -1,0 +1,5 @@
+{
+  "error": "asserted 42 original rows in completed-only sample classification view; actual31 complete rows, not a changed original draw frame",
+  "fix": "join explicit11missing IDs/weights and verify42ID union against original frame; preserve missing values",
+  "new_native": 0
+}

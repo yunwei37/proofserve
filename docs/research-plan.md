@@ -106,3 +106,12 @@ full private-runtime cache/region controls follow actual new terminal, not this
 tiny control. Original source11draw/dynamic13draw gaps remain.
 
 Current paper root0256:18pages184684bytes, full compile/all-page static self-review;14oldtable bodies+1new policy table, no newrootnative/agent. General/global/cluster/software/axiom gaps remain.
+
+[Root0257](tmp/build-and-evaluate/step-0257-20261101T215746+0000/step-report.md) closes Mv8private-input cache finite-point dependency:
+positive same-machine verdict/diagnostic stability, no universalBpromotion.
+v6runtime-closure failure remains terminal history. Matched math/kernel coexecution
+is a separate real waiter; do not treat cache completion as its result or rerun cache.
+RQ1now states exact CPU-versus-elapsed estimands and missing-weight sensitivity;
+11costs/13dynamic draws remain unfilled. No new experiment, agent, queue or budget from root.
+
+Paper root0257:19pages188474bytes, full compile/all-page static self-review;all15prior table bodies/title/fullabstract/4RQ/sections/four implications unchanged. Root0newnative/agent. GeneralB/globalweights/software/axiom/cluster gaps remain.
