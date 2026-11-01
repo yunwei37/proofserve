@@ -1,5 +1,5 @@
 cohort,root,closure_modules,constructed_modules,construction_complete,source_compiler_work_s,source_peak_rss_kib,original_artifact_stream_s,matched_artifact_stream_s,matched_stream_peak_rss_kib,stream_over_full_construction,matched_oracle_modules,acceptance_parity_complete,status,failed_attempts
 math,Mathlib.Data.Nat.Basic,1330,1330,True,622.3794121909887,753736,65.96439544856548,65.69264411274344,754252,0.10555079879889155,1330,True,complete,0
-compute-grid,OAI.Analysis.PlanarPacking.Grid,3793,3463,False,2815.6529307495803,1532932,557.7208228707314,,,,1330,False,pending,0
-compute-amplitudes,OAI.Analysis.PlanarPacking.Certificate.Amplitudes,5083,3463,False,2815.6529307495803,1532932,,,,,1330,False,pending,0
-ordinary-oai,OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion,3333,3204,False,2395.573848146014,1429440,,,,,1330,False,pending,0
+compute-grid,OAI.Analysis.PlanarPacking.Grid,3793,3793,True,3878.7067395858467,7940196,557.7208228707314,,,,1330,False,pending,0
+compute-amplitudes,OAI.Analysis.PlanarPacking.Certificate.Amplitudes,5083,3793,False,3878.7067395858467,7940196,,,,,1330,False,pending,0
+ordinary-oai,OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion,3333,3239,False,2445.402174906805,1429440,,,,,1330,False,pending,0
