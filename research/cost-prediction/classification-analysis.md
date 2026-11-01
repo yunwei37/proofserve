@@ -47,7 +47,18 @@ Only this completed, selected panel is evaluated.
 Accuracy27/29=93.10%. A2000-resample project-block bootstrap over20 observed
 source projects gives[77.78%,100%]. This conditional interval does not account
 for the13 missing draws, whole-library label error, or observer perturbation;
-it does not establish a population guarantee. No new model training occurred.
+it does not establish a population guarantee. No new model training occurred. Both mistakes are the two observed
+OAI.NumberTheory.Catalan modules: that project's accuracy is0/2, whereas the
+other27 observed primary modules are correct. This clustering is why we
+resample projects and do not describe the label as universally reliable.
+
+The selected primary panel is15positive/14negative under this dynamic
+definition; always predicting certificate would be correct15/29, and always
+ordinary14/29. This differs sharply from W's whole-source proxy prevalence
+(3.586% positive). The source-kernel-presence stratification intentionally
+oversamples that rare source class. Neither this panel's accuracy nor its
+class balance can be exported to the full library without missing-label and
+sampling-design treatment.
 
 The two mistakes:
 - ManuscriptNormLogPGroup006 has explicit markers, but helpers consume43.79%
@@ -66,6 +77,11 @@ inputs. Do not describe all exposed work as removable wasted CPU.
 Grid and Amplitudes both match the operational label. Adding them gives29/31
 correct, but they dominate kernel CPU and were selected because they are hot.
 They do not strengthen a random-sample prevalence or accuracy claim.
+The two purposeful compiler labels use the cost snapshot's qualified O
+three-artifact construction cells; they differ from the earlier W purposeful
+cost rows used in M's original summary. Kernel labels still come solely from
+the original M trace. Every row records both label sources. No producer/checker
+phase ratio is created by joining those separate observations.
 Sensitivity at25%/75% reference CPU thresholds is in
 [classification-summary.csv](classification-summary.csv); the source rule is
 unchanged rather than tuned to the dynamic outcomes. The single-project
@@ -84,7 +100,8 @@ FIFO uses O's original serial kernel stream for every root. Type-route preserves
 arrival order, checking the ordinary root serially and certificate roots through
 M's qualified v14 four-worker original-kernel declaration waves. It does not
 change proof terms or use chunk rewrites. Upper-admission adds a type-level
-envelope: maximum previously observed whole-process CPU in that type/route.
+envelope: maximum previously observed whole-process CPU in that type/route within the
+three-root paired panel.
 It is a historical-workload limit on these same roots, not a calibrated unseen-
 module bound. Prior compiler regression intervals are not reused.
 
@@ -155,6 +172,19 @@ There is no other ordinary cohort to calibrate a held-out Mathlib upper limit.
 Thus the only two computational transfer cases have1/2coverage, and the
 ordinary case has no finite bound. These tiny counts are diagnostic, not a
 coverage estimate.[Exact transfer table](class-envelope-transfer.csv).
+An independently retained ordinary OAI closure supplies a stronger transfer
+counterexample without a new run: NearPin's complete3333-module stock stream
+uses172.725660CPU seconds, versus the frozen ordinary envelope71.744430s.
+Its root has no explicit computation marker. It was not in the three-root
+paired-route calibration because no matching parallel closure pair exists.
+The same O checker/no-M/P0–7 measurement has an11.875GiB charged cap versus
+the new11.5GiB child cap; neither has a memory failure. This is a separate
+complete input's CPU, not borrowed phase fractions or the new native point.
+Binary ordinary/certificate membership does not bound dependency-closure work.
+The running native plan already identifies its bounds as three-root historical
+calibration; no source, budget or envelope was changed in response to this
+counterexample.
+
 No numerical regression is fitted to repair this. In particular, avoiding
 interruptions in the coming known-root experiment cannot be advertised as
 a certified unseen-module admission bound.
@@ -165,7 +195,10 @@ a certified unseen-module admission bound.
 rotated policy execution order,120CPU seconds per policy, and three repetitions.
 P0–7/flock/no-M, external11.5GiB child memory plus512MiB driver reserve.
 It consumes the same actual artifacts with original-kernel serial or qualified
-four-worker checking. Upper envelopes are frozen before execution.
+four-worker checking. Upper envelopes are frozen before execution. The recorded plan is exactly
+reproduced by prepare_class_native.py using source-marker counts for classes
+and historical checker costs only for the separately named type envelopes;
+no running plan is rewritten.
 Queue wait, source production, and offline feature computation are outside
 this artifact-checking budget and stay explicit.
 

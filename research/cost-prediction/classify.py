@@ -8,7 +8,7 @@ ROOT=Path('/workspaces/.agent-state/gpu-smt-captures/cost-classification-2026110
 FEATURES=Path('/workspaces/.agent-state/gpu-smt-captures/cost-prediction-20261101-v2/features-and-costs.csv')
 def writecsv(name, rows):
  with (ROOT/name).open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
+  w=csv.DictWriter(f,fieldnames=rows[0],lineterminator='\n');w.writeheader();w.writerows(rows)
 def q(xs,p):
  xs=sorted(xs);x=(len(xs)-1)*p;i=int(x)
  return xs[i]*(1-x+i)+xs[min(i+1,len(xs)-1)]*(x-i)
@@ -33,7 +33,7 @@ def main():
    density=float(f['kernel_density_kib']),predicted_certificate=f['regime']=='1',
    decision_cpu_s=compute,kernel_call_cpu_s=total,decision_cpu_share=compute/total,
    dynamic_certificate=compute/total>=.5,compiler_cpu_s=float(f['compiler_cpu_s']),
-   raw_trace=d['raw'],scope='separate original-kernel replay CPU; not compiler phase fraction'))
+   raw_trace=d['raw'],compiler_label_file=f['compiler_label_file'],compiler_label_line=f['compiler_label_line'],scope='separate original-kernel replay CPU; not compiler phase fraction'))
  writecsv('classification-rows.csv',rows)
  summaries=[]
  rng=random.Random(20261101)

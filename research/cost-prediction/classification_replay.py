@@ -7,7 +7,7 @@ REPO=Path('/workspaces/repository')
 ROOT=Path('/workspaces/.agent-state/gpu-smt-captures/cost-classification-20261101')
 def writecsv(name, rows):
  with (ROOT/name).open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
+  w=csv.DictWriter(f,fieldnames=rows[0],lineterminator='\n');w.writeheader();w.writerows(rows)
 def main():
  cells=list(csv.DictReader((REPO/'research/parallel-stream-check/full-cells.csv').open()))
  math=list(csv.DictReader((REPO/'research/parallel-stream-check/v14-math-cells.csv').open()))

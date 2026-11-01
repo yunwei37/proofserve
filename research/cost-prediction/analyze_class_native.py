@@ -6,7 +6,7 @@ os.sched_setaffinity(0,{8})
 ROOT=Path('/workspaces/.agent-state/gpu-smt-captures/cost-classification-20261101')
 def csvwrite(name, rows):
  with (ROOT/name).open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
+  w=csv.DictWriter(f,fieldnames=rows[0],lineterminator='\n');w.writeheader();w.writerows(rows)
 def events(path):
  rows=[]
  for line in path.read_text().splitlines():

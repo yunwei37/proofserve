@@ -2,3 +2,4 @@ held_out,calibration_type_count,upper_cpu_s,actual_cpu_s,covered,scope
 math,0,,,,no other ordinary cohort; finite bound unavailable
 barrier,1,744.406169,591.467022,True,leave-one-selected-cohort-out; one calibration compute input only
 grid,1,591.467022,744.406169,False,leave-one-selected-cohort-out; one calibration compute input only
+ordinary-NearPin-independent-completed-cohort,1,71.74443000000001,172.72565999999998,False,"outside three-root calibration panel; same O stock stream/P0-7/noM; old charged cap11.875GiB, not new run"
