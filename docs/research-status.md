@@ -2,7 +2,8 @@
 
 Snapshot2026-11-01UTC. Current frontier, not a new experiment or live-process
 inventory. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
-[Results](../research/README.md) · [Detailed history](evaluation.md).
+[Results](../research/README.md) · [Related work](background-related-work.md) ·
+[Detailed history](evaluation.md).
 
 ## Scientific contract
 **Checking or Recomputing? Two Cost Regimes in Verifying AI-Generated Formal

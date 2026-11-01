@@ -1,259 +1,112 @@
 # Background And Related Work
 
-Last updated: 2026-10-09, step0003 complete supporting native-constructor frontier; authentic generated-candidate capture remains incomplete.
-Source/command: full research-literature-novelty loop; [node report](tmp/bootstrap/step-0001-20261007T212930+0000/literature-20261007T213700+0000/report.md).
-Completeness: finite bootstrap coverage complete for declared branches; novelty remains conditional. The step0001 native-interface discriminator completed with a negative qualification result. Eight primary PDFs were subsequently retained during citation verification; source availability alone does not establish runnable numerical baselines.
+Integration updated2026-11-01UTC; **not a new literature search or re-verification**.
+This frontier indexes the existing paper bibliography, historical primary-source
+reports and recent native-source audits under the user-selected characterization
+mainline. Original source-access dates remain in those records.
+[Paper](paper/main.tex) · [Bibliography](paper/references.bib) ·
+[Status](research-status.md) · [Plan](research-plan.md).
+The prior map, dated source judgments and old serving/GPU/failure-cache
+admissions remain verbatim in the [entry archive](tmp/build-and-evaluate/step-0249-20261101T151943+0000/experiment-001/background-before.md.gz).
+Historical next-action paragraphs are not current experiment instructions.
 
 ## Search Log
-
-| Date | Query/source | Purpose | Result |
-|---|---|---|---|
-| 2026-10-07, before 21:37:10 UTC | Lean REPL / Pantograph / LeanDojo; checker arena; solver history; caching; serverless; Mallob; candidate streams; GPU reasoning | Initial claim questions and closest-work search | Existing reuse is much stronger than cold process comparisons |
-| 21:38:28 UTC onward | SMT fork/checkpoint, Lean parallel proof-state snapshots, source references and author artifacts | Contradiction review | Snapshot-DSP is a direct same-mechanism threat; artifact currently 404 |
-| 21:39:31 UTC onward | Official Lean 4.32 release, PR #13965; LeanTree server source | Current-tooling contradiction review | Stock disk snapshots and bounded recycling native services must enter comparison |
-| 21:40:14 UTC | Reread user instruction before verdict | Preserve author ambition | Report larger differentiation alternatives; do not narrow Lean/SMT/GPU scope |
+| Existing record / date | Question covered | Present use |
+|---|---|---|
+| Paper bibliography, annotations through2026-10-31 | Build/runtime, independent checking, warm RL services | Existing evidence, not refreshed metadata |
+| [Native module-task audit](tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md),2026-11-01 | Does the bundled checker wait for imported modules to finish verification? | Actual pinned source says independent task dispatch; matched performance still missing |
+| [Failure-selection source review](tmp/build-and-evaluate/step-0163-20261030T032548+0000/literature/report.md),2026-10-30 | Algorithm selection, restarts, stopping | Historical overlap; no new reproduction |
+| [Closest failure-memory follow-up](tmp/build-and-evaluate/step-0165-20261030T035108+0000/literature/report.md),2026-10-30 | Existing deterministic failure skipping and cost control | Retain prior-art limits, not the current paper mainline |
+| This consolidation | Reconcile an old2026-10-16 header/accumulated map with the current fourRQ | Records-only update, no new novelty verdict |
 
 ## PDF Corpus
-
-| Work | Local PDF path | Verification status | Why kept |
-|---|---|---|---|
-| Kimina | [PDF](reference/kimina-2504.21230.pdf) | Primary report retained and cited | Strong warm-service competitor |
-| Keep the Proof State Live | [PDF](reference/lean-snapshot-2605.25556.pdf) | Primary report retained and cited | Direct prepared-state branching overlap |
-| Lean 4 | [PDF](reference/lean4-cade21.pdf) | Primary paper retained and cited | Native architecture |
-| Verus | [PDF](reference/verus-oopsla2023.pdf) | Primary paper retained and cited | Verification pipeline |
-| VeruSAGE | [PDF](reference/verusage-2512.18436.pdf) | Primary report retained and cited | Real systems proof workload |
-| Fine-grained verification caching | [PDF](reference/boogie-cache-krml245.pdf) | Author technical report retained and cited | Real edit-session precedent |
-| SOCK | [PDF](reference/sock-atc18-oakes.pdf) | Primary paper retained and cited | Preparation sharing and process branches |
-| SEUSS | [PDF](reference/seuss-eurosys20.pdf) | Author paper retained and cited | Snapshot service competitor |
-
-Actual full citation verification is recorded in [writing round10](tmp/bootstrap/step-0001-20261007T212930+0000/step-report.md), with20 entries checked. This table records the later retained corpus rather than rewriting the initial literature node's no-download history.
+Existing PDFs retain their original provenance, not a fresh download.
+| Work | Retained path | Role |
+|---|---|---|
+| Lean4 | [lean4-cade21.pdf](reference/lean4-cade21.pdf) | Frontend/runtime/kernel architecture |
+| Kimina | [kimina-2504.21230.pdf](reference/kimina-2504.21230.pdf) | Persistent verification service precedent |
+| Keep the Proof State Live | [lean-snapshot-2605.25556.pdf](reference/lean-snapshot-2605.25556.pdf) | Prepared proof-state reuse |
+| Boogie fine-grained caching | [boogie-cache-krml245.pdf](reference/boogie-cache-krml245.pdf) | Existing dependency-aware result reuse |
+| Verus / VeruSAGE | [Verus](reference/verus-oopsla2023.pdf), [VeruSAGE](reference/verusage-2512.18436.pdf) | Historical software-verification source boundaries |
 
 ## Claim-Oriented Novelty Map
-
-Names removed, the candidate claims are:
-
-| Claim | Closest prior work | Same-claim risk | Novelty delta to establish, not assume | Baselines implied | Expansion opportunity |
-|---|---|---|---|---|---|
-| Real independent proof/program attempts share costly preparation beyond exact result caching | LeanDojo, VeruSAGE, Boogie edit sessions, Kimina | Medium: locality characterization exists, this specific joint preparation-cost claim not established here | Actual ordered attempts, all failures, cost-weighted sharing at native boundaries across contexts and projects | Warm/cache services | Characterize when reuse fails as well as succeeds; task bytes alone cannot answer RQ1 |
-| Immutable prepared native state supports isolated disposable candidates and improves equal-resource latency/throughput/memory beyond established reuse | Snapshot-DSP, stock Lean incremental snapshots, REPL roots, LeanTree, SOCK/SEUSS | High for bare mechanism; medium/high for complete verified service claim | Observable response/artifact and resource-history preservation, cancellation isolation, bounded multi-context placement, demonstrated service frontier in both Lean and SMT | Strong warm/cache service and native logical/serialized snapshot reuse | A joint behavior-preserving resource-management result is larger than a Lean fork implementation; root must decide if mechanism supports it |
-| After preparation, heterogeneous execution accelerates complete verification beyond fastest CPU checking | nanoclo, nanoclo-fortran, ParaFROST, ix | High for arrays, delayed substitution, parallel declarations, GPU simplification or GPU proof generation alone | Dynamic expensive remaining work and equal-boundary CPU/GPU complete checking benefit with conversion, transport, fallback and trust included | Best CPU complete checker path | Context-sensitive closure/conversion DAG execution is an alternative only after dynamic dependence evidence; no metadata-pass novelty |
+No claim of firstness is added by this table. The user-selected empirical scope
+is unchanged; overall novelty remains unestablished pending the missing evidence.
+| Current claim/question | Existing closest work | Overlap and unresolved delta |
+|---|---|---|
+| Cost location across released AI formal artifacts | Lean runtime, Mathlib profiling/build CI, Isabelle/AFP build studies | Profiling/build costs are established. Current study joins selected native clocks with fixed-source coverage; global weights/software coverage remain incomplete. |
+| Cheap independent checking versus source production | leanchecker, Lean4Lean, Lean Kernel Arena | Independent/kernel replay is established. Our comparison charges source compiler work and explicitly scopes complete closures/components; causal import attribution is not complete. |
+| Original-kernel parallel cases | Bundled leanchecker tasks, Isabelle build parallelism | Parallel checking is prior art. Current mechanisms are design cases, with extra coordinator/Cadapter trust and missing native module-task comparison. |
+| Meaning of verified | Kernel/checker semantics and project build/input boundaries | No universal soundness or complete axiom-closure result follows from accepted sets, source tokens or short controls. |
+| Warm/COW/cache/failure reuse | Kimina, snapshots, fine-grained caching, SHRED and historical source map | Existing primitives, not the paper's novelty. No return to closed GPU/oracle routes or new competitor reproduction. |
 
 ## Closest Work
-
-| Work | Claim | Method/artifact | Evaluation | Same problem/mechanism/metric/setting? | Gap relative to intended project |
-|---|---|---|---|---|---|
-| [Keep the Proof State Live, arXiv 2605.25556v1](https://arxiv.org/html/2605.25556v1) | Reuse elaborated proof states for parallel tactic portfolios | Immutable Environment shared; independent MetavarContext; LSP capture/branch RPCs and IO.asTask; patched Lean 4.25.1 | 45 hand-crafted valid sketches, 3 end-to-end DSP runs; 8GB Mac; cold lake-build comparator; composed warm comparison estimated | Same preparation/branch mechanism, Lean setting and wall time; direct overlap | Does not establish bounded multi-context service, cancellation or native-history artifact fidelity. Claimed code [Lean_Snapshot](https://github.com/A2DR1/Lean_Snapshot) returned 404 through web and GitHub API today. Absence of runnable code does not reduce novelty overlap |
-| [Lean 4.32 release](https://lean-lang.org/doc/reference/latest/releases/v4.32.0/) and [merged PR #13965](https://github.com/leanprover/lean4/pull/13965) | Reuse elaboration snapshots across stock executable invocations | Full disk snapshots include eligible intra-command header/tactic child states; in-memory frontend also supports them. Unchanged syntax/context governs reuse; caller must validate unchanged imports | Official implementation/change, not an accepted-paper performance protocol | Same native prepared state and independent invocations | Disk resumption can already remove reconstruction. Any new mechanism must outperform this supported path; pin module/import validity and measure loading/serialization |
-| [Community REPL](https://github.com/leanprover-community/repl) | Commands/tactics run from earlier environment/state IDs; efficient pickling | Backtracking roots, differential .olean serialization, mmap load; scoped-extension pickling limitation documented | Official regression suite | Same logical state reuse and candidate setting | Process-wide runtime effects and cancellation isolation need separate examination; logical branching itself is established |
-| [Kimina technical report](https://arxiv.org/html/2504.21230v1), [official source](https://github.com/project-numina/kimina-lean-server) | Parallel verification with header-indexed LRU warm REPLs | Pool limits; body uses env=0 and gc=true; worker retirement; memory/use/wait controls | Goedel workbook proof scaling and cache comparison | Same verification service, latency/throughput objective, immutable environment reuse | It is already bounded and prunes candidate environments. Describe its scientific position accurately; a naive ever-growing session is not the mandatory baseline |
-| [Pantograph paper](https://arxiv.org/html/2410.16429v2), [protocol](https://github.com/leanprover/Pantograph/blob/dev/doc/repl.md) | Structured incremental proof-state search, coupling and persistence | State IDs, deletion, goal/environment save/load, frontend invocation extraction | Illustrative proof search/data extraction | Same prepared logical states; real source attempts feasible | Saving goal state does not carry environment; imports cannot be changed after process start. Coupled goals demand full final proof checking |
-| [LeanTree](https://github.com/Kripner/leantree), [LeanInteract](https://github.com/augustepoiroux/LeanInteract) | Factorized proof branches and incremental interface; current service tooling | LeanTree checkpoints/rollback, bounded recycling pool and PSS governor; LeanInteract incremental and parallel elaboration | Public tests, warmup/stress tools; workshop/software status distinguished from top-level accepted papers | Same state reuse and service lifecycle | Existing lifecycle controls cannot be relabelled a contribution; prove a frontier beyond competent implementations |
-| [Programming Z3](https://z3prover.github.io/papers/programmingz3.html), [SMT-LIB 2.7](https://smt-lib.org/papers/smt-lib-reference-v2.7-r2025-07-07.pdf) | Incremental sessions and observable command contract | Push/pop retract assertions; Z3 switches one-shot to incremental engine after checks/use | Official APIs/protocol | Same native reuse; logical assertion equivalence weaker than history equivalence | No standard promises byte-identical models/cores or identical UNKNOWN behavior under changed history. Native branching parity is an experimental obligation |
-| [Green](https://www.cs.sun.ac.za/~jaco/PAPERS/index.html), [KLEE solver chain](https://klee-se.org/docs/solver-chain/) | Constraint/result reuse across runs/programs; layered query/model caches and independence | Canonicalization and cached results; KLEE supports forked STP/metaSMT solver calls | FSE 2012 paper metadata; official current solver-chain docs | Same reuse problem, different cached object | Neither exact caches nor symbolic-state/COW branching are new. Green full PDF unavailable through web; author abstract and official repository verified; keep finer mechanism claims provisional |
-| [Fine-grained verification caching](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/12/krml245.pdf), [ViperServer](https://github.com/viperproject/viperserver) | Avoid repeated verification after edits/startup | Program/control-flow result caching; HTTP warm verifier stack | CAV 2015: eight unscripted Dafny editing sessions | Same responsiveness/reuse; frontend-specific mechanism | Historical edit-session protocols motivate real streams; not interchangeable executable baseline for Verus/Lean |
-| [SOCK, ATC 2018](https://www.usenix.org/system/files/conference/atc18/atc18-oakes.pdf), [SEUSS, EuroSys 2020](https://handong32.github.io/docs/3342195.3392698.pdf), [Catalyzer, ASPLOS 2020](https://doi.org/10.1145/3373376.3378512) | Reuse prepared execution while isolating requests and sharing memory | Zygote trees/COW; immutable snapshot stacks; sandbox checkpoint/restore | Startup, memory density, throughput/latency and bursts; Catalyzer tests five runtimes, end-to-end functions, memory, 1000-instance scale and isolation | Same general systems mechanism and metrics; different workload | Verification specialization alone is insufficient. SEUSS already contrasts occupied warm containers with parallel snapshot deployment. Catalyzer publisher fetch blocked; [author PDF](https://ipads.sjtu.edu.cn/_media/publications/catalyzer-asplos20.pdf) fetched and evaluation text extracted through pdftotext |
-| [Mallob, CAV 2026](https://link.springer.com/chapter/10.1007/978-3-032-32526-6_5), [official artifact](https://doi.org/10.5281/zenodo.19841974) | On-demand distributed reasoning with incremental SAT and SMT engines | Retains incremental root workers, suspended contexts and state-affine resource reassignment | Accepted tool paper and evaluated artifact; SAT/SMT scale | Same service/resource question; primarily reasoning engine/distributed scale | Do not say it only solves single jobs. Different backend theories and finite-core deployment prevent automatic numerical baseline admission |
-| [nanoclo](https://github.com/sgraf812/nanoclo), [nanoclo-fortran](https://github.com/kim-em/nanoclo-fortran), [Arena round](https://arena.lean-lang.org/round/2026-09/) | Fast closure-based type checking with efficient representations | Delayed substitution, interned environments; Fortran integer-ID parallel arrays and private OpenMP workers | Real library exports plus accept/reject/corner/performance tests | Same kernel costs, representation and parallelism | Static arrays and parallel declarations are already implemented; best algorithm may remove apparent GPU opportunity. Exported proof checking excludes candidate elaboration |
-| [ParaFROST FMSD paper](https://cca.informatik.uni-freiburg.de/papers/OsamaWijsBiere-FMSD23.pdf), [official code](https://github.com/muhos/ParaFROST), [gpu4bmc](https://github.com/muhos/gpu4bmc) | GPU inprocessing with certified SAT outcomes and model-checker integration | GPU simplification/GC/proof generation; CPU solver counterpart; incremental interface | SAT competition formulas, same-algorithm CPU/GPU phases; CAV 2021 BMC integration | Same heterogeneous reasoning; SAT rather than Lean conversion or quantified Verus | Selected large formulas do not justify GPU candidate-stream acceleration; include frontend and certificate checking |
-| [ix](https://github.com/argumentcomputer/ix) | Lean-derived checking/proof-carrying code and CUDA proving | Ixon compilation, certified checker, multi-STARK CUDA backend; CPU-verifiable GPU proofs | Official benchmark commands and separate compiler/kernel/prover cells | GPU proving is adjacent; direct checking differs | Do not conflate generating a cryptographic proof of checking with native Lean checking latency or treat current ix CUDA as absent |
+These links identify the already cited primary artifacts; the integration date
+does not certify their current live state or transfer their performance numbers.
+| Work | Existing evidence boundary | Role here |
+|---|---|---|
+| [Distributed Parallel Build for Isabelle AFP](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITP.2024.22) | Build/session parallelism and dependency scheduling | Prior build engineering, not our measured native kernel costs |
+| [Lean4Lean v3](https://arxiv.org/abs/2403.14064v3) | Reimplemented Lean checker and compiled-environment replay | Independent-checker precedent; not source compiler work |
+| [lean4checker / bundled checker](https://github.com/leanprover/lean4checker) | Official-kernel replay, not a separate kernel implementation | Native checking family and trust boundary |
+| [LeanChecker4.34.1 source](https://github.com/leanprover/lean4/blob/v4.34.1/src/LeanChecker.lean) | Independent module-local task dispatch and prefix-based CLI selection | Root0247 verified source; no matched throughput yet |
+| [Lean Kernel Arena](https://github.com/leanprover/lean-kernel-arena) | Checker/corner-case comparison at exported-environment scope | Different boundary and metric from source build wall |
+| [Kimina paper](https://arxiv.org/abs/2504.21230) / [server](https://github.com/project-numina/kimina-lean-server) | Concurrent persistent REPL/header reuse | Existing service mechanism, not a serial library-build speedup |
+| [APE-Bench v3](https://arxiv.org/abs/2504.19110v3) | File/repository-level proof-engineering evaluation | Workload/infrastructure precedent; not new timing evidence here |
 
 ## Mandatory Baselines
+This section indexes **existing comparison families**. It admits no new capture,
+baseline implementation, budget, agent or competitor reproduction.
+| Existing family | Current evidence | Fairness / remaining limit |
+|---|---|---|
+| Pinned original source compilation | Four selected Oclosures reconstructed, source work charged per module | Includes imports/tactics/output; serial work is not parallel Lake wall. O resource-share deviation retained. |
+| Direct original-kernel serial replay | Matched closure and local-module references in root reports | Stronger than comparing only to a deliberately fragmented one-worker variant; exact clock/output scope retained. |
+| Declaration-parallel versus chunked target | Envelope existing decl8/chunk8 sequence | Chunking compared to stronger declaration parallelism; complete chosen-configuration pairing/repeats remain missing. |
+| Native module-local task path | Actual bundled source dispatch verified in root0247 | Throughput at matched closure/worker/resource/lifecycle remains missing; strict-import DAG does not bound it. |
 
-At most three scientific families are recommended; final runnable admission belongs to experiment design.
-
-| Baseline | Official artifact/version | Runnable status | Visible input/information | Tuning surface/budget | Evaluation protocol | Reproduction risk | Fairness notes | Claim consequence if unavailable |
-|---|---|---|---|---|---|---|---|---|
-| Competent bounded warm/cache verification service | Kimina fb2393de3461db35eda4c714e3fd21187e92ec90, image 2.0.0; source-aligned community REPL; stock Z3 version required by pinned Verus | Official build recipes/source; not built here | Exact source/import headers; SMT ordered stream; exact-result cache available equally | Worker count, total memory, retirement, header placement, timeout, cache budget; equal tuning effort | Complete candidates at matched CPU/memory, load/concurrency/context-count sweeps | Lean-version alignment and warm/cold accounting; SMT wrapper is declared glue | env=0/gc enabled; idle replacement and caches included; compare complete outcomes | Without it, no “beyond established warm reuse” claim; if it wins, mechanism thesis is falsified for that regime |
-| Native logical/serialized prepared-state reuse | Lean stock 4.32.2 or workload-supported newer stable version, PR #13965 merge b8b35fcd1b8705abb9cb0592d84a640645ef2cb1; Pantograph 92d4818a4b343d7be293731e03359a19e8082626; REPL 70b404f181ce92effe7d1a1845692f998e1eacf8; LeanTree 53493b9fb48a10a21d01cc6ff77f824e26b6217f | Stock and official sources exist; Snapshot-DSP advertised code 404 | Exact prepared source prefix or native goal state; module hashes; config/resource settings | Root retention/deletion, resume serialization, worker width, memory; same candidate set and preparation opportunities | Match boundary and full proof validation; logical state branches and snapshot resume answer whether process cloning adds value | Older corpora may not build on current Lean; tactic vs whole-file semantics differ | Choose strongest compatible official implementation, document unmatched inputs; no hidden branch pruning | Missing recent native reuse leaves high same-claim risk unresolved; citation alone cannot quantify incremental benefit. If it matches, generic process branching lacks performance novelty |
-| Fastest complete CPU checker path for heterogeneous RQ | Frozen Arena nanoclo 62671ff0c6dbb23df3f5e014226b910f4a45f2bc and Fortran b3a13ef5f0ae98a56087bef11ee1ec80dde0ef30; verify current candidates a2aa37eb and 95350c6f before freeze | Official recipes/corpus; not built here | Same exported expressions/declarations; official frontend for source jobs; no accepted-input filtering | CPU threads, compiler flags, representation/caches, axiom policy, literal extensions; equal resource sweep | Parse/export/setup/check complete boundary plus resident operation diagnostic; dynamic reduction/dependency profile | Independent kernels have corner-case differences and trust policies | Arena unsafe-permit-all-axioms config is not no-sorry validation; standard axioms and native decisions required | Without strongest CPU algorithm, GPU speedup is not established. If CPU wins, retain useful negative RQ4 result |
+Lean4Lean/Arena/Isabelle/Kimina are citation precedents here, not newly admitted
+numerical main baselines. Existing user ban on new competitor reproduction holds.
 
 ## Experimental Precedents And External Assets
+| Question | Existing public/source-native asset | Reused boundary / caveat |
+|---|---|---|
+| RQ1 population costs | Fixedopenai/math4eaee875 and same-mask Mathlibd13f | Allsource census complete; original42draw runtime population incomplete |
+| RQ2 checking versus production | Officialkernel replay and matched constructed artifacts | Charge wholeclosure separately from module components; shared dependencies overlap |
+| RQ3 parallel checking | Originalkernel APIs and bundledchecker module tasks | No new proof rules; implementation trust, preparation and fullcost still matter |
+| RQ4 coverage and trust | Native headers/acceptance logs, pinned source/toolchain/project targets | Missing/timeout/unsafe-partial exclusions not hidden, source tokens not axiom closure |
+| Public software | [Released-output audit](../workloads/ai-verification-software/README.md) | Reference solutions/checker fixtures do not substitute for model outputs |
 
-| RQ/claim | Accepted paper/protocol citation | Official benchmark/dataset/software/test tool | Version/artifact | Real-world provenance | Reusable design | Required deviation or glue |
-|---|---|---|---|---|---|---|
-| RQ1 preparation opportunity | [LeanDojo, NeurIPS 2023](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html); CAV 2015 fine-grained caching | LeanDojo-v2/Pantograph source interaction; VeruSAGE benchmark; real edit-session precedent | LeanDojo-v2 baed5eae6e87a65a446d9f54af07aab2154e7599; VeruSAGE source cbf9c0c6337b224fd8e5b7cb4e01ae65c0f98bc1 | Mathlib theorem repositories and systems proofs | Repository-based split, genuine attempt ordering, context availability and actual editing/session protocols | Public ground-truth proofs/task inputs are not generated candidate streams. Capture actual fixed-policy attempts with all failures and time/order; released-attempt availability not yet established |
-| RQ2 behavior/isolation | LeanDojo NeurIPS 2023 interaction reliability; [Verus, SOSP 2024 paper](https://www.wisdom.weizmann.ac.il/~padon/verus-sosp2024.pdf) and [artifact](https://verus-lang.github.io/paper-sosp24-artifact/); SMT-LIB protocol | Native executable, official REPL/Pantograph tests, Arena invalid tests; retained scope/history regressions | Exact Lean/Mathlib/Verus/Z3 pins per corpus; VeruSAGE recommends Verus ddc66116aa7a844a9e19cc50922fe85c84b8b4a5 | Accepted papers test real verifier interactions and failure feedback | Include native feedback/errors and intentionally broken proofs as controls, differential validation | Add cancellation/sibling interference, budget/history and models/cores/proofs checks; separate logical validity from byte-identical chosen artifact requirements |
-| RQ3 service frontier | SOCK ATC 2018; SEUSS EuroSys 2020; Verus SOSP 2024 | Official warm services, Linux PSS/cgroups, SEUSS/OpenLambda artifact sources | SEUSS 677826e7b9746575bec643a099fc0d5521bb8a19; OpenLambda 5a1a912f0791a04394f4d6e565e6e4673e273d90 are observed current heads, not historical paper pins | Production-style function workloads and real verified systems | Matched host, context count, concurrency, cache density, bursts, full request latency/throughput; whole-run repetition | Verification-native service glue; add open-loop offered load to avoid closed-loop queueing bias; equal complete resources rather than inherit obsolete hosts |
-| RQ4 heterogeneous checking | [GPU Acceleration of Bounded Model Checking with ParaFROST, CAV 2021 integration](https://github.com/muhos/gpu4bmc); certified FMSD follow-up | ParaFROST CPU/GPU, official Arena exports and correctness tests; ix compiler/kernel/prover benchmark separation | gpu4bmc CBMC 5.31.0; pinned checker recipes above; ix 91348190f091d53ab0838440eaeaf0cb36f2737f | SAT competition/model checking and Lean library proofs | Same algorithm CPU/GPU component controls, full frontend and certification time, independent outcome checking | RTX 5090 only; Lean conversion work is new glue and requires faithful inference/reduction, not metadata. SAT/BMC is precedent rather than a replacement for Lean/Verus jobs |
+## Baseline Candidates And Controls
+Existing malformed-proof/context controls support only their tested transitions.
+Positive-set parity is not a proof of universal context/budget/diagnostic
+transparency. The oldv4counterexample and v10RSS/Envelope timeout remain intact.
+No unexecuted control, source code or model bound fills a missing native result.
 
-## Baseline Candidates
-
-| Baseline | Why required | Reproduction risk | Fairness notes |
-|---|---|---|---|
-| Mallob/Bitwuzla | Optional stronger solver-serving competitor when input fragment and deployment match | MPI, backend theories, core scale, proof/artifact differences | Not default numerical comparison for quantified Verus; no claim that resource scheduling/state affinity is new |
-| Generic OS COW clone with no verification placement | Mechanism control: test whether ordinary snapshotting already explains gains | Quiescence and inherited runtime threads/FDs | Controls same prepared boundary, limits and cancellation; do not count as fourth baseline family |
-| Fresh native execution and matched native library/REPL driver | Correctness/control and cold-start accounting | Driver may change options or check mode | Mandatory parity before branch timing; fresh is not the strongest acceleration baseline |
-| Exact-result cache and reuse disabled | Control/ablation of completed-result contribution | Configuration/history/artifact cache identity | Give same valid cache to all baseline services; report hit rates, do not inflate duplicate traffic |
-| Lean-gym | Historical interface precedent, not strongest current Lean baseline | Original version/context limitations | Published proofs replayed with mutations are controls; current Pantograph/LeanDojo-v2 is preferred |
-
-## Absorbable Ideas
-
-| Source/community | Idea to absorb | Claim expansion enabled | Experiment implication | Risk |
-|---|---|---|---|---|
-| Official Lean incremental frontend | Reuse native syntax snapshots and module validation | Compatible prepared-state boundary | Compare disk load, logical roots and process clone without artificial reconstruction | Native primitive may already capture all useful benefit |
-| Native Lean services | Prune roots and recycle workers after timeout/memory growth | Competent bounded service | Equal lifecycle tuning and complete source validation | Existing controls are prior art |
-| Z3 and SMT-LIB | Exact command ordering/config/history matters | Behavior-preserving reuse across solver modes | Keep UNKNOWN/resource failures and artifacts; isolate previous suffixes | OS snapshot can inherit already-consumed resource counters |
-| Serverless systems | Density, page mutation and burst behavior are jointly important | Multi-context serving under bounded resources | Context working-set/PSS, COW dirtying, placement and replacement causal sweeps | Generic lifecycle alone insufficient differentiation |
-| Fast CPU kernels and certified GPU SAT | Profile expensive dynamic graph operations and trusted certificates | Consequential heterogeneous complete checking | Match algorithm and semantics; include transfer/conversion/checking | Faster CPU representations can erase device headroom |
-
-## Adjacent Communities
-
-| Community/venue family | Why relevant | Keywords/aliases | Useful papers or benchmarks |
-|---|---|---|---|
-| OSDI/SOSP/EuroSys/ATC/ASPLOS | Serving, snapshots, density, resource isolation | zygote, computational caching, COW, initialization-less boot | SOCK, SEUSS, Catalyzer, Verus |
-| CAV/FSE/PLDI/OOPSLA | Solver history and verification caching | push/pop, incremental SMT, verification sessions, failure feedback | Green, Boogie caching, Mallob, Verus |
-| NeurIPS/ICLR/CPP and theorem proving | Real proof attempts/native state reuse | proof-state snapshots, factorized goals, saved state | LeanDojo, Aesop, Pantograph, LeanTree |
-| SAT/GPU reasoning | Complete heterogeneous boundary and proof trust | inprocessing, certificate checking, reduction/conversion | ParaFROST, gpu4bmc, ix, Arena |
+## Absorbable Ideas And Adjacent Communities
+Proof engineering/build systems establish cached artifacts and dependency
+scheduling; checker work establishes post-export trust/acceptance boundaries;
+verification services establish persistent environments and feedback APIs.
+These are established methods to account for, not new names or novelty claims.
+The characterization preserves Lean-first/OSDI-level goals without claiming
+that selected prototypes or a successful compilation establish acceptance.
 
 ## Venue Evaluation Patterns
+Keep exact workload population, actual input/output/trust boundary, strong
+existing baselines, complete cost accounting, original failed/partial results,
+resource-policy deviations and uncertainty. Do not mix process, component,
+threadCPU, sampled cycles, queue time or hardware points.
+This is the existing evaluation promise, not a new review gate or enlarged scope.
 
-Reuse accepted-paper structure, not their reported speedups: characterize real workloads before mechanism claims; show complete-system effects at matched resources and scale; retain failure feedback; compare competent alternatives and explain mechanism causally. A single cold-vs-warm table or one import-Mathlib theorem is insufficient. Native correctness and driver equivalence are separate from speed. Repeated full-run confidence intervals and load saturation are needed for tail/frontier claims. No surveyed source establishes a universal guarantee of exact timeout identity across changed hardware scheduling.
+## Must-Read List And Novelty Verdict
+Read the current paper/status/plan, root0231/0238population boundaries,
+root0245censored result, root0246component interpretation and root0247baseline
+source audit. Older detailed source branches remain in the entry archive and
+their original linked reports.
+No new novelty confidence, fullpaper acceptance or scientific-contract revision
+is asserted by this record cleanup. Remaining global/source-phase weights,
+software native coverage, matched module-task comparison, causal decomposition,
+axiom closure and cluster evidence remain missing.
+Next action follows existing owners' real results or independent root analysis
+with paper-decision value; never a historical next-action paragraph or stalePID.
 
-## Must-Read List
-
-Snapshot-DSP full text; stock Lean PR #13965 and current snapshot implementation; Kimina manager/repl source; LeanTree process_pool/server; Z3 combined solver and resource counters; SOCK/SEUSS; nanoclo/nanoclo-fortran implementations; ParaFROST complete boundaries.
-
-## Novelty Verdict
-
-- Overall same-claim risk: high for “prepared immutable state plus independent parallel branches,” medium/high for the ambitious complete service target pending decisive evidence.
-- Ambitious target claims: retain consequential Lean and SMT acceleration with native behavior, resource isolation, bounded memory and full service frontiers; retain RTX 5090 heterogeneous assessment.
-- Claims requiring stronger differentiation or evidence: native branching is already prior art; warm Lean services already use immutable logical roots; stock Lean now supports serialized elaboration reuse.
-- Larger claim opportunities: a general verified distinction between logical rollback and native execution-history isolation, coupled to adaptive bounded state placement that demonstrably shifts the multi-context frontier. This is a root-owned alternative, not an adopted thesis edit. A dynamic context-sensitive closure/conversion GPU checker remains an equally ambitious sibling, not an easy metadata substitute.
-- Absorbable ideas to import: stock snapshot validity, strong warm lifecycle controls, costly dynamic operation profiles, source-native failures and accepted-paper density/load experiments.
-- Mandatory baselines: at most three families above; the strongest official native reuse path cannot be omitted because Snapshot-DSP code is unavailable.
-- Experimental precedents and external assets: each RQ has accepted-paper precedents above; actual ordered Lean and VeruSAGE attempt corpus completeness remains unresolved.
-- Next action: experiment design should admit a real-stream native-parity plus equal-resource frontier experiment. First freeze corpus/toolchain/module validity and verify complete source attempts exist; implement only declared glue. If native logical/disk reuse matches, revisit the mechanism with the root rather than hiding that result behind a weaker baseline.
-
-## Actual attempt acquisition frontier
-
-[Primary sample/tree audit](tmp/bootstrap/step-0001-20261007T212930+0000/literature-20261007T213700+0000/candidate-assets.md) verified real AutoVerus rejected and accepted intermediate sources plus local time logs at cbf9c0c6337b224fd8e5b7cb4e01ae65c0f98bc1. The full declared main cohort is now retained (196 logs and3,566 savedRust sources), and stage reconciliation is complete in step0002. Hidden debugging/scoring/Houdini checks and ephemeral native sources are not fully logged, so root rejects reconstructing a complete historical native-call stream from those files. They remain authentic offline candidate inputs, not measured complete traffic. These algorithm benchmarks alone do not satisfy multi-project systems traffic. Inspected Lean releases contain solutions, tasks or training pairs; they do not supply a complete failure-inclusive ordered stream. Official Goedel and DeepSeek V1.5 drivers retain generated attempts/results and offer concrete capture hooks. Goedel/DeepSeek share Mathlib2f65ba7 with Lean4.9rc1; DSP+ supplies Mathlib8b97781/Lean4.17rc1, whose old versions cannot silently receive current stock snapshot features. VeruSAGE real-project tasks remain inputs for new complete agent capture, not an already-released attempt stream. Acquisition is an unresolved bootstrap experiment dependency, not a negative locality result.
-
-## Current native incremental baseline clarification
-
-[Exact current stock source audit](tmp/bootstrap/step-0002-20261007T224656+0000/literature-20261007T225255+0000/lean-proof-state-boundary.md) pins4.34.1 at5045d0056413266e57c625dcd7c365b10e377c52 and reads complete header/value/tactic/native frontend functions. Stock Lean already restores unchanged elaborated declaration headers, forwards supported tactic snapshots across changed bodies and finalizes/checks the original declaration. Full disk serialization retains child snapshot graphs when internal.cmdlineSnapshots is false; it is not confined to completed whole commands. The exact4.9 fork REPL merely reconstructs goal states and does not automatically assemble/check the original declaration on goal closure. That old-version interface gap is not novelty against modern stock Lean. Root accepts this as baseline clarification within the previously accepted native-state family; no measured benefit or corpus migration is claimed.
-
-## Dynamic elaborator work after normal-check profiling
-
-The complete supporting six-module normal-check profile selects frontend/meta work rather than trusted AddDecl-only processing at that local boundary. [Exact synthesis/cache source audit](tmp/bootstrap/step-0002-20261007T224656+0000/literature-20261007T225255+0000/lean-typeclass-boundary.md) shows existing tabled synthesis and Meta.State success/failure caches; native full snapshots can retain them, while ordinary command-level Meta invocations normally start empty. Local instances, mutable assignments, environment/options/limits and explicit defeq resets prevent printed-type or blanket closed-expression cache claims. Cost-weighted recurrence, native cache resets and dynamic independent work are unmeasured. These facts select a future discriminator, not a novel cache or GPU algorithm.
-
-## Native constructor evidence after the finite source question
-
-[Experiment004's completed causal comparison](tmp/bootstrap/step-0003-20261009T132427+0000/experiment-004/result-review.md) adds real evidence to the prior pinned Z3 source finding: same-executable early owned-manager creation changes six checks and requested responses, while lazy matches same-source stock output. The source control exposes release version metadata differences rather than silently defining parity. This is supporting native-interface evidence, not new process-cloning novelty or proof of sole API causality. Existing closest-work/baseline judgments remain; mandatory grounding is not rerun unchanged. Next scientific effort must resolve actual preparation/isolation/resource value against strong native/warm/cache reuse and real streams.
-
-[Experiment005's independent native-context result](tmp/bootstrap/step-0004-20261009T183603+0000/experiment-005/result-review.md) now supplies restricted EOF/branch/order/post-disposal response identity. Official SMT-LIB2.7 protocol and Verus SOSP2024 artifact were opened again for metric/source authority. No closest-work or central-position change is adopted: generic COW is established, shared preparation cost and useful service differentiation remain unmeasured. Native/warm/cache/snapshot competitors stay mandatory.
-
-## New failure-inclusive Lean source opportunity — step0005
-
-[Complete primary search/contradiction report](tmp/bootstrap/step-0005-20261009T194100+0000/literature-20261009T202400+0000/report.md) verifies newly released [LeanPolish](https://arxiv.org/abs/2609.38384), a Sep2026 preprint rather than an accepted venue paper. Official complete-menu archives contain real failed/valid/skipped tactic outcomes, original source files and per-file logs with Lean4.21/Mathlib pins. These are proof-improvement attempts, not upstream prover traffic or demonstrated global arrivals. Publiccode70cda81 differs from manifest-generation97b93d7; historical code correspondence/actual licensed cohort still need qualification. Root independently retains exact publicsource/manifest and reads full relevant native routines; raw/source hashes are in currentstep. Existing TermElabM save/restore, command checkpoints and persistent import workers are competent native baseline mechanisms, not our contribution. Complete menu records omit skipped native calls, exact?/laterphasechecks and any unvisited budget-truncated sites; pool200char errors are not native authority. Strongest next acquisition route is native context reconstruction from original file/InfoTree and published pipeline capture, never printed-goal fabrication. Other failure-inclusive RL/prover releases lack enough native extraction/version/history evidence for immediate admission. AllfourRQ/native/warm/cache/device families remain unchanged; same-claim risk for generic branching stays high.
-
-Load-bearing source-boundary correction: the same report's follow-up audits pool emission. Menu valid means goal closure plus errors/leak/sorry screening, with NO per-candidate original declaration/kernel finalization; rejected_kernel is a broad tactic-screen label. Later selected joint edits receive command re-elaboration/optional fresh-file checking, which does not certify every alternative. Real tactic traffic is available, but fullverification experiments must retain original native contexts and actually finalize/check each claimed complete proof or use the official full-file edit path. Goal closure is not Lean acceptance; this restriction strengthens the earlier stock-snapshot/fullchecking requirement rather than narrowing the goal.
-
-## Current expensive-work admission — 2026-10-16 local / 2026-10-17 UTC
-
-The [source/coverage/decision node](tmp/bootstrap/step-0010-20261014T133154+0000/literature-20261017T0212/report.md)
-checks candidate proof-computation reuse after the user-directed E038closure.
-No new mechanism, native replay, model or full matrix is admitted.
-
-| Primary work | Verified mechanism or asset | Effect on our next decision |
-|---|---|---|
-| [SHRED a6616e9](https://github.com/memo-ozdincer/shred/tree/a6616e99534ce777dcebfd56566eaaffb63997a8) | Exact tactic prefixes and elaborated-context closing-proof reuse; pinned4.9rc1source and upstream representative CPU aggregates | Plain prefix/certificate reuse is already implemented prior art; upstream4096-pair3.24%CPU reduction and small diagnostic prefix opportunity are not our replay or wall speed |
-| [Learned Lean feedback](https://arxiv.org/abs/2610.21881) | GPU verdict/message prediction and approximate hybrid rewards; current repo announces executable code later | Its4.2xH100pipeline comparison does not establish exact native or5090acceleration; do not silently change verification into prediction |
-| [Public evaluation corpus](https://huggingface.co/datasets/EPFL-LARA/lean-evaluation-benchmark/tree/0bbf31331bd1c726f539b311cce8b058a821f15c) |68932deduplicated4.15programs/labels, with operational and precheck exclusions | Useful future source asset, not a complete arrival/cost/failure trace or an admitted new full benchmark |
-| [NanoProof](https://arxiv.org/abs/2610.11605) / LeanTree | Factorized search/interface and extracted Mathlib/DeepSeek proof trees | Strengthens existing same-mechanism comparison; extracted proofs do not supply complete failed search traffic |
-
-Root recomputes upstream published aggregates, not original private per-pair data or native runs.
-Selected per-hit maxima and enriched subsets are not whole-system results.
-A future distinct cache mechanism belongs within the existing competent warm/cache baseline family;
-citation alone settles generic novelty, so no redundant numerical rerun is needed now.
-No source establishes a surviving new high-value implementation here. Preserve allfourRQs/Initial Narrative,
-existing negatives and the full Lean/SMT/service/5090goal. Complete-evidence/contribution assessment continues
-without reviving E038/E040/scalarGPU or importing another repository's budgets, gates or hash checks.
-
-
-## 2026-10-18: arithmetic certificate and GPU batching overlap
-
-Exact dual/Farkas certificates for infeasibility are established prior art:
-[Schaeffeler and Abdulaziz, AAAI 2025](https://ojs.aaai.org/index.php/AAAI/article/view/34868)
-and its [verified LP checker](https://github.com/schaeffm/fmdp_isabelle).
-Generic external arithmetic search plus Lean proof reconstruction already
-exists in Mathlib and [Farkas](https://github.com/lucifer1004/farkas).
-[ICPE 2019](https://doi.org/10.1145/3297663.3310308) already maps one CUDA
-block to each LP in a batch. These primitives cannot establish our novelty.
-
-The surviving RQ4 hypothesis concerns complete verification at equal resources:
-actual request supply, exact positive/negative termination, independent
-cancellation and full setup/fallback costs must beat the strongest CPU path.
-A matched 32-candidate-queue capacity preflight tests that uncertainty.
-This does not replace the original native-state/service RQs or claim their
-completion. [Primary-source review and baseline handoff](tmp/bootstrap/step-0010-20261014T133154+0000/literature-20261018T1036/report.md).
-
-
-## 2026-10-19: exact arithmetic source comparison
-
-The [source-level follow-up](tmp/bootstrap/step-0010-20261014T133154+0000/literature-20261020T061754Z/report.md) verifies the unchanged Farkas
-upstream pin, the actual local reconstruction path, type/fast-path coverage
-and the official LP tactic's direct-certificate precedent. Generic external
-search and delayed native proof construction remain high-overlap prior
-mechanisms. The measured4.27adaptation is not an unchanged upstream4.31
-replication. Keep the current full-population experiment and original systems
-goal; do not promote a local CPU composition into the missing systems novelty.
-No additional numerical main baseline or new acquisition is admitted.
-
-
-## 2026-10-24: arithmetic counterexample screening
-
-[Bounded primary-source review and own-experiment handoff](tmp/bootstrap/step-0011-20261023T195335-0700/literature-20261024T0630/report.md)
-covers sampling, hypothesis satisfaction, subgoal backtracking and current Lean
-refutation. Generic counterexample filtering is not our new contribution:
-[the Isabelle overview](https://isabelle.in.tum.de/~nipkow/pubs/frocos11.pdf)
-and [ACL2 testing integration](https://arxiv.org/html/1105.4394v2) establish
-the principle. [Official Lean Plausible source](https://github.com/leanprover-community/plausible/blob/fb13df72ecefd8ddbf9291021d7f33a8673eb57b/Plausible/Tactic.lean)
-already tests local goals; [formal counterexample generation](https://arxiv.org/abs/2603.19514)
-already requires Lean proofs of refutation. Our CPU rational witness checker
-does not itself produce such a Lean proof.
-
-The unresolved claim is useful complete verification savings on real expensive
-failed candidates, including all host/device/fallback/cleanup cost at equal
-resources. Current cheap witnesses do not establish that claim, and a finite
-search finding no direct GPU counterpart does not prove novelty or impossibility.
-No additional external reproduction or numerical baseline is admitted. Preserve
-the original7808observation; actual completion precedes own native24qualification
-and the complete same-candidate native/GPU pair. The source-access and incomplete
-coverage limits remain in the detailed report. AllfourRQ/Lean+SMT/OSDI goals remain.
-
-
-## 2026-10-29: workload and certificate-checking scope
-
-[Completed scoped three-claim review](tmp/build-and-evaluate/step-0123-20261029T063534+0000/literature-20261029T063534+0000/report.md) reads the current paper and verifies primary overlap/protocol boundaries.
-Resumable/streamed LRAT-to-Lean import is established in [LRAT-Catcher v2](https://arxiv.org/abs/2607.00815v2);our conversion fusion remains a qualified control,not a novelty claim.
-Resource reuse and ordinary first-success scheduling remain prior techniques.
-Useful native-preserving failure/memory methods and complete equal-resource
-workload evidence remain unproven. No additional competitor reproduction is admitted.
-
-
-## Resource-failure and exact first-success selection — 2026-10-30
-
-[Primary-source review and applicability](tmp/build-and-evaluate/step-0163-20261030T032548+0000/literature/report.md)
-covers [SATzilla](https://arxiv.org/pdf/1111.2249),
-[Weitzman's search model](https://dspace.mit.edu/entities/publication/990c36ff-57d4-4d0e-916e-2db6a4e93969),
-[Luby restarts](https://www.cs.utexas.edu/~diz/pubs/speedup.pdf),
-[SOAP/Gittins](https://arxiv.org/html/1712.00790v2) and
-[adaptive Best-of-N stopping](https://arxiv.org/abs/2510.01394).
-Feature-based algorithm selection,p/c ordering and restart scheduling are prior
-mechanisms. Their assumptions differ from correlated finite candidate groups,
-RSS-watchdog failures and charged native kill/restart costs. Exact pass@k
-requires exhaustive checking of every observed-unsolved task;generic reward
-stopping cannot replace that obligation. A resource-failure record requires a
-valid native transition/resource model,not just task,tactic text and an RSS cap.
-
-
-### Closest Lean failure/cost-control precedents — 2026-10-30
-
-[LeanGraphSearch](https://arxiv.org/html/2610.22339v1),appendixB.4,already skips
-recompilation of unchanged deterministic failed candidates and excludes
-infrastructure failures. [Cost-quality Lean control](https://arxiv.org/abs/2606.04883)
-already uses failure history and predicted success/cost to control generation.
-These are direct threats to generic failure-memory or cost-aware-selection
-novelty. They do not establish native failed-transition fidelity or monotone
-RSS-failure certificates. [Primary-source follow-up](tmp/build-and-evaluate/step-0165-20261030T035108+0000/literature/report.md)
-retains the exact scope;no competitor implementation was reproduced.
+[Current-map consolidation](tmp/build-and-evaluate/step-0249-20261101T151943+0000/step-report.md); the entry archive above
+preserves every prior dated branch and source judgment.

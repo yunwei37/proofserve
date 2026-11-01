@@ -1,0 +1,30 @@
+{
+  "summary": {
+    "before_lines": 261,
+    "after_lines": 109,
+    "local_links_checked": 15,
+    "new_external_searches": 0,
+    "new_scientific_results": false,
+    "new_native_runs": 0,
+    "paper_and_bibliography_unchanged": true,
+    "root_maintenance_s": 0.005220016464591026,
+    "root_maxrss_kib": 13224
+  },
+  "local_links": [
+    "paper/main.tex",
+    "paper/references.bib",
+    "research-status.md",
+    "research-plan.md",
+    "tmp/build-and-evaluate/step-0249-20261101T151943+0000/experiment-001/background-before.md.gz",
+    "tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md",
+    "tmp/build-and-evaluate/step-0163-20261030T032548+0000/literature/report.md",
+    "tmp/build-and-evaluate/step-0165-20261030T035108+0000/literature/report.md",
+    "reference/lean4-cade21.pdf",
+    "reference/kimina-2504.21230.pdf",
+    "reference/lean-snapshot-2605.25556.pdf",
+    "reference/boogie-cache-krml245.pdf",
+    "reference/verus-oopsla2023.pdf",
+    "reference/verusage-2512.18436.pdf",
+    "../workloads/ai-verification-software/README.md"
+  ]
+}
