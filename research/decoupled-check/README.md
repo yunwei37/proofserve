@@ -94,3 +94,40 @@ claimed at this checkpoint. Standard compiler reconstruction of the exact
 dependency graph is active, with output artifacts isolated from original data.
 Cgroup child memory.max is 11.875GiB, reserving128MiB for the small O parent
 inside the12GiB allocation. No Lean -M flag is present.
+
+## Matched artifact requirement
+The first 65.964s stream run reads the retained original compiled inputs and is
+an observed control. Primary stream/build ratios will instead replay the exact
+new artifacts emitted by the measured source reconstruction. This avoids
+assuming regenerated proof terms are identical to a distributed cache.
+A matched-stream acceptance graph must equal the planned complete closure.
+Every module of that newly produced closure is also checked by the
+source-equivalent single-module oracle. Bounded chunks retain per-module
+acceptances and never reuse a checked kernel environment across modules.
+The stock CLI 13-module preflight separately qualifies that oracle. A timeout
+or missing acceptance is not a native rejection or parity success.
+Large target compiler invocations begin only in a window with their full
+declared per-module budget available; partial windows do not silently shrink
+the Grid/Amplitudes bounds.
+
+## Source construction completed for the first cohort
+All1,330 Mathlib.Data.Nat.Basic closure members have successful measured standard
+compiler artifacts, with 622.379412s summed native subprocess wall. This is a
+complete source-closure denominator; the original-cache 65.964395s check is
+still a separate input control until regenerated artifacts are rechecked.
+The union frame comprises5,085 source modules (no missing source), including
+both PlanarPacking computational roots and the ordinary NearPinDeletion root.
+Later cohorts include their actually measured member costs; shared dependencies
+are measured once, not replaced by a guessed average or a leaf-only denominator.
+
+## Bounded continuation
+Each locked window is internally1,680s and externally1,740s; every native child
+has a timeout and its own temporary cgroup. The finite coordinator waits for
+actual exit, reduces/publishes small result tables, checks /proc/locks, then
+joins the back of any existing queue for the next window. It stops on a real
+cell error or its eight-hour continuation bound, preserving partials. That is
+a capture bound, not a research deadline. It creates no schedule, service,
+new agent or alternative Workspace. Successful already-built artifacts are
+never overwritten; matched oracle records may cover the same immutable module
+in multiple enclosing closures. Old cached-input oracle data are retained
+separately and do not fill the matched-input acceptance set.

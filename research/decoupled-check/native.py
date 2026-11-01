@@ -3,6 +3,17 @@ import json,os,subprocess,signal
 from pathlib import Path
 ROOT=Path('/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031')
 SDK=Path('/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux')
+ACTIVE=None
+def abort(signum,frame):
+    if ACTIVE is not None:
+        cg,pid=ACTIVE
+        try:(cg/'cgroup.kill').write_text('1')
+        except OSError:
+            try:os.killpg(pid,signal.SIGKILL)
+            except ProcessLookupError:pass
+    raise SystemExit(128+signum)
+signal.signal(signal.SIGTERM,abort)
+signal.signal(signal.SIGINT,abort)
 def environment():
     old=Path('/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/startup-replay/repair-v3/preparation.json')
     e=os.environ.copy();e.update(PATH=str(SDK/'bin')+':'+e['PATH'],LEAN_SYSROOT=str(SDK),
@@ -11,6 +22,7 @@ def environment():
     e.pop('DECOUPLED_TIMING',None)
     return e
 def run(key,command,limit=120,measured=False,env=None,cwd=None):
+    global ACTIVE
     affinity=sorted(os.sched_getaffinity(0))
     if measured:assert affinity==list(range(8)),'timed runs require P cores and outer shared flock'
     current=Path('/sys/fs/cgroup')/Path('/proc/self/cgroup').read_text().strip().split('::',1)[1].lstrip('/')
@@ -27,10 +39,12 @@ def run(key,command,limit=120,measured=False,env=None,cwd=None):
     with(ROOT/(key+'.stdout')).open('w')as fo,(ROOT/(key+'.stderr')).open('w')as fe:
         begin=time.monotonic()if measured else None
         p=subprocess.Popen(args,cwd=cwd or ROOT,env=chosen,stdout=fo,stderr=fe,preexec_fn=enter,start_new_session=True)
+        ACTIVE=(cg,p.pid)
         if measured:
             _,status,usage=os.wait4(p.pid,0);p.returncode=os.waitstatus_to_exitcode(status)
             record.update(wall_s=time.monotonic()-begin,user_s=usage.ru_utime,system_s=usage.ru_stime,peak_rss_kib=usage.ru_maxrss,minor_faults=usage.ru_minflt,major_faults=usage.ru_majflt)
         else:p.wait()
+    ACTIVE=None
     record.update(returncode=p.returncode,cgroup_peak_bytes=int((cg/'memory.peak').read_text()),memory_events=(cg/'memory.events').read_text())
     (ROOT/(key+'.result.json')).write_text(json.dumps(record,indent=2))
     try:cg.rmdir()
