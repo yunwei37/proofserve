@@ -1,0 +1,7 @@
+domain,metric,population_modules,observed_original_random_costs,planned_original_random_costs,complete_strata,conditional_CPU_h,conditional_CI97p5_low_h,conditional_CI97p5_high_h,global_CPU_h,global_CI95_low_h,global_CI95_high_h,scope,missing_reason
+certificate_proxy,native_source_compiler_CPU,163097,31,42,14,24.146734908888885,0.0,54.94535945434526,,,,complete observed strata only; imports/elaboration/checking/three artifact emission,11 original draws;7 incomplete cells/59629 modules
+certificate_proxy,independent_verifier_CPU,163097,0,42,0,,,,,,,not yet a matched probability-sampled verifier CPU estimand,purposeful closure ratios/producer profiles cannot supply population weights
+certificate_proxy,complete_project_build_CPU,163097,0,42,0,,,,,,,native compiler scope excludes setup/Lake/link/external-library construction,no measured complete clean-build orchestration/link bill
+ordinary_proxy,native_source_compiler_CPU,163097,31,42,14,116.70482585097221,0.0,674.268296844146,,,,complete observed strata only; imports/elaboration/checking/three artifact emission,11 original draws;7 incomplete cells/59629 modules
+ordinary_proxy,independent_verifier_CPU,163097,0,42,0,,,,,,,not yet a matched probability-sampled verifier CPU estimand,purposeful closure ratios/producer profiles cannot supply population weights
+ordinary_proxy,complete_project_build_CPU,163097,0,42,0,,,,,,,native compiler scope excludes setup/Lake/link/external-library construction,no measured complete clean-build orchestration/link bill

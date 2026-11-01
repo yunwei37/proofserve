@@ -1,0 +1,21 @@
+query_id,UTC_date,query,decision
+1,2026-11-01,site.mathlib.org speedcenter lean build time mathlib CI performance,completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+2,2026-11-01,site.isa-afp.org statistics build time elapsed CPU sessions,completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+3,2026-11-01,site.coq.inria.fr CI bench performance build time user time,completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+4,2026-11-01,Lean Mathlib library stratified sampling Horvitz Thompson build cost estimation,completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+5,2026-11-01,site.isabelle.in.tum.de devel build_status timing cpu elapsed AFP statistics,completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+6,2026-11-01,"site.isa-afp.org ""Timing"" ""CPU""",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+7,2026-11-01,site.github.com rocq-prover bench compare time perf development,completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+8,2026-11-01,"site.mathlib.org ""benchmark"" performance build",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+9,2026-11-01,"""proof assistant"" ""stratified sampling"" performance library",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+10,2026-11-01,"""Isabelle"" ""Horvitz"" sampling",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+11,2026-11-01,"""Mathlib"" ""stratified"" ""time""",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+12,2026-11-01,"""Coq"" ""Horvitz"" performance",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+13,2026-11-01,"site.github.com/rocq-prover/rocq ""bench"" ""instructions"" ""CI""",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+14,2026-11-01,"site.github.com/coq/coq ""Bench"" ""user time""",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+15,2026-11-01,"site.github.com/coq/coq ""dev/bench"" ""README""",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+16,2026-11-01,"site.isabelle.in.tum.de ""build_status"" ""timing""",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+17,2026-11-01,"""proof libraries"" ""sampling"" ""performance"" build cost",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+18,2026-11-01,"""Lean"" ""library"" ""cost estimation"" sampling",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+19,2026-11-01,"""Rocq"" ""stratified sampling"" build",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
+20,2026-11-01,"""A Generalization of Sampling Without Replacement from a Finite Universe"" 1952",completed; primary sources retained in sources.csv; nonmatching stratification/ML-generation/name hits excluded
