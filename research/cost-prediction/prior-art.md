@@ -46,3 +46,19 @@ algorithmic complexity in Lean; those are excluded from checking-cost prediction
 The root paper and RQs are not rewritten by this O-line literature finding.
 The requested experiments proceed; their outcomes decide whether the useful
 result is regime-conditioned predictability or a measured limit on it.
+
+## Binary-regime follow-up: correction to the regression-only comparison
+
+2026-11-01UTC targeted search: "SATzilla2012 cost-sensitive classification",
+"SATzilla hierarchical SAT UNSAT prediction". The author-hosted
+[SATzilla2012 description](https://www.cs.ubc.ca/~kevinlb/papers/2012-SATzilla2012-Solver-Description.pdf)
+explicitly selects solvers using cost-sensitive classification, with runtime
+loss weighting and a separate classifier for expensive feature computation.
+Thus it would be incorrect to say SATzilla only predicts numerical runtimes.
+Our output label is a Lean computation/checking regime rather than a winner
+among SAT solvers; our candidate downstream route checks the same Lean terms
+with the original kernel. That domain/target distinction is real, but generic
+binary classification and cost-aware method selection remain prior techniques.
+The earlier[HHM author paper](https://www.cs.ubc.ca/~kevinlb/papers/CP07-HHM.pdf)
+also classifies SAT/UNSAT before combining conditional runtime models. We do
+not claim that replacing regression by a class label establishes novelty.
