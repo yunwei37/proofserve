@@ -1,0 +1,8 @@
+module,native_shape,checked_auxiliary_types,shape_split_possible,scope
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,other:LE.le.{0},1,False,compiled mkDecideProof-headed auxiliaries only; not all source sites or exclusive CPU
+OAI.Analysis.PlanarPacking.Grid,record_equality:OAI.SharpPlanar.IntegerIntervals.RBox,1536,True,compiled mkDecideProof-headed auxiliaries only; not all source sites or exclusive CPU
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,record_equality:OAI.SharpPlanar.IntegerIntervals.CBox,1164,True,compiled mkDecideProof-headed auxiliaries only; not all source sites or exclusive CPU
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,record_equality:OAI.SepticProfile.FixedInterval.Box,1246,True,compiled mkDecideProof-headed auxiliaries only; not all source sites or exclusive CPU
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,other:LT.lt.{0},73,False,compiled mkDecideProof-headed auxiliaries only; not all source sites or exclusive CPU
+OAI.Analysis.PlanarPacking.Grid,conjunction:And,1536,True,compiled mkDecideProof-headed auxiliaries only; not all source sites or exclusive CPU
+OAI.Analysis.PlanarPacking.Grid,record_equality:OAI.SharpPlanar.IntegerIntervals.PointBox,1536,True,compiled mkDecideProof-headed auxiliaries only; not all source sites or exclusive CPU

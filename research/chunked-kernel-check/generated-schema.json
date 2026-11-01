@@ -1,0 +1,72 @@
+{
+  "source_module": "OAI.Analysis.PlanarPacking.Grid",
+  "original_target": "PointBox.calc p0_0.t = p0_0",
+  "source_definition": "p0_0",
+  "record_fields": {
+    "RBox": [
+      [
+        "lo",
+        "\u2124"
+      ],
+      [
+        "hi",
+        "\u2124"
+      ]
+    ],
+    "CBox": [
+      [
+        "re",
+        "RBox"
+      ],
+      [
+        "im",
+        "RBox"
+      ]
+    ],
+    "PointBox": [
+      [
+        "t",
+        "RBox"
+      ],
+      [
+        "lam",
+        "CBox"
+      ],
+      [
+        "z",
+        "CBox"
+      ],
+      [
+        "direct",
+        "CBox"
+      ],
+      [
+        "quarter",
+        "CBox"
+      ]
+    ]
+  },
+  "leaf_paths": [
+    ".t.lo",
+    ".t.hi",
+    ".lam.re.lo",
+    ".lam.re.hi",
+    ".lam.im.lo",
+    ".lam.im.hi",
+    ".z.re.lo",
+    ".z.re.hi",
+    ".z.im.lo",
+    ".z.im.hi",
+    ".direct.re.lo",
+    ".direct.re.hi",
+    ".direct.im.lo",
+    ".direct.im.hi",
+    ".quarter.re.lo",
+    ".quarter.re.hi",
+    ".quarter.im.lo",
+    ".quarter.im.hi"
+  ],
+  "strategy": "structural record equality; split leaves into balanced contiguous conjunctions",
+  "source_is_extracted": true,
+  "handwritten_target_numbers": false
+}

@@ -1,0 +1,19 @@
+{
+  "completed_cells": 15,
+  "original_accepts": 3,
+  "chunked_accepts": 12,
+  "original_axioms": [
+    "propext"
+  ],
+  "final_axioms": [
+    "propext"
+  ],
+  "new_axioms": 0,
+  "all_final_targets_identical": true,
+  "sorry": false,
+  "false_first_chunk_rejected": true,
+  "no_false_combined_artifact": true,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check",
+  "limits": "one real Grid target, field splitting; no complete Grid module acceleration claim",
+  "native_coverage": "native-shapes.csv; syntax extracted field layout independently accepted by Lean"
+}

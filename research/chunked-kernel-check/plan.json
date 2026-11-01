@@ -1,0 +1,19 @@
+{
+  "phase": "real Grid PointBox.calc p0_0.t equality; generated18 scalar leaves",
+  "repetitions": 3,
+  "arms": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "k0": "original monolithic proposition",
+  "k1": "same field decomposition, one worker",
+  "source": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-v1",
+  "timed_no_native_memory_guard": true,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/runs",
+  "order": "rep1 original,1,2,4,8; rep2 8,4,2,1,original; rep3 original,1,2,4,8",
+  "current_waiters": "",
+  "time_utc": "2026-11-01T00:03:59.626550+00:00"
+}
