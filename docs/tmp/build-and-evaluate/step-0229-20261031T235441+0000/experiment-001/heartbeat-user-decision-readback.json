@@ -1,0 +1,11 @@
+{
+  "changed_fields": [
+    "updated_at",
+    "prompt"
+  ],
+  "rule": "FREQ=HOURLY;INTERVAL=1",
+  "status": "ACTIVE",
+  "target_unchanged": true,
+  "reason": "explicit user decision: omit -M; five findings and missing current noM costs",
+  "new_entities": 0
+}

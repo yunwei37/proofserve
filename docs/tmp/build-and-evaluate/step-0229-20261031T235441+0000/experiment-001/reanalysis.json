@@ -1,0 +1,10 @@
+{
+  "root_analysis_s": 0.024530177004635334,
+  "root_analysis_maxrss_kib": 12720,
+  "new_native_invocations": 0,
+  "findings": 5,
+  "RQs": 4,
+  "old_cost_figure_removed_from_current_paper": true,
+  "archived_not_deleted": true,
+  "noM_checker_argv_records": 21
+}

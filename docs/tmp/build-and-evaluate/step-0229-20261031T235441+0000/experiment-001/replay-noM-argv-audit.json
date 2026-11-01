@@ -1,0 +1,215 @@
+[
+  {
+    "key": "preflight",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion"
+    ],
+    "wall_s": 2.556887459009886,
+    "returncode": 0
+  },
+  {
+    "key": "target-00",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion"
+    ],
+    "wall_s": 2.555695364251733,
+    "returncode": 0
+  },
+  {
+    "key": "target-01",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Analysis.Cotype.FiniteRankWalsh"
+    ],
+    "wall_s": 3.930132854729891,
+    "returncode": 0
+  },
+  {
+    "key": "target-02",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17"
+    ],
+    "wall_s": 3.675953117199242,
+    "returncode": 0
+  },
+  {
+    "key": "target-03",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Analysis.Laughlin.FiniteFlux.Row0705207"
+    ],
+    "wall_s": 2.576673701405525,
+    "returncode": 0
+  },
+  {
+    "key": "target-04",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle"
+    ],
+    "wall_s": 2.8171090660616755,
+    "returncode": 0
+  },
+  {
+    "key": "target-05",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Zeros30"
+    ],
+    "wall_s": 3.8850280921906233,
+    "returncode": 0
+  },
+  {
+    "key": "target-06",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.GroupTheory.PolycyclicRecognition.Analysis.TranslationCovering"
+    ],
+    "wall_s": 2.6006225496530533,
+    "returncode": 0
+  },
+  {
+    "key": "target-07",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Geometry.CylinderCovering.Radial.Assembly"
+    ],
+    "wall_s": 3.983339423313737,
+    "returncode": 0
+  },
+  {
+    "key": "target-08",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.NumberTheory.Catalan.Analysis.ManuscriptNormLogPGroup006"
+    ],
+    "wall_s": 3.053981551900506,
+    "returncode": 0
+  },
+  {
+    "key": "target-09",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Analysis.CircleDomains.Rigidity.MaskedCircleEnergy"
+    ],
+    "wall_s": 3.8958148872479796,
+    "returncode": 0
+  },
+  {
+    "key": "target-10",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Analysis.MutuallyUnbiased.GramAssembly.Block0Data"
+    ],
+    "wall_s": 3.918764286674559,
+    "returncode": 0
+  },
+  {
+    "key": "target-11",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Analysis.PlanarPacking.Certificate.WUCert48"
+    ],
+    "wall_s": 3.2917749797925353,
+    "returncode": 0
+  },
+  {
+    "key": "target-12",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.NumberTheory.Catalan.Determinants.FixedCompactRow48"
+    ],
+    "wall_s": 3.5103127267211676,
+    "returncode": 0
+  },
+  {
+    "key": "target-13",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Analysis.PlanarPacking.Grid"
+    ],
+    "wall_s": 253.43851630575955,
+    "returncode": 0
+  },
+  {
+    "key": "target-14",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "OAI.Analysis.PlanarPacking.Certificate.Amplitudes"
+    ],
+    "wall_s": 113.61774599552155,
+    "returncode": 0
+  },
+  {
+    "key": "scope-0-0",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "Init.Data.Nat.Basic"
+    ],
+    "wall_s": 2.026039369404316,
+    "returncode": 0
+  },
+  {
+    "key": "scope-0-1",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "--fresh",
+      "Init.Data.Nat.Basic"
+    ],
+    "wall_s": 2.428216775879264,
+    "returncode": 0
+  },
+  {
+    "key": "scope-1-0",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "Mathlib.Data.Nat.Basic"
+    ],
+    "wall_s": 2.1949921678751707,
+    "returncode": 0
+  },
+  {
+    "key": "scope-1-1",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "--fresh",
+      "Mathlib.Data.Nat.Basic"
+    ],
+    "wall_s": 73.1344447657466,
+    "returncode": 0
+  },
+  {
+    "key": "scope-2-1",
+    "args": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+      "-v",
+      "--fresh",
+      "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion"
+    ],
+    "wall_s": 180.1111795194447,
+    "returncode": -15
+  }
+]

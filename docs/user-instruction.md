@@ -299,3 +299,12 @@ Full/Fast × hybrid/HiGHS 矩阵达到 **9 / 16**? 你在干嘛? 走偏了? 谁�
 2) 写相关工作：已有的证明助手构建和检查性能研究、Mathlib 构建 CI 成本、lean4checker 和外部内核等独立复核器、RL 验证服务（Kimina Lean Server 等），说明我们的刻画补的是哪块空白。
 3) 把 O 线已推送的导入结果（中位数 1.355 s，约占小模块构建的 68%；导入 PSS 约 93% 是文件页）和 W 线 e3301f9、b2df330 的新成本证据放进对应的发现小节；M 线的系统态归因还在排队，先留 \missing。
 改完 commit 并 push。
+
+
+## 2026-10-31 — verbatim no-M paper decision
+
+【Claude 通知：完全不用 -M】用户决定：「就完全不用 M」。依据：Lean 的 check_memory 只有显式传 -M 才启用，官方默认上限是 0（src/runtime/memory.cpp）；DeepSeek-Prover 和 Kimina 都用 RLIMIT_AS 加外部监控，不传 -M。所以 -M 的开销是我们测量设置造成的，不是负载本身的性质。请这样改论文：
+1) 删掉"内存预算的执行可能主导系统态开销"这条发现，改成方法学里的一段：进程内的 -M 检查会在计算密集模块上把墙钟抬高最多约 2 倍（Grid 2.03 倍、UMoments9 1.61 倍、EnvelopePsiB 1.01 倍，判定和产物完全一致），所以全部测量都不用 -M，只用外层 cgroup。
+2) 用 -M 测的成本数字一律标成旧口径并替换掉；W 线正在补无 -M 的新口径，补齐前先留 \missing。
+3) 原来"证书类模块 39–52% 的 CPU 在系统态"的说法要撤掉或改写，那是 -M 造成的。
+改完 commit 并 push。

@@ -1,0 +1,10 @@
+{
+  "source": "https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/runtime/memory.cpp",
+  "findings": [
+    "g_max_memory initializes0",
+    "check_memory returns before RSSqueries when0",
+    "nonzero configured limit checks every200calls"
+  ],
+  "cgroup_context": "https://docs.kernel.org/admin-guide/cgroup-v2.html",
+  "new_native_calls": 0
+}

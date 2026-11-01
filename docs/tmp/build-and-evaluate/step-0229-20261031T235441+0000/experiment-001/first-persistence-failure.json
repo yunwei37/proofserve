@@ -1,0 +1,53 @@
+[
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--stat",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/evaluation.md",
+      "docs/idea-story.md",
+      "docs/user-instruction.md",
+      "docs/tmp/build-and-evaluate/step-0229-20261031T235441+0000"
+    ],
+    "returncode": 0,
+    "stdout": " docs/evaluation.md       | 621 ++++-------------------------------\n docs/idea-story.md       |  14 +\n docs/paper/main.pdf      | Bin 185757 -> 142550 bytes\n docs/paper/main.tex      | 820 ++++++++++-------------------------------------\n docs/user-instruction.md |   9 +\n 5 files changed, 262 insertions(+), 1202 deletions(-)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "add",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/evaluation.md",
+      "docs/idea-story.md",
+      "docs/user-instruction.md",
+      "docs/tmp/build-and-evaluate/step-0229-20261031T235441+0000"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/evaluation.md",
+      "docs/idea-story.md",
+      "docs/user-instruction.md",
+      "docs/tmp/build-and-evaluate/step-0229-20261031T235441+0000"
+    ],
+    "returncode": 2,
+    "stdout": "docs/tmp/build-and-evaluate/step-0229-20261031T235441+0000/experiment-001/withdrawn-finding-legacy-M.tex:418: new blank line at EOF.\n",
+    "stderr": ""
+  }
+]

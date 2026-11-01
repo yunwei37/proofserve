@@ -228,3 +228,17 @@ contributions. System-CPU causes/import-only/software/full-build results
 remain missing until qualified lane data arrive. No novelty or venue
 acceptance is inferred from counters or compilation.
 [Reconstruction and self-review](tmp/build-and-evaluate/step-0214-20261031T040106+0000/step-report.md).
+
+## 2026-10-31 — user withdraws the memory-guard finding
+Explicit user decision: completely omit -M, memory protection outside Lean.
+The previous configuration-attribution finding is removed, not promoted as a
+workload property. Five finding sections remain; four characterization RQs
+and the original narrative/history above stay preserved. One methodology
+paragraph gives the three within-module guard/noM ratios and observed parity.
+All affected compilation/import/profile costs and projections are superseded,
+replaced by missing noM results rather than scaled. Legacy systemCPU/core-use
+claims withdrawn. Source/build-domain counts and separate noM checker scopes
+remain evidence; certificate/service cases retain original historic boundaries.
+This is more faithful to the user's workload-cost question than attributing
+our nondefault setting to the workload. Revisit numerical findings only when
+W's matching noM results arrive. [Self-review](tmp/build-and-evaluate/step-0229-20261031T235441+0000/outer-audit.md).

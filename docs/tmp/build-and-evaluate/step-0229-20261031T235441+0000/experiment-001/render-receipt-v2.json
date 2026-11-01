@@ -1,0 +1,25 @@
+{
+  "pages": 11,
+  "affected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "contacts": [
+    "/workspaces/.agent-state/gpu-smt-captures/step-0229-20261031T235441+0000-paper-v2/contact1.jpg",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0229-20261031T235441+0000-paper-v2/contact2.jpg",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0229-20261031T235441+0000-paper-v2/contact3.jpg"
+  ],
+  "PDF_bytes": 143309,
+  "unchanged_title_RQs": true,
+  "abstract_and_finding_structure_changed_by_explicit_user_noM_decision": true,
+  "logical_budget_not_heartbeat_invariance_claim": true
+}

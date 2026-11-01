@@ -16,20 +16,17 @@ We characterize these costs, using the research-level \texttt{openai/math}
 library as the primary workload and retained proof/program candidate streams
 as contrasts. A complete source census covers 163,097 Lean modules; bounded
 native measurements retain successful, failed and dependency-blocked work.
-In 26 randomly selected modules compiled with standard compiler artifacts,
-system CPU accounts for 28.26\% of measured compiler CPU. A large Grid module
-records 45.38 million voluntary context switches and averages 1.33 CPU cores
-despite eight requested workers. In a separate guarded Grid experiment,
-resource accounting occupies a median 74.98\% of sampled kernel cycles,
-exposing the cost of enforcing the benchmark's memory budget.
+Library-stage CPU, latency and import-cost results are being recollected
+without Lean's optional in-process memory check; values collected with that
+check are retained as a superseded measurement setting.
 The default root omits 33.30\% of the release's lexical
 \texttt{decide +kernel} occurrences.
 Budget-failure exposure varies across candidate streams, and profiling can
 change resource-bounded outcomes: seven of 200 diagnostic source pairs change
 error flags. We distinguish these observations from semantic falsity,
 whole-build costs and accelerator opportunity.
-\missing{Generated-software native costs, complete cost-estimation coverage,
-calibrated import attribution and cross-module causal controls.}
+\missing{No-\texttt{-M} library-stage costs, generated-software native
+costs, complete cost-estimation coverage and calibrated import attribution.}
 Certificate-repair experiments illustrate when changing proof representation
 can help pathological reductions and when it adds cost. The contribution is
 a characterization and its implications for verifier design, rather than a
@@ -57,14 +54,14 @@ We use existing released outputs; we do not generate a new evaluation corpus.
 Repository scaffolds, reference proofs and reported scores alone do not
 establish that evaluated model outputs are available.
 
-Our central observation is that verification exposes different bottlenecks
-at different boundaries. Source-library compilation has substantial system
-CPU and repeated process-level preparation. In the selected Grid case,
-the memory-budget check itself explains much of the sampled kernel work;
-this is a property of the guarded benchmark configuration, not an intrinsic
-cost assigned to every Lean proof. Some candidate streams spend
-most of their measured work on requests that end at resource limits; others
-have a much smaller slow tail. Profiling can itself alter those limits.
+Verification exposes different costs at different boundaries: imported
+environments, source processing, proof construction and checking.
+A measurement setting can also introduce work that is not intrinsic to the
+released artifact. We exclude the optional in-process memory-check setting
+from the current cost protocol and recollect the affected observations.
+Some candidate streams spend most of their historical measured work on
+requests that end at resource limits; others have a much smaller slow tail.
+Profiling can itself alter those limits.
 Even the selected build domain changes the apparent amount of computational
 proof work. Consequently, a lexical tactic count, a successful compiler
 subset or an operation-only speedup cannot stand in for verification cost.
@@ -141,16 +138,15 @@ Dependencies, cache preparation and target compilation retain separate
 records rather than pretending that a target's local CPU is its complete
 cold-build cost. Expensive or blocked draws stay in the original frame;
 we do not replace them with easier modules.
-At the legacy standard-artifact point, 26 targets have complete costs.
-The first locked continuation, five unprofiled panel baselines and the
-collected cohort C below increase the accumulated matching-native-setting
-inventory to 29/42 target costs and 12 complete strata.
-That inventory initially has eight strictly locked costs and three
-complete strata. The later 21-target shared-lock replay raises strict
-coverage to 29/42 costs and 12 complete strata, without replacing any draw.
-Legacy and locked timing policies stay separate; neither is a completed
-same-protocol full-population sample. Dependency compiles and repeated
-profiles do not become additional probability draws.
+The superseded protocol enables \texttt{-M}; it eventually records
+29/42 strictly locked target costs and 12 complete strata.
+Those are historical coverage counts, not valid cost coverage under the
+current no-\texttt{-M} protocol.
+We retain the same original draws, including unfinished difficult targets,
+while replacing their measurements rather than applying a correction factor.
+\missing{Completed no-\texttt{-M} sample/stratum coverage and CPU costs.}
+Dependency compiles and repeated profiles do not become additional
+probability draws.
 
 For a fully observed stratum of size $N_h$ with $n_h=2$ planned draws,
 we use the expansion estimate and finite-population variance
@@ -182,17 +178,40 @@ The library compiler requests eight workers per native process.
 We report actual CPU/wall ratios rather than equating eight workers with
 eight utilized cores.
 
-The current source-cost point emits \texttt{.olean}, \texttt{.ilean} and
-\texttt{.c}, preserves authored heartbeat/recursion options and uses
-\texttt{autoImplicit=false} and the 9,216\,MiB Lean memory option.
-Earlier olean-only, different-budget and pre-lock points remain separately
-labelled. Pre-lock observations are not relabelled as serialized controls
-after the privileged restart.
-Timed captures retain their own finite group/per-file allowances, memory
-records, source identity, actual arguments and PID/birth/terminal evidence.
-Lean memory checks and one-second RSS response policies are not kernel
-hard quotas. A later deployment change does not rewrite an earlier
-measurement's conditions.
+The current source-cost protocol emits \texttt{.olean}, \texttt{.ilean}
+and \texttt{.c}, preserves authored heartbeat/recursion options and uses
+\texttt{autoImplicit=false}. It does not pass \texttt{-M}, including
+\texttt{-M0}; memory protection is provided outside Lean by the recorded
+cgroup. RSS sampling records usage and may overshoot; it is not a second
+in-process memory limit or a kernel hard aggregate-RSS quota.
+The cgroup's charged-memory boundary and OOM outcome are recorded separately
+from process RSS and Lean exceptions~\cite{cgroupV2Memory2026}.
+Each capture retains its actual arguments, finite group/per-file allowances,
+source identity and PID/birth/terminal evidence.
+Earlier \texttt{-M}, olean-only, different-budget and pre-lock captures stay
+labelled as historical points. A later protocol change does not rewrite them.
+
+\paragraph{An optional memory check confounded the earlier measurements.}
+The pinned runtime initializes its native memory limit to zero and returns
+from \texttt{check\_memory} before querying RSS when that value is zero;
+the optional nonzero \texttt{-M} setting activates periodic accounting
+~\cite{leanMemoryGuard2026}.
+Our earlier \texttt{-M} setting, not the workload itself, introduced this
+overhead. In three ordered, unprofiled repetitions per condition, guarded/
+no-\texttt{-M} wall-median ratios are 2.03 for Grid, 1.61 for UMoments9
+and 1.01 for EnvelopePsiB. Native verdicts, diagnostics and complete emitted
+artifacts match within each module. Grid emits \texttt{.olean} only and
+uses 100,000 heartbeats; the other two emit all three facets and retain
+authored/default heartbeats. The same external 15\,GiB native cgroup
+remains in both arms. These three purposeful passing cases establish
+a measurement-configuration effect, not a workload bottleneck, general
+speedup, failure-policy equivalence or population correction.
+We therefore omit \texttt{-M} from all current measurements and use only
+external cgroup memory protection. All earlier \texttt{-M} cost values,
+including import/profile costs and projections derived from them, are
+superseded; current replacements remain \missing{pending no-\texttt{-M}
+measurements}. The old 39--52\% certificate-system-CPU characterization is
+withdrawn. Raw observations remain archived rather than deleted.
 
 Library objects and raw captures reside on the existing PVC.
 No cache drop is performed. The import matrix is sequential with warm OS
@@ -212,7 +231,7 @@ Queue time before acquiring the shared timing lock is separate.
 A concurrent service makespan, summed physical attempts, a frontend-body
 timer and an extra warm declaration check keep their own denominators.
 
-The import matrix has 13 modules selected by historical build time below
+The superseded \texttt{-M} import matrix selects 13 modules by historical build time below
 five seconds within the 26 completed targets.
 Each receives three adjacent build/import-only pairs, with all compiler
 output facets retained; three Mathlib-only controls are additional.
@@ -232,7 +251,7 @@ cumulative phase timers do not form a wall-time partition.
 Stacks, missing/unresolved samples and observer CPU remain visible.
 We check diagnostics and resource outcomes as well as successful completion;
 a shorter profile ending at an earlier budget error is not a speedup.
-\missing{Non-Grid system-CPU attribution, randomized perturbation
+\missing{No-\texttt{-M} CPU/profile attribution, randomized perturbation
 controls and uninstrumented import-cost comparisons.}
 
 Rechecking compiled declarations is a distinct experiment.
@@ -444,529 +463,29 @@ closure and emitted outputs as part of the workload contract, so that a
 faster default target is not mistaken for faster verification of all
 released artifacts.
 
-\section{Memory-budget enforcement can dominate system CPU}
-\label{sec:system}
-Across the 26 completed standard-artifact probability targets, measured
-user CPU is 510.823 seconds and system CPU is 201.187 seconds.
-System work is therefore 28.26\% of the 712.010-second CPU sum.
-This is the aggregate of completed random draws, not a population-weighted
-full-library fraction: 16 selected draws remain incomplete at this point.
-Within those 26 observations, two modules, \texttt{UMoments9} and
-\texttt{BarrierData41}, account for 84.11\% of the measured system CPU;
-adding \texttt{Barrier50} raises the share to 89.39\%.
-Their respective system fractions are 44.33\%, 38.91\% and 41.56\%.
-In contrast, \texttt{EnvelopePsiB} peaks at 8.10\,GiB leader RSS with a
-3.82\% system fraction. High resident memory alone does not explain
-this variation. This is a descriptive comparison at the old point, not a
-new perf attribution or a population-weighted ranking.
-
-A later strictly locked continuation returns 14 native invocations:
-13 compile and the last is interrupted by the remaining group budget.
-Their summed CPU and native wall times are 3,304.393 and 1,700.018 seconds,
-or 1.944 average native CPU cores; group and external capture clocks are
-1,700.148 and 1,701.050 seconds. This is a bounded prefix of 659 planned
-jobs for six endpoints, not their complete build.
-Only \texttt{CoverageK14} reaches an original probability endpoint,
-taking 11.016 seconds locally after prerequisites.
-At that boundary, the combined inventory reaches 27/42 target costs
-and strict locked coverage is one; the separate five-case panel below
-later raises strict coverage to six; cohort C raises it to eight, and the
-later 21-target replay raises it to 29.
-Full total CPU and a global interval remain
-\missing{unavailable from the incomplete matching sample}.
-
-The freshly re-executed \texttt{CertificatesK14Part003} compiles in
-258.741 seconds, but its earlier platform-interrupted cost is unknown;
-no before/after speedup follows.
-The final \texttt{KernelValues20} receives a 92.930-second remainder and
-returns after 93.078 seconds, rather than using a complete 600-second
-opportunity. Fourteen source/PID/birth records are checked and retired.
-These costs retain the deadline and import-cache boundary; they do not
-partition system CPU into causes.
-
-A second completed bounded capture, cohort C, returns 544 native calls:
-543 compile with the three standard outputs and one reaches the group
-deadline; 73 of its 617 planned jobs never start.
-Only two original probability endpoints finish, taking 3.946 and
-1.644 seconds locally. The remaining completed calls are dependency work,
-not 541 additional costed draws.
-Its summed CPU and native wall clocks are 2,077.369 and 1,699.465 seconds,
-or 1.222 average native CPU cores; group elapsed time is 1,700.033 seconds.
-The final dependency runs for 0.335 seconds with only 0.303 seconds of
-group allowance. It is not a failed 600-second opportunity.
-Source bytes, successful artifact sizes and all 544 native identities are
-checked. At that boundary coverage is 29/42 under matching native compiler settings,
-or 8/42 with the strict shared lock.
-A later shared-lock replay of 21 previously costed original targets closes
-the locking gap for those targets: all 21 compile with exact original
-source bytes, authored/default heartbeats, \texttt{-M9216}, eight requested
-workers and all three standard output facets.
-Native wall time sums to 122.484 seconds, with 178.430 user and 25.588
-system CPU seconds; the capture takes 123.102 seconds.
-Its one-second capture-tree sampler peaks at 7,500,951,552 bytes, with one
-native process active at a time. This is neither a whole-Workspace RSS
-measurement nor a kernel-enforced RSS limit.
-All 21 native PID/birth identities and both recorded launcher/CLI
-identities retire; expected artifacts are present.
-
-Combining these disjoint 21 targets with the eight previously locked
-observations gives 29/42 strictly locked target costs and 12 complete
-two-draw strata out of 21. Thirteen original draws remain unmeasured.
-The replay uses cached dependencies and measures local endpoint
-compilation, not rebuilding each target's transitive closure.
-It supplies neither a fresh probability draw nor a controlled speedup
-against historical concurrent observations.
-An initial output-directory preparation failure is retained separately;
-it is an operational failure, not a proof rejection or completed cost.
-No finite full-library CPU estimate follows from the incomplete sample.
-
-
-The purposeful Grid module exposes a more extreme operating point.
-It compiles in 634.280 elapsed seconds with 399.934 user and 440.563
-system CPU seconds. Its 52.42\% system share accompanies 45,375,721
-voluntary and 529,643 involuntary context switches.
-Total CPU divided by wall time is 1.325 cores despite eight requested Lean
-workers. There are no observed major page faults.
-These counters establish low realized CPU utilization and substantial
-system work; they do not identify a lock, allocator, futex or scheduler
-as the cause.
-
-Another large certificate module, Amplitudes, uses 228.898 user and
-95.954 system CPU seconds over 180.276 elapsed seconds:
-29.54\% system CPU and 1.802 average cores at its separate point.
-Thus the inspected large modules do not all share a 39--52\% range.
-\missing{Matched certificate-module cohort and its system-share distribution,
-perf attribution to synchronization/allocation/I/O, and causal controls.}
-The earlier one-worker profiled Grid run stops at its own 300-second bound;
-it cannot supply an isolated eight-versus-one-worker speedup.
-
-\paragraph{The guarded Grid configuration spends kernel cycles enforcing its limit.}
-A separate mechanism experiment uses exact original Grid source, Lean~4.34.1,
-eight requested workers, \texttt{-M8192}, 100,000 heartbeats and only an
-\texttt{.olean} output. It is distinct from the standard-artifact cost
-sample. Each condition has three repetitions under the shared P-core lock:
-plain, perf-stat, perf-record and syscall tracing, with a constant outer
-15\,GiB native cgroup and 16\,GiB capture-tree budget.
-All 12 compile; exact diagnostics and serialized \texttt{.olean} bytes
-match within this experiment.
-
-Table~\ref{tab:grid-guard-accounting} keeps unprofiled and instrumented clocks
-separate. The plain system-CPU share has median 53.07\%
-(range 52.92--53.08\%), with median wall time 621.936 seconds.
-Across the three recordings, resource-accounting callchains account for
-74.98\% of native kernel sampled periods (range 74.92--75.26\%);
-futex paths account for 20.42\%, mapping/advice for 0.14\% and page faults
-for 0.78\%. These are within-kernel sample fractions, not elapsed-time
-fractions or proportions borrowed from the plain run.
-The stack path is \texttt{getrusage} through libc to
-\texttt{lean::check\_memory}, \texttt{check\_system} and checker reduction.
-The pinned runtime source and SDK disassembly identify a per-thread
-200-call check counter and a \texttt{getrusage(RUSAGE\_SELF)} peak-RSS
-query~\cite{leanMemoryGuard2026}.
-Linux defines this usage for the process across all its
-threads~\cite{linuxGetrusage2026}.
-The first two recordings resolve the accounting callers to approximately
-93\% C++ checker and 7\% IR interpreter; the third retains kernel
-accounting symbols but lacks the application caller.
-Its unresolved application origin is retained, rather than labelled zero
-guard work. All three contain 305,417 native samples in total; decoded
-periods and counts match the retained flat-report totals.
-
-Three traces observe a median 4,010,856 \texttt{getrusage} calls, but two
-lose 16,749 and 7,348 events. These are observed counts, not a loss-free
-syscall census. Cumulative syscall elapsed time includes overlapping
-sleeping threads and cannot replace on-CPU period attribution.
-
-\begin{table*}[t]
-\centering\small
-\begin{tabular}{lrrrr}
-\toprule
-Grid configuration / observation & Repetitions & Wall (s) & User CPU (s) & System CPU (s)\\
-\midrule
-Guarded, unprofiled &3&621.936&385.525&436.151\\
-Guarded, perf stat &3&631.057&386.238&580.505\\
-Guarded, perf record &3&631.688&386.095&486.194\\
-Guarded, syscall trace &3&616.584&375.757&515.744\\
-Without \texttt{-M}, unprofiled &3&305.693&371.815&107.412\\
-Without \texttt{-M}, perf stat &3&327.850&372.597&243.805\\
-Without \texttt{-M}, syscall trace &3&308.212&361.129&187.021\\
-\bottomrule
-\end{tabular}
-\caption{Native clocks at the separate \texttt{.olean}-only Grid point.
-Every row reports per-metric medians of three completed repetitions.
-Removing the in-process memory option changes that resource policy;
-the outer native and tree limits remain in place.
-No row is a kernel-only timer or a matched production-service speedup.}
-\label{tab:grid-guard-accounting}
-\end{table*}
-
-\paragraph{Repeated Grid contrast and implications for cost estimates.}
-The first no-\texttt{-M} plain run takes 320.612 seconds.
-The now-completed three-run plain subset has wall median 305.693 seconds
-(range 303.203--320.612), versus 621.936 seconds
-(612.777--633.650) in the guarded triplet.
-The ratio of medians is 2.035; the no-\texttt{-M} median is 50.85\% lower.
-System CPU has median 107.412 seconds (101.354--213.346), versus
-436.151 seconds in the guarded baseline, a 75.37\% median reduction.
-All nine completed no-\texttt{-M} plain/stat/trace cells return zero with
-the same native diagnostics and reported serialized \texttt{.olean} bytes.
-
-The source, explicit environment and native command are unchanged apart
-from \texttt{-M} and output destination; outer protection remains in place.
-The result supports the observation that this in-process limit can account
-for about half the observed latency of this accepted compute-heavy module.
-These Grid ratios describe an ordered single-factor comparison with a
-changed resource policy, not a randomized population effect, exclusive
-phase timer or failure-equivalence result.
-The wide system-CPU range is retained rather than selecting the fastest
-or lowest-system-cost run.
-\paragraph{A completed three-module matrix bounds the generalization.}
-The full planned matrix now has 90 completed cells and retired native
-identities/controllers: 30 conditions, each repeated three times, across
-three deliberately selected computational modules.
-All native processes return zero; native diagnostics match and retained
-byte comparisons report the same \texttt{.olean} within each module.
-The matrix contains the earlier Grid cells rather than 90 additional runs.
-Failed setup attempts outside this frozen matrix remain separately retained.
-
-Table~\ref{tab:memory-policy-matrix} compares the plain conditions.
-Removing \texttt{-M} lowers UMoments9's wall median from 141.739 to
-88.211 seconds (37.77\%), but EnvelopePsiB's from 64.447 to 63.518
-seconds (1.44\%). Thus two measured computational modules show substantial
-memory-option effects while the third shows a small one.
-Each comparison keeps its own module's settings: Grid emits only
-\texttt{.olean} with \texttt{-M8192} and 100,000 heartbeats;
-the other two emit \texttt{.olean}/\texttt{.ilean}/\texttt{.c}, use
-\texttt{-M9216} in guarded conditions, and retain authored/default heartbeats.
-The rows must not be pooled into one uniform cost point or used to correct
-the library's unmeasured population.
-
-\begin{table*}[t]
-\centering\small
-\begin{tabular}{lrrrrr}
-\toprule
-Module & Guarded baseline & No \texttt{-M} & One worker & mmap threshold & trim threshold\\
-\midrule
-Grid & 621.936 & 305.693 & 710.292 & 622.072 & 623.923\\
-UMoments9 & 141.739 & 88.211 & 174.765 & 142.735 & 141.862\\
-EnvelopePsiB & 64.447 & 63.518 & 64.968 & 64.568 & 64.555\\
-\bottomrule
-\end{tabular}
-\caption{Wall seconds, medians of three unprofiled executions per cell.
-Compare columns within a row; the module settings and output facets differ
-between rows. All use external 15\,GiB native protection and P0--7 affinity.
-The last two controls separately set the glibc mmap or trim threshold
-to 128\,MiB. One-worker settings change both \texttt{-j} and
-\texttt{LEAN\_NUM\_THREADS}; no-\texttt{-M} changes the internal memory policy.
-These purposeful modules are not a population-weighted sample.}
-\label{tab:memory-policy-matrix}
-\end{table*}
-
-Reducing requested workers alone does not reproduce the memory-option
-benefit. With \texttt{-j1} and \texttt{LEAN\_NUM\_THREADS=1}, Grid takes
-710.292 seconds and UMoments9 174.765 seconds, respectively 14.21\%
-and 23.30\% slower than their eight-worker baseline medians.
-EnvelopePsiB takes 64.968 seconds, 0.81\% slower.
-This does not establish the number of live OS threads or attribute the
-residual system CPU; it rules out this worker-setting change as an
-effective fix in these runs.
-The two tested glibc threshold controls also provide no lower wall medians:
-their changes are below 0.71\% in magnitude.
-Those ordered, three-repeat negative controls are not equivalence tests or
-evidence that allocator behavior is irrelevant in every verifier.
-Independent flat-report checks now also match all decoded native sample
-and period totals for the six completed non-Grid baseline recordings.
-Table~\ref{tab:kernel-operation-samples} uses the same operation classifier
-in three recordings per module. UMoments9 spends a median 59.36\% of
-kernel sampled periods in resource accounting and 34.10\% in futex paths.
-EnvelopePsiB instead has a 37.65\% page-fault share, 20.66\% resource
-accounting and 1.11\% futex. Its low absolute system-CPU budget is not
-contradictory: each percentage is conditional on that module's kernel
-samples, not on its complete verification time.
-The table supports a workload-dependent attribution rather than assigning
-Grid's accounting fraction to every computational proof.
-
-\begin{table*}[t]
-\centering\small
-\begin{tabular}{lrrrrr}
-\toprule
-Module & Resource accounting & Futex & Page faults & Mapping/advice & Other kernel\\
-\midrule
-Grid &74.98&20.42&0.78&0.14&3.35\\
-UMoments9 &59.36&34.10&0.98&0.11&5.13\\
-EnvelopePsiB &20.66&1.11&37.65&7.65&31.95\\
-\bottomrule
-\end{tabular}
-\caption{Percentages of native kernel sampled cycle periods: the median
-of three guarded baseline recordings per module, not wall-time shares.
-Resource-accounting ranges are 74.92--75.26\%, 58.38--59.43\% and
-15.84--23.03\%, respectively. Mapping/advice includes mmap, munmap and
-madvise callchains. Scheduler/wakeup and PMU paths are retained separately
-in the underlying data; independently computed category medians need not
-sum to 100\%. These are the baseline-record cells already included in
-the 90-cell matrix, not nine additional native measurements.}
-\label{tab:kernel-operation-samples}
-\end{table*}
-
-\paragraph{Removing accounting leaves synchronization evidence, not a complete residual profile.}
-The three baseline trace summaries per module observe median
-\texttt{getrusage} counts of 4,010,856, 1,022,147 and 600,149.
-None of the nine no-\texttt{-M} trace summaries contains that row.
-Absence is recorded as not observed rather than an exact zero syscall
-census. Grid's baseline traces lose events in two repetitions and its
-first no-\texttt{-M} trace loses 348; the other trace captures report no
-lost events. Even a loss-free report is not a proof of complete
-entry/exit pairing.
-
-In no-\texttt{-M} plain runs, system-CPU medians remain 107.412 seconds
-for Grid, 42.305 for UMoments9 and 1.960 for EnvelopePsiB.
-Separate no-\texttt{-M} traces still observe median futex counts of
-50.52 million and 18.17 million for Grid and UMoments9, close to their
-guarded counts of 52.37 million and 19.00 million.
-This identifies synchronization as a remaining path worth testing;
-it does not measure its share of the residual on-CPU budget.
-There is no no-\texttt{-M} perf-record arm in this matrix.
-Cumulative syscall elapsed seconds include sleeping, preemption and
-overlapping threads; they cannot be added to system CPU or used to
-subtract baseline sample fractions from a different execution.
-The single-worker control retains \texttt{-M}; without a combined
-no-\texttt{-M}/one-worker condition, the interaction remains unknown.
-
-Our W-line source-cost measurements also enable \texttt{-M}, including
-\texttt{-M9216} at the standard-artifact point.
-Those measurements correctly describe their guarded configurations, but
-conditional cost projections derived from them may be high relative to
-verification protected only outside the process.
-The amount of any inflation remains unknown until matched controls
-establish the effect across the measured modules.
-We apply no Grid-derived percentage correction to W's recorded costs,
-sampling estimates or the full library.
-This potential configuration effect is separate from the incomplete
-probability sample's missing population estimate.
-
-Instrumentation is itself material here. Relative to the plain triplet's
-medians, perf-stat wall time rises 1.47\% while system CPU rises 33.10\%;
-perf-record rises 1.57\% and 11.47\%, respectively.
-Syscall tracing has a slightly lower wall median while system CPU rises
-18.25\%. These ordered triplets are descriptive comparisons, not randomized
-overhead intervals. After removing \texttt{-M}, perf-stat's wall median
-is 7.25\% above the no-\texttt{-M} plain median, while system CPU is
-126.98\% higher. These medians retain their own no-\texttt{-M} denominator;
-a guard-dependent instrumentation effect cannot be replaced with one
-universal overhead correction.
-\missing{Broader module coverage, no-memory-option on-CPU residual
-attribution, randomized-order uncertainty, population cost-estimation
-impact and resource-failure outcome equivalence.}
-
-
-\paragraph{Native profiles expose different work inside the same compiler.}
-A separate five-source panel brackets perf-stat and perf-record runs with
-unprofiled before/after baselines: 20 native invocations in all.
-The two mathematical comparators are the original random pilots in one
-high-variance stratum; three heavy original targets are selected for
-mechanism inspection. The panel has no population phase weights.
-Every source compiles in all four modes with exact source bytes and
-identical native diagnostics, and every recorded native process retires.
-
-Figure~\ref{fig:native-cost-domains} (right) attributes native-PID user-cycle sample
-periods to the nearest recognized caller family.
-Every hotspot percentage below is a sampling distribution within that
-event and PID scope, not a percentage of complete-process elapsed time
-or total user-plus-system CPU.
-The three computational cases have 74.93--94.01\% in the C++ checker family;
-the two mathematical comparators have only 1.92--2.06\%.
-The C++ family includes inference, equality, reduction and checker-state
-cleanup, rather than solely final theorem validation.
-The contrast supports measuring mathematical and computational proof
-families separately; it is not an all-library kernel fraction.
-Within the same sampled user-cycle denominator, normalization anchors
-account for 71.43\%, 65.71\% and 80.61\% in the three computational
-cases; checker-state cleanup accounts for another 9.30\%, 8.87\% and
-13.34\%. These symbol subfamilies explain the breadth of the checker
-label without assigning a source-level tactic from a C++ frame.
-Private-name recognition refines the initial Meta/import attribution;
-it changes classification, not the original native recordings.
-
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/native-cost-domains.pdf}
-\caption{The same five purposeful sources have different cost mixtures.
-Left: native CPU accounting in each unprofiled before baseline.
-Right: decoded native-PID user-cycle sampling in a separate perf-record
-execution, using published revision-two caller-family classification.
-These are separate denominators and runs; the panels are not multiplied
-into a full-process phase estimate. The checker family includes
-normalization/inference/equality and cleanup, not only final validation.
-Other includes recognized elaborator/compiler/serialization families;
-unresolved includes runtime leaves without a recognized phase anchor.}
-\label{fig:native-cost-domains}
-\end{figure*}
-
-The five recordings contain 46,882 native samples and zero reported lost
-samples. Their decoded period totals plus excluded launcher periods match
-stock perf-report totals.
-Zero lost samples does not guarantee complete stacks: full root markers
-are rarely reached, and the shortest recording has only 215 native samples.
-Stat IPC spans 1.450--2.189 and cache misses per thousand instructions
-1.379--6.101, but those counters include the launcher and native descendants;
-the phase table separately filters to the native PID.
-Per-case baseline-after CPU differs from baseline-before by -9.91\% to
-+6.38\%. One bracket per source cannot establish a general overhead
-correction or interval, even with equal observed diagnostics.
-System CPU remains outside the user-cycle phase denominator.
-This exclusion matters even among the three computational cases.
-In their unprofiled before baselines, UMoments9 and BarrierData41 spend
-45.33\% and 39.73\% of native CPU in system mode, with approximately
-115,680 and 131,232 voluntary context switches per wall second.
-EnvelopePsiB instead spends 4.12\% in system mode and records 572 such
-switches per second. The two mathematical comparators have system shares
-10.73\% and 19.54\%. Each fraction uses that invocation's own CPU
-denominator; switch counts alone do not attribute the work to a syscall.
-UMoments9 and BarrierData41 are outside the publisher's default import
-closure, whereas the other three panel sources are inside.
-Consequently, a default-root-only profile would omit two of these
-expensive computational cases, even before weighting or extrapolation.
-
-\missing{System-CPU attribution beyond these three selected modules
-and broader repeated profile-overhead uncertainty.}
-
-\paragraph{System-design implication.}
-Move memory protection off the frequent reduction/checking path:
-enforce the memory budget outside the verification process, for example
-with a cgroup, or reduce/coalesce the in-process accounting-query frequency.
-Grid's existing outer limit makes the first option concrete without
-requiring an unprotected process; the lower-frequency option remains
-unmeasured.
-The attribution motivates these choices, while comparative performance and
-resource-failure behavior still require matched evaluation.
-Kernel-enforced \texttt{memory.max} limits charged cgroup memory and can
-invoke a cgroup OOM kill~\cite{cgroupV2Memory2026}; its accounting boundary
-and failure mode are not Lean's in-process memory exception.
-Declare the enforced quantity, overshoot and failure behavior for the chosen
-policy. A fair optimization preserves the safety guarantee or explicitly
-changes the resource contract.
-The three accepted no-\texttt{-M} plain repetitions establish neither
-failure equivalence nor a generally preferable memory policy.
-Budget enforcement belongs in the measured acceptance path: for this
-guarded Grid and UMoments9 points, resource-accounting checks and
-synchronization dominate the classified kernel samples.
-EnvelopePsiB's low-system-time, page-fault-heavy counterexample rules
-out treating this as a universal verifier bottleneck.
-Process-wide usage accounting also makes requested worker count different
-from the OS thread group whose resources are aggregated.
-The completed one-worker controls do not remove the expensive behavior;
-actual thread/call-path measurements remain necessary to explain it.
-The different no-memory-option effects across the three modules favor
-workload-qualified policy choices over one universal correction.
-The separate user-cycle panel motivates normalization and cleanup studies,
-but cannot supply a whole-flow accelerator ceiling.
-
-
 \section{Fresh module verification has a preparation floor}
 \label{sec:imports}
 Each separately launched module compiler reconstructs its imported
-environment, even when dependency objects already exist.
-In the 26-module standard-artifact sample, the fastest complete compiler
-call takes 1.116 seconds and peaks at 2,598,928\,KiB
-(2.48\,GiB) leader RSS, for a 2,072-byte source.
-This is a measured whole-process floor in that sample, not an isolated
-Mathlib import timer or a universal minimum.
-The clock includes source processing and artifact emission.
+environment even when dependency objects already exist.
+The earlier module-floor and import-control measurements enable
+\texttt{-M}; their timing, memory, observer-cost and profile values are
+therefore old-protocol observations, not current characterization results.
+This includes the earlier short-module import/build ratios and serial-hour
+illustration. They are retained in the step records but not corrected by
+the three-module ratios above.
 
-A completed import-control matrix narrows that interpretation.
-It selects the 13 of those 26 modules whose historical compiler wall time
-was below five seconds, then executes three adjacent build/import-only
-pairs per module, plus three \texttt{import Mathlib} controls.
-All 81 native processes return zero; original builds retain exact source
-bytes, and the controls retain only the original direct import lines.
-Both sides emit \texttt{.olean}, \texttt{.ilean} and \texttt{.c}.
-The sequential warm-OS-cache point uses a shared timing lock on CPUs~0--7,
-eight requested Lean workers and the 9,216\,MiB native memory option.
-Its numbers are conditional on this short-module selection and instrumentation.
-
-Per-module import-only wall medians range from 0.712 to 3.195 seconds,
-with a median of 1.355 seconds. The median per-module import/build ratio
-is 0.682; the ratio of summed module medians is 0.678.
-These are different descriptive aggregations, not a measured removable
-fraction or population estimate. The Mathlib-only control median is
-3.002 seconds.
-
-\paragraph{Conditional serial scale, not a library-cost estimate.}
-For illustration only, suppose $n=163{,}000$ separately launched calls
-each paid the same measured import-only median $t$:
-\[
-  H(t)=\frac{n\,t}{3{,}600}\quad\text{serial hours}.
-\]
-The selected module medians give 32--145 hours, with 61 hours at the
-cohort median (unrounded: 32.23, 144.68 and 61.34 hours).
-The rounded $n$ is a scale parameter, not a newly measured module count;
-the released source census remains 163,097.
-These are hypothetical repeated identical import costs under warm page
-cache, selected short successful modules and the measured observer.
-The range is the range of selected module medians, not an uncertainty
-interval for the population.
-Different import closures, cache states, dependency reuse and parallel
-execution prevent treating it as a full-build estimate or removable
-end-to-end time. No corresponding cold-cache or retained-process total
-has been measured.
-
-\begin{table}[t]
-\centering\small
-\begin{tabular}{@{}lr@{}}
-\toprule
-Import-control observation & Value\\
-\midrule
-Native runs / selected modules &39 / 13\\
-Median native peak RSS &3.113\,GiB\\
-Median sampled PSS at RSS peak &3.100\,GiB\\
-Median file-backed fraction of PSS &92.89\%\\
-Median anonymous PSS at RSS peak &237.77\,MiB\\
-Sum of major page faults &0\\
-\bottomrule
-\end{tabular}
-\caption{The 39 warm-cache import controls. Sampled PSS components use one
-simultaneous per-run RSS-peak sample; displayed medians need not add up.
-A 100\,ms sample can miss peaks. Leader high-water RSS is a separate metric.}
-\label{tab:import-memory}
-\end{table}
-
-Resident memory is mostly file-backed at this point
-(Table~\ref{tab:import-memory}). Low reported \texttt{Shared\_Clean}
-does not demonstrate that these pages cannot be shared: only one native
-compiler runs at a time, so mapped file pages can appear
-\texttt{Private\_Clean}. A 3.113\,GiB resident footprint is not evidence
-that 3.113\,GiB of mutable heap was rebuilt.
-Actual cross-worker page sharing and environment-construction CPU
-still require separate measurements.
-
-The observer is consequential. Native child CPU sums to 205.945 seconds
-and native wall intervals to 194.168 seconds.
-Driver waited-child accounting exceeds native CPU by approximately
-54.045 CPU seconds, including observation and phase preparation.
-The runner scans process descendants and collects \texttt{smaps\_rollup}
-at 100\,ms intervals. This additional work is reported rather than
-subtracted from the native wall clocks.
-A completed follow-up changes descendant discovery while retaining
-100\,ms memory sampling. It executes three build/import repetitions on
-three historical short-module controls, plus three Mathlib-only repetitions:
-21 successful native calls and 14.348 seconds of measured observer CPU
-alongside 49.964 native CPU seconds.
-Across the seven mode/module groups, follow-up/original wall-median ratios
-range from 0.920 to 1.087, including both slower and faster observations.
-This fixed-order, smaller-cohort comparison is neither an uninstrumented
-reference nor a randomized overhead estimate. Its observer CPU cannot be
-compared directly with the earlier 81-call matrix's 54.045-second aggregate.
-
-Five separate import-only perf runs also complete.
-The user-plus-kernel Mathlib recording contains 579 samples and zero
-reported lost samples; its self-period shares include 9.29\% for
-\texttt{lean\_mark\_persistent} and 5.69\% for \texttt{lean\_name\_eq}.
-The other four recordings sample user cycles only and keep their own
-denominators. These profiles expose work within import preparation,
-not a cause of the complete library modules' system-CPU share.
-\missing{Uninstrumented import controls, repeat-based observer uncertainty,
-cold-cache controls, allocation/CPU attribution and matched retained-state costs.}
+The current protocol keeps original source/import closures and all requested
+artifact facets, omits \texttt{-M} and uses external cgroup protection.
+Import-only controls retain direct import lines, while complete builds
+retain all declarations. Warm page-cache state, ordering, memory sampling
+and observer CPU remain separate measurement conditions.
+\missing{No-\texttt{-M} complete-module floor, import-only medians,
+import/build ratios, RSS/PSS components, observer overhead and repeat
+uncertainty.}
+\missing{No-\texttt{-M} cold-cache and retained-process comparisons;
+any justified serial-scale illustration under the new protocol.}
+No old import median, file-backed share or derived hours is used as a
+replacement for these missing results.
 
 \paragraph{Replay costs depend on the checking boundary.}
 The first compiled-module replay attempt stops before checking:
@@ -977,18 +496,15 @@ matrix completes all 15 requested import-relative target replays.
 Every successful invocation announces exactly its requested module and
 returns zero without diagnostics.
 
-For the 13 short modules, median checker-process wall time is 3.510 seconds.
-The median ratio to each module's earlier three-repeat full-build median
-is 1.281. Thus eliminating source elaboration does not automatically
-make this fresh checker process cheaper in the selected cohort.
-Both durations include process setup and environment work, and the
-denominators include the earlier import experiment's observer.
-These are separate sequential captures, not contemporaneous randomized
-construction/replay pairs or an exclusive-kernel fraction.
-Grid and Amplitudes replay in 253.439 and 113.618 seconds, respectively;
-their ratios to separately retained historical standard builds are
-0.400 and 0.630. These two historical comparisons remain separate from
-the 13-module median and do not establish service speedups.
+The retained stock-checker commands do not pass \texttt{-M}.
+For the 13 short modules, median checker-process wall time is 3.510 seconds;
+Grid and Amplitudes take 253.439 and 113.618 seconds at that earlier
+replay point. These are standalone process measurements with their original
+recorded resource/observer conditions, not a new cgroup-matched source-build
+comparison or an exclusive-kernel clock.
+Ratios to earlier \texttt{-M} source builds are withdrawn.
+\missing{Contemporaneous no-\texttt{-M}, cgroup-matched repeated
+construction/replay costs and ratios.}
 
 Import-relative replay trusts imported declarations and rechecks target
 constants. In contrast, \texttt{--fresh} imports the target and replays
@@ -1039,26 +555,21 @@ resource retries and 18 different-import fallbacks remain charged.
 This service comparison does not estimate a library build's import share.
 
 \paragraph{System-design implication.}
-Small modules can be dominated by process/environment preparation even when
-their proof bodies are cheap. This fixed cost motivates resident or prewarmed
-checking processes that retain a compatible imported environment across
-requests. State and options must remain request-correct, and incompatible
-imports still require separate environments or reloads.
+Resident or prewarmed checking processes can amortize compatible environment
+preparation across requests, but its no-\texttt{-M} cost and removable
+fraction remain to be measured here.
+State and options must stay request-correct; incompatible imports can
+require separate environments or reloads.
 Import amortization is established engineering, not our novelty claim.
-Evaluate it against a competent warm service and charge replicated resident
-memory, incompatible contexts, reloads, cancellation and cleanup~\cite{fork}.
-A gain over fresh processes alone is insufficient evidence of service benefit.
-The instrumented import matrix and limited observer follow-up establish
-substantial preparation-related latency in their selected cohorts, but not
-how much a production service can remove. The large file-backed share also prevents inferring memory-capacity
-gains by multiplying per-process RSS. Calibration and matched retained-state
-comparisons must establish these benefits without changing verification
-behavior.
-A verification service must also expose its checking boundary: rebuilding a
-source, rechecking it relative to trusted imports and replaying its full
-loaded constant map are different operations.
-Charge discovery, imports and cleanup for the chosen operation; do not
-substitute a cheaper trust scope for an equivalent performance comparison.
+Evaluate it against a competent warm service, charging resident memory,
+reloads, cancellation and cleanup~\cite{fork}.
+Distinguish file-backed pages from mutable state before estimating memory
+capacity from RSS. The superseded import matrix supplies no current
+no-\texttt{-M} capacity or latency estimate.
+A service must expose its checking boundary: rebuilding source, rechecking
+relative to trusted imports and replaying the loaded constant map are
+different operations. Charge discovery, imports and cleanup for the chosen
+operation; do not substitute a cheaper trust scope for equivalent verification.
 
 \section{Budget-failure exposure is workload dependent}
 \label{sec:failures}
@@ -1080,27 +591,29 @@ budget.
 In the first retained ProofNet pass, 70 of 5,952 sources with budget
 diagnostics consume 138.011 of 1,192.435 request seconds, or 11.57\%.
 The other two passes have their own clocks and are not pooled.
-The selected EPFL and APRIL points also vary (Table~\ref{tab:budget});
-they are small diagnostic samples, not population estimates.
+The EPFL and APRIL diagnostic points were collected under the superseded
+\texttt{-M} protocol. Their old time shares remain archived;
+Table~\ref{tab:budget} leaves current replacements missing.
 
 \begin{table}[t]
 \centering\footnotesize
-\setlength{\tabcolsep}{3pt}
+\setlength{\tabcolsep}{2pt}
 \begin{tabular}{@{}lrrr@{}}
 \toprule
 Point & Sources & Budget sources & Cost share\\
 \midrule
 miniF2F attempts &7,808&126&73.21\%\\
 ProofNet pass 1 &5,952&70&11.57\%\\
-EPFL completed prefix &136&12&25.60\%\\
-EPFL training selection &12&6&55.04\%\\
-APRIL mutations &39&16&50.53\%\\
-APRIL references &39&4&18.94\%\\
+EPFL completed prefix &136&12&\missing{}\\
+EPFL training selection &12&6&\missing{}\\
+APRIL mutations &39&16&\missing{}\\
+APRIL references &39&4&\missing{}\\
 \bottomrule
 \end{tabular}
 \caption{Budget-exposed source time under each point's own measurement
 boundary. miniF2F includes physical retries; other rows use request clocks.
-Selection, environments and limits differ. No row is a sound early-rejection
+EPFL/APRIL counts retain their old protocol; their no-\texttt{-M} costs
+are missing. Selection, environments and limits differ. No row is a sound early-rejection
 rule or a cross-workload speedup comparison.}
 \label{tab:budget}
 \end{table}
@@ -1157,25 +670,25 @@ Replayed reference proofs, generated mutations and service responses must
 therefore preserve their separate provenance.
 
 Observation can also change the work completed.
-A Lean~4.9.0-rc1 diagnostic executes 200 sources in control/observe pairs
+A historical \texttt{-M8192} Lean~4.9.0-rc1 diagnostic executes
+200 sources in control/observe pairs
 with the same diagnostic \texttt{maxHeartbeats=3000}.
 Both retain InfoTrees; observe additionally enables zero-threshold
 \texttt{trace.profiler}. Seven pairs change from a no-error flag to a
 budget error. Raw error arrays differ for 80 pairs.
-The control/observe body sums are 779.388 and 80.075 seconds; the shorter
-profiled time reflects earlier interruption, not acceleration.
-The complete process takes 1,170.883 seconds.
+These diagnostic-outcome changes belong to that old resource point.
+Its old body/process clocks are superseded;
+\missing{No-\texttt{-M} profiling costs and paired outcome stability.}
+Earlier interruption is not acceleration.
 A no-error frontend flag is not whole-source, axiom-clean service acceptance.
 
 A later linked C-timing control preserves error flags, diagnostic arrays
 and InfoTrees on all 200 sources. Yet measured allocation-heartbeat deltas
 differ for 63 timing-off and 62 timing-on sources relative to stock.
-Its six serial processes take 3,081.953 seconds, exceeding the declared
-1,800-second group limit; these are retained exploratory diagnostics.
-Even outcome equality does not establish exact budget accounting.
-Their 93.17\% exclusive \texttt{eqRefl} body-CPU share cannot be transferred
-to the original service: one diagnostic call runs for 720.250 seconds
-inside that frame, while the service stops the request at 300 seconds.
+Its six serial processes also exceed the old collection deadline,
+a retained protocol failure. That old \texttt{-M} point's cost and exclusive
+\texttt{eqRefl} CPU-share numbers are withdrawn from current characterization.
+\missing{No-\texttt{-M} C-timing perturbation costs and CPU attribution.}
 
 \paragraph{System-design implication.}
 Budgeted verification needs a versioned work-accounting contract.
@@ -1199,8 +712,10 @@ unprofiled run's denominator.
 
 \section{Certificate repair helps selected pathological reductions}
 \label{sec:certificates}
-This case study tests an implication of the profiles: representation can
-matter more than performing the same arithmetic faster.
+This case study tests whether representation can matter more than
+performing the same arithmetic faster. Its historical prototype costs are
+kept at their original resource points and do not fill the missing current
+no-\texttt{-M} library-cost profile.
 It is not the paper's main contribution or a generic verified extraction
 compiler. All proposed replacements still require native checking.
 
@@ -1208,12 +723,13 @@ A small finite-count proof groups 10,000 tests into 100 blocks and proves
 correspondence to the original predicate/cardinality.
 Its computation theorem has no axioms; the bridge has only standard logical
 axioms, without \texttt{sorryAx} or a native-evaluation axiom.
-A complete successful control takes 30.581 seconds, including a warm extra
-declaration check of 8.557 seconds.
-That subclock is not added again or compared with a separately timed
-untrusted numeric loop as a checking speedup.
+The successful native control uses the superseded \texttt{-M8192}
+protocol. Its proof/axiom audit is retained, but its old whole-source and
+extra-check times do not supply the current no-\texttt{-M} cost.
+\missing{No-\texttt{-M} complete construction, checking and correspondence costs.}
 
-The broader miniF2F test makes the coverage boundary explicit.
+The historical \texttt{-M} miniF2F repair test makes the proof-coverage
+boundary explicit; it is not a new-protocol cost or budget-outcome sample.
 For 64 exact sources in two selected pathological computation families,
 original execution has zero acceptances, 13 ordinary errors and 51 budget
 outcomes; the repair has 31 acceptances, 29 errors and four budget outcomes.
@@ -1224,13 +740,14 @@ They are not a transparent unchanged-input verifier optimization.
 Combining these repairs with historical accepted IDs is not a fresh
 full-population run or a pass-set preservation experiment.
 
-The contrast with modern library proofs is negative.
-Seven matched Int/list certificate comparisons accept in both conditions,
-but all seven certificate variants are slower.
-Whole-source sums increase from 13.318 to 23.937 seconds; additional warm
-declaration checks increase from 2.328 to 5.758 seconds.
-The extra checks exclude original construction and first checking, so they
-do not isolate total kernel CPU.
+Seven matched Int/list certificate comparisons accept in both conditions
+under the historical \texttt{-M} setting.
+Their old whole-source and additional-check costs, and the resulting
+slowdown ranking, are not used as a current no-\texttt{-M} transfer result.
+\missing{No-\texttt{-M} matched certificate construction/replay costs and
+transfer comparison.}
+Extra checks exclude original construction and first checking, so even a
+new matched replay clock would not isolate total kernel CPU.
 Further external literal/certificate tests recover no whole ProofNet,
 EPFL or APRIL source in the tested subsets.
 An intermediate tactic hit can still leave a later false or unproved
@@ -1260,24 +777,31 @@ or a new experimental direction.
 
 \section{What the characterization supports, and what remains unknown}
 \label{sec:limits}
-The observations support six design priorities: declare build coverage;
-attribute system work before adding cores; isolate the import floor;
-separate failure frequency from tail concentration; measure observer
-perturbation; and evaluate proof-representation changes through complete
-native checking. They do not yet establish one generally superior verifier.
+The retained findings motivate five priorities: declare build coverage;
+measure preparation at the chosen replay boundary; separate failure frequency
+from tail concentration; measure observer perturbation; and evaluate
+proof-representation changes through complete native checking.
+Current no-\texttt{-M} preparation costs remain an explicit missing result,
+rather than being filled with the superseded import measurements.
 
-There are three major open evidence boundaries.
-First, all-source native cost estimation is incomplete. Completed samples,
-purposeful stresses and dependency work cannot be pooled into a whole-library
-point estimate, and cold preparation costs remain outside the compiler
-clocks. Second, generated-software availability and performance must be
-established independently of published task scaffolds and benchmark scores.
-Third, selected Grid callchains identify native memory accounting
-at the guarded point; the completed 90-cell matrix adds three-module
-memory-option and worker-setting comparisons.
-Kernel-callchain attribution beyond Grid, effects on resource failures and
-generalization beyond these purposeful modules remain incomplete. This does not establish that unguarded stock Lean has
-the same system share, nor replace missing results with estimated speedups.
+The optional \texttt{-M} experiment is a methodology correction, not a finding
+about intrinsic workload cost. All previous library compilation/import/
+profile costs using that option remain archived as old-protocol evidence.
+The claims of generally high certificate-module system CPU and low realized
+core use from those captures are withdrawn.
+We do not multiply old costs by Grid's ratio or relabel old observations as
+new no-\texttt{-M} measurements.
+
+Three evidence boundaries remain open.
+First, same-protocol no-\texttt{-M} library cost estimation is incomplete;
+successful legacy samples, purposeful stresses and dependency work cannot
+be pooled into a current full-library estimate.
+Second, generated-software performance must be established independently of
+task scaffolds and benchmark scores.
+Third, no-\texttt{-M} stage attribution, observer uncertainty and
+resource-failure behavior require their own matched measurements.
+Historical candidate-stream contrasts retain their own toolchains and
+resource policies; their costs are not current library-build estimates.
 
 The artifacts preserve unsuccessful prototypes, signal-limited captures,
 budget interruptions and uninvoked dependencies.
@@ -1371,19 +895,21 @@ reduction bottleneck; external search with native checking is prior art.
 The gap addressed here is a boundary-consistent characterization of released
 AI-generated formal artifacts, with a research-level library as the primary
 population and rejected/resource-limited attempts retained as contrasts.
-It joins source/build coverage to native costs, separates mapped resident
-pages from mutable state, and tests whether observation preserves outcomes.
+It joins source/build coverage to explicitly scoped native costs, treats
+mapped resident pages and mutable state as distinct metrics, and tests
+whether observation preserves outcomes.
 It complements build engineering and checker benchmarks rather than claiming
 that their bottlenecks are new. Complete software and causal-profile
 findings remain explicit open results.
 \section{Conclusion}
 Verification of AI-generated formal artifacts has workload- and
 boundary-dependent costs.
-The research-library evidence exposes substantial system CPU at its guarded
-points, low realized core use, a repeated fresh-process floor and incomplete
-default-build coverage. In selected Grid runs, native memory accounting
-dominates sampled kernel work; the budget mechanism is part of the cost
-being characterized. Candidate streams expose different failure and tail structures;
+The research-library source census exposes incomplete default-build
+coverage. Its current native stage and preparation costs remain
+\missing{pending no-\texttt{-M} measurements}.
+The optional memory-check overhead is a confound introduced by our earlier
+measurement setting, not a property attributed to AI-generated proofs.
+Candidate streams expose different failure and tail structures;
 resource limits and profiling can change the observed outcome.
 Targeted certificate repair illustrates an algorithmic response to selected
 pathological reductions, while its negative transfer results limit that
