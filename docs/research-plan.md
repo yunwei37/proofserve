@@ -115,3 +115,13 @@ RQ1now states exact CPU-versus-elapsed estimands and missing-weight sensitivity;
 11costs/13dynamic draws remain unfilled. No new experiment, agent, queue or budget from root.
 
 Paper root0257:19pages188474bytes, full compile/all-page static self-review;all15prior table bodies/title/fullabstract/4RQ/sections/four implications unchanged. Root0newnative/agent. GeneralB/globalweights/software/axiom/cluster gaps remain.
+
+[Root0258](tmp/build-and-evaluate/step-0258-20261101T225830+0000/step-report.md) retires the old M5running/waiter interpretation:
+actualEnvelopeinput-path failure ended the finite task,retaining completedmathsubset
+andGridprefix. Mowns repair/requalification against actualnewversion/terminal;
+rootdoesnotresumeorhoteditforeignsource. Existingqualifiedtargetobjectlocation
+is diagnosed inrootreceipt,notitself runtime/per-goal qualification.
+Fullmatchedregimecomparison remainsmissing;192finite math comparisons are not
+wholekernel or universal budget evidence. W/Ohealthy partials remain protected.
+
+Paper now root0258:19pages189874bytes,complete compile/all-page static self-review;15prior tables/title/fullabstract/4RQ/sections/four implications unchanged. No completecross-regimecomparison or generalB/Cguarantee follows.0rootnative/agent.

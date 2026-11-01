@@ -532,3 +532,14 @@ Wsame14strata CPUshare17.1434%/nativeelapsed14.8102%,11missingdrawsHTsensitivity
 peruniform+1s,known165.187936honlysubtotal;globalstillmissing.
 
 Final0257PDF19pages188474bytes,compile2.832672s/sample190291968B/E22–23/all19pages5contacts self-reviewed.15prior table bodies/title/fullabstract/4RQ/sections unchanged. 29rootdisposableimages/18234040bytes removed;raw/PDF/logs preserved. No native rerun.
+
+## 2026-11-01 root0258 — M5actualpartialcoexecution, 自审
+[Step](tmp/build-and-evaluate/step-0258-20261101T225830+0000/step-report.md) · [Audit](tmp/build-and-evaluate/step-0258-20261101T225830+0000/outer-audit.md).
+15actualphases14rc0+1rc1,31PIDbirth/controller/cgroupsretired.8mathcells256rows
+yield192workercomparisons0acceptdiff/84rawcountervectorsdifferent;actualTIDs1/2/4/8.
+Grid4prefixcells32acceptedrows;Envelopefirstimportmissingobjectrc1/0.916s,0REGIONrows.
+ConfiguredoldLEAN_PATHlackstargetwhichisavailableinqualifiedoverlay;noMsourceedit/restart.
+Partialrunpreserved,notkernelrejectionorcompleteregimecomparison.0rootnative/agent,
+paperaddsqualifiedfiniteobservationandexplicitmissingcontrast,noperformanceratio.
+
+Final0258paper19pages189874bytes,compile2.836982s/sample190308352B/E22–23;5contacts/all19pages self-reviewed;15oldtable bodies/title/fullabstract/4RQ/sections unchanged. Rootrenderings29/18431726bytes removed,raw/PDF/log/source preserved.

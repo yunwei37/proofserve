@@ -79,3 +79,9 @@ notcoldruntime. Raw/source/failed/partial texts archived in experiment-001;34rec
 Retains v6probecompile failure/0candidate rows. Actual inputresidency cold0/warmall
 2238400pages; notglobalcoldboot. Wsame14strata CPUshare17.1434% versus serial-native-elapsed14.8102%;
 missing11draws exactHTsensitivity10.842083h peruniform1CPU-s, not globaltotal.
+
+[Root0258](../docs/tmp/build-and-evaluate/step-0258-20261101T225830+0000/step-report.md): M5partial terminal,15nativephases/31retired
+identities. Math256rows complete;192comparisons0acceptdiff/84countervectorsdifferent.
+Grid32accepted-prefixrows;Envelope0rows/importavailabilityfailure rc1.
+Raw/source/partialfailure frozen;fullcross-regimecomparison stillmissing.
+No rootnative/agent,foreignimplementationrepair or queuedwork restart.

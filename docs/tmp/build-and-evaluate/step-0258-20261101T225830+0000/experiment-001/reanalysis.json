@@ -1,0 +1,361 @@
+{
+  "actual_terminal": "partial, first Envelope import failure; remaining planned cells uninvoked",
+  "phases": [
+    {
+      "key": "math-syntax",
+      "returncode": 0,
+      "wall_s": 1.833369086496532,
+      "user_s": 1.3963510000000001,
+      "system_s": 0.42117699999999997,
+      "peak_rss_kib": 1655312,
+      "sampled_tree_peak_bytes": 1586118656,
+      "charged_peak_bytes": 193409024
+    },
+    {
+      "key": "kernel-syntax",
+      "returncode": 0,
+      "wall_s": 1.7419658740982413,
+      "user_s": 1.28268,
+      "system_s": 0.432948,
+      "peak_rss_kib": 1646676,
+      "sampled_tree_peak_bytes": 1586749440,
+      "charged_peak_bytes": 188682240
+    },
+    {
+      "key": "math-r0-j1",
+      "returncode": 0,
+      "wall_s": 7.164643765427172,
+      "user_s": 5.377072,
+      "system_s": 1.774891,
+      "peak_rss_kib": 8794212,
+      "sampled_tree_peak_bytes": 9007054848,
+      "charged_peak_bytes": 2321510400
+    },
+    {
+      "key": "math-r0-j2",
+      "returncode": 0,
+      "wall_s": 6.490938030183315,
+      "user_s": 5.561095,
+      "system_s": 1.77071,
+      "peak_rss_kib": 8801680,
+      "sampled_tree_peak_bytes": 9014632448,
+      "charged_peak_bytes": 2330619904
+    },
+    {
+      "key": "math-r0-j4",
+      "returncode": 0,
+      "wall_s": 5.725092088803649,
+      "user_s": 5.50155,
+      "system_s": 1.7841230000000001,
+      "peak_rss_kib": 8811196,
+      "sampled_tree_peak_bytes": 9024364544,
+      "charged_peak_bytes": 2339954688
+    },
+    {
+      "key": "math-r0-j8",
+      "returncode": 0,
+      "wall_s": 6.059496582485735,
+      "user_s": 5.8396159999999995,
+      "system_s": 2.044316,
+      "peak_rss_kib": 8829728,
+      "sampled_tree_peak_bytes": 9000202240,
+      "charged_peak_bytes": 2358743040
+    },
+    {
+      "key": "math-r1-j8",
+      "returncode": 0,
+      "wall_s": 5.501473772339523,
+      "user_s": 5.518982,
+      "system_s": 1.802919,
+      "peak_rss_kib": 8829856,
+      "sampled_tree_peak_bytes": 9043484672,
+      "charged_peak_bytes": 2357788672
+    },
+    {
+      "key": "math-r1-j4",
+      "returncode": 0,
+      "wall_s": 5.694692585617304,
+      "user_s": 5.453774,
+      "system_s": 1.781548,
+      "peak_rss_kib": 8806996,
+      "sampled_tree_peak_bytes": 9020243968,
+      "charged_peak_bytes": 2337554432
+    },
+    {
+      "key": "math-r1-j2",
+      "returncode": 0,
+      "wall_s": 6.770345848053694,
+      "user_s": 5.793938,
+      "system_s": 1.968328,
+      "peak_rss_kib": 8802324,
+      "sampled_tree_peak_bytes": 9015533568,
+      "charged_peak_bytes": 2333241344
+    },
+    {
+      "key": "math-r1-j1",
+      "returncode": 0,
+      "wall_s": 8.016547697596252,
+      "user_s": 6.019684,
+      "system_s": 1.992518,
+      "peak_rss_kib": 8793904,
+      "sampled_tree_peak_bytes": 9006551040,
+      "charged_peak_bytes": 2323689472
+    },
+    {
+      "key": "grid-r0-j1",
+      "returncode": 0,
+      "wall_s": 4.001111040823162,
+      "user_s": 2.7915479999999997,
+      "system_s": 1.199849,
+      "peak_rss_kib": 4708716,
+      "sampled_tree_peak_bytes": 4805206016,
+      "charged_peak_bytes": 1849815040
+    },
+    {
+      "key": "grid-r0-j2",
+      "returncode": 0,
+      "wall_s": 4.146800126880407,
+      "user_s": 3.033102,
+      "system_s": 1.30914,
+      "peak_rss_kib": 4746216,
+      "sampled_tree_peak_bytes": 4696657920,
+      "charged_peak_bytes": 1888804864
+    },
+    {
+      "key": "grid-r0-j4",
+      "returncode": 0,
+      "wall_s": 4.017201784066856,
+      "user_s": 3.173273,
+      "system_s": 1.235292,
+      "peak_rss_kib": 4786164,
+      "sampled_tree_peak_bytes": 4699611136,
+      "charged_peak_bytes": 1931436032
+    },
+    {
+      "key": "grid-r0-j8",
+      "returncode": 0,
+      "wall_s": 3.7200463665649295,
+      "user_s": 2.966676,
+      "system_s": 1.147874,
+      "peak_rss_kib": 4788428,
+      "sampled_tree_peak_bytes": 4809240576,
+      "charged_peak_bytes": 1932652544
+    },
+    {
+      "key": "envelope-r0-j1",
+      "returncode": 1,
+      "wall_s": 0.9160358272492886,
+      "user_s": 0.663167,
+      "system_s": 0.24115099999999998,
+      "peak_rss_kib": 1635664,
+      "sampled_tree_peak_bytes": 1757184,
+      "charged_peak_bytes": 176562176
+    }
+  ],
+  "math_completed_rows": 256,
+  "math_comparisons": [
+    {
+      "repeat": 0,
+      "workers": 2,
+      "pairs": 32,
+      "verdict_changes": 0,
+      "acceptance_changes": 0,
+      "command_counter_vector_changes": 8,
+      "distinct_recorded_worker_tids": 2
+    },
+    {
+      "repeat": 0,
+      "workers": 4,
+      "pairs": 32,
+      "verdict_changes": 0,
+      "acceptance_changes": 0,
+      "command_counter_vector_changes": 16,
+      "distinct_recorded_worker_tids": 4
+    },
+    {
+      "repeat": 0,
+      "workers": 8,
+      "pairs": 32,
+      "verdict_changes": 0,
+      "acceptance_changes": 0,
+      "command_counter_vector_changes": 20,
+      "distinct_recorded_worker_tids": 8
+    },
+    {
+      "repeat": 1,
+      "workers": 2,
+      "pairs": 32,
+      "verdict_changes": 0,
+      "acceptance_changes": 0,
+      "command_counter_vector_changes": 2,
+      "distinct_recorded_worker_tids": 2
+    },
+    {
+      "repeat": 1,
+      "workers": 4,
+      "pairs": 32,
+      "verdict_changes": 0,
+      "acceptance_changes": 0,
+      "command_counter_vector_changes": 17,
+      "distinct_recorded_worker_tids": 4
+    },
+    {
+      "repeat": 1,
+      "workers": 8,
+      "pairs": 32,
+      "verdict_changes": 0,
+      "acceptance_changes": 0,
+      "command_counter_vector_changes": 21,
+      "distinct_recorded_worker_tids": 8
+    }
+  ],
+  "grid_prefix_rows": 32,
+  "Envelope_rows": 0,
+  "failure": {
+    "key": "envelope-r0-j1",
+    "stderr": "uncaught exception: object file '/workspaces/.agent-state/gpu-smt-workloads/openai4341-oleans/OAI/Analysis/Triangular/Envelope/EnvelopePsiB.olean' of module OAI.Analysis.Triangular.Envelope.EnvelopePsiB does not exist\n",
+    "native_wall_s": 0.9160358272492886,
+    "native_CPU_s": 0.904318,
+    "returncode": 1,
+    "sampled_RSS_B": 1757184,
+    "wait4_peak_RSS_KiB": 1635664,
+    "charged_peak_B": 176562176
+  },
+  "retired_identities": [
+    [
+      301735,
+      "762181601"
+    ],
+    [
+      314386,
+      "762318865"
+    ],
+    [
+      314387,
+      "762318866"
+    ],
+    [
+      314504,
+      "762319049"
+    ],
+    [
+      314506,
+      "762319050"
+    ],
+    [
+      314527,
+      "762319223"
+    ],
+    [
+      314528,
+      "762319224"
+    ],
+    [
+      314549,
+      "762319939"
+    ],
+    [
+      314551,
+      "762319941"
+    ],
+    [
+      314569,
+      "762320589"
+    ],
+    [
+      314571,
+      "762320590"
+    ],
+    [
+      314587,
+      "762321161"
+    ],
+    [
+      314589,
+      "762321163"
+    ],
+    [
+      314626,
+      "762321767"
+    ],
+    [
+      314628,
+      "762321769"
+    ],
+    [
+      314642,
+      "762322318"
+    ],
+    [
+      314644,
+      "762322319"
+    ],
+    [
+      314654,
+      "762322887"
+    ],
+    [
+      314656,
+      "762322889"
+    ],
+    [
+      314664,
+      "762323565"
+    ],
+    [
+      314666,
+      "762323566"
+    ],
+    [
+      314672,
+      "762324366"
+    ],
+    [
+      314674,
+      "762324368"
+    ],
+    [
+      314691,
+      "762324767"
+    ],
+    [
+      314693,
+      "762324768"
+    ],
+    [
+      314701,
+      "762325181"
+    ],
+    [
+      314703,
+      "762325183"
+    ],
+    [
+      314712,
+      "762325583"
+    ],
+    [
+      314714,
+      "762325585"
+    ],
+    [
+      314724,
+      "762325955"
+    ],
+    [
+      314726,
+      "762325957"
+    ]
+  ],
+  "retired_identity_count": 31,
+  "frozen_loader_LEAN_PATH": "/workspaces/.agent-state/gpu-smt-workloads/rellich4341-oleans:/workspaces/.agent-state/gpu-smt-workloads/openai4341-oleans:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Cli/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/batteries/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Qq/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/aesop/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/importGraph/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/plausible/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean",
+  "existing_qualified_artifact": {
+    "path": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-assets/overlay-complete-v2/OAI/Analysis/Triangular/Envelope/EnvelopePsiB.olean",
+    "bytes": 2268344,
+    "not_a_per_goal_or_env_qualification": true
+  },
+  "root_edited_foreign_source": false,
+  "root_native_runs": 0,
+  "root_analysis_seconds": 0.045568314380943775,
+  "root_analysis_maxrss_kib": 14992
+}

@@ -1,0 +1,7 @@
+repeat,workers,pairs,verdict_changes,acceptance_changes,command_counter_vector_changes,distinct_recorded_worker_tids
+0,2,32,0,0,8,2
+0,4,32,0,0,16,4
+0,8,32,0,0,20,8
+1,2,32,0,0,2,2
+1,4,32,0,0,17,4
+1,8,32,0,0,21,8

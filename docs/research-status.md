@@ -163,3 +163,20 @@ W301743 also waits behind healthy O301572. No restart or hot modification.
 Paper root0257:19pages188474bytes, full compile/all-page static self-review;all15prior table bodies/title/fullabstract/4RQ/sections/four implications unchanged. Root0newnative/agent. GeneralB/globalweights/software/axiom/cluster gaps remain.
 
 Root audit metadata correction:0256count34covered Mparents/controllers but not memory-process arrays;0257now checks all16sampledMv3processes retired as well. No clock/verdict changes or backdated audit; original report/raw retained.
+
+## Matched co-execution attempt is partial, not still running
+[Root0258](tmp/build-and-evaluate/step-0258-20261101T225830+0000/step-report.md) audits actual M5terminal:15nativephases,
+14rc0/1rc1,all31PIDbirth/controller301735/cgroups retired,noOOM/RSSstop.
+Completedmath8cells256rows:192worker1-versus-higher comparisons show0verdict
+andacceptancechanges,84commandcounter-vector differences;actualworkerTIDs1/2/4/8.
+These are finite configuration observations,not exactunit/globalbudget guarantees.
+Grid4first-repeat cells32accepted rows retained;Envelope first import rc1/0.916s
+has no REGIONrows because configuredLEAN_PATH lacks targetartifact.
+Targetname matches qualifiedv14;existingoverlay-complete-v2has2268344Bobject.
+This is inputavailability,notkernel rejection,notcompletecross-regimecurve.
+Rootonlyread/freeze/diagnosis,noMsource edit or native restart.
+HealthyFalconerholder332933/birth762601598 andW332936/birth762601628waiter
+observed/protected;W31replaypartial10rows andFalconer11066sourceprefix are not
+complete31sample/13205closure results.
+
+Paper now root0258:19pages189874bytes,complete compile/all-page static self-review;15prior tables/title/fullabstract/4RQ/sections/four implications unchanged. No completecross-regimecomparison or generalB/Cguarantee follows.0rootnative/agent.
