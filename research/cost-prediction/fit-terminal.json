@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "cohorts": [
+    [
+      "primary31_cpu",
+      31
+    ],
+    [
+      "ai_measured_cpu",
+      131
+    ],
+    [
+      "all_measured_cpu",
+      6214
+    ],
+    [
+      "kernel_component_wall",
+      5085
+    ]
+  ],
+  "summaries": 210,
+  "PRESS_refit_checks": 20,
+  "no_Lean_launched": true,
+  "models_and_seeds_fixed_before_fitting": true
+}

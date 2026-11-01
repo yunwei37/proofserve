@@ -1,0 +1,12 @@
+{
+  "scope": "paired project-bootstrap fixed project5fold errors; training uncertainty excluded",
+  "replicates": 1000,
+  "median_delta_ci": [
+    -0.08715644326118777,
+    0.23806519605956855
+  ],
+  "p90_delta_ci": [
+    -0.14164866617300165,
+    0.4805964929453162
+  ]
+}

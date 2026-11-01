@@ -1,0 +1,26 @@
+{
+  "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+  "frozen_git_head": "58ab893072caeefe6ee871ded4c50400e6a9e829",
+  "primary_frame": 42,
+  "primary_completed": 31,
+  "feature_rows": 6225,
+  "all_compiler_modules": 6214,
+  "kernel_modules": 5085,
+  "auxiliary_ai_compiler_modules": 131,
+  "native_noncompleted_records": 1,
+  "excluded": {
+    "W_incompatible_or_unqualified": 2,
+    "same_module_repeat_not_independent": 1,
+    "O_failed_or_nonprimary_source_cell": 1
+  },
+  "unresolved_source_imports": [],
+  "cycles": [],
+  "frozen_raw_sources": [
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hard-two-prepared-20261101/results.jsonl",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix-20261101/results.jsonl",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101/results.jsonl",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/results.jsonl"
+  ],
+  "no_Lean_launched": true,
+  "scope": "current CPU/build target and conditional replay components kept separate; missing primary costs remain missing"
+}

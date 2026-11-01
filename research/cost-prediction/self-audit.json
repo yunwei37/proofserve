@@ -1,0 +1,23 @@
+{
+  "status": "passed_self_review",
+  "primary_frame": 42,
+  "qualified_primary": 31,
+  "missing_primary": 11,
+  "native_calls": 45,
+  "native_accepted": 43,
+  "cpu_budget_interruptions": 2,
+  "native_setup_failure": null,
+  "no_oom": true,
+  "max_child_cgroup_gib": 0.8726844787597656,
+  "controller_retired": true,
+  "checks": [
+    "static source only; no measured costs as features",
+    "train/calibration/test projects separated",
+    "compilerCPU/compilerwall/kernel component distinct",
+    "LOO explicit refits agree",
+    "missing/censored/repeated labels retained",
+    "native gain not inferred from simulation",
+    "no bounded-error/novelty/fullpassk claim",
+    "own paths only"
+  ]
+}

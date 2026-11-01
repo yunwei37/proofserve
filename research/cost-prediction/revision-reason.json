@@ -1,0 +1,4 @@
+{
+  "previous": "/workspaces/.agent-state/gpu-smt-captures/cost-prediction-20261101",
+  "reason": "source-only dependency discovery initially omitted the known patched Rellich source; three primary rows had unresolved features. No metric/model/seed changed; no performance result inspected or selected before repair."
+}

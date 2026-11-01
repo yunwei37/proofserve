@@ -1,0 +1,7 @@
+{
+  "status": "complete",
+  "setup_failure": null,
+  "policies_completed": 3,
+  "native_calls": 45,
+  "scope": "separate12GiB/j8/noM native point; CPU limits approximate to OS accounting quantum"
+}

@@ -89,3 +89,9 @@ prototype will use a fixed CPU-work budget, P-core lock, no-M and outer12GiB
 protection. It will record deferrals/interruptions and exact accepted IDs.
 This is separate from an offline simulation, not a production-engine claim.
 No performance or bounded-error result is prefilled.
+
+## Completed evidence
+
+See [analysis.md](analysis.md) for the negative bounded-error/novelty finding,
+all validation splits, native policy results and limitations. Raw snapshots are
+on the existing PVC; v1 extraction and corrected v2 are both retained.
