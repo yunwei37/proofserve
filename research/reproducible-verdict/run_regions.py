@@ -17,6 +17,18 @@ def main():
   records.append(cp)
   if cp["returncode"]:raise RuntimeError("kernel region syntax failed")
   for rep in [0,1]:
+   for threads in ([1,2,4,8]if rep==0 else[8,4,2,1]):
+    left=int(1690-(time.monotonic()-start))
+    if left<20:raise RuntimeError("finite whole-task budget exhausted")
+    env=native.environment();env["LEAN_NUM_THREADS"]=str(threads)
+    key=f"math-r{rep}-j{threads}"
+    result=native.run(key,[native.SDK/"bin/lean","-j"+str(threads),"--run",
+      ROOT/"MathBatchProbe.lean",ROOT/"math-requests.json",str(threads)],
+      limit=min(180,left),measured=True,env=env)
+    records.append(result)
+    rr=[x for x in(ROOT/"runs"/key/"stdout").read_text().splitlines()if x.startswith("MATH ")]
+    if result["returncode"]or len(rr)!=32:raise RuntimeError("incomplete math batch "+key)
+  for rep in [0,1]:
    for short,module in MODULES:
     for threads in ([1,2,4,8]if rep==0 else[8,4,2,1]):
      left=int(1690-(time.monotonic()-start))
@@ -29,18 +41,6 @@ def main():
      rows=[json.loads(x[7:])for x in(ROOT/'runs'/key/'stdout').read_text().splitlines()if x.startswith('REGION ')]
      if result['returncode']or len(rows)!=8:raise RuntimeError('incomplete native kernel cell '+key)
      if any(x['result']['verdict']!='accepted'for x in rows):raise RuntimeError('original kernel rejected stored proof')
-  for rep in [0,1]:
-   for threads in ([1,2,4,8]if rep==0 else[8,4,2,1]):
-    left=int(1690-(time.monotonic()-start))
-    if left<20:raise RuntimeError("finite whole-task budget exhausted")
-    env=native.environment();env["LEAN_NUM_THREADS"]=str(threads)
-    key=f"math-r{rep}-j{threads}"
-    result=native.run(key,[native.SDK/"bin/lean","-j"+str(threads),"--run",
-      ROOT/"MathBatchProbe.lean",ROOT/"math-requests.json",str(threads)],
-      limit=min(180,left),measured=True,env=env)
-    records.append(result)
-    rr=[x for x in(ROOT/"runs"/key/"stdout").read_text().splitlines()if x.startswith("MATH ")]
-    if result["returncode"]or len(rr)!=32:raise RuntimeError("incomplete math batch "+key)
   state='complete'
  except BaseException as error:
   records.append(dict(error=repr(error)));state='partial'
