@@ -1,3 +1,4 @@
 capture,key,complete,returncode,whole_wall_s,whole_cpu_s,whole_peak_rss_mib,sampled_tree_peak_mib,accepted_modules,fallback_events,native_retired,cgroup_retired
 parallel-stream-check-v10,envelope-stream-r1,False,-9,1313.5996397463605,unknown_guard_killed_parent,unknown_guard_killed_parent,14970.72265625,10743,0,True,False
 parallel-stream-check-v12,grid-stream-r1,True,0,1097.5916381031275,1988.629244,2774.9375,2771.2734375,3793,0,True,True
+parallel-stream-check-v14,barrier-stream-r1,True,0,468.1116239614785,867.563323,3196.18359375,3197.97265625,4449,0,True,True

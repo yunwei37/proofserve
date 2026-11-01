@@ -11,7 +11,10 @@ A planned wave has unique new names, no references to another job in the wave,
 and no free metavariable/tactic state. Dependencies are already in the immutable
 base. The kernel returns the actual typed CI; structural fields must match the
 job. Joined results must cover original indices exactly. The C adapter checks
-all frontier owners before inserting any CI. Original order is retained.
+all frontier owners before inserting any CI. Original indices order commits within each ordinary frontier; frontiers are
+topological, not a promise to reproduce the serialized module array order.
+Certificate support/children are inserted before their checked parent merges,
+so certificate paths do not claim a byte-identical environment insertion order.
 
 The reasoning is monotonic weakening: adding other fresh independent constants
 does not change the meaning of any constant used by an already checked proof.

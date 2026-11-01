@@ -8,7 +8,9 @@ dependency waves. Original `Kernel.Environment.addDeclCore 0 0` checks every
 job. Tasks are joined before errors propagate. Returned typed constants must
 match the input completely, and token indices must cover the wave exactly.
 `checked_commit.c` validates frontier identity before committing checked
-constants in original input order via the pinned runtime's map-insertion API.
+ordinary constants by original index within each dependency frontier via the
+pinned runtime's map-insertion API. Certificate support/children precede their
+parent merges; this is not serialized-byte or diagnostic-order parity.
 
 **Trust boundary:** the coordinator and 40-line C commit adapter are additional
 trusted implementation code. Mathematical checking uses the original kernel;

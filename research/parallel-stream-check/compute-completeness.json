@@ -1,10 +1,11 @@
 {
   "raw": [
     "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v10",
-    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v12"
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v12",
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14"
   ],
-  "complete_native_runs": 1,
-  "actual_cells": 5,
+  "complete_native_runs": 2,
+  "actual_cells": 10,
   "failed_runs": [
     {
       "capture": "parallel-stream-check-v10",
