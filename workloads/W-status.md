@@ -1,47 +1,35 @@
 # W current state
 
-## Current frontier (W065:31/42no-M random costs; hard original draws queued)
-- W064 authorized cleanup removes16.879GiB old regenerable WSDK/caches/archive
- copies. All raw/native/profiles preserved. ActualPVCdf71%/38GiBfree then;
- other lanes cleaned concurrently. See cleanup-20261101.md and exactCSV.
-- Suffix48completed48/48compile_ok/retired:179.255830nativewall/
- 201.060628CPU seconds;9,217.807695s elapsedincluding contention.
- 31/42original random costs,14/21complete cells;globalCPU/CIblank.
-- Primary sourceproxy classification all163097modules/5848positive.
- 14complete cells cover103468modules:certificateCPU24.146735h/
- ordinary116.704826h;conditionalshare17.1434%,nominaldelta95%0–43.6646%,
- conservativeBonferroni0–100%. Missing59629modules/1164positive.
- Sourceclasses are not measured kernel dominance; no-MCppprofiles pending.
-- Current sole Wgroup:openai4341-noM-hard-two-prepared-20261101,
- 36cases for original LowBlock15_1 thenDihedralIntervals. Actually launched
- 2026-11-01T18:24:59UTC/controller237124/birth761008293;recheck actualidentity/
- current/terminal. Firstrequest waiting observed;do not duplicate/restart.
-- NoM/P0–7j8/15GiBownedchargedcgroup/16GiBsampler;600dep/1200target,
- 1700native-work groupallowance;waiting excluded from nativecost/allowance.
- One stockflock command queued at a time,wait return,release,then next.
- No oldpriority hold/nonblockingdefer/whole-batch lock.
-- Remaining11original target sources prepared;9587physicalmissingclosure
- modules/107644656bytes allsourcepresent at W063. Inputcacheonly,not oldCPU.
- Currentwhole-library estimate still unavailable;original draws not replaced.
-- Onlyworkloads/edited;no candidate generation,newagent or infrastructure
- mutation. CPUoracle frozen. Existingimportsourceaudit top100about4.94%.
-
-## W066–W068 follow-up
-- f29316a:20queries/9primary sources; HT and native CPU/build measurements
- are standard. Mathlib/AFP/Rocq already measureCPU;no wall-only distinction.
- See openai-math/cost-method-prior-art-20261101. GlobalCPU/V/B/CIs stillblank.
-- Deep original PreparedModularCanonicalDetectorPositive requires3451uncached
- closure nodes. Next128topological source cases prepared (489833bytes),
- no launch. See remaining-noM-sample-preparation/next-deep128.md.
-- Matched target-only native recheck31prepared onPVC;80723096targetartifact
- bytes frozen. Source compilation is default;small runner replay extension/
- Python contracts qualified. No native timing/acceptance yet. Imports trusted
- like leanchecker,not full-library empty-env stream;whole-closure byte
- identity unverified. See paired-kernel-cost-preparation/README.md.
-- Current sole native remains hard36frozen point;last observed11compile
- dependency returns,no terminal. Do not launch pending31or128until actual
- current native/controller retirement. Native work/cost coverage not inferred
- from prepared states. Latest directuser rules override oldfrontier notes.
+## W073 current frontier — native replay active; original costs incomplete
+- Sourcecost31/42draws,14/21cells;globalCPU/CIunknown. Incomplete cells contain
+ 59629modules(36.5605%). Primary-positive1164,ordinary58465missing coverage.
+- Current soleWcapture:openai4341-noM-original31-kernel-replay-namespace-v2-20261101,
+ controller284952/birth761902416,actually submitted20:54UTC. Recheck real
+ PID/birth/current/terminal. First native NearPinDeletion accepted21:09,
+ wall0.911619s/CPU0.815876s/native+cgroupretired. Fullmatrixnotcomplete.
+- Original31attempt kept2setupfailures causedby partialOAIoverlay;controller/
+ unstartedwaiter stoppedwithidentityproof. No proofrejection. Repairfullnamespace
+ 1713provider entries/31exacttarget copies. Rawoldpoint andowner-stop retained.
+- Hard36group actuallyended18returns:17successfuldeps/1groupremainder32.483s
+ censor/18unstarted;no probabilityendpointscompleted. Native1690.119002wall/
+ 2544.852971CPU s;allretired. Suffix19prepared,retryfull600s,notlaunched.
+- Nextsourcepriorityafterreplay/hard19:Hodge IndexedInverseMultiplier,
+ 39933modulecell missingoneoriginaldraw. Fullclosure1734/15ready/1719uncached,
+ 14.05MBexactsourcecopied;nativeworkpoint1700s maystopbeforetarget.
+ No newdraws/weights;olddeep128planretained,unlaunched.
+- Missing-costHTsensitivity:all11unknowncosts+1CPU s gives+10.842083CPU h
+ eventualpoint;knownterms165.187936h NOTpopulationlowerbound/globalestimate.
+- Historical26noM CPU/wall1.586878;freshsame26ratio1.589326. Current14covered
+ strataCshare17.1434%CPU versus14.8102%serialelapsed. Neitherclockcohortfactor
+ norcoveredstrata shareisglobal. CPU/wall/profiledenominatorsseparate.
+- PairedCPUestimatorwithcovariance/finite-populationweights and5analyticcontrols
+ ready;runonactualcompleted31ledger,nottests. Target-onlyfreshreplay/imports
+ trustedlikeleanchecker remainsdifferentfromempty-environmentOstream.
+- No-M/P0–7j8/owned15GiBchargedcgroup/1s16GiBnative+controllerRSSguard;
+ oneWrequest/oneWnative. Stockflockpercase;notstrictFIFO. Otherlanewindows
+ canholdlockup to1740s;do not interruptthemorhidequeueasnativecost.
+- W064cleanup16.879GiBregenerableassets,rawdatapreserved;dfnowabout73%/35GiBfree
+ atlastcheck. Onlyworkloads/edited,no agent/infrastructure/schedule mutation.
 
 ## Historical step notes (retained unchanged below)
 W004ea41025 build-planning models and53-target stratified frame are preserved.

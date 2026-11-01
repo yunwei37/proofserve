@@ -1,0 +1,14 @@
+{
+  "UTC": "2026-11-01T21:17:53.309239+00:00",
+  "target": "OAI.AlgebraicGeometry.HodgeConjecture.ThetaCycle.IndexedInverseMultiplier",
+  "original_missing_draws": 11,
+  "internal_closure": 1734,
+  "ready_closure": 15,
+  "uncached_closure": 1719,
+  "next_jobs": 1719,
+  "source_copy_bytes": 14051087,
+  "native_launched": false,
+  "original_sample_membership_unchanged": true,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hodge-original-prepared-20261101",
+  "current_active_capture": "original31-kernel-replay-namespace-v2; no newWrequest"
+}

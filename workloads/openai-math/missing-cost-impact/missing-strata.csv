@@ -1,0 +1,8 @@
+stratum,population_modules,planned_draws,missing_draws,unknown_HT_weight_sum,HT_CPU_hours_change_per_1CPU_second_added_to_each_missing_draw,known_HT_terms_CPU_h,missing_modules
+0-50;101+;0,9146,2,2,9146.0,2.5405555555555557,0.0,"[""OAI.Analysis.CircleDomains.Selection.TrackedTestBounds"", ""OAI.Probability.InvariantIsing.Fields.PhysicalFieldPopulationLimit""]"
+50-90;11-100;0,39933,2,1,19966.5,5.54625,20.257323165,"[""OAI.AlgebraicGeometry.HodgeConjecture.ThetaCycle.IndexedInverseMultiplier""]"
+90-99;101+;0,2023,2,2,2023.0,0.5619444444444445,0.0,"[""OAI.Combinatorics.Progressions.Sampling.AllocatedForecastPrimitiveCapBound"", ""OAI.Computability.DirectedFeedback.RankGraph.PacketLocality""]"
+90-99;11-100;0,7225,2,2,7225.0,2.0069444444444446,0.0,"[""OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.NativeCodeAssembly"", ""OAI.AlgebraicGeometry.PELModuli.CMPoints.IntrinsicHolomorphicLogarithm""]"
+99-100;101+;0,40,2,2,40.0,0.011111111111111112,0.0,"[""OAI.SetTheory.PartitionPrinciple.Geometry.GroundMainFinalStructuralRefinementOutputs"", ""OAI.Combinatorics.Progressions.Estimates.PreparedModularCanonicalDetectorPositive""]"
+99-100;11-100;0,98,2,1,49.0,0.01361111111111111,0.5212841316666667,"[""OAI.RepresentationTheory.KazhdanLusztig.DihedralIntervals""]"
+99-100;11-100;1,1164,2,1,582.0,0.16166666666666665,3.5577679399999997,"[""OAI.Analysis.PlanarPacking.Certificate.LowBlock15_1""]"

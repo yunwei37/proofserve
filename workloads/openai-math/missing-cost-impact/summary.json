@@ -1,0 +1,17 @@
+{
+  "original_draws": 42,
+  "completed_costs": 31,
+  "missing_draws": 11,
+  "complete_cells": 14,
+  "incomplete_cells": 7,
+  "population_modules": 163097,
+  "incomplete_cell_population": 59629,
+  "incomplete_population_fraction": 0.3656045175570366,
+  "missing_certificate_cell_population": 1164,
+  "missing_ordinary_cell_population": 58465,
+  "known_terms_of_eventual_HT_point_CPU_h": 165.18793599652776,
+  "uniform_missing_draw_sensitivity_CPU_h_per_1CPU_s": 10.842083333333333,
+  "is_population_lower_confidence_bound": false,
+  "does_not_assume_missing_cost_zero": true,
+  "does_not_complete_global_estimate": true
+}

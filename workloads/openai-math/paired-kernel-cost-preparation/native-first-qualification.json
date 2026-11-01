@@ -1,0 +1,30 @@
+{
+  "scope": "first actual native replay qualification only,not31-case distribution",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original31-kernel-replay-namespace-v2-20261101/runs/00-noM",
+  "module": "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion",
+  "status": "accepted",
+  "wall_s": 0.911618797108531,
+  "CPU_s": 0.8158759999999999,
+  "wait4_peak_RSS_kib": 1995252,
+  "sampled_RSS_peak_bytes": 847872,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+  "verification_events": [
+    {
+      "event": "accept",
+      "module": "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion",
+      "mutation": "none",
+      "skipped_unsafe_partial": 0,
+      "theorem_examples": [
+        "OAI.Falconer.nearPinPairs_measurable",
+        "OAI.Falconer.near_pin_pair_mass",
+        "OAI.Falconer.distance_of_not_nearPinPairs"
+      ]
+    },
+    {
+      "event": "one_complete",
+      "parts": 1
+    }
+  ],
+  "native_retired": true,
+  "cgroup_removed": true
+}
