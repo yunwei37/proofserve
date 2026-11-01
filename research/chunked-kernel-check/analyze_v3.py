@@ -1,0 +1,59 @@
+"""Analyze only the completed, corrected artifact-matched v3 kernel matrix."""
+import os,pathlib,json,re,csv,statistics,filecmp
+HERE=pathlib.Path(__file__).resolve().parent
+RAW=pathlib.Path('/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check')
+def write(name,rows):
+ with (HERE/name).open('w') as f:
+  w=csv.DictWriter(f,fieldnames=list(dict.fromkeys(k for r in rows for k in r)));w.writeheader();w.writerows(rows)
+def main():
+ os.sched_setaffinity(0,set(range(8,16)))
+ term=json.loads((RAW/'frozen-grid-v3/terminal.json').read_text())
+ assert term['complete'] and term['completed']==15,'pending/failed is not complete evidence'
+ rows=[];artifacts=[]
+ for k in [0,1,2,4,8]:
+  for rep in [1,2,3]:
+   p=RAW/'runs'/f'grid-v3-k{k}-r{rep}'
+   r=json.loads((p/'result.json').read_text());text=(p/'native.log').read_text()
+   assert r['returncode']==0 and r['retired'] and not r['stop_reasons']
+   command=json.loads((p/'command.json').read_text())
+   assert command['pcore']=='0-7' and not any(a.startswith('-M') for a in command['argv'])
+   phases=[tuple(map(int,m)) for m in re.findall(r'^CK_KERNEL (\d+) (\d+) (\d+) (\d+)$',text,re.M)]
+   assert len(phases)==max(1,k)
+   assert all(end>=start and cpu>=0 for _,start,end,cpu in phases)
+   span=(max(x[2] for x in phases)-min(x[1] for x in phases))/1e9
+   cpu=sum(x[3] for x in phases)/1e9
+   m=re.search(r'CK_RESULT (original|chunks) (\d+) (\d+) (\d+) (\d+)',text);assert m
+   row=dict(k=k,rep=rep,native_wall_s=r['wall_s'],native_cpu_s=r['user_s']+r['system_s'],
+     peak_rss_kib=r['peak_rss_kib'],pure_kernel_span_s=span,pure_kernel_worker_thread_cpu_s=cpu,
+     pure_kernel_average_active_cores=cpu/span,check_and_write_span_s=int(m[2])/1e9,
+     check_and_write_process_cpu_s=int(m[3])/1e9,merge_stage_wall_s=int(m[4])/1e9,merge_stage_cpu_s=int(m[5])/1e9)
+   if k:
+    assert f'CK_VALID k={k} target_identical=true axioms=[propext] new_axioms=0 sorry=false children={k}' in text
+    parts=re.search(r'CK_MERGE_PARTS (\d+) (\d+) (\d+) (\d+)',text);assert parts
+    for i,key in enumerate(['import','final_kernel_check','axiom_shape_audit','final_export']):
+     row[key+'_wall_s']=int(parts[i+1])/1e9
+   else:assert 'CK_ORIGINAL_AXIOMS [propext]' in text
+   paths=[p/'ChunkOriginal.olean'] if k==0 else [p/f'ChunkK{k}Part{i}.olean' for i in range(k)]+[p/'ChunkCombined.olean']
+   for a in paths:
+    assert a.exists()
+    ref=RAW/'runs'/f'grid-v3-k{k}-r1'/a.name
+    artifacts.append(dict(k=k,rep=rep,artifact=a.name,bytes=a.stat().st_size,
+       equal_same_k_rep1=filecmp.cmp(a,ref,shallow=False),
+       scope='same configuration repetitions; proof restructuring changes artifact bytes across k'))
+   row['raw']=str(p);rows.append(row)
+ write('v3-per-repeat.csv',rows);write('v3-artifacts.csv',artifacts)
+ summaries=[]
+ for k in [0,1,2,4,8]:
+  rr=[r for r in rows if r['k']==k]
+  for metric in rr[0]:
+   if not metric.endswith(('_s','_kib','_cores')):continue
+   vals=[r[metric] for r in rr if r.get(metric) is not None]
+   if vals:summaries.append(dict(k=k,metric=metric,n=len(vals),median=statistics.median(vals),min=min(vals),max=max(vals)))
+ write('v3-summary.csv',summaries)
+ quality=dict(completed_native_cells=15,accepted=15,target_identical_to_original_extracted_input=True,
+  axioms=['propext'],new_axioms=0,sorry=False,same_k_repeat_artifacts_equal=all(a['equal_same_k_rep1'] for a in artifacts),
+  native_heartbeats='finite per child; no claim of aggregate budget transparency',
+  source_frame='one real Grid PointBox.calc equality, not full Grid compilation')
+ (HERE/'v3-validation.json').write_text(json.dumps(quality,indent=2)+'\n')
+ print(json.dumps(quality))
+if __name__=='__main__':main()

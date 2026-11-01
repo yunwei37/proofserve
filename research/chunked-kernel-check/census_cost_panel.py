@@ -16,6 +16,11 @@ def main():
  rows=[r for r in rows if (cache_global/pathlib.Path(*r['module'].split('.')).with_suffix('.olean')).exists()]
  source=(HERE/'NativeCensus.lean').read_text()
  body=source[source.index('import Lean'):]
+ # Full Expr pretty-printing is not needed for counts; retain the earlier typed
+ # examples separately and avoid expanding large shared type DAGs here.
+ ex=body.index('      let n := emitted')
+ endex=body.index('  for ((mod,cat), n)',ex)
+ body=body[:ex]+body[endex:]
  begin=body.index('  let mods := [');end=body.index('  let mut counts',begin)
  results=[]
  for index in range(0,len(rows),4):
@@ -29,8 +34,8 @@ def main():
     results.append(dict(module=module,shape=shape,n=int(n)))
    print('retained native metadata',index+len(batch),flush=True)
    continue
-  if log.exists():log.rename(log.with_suffix('.bounded-attempt1.log'))
-  if path.exists():path.rename(path.with_suffix('.bounded-attempt1.lean'))
+  if log.exists():log.rename(log.with_suffix('.bounded-no-print-before.log'))
+  if path.exists():path.rename(path.with_suffix('.bounded-no-print-before.lean'))
   path.write_text(src)
   with log.open('w') as f:
    ret=subprocess.run(['/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean',

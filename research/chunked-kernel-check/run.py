@@ -3,12 +3,14 @@ from pathlib import Path
 import os,sys,json,time,fcntl,signal,subprocess,threading,resource,argparse
 HERE=Path(__file__).resolve().parent
 RAW=Path('/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check')
-PROTO=RAW/'prototype'
+PROTO=RAW/'frozen-grid-v3'
 SDK=Path('/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux')
 LOCK=Path('/workspaces/.agent-state/gpu-smt-captures/pcore.lock')
 def cell(label,k,negative=False):
     out=RAW/'runs'/label;out.mkdir(parents=True,exist_ok=False)
     env=dict(os.environ,CK_K=str(k),CK_OUT=str(out),LEAN_NUM_THREADS='8')
+    env.pop('CK_PREPARE',None)
+    env.pop('CK_NEGATIVE',None)
     if negative:env['CK_NEGATIVE']='1'
     old=json.loads(Path('/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/inputs.json').read_text())
     env['LEAN_PATH']=str(out)+':'+str(PROTO)+':'+old['LEAN_PATH']

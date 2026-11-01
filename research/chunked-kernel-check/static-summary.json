@@ -1,0 +1,15 @@
+{
+  "source_files": 163097,
+  "raw_regex_sites": 1354379,
+  "code_regex_sites": 1354379,
+  "files_with_sites": 5848,
+  "lexical_candidates": 1514,
+  "lexical_candidate_fraction": 0.0011178554894900172,
+  "semantic_coverage": "unknown until native validation; lexical candidate count is not proven splittable coverage",
+  "raw_sites": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/lexical-sites.jsonl.gz",
+  "frame_source_bytes": 1785499363,
+  "pin": "4eaee87548250b2682affda7d05d947c05554bae",
+  "raw_and_masked_regex_count_equal": true,
+  "corpus_frame_complete": true,
+  "all_lexical_sites_are_executions": false
+}

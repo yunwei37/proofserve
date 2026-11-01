@@ -1,0 +1,8 @@
+{
+  "pid": 153414,
+  "birth": "754529333",
+  "launched_utc": "2026-11-01T00:25:09.914584+00:00",
+  "kind": "bounded requested v2 matrix; queued on existing shared P-core lock",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-v2",
+  "owner": "M"
+}

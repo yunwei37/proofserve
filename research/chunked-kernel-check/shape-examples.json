@@ -1,0 +1,90 @@
+{
+  "equality_unresolved_type": {
+    "path": "OAI/Algebra/AuslanderReiten/Cocycles/CocycleCertificate.lean",
+    "line": 11,
+    "category": "equality_unresolved_type",
+    "lexical_candidate": false,
+    "target": "certificate (false, .e) = true",
+    "header_recovered": true
+  },
+  "forall_inferred_or_unresolved": {
+    "path": "OAI/Algebra/AuslanderReiten/Cocycles/CocycleCorners.lean",
+    "line": 34,
+    "category": "forall_inferred_or_unresolved",
+    "lexical_candidate": false,
+    "target": "cochain.all (fun p => decide (\n    (∀ b : Bool, p.first ≠ TIndex.vertex b ∧ p.second ≠ TIndex.vertex b ∧ p.third ≠ TIndex.vertex b) ∧\n    p.first.target = p.second.source ∧ p.second.target = p.third.source ∧\n    p.first.source = p.output.source ∧ p.third.target = p.output.target ∧\n    p.first.weight",
+    "header_recovered": true
+  },
+  "conjunction": {
+    "path": "OAI/Algebra/AuslanderReiten/Cocycles/SparseCocycle.lean",
+    "line": 68,
+    "category": "conjunction",
+    "lexical_candidate": true,
+    "target": "(cochain.filter fun p => decide (p.first = (false, .t) ∧\n      p.second = (false, .x) ∧ p.third = (true, .j))) = []",
+    "header_recovered": true
+  },
+  "nested_forall_unresolved_domain": {
+    "path": "OAI/Analysis/Laughlin/FourBody/Integral.lean",
+    "line": 91,
+    "category": "nested_forall_unresolved_domain",
+    "lexical_candidate": false,
+    "target": "∀ row ∈ rows, row.1 ≤ 16 ∧\n    ∀ e ∈ row.2.2, ∀ f ∈ row.2.2,\n      e.1 + e.2.1 + (f.1 + f.2.1 - row.1) ≤ 24",
+    "header_recovered": true
+  },
+  "application_or_other": {
+    "path": "OAI/Analysis/Laughlin/FourBody/Integral.lean",
+    "line": 96,
+    "category": "application_or_other",
+    "lexical_candidate": false,
+    "target": "rows[n]! ∈ rows",
+    "header_recovered": true
+  },
+  "atomic_comparison": {
+    "path": "OAI/Analysis/Laughlin/ThreeBody/Basic.lean",
+    "line": 7,
+    "category": "atomic_comparison",
+    "lexical_candidate": false,
+    "target": "e 2 < limitBound 2",
+    "header_recovered": true
+  },
+  "forall_membership_or_subset_unresolved": {
+    "path": "OAI/Analysis/LaughlinFock/Certificate01.lean",
+    "line": 38,
+    "category": "forall_membership_or_subset_unresolved",
+    "lexical_candidate": false,
+    "target": "CopyLabel 1, ∀ A∈highestFourOccupations 1,\n    kernelHighestEntry 1 r A = highestLookup fourHighestCache_1 r.val.val A",
+    "header_recovered": true
+  },
+  "forall_explicit_fin": {
+    "path": "OAI/Analysis/LaughlinFock/CouplingTables.lean",
+    "line": 664,
+    "category": "forall_explicit_fin",
+    "lexical_candidate": true,
+    "target": "∀ (k : Fin 24) (p : Fin 9),\n    fastIntegerCoupling 1 0 k.val p.val = memoUnitCoupling 0 k.val p.val",
+    "header_recovered": true
+  },
+  "existential_or_mixed": {
+    "path": "OAI/Analysis/MutuallyUnbiased/Cubic/FiveCycle.lean",
+    "line": 38,
+    "category": "existential_or_mixed",
+    "lexical_candidate": false,
+    "target": "∀ b, twoRegularFive b →\n    ∃ c, ∀ i j, fiveGraph b (fiveCycleOrder c i) (fiveCycleOrder c j) =\n      canonicalFiveCycle i j",
+    "header_recovered": true
+  },
+  "embedded_or_unresolved": {
+    "path": "OAI/Analysis/MutuallyUnbiased/MixedSemantics/Singletons10.lean",
+    "line": 15,
+    "category": "embedded_or_unresolved",
+    "lexical_candidate": false,
+    "target": "",
+    "header_recovered": false
+  },
+  "forall_list": {
+    "path": "OAI/NumberTheory/Catalan/FirstBarrier/BarrierCaseOneGlobalBounds.lean",
+    "line": 444,
+    "category": "forall_list",
+    "lexical_candidate": true,
+    "target": "∀ k ∈ ([-9917299785] : List ℤ), k ∈ barrierCase1XBrackets",
+    "header_recovered": true
+  }
+}

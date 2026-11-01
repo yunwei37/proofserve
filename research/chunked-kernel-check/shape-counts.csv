@@ -1,0 +1,15 @@
+category,sites,fraction,lexical_candidate_sites,evidence
+application_or_other,192594,0.14220096442723934,0,lexical only; requires native type/closedness/dependency validation
+atomic_comparison,22834,0.016859387217315093,0,lexical only; requires native type/closedness/dependency validation
+boolean_container_all,0,0,0,zero explicit matches by this lexical recognizer; not zero semantic occurrences
+conjunction,1401,0.001034422417949481,1401,lexical only; requires native type/closedness/dependency validation
+embedded_or_unresolved,2249,0.0016605396273864257,0,lexical only; requires native type/closedness/dependency validation
+equality_unresolved_type,1081872,0.7987956103867528,0,lexical only; requires native type/closedness/dependency validation
+existential_or_mixed,3252,0.002401100430529416,0,lexical only; requires native type/closedness/dependency validation
+forall_explicit_fin,109,8.047968847715448e-05,109,lexical only; requires native type/closedness/dependency validation
+forall_inferred_or_unresolved,42589,0.03144540782159204,0,lexical only; requires native type/closedness/dependency validation
+forall_list,4,2.9533830633818154e-06,4,lexical only; requires native type/closedness/dependency validation
+forall_membership_or_subset_unresolved,6164,0.004551163300671378,0,lexical only; requires native type/closedness/dependency validation
+forall_range_or_interval,0,0,0,zero explicit matches by this lexical recognizer; not zero semantic occurrences
+nested_forall_explicit_fin,0,0,0,zero explicit matches by this lexical recognizer; not zero semantic occurrences
+nested_forall_unresolved_domain,1311,0.00096797129902339,0,lexical only; requires native type/closedness/dependency validation

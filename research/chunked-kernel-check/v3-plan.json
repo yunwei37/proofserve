@@ -1,0 +1,17 @@
+{
+  "planned": 15,
+  "arms": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "repetitions": 3,
+  "v2_stop": "original native cell accepted; import-with-extensions lacked standard initializer flag, native error preserved",
+  "correction": "invoke stock enableInitializersExecution before importModules(loadExts=true); not unchecked proof insertion",
+  "measures": "original also exports module; pure kernel worker spans/thread CPU; import/finalcheck/audit/export components",
+  "lock_before": "   PID COMMAND PATH                                                 BLOCKER\n153764 flock   /workspaces/.agent-state/gpu-smt-captures/pcore.lock \n",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-v3",
+  "same_original_cpp_checker": true
+}

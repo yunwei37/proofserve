@@ -84,7 +84,7 @@ def main():
     signal.alarm(1800)
     RAW.mkdir(exist_ok=True);totals=collections.Counter();eligible=collections.Counter();files=[];examples={}
     codehits=rawhits=nfiles=0
-    with gzip.open(RAW/'lexical-sites.jsonl.gz','wt') as out:
+    with gzip.open(RAW/'lexical-sites.jsonl.gz','wt',compresslevel=1) as out:
       for rel,s in sources():
         nfiles+=1;rawhits+=len(SITES.findall(s))
         if 'kernel' not in s:continue
@@ -97,19 +97,19 @@ def main():
             target,known=header(clean,h.start());cat,possible=classify(target,known)
             categories[cat]+=1;totals[cat]+=1;eligible[cat]+=possible;cand+=possible;codehits+=1
             row=dict(path=rel,line=bisect.bisect_right(lines,h.start()),
-                     category=cat,lexical_candidate=possible,target=target[:1200],header_recovered=known)
+                     category=cat,lexical_candidate=possible,target=target[:300],header_recovered=known)
             out.write(json.dumps(row,ensure_ascii=False)+'\n')
             if cat not in examples:examples[cat]=row
         files.append(dict(module='.'.join(Path(rel).with_suffix('').parts),path=rel,
             sites=len(hits),lexical_candidates=cand,lexical_fraction=cand/len(hits),**categories))
-    keys=sorted(totals)
+    keys=sorted(set(totals)|{"nested_forall_explicit_fin","forall_range_or_interval","boolean_container_all"})
     write('shape-counts.csv',[dict(category=k,sites=totals[k],fraction=totals[k]/codehits,
         lexical_candidate_sites=eligible[k],evidence='lexical only; requires native type/closedness/dependency validation') for k in keys])
     # Sparse per-file categories are kept raw; compact module totals enter Git.
     write('module-counts.csv',[{k:v for k,v in r.items() if k in ['module','path','sites','lexical_candidates','lexical_fraction']} for r in files])
     (RAW/'module-category-counts.json').write_text(json.dumps(files)+'\n')
     (HERE/'shape-examples.json').write_text(json.dumps(examples,ensure_ascii=False,indent=2)+'\n')
-    summary=dict(source_files=nfiles,raw_regex_sites=rawhits,code_regex_sites=codehits,files_with_sites=len(files),
+    summary=dict(source_files=nfiles,frame_source_bytes=1785499363,pin="4eaee87548250b2682affda7d05d947c05554bae",raw_regex_sites=rawhits,code_regex_sites=codehits,files_with_sites=len(files),
         lexical_candidates=sum(eligible.values()),lexical_candidate_fraction=sum(eligible.values())/codehits,
         semantic_coverage='unknown until native validation; lexical candidate count is not proven splittable coverage',
         raw_sites=str(RAW/'lexical-sites.jsonl.gz'))

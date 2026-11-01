@@ -1,0 +1,33 @@
+{
+  "modules": 31,
+  "completed_native_or_zero_site_metadata": 28,
+  "usable_helper_mix_modules": 26,
+  "unknown_modules": [
+    "OAI.Analysis.Laughlin.FiniteFlux.Row0705207",
+    "OAI.Analysis.Triangular.Envelope.EnvelopePsiB",
+    "OAI.NumberTheory.DirichletL.Eisenstein.SourceProjection",
+    "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50",
+    "OAI.Analysis.PlanarPacking.Certificate.Amplitudes"
+  ],
+  "counting_units": "source sites and checked helper declarations are separate; no measured per-site CPU",
+  "proxy_assumption": "Within a module, allocate its complete wall/CPU uniformly over native decide-helper declarations; not an empirical tactic-time fraction",
+  "context": "W fixed31 no-M standard-artifact point, not entire library or service",
+  "wall_s": {
+    "total": 811.2593079665676,
+    "known_cost": 605.6604964891449,
+    "unknown_cost": 205.59881147742271,
+    "modeled_split_share_lower": 0.588922293589179,
+    "modeled_split_share_upper": 0.8423539762317597,
+    "module_exposure_fraction": 0.6220558275455431,
+    "caveat": "Proxy bounds assign unknown helper mixes 0..1, not bounds on actually saved runtime"
+  },
+  "cpu_s": {
+    "total": 1342.922151,
+    "known_cost": 991.780027,
+    "unknown_cost": 351.14212399999997,
+    "modeled_split_share_lower": 0.5764024746206767,
+    "modeled_split_share_upper": 0.8378786322211184,
+    "module_exposure_fraction": 0.601867320006698,
+    "caveat": "Proxy bounds assign unknown helper mixes 0..1, not bounds on actually saved runtime"
+  }
+}

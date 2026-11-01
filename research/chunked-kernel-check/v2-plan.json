@@ -1,0 +1,21 @@
+{
+  "planned": 15,
+  "repetitions": 3,
+  "arms": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "changes_from_v1": [
+    "original also exports checked module",
+    "kernel-only spans and summed worker-thread CPU separately",
+    "standard importer loads environment extensions",
+    "separate import/final-check/audit/export times"
+  ],
+  "syntax_preparation": "qualified; CK_PREPARE skipped all timed callbacks",
+  "p_lock_before": "   PID COMMAND PATH                                                 BLOCKER\n137341 flock   /workspaces/.agent-state/gpu-smt-captures/pcore.lock \n",
+  "wall_scope": "native180s per cell; outer finite queue wrapper1740s, raw partial cells retained",
+  "source": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-v2"
+}

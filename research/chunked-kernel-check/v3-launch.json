@@ -1,0 +1,8 @@
+{
+  "pid": 154071,
+  "birth": "754571435",
+  "launched_utc": "2026-11-01T00:32:10.940593+00:00",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-v3",
+  "owner": "M",
+  "kind": "finite corrected kernel-check matrix, existing P-core lock"
+}

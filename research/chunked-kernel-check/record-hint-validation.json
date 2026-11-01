@@ -1,0 +1,18 @@
+{
+  "validated_utc": "2026-11-01T00:54:53.336648+00:00",
+  "projection_cases": {
+    "p0_0": "PointBox",
+    "p0_0.t": "RBox",
+    "p0_0.lam": "CBox",
+    "p0_0.lam.re": "RBox",
+    "p0_0.t.lo": null,
+    "p0_0.lam.re.lo": null,
+    "p0_0.unknown": null,
+    "(p0_0).t": "RBox",
+    "p0_0 + p0_0": null
+  },
+  "csv_rows": 751,
+  "csv_candidates": 321470,
+  "full_csv_aggregation_equal": true,
+  "scope": "lexical classifier controls; not Lean type validation"
+}
