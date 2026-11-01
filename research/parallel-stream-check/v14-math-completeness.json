@@ -1,0 +1,8 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14",
+  "actual_cells": 18,
+  "expected_cells": 18,
+  "terminal": true,
+  "all_accepted_equal": true,
+  "failed": []
+}

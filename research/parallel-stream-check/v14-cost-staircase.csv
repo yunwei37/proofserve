@@ -1,0 +1,8 @@
+cohort,operation,workers,wall_s,scope,capture,complete
+math1330,source_construction_serial_sum,stock compiler,622.3794121909887,sum_of_per_module_invocations_not_parallel_Lake_wall,O-construction,True
+math1330,reference,1,68.60523250419647,complete_single_process_artifact_closure,parallel-stream-check-v14,True
+math1330,audited,1,71.32571784034371,complete_single_process_artifact_closure,parallel-stream-check-v14,True
+math1330,parallel1,1,77.85869697947055,complete_single_process_artifact_closure,parallel-stream-check-v14,True
+math1330,parallel2,2,57.56878287624568,complete_single_process_artifact_closure,parallel-stream-check-v14,True
+math1330,parallel4,4,47.598143151029944,complete_single_process_artifact_closure,parallel-stream-check-v14,True
+math1330,parallel8,8,45.05003887694329,complete_single_process_artifact_closure,parallel-stream-check-v14,True

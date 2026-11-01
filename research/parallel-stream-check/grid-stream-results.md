@@ -18,7 +18,7 @@ All leaf constants match the serial check. No fallback, budget stop or rejection
 Four workers reduce incremental leaf wall time 2.838x, with 40.61% more CPU.
 The requested-eight trial uses only about four cores on average; it is not an
 eight-core scaling result. The requested-one trial is 6.17% slower than serial.
-Each wave contains the same 7,898 jobs over eight dependency frontiers.
+Each parallel trial checks the same 7,898 jobs over eight dependency frontiers.
 
 The whole process checks the prefix once and runs all five variants: 1,097.592 s
 wall, 1,988.629 s CPU, 2,774.938 MiB wait4 peak RSS. It is not the wall time of

@@ -43,5 +43,8 @@ separately.
 Current scheduling qualification: [worker-start.md](worker-start.md).
 First complete Grid curve: [grid-stream-results.md](grid-stream-results.md).
 Formal obligations and implementation trust: [correctness.md](correctness.md).
-Frozen v14 is qualified by native fault and certificate controls; its final
-Mathlib/computational performance measurements remain pending.
+Frozen v14 is qualified by native fault and certificate controls. Its complete
+three-repeat mathematical matrix is [v14-math-results.md](v14-math-results.md):
+serial68.605 s, parallel8=45.050 s (1.523x), with36.3% more CPU.
+Computational final curves remain pending; do not substitute the short controls.
+The cost staircase is [v14-cost-staircase.csv](v14-cost-staircase.csv).

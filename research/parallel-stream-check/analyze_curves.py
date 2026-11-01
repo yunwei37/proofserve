@@ -32,7 +32,9 @@ def main(raw,out):
     cpu_ratio_to_serial=cpu/baseCPU,mean_cores=cpu/wall,
     chunk_parents=cell['actual_chunk_parents'],chunk_subjobs=cell['actual_chunk_subjobs'],
     waves=cell['waves'],jobs=cell['jobs'],route=cell['route'],
-    all_source_constants_match=True,scope='incremental_root_same_verified_prefix',
+    all_source_constants_match=not cell['kind'].startswith('chunk'),
+    constant_comparison_scope='new inserted constants; chunk-selected proof bodies replaced after original-type validation',
+    scope='incremental_root_same_verified_prefix',
     chunk_payload_read_included=cell['kind'].startswith('chunk')))
  dump(out/'compute-cells.csv',rows);dump(out/'compute-runs.csv',runs)
  summary=[]

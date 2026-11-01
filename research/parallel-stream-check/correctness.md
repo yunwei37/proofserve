@@ -18,6 +18,11 @@ does not change the meaning of any constant used by an already checked proof.
 This relies on complete dependency discovery, correct visibility/binding
 resolution, stable input, faithful ABI handling and the coordinator's implementation.
 It is not justified merely by successful tests or the word "kernel".
+The pinned SDK Lean/Util/FoldConsts.lean implements
+ConstantInfo.getUsedConstantsAsSet over both type and value, with
+allowOpaque := true. Opaque proof bodies therefore participate in the graph;
+metadata ignored by the kernel is not a hidden proof dependency.
+
 
 Inductives/constructors/recursors/quotient declarations and cyclic plans use
 upstream replay. Context conflicts use O's module-local path. The real v4
