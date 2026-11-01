@@ -1,0 +1,255 @@
+{
+  "rows": [
+    {
+      "accounting": "main-thread-only-not-total",
+      "axioms": [],
+      "budget": 3000,
+      "command_raw_heartbeats": [],
+      "errors": [],
+      "id": "true",
+      "main_thread_raw_heartbeats": 1359,
+      "mode": "stock",
+      "new_axioms": [],
+      "observer": "off",
+      "target": "repro_true",
+      "theorem_present": true,
+      "verdict": "accepted",
+      "warnings": []
+    },
+    {
+      "accounting": "main-thread-only-not-total",
+      "axioms": [
+        "sorryAx"
+      ],
+      "budget": 3000,
+      "command_raw_heartbeats": [],
+      "errors": [
+        "Tactic `decide` proved that the proposition\n  2 + 2 = 5\nis false"
+      ],
+      "id": "false",
+      "main_thread_raw_heartbeats": 957,
+      "mode": "stock",
+      "new_axioms": [],
+      "observer": "off",
+      "target": "repro_false",
+      "theorem_present": true,
+      "verdict": "lean_error",
+      "warnings": []
+    },
+    {
+      "accounting": "main-thread-only-not-total",
+      "axioms": [
+        "sorryAx"
+      ],
+      "budget": 3000,
+      "command_raw_heartbeats": [],
+      "errors": [],
+      "id": "sorry",
+      "main_thread_raw_heartbeats": 661,
+      "mode": "stock",
+      "new_axioms": [],
+      "observer": "off",
+      "target": "repro_sorry",
+      "theorem_present": true,
+      "verdict": "incomplete",
+      "warnings": [
+        "declaration uses `sorry`"
+      ]
+    },
+    {
+      "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+      "axioms": [],
+      "budget": 3000,
+      "command_raw_heartbeats": [
+        66692,
+        8431
+      ],
+      "errors": [],
+      "id": "true",
+      "main_thread_raw_heartbeats": 75195,
+      "mode": "sync",
+      "new_axioms": [],
+      "observer": "off",
+      "target": "repro_true",
+      "theorem_present": true,
+      "verdict": "accepted",
+      "warnings": []
+    },
+    {
+      "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+      "axioms": [
+        "sorryAx"
+      ],
+      "budget": 3000,
+      "command_raw_heartbeats": [
+        54833,
+        8431
+      ],
+      "errors": [
+        "Tactic `decide` proved that the proposition\n  2 + 2 = 5\nis false"
+      ],
+      "id": "false",
+      "main_thread_raw_heartbeats": 63302,
+      "mode": "sync",
+      "new_axioms": [],
+      "observer": "off",
+      "target": "repro_false",
+      "theorem_present": true,
+      "verdict": "lean_error",
+      "warnings": []
+    },
+    {
+      "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+      "axioms": [
+        "sorryAx"
+      ],
+      "budget": 3000,
+      "command_raw_heartbeats": [
+        18210,
+        8430
+      ],
+      "errors": [],
+      "id": "sorry",
+      "main_thread_raw_heartbeats": 26678,
+      "mode": "sync",
+      "new_axioms": [],
+      "observer": "off",
+      "target": "repro_sorry",
+      "theorem_present": true,
+      "verdict": "incomplete",
+      "warnings": [
+        "declaration uses `sorry`"
+      ]
+    },
+    {
+      "accounting": "main-thread-only-not-total",
+      "axioms": [],
+      "budget": 3000,
+      "command_raw_heartbeats": [],
+      "errors": [
+        "unexpected end of input"
+      ],
+      "id": "parse_error",
+      "main_thread_raw_heartbeats": 825,
+      "mode": "stock",
+      "new_axioms": [],
+      "observer": "off",
+      "target": "repro_parse",
+      "theorem_present": true,
+      "verdict": "lean_error",
+      "warnings": []
+    },
+    {
+      "accounting": "main-thread-only-not-total",
+      "axioms": [
+        "rogue"
+      ],
+      "budget": 3000,
+      "command_raw_heartbeats": [],
+      "errors": [],
+      "id": "new_axiom",
+      "main_thread_raw_heartbeats": 514,
+      "mode": "stock",
+      "new_axioms": [
+        "rogue"
+      ],
+      "observer": "off",
+      "target": "repro_axiom",
+      "theorem_present": true,
+      "verdict": "incomplete",
+      "warnings": []
+    },
+    {
+      "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+      "axioms": [],
+      "budget": 3000,
+      "command_raw_heartbeats": [
+        21230,
+        8431
+      ],
+      "errors": [
+        "unexpected end of input"
+      ],
+      "id": "parse_error",
+      "main_thread_raw_heartbeats": 29699,
+      "mode": "sync",
+      "new_axioms": [],
+      "observer": "off",
+      "target": "repro_parse",
+      "theorem_present": true,
+      "verdict": "lean_error",
+      "warnings": []
+    },
+    {
+      "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+      "axioms": [
+        "rogue"
+      ],
+      "budget": 3000,
+      "command_raw_heartbeats": [
+        11763,
+        14226,
+        8435
+      ],
+      "errors": [],
+      "id": "new_axiom",
+      "main_thread_raw_heartbeats": 34462,
+      "mode": "sync",
+      "new_axioms": [
+        "rogue"
+      ],
+      "observer": "off",
+      "target": "repro_axiom",
+      "theorem_present": true,
+      "verdict": "incomplete",
+      "warnings": []
+    }
+  ],
+  "native": {
+    "key": "qualification2",
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "100",
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "-j1",
+      "--run",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v2/Probe.lean",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v2/qualification2.json"
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "measured": true,
+    "wall_limit_s": 100,
+    "own_rss_sample_stop_gib": 14,
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-258778-qualification2.scope",
+    "cgroup_charged_memory_max_gib": 14,
+    "pid": 258779,
+    "birth": "761297511",
+    "returncode": 0,
+    "wall_s": 5.012888507917523,
+    "user_s": 3.241001,
+    "system_s": 1.762265,
+    "peak_rss_kib": 8780756,
+    "native_retired": true,
+    "sampled_tree_peak_bytes": 8784560128,
+    "stop_reasons": [],
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "charged_peak_bytes": 2313322496,
+    "cgroup_cpu_stat": "usage_usec 5002641\nuser_usec 3240415\nsystem_usec 1762225\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+    "cgroup_usage_s": 5.002641,
+    "cgroup_user_s": 3.240415,
+    "cgroup_system_s": 1.762225,
+    "wait4_usage_complete": true,
+    "cgroup_retired": true
+  }
+}
