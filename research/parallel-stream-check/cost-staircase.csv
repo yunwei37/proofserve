@@ -1,0 +1,4 @@
+operation,seconds,source,fresh_repeats
+source_construction_serial_compiler_work,622.3794121909887,research/decoupled-check/cohort-costs.csv math,0
+artifact_serial_stream,65.9398591388017,/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v4,3
+artifact_parallel_stream_8,57.05232662521303,/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v4,3
