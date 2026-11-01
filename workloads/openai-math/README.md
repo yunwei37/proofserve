@@ -169,3 +169,7 @@ hypothesis remain unknown; native costs exist for the stated subset.
 Review is same-chat self-review, not an independent audit.
 
 Exact import-name-set population and limitations: [import-set-reuse](import-set-reuse/README.md).
+
+Current source-defined cost domains and uncertainty: [cost-regimes-noM](cost-regimes-noM/README.md).
+Timing submission now uses one stockflock command at a time;the former
+profile-priority/nonblocking-defer hold is superseded by the direct user rule.

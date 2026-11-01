@@ -1,0 +1,6 @@
+module,explicit_markers_per_KiB,explicit_any,explicit_0p1_per_KiB,explicit_1_per_KiB,cpp_type_checker_usercycle_share,checker_majority,primary_agrees_majority,profile_convention,valid_current_noM_cross_validation,interpretation
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,0.0,False,False,False,0.019183586638178016,False,True,legacy_M_methodology_only,False,purposeful five-module diagnostic; user cycles not wall or all kernel work
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,0.0,False,False,False,0.02061032834313725,False,True,legacy_M_methodology_only,False,purposeful five-module diagnostic; user cycles not wall or all kernel work
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,4.006790395288407,True,True,True,0.8151997826060953,True,True,legacy_M_methodology_only,False,purposeful five-module diagnostic; user cycles not wall or all kernel work
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,3.724087768214329,True,True,True,0.7493148598248758,True,True,legacy_M_methodology_only,False,purposeful five-module diagnostic; user cycles not wall or all kernel work
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,0.5712612097460287,True,True,False,0.9401219683374014,True,True,legacy_M_methodology_only,False,purposeful five-module diagnostic; user cycles not wall or all kernel work

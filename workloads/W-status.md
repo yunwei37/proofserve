@@ -1,28 +1,27 @@
 # W current state
-## Current frontier (W061: noM31costs plus26deps; yielded to real Mlockowner)
-- All new timing omits-M; all old-Mcosts/profiles are legacy methodology only.
-- Fresh noM31complete/allcompile:26A+Grid+Amplitudes+3ready random draws.
- New estimator29/42costs/12of21cells, memory0, P-lock only. No oldpair/Mcosts.
- FullCPU/globalCI still unavailable; missing13random draws not substituted.
-- Grid317.191522wall/488.711891CPU,Amplitudes127.044006wall/251.582698CPU;
- same known native verdicts. Full31native sum811.259308wall/1342.922151CPU.
- NoMsystemCPUshares:unweightedA26=17.98%,Grid20.87%,Amplitudes14.55%.
- These are not old-Mfigures, globalwallshares or a system-call attribution.
- Raw workloads/openai4341-noM-standard-a-20261031 complete/retired/collected.
-- Suffix74actually ended after26compile/78.905685CPU:deferred without queue/
- retry on another lane'sPrequest. No new probability endpoint; coverage29/42.
- Raw workloads/openai4341-noM-original-c-suffix-20261101 completeprefixretired.
- Prepared48suffix at workloads/openai4341-noM-original-c-suffix48-prepared-20261101
- has no launch, no queued Wwrapper. Includes fixedOriginalBlock81/KeySound82.
-- Last actually verified Powner136340/birth754404164 (MchunkedGrid) was live;
- do not infer retirement from thisnote. Recheck actualPID/birth/lock beforeW.
- All futureWtiming:noM,P0–7nonblockingwaiteryield,owned15GiBchargedcgroup/
- 16GiBnative-controllerRSSsampling,one native. Rawbudget/failures preserved.
-- W059 import audit complete:143637directsets/141573graphclosures,top100
- 4.94246%/4.95043%. Static/unweighted; external3529frontierunexpanded.
- Exactpartitions; independentBFS200classes/310members. No CPUor cache-safetyclaim.
-- Full42sample/conditional6draws and other workloads remain ongoing.
- Onlyworkloads/changed. No extraagent, generation, UI or infra mutation.
+## Current frontier (W062:48queued individually;conditional two-domain costs)
+- New user:profilepriority ended. Queue one timed task,wait realreturn,thennext.
+ 48controller191267/birth754946357 launched01:34:40UTC,raw
+ workloads/openai4341-noM-original-c-suffix48-prepared-20261101. One stockflock
+ request at a time,no batchheldlock. Firstreturn/nextqueue actually observed.
+ Recheck actualPID/birth/terminal;never infer from thisnote. No second Wnative.
+- All new timing noM/P0–7/j8/owned15GiBchargedcgroup/16GiBsampler.
+ Per native600dep/1200target s,native-work group1700s;contention notnativecost.
+ Do not restore legacyMplans or profilepriority/nonblocking-deferstop.
+- W060fresh31noMcompiles:29/42random costs,12/21complete cells. No fullCPU/CI.
+ Grid317.191522s,Amplitudes127.044006s;31capture retired/collected.
+- RQ1labels all163097modules,5848primarypositive.
+ 12complete strata(101596modules):certificateCPU15.467757h/ordinary116.704826h,
+ share11.7027%;nominaldelta95%0–28.8801%,Bonferroni0–100%.
+ Conditional coveredstrata only,NOTwholelibrary. Missing61501modules include
+ 3036positive;globalcost/share/CIblank. See openai-math/cost-regimes-noM.
+- FiveCppprofiles are legacy-Mmethodology,not currentnoMvalidation. Density
+ 1/KiBmisseslegacyEnvelopePsiB. Source labels do not establish kernel dominance.
+ Full163097labels/raw onPVC;smallclassification/stratum/shareCSVpublished.
+- Import audit143637directsets/141573graphclosures,top100about4.94%;
+ sourcegraph only,notstatecache safety or CPUshare.
+- Original42draws/conditional6extension preserved. Onlyworkloads/edited.
+ No generation,extraagent,desktop or infrastructure mutation.
 
 ## Historical step notes (retained unchanged below)
 W004ea41025 build-planning models and53-target stratified frame are preserved.

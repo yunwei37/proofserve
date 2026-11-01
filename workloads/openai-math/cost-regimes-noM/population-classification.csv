@@ -1,0 +1,5 @@
+rule,modules,certificate_proxy_modules,ordinary_proxy_modules,certificate_file_fraction,certificate_source_bytes,label_scope
+explicit_any,163097,5848,157249,0.03585596301587399,655100740,lexical source proxy; not dynamic checker dominance
+explicit_0p1_per_KiB,163097,5630,157467,0.03451933511959141,638058645,lexical source proxy; not dynamic checker dominance
+explicit_1_per_KiB,163097,4056,159041,0.024868636455606174,490371794,lexical source proxy; not dynamic checker dominance
+including_plain_decide,163097,16766,146331,0.10279772160125569,862282902,lexical source proxy; not dynamic checker dominance
