@@ -1,0 +1,186 @@
+[
+  {
+    "mutation": "none",
+    "result": {
+      "key": "warm-control-none",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "90",
+        "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14/warm-curve",
+        "Waves",
+        "none"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": false,
+      "wall_limit_s": 90,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-227576-warm-control-none.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 227577,
+      "birth": "757287568",
+      "returncode": 0,
+      "wall_s": 0.053601015359163284,
+      "user_s": 0.032889999999999996,
+      "system_s": 0.008704,
+      "peak_rss_kib": 74764,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 1867776,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 18055168,
+      "cgroup_cpu_stat": "usage_usec 40893\nuser_usec 33737\nsystem_usec 7156\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.040893,
+      "cgroup_user_s": 0.033737,
+      "cgroup_system_s": 0.007156,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    "events": [
+      {
+        "accept": true,
+        "cpu_ns": "100650",
+        "elapsed_ns": 102649,
+        "event": "curve_cell",
+        "jobs": 0,
+        "kind": "serial",
+        "module": "Waves",
+        "retained_certificate_regions": 0,
+        "route": "serial",
+        "scope": "trusted_stock_imports_entire_leaf",
+        "waves": 0,
+        "workers": 1
+      },
+      {
+        "accept": true,
+        "cpu_ns": "788454",
+        "elapsed_ns": 969081,
+        "event": "curve_cell",
+        "jobs": 5,
+        "kind": "parallel1",
+        "module": "Waves",
+        "retained_certificate_regions": 0,
+        "route": "parallel",
+        "scope": "trusted_stock_imports_entire_leaf",
+        "waves": 3,
+        "workers": 1
+      },
+      {
+        "accept": true,
+        "cpu_ns": "744637",
+        "elapsed_ns": 692555,
+        "event": "curve_cell",
+        "jobs": 5,
+        "kind": "parallel2",
+        "module": "Waves",
+        "retained_certificate_regions": 0,
+        "route": "parallel",
+        "scope": "trusted_stock_imports_entire_leaf",
+        "waves": 3,
+        "workers": 2
+      },
+      {
+        "accept": true,
+        "cpu_ns": "232175",
+        "elapsed_ns": 158681,
+        "event": "curve_cell",
+        "jobs": 5,
+        "kind": "parallel4",
+        "module": "Waves",
+        "retained_certificate_regions": 0,
+        "route": "parallel",
+        "scope": "trusted_stock_imports_entire_leaf",
+        "waves": 3,
+        "workers": 4
+      },
+      {
+        "accept": true,
+        "cpu_ns": "200180",
+        "elapsed_ns": 184442,
+        "event": "curve_cell",
+        "jobs": 5,
+        "kind": "parallel8",
+        "module": "Waves",
+        "retained_certificate_regions": 0,
+        "route": "parallel",
+        "scope": "trusted_stock_imports_entire_leaf",
+        "waves": 3,
+        "workers": 8
+      },
+      {
+        "certificate_regions": 0,
+        "constants": 5,
+        "event": "complete",
+        "input_regions": 1,
+        "module": "Waves",
+        "prefix_import_ns": 1042028,
+        "prefix_independently_rechecked": false
+      }
+    ]
+  },
+  {
+    "mutation": "bvar",
+    "result": {
+      "key": "warm-control-bvar",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "90",
+        "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14/warm-curve",
+        "Waves",
+        "bvar"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": false,
+      "wall_limit_s": 90,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-227576-warm-control-bvar.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 227587,
+      "birth": "757287574",
+      "returncode": 1,
+      "wall_s": 0.05715092644095421,
+      "user_s": 0.029684,
+      "system_s": 0.010013,
+      "peak_rss_kib": 72280,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 1789952,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 15171584,
+      "cgroup_cpu_stat": "usage_usec 39073\nuser_usec 29054\nsystem_usec 10018\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 0.039073,
+      "cgroup_user_s": 0.029054,
+      "cgroup_system_s": 0.010018,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    "events": [
+      {
+        "error": "while replaying declaration 'cc':\n(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+        "event": "reject",
+        "scope": "trusted_stock_imports_entire_leaf"
+      }
+    ]
+  }
+]

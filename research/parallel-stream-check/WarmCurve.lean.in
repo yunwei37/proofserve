@@ -1,0 +1,94 @@
+/-- Diagnostic mode: stock imports are trusted; only the entire leaf is rechecked.
+It must never be labeled independent closure validation. -/
+unsafe def warmMain (args : List String) : IO UInt32 := do
+  let some rawMod := args[0]? | throw <| IO.userError "module required"
+  initSearchPath (← findSysroot)
+  let parts ← pathParts (← findOLean rawMod.toName)
+  let some (first,_) := parts[0]? | throw <| IO.userError "empty module"
+  let some (data,_) := parts[parts.size-1]? | throw <| IO.userError "empty module"
+  let begin ← IO.monoNanosNow
+  let (_,state) ← importModulesCore first.imports |>.run
+  let env ← finalizeImport state first.imports {} 0 false false (isModule := true)
+  let imported ← IO.monoNanosNow
+  let base := env.toKernelEnv
+  let mutation := args[1]?.getD "none"
+  unless ["none","bvar","sibling"].contains mutation do throw <| IO.userError "invalid mutation"
+  let target := (← IO.getEnv "DECOUPLED_MUTATE_CONSTANT").map String.toName
+  let (map,_) := constantsOf data mutation target
+  let mut insertMap : Std.HashMap Name ConstantInfo := {}
+  let mut duplicates : Array ConstantInfo := #[]
+  let mut conflict := false
+  for (_,ci) in map do
+    unless ci.isUnsafe || ci.isPartial do
+      match base.find? ci.name with
+      | none => insertMap := insertMap.insert ci.name ci
+      | some old =>
+        unless sameConstant old ci do
+          match old,ci with
+          | .thmInfo a,.thmInfo b =>
+            if a.type==b.type && a.levelParams==b.levelParams && a.all==b.all &&
+                !reachesLocal map ci.name ci.getUsedConstantsAsSet.toList then
+              duplicates := duplicates.push ci
+            else conflict := true
+          | _,_ => conflict := true
+  let directory ← IO.getEnv "PARALLEL_CHUNK_ASSETS_CURVE"
+  let kinds := if directory.isSome then
+    ["serial","parallel1","parallel2","parallel4","parallel8","chunk1","chunk2","chunk4","chunk8"]
+    else ["serial","parallel1","parallel2","parallel4","parallel8"]
+  let mut oracle : Option Kernel.Environment := none
+  let mut retained : Array CompactedRegion := #[]
+  for kind in kinds do
+    let workers := (String.ofList (kind.toList.filter Char.isDigit)).toNat?.getD 1
+    let t0 ← IO.monoNanosNow
+    let c0 ← processNs
+    let (bundles,regions) ← if kind.startsWith "chunk" then do
+      let some root := directory | throw <| IO.userError "missing assets"
+      loadBundle root workers
+      else pure (#[],#[])
+    let (checked,waves,jobs,route) ← if kind=="serial" then do
+      let e ← base.replay map
+      pure (e,0,0,"serial")
+      else if conflict then do
+        let e ← base.replay map
+        pure (e,0,0,"module_local_serial_conflict")
+      else parallelReplay data insertMap base workers "none" bundles
+    if !conflict then
+      for h : i in [:duplicates.size] do
+        let mut fresh := Name.num `_proofserveWarmDuplicate i
+        while (checked.find? fresh).isSome do fresh := Name.num fresh 0
+        validateDuplicate checked duplicates[i] fresh
+    if let some reference := oracle then
+      for (_,ci) in map do
+        unless ci.isUnsafe || ci.isPartial do
+          let some expected := reference.find? ci.name | throw <| IO.userError "missing serial result"
+          let some actual := checked.find? ci.name | throw <| IO.userError "missing parallel result"
+          let rewritten := bundles.any (fun b => sameConstant ci b.reference)
+          unless sameConstant expected actual ||
+              (rewritten && expected.name==actual.name && expected.type==actual.type &&
+               expected.levelParams==actual.levelParams) do
+            throw <| IO.userError s!"result mismatch:{ci.name}"
+    else oracle := some checked
+    let c1 ← processNs
+    let t1 ← IO.monoNanosNow
+    retained := retained ++ regions
+    IO.println <| Json.compress <| Json.mkObj [
+      ("event",toJson "curve_cell"),("module",toJson rawMod),("kind",toJson kind),
+      ("workers",toJson workers),("elapsed_ns",toJson (t1-t0)),("cpu_ns",toJson (c1-c0)),
+      ("waves",toJson waves),("jobs",toJson jobs),("route",toJson route),
+      ("scope",toJson "trusted_stock_imports_entire_leaf"),
+      ("retained_certificate_regions",toJson retained.size),("accept",toJson true)]
+    (← IO.getStdout).flush
+  IO.println <| Json.compress <| Json.mkObj [
+    ("event",toJson "complete"),("module",toJson rawMod),("constants",toJson data.constants.size),
+    ("prefix_import_ns",toJson (imported-begin)),("prefix_independently_rechecked",toJson false),
+    ("input_regions",toJson parts.size),("certificate_regions",toJson retained.size)]
+  return 0
+
+unsafe def main (args : List String) : IO UInt32 := do
+  try warmMain args
+  catch e =>
+    IO.println <| Json.compress <| Json.mkObj [
+      ("event",toJson "reject"),("scope",toJson "trusted_stock_imports_entire_leaf"),
+      ("error",toJson e.toString)]
+    (← IO.getStdout).flush
+    return 1
