@@ -115,6 +115,50 @@ completed whole-run wall by a CPU fraction. All replay ranges describe the
 enumerated arrivals/Mathlib observations, not confidence about repeated native
 computational runs. No semantic rejection is inferred from a budget cut.
 
+## What the class label does not guarantee
+
+The finite42-draw frame has27known correct labels,2known errors and13unknown
+dynamic outcomes. Without assumptions about those missing outcomes, its
+unweighted accuracy can range from27/42=64.29% to40/42=95.24%.
+Missing runtime weights prevent a corresponding nontrivial whole-frame CPU
+error bound. The93.10% is conditional accuracy, not filled-in population truth.
+
+| Root closure | Serial CPU / wall s | Selected type-route CPU / wall s |
+|---|---:|---:|
+|math|68.756 / 68.800|68.756 / 68.800|
+|barrier|474.582 / 474.851|591.467 / 304.862|
+|grid|557.350 / 557.568|744.406 / 296.293|
+
+These completed-process cost sums are 1100.688CPU seconds for all-serial
+versus1404.629 for type-route(+27.61%).
+Summed process wall falls39.16%
+(1101.218->669.955s), but this is a sum of prior completed cells,
+not an additional measured continuous batch or service makespan.
+The observed wall/CPU tradeoff explains why the fixed-CPU replay can be worse
+despite faster computational checking. It cannot be described as CPU saved.
+
+Nor is the ordinary class a proof that parallel checking is useless:
+the existing Mathlib parallel4 matrix has a47.60s median wall versus68.61s
+serial, while using84.64s versus68.57s median CPU. A regime label does not by
+itself identify the wall-optimal or CPU-optimal checker; the policy objective
+and actual dependency graph still matter. No firstness claim for such routing
+follows from high classification accuracy.
+
+## Upper admission's transfer limit
+
+The type-level upper envelope is deliberately calibrated from previous
+observations of the same roots. It is an availability control for recurrent
+known work, not evidence that class membership alone bounds unseen work.
+A leave-one-cohort-out calculation exposes the gap: using only Barrier's
+591.47CPU seconds underestimates Grid's744.41s; using Grid covers Barrier.
+There is no other ordinary cohort to calibrate a held-out Mathlib upper limit.
+Thus the only two computational transfer cases have1/2coverage, and the
+ordinary case has no finite bound. These tiny counts are diagnostic, not a
+coverage estimate.[Exact transfer table](class-envelope-transfer.csv).
+No numerical regression is fitted to repair this. In particular, avoiding
+interruptions in the coming known-root experiment cannot be advertised as
+a certified unseen-module admission bound.
+
 ## Native matrix currently collecting
 
 [classification-plan.md](classification-plan.md) fixes three cyclic arrivals,

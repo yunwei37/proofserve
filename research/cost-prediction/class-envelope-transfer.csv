@@ -1,0 +1,4 @@
+held_out,calibration_type_count,upper_cpu_s,actual_cpu_s,covered,scope
+math,0,,,,no other ordinary cohort; finite bound unavailable
+barrier,1,744.406169,591.467022,True,leave-one-selected-cohort-out; one calibration compute input only
+grid,1,591.467022,744.406169,False,leave-one-selected-cohort-out; one calibration compute input only
