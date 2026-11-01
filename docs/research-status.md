@@ -34,7 +34,8 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
 ## Evidence and limitations
 - [Static census](../workloads/openai-math/README.md):
   163097files; default root omits451008/1354379=33.30%lexical decide+kernel,
-  not runtime. Same-scanner Mathlib density comparison is being rechecked.
+  not runtime. Same-scanner Mathlib masked7sites/4files versus openai1354379/5848;
+  density10668.32x, positivegeneratedfiles3.5856%, not CPUweights.
 - [Fresh noM31](../workloads/openai-math/noM-standard-artifacts-a/README.md):
   W reports31successful native calls:29/42random costs/12complete strata,
   plus2purposeful modules.13draws remain missing; no fullCPU/globalCI.

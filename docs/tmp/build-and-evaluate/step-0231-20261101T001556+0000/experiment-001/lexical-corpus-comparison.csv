@@ -1,0 +1,3 @@
+corpus,source_files,source_bytes,raw_occurrences,raw_positive_files,masked_occurrences,masked_positive_files,positive_file_fraction,occurrences_per_decimal_MB
+Mathlib,8529,98449500,8,5,7,4,0.00046898815804900925,0.07110244338467946
+openai/math,163097,1785499363,1354379,5848,1354379,5848,0.03585596301587399,758.5435358119475

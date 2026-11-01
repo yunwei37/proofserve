@@ -1,0 +1,11 @@
+{
+  "changed_fields": [
+    "updated_at",
+    "prompt"
+  ],
+  "same_rule": "FREQ=HOURLY;INTERVAL=1",
+  "same_status": "ACTIVE",
+  "same_target": true,
+  "new_entities": 0,
+  "authority": "user: \u6309\u8fd9\u4e2a\u4e3b\u7ebf\u63a8\u8fdb; no-M remains methodological"
+}

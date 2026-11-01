@@ -242,3 +242,21 @@ remain evidence; certificate/service cases retain original historic boundaries.
 This is more faithful to the user's workload-cost question than attributing
 our nondefault setting to the workload. Revisit numerical findings only when
 W's matching noM results arrive. [Self-review](tmp/build-and-evaluate/step-0229-20261031T235441+0000/outer-audit.md).
+
+## 2026-11-01 — user selects two verification-cost regimes
+Explicit user instruction replaces the prior five-finding organization with
+checking mathematical witnesses versus replaying proof-embedded computation.
+Newtitle/abstract/fourRQmeaning/structure are authorized, notagentstorydrift.
+RQ1nativecost/location andcost-weightedprevalence; RQ2independentverification/
+import/elaborationcoupling; RQ3original-kernel multi-core/cluster scaling;
+RQ4build/outcome/axiomcoverage. Primarymath/publicsoftware/RLcontrasts remain.
+Commonmaskedscanner independentlyfinds Mathlib7sites/4files versus
+openai1354379/5848; rawMathlib8/5includesonedoccomment. Density10668.3188x,
+positivegeneratedfiles3.585596%, neitherisCPUshare. Old-M75–94/~2/1.28
+remain methodologymotivation, notfreshanswers. NoM31rawrecordschecked,
+random29/42/12cells; fullweights/streaming/chunked/cluster slotsmissing.
+Ostreaming andMchunking are implicationprototypes; stockkernel/APIcalls do
+not themselves prove fullsoundnessor speed. OriginalInitialNarrative/evolution
+above retained; current framing is morefaithful to explicituserregimequestion
+than a general resource/accelerator story.
+[Evidence and self-review](tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md).

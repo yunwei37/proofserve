@@ -1,0 +1,2 @@
+corpus,path,raw_occurrences,masked_occurrences
+Mathlib,Mathlib/Tactic/Echelon/Cert.lean,1,0

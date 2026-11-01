@@ -1,0 +1,45 @@
+{
+  "complete": true,
+  "corpora": [
+    {
+      "corpus": "Mathlib",
+      "source_files": 8529,
+      "source_bytes": 98449500,
+      "raw_occurrences": 8,
+      "raw_positive_files": 5,
+      "masked_occurrences": 7,
+      "masked_positive_files": 4,
+      "positive_file_fraction": 0.00046898815804900925,
+      "occurrences_per_decimal_MB": 0.07110244338467946
+    },
+    {
+      "corpus": "openai/math",
+      "source_files": 163097,
+      "source_bytes": 1785499363,
+      "raw_occurrences": 1354379,
+      "raw_positive_files": 5848,
+      "masked_occurrences": 1354379,
+      "masked_positive_files": 5848,
+      "positive_file_fraction": 0.03585596301587399,
+      "occurrences_per_decimal_MB": 758.5435358119475
+    }
+  ],
+  "density_ratio": 10668.318832702618,
+  "units": "decimal MB=1000000 source bytes",
+  "pattern": "\\bdecide\\s*\\+\\s*kernel\\b",
+  "mask": "exact existing W masks implementation",
+  "pins": {
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "openai_math": "4eaee87548250b2682affda7d05d947c05554bae"
+  },
+  "raw_archive": "/workspaces/.agent-state/gpu-smt-captures/step-0231-20261101T001556+0000-static/source.tar.gz",
+  "raw_archive_bytes": 896084751,
+  "compressed_prefix_bytes_read": 316702720,
+  "source_census_complete_archive_may_be_partial": true,
+  "scope": "Mathlib/ subtree and pinned whole openai/math Lean inventory; lexical, not native calls/costs/axiom audits",
+  "initial_partial_cache_discarded_as_population": true,
+  "native_calls": 0,
+  "root_analysis_s": 58.758693375624716,
+  "root_analysis_maxrss_kib": 242288,
+  "download_cleanup": "extra full-archive download stopped only after complete source-frame census; retained rawprefix is not a complete archive claim"
+}

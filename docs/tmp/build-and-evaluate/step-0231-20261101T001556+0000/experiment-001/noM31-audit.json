@@ -1,0 +1,11 @@
+{
+  "native_rows": 31,
+  "random_endpoints": 29,
+  "purposeful_endpoints": 2,
+  "same_source": true,
+  "pid_births_retired": true,
+  "argv_no_M": true,
+  "own_clocks_recomputed": true,
+  "global_estimate": null,
+  "no_new_native_calls": true
+}

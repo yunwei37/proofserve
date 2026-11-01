@@ -1,0 +1,13 @@
+{
+  "status": "rejected before manuscript edits",
+  "reason": "local openai/math source cache contains only13952files/262957071bytes, not complete163097source frame",
+  "partial_occurrences": 148021,
+  "partial_positive_files": 254,
+  "mathlib_tree_result": {
+    "files": 8529,
+    "bytes": 98449500,
+    "masked_occurrences": 7,
+    "masked_files": 4
+  },
+  "action": "locate retained complete archive or stream exact pinned official archive; reconcile mathlib raw versus masked scope"
+}

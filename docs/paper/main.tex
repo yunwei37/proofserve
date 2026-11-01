@@ -3,824 +3,415 @@
 \usepackage{booktabs,amsmath,graphicx,microtype,hyperref}
 \hypersetup{colorlinks=true,allcolors=blue}
 \newcommand{\missing}[1]{\textbf{[RESULT: #1]}}
-\title{Where Does the Cost of Verifying AI-Generated\\Formal Artifacts Come From?}
+\title{Checking or Recomputing? Two Cost Regimes in\\Verifying AI-Generated Formal Artifacts}
 \author{Anonymous research draft}
 \date{}
 \begin{document}
 \maketitle
 \begin{abstract}
-AI systems produce mathematical libraries, verified programs and streams of
-proof candidates. Their verification costs span library loading, elaboration,
-proof construction, kernel reduction and operating-system work.
-We characterize these costs, using the research-level \texttt{openai/math}
-library as the primary workload and retained proof/program candidate streams
-as contrasts. A complete source census covers 163,097 Lean modules; bounded
-native measurements retain successful, failed and dependency-blocked work.
-Library-stage CPU, latency and import-cost results are being recollected
-without Lean's optional in-process memory check; values collected with that
-check are retained as a superseded measurement setting.
-The default root omits 33.30\% of the release's lexical
-\texttt{decide +kernel} occurrences.
-Budget-failure exposure varies across candidate streams, and profiling can
-change resource-bounded outcomes: seven of 200 diagnostic source pairs change
-error flags. We distinguish these observations from semantic falsity,
-whole-build costs and accelerator opportunity.
-\missing{No-\texttt{-M} library-stage costs, generated-software native
-costs, complete cost-estimation coverage and calibrated import attribution.}
-Certificate-repair experiments illustrate when changing proof representation
-can help pathological reductions and when it adds cost. The contribution is
-a characterization and its implications for verifier design, rather than a
-new branching service or certificate algorithm.
+AI-generated mathematics changes what proof verification asks the machine
+to do. A mathematical witness can be checked without repeating its
+producer's search, while a computational certificate can require the
+kernel to recompute the calculation encoded in the proof.
+We characterize these two cost regimes using released \texttt{openai/math}
+artifacts and their version-matched Mathlib dependency.
+The same comment/string-masked scanner finds 1,354,379
+\texttt{decide +kernel} sites in 163,097 generated-library files,
+versus 7 sites in 8,529 Mathlib files: approximately
+10,668.3 times the source-megabyte density.
+Only 5,848 generated-library files (3.5856\%) contain this form.
+This is lexical concentration, not a measured fraction of verification time.
+Runtime-weighted prevalence remains
+\missing{pending from the incomplete native sample}.
+We examine repeated imports and production/checking coupling, and test
+single-process streaming and automatically chunked original-kernel checking
+as design-implication prototypes.
+\missing{Matched independent-checking and whole-path parallel results.}
+The meaning of \emph{verified} is a separate boundary: the default build
+omits 33.30\% of kernel-decision sites, outcomes depend on settings and
+observation, and whole-library axiom closure remains unestablished.
+The contribution is a characterization and its tested implications, not a
+general accelerator or a replacement trusted kernel.
 \end{abstract}
 
 \section{Introduction}
-AI-generated formal artifacts now range from individual proof attempts to
-research mathematical libraries and multi-module verified programs.
-Verification supplies the acceptance signal for these artifacts, but the
-cost of obtaining that signal is not a single solver call.
-Lean must prepare imported declarations, elaborate source, execute tactics,
-construct proof terms and check them in the kernel~\cite{lean4}.
-SMT-backed program verification adds source translation and solver
-interaction~\cite{verus}. The cheapest stage to optimize may account for
-little of the complete cost.
+Checking a proof need not resemble producing it.
+Mathematical proof production can involve search, tactics and elaboration;
+an independent kernel can instead check the supplied witness.
+A computational proof exposes a different boundary: when its
+justification depends on reducing a large decidable expression,
+checking executes the relevant computation.
+Replaying the unchanged certificate can repeat that work.
 
-This paper asks where that cost comes from.
-Our primary workload is the released \texttt{openai/math} research
-library~\cite{openaiMathSource}, rather than treating short contest proofs as
-representative of all generated formal artifacts.
-We separately examine the availability of generated software repositories
-and use miniF2F, ProofNet and AutoVerus candidate streams as contrasts.
-We use existing released outputs; we do not generate a new evaluation corpus.
-Repository scaffolds, reference proofs and reported scores alone do not
-establish that evaluated model outputs are available.
+Our primary workload is the released \texttt{openai/math} research library
+~\cite{openaiMathSource}. Its pinned Mathlib dependency supplies a
+version-matched reference~\cite{mathlibD13fSource2026}.
+The generated release contains far more source-level kernel evaluation,
+concentrated in a small subset of files.
+This motivates a distinction between mathematical-witness checking and
+proof-embedded recomputation, rather than treating verification as one
+uniform solver call. Files can mix both regimes; tokens cannot assign CPU.
 
-Verification exposes different costs at different boundaries: imported
-environments, source processing, proof construction and checking.
-A measurement setting can also introduce work that is not intrinsic to the
-released artifact. We exclude the optional in-process memory-check setting
-from the current cost protocol and recollect the affected observations.
-Some candidate streams spend most of their historical measured work on
-requests that end at resource limits; others have a much smaller slow tail.
-Profiling can itself alter those limits.
-Even the selected build domain changes the apparent amount of computational
-proof work. Consequently, a lexical tactic count, a successful compiler
-subset or an operation-only speedup cannot stand in for verification cost.
-
+The distinction suggests two systems responses.
+For mathematical proofs, can checking avoid producer elaboration and
+repeated import preparation?
+For computation, can independent claims be checked by several unchanged
+kernels and assembled into the original theorem?
+A faster untrusted numeric answer, weaker import trust scope or new axiom
+is not equivalent verification.
 We organize the study around four questions:
 \begin{description}
-\item[RQ1] How do artifact granularity, released-source coverage and build
-scope change the verification workload being measured?
-\item[RQ2] How do imports, source processing, proof construction, kernel
-checking and operating-system work contribute to CPU, latency and memory?
-\item[RQ3] How do failures, resource limits and observation methods change
-cost distributions and the reproducibility of verifier outcomes?
-\item[RQ4] Which system-design implications survive complete verification,
-and where do targeted proof-representation changes fail to generalize?
+\item[RQ1] Where do verification costs fall, and how prevalent are the
+computation-replaying and mathematical-proof-checking regimes across the library?
+\item[RQ2] Why does independent verification fail to realize the potential
+low cost of mathematical-proof checking?
+\item[RQ3] Can computational checking scale across cores or a cluster
+without expanding the trusted base?
+\item[RQ4] What gaps remain between a reported verified result and build
+coverage, reproducible outcomes and known axiom dependencies?
 \end{description}
 
-Each finding section presents its evidence, measurement boundary and
-implication. We do not assume that all verification workloads need the same
-cache, scheduler, proof representation or accelerator.
-Our contributions are a source/build-domain characterization, a
-boundary-aware account of measured native costs and outcomes, and
-case studies testing the resulting design implications.
-Missing results remain explicit; the current draft does not claim a
-complete full-library build or completed generated-software evaluation.
+Each RQ separates evidence, missing results and design implications.
+We use public generated-software outputs and retained candidate streams
+as contrasts, never generate replacements for unavailable releases.
+Streaming and chunking are prototypes testing the characterization;
+warm imports, ordinary scheduling and external search/checking are prior
+techniques. Missing native profiles and full-library weights remain explicit.
 
 \section{Methodology}\label{sec:method}
-\subsection{Workload selection and artifact provenance}
-Our primary population is the complete \texttt{openai/math} release at
-\texttt{4eaee87548250b2682affda7d05d947c05554bae}~\cite{openaiMathSource}.
-It contains 163,097 Lean files and 1,785,499,363 source bytes.
-We pin Lean~4.34.1, Mathlib \texttt{d13f23b7} and the manifest's external
-dependencies. Version-matched prebuilt dependency caches prepare the
-context; their acquisition is not silently included in target compiler CPU.
-Required dependency compatibility patches and retained objects are recorded
-as part of that context, rather than treated as candidate-source changes.
-A source module, its prerequisite closure and the entire library are
-different units. Source-directory overrides are resolved before computing
-internal import reachability.
+\subsection{Sources and the common lexical boundary}
+The primary release is
+\texttt{4eaee87548250b2682affda7d05d947c05554bae},
+with Lean~4.34.1 and Mathlib
+\texttt{d13f23b723b8a846827a245b89c10fc7d3f11612}.
+We compare all released Lean files in the primary inventory with the
+reference repository's \texttt{Mathlib/} subtree, excluding tests,
+archive and tooling directories from that reference denominator.
+The reference source tree is checked at its exact Git revision.
+All 163,097 primary source members are independently rescanned from the
+pinned official archive and matched by path/byte size to the complete
+inventory; decoding and lexical checks succeed.
+The local extracted cache is partial and is not used as the population.
+A complete received-archive-prefix scan and full-archive scan agree exactly;
+they are repeated validation, not additional corpus observations.
+The same existing scanner erases nested comments and string literals and
+matches \texttt{decide}, whitespace, \texttt{+}, whitespace and
+\texttt{kernel}, allowing zero whitespace.
+One MB is 1,000,000 original UTF-8 source bytes.
+Sites and containing files are not dynamic calls, distinct propositions,
+accepted proofs or native time.
 
-We contrast research mathematics with public generated-software artifacts
-and retained candidate streams. Availability is checked at an immutable
-repository revision: a benchmark task, score or reference implementation
-does not substitute for the model's submitted source.
-We preserve declared specification axioms, admissions and incomplete
-obligations, and never generate replacements for unavailable outputs.
-The software admission audit is detailed below.
+Vericoding releases 1,503 model-tagged Lean snapshots, 1,490 distinct source
+texts; its original 626 are a subset~\cite{vericodingOutputs2026}.
+Publisher labels are not our native verdicts or axiom audit.
+The inspected Vero release does not establish availability of evaluated
+agent outputs~\cite{vero2026}; scaffolds/references do not replace them.
+Lean Kernel Verify supplies checking code and KIR fixtures with separate
+output provenance~\cite{leanKernelVerify}.
+\missing{Version-qualified generated-software native costs and axiom audit.}
+The contrast streams retain 7,808 miniF2F, 5,952 ProofNet per recorded pass
+and 3,566 AutoVerus sources, including unsuccessful attempts.
+Source-sorted replay is not historical arrival traffic.
 
-The candidate contrasts retain the original 7,808 miniF2F sources,
-5,952 ProofNet sources per recorded pass, and 3,566 AutoVerus outputs,
-including unsuccessful and intermediate attempts~\cite{autoverusArtifact}.
-EPFL and APRIL provide separately labelled feedback/mutation/reference
-subsets~\cite{epflEvaluation,aprilDataset}.
-Source-sorted replay is not a historical arrival trace. Selection,
-toolchain, context, native libraries and limits accompany each point;
-different streams are not pooled into one distribution.
-Generation costs are excluded except where explicitly reported as
-publisher log accounting. All-candidate verification and first-success
-consumption have different stopping rules.
+\subsection{Cost boundaries and regime classification}
+Source production includes imports, elaboration, tactics, proof construction,
+first checking and requested artifact emission.
+AI inference time is excluded unless separately supplied by publisher logs.
+Independent checking consumes compiled declarations under a declared trust
+scope. A kernel-only subclock omits preparation/cleanup and cannot replace
+either complete process clock.
 
-\subsection{Stratified sampling and nonresponse}
-The probability frame is all 163,097 released modules, including those
-outside the default \texttt{OAI} root.
-We cross four source-size percentile bins (0--50, 50--90, 90--99, 99--100),
-three internal import-depth bins (1--10, 11--100, 101+), and presence of
-comment/string-filtered \texttt{decide +kernel}.
-There are 21 nonempty cells. With seed 20261030, we draw two modules
-uniformly without replacement in each cell, giving 42 original targets.
-A module in stratum $h$ of size $N_h$ has inclusion probability $2/N_h$.
-A two-module stratum is a census. Purposeful large/deep/computation stresses
-and prerequisites get no additional population weight.
+The regimes describe checking work, not disjoint proof languages.
+Computational checking normalizes embedded calculations; mathematical
+checking can avoid the producer's search and elaboration.
+A module may contain both. A C++ checker sample includes inference, equality,
+normalization and cleanup, not solely final validation.
+User-cycle percentages are not elapsed-time shares.
+\missing{No-memory-option per-declaration/module profiles, classification,
+observer uncertainty and runtime-weighted prevalence.}
 
-Targets are compiled after their prerequisite objects exist.
-Dependencies, cache preparation and target compilation retain separate
-records rather than pretending that a target's local CPU is its complete
-cold-build cost. Expensive or blocked draws stay in the original frame;
-we do not replace them with easier modules.
-The superseded protocol enables \texttt{-M}; it eventually records
-29/42 strictly locked target costs and 12 complete strata.
-Those are historical coverage counts, not valid cost coverage under the
-current no-\texttt{-M} protocol.
-We retain the same original draws, including unfinished difficult targets,
-while replacing their measurements rather than applying a correction factor.
-\missing{Completed no-\texttt{-M} sample/stratum coverage and CPU costs.}
-Dependency compiles and repeated profiles do not become additional
-probability draws.
-
-For a fully observed stratum of size $N_h$ with $n_h=2$ planned draws,
-we use the expansion estimate and finite-population variance
+\subsection{Sampling and current native point}
+The original frame remains 163,097 modules, with 21 nonempty strata formed
+from four source-size bins, three internal-import-depth bins and
+masked kernel-decision presence.
+Seed 20261030 selects two draws per stratum, 42 total.
+Inclusion probability is $2/N_h$; purposeful modules and prerequisites
+receive no additional population weight.
+For complete strata,
 \[
- \widehat T_h=N_h\bar y_h,\qquad
- \widehat V_h=N_h^2(1-n_h/N_h)s_h^2/n_h ,
+\widehat T_h=N_h\bar y_h,\qquad
+\widehat V_h=N_h^2(1-n_h/N_h)s_h^2/n_h,\quad n_h=2.
 \]
-where $y$ is measured user plus system CPU and $s_h^2$ is sample variance.
-These are compiler-CPU totals conditional on already-built imports and
-the stated output facets. We do not replace $n_h$ by a completed-response
-count in an incomplete cell.
-Nominal normal-cost $t$ intervals from two observations are fragile under
-heavy tails and exclude runtime/systematic variation.
-Whole-library totals and intervals remain unavailable until the required
-draws have valid matching costs.
-A default-root domain total uses the original inclusion probabilities and
-response $y_i I(i\text{ in root closure})$; known domain exclusion is not a
-measured zero-cost compilation.
+Missing draws stay missing, not replaced by completed-response counts.
+Two-draw normal-cost intervals are fragile under heavy tails.
+The newly checked no-\texttt{-M} point has 31 successful native calls:
+29 original random draws and two purposeful modules.
+All original sources, no-\texttt{-M} arguments, PID/birth retirement and
+matching native clock sums are checked.
+The random-frame coverage is 29/42 with 12 complete strata; 13 draws remain
+missing. The two purposeful modules receive no sampling weight.
+These are local compilation costs with prerequisite objects available,
+not cold transitive builds, whole Lake execution or generation time.
+\missing{Complete no-memory-option sample and per-regime cost estimates.}
 
-\subsection{Platform and serialized native measurements}
-The current node is phobos-vt, an Intel Core i9-14900K machine.
-The inspected Linux PMU CPU sets identify P-core CPU IDs~0--7 and
-E-core IDs~8--23; observed physical RAM is 64,205,640\,KiB.
-New timed native compilation/profile captures take one shared exclusive
-P-core lock and use affinity~0--7. Untimed preparation and root analysis
-use E cores. This serializes measurement captures across the participating
-lanes; it does not mean Lean is single-threaded.
-The library compiler requests eight workers per native process.
-We report actual CPU/wall ratios rather than equating eight workers with
-eight utilized cores.
+The platform is phobos-vt, Intel Core i9-14900K,
+observed 64,205,640\,KiB RAM.
+Timed native captures share one P0--7 lock; preparation/analysis use E cores.
+Eight requested workers are not assumed to use eight CPU cores.
+All current commands omit \texttt{-M}, including \texttt{-M0};
+memory protection is external cgroup.
+The W point uses 15\,GiB charged native memory and separate one-second
+sampled native/controller RSS response.
+Charged pages, leader RSS and tree RSS differ; sampled response can overshoot
+and is not a kernel hard aggregate-RSS quota.
+Every result must record its actual enforcement boundary.
 
-The current source-cost protocol emits \texttt{.olean}, \texttt{.ilean}
-and \texttt{.c}, preserves authored heartbeat/recursion options and uses
-\texttt{autoImplicit=false}. It does not pass \texttt{-M}, including
-\texttt{-M0}; memory protection is provided outside Lean by the recorded
-cgroup. RSS sampling records usage and may overshoot; it is not a second
-in-process memory limit or a kernel hard aggregate-RSS quota.
-The cgroup's charged-memory boundary and OOM outcome are recorded separately
-from process RSS and Lean exceptions~\cite{cgroupV2Memory2026}.
-Each capture retains its actual arguments, finite group/per-file allowances,
-source identity and PID/birth/terminal evidence.
-Earlier \texttt{-M}, olean-only, different-budget and pre-lock captures stay
-labelled as historical points. A later protocol change does not rewrite them.
-
-\paragraph{An optional memory check confounded the earlier measurements.}
-The pinned runtime initializes its native memory limit to zero and returns
-from \texttt{check\_memory} before querying RSS when that value is zero;
-the optional nonzero \texttt{-M} setting activates periodic accounting
+\paragraph{A measurement correction, not a workload finding.}
+The pinned runtime initializes its native memory limit to zero;
+\texttt{check\_memory} returns before RSS queries while zero
 ~\cite{leanMemoryGuard2026}.
-Our earlier \texttt{-M} setting, not the workload itself, introduced this
-overhead. In three ordered, unprofiled repetitions per condition, guarded/
-no-\texttt{-M} wall-median ratios are 2.03 for Grid, 1.61 for UMoments9
-and 1.01 for EnvelopePsiB. Native verdicts, diagnostics and complete emitted
-artifacts match within each module. Grid emits \texttt{.olean} only and
-uses 100,000 heartbeats; the other two emit all three facets and retain
-authored/default heartbeats. The same external 15\,GiB native cgroup
-remains in both arms. These three purposeful passing cases establish
-a measurement-configuration effect, not a workload bottleneck, general
-speedup, failure-policy equivalence or population correction.
-We therefore omit \texttt{-M} from all current measurements and use only
-external cgroup memory protection. All earlier \texttt{-M} cost values,
-including import/profile costs and projections derived from them, are
-superseded; current replacements remain \missing{pending no-\texttt{-M}
-measurements}. The old 39--52\% certificate-system-CPU characterization is
-withdrawn. Raw observations remain archived rather than deleted.
+Our earlier optional \texttt{-M} setting introduced periodic accounting.
+Three ordered plain repetitions per arm give guarded/no-\texttt{-M}
+wall-median ratios 2.03/1.61/1.01 for Grid/UMoments9/EnvelopePsiB,
+with matching verdicts, diagnostics and emitted artifacts.
+The same outer 15\,GiB cgroup remains; output and heartbeat settings match
+within each module. These passing cases are not resource-failure equivalence.
+The earlier five-source \texttt{openai/math} panel's 75--94\% versus
+roughly 2\% user-cycle contrast, and a 13-short-module 1.28 replay/build
+ratio, also used \texttt{-M} builds. The panel is not a Mathlib native sample.
+They motivate questions, not current runtime conclusions.
+Affected costs/projections remain archived, never scaled by Grid's ratio.
 
-Library objects and raw captures reside on the existing PVC.
-No cache drop is performed. The import matrix is sequential with warm OS
-caches and fixed build-then-import ordering; it is not a randomized
-cold-storage experiment.
-A native compile is counted as such only after exit zero without a sorry
-warning. That criterion is not a whole-repository axiom-closure audit.
-Software corpora retain their own SDKs and imports: the core/Std-only LKV
-boundary is not forced through a Mathlib-loaded service.
+\subsection{Outcomes, observation and trust}
+Process wall, user/system CPU, queue/capture lifecycle and extra rechecks
+keep their own denominators.
+Unprofiled, sampled and traced executions are separate conditions.
+Ordinary error, timeout, cgroup OOM, watchdog interruption, platform loss and
+never-started dependency are distinct; none proves falsehood.
+Raw, failed and partial captures remain retained on the PVC.
 
-\subsection{Timing, profiling and outcome comparison}
-Native elapsed time runs from process launch to observed exit/collection;
-user/system CPU and leader high-water RSS come from native process
-accounting. Group elapsed time additionally charges between-job handling
-and retirement; external capture time includes the controlling lifecycle.
-Queue time before acquiring the shared timing lock is separate.
-A concurrent service makespan, summed physical attempts, a frontend-body
-timer and an extra warm declaration check keep their own denominators.
+Import-relative stock \texttt{leanchecker} trusts imported declarations.
+Its \texttt{--fresh} mode replays the loaded constant map into an empty kernel.
+Both use the upstream kernel and designated unsafe/partial exclusions
+~\cite{leanCheckerDocs}; neither is an independent implementation or an
+axiom-closure audit. A cheaper trust scope cannot substitute for equivalence.
 
-The superseded \texttt{-M} import matrix selects 13 modules by historical build time below
-five seconds within the 26 completed targets.
-Each receives three adjacent build/import-only pairs, with all compiler
-output facets retained; three Mathlib-only controls are additional.
-Its 100\,ms memory observer has material CPU cost, recorded separately.
-Sampled memory components are taken from the same per-run RSS-peak sample;
-medians across runs are not combined into one fictitious process.
-Import-only controls remove declarations, not proof obligations from the
-reported original builds. Differences are descriptive preparation exposure,
-not a proved removable fraction.
-
-Unprofiled timing and perf-record executions are separate conditions.
-Source, imports, toolchain, budgets, worker settings and output facets are
-matched before comparing them.
-Hardware-event samples are interpreted within their event and privilege
-scope: user-only cycles do not attribute kernel CPU, and overlapping
-cumulative phase timers do not form a wall-time partition.
-Stacks, missing/unresolved samples and observer CPU remain visible.
-We check diagnostics and resource outcomes as well as successful completion;
-a shorter profile ending at an earlier budget error is not a speedup.
-\missing{No-\texttt{-M} CPU/profile attribution, randomized perturbation
-controls and uninstrumented import-cost comparisons.}
-
-Rechecking compiled declarations is a distinct experiment.
-Import-relative \texttt{leanchecker} trusts imported declarations and replays
-the target; \texttt{--fresh} includes imported constants.
-The former is not a whole-closure independent implementation.
-An extra warm check also excludes original proof construction and first
-checking. Compiler, replay CLI and kernel-only subclocks are never used
-interchangeably~\cite{leanCheckerDocs,lean4lean2025}.
-
-\subsection{Censoring and explicitly conditional projections}
-A native timeout, watchdog interruption, allocator diagnostic, ordinary
-error, platform interruption and never-invoked dependency are distinct.
-A group deadline can give the last job less time than its nominal per-file
-allowance; its actual allowance is retained.
-Platform-interrupted work with unknown cost is not fabricated as a
-native timeout. Neither budget exhaustion nor an ordinary failed tactic
-establishes that its mathematical goal is false.
-
-Static source/token counts and graph depths are exact at their lexical
-boundary, not runtime calls or timed spans.
-Earlier per-file/byte-rate cost models and 8/24-core schedules are
-hypothetical. Scaling selected import medians by the library's module
-count is not a full-build estimate.
-Observed successful artifact/source byte ratios are not population-weighted
-storage forecasts or bounds on live RAM.
-We retain failed and uncompleted samples rather than reporting a
-successful-subset global estimate.
-\missing{Complete all-source/default-root native totals and uncertainty,
-cold preparation/linking costs and generated-software measurements.}
-
-\subsection{Generated software requires released outputs}
-Table~\ref{tab:software} separates publicly described tasks from usable
-generated artifacts. Vero describes 43 multi-module Lean~4 instances and
-joint code-and-proof and proof-only modes~\cite{vero2026}.
-Its 43 active instances contain 640 Lean scaffold files; their
-within-project import depth reaches 35, excluding external dependencies.
-The pinned public tree and inspected release assets do not establish release
-of the evaluated agent-run outputs. A historical 13-file BankLedger solution
-has unestablished model provenance. The live project site returns HTTP~403
-from the measurement Workspace, so this is a scoped repository audit,
-not a claim that outputs are absent everywhere.
-We do not replace model outputs with references or run new generation.
-
+\section{Kernel-evaluation forms are concentrated; runtime weights remain open}
+\label{sec:regimes}
+\paragraph{RQ1: checking versus recomputing.}
+Table~\ref{tab:corpora} gives the complete, common-boundary source comparison.
+Unmasked Mathlib text contains eight sites in five files.
+One is a documentation comment in \texttt{Mathlib/Tactic/Echelon/Cert.lean}.
+Removing comments gives seven in four files; the table uses this common
+masked boundary, not eight unmasked sites against masked generated code.
 \begin{table*}[t]
 \centering\small
-\begin{tabular}{p{.18\textwidth}p{.37\textwidth}p{.36\textwidth}}
+\begin{tabular}{lrrrrr}
 \toprule
-Software source & Public-artifact evidence & Admission and current measurement scope\\
+Corpus & Lean files & Source MB & Kernel-decision sites & Containing files & Sites/MB\\
 \midrule
-Vero & 43 multi-module instances described; inspected repository
-\texttt{0a7325df} contains scaffolds and reference material &
-Evaluated agent outputs not established by this audit; native
-generated-output costs \missing{pending output provenance}.\\
-Vericoding & Data \texttt{387cd699} and code \texttt{b265a3b2}
-release 1,503 model-tagged Lean snapshots; the original 626 are a subset.
-There are also 45 Verus/Dafny final-result tables &
-Released outputs are available, with partial publisher joins; complete
-candidate trajectories, native acceptance and per-stage costs
-\missing{pending}.\\
-Lean Kernel Verify & Pinned \texttt{129e65bf} publishes Lean checking code
-and KIR fixtures, using \texttt{native\_decide} &
-A released checker/fixture workload; AI-authorship/output provenance and
-native repository costs \missing{pending}.\\
+Mathlib \texttt{d13f} &8,529&98.450&7&4&0.0711\\
+\texttt{openai/math} &163,097&1785.499&1,354,379&5,848&758.544\\
 \bottomrule
 \end{tabular}
-\caption{Software-workload availability audit, not completed verification.
-No candidate is generated to fill a missing release. Public files and
-publisher outcomes do not establish accepted, axiom-clean proofs.}
-\label{tab:software}
+\caption{Nested-comment/string-masked \texttt{decide +kernel} sites.
+Decimal MB uses original source bytes. Lexical counts are not time weights.}
+\label{tab:corpora}
 \end{table*}
 
-Vericoding supplies an actual public model-output corpus, beyond task
-specifications~\cite{vericoding2025,vericodingOutputs2026}.
-The data repository's 626 Lean programs all occur in the code repository's
-1,503 model-tagged Lean snapshots (1,490 distinct source byte strings).
-We do not add those overlapping collections.
-The same code release exposes 45 detailed Verus/Dafny final-result tables:
-16,025 outcome rows contain 14,109 nonempty final-program fields.
-These are output occurrences, not 14,109 distinct programs or all intermediate
-repair attempts. All explicit \texttt{error\_message} fields in these
-45 tables are empty; schema fields and prompt/debug references do not
-provide a complete native diagnostic history.
-Separate outcome-only tables have 55,397 final records but no program bodies
-or per-request durations; they cannot supply a verification-time denominator.
+The density ratio is 10,668.3, approximately $1.1\times10^4$.
+Only 3.5856\% of generated-library files contain the form.
+These are concrete candidates for inspecting recomputation, not an exhaustive
+runtime classification: expensive reduction can occur without the token,
+and a positive file can mix computation and symbolic reasoning.
+The 29 completed no-\texttt{-M} random targets sum to 367.024 seconds
+of native wall intervals and 602.628 user-plus-system CPU seconds.
+This is not a full-build makespan or population expansion.
+The separate purposeful Grid and Amplitudes points differ in output/heartbeat
+scope and do not fill missing strata.
+Unprofiled process costs do not supply a kernel-cycle partition.
+\missing{Representative no-\texttt{-M} mathematical/computational profiles,
+regime-specific CPU shares and whole-library cost weights.}
+The 3.5856\% source-file concentration must not become a cost fraction.
 
-For the Lean snapshots, task-ID/model joins associate 1,354 files with a
-publisher success and leave 149 without a matching row.
-Such associations are neither our native verdicts nor a soundness audit.
-The masked-source scanner marks \texttt{axiom} in 35 files and
-\texttt{sorry} in 12; these lexical flags require a native declaration/axiom
-audit before classifying accepted artifacts.
-All admissions and specifications must remain part of the replay context.
-The code repository declares Lean~4.23.0-rc2 and Mathlib
-\texttt{90c0e186}, but these do not establish each historical run's exact
-environment. Original Verus compiler builds remain unknown.
-
-The published lexical scan finds \texttt{simp} in 1,220 of the 1,503 Lean
-snapshots and \texttt{rfl} in 693, with no \texttt{bv\_decide} or
-\texttt{decide +kernel} identifiers. These are comment/string-masked source
-occurrences, not executed tactic counts or CPU fractions.
-Each standalone snapshot has within-input import depth one; its external
-Mathlib/Std dependency closure is excluded.
-Thus the available software candidates complement the deep computational
-mathematics library, but do not yet show which verifier stage dominates.
-Native measurement must preserve per-language versions, output provenance
-and repository-level outcome boundaries.
-\missing{Toolchain-qualified software builds, axiom/admission audit,
-per-stage native costs and complete candidate-stream coverage.}
-
-Lean Kernel Verify is a distinct software verification boundary:
-a frontend lowers compiler IR to KIR and its proof-generation template
-uses \texttt{native\_decide} for concrete-case properties~\cite{leanKernelVerify}.
-The public input set has 90 KIR fixtures and 12 Lean checker files;
-it is not an identified LLM candidate stream. The identifier occurs in a
-template string rather than masked executable Lean source, so a raw text
-hit cannot be reported as a measured tactic invocation.
-Its published checker can prove a safety violation; such a result is not a
-Lean proof failure. The public README states that some full frontend paths
-still require its originating monorepo.
-Released fixtures are useful characterization inputs, but do not by
-themselves establish availability of the generated software histories sought
-here. We keep these provenance and trust distinctions explicit.
-
-\section{The default build omits a third of computational proof sites}
-\label{sec:scope}
-The released library and its default build root are different workload
-domains. Resolving the publisher's source-directory overrides and imports,
-the default \texttt{OAI} root reaches 130,834 of 163,097 modules.
-The remaining 32,263 modules contain 387,698,422 source bytes.
-
-\begin{table}[t]
-\centering\small
-\begin{tabular}{@{}lrr@{}}
-\toprule
-Domain & Modules & Kernel-decision tokens\\
-\midrule
-All released source &163,097&1,354,379\\
-Default-root closure &130,834&903,371\\
-Outside default root &32,263&451,008\\
-\bottomrule
-\end{tabular}
-\caption{Comment/string-filtered \texttt{decide +kernel} occurrences.
-The 33.30\% omitted share is lexical, not a runtime or native-check share.}
-\label{tab:build-domain}
-\end{table}
-
-All 562 PlanarPacking and 466 Transonic modules lie outside that default
-root at the pin. They contain 255,199 and 193,076 such occurrences.
-Thus a default-root build can omit precisely the computational proof
-families that motivate kernel-optimization studies.
-Conversely, explicitly building those sources is a workload extension,
-not evidence about the default command's cost.
-
-Lexical density also overstates what is known about repeated kernel work.
-In 363 retained compiled modules, 45,661 auxiliary declarations match the
-decision-helper shape, with 42,610 globally distinct expression-type keys.
-The corresponding source-site count is 42,886: one source site can expand
-to several helpers, and imported/cached objects use another boundary.
-Lean's auxiliary-lemma cache is branch-local~\cite{leanDecide434,leanAuxLemma434}.
-Neither global source-text equality nor equal helper types establishes
-cache misses, full dependency equality or seconds saved.
-
-\paragraph{Compiler outputs are a separate size boundary.}
-Completed native records show that source bytes can badly understate the
-artifact footprint (Table~\ref{tab:artifact-growth}).
-The 26 original probability targets produce 77,581,124 output bytes from
-1,418,376 source bytes. A separate 61-module completed prerequisite cohort
-produces 420,157,676 bytes from 9,780,494 source bytes.
-Each total counts exactly one \texttt{.olean}/\texttt{.ilean}/\texttt{.c}
-set per completed module, not toolchains, external caches or duplicated
-capture copies.
-
-\begin{table}[t]
-\centering\small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lrrr@{}}
-\toprule
-Completed cohort & Modules & Aggregate ratio & Maximum\\
-\midrule
-A: original targets &26&54.697&230.725\\
-B: prerequisites &61&42.959&314.668\\
-\bottomrule
-\end{tabular}
-\caption{Observed compiler-output/source byte ratios, not CPU cost or
-whole-library storage predictions. Failed/interrupted outputs are excluded
-from these success-only ratios and retained separately.}
-\label{tab:artifact-growth}
-\end{table}
-
-For example, a 9,339-byte \texttt{Shortening} module yields 2,938,688
-artifact bytes, of which 2,893,832 are olean bytes.
-This identifies serialized output to inspect; it does not establish
-proof-term duplication or the CPU fraction spent exporting it.
-Both aggregate ratios exceed the earlier planning assumption of 40 times,
-so that assumption is not a safe storage upper bound.
-Neither successful cohort justifies multiplying its ratio by all released
-source bytes or estimating peak memory from source size.
+Checking an unchanged computation-based certificate repeats the reductions
+needed by its justification. It need not repeat the producer's search, but
+cannot treat an untrusted numerical answer as a theorem.
+For a mathematical witness a low checking share is possible when source
+production dominates; it is not established for every mathematical module.
 
 \paragraph{System-design implication.}
-A representative verification benchmark must specify both the released-source
-domain and the exact build target/artifact set.
-A compiler or cache evaluated only on the default root cannot claim coverage
-of omitted computational families. Population estimates must retain the
-original sampling probabilities when reporting a default-root subdomain;
-known out-of-domain membership is not a measured zero-cost compilation.
-Build schedulers and artifact caches should therefore expose the dependency
-closure and emitted outputs as part of the workload contract, so that a
-faster default target is not mistaken for faster verification of all
-released artifacts.
+Choose the acceptance boundary before the accelerator.
+Mathematical witnesses motivate production/checking separation;
+computational certificates motivate independent kernel work.
+Tokens and old guarded profiles establish neither a global partition nor
+an accelerator ceiling.
 
-\section{Fresh module verification has a preparation floor}
-\label{sec:imports}
-Each separately launched module compiler reconstructs its imported
-environment even when dependency objects already exist.
-The earlier module-floor and import-control measurements enable
-\texttt{-M}; their timing, memory, observer-cost and profile values are
-therefore old-protocol observations, not current characterization results.
-This includes the earlier short-module import/build ratios and serial-hour
-illustration. They are retained in the step records but not corrected by
-the three-module ratios above.
+\section{Cheap checking can be hidden by imports and production coupling}
+\label{sec:decoupled}
+\paragraph{RQ2: why independent verification remains costly.}
+Source compilation imports, elaborates, executes tactics and constructs
+proofs before checking. A post-compilation checker can omit that production,
+but a new process still locates objects and prepares its environment.
+A potentially small kernel cost therefore need not imply cheap independent
+verification.
 
-The current protocol keeps original source/import closures and all requested
-artifact facets, omits \texttt{-M} and uses external cgroup protection.
-Import-only controls retain direct import lines, while complete builds
-retain all declarations. Warm page-cache state, ordering, memory sampling
-and observer CPU remain separate measurement conditions.
-\missing{No-\texttt{-M} complete-module floor, import-only medians,
-import/build ratios, RSS/PSS components, observer overhead and repeat
-uncertainty.}
-\missing{No-\texttt{-M} cold-cache and retained-process comparisons;
-any justified serial-scale illustration under the new protocol.}
-No old import median, file-backed share or derived hours is used as a
-replacement for these missing results.
+The earlier no-\texttt{-M} stock-checker point completes 15 target replays.
+For 13 selected short modules its process-wall median is 3.510 seconds,
+including lookup, imports, replay and cleanup.
+It is not an exclusive kernel timer or a contemporaneous construction pair.
+It cannot establish a current construction/replay ratio or its cause
+by division against an earlier, differently configured build.
+\missing{Matched no-\texttt{-M} build, import-only, checking and cleanup
+costs; independent-process ratio.}
+Repeated imports and coupling are explanations to test, not a residual
+assigned to an unmeasured stage.
 
-\paragraph{Replay costs depend on the checking boundary.}
-The first compiled-module replay attempt stops before checking:
-all 28 targets and 13 empty controls fail module discovery.
-Those operational failures remain excluded from replay-cost statistics.
-After correcting artifact-path enumeration, a separate stock Lean~4.34.1
-matrix completes all 15 requested import-relative target replays.
-Every successful invocation announces exactly its requested module and
-returns zero without diagnostics.
+Trust scope changes the work too. Separate no-\texttt{-M} controls take
+2.195 seconds import-relative and 73.134 seconds fresh-scope for Mathlib
+Nat.Basic, a 33.32 ratio.
+A NearPinDeletion fresh-scope control reaches its 180-second wall bound.
+These are scope contrasts, not interchangeable verification methods.
+A stream that checks dependencies needs a full-closure baseline.
 
-The retained stock-checker commands do not pass \texttt{-M}.
-For the 13 short modules, median checker-process wall time is 3.510 seconds;
-Grid and Amplitudes take 253.439 and 113.618 seconds at that earlier
-replay point. These are standalone process measurements with their original
-recorded resource/observer conditions, not a new cgroup-matched source-build
-comparison or an exclusive-kernel clock.
-Ratios to earlier \texttt{-M} source builds are withdrawn.
-\missing{Contemporaneous no-\texttt{-M}, cgroup-matched repeated
-construction/replay costs and ratios.}
+\paragraph{Prototype: streamed original-kernel replay in one process.}
+O's implementation reads module-data parts, traverses imports, retains their
+mapped regions and calls the upstream \texttt{Kernel.Environment.replay}.
+A visited set avoids processing an already visited module within the stream.
+Checking compiled declarations is separate from source elaboration.
+The implementation also has an import-relative single-module mode and
+malformed-proof controls.
+\missing{Completed native corruption/oracle differential coverage,
+declaration/axiom coverage, lifecycle cost, memory and matched streaming ratio.}
+Code presence is not those results.
 
-Import-relative replay trusts imported declarations and rechecks target
-constants. In contrast, \texttt{--fresh} imports the target and replays
-the loaded constant map into an empty kernel environment.
-Both modes use the stock kernel and skip upstream-designated unsafe and
-partial declarations~\cite{leanCheckerDocs}; neither is a separately
-implemented checker or an axiom-clean proof audit.
-The three scope controls in Table~\ref{tab:replay-scope} illustrate why
-their costs cannot be exchanged.
-Mathlib's Nat.Basic takes 2.195 seconds import-relative but 73.134 seconds
-with \texttt{--fresh}, a 33.32 ratio.
-NearPinDeletion's fresh-scope call reaches its 180-second wall bound;
-its 180.111-second observed duration is a censored attempt, not a completed
-replay cost, failed proposition or successful ratio.
-Fresh scope does not mean a cold OS page cache.
-
-\begin{table}[t]
-\centering\small
-\begin{tabular}{@{}lrr@{}}
-\toprule
-Module & Import-relative (s) & Fresh-scope (s)\\
-\midrule
-Init Nat.Basic & 2.026 & 2.428\\
-Mathlib Nat.Basic & 2.195 & 73.134\\
-NearPinDeletion & 2.556 & censored at 180\\
-\bottomrule
-\end{tabular}
-\caption{Separate bounded checker-process invocations with different
-trust/replay scopes. Fresh scope rechecks the loaded constant map, not
-only the target source; the last cell is not a successful checking time.}
-\label{tab:replay-scope}
-\end{table}
-
-\missing{Contemporaneous repeated build/replay comparisons, successful
-empty-module controls after repair, exclusive target-check cost and
-replay coverage beyond the selected 15 targets.}
-
-Established environment reuse provides a useful contrast~\cite{repl,kimina}.
-In one completed miniF2F resource comparison, four warm workers take
-25,176.49 seconds and the prepared engine takes 20,323.01 seconds.
-All 7,808 final status aliases and 3,014 accepted IDs match.
-The 1.23882 ratio includes retry ordering, affinity, native work, fallback
-and retirement; it does not isolate copy-on-write or import elimination.
-Raw payloads differ, and a labelled two-field normalization still leaves
-23 rejected-source diagnostic differences.
-One prepared parent serves the ordinary frontier, while 42 fresh exclusive
-resource retries and 18 different-import fallbacks remain charged.
-This service comparison does not estimate a library build's import share.
+Report actual replayed modules/constants, trusted imports and unsafe/partial
+exclusions. Compare full closure with full closure; report trusted-import
+replay separately. Include stream preparation, reads and finalization.
+Adding serial module clocks and subtracting shared imports does not constitute
+a measured end-to-end result.
 
 \paragraph{System-design implication.}
-Resident or prewarmed checking processes can amortize compatible environment
-preparation across requests, but its no-\texttt{-M} cost and removable
-fraction remain to be measured here.
-State and options must stay request-correct; incompatible imports can
-require separate environments or reloads.
-Import amortization is established engineering, not our novelty claim.
-Evaluate it against a competent warm service, charging resident memory,
-reloads, cancellation and cleanup~\cite{fork}.
-Distinguish file-backed pages from mutable state before estimating memory
-capacity from RSS. The superseded import matrix supplies no current
-no-\texttt{-M} capacity or latency estimate.
-A service must expose its checking boundary: rebuilding source, rechecking
-relative to trusted imports and replaying the loaded constant map are
-different operations. Charge discovery, imports and cleanup for the chosen
-operation; do not substitute a cheaper trust scope for equivalent verification.
+Expose the cheap checking boundary if one exists: separate production and
+checking APIs, reuse compatible contexts and charge the complete lifecycle.
+Warm imports are established engineering~\cite{kimina,kiminaPaper};
+the characterization must show where they matter and what remains expensive.
 
-\section{Budget-failure exposure is workload dependent}
-\label{sec:failures}
-A request that ends at a resource limit consumes verification capacity but
-does not establish a false proposition or an inherently impossible proof.
-We therefore separate budget exposure, ordinary nonzero exits and slow-tail
-concentration.
+\section{Recomputation motivates parallel original-kernel checking}
+\label{sec:chunked}
+\paragraph{RQ3: scale without adding trusted proof rules.}
+A monolithic reduction can leave cores unavailable to one checking invocation.
+Parallelism requires independently checkable claims and a checked connection
+to the unchanged original proposition.
+A source split, numeric evaluator or worker success flag alone is insufficient.
 
-In the retained miniF2F engine point, 85 final timeouts and 41 final
-resource failures identify 126 distinct sources.
-Their physical attempt sums, including retries, total 38,795.133 of
-52,992.124 seconds: 73.21\% of worker-attempt time.
-This is not 73.21\% of the concurrent 20,323.01-second makespan.
-A separate fixed 42-source exclusive rerun under the aggregate budget returns
-41 watchdog resource failures and one timeout, with no recovered acceptance.
-It does not prove that those computations fail under every environment or
-budget.
+\paragraph{Prototype: generated claims and checked assembly.}
+M freezes a real Grid \texttt{PointBox.calc} equality and structurally forms
+18 scalar-equality leaves.
+The prototype groups them for one, two, four or eight workers, constructs
+decision proofs and submits declarations through the original C++ kernel's
+\texttt{Environment.addDeclCore} API.
+Checked leaves are emitted as modules; a composition proof uses
+extensionality lemmas and is checked against the original target.
+Code checks the target, sorry/metavariable absence and expected axiom boundary.
+These describe the intended acceptance path, not completed evidence.
 
-In the first retained ProofNet pass, 70 of 5,952 sources with budget
-diagnostics consume 138.011 of 1,192.435 request seconds, or 11.57\%.
-The other two passes have their own clocks and are not pooled.
-The EPFL and APRIL diagnostic points were collected under the superseded
-\texttt{-M} protocol. Their old time shares remain archived;
-Table~\ref{tab:budget} leaves current replacements missing.
+The controls distinguish original monolithic $k=0$, the same decomposition
+with $k=1$, and $k=2,4,8$.
+This separates decomposition from parallel execution.
+Preparation, repeated reductions, serialization/communication, assembly,
+checking, memory and retirement belong in end-to-end cost.
+\missing{Complete no-\texttt{-M} repetitions, exact proposition/axiom
+comparison, corrupt-leaf rejection and charged whole-path speedup.}
+One frozen equality is not full Grid or a general extraction algorithm.
+\missing{Shape coverage, heterogeneous-module transfer and failures.}
 
-\begin{table}[t]
-\centering\footnotesize
-\setlength{\tabcolsep}{2pt}
-\begin{tabular}{@{}lrrr@{}}
-\toprule
-Point & Sources & Budget sources & Cost share\\
-\midrule
-miniF2F attempts &7,808&126&73.21\%\\
-ProofNet pass 1 &5,952&70&11.57\%\\
-EPFL completed prefix &136&12&\missing{}\\
-EPFL training selection &12&6&\missing{}\\
-APRIL mutations &39&16&\missing{}\\
-APRIL references &39&4&\missing{}\\
-\bottomrule
-\end{tabular}
-\caption{Budget-exposed source time under each point's own measurement
-boundary. miniF2F includes physical retries; other rows use request clocks.
-EPFL/APRIL counts retain their old protocol; their no-\texttt{-M} costs
-are missing. Selection, environments and limits differ. No row is a sound early-rejection
-rule or a cross-workload speedup comparison.}
-\label{tab:budget}
-\end{table}
+A cluster cannot silently trust remote object files or worker verdicts as
+new proof assertions. Specify what the acceptance authority checks,
+dependency identity, transfer and recovery.
+\missing{Multi-machine protocol, native soundness/differential evidence
+and complete cluster costs.}
+Single-host code and multi-core timings are not distributed results.
 
-AutoVerus illustrates a different distinction. In three complete direct
-passes, the slowest 58 of 3,566 sources (the ceiling of 1.6\%) consume
-3.399\%, 3.338\% and 3.315\% of summed external process time.
-These are \emph{slow-tail shares}, not budget-failure shares.
-No capture timeout is reported in those passes.
-Meanwhile, 3,376 nonzero process exits consume about 95\% of each pass's
-time. Ordinary rejection can be common without a concentrated long tail.
-Its first-pass external, reported frontend and SMT sums are respectively
-639.238, 443.690 and 63.120 seconds. SMT is initialization plus query
-interaction elapsed time, not isolated Z3 CPU. Missing timing JSON or SMT
-fields remain unavailable; nested timers are not added twice.
-
-For a common slow-tail definition, the slowest 96 ProofNet requests consume
-33.55\% in its first pass. The miniF2F retained budget-source witnesses prove
-a lower bound of 72.68\% for its true slowest 125 source attempt sums.
-This miniF2F value is a subset-based lower bound, not a complete top-125
-ranking. Neither number is interchangeable with the budget-share column.
+Earlier certificate proofs establish selected feasibility; seven Int/list
+original/certificate pairs all accept, but currently matched transfer costs
+remain unestablished.
+Changing a certified algorithm and parallelizing a fixed decomposition are
+distinct. Reflection and proof parallelism are established approaches
+~\cite{mathlib,lean49DecideSource,isabelleBuild2024}.
 
 \paragraph{System-design implication.}
-Failure-aware scheduling must be justified for the target workload and
-consumer. Exact all-candidate rewards still require every result.
-First-success consumers may cancel peers after a checked success, but an
-unsolved task still requires all candidates. Historical resource failures
-are not safe semantic cache entries without complete state, resource and
-replay obligations.
-A workload with a 73\% budget-exposed attempt share invites different
-experiments from one whose slowest 1.6\% consumes only 3.4\%.
-Expose all-candidate and first-success modes explicitly in the service:
-their cancellation permissions and useful-work metrics differ. Provision
-and evaluate retry capacity from that workload's measured resource tail,
-rather than transferring a timeout policy from another candidate stream.
-Generation cost also matters: AutoVerus publisher log labels spend
-95.93\% of aggregate logged span on inference, including waits/retries.
-The residual is unattributed, not a measured verification component, and
-cannot be combined with our later replay clocks.
+Expose work at a kernel-checkable boundary; retain original checking rules
+and the required axiom closure.
+Keep generation/scheduling outside the trusted decision.
+Validate decomposition and parallelism separately, then check the complete
+assembled theorem at equal CPU/memory resources.
+Faster leaves or transformed subgoal success alone are insufficient.
 
-\section{Resource limits and profilers can change the observed answer}
-\label{sec:reproducibility}
-A verification verdict includes the executable environment, options,
-accepted context, resource policy and service interpretation.
-Lean recursion-depth, allocation-heartbeat and wall limits are distinct.
-A stored budget label is not necessarily reproduced by source text alone.
+\section{Verified leaves build, outcome and axiom boundaries open}
+\label{sec:meaning}
+\paragraph{RQ4: what has actually been established?}
+The publisher's default root reaches 130,834 of 163,097 modules.
+The other 32,263 contain 451,008 of 1,354,379 masked kernel-decision sites,
+33.30\%. This is not an omitted CPU fraction or a statement that outside
+files fail. All 562 PlanarPacking and 466 Transonic modules are outside.
+A successful default build cannot establish all released-artifact coverage.
 
-Six released EPFL exact-program controls pass under the reconstructed
-native context with original source, annotated source and an enlarged
-heartbeat setting. A recursion depth of 128 fails, whereas 256 and the
-default 512 pass. The original producer context is unavailable.
-This exposes a concrete sensitivity, not a proven publisher label bug.
-Replayed reference proofs, generated mutations and service responses must
-therefore preserve their separate provenance.
+\paragraph{Source sites, declarations and axioms differ.}
+In the retained 363-object census, 45,661 decision-shaped auxiliaries have
+42,610 globally distinct expression-type keys.
+Source occurrences can expand into several helpers; imported objects use
+another boundary. Neither these keys nor Lean's branch-local auxiliary
+cache establishes safe cross-proof reuse~\cite{leanAuxLemma434,leanDecide434}.
+Zero direct native-evaluation tokens does not establish zero transitive
+axiom dependence. Vericoding source flags and publisher labels similarly
+do not establish native acceptance or known axiom closure.
+\missing{Repository-wide declaration reachability, admissions and axiom closure.}
 
-Observation can also change the work completed.
-A historical \texttt{-M8192} Lean~4.9.0-rc1 diagnostic executes
-200 sources in control/observe pairs
-with the same diagnostic \texttt{maxHeartbeats=3000}.
-Both retain InfoTrees; observe additionally enables zero-threshold
-\texttt{trace.profiler}. Seven pairs change from a no-error flag to a
-budget error. Raw error arrays differ for 80 pairs.
-These diagnostic-outcome changes belong to that old resource point.
-Its old body/process clocks are superseded;
-\missing{No-\texttt{-M} profiling costs and paired outcome stability.}
-Earlier interruption is not acceleration.
-A no-error frontend flag is not whole-source, axiom-clean service acceptance.
+\paragraph{Settings and observers change outcomes.}
+Six released EPFL exact-program controls fail at recursion depth128 but
+pass at256/default512 in reconstructed contexts; producer context is unknown.
+A historical \texttt{-M8192} diagnostic changes seven error flags among
+200 profiler/control pairs.
+That is neither full-source accepted-set loss nor a current no-\texttt{-M}
+observer-cost estimate.
+A C-timing control preserves diagnostics but changes allocation-heartbeat
+deltas; equal error flags do not establish exact budget accounting.
+\missing{No-\texttt{-M} repeated observer/outcome stability and software coverage.}
 
-A later linked C-timing control preserves error flags, diagnostic arrays
-and InfoTrees on all 200 sources. Yet measured allocation-heartbeat deltas
-differ for 63 timing-off and 62 timing-on sources relative to stock.
-Its six serial processes also exceed the old collection deadline,
-a retained protocol failure. That old \texttt{-M} point's cost and exclusive
-\texttt{eqRefl} CPU-share numbers are withdrawn from current characterization.
-\missing{No-\texttt{-M} C-timing perturbation costs and CPU attribution.}
+The retained candidate contrasts have different failure/cost boundaries.
+One miniF2F point spends73.21\% of summed physical worker-attempt time on
+budget-source attempts, not that share of concurrent makespan.
+ProofNet pass1 has an11.57\% budget-source request-time share.
+AutoVerus's slowest1.6\% consumes about3.4\%, a slow-tail rather than
+budget-failure metric.
+These historical resource points aren't a regime classifier for the library.
+Ordinary errors and resource exhaustion do not establish falsehood.
 
 \paragraph{System-design implication.}
-Budgeted verification needs a versioned work-accounting contract.
-Define reproducibility-oriented cutoffs in documented logical work units
-where the verifier can meter them reproducibly; retain wall time and RSS as
-separate operational safety limits. Pin recursion depth, toolchain, worker
-settings and context rather than reporting only a timeout in seconds.
-Lean's allocation-based heartbeats are not automatically an
-instrumentation-invariant meter: the measured controls change those deltas
-even when diagnostic outcomes match. An improved budget policy must
-therefore validate counter and outcome stability, not merely replace a wall
-timeout with an existing heartbeat option.
-A profile also needs its own denominator and an explicit perturbation study.
-Hardware sampling, source tracing and extra kernel rechecks have different
-effects. Record changed outcomes before attributing stage cost, and compare
-raw diagnostics as well as acceptance sets.
-\missing{Same-input privileged profiling repetitions, perturbation
-uncertainty and reproducibility across the generated-software workloads.}
-Do not infer an accelerator ceiling or semantic equivalence by borrowing an
-unprofiled run's denominator.
+Report build domain, checked constants, trusted imports, axiom/admission
+policy, executable/options, resource accounting and observer configuration.
+A Boolean result hides these boundaries.
+Faster delivery of a narrower checking scope isn't equivalent verification.
 
-\section{Certificate repair helps selected pathological reductions}
-\label{sec:certificates}
-This case study tests whether representation can matter more than
-performing the same arithmetic faster. Its historical prototype costs are
-kept at their original resource points and do not fill the missing current
-no-\texttt{-M} library-cost profile.
-It is not the paper's main contribution or a generic verified extraction
-compiler. All proposed replacements still require native checking.
+\section{Limits and unfinished evidence}
+The complete lexical comparison establishes concentration, not runtime
+prevalence or a universal two-way partition.
+The no-\texttt{-M} sample remains incomplete and purposeful modules receive
+no population weights.
+\missing{Current per-regime profiles, expansion estimates and uncertainty.}
+Generated-software contexts/provenance differ; software-stage costs remain
+\missing{pending}.
 
-A small finite-count proof groups 10,000 tests into 100 blocks and proves
-correspondence to the original predicate/cardinality.
-Its computation theorem has no axioms; the bridge has only standard logical
-axioms, without \texttt{sorryAx} or a native-evaluation axiom.
-The successful native control uses the superseded \texttt{-M8192}
-protocol. Its proof/axiom audit is retained, but its old whole-source and
-extra-check times do not supply the current no-\texttt{-M} cost.
-\missing{No-\texttt{-M} complete construction, checking and correspondence costs.}
-
-The historical \texttt{-M} miniF2F repair test makes the proof-coverage
-boundary explicit; it is not a new-protocol cost or budget-outcome sample.
-For 64 exact sources in two selected pathological computation families,
-original execution has zero acceptances, 13 ordinary errors and 51 budget
-outcomes; the repair has 31 acceptances, 29 errors and four budget outcomes.
-A third, 32-source power family adds only two acceptances; 29 remain errors
-and one remains budget-limited. These are changed-source proof repairs with
-checked enclosing declarations and axiom audits.
-They are not a transparent unchanged-input verifier optimization.
-Combining these repairs with historical accepted IDs is not a fresh
-full-population run or a pass-set preservation experiment.
-
-Seven matched Int/list certificate comparisons accept in both conditions
-under the historical \texttt{-M} setting.
-Their old whole-source and additional-check costs, and the resulting
-slowdown ranking, are not used as a current no-\texttt{-M} transfer result.
-\missing{No-\texttt{-M} matched certificate construction/replay costs and
-transfer comparison.}
-Extra checks exclude original construction and first checking, so even a
-new matched replay clock would not isolate total kernel CPU.
-Further external literal/certificate tests recover no whole ProofNet,
-EPFL or APRIL source in the tested subsets.
-An intermediate tactic hit can still leave a later false or unproved
-obligation; closing that tactic is not acceptance of its enclosing source.
-
-\paragraph{System-design implication.}
-Selected deep reductions can benefit from a different certified algorithm,
-but that result does not generalize to every decision tactic or library.
-Certificate generation, correspondence proofs, first kernel checking,
-imports and complete-source acceptance must all be charged.
-The checked semantic boundary matters more than the size of a raw arithmetic
-loop. Select certified representation changes from the observed reduction
-family, then test transfer to untouched sources and charge every bridge
-obligation; a fast standalone evaluator is insufficient.
-Existing external search/check architectures and native decision
-procedures remain prior techniques~\cite{mathlib,lean49DecideSource}.
-
-The same boundary limits device conclusions.
-In the completed miniF2F counterexample-screening comparison, exact
-post-checking refutes intermediate goals in 29 ordinary-error candidates,
-removes no timeout and increases whole elapsed time by 8.86\%.
-It is a small component with limited measured coverage, not a general GPU
-acceleration result. Failure of that implementation does not prove GPUs
-cannot help a different profiled workload.
-The external arithmetic oracle remains a frozen baseline, not a contribution
-or a new experimental direction.
-
-\section{What the characterization supports, and what remains unknown}
-\label{sec:limits}
-The retained findings motivate five priorities: declare build coverage;
-measure preparation at the chosen replay boundary; separate failure frequency
-from tail concentration; measure observer perturbation; and evaluate
-proof-representation changes through complete native checking.
-Current no-\texttt{-M} preparation costs remain an explicit missing result,
-rather than being filled with the superseded import measurements.
-
-The optional \texttt{-M} experiment is a methodology correction, not a finding
-about intrinsic workload cost. All previous library compilation/import/
-profile costs using that option remain archived as old-protocol evidence.
-The claims of generally high certificate-module system CPU and low realized
-core use from those captures are withdrawn.
-We do not multiply old costs by Grid's ratio or relabel old observations as
-new no-\texttt{-M} measurements.
-
-Three evidence boundaries remain open.
-First, same-protocol no-\texttt{-M} library cost estimation is incomplete;
-successful legacy samples, purposeful stresses and dependency work cannot
-be pooled into a current full-library estimate.
-Second, generated-software performance must be established independently of
-task scaffolds and benchmark scores.
-Third, no-\texttt{-M} stage attribution, observer uncertainty and
-resource-failure behavior require their own matched measurements.
-Historical candidate-stream contrasts retain their own toolchains and
-resource policies; their costs are not current library-build estimates.
-
-The artifacts preserve unsuccessful prototypes, signal-limited captures,
-budget interruptions and uninvoked dependencies.
-An earlier 8,031-unit state-reuse plan is interrupted rather than complete:
-2,640 original records are archived, one panic record has unknown elapsed
-time and at least 1,273 later observed ledger entries are currently
-unrecoverable after storage eviction.
-Those missing records are neither ordinary failures nor evidence of zero
-cache opportunity. The present paper uses only retained data with declared
-scope.
-
-Public corpus selection also limits generalization. EPFL's construction
-filters some infrastructure failures, invalid outputs and missing
-declarations; APRIL mutation subsets are not natural arrival traffic.
-AutoVerus source-sorted replay is not a historical arrival trace.
-Repository buildability, per-file compiler exit, tactic success and
-axiom-clean acceptance remain different outcomes.
-\missing{Representative software audit, complete profile tables and
-repeat uncertainty required for the final characterization.}
+Streaming and chunking are design-implication prototypes, not accepted-set,
+soundness, performance or cluster results.
+Their complete differentials, axiom closure, failures and matching lifecycle
+costs remain open. Ordinary warm-state reuse and frozen arithmetic oracles
+are prior mechanisms, not the contribution.
+The historical GPU screen was slower and removed no timeout; that does not
+rule out all devices or workloads.
+All failed, partial and withdrawn evidence remains, including interrupted
+state-reuse records whose missing entries aren't zero cache opportunity.
 
 \section{Related work}
 \paragraph{Proof-assistant runtime and build performance.}
@@ -889,10 +480,10 @@ Fine-grained verification caching~\cite{boogieCache}, tactic/prefix reuse
 ~\cite{tactician2020,shred}, simplifier memoization~\cite{leanSimpCache},
 dynamic dependencies~\cite{salsaDependencies,adapton} and age-based scheduling
 ~\cite{lubyRestart1993,soap2018} are established alternatives.
-The certificate case study tests a specific consequence of a measured
-reduction bottleneck; external search with native checking is prior art.
+The streaming and chunking prototypes test different regime-specific
+implications; external search with native checking is prior art.
 
-The gap addressed here is a boundary-consistent characterization of released
+The gap addressed here is a boundary-consistent, two-regime characterization of released
 AI-generated formal artifacts, with a research-level library as the primary
 population and rejected/resource-limited attempts retained as contrasts.
 It joins source/build coverage to explicitly scoped native costs, treats
@@ -901,23 +492,19 @@ whether observation preserves outcomes.
 It complements build engineering and checker benchmarks rather than claiming
 that their bottlenecks are new. Complete software and causal-profile
 findings remain explicit open results.
+
+
 \section{Conclusion}
-Verification of AI-generated formal artifacts has workload- and
-boundary-dependent costs.
-The research-library source census exposes incomplete default-build
-coverage. Its current native stage and preparation costs remain
-\missing{pending no-\texttt{-M} measurements}.
-The optional memory-check overhead is a confound introduced by our earlier
-measurement setting, not a property attributed to AI-generated proofs.
-Candidate streams expose different failure and tail structures;
-resource limits and profiling can change the observed outcome.
-Targeted certificate repair illustrates an algorithmic response to selected
-pathological reductions, while its negative transfer results limit that
-response's scope.
-\missing{Final generated-software, calibrated import-cost, cross-module
-causal controls and population-cost findings.}
-The characterization argues for measuring the complete acceptance path and
-its actual workload before selecting an acceleration mechanism.
+AI-generated mathematics exposes two verification boundaries:
+checking mathematical witnesses and recomputing proof-embedded calculations.
+The matched lexical census shows a large increase concentrated in a small
+source subset; its full-library time weight remains unknown.
+Decoupled streaming and original-kernel chunking test different systems
+responses.
+\missing{Final no-\texttt{-M} regime weights, matched independent-checking
+costs and whole-path parallel/cluster results.}
+Build coverage, reproducibility and axiom closure must accompany every
+performance or verified claim.
 
 \bibliographystyle{plain}
 \bibliography{references}

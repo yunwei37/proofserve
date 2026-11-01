@@ -28,3 +28,10 @@ Pinned sources/toolchains: /workspaces/.agent-state/gpu-smt-workloads/
 Small derived tables/reports are committed. Original commands/artifacts,
 failed/partial data retain recorded PVC paths. Old-Mfigures are historical,
 not currentcost inputs. Reviews are **自审**, not independent acceptance.
+
+## Root source comparison and paper integration
+[Step0231](../docs/tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md):
+freshsame-maskMathlib/openaicomparison7/4vs1354379/5848,10668.32xsites/MB;
+3.5856%positivegeneratedfiles, notCPUshare. Rawfixedarchive andsourcecensus:
+/workspaces/.agent-state/gpu-smt-captures/step-0231-20261101T001556+0000-static/source.tar.gz. Two scans agree; no-M31results independentlyaudited.
+Old8/5Mathlibfigureincludesadocumentationcomment. Nativeweights remainopen.
