@@ -11,7 +11,7 @@ def main():
  root=matches[0]
  e=environment()
  prep=json.loads(Path('/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/startup-replay/repair-v3/preparation.json').read_text())
- e.update(LEAN_PATH=str(assets/'overlay-complete-v2')+':'+prep['lean_path'],PARALLEL_WORKERS='8',
+ e.update(LEAN_PATH=str(assets/'overlay-complete-v2')+':'+prep['lean_path'],PARALLEL_WORKERS='4',
   PARALLEL_CURVE_MODULES=root)
  if module=='envelope':e['PARALLEL_CHUNK_ASSETS_CURVE']=str(assets/'all-envelope')
  os.sched_setaffinity(0,set(range(8)))

@@ -3,7 +3,7 @@
 The primary library task is the exact constructed 1330-module
 Mathlib.Data.Nat.Basic closure used by O. O's unchanged stream-check binary is
 the reference. Our audited serial mode isolates context-validation overhead;
-parallel 1/2/4/8 isolates checked-frontier execution. Three full cold-process
+parallel 1/2/4/8 isolates checked-frontier execution. Three full fresh-process
 cells of each variant, same artifacts and LEAN_PATH, no Lean -M. Persistent
 filesystem page caches are not flushed; native ordering is sequential and
 reported. Every completed cell must have all 1330 accepted module IDs equal
@@ -71,3 +71,11 @@ old 65.7s number as a fresh paired denominator. Do not equate stream acceptance
 with source elaboration, dependency integrity/authenticity or full olean-extension
 validation. Stock LeanChecker already parallelizes modules; this prototype tests
 within a single persistent stream, not the invention of proof parallelism.
+
+
+The three-leaf method choice is tied to the prior native per-helper profile
+(method-selection.csv), with that profile's own denominator. Grid/Barrier have
+no >=1s helper. Envelope's10 helpers represent96.166% of its decision CPU.
+This is a selection rationale for these leaves, not a population estimate:
+Grid was purposeful, and a previous weighted library estimate was dominated by
+the single high-leverage Envelope draw. No whole-library chunk coverage claim.

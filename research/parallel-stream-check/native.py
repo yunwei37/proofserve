@@ -75,8 +75,17 @@ def run(key,argv,limit=600,measured=False,env=None):
   ACTIVE=None
   record.update(sampled_tree_peak_bytes=peak[0],stop_reasons=stops,
    memory_events=(cg/'memory.events').read_text(),charged_peak_bytes=int((cg/'memory.peak').read_text()))
-  try:cg.rmdir();record['cgroup_retired']=True
-  except OSError as err:record['cgroup_cleanup_pending']=str(err)
+  cpu_text=(cg/'cpu.stat').read_text()
+  record['cgroup_cpu_stat']=cpu_text
+  cpu_values={k:int(v) for k,v in (line.split()for line in cpu_text.splitlines())}
+  for label in ['usage','user','system']:
+   if label+'_usec'in cpu_values:record['cgroup_'+label+'_s']=cpu_values[label+'_usec']/1e6
+  record['wait4_usage_complete']=reaped and not stops and record.get('returncode',-1)>=0
+  for attempt in range(6):
+   try:cg.rmdir();record['cgroup_retired']=True;break
+   except OSError as err:
+    if attempt==5:record['cgroup_cleanup_pending']=str(err)
+    else:time.sleep(0.05)
   (out/'result.json').write_text(json.dumps(record,indent=2)+'\n')
  print(json.dumps(record),flush=True)
  return record

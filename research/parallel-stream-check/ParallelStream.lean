@@ -20,8 +20,9 @@ structure AuditState where
 
 abbrev AuditM := StateRefT AuditState IO
 
-def event (fields : List (String × Json)) : IO Unit :=
+def event (fields : List (String × Json)) : IO Unit := do
   IO.println (Json.compress (Json.mkObj fields))
+  (← IO.getStdout).flush
 
 def moduleParts (mod : Name) : IO (Array (ModuleData × CompactedRegion)) := do
   let file ← findOLean mod

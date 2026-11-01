@@ -1,0 +1,78 @@
+{
+  "scope": "stock trusted imports; root-ready dependencies rechecked; not full closure",
+  "cases": [
+    {
+      "scenario": "good-all",
+      "returncode": 0,
+      "expected": 0,
+      "original_kernel_rejection": false,
+      "qualified": true,
+      "events": [
+        {
+          "axioms": [
+            "propext"
+          ],
+          "children": 80,
+          "chunks_ns": 12205920566,
+          "constants": [
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB1_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB12_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB9_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB13_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB4_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB19_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB3_calc._proof_1_1"
+          ],
+          "event": "chunk_work",
+          "merge_audit_ns": 12132682,
+          "parents": 10,
+          "sorry": false,
+          "support_ns": 5158242,
+          "workers": 8
+        },
+        {
+          "event": "control_accept",
+          "input_regions": 1,
+          "retained_regions": 12,
+          "scenario": "good-all",
+          "selected_targets": 10
+        }
+      ]
+    },
+    {
+      "scenario": "bad-input",
+      "returncode": 1,
+      "expected": 1,
+      "original_kernel_rejection": true,
+      "qualified": true,
+      "events": [
+        {
+          "error": "kernel_reject:OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+          "event": "control_reject",
+          "input_regions": 1,
+          "retained_regions": 12,
+          "scenario": "bad-input"
+        }
+      ]
+    },
+    {
+      "scenario": "bad-chunk",
+      "returncode": 1,
+      "expected": 1,
+      "original_kernel_rejection": true,
+      "qualified": true,
+      "events": [
+        {
+          "error": "kernel_reject:MEnvelopeStream.chunk_b8_8_0:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+          "event": "control_reject",
+          "input_regions": 1,
+          "retained_regions": 12,
+          "scenario": "bad-chunk"
+        }
+      ]
+    }
+  ]
+}

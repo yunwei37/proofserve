@@ -1,0 +1,57 @@
+unsafe def main (args : List String) : IO UInt32 := do
+  let scenario := args.headD "good-target"
+  initSearchPath (← findSysroot)
+  let some directory ← IO.getEnv "PARALLEL_CHUNK_ASSETS" |
+    throw <| IO.userError "missing assets"
+  let (bundles,retained) ← loadBundle directory 8
+  let mod := `OAI.Analysis.Triangular.Envelope.EnvelopePsiB
+  let parts ← pathParts (← findOLean mod)
+  let some (first,_) := parts[0]? | throw <| IO.userError "missing input"
+  let some (data,_) := parts[parts.size-1]? | throw <| IO.userError "missing input"
+  for bundle in bundles do
+    let some actual := data.constants.find? (·.name == bundle.reference.name) |
+      throw <| IO.userError "source target absent"
+    unless sameConstant actual bundle.reference do
+      throw <| IO.userError "source CI differs from selector reference"
+  let (_,state) ← importModulesCore first.imports |>.run
+  let env ← finalizeImport state first.imports {} 0 false false (isModule := true)
+  let mut blocked : NameSet := {}
+  for bundle in bundles do blocked := blocked.insert bundle.reference.name
+  let mut changed := true
+  while changed do
+    changed := false
+    for ci in data.constants do
+      unless blocked.contains ci.name do
+        if ci.getUsedConstantsAsSet.toList.any blocked.contains then
+          blocked := blocked.insert ci.name
+          changed := true
+  let mut ready : Std.HashMap Name ConstantInfo := {}
+  for ci in data.constants do
+    unless blocked.contains ci.name do ready := ready.insert ci.name ci
+  -- Only short ready declarations, never the ten expensive facts or their users.
+  let base ← env.toKernelEnv.replay ready
+  let selected := if scenario == "good-all" then bundles else
+    bundles.filter (fun b => b.reference.name.toString.endsWith "envelopeExpB16_calc._proof_1_1")
+  unless !selected.isEmpty do throw <| IO.userError "target unavailable"
+  let mut constants := #[]
+  for bundle in selected do
+    let ci := if scenario == "bad-input" then match bundle.reference with
+      | .thmInfo t => ConstantInfo.thmInfo {t with value:=Expr.bvar 0}
+      | other => other
+      else bundle.reference
+    constants := constants.push ci
+  let testData := {data with constants,constNames:=constants.map (·.name)}
+  let mut map : Std.HashMap Name ConstantInfo := {}
+  for ci in constants do map := map.insert ci.name ci
+  try
+    let _ ← parallelReplay testData map base 8 "none" selected
+    IO.println <| Json.compress <| Json.mkObj [
+      ("event",toJson "control_accept"),("scenario",toJson scenario),
+      ("retained_regions",toJson retained.size),("input_regions",toJson parts.size),("selected_targets",toJson selected.size)]
+    return 0
+  catch e =>
+    IO.println <| Json.compress <| Json.mkObj [
+      ("event",toJson "control_reject"),("scenario",toJson scenario),
+      ("error",toJson e.toString),("retained_regions",toJson retained.size),
+      ("input_regions",toJson parts.size)]
+    return 1
