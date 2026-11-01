@@ -1,89 +1,56 @@
-# Research plan
+# Research plan: two verification-cost regimes
 
-ProofServe studies verification workloads and systems mechanisms around native
-Lean verification. The four research questions and retained evidence remain in
-[idea-story](idea-story.md), [evaluation](evaluation.md), and [the paper](paper/main.tex).
-This document does not decide a replacement paper thesis.
+Updated2026-11-01UTC. [Status](research-status.md) · [Evidence](evaluation.md) ·
+[User words](user-instruction.md) · [Research index](../research/README.md).
 
-## Current conclusions
+## User-selected questions
+1. Where do AI-generated artifact verification costs fall, and how prevalent
+   are computation-replaying and witness-checking regimes in the entire library?
+2. Why does independent checking fail to realize the potential low cost of
+   mathematical-proof checking? Separate imports, elaboration/proof production,
+   checking, observation and cleanup, preserving trust scope.
+3. Can computational checking scale across cores or a cluster without expanding
+   the trusted base? Charge decomposition, transfer, checking and assembly.
+4. What does “verified” establish? Report default-build omissions, settings/
+   observer-sensitive outcomes, admissions and unknown axiom closures.
 
-- The retained strong pass@k schedule is close to its measured ideal ordering:
-  only about1.8% of consumed work remains in that offline ordering gap. This is
-  a frozen-work proxy, not a wall-time guarantee under memory/arrival effects.
-  Do not repeat the source-feature cost predictor.
-- Resource management, warm preparation, ordinary caching and scheduling are
-  infrastructure. Their engineering value is not by itself research novelty.
-- Workload representativeness comes first. W is checking public mathematical and
-  program-verification workloads; selected slow tactics are not representative
-  by assertion.
-- Analyze native semantics and deterministic budgets directly. Do not assume
-  a watchdog or kill signal as a semantic failure oracle. The existing service
-  resource watchdog is separate from this research question.
+Reproduce Mathlib/openai counts with the same masked scanner/source boundaries.
+Lexical concentration isn't a native cost share. Production, source compilation
+and independent checking have different denominators; a user-cycle sample isn't
+a pure final-kernel clock or generation-time ratio.
 
-## Asymmetric trust
+## Work and ownership
+- W: [workloads/](../workloads/W-status.md). Preserve42draws/inclusion weights;
+  noMcosts and uncertainty determine weights. Missing hard draws stay missing.
+  Public generated outputs only, no generation or new competitor reproduction.
+- O: [decoupled checker](../research/decoupled-check/StreamCheck.lean).
+  One-process streaming with stock-kernel acceptance, comparable replay scopes,
+  total import/init/finalization costs and differential diagnostic checks.
+- M: [chunked checker](../research/chunked-kernel-check/plan.json).
+  Separate monolithic k0, same decomposition k1 and k2/4/8.
+  Untrusted code generation may propose chunks; original kernel checks each
+  claim and the complete assembly. Include dependencies, axioms and memory.
+- Root: paper, reproducible static comparison, user records and evidence index.
+  No new agent or implementation edits in another lane.
 
-A proof is accepted only through the original Lean kernel under declared native
-semantics; rejection may use any fast path. Fast rejection does not add an axiom
-to accepted proofs. It can affect completeness and workload quality, which must
-be measured separately. Rejecting a proof attempt does not disprove its target.
+## Designs follow characterization
+Streaming addresses repeated environment preparation and coupling only if the
+new measurements support that cost boundary. Chunking addresses kernel
+recomputation only if parallel leaf checking amortizes decomposition/assembly.
+These are prototypes testing design implications, not promised accelerators.
+Prepared contexts, certificates and ordinary scheduling are prior techniques.
+Multi-core results do not constitute multi-machine results.
 
-Only modifying the trusted kernel changes that proof-checking boundary. Faster
-tactics, extracted computation and external certificates still have to produce
-proofs/certificates checked by the original kernel. Budget/heartbeat changes
-are semantic/resource changes to report, not hidden speedups.
-[Architecture](architecture.md) records the same boundary.
+All current native measurements omit-M; only external cgroup memory protection.
+Legacy-M75–94%/~2%profile and1.28replay/build values remain historical motivation.
+Current replacements are missing; never scale old costs or fill missing strata.
+Pin SDK/imports/axioms, keep diagnostics and compare complete native acceptance.
+The original kernel/trust base remains the acceptance authority.
 
-## Candidate mechanisms
-
-1. **Computation extraction and certificates.** Batch finite enumeration outside
-   proof search, produce a reflection certificate, split it into chunks checked
-   in parallel by the original kernel. Include construction, transfer,
-   reconstruction and checking costs.
-2. **Precompilation.** Native tactic compilation; investigate what csimp actually
-   affects in kernel-checked computations; investigate Expr runtime
-   representation. A compiler rewrite is not a kernel reduction rule.
-   Feasibility and TCB effects require evidence.
-3. **Early failure and deterministic budgets.** Analyze native failure and
-   exhausted computation under declared budgets. Keep tactic failure, resource
-   failure, timeout and unknown distinct.
-4. **Out-of-order speculative execution with fine-grained CPU/memory scheduling.**
-   Explore independent work and commit ordering, charging rollback, wasted work,
-   actual memory and retirement.
-5. **Generation/verification co-design.** Later, after workload and feasibility
-   evidence for the preceding mechanisms.
-
-M owns feasibility experiments. These are candidates, not completed methods.
-CPU oracle work stays frozen; retain failed/partial results.
-
-## Paper decision
-
-The OSDI standard is one clear thesis supported by two or three mechanisms,
-representative workloads, generality and strongest relevant baselines. Do not
-assemble a contribution from unrelated engineering optimizations.
-
-W and M provide workload/feasibility results. The main thread integrates the
-paper/evidence; the user decides its thesis. O prepares the extensible open-source
-system and interfaces. No agents beyond the four authorized lines are introduced.
-
-## Engineering and current limits
-
-Contracts, engine resources/scheduling, native Lean backends and service adapters
-are separate crates. Crate packages and Docker context exclude research data;
-the existing repository and history retain it.
-
-The operator-approved migration keeps the same Workspace/PVC on phobos-vt.
-The four lines share 40 GiB actual RSS: W≤16 GiB, M≤16 GiB, O≤4 GiB,
-main≤4 GiB; each line uses at most 8 cores. O uses one compiler job on CPUs 16–19,
-without a Lean process, and preserves the interrupted G10 validation separately.
-
-After the 2026-10-30 storage recovery, O confirms the same PVC is writable.
-Docker qualification stays within O's 4 GiB allocation; its actual build result
-belongs in the [release preparation](releases/0.1.0.md#remaining-qualification-and-publication).
-The renewed short signal control on the Kubernetes-exec path still returns
-errno 13 for same-UID TERM. Do not assume watchdog delivery from the node change.
-Native work uses bounded heartbeats/natural termination until its own execution
-path is qualified.
-The migration is an explicit operator exception; O makes no scheduling/security
-or credential changes. No publication token is read or created.
-
-Historical plans remain [archived](tmp/bootstrap/step-0004-20261009T183603+0000/archived-research-plan-20261009T193900+0000.md).
+## Resources and retained history
+Same gpu-smt-dev/phobos-vt/PVC;40GiB W16/M16/O4/root4,<=8cores each.
+Shared P0–7 timing lock; Ecores prepare/analyze. Raw output/sources/toolchains/
+datasets/builds live on PVC outside Git. No runtime/permission/CronJob change.
+Never restart a healthy capture using a stale note; retain failures/partial data.
+CPU oracle remains frozen; closed narrowGPU paths aren't restarted.
+[Prior plan, exact archive](tmp/build-and-evaluate/step-0230-20261101T001154+0000/experiment-001/research-plan.md-before.gz).
