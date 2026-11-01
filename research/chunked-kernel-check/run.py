@@ -6,15 +6,16 @@ RAW=Path('/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check')
 PROTO=RAW/'frozen-grid-v3'
 SDK=Path('/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux')
 LOCK=Path('/workspaces/.agent-state/gpu-smt-captures/pcore.lock')
-def cell(label,k,negative=False):
+def cell(label,k,negative=False,*,argv=None,extra_env=None):
     out=RAW/'runs'/label;out.mkdir(parents=True,exist_ok=False)
     env=dict(os.environ,CK_K=str(k),CK_OUT=str(out),LEAN_NUM_THREADS='8')
     env.pop('CK_PREPARE',None)
     env.pop('CK_NEGATIVE',None)
     if negative:env['CK_NEGATIVE']='1'
+    if extra_env:env.update(extra_env)
     old=json.loads(Path('/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/systime/inputs.json').read_text())
     env['LEAN_PATH']=str(out)+':'+str(PROTO)+':'+old['LEAN_PATH']
-    command=[str(SDK/'bin/lean'),'--root='+str(PROTO),'-j8','-DmaxHeartbeats=2000000',
+    command=argv if argv is not None else [str(SDK/'bin/lean'),'--root='+str(PROTO),'-j8','-DmaxHeartbeats=2000000',
              '--load-dynlib='+str(PROTO/'clock.so'),str(PROTO/'Driver.lean')]
     waiters=subprocess.run(['lslocks','-o','PID,COMMAND,PATH,BLOCKER'],capture_output=True,text=True).stdout
     (out/'lock-before.txt').write_text(waiters)

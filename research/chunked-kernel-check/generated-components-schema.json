@@ -1,0 +1,196 @@
+{
+  "source_module": "OAI.Analysis.PlanarPacking.Grid",
+  "original_target": "PointBox.calc p0_0.t = p0_0",
+  "source_definition": "p0_0",
+  "record_fields": {
+    "RBox": [
+      [
+        "lo",
+        "\u2124"
+      ],
+      [
+        "hi",
+        "\u2124"
+      ]
+    ],
+    "CBox": [
+      [
+        "re",
+        "RBox"
+      ],
+      [
+        "im",
+        "RBox"
+      ]
+    ],
+    "PointBox": [
+      [
+        "t",
+        "RBox"
+      ],
+      [
+        "lam",
+        "CBox"
+      ],
+      [
+        "z",
+        "CBox"
+      ],
+      [
+        "direct",
+        "CBox"
+      ],
+      [
+        "quarter",
+        "CBox"
+      ]
+    ]
+  },
+  "leaf_paths": [
+    ".t.lo",
+    ".t.hi",
+    ".lam.re.lo",
+    ".lam.re.hi",
+    ".lam.im.lo",
+    ".lam.im.hi",
+    ".z.re.lo",
+    ".z.re.hi",
+    ".z.im.lo",
+    ".z.im.hi",
+    ".direct.re.lo",
+    ".direct.re.hi",
+    ".direct.im.lo",
+    ".direct.im.hi",
+    ".quarter.re.lo",
+    ".quarter.re.hi",
+    ".quarter.im.lo",
+    ".quarter.im.hi"
+  ],
+  "strategy": "keep source exponential components whole; distribute remaining leaves",
+  "partition_mode": "components",
+  "source_component_expressions": {
+    "t": "a",
+    "lam": "lamBox a",
+    "z": "zBox a",
+    "direct": "(directArgBox a).exp 3",
+    "quarter": "(quarterArgBox a).exp 3"
+  },
+  "preserved_components": [
+    "direct",
+    "quarter"
+  ],
+  "groups": {
+    "1": [
+      [
+        ".t.lo",
+        ".t.hi",
+        ".lam.re.lo",
+        ".lam.re.hi",
+        ".lam.im.lo",
+        ".lam.im.hi",
+        ".z.re.lo",
+        ".z.re.hi",
+        ".z.im.lo",
+        ".z.im.hi",
+        ".direct.re.lo",
+        ".direct.re.hi",
+        ".direct.im.lo",
+        ".direct.im.hi",
+        ".quarter.re.lo",
+        ".quarter.re.hi",
+        ".quarter.im.lo",
+        ".quarter.im.hi"
+      ]
+    ],
+    "2": [
+      [
+        ".direct.re.lo",
+        ".direct.re.hi",
+        ".direct.im.lo",
+        ".direct.im.hi",
+        ".t.lo",
+        ".lam.re.lo",
+        ".lam.im.lo",
+        ".z.re.lo",
+        ".z.im.lo"
+      ],
+      [
+        ".quarter.re.lo",
+        ".quarter.re.hi",
+        ".quarter.im.lo",
+        ".quarter.im.hi",
+        ".t.hi",
+        ".lam.re.hi",
+        ".lam.im.hi",
+        ".z.re.hi",
+        ".z.im.hi"
+      ]
+    ],
+    "4": [
+      [
+        ".direct.re.lo",
+        ".direct.re.hi",
+        ".direct.im.lo",
+        ".direct.im.hi"
+      ],
+      [
+        ".quarter.re.lo",
+        ".quarter.re.hi",
+        ".quarter.im.lo",
+        ".quarter.im.hi"
+      ],
+      [
+        ".t.lo",
+        ".lam.re.lo",
+        ".lam.im.lo",
+        ".z.re.lo",
+        ".z.im.lo"
+      ],
+      [
+        ".t.hi",
+        ".lam.re.hi",
+        ".lam.im.hi",
+        ".z.re.hi",
+        ".z.im.hi"
+      ]
+    ],
+    "8": [
+      [
+        ".direct.re.lo",
+        ".direct.re.hi",
+        ".direct.im.lo",
+        ".direct.im.hi"
+      ],
+      [
+        ".quarter.re.lo",
+        ".quarter.re.hi",
+        ".quarter.im.lo",
+        ".quarter.im.hi"
+      ],
+      [
+        ".t.lo",
+        ".z.re.lo"
+      ],
+      [
+        ".t.hi",
+        ".z.re.hi"
+      ],
+      [
+        ".lam.re.lo",
+        ".z.im.lo"
+      ],
+      [
+        ".lam.re.hi",
+        ".z.im.hi"
+      ],
+      [
+        ".lam.im.lo"
+      ],
+      [
+        ".lam.im.hi"
+      ]
+    ]
+  },
+  "source_is_extracted": true,
+  "handwritten_target_numbers": false
+}

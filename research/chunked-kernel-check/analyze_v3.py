@@ -1,5 +1,5 @@
 """Analyze only the completed, corrected artifact-matched v3 kernel matrix."""
-import os,pathlib,json,re,csv,statistics,filecmp
+import os,pathlib,json,re,csv,statistics,filecmp,argparse
 HERE=pathlib.Path(__file__).resolve().parent
 RAW=pathlib.Path('/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check')
 def write(name,rows):
@@ -7,8 +7,10 @@ def write(name,rows):
   w=csv.DictWriter(f,lineterminator='\n',fieldnames=list(dict.fromkeys(k for r in rows for k in r)));w.writeheader();w.writerows(rows)
 def main():
  os.sched_setaffinity(0,set(range(8,16)))
- point=RAW/'frozen-grid-v3-continuation'
- if not (point/'terminal.json').exists():point=RAW/'frozen-grid-v3'
+ ap=argparse.ArgumentParser();ap.add_argument('--point',type=pathlib.Path);ap.add_argument('--prefix',default='v3');args=ap.parse_args()
+ point=args.point or RAW/'frozen-grid-v3-continuation'
+ if args.point is None and not (point/'terminal.json').exists():point=RAW/'frozen-grid-v3'
+ prefix=args.prefix
  term=json.loads((point/'terminal.json').read_text())
  paths={(r['k'],r['rep']):pathlib.Path(r['raw']) for r in json.loads((point/'manifest.json').read_text())} if (point/'manifest.json').exists() else {}
  assert term['complete'] and term['completed']==15,'pending/failed is not complete evidence'
@@ -23,8 +25,10 @@ def main():
    phases=[tuple(map(int,m)) for m in re.findall(r'^CK_KERNEL (\d+) (\d+) (\d+) (\d+)$',text,re.M)]
    assert len(phases)==max(1,k)
    assert all(end>=start and cpu>=0 for _,start,end,cpu in phases)
+   assert all(cpu<=(end-start)*1.05+1000000 for _,start,end,cpu in phases),'thread CPU clock exceeds its wall interval'
    span=(max(x[2] for x in phases)-min(x[1] for x in phases))/1e9
    cpu=sum(x[3] for x in phases)/1e9
+   assert cpu<=span*min(max(1,k),8)*1.05+0.01,'impossible measured active-core average'
    m=re.search(r'CK_RESULT (original|chunks) (\d+) (\d+) (\d+) (\d+)',text);assert m
    row=dict(k=k,rep=rep,native_wall_s=r['wall_s'],native_cpu_s=r['user_s']+r['system_s'],
      peak_rss_kib=r['peak_rss_kib'],pure_kernel_span_s=span,pure_kernel_worker_thread_cpu_s=cpu,
@@ -44,7 +48,7 @@ def main():
        equal_same_k_rep1=filecmp.cmp(a,ref,shallow=False),
        scope='same configuration repetitions; proof restructuring changes artifact bytes across k'))
    row['raw']=str(p);rows.append(row)
- write('v3-per-repeat.csv',rows);write('v3-artifacts.csv',artifacts)
+ write(prefix+'-per-repeat.csv',rows);write(prefix+'-artifacts.csv',artifacts)
  summaries=[]
  for k in [0,1,2,4,8]:
   rr=[r for r in rows if r['k']==k]
@@ -52,11 +56,11 @@ def main():
    if not metric.endswith(('_s','_kib','_cores')):continue
    vals=[r[metric] for r in rr if r.get(metric) is not None]
    if vals:summaries.append(dict(k=k,metric=metric,n=len(vals),median=statistics.median(vals),min=min(vals),max=max(vals)))
- write('v3-summary.csv',summaries)
+ write(prefix+'-summary.csv',summaries)
  quality=dict(completed_native_cells=15,accepted=15,target_identical_to_original_extracted_input=True,
   axioms=['propext'],new_axioms=0,sorry=False,same_k_repeat_artifacts_equal=all(a['equal_same_k_rep1'] for a in artifacts),
   native_heartbeats='finite per child; no claim of aggregate budget transparency',
   source_frame='one real Grid PointBox.calc equality, not full Grid compilation')
- (HERE/'v3-validation.json').write_text(json.dumps(quality,indent=2)+'\n')
+ (HERE/(prefix+'-validation.json')).write_text(json.dumps(quality,indent=2)+'\n')
  print(json.dumps(quality))
 if __name__=='__main__':main()

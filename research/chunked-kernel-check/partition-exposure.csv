@@ -1,0 +1,9 @@
+partition,k,heavy_output_components,checker_component_exposures,jobs_with_heavy_output,max_heavy_outputs_in_one_job,exposure_is_measured_reduction_count
+flat,1,2,2,1,2,False
+flat,2,2,2,1,2,False
+flat,4,2,3,2,2,False
+flat,8,2,5,4,2,False
+components,1,2,2,1,2,False
+components,2,2,2,2,1,False
+components,4,2,2,2,1,False
+components,8,2,2,2,1,False

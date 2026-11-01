@@ -112,3 +112,34 @@ arguments and12UMoments9CBox equalities reached after change and simp_rw.
 All7018native structural targets remain known; they are not reduced to the
 5470lexically recoverable record headers. Aggregate agreement in these types
 is not a measured per-call classification precision across the whole corpus.
+
+## Logical independence is not independent computational work
+
+The pinned PointBox.calc source has two record-valued exponential components:
+directArgBox(a).exp(3) and quarterArgBox(a).exp(3). Each CBox.exp evaluates
+a32-step Horner expression followed by repeated squaring. This is a source
+observation, not an attributed runtime percentage.
+
+Naive equal-leaf groups put both components in one job at k2. At k8 they
+expose the two outputs across five checker/component pairs; one job still
+touches both outputs. Different C++ theorem checkers do not share reduction
+caches, so logical field independence does not guarantee independent work.
+The exact extra work remains a measurement question.
+
+A second automatic partition is prepared: detect explicit .exp calls in the
+root constructor, preserve each corresponding record's complete leaf group,
+then distribute other leaves. At k2/4/8 it exposes the two heavy outputs to two
+different jobs without splitting either. The heuristic has no timing oracle.
+All eighteen equalities still occur exactly once and no group is empty.
+partition-exposure.csv records this source structure; its counts are **not**
+measured invocations, cycles, speedup or a general-purpose optimizer result.
+
+ComponentBase.lean and generated-components-schema.json are generated from
+the same original numeric input. Native qualification and a full matrix must
+still succeed before using performance or acceptance claims for this variant.
+The existing flat matrix's frozen source is unchanged.
+
+P-core serialization does not isolate shared LLC, DRAM, storage or all other
+host work. Background preparation may use E cores under the joint memory
+budget. Three repetitions describe these controlled attempts, not a whole-
+machine-isolation or cold-cache guarantee.

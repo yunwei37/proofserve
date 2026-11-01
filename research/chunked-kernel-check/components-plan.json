@@ -1,0 +1,24 @@
+{
+  "state": "prepared-not-launched",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-components-v1",
+  "one_variable": "field partition only; original output target, kernel API, import path and budgets unchanged",
+  "reason": "source shows two complete exponential components; flat equal-leaf groups duplicate/schedule both heavy outputs badly",
+  "source_heuristic": "preserve record-valued root constructor fields with explicit .exp call; spread remaining leaves; no measured timing oracle",
+  "arms": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "repetitions": 3,
+  "qualification": [
+    "compile generated base with original kernel",
+    "check original Grid input and target equivalence"
+  ],
+  "same_driver_as_v3": true,
+  "leakEnv_unchanged": "same default false, not changed",
+  "not_claimed": "logical splitting alone implies speedup; syntactic exposures are not measured repeated work",
+  "common_lock": true,
+  "limits": "same180s/finiteHB/noM/P0-7/14GiB own-tree sampler; M total16GiB"
+}
