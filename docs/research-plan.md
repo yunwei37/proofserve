@@ -121,15 +121,11 @@ No Woldqueue restart; newcapture choices belongtotheexistingWlane.
 
 [Rootstep0239 failed combined-stream capture](tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md): Envelope-stream-r1 return-9 after1313.600s/sample15,697,940,480B vs14GiBsampledstop; charged9,738,059,776B. No kernelOOMevent. Allsampled native identities/controller nowretired; initialcgroupcleanup-pending record retained, cgroup nowabsent. TotalnativeCPUunknown (timeout-parent wait4nearzero is not descendantCPU). Notmathematicalrejection/completecurve/speedup. No automaticrerun or budgetincrease; originalsmallEnvelopev3curve unaffected.
 
-## New bounded repaired-version evidence
-Rootstep0240 collects actual v12Gridstream-r1: one3793moduleclosure plusfive
-incrementaltargettrials, 4worker93.662vsserial265.785s, CPU+40.6%;8worker95.431s.
-Same7898typedconstants/proofbodies, additionaltrustedcoordinator/Ccommitcode.
-Singleorderedrun, notcoldsinglemode speedup/repeatedlibrarythroughput.
-Allten Envelope long-call helpers pass80children/10merges; badinput/child
-kernelreject. Imports trusted in thiscontrol; no performance or coldbootstrap
-claim. Originalv10coldprefixresourcefailure remains. Follow actualnewqualified
-Mplans withoutrestartingcompletedGridr1; rootsmallanalysis only.
+## Historical qualification retained
+Rootstep0240's v12Grid requested-eight observation is scheduling-defective;
+use the repaired v14 curve in rootstep0244 for current target timings.
+Keep the original data and all-ten source-qualified certificate controls.
+Do not reuse the old partial CPU occupancy as current eight-worker evidence.
 
 ## Repaired exact-closure pairing completed
 Rootstep0241collectsv14matrix18cells,3fixed-orderrepsper6modes,
@@ -158,3 +154,18 @@ Whole1665.530sincludesprefix+all9. Separatewhole-cohortserial/singleconfiguratio
 coldcost/repeatsstillunmeasured. Sample14GiBguardisnothardRSS; wait4peak14.019
 vs sampled13.971GiBexplicit. v10failedsource/prefixpointunchanged.
 No automaticrerun or capincrease; actualMfull-cost/newpairedplansownnextwork.
+
+## Complete computational closure costs now measured
+[Rootstep0244](tmp/build-and-evaluate/step-0244-20261101T101651+0000/step-report.md) independently reduces four completed native arms.
+Barrier original serial474.851s/uniform4=304.862s (1.55759x,CPU+24.629%);
+Grid557.568/296.293s (1.88181x,CPU+33.562%). Equal800s per-arm/noM/P0–7/14GiB
+charged, native/identity/cgroup retirement checked. Grid reference preserved
+across a disclosed controller-metadata repair gap; no rerun or continuous clock.
+Complete native wall excludes queue/setup/post-wait sampler/cgroup cleanup.
+Repaired v14Grid leaf8=65.856s vs265.010serial,4.024x but CPU+97.76%.
+The earlier v12 underfilled-eight point is historical. One ordered observation
+per computational mode, no repeated confidence or full8worker/global gain.
+Next M work belongs to its real current protocol; do not restart completed
+pairs or borrow the incremental target ratios for full closure claims.
+Envelope whole-closure serial/best-mode pairing, repetitions, W missing draws,
+axiom closures, broader software and cluster evidence remain open.

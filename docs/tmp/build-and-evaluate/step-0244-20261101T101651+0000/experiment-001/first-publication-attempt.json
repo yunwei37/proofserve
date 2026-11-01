@@ -1,0 +1,59 @@
+[
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--stat",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/paper/references.bib",
+      "docs/evaluation.md",
+      "docs/research-status.md",
+      "docs/research-plan.md",
+      "research/README.md",
+      "docs/tmp/build-and-evaluate/step-0244-20261101T101651+0000"
+    ],
+    "returncode": 0,
+    "stdout": " docs/evaluation.md      |  39 ++++++++++++++++++++\n docs/paper/main.pdf     | Bin 144466 -> 147874 bytes\n docs/paper/main.tex     |  94 ++++++++++++++++++++++++++++++++++++++++--------\n docs/research-plan.md   |  29 ++++++++++-----\n docs/research-status.md |  25 ++++++++-----\n research/README.md      |   2 +-\n 6 files changed, 155 insertions(+), 34 deletions(-)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "add",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/paper/references.bib",
+      "docs/evaluation.md",
+      "docs/research-status.md",
+      "docs/research-plan.md",
+      "research/README.md",
+      "docs/tmp/build-and-evaluate/step-0244-20261101T101651+0000"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/paper/references.bib",
+      "docs/evaluation.md",
+      "docs/research-status.md",
+      "docs/research-plan.md",
+      "research/README.md",
+      "docs/tmp/build-and-evaluate/step-0244-20261101T101651+0000"
+    ],
+    "returncode": 2,
+    "stdout": "docs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/complete-native-cells.csv:1: trailing whitespace.\n+key,wall_s,wait4_CPU_s,cgroup_CPU_s,wait4_maxrss_kib,sampled_RSS_bytes,charged_peak_bytes,accepted,native_limit_s,all_native_retired\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/complete-native-cells.csv:2: trailing whitespace.\n+barrier-full-reference1-r1,474.85050061531365,474.582676,474.582037,2785548,2835480576,461840384,4449,800,True\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/complete-native-cells.csv:3: trailing whitespace.\n+barrier-full-parallel4-r1,304.86163028422743,591.46771,591.467022,3280180,3300728832,899768320,4449,800,True\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/complete-native-cells.csv:4: trailing whitespace.\n+grid-full-reference1-r1,557.5677188849077,557.350578,557.349965,2322124,2379612160,318025728,3793,800,True\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/complete-native-cells.csv:5: trailing whitespace.\n+grid-full-parallel4-r1,296.293452787213,744.406806,744.406169,2848816,2919067648,970964992,3793,800,True\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/complete-native-cells.csv:6: trailing whitespace.\n+grid-stream-r1,1054.528578323312,2116.2475,2116.246917,2879828,2935898112,918913024,3793,1680,True\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/complete-pairs.csv:1: trailing whitespace.\n+cohort,modules,reference_wall_s,parallel4_wall_s,wall_ratio,wall_reduction_percent,cgroup_CPU_increase_percent,wait4_CPU_increase_percent,interrupted_pair\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/complete-pairs.csv:2: trailing whitespace.\n+barrier,4449,474.85050061531365,304.86163028422743,1.557593522584665,35.7983976242657,24.629036897155054,24.62901406034468,False\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/complete-pairs.csv:3: trailing whitespace.\n+grid,3793,557.5677188849077,296.293452787213,1.881809110663448,46.85964722280246,33.56171449656411,33.5616818899217,True\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/grid-v14-incremental.csv:1: trailing whitespace.\n+kind,wall_s,CPU_s\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/grid-v14-incremental.csv:2: trailing whitespace.\n+serial,265.009820344,264.853454512\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/grid-v14-incremental.csv:3: trailing whitespace.\n+parallel1,270.263915329,270.157624914\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/grid-v14-incremental.csv:4: trailing whitespace.\n+parallel2,155.577084346,310.739218644\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/grid-v14-incremental.csv:5: trailing whitespace.\n+parallel4,94.18323887,375.642908483\ndocs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/experiment-001/grid-v14-incremental.csv:6: trailing whitespace.\n+parallel8,65.856253153,523.784131825\n",
+    "stderr": ""
+  }
+]

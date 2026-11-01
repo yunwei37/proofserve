@@ -1,0 +1,67 @@
+{
+  "pairs": [
+    {
+      "cohort": "barrier",
+      "modules": 4449,
+      "reference_wall_s": 474.85050061531365,
+      "parallel4_wall_s": 304.86163028422743,
+      "wall_ratio": 1.557593522584665,
+      "wall_reduction_percent": 35.7983976242657,
+      "cgroup_CPU_increase_percent": 24.629036897155054,
+      "wait4_CPU_increase_percent": 24.62901406034468,
+      "interrupted_pair": false
+    },
+    {
+      "cohort": "grid",
+      "modules": 3793,
+      "reference_wall_s": 557.5677188849077,
+      "parallel4_wall_s": 296.293452787213,
+      "wall_ratio": 1.881809110663448,
+      "wall_reduction_percent": 46.85964722280246,
+      "cgroup_CPU_increase_percent": 33.56171449656411,
+      "wait4_CPU_increase_percent": 33.5616818899217,
+      "interrupted_pair": true
+    }
+  ],
+  "grid_incremental": [
+    {
+      "kind": "serial",
+      "wall_s": 265.009820344,
+      "CPU_s": 264.853454512
+    },
+    {
+      "kind": "parallel1",
+      "wall_s": 270.263915329,
+      "CPU_s": 270.157624914
+    },
+    {
+      "kind": "parallel2",
+      "wall_s": 155.577084346,
+      "CPU_s": 310.739218644
+    },
+    {
+      "kind": "parallel4",
+      "wall_s": 94.18323887,
+      "CPU_s": 375.642908483
+    },
+    {
+      "kind": "parallel8",
+      "wall_s": 65.856253153,
+      "CPU_s": 523.784131825
+    }
+  ],
+  "grid_metrics": {
+    "grid8_incremental_ratio": 4.024064650752574,
+    "grid8_CPU_increase_percent": 97.7637530875658,
+    "grid8_CPU_wall": 7.9534456752060105
+  },
+  "full_native_cells": 4,
+  "additional_incremental_processes": 1,
+  "unique_sampled_PID_births": 10,
+  "root_new_native_runs": 0,
+  "full_clock": "Popen-to-wait4 wall; excludes outer queue/setup and subsequent sampler/cgroup cleanup",
+  "CPU_ledger": "cgroup usage preferred; complete wait4 user+system separately retained",
+  "cgroup_CPU_wait4_agreement_max_abs_s": 0.0006879999999496178,
+  "root_analysis_s": 1.134745511226356,
+  "root_analysis_maxrss_kib": 69416
+}

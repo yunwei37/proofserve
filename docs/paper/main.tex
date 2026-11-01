@@ -710,7 +710,7 @@ prefix. Unlike the earlier checked-fragment protocol, it commits checked
 results through an internal-ABI adapter; its additional implementation
 trust is discussed in Section~\ref{sec:meaning}.
 
-One completed Grid process checks its 3,793-module closure and runs five
+One completed repaired v14 Grid process checks its 3,793-module closure and runs five
 ordered target trials (Table~\ref{tab:gridstream}).
 Each parallel trial processes 7,898 declarations in eight dependency waves;
 its complete typed constants, including proof bodies, match direct serial
@@ -722,11 +722,11 @@ replay. There is no chunk substitution in these Grid trials.
 \toprule
 Grid trial & Incremental wall (s) & Process CPU (s)\\
 \midrule
-Direct serial &265.785&265.660\\
-1 worker &282.181&282.039\\
-2 workers &156.246&312.081\\
-4 workers &93.662&373.548\\
-8 workers &95.431&380.706\\
+Direct serial &265.010&264.853\\
+1 worker &270.264&270.158\\
+2 workers &155.577&310.739\\
+4 workers &94.183&375.643\\
+8 workers &65.856&523.784\\
 \bottomrule
 \end{tabular}
 \caption{One ordered Grid trial sequence inside one process and checked
@@ -737,17 +737,22 @@ There is one observation per path, without randomized order or confidence bounds
 \label{tab:gridstream}
 \end{table}
 
-Four workers reduce the incremental target wall time 2.838-fold with
-40.6\% more process CPU; eight workers are slightly slower than four.
-The complete process takes 1,097.592 seconds and 1,988.630 CPU seconds,
+Eight workers reduce the incremental target wall time 4.024-fold,
+with 97.76\% more process CPU.
+CPU/wall is 7.95, an observed average occupancy rather than a count of
+operating-system threads. Four workers take 94.183 seconds; one worker
+remains slower than direct serial replay.
+The complete process takes 1,054.529 seconds and 2,116.247 cgroup CPU seconds,
 including the prefix and all five trials.
-Neither that total nor the incremental ratios measure a cold single-mode
-speedup. The process exits successfully under the same P0--7/no-\texttt{-M}/
-14\,GiB charged-memory boundary; sampled RSS and charged peaks are
-2.906\,GB and 1.038\,GB, respectively.
+Neither that total nor the incremental ratios measure a complete single-mode
+speedup. The process exits successfully under P0--7/no-\texttt{-M}/
+14\,GiB charged-memory protection; sampled RSS and charged peaks are
+2.936\,GB and 0.919\,GB, respectively.
 Upstream unsafe/partial exclusions remain 3,554 among 382,707 input entries.
-This is one bounded repaired-version observation, not a repeated Grid observation, library-wide performance estimate or a
-universally transparent stream.
+This repairs the earlier scheduling-defective requested-eight observation;
+the two versions are not pooled.
+One ordered observation does not establish repeated Grid uncertainty or
+library-wide performance, and the extra CPU has no matched causal profile.
 
 \paragraph{A repaired complete-closure comparison.}
 The later frozen version adds a shared worker-start gate and set-based
@@ -825,6 +830,65 @@ Its incremental 5.297-fold result is distinct from the earlier
 their lifecycle/output boundaries match.
 We do not attribute the difference to the worker-start gate or report it
 as a cold-mode, source-build or library-wide improvement.
+
+\paragraph{Complete closure costs are smaller gains than target curves.}
+Two new pairs run the original serial stream and repaired uniform
+four-worker stream from empty checked environments on the same artifacts
+(Table~\ref{tab:fullcomputestream}).
+Each arm uses one complete configuration, independently checking every
+dependency, with retained filesystem caches.
+The external charged-memory cap is 14\,GiB, both arms have an 800-second
+native budget, and all timed native execution uses P0--7 without
+\texttt{-M}. No certificate proof rewriting is active.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+Closure & Modules & Serial (s) & Four (s) & Ratio\\
+\midrule
+BarrierData41 &4,449&474.851&304.862&1.558\\
+Grid &3,793&557.568&296.293&1.882\\
+\bottomrule
+\end{tabular}
+\caption{Actual complete native-process pairs, one observation per arm.
+Clocks run from subprocess launch through \texttt{wait4}; subsequent
+sampler join and cgroup removal are verified but outside that wall clock.
+Each pair runs serial first. Grid's arms are separated by a controller
+repair gap; its completed reference is retained without rerunning.}
+\label{tab:fullcomputestream}
+\end{table}
+
+Barrier's complete closure takes 35.80\% less wall with 24.63\% more
+cgroup CPU (474.582 to 591.467 seconds).
+Grid takes 46.86\% less wall with 33.56\% more cgroup CPU
+(557.350 to 744.406 seconds).
+Complete \texttt{wait4} CPU accounting is retained separately and differs
+from cgroup usage by less than 0.001 seconds for each of these arms.
+The full accepted sets and import graphs match between each pair and its
+corresponding earlier complete-prefix curve:
+425,463 entries with 3,595 upstream exclusions for Barrier, and
+382,707 with 3,554 for Grid.
+All sampled native identities, controllers and temporary cgroups retire
+without resource stops or OOM events.
+
+The first Grid controller finishes its serial arm and then fails while
+writing pair metadata, before launching the second arm.
+The corrected continuation reuses that result and measures only the
+missing parallel arm. We compare the two native-process clocks, not a
+continuous pair-session time across the repair gap.
+Neither pair is randomized or repeated.
+Grid's earlier matching source work is 3,878.707 seconds, a serial sum
+of compiler invocations rather than a parallel Lake build wall time;
+the measured stream pair does not remeasure that production cost.
+A matching complete source-work sum for Barrier is \missing{Barrier closure
+source work}; its leaf compiler time cannot fill that cell.
+The complete four-worker ratios cannot be replaced by, or multiplied with,
+the eight-worker incremental target ratios.
+Full eight-worker closure costs and general service throughput remain
+unmeasured. The coordinator and internal-ABI adapter still add trusted
+implementation code; acceptance-set parity is not a proof of universal
+malformed-input equivalence.
 
 \paragraph{Pooled certificates pass a broader native qualification.}
 A separate native control selects all ten measured Envelope helpers whose

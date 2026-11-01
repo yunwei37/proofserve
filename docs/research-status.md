@@ -119,15 +119,10 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   trustedimplementationcode; not unchangedTCB. Rootstep0237freezesreceipts.
   NewfiniteEnvelope-streampoint laterhitRSSstop; see rootstep0239, no fullcurve.
 
-- [Rootstep0240 collected v12 Grid and all-ten qualification](tmp/build-and-evaluate/step-0240-20261101T071044+0000/step-report.md):
-  one complete3793moduleprocess/fiveorderedGridtargettrials; 7898originalCIs
-  matchserial after8waves. Incrementalserial265.785s,1/2/4/8worker
-  282.181/156.246/93.662/95.431s;4worker2.8377x/CPU+40.6%, oneobservation.
-  Whole1097.592s/1988.630CPUincludesprefix+allfive, notcoldmodegain.
-  Additionaltrustedcoordinator/Cadapter retained; ordinaryproofsunchanged.
-  Separateall10Envelopehelpers actualselectorCImatch,80children/10merges pass,
-  [propext]/nosorry, corruptinputandchunkkernelreject. Trustedimportprefix,
-  notcompletecoldclosure/performancequalification. All4nativeprocessesretired.
+- [Historical v12 Grid](tmp/build-and-evaluate/step-0240-20261101T071044+0000/step-report.md):
+  requested-eight scheduling underutilization is superseded by the repaired
+  v14 curve below. Original raw data and all-ten certificate qualification
+  remain preserved; results across versions are not pooled.
 
 - [Repaired v14 full 1330-module matrix](../research/parallel-stream-check/v14-math-results.md):
   rootstep0241rawaudit18/18complete, all1330module sets equal/132484entries/
@@ -158,6 +153,18 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   Sample13.971GiBbelow14stop,wait4peak14.019GiBabovebetween-samplethreshold;
   charged8910696448Bbelow14GiBcap, noOOM/stop; nativebelow16GiBlaneshare.
   Allidentities/scopesretired. No full-cohortserialparity/repeats/causalmemoryfix.
+
+- [Rootstep0244 complete computational closures](tmp/build-and-evaluate/step-0244-20261101T101651+0000/step-report.md):
+  actual full serial/uniform4 pairs: Barrier4449modules474.851→304.862s,
+  1.55759x/CPU+24.629%; Grid3793modules557.568→296.293s,1.88181x/CPU+33.562%.
+  All accepted IDs/imports/entry counts match and native/controller/cgroups
+  retire. One ordered pair each; Grid's controller repair gap is disclosed,
+  completed reference reused without rerun. Clock ends at wait4; post-wait
+  sampler/cgroup cleanup verified separately. Cgroup CPU and complete wait4
+  ledgers retained distinctly. No full8worker/source/service gain inferred.
+  Repaired Grid v14 incremental serial265.010→eight65.856s=4.024x,CPU+97.76%,
+  observed CPU/wall7.95. One prefix/five trials, not a full single-mode cost.
+  Old v12 underfilled-eight timing retained historically, not pooled.
 
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):

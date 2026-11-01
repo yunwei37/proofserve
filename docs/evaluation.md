@@ -357,3 +357,42 @@ Parent228392/birth757362780/controller228389/birth757362777andcgroupretired.
 Sourcebyteequalsqualifiedv14;priorv10failedsource/prefix8remainsunchanged.
 Noisolatedcausalpatch-memoryfix/robustnessclaim. WaveExpData44.990saggregate
 isadditionalancestor, nottimeattributedtotenleafgoals.0rootnative.
+
+## Complete computational closures and repaired Grid curve — rootstep0244
+[Root report](tmp/build-and-evaluate/step-0244-20261101T101651+0000/step-report.md), **自审**, not independent review or venue acceptance.
+Raw /workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14/;
+root freezes all five commands/results/stdout/stderr/memory files, driver and
+frozen core source, derived CSV and readable compressed evidence under this step.
+Four full arms: original O serial/reference then repaired uniform4, no rewriting.
+Barrier4449/425463entries/3595exclusions; Grid3793/382707/3554. Exact accept-ID,
+imports/counts and reachability match both arms and prior complete-prefix curve.
+One fixed-order pair each; retained page cache, empty checking environment.
+Barrier474.850500615→304.861630284s=1.557593523x/35.7984%lesswall/24.6290%more
+cgroupCPU. Grid557.567718885→296.293452787s=1.881809111x/46.8596%lesswall/
+33.5617%more cgroupCPU. CgroupCPU474.582037/591.467022 and557.349965/744.406169s.
+Separate completewait4 ledgers474.582676/591.467710/557.350578/744.406806s.
+Difference<0.001s each; do not silently label the published cgroup totals wait4.
+Same800s native budgets/noM/P0–7/14GiBcharged+sampledRSS thresholds.
+All10sampled native PID/birth identities across four arms+Gridcurve and
+controllers retired; no stop/OOM/cgroups remaining. Peaked wait4/sample/charged
+memory retained independently. Root0native, no other lane/source/policy changes.
+
+Clock audit: native.py records wall immediately after wait4, before sampler join
+and cgroup removal. Those retirements are verified but outside reported native
+wall. Published wording that includes all subsequent cgroup cleanup is too broad;
+root tables use the actual Popen-to-wait4 boundary, not controller elapsed.
+Grid controller failed after successful reference at a Path/string metadata
+write, before launching parallel. Preserve original driver/log. Reuse only that
+completed reference; corrected continuation measured missingparallel4 once.
+Pair gap explicit, no continuous run or replaced baseline claimed.
+
+Repaired v14Gridcurve: serial/1/2/4/8wall265.009820344/270.263915329/155.577084346/
+94.183238870/65.856253153s; CPU264.853454512/270.157624914/310.739218644/
+375.642908483/523.784131825s. Eight4.024064651x/CPU+97.7637531%, CPUwall7.9534
+is occupancy, not OS thread count/instruction count or proven allocation cost.
+7898 originaltypedCIs/proofbodies/eightwaves compare serial; no rewriting.
+Whole1054.528578323s/2116.246917cgroupCPU includes prefix/all5; notsinglemode.
+Source byteidentical to root0241 qualified8c62fc3. Earlier v12 requested8/achieved
+about4 is scheduling-defective historical data, not pooled current performance.
+No isolated causal gate/lookup-patch attribution, no repeated confidence.
+No additional universal context/axiom/failure/HB/cluster proof.
