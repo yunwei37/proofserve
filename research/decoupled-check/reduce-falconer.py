@@ -26,12 +26,15 @@ def main():
   pending.replace(dest)
  csvwrite('falconer-source-costs.csv',rows)
  construction_complete=len(rows)==len(frame)
- total=sum(r['source_compiler_wall_s']for r in rows)
+ successful_work=sum(r['source_compiler_wall_s']for r in rows)
+ failed_work=sum(r['wall_s']for r in new if r.get('operation')=='build'and(r['returncode']or r.get('sorry_warning')))
+ total=successful_work+failed_work
  primary=next((r for r in new if r.get('operation')=='primary'and r.get('closure_complete')),None)
  parity=bool(state.get('complete'))
  ratio=primary['wall_s']/total if primary and construction_complete and parity else None
  summary=dict(closure_modules=len(frame),successful_source_nodes=len(rows),construction_complete=construction_complete,
   reused_same_capture_nodes=sum(r['reused_exact_artifact']for r in rows),source_compiler_wall_s=total,
+  successful_source_work_s=successful_work,retained_failed_native_work_s=failed_work,
   matched_stream_wall_s=primary['wall_s']if primary else None,acceptance_parity_complete=parity,
   finalized_check_over_source_ratio=ratio,module_local_fallbacks=None,
   status='complete'if parity else'partial',failure=state.get('failure'))

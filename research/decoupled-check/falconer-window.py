@@ -30,6 +30,7 @@ def main():
  parent_state=json.loads((BASE/'progress.json').read_text())
  common=set(parent_state['built'])&wanted
  state['reused']=sorted(common)
+ assert(ROOT/'overlay-common.json').is_file(),'prepare exact common-artifact overlay before a timed window'
  old_rows={r['module']:r for r in json.loads((BASE/'build-frame.json').read_text())}
  for row in frame:
   m=row['module']
