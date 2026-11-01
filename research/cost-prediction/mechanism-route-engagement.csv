@@ -1,0 +1,15 @@
+policy,actual_kind,selected_mode,dispatched_requests
+all_build,math,build,2286
+all_stream,math,stream,3474
+classified,math,stream,3111
+classified_upper,math,stream,3405
+all_stream_upper,math,stream,3533
+classified,math,parallel,335
+classified_upper,math,parallel,184
+all_stream,compute,stream,2673
+classified,compute,parallel,2280
+all_build,compute,build,1902
+classified_upper,compute,parallel,1148
+all_stream_upper,compute,stream,1614
+classified_upper,compute,stream,372
+classified,compute,stream,287

@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "batch_replays": 2025,
+  "summary_rows": 675,
+  "request_replays": 40500,
+  "cost_table_rows": 10,
+  "checker_native_cells": 8,
+  "build_aggregate_cells": 2,
+  "new_native_runs": 0,
+  "regression_fitted": false,
+  "all_unbounded_inputs_previously_accepted": true,
+  "scope": "two-template mechanism feasibility; no general workload/native-throughput/novelty claim"
+}

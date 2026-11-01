@@ -102,3 +102,11 @@ on the existing PVC; v1 extraction and corrected v2 are both retained.
 label against independent original-kernel CPU traces and completes9native
 budgeted policy batches. Classification accuracy does not imply a cost bound
 or successful CPU-budgeted route selection. This follow-up fits no regression.
+
+## Mixed-request mechanism feasibility
+
+[mechanism-analysis.md](mechanism-analysis.md) compares full construction,
+streaming, class-selected checking and class-selected admission across mixed
+requests, per-request/total budgets and injected10/20%classification errors.
+This is actual-cost-driven replay, not new native throughput. Streaming wins or
+ties class-selected modes under the measured CPU costs.
