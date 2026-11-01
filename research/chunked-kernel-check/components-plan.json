@@ -1,5 +1,5 @@
 {
-  "state": "prepared-not-launched",
+  "state": "launched-waiting-common-lock",
   "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-components-v1",
   "one_variable": "field partition only; original output target, kernel API, import path and budgets unchanged",
   "reason": "source shows two complete exponential components; flat equal-leaf groups duplicate/schedule both heavy outputs badly",
@@ -20,5 +20,6 @@
   "leakEnv_unchanged": "same default false, not changed",
   "not_claimed": "logical splitting alone implies speedup; syntactic exposures are not measured repeated work",
   "common_lock": true,
-  "limits": "same180s/finiteHB/noM/P0-7/14GiB own-tree sampler; M total16GiB"
+  "limits": "same180s/finiteHB/noM/P0-7/14GiB own-tree sampler; M total16GiB",
+  "prior_review": "flat15/15accepted; kernel span178ms/392msCPU at8 vs146ms original; ordinary import~3.65s dominates"
 }

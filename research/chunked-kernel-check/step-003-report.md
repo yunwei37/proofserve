@@ -114,3 +114,11 @@ new mathematical axiom or generic novelty is claimed.
 The corrected static result is ready to push. Keep the finite native point
 active; the next result must report actual pure-kernel span/threadCPU and full
 pipeline costs at each k, including negative curves and all output checks.
+
+### Later forward correction
+
+Step004preserves explicitly typed universal binders by using the first goal
+colon rather than the last binder colon. The old complete v2static output is
+retained on PVC lexical-census-v2-complete. Current CSV and README use final
+v3counts; this historical table is not the current classification. The record
+candidate total, actual native helper types and recorded clocks are unchanged.

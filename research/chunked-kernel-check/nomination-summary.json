@@ -1,0 +1,14 @@
+{
+  "complete_site_denominator": 1354379,
+  "explicit_structural_candidates": 224486,
+  "conditional_record_candidates": 277963,
+  "disjoint_nomination_union": 502449,
+  "global_nomination_fraction": 0.3709810917032825,
+  "semantic_splittable_fraction": "unknown; nomination is not certified coverage",
+  "actual_exclusive_splittable_time_fraction": "not measured; see explicit selected-module model",
+  "known_native_hot_subset": {
+    "structural": 7018,
+    "total": 7092,
+    "representative_of_library": false
+  }
+}

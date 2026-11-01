@@ -1,17 +1,20 @@
 {
+  "target_header_scope": "direct explicit proof only, first top-level declaration colon preserves quantifier binders",
   "source_files": 163097,
   "frame_source_bytes": 1785499363,
   "pin": "4eaee87548250b2682affda7d05d947c05554bae",
   "raw_regex_sites": 1354379,
   "code_regex_sites": 1354379,
   "files_with_sites": 5848,
-  "lexical_candidates": 538,
-  "lexical_candidate_fraction": 0.0003972300220248542,
+  "lexical_candidates": 224486,
+  "lexical_candidate_fraction": 0.16574828759158255,
   "semantic_coverage": "unknown until native validation; lexical candidate count is not proven splittable coverage",
   "raw_sites": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/lexical-sites.jsonl.gz",
   "raw_and_masked_regex_count_equal": true,
   "corpus_frame_complete": true,
   "all_lexical_sites_are_executions": false,
-  "target_header_scope": "direct explicit := by decide only; inline inferred goals unresolved",
-  "prior_classification": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/lexical-census-v1"
+  "prior_classifications": [
+    "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/lexical-census-v1",
+    "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/lexical-census-v2-complete"
+  ]
 }

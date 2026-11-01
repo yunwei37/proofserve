@@ -41,7 +41,7 @@ def header(s,pos):
         elif c in pairs and stack and stack[-1]==pairs[c]:stack.pop()
         elif c==':' and not stack:colons.append(i)
     if not colons:return '',False
-    return h[colons[-1]+1:].strip(),True
+    return h[colons[0]+1:].strip(),True
 def classify(t,known):
     if not known:return 'embedded_or_unresolved',False
     if re.search(r'∃|\bExists\b',t):return 'existential_or_mixed',False

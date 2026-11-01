@@ -1,0 +1,10 @@
+{
+  "pid": 185667,
+  "birth": "754880676",
+  "utc": "2026-11-01T01:23:43.353594+00:00",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-components-v1",
+  "lock_before": "   PID COMMAND PATH                                                 BLOCKER\n184131 flock   /workspaces/.agent-state/gpu-smt-captures/pcore.lock \n",
+  "outer_wall_s_including_queue": 1740,
+  "queued_after_flat_matrix_complete": true,
+  "source_frame": "same real Grid goal; one partition change only"
+}

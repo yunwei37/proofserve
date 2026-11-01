@@ -1,7 +1,7 @@
 # What the shape census does and does not prove
 
 > Current classification uses only direct explicit-header proofs. Earlier
-> stale-header ratios are superseded; their original source and raw data remain
+> stale-header/last-colon ratios are superseded; their original source and raw data remain
 > in PVC lexical-census-v1. Native type and cost-panel data are unaffected.
 
 
@@ -13,13 +13,15 @@ per-site rows remain PVC-only; the small per-file totals are module-counts.csv.
 
 The scanner masks ordinary strings/comments and recovers a local/declaration
 header only when the body before the tactic is exactly whitespace plus by.
+The first top-level declaration colon begins the goal; subsequent colons in
+explicitly typed universal binders remain part of that goal.
 Inline proof arguments and goals transformed by earlier tactics remain unknown. This is **not Lean parsing or elaboration**. It does
 not resolve notation, binders, namespaces or named predicates globally.
-It recognizes538explicit conjunction/finite-domain candidates (0.03972%).
+It recognizes224,486explicit conjunction/finite-domain candidates (16.5748%).
 That number is **not** the global semantic splittable fraction: hidden finite
 domains and record equalities are deliberately unresolved. In particular
-816,321sites (60.2727%) have an equality-shaped recovered header with unknown
-type, 459,167(33.9024%)are embedded/unresolved and9,316(0.6878%)are applications/other. A universal-only detector
+579,988sites (42.8232%) have an equality-shaped recovered header with unknown
+type, 459,167(33.9024%)are embedded/unresolved and21,032(1.5529%)are applications/other. A universal-only detector
 would miss much of the observed hot regime.
 
 | Shape | Safe logical decomposition, once types are known | Required conditions | Implemented here |
@@ -35,10 +37,11 @@ would miss much of the observed hot regime.
 | Existential / mixed | Independent witnesses per outer universal, or a disjunction/coverage-aware search for an existential | Do not replace existential alternatives with an unconditional And | unsupported in prototype |
 | Named predicate / unresolved header | Native elaborated type and controlled unfolding required | Text alone does not reveal logical/compute structure | native probes on compiled inputs |
 
-The explicit interval/nested-Fin/Boolean-all categories have zero recognizer
+The explicit interval/Boolean-all categories have zero recognizer
 matches in this pass. That is a property of this recognizer, not evidence those
-computations do not occur. Mixed existentials are kept separate even when an
-outer finite universal might later admit a split.
+computations do not occur. There are284nested universal headers mentioning an explicit Fin domain.
+Mixed existentials are kept separate even when an outer finite universal might
+later admit a split.
 
 ## Native evidence
 
@@ -97,7 +100,7 @@ The first naive parent-type pass remains in PVC record-hints-v1; the later
 direct-header correction and its completed raw results are in record-hints-v2.
 
 These candidates lie in the lexical equality category, separate from the
-538explicit structural forms. Their union is278,501sites (20.5630%).
+224,486explicit structural forms. Their union is502,449sites (37.0981%).
 This is a **conditional lexical nomination set**, not a certified lower bound
 or an execution-time share. Namespace resolution, binder shadowing, true
 elaborated types and remaining named predicates still require native checks.
@@ -143,3 +146,12 @@ P-core serialization does not isolate shared LLC, DRAM, storage or all other
 host work. Background preparation may use E cores under the joint memory
 budget. Three repetitions describe these controlled attempts, not a whole-
 machine-isolation or cold-cache guarantee.
+
+## Literal finite-domain grain
+
+Among224,001universal headers with explicit Fin tokens,223,990have an outer
+literal bound recovered and11do not. Of those literal hints,222,299(99.245%)
+have n≤32; the largest observed literal is372. fin-literal-summary.json retains
+the full bin denominators. A small outer bound does not bound the cost of its
+predicate or inner enumeration. It does show why a large count of structurally
+splittable sites alone cannot establish useful task granularity or speedup.

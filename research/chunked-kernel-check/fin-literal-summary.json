@@ -1,0 +1,14 @@
+{
+  "universal_headers_with_explicit_Fin_token": 224001,
+  "outer_Fin_literal_recovered": 223990,
+  "unresolved_outer_bound": 11,
+  "bins": {
+    "0": 17,
+    "1-8": 3260,
+    "9-32": 219022,
+    "33-128": 941,
+    "129-1024": 750,
+    ">1024": 0
+  },
+  "scope": "source-only outer literal hints among finite-token nominations; Fin may occur inside a larger formula; no native cost per bound"
+}

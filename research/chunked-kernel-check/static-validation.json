@@ -1,5 +1,5 @@
 {
-  "validated_utc": "2026-11-01T01:02:23.520342+00:00",
+  "validated_utc": "2026-11-01T01:28:09.973231+00:00",
   "files": 163097,
   "source_bytes": 1785499363,
   "regex_sites": 1354379,
@@ -7,6 +7,10 @@
   "W_per_file_count_disagreements": 0,
   "raw_site_class_totals_equal_csv": true,
   "raw_module_counts_equal_csv": true,
-  "header_scope": "direct explicit := by decide only; inline inferred goals unresolved",
-  "semantic_scope": "lexical direct-header count validation, not proof of elaborated finite domains or actual executions"
+  "header_scope": "direct explicit proof only, first top-level declaration colon preserves quantifier binders",
+  "semantic_scope": "lexical nominations, not native semantic coverage or per-goal cost",
+  "prior_passes_retained": [
+    "lexical-census-v1",
+    "lexical-census-v2-complete"
+  ]
 }

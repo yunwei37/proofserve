@@ -55,6 +55,14 @@
     "target": "∀ (k : Fin 24) (p : Fin 9),\n    fastIntegerCoupling 1 0 k.val p.val = memoUnitCoupling 0 k.val p.val",
     "header_recovered": true
   },
+  "nested_forall_explicit_fin": {
+    "path": "OAI/Analysis/LaughlinGap/Certificate10.lean",
+    "line": 33,
+    "category": "nested_forall_explicit_fin",
+    "lexical_candidate": true,
+    "target": "∀ j : Fin 0, ∀ x : Fin 6,\n  (fourTermLabels (by omega : 10 ≤ 23) ⟨0,j,x⟩).Nodup →\n    (fourTermLabels (by omega : 10 ≤ 23) ⟨0,j,x⟩).toFinset=keys (keyIndex 0 j x)",
+    "header_recovered": true
+  },
   "application_or_other": {
     "path": "OAI/Analysis/LaughlinGap/Certificate10.lean",
     "line": 85,
@@ -63,20 +71,20 @@
     "target": "Function.Injective keys",
     "header_recovered": true
   },
+  "forall_membership_or_subset_unresolved": {
+    "path": "OAI/Analysis/LaughlinGap/Certificate5.lean",
+    "line": 31,
+    "category": "forall_membership_or_subset_unresolved",
+    "lexical_candidate": false,
+    "target": "∀ b : FourTerm 5,\n    (fourTermLabels (by omega : 5 ≤ 23) b).toFinset=keys 0 ↔ b ∈ fibers 0",
+    "header_recovered": true
+  },
   "existential_or_mixed": {
     "path": "OAI/Analysis/MutuallyUnbiased/Cubic/NormalizedCodes.lean",
     "line": 30,
     "category": "existential_or_mixed",
     "lexical_candidate": false,
     "target": "∀ (i : Fin 5) (f : Fin 5 → Bool),\n    f i = false → (Finset.univ.filter (fun j => f j = true)).card = 2 →\n      ∃ a, ∀ j, fiveRowChoice i a j = f j",
-    "header_recovered": true
-  },
-  "forall_membership_or_subset_unresolved": {
-    "path": "OAI/Analysis/NuclearUltrapower/IntegerMatrices.lean",
-    "line": 13,
-    "category": "forall_membership_or_subset_unresolved",
-    "lexical_candidate": false,
-    "target": "∀ m ∈ generators, (toMatrix m).det = 1",
     "header_recovered": true
   },
   "forall_list": {

@@ -1,15 +1,15 @@
 category,sites,fraction,lexical_candidate_sites,evidence
-application_or_other,9316,0.006878429154616249,0,lexical only; requires native type/closedness/dependency validation
-atomic_comparison,21004,0.015508214465817913,0,lexical only; requires native type/closedness/dependency validation
+application_or_other,21032,0.015528888147261586,0,lexical only; requires native type/closedness/dependency validation
+atomic_comparison,20896,0.015428473123106605,0,lexical only; requires native type/closedness/dependency validation
 boolean_container_all,0,0.0,0,lexical only; requires native type/closedness/dependency validation
-conjunction,508,0.0003750796490494906,508,lexical only; requires native type/closedness/dependency validation
+conjunction,481,0.0003551443133716633,481,lexical only; requires native type/closedness/dependency validation
 embedded_or_unresolved,459167,0.3390240102659595,0,lexical only; requires native type/closedness/dependency validation
-equality_unresolved_type,816321,0.6027271539207267,0,lexical only; requires native type/closedness/dependency validation
-existential_or_mixed,3245,0.002395932010168498,0,lexical only; requires native type/closedness/dependency validation
-forall_explicit_fin,26,1.91969899119818e-05,26,lexical only; requires native type/closedness/dependency validation
-forall_inferred_or_unresolved,37602,0.027763277487320756,0,lexical only; requires native type/closedness/dependency validation
+equality_unresolved_type,579988,0.4282316840411731,0,lexical only; requires native type/closedness/dependency validation
+existential_or_mixed,3252,0.002401100430529416,0,lexical only; requires native type/closedness/dependency validation
+forall_explicit_fin,223717,0.16518049969764742,223717,lexical only; requires native type/closedness/dependency validation
+forall_inferred_or_unresolved,38367,0.028328111998192528,0,lexical only; requires native type/closedness/dependency validation
 forall_list,4,2.9533830633818154e-06,4,lexical only; requires native type/closedness/dependency validation
-forall_membership_or_subset_unresolved,5875,0.0043377813743420415,0,lexical only; requires native type/closedness/dependency validation
+forall_membership_or_subset_unresolved,5877,0.004339258065873732,0,lexical only; requires native type/closedness/dependency validation
 forall_range_or_interval,0,0.0,0,lexical only; requires native type/closedness/dependency validation
-nested_forall_explicit_fin,0,0.0,0,lexical only; requires native type/closedness/dependency validation
-nested_forall_unresolved_domain,1311,0.00096797129902339,0,lexical only; requires native type/closedness/dependency validation
+nested_forall_explicit_fin,284,0.0002096901975001089,284,lexical only; requires native type/closedness/dependency validation
+nested_forall_unresolved_domain,1314,0.0009701863363209265,0,lexical only; requires native type/closedness/dependency validation

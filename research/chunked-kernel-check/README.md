@@ -1,22 +1,23 @@
 # Chunking closed kernel computations
 
 > Corrected direct-header census: inline inferred targets are now unknown,
-> not borrowed from a preceding proof. The earlier scanner and its raw outputs
-> remain in PVC lexical-census-v1; step002 has a forward correction note.
+> not borrowed from a preceding proof. Both earlier scanners/raw outputs remain in PVC lexical-census-v1 and
+> lexical-census-v2-complete. Typed universal binders retain their colons.
 
 
 M-lane evidence for the two-cost-regime characterization, on pinned
 OpenAI/math `4eaee87548250b2682affda7d05d947c05554bae`, Lean 4.34.1,
 and Mathlib d13f. This is a research prototype, not an enabled serving feature.
 
-The full lexical census finds **1,354,379** `decide +kernel` occurrences
+The complete, corrected lexical census finds **1,354,379** `decide +kernel` occurrences
 in **5,848 / 163,097** source files. A universal-quantifier-only detector would
-miss the main observed shape: **60.27%** of recovered headers are equalities
+miss the main observed shape: **42.82%** of recovered headers are equalities
 whose types the lexical pass does not resolve; another **33.90%** of all
 occurrences have embedded or otherwise unresolved targets. In known interval-certificate
 families, same-file type annotations nominate **277,963** record-equality sites
-(**20.52%** of all occurrences). These remain conditional lexical candidates,
-not a certified global splittable fraction.
+(**20.52%** of all occurrences). An additional224,486explicit structural forms are nominated, mostly Fin
+universals. The disjoint union is502,449sites (37.10%). These are conditional
+lexical candidates, not a certified global splittable fraction.
 
 Actual compiled helper types in Grid, UMoments9 and BarrierData41 contain
 **7,018 / 7,092** known structurally decomposable targets. This selected hot
@@ -55,18 +56,21 @@ Per-child heartbeats are finite. Aggregate heartbeat accounting equivalent
 to a monolithic budget-limited request is **not implemented**; successful
 target checks do not establish arbitrary timeout/resource-class equivalence.
 
-The first 15-cell experiment is negative end-to-end (~1.85 s original versus
-~5.5 s split), but the original arm did not export a final module. Preserve
-that output boundary rather than presenting its ratio as matched.
-V2 corrected output handling but failed ordinary import initialization after
-two cells; its partial results remain on PVC. V3 fixes that setup and separates
-pure kernel work, child export, normal import, final kernel check, audit and
-final export. The first finite V3 controller retired after its configured queue deadline,
-with two accepted native cells and no final terminal. At01:01:49UTC a finite
-continuation queued the missing13cells only, retaining the original native
-source and both completed results. Queue/controller time is not native runtime.
-This remains a partial matrix until its actual terminal. Use its actual terminal and validation before
-citing a corrected curve.
+The initial15-cell v1 point is retained, with its unmatched output caveat.
+The corrected matched-output v3 point is now complete:15/15accept, same target,
+no sorry/new axiom dependency, and same-k repeated artifacts byte-identical.
+Original pure checking is146ms; flat k2/4/8 is141/152/178ms, with149/238/392ms
+of aggregate worker CPU. The whole native pipeline is about5.9s split versus
+1.97s original; standard module reimport alone adds about3.65s.
+[Full curve and limitations](v3-result.md) separate pure kernel, export/import
+and whole-process costs. This is a negative result for the flat partition on
+one real target, not a rejection of all chunking or a whole-module claim.
+
+A source-only component-preserving control is separately queued after that
+review. It keeps complete exponential components in different jobs, avoiding
+the flat partition's obvious source-level duplication/imbalance. See
+components-plan.json and partition-exposure.csv. It remains unqualified and
+unmeasured until its actual terminal; do not transfer v3's acceptance to it.
 
 ## Reproduction and raw data
 
