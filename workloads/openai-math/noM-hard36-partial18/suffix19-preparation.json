@@ -1,0 +1,10 @@
+{
+  "UTC": "2026-11-01T20:36:44.168881+00:00",
+  "cases": 19,
+  "dependency_cases": 17,
+  "original_targets": 2,
+  "first_case_full_allowance_s": 600,
+  "not_launched": true,
+  "active_other_Wpoint": "original31-kernel-replay",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hard-two-suffix19-prepared-20261101"
+}

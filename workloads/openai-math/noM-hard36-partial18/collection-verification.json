@@ -1,0 +1,19 @@
+{
+  "returned": 18,
+  "successful_dependencies": 17,
+  "group_remainder_wall_censored": 1,
+  "not_started": 18,
+  "planned_jobs": 36,
+  "probability_endpoints_completed": 0,
+  "native_wall_s": 1690.119002209045,
+  "native_CPU_s": 2544.852971,
+  "successful_CPU_s": 2511.656138,
+  "censored_module": "OAI.Analysis.PlanarPacking.Certificate.TableDensity1Panel0",
+  "censored_actual_allowance_s": 32.48348355386406,
+  "max_sampled_native_plus_controller_RSS_bytes": 6734557184,
+  "all_native_and_cgroups_retired": true,
+  "resource_failure": 0,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hard-two-prepared-20261101",
+  "clock_scope": "sum of individual native processes,not queue or parallel makespan",
+  "coverage": "31/42original costs,14/21cells unchanged"
+}
