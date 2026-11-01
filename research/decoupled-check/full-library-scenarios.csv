@@ -1,0 +1,5 @@
+compiled_entries_per_lexical_theorem_site,assumed_base_entries,lexical_sites,assumed_total_entries,rss_gib_at_low_observed_rate,rss_gib_at_high_observed_rate,hours_at_low_observed_rate,hours_at_high_observed_rate,classification
+1,382707,2363592,2746299,14.910799962599452,15.55292744128147,0.37826715098968594,1.111720903204066,conditional scenario; not a runtime/memory bound or calibrated population estimate
+2,382707,2363592,5109891,27.74372438386617,28.93849648412544,0.7038213648396761,2.068519355610707,conditional scenario; not a runtime/memory bound or calibrated population estimate
+4,382707,2363592,9837075,53.4095732263996,55.70963456981338,1.3549297925396562,3.982116260423988,conditional scenario; not a runtime/memory bound or calibrated population estimate
+8,382707,2363592,19291443,104.74127091146647,109.25191074118926,2.657146647939616,7.809310070050551,conditional scenario; not a runtime/memory bound or calibrated population estimate

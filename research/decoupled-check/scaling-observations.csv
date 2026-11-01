@@ -1,0 +1,3 @@
+capture,modules,input_declaration_entries,upstream_skipped_entries,wall_s,peak_rss_kib,rss_kib_per_input_entry,seconds_per_input_entry,kernel_component_s
+timed-constructed-stream-math,1330,132484,2269,65.69264411274344,754252,5.693155399897346,0.000495853417112583,65.472302899
+timed-stream-compute-grid,3793,382707,3554,557.7208228707314,2272640,5.9383287998390415,0.0014573049953900278,556.974397744
