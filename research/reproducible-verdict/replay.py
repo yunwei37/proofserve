@@ -38,14 +38,15 @@ def bundle(requests,rows,environment,native_result):
         if any(x not in row for x in required):raise ValueError("incomplete observation")
         if row["verdict"]=="accepted" and (
             not row["theorem_present"] or "sorryAx" in row["axioms"] or
-            row["new_axioms"] or row["errors"]):
+            row["new_axioms"] or row["errors"] or row.get("kernel_replay","checked")!="checked"):
             raise ValueError("invalid accepted observation")
         observations.append({"request":index[k],"result":row})
     return dict(schema=SCHEMA,environment=environment,
         budget_scope="stock Lean maxHeartbeats per Core context, NOT a global candidate quota",
         unit="1000 small-allocation heartbeats per user-facing unit; command deltas are raw",
         trusted_status="observational receipt; rerun original Lean, do not trust verdict on receipt alone",
-        native_result=native_result,observations=observations,
+        complete_work_accounting=False,unobserved_work=["native kernel polls","arbitrary asynchronous child work"],
+        native_result=native_result,ordered_requests=requests,observations=observations,
         missing=[x for k,x in index.items() if k not in seen])
 
 def compare(recorded,rerun):
@@ -65,7 +66,8 @@ def compare(recorded,rerun):
                 diffs.append(dict(key=k,field=f,recorded=a[k]["result"][f],rerun=b[k]["result"][f]))
     semantics_a=recorded["environment"].get("semantics")
     semantics_b=rerun["environment"].get("semantics")
-    return dict(same_declared_semantics=bool(semantics_a) and semantics_a==semantics_b,
+    return dict(same_request_order=recorded.get("ordered_requests")==rerun.get("ordered_requests"),
+                same_declared_semantics=bool(semantics_a) and semantics_a==semantics_b,
                 differences=diffs,matching_observations=len(a.keys()&b.keys()),
                 recorded_missing=len(recorded["missing"]),rerun_missing=len(rerun["missing"]),
                 universal_determinism_proved=False)

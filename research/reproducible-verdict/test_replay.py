@@ -25,6 +25,13 @@ class ReceiptTests(unittest.TestCase):
   a=self.make();self.assertEqual(compare(a,a)['differences'],[])
   b=copy.deepcopy(a);b['environment']['semantics']['version']='different'
   self.assertFalse(compare(a,b)['same_declared_semantics'])
+ def test_kernel_rejection_not_accepted(self):
+  r=copy.deepcopy(self.row);r["kernel_replay"]="rejected"
+  with self.assertRaises(ValueError):self.make(r)
+ def test_order_and_counter_coverage_explicit(self):
+  a=self.make();b=copy.deepcopy(a);b["ordered_requests"]=[]
+  self.assertFalse(compare(a,b)["same_request_order"])
+  self.assertFalse(a["complete_work_accounting"])
  def test_no_total_work_claim(self):
   self.assertIn('NOT a global',self.make()['budget_scope'])
 if __name__=='__main__':unittest.main()

@@ -44,3 +44,5 @@ integrity only. No producer failure cache or service behavior is enabled.
 
 See matrix-v1-results.md for actual counter/observer findings and the adapter
 defect. The broad cross-machine/cross-observer hypothesis remains unproved.
+
+[protocol.md](protocol.md) specifies counter families, ordered replay inputs and the still-unmet global-budget obligation. ReplayProbe.lean adds original-kernel rechecking; compile-qualified only until native controls finish.

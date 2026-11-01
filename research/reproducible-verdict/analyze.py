@@ -19,8 +19,9 @@ def analyze(point,out):
    ts=[json.loads(x[6:])for x in text.splitlines()if x.startswith('TASKS ')]
    if len(ts)!=1:raise ValueError('task control incomplete')
    tasks.append(dict(ts[0],repeat=rep,threads=threads))
- index={(x['repeat'],x['threads'],x['id'],x['mode'],x['observer']):x for x in allrows}
+ index={(x['repeat'],x['threads'],x['id'],x['mode'],x['observer'],x['budget']):x for x in allrows}
  ids=sorted({x['id']for x in allrows})
+ budgets=sorted({x['budget']for x in allrows})
  comparisons={}
  def add(label,pairs):
   diffs=[];count=0
@@ -29,7 +30,7 @@ def analyze(point,out):
    fields=[f for f in ['verdict','axioms','new_axioms','errors']if a[f]!=b[f]]
    if a['mode']==b['mode']=='sync'and a['command_raw_heartbeats']!=b['command_raw_heartbeats']:
     fields.append('command_raw_heartbeats')
-   if fields:diffs.append(dict(id=a['id'],repeat=a['repeat'],threads_a=a['threads'],threads_b=b['threads'],
+   if fields:diffs.append(dict(id=a['id'],budget=a['budget'],repeat=a['repeat'],threads_a=a['threads'],threads_b=b['threads'],
       mode_a=a['mode'],mode_b=b['mode'],observer_a=a['observer'],observer_b=b['observer'],
       fields=fields,verdict_a=a['verdict'],verdict_b=b['verdict'],
       units_a=a['command_raw_heartbeats'],units_b=b['command_raw_heartbeats']))
@@ -38,16 +39,16 @@ def analyze(point,out):
     heartbeat_mismatches=sum('command_raw_heartbeats'in x['fields']for x in diffs),
     differences=diffs)
  for obs in ['off','native','trace']:
-  add('threads_'+obs,((index[rep,1,key,mode,obs],index[rep,t,key,mode,obs])
-    for rep in [0,1]for t in [2,4,8]for key in ids for mode in ['stock','sync']))
+  add('threads_'+obs,((index[rep,1,key,mode,obs,budget],index[rep,t,key,mode,obs,budget])
+    for rep in [0,1]for t in [2,4,8]for key in ids for mode in ['stock','sync']for budget in budgets))
  for obs in ['native','trace']:
-  add('observer_'+obs,((index[rep,t,key,mode,'off'],index[rep,t,key,mode,obs])
-    for rep in [0,1]for t in [1,2,4,8]for key in ids for mode in ['stock','sync']))
- add('frontend',((index[rep,t,key,'stock',obs],index[rep,t,key,'sync',obs])
-   for rep in [0,1]for t in [1,2,4,8]for key in ids for obs in ['off','native','trace']))
- add('repeat_and_order',((index[0,t,key,mode,obs],index[1,t,key,mode,obs])
-   for t in [1,2,4,8]for key in ids for mode in ['stock','sync']for obs in ['off','native','trace']))
- summary=dict(sources=len(ids),rows=len(allrows),verdict_counts=dict(collections.Counter(x['verdict']for x in allrows)),
+  add('observer_'+obs,((index[rep,t,key,mode,'off',budget],index[rep,t,key,mode,obs,budget])
+    for rep in [0,1]for t in [1,2,4,8]for key in ids for mode in ['stock','sync']for budget in budgets))
+ add('frontend',((index[rep,t,key,'stock',obs,budget],index[rep,t,key,'sync',obs,budget])
+   for rep in [0,1]for t in [1,2,4,8]for key in ids for obs in ['off','native','trace']for budget in budgets))
+ add('repeat_and_order',((index[0,t,key,mode,obs,budget],index[1,t,key,mode,obs,budget])
+   for t in [1,2,4,8]for key in ids for mode in ['stock','sync']for obs in ['off','native','trace']for budget in budgets))
+ summary=dict(sources=len(ids),budgets=budgets,rows=len(allrows),verdict_counts=dict(collections.Counter(x['verdict']for x in allrows)),
    comparisons=comparisons,task_controls=tasks,native_cells=term['cells'],raw=str(point))
  out.mkdir(exist_ok=True)
  (out/'matrix-summary.json').write_text(json.dumps(summary,indent=2))
