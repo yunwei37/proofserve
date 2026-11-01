@@ -10,7 +10,7 @@ for key,cmd in [
 binary=ROOT/'stream-check';root='Init.Data.Nat.Basic'
 r=run('functional-stream',[binary,'stream','none',root],120)
 if r['returncode']:raise SystemExit('initial native streaming failed')
-events=[json.loads(x)for x in(ROOT/'functional-stream.stdout').read_text().splitlines()]
+events=[json.loads(x)for x in(ROOT/(r['key']+'.stdout')).read_text().splitlines()]
 assert events[-1]['event']=='complete'
 modules=[e['module']for e in events if e['event']=='accept']
 accepted=[];rejected=[]
@@ -24,7 +24,7 @@ for mutation in ['bvar','unknown','sort']:
     for mode in ['stream','one']:
         key='functional-'+mode+'-'+mutation
         r=run(key,[binary,mode,mutation,root],120)
-        e=[json.loads(x)for x in(ROOT/(key+'.stdout')).read_text().splitlines()]
+        e=[json.loads(x)for x in(ROOT/(r['key']+'.stdout')).read_text().splitlines()]
         rejects=[v for v in e if v.get('event')=='reject'and v.get('module')==root]
         pair.append(dict(mode=mode,mutation=mutation,returncode=r['returncode'],native_rejection=bool(rejects),error=rejects[-1]['error']if rejects else''))
         assert r['returncode']not in[0,124,137]and rejects

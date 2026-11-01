@@ -19,8 +19,8 @@ summary=[];components=[]
 for name,spec in plan['cases'].items():
  wanted=set(spec['modules']);done=wanted.intersection(success)
  trials=[x for x in build if x['module']in wanted]
- old=next((x for x in rows if x['operation']=='stream'and x['cohort']==name),None)
- stream=next((x for x in rows if x['operation']=='matched_stream'and x['cohort']==name),None)
+ old=next((x for x in reversed(rows) if x['operation']=='stream'and x['cohort']==name),None)
+ stream=next((x for x in reversed(rows) if x['operation']=='matched_stream'and x['cohort']==name),None)
  btime=sum(x['wall_s']for x in trials)
  complete=wanted.issubset(success)
  stream_ok=stream is not None and stream['closure_complete']

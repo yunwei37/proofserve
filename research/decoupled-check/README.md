@@ -131,3 +131,17 @@ new agent or alternative Workspace. Successful already-built artifacts are
 never overwritten; matched oracle records may cover the same immutable module
 in multiple enclosing closures. Old cached-input oracle data are retained
 separately and do not fill the matched-input acceptance set.
+
+Oracle chunks contribute acceptance parity only when the whole native chunk
+exits0 and its accepted module set exactly matches its requested set.
+Any stdout prefix from a timeout, OOM or crash stays raw evidence and never
+counts toward parity. The completed first mathematical cohort contains no
+such records, so this qualification clarification changes none of its results.
+Current native capture code stays loaded; the next bounded window uses this rule.
+
+Resume writes preserve old stdout/stderr and commands by allocating an attempt
+suffix; incomplete compiler artifacts are moved to an owned raw backup before
+retry. Successful constructed modules remain immutable. Progress updates use
+fsync plus atomic replacement, so a container interruption cannot truncate the
+only checkpoint. Original native attempts and their elapsed costs stay recorded.
+The active window keeps its loaded code; later windows use these resume rules.

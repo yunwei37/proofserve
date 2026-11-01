@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """One <=29-minute locked window of the finite decoupled-check experiment."""
-import os,json,time,sys
+import os,json,time,sys,shutil
 from pathlib import Path
 from native import run,ROOT,SDK,environment
 def load_events(path):
@@ -12,6 +12,11 @@ def compiler_flags(row):
     return []
 def append(row):
     with(ROOT/'measured.jsonl').open('a')as f:f.write(json.dumps(row)+'\n');f.flush();os.fsync(f.fileno())
+def checkpoint(state):
+    target=ROOT/'progress.json';pending=ROOT/'progress.pending'
+    with pending.open('w')as f:
+        json.dump(state,f,indent=2);f.flush();os.fsync(f.fileno())
+    os.replace(pending,target)
 def main():
     assert sorted(os.sched_getaffinity(0))==list(range(8))
     start=time.monotonic();deadline=start+1680
@@ -29,7 +34,7 @@ def main():
             if deadline-time.monotonic()<spec['stream_limit_s']+10:break
             key='timed-stream-'+name
             r=run(key,[ROOT/'stream-check','stream','none',root],spec['stream_limit_s'],True)
-            events=load_events(ROOT/(key+'.stdout'))
+            key=r['key'];events=load_events(ROOT/(key+'.stdout'))
             accepted=[x['module']for x in events if x.get('event')=='accept']
             r.update(operation='stream',cohort=name,root=root,accepted_modules=accepted,
                 closure_complete=r['returncode']==0 and set(accepted)==wanted and events[-1].get('event')=='complete')
@@ -45,12 +50,17 @@ def main():
             limit=900 if module.endswith('.Grid') else 600 if module.endswith('.Amplitudes')else 180
             if remaining<limit+10:break
             out=ROOT/'constructed/lib'/Path(*module.split('.'));out.parent.mkdir(parents=True,exist_ok=True)
+            leftovers=list(out.parent.glob(out.name+'.*'))
+            if leftovers:
+                backup=ROOT/'interrupted-artifacts'/(str(index)+'-'+str(time.monotonic_ns()))
+                backup.mkdir(parents=True)
+                for f in leftovers:shutil.move(str(f),str(backup/f.name))
             env=environment();env['LEAN_PATH']=str(ROOT/'constructed/lib')+':'+env['LEAN_PATH']
             cmd=[SDK/'bin/lean','--root='+row['source_root'],'-j8']+compiler_flags(row)+[
                 '-o',str(out)+'.olean','-i',str(out)+'.ilean','-c',str(out)+'.c',row['source']]
             key=f'build-{index:05d}'
             r=run(key,cmd,min(limit,remaining-5),True,env=env,cwd=row['source_root'])
-            text=(ROOT/(key+'.stdout')).read_text(errors='replace')+(ROOT/(key+'.stderr')).read_text(errors='replace')
+            key=r['key'];text=(ROOT/(key+'.stdout')).read_text(errors='replace')+(ROOT/(key+'.stderr')).read_text(errors='replace')
             outputs={s:Path(str(out)+s).exists()for s in ['.olean','.ilean','.c']}
             r.update(operation='build',module=module,source=row['source'],class_tag=row['class_tag'],outputs=outputs,
                 sorry_warning="declaration uses 'sorry'"in text)
@@ -59,8 +69,8 @@ def main():
                 state['build_failure']=module
                 break
             state['built'].append(module)
-            (ROOT/'progress.json').write_text(json.dumps(state,indent=2))
-        (ROOT/'progress.json').write_text(json.dumps(state,indent=2))
+            checkpoint(state)
+        checkpoint(state)
         if state.get('build_failure')or state.get('stream_failure'):break
         if not wanted.issubset(state['built']):break
         # Primary consumption run reads the exact artifacts just constructed.
@@ -69,7 +79,7 @@ def main():
             key='timed-constructed-stream-'+name
             env=environment();env['LEAN_PATH']=str(ROOT/'constructed/lib')+':'+env['LEAN_PATH']
             r=run(key,[ROOT/'stream-check','stream','none',root],spec['stream_limit_s'],True,env=env)
-            events=load_events(ROOT/(key+'.stdout'));accepted=[e['module']for e in events if e.get('event')=='accept']
+            key=r['key'];events=load_events(ROOT/(key+'.stdout'));accepted=[e['module']for e in events if e.get('event')=='accept']
             r.update(operation='matched_stream',cohort=name,root=root,accepted_modules=accepted,
                 closure_complete=r['returncode']==0 and set(accepted)==wanted and events[-1].get('event')=='complete')
             append(r);state['constructed_streams'].append(name)
@@ -86,20 +96,20 @@ def main():
             chunk=pending[:32];key='oracle-'+name+'-'+str(len(verified)).zfill(5)
             env=environment();env['LEAN_PATH']=str(ROOT/'constructed/lib')+':'+env['LEAN_PATH']
             r=run(key,[ROOT/'stream-check','one','none']+chunk,min(600,remaining-10),True,env=env)
-            events=load_events(ROOT/(key+'.stdout'));accepted=[e['module']for e in events if e.get('event')=='accept']
+            key=r['key'];events=load_events(ROOT/(key+'.stdout'));accepted=[e['module']for e in events if e.get('event')=='accept']
             r.update(operation='matched_oracle',cohort=name,requested_modules=chunk,accepted_modules=accepted,
                 closure_complete=r['returncode']==0 and set(accepted)==set(chunk))
             append(r)
-            verified.extend(m for m in accepted if m not in verified)
-            state['oracle_global'].extend(m for m in accepted if m not in state['oracle_global'])
-            (ROOT/'progress.json').write_text(json.dumps(state,indent=2))
+            if r['closure_complete']:
+                verified.extend(m for m in accepted if m not in verified)
+                state['oracle_global'].extend(m for m in accepted if m not in state['oracle_global'])
+            checkpoint(state)
             if not r['closure_complete']:
-                if r['returncode']==124 and accepted:break
                 state['oracle_failure']=name;break
         if wanted.issubset(verified) and name not in state['constructed_oracle_done']:
             state['constructed_oracle_done'].append(name)
         if state.get('oracle_failure') or name not in state['constructed_oracle_done']:break
-    (ROOT/'progress.json').write_text(json.dumps(state,indent=2))
+    checkpoint(state)
     terminal=dict(window=window,elapsed_s=time.monotonic()-start,built_count=len(state['built']),stream_cohorts=state['streams'],oracle_cohorts=state['constructed_oracle_done'],
         failed=any(state.get(k)for k in ['build_failure','stream_failure','matched_failure','oracle_failure']),
         finished=all(n in state['constructed_oracle_done']for n in ['math','compute-grid','compute-amplitudes','ordinary-oai']))
