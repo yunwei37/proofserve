@@ -1,0 +1,20 @@
+{
+  "native_runs_launched": 0,
+  "errors": [
+    {
+      "stage": "bounded exploratory read",
+      "error": "_csv.Error: field larger than field limit (131072)",
+      "resolution": "do not print large goal strings; native reanalysis parses original JSON lines and explicit larger CSV field limit"
+    },
+    {
+      "stage": "orchestration before remote invocation",
+      "error": "ReferenceError: TextEncoder is not defined",
+      "resolution": "ASCII base64 encoding for existing analysis source, no remote action on failed call"
+    },
+    {
+      "stage": "first native-data reanalysis, no native process",
+      "error": "TypeError: unsupported operand type(s) for /: 'str' and 'float'",
+      "resolution": "parse Lean JSON Nat clocks with int before arithmetic; original source retained"
+    }
+  ]
+}

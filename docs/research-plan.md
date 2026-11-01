@@ -50,7 +50,9 @@ AI-generated closures, repeated comparison and causal component attribution
 remain open. M initial timing has unequal output boundaries; correctedV3 now completes
 15acceptances and finds no flat-partition whole-path gain. Its dedicated
 charged-memory cap is not established, so final resource qualification remains
-open. Component-preserving alternatives are separate, not granted acceptance.
+open. The component-preserving small-goal control now also has15accepting cells,
+with a lower kernel subclock but no whole-path gain. New declaration-wave and
+Envelope curves remain separately unmeasured.
 Root also verifies completeGrid closure14.52% and target component80.28%;
 its native source peak7.57GiB exceeds listedO4share. These observed points do
 not authorize new resource limits or establish service/global gains.
@@ -64,3 +66,13 @@ datasets/builds live on PVC outside Git. No runtime/permission/CronJob change.
 Never restart a healthy capture using a stale note; retain failures/partial data.
 CPU oracle remains frozen; closed narrowGPU paths aren't restarted.
 [Prior plan, exact archive](tmp/build-and-evaluate/step-0230-20261101T001154+0000/experiment-001/research-plan.md-before.gz).
+
+## Measured grain now constrains the mechanism
+[Native per-declaration point](../research/chunked-kernel-check/step-006-report.md)
+is complete at31artifacts/34native units. Three computational hot modules have
+many subsecond decision-shaped declarations; Envelope has genuinely >=1s calls.
+Test dependency-aware declaration replay and appropriately coarse within-goal
+partitioning at their separate boundaries; code/short controls/queue submission
+do not establish their full curves. The small Grid component-preserving variant
+improves its kernel subclock but remains slower whole-path. Global regime
+weights and missing13draws still open; do not borrow compilation denominators.

@@ -1,0 +1,13 @@
+{
+  "pages": 9,
+  "all_pages_visually_self_reviewed": true,
+  "title_abstract_four_RQ_and_sections_unchanged": true,
+  "native_grain_table_readable_no_clipping": true,
+  "current_root_links_resolve": true,
+  "gzip_snapshots_readable": true,
+  "exactly_two_root_markdown_reports": true,
+  "pdf_bytes": 120452,
+  "current_pdf_identical_to_rendered": true,
+  "independent_review": false,
+  "native_runs_started_by_root": 0
+}

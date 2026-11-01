@@ -75,6 +75,19 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   not kernel time or full-library share.61501modules/3036positive missing;
   nominal joint interval0–100%, no precise global estimate.
 
+- [Native grain](../research/chunked-kernel-check/step-006-report.md):
+  31artifacts/34target executions complete and retired, three stock/timed sets
+  match. Grid4608/UMoments9 1164/Barrier1320 decision-shaped declarations all
+  below1CPUsecond; Envelope10of40 consume55.782/58.006s. Across panel >=1s
+  decisions consume10.09%native-callCPU; weighted available29case28.23% is
+  conditional, not global. One ordered observer pair/module shows ratios
+  0.9100/1.0016/1.0745. New point records14GiBcharged cgroup, distinct from
+  old partition diagnostics without a dedicated cap receipt.
+- [Component-preserving small-goal control](../research/chunked-kernel-check/step-005-report.md):
+  15/15accept; k4local kernel78.75ms vs151.03ms original, whole native5.838s
+  vs1.982s.27different artifact byte pairs have equal typedConstantInfo,
+  not extension-state or byte equivalence. Still no whole-path gain.
+
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):
   7808same statuses/3014accepted IDs,19.28%less elapsed at one point;

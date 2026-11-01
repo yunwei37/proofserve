@@ -139,3 +139,27 @@ W independent sums confirm12completedstrata101596modules: proxy-markedCPU
 Incompletecells61501modules/3036positive retainblankfullpopulationfields;
 nominaljoint0–100%interval doesnotboundmissingness/labelerror. No newnative,
 sourcecensus, queue, policy or foreignlane mutation. Raw snapshots retained.
+
+## Native declaration grain — step0234
+[Root report](tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md), **自审**.
+[PrimaryM report](../research/chunked-kernel-check/step-006-report.md).
+Complete31artifact/34target-unit dataset, exact31input identities and noM/P0–7/
+14GiBchargedcap/retirement checked. Separate4positive/negative controls, both
+paths rejectloose-bvar proof;3hotstock/timedcompleteeligible sets identical.
+OriginalCppaddDeclCore call timings: all588.7730888s, decision-shaped
+574.744388896s; >=1sdecisioncalls12/59.402095081s=10.08913%allcallCPU.
+Grid4608helpers/max0.185703s; UM1164/max0.085501s; Barrier1320/max0.164570s.
+Envelope10of40 longhelpers55.781997969/58.005994044s; Residues2/3.620097112s.
+Available-case29weighted ratios28.2320%allcall/34.9278%decisionCPU, not global
+or source compilation/closure cost.13originaldraws missing. Sourceproofhead
+cleanupAnnotations/of_decide_eq_true definesclass; notallcomputeor native_decide.
+Oneorderedstock/timedratio0.90998/1.00155/1.07446, notzero-overheadqualification.
+MaxnativeRSS9266920KiB/sampled9491025920bytes/charged3015237632bytes separately
+retained. Existingdeclcapturecontroller and34identities/cgroupsretired.
+
+Component-preserving smallGrid diagnostic15/15accept/retired reanalyzed;
+localoriginal/k1/k4kernel151.031/147.716/78.755ms, wholeoriginal1.981861s vs
+k45.838481s. All27unequal-bytepairs match nativeexactConstantInfo, not extension
+state; no explanation ofserializationvariance asserted. Bothsmallgoalpoints
+remain negativewholepath/resource-limited diagnostics. Newdependency-wave and
+Envelopecurve plans not countedas measured results. No newnativecallbyroot.

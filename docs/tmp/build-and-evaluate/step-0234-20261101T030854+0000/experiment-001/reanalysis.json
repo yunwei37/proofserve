@@ -1,0 +1,246 @@
+{
+  "input_raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1",
+  "completed_target_units": 34,
+  "timed_modules": 31,
+  "retained_probability_modules": 29,
+  "original_missing_draws": 13,
+  "source_scope": "module-local independent replay; declared imports trusted; not source compilation or full closure",
+  "decision_shape": "theorem value head after cleanupAnnotations is of_decide_eq_true; not every computational proof",
+  "all_native_call_CPU_s": 588.7730888,
+  "decision_call_CPU_s": 574.744388896,
+  "large_decision_CPU_s": 59.402095081,
+  "large_decision_count": 12,
+  "unweighted_large_decision_share_all_calls": 0.10089132165002579,
+  "unweighted_large_decision_share_decisions": 0.10335393651272132,
+  "weighted_available_case_share_all_calls": 0.28232021798827595,
+  "weighted_available_case_share_decisions": 0.34927849218998847,
+  "all_large_native_call_CPU_s": 59.402095081,
+  "hot_observer_controls": [
+    {
+      "module": "OAI.Analysis.PlanarPacking.Certificate.UMoments9",
+      "accepted_sets_equal": true,
+      "stock_process_replay_CPU_s": 84.512857357,
+      "timed_process_replay_CPU_s": 76.904994138,
+      "timed_over_stock_CPU": 0.9099798130494773
+    },
+    {
+      "module": "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41",
+      "accepted_sets_equal": true,
+      "stock_process_replay_CPU_s": 47.34243377,
+      "timed_process_replay_CPU_s": 47.415929682,
+      "timed_over_stock_CPU": 1.0015524320603597
+    },
+    {
+      "module": "OAI.Analysis.PlanarPacking.Grid",
+      "accepted_sets_equal": true,
+      "stock_process_replay_CPU_s": 248.441912825,
+      "timed_process_replay_CPU_s": 266.941824571,
+      "timed_over_stock_CPU": 1.0744637309206002
+    }
+  ],
+  "max_wait4_RSS_KiB": 9266920,
+  "max_charged_peak_bytes": 3015237632,
+  "max_sampled_native_tree_bytes": 9491025920,
+  "charged_cap_GiB": 14,
+  "all_target_PIDbirths_and_cgroups_retired": true,
+  "declaration_capture_controller_retired": true,
+  "component_medians": {
+    "0": {
+      "kernel_span_s": 0.151031077,
+      "whole_native_s": 1.981860538944602
+    },
+    "1": {
+      "kernel_span_s": 0.147715963,
+      "whole_native_s": 5.921271967701614
+    },
+    "2": {
+      "kernel_span_s": 0.092245949,
+      "whole_native_s": 5.8715901067480445
+    },
+    "4": {
+      "kernel_span_s": 0.078754732,
+      "whole_native_s": 5.838481088168919
+    },
+    "8": {
+      "kernel_span_s": 0.083630747,
+      "whole_native_s": 5.857721225358546
+    }
+  },
+  "component_unequal_byte_pairs": 27,
+  "component_typed_constant_pairs_equal": 27,
+  "root_analysis_s": 0.44532299879938364,
+  "root_analysis_maxrss_kib": 39832,
+  "new_native_runs": 0,
+  "raw_stdout_metadata": [
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/00-UMoments9-stock/stdout",
+      "bytes": 176820,
+      "mtime_ns": 1793499092749459171
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/01-UMoments9-timed/stdout",
+      "bytes": 1497787,
+      "mtime_ns": 1793499172935204926
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/02-BarrierData41-stock/stdout",
+      "bytes": 203723,
+      "mtime_ns": 1793499223403044908
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/03-BarrierData41-timed/stdout",
+      "bytes": 1711367,
+      "mtime_ns": 1793499273894884814
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/04-Grid-stock/stdout",
+      "bytes": 396509,
+      "mtime_ns": 1793499525428952380
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/05-Grid-timed/stdout",
+      "bytes": 4244379,
+      "mtime_ns": 1793499795742776512
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/06-NearPinDeletion-timed/stdout",
+      "bytes": 1410,
+      "mtime_ns": 1793499798556764272
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/07-FiniteRankWalsh-timed/stdout",
+      "bytes": 2274,
+      "mtime_ns": 1793499802728746123
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/08-ComputeRow1115Batch17-timed/stdout",
+      "bytes": 13410,
+      "mtime_ns": 1793499806785728476
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/09-Row0705207-timed/stdout",
+      "bytes": 2305,
+      "mtime_ns": 1793499809776715465
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/10-ReindexSingle-timed/stdout",
+      "bytes": 896,
+      "mtime_ns": 1793499812845702115
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/11-InteriorH1Derivative-timed/stdout",
+      "bytes": 787,
+      "mtime_ns": 1793499817094683632
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/12-Zeros30-timed/stdout",
+      "bytes": 11962,
+      "mtime_ns": 1793499821298665344
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/13-TranslationCovering-timed/stdout",
+      "bytes": 8654,
+      "mtime_ns": 1793499824462651581
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/14-Assembly-timed/stdout",
+      "bytes": 6459,
+      "mtime_ns": 1793499828644633389
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/15-ManuscriptNormLogPGroup006-timed/stdout",
+      "bytes": 723015,
+      "mtime_ns": 1793499832085618421
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/16-Rows45-timed/stdout",
+      "bytes": 40248,
+      "mtime_ns": 1793499840122583460
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/17-MaskedCircleEnergy-timed/stdout",
+      "bytes": 3375,
+      "mtime_ns": 1793499844354565051
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/18-Block0Data-timed/stdout",
+      "bytes": 14980,
+      "mtime_ns": 1793499848579546672
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/19-WUCert48-timed/stdout",
+      "bytes": 29493,
+      "mtime_ns": 1793499852211530873
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/20-VariationalDN-timed/stdout",
+      "bytes": 7584,
+      "mtime_ns": 1793499856590517908
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/21-FixedCompactRow48-timed/stdout",
+      "bytes": 33009,
+      "mtime_ns": 1793499860490507162
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/22-Canonical240-timed/stdout",
+      "bytes": 1339286,
+      "mtime_ns": 1793499865701492805
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/23-EnvelopePsiB-timed/stdout",
+      "bytes": 54107,
+      "mtime_ns": 1793499927974321109
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/24-SourceProjection-timed/stdout",
+      "bytes": 42985,
+      "mtime_ns": 1793499932728307632
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/25-ResiduesModThree-timed/stdout",
+      "bytes": 39242,
+      "mtime_ns": 1793499939970287101
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/26-Height12Part04-timed/stdout",
+      "bytes": 428577,
+      "mtime_ns": 1793499953713248140
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/27-EstimatorBounds-timed/stdout",
+      "bytes": 160338,
+      "mtime_ns": 1793499959686231207
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/28-Binomial-timed/stdout",
+      "bytes": 104657,
+      "mtime_ns": 1793499965492214747
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/29-Barrier50-timed/stdout",
+      "bytes": 802447,
+      "mtime_ns": 1793499971139198738
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/30-Amplitudes-timed/stdout",
+      "bytes": 1528815,
+      "mtime_ns": 1793500084278877990
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/31-Tail-timed/stdout",
+      "bytes": 4527,
+      "mtime_ns": 1793500087696868300
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/32-FiniteComparisonBounds-timed/stdout",
+      "bytes": 12227,
+      "mtime_ns": 1793500090779859560
+    },
+    {
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/33-CoverageK14-timed/stdout",
+      "bytes": 417701,
+      "mtime_ns": 1793500097193841376
+    }
+  ]
+}
