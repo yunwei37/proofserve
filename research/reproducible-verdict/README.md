@@ -48,3 +48,5 @@ defect. The broad cross-machine/cross-observer hypothesis remains unproved.
 [protocol.md](protocol.md) specifies counter families, ordered replay inputs and the still-unmet global-budget obligation. ReplayProbe.lean adds original-kernel rechecking; compile-qualified only until native controls finish.
 
 Corrected1536-observation results: [matrix-v2-results.md](matrix-v2-results.md). No thread-count mismatch; low-budget sync acceptance changes under trace. Lab incomplete.
+
+[Budget ladder](budget-monotonicity-results.md):0/100tested lower-pass/larger-budget violations; not a universal guarantee. Full private runtime cache test actually queued; computation-stage comparison prepared.

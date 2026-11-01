@@ -1,0 +1,265 @@
+cell,threads,id,budget,mode,observer,verdict,main_thread_raw_heartbeats,command_raw_heartbeats
+ladder,1,minif2f-2797,500,sync,off,budget_exhausted,551515,"[20552, 522039, 8469]"
+ladder,1,minif2f-2797,1000,sync,off,budget_exhausted,1046098,"[14937, 1022692, 8431]"
+ladder,1,minif2f-2797,1500,sync,off,budget_exhausted,1546422,"[14937, 1523016, 8431]"
+ladder,1,minif2f-2797,3000,sync,off,lean_error,2224355,"[14937, 2200949, 8431]"
+ladder,1,minif2f-2797,6000,sync,off,lean_error,2221852,"[14937, 2198446, 8431]"
+ladder,1,minif2f-1041,500,sync,off,budget_exhausted,538049,"[14937, 514654, 8420]"
+ladder,1,minif2f-1041,1000,sync,off,accepted,858295,"[14937, 834889, 8431]"
+ladder,1,minif2f-1041,1500,sync,off,accepted,856959,"[14937, 833553, 8431]"
+ladder,1,minif2f-1041,3000,sync,off,accepted,856959,"[14937, 833553, 8431]"
+ladder,1,minif2f-1041,6000,sync,off,accepted,856959,"[14937, 833553, 8431]"
+ladder,1,minif2f-6881,500,sync,off,budget_exhausted,587200,"[14937, 563794, 8431]"
+ladder,1,minif2f-6881,1000,sync,off,budget_exhausted,1090871,"[14937, 1067465, 8431]"
+ladder,1,minif2f-6881,1500,sync,off,accepted,1227036,"[14937, 1203630, 8431]"
+ladder,1,minif2f-6881,3000,sync,off,accepted,1227036,"[14937, 1203630, 8431]"
+ladder,1,minif2f-6881,6000,sync,off,accepted,1227036,"[14937, 1203630, 8431]"
+ladder,1,minif2f-945,500,sync,off,budget_exhausted,542516,"[14937, 519110, 8431]"
+ladder,1,minif2f-945,1000,sync,off,budget_exhausted,1042948,"[14937, 1019542, 8431]"
+ladder,1,minif2f-945,1500,sync,off,accepted,1368709,"[14937, 1345303, 8431]"
+ladder,1,minif2f-945,3000,sync,off,accepted,1368582,"[14937, 1345176, 8431]"
+ladder,1,minif2f-945,6000,sync,off,accepted,1368582,"[14937, 1345176, 8431]"
+ladder,1,minif2f-2693,500,sync,off,budget_exhausted,557907,"[14937, 534501, 8431]"
+ladder,1,minif2f-2693,1000,sync,off,budget_exhausted,1057319,"[14937, 1033913, 8431]"
+ladder,1,minif2f-2693,1500,sync,off,accepted,1411625,"[14937, 1388219, 8431]"
+ladder,1,minif2f-2693,3000,sync,off,accepted,1411625,"[14937, 1388219, 8431]"
+ladder,1,minif2f-2693,6000,sync,off,accepted,1411625,"[14937, 1388219, 8431]"
+ladder,1,minif2f-6049,500,sync,off,lean_error,218052,"[14937, 190799, 12278]"
+ladder,1,minif2f-6049,1000,sync,off,lean_error,217489,"[14937, 190236, 12278]"
+ladder,1,minif2f-6049,1500,sync,off,lean_error,217489,"[14937, 190236, 12278]"
+ladder,1,minif2f-6049,3000,sync,off,lean_error,217489,"[14937, 190236, 12278]"
+ladder,1,minif2f-6049,6000,sync,off,lean_error,217489,"[14937, 190236, 12278]"
+ladder,1,minif2f-6063,500,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,1,minif2f-6063,1000,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,1,minif2f-6063,1500,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,1,minif2f-6063,3000,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,1,minif2f-6063,6000,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,1,minif2f-2397,500,sync,off,accepted,104047,"[14937, 80641, 8431]"
+ladder,1,minif2f-2397,1000,sync,off,accepted,102196,"[14937, 78790, 8431]"
+ladder,1,minif2f-2397,1500,sync,off,accepted,102196,"[14937, 78790, 8431]"
+ladder,1,minif2f-2397,3000,sync,off,accepted,102196,"[14937, 78790, 8431]"
+ladder,1,minif2f-2397,6000,sync,off,accepted,102196,"[14937, 78790, 8431]"
+ladder,1,minif2f-7702,500,sync,off,accepted,187188,"[14937, 163782, 8431]"
+ladder,1,minif2f-7702,1000,sync,off,accepted,187074,"[14937, 163668, 8431]"
+ladder,1,minif2f-7702,1500,sync,off,accepted,187074,"[14937, 163668, 8431]"
+ladder,1,minif2f-7702,3000,sync,off,accepted,187074,"[14937, 163668, 8431]"
+ladder,1,minif2f-7702,6000,sync,off,accepted,187074,"[14937, 163668, 8431]"
+ladder,1,minif2f-1593,500,sync,off,accepted,151186,"[14937, 127780, 8431]"
+ladder,1,minif2f-1593,1000,sync,off,accepted,151102,"[14937, 127696, 8431]"
+ladder,1,minif2f-1593,1500,sync,off,accepted,151102,"[14937, 127696, 8431]"
+ladder,1,minif2f-1593,3000,sync,off,accepted,151102,"[14937, 127696, 8431]"
+ladder,1,minif2f-1593,6000,sync,off,accepted,151102,"[14937, 127696, 8431]"
+ladder,1,minif2f-7486,500,sync,off,lean_error,67788,"[14937, 44382, 8431]"
+ladder,1,minif2f-7486,1000,sync,off,lean_error,67762,"[14937, 44356, 8431]"
+ladder,1,minif2f-7486,1500,sync,off,lean_error,67762,"[14937, 44356, 8431]"
+ladder,1,minif2f-7486,3000,sync,off,lean_error,67762,"[14937, 44356, 8431]"
+ladder,1,minif2f-7486,6000,sync,off,lean_error,67762,"[14937, 44356, 8431]"
+ladder,1,minif2f-4004,500,sync,off,lean_error,171907,"[14937, 148501, 8431]"
+ladder,1,minif2f-4004,1000,sync,off,lean_error,171108,"[14937, 147702, 8431]"
+ladder,1,minif2f-4004,1500,sync,off,lean_error,171108,"[14937, 147702, 8431]"
+ladder,1,minif2f-4004,3000,sync,off,lean_error,171108,"[14937, 147702, 8431]"
+ladder,1,minif2f-4004,6000,sync,off,lean_error,171108,"[14937, 147702, 8431]"
+ladder,1,minif2f-3859,500,sync,off,lean_error,197281,"[14937, 173875, 8431]"
+ladder,1,minif2f-3859,1000,sync,off,lean_error,197227,"[14937, 173821, 8431]"
+ladder,1,minif2f-3859,1500,sync,off,lean_error,197227,"[14937, 173821, 8431]"
+ladder,1,minif2f-3859,3000,sync,off,lean_error,197227,"[14937, 173821, 8431]"
+ladder,1,minif2f-3859,6000,sync,off,lean_error,197227,"[14937, 173821, 8431]"
+ladder,1,minif2f-5239,500,sync,off,budget_exhausted,695760,"[14937, 672354, 8431]"
+ladder,1,minif2f-5239,1000,sync,off,budget_exhausted,1042403,"[14937, 1019008, 8420]"
+ladder,1,minif2f-5239,1500,sync,off,accepted,1377383,"[14937, 1353977, 8431]"
+ladder,1,minif2f-5239,3000,sync,off,accepted,1377383,"[14937, 1353977, 8431]"
+ladder,1,minif2f-5239,6000,sync,off,accepted,1377383,"[14937, 1353977, 8431]"
+ladder,1,minif2f-5777,500,sync,off,budget_exhausted,545890,"[14937, 522484, 8431]"
+ladder,1,minif2f-5777,1000,sync,off,budget_exhausted,1046760,"[14937, 1023354, 8431]"
+ladder,1,minif2f-5777,1500,sync,off,budget_exhausted,1659053,"[14937, 1635647, 8431]"
+ladder,1,minif2f-5777,3000,sync,off,accepted,2230583,"[14937, 2207177, 8431]"
+ladder,1,minif2f-5777,6000,sync,off,accepted,2230536,"[14937, 2207130, 8431]"
+ladder,1,minif2f-5765,500,sync,off,budget_exhausted,545137,"[14937, 521731, 8431]"
+ladder,1,minif2f-5765,1000,sync,off,budget_exhausted,1127740,"[14937, 1104334, 8431]"
+ladder,1,minif2f-5765,1500,sync,off,budget_exhausted,1629911,"[14937, 1606505, 8431]"
+ladder,1,minif2f-5765,3000,sync,off,accepted,1839298,"[14937, 1815892, 8431]"
+ladder,1,minif2f-5765,6000,sync,off,accepted,1839298,"[14937, 1815892, 8431]"
+ladder,1,budget-sensitive-control,1000,sync,off,lean_error,379458,"[370990, 8430]"
+ladder,1,budget-sensitive-control,3000,sync,off,lean_error,379422,"[370954, 8430]"
+ladder,1,budget-sensitive-control,6000,sync,off,lean_error,379422,"[370954, 8430]"
+ladder,1,budget-sensitive-control,12000,sync,off,lean_error,379422,"[370954, 8430]"
+ladder,8,minif2f-2797,500,sync,off,budget_exhausted,551515,"[20552, 522039, 8469]"
+ladder,8,minif2f-2797,1000,sync,off,budget_exhausted,1046098,"[14937, 1022692, 8431]"
+ladder,8,minif2f-2797,1500,sync,off,budget_exhausted,1546422,"[14937, 1523016, 8431]"
+ladder,8,minif2f-2797,3000,sync,off,lean_error,2224355,"[14937, 2200949, 8431]"
+ladder,8,minif2f-2797,6000,sync,off,lean_error,2221852,"[14937, 2198446, 8431]"
+ladder,8,minif2f-1041,500,sync,off,budget_exhausted,538049,"[14937, 514654, 8420]"
+ladder,8,minif2f-1041,1000,sync,off,accepted,858295,"[14937, 834889, 8431]"
+ladder,8,minif2f-1041,1500,sync,off,accepted,856959,"[14937, 833553, 8431]"
+ladder,8,minif2f-1041,3000,sync,off,accepted,856959,"[14937, 833553, 8431]"
+ladder,8,minif2f-1041,6000,sync,off,accepted,856959,"[14937, 833553, 8431]"
+ladder,8,minif2f-6881,500,sync,off,budget_exhausted,587200,"[14937, 563794, 8431]"
+ladder,8,minif2f-6881,1000,sync,off,budget_exhausted,1090871,"[14937, 1067465, 8431]"
+ladder,8,minif2f-6881,1500,sync,off,accepted,1227036,"[14937, 1203630, 8431]"
+ladder,8,minif2f-6881,3000,sync,off,accepted,1227036,"[14937, 1203630, 8431]"
+ladder,8,minif2f-6881,6000,sync,off,accepted,1227036,"[14937, 1203630, 8431]"
+ladder,8,minif2f-945,500,sync,off,budget_exhausted,542516,"[14937, 519110, 8431]"
+ladder,8,minif2f-945,1000,sync,off,budget_exhausted,1042948,"[14937, 1019542, 8431]"
+ladder,8,minif2f-945,1500,sync,off,accepted,1368709,"[14937, 1345303, 8431]"
+ladder,8,minif2f-945,3000,sync,off,accepted,1368582,"[14937, 1345176, 8431]"
+ladder,8,minif2f-945,6000,sync,off,accepted,1368582,"[14937, 1345176, 8431]"
+ladder,8,minif2f-2693,500,sync,off,budget_exhausted,557907,"[14937, 534501, 8431]"
+ladder,8,minif2f-2693,1000,sync,off,budget_exhausted,1057319,"[14937, 1033913, 8431]"
+ladder,8,minif2f-2693,1500,sync,off,accepted,1411625,"[14937, 1388219, 8431]"
+ladder,8,minif2f-2693,3000,sync,off,accepted,1411625,"[14937, 1388219, 8431]"
+ladder,8,minif2f-2693,6000,sync,off,accepted,1411625,"[14937, 1388219, 8431]"
+ladder,8,minif2f-6049,500,sync,off,lean_error,218052,"[14937, 190799, 12278]"
+ladder,8,minif2f-6049,1000,sync,off,lean_error,217489,"[14937, 190236, 12278]"
+ladder,8,minif2f-6049,1500,sync,off,lean_error,217489,"[14937, 190236, 12278]"
+ladder,8,minif2f-6049,3000,sync,off,lean_error,217489,"[14937, 190236, 12278]"
+ladder,8,minif2f-6049,6000,sync,off,lean_error,217489,"[14937, 190236, 12278]"
+ladder,8,minif2f-6063,500,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,8,minif2f-6063,1000,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,8,minif2f-6063,1500,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,8,minif2f-6063,3000,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,8,minif2f-6063,6000,sync,off,lean_error,217935,"[14937, 190236, 12724]"
+ladder,8,minif2f-2397,500,sync,off,accepted,104047,"[14937, 80641, 8431]"
+ladder,8,minif2f-2397,1000,sync,off,accepted,102196,"[14937, 78790, 8431]"
+ladder,8,minif2f-2397,1500,sync,off,accepted,102196,"[14937, 78790, 8431]"
+ladder,8,minif2f-2397,3000,sync,off,accepted,102196,"[14937, 78790, 8431]"
+ladder,8,minif2f-2397,6000,sync,off,accepted,102196,"[14937, 78790, 8431]"
+ladder,8,minif2f-7702,500,sync,off,accepted,187188,"[14937, 163782, 8431]"
+ladder,8,minif2f-7702,1000,sync,off,accepted,187074,"[14937, 163668, 8431]"
+ladder,8,minif2f-7702,1500,sync,off,accepted,187074,"[14937, 163668, 8431]"
+ladder,8,minif2f-7702,3000,sync,off,accepted,187074,"[14937, 163668, 8431]"
+ladder,8,minif2f-7702,6000,sync,off,accepted,187074,"[14937, 163668, 8431]"
+ladder,8,minif2f-1593,500,sync,off,accepted,151186,"[14937, 127780, 8431]"
+ladder,8,minif2f-1593,1000,sync,off,accepted,151102,"[14937, 127696, 8431]"
+ladder,8,minif2f-1593,1500,sync,off,accepted,151102,"[14937, 127696, 8431]"
+ladder,8,minif2f-1593,3000,sync,off,accepted,151102,"[14937, 127696, 8431]"
+ladder,8,minif2f-1593,6000,sync,off,accepted,151102,"[14937, 127696, 8431]"
+ladder,8,minif2f-7486,500,sync,off,lean_error,67788,"[14937, 44382, 8431]"
+ladder,8,minif2f-7486,1000,sync,off,lean_error,67762,"[14937, 44356, 8431]"
+ladder,8,minif2f-7486,1500,sync,off,lean_error,67762,"[14937, 44356, 8431]"
+ladder,8,minif2f-7486,3000,sync,off,lean_error,67762,"[14937, 44356, 8431]"
+ladder,8,minif2f-7486,6000,sync,off,lean_error,67762,"[14937, 44356, 8431]"
+ladder,8,minif2f-4004,500,sync,off,lean_error,171907,"[14937, 148501, 8431]"
+ladder,8,minif2f-4004,1000,sync,off,lean_error,171108,"[14937, 147702, 8431]"
+ladder,8,minif2f-4004,1500,sync,off,lean_error,171108,"[14937, 147702, 8431]"
+ladder,8,minif2f-4004,3000,sync,off,lean_error,171108,"[14937, 147702, 8431]"
+ladder,8,minif2f-4004,6000,sync,off,lean_error,171108,"[14937, 147702, 8431]"
+ladder,8,minif2f-3859,500,sync,off,lean_error,197281,"[14937, 173875, 8431]"
+ladder,8,minif2f-3859,1000,sync,off,lean_error,197227,"[14937, 173821, 8431]"
+ladder,8,minif2f-3859,1500,sync,off,lean_error,197227,"[14937, 173821, 8431]"
+ladder,8,minif2f-3859,3000,sync,off,lean_error,197227,"[14937, 173821, 8431]"
+ladder,8,minif2f-3859,6000,sync,off,lean_error,197227,"[14937, 173821, 8431]"
+ladder,8,minif2f-5239,500,sync,off,budget_exhausted,695760,"[14937, 672354, 8431]"
+ladder,8,minif2f-5239,1000,sync,off,budget_exhausted,1042403,"[14937, 1019008, 8420]"
+ladder,8,minif2f-5239,1500,sync,off,accepted,1377383,"[14937, 1353977, 8431]"
+ladder,8,minif2f-5239,3000,sync,off,accepted,1377383,"[14937, 1353977, 8431]"
+ladder,8,minif2f-5239,6000,sync,off,accepted,1377383,"[14937, 1353977, 8431]"
+ladder,8,minif2f-5777,500,sync,off,budget_exhausted,545890,"[14937, 522484, 8431]"
+ladder,8,minif2f-5777,1000,sync,off,budget_exhausted,1046760,"[14937, 1023354, 8431]"
+ladder,8,minif2f-5777,1500,sync,off,budget_exhausted,1659053,"[14937, 1635647, 8431]"
+ladder,8,minif2f-5777,3000,sync,off,accepted,2230583,"[14937, 2207177, 8431]"
+ladder,8,minif2f-5777,6000,sync,off,accepted,2230536,"[14937, 2207130, 8431]"
+ladder,8,minif2f-5765,500,sync,off,budget_exhausted,545137,"[14937, 521731, 8431]"
+ladder,8,minif2f-5765,1000,sync,off,budget_exhausted,1127740,"[14937, 1104334, 8431]"
+ladder,8,minif2f-5765,1500,sync,off,budget_exhausted,1629911,"[14937, 1606505, 8431]"
+ladder,8,minif2f-5765,3000,sync,off,accepted,1839298,"[14937, 1815892, 8431]"
+ladder,8,minif2f-5765,6000,sync,off,accepted,1839298,"[14937, 1815892, 8431]"
+ladder,8,budget-sensitive-control,1000,sync,off,lean_error,379458,"[370990, 8430]"
+ladder,8,budget-sensitive-control,3000,sync,off,lean_error,379422,"[370954, 8430]"
+ladder,8,budget-sensitive-control,6000,sync,off,lean_error,379422,"[370954, 8430]"
+ladder,8,budget-sensitive-control,12000,sync,off,lean_error,379422,"[370954, 8430]"
+input-r0-cold,1,minif2f-2797,1000,stock,off,budget_exhausted,784,[]
+input-r0-cold,1,minif2f-1041,1000,stock,off,accepted,402,[]
+input-r0-cold,1,minif2f-6881,1000,stock,off,budget_exhausted,469,[]
+input-r0-cold,1,minif2f-945,1000,stock,off,budget_exhausted,408,[]
+input-r0-cold,1,minif2f-2693,1000,stock,off,budget_exhausted,447,[]
+input-r0-cold,1,minif2f-6049,1000,stock,off,lean_error,363,[]
+input-r0-cold,1,minif2f-6063,1000,stock,off,lean_error,363,[]
+input-r0-cold,1,minif2f-2397,1000,stock,off,accepted,436,[]
+input-r0-cold,1,minif2f-7702,1000,stock,off,accepted,400,[]
+input-r0-cold,1,minif2f-1593,1000,stock,off,accepted,442,[]
+input-r0-cold,1,minif2f-7486,1000,stock,off,lean_error,386,[]
+input-r0-cold,1,minif2f-4004,1000,stock,off,lean_error,405,[]
+input-r0-cold,1,minif2f-3859,1000,stock,off,lean_error,382,[]
+input-r0-cold,1,minif2f-5239,1000,stock,off,budget_exhausted,443,[]
+input-r0-cold,1,minif2f-5777,1000,stock,off,budget_exhausted,408,[]
+input-r0-cold,1,minif2f-5765,1000,stock,off,budget_exhausted,426,[]
+input-r0-warm,1,minif2f-2797,1000,stock,off,budget_exhausted,784,[]
+input-r0-warm,1,minif2f-1041,1000,stock,off,accepted,402,[]
+input-r0-warm,1,minif2f-6881,1000,stock,off,budget_exhausted,470,[]
+input-r0-warm,1,minif2f-945,1000,stock,off,budget_exhausted,407,[]
+input-r0-warm,1,minif2f-2693,1000,stock,off,budget_exhausted,447,[]
+input-r0-warm,1,minif2f-6049,1000,stock,off,lean_error,363,[]
+input-r0-warm,1,minif2f-6063,1000,stock,off,lean_error,363,[]
+input-r0-warm,1,minif2f-2397,1000,stock,off,accepted,436,[]
+input-r0-warm,1,minif2f-7702,1000,stock,off,accepted,400,[]
+input-r0-warm,1,minif2f-1593,1000,stock,off,accepted,442,[]
+input-r0-warm,1,minif2f-7486,1000,stock,off,lean_error,386,[]
+input-r0-warm,1,minif2f-4004,1000,stock,off,lean_error,405,[]
+input-r0-warm,1,minif2f-3859,1000,stock,off,lean_error,381,[]
+input-r0-warm,1,minif2f-5239,1000,stock,off,budget_exhausted,443,[]
+input-r0-warm,1,minif2f-5777,1000,stock,off,budget_exhausted,407,[]
+input-r0-warm,1,minif2f-5765,1000,stock,off,budget_exhausted,426,[]
+input-r1-cold,1,minif2f-2797,1000,stock,off,budget_exhausted,784,[]
+input-r1-cold,1,minif2f-1041,1000,stock,off,accepted,402,[]
+input-r1-cold,1,minif2f-6881,1000,stock,off,budget_exhausted,470,[]
+input-r1-cold,1,minif2f-945,1000,stock,off,budget_exhausted,408,[]
+input-r1-cold,1,minif2f-2693,1000,stock,off,budget_exhausted,447,[]
+input-r1-cold,1,minif2f-6049,1000,stock,off,lean_error,363,[]
+input-r1-cold,1,minif2f-6063,1000,stock,off,lean_error,363,[]
+input-r1-cold,1,minif2f-2397,1000,stock,off,accepted,436,[]
+input-r1-cold,1,minif2f-7702,1000,stock,off,accepted,400,[]
+input-r1-cold,1,minif2f-1593,1000,stock,off,accepted,442,[]
+input-r1-cold,1,minif2f-7486,1000,stock,off,lean_error,386,[]
+input-r1-cold,1,minif2f-4004,1000,stock,off,lean_error,405,[]
+input-r1-cold,1,minif2f-3859,1000,stock,off,lean_error,382,[]
+input-r1-cold,1,minif2f-5239,1000,stock,off,budget_exhausted,443,[]
+input-r1-cold,1,minif2f-5777,1000,stock,off,budget_exhausted,407,[]
+input-r1-cold,1,minif2f-5765,1000,stock,off,budget_exhausted,425,[]
+input-r1-warm,1,minif2f-2797,1000,stock,off,budget_exhausted,784,[]
+input-r1-warm,1,minif2f-1041,1000,stock,off,accepted,403,[]
+input-r1-warm,1,minif2f-6881,1000,stock,off,budget_exhausted,469,[]
+input-r1-warm,1,minif2f-945,1000,stock,off,budget_exhausted,407,[]
+input-r1-warm,1,minif2f-2693,1000,stock,off,budget_exhausted,448,[]
+input-r1-warm,1,minif2f-6049,1000,stock,off,lean_error,363,[]
+input-r1-warm,1,minif2f-6063,1000,stock,off,lean_error,363,[]
+input-r1-warm,1,minif2f-2397,1000,stock,off,accepted,435,[]
+input-r1-warm,1,minif2f-7702,1000,stock,off,accepted,400,[]
+input-r1-warm,1,minif2f-1593,1000,stock,off,accepted,442,[]
+input-r1-warm,1,minif2f-7486,1000,stock,off,lean_error,386,[]
+input-r1-warm,1,minif2f-4004,1000,stock,off,lean_error,404,[]
+input-r1-warm,1,minif2f-3859,1000,stock,off,lean_error,382,[]
+input-r1-warm,1,minif2f-5239,1000,stock,off,budget_exhausted,443,[]
+input-r1-warm,1,minif2f-5777,1000,stock,off,budget_exhausted,407,[]
+input-r1-warm,1,minif2f-5765,1000,stock,off,budget_exhausted,425,[]
+input-r2-cold,1,minif2f-2797,1000,stock,off,budget_exhausted,784,[]
+input-r2-cold,1,minif2f-1041,1000,stock,off,accepted,403,[]
+input-r2-cold,1,minif2f-6881,1000,stock,off,budget_exhausted,470,[]
+input-r2-cold,1,minif2f-945,1000,stock,off,budget_exhausted,407,[]
+input-r2-cold,1,minif2f-2693,1000,stock,off,budget_exhausted,447,[]
+input-r2-cold,1,minif2f-6049,1000,stock,off,lean_error,363,[]
+input-r2-cold,1,minif2f-6063,1000,stock,off,lean_error,363,[]
+input-r2-cold,1,minif2f-2397,1000,stock,off,accepted,436,[]
+input-r2-cold,1,minif2f-7702,1000,stock,off,accepted,400,[]
+input-r2-cold,1,minif2f-1593,1000,stock,off,accepted,442,[]
+input-r2-cold,1,minif2f-7486,1000,stock,off,lean_error,386,[]
+input-r2-cold,1,minif2f-4004,1000,stock,off,lean_error,405,[]
+input-r2-cold,1,minif2f-3859,1000,stock,off,lean_error,382,[]
+input-r2-cold,1,minif2f-5239,1000,stock,off,budget_exhausted,443,[]
+input-r2-cold,1,minif2f-5777,1000,stock,off,budget_exhausted,408,[]
+input-r2-cold,1,minif2f-5765,1000,stock,off,budget_exhausted,425,[]
+input-r2-warm,1,minif2f-2797,1000,stock,off,budget_exhausted,784,[]
+input-r2-warm,1,minif2f-1041,1000,stock,off,accepted,402,[]
+input-r2-warm,1,minif2f-6881,1000,stock,off,budget_exhausted,469,[]
+input-r2-warm,1,minif2f-945,1000,stock,off,budget_exhausted,408,[]
+input-r2-warm,1,minif2f-2693,1000,stock,off,budget_exhausted,447,[]
+input-r2-warm,1,minif2f-6049,1000,stock,off,lean_error,363,[]
+input-r2-warm,1,minif2f-6063,1000,stock,off,lean_error,363,[]
+input-r2-warm,1,minif2f-2397,1000,stock,off,accepted,436,[]
+input-r2-warm,1,minif2f-7702,1000,stock,off,accepted,400,[]
+input-r2-warm,1,minif2f-1593,1000,stock,off,accepted,442,[]
+input-r2-warm,1,minif2f-7486,1000,stock,off,lean_error,385,[]
+input-r2-warm,1,minif2f-4004,1000,stock,off,lean_error,405,[]
+input-r2-warm,1,minif2f-3859,1000,stock,off,lean_error,382,[]
+input-r2-warm,1,minif2f-5239,1000,stock,off,budget_exhausted,443,[]
+input-r2-warm,1,minif2f-5777,1000,stock,off,budget_exhausted,408,[]
+input-r2-warm,1,minif2f-5765,1000,stock,off,budget_exhausted,426,[]

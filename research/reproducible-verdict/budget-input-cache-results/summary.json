@@ -1,0 +1,1544 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3",
+  "native": [
+    {
+      "key": "ladder-j1",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "180",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/ladder-j1.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 180,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-280911-ladder-j1.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 280913,
+      "birth": "761844367",
+      "returncode": 0,
+      "wall_s": 9.44152191374451,
+      "user_s": 7.690556,
+      "system_s": 1.73451,
+      "peak_rss_kib": 8785904,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 8998125568,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2319626240,
+      "cgroup_cpu_stat": "usage_usec 9424406\nuser_usec 7689699\nsystem_usec 1734706\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 9.424406,
+      "cgroup_user_s": 7.689699,
+      "cgroup_system_s": 1.734706,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "ladder-j8",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "180",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j8",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/ladder-j8.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 180,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-280911-ladder-j8.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 281183,
+      "birth": "761845311",
+      "returncode": 0,
+      "wall_s": 9.3874831777066,
+      "user_s": 7.682302,
+      "system_s": 1.7393809999999998,
+      "peak_rss_kib": 8791820,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9004351488,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2322960384,
+      "cgroup_cpu_stat": "usage_usec 9420883\nuser_usec 7680720\nsystem_usec 1740163\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 9.420883,
+      "cgroup_user_s": 7.68072,
+      "cgroup_system_s": 1.740163,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "cache-r0-cold",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "180",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/cache-r0-cold.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 180,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-280911-cache-r0-cold.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 281194,
+      "birth": "761846251",
+      "returncode": 0,
+      "wall_s": 5.909210762940347,
+      "user_s": 4.14665,
+      "system_s": 1.7438319999999998,
+      "peak_rss_kib": 8791748,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9004462080,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2320273408,
+      "cgroup_cpu_stat": "usage_usec 5889802\nuser_usec 4146380\nsystem_usec 1743421\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 5.889802,
+      "cgroup_user_s": 4.14638,
+      "cgroup_system_s": 1.743421,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "cache-r0-warm",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "180",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/cache-r0-warm.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 180,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-280911-cache-r0-warm.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 281202,
+      "birth": "761846842",
+      "returncode": 0,
+      "wall_s": 6.123942332342267,
+      "user_s": 4.357845,
+      "system_s": 1.749569,
+      "peak_rss_kib": 8790600,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9003048960,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2319822848,
+      "cgroup_cpu_stat": "usage_usec 6106593\nuser_usec 4357996\nsystem_usec 1748597\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 6.106593,
+      "cgroup_user_s": 4.357996,
+      "cgroup_system_s": 1.748597,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "cache-r1-warm",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "180",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/cache-r1-warm.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 180,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-280911-cache-r1-warm.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 281209,
+      "birth": "761847455",
+      "returncode": 0,
+      "wall_s": 5.814026031643152,
+      "user_s": 4.055694,
+      "system_s": 1.752883,
+      "peak_rss_kib": 8792324,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9005039616,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2322120704,
+      "cgroup_cpu_stat": "usage_usec 5807945\nuser_usec 4055056\nsystem_usec 1752888\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 5.807945,
+      "cgroup_user_s": 4.055056,
+      "cgroup_system_s": 1.752888,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "cache-r1-cold",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "180",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/cache-r1-cold.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 180,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-280911-cache-r1-cold.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 281217,
+      "birth": "761848037",
+      "returncode": 0,
+      "wall_s": 5.8366326885297894,
+      "user_s": 4.05157,
+      "system_s": 1.757038,
+      "peak_rss_kib": 8792000,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9004953600,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2320539648,
+      "cgroup_cpu_stat": "usage_usec 5807832\nuser_usec 4051882\nsystem_usec 1755949\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 5.807832,
+      "cgroup_user_s": 4.051882,
+      "cgroup_system_s": 1.755949,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "cache-r2-cold",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "180",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/cache-r2-cold.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 180,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-280911-cache-r2-cold.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 281225,
+      "birth": "761848622",
+      "returncode": 0,
+      "wall_s": 6.355218652635813,
+      "user_s": 4.342454,
+      "system_s": 1.991793,
+      "peak_rss_kib": 8792144,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9004945408,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2320560128,
+      "cgroup_cpu_stat": "usage_usec 6333513\nuser_usec 4342723\nsystem_usec 1990790\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 6.333513,
+      "cgroup_user_s": 4.342723,
+      "cgroup_system_s": 1.99079,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    },
+    {
+      "key": "cache-r2-warm",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "180",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "-j1",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/Probe.lean",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v3/cache-r2-warm.json"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 180,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-280911-cache-r2-warm.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 281232,
+      "birth": "761849258",
+      "returncode": 0,
+      "wall_s": 5.943873496726155,
+      "user_s": 4.160734,
+      "system_s": 1.778014,
+      "peak_rss_kib": 8791752,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 9004265472,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 2320191488,
+      "cgroup_cpu_stat": "usage_usec 5938019\nuser_usec 4160816\nsystem_usec 1777203\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 5.938019,
+      "cgroup_user_s": 4.160816,
+      "cgroup_system_s": 1.777203,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true
+    }
+  ],
+  "cache_conditions": [
+    {
+      "label": "cache-r0-cold",
+      "before": {
+        "pages": 7,
+        "resident": 7
+      },
+      "treated": {
+        "pages": 7,
+        "resident": 0
+      },
+      "after": {
+        "pages": 7,
+        "resident": 7
+      },
+      "scope": "only this request input JSON, not globally cold SDK or Mathlib pages"
+    },
+    {
+      "label": "cache-r0-warm",
+      "before": {
+        "pages": 7,
+        "resident": 7
+      },
+      "treated": {
+        "pages": 7,
+        "resident": 7
+      },
+      "after": {
+        "pages": 7,
+        "resident": 7
+      },
+      "scope": "only this request input JSON, not globally cold SDK or Mathlib pages"
+    },
+    {
+      "label": "cache-r1-warm",
+      "before": {
+        "pages": 7,
+        "resident": 7
+      },
+      "treated": {
+        "pages": 7,
+        "resident": 7
+      },
+      "after": {
+        "pages": 7,
+        "resident": 7
+      },
+      "scope": "only this request input JSON, not globally cold SDK or Mathlib pages"
+    },
+    {
+      "label": "cache-r1-cold",
+      "before": {
+        "pages": 7,
+        "resident": 7
+      },
+      "treated": {
+        "pages": 7,
+        "resident": 0
+      },
+      "after": {
+        "pages": 7,
+        "resident": 7
+      },
+      "scope": "only this request input JSON, not globally cold SDK or Mathlib pages"
+    },
+    {
+      "label": "cache-r2-cold",
+      "before": {
+        "pages": 7,
+        "resident": 7
+      },
+      "treated": {
+        "pages": 7,
+        "resident": 0
+      },
+      "after": {
+        "pages": 7,
+        "resident": 7
+      },
+      "scope": "only this request input JSON, not globally cold SDK or Mathlib pages"
+    },
+    {
+      "label": "cache-r2-warm",
+      "before": {
+        "pages": 7,
+        "resident": 7
+      },
+      "treated": {
+        "pages": 7,
+        "resident": 7
+      },
+      "after": {
+        "pages": 7,
+        "resident": 7
+      },
+      "scope": "only this request input JSON, not globally cold SDK or Mathlib pages"
+    }
+  ],
+  "ladders": {
+    "1": {
+      "sources": 16,
+      "budgets": [
+        500,
+        1000,
+        1500,
+        3000,
+        6000
+      ],
+      "lower_accepted_larger_pairs": 50,
+      "violations": [],
+      "chains": {
+        "minif2f-2797": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "budget_exhausted"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-1041": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "accepted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-6881": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-945": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-2693": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-6049": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-6063": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-2397": [
+          [
+            500,
+            "accepted"
+          ],
+          [
+            1000,
+            "accepted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-7702": [
+          [
+            500,
+            "accepted"
+          ],
+          [
+            1000,
+            "accepted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-1593": [
+          [
+            500,
+            "accepted"
+          ],
+          [
+            1000,
+            "accepted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-7486": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-4004": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-3859": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-5239": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-5777": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "budget_exhausted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-5765": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "budget_exhausted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ]
+      },
+      "intentional_control": [
+        {
+          "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+          "axioms": [
+            "sorryAx"
+          ],
+          "budget": 1000,
+          "command_raw_heartbeats": [
+            370990,
+            8430
+          ],
+          "errors": [
+            "Environment.realizeConst: `realizedImportedConsts` is empty"
+          ],
+          "id": "budget-sensitive-control",
+          "main_thread_raw_heartbeats": 379458,
+          "mode": "sync",
+          "new_axioms": [],
+          "observer": "off",
+          "target": "repro_budget_sensitive",
+          "theorem_present": true,
+          "verdict": "lean_error",
+          "warnings": []
+        },
+        {
+          "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+          "axioms": [
+            "sorryAx"
+          ],
+          "budget": 3000,
+          "command_raw_heartbeats": [
+            370954,
+            8430
+          ],
+          "errors": [
+            "Environment.realizeConst: `realizedImportedConsts` is empty"
+          ],
+          "id": "budget-sensitive-control",
+          "main_thread_raw_heartbeats": 379422,
+          "mode": "sync",
+          "new_axioms": [],
+          "observer": "off",
+          "target": "repro_budget_sensitive",
+          "theorem_present": true,
+          "verdict": "lean_error",
+          "warnings": []
+        },
+        {
+          "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+          "axioms": [
+            "sorryAx"
+          ],
+          "budget": 6000,
+          "command_raw_heartbeats": [
+            370954,
+            8430
+          ],
+          "errors": [
+            "Environment.realizeConst: `realizedImportedConsts` is empty"
+          ],
+          "id": "budget-sensitive-control",
+          "main_thread_raw_heartbeats": 379422,
+          "mode": "sync",
+          "new_axioms": [],
+          "observer": "off",
+          "target": "repro_budget_sensitive",
+          "theorem_present": true,
+          "verdict": "lean_error",
+          "warnings": []
+        },
+        {
+          "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+          "axioms": [
+            "sorryAx"
+          ],
+          "budget": 12000,
+          "command_raw_heartbeats": [
+            370954,
+            8430
+          ],
+          "errors": [
+            "Environment.realizeConst: `realizedImportedConsts` is empty"
+          ],
+          "id": "budget-sensitive-control",
+          "main_thread_raw_heartbeats": 379422,
+          "mode": "sync",
+          "new_axioms": [],
+          "observer": "off",
+          "target": "repro_budget_sensitive",
+          "theorem_present": true,
+          "verdict": "lean_error",
+          "warnings": []
+        }
+      ]
+    },
+    "8": {
+      "sources": 16,
+      "budgets": [
+        500,
+        1000,
+        1500,
+        3000,
+        6000
+      ],
+      "lower_accepted_larger_pairs": 50,
+      "violations": [],
+      "chains": {
+        "minif2f-2797": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "budget_exhausted"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-1041": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "accepted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-6881": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-945": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-2693": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-6049": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-6063": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-2397": [
+          [
+            500,
+            "accepted"
+          ],
+          [
+            1000,
+            "accepted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-7702": [
+          [
+            500,
+            "accepted"
+          ],
+          [
+            1000,
+            "accepted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-1593": [
+          [
+            500,
+            "accepted"
+          ],
+          [
+            1000,
+            "accepted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-7486": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-4004": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-3859": [
+          [
+            500,
+            "lean_error"
+          ],
+          [
+            1000,
+            "lean_error"
+          ],
+          [
+            1500,
+            "lean_error"
+          ],
+          [
+            3000,
+            "lean_error"
+          ],
+          [
+            6000,
+            "lean_error"
+          ]
+        ],
+        "minif2f-5239": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "accepted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-5777": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "budget_exhausted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ],
+        "minif2f-5765": [
+          [
+            500,
+            "budget_exhausted"
+          ],
+          [
+            1000,
+            "budget_exhausted"
+          ],
+          [
+            1500,
+            "budget_exhausted"
+          ],
+          [
+            3000,
+            "accepted"
+          ],
+          [
+            6000,
+            "accepted"
+          ]
+        ]
+      },
+      "intentional_control": [
+        {
+          "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+          "axioms": [
+            "sorryAx"
+          ],
+          "budget": 1000,
+          "command_raw_heartbeats": [
+            370990,
+            8430
+          ],
+          "errors": [
+            "Environment.realizeConst: `realizedImportedConsts` is empty"
+          ],
+          "id": "budget-sensitive-control",
+          "main_thread_raw_heartbeats": 379458,
+          "mode": "sync",
+          "new_axioms": [],
+          "observer": "off",
+          "target": "repro_budget_sensitive",
+          "theorem_present": true,
+          "verdict": "lean_error",
+          "warnings": []
+        },
+        {
+          "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+          "axioms": [
+            "sorryAx"
+          ],
+          "budget": 3000,
+          "command_raw_heartbeats": [
+            370954,
+            8430
+          ],
+          "errors": [
+            "Environment.realizeConst: `realizedImportedConsts` is empty"
+          ],
+          "id": "budget-sensitive-control",
+          "main_thread_raw_heartbeats": 379422,
+          "mode": "sync",
+          "new_axioms": [],
+          "observer": "off",
+          "target": "repro_budget_sensitive",
+          "theorem_present": true,
+          "verdict": "lean_error",
+          "warnings": []
+        },
+        {
+          "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+          "axioms": [
+            "sorryAx"
+          ],
+          "budget": 6000,
+          "command_raw_heartbeats": [
+            370954,
+            8430
+          ],
+          "errors": [
+            "Environment.realizeConst: `realizedImportedConsts` is empty"
+          ],
+          "id": "budget-sensitive-control",
+          "main_thread_raw_heartbeats": 379422,
+          "mode": "sync",
+          "new_axioms": [],
+          "observer": "off",
+          "target": "repro_budget_sensitive",
+          "theorem_present": true,
+          "verdict": "lean_error",
+          "warnings": []
+        },
+        {
+          "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+          "axioms": [
+            "sorryAx"
+          ],
+          "budget": 12000,
+          "command_raw_heartbeats": [
+            370954,
+            8430
+          ],
+          "errors": [
+            "Environment.realizeConst: `realizedImportedConsts` is empty"
+          ],
+          "id": "budget-sensitive-control",
+          "main_thread_raw_heartbeats": 379422,
+          "mode": "sync",
+          "new_axioms": [],
+          "observer": "off",
+          "target": "repro_budget_sensitive",
+          "theorem_present": true,
+          "verdict": "lean_error",
+          "warnings": []
+        }
+      ]
+    }
+  },
+  "input_only_cache": {
+    "pairs": 48,
+    "differences": [
+      {
+        "id": "minif2f-6881",
+        "repeat": 0,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 469,
+        "main_warm": 470
+      },
+      {
+        "id": "minif2f-945",
+        "repeat": 0,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 408,
+        "main_warm": 407
+      },
+      {
+        "id": "minif2f-3859",
+        "repeat": 0,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 382,
+        "main_warm": 381
+      },
+      {
+        "id": "minif2f-5777",
+        "repeat": 0,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 408,
+        "main_warm": 407
+      },
+      {
+        "id": "minif2f-1041",
+        "repeat": 1,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 402,
+        "main_warm": 403
+      },
+      {
+        "id": "minif2f-6881",
+        "repeat": 1,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 470,
+        "main_warm": 469
+      },
+      {
+        "id": "minif2f-945",
+        "repeat": 1,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 408,
+        "main_warm": 407
+      },
+      {
+        "id": "minif2f-2693",
+        "repeat": 1,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 447,
+        "main_warm": 448
+      },
+      {
+        "id": "minif2f-2397",
+        "repeat": 1,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 436,
+        "main_warm": 435
+      },
+      {
+        "id": "minif2f-4004",
+        "repeat": 1,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 405,
+        "main_warm": 404
+      },
+      {
+        "id": "minif2f-1041",
+        "repeat": 2,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 403,
+        "main_warm": 402
+      },
+      {
+        "id": "minif2f-6881",
+        "repeat": 2,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 470,
+        "main_warm": 469
+      },
+      {
+        "id": "minif2f-945",
+        "repeat": 2,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 407,
+        "main_warm": 408
+      },
+      {
+        "id": "minif2f-7486",
+        "repeat": 2,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 386,
+        "main_warm": 385
+      },
+      {
+        "id": "minif2f-5765",
+        "repeat": 2,
+        "fields": [
+          "main_thread_raw_heartbeats"
+        ],
+        "main_cold": 425,
+        "main_warm": 426
+      }
+    ],
+    "verdict_differences": 0,
+    "parent_counter_not_total": true,
+    "not_an_SDK_or_Mathlib_cold_test": true
+  }
+}
