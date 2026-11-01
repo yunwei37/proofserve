@@ -1,5 +1,13 @@
 # What the shape census does and does not prove
 
+> Correction in progress (2026-11-01 UTC): the first lexical pass could borrow
+> a previous explicit header for an inline inferred-target proof. The complete
+> occurrence count/frame is unaffected, but its shape and record-hint ratios
+> must not be used as certified target coverage. Original outputs remain in
+> PVC lexical-census-v1. A direct-header-only pass is running; native helper
+> type counts and native timing records are unaffected.
+
+
 The complete lexical census covers163,097 pinned source files /1,785,499,363bytes.
 Its1,354,379masked sites exactly match both the unmasked narrow regex and W's
 existing complete-corpus count. These are source occurrences, not executions.

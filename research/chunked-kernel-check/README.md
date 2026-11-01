@@ -1,5 +1,13 @@
 # Chunking closed kernel computations
 
+> Correction in progress (2026-11-01 UTC): the first lexical pass could borrow
+> a previous explicit header for an inline inferred-target proof. The complete
+> occurrence count/frame is unaffected, but its shape and record-hint ratios
+> must not be used as certified target coverage. Original outputs remain in
+> PVC lexical-census-v1. A direct-header-only pass is running; native helper
+> type counts and native timing records are unaffected.
+
+
 M-lane evidence for the two-cost-regime characterization, on pinned
 OpenAI/math `4eaee87548250b2682affda7d05d947c05554bae`, Lean 4.34.1,
 and Mathlib d13f. This is a research prototype, not an enabled serving feature.

@@ -112,3 +112,14 @@ until the corrected native matrix completes; the existing V1 result is
 negative and must not be hidden. Prior-work overlap remains high for generic
 parallel checking/certificate splitting. The next evidence step is the actual
 V3 terminal and phase curve, not another broad proxy or a new system claim.
+
+### Forward correction discovered after this step's first push
+
+At00:56UTC, a source/native crosscheck showed Grid's third inline proof per
+point inherited the previous explicit equality header in the lexical scanner.
+The native census correctly identified it as a conjunction. This invalidates
+the interpretation of v1 recovered-header/record-hint ratios as the actual
+targets' shapes, although the exact source-site denominator and raw per-file
+count validation remain correct. A new direct-header-only pass was launched
+at00:57:19UTC after preserving all v1 outputs and source. Native/timing data
+are not changed. This is a scanner error, not a workload outcome change.

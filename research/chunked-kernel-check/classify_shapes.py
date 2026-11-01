@@ -26,7 +26,10 @@ def mask(s):
 def header(s,pos):
     start=s.rfind(':=',max(0,pos-8192),pos)
     if start<0:return '',False
-    # Only same proof's header if there is no earlier completed tactic body.
+    # Inline argument proofs and tactics after earlier statements have inferred
+    # targets; never borrow a preceding have/declaration's explicit header.
+    if re.fullmatch(r'\s*by\s*',s[start+2:pos]) is None:return '',False
+    # Only a direct explicit-header proof is recoverable without elaboration.
     h=s[max(0,start-4096):start]
     matches=list(DECL.finditer(h))
     if not matches:return '',False
