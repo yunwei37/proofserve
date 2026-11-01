@@ -1,0 +1,51 @@
+{
+  "controls": 20,
+  "raw_control_processes": 22,
+  "all_control_identities_and_scopes_retired": true,
+  "v4_accepts_Cyclic": true,
+  "same_v4_binary_module_local_rejects_Cyclic": true,
+  "repaired_workers_1_and_8_reject_Cyclic": true,
+  "historical_v4_positive_cells": 18,
+  "historical_v4_module_acceptances": 1330,
+  "not_final_repaired_performance": true,
+  "active_point": {
+    "point": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v10",
+    "result_present": false,
+    "last_sample": {
+      "rss_bytes": 5228761088,
+      "processes": [
+        {
+          "pid": 223364,
+          "birth": "756513330",
+          "rss": 1953792
+        },
+        {
+          "pid": 223366,
+          "birth": "756513331",
+          "rss": 5226807296
+        }
+      ]
+    },
+    "identities_live": [
+      {
+        "pid": 223364,
+        "birth": "756513330",
+        "live": true
+      },
+      {
+        "pid": 223366,
+        "birth": "756513331",
+        "live": true
+      }
+    ],
+    "locks": "4: FLOCK  ADVISORY  WRITE 223361 08:10:1443914 0 EOF\n"
+  },
+  "additional_trusted_code": [
+    "checked-token coordinator",
+    "pinned internal-ABI C environment insertion adapter"
+  ],
+  "claim": "acceptance-contract mismatch on malformed True-proof module; not proof of a false theorem or original kernel defect",
+  "root_analysis_s": 0.2003244748339057,
+  "root_analysis_maxrss_kib": 16572,
+  "new_native_runs": 0
+}

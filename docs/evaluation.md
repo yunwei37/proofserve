@@ -218,3 +218,26 @@ Externalchargedmax14GiB, peakcharged2588258304B, sampled9086930944B, wait4
 maxRSS8872544KiB.
 No aggregateheartbeat, arbitrarytacticbacktracking, maliciousworker orcluster
 guarantee. Failedv1/v2 and unknown interruptedCPU remain unchanged.0rootnative.
+
+## Shared-context cycle counterexample — step0237
+[Root self-review](tmp/build-and-evaluate/step-0237-20261101T060743+0000/step-report.md), **自审**.
+Root verified20qualifiedcontrols+historicalredacceptance+isolatednative
+reject fromv10rawdirectory, all22PIDbirth/cgroupsretired, noM/P0–7/14GiBcharged,
+no memoryevent orstop. These measured=false finitecontrols are notspeeddata.
+EarlierDupAdeclaresShared.t:True:=True.intro. IncomingrawCyclic imports only
+Init.Prelude andcontains helper:True:=t,t:True:=helper. V4parallelaccepts
+Cyclic; exactsamev4binary one-mode rejects unknownShared.t whilecheckinghelper.
+V10parallel1/8reject withmodule_localfallback/different_constant:Shared.t.
+This is inputacceptancecontractdivergence, notFalseproof ororiginalkernelbug.
+Rawinput/source/logs/commands/sourcefrozen andretained. InitialtoolJavaScript
+literalbacktick parsingfailure occurredbeforeremoteexecution; correctedtransport
+only,0rootnative. Existing18v4cells independentlyconfirmedcomplete1330accepts
+but not validfinalrepair-versionperformance. No speedupfigure enterspaper.
+Checkedcommitadapter usesupstreaminternallean_environment_add; tokensvalidate
+frontierownership andindices. Coordinator/internalABI adapter are additional
+trustedimplementation, not an unchangedTCBclaim. Originalkernel stilldecides
+mathbut contextauthenticity/proofbinding mustbevalidatedoutsidethekernel.
+Healthyv10Envelope-stream-r1 observedlivePID223364/birth756513330 and
+223366/birth756513331, lockholder223361; noresult atread. Preservecapture.
+W48originalqueue terminalcomplete48compile_ok/controllerretired observed;
+notautomatically48probabilitydraws. Exactcoverage reduction followsseparately.

@@ -739,6 +739,43 @@ axiom dependence. Vericoding source flags and publisher labels similarly
 do not establish native acceptance or known axiom closure.
 \missing{Repository-wide declaration reachability, admissions and axiom closure.}
 
+\paragraph{A shared context can change which proof is checked.}
+A later combined streaming prototype exposes a concrete context failure.
+A valid earlier sibling provides \texttt{Shared.t : True}.
+A different incoming module imports only \texttt{Init.Prelude}; its raw
+declarations give \texttt{Shared.helper : True := Shared.t} and
+\texttt{Shared.t : True := Shared.helper}.
+These are deliberately cyclic proof data, not successfully compiled source.
+Version 4 accepts the incoming module after the sibling: the old
+\texttt{Shared.t} makes the helper check, masking the incoming local cycle.
+The same binary's isolated module-local original-kernel path rejects it
+with an unknown-constant error for \texttt{Shared.t}.
+
+This is a demonstrated acceptance-contract mismatch, not an original-kernel
+bug or an accepted proof of \texttt{False}: both claimed propositions are
+\texttt{True}. The defect is substituting an out-of-import binding while
+validating the incoming proof.
+The repaired prototype follows incoming local dependencies transitively;
+a cycle takes module-local replay.
+It rejects this input with one and eight workers, and completes 20 native
+boundary controls, including sibling visibility, corrupted duplicate proofs,
+conflicting definitions and stale/duplicate checked tokens.
+All 22 recorded control processes, including historical acceptance and the
+isolated rejection, retire without resource interruption.
+These controls bound the tested cases, not arbitrary corrupted modules.
+The previous 18-cell, 1,330-module positive-input performance table belongs
+to the defective version and is not a repaired-version throughput result.
+\missing{Complete repaired-version paired performance and broader
+module-context differential evidence.}
+
+A second boundary is implementation trust.
+This combined in-memory prototype commits checked results through a
+checked-token coordinator and a pinned internal-ABI C map-insertion adapter.
+Those components are additional trusted implementation code, although the
+original kernel still checks mathematical declarations.
+They differ from the earlier Barrier checked-fragment/normal-import protocol.
+Neither prototype establishes a universally unchanged implementation TCB.
+
 \paragraph{Settings and observers change outcomes.}
 Six released EPFL exact-program controls fail at recursion depth128 but
 pass at256/default512 in reconstructed contexts; producer context is unknown.

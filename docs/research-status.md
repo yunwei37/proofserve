@@ -110,6 +110,15 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   candidate-service or aggregatebudget equivalence claim. P0–7/noM/14GiBcharged;
   all recorded native identities/scopes retired. Both current Mcurves completed.
 
+- [Combined parallel-stream context counterexample](../research/parallel-stream-check/math-results.md):
+  frozenv4accepts a rawtwo-True-theorem cycle afteranundeclared siblingbinding;
+  the samebinary module-localstockkernelpathrejectsunknownShared.t.
+  Repairedv10rejects at1/8workers;20boundarycontrols/22nativeprocessesverified
+  retired. Prior18cell1330modulepositivecurve ishistoricalv4, not repaired
+  performance. Checked-token coordinator/internalABI C insertion areextra
+  trustedimplementationcode; not unchangedTCB. Rootstep0237freezesreceipts.
+  NewfiniteEnvelope-streampoint actuallyrunning atread; preserve it.
+
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):
   7808same statuses/3014accepted IDs,19.28%less elapsed at one point;
@@ -128,3 +137,11 @@ Draft/CI/native completion/axiom-clean acceptance are different.
 All root reviews are **自审**, not independent or venue acceptance.
 The supplied word supplement is preserved and deduplicated; unavailable
 complete cross-chat conversation history is not claimed recovered.
+
+## Newly observed W terminal awaiting independent population reduction
+The original48job suffix queue has complete=true,48native compile_ok rows and
+controller191267/birth754946357 retired. Nativewall179.255830s is48local
+compiler processes, not48newrandomdraws or9217.807695s queue-inclusive time.
+Do not restart that completed queue. Original42draw coverage must be reduced
+from per-row probability_sample_target and exact module IDs before updating
+population weights; no missing draw is silently replaced with a dependency.

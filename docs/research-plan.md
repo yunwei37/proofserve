@@ -99,3 +99,13 @@ Barrier's module-replay contract and whole-library throughput. Both current
 Mcurves are complete; no pending oldcurve/controller should be restarted.
 Next integration remains original Wmissingdraws, Ocontext qualification and
 actual new results. Root does not create another capture or alter lane code.
+
+## Context counterexample and version-qualified performance
+[Combined stream](../research/parallel-stream-check/math-results.md) has an actual
+v4acceptance mismatch on a cyclicincomingmodule hidden by an earlier sibling.
+The samebinary module-localpath rejects; repaired1/8workers reject and20native
+controls pass. The18cellpositivecurve belongs tov4, notthe repaired version.
+Additionalchecked-token/Cinsertioncode remains trustedimplementation.
+Do not substitute boundedcontrols for fullrepair-version replay/timing.
+W's original48jobqueue has now reached complete48/48compile_ok and retired;
+reduce exactoriginaldraw coverage next, without restarting thequeue.
