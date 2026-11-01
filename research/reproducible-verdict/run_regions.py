@@ -12,6 +12,10 @@ def main():
     "-o",ROOT/"MathBatchProbe.olean",ROOT/"MathBatchProbe.lean"],limit=90,measured=False)
   records.append(pre)
   if pre["returncode"]:raise RuntimeError("math batch syntax failed")
+  cp=native.run("kernel-syntax",["taskset","-c","8-15",native.SDK/"bin/lean","-j1",
+    "-o",ROOT/"RegionProbe.olean",ROOT/"RegionProbe.lean"],limit=90,measured=False)
+  records.append(cp)
+  if cp["returncode"]:raise RuntimeError("kernel region syntax failed")
   for rep in [0,1]:
    for short,module in MODULES:
     for threads in ([1,2,4,8]if rep==0 else[8,4,2,1]):

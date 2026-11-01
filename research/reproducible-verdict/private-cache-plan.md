@@ -12,3 +12,8 @@ timing but inside the finite shared-lock task. Whole1690s/outer1740s,
 pernative180s/no-M/P0-7/14GiBguard plus reserve within M16.
 Runtime copies stay outsideGit; remove only these copies after preserved
 results and an own-directory cleanup record. Prepared, not launched.
+
+v6actually failed before candidate evaluation: omitted .ir.sig executable
+signatures. Original failure preserved. v8includes signatures, first qualifies
+the copied runtime, then checks whole-input residency after treatment. It may
+link only own retired v6copies; never the live original inputs. v8actually queued.

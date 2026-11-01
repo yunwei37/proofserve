@@ -1,0 +1,88 @@
+{
+  "classification": "harness runtime-input closure incomplete before any candidate",
+  "candidate_rows": 0,
+  "terminal": {
+    "state": "partial",
+    "cells": [
+      {
+        "key": "private-r0-j1-cold",
+        "argv": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=5",
+          "180",
+          "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/sdk/bin/lean",
+          "-j1",
+          "--run",
+          "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/Probe.lean",
+          "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/private-r0-j1-cold.json"
+        ],
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "measured": true,
+        "wall_limit_s": 180,
+        "own_rss_sample_stop_gib": 14,
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-290803-private-r0-j1-cold.scope",
+        "cgroup_charged_memory_max_gib": 14,
+        "pid": 290937,
+        "birth": "761993790",
+        "returncode": 1,
+        "wall_s": 12.078959802165627,
+        "user_s": 1.084915,
+        "system_s": 1.111723,
+        "peak_rss_kib": 1458552,
+        "native_retired": true,
+        "sampled_tree_peak_bytes": 1495199744,
+        "stop_reasons": [],
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+        "charged_peak_bytes": 2000891904,
+        "cgroup_cpu_stat": "usage_usec 2195834\nuser_usec 1083565\nsystem_usec 1112269\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "cgroup_usage_s": 2.195834,
+        "cgroup_user_s": 1.083565,
+        "cgroup_system_s": 1.112269,
+        "wait4_usage_complete": true,
+        "cgroup_retired": true
+      },
+      {
+        "error": "RuntimeError('private runtime native cell failed')"
+      }
+    ],
+    "conditions": [
+      {
+        "pages": 2209158,
+        "resident": 929,
+        "fraction": 0.0004205222080086621,
+        "label": "private-r0-j1-cold",
+        "scope": "private SDK/lib and Mathlib runtime inputs; system libc/page tables not globally evicted"
+      }
+    ],
+    "wall_s": 79.98975696135312
+  },
+  "stdout": "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/Probe.lean:37:11: error: failed to compile definition, compiler IR check failed at `Lean.collectAxioms._at_.main.spec_8._redArg`. Error: depends on declaration '_private.Lean.Util.CollectAxioms.0.Lean.CollectAxioms.runM._redArg', which has no executable code; consider marking definition as 'noncomputable'\n",
+  "stderr": "",
+  "prepared": {
+    "files": 72501,
+    "bytes": 8844052649,
+    "source_sdk": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux",
+    "copied_sdk": "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/sdk",
+    "copied_imports": [
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/import0",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/import1",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/import2",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/import3",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/import4",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/import5",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/import6",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/import7",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v6/runtime/import8"
+    ]
+  }
+}

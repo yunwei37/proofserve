@@ -36,3 +36,8 @@ monotonicity; only observer/history differences have been demonstrated.
 Thus evidence does not support 'only mathematics needs deterministic budgeting'.
 Actual computation-stage comparison is compile-qualified/prepared, not executed
 at this report. Full source candidates and kernel-only replays remain distinct.
+
+Separate v2re-analysis: among the B1000accepted observations, all184matched
+B3000observations also accept, across1/2/4/8threads/bothfrontends/threeobservers.
+Do not add this to100as independent source evidence; many source/configurations
+repeat and the five-level point has a distinct protocol.

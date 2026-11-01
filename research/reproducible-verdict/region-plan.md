@@ -33,3 +33,9 @@ loops,2reversed orders, shared imported base with fixed main module.
 It preserves per-request result order and records actual TIDs. These are new
 matched batch conditions, not pooled with v2sequential inputs. Source compilation
 is first inside the future task; no extra Lean process started while v6queued.
+
+Envelope selection explicitly includes the previously measured6.16s original
+envelopeExpB16_calc._proof_1_1 target, plus7lexicographic decide-kernel objects.
+Missing that exact stored name aborts instead of silently substituting tiny goals.
+The kernel source has therefore changed before first execution; the future task
+compile-checks it again before native runs. It remains prepared, not measured.

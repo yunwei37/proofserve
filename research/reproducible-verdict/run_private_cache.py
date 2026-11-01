@@ -4,12 +4,12 @@ Preparatory copying/advice is outside native timing, but the whole finite task
 owns the shared P-core lock. Source/runtime bytes are not rebuilt or modified.
 """
 from pathlib import Path
-import os,json,time,shutil,sys,mmap,ctypes
+import os,json,time,shutil,sys,mmap,ctypes,subprocess
 import native
 ROOT=Path(__file__).resolve().parent
 def needed(p):
  n=p.name
- return ".olean"in n or n.endswith(".ir")or ".so"in n
+ return ".olean" in n or ".ir" in n or ".so" in n
 def residency(path):
  size=path.stat().st_size
  if not size:return (0,0)
@@ -38,9 +38,19 @@ def prepare():
   lean_path.append(str(dest))
   for p in root.rglob('*'):
    if p.is_file()and needed(p):pairs.append((p,dest/p.relative_to(root)))
+ previous=ROOT.parent/"reproducible-verdict-v6"/"runtime"
+ prior_terminal=json.loads((previous.parent/"private-terminal.json").read_text())
+ if not all(x.get("native_retired",True)for x in prior_terminal["cells"]):
+  raise RuntimeError("old runtime may still be live")
+ required=sum(((p.stat().st_size+4095)//4096)*4096 for p,_ in pairs)+len(pairs)*512+64*1024**2
+ if shutil.disk_usage(ROOT).free<required:raise RuntimeError("insufficient PVC capacity for private runtime preparation")
  for source,target in pairs:
   target.parent.mkdir(parents=True,exist_ok=True)
-  shutil.copyfile(source,target);files.append(target)
+  prior=previous/target.relative_to(ROOT/"runtime")
+  if prior.exists()and prior.stat().st_size==source.stat().st_size:
+   os.link(prior,target)  # Only our retired private copy, NEVER a live source inode.
+  else:shutil.copyfile(source,target)
+  files.append(target)
   # Different inode is necessary: advice must not evict another lane's input.
   if source.stat().st_dev==target.stat().st_dev and source.stat().st_ino==target.stat().st_ino:
    raise RuntimeError('runtime copy unexpectedly shares source inode')
@@ -60,12 +70,27 @@ def treat(files,kind):
     os.posix_fadvise(f.fileno(),0,0,os.POSIX_FADV_DONTNEED)
    else:
     while f.read(8*1024*1024):pass
+ # Verify after ALL files are treated, rather than immediate per-file hits.
+ for p in files:
   n,r=residency(p);pages+=n;resident+=r
  return dict(pages=pages,resident=resident,fraction=resident/max(1,pages))
 def main():
  begin=time.monotonic();records=[];conditions=[]
  try:
-  sdk,files,env=prepare()
+  prep=subprocess.run(["taskset","-c","8-15","timeout","--kill-after=5","300",
+    sys.executable,str(Path(__file__).resolve()),"--prepare-only"])
+  if prep.returncode:raise RuntimeError("bounded preparation failed")
+  prepared=json.loads((ROOT/"runtime-prepared.json").read_text())
+  sdk=Path(prepared["copied_sdk"])
+  files=[Path(x)for x in json.loads((ROOT/"runtime-files.json").read_text())]
+  env=native.environment()
+  env.update(LEAN_SYSROOT=str(sdk),LEAN_PATH=':'.join(prepared["copied_imports"]+[str(sdk/"lib/lean")]))
+  qual=native.run("runtime-qualification",[sdk/"bin/lean","-j1","--run",
+    ROOT/"Probe.lean",ROOT/"qualification.json"],limit=90,measured=True,env=env)
+  records.append(qual)
+  rr=[json.loads(x[6:])for x in(ROOT/"runs/runtime-qualification/stdout").read_text().splitlines()if x.startswith("REPRO ")]
+  if qual["returncode"]or [x["verdict"]for x in rr]!=["accepted","lean_error","incomplete"]*2:
+   raise RuntimeError("private runtime qualification failed")
   for rep in [0,1]:
    for threads in [1,8]:
     for kind in (['cold','warm']if rep==0 else['warm','cold']):
@@ -88,4 +113,6 @@ def main():
  (ROOT/'private-terminal.json').write_text(json.dumps(dict(state=state,cells=records,
    conditions=conditions,wall_s=time.monotonic()-begin),indent=2))
  return 0 if state=='complete'else 1
-if __name__=='__main__':raise SystemExit(main())
+if __name__=='__main__':
+ if sys.argv[1:]==["--prepare-only"]:prepare()
+ else:raise SystemExit(main())

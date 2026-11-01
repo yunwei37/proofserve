@@ -55,6 +55,11 @@ unsafe def main (args : List String) : IO UInt32 := do
     unless v.value.cleanupAnnotations.getAppFn.isConstOf `of_decide_eq_true do continue
     targets := targets.push v
   targets := targets.qsort fun a b => a.name.toString < b.name.toString
+  if moduleText == "OAI.Analysis.Triangular.Envelope.EnvelopePsiB" then
+    let priority := "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1".toName
+    let some heavy := targets.find? (fun x => x.name == priority)
+      | throw <| IO.userError "retained measured-heavy Envelope target missing"
+    targets := #[heavy] ++ targets.filter (fun x => x.name != priority)
   targets := targets.extract 0 (min 8 targets.size)
   unless targets.size == 8 do throw <| IO.userError s!"need8 actual targets, got{targets.size}"
   for v in targets do
