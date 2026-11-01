@@ -1,0 +1,23 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v5",
+  "rows": 256,
+  "pairs": 192,
+  "changed_opening": 26,
+  "changed_theorem": 83,
+  "changed_terminal": 0,
+  "verdict_differences": 0,
+  "error_differences": 3,
+  "axiom_differences": 0,
+  "maximum_theorem_relative_range": 0.02333868257117224,
+  "accepted_maximum_theorem_relative_range": 0.02333868257117224,
+  "actual_TIDs": {
+    "r0-j1": 1,
+    "r0-j2": 2,
+    "r0-j4": 4,
+    "r0-j8": 8,
+    "r1-j1": 1,
+    "r1-j2": 2,
+    "r1-j4": 4,
+    "r1-j8": 8
+  }
+}
