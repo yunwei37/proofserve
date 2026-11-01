@@ -37,6 +37,12 @@ def main():
                 "taskset", "-c", "0-7", "python3", "-u", str(point/"runner.py"),
                 "--point", str(point), "--index", str(index), "--arm", "noM",
                 "--wall-limit", str(min(case["self_wall_s"], remaining-10))]
+            # Observe the shared lock before each separate request. Joining
+            # stock flock does not promise strict FIFO or a new priority policy.
+            lock_stat = Path("/workspaces/.agent-state/gpu-smt-captures/pcore.lock").stat()
+            lock_token = f"{os.major(lock_stat.st_dev):02x}:{os.minor(lock_stat.st_dev):02x}:{lock_stat.st_ino}"
+            observed_lock_lines = [line for line in Path("/proc/locks").read_text().splitlines()
+                                   if lock_token in line.split()]
             submitted = time.monotonic()
             with (point/(str(index).zfill(4)+"-launcher.log")).open("w") as log:
                 child = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT)
@@ -44,7 +50,9 @@ def main():
                     birth_ticks=Path("/proc", str(child.pid), "stat").read_text().rsplit(")", 1)[1].split()[19],
                     utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                     submitted_monotonic_s=submitted, command=command,
-                    one_outstanding_W_request=True)
+                    one_outstanding_W_request=True,
+                    lock_observation_before_submission=observed_lock_lines,
+                    existing_waiters_observed=any("->" in line for line in observed_lock_lines))
                 (point/"current.json").write_text(json.dumps(current)+"\n")
                 code = child.wait()
             if code != 0:

@@ -1,0 +1,14 @@
+{
+  "UTC": "2026-11-01T18:42:41.115086+00:00",
+  "target": "OAI.Combinatorics.Progressions.Estimates.PreparedModularCanonicalDetectorPositive",
+  "original_missing_draws": 11,
+  "internal_closure": 3451,
+  "ready_closure": 0,
+  "uncached_closure": 3451,
+  "next_jobs": 128,
+  "source_copy_bytes": 489833,
+  "native_launched": false,
+  "active_hard36_unchanged": true,
+  "original_sample_membership_unchanged": true,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-deep-original-next128-prepared-20261101"
+}
