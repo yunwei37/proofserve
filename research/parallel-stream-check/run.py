@@ -13,7 +13,7 @@ def events(key):
  return [json.loads(x) for x in (ROOT/'runs'/key/'stdout').read_text().splitlines() if x.startswith('{')]
 def controls():
  os.sched_setaffinity(0,set(range(8,16)))
- d=ROOT/'fixtures';d.mkdir(exist_ok=True);e=env()
+ d=ROOT/'fixtures';d.mkdir(exist_ok=True);e=env();e['LEAN_PATH']=str(d)+':'+str(SDK/'lib/lean')
  cases={
  'DupA':'namespace Shared\ntheorem t : True := True.intro\nend Shared\n',
  'DupB':'namespace Shared\ntheorem t : True := True.intro\nend Shared\n',
@@ -29,9 +29,25 @@ def controls():
   p=d/(mod+'.lean');p.write_text('prelude\nimport Init.Prelude\n'+text)
   r=run('fixture-'+mod,[SDK/'bin/lean','--root='+str(d),'-o',d/(mod+'.olean'),p],60,False,e)
   if r['returncode']:raise RuntimeError('compile fixture')
+  # Deliberately cyclic raw proof data, never a successfully compiled proof.
+ ee=e.copy();ee['PARALLEL_CONTROL_OUT']=str(d)
+ rr=run('generate-raw-cycle',[SDK/'bin/lean','--run',ROOT/'source/RawControls.lean'],90,False,ee)
+ if rr['returncode']:raise RuntimeError('raw control generator failed')
+ os.sched_setaffinity(0,set(range(8)))
+ # Preserve a red native result against the previously measured v4 binary.
+ prior=Path('/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v4/parallel-stream')
+ if prior.exists():
+  red=run('hidden-cycle-v4-red',[prior,'parallel','none','DupA','Cyclic'],90,False,e)
+  if red['returncode']!=0:raise RuntimeError('expected prior hidden-cycle acceptance not reproduced')
+ else:
+  (ROOT/'historical-red-unavailable.json').write_text(json.dumps(dict(reason='historical v4 binary absent; current rejection controls still required')))
+ isolated=run('hidden-cycle-native-oracle',[ROOT/'parallel-stream','one','none','Cyclic'],90,False,e)
+ if isolated['returncode']!=1 or not any(x.get('event')=='reject'for x in events('hidden-cycle-native-oracle')):
+  raise RuntimeError('isolated native rejection control did not qualify')
  controls=[
  ('ordinary','none',None,['DupA','DupB'],True,None),
  ('duplicate-local-deps','none',None,['DupA','DupDeps'],True,None),
+ ('hidden-cycle','none',None,['DupA','Cyclic'],False,None),
  ('corrupt','bvar','DupB',['DupA','DupB'],False,None),
  ('sibling','sibling','ExtraB',['ExtraA','ExtraB'],False,None),
  ('definitions','none',None,['DefA','DefB'],True,None),
@@ -52,6 +68,12 @@ def controls():
    rows.append(dict(key=key,expected_accept=expected,returncode=rr['returncode'],explicit_reject=reject,qualified=ok))
    (ROOT/'controls.json').write_text(json.dumps(rows,indent=2))
    if not ok:raise RuntimeError('control failed '+key)
+ ce=e.copy();ce.update(PARALLEL_WORKERS='8',PARALLEL_CURVE_MODULES='Waves')
+ cr=run('curve-clock-control',[ROOT/'parallel-stream','parallel','none','Waves'],90,False,ce)
+ cells=[x for x in events('curve-clock-control')if x.get('event')=='curve_cell']
+ if cr['returncode']or len(cells)!=5 or not all(int(x['cpu_ns'])>0 and int(x['elapsed_ns'])>0 for x in cells):
+  raise RuntimeError('curve/UInt64 clock control failed')
+ (ROOT/'curve-clock-qualified.json').write_text(json.dumps(dict(cells=5,not_a_performance_result=True)))
  (ROOT/'controls-qualified.json').write_text(json.dumps(dict(cases=len(rows),utc=time.strftime('%FT%TZ',time.gmtime()))))
 def matrix():
  assert (ROOT/'controls-qualified.json').exists()

@@ -20,17 +20,21 @@ Unsafe/partial exclusions match upstream replay. Inductive/constructor/recursor/
 quotient modules and cyclic plans currently fall back to upstream replay.
 Context conflicts retain O's module-local check. Compatible duplicate theorems
 with differing proof bodies are checked under a collision-checked fresh name;
-self-reference or different types take the module-local path. They never overwrite
+direct/indirect self-reference or different types take the module-local path. They never overwrite
 an already checked name. Sibling-context, corrupt duplicate, and conflicting
 definition controls are included.
 
-The default has no chunk rewriting yet. Existing large-goal results are in
-`research/chunked-kernel-check/`; integrating their certificate is pending,
-rather than implied by the declaration implementation.
+The optional certificate generator nominates all ten measured >=1s Fin31
+Envelope helpers and emits40 untrusted files/150 terms. The checker rechecks
+support, pooled chunks and ordered merges with the original kernel.
+Generation is not native numeric acceptance or speed; those curves are pending.
 
 Raw data live on the PVC, outside Git:
-`/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v3`.
-16 minimal-import native controls qualify; no full-closure speedup is claimed yet.
+`/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v10`.
+20 native controls and five mock curve paths qualify. A real indirect-cycle
+counterexample accepted by v4 is now rejected. The 18-cell full-closure table in
+[math-results.md](math-results.md) is historical positive-input v4 evidence,
+not final repaired-version throughput. See [protocol.md](protocol.md).
 All measured cells use the existing P0-7 lock, no Lean -M, sampled own RSS plus
 14GiB external cgroup cap inside the lane's 16GiB budget. Original per-module
 source build cost and the serial stream are different operations and are labeled

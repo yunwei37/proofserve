@@ -28,6 +28,20 @@
     "qualified": true
   },
   {
+    "key": "hidden-cycle-1",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  },
+  {
+    "key": "hidden-cycle-8",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  },
+  {
     "key": "corrupt-1",
     "expected_accept": false,
     "returncode": 1,

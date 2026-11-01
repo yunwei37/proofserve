@@ -55,3 +55,14 @@ in every cell here; its pending implementation cannot explain these measurements
 
 Raw results/source/segments/memory and full module accept events: `/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v4`.
 The earlier v3 real-closure rejection and initial stopped control are retained.
+
+
+## Subsequent negative control and version boundary
+
+Frozen v4 accepts an invalid indirect local proof cycle if an earlier sibling
+already supplied a compatible theorem. Isolated original-kernel module replay
+rejects that raw input. This was actually reproduced, not just a source concern.
+The combined prototype's cycle guard rejects it at workers1/8 and passes20
+native controls. Thus v4 is historical positive-input performance evidence,
+**not final safe-prototype throughput**. Fresh complete repaired-version
+library measurements remain pending.

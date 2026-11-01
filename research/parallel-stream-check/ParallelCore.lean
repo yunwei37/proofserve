@@ -6,6 +6,8 @@ import Lean
 import Std.Sync.Mutex
 open Lean
 
+@[extern "ps_process_ns"] opaque processNs : IO UInt64
+
 /-- Structural comparison copied read-only from O's audited reader. -/
 def sameQuotKind (a b : QuotKind) : Bool :=
   match a,b with
@@ -28,6 +30,15 @@ def sameConstant (a b : ConstantInfo) : Bool :=
   | .ctorInfo a,.ctorInfo b => a==b
   | .recInfo a,.recInfo b => a==b
   | _,_ => false
+
+/-- Prepared certificate payloads are untrusted: every helper/chunk/merge goes
+through the original kernel in the current streaming context. -/
+structure ChunkBundle where
+  reference : ConstantInfo
+  support : Std.HashMap Name ConstantInfo
+  children : Array ConstantInfo
+  mergeName : Name
+  k : Nat
 
 private structure CheckedToken where
   frontier : Kernel.Environment
@@ -115,40 +126,104 @@ private def worker (base : Kernel.Environment) (plan : Plan)
     results := results.push (← checkOne base plan.constants[index]! index)
   return results
 
-/-- A checked frontier is committed in original input-index order, after all jobs finish. -/
+private def checkedBatch (base : Kernel.Environment) (plan : Plan)
+    (wave : Array Nat) (workers : Nat) (fault : String) : IO Kernel.Environment := do
+  let queue ← Std.Mutex.new 0
+  let mut tasks := #[]
+  for _ in [:min workers wave.size] do
+    tasks := tasks.push (← IO.asTask <| worker base plan wave queue)
+  let mut tokens : Array CheckedToken := #[]
+  let mut error : Option IO.Error := none
+  for task in tasks do
+    match task.get with
+    | .ok values => tokens := tokens ++ values
+    | .error e => if error.isNone then error := some e
+  if let some e := error then throw e
+  if fault=="duplicate" && tokens.size>1 then
+    if let some second := tokens[1]? then tokens := tokens.set! 0 second
+  tokens := tokens.qsort fun a b => a.index < b.index
+  unless tokens.map (·.index) == wave do
+    throw <| IO.userError "invariant: base-index cover differs"
+  for token in tokens do
+    unless sameConstant token.info plan.constants[token.index]! do
+      throw <| IO.userError "invariant: base payload does not match job"
+    if (base.find? token.info.name).isSome then
+      throw <| IO.userError "invariant: base commit would overwrite constant"
+  let checked ← if fault=="stale" && !tokens.isEmpty then do
+    let other ← mkEmptyEnvironment
+    commitChecked other.toKernelEnv tokens
+    else commitChecked base tokens
+  return checked
+
+partial def axiomsOf (env : Kernel.Environment) (todo : List Name) (seen : NameSet := {})
+    (axioms : NameSet := {}) : NameSet :=
+  match todo with
+  | [] => axioms
+  | n :: rest =>
+    if seen.contains n then axiomsOf env rest seen axioms
+    else match env.find? n with
+    | none => axiomsOf env rest (seen.insert n) axioms
+    | some (.axiomInfo _) => axiomsOf env rest (seen.insert n) (axioms.insert n)
+    | some ci => axiomsOf env (ci.getUsedConstantsAsSet.toList ++ rest) (seen.insert n) axioms
+
+private def checkChunkedWave (base : Kernel.Environment)
+    (parents : Array (ConstantInfo × ChunkBundle)) (workers : Nat) : IO Kernel.Environment := do
+  let before ← IO.monoNanosNow
+  let mut support := {}
+  let mut children := #[]
+  for (original,bundle) in parents do
+    unless sameConstant original bundle.reference do
+      throw <| IO.userError "invariant: chunk input does not match pinned reference"
+    for (name,ci) in bundle.support do
+      if let some old := base.find? name then
+        unless sameConstant old ci do throw <| IO.userError "certificate namespace conflict"
+      else if let some old := support[name]? then
+        unless sameConstant old ci do throw <| IO.userError "certificate support conflict"
+      else support := support.insert name ci
+    children := children ++ bundle.children
+  let mut checked ← base.replay support
+  let prepared ← IO.monoNanosNow
+  let plan : Plan := {constants:=children,waves:=#[]}
+  -- All eligible parents' chunks share one pool; never nested k-by-k workers.
+  checked ← checkedBatch checked plan (Array.range children.size) workers "none"
+  let childrenDone ← IO.monoNanosNow
+  let mut merged := #[]
+  for (original,bundle) in parents do
+    let .thmInfo thm := original | throw <| IO.userError "chunk target is not a theorem"
+    let value := mkAppN (mkConst bundle.mergeName) (bundle.children.map (fun ci => mkConst ci.name))
+    merged := merged.push (ConstantInfo.thmInfo {thm with value})
+  checked ← checkedBatch checked {constants:=merged,waves:=#[]} (Array.range merged.size) 1 "none"
+  let axioms := axiomsOf checked (parents.toList.map (·.1.name))
+  unless axioms.toList.all (· == `propext) do
+    throw <| IO.userError s!"chunk unexpected axiom dependency: {axioms.toList}"
+  IO.println <| Json.compress <| Json.mkObj [
+    ("event",toJson "chunk_work"),("constants",toJson (parents.map (·.1.name.toString))),
+    ("parents",toJson parents.size),("children",toJson children.size),("workers",toJson workers),
+    ("support_ns",toJson (prepared-before)),("chunks_ns",toJson (childrenDone-prepared)),
+    ("merge_audit_ns",toJson ((← IO.monoNanosNow)-childrenDone)),
+    ("axioms",toJson (axioms.toList.map Name.toString)),("sorry",toJson false)]
+  return checked
+
+/-- Original mathematical checker, ordered checked-frontier commits. Optional
+chunking is confined to one exact prepared constant; unknown inputs are replayed. -/
 def parallelReplay (data : ModuleData) (map : Std.HashMap Name ConstantInfo)
-    (base : Kernel.Environment) (workers : Nat) (fault : String := "none") :
+    (base : Kernel.Environment) (workers : Nat) (fault : String := "none")
+    (chunks : Array ChunkBundle := #[]) :
     IO (Kernel.Environment × Nat × Nat × String) := do
   let some plan := makePlan data map |
     return (← base.replay map,0,0,"upstream_complex_or_cycle")
   let mut checked := base
   let mut jobsDone := 0
   for wave in plan.waves do
-    let queue ← Std.Mutex.new 0
-    let mut tasks := #[]
-    for _ in [:min workers wave.size] do
-      tasks := tasks.push (← IO.asTask <| worker checked plan wave queue)
-    let mut tokens : Array CheckedToken := #[]
-    let mut error : Option IO.Error := none
-    for task in tasks do
-      match task.get with
-      | .ok values => tokens := tokens ++ values
-      | .error e => if error.isNone then error := some e
-    if let some e := error then throw e
-    if fault=="duplicate" && tokens.size>1 then
-      if let some second := tokens[1]? then tokens := tokens.set! 0 second
-    tokens := tokens.qsort fun a b => a.index < b.index
-    unless tokens.map (·.index) == wave do
-      throw <| IO.userError "invariant: checked-index cover differs"
-    for token in tokens do
-      unless sameConstant token.info plan.constants[token.index]! do
-        throw <| IO.userError "invariant: checked payload does not match job"
-      if (checked.find? token.info.name).isSome then
-        throw <| IO.userError "invariant: checked commit would overwrite constant"
-    if fault=="stale" && !tokens.isEmpty then
-      let other ← mkEmptyEnvironment
-      checked ← commitChecked other.toKernelEnv tokens
-    else checked ← commitChecked checked tokens
+    let chunkJobs := wave.filter fun i => chunks.any (fun b => sameConstant plan.constants[i]! b.reference)
+    let plainJobs := wave.filter fun i => !chunkJobs.contains i
+    checked ← checkedBatch checked plan plainJobs workers fault
+    let mut parents := #[]
+    for i in chunkJobs do
+      let some bundle := chunks.find? (fun b => sameConstant plan.constants[i]! b.reference) |
+        throw <| IO.userError "missing chunk bundle"
+      parents := parents.push (plan.constants[i]!,bundle)
+    if !parents.isEmpty then checked ← checkChunkedWave checked parents workers
     jobsDone := jobsDone + wave.size
   return (checked,plan.waves.size,jobsDone,"parallel")
 
