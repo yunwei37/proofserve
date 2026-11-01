@@ -1,5 +1,5 @@
 # Decoupled native checking: measured status
-Updated 2026-11-01T02:53:08Z. Review: self-review.
+Updated 2026-11-01T03:26:24Z. Review: self-review.
 Raw observations: /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031. P cores0-7; shared lock; no Lean -M;
 11.875GiB child cgroup plus128MiB parent reserve within O12GiB.
 Fixed native kernel and compiler: Lean4.34.1, release5045d0056413266e57c625dcd7c365b10e377c52.
@@ -7,7 +7,7 @@ Fixed native kernel and compiler: Lean4.34.1, release5045d0056413266e57c625dcd7c
 ## Complete closure accounting
 - math (Mathlib.Data.Nat.Basic): constructed 1330/1330; source compiler work 622.379412s; matched stream 65.69264411274344; ratio 0.10555079879889155; matched oracle modules 1330; parity complete=True.
 - compute-grid (OAI.Analysis.PlanarPacking.Grid): constructed 3793/3793; source compiler work 3878.706740s; matched stream 563.082232083194; ratio 0.14517267478265647; matched oracle modules 3793; parity complete=True.
-- compute-amplitudes (OAI.Analysis.PlanarPacking.Certificate.Amplitudes): constructed 4201/5083; source compiler work 4465.889275s; matched stream ; ratio ; matched oracle modules 3793; parity complete=False.
+- compute-amplitudes (OAI.Analysis.PlanarPacking.Certificate.Amplitudes): constructed 5011/5083; source compiler work 5936.985569s; matched stream ; ratio ; matched oracle modules 3793; parity complete=False.
 - ordinary-oai (OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion): constructed 3331/3333; source compiler work 2554.724902s; matched stream ; ratio ; matched oracle modules 3239; parity complete=False.
 
 A blank ratio is pending, not zero. The primary numerator consumes the exact
