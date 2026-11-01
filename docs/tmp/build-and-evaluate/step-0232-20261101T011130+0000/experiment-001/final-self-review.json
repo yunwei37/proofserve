@@ -1,0 +1,16 @@
+{
+  "all_eight_pages_visually_self_reviewed": true,
+  "contacts": [
+    "contact1.jpg",
+    "contact2.jpg"
+  ],
+  "no_overlap_or_clipping_observed": true,
+  "title_abstract_four_RQ_and_section_structure_unchanged": true,
+  "new_table_and_RQ2_text_checked": true,
+  "root_current_links_resolve": true,
+  "exactly_two_root_markdown_reports": true,
+  "all_gzip_snapshots_readable": true,
+  "pdf_bytes": 106215,
+  "current_pdf_identical_to_rendered": true,
+  "independent_review": false
+}

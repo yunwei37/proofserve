@@ -1,0 +1,47 @@
+{
+  "argv": [
+    "/workspaces/.agent-state/gpu-smt-paper-recovery-20261030/tectonic",
+    "--keep-logs",
+    "--keep-intermediates",
+    "--outdir",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0232-20261101T011130+0000-paper",
+    "main.tex"
+  ],
+  "returncode": 0,
+  "elapsed_s": 2.134685100056231,
+  "own_tree_sample_peak_rss_bytes": 188780544,
+  "compiler_AS_bytes": 3221225472,
+  "root_share_bytes": 4294967296,
+  "CPU_affinity": [
+    22,
+    23
+  ],
+  "pod": "coder-81668d0b-bcba-4058-a2e6-473350357c52-5ff9c6487-j588z",
+  "node": "phobos-vt",
+  "output_directory": "/workspaces/.agent-state/gpu-smt-captures/step-0232-20261101T011130+0000-paper",
+  "retired": true,
+  "signal_watchdog_claimed": false,
+  "samples": [
+    {
+      "elapsed_s": 0.002761218696832657,
+      "rss_bytes": 3743744,
+      "pids": [
+        180749
+      ]
+    },
+    {
+      "elapsed_s": 1.00313641410321,
+      "rss_bytes": 188780544,
+      "pids": [
+        180749
+      ]
+    },
+    {
+      "elapsed_s": 2.0035781441256404,
+      "rss_bytes": 53805056,
+      "pids": [
+        180749
+      ]
+    }
+  ]
+}

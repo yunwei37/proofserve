@@ -1,0 +1,382 @@
+{
+  "kernel_rejections": [
+    {
+      "key": "functional-stream-bvar",
+      "reject": {
+        "error": "while replaying declaration 'Nat.lt_or_gt_of_ne':\n(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+        "event": "reject",
+        "module": "Init.Data.Nat.Basic",
+        "mutation": "bvar"
+      }
+    },
+    {
+      "key": "functional-stream-unknown",
+      "reject": {
+        "error": "while replaying declaration 'Nat.not_add_one_le_zero':\n(kernel) unknown constant '__decoupled_missing_proof_constant'",
+        "event": "reject",
+        "module": "Init.Data.Nat.Basic",
+        "mutation": "unknown"
+      }
+    },
+    {
+      "key": "functional-stream-sort",
+      "reject": {
+        "error": "while replaying declaration 'Nat.succ_add':\n(kernel) declaration type mismatch, 'Nat.succ_add' has type\n  Type\nbut it is expected to have type\n  (n m : Nat) \u2192\n    @Eq Nat (@HAdd.hAdd Nat Nat Nat (@instHAdd Nat instAddNat) (Nat.succ n) m)\n      (Nat.succ (@HAdd.hAdd Nat Nat Nat (@instHAdd Nat instAddNat) n m))",
+        "event": "reject",
+        "module": "Init.Data.Nat.Basic",
+        "mutation": "sort"
+      }
+    },
+    {
+      "key": "functional-one-bvar",
+      "reject": {
+        "error": "while replaying declaration 'Nat.lt_or_gt_of_ne':\n(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+        "event": "reject",
+        "module": "Init.Data.Nat.Basic"
+      }
+    },
+    {
+      "key": "functional-one-unknown",
+      "reject": {
+        "error": "while replaying declaration 'Nat.not_add_one_le_zero':\n(kernel) unknown constant '__decoupled_missing_proof_constant'",
+        "event": "reject",
+        "module": "Init.Data.Nat.Basic"
+      }
+    },
+    {
+      "key": "functional-one-sort",
+      "reject": {
+        "error": "while replaying declaration 'Nat.succ_add':\n(kernel) declaration type mismatch, 'Nat.succ_add' has type\n  Type\nbut it is expected to have type\n  \u2200 (n m : Nat), Eq (instHAdd.hAdd n.succ m) (instHAdd.hAdd n m).succ",
+        "event": "reject",
+        "module": "Init.Data.Nat.Basic"
+      }
+    }
+  ],
+  "stock_cli_positive": [
+    {
+      "key": "functional-oracle-000",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Prelude"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-000.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 50077696,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-001",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Coe"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-001.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 49856512,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-002",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Notation"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-002.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 50302976,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-003",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Tactics"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-003.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 50073600,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-004",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.SizeOf"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-004.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 50032640,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-005",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Core"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-005.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 50114560,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-006",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.SimpLemmas"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-006.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 51683328,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-007",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Data.Zero"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-007.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 50315264,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-008",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Data.NeZero"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-008.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 49844224,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-009",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Grind.Attr"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-009.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 51658752,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-010",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Grind.Interactive"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-010.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 49840128,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-011",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Grind.Tactics"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-011.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 50118656,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    {
+      "key": "functional-oracle-012",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "120",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+        "-v",
+        "Init.Data.Nat.Basic"
+      ],
+      "affinity": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-decoupled-135175-functional-oracle-012.scope",
+      "memory_max_bytes": 12884901888,
+      "measured": false,
+      "limit_s": 120,
+      "returncode": 0,
+      "cgroup_peak_bytes": 51912704,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    }
+  ]
+}

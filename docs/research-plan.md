@@ -23,10 +23,10 @@ a pure final-kernel clock or generation-time ratio.
 - W: [workloads/](../workloads/W-status.md). Preserve42draws/inclusion weights;
   noMcosts and uncertainty determine weights. Missing hard draws stay missing.
   Public generated outputs only, no generation or new competitor reproduction.
-- O: [decoupled checker](../research/decoupled-check/StreamCheck.lean).
+- O: [decoupled checker](../research/decoupled-check/README.md).
   One-process streaming with stock-kernel acceptance, comparable replay scopes,
   total import/init/finalization costs and differential diagnostic checks.
-- M: [chunked checker](../research/chunked-kernel-check/plan.json).
+- M: [chunked checker](../research/chunked-kernel-check/README.md).
   Separate monolithic k0, same decomposition k1 and k2/4/8.
   Untrusted code generation may propose chunks; original kernel checks each
   claim and the complete assembly. Include dependencies, axioms and memory.
@@ -43,7 +43,12 @@ Multi-core results do not constitute multi-machine results.
 
 All current native measurements omit-M; only external cgroup memory protection.
 Legacy-M75–94%/~2%profile and1.28replay/build values remain historical motivation.
-Current replacements are missing; never scale old costs or fill missing strata.
+Current population/profile replacements remain missing; never scale old costs
+or fill missing strata. The first complete same-artifact Mathlib control is
+[1330modules/10.56%checking-to-construction](../research/decoupled-check/math-closed-result.md).
+AI-generated closures, repeated comparison and causal component attribution
+remain open. M initial timing has unequal output boundaries; its corrected
+matched-output matrix is still partial. Do not infer scaling from it.
 Pin SDK/imports/axioms, keep diagnostics and compare complete native acceptance.
 The original kernel/trust base remains the acceptance authority.
 

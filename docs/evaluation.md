@@ -22,7 +22,7 @@ nativeP0–7/sharedlock. No new agents. CPU oracle frozen; narrowGPU routes clos
 | RQ | Two-regime characterization question | Current frontier |
 |---|---|---|
 | RQ1 | Cost locations and runtime-weighted regime prevalence | matchedlexicalcensus complete; noM29/42costs, fullphaseweights missing |
-| RQ2 | Why cheap mathematical checking isn't cheap independent verification | samekernel replay scopes known; matchedstreaming/import/coupling costs missing |
+| RQ2 | Why cheap mathematical checking isn't cheap independent verification | 1330module Mathlib matched stream/source10.56%; AIclosures/import-coupling attribution missing |
 | RQ3 | Original-kernel computation across cores/cluster | M18leafprototype inspected, complete performance/differential/cluster results missing |
 | RQ4 | Build/outcome/axiom meaning of verified | defaultroot33.30%siteomission, historicalsetting/observer sensitivity; axiomclosure missing |
 
@@ -87,3 +87,27 @@ CPU602.627562s/nativewall367.023781s. PurposefulGrid/Amplitudes notweighted.
 This supersedes earliercurrentmissing coverage at229, notthe old-Mclocks.
 Runtimephaseweights, matchedstreaming andparallel/cluster results remainmissing.
 Source/prototypecode inspected/frozen withouteditingownerimplementations.
+
+## Same-artifact Mathlib closure — step0232
+[Root report](tmp/build-and-evaluate/step-0232-20261101T011130+0000/step-report.md), **自审**.
+[O result](../research/decoupled-check/math-closed-result.md).
+Full Mathlib.Data.Nat.Basic dependency closure1330modules independently reduced:
+622.379412191s summed source compiler subprocess wall versus65.692644113s
+single-process matched new-object stream, check/production0.105550799.
+All1330 source calls succeed with standard olean/ilean/C outputs and no sorry
+warning;42 whole rc0 oracle chunks coverexact1330 moduleacceptances. No partial
+stdout or old distributed-cache stream substituted.132484entries,2269upstream
+unsafe/partial exclusions; three invalid proof terms rejected in both paths.
+One warm-cache pass, compiler/standard dependencies included, serial work rather
+than Lake makespan; no global AI ratio, serving gain or causal import fraction.
+Wait4 stream RSS754252KiB; raw chargedpeak79400960bytes is separately retained.
+Completed cgroup scopes gone; native results reaped, individual nativePID/birth
+not logged. Source/command/metadata/raw frozen; no additional native run.
+
+O README cached stream charged-memory unit is inconsistent:82894848bytes is
+79.055MiB, not79.055GiB. Root uses raw bytes, does not edit O files. Configured
+native limit11.875GiB is reported literally, not claimed O4GiB enforcement.
+Other O closures, fullrepeat uncertainty and exact axiomclosure remain open.
+M V3 remains partial and prior output-mismatch timings cannot yield fair scaling;
+old79.88%/23.74%shape figures superseded by direct-header correction. No leaf
+coverage or modeled module allocation is converted to measured parallel gain.

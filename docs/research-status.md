@@ -11,7 +11,8 @@ Mathematical proofs may have a cheaper checking boundary, while imports and
 elaboration coupling can obstruct cheap independent verification.
 The old75–94%/~2% user-cycle panel and1.28build/replay ratio were measured
 under-M. They motivate questions, not current noMphase shares or cost bounds.
-No-M phase weights, matched replay ratios and parallel speedups remain missing.
+No-M population phase weights, AI-closure checking ratios and matched-output
+parallel speedups remain missing. One complete Mathlib checking control is below.
 All current native measurements omit-M; memory protection is external cgroup.
 Old-Mcosts/profiles remain historical methodology, never corrected by Grid's
 ratio. [Withdrawal](tmp/build-and-evaluate/step-0229-20261031T235441+0000/step-report.md).
@@ -20,8 +21,8 @@ ratio. [Withdrawal](tmp/build-and-evaluate/step-0229-20261031T235441+0000/step-r
 | Line | Responsibility | Paths |
 |---|---|---|
 | W | Public outputs, census, original-frame noMcosts and regime prevalence | [workloads/](../workloads/W-status.md) |
-| M | Automatic chunking and original-kernel parallel checking | [chunked-kernel-check](../research/chunked-kernel-check/plan.json) |
-| O | Decoupled single-process streaming checker, engine and open-source delivery | [decoupled-check](../research/decoupled-check/StreamCheck.lean), crates/ and service docs |
+| M | Automatic chunking and original-kernel parallel checking | [chunked-kernel-check](../research/chunked-kernel-check/README.md) |
+| O | Decoupled single-process streaming checker, engine and open-source delivery | [decoupled-check](../research/decoupled-check/README.md), crates/ and service docs |
 | Root | Paper, source/count verification, evidence and user-record integration | docs/paper/, research index, status and plan |
 
 Earlier work:
@@ -44,11 +45,18 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
 - [Replay scopes](../research/profile-2026-10-31/startup-replay/repaired-replay-analysis.md):
   15stockchecker targets pass,13short median3.510s without-M. Separate
   process/trust boundary, not pure kernel or matched noMbuild/replay gain.
-- [Chunk plan](../research/chunked-kernel-check/plan.json):
-  realGrid equality,18scalar leaves, k0/1/2/4/8; code/plan do not prove
-  completed scaling, cluster delivery or unchanged accepted sets.
-- [Streaming controls](../research/decoupled-check/functional.py):
-  current implementation; native results and timing require separate reports.
+- [Chunking status](../research/chunked-kernel-check/README.md):
+  realGrid equality,18scalar leaves, k0/1/2/4/8. Initial15cells have an
+  output-boundary mismatch; correctedV3 remains partial, no matched scaling
+  claim. Earlier lexical target-header borrowing is corrected; superseded
+  shape ratios are not certified split coverage.
+- [Matched Mathlib closure](../research/decoupled-check/math-closed-result.md):
+  all1330 reconstructed modules, matched stream65.692644s / serial source
+  work622.379412s=10.55508%;42 complete oracle chunks match1330acceptances.
+  Stream132484entries/2269upstream unsafe-partial exclusions; three bad proofs
+  rejected by both paths. One Mathlib control/warm pass, not AI-population,
+  serving speedup, parallel Lake makespan or full axiom/soundness audit.
+  [Root reanalysis](tmp/build-and-evaluate/step-0232-20261101T011130+0000/step-report.md).
 
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):

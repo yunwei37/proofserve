@@ -281,15 +281,66 @@ A visited set avoids processing an already visited module within the stream.
 Checking compiled declarations is separate from source elaboration.
 The implementation also has an import-relative single-module mode and
 malformed-proof controls.
-\missing{Completed native corruption/oracle differential coverage,
-declaration/axiom coverage, lifecycle cost, memory and matched streaming ratio.}
-Code presence is not those results.
+The first complete matched control covers the dependency closure of
+Mathlib \texttt{Data.Nat.Basic}: 1,330 modules and 132,484 declaration entries.
+Every module is reconstructed with the stock Lean~4.34.1 compiler, requesting
+\texttt{.olean}, \texttt{.ilean} and C output.
+The streamed checker then consumes these newly emitted objects, rather than
+the initially distributed cache, from one empty checked kernel environment.
+All commands omit \texttt{-M} and use P0--7 with external cgroup protection.
 
-Report actual replayed modules/constants, trusted imports and unsafe/partial
-exclusions. Compare full closure with full closure; report trusted-import
-replay separately. Include stream preparation, reads and finalization.
-Adding serial module clocks and subtracting shared imports does not constitute
-a measured end-to-end result.
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lr}
+\toprule
+Complete \texttt{Nat.Basic} closure & Native wall (s)\\
+\midrule
+Serial source compiler work, 1,330 calls &622.379\\
+Streamed checking, one process &65.693\\
+Check / source compiler work &10.56\%\\
+\bottomrule
+\end{tabular}
+\caption{One no-\texttt{-M}, same-artifact Mathlib control.
+The denominator sums compiler subprocess wall intervals, including repeated
+imports and artifact emission. It is not a parallel Lake makespan.}
+\label{tab:stream}
+\end{table}
+
+The checking process takes 65.693 seconds versus 622.379 seconds of serial
+source compiler work (Table~\ref{tab:stream}).
+This is a comparison between producing and validating artifacts, not a
+9.47-fold acceleration of production or serving.
+The numerator includes process setup, object reads, replay and retirement;
+the denominator includes each module's imports, elaboration, tactics,
+first checking and standard artifact emission.
+Neither clock includes shared-lock wait or coordinator work.
+The streamed process consumes 65.509 user and 0.163 system CPU seconds;
+its \texttt{wait4} peak RSS is 754,252\,KiB.
+
+Forty-two completed single-module-oracle chunks independently reimport each
+target's environment before native replay; every chunk exits zero and its
+requested and accepted sets agree. Together they match all 1,330 streamed
+acceptances. A separate stock-checker preflight covers 13 modules.
+Three invalid proof terms---a loose variable, unknown constant and wrong
+sort---are rejected through both streaming and module-local replay.
+These checks establish differential evidence for the tested artifacts,
+not universal transparency or an axiom-closure audit.
+Upstream replay excludes 2,269 unsafe/partial entries in this closure;
+axioms keep their ordinary Lean semantics.
+The stock reader's well-formed-object assumption is retained.
+
+The closure includes compiler and standard libraries, not only mathematical
+theorems. Its 80 Mathlib-namespace modules account for 0.849 seconds of
+kernel replay and 49.607 seconds of source compiler work.
+That component ratio (1.71\%) omits shared-base checking, reads and process
+overhead; this namespace also contains tactics and helpers.
+It cannot replace the full-closure 10.56\% process comparison or establish a
+mathematical-module population estimate.
+This one-pass, warm-cache control demonstrates a lower-cost checking boundary
+at complete dependency scope. It does not isolate the causal shares of import
+reuse and omitted production.
+\missing{Matched repeated AI-generated mathematical and computational
+closures, component attribution, uncertainty and full axiom coverage.}
 
 \paragraph{System-design implication.}
 Expose the cheap checking boundary if one exists: separate production and

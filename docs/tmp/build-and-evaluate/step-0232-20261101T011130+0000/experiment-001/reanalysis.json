@@ -1,0 +1,98 @@
+{
+  "observed_utc": "2026-11-01T01:11:31Z",
+  "head": "75729a8590c60945f46f5f953bf6ad93fadca289",
+  "source_raw": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031",
+  "closure_root": "Mathlib.Data.Nat.Basic",
+  "modules": 1330,
+  "declaration_entries": 132484,
+  "upstream_unsafe_partial_exclusions": 2269,
+  "source_build_calls": 1330,
+  "source_build_work_s": 622.3794121909887,
+  "matched_stream_process_s": 65.69264411274344,
+  "ratio_check_over_production": 0.10555079879889155,
+  "construction_over_check": 9.474111151970757,
+  "oracle_complete_chunks": 42,
+  "oracle_acceptances": 1330,
+  "exact_requested_and_accepted_module_sets": true,
+  "complete_native_returncodes": true,
+  "completed_native_cgroups_absent": true,
+  "all_M_flags_absent": true,
+  "stream_user_s": 65.508931,
+  "stream_system_s": 0.16272399999999998,
+  "stream_wait4_peak_rss_kib": 754252,
+  "stream_cgroup_peak_bytes": 79400960,
+  "source_max_wait4_rss_kib": 753736,
+  "native_cgroup_limit_bytes": 12750684160,
+  "native_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "namespaces": {
+    "Init": {
+      "modules": 649,
+      "kernel_s": 49.721922879000054,
+      "source_s": 254.75914108753204
+    },
+    "Lean": {
+      "modules": 438,
+      "kernel_s": 5.798459592,
+      "source_s": 231.46535780932754
+    },
+    "Std": {
+      "modules": 113,
+      "kernel_s": 8.829380724000004,
+      "source_s": 65.11347908806056
+    },
+    "Mathlib": {
+      "modules": 80,
+      "kernel_s": 0.8489162,
+      "source_s": 49.606739638373256
+    },
+    "Batteries": {
+      "modules": 40,
+      "kernel_s": 0.265123747,
+      "source_s": 18.613911607302725
+    },
+    "ImportGraph": {
+      "modules": 10,
+      "kernel_s": 0.008499757000000002,
+      "source_s": 2.8207829603925347
+    }
+  },
+  "negative_controls": [
+    {
+      "case": "functional-stream-bvar.result",
+      "rc": 1
+    },
+    {
+      "case": "functional-stream-unknown.result",
+      "rc": 1
+    },
+    {
+      "case": "functional-stream-sort.result",
+      "rc": 1
+    },
+    {
+      "case": "functional-one-bvar.result",
+      "rc": 1
+    },
+    {
+      "case": "functional-one-unknown.result",
+      "rc": 1
+    },
+    {
+      "case": "functional-one-sort.result",
+      "rc": 1
+    }
+  ],
+  "root_analysis_s": 1.2572532836347818,
+  "root_analysis_maxrss_kib": 63176,
+  "new_native_invocations": 0,
+  "cross_capture_artifact_identity_proven": false
+}
