@@ -67,3 +67,37 @@ and complete serialization/import/merge costs must decide the claim.
 
 No competing system was installed or reproduced. No source paper is treated as
 authority to change the user's scope or select a different thesis.
+
+## Focused follow-up: splitting and loading costs already have precedent
+
+Reopened the primary Self-Certification paper, section7.2–7.3, on2026-11-01.
+It describes both source-level and further Coq-level certificate splitting,
+reuse through opaque lemmas, and substantial dependency-loading costs when
+checking later pieces. This directly overlaps not only splitting, but the
+serialization/import cost concern of our prototype. It is sequential checking
+in that description; the paper does not establish our specific automatic
+numeric-record transformation or its multicore curve.
+[Primary paper, sections7.2–7.3](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/popl2012-paper211.pdf).
+
+A primary practitioner account describes restructuring a large Lean matrix
+computation into row certificates, but its demonstrated verification uses
+native_decide and explicitly trusts compiled evaluation. It is another
+precedent for arithmetic decomposition; it does not demonstrate unchanged-
+kernel parallel checking. Its performance numbers are the author's report,
+not results reproduced here.
+[Huang,2026-06-27](https://infsup.com/en/tell-dont-compute/).
+
+The pinned Lean C++ source gives each theorem checker its own reduction and
+conversion caches. Splitting one theorem across separate checkers therefore
+does not share those caches. This supports *possible repeated work*, not a
+measured attribution of all extra CPU. Other costs include changing one record
+decision into field conjunctions and writing/loading child modules.
+[Checker state](https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/kernel/type_checker.h),
+[theorem-checking entry](https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/kernel/environment.cpp).
+
+Local Lean/Environment.lean2307–2400shows that normal finalizeImport builds new
+constant maps and initializes imported extensions;2438–2449performs a fresh
+import traversal. It is not an incremental merge into our existing base.
+A stock leakEnv option may alter marking costs, but no result here measures
+that option and no import time is claimed to be a fundamental lower bound.
+No unchecked environment mutation is used to bypass this cost.

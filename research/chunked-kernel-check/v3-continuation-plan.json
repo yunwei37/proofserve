@@ -1,0 +1,25 @@
+{
+  "state": "launched-waiting-common-lock",
+  "reason": "current finite v3 controller spent most of its deadline waiting for other lane lock; preserve it until retirement; resume missing cells only if needed",
+  "original_native_source": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-v3",
+  "future_window": "one existing common lock, timeout1740s after acquisition; each native still180s/finiteHB/noM/14GiB sampledstop",
+  "existing_cells_preserved": true,
+  "no_duplicate_native_cells": true,
+  "original_retirement": {
+    "observed_utc": "2026-11-01T01:01:49.432067+00:00",
+    "original_identity": {
+      "pid": 154071,
+      "birth": "754571435",
+      "launched_utc": "2026-11-01T00:32:10.940593+00:00",
+      "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-v3",
+      "owner": "M",
+      "kind": "finite corrected kernel-check matrix, existing P-core lock"
+    },
+    "controller_and_all_recorded_native_identities_retired": true,
+    "completed_native_cells": 2,
+    "original_controller_exit_code": "unknown",
+    "interpretation": "retired after configured1740s deadline without terminal; consistent with queue deadline, not a native proof failure",
+    "original_raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-v3",
+    "unstarted_queued_cell_preserved": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/runs/grid-v3-k2-r1"
+  }
+}

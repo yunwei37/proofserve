@@ -1,11 +1,8 @@
 # What the shape census does and does not prove
 
-> Correction in progress (2026-11-01 UTC): the first lexical pass could borrow
-> a previous explicit header for an inline inferred-target proof. The complete
-> occurrence count/frame is unaffected, but its shape and record-hint ratios
-> must not be used as certified target coverage. Original outputs remain in
-> PVC lexical-census-v1. A direct-header-only pass is running; native helper
-> type counts and native timing records are unaffected.
+> Current classification uses only direct explicit-header proofs. Earlier
+> stale-header ratios are superseded; their original source and raw data remain
+> in PVC lexical-census-v1. Native type and cost-panel data are unaffected.
 
 
 The complete lexical census covers163,097 pinned source files /1,785,499,363bytes.
@@ -14,14 +11,15 @@ existing complete-corpus count. These are source occurrences, not executions.
 5,848files contain a site (3.5856%of the corpus). Raw source archive and derived
 per-site rows remain PVC-only; the small per-file totals are module-counts.csv.
 
-The scanner masks ordinary strings/comments and recovers the nearest local or
-declaration proof header. This is **not Lean parsing or elaboration**. It does
+The scanner masks ordinary strings/comments and recovers a local/declaration
+header only when the body before the tactic is exactly whitespace plus by.
+Inline proof arguments and goals transformed by earlier tactics remain unknown. This is **not Lean parsing or elaboration**. It does
 not resolve notation, binders, namespaces or named predicates globally.
-It recognizes1,514explicit conjunction/finite-domain candidates (0.1118%).
+It recognizes538explicit conjunction/finite-domain candidates (0.03972%).
 That number is **not** the global semantic splittable fraction: hidden finite
 domains and record equalities are deliberately unresolved. In particular
-1,081,872sites (79.8796%) have an equality-shaped recovered header with unknown
-type, and192,594(14.2201%) are applications/other. A universal-only detector
+816,321sites (60.2727%) have an equality-shaped recovered header with unknown
+type, 459,167(33.9024%)are embedded/unresolved and9,316(0.6878%)are applications/other. A universal-only detector
 would miss much of the observed hot regime.
 
 | Shape | Safe logical decomposition, once types are known | Required conditions | Implemented here |
@@ -91,16 +89,26 @@ the real Grid point's sharing, task and merge costs.
 ## Conditional record-type refinement
 
 The two known interval-certificate prefixes contain448,275sites in751files.
-Same-file unambiguous definition annotations nominate321,470record-equality
-sites (23.7356%of all1,354,379sites):195,460CBox,3,086PointBox,2,960RBox,
-119,964Box. Field projections follow the original record schemas:
+Same-file unambiguous definition annotations nominate277,963record-equality
+sites (20.5233%of all1,354,379sites):193,460CBox,1,543PointBox,2,960RBox,
+80,000Box. Field projections follow the original record schemas:
 p0_0.t is an RBox candidate, while p0_0.t.lo is scalar and excluded.
-The first naive parent-type pass is retained in PVC record-hints-v1.
+The first naive parent-type pass remains in PVC record-hints-v1; the later
+direct-header correction and its completed raw results are in record-hints-v2.
 
 These candidates lie in the lexical equality category, separate from the
-1,514explicit structural forms. Their union is322,984sites (23.8474%).
+538explicit structural forms. Their union is278,501sites (20.5630%).
 This is a **conditional lexical nomination set**, not a certified lower bound
 or an execution-time share. Namespace resolution, binder shadowing, true
 elaborated types and remaining named predicates still require native checks.
 The actual transformer has been demonstrated on one real Grid equality;
 its schema recognizer is not claimed to transform all these source sites.
+
+The three native hot modules corroborate why inferred targets remain unknown:
+the direct-header hints contain3072Grid record equalities,1152UMoments9
+CBox equalities and1246BarrierData41Box equalities (5470total).
+Native extraction additionally finds1536Grid conjunctions supplied as inline
+arguments and12UMoments9CBox equalities reached after change and simp_rw.
+All7018native structural targets remain known; they are not reduced to the
+5470lexically recoverable record headers. Aggregate agreement in these types
+is not a measured per-call classification precision across the whole corpus.

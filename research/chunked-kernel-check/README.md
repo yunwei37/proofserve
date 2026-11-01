@@ -1,11 +1,8 @@
 # Chunking closed kernel computations
 
-> Correction in progress (2026-11-01 UTC): the first lexical pass could borrow
-> a previous explicit header for an inline inferred-target proof. The complete
-> occurrence count/frame is unaffected, but its shape and record-hint ratios
-> must not be used as certified target coverage. Original outputs remain in
-> PVC lexical-census-v1. A direct-header-only pass is running; native helper
-> type counts and native timing records are unaffected.
+> Corrected direct-header census: inline inferred targets are now unknown,
+> not borrowed from a preceding proof. The earlier scanner and its raw outputs
+> remain in PVC lexical-census-v1; step002 has a forward correction note.
 
 
 M-lane evidence for the two-cost-regime characterization, on pinned
@@ -14,10 +11,11 @@ and Mathlib d13f. This is a research prototype, not an enabled serving feature.
 
 The full lexical census finds **1,354,379** `decide +kernel` occurrences
 in **5,848 / 163,097** source files. A universal-quantifier-only detector would
-miss the main observed shape: **79.88%** of recovered headers are equalities
-whose types the lexical pass does not resolve. In known interval-certificate
-families, same-file type annotations nominate **321,470** record-equality sites
-(**23.74%** of all occurrences). These remain conditional lexical candidates,
+miss the main observed shape: **60.27%** of recovered headers are equalities
+whose types the lexical pass does not resolve; another **33.90%** of all
+occurrences have embedded or otherwise unresolved targets. In known interval-certificate
+families, same-file type annotations nominate **277,963** record-equality sites
+(**20.52%** of all occurrences). These remain conditional lexical candidates,
 not a certified global splittable fraction.
 
 Actual compiled helper types in Grid, UMoments9 and BarrierData41 contain
@@ -63,9 +61,11 @@ that output boundary rather than presenting its ratio as matched.
 V2 corrected output handling but failed ordinary import initialization after
 two cells; its partial results remain on PVC. V3 fixes that setup and separates
 pure kernel work, child export, normal import, final kernel check, audit and
-final export. At the 00:54:53 UTC report boundary V3 had two completed accepted cells
-(original and k=1, repetition1) and its next cell was waiting for the common
-P-core lock. This is a partial matrix, not a completed result. Use its actual terminal and validation before
+final export. The first finite V3 controller retired after its configured queue deadline,
+with two accepted native cells and no final terminal. At01:01:49UTC a finite
+continuation queued the missing13cells only, retaining the original native
+source and both completed results. Queue/controller time is not native runtime.
+This remains a partial matrix until its actual terminal. Use its actual terminal and validation before
 citing a corrected curve.
 
 ## Reproduction and raw data

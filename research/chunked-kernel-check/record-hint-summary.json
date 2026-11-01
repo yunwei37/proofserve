@@ -5,16 +5,16 @@
   ],
   "files_with_sites": 751,
   "source_sites": 448275,
-  "equality_headers": 389266,
-  "record_hint_candidates": 321470,
+  "equality_headers": 339607,
+  "record_hint_candidates": 277963,
   "by_type": {
-    "CBox": 195460,
-    "PointBox": 3086,
+    "CBox": 193460,
+    "PointBox": 1543,
     "RBox": 2960,
-    "Box": 119964
+    "Box": 80000
   },
   "global_site_denominator": 1354379,
-  "global_fraction": 0.23735601334633807,
+  "global_fraction": 0.2052328041116999,
   "evidence": "lexical type annotations in the same file; known record projections resolved from original schemas; namespace/shadowing not resolved; conditional on successful elaboration",
   "semantic_status": "not a certified global splittable fraction; automation still demonstrated only on the tested Grid goal",
   "examples": [

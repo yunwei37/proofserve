@@ -4,15 +4,18 @@ HERE=pathlib.Path(__file__).resolve().parent
 RAW=pathlib.Path('/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check')
 def write(name,rows):
  with (HERE/name).open('w') as f:
-  w=csv.DictWriter(f,fieldnames=list(dict.fromkeys(k for r in rows for k in r)));w.writeheader();w.writerows(rows)
+  w=csv.DictWriter(f,lineterminator='\n',fieldnames=list(dict.fromkeys(k for r in rows for k in r)));w.writeheader();w.writerows(rows)
 def main():
  os.sched_setaffinity(0,set(range(8,16)))
- term=json.loads((RAW/'frozen-grid-v3/terminal.json').read_text())
+ point=RAW/'frozen-grid-v3-continuation'
+ if not (point/'terminal.json').exists():point=RAW/'frozen-grid-v3'
+ term=json.loads((point/'terminal.json').read_text())
+ paths={(r['k'],r['rep']):pathlib.Path(r['raw']) for r in json.loads((point/'manifest.json').read_text())} if (point/'manifest.json').exists() else {}
  assert term['complete'] and term['completed']==15,'pending/failed is not complete evidence'
  rows=[];artifacts=[]
  for k in [0,1,2,4,8]:
   for rep in [1,2,3]:
-   p=RAW/'runs'/f'grid-v3-k{k}-r{rep}'
+   p=paths.get((k,rep),RAW/'runs'/f'grid-v3-k{k}-r{rep}')
    r=json.loads((p/'result.json').read_text());text=(p/'native.log').read_text()
    assert r['returncode']==0 and r['retired'] and not r['stop_reasons']
    command=json.loads((p/'command.json').read_text())
@@ -36,7 +39,7 @@ def main():
    paths=[p/'ChunkOriginal.olean'] if k==0 else [p/f'ChunkK{k}Part{i}.olean' for i in range(k)]+[p/'ChunkCombined.olean']
    for a in paths:
     assert a.exists()
-    ref=RAW/'runs'/f'grid-v3-k{k}-r1'/a.name
+    ref=paths.get((k,1),RAW/'runs'/f'grid-v3-k{k}-r1')/a.name
     artifacts.append(dict(k=k,rep=rep,artifact=a.name,bytes=a.stat().st_size,
        equal_same_k_rep1=filecmp.cmp(a,ref,shallow=False),
        scope='same configuration repetitions; proof restructuring changes artifact bytes across k'))

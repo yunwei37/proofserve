@@ -1,5 +1,5 @@
 {
-  "validated_utc": "2026-11-01T00:54:53.336648+00:00",
+  "validated_utc": "2026-11-01T01:05:53.474344+00:00",
   "projection_cases": {
     "p0_0": "PointBox",
     "p0_0.t": "RBox",
@@ -12,7 +12,37 @@
     "p0_0 + p0_0": null
   },
   "csv_rows": 751,
-  "csv_candidates": 321470,
+  "csv_candidates": 277963,
   "full_csv_aggregation_equal": true,
-  "scope": "lexical classifier controls; not Lean type validation"
+  "scope": "lexical classifier controls; not Lean type validation",
+  "direct_header_only": true,
+  "native_3module_record_type_comparison": [
+    {
+      "module": "OAI.Analysis.PlanarPacking.Grid",
+      "record": "RBox",
+      "source_direct_hints": 1536,
+      "native_record_auxiliaries": 1536
+    },
+    {
+      "module": "OAI.Analysis.PlanarPacking.Grid",
+      "record": "PointBox",
+      "source_direct_hints": 1536,
+      "native_record_auxiliaries": 1536
+    },
+    {
+      "module": "OAI.Analysis.PlanarPacking.Certificate.UMoments9",
+      "record": "CBox",
+      "source_direct_hints": 1152,
+      "native_record_auxiliaries": 1164
+    },
+    {
+      "module": "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41",
+      "record": "Box",
+      "source_direct_hints": 1246,
+      "native_record_auxiliaries": 1246
+    }
+  ],
+  "native_3module_hint_record_candidates": 5470,
+  "native_3module_known_structural_targets": 7018,
+  "warning": "aggregate comparison, not per-call semantic precision;1536Gridinlineconjunctions and12UMoments9goals afterchange/simp_rw are intentionally unresolved lexically"
 }

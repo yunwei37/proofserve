@@ -21,7 +21,13 @@ def cell(label,k,negative=False):
     (out/'command.json').write_text(json.dumps(dict(argv=command,k=k,negative=negative,pcore='0-7',
         self_wall_s=180,own_tree_rss_stop_gib=14,reason_for_headroom='M16GiB includes concurrent E-core scan',
         env={n:env[n] for n in ['CK_K','CK_OUT','LEAN_NUM_THREADS','LEAN_PATH']}),indent=2)+'\n')
-    with LOCK.open('a+') as lock:
+    descriptor=env.get('CK_PCORE_LOCK_FD')
+    if descriptor is not None:
+      fd=int(descriptor)
+      assert (os.fstat(fd).st_dev,os.fstat(fd).st_ino)==(LOCK.stat().st_dev,LOCK.stat().st_ino)
+      context=os.fdopen(os.dup(fd),'a+')
+    else:context=LOCK.open('a+')
+    with context as lock:
       fcntl.flock(lock,fcntl.LOCK_EX)
       def child():
         os.setsid();os.sched_setaffinity(0,set(range(8)));signal.alarm(180)

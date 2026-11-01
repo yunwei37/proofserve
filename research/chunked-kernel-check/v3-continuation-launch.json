@@ -1,0 +1,9 @@
+{
+  "pid": 173655,
+  "birth": "754749286",
+  "utc": "2026-11-01T01:01:49.447866+00:00",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-v3-continuation",
+  "lock_before": "   PID COMMAND PATH                                                 BLOCKER\n166882 flock   /workspaces/.agent-state/gpu-smt-captures/pcore.lock \n",
+  "scope": "missing frozen-v3 cells only; same native source; common lock held for finite continuation window",
+  "outer_wall_s_including_queue": 1740
+}

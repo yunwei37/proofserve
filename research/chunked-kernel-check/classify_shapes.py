@@ -61,7 +61,7 @@ def classify(t,known):
     return 'application_or_other',False
 def write(name,rows):
     with (HERE/name).open('w') as f:
-        w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+        w=csv.DictWriter(f,lineterminator='\n',fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
 
 def sources():
     frame=HERE.parents[1]/'workloads/openai-math/static-4eaee875/files.csv.gz'
@@ -112,7 +112,7 @@ def main():
     write('module-counts.csv',[{k:v for k,v in r.items() if k in ['module','path','sites','lexical_candidates','lexical_fraction']} for r in files])
     (RAW/'module-category-counts.json').write_text(json.dumps(files)+'\n')
     (HERE/'shape-examples.json').write_text(json.dumps(examples,ensure_ascii=False,indent=2)+'\n')
-    summary=dict(source_files=nfiles,frame_source_bytes=1785499363,pin="4eaee87548250b2682affda7d05d947c05554bae",raw_regex_sites=rawhits,code_regex_sites=codehits,files_with_sites=len(files),
+    summary=dict(target_header_scope='direct explicit := by decide only; inline inferred goals unresolved',source_files=nfiles,frame_source_bytes=1785499363,pin="4eaee87548250b2682affda7d05d947c05554bae",raw_regex_sites=rawhits,code_regex_sites=codehits,files_with_sites=len(files),
         lexical_candidates=sum(eligible.values()),lexical_candidate_fraction=sum(eligible.values())/codehits,
         semantic_coverage='unknown until native validation; lexical candidate count is not proven splittable coverage',
         raw_sites=str(RAW/'lexical-sites.jsonl.gz'))

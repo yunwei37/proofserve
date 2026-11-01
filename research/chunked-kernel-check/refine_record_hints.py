@@ -55,7 +55,7 @@ def main():
        equality_headers=total,record_hint_candidates=sum(bytype.values()),
        CBox=bytype['CBox'],RBox=bytype['RBox'],PointBox=bytype['PointBox'],Box=bytype['Box']))
  with (HERE/'record-hint-candidates.csv').open('w') as f:
-  w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+  w=csv.DictWriter(f,lineterminator='\n',fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
  result=dict(prefixes=PREFIXES,files_with_sites=files,source_sites=sum(r['source_sites'] for r in rows),
   equality_headers=sum(r['equality_headers'] for r in rows),record_hint_candidates=sum(counts.values()),
   by_type=dict(counts),global_site_denominator=1354379,
