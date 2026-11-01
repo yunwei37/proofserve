@@ -73,17 +73,26 @@ byte comparisons differ, while all27 typed ConstantInfo comparisons agree.
 No further small-goal trials are planned. See components-summary.csv and
 step-005-report.md.
 
-## Actual kernel cost distribution — partial native evidence
-UMoments9 has1,164 actual decide helpers (not40); BarrierData41 has1,320.
-Neither contains a >=1s helper in this independent replay point. Their maxima
-are85.5ms and164.6ms. Stock and timed complete eligible-name sets agree.
-The ongoing31-artifact capture remains partial: this is not a whole-library
-large-target percentage. Timers wrap original C++ declaration checks; one-pair
-observer controls do not establish zero measurement overhead.
-See [step005](step-005-report.md), declaration-distribution.csv,
+## Actual kernel cost distribution — complete retained panel
+The31-artifact native distribution completed34/34 target units, all accepted;
+stock/timed sets agree for the3hot-module pairs. UMoments9 has1,164 helpers,
+BarrierData41 has1,320 and Grid has4,608. None reaches1s of original kernel
+CPU: maxima85.5ms/164.6ms/185.7ms. These are many-small-goal modules.
+
+EnvelopePsiB has10large helpers among40, consuming55.782s/58.006s decision CPU.
+Across the unweighted panel, >=1s helpers consume10.09% of total checker-call CPU.
+Using only29available probability-sample artifacts gives a conditional weighted
+28.23% of checker-call CPU (34.93% of decision CPU);13original draws are absent,
+so this is **not an unbiased whole-library estimate**. Purposeful Grid and
+Amplitudes are excluded from weighting. Independent replay instrumentation
+and one-pair observer controls do not establish unperturbed source-compiler
+timing or zero overhead.
+
+See [complete report](step-006-report.md), declaration-distribution.csv,
 declaration-histogram.csv, declaration-observer-controls.csv and
-distribution-plan.md. Barrier's6-level dependency graph is an implementation
-opportunity, not measured speedup.
+declaration-estimate.json. Barrier's measured dependency frontier supports
+testing declaration parallelism, while Envelope supplies a genuine >=1s
+within-goal partition target. Neither mechanism has a measured curve yet.
 
 ## Reproduction and raw data
 

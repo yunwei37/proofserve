@@ -1,0 +1,38 @@
+{
+  "module": "BarrierData41",
+  "source": "same completed native timed replay plus exact typed dependency graph",
+  "level_counts": [
+    95,
+    16,
+    17,
+    1099,
+    1318,
+    880
+  ],
+  "level_cpu_s": [
+    0.006444974,
+    0.007314036,
+    0.034235275,
+    44.646124431,
+    2.338846522,
+    0.104929702
+  ],
+  "level_max_declaration_cpu_s": [
+    0.000569883,
+    0.006494067,
+    0.014557859,
+    0.164569917,
+    0.013269123,
+    0.000200964
+  ],
+  "total_cpu_s": 47.137894939999995,
+  "barriered_infinite_worker_lower_bound_s": 0.19966181300000002,
+  "barriered_work_span_ratio": 236.08868532111342,
+  "caveat": "CPU weights from one serial replay; infinite-worker compute bound only. Ignores I/O/import/export, scheduling, contention, memory and reader costs; not observed speedup.",
+  "finite_worker_compute_lower_bound_s": {
+    "1": 47.137894939999995,
+    "2": 23.571784518999998,
+    "4": 11.79513833325,
+    "8": 5.908095129625
+  }
+}

@@ -1,3 +1,4 @@
 module,stock_replay_cpu_s,timed_replay_cpu_s,timed_to_stock_cpu_ratio,stock_replay_wall_s,timed_replay_wall_s,accepted_eligible_names_equal,scope
 OAI.Analysis.PlanarPacking.Certificate.UMoments9,84.512857357,76.904994138,0.9099798130494773,84.563861595,76.970976961,True,"one ordered pair, observer and cache/allocation effects; not zero-overhead claim"
 OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,47.34243377,47.415929682,1.0015524320603595,47.366483809,47.439767169,True,"one ordered pair, observer and cache/allocation effects; not zero-overhead claim"
+OAI.Analysis.PlanarPacking.Grid,248.441912825,266.941824571,1.0744637309206,248.551469528,267.083635887,True,"one ordered pair, observer and cache/allocation effects; not zero-overhead claim"
