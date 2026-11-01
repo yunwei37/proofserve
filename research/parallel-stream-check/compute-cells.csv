@@ -1,0 +1,6 @@
+capture,module,key,variant,workers,wall_s,cpu_s,speedup_to_same_process_serial,cpu_ratio_to_serial,mean_cores,chunk_parents,chunk_subjobs,waves,jobs,route,all_source_constants_match,scope,chunk_payload_read_included
+parallel-stream-check-v12,OAI.Analysis.PlanarPacking.Grid,grid-stream-r1,serial,1,265.784594984,265.659521954,1.0,1.0,0.9995294195662185,0,0,0,0,serial,True,incremental_root_same_verified_prefix,False
+parallel-stream-check-v12,OAI.Analysis.PlanarPacking.Grid,grid-stream-r1,parallel1,1,282.181143156,282.039078586,0.9418935369365365,1.0616562000545804,0.9994965483220775,0,0,8,7898,parallel,True,incremental_root_same_verified_prefix,False
+parallel-stream-check-v12,OAI.Analysis.PlanarPacking.Grid,grid-stream-r1,parallel2,2,156.246086777,312.08117692,1.7010640104115844,1.1747411672826773,1.9973695556639024,0,0,8,7898,parallel,True,incremental_root_same_verified_prefix,False
+parallel-stream-check-v12,OAI.Analysis.PlanarPacking.Grid,grid-stream-r1,parallel4,4,93.661574252,373.547742218,2.8377122326483275,1.4061146367743644,3.98827101937189,0,0,8,7898,parallel,True,incremental_root_same_verified_prefix,False
+parallel-stream-check-v12,OAI.Analysis.PlanarPacking.Grid,grid-stream-r1,parallel8,8,95.431348474,380.705852558,2.7850868633215664,1.4330593150126978,3.9893164944821273,0,0,8,7898,parallel,True,incremental_root_same_verified_prefix,False

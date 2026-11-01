@@ -1,9 +1,13 @@
 {
-  "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v10",
-  "complete_native_runs": 0,
-  "actual_cells": 0,
+  "raw": [
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v10",
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v12"
+  ],
+  "complete_native_runs": 1,
+  "actual_cells": 5,
   "failed_runs": [
     {
+      "capture": "parallel-stream-check-v10",
       "key": "envelope-stream-r1",
       "returncode": -9,
       "completed_cells": 0
