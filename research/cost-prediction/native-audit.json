@@ -1,0 +1,22 @@
+{
+  "status": "complete_self_review",
+  "native_calls": 12,
+  "policy_cells": 9,
+  "root_accepts": 5,
+  "operational_interruptions": 7,
+  "complete_math_ID_set_matches_native_reference": true,
+  "max_charged_peak_bytes": 322310144,
+  "max_sampled_RSS_bytes": 1389350912,
+  "all_children_retired": true,
+  "controller_retired": true,
+  "semantics": "native accepted completed roots only; skipped/interrupted never called false",
+  "novelty": "no new cost-sensitive classification or checker parallelism claim",
+  "interruptions_by_cause": {
+    "SIGXCPU": 7
+  },
+  "OOM_events": 0,
+  "original_compiler_regression_used": false,
+  "static_rebuilt_plan_equals_running_plan": true,
+  "resource_scope": "child cgroup plus parent reserve; sampled child RSS is not an aggregate kernel hard RSS quota",
+  "parent_peak_rss": "not recorded by this driver;512MiB reserved"
+}

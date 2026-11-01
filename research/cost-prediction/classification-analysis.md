@@ -1,8 +1,8 @@
 # Binary regime classification: validation and cost of choosing a checker
 
 2026-11-01UTC, O line; self-review. No regression was fitted or retuned.
-Native repeated policy cells remain pending at this checkpoint; below are
-completed static/trace analyses, not a finished scheduling experiment.
+All nine native policy batches completed. The classification and budgeted
+method-selection experiment is complete for its explicitly limited inputs.
 
 ## Classification versus a runtime forecast
 
@@ -189,17 +189,19 @@ No numerical regression is fitted to repair this. In particular, avoiding
 interruptions in the coming known-root experiment cannot be advertised as
 a certified unseen-module admission bound.
 
-## Native matrix currently collecting
+## Completed repeated native matrix
 
 [classification-plan.md](classification-plan.md) fixes three cyclic arrivals,
 rotated policy execution order,120CPU seconds per policy, and three repetitions.
 P0–7/flock/no-M, external11.5GiB child memory plus512MiB driver reserve.
 It consumes the same actual artifacts with original-kernel serial or qualified
-four-worker checking. Upper envelopes are frozen before execution. The recorded plan is exactly
-reproduced by prepare_class_native.py using source-marker counts for classes
-and historical checker costs only for the separately named type envelopes;
-no running plan is rewritten.
-Queue wait, source production, and offline feature computation are outside
+four-worker checking. The route is selected per root request, which includes
+its complete dependency closure; this is not a per-dependent-module switching
+prototype. Upper envelopes were frozen before execution. The recorded plan is
+exactly reproduced by prepare_class_native.py using source-marker counts for
+classes and historical checker costs only for the separately named type
+envelopes. No running source, budget, or envelope was changed.
+Queue wait, source production, and offline feature/plan computation are outside
 this artifact-checking budget and stay explicit.
 
 The120s point deliberately allows the ordinary closure but not either whole
@@ -209,7 +211,78 @@ service or a general speedup. Native per-root interruption work, actual budget
 excess, unused budget, completed IDs and partial dependency acceptances are
 separate. Pass@k>1 remains unidentifiable from these distinct reference roots.
 
-Raw input/features/traces and the finite native matrix are on the existing PVC:
+### Actual results: mean [observed minimum, maximum]
+
+| Policy | Whole roots completed | CPU-limit interruptions | Discarded-root CPU s | Unused CPU s |
+|---|---:|---:|---:|---:|
+| FIFO |0.333 [0,1]|1.000 [1,1]|97.335 [53.999,119.012]|0.649 [0.058,0.955]|
+| Type-route |0.333 [0,1]|1.333 [1,2]|97.330 [52.967,119.912]|0.610 [0.033,0.955]|
+| Upper admission |1.000 [1,1]|0.000 [0,0]|0.000 [0,0]|54.049 [53.781,54.185]|
+
+Each row has three actual batches, each with three possible root requests and
+120CPU seconds allocated. The range reflects both the three cyclic arrivals
+and runtime variation; it is not a confidence interval for a population or
+three identical-arrival replications. Native batch mean wall is119.494s FIFO,
+76.871s type-route and65.990s upper admission. Failing a root faster in wall
+while spending the same CPU is not increased successful completion throughput.
+
+There were12 actual native calls:5successful Mathlib root requests and7SIGXCPU
+interruptions. No OOM, sampled-RSS stop, wall timeout, native rejection or setup
+error occurred. All five completed requests' exact1330module-ID sets match
+the retained native reference. Neither computational root completes within
+this deliberately small budget; their full-acceptance parity is prior qualified
+pair evidence, not established anew by these interrupted requests. Deferred
+or interrupted valid work is not reclassified as a false proof.
+
+Recorded total CPU(wait4 plus driver) remains below120s in all nine batches;
+largest observed actual excess is0. RLIMIT accounting is discrete, not a
+deterministic Lean heartbeat budget. In repeat1 type-route, the first interrupted
+request leaves enough whole-second allowance to launch a second request, which
+also receives SIGXCPU. Hence this cell has two interruptions, not the idealized
+continuous-work replay's one. Both calls and their CPU are retained. We did not
+change the running policy to hide this quantization effect.
+
+Discarded-root CPU is all measured work in an interrupted fresh root process;
+its partially checked dependencies are not retained for the next process.
+It is different from exceeding the total CPU budget(which was not observed).
+The upper policy avoids this discarded work here but leaves45.04% of allocated
+CPU unused. Its stronger completion count depends on the known panel's ordinary
+root fitting and on rejecting the two historically expensive types before
+execution. The held-out NearPin example shows why this is not general unseen-
+module admission safety.
+
+Maximum sampled native child-tree RSS is1,389,350,912bytes(1.294GiB); maximum
+charged child-cgroup memory is322,310,144bytes(0.300GiB). Shared-page charging
+and sampled RSS are different metrics. The child cap is11.5GiB and the driver
+reserve512MiB; the parent peak is not separately recorded. No kernel hard
+aggregate RSS guarantee is claimed. All child groups and the finite controller
+retired. The shared lock passed back to Falconer's existing next window.
+
+### Conclusion and evidence boundary
+
+**Static binary classification is feasible on this observed kernel panel, but
+class-driven checker routing does not improve completion count under the
+tested CPU budget.** At larger counterfactual budgets it can be worse because
+the parallel checker spends more CPU. A label alone is not a cost bound or
+the right scheduler objective. Conservative, historically calibrated admission
+improves known-panel availability and avoids discarded CPU here, at the price
+of deferral/unused capacity; its transfer guarantee is absent and has actual
+counterexamples. None of this establishes novelty for classification,
+cost-sensitive selection, or parallel proof checking.
+
+This is a different operation/population from the earlier31source-compilation
+jobs at60CPU seconds. The new1-versus0.333whole-root counts must not be used
+to enlarge the earlier15-versus13candidate result into a general service gain.
+Only three selected complete-closure roots have paired route costs; no outcome
+is imputed for unmeasured roots. There is one reference per root, so pass@k>1
+is not identified. No production-engine policy is enabled by this experiment.
+
+Small native outputs are[native-classification-summary.csv](native-classification-summary.csv),
+[native-classification-batches.csv](native-classification-batches.csv) and
+[native-classification-calls.csv](native-classification-calls.csv).
+Raw source snapshots, exact commands, return codes, full/partial accepted IDs,
+memory samples and all prior/failed records stay on the existing PVC:
 /workspaces/.agent-state/gpu-smt-captures/cost-classification-20261101.
-Falconer remains active and unchanged; the new bounded matrix joins the shared
-P-core FIFO lock behind the existing holder. Its completion is not assumed here.
+Falconer remains active and unchanged, continuing through its original finite
+source/check plan after this matrix's lock retirement. No full Falconer ratio
+is claimed here.

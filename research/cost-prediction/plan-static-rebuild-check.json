@@ -1,0 +1,6 @@
+{
+  "equal": true,
+  "running_plan_unchanged": true,
+  "source_rule": "explicit_kernel_sites>0; no outcome/time features in class assignment",
+  "all_parameters_equal": true
+}

@@ -1,0 +1,13 @@
+repeat,policy,job,module,route,accepted,returncode,cpu_s,wall_s,budget_interruption,discarded_root_cpu_s,accepted_dependency_count,wait4_peak_rss_kib,sampled_tree_peak_bytes,charged_peak_bytes,native_retired
+0,fifo,math,Mathlib.Data.Nat.Basic,serial,True,0,65.88829799999999,65.92515517119318,False,0,1330,757812,754106368,80269312,True
+0,fifo,barrier,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,serial,False,-24,53.998650999999995,54.147017639130354,True,53.998650999999995,662,489776,503312384,78614528,True
+0,type_route,math,Mathlib.Data.Nat.Basic,serial,True,0,66.03112399999999,66.09529651887715,False,0,1330,757572,777314304,84709376,True
+0,type_route,barrier,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,parallel4,False,-24,52.966541,26.23105689510703,True,52.966541,439,443592,453926912,148119552,True
+0,upper_admission,math,Mathlib.Data.Nat.Basic,serial,True,0,66.186135,66.24706820584834,False,0,1330,754904,773992448,86769664,True
+1,type_route,barrier,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,parallel4,False,-24,118.909873,68.47492541279644,True,118.909873,2067,1253308,1283600384,322310144,True
+1,type_route,grid,OAI.Analysis.PlanarPacking.Grid,parallel4,False,-24,1.002494,1.0353164300322533,True,1.002494,28,107424,111947776,29560832,True
+1,upper_admission,math,Mathlib.Data.Nat.Basic,serial,True,0,65.789682,65.83750235661864,False,0,1330,757188,753029120,78635008,True
+1,fifo,barrier,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,serial,False,-24,118.99609799999999,119.17731544096023,True,118.99609799999999,2330,1280604,1312071680,143486976,True
+2,upper_admission,math,Mathlib.Data.Nat.Basic,serial,True,0,65.78557599999999,65.83610115479678,False,0,1330,757460,753418240,79716352,True
+2,fifo,grid,OAI.Analysis.PlanarPacking.Grid,serial,False,-24,119.011717,119.16355284489691,True,119.011717,2511,1355072,1389350912,141590528,True
+2,type_route,grid,OAI.Analysis.PlanarPacking.Grid,parallel4,False,-24,119.111997,68.72924930602312,True,119.111997,2075,1254648,1278406656,304939008,True

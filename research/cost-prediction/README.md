@@ -95,3 +95,10 @@ No performance or bounded-error result is prefilled.
 See [analysis.md](analysis.md) for the negative bounded-error/novelty finding,
 all validation splits, native policy results and limitations. Raw snapshots are
 on the existing PVC; v1 extraction and corrected v2 are both retained.
+
+## Binary classification follow-up
+
+[classification-analysis.md](classification-analysis.md) tests the fixed source
+label against independent original-kernel CPU traces and completes9native
+budgeted policy batches. Classification accuracy does not imply a cost bound
+or successful CPU-budgeted route selection. This follow-up fits no regression.

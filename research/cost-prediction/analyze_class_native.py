@@ -32,6 +32,10 @@ def main():
    actual={e['module']for e in events(out)if e.get('event')=='accept'}
    if r['job']=='math':assert actual==expected
   else:assert r['budget_interruption'],r
+ submission=json.loads((p/'submission.json').read_text())
+ stat=Path('/proc',str(submission['pid']),'stat')
+ controller_retired=not stat.exists() or stat.read_text().split(') ',1)[1].split()[19]!=submission['birth']
+ assert controller_retired
  csvwrite('native-classification-batches.csv',[{k:('/'.join(v)if isinstance(v,list)else v)for k,v in x.items()}for x in sums])
  csvwrite('native-classification-calls.csv',[{k:v for k,v in r.items()if k not in ['memory_events','cpu_stat','complete_event','stop_reasons']}for r in rows])
  summary=[]
@@ -52,8 +56,14 @@ def main():
   complete_math_ID_set_matches_native_reference=True,
   max_charged_peak_bytes=max(r['charged_peak_bytes']for r in rows),
   max_sampled_RSS_bytes=max(r['sampled_tree_peak_bytes']for r in rows),
-  all_children_retired=all(r['native_retired']for r in rows),
+  all_children_retired=all(r['native_retired']for r in rows),controller_retired=controller_retired,
   semantics='native accepted completed roots only; skipped/interrupted never called false',
-  novelty='no new cost-sensitive classification or checker parallelism claim'),indent=2))
+  novelty='no new cost-sensitive classification or checker parallelism claim',
+  interruptions_by_cause={'SIGXCPU':sum(r['returncode']==-24 for r in rows)},
+  OOM_events=sum(int(dict(line.split()for line in r['memory_events'].splitlines()).get('oom_kill','0')) for r in rows),
+  original_compiler_regression_used=False,
+  static_rebuilt_plan_equals_running_plan=json.loads((ROOT/'plan-static-rebuild.json').read_text())==json.loads((p/'plan.json').read_text()),
+  resource_scope='child cgroup plus parent reserve; sampled child RSS is not an aggregate kernel hard RSS quota',
+  parent_peak_rss='not recorded by this driver;512MiB reserved'),indent=2))
  print(json.dumps(summary,indent=2))
 if __name__=='__main__':main()

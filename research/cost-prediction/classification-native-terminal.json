@@ -1,0 +1,7 @@
+{
+  "status": "complete",
+  "policy_cells": 9,
+  "native_calls": 12,
+  "budget_s": 120,
+  "cpu_scope": "wait4 child+parent charged; queue wait excluded; no-M; P0-7"
+}
