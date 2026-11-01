@@ -1,0 +1,70 @@
+{
+  "medians": {
+    "reference": {
+      "wall_s": 68.60523250419647,
+      "CPU_s": 68.569794,
+      "minimum_wall_s": 65.98913680482656,
+      "maximum_wall_s": 71.8046940844506
+    },
+    "audited": {
+      "wall_s": 71.32571784034371,
+      "CPU_s": 71.17971,
+      "minimum_wall_s": 71.30363141000271,
+      "maximum_wall_s": 72.1246463721618
+    },
+    "parallel1": {
+      "wall_s": 77.85869697947055,
+      "CPU_s": 77.43762100000001,
+      "minimum_wall_s": 76.17126148566604,
+      "maximum_wall_s": 77.96731681749225
+    },
+    "parallel2": {
+      "wall_s": 57.56878287624568,
+      "CPU_s": 80.81058300000001,
+      "minimum_wall_s": 57.52872320264578,
+      "maximum_wall_s": 58.21601968817413
+    },
+    "parallel4": {
+      "wall_s": 47.598143151029944,
+      "CPU_s": 84.643783,
+      "minimum_wall_s": 47.36191025748849,
+      "maximum_wall_s": 49.213541883043945
+    },
+    "parallel8": {
+      "wall_s": 45.05003887694329,
+      "CPU_s": 93.429579,
+      "minimum_wall_s": 44.26988547574729,
+      "maximum_wall_s": 45.291914731264114
+    }
+  },
+  "metrics": {
+    "wall_median_ratio": 1.522867331848381,
+    "wall_reduction_percent": 34.334398073517704,
+    "CPU_increase_percent": 36.25471734682475
+  },
+  "paired8": [
+    1.514734647701693,
+    1.5938875054156814,
+    1.490610063605832
+  ],
+  "complete_cells": 18,
+  "modules_each": 1330,
+  "entries_each": 132484,
+  "excluded_each": 2269,
+  "parallel_modules": 858,
+  "serial_complex_modules": 472,
+  "jobs": 55255,
+  "waves": 3616,
+  "module_local_fallbacks": 0,
+  "all_identities_scopes_and_matrix_controller_retired": true,
+  "repaired_ordinary_controls": 20,
+  "requalified_certificate_controls": 3,
+  "max_RSS_KiB": 859192,
+  "max_sampled_RSS_bytes": 860020736,
+  "max_charged_bytes": 233680896,
+  "scope": "same-artifact paths in frozen runner, three fixed-order fresh-process repetitions per mode; no source-build/service/equivalence proof",
+  "additional_implementation_TCB": true,
+  "root_analysis_s": 1.190384672023356,
+  "root_analysis_maxrss_kib": 28620,
+  "new_native_runs": 0
+}

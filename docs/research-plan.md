@@ -130,3 +130,13 @@ Allten Envelope long-call helpers pass80children/10merges; badinput/child
 kernelreject. Imports trusted in thiscontrol; no performance or coldbootstrap
 claim. Originalv10coldprefixresourcefailure remains. Follow actualnewqualified
 Mplans withoutrestartingcompletedGridr1; rootsmallanalysis only.
+
+## Repaired exact-closure pairing completed
+Rootstep0241collectsv14matrix18cells,3fixed-orderrepsper6modes,
+1330sameartifactmodules. Freshreference68.605s/eight45.050s=1.52287x,
+CPU+36.2547%; notOsourcecompiler/service/whole-librarygain.
+The selectedrepair-versioncomparison isnowcomplete, broaderAI/otherclosures,
+coldcertificatebootstrap/axiom/failure/cluster obligationsstillopen.
+V4numbers remainversion-qualifiedhistory.20ordinarynativeand3certificate
+controls requalified butnotuniversalcorrectness. Preserve healthynewBarrier
+ortrusted-prefixdiagnostics; neitherpreparation norpartialdata fillsa coldrun.

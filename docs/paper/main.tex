@@ -746,8 +746,63 @@ speedup. The process exits successfully under the same P0--7/no-\texttt{-M}/
 14\,GiB charged-memory boundary; sampled RSS and charged peaks are
 2.906\,GB and 1.038\,GB, respectively.
 Upstream unsafe/partial exclusions remain 3,554 among 382,707 input entries.
-This is one bounded repaired-version observation, not the missing repeated
-library-level throughput comparison or a universally transparent stream.
+This is one bounded repaired-version observation, not a repeated Grid observation, library-wide performance estimate or a
+universally transparent stream.
+
+\paragraph{A repaired complete-closure comparison.}
+The later frozen version adds a shared worker-start gate and set-based
+import-visibility membership, while retaining the local-cycle repair.
+Its startup and audit costs remain inside the measured process boundary;
+we do not isolate either implementation change's causal benefit.
+A fresh matrix uses the same constructed 1,330-module
+\texttt{Mathlib.Data.Nat.Basic} closure for the original serial stream,
+audited serial replay and 1, 2, 4 or 8-worker streams
+(Table~\ref{tab:repairedstream}).
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrr}
+\toprule
+Stream path & Wall median [min,max] (s) & CPU (s)\\
+\midrule
+Original serial &68.605 [65.989,71.805]&68.570\\
+Audited serial &71.326 [71.304,72.125]&71.180\\
+1 worker &77.859 [76.171,77.967]&77.438\\
+2 workers &57.569 [57.529,58.216]&80.811\\
+4 workers &47.598 [47.362,49.214]&84.644\\
+8 workers &45.050 [44.270,45.292]&93.430\\
+\bottomrule
+\end{tabular}
+\caption{Complete artifact-closure process costs on repaired frozen v14,
+three fresh-process repetitions per path in repeated fixed order.
+Filesystem caches are not flushed. CPU is a separate median.
+The fresh original-stream baseline is distinct from the earlier single
+65.693-second observation and from source compiler work.}
+\label{tab:repairedstream}
+\end{table}
+
+All 18 cells exit zero and accept the same 1,330-module set, with 132,484
+entries and 2,269 upstream unsafe/partial exclusions per cell.
+The parallel paths execute 55,255 ordinary-declaration jobs in 3,616 waves
+across 858 modules; 472 complex/cyclic modules use upstream serial replay.
+There are no module-local context fallbacks on this fixed closure, and
+certificate proof rewriting is inactive.
+
+Eight workers reduce process-wall median 34.33\%, or 1.523-fold, with
+36.25\% more native CPU.
+Same-repeat wall ratios are 1.515, 1.594 and 1.491.
+Audited and one-worker paths remain slower than the original stream.
+Three fixed-order repetitions do not establish population confidence or
+production-service throughput.
+All native identities, temporary cgroups and the finite matrix controller
+retire under P0--7/no-\texttt{-M}/14\,GiB charged protection.
+The repaired source requalifies 20 native boundary controls and the three
+actual-certificate scenarios.
+This completes one repaired-version artifact-checking comparison; it neither
+retroactively qualifies the defective v4 table nor proves universal context
+equivalence or an unchanged implementation TCB.
+The earlier 622.379-second source-work denominator is not remeasured here,
+and no compiler-build speedup follows from these same-artifact stream ratios.
 
 \paragraph{Pooled certificates pass a broader native qualification.}
 A separate native control selects all ten measured Envelope helpers whose
@@ -765,8 +820,8 @@ Its three native processes retire without resource stops, but it supplies
 no paired performance result.
 The earlier complete-prefix Envelope stream remains interrupted by its
 RSS stop. Passing these controls does not repair that cost or resource result.
-\missing{Repeated complete-prefix certificate curves, repaired-version
-library throughput and aggregate failure/budget transparency.}
+\missing{Repeated complete-prefix certificate curves, broader repaired-version
+library coverage and aggregate failure/budget transparency.}
 
 A cluster cannot silently trust remote object files or worker verdicts as
 new proof assertions. Specify what the acceptance authority checks,
@@ -837,8 +892,8 @@ isolated rejection, retire without resource interruption.
 These controls bound the tested cases, not arbitrary corrupted modules.
 The previous 18-cell, 1,330-module positive-input performance table belongs
 to the defective version and is not a repaired-version throughput result.
-\missing{Complete repaired-version paired performance and broader
-module-context differential evidence.}
+\missing{Repaired-version performance beyond the selected closure and
+broader module-context differential evidence.}
 
 A second boundary is implementation trust.
 This combined in-memory prototype commits checked results through a

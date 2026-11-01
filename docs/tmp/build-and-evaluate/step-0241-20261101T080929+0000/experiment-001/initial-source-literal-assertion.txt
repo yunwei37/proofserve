@@ -1,0 +1,1 @@
+Initial offline auditor expected /constructed/lib as one source literal; frozen runner joins ORAW to constructed/lib. All18 native and23 control checks passed before that text-only assertion. Corrected the source-literal assertion, no source/result change or native rerun.

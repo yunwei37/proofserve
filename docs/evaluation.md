@@ -296,3 +296,23 @@ trusted, root-readylocaldeclsreplayed. Nomissingcomplete-prefixprofilecounts
 filled. v10RSSfailure unchanged. PinnedCchecked-commit/coordinator addTCB.
 Preparation/generator/selectorcostsnotmeasuredonPcores orclaimedamortizedgain.
 Raw/gridmodulelog/CPU/memory/nativecontrolsource frozen;0rootnative.
+
+## Repaired v14 complete Mathlib matrix — step0241
+[Root self-review](tmp/build-and-evaluate/step-0241-20261101T080929+0000/step-report.md), **自审**.
+18/18actualrawcells=reference/audited/parallel1/2/4/8 ×3, exact1330unique
+accepts each/132484entries/2269skips. Command/result/identity/cgroupretirement,
+P0–7/noM/14GiBcharged/no stop/events/wait4complete verified. Frozenrunneruses
+Oconstructed/lib sameartifactselection for everycell; no per-open-files trace
+orinputauthenticityproof claimed. Referencefreshpairednotborrowedold65.693.
+Parallel858modules/55255jobs/3616waves,472upstreamcomplex/cyclefallbacks,
+zero module-localcontextfallbacks; chunkrewriteinactive.
+Medianswall68.605232504/71.325717840/77.858696979/57.568782876/47.598143151/
+45.050038877s;nativeCPU68.569794/71.179710/77.437621/80.810583/84.643783/
+93.429579s. Reference/eight1.522867332, wall-34.3343981%,CPU+36.2547173%;
+paired1.514734648/1.593887505/1.490610064. Threeorderedfreshprocessreps,noflush
+or randomCI; no global/source/servicegain. Additionaltrustedcoordinator/Cadapter.
+20ordinaryand3certificatecases actualrawcontrols allretired/pass/reject expected;
+controlsuccessnotuniversaltransparency. Controller226899/birth757155434retired.
+Initialofflineassertionexpected'/constructed/lib'asone literal, runnerjoinsORAW
+with'constructed/lib'; correctedstringassert afterallnativechecks,noexperimental
+rerun/sourcechange. Failure retained.0rootnative, no v4measurements pooled.

@@ -129,6 +129,16 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   [propext]/nosorry, corruptinputandchunkkernelreject. Trustedimportprefix,
   notcompletecoldclosure/performancequalification. All4nativeprocessesretired.
 
+- [Repaired v14 full 1330-module matrix](../research/parallel-stream-check/v14-math-results.md):
+  rootstep0241rawaudit18/18complete, all1330module sets equal/132484entries/
+  2269upstream exclusions. Freshserialwallmedian68.605s vs8workers45.050s,
+  ratio1.52287/34.3344%lesswall, CPU68.570→93.430s (+36.2547%).
+  Same-repeat ratios1.515/1.594/1.491; threefixed-orderfreshprocessrepeats,
+  notservice/source-build gain. Parallel858modules/55255jobs/3616waves,
+  472complexserialfallbacks, zero contextfallbacks.14GiBcharged/noM/P0–7,
+  allnative/control/matrixidentities retired.20ordinarycontrols+3certificate
+  scenarios requalified. Newcoordinator/Cadaptertrusted; v4stillhistorical.
+
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):
   7808same statuses/3014accepted IDs,19.28%less elapsed at one point;
