@@ -316,3 +316,20 @@ controlsuccessnotuniversaltransparency. Controller226899/birth757155434retired.
 Initialofflineassertionexpected'/constructed/lib'asone literal, runnerjoinsORAW
 with'constructed/lib'; correctedstringassert afterallnativechecks,noexperimental
 rerun/sourcechange. Failure retained.0rootnative, no v4measurements pooled.
+
+## Barrier one-process incremental target curve — step0242
+[Root self-review](tmp/build-and-evaluate/step-0242-20261101T081822+0000/step-report.md), **自审**.
+Completev14samequalifiedsourceasroot241;1naturalrc0process/5exactordered
+paths, fullimportgraph4449uniquemodules/425463entries/3595upstreamexclusions/
+0contextfallbacks, exactallheaders/importreachability. 4448prefix once,
+3425ordinaryCIsinclproofbodies/6waves matchserial; no proofrewrite.
+Wallserial/1/2/4/8:53.960309745/56.443105876/29.829180523/16.468221283/
+10.186320706s. CPU53.934446365/56.414155704/59.529285933/65.420764353/
+80.154683084s.8ratio5.297330734,+48.6150104%CPU,achievedCPU/wall~7.87,
+notOSthreadcount. Whole468.111623961s/867.563938CPU (cgroup867.563323s)
+includesprefix/all5, no cold-mode/global/sourcegain. Additionaltrusted
+coordinator/internalC ABIunchangedscope.Actualcap14GiB, sampled3353317376B/
+charged886595584B, noOOM/stop. Parent227736/birth757291977/controller227733/
+birth757291974 andcgroupactuallyretired.1observation/path,no CI/randomization.
+Oldfragment3.32637ratio hasdifferentoutput/lifecycle, notcomparabletuningcurve.
+0rootnative, rawresults/commands/stdout/memory/source retained.

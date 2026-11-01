@@ -1,0 +1,80 @@
+{
+  "curves": [
+    {
+      "kind": "serial",
+      "workers": 1,
+      "wall_s": 53.960309745,
+      "CPU_s": 53.934446365,
+      "jobs": 0,
+      "waves": 0,
+      "serial_to_wall_ratio": 1.0,
+      "CPU_increase_percent": 0.0
+    },
+    {
+      "kind": "parallel1",
+      "workers": 1,
+      "wall_s": 56.443105876,
+      "CPU_s": 56.414155704,
+      "jobs": 3425,
+      "waves": 6,
+      "serial_to_wall_ratio": 0.9560124112153847,
+      "CPU_increase_percent": 4.597635659813082
+    },
+    {
+      "kind": "parallel2",
+      "workers": 2,
+      "wall_s": 29.829180523,
+      "CPU_s": 59.529285933,
+      "jobs": 3425,
+      "waves": 6,
+      "serial_to_wall_ratio": 1.8089772765763217,
+      "CPU_increase_percent": 10.373406876446012
+    },
+    {
+      "kind": "parallel4",
+      "workers": 4,
+      "wall_s": 16.468221283,
+      "CPU_s": 65.420764353,
+      "jobs": 3425,
+      "waves": 6,
+      "serial_to_wall_ratio": 3.2766325408016446,
+      "CPU_increase_percent": 21.296812634854234
+    },
+    {
+      "kind": "parallel8",
+      "workers": 8,
+      "wall_s": 10.186320706,
+      "CPU_s": 80.154683084,
+      "jobs": 3425,
+      "waves": 6,
+      "serial_to_wall_ratio": 5.297330734267577,
+      "CPU_increase_percent": 48.615010417563596
+    }
+  ],
+  "complete_processes": 1,
+  "repeats_per_mode": 1,
+  "verified_prefix_modules": 4448,
+  "closure_modules": 4449,
+  "closure_complete_event": {
+    "constants": 425463,
+    "event": "complete",
+    "mode": "parallel",
+    "module_local_fallbacks": 0,
+    "modules": 4449,
+    "retained_regions": 13307,
+    "skipped_unsafe_partial": 3595
+  },
+  "full_process_wall_s": 468.1116239614785,
+  "full_process_CPU_s": 867.563938,
+  "cgroup_CPU_s": 867.563323,
+  "sampled_RSS_bytes": 3353317376,
+  "charged_peak_bytes": 886595584,
+  "cap_GiB": 14,
+  "all_identities_scopes_retired": true,
+  "source_equal_prior_qualified_v14": true,
+  "additional_implementation_TCB": true,
+  "scope": "five ordered incremental target trials share one independently checked prefix; complete process includes prefix and all five, not cold-mode or old fragment-pipeline speedup",
+  "root_analysis_s": 0.256727228872478,
+  "root_analysis_maxrss_kib": 33224,
+  "new_native_runs": 0
+}

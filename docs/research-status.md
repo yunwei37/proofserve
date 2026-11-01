@@ -139,6 +139,14 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   allnative/control/matrixidentities retired.20ordinarycontrols+3certificate
   scenarios requalified. Newcoordinator/Cadaptertrusted; v4stillhistorical.
 
+- [Rootstep0242 Barrier v14 complete process](tmp/build-and-evaluate/step-0242-20261101T081822+0000/step-report.md):
+  independentlychecked4448moduleprefixonce,5orderedincrementaltargettrials,
+  same3425originaltypedCIs/proofbodies and6waves. Serial53.960s;1/2/4/8
+  56.443/29.829/16.468/10.186s,8ratio5.29733/CPU+48.615%, oneobservation.
+  Whole468.112s/867.564CPUincludesprefix+allfive,4449accepts/3595exclusions.
+  Actualidentity/cgroup/controllerretired,no stop/noM/P0–7/14GiBcharged.
+  NotoldBarrierfragment3.326x'slifecycle, notcausalgate/cold/globalgain.
+
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):
   7808same statuses/3014accepted IDs,19.28%less elapsed at one point;

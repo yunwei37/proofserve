@@ -804,6 +804,28 @@ equivalence or an unchanged implementation TCB.
 The earlier 622.379-second source-work denominator is not remeasured here,
 and no compiler-build speedup follows from these same-artifact stream ratios.
 
+A second complete process uses the same repaired frozen source for
+BarrierData41. It checks a 4,448-module prefix once and then runs the same
+five ordered target paths.
+Incremental serial and 1/2/4/8-worker wall costs are
+53.960, 56.443, 29.829, 16.468 and 10.186 seconds.
+All parallel trials return the same 3,425 typed constants, including proof
+bodies, across six dependency waves.
+Eight workers reduce target wall time 5.297-fold, with process CPU rising
+from 53.934 to 80.155 seconds, or 48.62\%.
+CPU/wall at that boundary is about 7.87, without implying only eight
+operating-system threads.
+The complete process takes 468.112 seconds and 867.564 CPU seconds,
+including the checked prefix and all five target trials.
+It accepts 4,449 modules with 3,595 upstream unsafe/partial exclusions;
+all recorded native identities and cgroups retire without resource stops.
+This is one ordered observation per path, not repeated uncertainty.
+Its incremental 5.297-fold result is distinct from the earlier
+3.326-fold checked-fragment pipeline result: neither their baselines nor
+their lifecycle/output boundaries match.
+We do not attribute the difference to the worker-start gate or report it
+as a cold-mode, source-build or library-wide improvement.
+
 \paragraph{Pooled certificates pass a broader native qualification.}
 A separate native control selects all ten measured Envelope helpers whose
 earlier checking calls exceed one CPU second.

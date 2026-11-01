@@ -140,3 +140,11 @@ coldcertificatebootstrap/axiom/failure/cluster obligationsstillopen.
 V4numbers remainversion-qualifiedhistory.20ordinarynativeand3certificate
 controls requalified butnotuniversalcorrectness. Preserve healthynewBarrier
 ortrusted-prefixdiagnostics; neitherpreparation norpartialdata fillsa coldrun.
+
+## Barrier prepared-stream sequence collected
+Rootstep0242collectsthecompletedv14Barrierprocess4449moduleclosure/5ordered
+targettrials. Same3425typedCIs,8incremental10.186s vsserial53.960s=5.2973x,
+CPU+48.615%. Whole468.112s includesallfive/prefix, notselectedcoldmode.
+Oneobservation/path andnewTCB codeexplicit. Earlierfragmentpipeline3.326x is
+differentoutput/lifecycle; don'tinterpret ratiosascontrolledsuccessivetuning.
+No restartofcompletedBarrier; furtherMwork fromactualnewplan/terminal only.
