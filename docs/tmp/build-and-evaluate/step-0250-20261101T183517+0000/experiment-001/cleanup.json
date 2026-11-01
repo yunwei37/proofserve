@@ -1,0 +1,12 @@
+{
+  "at_utc": "2026-11-01T18:35:17.093236+00:00",
+  "deleted_files": 344,
+  "deleted_logical_bytes": 210688408,
+  "available_bytes_before": 39383343104,
+  "available_bytes_after": 39594598400,
+  "open_fd_hits": [],
+  "all_pdfs_retained": true,
+  "raw_native_deleted": false,
+  "other_lane_deleted": false,
+  "concurrent_df_not_exact_reclamation": true
+}
