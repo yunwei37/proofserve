@@ -1,23 +1,25 @@
 # W current state
-## Current frontier (W058: all new timing noM, old-Mmethodology only)
-- Latest user:完全不用-M. No old-Mcost enters new library estimate.
-- Completed old26pairs preserve52returns;26verdict/diagnostic/artifactbytes
- identical. Wall432.134416/350.212707,CPU650.293756/555.744907(M/noM).
- These are methodology sensitivity only, never full-library correction.
-- Old controller already retired at23:42:42UTC; no running-Mchild killed.
- Public paired CLI rejectsM; old prepared-Mplans annotated not-to-launch.
-- Fresh noM31case group launched23:44:46UTC, actualcontroller129179/birth754286997.
- Capture workloads/openai4341-noM-standard-a-20261031.26A+Grid+Amplitudes+
- 3ready original draws, P0–7/nonblocking waiter-yield,15GiBchargedcgroup,
- 16GiBWsampledRSS,one native, noM. Read actualPID/birth/terminal, not thisnote.
- Population29/42/CI still pending; old pair costs are not borrowed.
-- W059 complete import audit:143637directsets/141573graphclosures;
- top100coverage4.94246%/4.95043%; unweighted/static, not CPU speedup.
- All partitions checked; independent BFS200classes/310members agrees.
- Sourcegraph external3529frontier names unexpanded; no state-cache key.
-- Original42frame, conditional6remainder draws, hard nonresponses retained.
- All old source/raw/failed/cancelled/interrupted outputs remain onPVC.
-- Onlyworkloads/ changed. No user desktop/browser, extraagent or infra changes.
+## Current frontier (W060: fresh noM31complete, hard74suffix active)
+- All new timing omits-M; all old-Mcosts/profiles are legacy methodology only.
+- Fresh noM31complete/allcompile:26A+Grid+Amplitudes+3ready random draws.
+ New estimator29/42costs/12of21cells, memory0, P-lock only. No oldpair/Mcosts.
+ FullCPU/globalCI still unavailable; missing13random draws not substituted.
+- Grid317.191522wall/488.711891CPU,Amplitudes127.044006wall/251.582698CPU;
+ same known native verdicts. Full31native sum811.259308wall/1342.922151CPU.
+ NoMsystemCPUshares:unweightedA26=17.98%,Grid20.87%,Amplitudes14.55%.
+ These are not old-Mfigures, globalwallshares or a system-call attribution.
+ Raw workloads/openai4341-noM-standard-a-20261031 complete/retired/collected.
+- Actual noM-only suffix74 launched2026-11-01T00:00:04UTC;
+ PID135471/birth754378814, raw workloads/openai4341-noM-original-c-suffix-20261101.
+ Recheck real identity/terminal, never infer from note.72deps+OriginalBlock81/
+ KeySound82, original-sourceHB,3facets,j8,P0–7nonblockingwaiter-yield,
+ owned15GiBchargedcgroup+1s16GiBnative/controllerRSSguard. One native.
+ Do not launch another Wtiming until actual retirement; no auto retry.
+- W059 import audit complete:143637directsets/141573graphclosures,top100
+ 4.94246%/4.95043%. Static/unweighted; external3529frontierunexpanded.
+ Exactpartitions; independentBFS200classes/310members. No CPUor cache-safetyclaim.
+- Full42sample/conditional6draws and other workloads remain ongoing.
+ Onlyworkloads/changed. No extraagent, generation, UI or infra mutation.
 
 ## Historical step notes (retained unchanged below)
 W004ea41025 build-planning models and53-target stratified frame are preserved.

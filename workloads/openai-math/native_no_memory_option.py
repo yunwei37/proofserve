@@ -130,6 +130,22 @@ def run(point, index, arm, wall_limit=None):
             native_retired=not Path("/proc", str(child.pid)).exists(),
             cgroup_retired=not (cg / "cgroup.procs").read_text().strip(),
             raw=str(out), args=args)
+        if classification == "compile_ok" and case.get("publish_cache"):
+            cache = Path(case["publish_cache"])
+            cache.mkdir(parents=True, exist_ok=True)
+            final = cache / Path(*case["module"].split(".")).with_suffix(".olean")
+            final.parent.mkdir(parents=True, exist_ok=True)
+            source_olean = Path(args[args.index("-o") + 1])
+            published = []
+            for suffix in ["", ".server", ".private"]:
+                origin = Path(str(source_olean) + suffix)
+                if origin.exists():
+                    target = Path(str(final) + suffix)
+                    temporary = Path(str(target) + ".W-noM-complete")
+                    shutil.copyfile(origin, temporary)
+                    os.replace(temporary, target)
+                    published.append(str(target))
+            result["cache_published_after_native_retirement"] = published
         dump(out / "result.json", result)
         print(json.dumps(result), flush=True)
         return 0

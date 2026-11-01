@@ -1,0 +1,19 @@
+{
+  "native_rows": 31,
+  "statuses": {
+    "compile_ok": 31
+  },
+  "native_wall_s": 811.2593079665676,
+  "CPU_s": 1342.922151,
+  "sampled_native_peak_bytes": 8227733504,
+  "native_leader_HWM_kib": 8065924,
+  "cgroup_peak_max_bytes": 6572814336,
+  "all_retired": true,
+  "all_sources_exact": true,
+  "all_cgroups_removed": true,
+  "any_memory_events": [],
+  "old_M_rows_included": 0,
+  "methodology_pairs_reused": 0,
+  "actual_cgroup_point": "15GiBchargedmemory;16GiBsampledWnative+controllerRSS; externalonly noM",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031"
+}
