@@ -1,0 +1,8 @@
+{
+  "raw_crosschecks": 52,
+  "actual_raw_source": "native wait4 user+system and monotonic process elapsed",
+  "published_pair_count": 26,
+  "fresh_same_module_count": 26,
+  "not_new_native_measurement": true,
+  "no_population_interval_from_this_comparison": true
+}

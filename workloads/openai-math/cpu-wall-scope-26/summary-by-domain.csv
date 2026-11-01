@@ -1,0 +1,7 @@
+cohort,source_domain,modules,native_wall_sum_s,native_CPU_sum_s,CPU_over_wall,CPU_minus_wall_s,scope
+fresh_noM_same26,ordinary_proxy,11,59.697251786477864,109.285174,1.8306567007621344,49.587922213522134,unweighted observed domain subset; not population weights
+fresh_noM_same26,certificate_proxy,15,291.1208331938833,448.27897,1.5398381664477139,157.15813680611672,unweighted observed domain subset; not population weights
+historical_pair_M,ordinary_proxy,11,59.73253824468702,109.152233,1.8273496524268105,49.419694755312975,unweighted observed domain subset; not population weights
+historical_pair_M,certificate_proxy,15,372.4018777003512,541.141523,1.4531116930495802,168.73964529964883,unweighted observed domain subset; not population weights
+historical_pair_noM,ordinary_proxy,11,60.331970636732876,109.450988,1.8141457480150864,49.11901736326712,unweighted observed domain subset; not population weights
+historical_pair_noM,certificate_proxy,15,289.8807363919914,446.29391899999996,1.539577705489539,156.41318260800858,unweighted observed domain subset; not population weights
