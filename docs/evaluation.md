@@ -496,3 +496,6 @@ Raw4timedlogs, exactupstreamsource, computedpaths/edges/models retained in step.
 
 ## 2026-11-01 — step0253 bounded B matrix (自审)
 [Root raw reanalysis](tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md) confirms768rows/16selected inputs,0acceptance mismatches but16/256trace operational-label differences and128/128sync counts changed.48/384stock/sync diagnostic differences arise from v1parser-message loss.33recordedPID/birth identities retired/noM/14GiBcharged,16rc0cells,0stop/OOM. v2live separate. No rootnative/newnovelty/global guarantee. Paper stays0252/16pages167901B, no duplicate build.
+
+## 2026-11-01 — root0254 A audit/result (自审)
+[Report](tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md):155LOO refits/45native outputs recomputed, A bounded-error/general admission claim unsupported; native60CPU-s15/15/13 completions. Same-corpus primary report overlaps core cost intuition; priority claim withheld. Oresource/identity gaps and unmatched simulation boundaries explicit.0rootnative/agent; paper unchanged in this step.

@@ -104,3 +104,6 @@ cost-prediction report remains unavailable; its context/Falconer work is distinc
 No old capture is restarted or prepared result promoted.
 
 [M v1 bounded matrix/root0253](tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md):768rows/16selected sources,0acceptance mismatches;16/256trace operational-label differences and128/128sync count changes.48/384frontend labels reflect the v1parser adapter defect. Not universal stability or novel deterministic budget. Correctedv2 is separate/in progress; paper remains0252.
+
+## O prediction audit now complete
+[Root0254](tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md) integrates O A audit/results: strong bounded-error/admission-benefit claim unsupported; native60s completes15/15/13, no sorting gain, upper trades coverage for fewer cuts. Same-corpus prior report overlaps the core cost/coverage intuition; no priority claim. Existing controlled characterization stays scoped. M v2 actual terminal is complete17phases; row audit pending, no restart. Paper still0252 until separate integration.

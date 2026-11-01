@@ -110,3 +110,5 @@ with paper-decision value; never a historical next-action paragraph or stalePID.
 
 [Current-map consolidation](tmp/build-and-evaluate/step-0249-20261101T151943+0000/step-report.md); the entry archive above
 preserves every prior dated branch and source judgment.
+
+Closest same-corpus overlap newly verified: [nealmcb pinned report](https://github.com/nealmcb/openai-math-lean-tooling/blob/c9570a82f79b78a1a969a6316ac0fdd69aabef55/REPORT.md), sections1b/3c/3f/4/5, public technical report. Existing intuition/cost/coverage work, not just a generic predictor precedent. Root audit withdraws priority implications; no foreign performance numbers pooled. [Current verdict](novelty-20261101.md).

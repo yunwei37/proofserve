@@ -1,0 +1,60 @@
+{
+  "url": "https://raw.githubusercontent.com/nealmcb/openai-math-lean-tooling/c9570a82f79b78a1a969a6316ac0fdd69aabef55/REPORT.md",
+  "repository_revision": "c9570a82f79b78a1a969a6316ac0fdd69aabef55",
+  "latest_report_commit_metadata_UTC": "2026-10-23T05:28:25Z",
+  "access_UTC": "2026-11-01",
+  "bytes": 74061,
+  "raw_PVC": "/workspaces/.agent-state/gpu-smt-captures/step-0254-20261101T195608+0000-external/REPORT.md",
+  "verified_sections": [
+    "1b",
+    "3c",
+    "3f",
+    "4",
+    "5"
+  ],
+  "not_peer_review_claim": true,
+  "native_numbers_not_pooled": true,
+  "leakage_project_folds": [
+    [
+      "OAI.Analysis.MutuallyUnbiased.GramAssembly.Block0Data",
+      "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Zeros30",
+      "OAI.Analysis.MutuallyUnbiased.MixedTargets.KeySound82",
+      "OAI.Analysis.MutuallyUnbiased.MixedTargets.OriginalBlock81",
+      "OAI.Analysis.MutuallyUnbiased.PairSemantics.Canonical240",
+      "OAI.Analysis.MutuallyUnbiased.TaoCertificate.Rows45",
+      "OAI.Analysis.Cotype.FiniteRankWalsh"
+    ],
+    [
+      "OAI.NumberTheory.DirichletL.Cusp.ResiduesModThree",
+      "OAI.NumberTheory.DirichletL.Eisenstein.SourceProjection",
+      "OAI.NumberTheory.DirichletL.Moments.Tail",
+      "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion",
+      "OAI.Combinatorics.Ramsey.CycleClique.Construction.CoverageK14",
+      "OAI.Computability.Logspace.EstimatorBounds"
+    ],
+    [
+      "OAI.Analysis.PlanarPacking.Certificate.UMoments9",
+      "OAI.Analysis.PlanarPacking.Certificate.WUCert48",
+      "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+      "OAI.Analysis.Laughlin.FiniteFlux.Row0705207",
+      "OAI.Probability.TraceReconstruction.Binomial",
+      "OAI.Analysis.CircleDomains.Rigidity.MaskedCircleEnergy"
+    ],
+    [
+      "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50",
+      "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41",
+      "OAI.GroupTheory.PolycyclicRecognition.Analysis.TranslationCovering",
+      "OAI.GameTheory.SnakyTwentyOne.Cards.Height12Part04",
+      "OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative",
+      "OAI.Analysis.Conductivity.Variational.VariationalDN"
+    ],
+    [
+      "OAI.NumberTheory.Catalan.Analysis.ManuscriptNormLogPGroup006",
+      "OAI.NumberTheory.Catalan.Determinants.FixedCompactRow48",
+      "OAI.Combinatorics.HadwigerCounterexample.FiniteComparisonBounds",
+      "OAI.Analysis.Triangular.Envelope.EnvelopePsiB",
+      "OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle",
+      "OAI.Geometry.CylinderCovering.Radial.Assembly"
+    ]
+  ]
+}

@@ -59,3 +59,5 @@ are not a reproducibility guarantee; O's cost-prediction report remains missing.
 [Root cleanup](../docs/cleanup-20261101.md) retains PDFs and all native evidence.
 
 [Root0253 v1matrix](../docs/tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md): finite768rows,0acceptance changes, observer counts/labels and parser-adapter differences separated. Rawfreeze in its experiment-001; correctedv2 not pooled. No new rootnative.
+
+[Cost prediction](cost-prediction/analysis.md) and [root0254](../docs/tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md):31completed original costs, fixed source-only forecasts;60CPU-s native counts15/15/13. Strong A unsupported; raw at cost-prediction-20261101-v2, rootfreeze linked. All three novelty reports actually received. Bv2terminal complete, not yet root-row-qualified.

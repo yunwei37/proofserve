@@ -1,0 +1,169 @@
+{
+  "primary_frame": 42,
+  "primary_completed": 31,
+  "missing": 11,
+  "primary_LOO_refits": 155,
+  "LOO_max_relative_difference": 2.6490392617781657e-11,
+  "errors": [
+    {
+      "model": "constant",
+      "validation": "loo_module",
+      "n": 31,
+      "median_ape": 0.8578809398845131,
+      "p90_ape": 3.434965135263222
+    },
+    {
+      "model": "constant",
+      "validation": "5fold",
+      "n": 31,
+      "median_ape": 0.8767614429095018,
+      "p90_ape": 3.7893867669942303
+    },
+    {
+      "model": "constant",
+      "validation": "project_5fold",
+      "n": 31,
+      "median_ape": 0.8650390910637117,
+      "p90_ape": 3.6674146692009866
+    },
+    {
+      "model": "bytes",
+      "validation": "loo_module",
+      "n": 31,
+      "median_ape": 0.4153861435573724,
+      "p90_ape": 1.1072443115318757
+    },
+    {
+      "model": "bytes",
+      "validation": "5fold",
+      "n": 31,
+      "median_ape": 0.4309023154084601,
+      "p90_ape": 1.1477187508771372
+    },
+    {
+      "model": "bytes",
+      "validation": "project_5fold",
+      "n": 31,
+      "median_ape": 0.34028096266469815,
+      "p90_ape": 1.005513334575835
+    },
+    {
+      "model": "imports",
+      "validation": "loo_module",
+      "n": 31,
+      "median_ape": 0.49341178911117084,
+      "p90_ape": 0.856740482444732
+    },
+    {
+      "model": "imports",
+      "validation": "5fold",
+      "n": 31,
+      "median_ape": 0.5387960063153365,
+      "p90_ape": 1.0515828023942067
+    },
+    {
+      "model": "imports",
+      "validation": "project_5fold",
+      "n": 31,
+      "median_ape": 0.4808092995696569,
+      "p90_ape": 0.7762312482673946
+    },
+    {
+      "model": "static",
+      "validation": "loo_module",
+      "n": 31,
+      "median_ape": 0.3866879381955596,
+      "p90_ape": 1.065951650210841
+    },
+    {
+      "model": "static",
+      "validation": "5fold",
+      "n": 31,
+      "median_ape": 0.4866102812822939,
+      "p90_ape": 1.2002980746409722
+    },
+    {
+      "model": "static",
+      "validation": "project_5fold",
+      "n": 31,
+      "median_ape": 0.34952562169179496,
+      "p90_ape": 0.7738107976161932
+    },
+    {
+      "model": "regime",
+      "validation": "loo_module",
+      "n": 31,
+      "median_ape": 0.44105736182858385,
+      "p90_ape": 0.8348564486951975
+    },
+    {
+      "model": "regime",
+      "validation": "5fold",
+      "n": 31,
+      "median_ape": 0.4813430883698718,
+      "p90_ape": 0.985277247231845
+    },
+    {
+      "model": "regime",
+      "validation": "project_5fold",
+      "n": 31,
+      "median_ape": 0.5006989374700103,
+      "p90_ape": 0.930173203816315
+    }
+  ],
+  "native_summaries": [
+    {
+      "policy": "fifo",
+      "cpu_budget_s": 60.0,
+      "completed": 15,
+      "deferred": 15,
+      "resource_interruptions": 1,
+      "child_cpu_s": 59.413548,
+      "parent_cpu_s": 0.030079000000000005,
+      "actual_total_cpu_s": 59.443627,
+      "wall_s": 53.55224751587957
+    },
+    {
+      "policy": "predicted_cost",
+      "cpu_budget_s": 60.0,
+      "completed": 15,
+      "deferred": 15,
+      "resource_interruptions": 1,
+      "child_cpu_s": 59.431319,
+      "parent_cpu_s": 0.030502000000000012,
+      "actual_total_cpu_s": 59.461821,
+      "wall_s": 51.5962970033288
+    },
+    {
+      "policy": "upper_admission",
+      "cpu_budget_s": 60.0,
+      "completed": 13,
+      "deferred": 18,
+      "resource_interruptions": 0,
+      "child_cpu_s": 41.824491,
+      "parent_cpu_s": 0.024159999999999994,
+      "actual_total_cpu_s": 41.848651000000004,
+      "wall_s": 38.814676818437874
+    }
+  ],
+  "calls": 45,
+  "native_rcs": {
+    "0": 43,
+    "-24": 2
+  },
+  "controller_pid": 259476,
+  "controller_birth": "761430373",
+  "controller_retired": true,
+  "native_cgroups_absent": 45,
+  "child_pid_birth_recorded": false,
+  "native_max_charged_peak_bytes": 937037824,
+  "native_max_wait4_rss_kib": 7085868,
+  "heldout_coverage_31": {
+    "imports": 28,
+    "regime": 28
+  },
+  "resource_deviation": "11.5GiB child cap+512MiB parents nominal12GiB vs listedO4; actual per-child peaks do not establish totalO4 compliance",
+  "root_new_native": 0,
+  "root_analysis_s": 0.22135644685477018,
+  "root_analysis_maxrss_kib": 23444
+}
