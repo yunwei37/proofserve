@@ -16,7 +16,7 @@ def run(key,command,limit=120,measured=False,env=None,cwd=None):
     current=Path('/sys/fs/cgroup')/Path('/proc/self/cgroup').read_text().strip().split('::',1)[1].lstrip('/')
     assert current.name.startswith('cri-containerd-')and'pod'in current.parent.name
     cg=current.parent/('proofserve-decoupled-'+str(os.getpid())+'-'+key+'.scope')
-    cg.mkdir();(cg/'memory.max').write_text(str(12*1024**3));(cg/'memory.oom.group').write_text('1')
+    cg.mkdir();(cg/'memory.max').write_text(str(12*1024**3-128*1024**2));(cg/'memory.oom.group').write_text('1')
     args=['timeout','--signal=TERM','--kill-after=5',str(limit)]+list(map(str,command))
     record=dict(key=key,args=args,affinity=affinity,cgroup=str(cg),memory_max_bytes=int((cg/'memory.max').read_text()),measured=measured,limit_s=limit)
     (ROOT/(key+'.command.json')).write_text(json.dumps(record,indent=2))

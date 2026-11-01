@@ -78,3 +78,19 @@ Only adapters, small CSVs and analysis enter this directory.
 - [4.34.1 kernel replay](https://github.com/leanprover/lean4/blob/v4.34.1/src/Lean/Replay.lean)
 - [Bundled checker](https://github.com/leanprover/lean4/blob/v4.34.1/src/LeanChecker.lean)
 - [Module regions and environment](https://github.com/leanprover/lean4/blob/v4.34.1/src/Lean/Environment.lean)
+
+## First actual P-core stream observation
+Mathlib.Data.Nat.Basic complete closure: 1330 modules,
+132484 declaration entries; native exit0.
+Wall 65.964395s, user 65.736833s,
+system 0.200969s; wait4 maximum RSS
+0.698GiB. Cgroup peak charged memory is separately
+79.055GiB; shared file pages can be charged to
+another preexisting group, so cgroup memory.peak is not a physical RSS estimate.
+Read/map/replay module timer sums are 0.089605/
+0.055303/65.688288s.
+There is no complete source-build denominator yet. No stream/build ratio is
+claimed at this checkpoint. Standard compiler reconstruction of the exact
+dependency graph is active, with output artifacts isolated from original data.
+Cgroup child memory.max is 11.875GiB, reserving128MiB for the small O parent
+inside the12GiB allocation. No Lean -M flag is present.
