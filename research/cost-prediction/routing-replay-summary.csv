@@ -1,0 +1,13 @@
+budget_cpu_s,policy,replay_cases,completed_mean,completed_min,completed_max,interruptions_mean,discarded_root_cpu_mean,unused_cpu_mean,interval_scope
+120,fifo,18,0.3333333333333333,0,1,1,97.08124722222222,0,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+120,type_route,18,0.3333333333333333,0,1,1,97.08124722222222,0,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+120,upper_admission,18,1,1,1,0,0.0,51.24374166666666,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+600,fifo,18,1.3333333333333333,1,2,1,142.54753066666666,0,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+600,type_route,18,0.6666666666666666,0,1,1,379.9255732222222,0,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+600,upper_admission,18,1,1,1,0,0.0,531.2437416666667,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+900,fifo,18,1.6666666666666667,1,2,1,338.19649344444446,0,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+900,type_route,18,1.6666666666666667,1,2,1,186.22589894444442,0,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+900,upper_admission,18,2,2,2,0,0.0,163.30714616666666,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+1200,fifo,18,3,3,3,0,0.0,99.31173966666665,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+1200,type_route,18,1.6666666666666667,1,2,1,486.22589894444445,0,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"
+1200,upper_admission,18,2,2,2,0,0.0,463.30714616666666,"enumerated arrival/repeated-Mathlib range, not native repeated-computational uncertainty"

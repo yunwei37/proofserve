@@ -52,11 +52,11 @@ def main():
     stats.append((1-len(e)/len(sample),sum(r['kernel_call_cpu_s']for r in e)/sum(r['kernel_call_cpu_s']for r in sample)))
    summaries.append(dict(scope=scope,truth_threshold=threshold,n=len(vals),projects=len(names),
     TP=counter[True,True],FN=counter[True,False],FP=counter[False,True],TN=counter[False,False],
-    accuracy=1-len(errors)/len(vals),accuracy_ci_low=q([s[0]for s in stats],.025),accuracy_ci_high=q([s[0]for s in stats],.975),
+    accuracy=1-len(errors)/len(vals),accuracy_ci_low=q([s[0]for s in stats],.025)if len(names)>1 else None,accuracy_ci_high=q([s[0]for s in stats],.975)if len(names)>1 else None,
     misclassified_kernel_cpu_s=sum(r['kernel_call_cpu_s']for r in errors),
     all_kernel_cpu_s=sum(r['kernel_call_cpu_s']for r in vals),
     kernel_cpu_weighted_error=sum(r['kernel_call_cpu_s']for r in errors)/sum(r['kernel_call_cpu_s']for r in vals),
-    kernel_weighted_error_ci_low=q([s[1]for s in stats],.025),kernel_weighted_error_ci_high=q([s[1]for s in stats],.975),
+    kernel_weighted_error_ci_low=q([s[1]for s in stats],.025)if len(names)>1 else None,kernel_weighted_error_ci_high=q([s[1]for s in stats],.975)if len(names)>1 else None,
     exposed_compiler_cpu_s=sum(r['compiler_cpu_s']for r in errors),all_compiler_cpu_s=sum(r['compiler_cpu_s']for r in vals),
     exposed_compiler_cpu_fraction=sum(r['compiler_cpu_s']for r in errors)/sum(r['compiler_cpu_s']for r in vals),
     CI='2000 project-block resamples of observed panel; not full-corpus or training uncertainty',

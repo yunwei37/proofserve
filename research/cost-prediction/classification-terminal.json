@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "native_launched": false,
+  "W_overlaps": 142,
+  "W_disagreements": 0,
+  "primary42_W_overlap": 42,
+  "dynamic_panel": 31,
+  "primary_dynamic": 29,
+  "primary_unobserved": 13,
+  "independent_truth": "decision-shaped helper share >=.5 within measured original-kernel replay",
+  "classifier": "preexisting fixed source explicit-marker density >0; no fitting",
+  "W_agreement_scope": "same proxy definition/scanner lineage, not independent truth"
+}
