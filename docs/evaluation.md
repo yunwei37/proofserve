@@ -274,3 +274,25 @@ not admittedas completecells. OriginalEnvelopev3smallcase15cells staysvalid.
 Notgenericimpossibility orkernelresourcefailure. RootdoesnotchangeMimplementation,
 kill/widen/restart, norborrowearlierdenominators. PublishedcurrentPDF132808bytes
 remainsunchanged, missingrepair-version/performanceplaceholders correct.
+
+## Grid prepared-stream target trials and pooled certificate controls — step0240
+[Root self-review](tmp/build-and-evaluate/step-0240-20261101T071044+0000/step-report.md), **自审**.
+Root verifies4v12nativeidentity/commands/cgroups/logs andcompleteGrid
+importgraph3793uniquemodules. Allretired/P0–7/noM/14GiBcharged/no stops/OOM;
+wait4usagecomplete, cgroupCPUindependent. Gridprefix once,fivefixedordertrials
+serial/1/2/4/8workers. Target7898ordinaryCIs/8waves comparedexactlyinclbodies;
+no certificate substitution. Wall265.784594984/282.181143156/156.246086777/
+93.661574252/95.431348474s, CPU265.659521954/282.039078586/312.081176920/
+373.547742218/380.705852558s.4ratio2.837712233/CPU+40.61146%;8ratio2.785086863/
+CPU+43.30593%, notmonotonic. Whole1097.591638103s/1988.629828CPU includesprefix
+andall5, cgroup1988.629244s. Sample2905890816B/charged1037979648B distinct.
+Notpairedcoldmodes/source/whole-libraryspeedup;1observation/mode,noCI.
+
+All10actualEnvelopeoriginalCIs matchselectorsinclproofbeforetransform;80pooled
+children+10merges originalkernelchecked. Finalaxiomunion[propext],nosorry.
+Corruptinput bvar0 bypasses no checker andisnativekernelreject; corruptchild
+alsoexplicitkernelreject.3controls measured=false, notspeeddata. Prefiximports
+trusted, root-readylocaldeclsreplayed. Nomissingcomplete-prefixprofilecounts
+filled. v10RSSfailure unchanged. PinnedCchecked-commit/coordinator addTCB.
+Preparation/generator/selectorcostsnotmeasuredonPcores orclaimedamortizedgain.
+Raw/gridmodulelog/CPU/memory/nativecontrolsource frozen;0rootnative.

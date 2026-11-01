@@ -702,6 +702,72 @@ combining the speedup ratios into a library estimate.
 It also identifies a concrete design cost: preserve checking parallelism
 without rebuilding a prepared environment at every assembly boundary.
 
+\paragraph{Checking inside one prepared stream.}
+A combined prototype avoids module-export round trips between target trials.
+It checks the import prefix once, then compares direct stock replay with
+1, 2, 4 and 8-worker declaration replay against the same immutable checked
+prefix. Unlike the earlier checked-fragment protocol, it commits checked
+results through an internal-ABI adapter; its additional implementation
+trust is discussed in Section~\ref{sec:meaning}.
+
+One completed Grid process checks its 3,793-module closure and runs five
+ordered target trials (Table~\ref{tab:gridstream}).
+Each parallel trial processes 7,898 declarations in eight dependency waves;
+its complete typed constants, including proof bodies, match direct serial
+replay. There is no chunk substitution in these Grid trials.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Grid trial & Incremental wall (s) & Process CPU (s)\\
+\midrule
+Direct serial &265.785&265.660\\
+1 worker &282.181&282.039\\
+2 workers &156.246&312.081\\
+4 workers &93.662&373.548\\
+8 workers &95.431&380.706\\
+\bottomrule
+\end{tabular}
+\caption{One ordered Grid trial sequence inside one process and checked
+prefix. Trial clocks include planning, checking and the result-identity audit;
+they exclude the already checked prefix and process startup.
+These are incremental target costs, not complete independent invocations.
+There is one observation per path, without randomized order or confidence bounds.}
+\label{tab:gridstream}
+\end{table}
+
+Four workers reduce the incremental target wall time 2.838-fold with
+40.6\% more process CPU; eight workers are slightly slower than four.
+The complete process takes 1,097.592 seconds and 1,988.630 CPU seconds,
+including the prefix and all five trials.
+Neither that total nor the incremental ratios measure a cold single-mode
+speedup. The process exits successfully under the same P0--7/no-\texttt{-M}/
+14\,GiB charged-memory boundary; sampled RSS and charged peaks are
+2.906\,GB and 1.038\,GB, respectively.
+Upstream unsafe/partial exclusions remain 3,554 among 382,707 input entries.
+This is one bounded repaired-version observation, not the missing repeated
+library-level throughput comparison or a universally transparent stream.
+
+\paragraph{Pooled certificates pass a broader native qualification.}
+A separate native control selects all ten measured Envelope helpers whose
+earlier checking calls exceed one CPU second.
+Before transformation, each input \texttt{ConstantInfo} must equal its
+prepared selector, including the original proof.
+The original kernel then checks certificate support, 80 pooled children and
+ten assembled parent theorems; their transitive axiom union is
+\texttt{[propext]}, without \texttt{sorry}.
+Corrupting an incoming original proof or a prepared child produces explicit
+original-kernel rejection in two additional controls.
+The control imports its prefix through the stock loader and rechecks the
+ready local declarations; it does not independently check the entire closure.
+Its three native processes retire without resource stops, but it supplies
+no paired performance result.
+The earlier complete-prefix Envelope stream remains interrupted by its
+RSS stop. Passing these controls does not repair that cost or resource result.
+\missing{Repeated complete-prefix certificate curves, repaired-version
+library throughput and aggregate failure/budget transparency.}
+
 A cluster cannot silently trust remote object files or worker verdicts as
 new proof assertions. Specify what the acceptance authority checks,
 dependency identity, transfer and recovery.

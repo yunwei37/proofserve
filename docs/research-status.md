@@ -22,7 +22,7 @@ ratio. [Withdrawal](tmp/build-and-evaluate/step-0229-20261031T235441+0000/step-r
 | Line | Responsibility | Paths |
 |---|---|---|
 | W | Public outputs, census, original-frame noMcosts and regime prevalence | [workloads/](../workloads/W-status.md) |
-| M | Automatic chunking and original-kernel parallel checking | [chunked-kernel-check](../research/chunked-kernel-check/README.md) |
+| M | Automatic chunking and original-kernel parallel checking | [chunked-kernel-check](../research/chunked-kernel-check/README.md), [parallel-stream-check](../research/parallel-stream-check/README.md) |
 | O | Decoupled single-process streaming checker, engine and open-source delivery | [decoupled-check](../research/decoupled-check/README.md), crates/ and service docs |
 | Root | Paper, source/count verification, evidence and user-record integration | docs/paper/, research index, status and plan |
 
@@ -118,6 +118,16 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   performance. Checked-token coordinator/internalABI C insertion areextra
   trustedimplementationcode; not unchangedTCB. Rootstep0237freezesreceipts.
   NewfiniteEnvelope-streampoint laterhitRSSstop; see rootstep0239, no fullcurve.
+
+- [Rootstep0240 collected v12 Grid and all-ten qualification](tmp/build-and-evaluate/step-0240-20261101T071044+0000/step-report.md):
+  one complete3793moduleprocess/fiveorderedGridtargettrials; 7898originalCIs
+  matchserial after8waves. Incrementalserial265.785s,1/2/4/8worker
+  282.181/156.246/93.662/95.431s;4worker2.8377x/CPU+40.6%, oneobservation.
+  Whole1097.592s/1988.630CPUincludesprefix+allfive, notcoldmodegain.
+  Additionaltrustedcoordinator/Cadapter retained; ordinaryproofsunchanged.
+  Separateall10Envelopehelpers actualselectorCImatch,80children/10merges pass,
+  [propext]/nosorry, corruptinputandchunkkernelreject. Trustedimportprefix,
+  notcompletecoldclosure/performancequalification. All4nativeprocessesretired.
 
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):

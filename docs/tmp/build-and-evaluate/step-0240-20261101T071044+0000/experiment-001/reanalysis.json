@@ -1,0 +1,88 @@
+{
+  "certificates": {
+    "selected": 10,
+    "checked_children": 80,
+    "merged_parents": 10,
+    "actual_input_CI_matches_selector": true,
+    "axioms": [
+      "propext"
+    ],
+    "sorry": false,
+    "negative_controls": [
+      "corrupt incoming original proof",
+      "corrupt prepared child"
+    ],
+    "scope": "trusted imported prefix; root-ready dependencies rechecked; no independent complete closure or gain"
+  },
+  "grid": {
+    "curves": [
+      {
+        "kind": "serial",
+        "workers": 1,
+        "incremental_wall_s": 265.784594984,
+        "process_CPU_s": 265.659521954,
+        "jobs": 0,
+        "waves": 0,
+        "serial_to_trial_wall_ratio": 1.0,
+        "CPU_change_percent": 0.0
+      },
+      {
+        "kind": "parallel1",
+        "workers": 1,
+        "incremental_wall_s": 282.181143156,
+        "process_CPU_s": 282.039078586,
+        "jobs": 7898,
+        "waves": 8,
+        "serial_to_trial_wall_ratio": 0.9418935369365365,
+        "CPU_change_percent": 6.165620005458039
+      },
+      {
+        "kind": "parallel2",
+        "workers": 2,
+        "incremental_wall_s": 156.246086777,
+        "process_CPU_s": 312.08117692,
+        "jobs": 7898,
+        "waves": 8,
+        "serial_to_trial_wall_ratio": 1.7010640104115844,
+        "CPU_change_percent": 17.47411672826773
+      },
+      {
+        "kind": "parallel4",
+        "workers": 4,
+        "incremental_wall_s": 93.661574252,
+        "process_CPU_s": 373.547742218,
+        "jobs": 7898,
+        "waves": 8,
+        "serial_to_trial_wall_ratio": 2.8377122326483275,
+        "CPU_change_percent": 40.61146367743645
+      },
+      {
+        "kind": "parallel8",
+        "workers": 8,
+        "incremental_wall_s": 95.431348474,
+        "process_CPU_s": 380.705852558,
+        "jobs": 7898,
+        "waves": 8,
+        "serial_to_trial_wall_ratio": 2.7850868633215664,
+        "CPU_change_percent": 43.30593150126978
+      }
+    ],
+    "complete_native_processes": 1,
+    "repetitions_per_mode": 1,
+    "accepted_closure_modules": 3793,
+    "entries": 382707,
+    "unsafe_partial_excluded": 3554,
+    "whole_process_wall_s": 1097.5916381031275,
+    "whole_process_CPU_s": 1988.629828,
+    "cgroup_CPU_s": 1988.629244,
+    "sampled_RSS_bytes": 2905890816,
+    "charged_peak_bytes": 1037979648,
+    "cap_GiB": 14,
+    "all_native_identities_and_scopes_retired": true,
+    "scope": "one prefix checked once, five ordered incremental target trials include planning/check/CI audit; full process includes prefix and all five, not cold single-mode speedup",
+    "additional_implementation_TCB": true
+  },
+  "root_analysis_s": 0.22749868873506784,
+  "root_analysis_maxrss_kib": 29120,
+  "new_native_runs": 0
+}

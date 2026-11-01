@@ -120,3 +120,13 @@ EarlierMchecking-grainpanelremains29draws+2purposeful, notretroactivelyexpanded.
 No Woldqueue restart; newcapture choices belongtotheexistingWlane.
 
 [Rootstep0239 failed combined-stream capture](tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md): Envelope-stream-r1 return-9 after1313.600s/sample15,697,940,480B vs14GiBsampledstop; charged9,738,059,776B. No kernelOOMevent. Allsampled native identities/controller nowretired; initialcgroupcleanup-pending record retained, cgroup nowabsent. TotalnativeCPUunknown (timeout-parent wait4nearzero is not descendantCPU). Notmathematicalrejection/completecurve/speedup. No automaticrerun or budgetincrease; originalsmallEnvelopev3curve unaffected.
+
+## New bounded repaired-version evidence
+Rootstep0240 collects actual v12Gridstream-r1: one3793moduleclosure plusfive
+incrementaltargettrials, 4worker93.662vsserial265.785s, CPU+40.6%;8worker95.431s.
+Same7898typedconstants/proofbodies, additionaltrustedcoordinator/Ccommitcode.
+Singleorderedrun, notcoldsinglemode speedup/repeatedlibrarythroughput.
+Allten Envelope long-call helpers pass80children/10merges; badinput/child
+kernelreject. Imports trusted in thiscontrol; no performance or coldbootstrap
+claim. Originalv10coldprefixresourcefailure remains. Follow actualnewqualified
+Mplans withoutrestartingcompletedGridr1; rootsmallanalysis only.
