@@ -1,0 +1,13 @@
+{
+  "utc": "2026-11-01T01:39:33.172771+00:00",
+  "prior_point": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/frozen-grid-components-v1",
+  "latest_priority": "measure actual per-target distribution; no further<1s splitting",
+  "raw_preserved": true,
+  "action": "already completed before attempted withdrawal; no process killed",
+  "terminal": {
+    "complete": true,
+    "completed": 15,
+    "planned": 15,
+    "qualified": true
+  }
+}

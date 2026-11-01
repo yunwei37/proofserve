@@ -1,0 +1,24 @@
+{
+  "module": "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41",
+  "input_entries": 3425,
+  "eligible": 3425,
+  "skipped": 0,
+  "checked_metadata_only": true,
+  "acyclic": true,
+  "levels": 6,
+  "widths": [
+    95,
+    16,
+    17,
+    1099,
+    1318,
+    880
+  ],
+  "max_ready_width": 1318,
+  "unresolved_nodes": [],
+  "kind_counts": {
+    "theorem": 3313,
+    "definition": 112
+  },
+  "scope": "static local declaration dependency DAG, not weighted critical path or measured speedup"
+}

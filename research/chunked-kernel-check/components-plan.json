@@ -21,5 +21,6 @@
   "not_claimed": "logical splitting alone implies speedup; syntactic exposures are not measured repeated work",
   "common_lock": true,
   "limits": "same180s/finiteHB/noM/P0-7/14GiB own-tree sampler; M total16GiB",
-  "prior_review": "flat15/15accepted; kernel span178ms/392msCPU at8 vs146ms original; ordinary import~3.65s dominates"
+  "prior_review": "flat15/15accepted; kernel span178ms/392msCPU at8 vs146ms original; ordinary import~3.65s dominates",
+  "current_disposition": "completed-before-priority-withdrawal; no additional subsecond trials"
 }

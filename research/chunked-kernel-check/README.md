@@ -66,11 +66,24 @@ of aggregate worker CPU. The whole native pipeline is about5.9s split versus
 and whole-process costs. This is a negative result for the flat partition on
 one real target, not a rejection of all chunking or a whole-module claim.
 
-A source-only component-preserving control is separately queued after that
-review. It keeps complete exponential components in different jobs, avoiding
-the flat partition's obvious source-level duplication/imbalance. See
-components-plan.json and partition-exposure.csv. It remains unqualified and
-unmeasured until its actual terminal; do not transfer v3's acceptance to it.
+The component-preserving Grid control completed before the later >=1s priority
+change could withdraw it. Local k4 kernel span falls from151ms to79ms, but
+whole-process time rises from1.98s to5.84s. All15accept;27 repeated artifact
+byte comparisons differ, while all27 typed ConstantInfo comparisons agree.
+No further small-goal trials are planned. See components-summary.csv and
+step-005-report.md.
+
+## Actual kernel cost distribution — partial native evidence
+UMoments9 has1,164 actual decide helpers (not40); BarrierData41 has1,320.
+Neither contains a >=1s helper in this independent replay point. Their maxima
+are85.5ms and164.6ms. Stock and timed complete eligible-name sets agree.
+The ongoing31-artifact capture remains partial: this is not a whole-library
+large-target percentage. Timers wrap original C++ declaration checks; one-pair
+observer controls do not establish zero measurement overhead.
+See [step005](step-005-report.md), declaration-distribution.csv,
+declaration-histogram.csv, declaration-observer-controls.csv and
+distribution-plan.md. Barrier's6-level dependency graph is an implementation
+opportunity, not measured speedup.
 
 ## Reproduction and raw data
 

@@ -1,0 +1,11 @@
+module,bin,count,decision_cpu_s
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,<1ms,0,0.0
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,1-10ms,0,0.0
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,10-100ms,1164,75.435722083
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,100ms-1s,0,0.0
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,>=1s,0,0.0
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,<1ms,43,0.035762879
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,1-10ms,519,1.926488352
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,10-100ms,646,30.475272939
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,100ms-1s,112,14.472175489
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,>=1s,0,0.0

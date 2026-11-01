@@ -1,0 +1,13 @@
+{
+  "completed_native_cells": 15,
+  "accepted": 15,
+  "target_identical_to_original_extracted_input": true,
+  "axioms": [
+    "propext"
+  ],
+  "new_axioms": 0,
+  "sorry": false,
+  "same_k_repeat_artifacts_equal": false,
+  "native_heartbeats": "finite per child; no claim of aggregate budget transparency",
+  "source_frame": "one real Grid PointBox.calc equality, not full Grid compilation"
+}

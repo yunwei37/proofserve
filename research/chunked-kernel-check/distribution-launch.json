@@ -1,0 +1,23 @@
+{
+  "pid": 193677,
+  "birth": "755112572",
+  "utc": "2026-11-01T02:02:22.306442+00:00",
+  "args": [
+    "flock",
+    "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+    "taskset",
+    "-c",
+    "0-7",
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=10",
+    "1740",
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/controller.py"
+  ],
+  "lock_before": "   PID COMMAND PATH                                                 BLOCKER\n192016 flock   /workspaces/.agent-state/gpu-smt-captures/pcore.lock  191562\n191951 flock   /workspaces/.agent-state/gpu-smt-captures/pcore.lock  191562\n191562 flock   /workspaces/.agent-state/gpu-smt-captures/pcore.lock \n",
+  "point": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1",
+  "single_submitted_task": true,
+  "measurement": "fixed-artifact original-kernel declaration replay, no-M"
+}

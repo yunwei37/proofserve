@@ -1,0 +1,6 @@
+{
+  "compared_different_byte_pairs": 27,
+  "all_typed_constants_equal": true,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/runs/old-artifact-semantic-v2",
+  "scope": "exact ConstantInfo equality including theorem types/bodies; not extension-state or additional kernel checking"
+}
