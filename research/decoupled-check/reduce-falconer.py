@@ -3,7 +3,7 @@
 import json,csv,re
 from pathlib import Path
 BASE=Path('/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031')
-ROOT=BASE/'scale-study/falconer-project'
+ROOT=BASE/'scale-study/falconer-project-20261101'
 REPO=Path('/workspaces/repository/research/decoupled-check')
 def read_rows(file):
  return [json.loads(x)for x in file.read_text().splitlines()]if file.exists()else[]
@@ -42,12 +42,39 @@ def main():
   memory=[]
   for e in read_rows(ROOT/(state['memory_profile']+'.stdout')):
    if e.get('event')!='memory_checkpoint':continue
-   row=dict(modules=e['modules'],input_entries=e['input_entries'])
+   row=dict(modules=e['modules'],input_entries=e['input_entries'],
+    checked_shared_declarations=e['shared_kernel_declarations'],eligible_input_entries=e['processed_eligible_entries'],
+    module_local_checks=e['module_local_checks'])
+   found=re.search(r'^VmHWM:\s+(\d+) kB$',e['process_status'],re.M)
+   row['peak_rss_kib']=int(found.group(1))if found else None
    for k in ['Rss','Pss','Shared_Clean','Shared_Dirty','Private_Clean','Private_Dirty']:
     found=re.search('^'+k+':\\s+(\\d+) kB$',e['smaps_rollup'],re.M)
     row[k.lower()+'_kib']=int(found.group(1))if found else None
    memory.append(row)
   csvwrite('falconer-memory-curve.csv',memory)
+  # Measured one-process peak-RSS trend; extrapolations are explicitly conditional.
+  xs=[float(r['checked_shared_declarations'])for r in memory if r['peak_rss_kib']is not None]
+  ys=[float(r['peak_rss_kib'])for r in memory if r['peak_rss_kib']is not None]
+  if len(xs)>2 and max(xs)>min(xs):
+   xbar=sum(xs)/len(xs);ybar=sum(ys)/len(ys)
+   b=sum((x-xbar)*(y-ybar)for x,y in zip(xs,ys))/sum((x-xbar)**2 for x in xs);a=ybar-b*xbar
+   residuals=[y-(a+b*x)for x,y in zip(xs,ys)]
+   ss=sum((y-ybar)**2 for y in ys)
+   fit=dict(points=len(xs),n_min=min(xs),n_max=max(xs),intercept_kib=a,kib_per_shared_declaration=b,
+    r_squared=1-sum(r*r for r in residuals)/ss if ss else None,max_abs_residual_kib=max(map(abs,residuals)),
+    scope='within-run VmHWM trend with mapped modules and audit state; not a causal per-declaration law or population bound')
+   (ROOT/'memory-fit.json').write_text(json.dumps(fit,indent=2));csvwrite('falconer-memory-fit.csv',[fit])
+   lexical=json.loads((ROOT.parent/'falconer-plan.json').read_text())
+   remaining=lexical['whole_source_metrics']['lemma_theorem_declarations']-lexical['source_metrics']['lemma_theorem_declarations']
+   final_n=xs[-1];scenarios=[]
+   for factor in [1,2,4,8]:
+    n=final_n+factor*remaining
+    scenarios.append(dict(assumed_new_unique_declarations_per_remaining_source_theorem=factor,
+     measured_falconer_closure_shared_declarations=int(final_n),remaining_lexical_theorems=remaining,
+     assumed_whole_library_declarations=int(n),fitted_peak_rss_gib=(a+b*n)/1024**2,
+     within_measured_range=n<=max(xs),scope='conditional extrapolation; source sites are not typed declaration counts; compute-heavy cases not calibrated'))
+   csvwrite('falconer-whole-library-memory-scenarios.csv',scenarios)
+
  (ROOT/'reduced-summary.json').write_text(json.dumps(summary,indent=2))
  text='# Complete Falconer project extension: observed status\n\nSelf-review.\n\n'
  text+='\n'.join('- '+k+': '+str(v)for k,v in summary.items())+'\n\n'

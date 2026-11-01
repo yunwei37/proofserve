@@ -57,6 +57,13 @@ def sameConstant (a b : ConstantInfo) : Bool :=
   | .recInfo a, .recInfo b => a == b
   | _, _ => false
 
+/-- Matches the upstream replay duplicate-theorem policy only within imports. -/
+def sameTheoremInterface (a b : ConstantInfo) : Bool :=
+  match a, b with
+  | .thmInfo a, .thmInfo b =>
+    a.name == b.name && a.levelParams == b.levelParams && a.type == b.type && a.all == b.all
+  | _, _ => false
+
 partial def closure (graph : Std.HashMap Name (Array Name)) (todo : List Name)
     (seen : NameSet := {}) : NameSet :=
   match todo with
@@ -71,7 +78,7 @@ def constantsOf (data : ModuleData) (mutation : String) :
     let mut map : Std.HashMap Name ConstantInfo := {}
     let mut skipped := 0
     let mut changed := false
-    for ci in data.constants do
+    for name in data.constNames, ci in data.constants do
       if ci.isUnsafe || ci.isPartial then skipped := skipped + 1
       let mut ci := ci
       if mutation != "none" && !changed then
@@ -80,7 +87,7 @@ def constantsOf (data : ModuleData) (mutation : String) :
             else Expr.bvar 0
           ci := .thmInfo { v with value }
           changed := true
-      map := map.insert ci.name ci
+      map := map.insert name ci
     return (map, skipped)
 
 /-- Module-local baseline is source-equivalent to the stock leanchecker path. -/
@@ -95,12 +102,17 @@ unsafe def localReplay (mod : Name) (mutation : String) : IO Unit := do
   env.freeRegions
 
 /-- Optional memory snapshots are explicitly a profiling mode, off for primary timing. -/
-def memorySnapshot (modules constants : Nat) : IO Unit := do
+def memorySnapshot (state : AuditState) (force : Bool := false) : IO Unit := do
   if (← IO.getEnv "DECOUPLED_MEMORY_PROFILE") == some "1" then
     let step := ((← IO.getEnv "DECOUPLED_MEMORY_STEP").getD "100").toNat?.getD 100
-    if step > 0 && modules % step == 0 then
-      event [("event", toJson "memory_checkpoint"), ("modules", toJson modules),
-        ("input_entries", toJson constants),
+    if force || (step > 0 && state.modules % step == 0) then
+      let checkedCount : Nat := SMap.fold (fun n _ _ => n + 1) 0 state.checked.constants
+      event [("event", toJson "memory_checkpoint"), ("modules", toJson state.modules),
+        ("input_entries", toJson state.constants),
+        ("processed_eligible_entries", toJson (state.constants - state.skipped)),
+        ("shared_kernel_declarations", toJson checkedCount),
+        ("module_local_checks", toJson state.fallbacks),
+        ("process_status", toJson (← IO.FS.readFile "/proc/self/status")),
         ("smaps_rollup", toJson (← IO.FS.readFile "/proc/self/smaps_rollup"))]
 
 partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Name) : AuditM Unit := do
@@ -116,20 +128,37 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
   for imp in first.imports do visit mode mutation mutateOnly imp.module
   let chosen := if mutateOnly == some mod then mutation else "none"
   let (map, skipped) := constantsOf data chosen
+  let aliases := Id.run do
+    let mut n := 0
+    for name in data.constNames, ci in data.constants do
+      if name != ci.name then n := n + 1
+    return n
   event [("event", toJson "module_header"), ("module", toJson mod.toString),
     ("imports", toJson (first.imports.map (·.module.toString))),
-    ("constants", toJson data.constants.size)]
+    ("constants", toJson data.constants.size), ("aliased_constant_entries", toJson aliases)]
   let s ← get
   let visible := closure s.imports (first.imports.map (·.module)).toList
   let mut reason : Option String := none
+  let mut separate := false
   let mut insertMap : Std.HashMap Name ConstantInfo := {}
   if mode == "audit" then
     for imported in visible do
-      if s.segregated.contains imported then reason := some "segregated_dependency"
+      if s.segregated.contains imported then
+        separate := true
+        reason := some "segregated_dependency"
     for (_, ci) in map do
       unless ci.isUnsafe || ci.isPartial do
         if let some old := s.checked.find? ci.name then
-          if !sameConstant old ci then reason := some s!"different_constant:{ci.name}"
+          let origins := s.origins[ci.name]?.getD {}
+          let mut imported := false
+          for origin in origins do
+            if visible.contains origin then imported := true
+          if !sameConstant old ci then
+            if sameTheoremInterface old ci then
+              unless imported do reason := some s!"duplicate_proof_requires_native:{ci.name}"
+            else
+              separate := true
+              reason := some s!"different_constant:{ci.name}"
         else insertMap := insertMap.insert ci.name ci
         for n in ci.getUsedConstantsAsSet do
           unless map.contains n do
@@ -137,14 +166,26 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
             let mut found := false
             for origin in origins do
               if visible.contains origin then found := true
-            unless found do reason := some s!"unimported_reference:{ci.name}:{n}"
+            unless found do
+              separate := true
+              reason := some s!"unimported_reference:{ci.name}:{n}"
   else insertMap := map
   if let some why := reason then
     try
       let _ ← unsafe localReplay mod chosen
       event [("event", toJson "accept"), ("module", toJson mod.toString),
         ("context", toJson "module_local"), ("fallback_reason", toJson why)]
-      modify fun s => { s with segregated := s.segregated.insert mod, fallbacks := s.fallbacks + 1 }
+      if separate then
+        modify fun s => { s with segregated := s.segregated.insert mod, fallbacks := s.fallbacks + 1 }
+      else
+        -- A locally checked duplicate theorem interface does not quarantine
+        -- unrelated new declarations or all future dependent modules.
+        let checked ← s.checked.replay insertMap
+        let mut origins := s.origins
+        for (name, ci) in map do
+          unless ci.isUnsafe || ci.isPartial do
+            origins := origins.insert name ((origins[name]?.getD {}).insert mod)
+        modify fun s => { s with checked, origins, fallbacks := s.fallbacks + 1 }
     catch e =>
       event [("event", toJson "reject"), ("module", toJson mod.toString),
         ("context", toJson "module_local"), ("error", toJson e.toString),
@@ -154,9 +195,9 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
     try
       let checked ← s.checked.replay insertMap
       let mut origins := s.origins
-      for (_, ci) in map do
+      for (name, ci) in map do
         unless ci.isUnsafe || ci.isPartial do
-          origins := origins.insert ci.name ((origins[ci.name]?.getD {}).insert mod)
+          origins := origins.insert name ((origins[name]?.getD {}).insert mod)
       modify fun s => { s with checked, origins }
       event [("event", toJson "accept"), ("module", toJson mod.toString),
         ("context", toJson "shared"), ("constants", toJson data.constants.size),
@@ -170,7 +211,7 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
     modules := s.modules + 1, constants := s.constants + data.constants.size,
     skipped := s.skipped + skipped }
   let s ← get
-  memorySnapshot s.modules s.constants
+  memorySnapshot s
 
 unsafe def main (args : List String) : IO UInt32 := do
   let mode :: mutation :: rawRoots := args |
@@ -201,7 +242,10 @@ unsafe def main (args : List String) : IO UInt32 := do
     let empty ← mkEmptyEnvironment
     let (_, s) ← (do
       for mod in roots do visit mode mutation mutateOnly mod).run { checked := empty.toKernelEnv }
+    memorySnapshot s true
+    let checkedCount : Nat := SMap.fold (fun n _ _ => n + 1) 0 s.checked.constants
     event [("event", toJson "complete"), ("mode", toJson mode), ("modules", toJson s.modules),
+      ("unique_shared_kernel_declarations", toJson checkedCount),
       ("constants", toJson s.constants), ("skipped_unsafe_partial", toJson s.skipped),
       ("module_local_fallbacks", toJson s.fallbacks), ("retained_regions", toJson s.regions.size)]
   return 0

@@ -31,6 +31,7 @@ def main():
  directory=ROOT/'fixtures';directory.mkdir(exist_ok=True)
  env=environment();env['LEAN_PATH']=str(directory)+':'+env['LEAN_PATH']
  for mod,text in fixtures.items():
+  text='prelude\nimport Init.Prelude\n'+text
   file=directory/(mod+'.lean');file.write_text(text)
   checked('fixture-'+mod,[SDK/'bin/lean','--root='+str(directory),'-o',directory/(mod+'.olean'),file],60,env=env,cwd=directory)
  cases=[
@@ -46,14 +47,19 @@ def main():
   if target:chosen['DECOUPLED_MUTATE_MODULE']=target
   for mode in ['one','naive','audit']:
    r=run(name+'-'+mode,[ROOT/'audited-stream',mode,mutation]+roots,90,False,env=chosen)
-   events=[json.loads(x)for x in(ROOT/(r['key']+'.stdout')).read_text().splitlines()if x.startswith('{')]
+   events=[];truncated_lines=0
+   for line in(ROOT/(r['key']+'.stdout')).read_text().splitlines():
+    if not line.startswith('{'):continue
+    try:events.append(json.loads(line))
+    except json.JSONDecodeError:truncated_lines+=1
+
    result.append(dict(case=name,mode=mode,expected_exit=expected[mode],actual_exit=r['returncode'],
-     qualified=(r['returncode']==0)==(expected[mode]==0),
+     qualified=(r['returncode']==0)==(expected[mode]==0) and r['returncode']not in [124,137,-9,-15] and not truncated_lines,truncated_lines=truncated_lines,
      accept=[e['module']for e in events if e.get('event')=='accept'],
      reject=[e['module']for e in events if e.get('event')=='reject'],
      fallbacks=[e for e in events if e.get('context')=='module_local']))
    # Nonzero expected is a native rejection, not an unconstrained crash.
-   if expected[mode] and not any(e.get('event')=='reject'for e in events):
+   if expected[mode] and not any(e.get('event')=='reject'and e.get('module')==roots[-1]for e in events):
     result[-1]['qualified']=False
  (ROOT/'boundary-results.json').write_text(json.dumps(result,indent=2))
  if not all(x['qualified']for x in result):raise RuntimeError('boundary result differs; retain actual evidence')
@@ -66,7 +72,7 @@ def main():
  base=ROOT.parent.parent
  r=checked('falconer-external-manifest',[base/'stream-check','manifest','none']+plan['external_frontier'],300)
  planner=runpy.run_path(str(ROOT/'plan-falconer.py'),run_name='falconer_plan')
- planner['prepare'](ROOT/(r['key']+'.stdout'),ROOT.parent/'falconer-project')
+ planner['prepare'](ROOT/(r['key']+'.stdout'),ROOT.parent/'falconer-project-20261101')
 
 if __name__=='__main__':
  try:main()

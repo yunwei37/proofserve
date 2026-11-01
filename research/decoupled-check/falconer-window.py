@@ -7,7 +7,8 @@ import os,json,time,sys,shutil
 from pathlib import Path
 from native_project import run,ROOT,SDK,environment
 BASE=ROOT.parent.parent
-BOUNDARY=ROOT.parent/'boundary-v2'
+BOUNDARY=ROOT.parent/'boundary-v4'
+CHECKER=ROOT.parent/'measurement-v1/audited-stream'
 def atomic(name,value):
  p=ROOT/name;tmp=p.with_suffix(p.suffix+'.pending')
  with tmp.open('w')as f:json.dump(value,f,indent=2);f.flush();os.fsync(f.fileno())
@@ -24,6 +25,7 @@ def main():
  # Original finite capture must actually retire before this extension writes.
  assert(BASE/'all-complete.json').is_file()
  assert(BOUNDARY/'qualified.json').is_file()
+ assert(ROOT.parent/'measurement-v1/measurement-qualified.json').is_file()
  assert not json.loads((BASE/'progress.json').read_text()).get('build_failure')
  parent_state=json.loads((BASE/'progress.json').read_text())
  common=set(parent_state['built'])&wanted
@@ -65,7 +67,7 @@ def main():
    if deadline-time.monotonic()<1510:break
    chosen=env.copy()
    if phase=='memory_profile':chosen['DECOUPLED_MEMORY_PROFILE']='1'
-   r=run(phase,[BOUNDARY/'audited-stream','audit','none',roots_arg],1500,True,env=chosen)
+   r=run(phase,[CHECKER,'audit','none',roots_arg],1500,True,env=chosen)
    es=events(r['key']);accepted={e['module']for e in es if e.get('event')=='accept'}
    finished=r['returncode']==0 and accepted==wanted and es[-1].get('event')=='complete'
    r.update(operation=phase,closure_complete=finished,accepted_modules=sorted(accepted))
@@ -85,7 +87,7 @@ def main():
     remain=deadline-time.monotonic()
     if remain<70:break
     chunk=pending[:32]
-    r=run('oracle-'+str(len(state['oracle_verified'])).zfill(5),[BOUNDARY/'audited-stream','one','none']+chunk,min(600,remain-10),True,env=env)
+    r=run('oracle-'+str(len(state['oracle_verified'])).zfill(5),[CHECKER,'one','none']+chunk,min(600,remain-10),True,env=env)
     es=events(r['key']);accepted={e['module']for e in es if e.get('event')=='accept'}
     complete=r['returncode']==0 and accepted==set(chunk)
     r.update(operation='module_oracle',requested_modules=chunk,closure_complete=complete);append(r)

@@ -1,0 +1,16 @@
+case,mode,expected_exit,actual_exit,qualified,accepted_modules,rejected_modules,truncated_lines
+ordinary-duplicates,one,0,0,True,DupA|DupB,,0
+ordinary-duplicates,naive,0,0,True,Init.Prelude|DupA|DupB,,0
+ordinary-duplicates,audit,0,0,True,Init.Prelude|DupA|DupB,,0
+corrupt-duplicate,one,1,1,True,DupA,DupB,0
+corrupt-duplicate,naive,0,0,True,Init.Prelude|DupA|DupB,,0
+corrupt-duplicate,audit,1,1,True,Init.Prelude|DupA,DupB,0
+unimported-sibling,one,1,1,True,ExtraA,ExtraB,0
+unimported-sibling,naive,0,0,True,Init.Prelude|ExtraA|ExtraB,,0
+unimported-sibling,audit,1,1,True,Init.Prelude|ExtraA,ExtraB,0
+conflicting-definitions,one,0,0,True,DefA|DefB,,0
+conflicting-definitions,naive,1,1,True,Init.Prelude|DefA,DefB,0
+conflicting-definitions,audit,0,0,True,Init.Prelude|DefA|DefB,,0
+private-names,one,0,0,True,PrivateA|PrivateB,,0
+private-names,naive,0,0,True,Init.Prelude|PrivateA|PrivateB,,0
+private-names,audit,0,0,True,Init.Prelude|PrivateA|PrivateB,,0

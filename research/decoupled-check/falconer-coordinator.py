@@ -4,7 +4,7 @@ import os,sys,time,json,select,subprocess,shutil
 from pathlib import Path
 os.sched_setaffinity(0,{8})
 BASE=Path('/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031')
-ROOT=BASE/'scale-study/falconer-project'
+ROOT=BASE/'scale-study/falconer-project-20261101'
 SOURCES=Path(__file__).parent
 ROOT.mkdir(exist_ok=True)
 REPO=Path('/workspaces/repository')
@@ -22,7 +22,7 @@ def wait_owner(pid,birth):
  finally:os.close(fd)
 def publish():
  subprocess.run(['python3',str(SOURCES/'reduce-falconer.py')],check=True)
- names=['falconer-result.md','falconer-source-costs.csv','falconer-memory-curve.csv']
+ names=['falconer-result.md','falconer-source-costs.csv','falconer-memory-curve.csv','falconer-memory-fit.csv','falconer-whole-library-memory-scenarios.csv']
  files=['research/decoupled-check/'+n for n in names if(REPO/'research/decoupled-check'/n).exists()]
  if not files:return
  assert subprocess.check_output(['git','symbolic-ref','--short','HEAD'],cwd=REPO,text=True).strip()=='main'
@@ -39,9 +39,9 @@ def main():
  wait_owner(launch['parent_pid'],launch['parent_birth'])
  if not(BASE/'all-complete.json').exists():
   terminal('parent incomplete; preserve primary collection and do not replace it');return
- b=BASE/'scale-study/boundary-v2'
+ b=BASE/'scale-study/boundary-v4'
  sub=json.loads((b/'submission.json').read_text());wait_owner(sub['pid'],sub['birth'])
- if not(b/'qualified.json').exists()or not(ROOT/'cohort-plan.json').exists():
+ if not(b/'qualified.json').exists()or not(ROOT.parent/'measurement-v1/measurement-qualified.json').exists()or not(ROOT/'cohort-plan.json').exists():
   terminal('native context qualification or external graph incomplete');return
  plan=json.loads((ROOT/'cohort-plan.json').read_text())
  if plan['status']!='prepared':terminal('complete source graph unavailable');return
