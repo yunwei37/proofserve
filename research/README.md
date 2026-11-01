@@ -45,3 +45,9 @@ Old8/5Mathlibfigureincludesadocumentationcomment. Nativeweights remainopen.
 [Rootstep0239 failed combined-stream capture](../docs/tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md): Envelope-stream-r1 return-9 after1313.600s/sample15,697,940,480B vs14GiBsampledstop; charged9,738,059,776B. No kernelOOMevent. Allsampled native identities/controller nowretired; initialcgroupcleanup-pending record retained, cgroup nowabsent. TotalnativeCPUunknown (timeout-parent wait4nearzero is not descendantCPU). Notmathematicalrejection/completecurve/speedup. No automaticrerun or budgetincrease; originalsmallEnvelopev3curve unaffected.
 
 [Envelope full-reference timeout](../docs/tmp/build-and-evaluate/step-0245-20261101T111249+0000/step-report.md): raw parallel-stream-check-v14/runs/envelope-full-reference1-r1; incomplete accepted-record set is not a completed-input parity counterexample or speedup.
+
+[Source-provenance work shares](../docs/tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md):
+rootstep0246reuses4completeOclosures. Grid4OAI nodes9.76%compilerwork but52.70%
+timed replaycallwall; Amplitudes8nodes8.69%/46.93%. Samecapture, correlated
+dependencies, not population or fullprocessCPU shares. SmallCSV/rawfreeze in
+rootstep; original /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/.

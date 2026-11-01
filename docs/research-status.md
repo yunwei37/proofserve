@@ -176,6 +176,16 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   Single-config full speedup/serial accept-set parity remain unknown.
   Do not divide by prior1665.530s prefix+all9trials or restart/raise budget.
 
+- [Rootstep0246 source-provenance decomposition](tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md):
+  same selected Oclosures, no new native. Grid4OAI modules account for9.7596%
+  of serial compilerwork but52.7017%of summed timed replay-call intervals;
+  Amplitudes8OAI:8.6899%/46.9318%. OAI replay/sourcework77.8437%/78.4934%.
+  NearPin2OAI:0.07426%/0.006267%shares,10.796ms replay/1.898436s compilerwork.
+  Replay intervals exclude read/map/startup/logging/cleanup, not fullprocessCPU
+  or pure sourcephase shares; provenance is not a semantic/global classifier.
+  Shared dependencies/onepass/Oresource deviation retained; 5085exactsource
+  result paths/noM/P0–7 and all4complete timed graphs audited.
+
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):
   7808same statuses/3014accepted IDs,19.28%less elapsed at one point;

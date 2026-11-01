@@ -479,6 +479,53 @@ shared-base checking and startup; these are not standalone latency ratios.}
 \label{tab:components}
 \end{table}
 
+\paragraph{Closure totals can hide the cost of generated nodes.}
+We also split each selected closure by source provenance, rather than
+assigning an entire closure to its root's proof style.
+The four Grid \texttt{OAI} modules account for 9.76\% of its summed source
+compiler work but 52.70\% of its measured replay-call intervals
+(Table~\ref{tab:namespacecost}).
+The corresponding eight Amplitudes modules account for 8.69\% and 46.93\%.
+Thus removing source production changes which part of the dependency
+graph accounts for the work; a low complete-closure check/source ratio
+can coexist with substantial computational replay in generated nodes.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lrrr}
+\toprule
+Closure & OAI modules & Source share & Replay share\\
+\midrule
+NearPinDeletion &2&0.0743\%&0.00627\%\\
+Grid &4&9.76\%&52.70\%\\
+Amplitudes &8&8.69\%&46.93\%\\
+\bottomrule
+\end{tabular}
+\caption{Shares attributable to fixed-source \texttt{OAI} modules within
+each complete selected closure. Source shares use summed native compiler
+wall; replay shares use summed per-module monotonic replay-call intervals
+after dependencies have been checked. Replay shares exclude read/map,
+startup, logging and cleanup, and are not full-process CPU shares.
+These are overlapping selected closures, not population-weighted samples.}
+\label{tab:namespacecost}
+\end{table}
+
+The generated modules' replay intervals total 294.675 seconds for Grid
+and 421.071 seconds for Amplitudes, versus 378.547 and 536.442 seconds
+of their respective source compiler work: 77.84\% and 78.49\%.
+By contrast, the two generated NearPinDeletion-closure modules require
+10.80\,ms of replay versus 1.898 seconds of compiler work, or 0.569\%.
+The 1,330-module Mathlib control contains no \texttt{OAI} nodes.
+Membership is established by namespace and pinned source path, not a
+complete semantic classifier of computational proofs.
+The two clocks measure different tasks: compilation includes imports,
+elaboration, tactics and artifact emission, whereas replay consumes
+compiled declarations in a checked environment.
+These shares do not isolate a causal import cost, establish a standalone
+latency gain, or fill the missing whole-library regime weights.
+Shared dependencies make the closures correlated; all values come from
+the earlier single-pass captures, not new repetitions.
+
 The actual O native cgroup limit is 11.875\,GiB.
 Grid source compilation reaches 7,940,196\,KiB peak RSS (7.57\,GiB),
 exceeding the listed 4\,GiB O-line share; the streamed closure reaches

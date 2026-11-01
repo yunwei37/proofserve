@@ -46,13 +46,14 @@ Legacy-M75–94%/~2%profile and1.28replay/build values remain historical motivat
 Current population/profile replacements remain missing; never scale old costs
 or fill missing strata. The first complete same-artifact Mathlib control is
 [1330modules/10.56%checking-to-construction](../research/decoupled-check/math-closed-result.md).
-AI-generated closures, repeated comparison and causal component attribution
-remain open. M initial timing has unequal output boundaries; correctedV3 now completes
+The four selected AI/control closure observations are complete; broader
+AI-generated coverage, repeated comparisons and causal attribution remain open. M initial timing has unequal output boundaries; correctedV3 now completes
 15acceptances and finds no flat-partition whole-path gain. Its dedicated
 charged-memory cap is not established, so final resource qualification remains
 open. The component-preserving small-goal control now also has15accepting cells,
 with a lower kernel subclock but no whole-path gain. The Barrier declaration-wave case is now complete;
-Envelope within-goal curves remain a separate actual-terminal obligation.
+Envelope within-goal curves are complete at their documented helper boundaries;
+full selected-configuration comparisons retain separate completion obligations.
 Root also verifies completeGrid closure14.52% and target component80.28%;
 its native source peak7.57GiB exceeds listedO4share. These observed points do
 not authorize new resource limits or establish service/global gains.
@@ -107,8 +108,9 @@ The samebinary module-localpath rejects; repaired1/8workers reject and20native
 controls pass. The18cellpositivecurve belongs tov4, notthe repaired version.
 Additionalchecked-token/Cinsertioncode remains trustedimplementation.
 Do not substitute boundedcontrols for fullrepair-version replay/timing.
-W's original48jobqueue has now reached complete48/48compile_ok and retired;
-reduce exactoriginaldraw coverage next, without restarting thequeue.
+W's original48jobqueue reached complete48/48compile_ok and retired; rootstep0238
+already reduced exactoriginaldraw coverage. Do not restart or re-reduce it
+without new evidence.
 
 ## Original-frame coverage after the completed W48 queue
 Rootstep0238checks48native receipts, exact42drawframe and prior29costs.
@@ -180,3 +182,13 @@ classify missing records as rejected modules or divide by the earlier
 parallel-prefix/all-nine-trials process. Preserve raw/partial rows.
 Further finite native plans belong to existing M; root does not requeue this
 finished attempt or enlarge its limit. Analysis/publication remain low-load.
+
+## Explain closure composition without changing denominators
+[Rootstep0246](tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md) derives provenance shares from the existing4Oclosures.
+Grid4OAI nodes9.76%sourcework/52.70%timed replaycallwall; Amplitudes8nodes
+8.69%/46.93%. Generatednode replay/sourcework77.84%/78.49%; selectedNearPin
+2nodes0.569%. This explains why a wholeclosure check/source fraction can be
+small despite expensive generated-node replay. Not fullprocessCPU shares,
+causalimport decomposition, independentrepeats or full-library regime weights.
+Same5085node sourceunion/oldcapture/Oresource-deviation,0rootnative.
+Keep per-cohort/namespace boundaries explicit; Wpopulation weights remain open.

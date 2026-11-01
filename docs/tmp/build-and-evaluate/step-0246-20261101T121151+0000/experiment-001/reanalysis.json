@@ -1,0 +1,63 @@
+{
+  "cohorts": [
+    {
+      "cohort": "math",
+      "closure_modules": 1330,
+      "OAI_modules": 0,
+      "source_compiler_work_s": 622.3794121909887,
+      "timed_replay_sum_s": 65.472302899,
+      "OAI_source_compiler_work_s": 0,
+      "OAI_timed_replay_s": 0.0,
+      "OAI_share_source_percent": 0.0,
+      "OAI_share_timed_replay_percent": 0.0,
+      "OAI_replay_to_source_percent": null
+    },
+    {
+      "cohort": "compute-grid",
+      "closure_modules": 3793,
+      "OAI_modules": 4,
+      "source_compiler_work_s": 3878.7067395858467,
+      "timed_replay_sum_s": 559.137563093,
+      "OAI_source_compiler_work_s": 378.5471092229709,
+      "OAI_timed_replay_s": 294.675063596,
+      "OAI_share_source_percent": 9.759621818260761,
+      "OAI_share_timed_replay_percent": 52.70171117925543,
+      "OAI_replay_to_source_percent": 77.84369670682948
+    },
+    {
+      "cohort": "compute-amplitudes",
+      "closure_modules": 5083,
+      "OAI_modules": 8,
+      "source_compiler_work_s": 6173.19460767135,
+      "timed_replay_sum_s": 897.198845558,
+      "OAI_source_compiler_work_s": 536.4415797693655,
+      "OAI_timed_replay_s": 421.071417538,
+      "OAI_share_source_percent": 8.689853695892502,
+      "OAI_share_timed_replay_percent": 46.93178325214191,
+      "OAI_replay_to_source_percent": 78.49343403228232
+    },
+    {
+      "cohort": "ordinary-oai",
+      "closure_modules": 3333,
+      "OAI_modules": 2,
+      "source_compiler_work_s": 2556.623338226229,
+      "timed_replay_sum_s": 172.280618743,
+      "OAI_source_compiler_work_s": 1.8984364476054907,
+      "OAI_timed_replay_s": 0.010796015,
+      "OAI_share_source_percent": 0.07425561752567804,
+      "OAI_share_timed_replay_percent": 0.006266529037781655,
+      "OAI_replay_to_source_percent": 0.5686792946699417
+    }
+  ],
+  "scope": {
+    "population": "same four purposefully selected complete O closures; overlapping immutable dependencies",
+    "source_boundary": "sum of serial native per-module compiler wall, includes imports/elaboration/tactics/check/output",
+    "replay_boundary": "sum of nonoverlapping monoNanos per-module Environment.replay call intervals after checked dependencies; excludes read/map/log/setup/cleanup",
+    "classification": "OAI namespace and matching fixed openai source path, not semantic regime classifier",
+    "resource_deviation": "original O11.875GiB native cap/sourcepeak7.57GiB exceeded listed O4share; retained, not retroactively approved",
+    "new_native_runs": 0
+  },
+  "source_modules": 5085,
+  "root_analysis_s": 1.6711133616045117,
+  "root_analysis_maxrss_kib": 66752
+}

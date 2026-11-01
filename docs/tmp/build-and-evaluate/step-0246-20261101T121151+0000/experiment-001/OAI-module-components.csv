@@ -1,0 +1,15 @@
+cohort,module,source_compiler_work_s,replay_s,readmap_s
+compute-grid,OAI.Analysis.PlanarPacking.Intervals,3.2360800318419933,0.229386939,0.000109619
+compute-grid,OAI.Analysis.PlanarPacking.Roots,13.23624564241618,2.815528155,0.001047495
+compute-grid,OAI.Analysis.PlanarPacking.Fejer,43.843931982293725,36.143619336,0.000507845
+compute-grid,OAI.Analysis.PlanarPacking.Grid,318.230851566419,255.486529166,0.002203018
+compute-amplitudes,OAI.Analysis.PlanarPacking.Intervals,3.2360800318419933,0.227357808,0.000112885
+compute-amplitudes,OAI.Analysis.PlanarPacking.Roots,13.23624564241618,2.837207438,0.001036224
+compute-amplitudes,OAI.Analysis.PlanarPacking.Fejer,43.843931982293725,36.397768481,0.000279916
+compute-amplitudes,OAI.Analysis.PlanarPacking.Grid,318.230851566419,257.783894583,0.002174783
+compute-amplitudes,OAI.Analysis.PlanarPacking.Cardinal,4.728387706913054,0.718185724,0.000166329
+compute-amplitudes,OAI.Analysis.PlanarPacking.Quadrature,3.1842708699405193,0.507031377,7.5625e-05
+compute-amplitudes,OAI.Analysis.PlanarPacking.BasisIntervals,16.36648979038,12.575006402,0.00028547
+compute-amplitudes,OAI.Analysis.PlanarPacking.Certificate.Amplitudes,133.615322179161,110.024965725,0.001465067
+ordinary-oai,OAI.MeasureTheory.Falconer.Estimates.CellwisePairDeletion,0.9361625136807561,0.006380297,3.9155e-05
+ordinary-oai,OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion,0.9622739339247346,0.004415718,5.6856e-05

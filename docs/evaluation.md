@@ -428,3 +428,34 @@ Native clockPopen→wait4; later sampler/cgroup cleanup verified outside clock.
 No complete originalserial reference, single-config parallel/chunk pair or
 full speedup; comparing to1665.529676s earlier prefix+9variant process invalid.
 No oldv10RSSfailure replacement, no cap/timeout extension/restart or rootnative.
+
+## Source-provenance decomposition of selected complete closures — step0246
+[Root raw reduction](tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md), **自审**;0native/foreign edits/newagents.
+Question: do completeclosure totals hide work concentrated in generated nodes?
+Use only the existing4completeOcaptures, source5085nodeunion and allsame-pinned
+compiled artifacts. Re-read each5085rawbuildreceipt, require rc0/exactframe source
+path/noM/P0–7/absentcgroup and verify publishedroundedCSV links. For eachcohort,
+sourceframe membership equals complete acceptset equals unique module_timing
+set; completeevent/mutated0 and totalsmatch originalscope. Preserve all5085raw
+source-result records compressed; fourtimedlogs/commands/results/stderr frozen.
+Timer source examined: replaystart follows recursion overimports and mapcreation,
+replayend precedes accept/timinglogs. Sum nonoverlapping per-module monotonic
+replaycall intervals, notCPU or pure original-source kernel times.
+Class OAI only when namespace and fixedopenai source path agree; otherdependencies
+include Mathlib/Init/Lean/Std/etc, not a semantic noncomputational classifier.
+
+Grid4OAI source378.547109223s/total3878.706739586s=9.7596218%;
+replay294.675063596s/total559.137563093s=52.7017112%.
+Amplitudes8OAI source536.441579769/6173.194607671=8.6898537%;
+replay421.071417538/897.198845558=46.9317833%.
+OAI replay/sourcework77.8436967%/78.4934340%, tasks have different scope.
+NearPin2OAI source1.898436448/2556.623338226=0.0742556%;
+replay0.010796015/172.280618743=0.00626653%; owncomponent ratio0.5686793%.
+Mathlibcontrol1330/noOAI, replaycomponents65.472302899s/source622.379412191s.
+These are costwork compositions in chosen overlapping dependencygraphs,
+not populationweights, independent samples, CPUshares or app latency gains.
+Wholeprocessstartup/read/map/logging/finalization outside replaycomponent sum;
+not a causal inference that all omittedsourcework is imports. No old-Mclock.
+OriginalO11.875GiBcap/source7.57GiBpeak exceeds listedO4share; historicaldeviation
+preserved, no newlimit or retroactiveapproval. Priorinput/context/axiom/exclusion
+limitations stay. No native experiment or claim of independent reviewer.
