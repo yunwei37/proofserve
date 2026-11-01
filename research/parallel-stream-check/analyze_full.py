@@ -1,5 +1,5 @@
 """Complete single-configuration costs; never substitute incremental-clock sums."""
-import csv,json,re
+import csv,json,re,statistics
 from pathlib import Path
 from analyze_curves import dump
 def main(raw,out):
@@ -39,6 +39,34 @@ def main(raw,out):
     accepted_modules=row['accepted_modules'],accepted_sets_equal=equality,
     scope='both actual complete cold native processes; one selected configuration each'))
  dump(out/'full-pairs.csv',pairs)
+ # Construction authority is O's complete source-build CSV; do not duplicate estimates.
+ repo=Path('/workspaces/repository')
+ costs=list(csv.DictReader((repo/'research/decoupled-check/cohort-costs.csv').open()))
+ def source_cost(root):
+  values=[x for x in costs if x['root']==root and x['construction_complete']=='True']
+  return float(values[0]['source_compiler_work_s'])if len(values)==1 else 'unknown_no_complete_source_construction'
+ stairs=[]
+ mathfile=out/'v14-math-summary.csv'
+ if mathfile.exists():
+  math=list(csv.DictReader(mathfile.open()))
+  ref=next(x for x in math if x['variant']=='reference')
+  par=next(x for x in math if x['variant']=='parallel8')
+  stairs.append(dict(cohort='Mathlib.Data.Nat.Basic',modules=int(ref['accepted_modules']),
+   source_compiler_work_s=source_cost('Mathlib.Data.Nat.Basic'),
+   serial_stream_s=float(ref['wall_s_median']),parallel_stream_s=float(par['wall_s_median']),
+   configuration='uniform8',repetitions=int(ref['completed_repeats']),scope='complete closure',
+   source_cost_scope='serial sum of compiler invocations; not parallel Lake wall'))
+ for cohort,method in dict.fromkeys((x['cohort'],x['method'])for x in pairs):
+  ps=[x for x in pairs if x['cohort']==cohort and x['method']==method]
+  record=next(record for group in groups.values()for row,record in group if row['cohort']==cohort and row['complete'])
+  root=record['result']['argv'][-1]
+  stairs.append(dict(cohort=root,modules=ps[0]['accepted_modules'],
+   source_compiler_work_s=source_cost(root),serial_stream_s=statistics.median(x['reference_wall_s']for x in ps),
+   parallel_stream_s=statistics.median(x['method_wall_s']for x in ps),
+   configuration='uniform'+method.removeprefix('parallel')if method.startswith('parallel')else method,
+   repetitions=len(ps),scope='complete closure',
+   source_cost_scope='serial sum of compiler invocations; not parallel Lake wall'))
+ dump(out/'cost-staircase-current.csv',stairs)
  (out/'full-completeness.json').write_text(json.dumps(dict(raw=str(raw),cells=len(rows),
   complete=sum(x['complete']for x in rows),pairs=len(pairs),
   failed=[x['key']for x in rows if not x['complete']],paired_process_repeats='one unless more raw repetitions exist'),indent=2))
