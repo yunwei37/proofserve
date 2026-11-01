@@ -1,0 +1,46 @@
+{
+  "access_date_UTC": "2026-11-01",
+  "queries": [
+    "site.isabelle.in.tum.de Wenzel parallel proof checking futures asynchronous",
+    "site.rocq-prover.org asynchronous parallel proof processing document STM",
+    "site.lean-lang.org parallel elaboration heartbeats maxHeartbeats deterministic",
+    "site.github.com lean4checker nanoda lean4lean checker",
+    "site.github.com project-numina kimina lean server",
+    "site.mathlib.org speed center performance CI Lean",
+    "site.github.com deepseek-ai DeepSeek-Prover-V1.5 timeout verification",
+    "\"Parallel Proof Checking in Isabelle/Isar\" Wenzel 2009",
+    "site.lean-lang.org \"parallel\" \"elaboration\" theorem",
+    "SATzilla runtime prediction hardness features 2008 paper",
+    "site.github.com leanprover-community mathlib4 \"bench\" \"CI\" performance",
+    "site.github.com cvc5 \"reproducible-resource-limit\"",
+    "parallel proof checking Coq reflection computation certificate splitting",
+    "Isabelle parallel proof checking Wenzel 2009 promise Goal.prove_future",
+    "\"Self-Certification\" \"certificates split\" Coq",
+    "\"Self-Certification\" Appel 2006 paper Coq splitting",
+    "\"cost prediction\" Lean verification runtime admission",
+    "\"Lean\" \"reproducible\" \"heartbeats\" parallel",
+    "site.statcan.gc.ca survey methods practices stratified sampling nonresponse estimation 12-587",
+    "\"pre-execution\" \"prediction\" \"proof\" verification runtime Lean"
+  ],
+  "strategy": "names -> mechanism/claim -> adjacent deterministic SMT budgets and certificate composition -> standard sampling",
+  "primary_verified_families": [
+    "Wenzel2009 PDF sections3-4",
+    "Coq2015 sections2-3 and 8.17.1 manual",
+    "Lean4.17/4.19 releases and Timing docs",
+    "lean4checker official README/pinned4.34.1 source",
+    "nanoda README,Lean4Lean v3 section7",
+    "Kimina technical report section2",
+    "DeepSeek1.5 verifier.py",
+    "Mathlib bench/build README and scripts; first-person Stoll2024",
+    "SMT-LIB2.7 section4.1.7 page61",
+    "SATzilla2007 author PDF and JAIR2008 metadata",
+    "Self-Certification2012 section7",
+    "StatisticsCanada probability sampling/nonresponse"
+  ],
+  "excluded_as_verdict_evidence": [
+    "secondary wiki/search snippets",
+    "unrelated search hits",
+    "unreadable Radar current numerical data"
+  ],
+  "residual": "finite search, not exhaustive novelty proof; O/W focused lane reports initially unavailable"
+}

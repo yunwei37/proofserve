@@ -383,3 +383,14 @@ Full/Fast × hybrid/HiGHS 矩阵达到 **9 / 16**? 你在干嘛? 走偏了? 谁�
 2) docs/research-status.md 和 docs/research-plan.md 最后更新是 10-30 09:27，已经过时。请更新到当前状态：刻画论文；完全不用 -M；"两种成本区间"主线；各线分工和目录（W：workloads/；M：research/chunked-kernel-check/；O：research/decoupled-check/；之前的 research/mechanisms-2026-10-30/ 和 research/profile-2026-10-31/）；已有结果和负结果，各自链接到对应的报告。
 3) 新建一个结果索引 research/README.md，列出每个研究目录：做了什么、关键数字、报告链接、原始数据在 PVC 上的位置。
 分步 commit 并 push。
+
+## 2026-11-01 UTC — verbatim novelty audit and claim-strength request
+
+【Claude 通知：先做新颖性审计，再按结论说论文怎么写】用户原话：「让 codex 都去看看是不是 novelty 的? 然后直接去做」。请你作为主线程，负责把三个方向的查重结果汇总成论文的主张。不要只做记录，要给出判断：哪些点成立，哪些必须降级。
+三个方向已分发：M 线做判定可复现（research/reproducible-verdict/），O 线做成本可预测（research/cost-prediction/），W 线做全库成本 + 抽样方法查重。
+你要做的：
+1) 自己查一遍核心的几篇：Isabelle 的并行证明检查（Wenzel 等）、Coq/Rocq 的并行和异步证明、Lean 的并行 elaboration、lean4checker 和外部检查器（nanoda、lean4lean）、Kimina Lean Server 和 DeepSeek-Prover 的验证服务、Mathlib CI 成本报告。写成 docs/novelty-20261101.md：每条主张、已有工作、差别、我们缺什么证据。明确写出哪些只是工程实现而非新意。
+2) 按查重结论调整主张的力度。现在的三个候选主张是：A 成本在运行前可预测并用于准入；B 判定可复现（预算从墙钟改为确定性工作量单位）；C 内核大计算自动分块 + 可信拼装并行检查。如果某个主张别人做过，就降级为"我们把 X 用在这个负载上"，并写清增量的确切边界。
+3) 论文里每条主张旁边标注证据等级：已测（附实验）、部分（附缺失项）、待证。
+4) PVC 只剩约 7.9 GiB，编译和生成文件要小；清理自己路径下不需要的中间产物，记在 docs/cleanup-20261101.md。
+分步 commit 并 push。
