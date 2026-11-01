@@ -1,0 +1,22 @@
+{
+  "positive_typed_constants_and_names_equal": true,
+  "malformed_proof_rejections": [
+    {
+      "mutation": "bvar",
+      "stock_reject": true,
+      "wave_reject": true
+    },
+    {
+      "mutation": "unknown",
+      "stock_reject": true,
+      "wave_reject": true
+    },
+    {
+      "mutation": "sort",
+      "stock_reject": true,
+      "wave_reject": true
+    }
+  ],
+  "note": "no speed claim; artifacts produced only from original checked kernel branches and normal module imports",
+  "uncommitted_dependency_rejected": true
+}

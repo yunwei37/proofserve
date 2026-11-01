@@ -1,0 +1,87 @@
+{
+  "original_source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Triangular/Envelope/EnvelopePsiB.lean",
+  "original_lemma": "envelopeExpB16_calc",
+  "n": 31,
+  "target_body": "(CI.ofReal (((envelopePhase01 j).re.neg).neg.mul (RI.point 16))).exp.re=envelopeExpB16 j",
+  "partition_bounds": {
+    "1": [
+      [
+        0,
+        31
+      ]
+    ],
+    "2": [
+      [
+        0,
+        15
+      ],
+      [
+        15,
+        31
+      ]
+    ],
+    "4": [
+      [
+        0,
+        7
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        15,
+        23
+      ],
+      [
+        23,
+        31
+      ]
+    ],
+    "8": [
+      [
+        0,
+        3
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        15,
+        19
+      ],
+      [
+        19,
+        23
+      ],
+      [
+        23,
+        27
+      ],
+      [
+        27,
+        31
+      ]
+    ]
+  },
+  "selection": "largest measured >=1s helper; entire predicate per j retained",
+  "original_measurement_row": {
+    "module": "OAI.Analysis.Triangular.Envelope.EnvelopePsiB",
+    "names": "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1",
+    "cpu_s": "6.16332766",
+    "wall_s": "6.165127065",
+    "goal": "forall (j : Fin (OfNat.ofNat.{0} Nat 31 (instOfNatNat 31))), Eq.{1} OAI.AtomicTriangular.Interval.RI (OAI.AtomicTriangular.Interval.CI.re (OAI.AtomicTriangular.Interval.CI.exp (OAI.AtomicTriangular.Interval.CI.ofReal (OAI.AtomicTriangular.Interval.RI.mul (OAI.AtomicTriangular.Interval.RI.neg (OAI.AtomicTriangular.Interval.RI.neg (OAI.AtomicTriangular.Interval.CI.re (OAI.AtomicTriangular.FiniteCertificate.envelopePhase01 j)))) (OAI.AtomicTriangular.Interval.RI.point (OfNat.ofNat.{0} Int 16 (instOfNat 16))))))) (OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16 j)"
+  },
+  "measurement_is_not_curve_denominator": true,
+  "status": "generated-base-driver-and-separate-target-equivalence-native-compiled; curve-unrun",
+  "preparation_raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-preparation-v4"
+}

@@ -1,0 +1,2 @@
+# Step007 outer audit — 自审
+Native stock/wave acceptance and three malformed-proof rejections are actual completed controls. Uncommitted dependencies are rejected. Barrier performance and Envelope target decisions remain unmeasured. The adapter uses stock checked module export/import, with independent-wave insertion order and artifact trust limitations disclosed. No changed kernel or unchecked union is used. All edits confined to M scope.
