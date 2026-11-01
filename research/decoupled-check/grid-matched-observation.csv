@@ -1,0 +1,2 @@
+root,closure_modules,matched_stream_wall_s,peak_rss_kib,root_read_s,root_map_s,root_kernel_replay_s,root_source_compiler_s,closure_source_compiler_s,module_local_verified,parity_complete,scope,root_component_check_over_source
+OAI.Analysis.PlanarPacking.Grid,3793,563.082232083194,2328540,5.5702e-05,0.002147316,255.486529166,318.230851566419,3878.7067395858467,1746,False,matched exit0 stream complete; final per-module parity still pending at observation,0.8028339424302379
