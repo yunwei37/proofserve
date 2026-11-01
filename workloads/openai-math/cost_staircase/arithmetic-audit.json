@@ -1,0 +1,9 @@
+{
+  "weighted_module_vs_cell_totals": 48,
+  "relative_tolerance": 1e-12,
+  "source_aggregate_matches_W072": true,
+  "missing_rows_blank": true,
+  "native_launches": 0,
+  "cpu_wall_sign_check": "parallel/chunk measured CPU rises while elapsed falls",
+  "review": "independent arithmetic within this thread; self-review, not another reviewer"
+}

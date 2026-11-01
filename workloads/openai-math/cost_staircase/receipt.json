@@ -1,0 +1,18 @@
+{
+  "original_costs": 31,
+  "planned": 42,
+  "complete_strata": 14,
+  "total_strata": 21,
+  "covered_modules": 103468,
+  "population_modules": 163097,
+  "missing_population_modules": 59629,
+  "no_new_native_run": true,
+  "no_M": true,
+  "source_regime_is_proxy": true,
+  "no_full_library_measurement": true,
+  "calibration_uncertainty_in_CI": false,
+  "chunk_preparation_CPU_h": "unknown; eligibility/support generation not timed in selected leaf curves",
+  "chunk_hardware_memory": "Envelope combined process peak14.0187GiB; not a whole-library memory proof",
+  "full_frame_projection_assumption": "unobserved modules have same within-class mean as complete-cell domain; not established",
+  "external_dependency_cost": "not separately identified; selected closure transfer mixes base/dependencies; no additional shared-base CPU invented"
+}

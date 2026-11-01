@@ -1,5 +1,22 @@
 # W current state
 
+## W074 conditional cost staircase — offline, not full-library measurement
+- Current complete14strata build140.851561CPUh; explicit O/M transfer model
+ serial9.571600/parallel13.075000/chunk13.104554CPUh. Parallel cuts elapsed,
+ addsCPU. Eleven original draw costs still missing; no empirical full-frame CI.
+- Additional declared class-mean projection215.923543->14.534547->19.845510->
+ 19.882408CPUh, wide sampling-only intervals and unmodeled factor/selection
+ uncertainty. Alternative anchors9.920158/13.558066/13.594855verificationCPUh.
+- Qualified Envelope splitting modeled c->d elapsed-0.473%/CPU+0.226%on
+ covered14cells; not a major established full-library saving. Only10Envelope
+ large goals qualified;2Residueslarge goals unsupported; othersunprofiled.
+- Actual soleW31replay atlastcheck10returned/controller284952birth761902416/
+ currentwaiter332936birth762601628live. Protect healthy point; collect once
+ terminal thenresumehard19/Hodge. No new capture submitted for this analysis.
+- workloads/openai-math/cost_staircase contains per-draw4stage costs,
+ calibrationprovenance, bothclockstables, signedmarginals, nominalintervals
+ and explicit extrapolation limitations. Review=self-review.
+
 ## W073 current frontier — native replay active; original costs incomplete
 - Sourcecost31/42draws,14/21cells;globalCPU/CIunknown. Incomplete cells contain
  59629modules(36.5605%). Primary-positive1164,ordinary58465missing coverage.
