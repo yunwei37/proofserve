@@ -9,7 +9,8 @@ The mathematical checker is the original Lean C++ kernel.
 |---|---:|---:|---|
 | Mathlib.Data.Nat.Basic |68.605|45.050 (8 workers)|Complete1,330-module closure;3 repeats,1.523x|
 | BarrierData41 |53.960|10.186 (8 workers)|Incremental leaf;1 repeat,5.297x|
-| Grid |265.010|65.856 (8 workers)|Incremental leaf; 1 repeat,4.024x|
+| Grid full closure |557.568|296.293 (4 workers)|Complete3,793-module closure; 1 interrupted pair,1.882x|
+| Grid leaf |265.010|65.856 (8 workers)|Incremental leaf; 1 repeat,4.024x|
 | EnvelopePsiB |61.913|17.539 declaration8;13.299 chunk8|Incremental leaf;1 repeat,4.655x;1.319x extra from chunks|
 
 Mathlib total CPU seconds increase36.3%; Barrier48.6%; Envelope chunk8adds66.2%
@@ -106,3 +107,32 @@ claimed for proof parallelism, reflection, certificate splitting or shared impor
 [Current complete-closure cost staircase](cost-staircase-current.csv) keeps unknown
 source-construction cells explicit. The complete Barrier process pair costs
 474.851->304.862s; it must not be replaced by the5.297x incremental leaf result.
+
+## Interpreting the prototype
+
+Declaration waves address many independent short computations; finite-goal
+partitioning addresses a small frontier of expensive parent computations.
+Envelope's extra chunk gain is measured against *already parallel* declaration
+checking. Its slower k2case prevents a blanket "more chunks is faster" conclusion.
+
+The wall reductions consume more aggregate CPU seconds. Grid's eight-worker
+leaf nearly doubles CPU seconds, so these latency curves do not establish
+higher throughput for a saturated multi-module verification queue. Hardware
+causes of extra CPU time require a separate matched profile.
+
+Incremental checking describes a resident verified prefix. Full closure pairs
+also include rebuilding that checked prefix from artifacts. The large difference
+between Barrier's leaf and complete-closure gains makes this amortization
+boundary observable. No persistent service or workload-amortization claim is
+filled with an unmeasured projection.
+
+The ten certificate targets use one source-supported finite family; earlier
+weighted large-goal coverage is sensitive to one file and missing observations.
+The contribution under discussion is characterization plus a measured system
+prototype, not firstness of proof parallelism, futures, reflection or splitting.
+
+The complete [Grid pair](full-grid-results.md) now costs557.568->296.293s,
+1.882x at uniform4workers, with3,793equal accepted IDs. Its retained serial arm
+and resumed parallel arm have a disclosed controller-repair gap. The full
+source-work staircase is3878.707->557.568->296.293s. The next missing complete
+cohort reference is Envelope; do not fill it from the nine-variant process time.

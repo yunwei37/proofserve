@@ -1,2 +1,3 @@
-cohort,repeat,method,reference_wall_s,method_wall_s,speedup,cpu_ratio,accepted_modules,accepted_sets_equal,scope
-barrier,1,parallel4,474.85050061531365,304.86163028422743,1.557593522584665,1.2462903689715505,4449,True,both actual complete cold native processes; one selected configuration each
+cohort,repeat,method,reference_wall_s,method_wall_s,speedup,cpu_ratio,accepted_modules,accepted_sets_equal,interrupted_pair,scope
+barrier,1,parallel4,474.85050061531365,304.86163028422743,1.557593522584665,1.2462903689715505,4449,True,False,both actual complete cold native processes; one selected configuration each
+grid,1,parallel4,557.5677188849077,296.293452787213,1.881809110663448,1.335617144965641,3793,True,True,both actual complete cold native processes; one selected configuration each

@@ -11,7 +11,11 @@ def main(raw,out):
   cohort,variant,workers,repeat=parsed.groups()
   native_complete=complete and r['native_retired']and r.get('cgroup_retired',False)
   ending=record['complete_event']or{}
+  completion_path=raw/f"{cohort}-full-pair-complete.json"
+  pair_status=json.loads(completion_path.read_text())if completion_path.exists()else{}
+  resumed=pair_status.get('resumed_after_controller_path_error',False)
   row=dict(capture=raw.name,key=r['key'],cohort=cohort,variant=variant,workers=int(workers),repeat=int(repeat),
+   interrupted_pair=resumed,
    complete=native_complete,returncode=r['returncode'],scope=record['scope'],
    cache_scope='empty checked environment; OS page cache retained',
    whole_wall_s=r['wall_s'],whole_cpu_s=r.get('cgroup_usage_s','unknown'if r['stop_reasons']or r['returncode']<0 else r['user_s']+r['system_s']),
@@ -37,6 +41,7 @@ def main(raw,out):
     speedup=ref['whole_wall_s']/row['whole_wall_s'],
     cpu_ratio=row['whole_cpu_s']/ref['whole_cpu_s'],
     accepted_modules=row['accepted_modules'],accepted_sets_equal=equality,
+    interrupted_pair=row['interrupted_pair'],
     scope='both actual complete cold native processes; one selected configuration each'))
  dump(out/'full-pairs.csv',pairs)
  # Construction authority is O's complete source-build CSV; do not duplicate estimates.
