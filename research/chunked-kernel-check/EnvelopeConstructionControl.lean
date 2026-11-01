@@ -13,6 +13,9 @@ elab "qualify_envelope_construction" : command => do
     let some (.defnInfo info) := env.find? name | throwError "missing {name}"
     let pf ← liftTermElabM <| mkDecideProof info.value
     unless !pf.hasSorry && !pf.hasMVar && !pf.hasFVar do throwError "not a closed decision proof: {name}"
+  for k in [1,2,4,8] do
+    let axs ← liftTermElabM <| collectAxioms (Name.str `MEnvelopeBase s!"merge_{k}")
+    unless axs.toList.all (· == `propext) do throwError "merge introduces axioms {axs}"
   let pf ← liftTermElabM <| mkDecideProof (mkConst `False)
   let decl := Declaration.thmDecl {
     name := `MEnvelopeControl.invalid

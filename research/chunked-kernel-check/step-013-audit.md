@@ -1,0 +1,2 @@
+# Step013 outer audit — 自审
+Actual native-v2RSS failure and checked child preserved. Matching v6child import reached positive kernel checking but rejected extra Quot.sound. Repaired direct Nat bridges actually pass all4axiom-set controls;16constructions and false kernel rejection pass. No old baseline reuse, no memory increase, no claimed completed curve. All preparations retired before the next submission.

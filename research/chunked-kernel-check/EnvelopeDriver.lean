@@ -79,8 +79,10 @@ elab "chunked_kernel_run" : command => do
   let imports := decls.map fun (modName, _) => ({ module := modName } : Import)
   let mergeStart ← IO.monoNanosNow
   let mergeCPU ← cpuNs
-  unsafe enableInitializersExecution
-  let imported ← importModules imports {} (loadExts := true)
+  let output ← IO.getStdout
+  output.flush
+  let (_, importState) ← importModulesCore imports |>.run
+  let imported ← finalizeImport importState imports {} 0 false false (isModule := true)
   let importStop ← IO.monoNanosNow
   let rootName := `EnvelopeCombined.result
   let values := decls.map fun (_, decl) => mkConst decl.getNames.head!

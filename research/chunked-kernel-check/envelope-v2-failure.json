@@ -1,0 +1,107 @@
+{
+  "failed_point": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v2",
+  "failure": {
+    "error": "AssertionError()"
+  },
+  "original_cell": {
+    "key": "envelope-k0-r1",
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "120",
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "--root=/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v2",
+      "-j1",
+      "--load-dynlib=/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v2/clock.so",
+      "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v2/EnvelopeDriver.lean"
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "measured": true,
+    "wall_limit_s": 120,
+    "own_rss_sample_stop_gib": 14,
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-217732-envelope-k0-r1.scope",
+    "cgroup_charged_memory_max_gib": 14,
+    "pid": 217743,
+    "birth": "755849995",
+    "returncode": 0,
+    "wall_s": 9.877701289951801,
+    "user_s": 8.758874,
+    "system_s": 1.108789,
+    "peak_rss_kib": 8180364,
+    "native_retired": true,
+    "sampled_tree_peak_bytes": 8357789696,
+    "stop_reasons": [],
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "charged_peak_bytes": 1683050496,
+    "cgroup_retired": true
+  },
+  "resource_failure": {
+    "key": "envelope-k1-r1",
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "120",
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "--root=/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v2",
+      "-j1",
+      "--load-dynlib=/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v2/clock.so",
+      "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-curve-v2/EnvelopeDriver.lean"
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "measured": true,
+    "wall_limit_s": 120,
+    "own_rss_sample_stop_gib": 14,
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-217732-envelope-k1-r1.scope",
+    "cgroup_charged_memory_max_gib": 14,
+    "pid": 217752,
+    "birth": "755850983",
+    "returncode": -9,
+    "wall_s": 17.018224325031042,
+    "user_s": 0.001807,
+    "system_s": 0.0,
+    "peak_rss_kib": 10444,
+    "native_retired": true,
+    "sampled_tree_peak_bytes": 15755669504,
+    "stop_reasons": [
+      "sampled_own_RSS_budget"
+    ],
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "charged_peak_bytes": 9079390208,
+    "cgroup_retired": true
+  },
+  "checked_child_bytes": 10496,
+  "interrupted_cpu": "unknown beyond timeout-only accounting; do not report near-zero as proof CPU",
+  "raw_merge_control": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-preparation-v6",
+  "raw_merge_diagnostic": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-preparation-v6/EnvelopeMergeQualification.lean:23:0: error: unexpected axioms [propext, Quot.sound]\n",
+  "repaired_qualification": {
+    "compiled": true,
+    "all16constructions": true,
+    "kernel_false_reject": true,
+    "merge1_2_4_8_axioms_subset": [
+      "propext"
+    ],
+    "raw_kernel_merge_import": true,
+    "curve_unrun": true
+  },
+  "repaired_raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-preparation-v7"
+}

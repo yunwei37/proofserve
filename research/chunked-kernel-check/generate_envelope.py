@@ -26,8 +26,9 @@ def generate(directory,source,top_goals):
   lines.append(f'theorem merge_{k} '+' '.join(f'(p{i} : goal_{k}_{i})' for i in range(k))+' : rootGoal := by')
   lines+=['  intro j','  have hj := j.isLt']
   for i,(lo,hi) in enumerate(groups):
-   if i<k-1:lines += [f'  by_cases h{i} : j.val < {hi}',f'  · exact p{i} j (by omega) h{i}']
-   else:lines.append(f'  exact p{i} j (by omega) (by omega)')
+   lower='(Nat.zero_le _)' if i==0 else f'(Nat.le_of_not_lt h{i-1})'
+   if i<k-1:lines += [f'  by_cases h{i} : j.val < {hi}',f'  · exact p{i} j {lower} h{i}']
+   else:lines.append(f'  exact p{i} j {lower} hj')
  lines+=['end MEnvelopeBase','']
  return '\n'.join(lines),dict(original_source=str(source),original_lemma=name,n=n,target_body=body,
    partition_bounds=bounds,selection='largest measured >=1s helper; entire predicate per j retained',

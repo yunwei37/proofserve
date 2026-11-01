@@ -82,7 +82,9 @@
     "goal": "forall (j : Fin (OfNat.ofNat.{0} Nat 31 (instOfNatNat 31))), Eq.{1} OAI.AtomicTriangular.Interval.RI (OAI.AtomicTriangular.Interval.CI.re (OAI.AtomicTriangular.Interval.CI.exp (OAI.AtomicTriangular.Interval.CI.ofReal (OAI.AtomicTriangular.Interval.RI.mul (OAI.AtomicTriangular.Interval.RI.neg (OAI.AtomicTriangular.Interval.RI.neg (OAI.AtomicTriangular.Interval.CI.re (OAI.AtomicTriangular.FiniteCertificate.envelopePhase01 j)))) (OAI.AtomicTriangular.Interval.RI.point (OfNat.ofNat.{0} Int 16 (instOfNat 16))))))) (OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16 j)"
   },
   "measurement_is_not_curve_denominator": true,
-  "status": "repaired base/driver/type equivalence and16instance/proof construction controls qualified; new curve not started",
-  "preparation_raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-preparation-v5",
-  "transparent_predicate": true
+  "status": "v7compiled/16constructions/merge-axioms-qualified; fresh performance matrix required",
+  "preparation_raw": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/envelope-preparation-v7",
+  "transparent_predicate": true,
+  "merge_import": "kernel-only, no extensions/initializers",
+  "merge_bounds": "direct Nat lemmas; no omega"
 }
