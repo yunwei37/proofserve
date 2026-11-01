@@ -489,3 +489,7 @@ Preserve every existing measuredpositive/negative/timeout result, serialbaseline
 scope, upstreamparallelchecking priorart and addedimplementationTCB limitations.
 No promise change/new experiment assignment/budgetchange/foreigncodeedit.
 Raw4timedlogs, exactupstreamsource, computedpaths/edges/models retained in step.
+
+## 2026-11-01 — step0252 novelty verdict applied (自审)
+[Audit](novelty-20261101.md) consolidates root primary-source checks and actual M/W audits. Generic A prediction/admission, B deterministic budget and C parallel decomposition/composition are prior art; A/B application benefit unproven, C finite application measured but broader automation/trust/fullcost partial. Actual paper has evidence grades and experiment links; all12 numerical tables unchanged. Title/fourRQ/section hierarchy preserved; local abstract claim correction explicitly authorized by current user. Final16page167901B PDF compiled/reviewed;0new rootnative/agent. M qualification controls do not substitute for stabilitymatrix; O prediction report unavailable. Full global/software/axiom/cluster gaps remain.
+[Root report](tmp/build-and-evaluate/step-0252-20261101T184145+0000/step-report.md) · [Self-audit](tmp/build-and-evaluate/step-0252-20261101T184145+0000/outer-audit.md) · [Cleanup](cleanup-20261101.md).

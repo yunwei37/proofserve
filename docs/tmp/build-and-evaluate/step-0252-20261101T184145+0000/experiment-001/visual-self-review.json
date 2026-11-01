@@ -1,0 +1,36 @@
+{
+  "review": "root self-review (not independent or venue acceptance)",
+  "reviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "contacts": [
+    "/workspaces/.agent-state/gpu-smt-captures/step-0252-20261101T184145+0000-paper/contact1.jpg",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0252-20261101T184145+0000-paper/contact2.jpg",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0252-20261101T184145+0000-paper/contact3.jpg",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0252-20261101T184145+0000-paper/contact4.jpg"
+  ],
+  "transfer": "full-contact CLI transfer failed websocket ping/reset; cancelled own transfer only; smaller JPEG previews transferred successfully",
+  "checks": [
+    "all16 pages present",
+    "no overlapping/clipped text or table edges seen",
+    "A/B/C grades and experiment references visible",
+    "references continue through16; final page sparse but intact"
+  ],
+  "pdf_bytes": 167901,
+  "new_native": 0
+}

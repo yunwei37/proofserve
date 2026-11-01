@@ -12,8 +12,9 @@ Current frontier2026-11-01UTC. [Status](research-status.md) ·
 4. What does verified establish about build coverage, outcome reproducibility
    and axiom/declaration closure?
 
-The user-selected title, abstract, fourRQ meanings and section hierarchy stay
-fixed. Mechanisms are measured design cases; familiar caching, warm processes,
+The user-selected title, fourRQ meanings and section hierarchy stay fixed.
+The direct2026-11-01 novelty request authorizes claim-strength/abstract corrections
+and evidence grades; [A/B/C verdict](novelty-20261101.md) supersedes old abstract-freeze wording. Mechanisms are measured design cases; familiar caching, warm processes,
 scheduling and parallel checking are not claimed as novelty.
 Missing results stay explicit; no lower-scope substitute or prediction fills them.
 
@@ -21,8 +22,8 @@ Missing results stay explicit; no lower-scope substitute or prediction fills the
 | Owner | Existing work / paths |
 |---|---|
 | W | workloads/: original probability draws, noM costs/weights, public output characterization |
-| M | research/chunked-kernel-check/ and research/parallel-stream-check/: kernel parallel cases |
-| O | research/decoupled-check/ and engine/service/open-source paths |
+| M | research/chunked-kernel-check/, research/parallel-stream-check/, research/reproducible-verdict/: parallel cases and budget replay audit |
+| O | research/decoupled-check/, new research/cost-prediction/ assignment and engine/service/open-source paths |
 | Root | Paper and root records/status/plan/index; read-only on other lines |
 
 No new agent/Workspace/queue/schedule. Same phobos-vt/PVC;40GiB shares
@@ -84,3 +85,5 @@ All root reviews are **自审**; project/paper acceptance is not declared.
 
 [Current-record consolidation](tmp/build-and-evaluate/step-0248-20261101T141922+0000/step-report.md); exact prior text
 is retained in [its entry archive](tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-docs-research-plan.md.gz).
+
+Current direct audit task: apply the [source-grounded novelty verdict](novelty-20261101.md), integrate actual M/W handoffs and the missing O prediction report when available. A/B application properties remain unproven; C finite measurements do not imply general automation or unchanged implementation trust. No replacement agent, queue or runtime budget.

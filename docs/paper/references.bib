@@ -931,3 +931,70 @@
   howpublished = {\url{https://github.com/leanprover/lean4/blob/v4.34.1/src/LeanChecker.lean}},
   note = {Pinned SDK source inspected 1 November 2026; independently dispatched module tasks, not a measured whole-library baseline}
 }
+
+% Primary-source novelty audit: accessed 1 November 2026; citation precedents, not reproduced baseline timings.
+@inproceedings{wenzelParallel2009,
+ author={Makarius Wenzel}, title={Parallel Proof Checking in Isabelle/Isar},
+ booktitle={ACM SIGSAM Workshop on Programming Languages for Mechanized Mathematics Systems (PLMMS)},
+ year={2009}, url={https://files.sketis.net/papers/parallel-isabelle.pdf},
+ note={Author PDF, sections 3--4 inspected via CLI; original-host web fetch unavailable}}
+@misc{coqAsync2015,
+ author={Bruno Barras and Carst Tankink and Enrico Tassi},
+ title={Asynchronous processing of Coq documents: from the kernel up to the user interface},
+ year={2015}, eprint={1506.05605}, archivePrefix={arXiv},
+ url={https://arxiv.org/abs/1506.05605}}
+@misc{coqAsyncManual2023,
+ author={{Coq contributors}}, title={Asynchronous and Parallel Proof Processing},
+ year={2023}, url={https://rocq-prover.org/doc/V8.17.1/refman/addendum/parallel-proof-processing.html},
+ note={Version 8.17.1; auxiliary-file duration prediction and proof-task checking}}
+@misc{leanParallelRelease2025,
+ author={{Lean contributors}}, title={Lean 4.19.0: Parallel Elaboration},
+ year={2025}, url={https://lean-lang.org/doc/reference/latest/releases/v4.19.0/},
+ note={Theorem-body parallel elaboration; source-release precedent}}
+@misc{leanKernelParallel2025,
+ author={{Lean contributors}}, title={Lean 4.17.0: Parallel Kernel Checking},
+ year={2025}, url={https://lean-lang.org/doc/reference/latest/releases/v4.17.0/},
+ note={Kernel checking concurrent with elaboration}}
+@misc{nanoda2026,
+ author={{Nanoda contributors}}, title={Nanoda: external Lean type checker},
+ year={2026}, url={https://github.com/ammkrn/nanoda_lib},
+ note={Current official README inspected; workers, axioms and kernel extensions are configurable; no local benchmark}}
+@misc{leanHeartbeats2026,
+ author={{Lean contributors}}, title={Lean Language Reference: IO Timing},
+ year={2026}, url={https://lean-lang.org/doc/reference/latest/IO/Timing/},
+ note={Thread-local small-allocation heartbeats; no universal cross-condition guarantee}}
+@manual{smtlib27,
+ author={Clark Barrett and Pascal Fontaine and Cesare Tinelli},
+ title={The SMT-LIB Standard, Version 2.7}, year={2025},
+ url={https://smt-lib.org/papers/smt-lib-reference-v2.7-r2025-04-09.pdf},
+ note={Section 4.1.7, reproducible-resource-limit; scope includes machine, command history and random seed}}
+@inproceedings{selfCertification2012,
+ author={Pierre-Yves Strub and Nikhil Swamy and C{\'e}dric Fournet and Juan Chen},
+ title={Self-Certification: Bootstrapping Certified Typecheckers in F* with Coq},
+ booktitle={POPL}, year={2012}, pages={571--584},
+ url={https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/popl2012-paper211.pdf},
+ note={Section 7: source-level certificate splitting and composition}}
+@misc{deepseekVerifierArtifact,
+ author={{DeepSeek-AI}}, title={DeepSeek-Prover-V1.5: Lean verification artifact},
+ year={2024}, url={https://github.com/deepseek-ai/DeepSeek-Prover-V1.5/blob/main/prover/lean/verifier.py},
+ note={Current official artifact inspected 1 November 2026, not a remeasurement of the publication}}
+@misc{mathlibBench2026,
+ author={{Mathlib contributors}}, title={Mathlib4 benchmark suite: build metrics},
+ year={2026}, url={https://github.com/leanprover-community/mathlib4/blob/master/scripts/bench/build/README.md},
+ note={Official README and run script inspected; not current numerical CI costs}}
+@misc{samplingStatCan,
+ author={{Statistics Canada}}, title={Statistics: Power from Data! Probability sampling},
+ url={https://www150.statcan.gc.ca/n1/edu/power-pouvoir/ch13/prob/5214899-eng.htm},
+ note={Accessed 1 November 2026; standard sampling precedent}}
+
+% Further primary verification from the actual M/W audit handoff, 1 November 2026.
+@misc{leanSharedThunk2026,
+ author={{Lean contributors}}, title={Do not count evaluating shared thunks toward heartbeats},
+ year={2026}, url={https://github.com/leanprover/lean4/commit/51c2c9e116cecfffb3c8f9f3bf650857d1b55f44},
+ note={Upstream commit inspected; backport to the measured 4.34.1 SDK unestablished}}
+@misc{growingMathlib2025,
+ author={Anne Baanen and Matthew Robert Ballard and Johan Commelin and Bryan Gin-ge Chen and Michael Rothgang and Damiano Testa},
+ title={Growing Mathlib: maintenance of a large scale mathematical library},
+ year={2025}, eprint={2508.21593}, archivePrefix={arXiv},
+ url={https://arxiv.org/abs/2508.21593v1},
+ note={Section 5 inspected; existing build/component/instruction performance studies}}

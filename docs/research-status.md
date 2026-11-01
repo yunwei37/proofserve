@@ -3,7 +3,7 @@
 Snapshot2026-11-01UTC. Current frontier, not a new experiment or live-process
 inventory. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Related work](background-related-work.md) ·
-[Detailed history](evaluation.md).
+[Detailed history](evaluation.md) · [Novelty verdict](novelty-20261101.md) · [Root cleanup](cleanup-20261101.md).
 
 ## Scientific contract
 **Checking or Recomputing? Two Cost Regimes in Verifying AI-Generated Formal
@@ -18,8 +18,8 @@ Missing values remain explicit. Tests, self-review and activity are not acceptan
 | Owner | Paths / responsibility |
 |---|---|
 | W | workloads/: fixed-frame native costs, released outputs, population weights |
-| M | research/chunked-kernel-check/ and research/parallel-stream-check/ |
-| O | research/decoupled-check/, engine/service/open-source paths |
+| M | research/chunked-kernel-check/, research/parallel-stream-check/, research/reproducible-verdict/ |
+| O | research/decoupled-check/, assigned research/cost-prediction/, engine/service/open-source paths |
 | Root | docs/paper/, root reports, status/plan/index; other lines read-only |
 
 Existing gpu-smt-dev/phobos-vt/128GiB PVC; W16/M16/O4/root4GiB within40.
@@ -93,3 +93,12 @@ Unavailable complete cross-chat history is not claimed recovered.
 
 [Current-record consolidation](tmp/build-and-evaluate/step-0248-20261101T141922+0000/step-report.md); exact prior text
 is retained in [its entry archive](tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-docs-research-status.md.gz).
+
+## Direct novelty decision, 2026-11-01
+[Root primary-source A/B/C verdict](novelty-20261101.md) and the actual M/W
+handoffs downgrade generic mechanisms/methods; the paper now marks evidence
+near principal claims and links experiments. A/B benefit remains unproven;
+C is a measured finite engineering case with partial general/fullcost evidence.
+M's six qualification controls do not complete stability claims. O's specific
+cost-prediction report remains unavailable; its context/Falconer work is distinct.
+No old capture is restarted or prepared result promoted.

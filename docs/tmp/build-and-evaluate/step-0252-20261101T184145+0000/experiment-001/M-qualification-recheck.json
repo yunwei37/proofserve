@@ -1,0 +1,78 @@
+{
+  "rows": [
+    {
+      "mode": "stock",
+      "id": "true",
+      "verdict": "accepted",
+      "accounting": "main-thread-only-not-total",
+      "main_thread_raw_heartbeats": 1386,
+      "command_raw_heartbeats": []
+    },
+    {
+      "mode": "stock",
+      "id": "false",
+      "verdict": "lean_error",
+      "accounting": "main-thread-only-not-total",
+      "main_thread_raw_heartbeats": 957,
+      "command_raw_heartbeats": []
+    },
+    {
+      "mode": "stock",
+      "id": "sorry",
+      "verdict": "incomplete",
+      "accounting": "main-thread-only-not-total",
+      "main_thread_raw_heartbeats": 661,
+      "command_raw_heartbeats": []
+    },
+    {
+      "mode": "sync",
+      "id": "true",
+      "verdict": "accepted",
+      "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+      "main_thread_raw_heartbeats": 75133,
+      "command_raw_heartbeats": [
+        66635,
+        8434
+      ]
+    },
+    {
+      "mode": "sync",
+      "id": "false",
+      "verdict": "lean_error",
+      "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+      "main_thread_raw_heartbeats": 63309,
+      "command_raw_heartbeats": [
+        54836,
+        8434
+      ]
+    },
+    {
+      "mode": "sync",
+      "id": "sorry",
+      "verdict": "incomplete",
+      "accounting": "synchronous-command-deltas-not-arbitrary-child-tasks",
+      "main_thread_raw_heartbeats": 26685,
+      "command_raw_heartbeats": [
+        18213,
+        8433
+      ]
+    }
+  ],
+  "terminal_returncode": 0,
+  "wall_s": 5.032693024724722,
+  "noM": true,
+  "cgroup_absent": true,
+  "identities": [
+    {
+      "pid": 240795,
+      "birth": "761085500",
+      "original_identity_retired": true
+    },
+    {
+      "pid": 240889,
+      "birth": "761094370",
+      "original_identity_retired": true
+    }
+  ],
+  "scope": "qualification only, not observer/thread/hardware stability"
+}

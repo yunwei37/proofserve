@@ -3,32 +3,39 @@
 \usepackage{booktabs,amsmath,graphicx,microtype,hyperref}
 \hypersetup{colorlinks=true,allcolors=blue}
 \newcommand{\missing}[1]{\textbf{[RESULT: #1]}}
+\newcommand{\measured}[1]{\textbf{[Measured: #1]}}
+\newcommand{\partialev}[1]{\textbf{[Partial: #1]}}
+\newcommand{\unproven}[1]{\textbf{[Unproven: #1]}}
+\newcommand{\expref}[2]{\href{https://github.com/yunwei37/proofserve/blob/main/docs/tmp/build-and-evaluate/step-#1/step-report.md}{E#2}}
 \title{Checking or Recomputing? Two Cost Regimes in\\Verifying AI-Generated Formal Artifacts}
 \author{Anonymous research draft}
 \date{}
 \begin{document}
 \maketitle
 \begin{abstract}
-AI-generated mathematics changes what proof verification asks the machine
-to do. A mathematical witness can be checked without repeating its
+The cost of checking released AI-generated mathematics depends on what
+its proof asks the machine to do. A mathematical witness can be checked without repeating its
 producer's search, while a computational certificate can require the
 kernel to recompute the calculation encoded in the proof.
 We characterize these two cost regimes using released \texttt{openai/math}
 artifacts and their version-matched Mathlib dependency.
+\measured{\expref{0231-20261101T001556+0000}{0231}}
 The same comment/string-masked scanner finds 1,354,379
 \texttt{decide +kernel} sites in 163,097 generated-library files,
 versus 7 sites in 8,529 Mathlib files: approximately
 10,668.3 times the source-megabyte density.
 Only 5,848 generated-library files (3.5856\%) contain this form.
 This is lexical concentration, not a measured fraction of verification time.
-Runtime-weighted prevalence remains
+\partialev{runtime weights incomplete} Runtime-weighted prevalence remains
 \missing{pending from the incomplete native sample}.
 We examine repeated imports and production/checking coupling, and test
-single-process streaming and automatically chunked original-kernel checking
+single-process streaming and source-qualified finite-index chunking
 as design-implication prototypes.
+\measured{\expref{0235-20261101T041713+0000}{0235}}
 Four selected matched closure checks cost 6.76--14.55\% of serial
 source compiler work. These aggregates hide costly recomputation within
 computational targets.
+\measured{\expref{0235-20261101T041713+0000}{0235}}
 A dependency-aware prototype reduces independent replay wall time
 3.33-fold on one compiled module, with 27.8\% more native CPU.
 The meaning of \emph{verified} is a separate boundary: the default build
@@ -74,6 +81,40 @@ without expanding the trusted base?
 \item[RQ4] What gaps remain between a reported verified result and build
 coverage, reproducible outcomes and known axiom dependencies?
 \end{description}
+
+\paragraph{Claim scope after the prior-work audit.}
+We distinguish \emph{Measured}, a version/input/clock-qualified observation
+with a linked experiment; \emph{Partial}, an observation missing stated
+evidence for the broader claim; and \emph{Unproven}, a candidate without
+a qualifying result. These labels assess evidence, not novelty or general
+soundness. An established technique can produce a new empirical observation.
+
+\textbf{A: cost prediction and admission.}
+\unproven{held-out prediction and admission benefit.}
+Prediction-based resource decisions already have algorithm-selection and
+proof-task scheduling precedents~\cite{satzilla2008,coqAsyncManual2023}.
+Our candidate is to evaluate those ideas on this workload, not to introduce
+prediction or claim a safe pre-execution resource bound.
+
+\textbf{B: reproducible budgeted outcomes.}
+\unproven{complete-work accounting and cross-condition replay.}
+Lean heartbeats and SMT-LIB reproducible limits already replace elapsed time
+with internal work accounting~\cite{leanHeartbeats2026,smtlib27}.
+Applying and testing that idea here is not a new deterministic-budget
+mechanism. An upstream shared-thunk fix already addresses scheduling-dependent
+heartbeat charging~\cite{leanSharedThunk2026}; its backport status in our
+pinned SDK is not established. A deterministic local counter does not establish a deterministic
+whole concurrent pipeline or turn exhaustion into mathematical rejection.
+
+\textbf{C: parallel decomposition and checked composition.}
+\partialev{selected cases measured; general automation and full costs missing.}
+Proof futures, asynchronous checking and certificate decomposition predate
+this study~\cite{wenzelParallel2009,coqAsync2015,selfCertification2012}.
+We apply them to source-qualified finite-index certificates and compare
+chunking with declaration parallelism (Table~\ref{tab:envelopepooled}).
+This is a bounded engineering case, not the first parallel checker or
+a general automatic splitter. Additional coordinator/adapter trust means
+RQ3's stronger unchanged-trusted-base goal remains open.
 
 Each RQ separates evidence, missing results and design implications.
 We use public generated-software outputs and retained candidate streams
@@ -206,6 +247,7 @@ axiom-closure audit. A cheaper trust scope cannot substitute for equivalence.
 \section{Kernel-evaluation forms are concentrated; runtime weights remain open}
 \label{sec:regimes}
 \paragraph{RQ1: checking versus recomputing.}
+\partialev{\expref{0231-20261101T001556+0000}{0231}; global runtime weights missing.}
 Table~\ref{tab:corpora} gives the complete, common-boundary source comparison.
 Unmasked Mathlib text contains eight sites in five files.
 One is a documentation comment in \texttt{Mathlib/Tactic/Echelon/Cert.lean}.
@@ -221,7 +263,7 @@ Mathlib \texttt{d13f} &8,529&98.450&7&4&0.0711\\
 \texttt{openai/math} &163,097&1785.499&1,354,379&5,848&758.544\\
 \bottomrule
 \end{tabular}
-\caption{Nested-comment/string-masked \texttt{decide +kernel} sites.
+\caption{\measured{\expref{0231-20261101T001556+0000}{0231}} Nested-comment/string-masked \texttt{decide +kernel} sites.
 Decimal MB uses original source bytes. Lexical counts are not time weights.}
 \label{tab:corpora}
 \end{table*}
@@ -256,6 +298,7 @@ regime-specific cost weights after completing the original sample.}
 The 3.5856\% source-file concentration must not become a cost fraction.
 
 \paragraph{Native checking work has different useful granularities.}
+\measured{\expref{0234-20261101T030854+0000}{0234}; conditional replay panel.}
 The earlier checking-grain capture is a different panel, unchanged by
 the two new source-compilation draws. It replays 31 retained compiled targets:
 29 available probability-sample artifacts and two purposeful modules.
@@ -282,7 +325,7 @@ EnvelopePsiB &40&58.006&6163.3&10\\
 ResiduesModThree &2&3.620&2274.5&2\\
 \bottomrule
 \end{tabular}
-\caption{Decision-shaped theorem checking in five selected modules from
+\caption{\measured{\expref{0234-20261101T030854+0000}{0234}} Decision-shaped theorem checking in five selected modules from
 the complete 31-artifact replay panel. Calls, CPU and maxima refer to these
 declarations, not all module work; $\geq1$s uses thread CPU.}
 \label{tab:grain}
@@ -323,6 +366,7 @@ For a mathematical witness a low checking share is possible when source
 production dominates; it is not established for every mathematical module.
 
 \paragraph{System-design implication.}
+\partialev{implication of scoped observations; general benefit unproven.}
 Choose the acceptance boundary before the accelerator.
 Mathematical witnesses motivate production/checking separation;
 computational certificates motivate independent kernel work.
@@ -335,6 +379,7 @@ an accelerator ceiling.
 \section{Cheap checking can be hidden by imports and production coupling}
 \label{sec:decoupled}
 \paragraph{RQ2: why independent verification remains costly.}
+\partialev{selected costs measured; causal import decomposition missing.}
 Source compilation imports, elaborates, executes tactics and constructs
 proofs before checking. A post-compilation checker can omit that production,
 but a new process still locates objects and prepares its environment.
@@ -360,6 +405,7 @@ These are scope contrasts, not interchangeable verification methods.
 A stream that checks dependencies needs a full-closure baseline.
 
 \paragraph{Prototype: streamed original-kernel replay in one process.}
+\measured{\expref{0235-20261101T041713+0000}{0235}; four selected overlapping closures.}
 O's implementation reads module-data parts, traverses imports, retains their
 mapped regions and calls the upstream \texttt{Kernel.Environment.replay}.
 A visited set avoids processing an already visited module within the stream.
@@ -387,7 +433,7 @@ Grid (3,793) &3878.707&563.082&14.52\%\\
 Amplitudes (5,083) &6173.195&898.034&14.55\%\\
 \bottomrule
 \end{tabular}
-\caption{One-pass no-\texttt{-M}, same-artifact closure comparisons.
+\caption{\measured{\expref{0235-20261101T041713+0000}{0235}} One-pass no-\texttt{-M}, same-artifact closure comparisons.
 Source work sums compiler subprocess wall; checking is one stream's process
 wall. Shared dependencies are counted once within each closure, so rows are
 not independent trials. These are different tasks, not parallel Lake or
@@ -430,6 +476,7 @@ at complete dependency scope. It does not isolate the causal shares of import
 reuse and omitted production.
 
 \paragraph{A computational target and its dependencies have different ratios.}
+\measured{\expref{0235-20261101T041713+0000}{0235}; target and closure clocks differ.}
 The reconstructed Grid closure also completes: 3,793 source modules,
 3,878.707 seconds of serial compiler work, and 563.082 seconds of matched
 stream checking (14.52\%).
@@ -473,13 +520,14 @@ Grid &318.231&255.489&80.28\%\\
 Amplitudes &133.615&110.026&82.35\%\\
 \bottomrule
 \end{tabular}
-\caption{Matched target read/map/kernel-replay components after dependency
+\caption{\measured{\expref{0235-20261101T041713+0000}{0235}} Matched target read/map/kernel-replay components after dependency
 checking, versus target source compiler process wall. Components exclude
 shared-base checking and startup; these are not standalone latency ratios.}
 \label{tab:components}
 \end{table}
 
 \paragraph{Closure totals can hide the cost of generated nodes.}
+\measured{\expref{0246-20261101T121151+0000}{0246}; selected provenance composition.}
 We also split each selected closure by source provenance, rather than
 assigning an entire closure to its root's proof style.
 The four Grid \texttt{OAI} modules account for 9.76\% of its summed source
@@ -501,7 +549,7 @@ Grid &4&9.76\%&52.70\%\\
 Amplitudes &8&8.69\%&46.93\%\\
 \bottomrule
 \end{tabular}
-\caption{Shares attributable to fixed-source \texttt{OAI} modules within
+\caption{\measured{\expref{0246-20261101T121151+0000}{0246}} Shares attributable to fixed-source \texttt{OAI} modules within
 each complete selected closure. Source shares use summed native compiler
 wall; replay shares use summed per-module monotonic replay-call intervals
 after dependencies have been checked. Replay shares exclude read/map,
@@ -539,6 +587,7 @@ sibling visibility require separate qualification.
 A context-auditing continuation is not part of these timing results.
 
 \paragraph{System-design implication.}
+\partialev{implication of scoped observations; general benefit unproven.}
 Expose the cheap checking boundary if one exists: separate production and
 checking APIs, reuse compatible contexts and charge the complete lifecycle.
 Warm imports are established engineering~\cite{kimina,kiminaPaper};
@@ -547,12 +596,14 @@ the characterization must show where they matter and what remains expensive.
 \section{Recomputation motivates parallel original-kernel checking}
 \label{sec:chunked}
 \paragraph{RQ3: scale without adding trusted proof rules.}
+\partialev{finite transformations; unchanged implementation TCB unproven.}
 A monolithic reduction can leave cores unavailable to one checking invocation.
 Parallelism requires independently checkable claims and a checked connection
 to the unchanged original proposition.
 A source split, numeric evaluator or worker success flag alone is insufficient.
 
 \paragraph{The existing module-parallel baseline has a different boundary.}
+\measured{\expref{0247-20261101T131749+0000}{0247}; source audit only, no throughput comparison.}
 The bundled checker already launches \texttt{replayFromImports} tasks for
 selected modules before collecting their results~\cite{lean434CheckerSource2026}.
 Each task loads its imports through the stock importer and checks its local
@@ -573,6 +624,7 @@ The stream speedups below compare the stated serial baselines; they do not
 establish superiority over this unmeasured native module-parallel path.
 
 \paragraph{Prototype: generated claims and checked assembly.}
+\measured{\expref{0234-20261101T030854+0000}{0234}; small Grid whole-path negative.}
 M freezes a real Grid \texttt{PointBox.calc} equality and structurally forms
 18 scalar-equality leaves.
 The prototype groups them for one, two, four or eight workers, constructs
@@ -609,7 +661,7 @@ $k=4$ &151.68&237.61&5.897\\
 $k=8$ &178.02&392.06&5.927\\
 \bottomrule
 \end{tabular}
-\caption{Medians of three no-\texttt{-M} repetitions on one real Grid
+\caption{\measured{\expref{0234-20261101T030854+0000}{0234}} Medians of three no-\texttt{-M} repetitions on one real Grid
 equality. Kernel span covers the worker checks; worker CPU sums their thread
 clocks. Native wall includes preparation, checks and artifact handling.}
 \label{tab:flat}
@@ -676,7 +728,7 @@ Wave, 4 workers &20.233&58.335\\
 Wave, 8 workers &14.127&60.016\\
 \bottomrule
 \end{tabular}
-\caption{BarrierData41 independent compiled-module replay, three ordered
+\caption{\measured{\expref{0235-20261101T041713+0000}{0235}; scoped prototype.} BarrierData41 independent compiled-module replay, three ordered
 repetitions per path. Wall spans first stage-configuration write through
 final audit retirement, including graph planning, native processes, imports,
 exports and driver gaps. Lease wait and initial directory/environment setup
@@ -730,7 +782,7 @@ Original &6.125&9.848&9.836\\
 8 chunks &0.973&8.982&15.110\\
 \bottomrule
 \end{tabular}
-\caption{EnvelopePsiB helper, medians of three repetitions. Kernel span
+\caption{\measured{\expref{0236-20261101T051231+0000}{0236}} EnvelopePsiB helper, medians of three repetitions. Kernel span
 runs from the first worker's stock checking-call entry to the last exit.
 Runtime includes both sequential producer and merger process lifecycles,
 imports, exports and interphase cleanup. Native CPU excludes the Python
@@ -796,7 +848,7 @@ Direct serial &265.010&264.853\\
 8 workers &65.856&523.784\\
 \bottomrule
 \end{tabular}
-\caption{One ordered Grid trial sequence inside one process and checked
+\caption{\measured{\expref{0244-20261101T101651+0000}{0244}} One ordered Grid trial sequence inside one process and checked
 prefix. Trial clocks include planning, checking and the result-identity audit;
 they exclude the already checked prefix and process startup.
 These are incremental target costs, not complete independent invocations.
@@ -845,7 +897,7 @@ Audited serial &71.326 [71.304,72.125]&71.180\\
 8 workers &45.050 [44.270,45.292]&93.430\\
 \bottomrule
 \end{tabular}
-\caption{Complete artifact-closure process costs on repaired frozen v14,
+\caption{\measured{\expref{0241-20261101T080929+0000}{0241}} Complete artifact-closure process costs on repaired frozen v14,
 three fresh-process repetitions per path in repeated fixed order.
 Filesystem caches are not flushed. CPU is a separate median.
 The fresh original-stream baseline is distinct from the earlier single
@@ -899,6 +951,7 @@ We do not attribute the difference to the worker-start gate or report it
 as a cold-mode, source-build or library-wide improvement.
 
 \paragraph{Complete closure costs are smaller gains than target curves.}
+\measured{\expref{0244-20261101T101651+0000}{0244}; one ordered pair per closure.}
 Two new pairs run the original serial stream and repaired uniform
 four-worker stream from empty checked environments on the same artifacts
 (Table~\ref{tab:fullcomputestream}).
@@ -918,7 +971,7 @@ BarrierData41 &4,449&474.851&304.862&1.558\\
 Grid &3,793&557.568&296.293&1.882\\
 \bottomrule
 \end{tabular}
-\caption{Actual complete native-process pairs, one observation per arm.
+\caption{\measured{\expref{0244-20261101T101651+0000}{0244}} Actual complete native-process pairs, one observation per arm.
 Clocks run from subprocess launch through \texttt{wait4}; subsequent
 sampler join and cgroup removal are verified but outside that wall clock.
 Each pair runs serial first. Grid's arms are separated by a controller
@@ -958,6 +1011,7 @@ implementation code; acceptance-set parity is not a proof of universal
 malformed-input equivalence.
 
 \paragraph{Pooled certificates pass a broader native qualification.}
+\measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}
 A separate native control selects all ten measured Envelope helpers whose
 earlier checking calls exceed one CPU second.
 Before transformation, each input \texttt{ConstantInfo} must equal its
@@ -977,6 +1031,7 @@ The subsequent complete-prefix observation below uses a different frozen
 version and prefix-worker policy.
 
 \paragraph{Splitting must beat declaration parallelism.}
+\measured{\expref{0243-20261101T091434+0000}{0243}; one target sequence, no full single-mode pair.}
 A repaired v14 Envelope process independently checks 10,751 dependency
 modules before nine ordered target trials.
 The prefix uses four requested workers; target paths request 1, 2, 4 or 8.
@@ -1003,7 +1058,7 @@ Chunk, 4 workers &20.768&80.182\\
 Chunk, 8 workers &13.299&102.888\\
 \bottomrule
 \end{tabular}
-\caption{One ordered Envelope target sequence after independently checking
+\caption{\measured{\expref{0243-20261101T091434+0000}{0243}} One ordered Envelope target sequence after independently checking
 the shared dependency prefix. Clocks include payload reading, support replay,
 children, merges, ordinary declarations and result audit.
 Source scanning, producer compilation and certificate generation are
@@ -1076,9 +1131,11 @@ distinct. Reflection and proof parallelism are established approaches
 ~\cite{mathlib,lean49DecideSource,isabelleBuild2024}.
 
 \paragraph{System-design implication.}
+\partialev{implication of scoped observations; general benefit unproven.}
 Expose work at a kernel-checkable boundary; retain original checking rules
 and the required axiom closure.
-Keep generation/scheduling outside the trusted decision.
+Keeping generation/scheduling outside the trusted decision is a design
+requirement, not a proved property of the combined in-memory prototype.
 Preserve shared subcomputations when choosing work units and account for
 environment reconstruction. Validate decomposition and parallelism separately,
 then check the complete assembled theorem at equal CPU/memory resources.
@@ -1087,6 +1144,7 @@ Faster leaves or transformed subgoal success alone are insufficient.
 \section{Verified leaves build, outcome and axiom boundaries open}
 \label{sec:meaning}
 \paragraph{RQ4: what has actually been established?}
+\measured{\expref{0231-20261101T001556+0000}{0231}; lexical/build coverage only.}
 The publisher's default root reaches 130,834 of 163,097 modules.
 The other 32,263 contain 451,008 of 1,354,379 masked kernel-decision sites,
 33.30\%. This is not an omitted CPU fraction or a statement that outside
@@ -1094,6 +1152,7 @@ files fail. All 562 PlanarPacking and 466 Transonic modules are outside.
 A successful default build cannot establish all released-artifact coverage.
 
 \paragraph{Source sites, declarations and axioms differ.}
+\partialev{retained-object census; whole axiom closure missing.}
 In the retained 363-object census, 45,661 decision-shaped auxiliaries have
 42,610 globally distinct expression-type keys.
 Source occurrences can expand into several helpers; imported objects use
@@ -1105,6 +1164,7 @@ do not establish native acceptance or known axiom closure.
 \missing{Repository-wide declaration reachability, admissions and axiom closure.}
 
 \paragraph{A shared context can change which proof is checked.}
+\measured{\expref{0237-20261101T060743+0000}{0237}; a specific acceptance-contract mismatch.}
 A later combined streaming prototype exposes a concrete context failure.
 A valid earlier sibling provides \texttt{Shared.t : True}.
 A different incoming module imports only \texttt{Init.Prelude}; its raw
@@ -1142,6 +1202,7 @@ They differ from the earlier Barrier checked-fragment/normal-import protocol.
 Neither prototype establishes a universally unchanged implementation TCB.
 
 \paragraph{Settings and observers change outcomes.}
+\partialev{historical controls; fresh no-M reproducibility missing.}
 Six released EPFL exact-program controls fail at recursion depth128 but
 pass at256/default512 in reconstructed contexts; producer context is unknown.
 A historical \texttt{-M8192} diagnostic changes seven error flags among
@@ -1162,6 +1223,7 @@ These historical resource points aren't a regime classifier for the library.
 Ordinary errors and resource exhaustion do not establish falsehood.
 
 \paragraph{System-design implication.}
+\partialev{implication of scoped observations; general benefit unproven.}
 Report build domain, checked constants, trusted imports, axiom/admission
 policy, executable/options, resource accounting and observer configuration.
 A Boolean result hides these boundaries.
@@ -1187,6 +1249,24 @@ All failed, partial and withdrawn evidence remains, including interrupted
 state-reuse records whose missing entries aren't zero cache opportunity.
 
 \section{Related work}
+\paragraph{Parallel proof checking and deterministic budgets.}
+Wenzel's Isabelle proof futures check promised propositions and
+well-founded fulfilment dependencies~\cite{wenzelParallel2009}.
+Coq's asynchronous document processing separates opaque proof tasks and
+complete checking~\cite{coqAsync2015}; its scheduler already predicts task
+durations using historical auxiliary data~\cite{coqAsyncManual2023}.
+Lean 4.17 overlaps kernel checking with elaboration, and 4.19 parallelizes
+theorem-body elaboration~\cite{leanParallelRelease2025,leanKernelParallel2025}.
+Certificate splitting and composition also have established precedents
+~\cite{selfCertification2012}.
+These are citation precedents, not performance baselines we have rerun.
+Likewise Lean's thread-local allocation heartbeats and SMT-LIB's
+reproducible-resource option precede candidate B
+~\cite{leanHeartbeats2026,smtlib27}. Neither their existence nor our controls
+establish a new whole-pipeline replay guarantee.
+SATzilla already uses instance predictions for algorithm decisions
+~\cite{satzilla2008}; candidate A requires application-specific evidence.
+
 \paragraph{Proof-assistant runtime and build performance.}
 Performance engineering of proof assistants predates AI-generated proofs.
 Lean's architecture and reference-counting work study efficient execution
@@ -1200,6 +1280,13 @@ generated artifacts; low realized core use does not by itself establish a
 new scheduling or runtime technique.
 
 \paragraph{Mathlib compilation and continuous integration.}
+The Mathlib maintenance study already describes continuous build/component
+performance tracking and optimization~\cite{growingMathlib2025}.
+The official Mathlib benchmark suite already records global and per-module
+build metrics, including task time, wall time, instructions, RSS and profiles
+~\cite{mathlibBench2026}. Standard stratification and known inclusion
+probabilities are established sampling methods~\cite{samplingStatCan}; our
+method applies them to this frame, with incomplete response kept explicit.
 Community profiling has already examined per-file build times and
 typeclass, tactic, import and checking phases in Mathlib~\cite{stollMathlib2024}.
 We do not claim the first library cost profile.
@@ -1221,6 +1308,8 @@ The archived \texttt{lean4checker} is now distributed with Lean as
 \texttt{leanchecker}. It replays declarations through the official kernel:
 it is a separate checking pass, not a separately implemented kernel
 ~\cite{leanCheckerDocs}.
+Nanoda independently implements checking in Rust and exposes checking workers
+and explicit axiom/extension settings~\cite{nanoda2026}.
 Carneiro's Lean4Lean reimplements the checker in Lean and evaluates
 post-compilation replay on major libraries~\cite{lean4lean2025}.
 Lean Kernel Arena evaluates multiple implementations on exported environments,
@@ -1238,6 +1327,10 @@ Kimina Lean Server uses concurrent persistent REPLs and cached import headers
 for RL and proof feedback~\cite{kimina,kiminaPaper}.
 Its published throughput study establishes import reuse as a practical
 service technique, not a new mechanism here.
+DeepSeek-Prover-V1.5's verifier already provides process scheduling, REPL
+checks, timeouts and distinct pass/complete/system-error fields
+~\cite{deepseekVerifierArtifact}. These services are source-feedback paths,
+not matched independent-artifact replay baselines.
 Snapshots retain live proof state for tactic search~\cite{leanSnapshot};
 stock incremental elaboration reuses prior source state~\cite{leanIncremental}.
 APE-Bench evaluates file/repository-level proof engineering with pinned
@@ -1268,16 +1361,17 @@ findings remain explicit open results.
 
 
 \section{Conclusion}
-AI-generated mathematics exposes two verification boundaries:
-checking mathematical witnesses and recomputing proof-embedded calculations.
-The matched lexical census shows a large increase concentrated in a small
-source subset; its full-library time weight remains unknown.
-Decoupled streaming and original-kernel chunking test different systems
-responses.
-\missing{Final no-\texttt{-M} regime weights, matched independent-checking
-costs and whole-path parallel/cluster results.}
-Build coverage, reproducibility and axiom closure must accompany every
-performance or verified claim.
+\measured{\expref{0231-20261101T001556+0000}{0231},\expref{0235-20261101T041713+0000}{0235}}
+The fixed release has concentrated kernel-decision syntax and selected
+cheap-witness versus costly-recomputation cases at declared cost boundaries.
+\partialev{population runtime weights, causality and generality missing.}
+A and B remain unproven applications of prior prediction/budget ideas.
+C is a measured finite-index application of established decomposition
+and checking, with additional implementation trust and incomplete full costs.
+\missing{Final no-\texttt{-M} regime weights, matched native module-task
+comparison, complete Envelope single-mode pair, software/axiom and cluster evidence.}
+The defensible contribution is the scoped characterization and tested
+implications, not three general new mechanisms.
 
 \bibliographystyle{plain}
 \bibliography{references}

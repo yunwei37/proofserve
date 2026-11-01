@@ -260,3 +260,6 @@ not themselves prove fullsoundnessor speed. OriginalInitialNarrative/evolution
 above retained; current framing is morefaithful to explicituserregimequestion
 than a general resource/accelerator story.
 [Evidence and self-review](tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md).
+
+## 2026-11-01 — user explicitly requests novelty verdict and claim downgrades
+The user asks root to audit core primary sources and decide A/B/C strength, then edit the paper. Root confirms generic prediction/resource decisions, deterministic work budgets and parallel proof decomposition/composition have prior art. A/B application benefits stay unproven; C is a measured finite-index engineering application with incomplete full costs and added implementation trust. Keep the two-regime characterization, title/fourRQ meanings/section hierarchy, scoped measured observations and missing global evidence. Abstract qualification/evidence grades are directly authorized, replacing the old abstract-freeze wording. No invented novelty, general automatic splitter, unchanged-TCB guarantee or new native result. Initial Narrative and prior evolution remain untouched. [Audit](novelty-20261101.md).

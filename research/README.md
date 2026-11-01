@@ -49,3 +49,11 @@ scaled into newpoints. No native status is inferred from this static index.
 
 [Current index consolidation](../docs/tmp/build-and-evaluate/step-0248-20261101T141922+0000/step-report.md) preserves the
 [exact prior index](../docs/tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-research-README.md.gz).
+
+## Current novelty audit
+[Root A/B/C decision](../docs/novelty-20261101.md) integrates
+[M prior-work](reproducible-verdict/prior-work.md) and
+[W method audit](../workloads/openai-math/cost-method-prior-art-20261101/README.md).
+M's [six classification controls](reproducible-verdict/step-002-report.md)
+are not a reproducibility guarantee; O's cost-prediction report remains missing.
+[Root cleanup](../docs/cleanup-20261101.md) retains PDFs and all native evidence.

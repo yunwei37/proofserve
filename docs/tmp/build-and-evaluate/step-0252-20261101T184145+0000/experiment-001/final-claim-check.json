@@ -1,0 +1,20 @@
+{
+  "numeric_table_bodies_unchanged": true,
+  "tables": 12,
+  "citation_keys": 108,
+  "referenced_keys": 48,
+  "local_link_counts": {
+    "docs/novelty-20261101.md": 12,
+    "docs/cleanup-20261101.md": 2,
+    "docs/research-status.md": 32,
+    "docs/research-plan.md": 10,
+    "research/README.md": 42,
+    "docs/background-related-work.md": 17
+  },
+  "local_link_failures": [],
+  "measured_tags": 27,
+  "partial_tags": 12,
+  "unproven_tags": 2,
+  "new_native": 0,
+  "new_agents": 0
+}

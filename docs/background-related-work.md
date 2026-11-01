@@ -1,6 +1,6 @@
 # Background And Related Work
 
-Integration updated2026-11-01UTC; **not a new literature search or re-verification**.
+Prior-map integration below retains its old scope. **Fresh 2026-11-01 primary-source novelty audit and root verdict:** [A/B/C audit](novelty-20261101.md). A/B generic ideas and C generic parallel/decomposition/composition overlap established work; application-specific evidence remains qualified. The paper now marks Measured/Partial/Unproven claims.
 This frontier indexes the existing paper bibliography, historical primary-source
 reports and recent native-source audits under the user-selected characterization
 mainline. Original source-access dates remain in those records.
