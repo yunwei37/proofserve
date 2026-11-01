@@ -109,8 +109,8 @@ The first actual waiter acquired the lease but failed its initial construction
 control before any performance cell: a normal predicate def blocked Decidable
 search. Failed raw data remain intact. The generator now uses a transparent
 abbrev; original target/merge equivalence,16instance/construction cases and
-a genuine original-kernel false rejection all pass. A fresh curve is next;
-no Envelope performance claim yet. See [step011](step-011-report.md).
+a genuine original-kernel false rejection all pass. The repaired v2curve is now an actual kernel-lock waiter (PID217380);
+no Envelope performance claim yet. See [step011](step-011-report.md) and [actual v2admission](envelope-v2-launch.json).
 
 The conditional28.23%weighted large-helper estimate is highly sensitive to
 one file: dropping Envelope changes it to0.01118%. Thirteen original draws
