@@ -1,0 +1,17 @@
+case,stream_accept,module_oracle_accept
+pristine:Init.Prelude,True,True
+pristine:Init.Coe,True,True
+pristine:Init.Notation,True,True
+pristine:Init.Tactics,True,True
+pristine:Init.SizeOf,True,True
+pristine:Init.Core,True,True
+pristine:Init.SimpLemmas,True,True
+pristine:Init.Data.Zero,True,True
+pristine:Init.Data.NeZero,True,True
+pristine:Init.Grind.Attr,True,True
+pristine:Init.Grind.Interactive,True,True
+pristine:Init.Grind.Tactics,True,True
+pristine:Init.Data.Nat.Basic,True,True
+corrupt:bvar,False,False
+corrupt:unknown,False,False
+corrupt:sort,False,False
