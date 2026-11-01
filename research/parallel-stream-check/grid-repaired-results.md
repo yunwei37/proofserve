@@ -12,7 +12,7 @@ independently checked3,792-module prefix. All7,898new leaf CIs match serial.
 |parallel4|94.183239|375.642908|3.988|2.814|
 |parallel8|65.856253|523.784132|7.953|4.024|
 
-True8-worker utilization7.954cores;4.024x leaf speedup,97.76% more CPU seconds
+True8-worker utilization7.953cores;4.024x leaf speedup,97.76% more CPU seconds
 than serial. Do not attribute the extra CPU to instructions, reference counting
 or bandwidth without a matched profile. One repetition; variance unknown.
 

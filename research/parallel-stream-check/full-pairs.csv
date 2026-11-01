@@ -1,0 +1,2 @@
+cohort,repeat,method,reference_wall_s,method_wall_s,speedup,cpu_ratio,accepted_modules,accepted_sets_equal,scope
+barrier,1,parallel4,474.85050061531365,304.86163028422743,1.557593522584665,1.2462903689715505,4449,True,both actual complete cold native processes; one selected configuration each

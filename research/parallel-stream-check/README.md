@@ -1,16 +1,16 @@
 # Parallel original-kernel streaming checks
 
-Lean4.34.1 research prototype for the two-cost-regime characterization. It reads
+Lean 4.34.1 research prototype for the two-cost-regime characterization. It reads
 compiled artifacts in one process, checks independent declarations in dependency
 frontiers, and optionally partitions ten expensive Fin31 proof computations.
 The mathematical checker is the original Lean C++ kernel.
 
 | Completed evidence | Serial wall s | Parallel wall s | Scope |
 |---|---:|---:|---|
-| Mathlib.Data.Nat.Basic |68.605|45.050 (8workers)|Complete1,330-module closure;3repeats,1.523x|
-| BarrierData41 |53.960|10.186 (8workers)|Incremental leaf;1repeat,5.297x|
+| Mathlib.Data.Nat.Basic |68.605|45.050 (8 workers)|Complete1,330-module closure;3 repeats,1.523x|
+| BarrierData41 |53.960|10.186 (8 workers)|Incremental leaf;1 repeat,5.297x|
 | Grid |265.010|65.856 (8 workers)|Incremental leaf; 1 repeat,4.024x|
-| EnvelopePsiB |61.913|17.539 declaration8;13.299 chunk8|Incremental leaf;1repeat,4.655x;1.319x extra from chunks|
+| EnvelopePsiB |61.913|17.539 declaration8;13.299 chunk8|Incremental leaf;1 repeat,4.655x;1.319x extra from chunks|
 
 Mathlib total CPU seconds increase36.3%; Barrier48.6%; Envelope chunk8adds66.2%
 versus its serial leaf, or5.2% versus declaration8. These are CPU seconds, not
@@ -31,8 +31,8 @@ is retained separately, never pooled with the repaired curve.
   Complete process1665.530s is prefix plus *all nine*, not one configuration.
 - [Repaired Grid](grid-repaired-results.md), [historical Grid](grid-stream-results.md), [worker-start correction](worker-start.md),
   and [compute tables](compute-summary.csv). Variance is unknown for one-repeat
-  computational curves. Separate complete computational serial/cohort-cost
-  comparisons and remaining repetitions are still outstanding.
+  computational curves. The first complete [Barrier pair](full-barrier-results.md) now has4,449equal
+  accepted IDs. Other complete computational cost pairs and repetitions remain.
 - [Selection and generation scope](selection-scope.md). Certificate generation is
   excluded from checking curves; reading/support/child checks/merges are included.
   The optional stock-imported diagnostic is prepared/short-control-qualified but
@@ -45,7 +45,7 @@ computational process a uniform eight-worker run or a production service gain.
 ## How checking works
 
 ParallelCore.lean plans ordinary acyclic declarations before committing anything.
-Workers call original Kernel.Environment.addDeclCore0 0 on an identical immutable
+Workers call original Kernel.Environment.addDeclCore 0 0 on an identical immutable
 frontier. A short mutex only lends job indices. Started-worker promises prevent
 the Lean standard pool from hiding the private backlog. All tasks join before
 errors propagate; typed payloads, index coverage and frontier identity are checked.
@@ -69,7 +69,8 @@ are trusted glue. Keeping the original mathematical kernel is not a claim of an
 unchanged implementation TCB or a formal theorem of universal input equivalence.
 See [correctness obligations](correctness.md). This does not validate source
 elaboration or every serialized environment extension. Unsafe/partial exclusions
-follow upstream policy. Binary-format hardening and byte-identical diagnostics
+follow upstream policy. Original artifact axioms retain the original Lean policy;
+only generated certificate roots are qualified as propext-only/no-sorry. Binary-format hardening and byte-identical diagnostics
 are outside this experiment. No external numerical solver is trusted.
 
 ## Reproduction and retained attempts
@@ -101,3 +102,7 @@ not measured results until an actual bounded native cell completes.
 Raw perf/captures/build outputs remain on PVC, never in Git. Only M-owned
 research paths are edited; the O reader was copied read-only. No novelty is
 claimed for proof parallelism, reflection, certificate splitting or shared imports.
+
+[Current complete-closure cost staircase](cost-staircase-current.csv) keeps unknown
+source-construction cells explicit. The complete Barrier process pair costs
+474.851->304.862s; it must not be replaced by the5.297x incremental leaf result.

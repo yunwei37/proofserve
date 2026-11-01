@@ -30,4 +30,11 @@ allows two complete per-arm budgets inside one1740s paired window, rather than
 silently truncating the second arm to remaining wall. Both are the same4,449-node
 input closure and14GiB sampled/charged point. Any timeout is censored operational
 failure, not a mathematical mismatch. No per-arm clock is borrowed from the
-incremental curves. This pair has not been submitted yet.
+incremental curves. This Barrier pair has completed both arms; see full-barrier-results.md.
+The same prepared equal-budget pair will next check Grid; its new results are pending.
+
+Cold here means a new native process and initially empty checked kernel
+environment. OS page cache is retained; no drop_caches, governor change or host
+sysctl is used. Reference then parallel is one fixed-order pair, not randomized
+or a three-repeat confidence estimate. The shared flock queue wait is outside native
+process wall and is not verification-service queue latency.

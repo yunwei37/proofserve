@@ -1,0 +1,3 @@
+cohort,modules,source_compiler_work_s,serial_stream_s,parallel_stream_s,configuration,repetitions,scope,source_cost_scope
+Mathlib.Data.Nat.Basic,1330,622.3794121909887,68.60523250419647,45.05003887694329,uniform8,3,complete closure,serial sum of compiler invocations; not parallel Lake wall
+BarrierData41,4449,unknown_no_complete_source_construction,474.85050061531365,304.86163028422743,uniform4,1,complete closure,leaf compiler63.03s is not the closure denominator

@@ -1,0 +1,8 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14",
+  "cells": 2,
+  "complete": 2,
+  "pairs": 1,
+  "failed": [],
+  "paired_process_repeats": "one unless more raw repetitions exist"
+}

@@ -4,7 +4,7 @@
 Repaired Grid v14 completed3,793module IDs equal to O's planned input closure.
 All7,898new leaf CIs match original serial. Five leaf variants complete:
 265.010/270.264/155.577/94.183/65.856s (serial/1/2/4/8).
-Eight uses7.954mean cores and4.024x wall speedup, with97.76% more CPU seconds.
+Eight uses7.953mean cores and4.024x wall speedup, with97.76% more CPU seconds.
 Whole prefix+five process1054.529s; retired, no resource stop. One repetition.
 
 ## WRITE
