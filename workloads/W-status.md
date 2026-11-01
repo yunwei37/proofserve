@@ -20,7 +20,10 @@
  Full163097labels/raw onPVC;smallclassification/stratum/shareCSVpublished.
 - Import audit143637directsets/141573graphclosures,top100about4.94%;
  sourcegraph only,notstatecache safety or CPUshare.
-- Original42draws/conditional6extension preserved. Onlyworkloads/edited.
+- W063other11source plan:9587uncached modules/107644656bytes,allsourcepresent.
+ Next hard LowBlock15_1+Dihedral36jobs copied onPVC at
+ workloads/openai4341-noM-hard-two-prepared-20261101,NOTlaunched/queued.
+ Original42draws/conditional6extension preserved. Onlyworkloads/edited.
  No generation,extraagent,desktop or infrastructure mutation.
 
 ## Historical step notes (retained unchanged below)

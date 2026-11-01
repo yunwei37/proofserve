@@ -1,0 +1,12 @@
+module,stratum,source_bytes,import_depth,closure,uncached,local_missing_sources,external_roots
+OAI.Analysis.CircleDomains.Selection.TrackedTestBounds,0-50;101+;0,2929,165,1815,1691,0,Mathlib
+OAI.Probability.InvariantIsing.Fields.PhysicalFieldPopulationLimit,0-50;101+;0,3354,117,1200,1200,0,Mathlib
+OAI.AlgebraicGeometry.HodgeConjecture.ThetaCycle.IndexedInverseMultiplier,50-90;11-100;0,6398,79,1734,1719,0,Lean;Mathlib
+OAI.Combinatorics.Progressions.Sampling.AllocatedForecastPrimitiveCapBound,90-99;101+;0,64383,389,3038,3038,0,Mathlib
+OAI.Computability.DirectedFeedback.RankGraph.PacketLocality,90-99;101+;0,34579,162,222,222,0,Mathlib
+OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.NativeCodeAssembly,90-99;11-100;0,22249,43,451,413,0,Lean;Mathlib
+OAI.AlgebraicGeometry.PELModuli.CMPoints.IntrinsicHolomorphicLogarithm,90-99;11-100;0,15905,20,174,173,0,Mathlib
+OAI.SetTheory.PartitionPrinciple.Geometry.GroundMainFinalStructuralRefinementOutputs,99-100;101+;0,88423,242,778,778,0,Init;Lean;Mathlib
+OAI.Combinatorics.Progressions.Estimates.PreparedModularCanonicalDetectorPositive,99-100;101+;0,81437,418,3451,3451,0,Mathlib
+OAI.RepresentationTheory.KazhdanLusztig.DihedralIntervals,99-100;11-100;0,94727,22,28,7,0,Mathlib
+OAI.Analysis.PlanarPacking.Certificate.LowBlock15_1,99-100;11-100;1,243906,20,65,29,0,Mathlib

@@ -1,0 +1,11 @@
+{
+  "remaining_targets": 11,
+  "targets_in_active48": [
+    "OAI.Analysis.MutuallyUnbiased.MixedTargets.KeySound82",
+    "OAI.Analysis.MutuallyUnbiased.MixedTargets.OriginalBlock81"
+  ],
+  "pending_modules": 9587,
+  "source_bytes": 107644656,
+  "missing_local_source_files": 0,
+  "native_launched": false
+}
