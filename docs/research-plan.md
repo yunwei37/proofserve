@@ -87,3 +87,5 @@ All root reviews are **自审**; project/paper acceptance is not declared.
 is retained in [its entry archive](tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-docs-research-plan.md.gz).
 
 Current direct audit task: apply the [source-grounded novelty verdict](novelty-20261101.md), integrate actual M/W handoffs and the missing O prediction report when available. A/B application properties remain unproven; C finite measurements do not imply general automation or unchanged implementation trust. No replacement agent, queue or runtime budget.
+
+M v1 diagnosis is complete and must not restart. [Root0253](tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md) preserves parser-adapter failure and exact denominators; correctedv2 follows its actual terminal. No cross-machine/global guarantee or A-result inferred.

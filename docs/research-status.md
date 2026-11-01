@@ -102,3 +102,5 @@ C is a measured finite engineering case with partial general/fullcost evidence.
 M's six qualification controls do not complete stability claims. O's specific
 cost-prediction report remains unavailable; its context/Falconer work is distinct.
 No old capture is restarted or prepared result promoted.
+
+[M v1 bounded matrix/root0253](tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md):768rows/16selected sources,0acceptance mismatches;16/256trace operational-label differences and128/128sync count changes.48/384frontend labels reflect the v1parser adapter defect. Not universal stability or novel deterministic budget. Correctedv2 is separate/in progress; paper remains0252.

@@ -1,0 +1,8 @@
+comparison,pairs,verdict_mismatches,acceptance_mismatches,sync_count_pairs,heartbeat_mismatches
+threads_off,192,0,0,96,0
+threads_native,192,0,0,96,0
+threads_trace,192,0,0,96,0
+observer_native,256,0,0,128,4
+observer_trace,256,16,0,128,128
+frontend,384,48,0,0,0
+repeat_and_order,384,0,0,192,64

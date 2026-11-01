@@ -57,3 +57,5 @@ scaled into newpoints. No native status is inferred from this static index.
 M's [six classification controls](reproducible-verdict/step-002-report.md)
 are not a reproducibility guarantee; O's cost-prediction report remains missing.
 [Root cleanup](../docs/cleanup-20261101.md) retains PDFs and all native evidence.
+
+[Root0253 v1matrix](../docs/tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md): finite768rows,0acceptance changes, observer counts/labels and parser-adapter differences separated. Rawfreeze in its experiment-001; correctedv2 not pooled. No new rootnative.

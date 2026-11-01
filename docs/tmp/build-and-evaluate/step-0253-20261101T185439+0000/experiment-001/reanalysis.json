@@ -1,0 +1,1013 @@
+{
+  "sources": 16,
+  "rows": 768,
+  "verdict_counts": {
+    "lean_error": 224,
+    "budget_exhausted": 16,
+    "accepted": 480,
+    "incomplete": 48
+  },
+  "comparisons": {
+    "threads_off": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 96,
+      "heartbeat_mismatches": 0
+    },
+    "threads_native": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 96,
+      "heartbeat_mismatches": 0
+    },
+    "threads_trace": {
+      "pairs": 192,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 96,
+      "heartbeat_mismatches": 0
+    },
+    "observer_native": {
+      "pairs": 256,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 128,
+      "heartbeat_mismatches": 4
+    },
+    "observer_trace": {
+      "pairs": 256,
+      "verdict_mismatches": 16,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 128,
+      "heartbeat_mismatches": 128
+    },
+    "frontend": {
+      "pairs": 384,
+      "verdict_mismatches": 48,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 0,
+      "heartbeat_mismatches": 0
+    },
+    "repeat_and_order": {
+      "pairs": 384,
+      "verdict_mismatches": 0,
+      "acceptance_mismatches": 0,
+      "sync_count_pairs": 192,
+      "heartbeat_mismatches": 64
+    }
+  },
+  "differences": {
+    "threads_off": [],
+    "threads_native": [],
+    "threads_trace": [],
+    "observer_native": [],
+    "observer_trace": [
+      {
+        "id": "minif2f-2797",
+        "repeat": 0,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 0,
+        "threads": 1,
+        "mode": "sync",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 0,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 0,
+        "threads": 2,
+        "mode": "sync",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 0,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 0,
+        "threads": 4,
+        "mode": "sync",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 0,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 0,
+        "threads": 8,
+        "mode": "sync",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 1,
+        "threads": 8,
+        "mode": "sync",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 1,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 1,
+        "threads": 4,
+        "mode": "sync",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 1,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 1,
+        "threads": 2,
+        "mode": "sync",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 1,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 1,
+        "threads": 1,
+        "mode": "sync",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      },
+      {
+        "id": "minif2f-2797",
+        "repeat": 1,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "budget_exhausted"
+      }
+    ],
+    "frontend": [
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 0,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 0,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 8,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 4,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 2,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6049",
+        "repeat": 1,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      },
+      {
+        "id": "minif2f-6063",
+        "repeat": 1,
+        "threads": 1,
+        "mode": "stock",
+        "a": "lean_error",
+        "b": "incomplete"
+      }
+    ],
+    "repeat_and_order": []
+  },
+  "tasks": [
+    {
+      "key": "tasks-r0-j1",
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130
+    },
+    {
+      "key": "tasks-r0-j2",
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130
+    },
+    {
+      "key": "tasks-r0-j4",
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5012,
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130
+    },
+    {
+      "key": "tasks-r0-j8",
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130
+    },
+    {
+      "key": "tasks-r1-j8",
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130
+    },
+    {
+      "key": "tasks-r1-j4",
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5012,
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130
+    },
+    {
+      "key": "tasks-r1-j2",
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130
+    },
+    {
+      "key": "tasks-r1-j1",
+      "checksums": [
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500,
+        12497500
+      ],
+      "child_raw_deltas": [
+        5026,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012,
+        5012
+      ],
+      "main_thread_delta": 130
+    }
+  ],
+  "cells": [
+    {
+      "key": "matrix-r0-j1",
+      "pid": 243186,
+      "birth": "761120706",
+      "returncode": 0,
+      "wall_s": 13.4953109389171,
+      "user_s": 11.678247,
+      "system_s": 1.815632,
+      "peak_rss_kib": 8823960,
+      "sampled_tree_peak_bytes": 9036947456,
+      "charged_peak_bytes": 2383925248,
+      "cgroup_usage_s": 13.493295
+    },
+    {
+      "key": "tasks-r0-j1",
+      "pid": 243351,
+      "birth": "761122056",
+      "returncode": 0,
+      "wall_s": 0.687250729650259,
+      "user_s": 0.454076,
+      "system_s": 0.22154,
+      "peak_rss_kib": 1617772,
+      "sampled_tree_peak_bytes": 1560576,
+      "charged_peak_bytes": 169717760,
+      "cgroup_usage_s": 0.674871
+    },
+    {
+      "key": "matrix-r0-j2",
+      "pid": 243358,
+      "birth": "761122125",
+      "returncode": 0,
+      "wall_s": 13.63549112342298,
+      "user_s": 11.987149,
+      "system_s": 1.822629,
+      "peak_rss_kib": 8829572,
+      "sampled_tree_peak_bytes": 9043181568,
+      "charged_peak_bytes": 2384560128,
+      "cgroup_usage_s": 13.80909
+    },
+    {
+      "key": "tasks-r0-j2",
+      "pid": 243374,
+      "birth": "761123488",
+      "returncode": 0,
+      "wall_s": 0.6871146019548178,
+      "user_s": 0.455362,
+      "system_s": 0.22672499999999998,
+      "peak_rss_kib": 1617776,
+      "sampled_tree_peak_bytes": 2113536,
+      "charged_peak_bytes": 169971712,
+      "cgroup_usage_s": 0.681486
+    },
+    {
+      "key": "matrix-r0-j4",
+      "pid": 243382,
+      "birth": "761123557",
+      "returncode": 0,
+      "wall_s": 13.61079063732177,
+      "user_s": 11.873848,
+      "system_s": 1.911239,
+      "peak_rss_kib": 8840980,
+      "sampled_tree_peak_bytes": 9044959232,
+      "charged_peak_bytes": 2400870400,
+      "cgroup_usage_s": 13.784499
+    },
+    {
+      "key": "tasks-r0-j4",
+      "pid": 243406,
+      "birth": "761124918",
+      "returncode": 0,
+      "wall_s": 0.7620783532038331,
+      "user_s": 0.510293,
+      "system_s": 0.260576,
+      "peak_rss_kib": 1619632,
+      "sampled_tree_peak_bytes": 1708032,
+      "charged_peak_bytes": 174432256,
+      "cgroup_usage_s": 0.770063
+    },
+    {
+      "key": "matrix-r0-j8",
+      "pid": 243416,
+      "birth": "761124995",
+      "returncode": 0,
+      "wall_s": 13.640647627413273,
+      "user_s": 12.023669,
+      "system_s": 1.804889,
+      "peak_rss_kib": 8848472,
+      "sampled_tree_peak_bytes": 9062813696,
+      "charged_peak_bytes": 2418704384,
+      "cgroup_usage_s": 13.827985
+    },
+    {
+      "key": "tasks-r0-j8",
+      "pid": 243430,
+      "birth": "761126359",
+      "returncode": 0,
+      "wall_s": 0.6713798493146896,
+      "user_s": 0.45328399999999996,
+      "system_s": 0.22450499999999998,
+      "peak_rss_kib": 1619684,
+      "sampled_tree_peak_bytes": 1953792,
+      "charged_peak_bytes": 172634112,
+      "cgroup_usage_s": 0.67711
+    },
+    {
+      "key": "matrix-r1-j8",
+      "pid": 243440,
+      "birth": "761126426",
+      "returncode": 0,
+      "wall_s": 13.824150991626084,
+      "user_s": 12.164496,
+      "system_s": 1.846242,
+      "peak_rss_kib": 8842492,
+      "sampled_tree_peak_bytes": 9056649216,
+      "charged_peak_bytes": 2407792640,
+      "cgroup_usage_s": 14.010075
+    },
+    {
+      "key": "tasks-r1-j8",
+      "pid": 243489,
+      "birth": "761127809",
+      "returncode": 0,
+      "wall_s": 0.6806256920099258,
+      "user_s": 0.453839,
+      "system_s": 0.23352799999999999,
+      "peak_rss_kib": 1619780,
+      "sampled_tree_peak_bytes": 1880064,
+      "charged_peak_bytes": 172834816,
+      "cgroup_usage_s": 0.686714
+    },
+    {
+      "key": "matrix-r1-j4",
+      "pid": 243498,
+      "birth": "761127877",
+      "returncode": 0,
+      "wall_s": 13.903861360624433,
+      "user_s": 12.208545,
+      "system_s": 1.875805,
+      "peak_rss_kib": 8837328,
+      "sampled_tree_peak_bytes": 9050984448,
+      "charged_peak_bytes": 2401718272,
+      "cgroup_usage_s": 14.083678
+    },
+    {
+      "key": "tasks-r1-j4",
+      "pid": 243528,
+      "birth": "761129269",
+      "returncode": 0,
+      "wall_s": 0.6860401816666126,
+      "user_s": 0.44493699999999997,
+      "system_s": 0.24961599999999998,
+      "peak_rss_kib": 1619640,
+      "sampled_tree_peak_bytes": 2297856,
+      "charged_peak_bytes": 172556288,
+      "cgroup_usage_s": 0.693756
+    },
+    {
+      "key": "matrix-r1-j2",
+      "pid": 243538,
+      "birth": "761129338",
+      "returncode": 0,
+      "wall_s": 14.006438230164349,
+      "user_s": 12.312453,
+      "system_s": 1.851261,
+      "peak_rss_kib": 8838292,
+      "sampled_tree_peak_bytes": 9051885568,
+      "charged_peak_bytes": 2399731712,
+      "cgroup_usage_s": 14.162986
+    },
+    {
+      "key": "tasks-r1-j2",
+      "pid": 243580,
+      "birth": "761130739",
+      "returncode": 0,
+      "wall_s": 0.6987992944195867,
+      "user_s": 0.46097699999999997,
+      "system_s": 0.23965499999999998,
+      "peak_rss_kib": 1617776,
+      "sampled_tree_peak_bytes": 2088960,
+      "charged_peak_bytes": 169869312,
+      "cgroup_usage_s": 0.700005
+    },
+    {
+      "key": "matrix-r1-j1",
+      "pid": 243589,
+      "birth": "761130809",
+      "returncode": 0,
+      "wall_s": 13.982170963659883,
+      "user_s": 11.965916,
+      "system_s": 2.016178,
+      "peak_rss_kib": 8833752,
+      "sampled_tree_peak_bytes": 9047629824,
+      "charged_peak_bytes": 2391023616,
+      "cgroup_usage_s": 13.981265
+    },
+    {
+      "key": "tasks-r1-j1",
+      "pid": 243619,
+      "birth": "761132207",
+      "returncode": 0,
+      "wall_s": 0.6957113593816757,
+      "user_s": 0.450001,
+      "system_s": 0.234875,
+      "peak_rss_kib": 1617788,
+      "sampled_tree_peak_bytes": 2293760,
+      "charged_peak_bytes": 169713664,
+      "cgroup_usage_s": 0.684214
+    }
+  ],
+  "retired_identity_count": 33,
+  "live_original_identities": [],
+  "controller": {
+    "pid": 242825,
+    "birth": "761111301",
+    "argv": [
+      "flock",
+      "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "990",
+      "taskset",
+      "-c",
+      "0-7",
+      "python3",
+      "-u",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v1/run_matrix.py"
+    ],
+    "source": "Probe e28ccc1; frozen source bytes in raw point",
+    "utc": "2026-11-01T18:42:09Z"
+  },
+  "new_root_native": 0,
+  "root_analysis_s": 0.020167951472103596,
+  "root_analysis_maxrss_kib": 16076
+}
