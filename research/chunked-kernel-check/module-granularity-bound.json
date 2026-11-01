@@ -1,0 +1,14 @@
+{
+  "scope": "unweighted retained31-artifact panel only; not whole library or runtime experiment",
+  "units": "original serial native checker-call threadCPU weights; imported dependencies/frontends excluded",
+  "modules": 31,
+  "total_serial_checker_work_s": 588.7730888,
+  "largest_module": "OAI.Analysis.PlanarPacking.Grid",
+  "largest_module_checker_work_s": 265.919112387,
+  "module_granularity_8processor_work_lower_bound_s": 73.5966361,
+  "module_granularity_8processor_straggler_lower_bound_s": 265.919112387,
+  "modeled_LPT_8processor_makespan_s": 265.919112387,
+  "zero_cost_barrier_removal_straggler_bound_s": 265.919112387,
+  "assumptions": "fixed serial costs, no startup/import/export/cache/memory/contention effects; no resource-admission model; not wall-clock prediction",
+  "conclusion": "Barrier alone does not remove dominant module lower bound in this selected panel; stock module parallelism is a necessary library-scale baseline"
+}
