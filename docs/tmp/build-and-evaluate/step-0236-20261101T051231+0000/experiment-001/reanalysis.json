@@ -1,0 +1,71 @@
+{
+  "medians": {
+    "0": {
+      "whole_wall_s": 9.848166930489242,
+      "native_cpu_s": 9.835852,
+      "kernel_span_s": 6.124702276,
+      "checker_thread_CPU_s": 6.121583642
+    },
+    "1": {
+      "whole_wall_s": 14.34668265003711,
+      "native_cpu_s": 14.319034,
+      "kernel_span_s": 6.177243194,
+      "checker_thread_CPU_s": 6.175708224
+    },
+    "2": {
+      "whole_wall_s": 11.490145329385996,
+      "native_cpu_s": 14.891702,
+      "kernel_span_s": 3.530576448,
+      "checker_thread_CPU_s": 6.707363681
+    },
+    "4": {
+      "whole_wall_s": 10.330934444442391,
+      "native_cpu_s": 15.307181,
+      "kernel_span_s": 1.966560133,
+      "checker_thread_CPU_s": 6.721484033
+    },
+    "8": {
+      "whole_wall_s": 8.982426721602678,
+      "native_cpu_s": 15.110444,
+      "kernel_span_s": 0.973338127,
+      "checker_thread_CPU_s": 6.848431089
+    }
+  },
+  "paired8": [
+    {
+      "rep": 1,
+      "whole_ratio": 1.0963815498549478,
+      "extra_nonkernel_s": 4.301035408113436
+    },
+    {
+      "rep": 2,
+      "whole_ratio": 1.1033282364892278,
+      "extra_nonkernel_s": 4.242830076381095
+    },
+    {
+      "rep": 3,
+      "whole_ratio": 0.9492071760396493,
+      "extra_nonkernel_s": 4.913144205693916
+    }
+  ],
+  "metrics": {
+    "kernel_ratio": 6.292471347934776,
+    "whole_ratio": 1.0963815498549478,
+    "wall_reduction_percent": 8.79087666768007,
+    "native_CPU_increase_percent": 53.626183069855074
+  },
+  "raw_native_phases": 28,
+  "positive_native_phases": 27,
+  "negative_rejections": 1,
+  "performance_cells": 15,
+  "all_identities_and_scopes_retired": true,
+  "max_RSS_KiB": 8872544,
+  "max_sampled_RSS_bytes": 9086930944,
+  "max_charged_bytes": 2588258304,
+  "external_charged_cap_GiB": 14,
+  "same_k_artifact_metadata_checked": 84,
+  "prior_byte_comparison_receipt_retained": true,
+  "root_analysis_s": 0.05218825675547123,
+  "root_analysis_maxrss_kib": 14200,
+  "new_native_runs": 0
+}

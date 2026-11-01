@@ -191,3 +191,30 @@ fromO4share retained. Sharedcontext transparentreplay still requiresseparate
 name/conflict/visibility qualification; initialboundarycompilefailure retained,
 not converted to a successful control. Abstract fills only its existing result
 slot; title/fourRQ/restabstract/sectionorganization unchanged.
+
+## Large-helper chunking: local gain versus runtime boundary — step0236
+[Root self-review](tmp/build-and-evaluate/step-0236-20261101T051231+0000/step-report.md), **自审**.
+CompleteMEnvelopev3 original/k1/k2/k4/k8,3reps each:15performancecells,
+28native phases (27success plus1explicitkernelreject), exactmanifestcoverage.
+Root audited everyphaseargv/PIDbirth/cgroup/CPUclocks andrawoutput; allretired,
+14GiBchargedcap/noM/P0–7, no stop/OOM. Originalsourceequivalence/merger checks
+frozen; alltarget+[propext]/nosorry outputs explicit. 84publishedsame-k byte
+comparison receipts retained, root recheckedartifactnames/sizes rather than
+re-reading binaries. Preparationv8 records compilequalification, notthecurve;
+freshv3 is theactualcomplete curve. Offline initialrootauditor mistakenly
+expected generic complete instead of driver_and_separate_merger_compiled;
+schemaassertion corrected, failedattempt kept, no native/resultdata changed.
+
+Wholeprepared-runtime medians9.848/14.347/11.490/10.331/8.982s.
+Kernelspans6.125/6.177/3.531/1.967/0.973s.
+8chunks:6.29247x kernelspan/1.09638x runtime,8.79088%lesswall,
+nativeCPU+53.62618%. Pairedwhole1.09638/1.10333/0.94921 retainsone5.35%regression.
+Mergerimport3.141584s/finalkernel0.000296144s. Addednonkernelresidual4.24283–
+4.91314s, notexactcausalimportattribution. Runtimebeginsbeforeproducerlaunch,
+includesproducer/mergercleanup, excludesinitialoutput/envsetup andpost-hoc
+aggregateJSONwriting; excludesofflinegenerator/Basecompilation andoriginal
+producerlibrarybuild. Not a fullsource-transform/sourcecompiler/servicegain.
+Externalchargedmax14GiB, peakcharged2588258304B, sampled9086930944B, wait4
+maxRSS8872544KiB.
+No aggregateheartbeat, arbitrarytacticbacktracking, maliciousworker orcluster
+guarantee. Failedv1/v2 and unknown interruptedCPU remain unchanged.0rootnative.

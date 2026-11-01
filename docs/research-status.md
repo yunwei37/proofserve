@@ -12,7 +12,7 @@ elaboration coupling can obstruct cheap independent verification.
 The old75–94%/~2% user-cycle panel and1.28build/replay ratio were measured
 under-M. They motivate questions, not current noMphase shares or cost bounds.
 No-M population phase weights, repeated/broader AI-mathematical comparisons
-and transfer beyond the one completed parallel module remain missing. Four complete selected closure observations are below, with explicit
+and transfer beyond the measured module/helper cases remain missing. Four complete selected closure observations are below, with explicit
 resource deviations; no general serving benefit is inferred.
 All current native measurements omit-M; memory protection is external cgroup.
 Old-Mcosts/profiles remain historical methodology, never corrected by Grid's
@@ -99,6 +99,16 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   component0.4648%. Sharedbase andtargetsubclocks staydistinct; singlewarm pass.
   Originalfiniteplan finished, laterOcontinuations separate. O4share deviation
   and unresolvedshared-context qualification retained.
+
+- [Envelope finite-index helper](../research/chunked-kernel-check/envelope-result.md):
+  complete15performance cells/28native phases, originaltarget/[propext]/nosorry
+  preserved; one false decision reaches stockkernel rejection. Kernel span
+  6.125→0.973s at8chunks (6.292x), complete prepared-runtime9.848→8.982s
+  (1.096x,8.79%lesswall), nativeCPU+53.6%. Pairedratios1.096/1.103/0.949
+  include one slower repetition. Mergerimport3.142s vsfinalcheck0.296ms.
+  Offlinegeneration/Basecompilation/originalproducer excluded; no library/
+  candidate-service or aggregatebudget equivalence claim. P0–7/noM/14GiBcharged;
+  all recorded native identities/scopes retired. Both current Mcurves completed.
 
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):

@@ -88,3 +88,14 @@ at5085unique constructednodes, with matchedfullgraphs and moduleoracles.
 Next O context-auditing/fullFalconer work is a separate continuation; never
 restore or rerun the original completed finitefourcase queue. Keep sourcephase
 weights/missingdraws, repeatedcausal costs and publicsoftware coverage explicit.
+
+## Completed large-helper curve and its limit
+[Envelope](../research/chunked-kernel-check/envelope-result.md) completes15cells
+with the same extractedtarget/axioms.8chunks shortenchecker span6.292x but
+prepared-runtime only1.096x; CPU+53.6% and one pairedrepeat0.949x. The fixed
+import/assembly interface absorbs most localgain. Distinguish this prepared
+transformation from complete source-transform production, sourcecompilation,
+Barrier's module-replay contract and whole-library throughput. Both current
+Mcurves are complete; no pending oldcurve/controller should be restarted.
+Next integration remains original Wmissingdraws, Ocontext qualification and
+actual new results. Root does not create another capture or alter lane code.

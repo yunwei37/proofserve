@@ -634,6 +634,68 @@ module, without establishing whole-library or source-elaboration speedup.
 Other modules, warm-service throughput and repeated failure behavior remain
 \missing{unmeasured at the matched resource/trust boundary}.
 
+\paragraph{Parallel leaves can lose their gain at the module boundary.}
+A larger measured helper, \texttt{envelopeExpB16\_calc} in
+EnvelopePsiB, checks 31 finite-index interval-exponential equalities.
+The prepared transformation groups indices into 1, 2, 4 or 8 chunks,
+retaining each index's original computation.
+An original-kernel-checked merge lemma reconstructs the original target;
+an explicit equality control connects that target to the released helper.
+This case tests parallel rechecking of a prepared transformation, not the
+cost of automatically producing that transformation.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Path & Kernel span (s) & Runtime (s) & CPU (s)\\
+\midrule
+Original &6.125&9.848&9.836\\
+1 chunk &6.177&14.347&14.319\\
+2 chunks &3.531&11.490&14.892\\
+4 chunks &1.967&10.331&15.307\\
+8 chunks &0.973&8.982&15.110\\
+\bottomrule
+\end{tabular}
+\caption{EnvelopePsiB helper, medians of three repetitions. Kernel span
+runs from the first worker's stock checking-call entry to the last exit.
+Runtime includes both sequential producer and merger process lifecycles,
+imports, exports and interphase cleanup. Native CPU excludes the Python
+parent; transformation generation, base/merge-lemma compilation and the
+original library producer build are excluded.}
+\label{tab:envelope}
+\end{table}
+
+Eight chunks shorten the kernel span 6.292-fold, but runtime decreases
+only from 9.848 to 8.982 seconds: 1.096-fold, or 8.79\% less wall time.
+Native CPU rises 53.6\%.
+Paired runtime ratios are 1.096, 1.103 and 0.949; the last repetition
+is 5.35\% slower than its original.
+Three repetitions, with reversed setting order in the second, do not
+establish population uncertainty or guaranteed nonregression.
+At eight chunks, merger import alone takes a median 3.142 seconds,
+whereas final kernel assembly takes 0.296\,ms.
+The paired nonkernel residual added over the original is 4.24--4.91
+seconds; this residual includes multiple operations and is not a causal
+attribution to imports alone.
+
+All 15 performance cells accept the same extracted target and the exact
+axiom set \texttt{[propext]}, without \texttt{sorry} or added axioms.
+A false-decision control reaches explicit original-kernel rejection.
+The 28 recorded native phases retire with their cgroups, with P0--7,
+no \texttt{-M} and an external 14\,GiB charged-memory cap.
+Sampled own-tree RSS peaks at 9.087\,GB and charged memory at
+2.588\,GB; these are distinct measurements, not equivalent limits.
+All 84 same-setting repeat artifact comparisons are recorded equal;
+proof artifacts intentionally differ across chunk counts.
+Aggregate heartbeat-budget transparency and arbitrary tactic-backtracking
+parity remain unimplemented.
+This helper's small and variable runtime gain complements the Barrier
+module case; their different baseline and output interfaces prevent
+combining the speedup ratios into a library estimate.
+It also identifies a concrete design cost: preserve checking parallelism
+without rebuilding a prepared environment at every assembly boundary.
+
 A cluster cannot silently trust remote object files or worker verdicts as
 new proof assertions. Specify what the acceptance authority checks,
 dependency identity, transfer and recovery.

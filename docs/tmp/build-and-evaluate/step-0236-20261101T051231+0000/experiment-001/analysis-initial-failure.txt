@@ -1,0 +1,1 @@
+Initial offline auditor expected a generic complete key in preparation-terminal.json. Actual preparation uses driver_and_separate_merger_compiled and whole_curve_unrun. All performance-data checks preceding this schema mismatch passed. No native processes or data changed.
