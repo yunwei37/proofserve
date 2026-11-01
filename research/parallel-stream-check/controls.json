@@ -1,0 +1,114 @@
+[
+  {
+    "key": "ordinary-1",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
+    "key": "ordinary-8",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
+    "key": "corrupt-1",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  },
+  {
+    "key": "corrupt-8",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  },
+  {
+    "key": "sibling-1",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  },
+  {
+    "key": "sibling-8",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  },
+  {
+    "key": "definitions-1",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
+    "key": "definitions-8",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
+    "key": "private-1",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
+    "key": "private-8",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
+    "key": "waves-1",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
+    "key": "waves-8",
+    "expected_accept": true,
+    "returncode": 0,
+    "explicit_reject": false,
+    "qualified": true
+  },
+  {
+    "key": "duplicate-token-1",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  },
+  {
+    "key": "duplicate-token-8",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  },
+  {
+    "key": "stale-token-1",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  },
+  {
+    "key": "stale-token-8",
+    "expected_accept": false,
+    "returncode": 1,
+    "explicit_reject": true,
+    "qualified": true
+  }
+]
