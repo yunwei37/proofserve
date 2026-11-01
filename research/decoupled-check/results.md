@@ -1,5 +1,5 @@
 # Decoupled native checking: measured status
-Updated 2026-11-01T03:53:21Z. Review: self-review.
+Updated 2026-11-01T04:05:10Z. Review: self-review.
 Raw observations: /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031. P cores0-7; shared lock; no Lean -M;
 11.875GiB child cgroup plus128MiB parent reserve within O12GiB.
 Fixed native kernel and compiler: Lean4.34.1, release5045d0056413266e57c625dcd7c365b10e377c52.
@@ -7,8 +7,8 @@ Fixed native kernel and compiler: Lean4.34.1, release5045d0056413266e57c625dcd7c
 ## Complete closure accounting
 - math (Mathlib.Data.Nat.Basic): constructed 1330/1330; source compiler work 622.379412s; matched stream 65.69264411274344; ratio 0.10555079879889155; matched oracle modules 1330; parity complete=True.
 - compute-grid (OAI.Analysis.PlanarPacking.Grid): constructed 3793/3793; source compiler work 3878.706740s; matched stream 563.082232083194; ratio 0.14517267478265647; matched oracle modules 3793; parity complete=True.
-- compute-amplitudes (OAI.Analysis.PlanarPacking.Certificate.Amplitudes): constructed 5083/5083; source compiler work 6173.194608s; matched stream 898.033542227; ratio 0.14547306529281048; matched oracle modules 4721; parity complete=False.
-- ordinary-oai (OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion): constructed 3331/3333; source compiler work 2554.724902s; matched stream ; ratio ; matched oracle modules 3331; parity complete=False.
+- compute-amplitudes (OAI.Analysis.PlanarPacking.Certificate.Amplitudes): constructed 5083/5083; source compiler work 6173.194608s; matched stream 898.033542227; ratio 0.14547306529281048; matched oracle modules 5083; parity complete=True.
+- ordinary-oai (OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion): constructed 3333/3333; source compiler work 2556.623338s; matched stream 172.8108643181622; ratio 0.06759340014397952; matched oracle modules 3333; parity complete=True.
 
 A blank ratio is pending, not zero. The primary numerator consumes the exact
 newly constructed olean artifacts, not the original distributed cache.
@@ -32,6 +32,7 @@ cycle fraction is a guaranteed end-to-end speedup.
 - Mathlib.Data.Nat.Basic: component 0.026844s / producer 0.410718s = 0.065358.
 - OAI.Analysis.PlanarPacking.Grid: component 255.488732s / producer 318.230852s = 0.802841.
 - OAI.Analysis.PlanarPacking.Certificate.Amplitudes: component 110.026431s / producer 133.615322s = 0.823457.
+- OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion: component 0.004473s / producer 0.962274s = 0.004648.
 
 ## Correctness and trust scope
 The preflight checks a real13-module closure against bundled leanchecker and

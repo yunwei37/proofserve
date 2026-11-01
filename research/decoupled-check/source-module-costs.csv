@@ -5082,3 +5082,5 @@ OAI.Analysis.PlanarPacking.Cardinal,4.728388,16.821642,0.49569,4185544,0,depende
 OAI.Analysis.PlanarPacking.Quadrature,3.184271,7.229151,0.395435,4165904,0,dependency,build-05080
 OAI.Analysis.PlanarPacking.BasisIntervals,16.36649,20.336197,2.180342,4586644,0,dependency,build-05081
 OAI.Analysis.PlanarPacking.Certificate.Amplitudes,133.615322,221.615534,35.993587,7285240,0,computational-target,build-05082
+OAI.MeasureTheory.Falconer.Estimates.CellwisePairDeletion,0.936163,0.787167,0.237005,2561864,0,dependency,build-05083
+OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion,0.962274,0.77397,0.242104,2562384,0,ordinary-target,build-05084
