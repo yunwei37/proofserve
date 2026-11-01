@@ -94,6 +94,21 @@ declaration-estimate.json. Barrier's measured dependency frontier supports
 testing declaration parallelism, while Envelope supplies a genuine >=1s
 within-goal partition target. Neither mechanism has a measured curve yet.
 
+## Next measured mechanisms
+[ParallelReplay.lean](ParallelReplay.lean) implements dependency-wave original
+kernel replay with checked standard modules. Real short controls accept the
+same typed constants as stock replay and reject3malformed proof variants
+and an uncommitted dependency. The finite Barrier stock/1/2/4/8 curve is the
+only submitted M task, behind existing O/W lease callers; it is **not a result**.
+See [step007](step-007-report.md), [step008](step-008-report.md),
+parallel-plan.md and parallel-launch.json.
+
+The automatically generated [EnvelopeBase.lean](EnvelopeBase.lean) keeps
+each whole Fin31 predicate computation within one chunk. Merge lemmas and
+target-type equivalence compile in original Lean. Its >=1s target curve is
+prepared but **not submitted**. No speedup is transferred from preparation or
+from the earlier small Grid target.
+
 ## Reproduction and raw data
 
 Raw archive, per-site rows, native modules, logs, memory samples and failures:

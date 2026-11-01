@@ -1,0 +1,64 @@
+{
+  "point": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/parallel-barrier-v1",
+  "pid": 195913,
+  "birth": "755303001",
+  "time": "2026-11-01T02:34:06.597834+00:00",
+  "command": [
+    "flock",
+    "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+    "taskset",
+    "-c",
+    "0-7",
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=10",
+    "1740",
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/parallel-barrier-v1/parallel_matrix.py"
+  ],
+  "code_commit": "6fea0f9",
+  "prior_lock_callers": [
+    {
+      "pid": 193896,
+      "argv": [
+        "flock",
+        "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+        "taskset",
+        "-c",
+        "0-7",
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=10",
+        "1740",
+        "python3",
+        "-u",
+        "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/window.py"
+      ]
+    },
+    {
+      "pid": 193898,
+      "argv": [
+        "flock",
+        "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+        "taskset",
+        "-c",
+        "0-7",
+        "python3",
+        "-u",
+        "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101/runner.py",
+        "--point",
+        "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101",
+        "--index",
+        "2",
+        "--arm",
+        "noM",
+        "--wall-limit",
+        "600"
+      ]
+    }
+  ],
+  "status": "submitted; actual lock acquisition and terminal not yet known",
+  "native_preparation_retired": true,
+  "only_this_task_submitted": true
+}
