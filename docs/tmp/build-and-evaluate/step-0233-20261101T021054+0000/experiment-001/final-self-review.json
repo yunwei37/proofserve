@@ -1,0 +1,12 @@
+{
+  "all_eight_pages_visually_self_reviewed": true,
+  "title_abstract_four_RQ_and_sections_unchanged": true,
+  "new_tables_readable_no_clipping": true,
+  "overfull_failure_retained_and_fixed": true,
+  "current_root_markdown_links_resolve": true,
+  "gzip_snapshots_readable": true,
+  "pdf_bytes": 114063,
+  "current_pdf_identical_to_rendered": true,
+  "independent_review": false,
+  "native_runs_launched": 0
+}

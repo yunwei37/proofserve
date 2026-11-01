@@ -158,8 +158,9 @@ The platform is phobos-vt, Intel Core i9-14900K,
 observed 64,205,640\,KiB RAM.
 Timed native captures share one P0--7 lock; preparation/analysis use E cores.
 Eight requested workers are not assumed to use eight CPU cores.
-All current commands omit \texttt{-M}, including \texttt{-M0};
-memory protection is external cgroup.
+Current measurements omit \texttt{-M}, including \texttt{-M0}.
+The required memory-protection boundary is external cgroup;
+a result records its actual enforcement rather than assuming conformance.
 The W point uses 15\,GiB charged native memory and separate one-second
 sampled native/controller RSS response.
 Charged pages, leader RSS and tree RSS differ; sampled response can overshoot
@@ -230,8 +231,19 @@ This is not a full-build makespan or population expansion.
 The separate purposeful Grid and Amplitudes points differ in output/heartbeat
 scope and do not fill missing strata.
 Unprofiled process costs do not supply a kernel-cycle partition.
-\missing{Representative no-\texttt{-M} mathematical/computational profiles,
-regime-specific CPU shares and whole-library cost weights.}
+A source-defined proxy marks files containing a masked explicit kernel-decision
+form; it does not establish which dynamic phase dominates them.
+For the 12 completed strata only (101,596 modules), the stratified estimates
+are 15.468 CPU hours in marked files and 116.705 hours in other files,
+giving a conditional marked-file share of 11.70\%.
+These are compilation CPU estimates, including imports, tactics and emission,
+not kernel-check-only hours or whole-library totals.
+The remaining strata contain 61,501 modules, including 3,036 of the
+5,848 marked files. Over half the marked population is outside this estimate.
+Two draws per stratum leave substantial uncertainty: a nominal joint
+Bonferroni interval spans 0--100\%, even before missing-stratum or label error.
+\missing{Representative no-\texttt{-M} phase profiles and full-library
+regime-specific cost weights after completing the original sample.}
 The 3.5856\% source-file concentration must not become a cost fraction.
 
 Checking an unchanged computation-based certificate repeats the reductions
@@ -291,18 +303,19 @@ All commands omit \texttt{-M} and use P0--7 with external cgroup protection.
 
 \begin{table}[t]
 \centering\small
-\begin{tabular}{lr}
+\begin{tabular}{lrrr}
 \toprule
-Complete \texttt{Nat.Basic} closure & Native wall (s)\\
+Closure (modules) & Source (s) & Check (s) & Ratio\\
 \midrule
-Serial source compiler work, 1,330 calls &622.379\\
-Streamed checking, one process &65.693\\
-Check / source compiler work &10.56\%\\
+\texttt{Nat.Basic} (1,330) &622.379&65.693&10.56\%\\
+Grid (3,793) &3878.707&563.082&14.52\%\\
 \bottomrule
 \end{tabular}
-\caption{One no-\texttt{-M}, same-artifact Mathlib control.
-The denominator sums compiler subprocess wall intervals, including repeated
-imports and artifact emission. It is not a parallel Lake makespan.}
+\caption{One-pass no-\texttt{-M}, same-artifact closure comparisons.
+Source work sums compiler subprocess wall, including repeated imports and
+artifact emission; checking is one stream's process wall.
+These are different tasks, not parallel Lake or serving speedups.
+Grid's source point exceeds the listed O-line memory share.}
 \label{tab:stream}
 \end{table}
 
@@ -339,8 +352,32 @@ mathematical-module population estimate.
 This one-pass, warm-cache control demonstrates a lower-cost checking boundary
 at complete dependency scope. It does not isolate the causal shares of import
 reuse and omitted production.
-\missing{Matched repeated AI-generated mathematical and computational
-closures, component attribution, uncertainty and full axiom coverage.}
+
+\paragraph{A computational target and its dependencies have different ratios.}
+The reconstructed Grid closure also completes: 3,793 source modules,
+3,878.707 seconds of serial compiler work, and 563.082 seconds of matched
+stream checking (14.52\%).
+Its exact accepted set matches 119 completed module-oracle chunks, including
+42 previously completed chunks for identical shared dependencies.
+The stream reports 382,707 entries and 3,554 upstream unsafe/partial exclusions.
+This advances the earlier observation whose module-local parity was pending.
+
+Within that process, Grid's own kernel replay takes 255.487 seconds, versus
+318.231 seconds for its source compiler invocation: 80.28\%.
+The target replay subclock excludes shared-process startup and dependency
+checking; source compilation includes target imports and artifact emission.
+This component ratio is not standalone checking latency or a sampled CPU share.
+The smaller whole-closure fraction includes source work for mathematical
+dependencies and cannot establish that this computational target is cheap
+to validate. Neither comparison establishes an all-module classifier.
+
+The actual O native cgroup limit is 11.875\,GiB.
+Grid source compilation reaches 7,940,196\,KiB peak RSS (7.57\,GiB),
+exceeding the listed 4\,GiB O-line share; the streamed closure reaches
+2,328,540\,KiB. This is an observed resource deviation, not a qualified
+4\,GiB comparison or authority to increase that share.
+\missing{Repeated generated-library mathematical/computational cohorts,
+causal component attribution, uncertainty and full axiom coverage.}
 
 \paragraph{System-design implication.}
 Expose the cheap checking boundary if one exists: separate production and
@@ -365,17 +402,67 @@ decision proofs and submits declarations through the original C++ kernel's
 Checked leaves are emitted as modules; a composition proof uses
 extensionality lemmas and is checked against the original target.
 Code checks the target, sorry/metavariable absence and expected axiom boundary.
-These describe the intended acceptance path, not completed evidence.
+The completed flat-partition diagnostic below exercises this acceptance path.
 
 The controls distinguish original monolithic $k=0$, the same decomposition
 with $k=1$, and $k=2,4,8$.
 This separates decomposition from parallel execution.
 Preparation, repeated reductions, serialization/communication, assembly,
 checking, memory and retirement belong in end-to-end cost.
-\missing{Complete no-\texttt{-M} repetitions, exact proposition/axiom
-comparison, corrupt-leaf rejection and charged whole-path speedup.}
+The corrected flat-partition matrix completes 15 native cells:
+the original and $k=1,2,4,8$, each repeated three times.
+All accept; final propositions and the \texttt{[propext]} axiom dependencies
+match the extracted original, with no \texttt{sorry} or new axiom dependency.
+Both original and split paths export a checked final module.
+Same-$k$ repeated artifacts are byte-identical; different partitions
+intentionally construct different proof terms.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Arm & Kernel span (ms) & Worker CPU (ms) & Native (s)\\
+\midrule
+Original &146.08&146.03&1.974\\
+$k=1$ &144.07&144.04&5.973\\
+$k=2$ &140.50&149.35&5.862\\
+$k=4$ &151.68&237.61&5.897\\
+$k=8$ &178.02&392.06&5.927\\
+\bottomrule
+\end{tabular}
+\caption{Medians of three no-\texttt{-M} repetitions on one real Grid
+equality. Kernel span covers the worker checks; worker CPU sums their thread
+clocks. Native wall includes preparation, checks and artifact handling.}
+\label{tab:flat}
+\end{table}
+
+Table~\ref{tab:flat} shows a negative whole-path result for this partition.
+Relative to the same decomposition at $k=1$, pure-kernel scaling is
+1.025, 0.950 and 0.809 at $k=2,4,8$; the eight-job case spends 2.72 times
+the worker CPU. More occupied cores do not imply useful acceleration.
+The split native pipeline takes roughly three times the original's wall time.
+At $k=2,4,8$, ordinary module reimport takes median
+3.643/3.659/3.660 seconds; final theorem checking takes about 0.16--0.20\,ms.
+Environment reconstruction, rather than the small assembly proof alone,
+dominates the observed merge stage.
+This standalone goal pipeline is not a warmed service or a full Grid build.
+
+The flat grouping places both exponential record components in one $k=2$
+job, while several $k=8$ jobs touch the same components.
+This supports an imbalance/repeated-reduction hypothesis, not a complete
+CPU attribution. A component-preserving variant remains separately under
+qualification; the flat result is not a bound on all decompositions.
+
+All 15 PID/birth identities are retired.
+The recorded resource response is a 14\,GiB sampled tree-RSS stop with a
+180-second self alarm. The frozen runner and receipts do not establish a
+dedicated charged-memory cgroup, so this diagnostic is not presented as
+the required final cgroup-controlled resource comparison.
+No observed cell times out or reaches its sampled stop.
+Aggregate heartbeat equivalence to the monolithic request is not implemented.
+\missing{Final resource-qualified parallel comparison, corrupt-leaf and
+budget/failure equivalence, shape coverage and heterogeneous-module transfer.}
 One frozen equality is not full Grid or a general extraction algorithm.
-\missing{Shape coverage, heterogeneous-module transfer and failures.}
 
 A cluster cannot silently trust remote object files or worker verdicts as
 new proof assertions. Specify what the acceptance authority checks,
@@ -395,8 +482,9 @@ distinct. Reflection and proof parallelism are established approaches
 Expose work at a kernel-checkable boundary; retain original checking rules
 and the required axiom closure.
 Keep generation/scheduling outside the trusted decision.
-Validate decomposition and parallelism separately, then check the complete
-assembled theorem at equal CPU/memory resources.
+Preserve shared subcomputations when choosing work units and account for
+environment reconstruction. Validate decomposition and parallelism separately,
+then check the complete assembled theorem at equal CPU/memory resources.
 Faster leaves or transformed subgoal success alone are insufficient.
 
 \section{Verified leaves build, outcome and axiom boundaries open}
@@ -454,10 +542,10 @@ no population weights.
 Generated-software contexts/provenance differ; software-stage costs remain
 \missing{pending}.
 
-Streaming and chunking are design-implication prototypes, not accepted-set,
-soundness, performance or cluster results.
-Their complete differentials, axiom closure, failures and matching lifecycle
-costs remain open. Ordinary warm-state reuse and frozen arithmetic oracles
+The prototypes have bounded acceptance and cost observations, rather than
+general accepted-set transparency, soundness or cluster results.
+Broader differentials, axiom closure, failures and resource-qualified lifecycle
+comparisons remain open. Ordinary warm-state reuse and frozen arithmetic oracles
 are prior mechanisms, not the contribution.
 The historical GPU screen was slower and removed no timeout; that does not
 rule out all devices or workloads.

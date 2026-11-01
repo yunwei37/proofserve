@@ -22,8 +22,8 @@ nativeP0–7/sharedlock. No new agents. CPU oracle frozen; narrowGPU routes clos
 | RQ | Two-regime characterization question | Current frontier |
 |---|---|---|
 | RQ1 | Cost locations and runtime-weighted regime prevalence | matchedlexicalcensus complete; noM29/42costs, fullphaseweights missing |
-| RQ2 | Why cheap mathematical checking isn't cheap independent verification | 1330module Mathlib matched stream/source10.56%; AIclosures/import-coupling attribution missing |
-| RQ3 | Original-kernel computation across cores/cluster | M18leafprototype inspected, complete performance/differential/cluster results missing |
+| RQ2 | Why cheap mathematical checking isn't cheap independent verification | Mathlib1330 closure10.56%, Grid3793 closure14.52%/target80.28%; other AIclosures and attribution open |
+| RQ3 | Original-kernel computation across cores/cluster | flat15cell negative diagnostic complete; final cgroup qualification, other variants and cluster open |
 | RQ4 | Build/outcome/axiom meaning of verified | defaultroot33.30%siteomission, historicalsetting/observer sensitivity; axiomclosure missing |
 
 ## Superseded -M setting
@@ -111,3 +111,31 @@ Other O closures, fullrepeat uncertainty and exact axiomclosure remain open.
 M V3 remains partial and prior output-mismatch timings cannot yield fair scaling;
 old79.88%/23.74%shape figures superseded by direct-header correction. No leaf
 coverage or modeled module allocation is converted to measured parallel gain.
+
+## Computational replay and the negative flat partition — step0233
+[Root report](tmp/build-and-evaluate/step-0233-20261101T021054+0000/step-report.md), **自审**.
+Grid source3793modules all complete, matched stream563.082232083s over source
+serial nativework3878.706739586s=14.5172675%. All119whole rc0 oracle chunks
+coverexact3793modules;42sharedMathlibchunks reused once, not newobservations.
+Current completion advances the1746partial oracle snapshot in O originalreport.
+Target-only kernel255.486529166s/source318.230851566s=80.2833942%; not a
+process or wholeclosure ratio.382707entries/3554unsafe-partial exclusions.
+Wait4 sourcepeak7940196KiB (7.57GiB) exceeds listedO4GiB share; actualnative
+cap12750684160bytes. Deviation retained, no retrospective authorization.
+
+M flat V3 15/15native accepts, exact extractedtarget/[propext]/nosorry,
+same-k output bytes independently compared; all recordedPIDbirths retired.
+Kernel median span original146.08ms; k1/2/4/8=144.07/140.50/151.68/178.02ms.
+Whole native original1.974469s; split5.973467/5.862188/5.897491/5.926591s.
+About3.65s normalreimport; final kernelcheck0.16–0.20ms. Negative for thisflat
+partition/target, not all decompositions. Initialcontroller exitunknown,
+continuation terminal15/15+clientexit0. Queueclocks not concatenated.
+Frozen runner/receipts do not establish a dedicatedcharged cap;14GiB RSS
+sampledstop/selfalarm retained. Diagnostic ratherthan fullycgroup-qualified
+finalresourcecomparison. Componentvariant uncommittedresults not adopted.
+
+W independent sums confirm12completedstrata101596modules: proxy-markedCPU
+15.467757294h/ordinary116.704825851h=11.7026973%;notglobalnativekernelshare.
+Incompletecells61501modules/3036positive retainblankfullpopulationfields;
+nominaljoint0–100%interval doesnotboundmissingness/labelerror. No newnative,
+sourcecensus, queue, policy or foreignlane mutation. Raw snapshots retained.

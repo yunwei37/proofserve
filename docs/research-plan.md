@@ -47,8 +47,13 @@ Current population/profile replacements remain missing; never scale old costs
 or fill missing strata. The first complete same-artifact Mathlib control is
 [1330modules/10.56%checking-to-construction](../research/decoupled-check/math-closed-result.md).
 AI-generated closures, repeated comparison and causal component attribution
-remain open. M initial timing has unequal output boundaries; its corrected
-matched-output matrix is still partial. Do not infer scaling from it.
+remain open. M initial timing has unequal output boundaries; correctedV3 now completes
+15acceptances and finds no flat-partition whole-path gain. Its dedicated
+charged-memory cap is not established, so final resource qualification remains
+open. Component-preserving alternatives are separate, not granted acceptance.
+Root also verifies completeGrid closure14.52% and target component80.28%;
+its native source peak7.57GiB exceeds listedO4share. These observed points do
+not authorize new resource limits or establish service/global gains.
 Pin SDK/imports/axioms, keep diagnostics and compare complete native acceptance.
 The original kernel/trust base remains the acceptance authority.
 

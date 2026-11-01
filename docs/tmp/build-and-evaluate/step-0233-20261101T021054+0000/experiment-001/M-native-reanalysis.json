@@ -1,0 +1,769 @@
+{
+  "cells": [
+    {
+      "k": 0,
+      "rep": 1,
+      "native_wall_s": 1.9724174588918686,
+      "native_cpu_s": 2.044537,
+      "peak_rss_kib": 3267104,
+      "pure_kernel_span_s": 0.142888041,
+      "pure_kernel_worker_thread_cpu_s": 0.142819589
+    },
+    {
+      "k": 1,
+      "rep": 1,
+      "native_wall_s": 5.926324619911611,
+      "native_cpu_s": 6.001220999999999,
+      "peak_rss_kib": 7050596,
+      "pure_kernel_span_s": 0.149221007,
+      "pure_kernel_worker_thread_cpu_s": 0.14916816,
+      "import_s": 3.654012269,
+      "final_kernel_s": 0.000162456,
+      "audit_s": 9.2694e-05,
+      "final_export_s": 0.149695916
+    },
+    {
+      "k": 2,
+      "rep": 1,
+      "native_wall_s": 5.86154124699533,
+      "native_cpu_s": 5.988778999999999,
+      "peak_rss_kib": 7048556,
+      "pure_kernel_span_s": 0.140502104,
+      "pure_kernel_worker_thread_cpu_s": 0.149510238,
+      "import_s": 3.642381388,
+      "final_kernel_s": 0.000163156,
+      "audit_s": 9.654e-05,
+      "final_export_s": 0.151674721
+    },
+    {
+      "k": 4,
+      "rep": 1,
+      "native_wall_s": 5.880795836448669,
+      "native_cpu_s": 6.1173839999999995,
+      "peak_rss_kib": 7051304,
+      "pure_kernel_span_s": 0.166047044,
+      "pure_kernel_worker_thread_cpu_s": 0.251806521,
+      "import_s": 3.64497501,
+      "final_kernel_s": 0.000181067,
+      "audit_s": 9.5589e-05,
+      "final_export_s": 0.150479625
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "native_wall_s": 5.92657070979476,
+      "native_cpu_s": 6.359149,
+      "peak_rss_kib": 7056512,
+      "pure_kernel_span_s": 0.180720388,
+      "pure_kernel_worker_thread_cpu_s": 0.396501235,
+      "import_s": 3.669354292,
+      "final_kernel_s": 0.000194158,
+      "audit_s": 0.000102919,
+      "final_export_s": 0.153585309
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "native_wall_s": 5.926591323688626,
+      "native_cpu_s": 6.364178,
+      "peak_rss_kib": 7052644,
+      "pure_kernel_span_s": 0.174941774,
+      "pure_kernel_worker_thread_cpu_s": 0.375425074,
+      "import_s": 3.66037882,
+      "final_kernel_s": 0.000199465,
+      "audit_s": 0.00010665,
+      "final_export_s": 0.1553861
+    },
+    {
+      "k": 4,
+      "rep": 2,
+      "native_wall_s": 5.9121677707880735,
+      "native_cpu_s": 6.162079,
+      "peak_rss_kib": 7050972,
+      "pure_kernel_span_s": 0.148385182,
+      "pure_kernel_worker_thread_cpu_s": 0.236955243,
+      "import_s": 3.663180187,
+      "final_kernel_s": 0.00017893,
+      "audit_s": 9.7915e-05,
+      "final_export_s": 0.153254219
+    },
+    {
+      "k": 2,
+      "rep": 2,
+      "native_wall_s": 5.864817931316793,
+      "native_cpu_s": 5.982457999999999,
+      "peak_rss_kib": 7050284,
+      "pure_kernel_span_s": 0.138697644,
+      "pure_kernel_worker_thread_cpu_s": 0.147682103,
+      "import_s": 3.644516504,
+      "final_kernel_s": 0.000167234,
+      "audit_s": 0.000103283,
+      "final_export_s": 0.152707
+    },
+    {
+      "k": 1,
+      "rep": 2,
+      "native_wall_s": 5.973466967232525,
+      "native_cpu_s": 6.035098,
+      "peak_rss_kib": 7050820,
+      "pure_kernel_span_s": 0.14327583,
+      "pure_kernel_worker_thread_cpu_s": 0.143253442,
+      "import_s": 3.657287638,
+      "final_kernel_s": 0.000166975,
+      "audit_s": 9.2824e-05,
+      "final_export_s": 0.148843161
+    },
+    {
+      "k": 0,
+      "rep": 2,
+      "native_wall_s": 1.9744690358638763,
+      "native_cpu_s": 2.041341,
+      "peak_rss_kib": 3267180,
+      "pure_kernel_span_s": 0.146076479,
+      "pure_kernel_worker_thread_cpu_s": 0.146030893
+    },
+    {
+      "k": 0,
+      "rep": 3,
+      "native_wall_s": 1.9834900852292776,
+      "native_cpu_s": 2.050687,
+      "peak_rss_kib": 3273212,
+      "pure_kernel_span_s": 0.151841449,
+      "pure_kernel_worker_thread_cpu_s": 0.151830804
+    },
+    {
+      "k": 1,
+      "rep": 3,
+      "native_wall_s": 6.541956478729844,
+      "native_cpu_s": 6.608029,
+      "peak_rss_kib": 7050632,
+      "pure_kernel_span_s": 0.144065667,
+      "pure_kernel_worker_thread_cpu_s": 0.144037266,
+      "import_s": 4.244478155,
+      "final_kernel_s": 0.000184524,
+      "audit_s": 0.000112903,
+      "final_export_s": 0.151391412
+    },
+    {
+      "k": 2,
+      "rep": 3,
+      "native_wall_s": 5.862188150174916,
+      "native_cpu_s": 5.98179,
+      "peak_rss_kib": 7052380,
+      "pure_kernel_span_s": 0.140551207,
+      "pure_kernel_worker_thread_cpu_s": 0.149349667,
+      "import_s": 3.643022087,
+      "final_kernel_s": 0.000164468,
+      "audit_s": 9.2929e-05,
+      "final_export_s": 0.150774437
+    },
+    {
+      "k": 4,
+      "rep": 3,
+      "native_wall_s": 5.897491130977869,
+      "native_cpu_s": 6.13899,
+      "peak_rss_kib": 7050940,
+      "pure_kernel_span_s": 0.151682998,
+      "pure_kernel_worker_thread_cpu_s": 0.237609964,
+      "import_s": 3.659309806,
+      "final_kernel_s": 0.000177356,
+      "audit_s": 9.9512e-05,
+      "final_export_s": 0.155287615
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "native_wall_s": 5.934270243160427,
+      "native_cpu_s": 6.375531,
+      "peak_rss_kib": 7054012,
+      "pure_kernel_span_s": 0.178016434,
+      "pure_kernel_worker_thread_cpu_s": 0.392057205,
+      "import_s": 3.649727829,
+      "final_kernel_s": 0.000193654,
+      "audit_s": 9.9705e-05,
+      "final_export_s": 0.152292716
+    }
+  ],
+  "medians": {
+    "0": {
+      "native_wall_s": 1.9744690358638763,
+      "native_cpu_s": 2.044537,
+      "peak_rss_kib": 3267180,
+      "pure_kernel_span_s": 0.146076479,
+      "pure_kernel_worker_thread_cpu_s": 0.146030893
+    },
+    "1": {
+      "native_wall_s": 5.973466967232525,
+      "native_cpu_s": 6.035098,
+      "peak_rss_kib": 7050632,
+      "pure_kernel_span_s": 0.144065667,
+      "pure_kernel_worker_thread_cpu_s": 0.144037266,
+      "import_s": 3.657287638,
+      "final_kernel_s": 0.000166975,
+      "audit_s": 9.2824e-05,
+      "final_export_s": 0.149695916
+    },
+    "2": {
+      "native_wall_s": 5.862188150174916,
+      "native_cpu_s": 5.982457999999999,
+      "peak_rss_kib": 7050284,
+      "pure_kernel_span_s": 0.140502104,
+      "pure_kernel_worker_thread_cpu_s": 0.149349667,
+      "import_s": 3.643022087,
+      "final_kernel_s": 0.000164468,
+      "audit_s": 9.654e-05,
+      "final_export_s": 0.151674721
+    },
+    "4": {
+      "native_wall_s": 5.897491130977869,
+      "native_cpu_s": 6.13899,
+      "peak_rss_kib": 7050972,
+      "pure_kernel_span_s": 0.151682998,
+      "pure_kernel_worker_thread_cpu_s": 0.237609964,
+      "import_s": 3.659309806,
+      "final_kernel_s": 0.00017893,
+      "audit_s": 9.7915e-05,
+      "final_export_s": 0.153254219
+    },
+    "8": {
+      "native_wall_s": 5.926591323688626,
+      "native_cpu_s": 6.364178,
+      "peak_rss_kib": 7054012,
+      "pure_kernel_span_s": 0.178016434,
+      "pure_kernel_worker_thread_cpu_s": 0.392057205,
+      "import_s": 3.66037882,
+      "final_kernel_s": 0.000194158,
+      "audit_s": 0.000102919,
+      "final_export_s": 0.153585309
+    }
+  },
+  "identities": [
+    {
+      "identity": {
+        "pid": 166736,
+        "birth": "754702823"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 166869,
+        "birth": "754703026"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 183993,
+        "birth": "754852776"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184134,
+        "birth": "754853369"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184149,
+        "birth": "754853963"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184165,
+        "birth": "754854562"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184180,
+        "birth": "754855160"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184195,
+        "birth": "754855758"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184209,
+        "birth": "754856350"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184224,
+        "birth": "754856953"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184238,
+        "birth": "754857157"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184252,
+        "birth": "754857361"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184273,
+        "birth": "754858022"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184289,
+        "birth": "754858615"
+      },
+      "same_pid_birth_live": false
+    },
+    {
+      "identity": {
+        "pid": 184303,
+        "birth": "754859211"
+      },
+      "same_pid_birth_live": false
+    }
+  ],
+  "artifact_byte_comparisons": [
+    {
+      "k": 0,
+      "rep": 1,
+      "name": "ChunkOriginal.olean",
+      "bytes": 5080,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 1,
+      "rep": 1,
+      "name": "ChunkK1Part0.olean",
+      "bytes": 14520,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 1,
+      "rep": 1,
+      "name": "ChunkCombined.olean",
+      "bytes": 5216,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 2,
+      "rep": 1,
+      "name": "ChunkK2Part0.olean",
+      "bytes": 10280,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 2,
+      "rep": 1,
+      "name": "ChunkK2Part1.olean",
+      "bytes": 10600,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 2,
+      "rep": 1,
+      "name": "ChunkCombined.olean",
+      "bytes": 5184,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 1,
+      "name": "ChunkK4Part0.olean",
+      "bytes": 7752,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 1,
+      "name": "ChunkK4Part1.olean",
+      "bytes": 8600,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 1,
+      "name": "ChunkK4Part2.olean",
+      "bytes": 8288,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 1,
+      "name": "ChunkK4Part3.olean",
+      "bytes": 8672,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 1,
+      "name": "ChunkCombined.olean",
+      "bytes": 5360,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "name": "ChunkK8Part0.olean",
+      "bytes": 6432,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "name": "ChunkK8Part1.olean",
+      "bytes": 6856,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "name": "ChunkK8Part2.olean",
+      "bytes": 6904,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "name": "ChunkK8Part3.olean",
+      "bytes": 7456,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "name": "ChunkK8Part4.olean",
+      "bytes": 7288,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "name": "ChunkK8Part5.olean",
+      "bytes": 7072,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "name": "ChunkK8Part6.olean",
+      "bytes": 7288,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "name": "ChunkK8Part7.olean",
+      "bytes": 7456,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 1,
+      "name": "ChunkCombined.olean",
+      "bytes": 5880,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "name": "ChunkK8Part0.olean",
+      "bytes": 6432,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "name": "ChunkK8Part1.olean",
+      "bytes": 6856,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "name": "ChunkK8Part2.olean",
+      "bytes": 6904,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "name": "ChunkK8Part3.olean",
+      "bytes": 7456,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "name": "ChunkK8Part4.olean",
+      "bytes": 7288,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "name": "ChunkK8Part5.olean",
+      "bytes": 7072,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "name": "ChunkK8Part6.olean",
+      "bytes": 7288,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "name": "ChunkK8Part7.olean",
+      "bytes": 7456,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 2,
+      "name": "ChunkCombined.olean",
+      "bytes": 5880,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 2,
+      "name": "ChunkK4Part0.olean",
+      "bytes": 7752,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 2,
+      "name": "ChunkK4Part1.olean",
+      "bytes": 8600,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 2,
+      "name": "ChunkK4Part2.olean",
+      "bytes": 8288,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 2,
+      "name": "ChunkK4Part3.olean",
+      "bytes": 8672,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 2,
+      "name": "ChunkCombined.olean",
+      "bytes": 5360,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 2,
+      "rep": 2,
+      "name": "ChunkK2Part0.olean",
+      "bytes": 10280,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 2,
+      "rep": 2,
+      "name": "ChunkK2Part1.olean",
+      "bytes": 10600,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 2,
+      "rep": 2,
+      "name": "ChunkCombined.olean",
+      "bytes": 5184,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 1,
+      "rep": 2,
+      "name": "ChunkK1Part0.olean",
+      "bytes": 14520,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 1,
+      "rep": 2,
+      "name": "ChunkCombined.olean",
+      "bytes": 5216,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 0,
+      "rep": 2,
+      "name": "ChunkOriginal.olean",
+      "bytes": 5080,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 0,
+      "rep": 3,
+      "name": "ChunkOriginal.olean",
+      "bytes": 5080,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 1,
+      "rep": 3,
+      "name": "ChunkK1Part0.olean",
+      "bytes": 14520,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 1,
+      "rep": 3,
+      "name": "ChunkCombined.olean",
+      "bytes": 5216,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 2,
+      "rep": 3,
+      "name": "ChunkK2Part0.olean",
+      "bytes": 10280,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 2,
+      "rep": 3,
+      "name": "ChunkK2Part1.olean",
+      "bytes": 10600,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 2,
+      "rep": 3,
+      "name": "ChunkCombined.olean",
+      "bytes": 5184,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 3,
+      "name": "ChunkK4Part0.olean",
+      "bytes": 7752,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 3,
+      "name": "ChunkK4Part1.olean",
+      "bytes": 8600,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 3,
+      "name": "ChunkK4Part2.olean",
+      "bytes": 8288,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 3,
+      "name": "ChunkK4Part3.olean",
+      "bytes": 8672,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 4,
+      "rep": 3,
+      "name": "ChunkCombined.olean",
+      "bytes": 5360,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "name": "ChunkK8Part0.olean",
+      "bytes": 6432,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "name": "ChunkK8Part1.olean",
+      "bytes": 6856,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "name": "ChunkK8Part2.olean",
+      "bytes": 6904,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "name": "ChunkK8Part3.olean",
+      "bytes": 7456,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "name": "ChunkK8Part4.olean",
+      "bytes": 7288,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "name": "ChunkK8Part5.olean",
+      "bytes": 7072,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "name": "ChunkK8Part6.olean",
+      "bytes": 7288,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "name": "ChunkK8Part7.olean",
+      "bytes": 7456,
+      "same_k_rep1_equal": true
+    },
+    {
+      "k": 8,
+      "rep": 3,
+      "name": "ChunkCombined.olean",
+      "bytes": 5880,
+      "same_k_rep1_equal": true
+    }
+  ]
+}

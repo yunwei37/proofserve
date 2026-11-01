@@ -11,8 +11,9 @@ Mathematical proofs may have a cheaper checking boundary, while imports and
 elaboration coupling can obstruct cheap independent verification.
 The old75–94%/~2% user-cycle panel and1.28build/replay ratio were measured
 under-M. They motivate questions, not current noMphase shares or cost bounds.
-No-M population phase weights, AI-closure checking ratios and matched-output
-parallel speedups remain missing. One complete Mathlib checking control is below.
+No-M population phase weights, remaining AI-mathematical closure comparisons
+and resource-qualified parallel improvements remain missing. Complete Mathlib and Grid closure observations are below, with explicit
+resource deviations; no general serving benefit is inferred.
 All current native measurements omit-M; memory protection is external cgroup.
 Old-Mcosts/profiles remain historical methodology, never corrected by Grid's
 ratio. [Withdrawal](tmp/build-and-evaluate/step-0229-20261031T235441+0000/step-report.md).
@@ -46,10 +47,13 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   15stockchecker targets pass,13short median3.510s without-M. Separate
   process/trust boundary, not pure kernel or matched noMbuild/replay gain.
 - [Chunking status](../research/chunked-kernel-check/README.md):
-  realGrid equality,18scalar leaves, k0/1/2/4/8. Initial15cells have an
-  output-boundary mismatch; correctedV3 remains partial, no matched scaling
-  claim. Earlier lexical target-header borrowing is corrected; superseded
-  shape ratios are not certified split coverage.
+  correctedV3 flat15/15accept and retired, same target/axioms and same-k
+  artifact equality. Kernel span144/140/152/178ms at k1/2/4/8; native5.86–5.97s
+  versus1.974s original. No whole-path gain; normal reimport about3.65s.
+  No dedicated charged-cgroup cap is established in that frozen runner;
+  its14GiBsampled stop is not final cgroup qualification. Other variants
+  remain separately under evaluation. Corrected lexical candidates are not
+  certified runtime split coverage.
 - [Matched Mathlib closure](../research/decoupled-check/math-closed-result.md):
   all1330 reconstructed modules, matched stream65.692644s / serial source
   work622.379412s=10.55508%;42 complete oracle chunks match1330acceptances.
@@ -57,6 +61,19 @@ Shared P0–7 timing lock; root E22–23. No new agent or infrastructure change.
   rejected by both paths. One Mathlib control/warm pass, not AI-population,
   serving speedup, parallel Lake makespan or full axiom/soundness audit.
   [Root reanalysis](tmp/build-and-evaluate/step-0232-20261101T011130+0000/step-report.md).
+
+- [Matched Grid](../research/decoupled-check/grid-matched-observation.md):
+  root subsequently verifies complete3793acceptances using119 complete oracle
+  chunks (shared1330 counted once). Whole stream563.082232s/source3878.706740s
+  is14.5173%; target kernel255.486529s/source318.230852s is80.2834%.
+  Complete closure and target component are different cost boundaries.
+  Actualnativecap11.875GiB; sourcepeak7.57GiB exceeds listedO4share,
+  not a resource-conforming4GiB comparison. Original publication's pending
+  oracle snapshot stays historical; root audit advances actual final coverage.
+- [Conditional strata](../workloads/openai-math/cost-regimes-noM/README.md):
+  12complete strata/101596modules yield proxy-marked11.70%compilationCPU,
+  not kernel time or full-library share.61501modules/3036positive missing;
+  nominal joint interval0–100%, no precise global estimate.
 
 ## Retained negative or limited results
 - [Warm comparison](../artifacts/engine-resource-profile-2026-10-25/gpu-smt-warm-engine-full7808-20261028T1220Z/result-review.md):

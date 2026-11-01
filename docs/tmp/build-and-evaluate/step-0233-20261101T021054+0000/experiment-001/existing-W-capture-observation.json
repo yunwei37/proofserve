@@ -1,0 +1,8 @@
+{
+  "W_recorded_pid": 191267,
+  "recorded_birth": "754946357",
+  "same_identity_live": true,
+  "cmdline_if_same": "python3 -u /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101/controller.py --point /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101 ",
+  "terminal_files": [],
+  "action": "read-only; no capture changes"
+}

@@ -1,0 +1,96 @@
+{
+  "utc": "2026-11-01T02:10:56Z",
+  "O": {
+    "closed_modules": 3793,
+    "source_work_s": 3878.7067395858467,
+    "matched_stream_s": 563.082232083194,
+    "complete_oracle_chunks": 119,
+    "complete_oracle_modules": 3793,
+    "closure_ratio": 0.14517267478265647,
+    "grid_source_s": 318.230851566419,
+    "grid_kernel_s": 255.486529166,
+    "grid_kernel_over_source": 0.8028339424302379,
+    "stream_RSS_kib": 2328540,
+    "target_source_RSS_kib": 7940196,
+    "native_cap_bytes": 12750684160,
+    "O4GiB_share_exceeded_by_target_RSS": true,
+    "entries": 382707,
+    "unsafe_partial": 3554,
+    "all_completed_scopes_removed": true
+  },
+  "M": {
+    "complete_cells": 15,
+    "all_pid_birth_identities_retired": true,
+    "same_k_outputs_equal": true,
+    "dedicated_cgroup_in_runner": false,
+    "charged_memory_limit_not_logged": true,
+    "sampled_own_tree_stop_GiB": 14,
+    "full_native_point": "one real Grid equality, not full Grid",
+    "medians": {
+      "0": {
+        "native_wall_s": 1.9744690358638763,
+        "native_cpu_s": 2.044537,
+        "peak_rss_kib": 3267180,
+        "pure_kernel_span_s": 0.146076479,
+        "pure_kernel_worker_thread_cpu_s": 0.146030893
+      },
+      "1": {
+        "native_wall_s": 5.973466967232525,
+        "native_cpu_s": 6.035098,
+        "peak_rss_kib": 7050632,
+        "pure_kernel_span_s": 0.144065667,
+        "pure_kernel_worker_thread_cpu_s": 0.144037266,
+        "import_s": 3.657287638,
+        "final_kernel_s": 0.000166975,
+        "audit_s": 9.2824e-05,
+        "final_export_s": 0.149695916
+      },
+      "2": {
+        "native_wall_s": 5.862188150174916,
+        "native_cpu_s": 5.982457999999999,
+        "peak_rss_kib": 7050284,
+        "pure_kernel_span_s": 0.140502104,
+        "pure_kernel_worker_thread_cpu_s": 0.149349667,
+        "import_s": 3.643022087,
+        "final_kernel_s": 0.000164468,
+        "audit_s": 9.654e-05,
+        "final_export_s": 0.151674721
+      },
+      "4": {
+        "native_wall_s": 5.897491130977869,
+        "native_cpu_s": 6.13899,
+        "peak_rss_kib": 7050972,
+        "pure_kernel_span_s": 0.151682998,
+        "pure_kernel_worker_thread_cpu_s": 0.237609964,
+        "import_s": 3.659309806,
+        "final_kernel_s": 0.00017893,
+        "audit_s": 9.7915e-05,
+        "final_export_s": 0.153254219
+      },
+      "8": {
+        "native_wall_s": 5.926591323688626,
+        "native_cpu_s": 6.364178,
+        "peak_rss_kib": 7054012,
+        "pure_kernel_span_s": 0.178016434,
+        "pure_kernel_worker_thread_cpu_s": 0.392057205,
+        "import_s": 3.66037882,
+        "final_kernel_s": 0.000194158,
+        "audit_s": 0.000102919,
+        "final_export_s": 0.153585309
+      }
+    }
+  },
+  "W": {
+    "complete_strata": 12,
+    "covered_modules": 101596,
+    "missing_modules": 61501,
+    "missing_positive_modules": 3036,
+    "certificate_CPU_h": 15.467757294444443,
+    "ordinary_CPU_h": 116.70482585097221,
+    "conditional_share": 0.11702697281346745,
+    "whole_population_share": null
+  },
+  "root_analysis_s": 1.6722424710169435,
+  "root_analysis_maxrss_kib": 115912,
+  "new_native_invocations": 0
+}
