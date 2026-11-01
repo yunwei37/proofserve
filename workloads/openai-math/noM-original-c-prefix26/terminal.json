@@ -1,0 +1,12 @@
+{
+  "rows": 26,
+  "planned_jobs": 74,
+  "native_rows": 26,
+  "elapsed_s": 78.66247431281954,
+  "stop": "deferred without queue/retry",
+  "statuses": {
+    "compile_ok": 26
+  },
+  "utc": "2026-11-01T00:01:23.430176+00:00",
+  "complete": false
+}

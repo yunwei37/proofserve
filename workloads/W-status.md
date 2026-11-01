@@ -1,5 +1,5 @@
 # W current state
-## Current frontier (W060: fresh noM31complete, hard74suffix active)
+## Current frontier (W061: noM31costs plus26deps; yielded to real Mlockowner)
 - All new timing omits-M; all old-Mcosts/profiles are legacy methodology only.
 - Fresh noM31complete/allcompile:26A+Grid+Amplitudes+3ready random draws.
  New estimator29/42costs/12of21cells, memory0, P-lock only. No oldpair/Mcosts.
@@ -9,12 +9,15 @@
  NoMsystemCPUshares:unweightedA26=17.98%,Grid20.87%,Amplitudes14.55%.
  These are not old-Mfigures, globalwallshares or a system-call attribution.
  Raw workloads/openai4341-noM-standard-a-20261031 complete/retired/collected.
-- Actual noM-only suffix74 launched2026-11-01T00:00:04UTC;
- PID135471/birth754378814, raw workloads/openai4341-noM-original-c-suffix-20261101.
- Recheck real identity/terminal, never infer from note.72deps+OriginalBlock81/
- KeySound82, original-sourceHB,3facets,j8,P0–7nonblockingwaiter-yield,
- owned15GiBchargedcgroup+1s16GiBnative/controllerRSSguard. One native.
- Do not launch another Wtiming until actual retirement; no auto retry.
+- Suffix74actually ended after26compile/78.905685CPU:deferred without queue/
+ retry on another lane'sPrequest. No new probability endpoint; coverage29/42.
+ Raw workloads/openai4341-noM-original-c-suffix-20261101 completeprefixretired.
+ Prepared48suffix at workloads/openai4341-noM-original-c-suffix48-prepared-20261101
+ has no launch, no queued Wwrapper. Includes fixedOriginalBlock81/KeySound82.
+- Last actually verified Powner136340/birth754404164 (MchunkedGrid) was live;
+ do not infer retirement from thisnote. Recheck actualPID/birth/lock beforeW.
+ All futureWtiming:noM,P0–7nonblockingwaiteryield,owned15GiBchargedcgroup/
+ 16GiBnative-controllerRSSsampling,one native. Rawbudget/failures preserved.
 - W059 import audit complete:143637directsets/141573graphclosures,top100
  4.94246%/4.95043%. Static/unweighted; external3529frontierunexpanded.
  Exactpartitions; independentBFS200classes/310members. No CPUor cache-safetyclaim.

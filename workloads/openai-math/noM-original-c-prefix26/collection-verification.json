@@ -1,0 +1,15 @@
+{
+  "returned": 26,
+  "statuses": {
+    "compile_ok": 26
+  },
+  "native_wall_s": 76.31928395666182,
+  "native_CPU_s": 78.905685,
+  "new_probability_targets": 0,
+  "remaining_jobs": 48,
+  "original_random_cost_coverage": "29/42 remains",
+  "termination": "lock deferral, not native failure",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix-20261101",
+  "next_prepared": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101",
+  "no_next_launch": true
+}
