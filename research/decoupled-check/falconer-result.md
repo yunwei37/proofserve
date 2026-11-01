@@ -3,11 +3,11 @@
 Self-review.
 
 - closure_modules: 13205
-- successful_source_nodes: 9720
+- successful_source_nodes: 10405
 - construction_complete: False
 - reused_same_capture_nodes: 5077
-- source_compiler_wall_s: 13785.774474397302
-- successful_source_work_s: 13785.721377241425
+- source_compiler_wall_s: 15142.51035518758
+- successful_source_work_s: 15142.457258031704
 - retained_failed_native_work_s: 0.05309715587645769
 - matched_stream_wall_s: None
 - acceptance_parity_complete: False
