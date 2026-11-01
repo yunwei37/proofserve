@@ -1,0 +1,340 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14",
+  "ordinary": [
+    {
+      "key": "ordinary-1",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "ordinary-8",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "duplicate-local-deps-1",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "duplicate-local-deps-8",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "hidden-cycle-1",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    },
+    {
+      "key": "hidden-cycle-8",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    },
+    {
+      "key": "corrupt-1",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    },
+    {
+      "key": "corrupt-8",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    },
+    {
+      "key": "sibling-1",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    },
+    {
+      "key": "sibling-8",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    },
+    {
+      "key": "definitions-1",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "definitions-8",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "private-1",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "private-8",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "waves-1",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "waves-8",
+      "expected_accept": true,
+      "returncode": 0,
+      "explicit_reject": false,
+      "qualified": true
+    },
+    {
+      "key": "duplicate-token-1",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    },
+    {
+      "key": "duplicate-token-8",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    },
+    {
+      "key": "stale-token-1",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    },
+    {
+      "key": "stale-token-8",
+      "expected_accept": false,
+      "returncode": 1,
+      "explicit_reject": true,
+      "qualified": true
+    }
+  ],
+  "certificate": [
+    {
+      "label": "good-all",
+      "result": {
+        "key": "certificate-good-all",
+        "argv": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=5",
+          "120",
+          "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14/certificate-controls",
+          "good-all"
+        ],
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "measured": true,
+        "wall_limit_s": 120,
+        "own_rss_sample_stop_gib": 14,
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-226702-certificate-good-all.scope",
+        "cgroup_charged_memory_max_gib": 14,
+        "pid": 226703,
+        "birth": "757145789",
+        "returncode": 0,
+        "wall_s": 16.171088160015643,
+        "user_s": 94.822844,
+        "system_s": 1.907555,
+        "peak_rss_kib": 7583168,
+        "native_retired": true,
+        "sampled_tree_peak_bytes": 7766949888,
+        "stop_reasons": [],
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+        "charged_peak_bytes": 1902653440,
+        "cgroup_cpu_stat": "usage_usec 96729841\nuser_usec 94823765\nsystem_usec 1906075\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "cgroup_usage_s": 96.729841,
+        "cgroup_user_s": 94.823765,
+        "cgroup_system_s": 1.906075,
+        "wait4_usage_complete": true,
+        "cgroup_retired": true
+      },
+      "events": [
+        {
+          "axioms": [
+            "propext"
+          ],
+          "children": 80,
+          "chunks_ns": 12061722878,
+          "constants": [
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB1_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB12_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB9_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB13_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB4_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB19_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1",
+            "OAI.AtomicTriangular.FiniteCertificate.envelopeExpB3_calc._proof_1_1"
+          ],
+          "event": "chunk_work",
+          "merge_audit_ns": 12205810,
+          "parents": 10,
+          "sorry": false,
+          "support_ns": 6238509,
+          "workers": 8
+        },
+        {
+          "event": "control_accept",
+          "input_regions": 1,
+          "retained_regions": 12,
+          "scenario": "good-all",
+          "selected_targets": 10
+        }
+      ]
+    },
+    {
+      "label": "bad-input",
+      "result": {
+        "key": "certificate-bad-input",
+        "argv": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=5",
+          "120",
+          "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14/certificate-controls",
+          "bad-input"
+        ],
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "measured": true,
+        "wall_limit_s": 120,
+        "own_rss_sample_stop_gib": 14,
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-226702-certificate-bad-input.scope",
+        "cgroup_charged_memory_max_gib": 14,
+        "pid": 226719,
+        "birth": "757147407",
+        "returncode": 1,
+        "wall_s": 3.892879666760564,
+        "user_s": 3.101394,
+        "system_s": 0.778072,
+        "peak_rss_kib": 6591112,
+        "native_retired": true,
+        "sampled_tree_peak_bytes": 6734303232,
+        "stop_reasons": [],
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+        "charged_peak_bytes": 476479488,
+        "cgroup_cpu_stat": "usage_usec 3878662\nuser_usec 3101529\nsystem_usec 777132\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "cgroup_usage_s": 3.878662,
+        "cgroup_user_s": 3.101529,
+        "cgroup_system_s": 0.777132,
+        "wait4_usage_complete": true,
+        "cgroup_retired": true
+      },
+      "events": [
+        {
+          "error": "kernel_reject:OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+          "event": "control_reject",
+          "input_regions": 1,
+          "retained_regions": 12,
+          "scenario": "bad-input"
+        }
+      ]
+    },
+    {
+      "label": "bad-chunk",
+      "result": {
+        "key": "certificate-bad-chunk",
+        "argv": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=5",
+          "120",
+          "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14/certificate-controls",
+          "good-target"
+        ],
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "measured": true,
+        "wall_limit_s": 120,
+        "own_rss_sample_stop_gib": 14,
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-226702-certificate-bad-chunk.scope",
+        "cgroup_charged_memory_max_gib": 14,
+        "pid": 226727,
+        "birth": "757147796",
+        "returncode": 1,
+        "wall_s": 3.860475174151361,
+        "user_s": 3.104087,
+        "system_s": 0.7411789999999999,
+        "peak_rss_kib": 6590956,
+        "native_retired": true,
+        "sampled_tree_peak_bytes": 6734356480,
+        "stop_reasons": [],
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+        "charged_peak_bytes": 475664384,
+        "cgroup_cpu_stat": "usage_usec 3844676\nuser_usec 3104316\nsystem_usec 740359\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "cgroup_usage_s": 3.844676,
+        "cgroup_user_s": 3.104316,
+        "cgroup_system_s": 0.740359,
+        "wait4_usage_complete": true,
+        "cgroup_retired": true
+      },
+      "events": [
+        {
+          "error": "kernel_reject:MEnvelopeStream.chunk_b8_8_7:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+          "event": "control_reject",
+          "input_regions": 1,
+          "retained_regions": 12,
+          "scenario": "good-target"
+        }
+      ]
+    }
+  ]
+}

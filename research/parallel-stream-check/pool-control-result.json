@@ -1,0 +1,157 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v13",
+  "qualification_only": true,
+  "cells": [
+    {
+      "counts": [
+        16,
+        16,
+        16,
+        16
+      ],
+      "cpu_ns": "3201360285",
+      "event": "pool_control",
+      "label": "warm4",
+      "wall_ns": 801092161
+    },
+    {
+      "counts": [
+        13,
+        13,
+        12,
+        13,
+        13,
+        0,
+        0,
+        0
+      ],
+      "cpu_ns": "3200311062",
+      "event": "pool_control",
+      "label": "ordinary8-0",
+      "wall_ns": 650177645
+    },
+    {
+      "counts": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cpu_ns": "3201480252",
+      "event": "pool_control",
+      "label": "gated8-0",
+      "wall_ns": 414872113
+    },
+    {
+      "counts": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cpu_ns": "3200516549",
+      "event": "pool_control",
+      "label": "ordinary8-1",
+      "wall_ns": 409175499
+    },
+    {
+      "counts": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cpu_ns": "3201076400",
+      "event": "pool_control",
+      "label": "gated8-1",
+      "wall_ns": 401497886
+    },
+    {
+      "counts": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cpu_ns": "3200298365",
+      "event": "pool_control",
+      "label": "ordinary8-2",
+      "wall_ns": 413219041
+    },
+    {
+      "counts": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cpu_ns": "3200780527",
+      "event": "pool_control",
+      "label": "gated8-2",
+      "wall_ns": 419363829
+    }
+  ],
+  "result": {
+    "key": "pool-control",
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "90",
+      "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v13/pool-control"
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "measured": true,
+    "wall_limit_s": 90,
+    "own_rss_sample_stop_gib": 14,
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-226228-pool-control.scope",
+    "cgroup_charged_memory_max_gib": 14,
+    "pid": 226229,
+    "birth": "757133384",
+    "returncode": 0,
+    "wall_s": 3.551433698274195,
+    "user_s": 21.004133,
+    "system_s": 1.437166,
+    "peak_rss_kib": 66240,
+    "native_retired": true,
+    "sampled_tree_peak_bytes": 69586944,
+    "stop_reasons": [],
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "charged_peak_bytes": 16216064,
+    "cgroup_cpu_stat": "usage_usec 22440588\nuser_usec 21003358\nsystem_usec 1437229\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+    "cgroup_usage_s": 22.440588,
+    "cgroup_user_s": 21.003358,
+    "cgroup_system_s": 1.437229,
+    "wait4_usage_complete": true,
+    "cgroup_retired": true
+  }
+}

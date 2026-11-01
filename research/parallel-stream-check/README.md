@@ -39,3 +39,9 @@ All measured cells use the existing P0-7 lock, no Lean -M, sampled own RSS plus
 14GiB external cgroup cap inside the lane's 16GiB budget. Original per-module
 source build cost and the serial stream are different operations and are labeled
 separately.
+
+Current scheduling qualification: [worker-start.md](worker-start.md).
+First complete Grid curve: [grid-stream-results.md](grid-stream-results.md).
+Formal obligations and implementation trust: [correctness.md](correctness.md).
+Frozen v14 is qualified by native fault and certificate controls; its final
+Mathlib/computational performance measurements remain pending.

@@ -129,11 +129,32 @@ private def worker (base : Kernel.Environment) (plan : Plan)
 private def checkedBatch (base : Kernel.Environment) (plan : Plan)
     (wave : Array Nat) (workers : Nat) (fault : String) : IO Kernel.Environment := do
   let queue ← Std.Mutex.new 0
+  let count := min workers wave.size
+  let gate ← IO.Promise.new
   let mut tasks := #[]
-  for _ in [:min workers wave.size] do
-    tasks := tasks.push (← IO.asTask <| worker base plan wave queue)
-  let mut tokens : Array CheckedToken := #[]
   let mut error : Option IO.Error := none
+  -- Lean grows its standard pool only on enqueue with no idle worker. A
+  -- private queue in long-lived tasks otherwise hides runnable work. Wait for
+  -- each task to enter the common gate before enqueueing its successor.
+  try
+    for _ in [:count] do
+      if count > 1 then
+        let started ← IO.Promise.new
+        let task ← IO.asTask do
+          started.resolve (1 : Nat)
+          unless gate.result?.get == some (1 : Nat) do
+            throw <| IO.userError "invariant: worker gate abandoned"
+          worker base plan wave queue
+        tasks := tasks.push task
+        unless started.result?.get == some (1 : Nat) do
+          throw <| IO.userError "invariant: worker did not start"
+      else
+        tasks := tasks.push (← IO.asTask <| worker base plan wave queue)
+  catch e => error := some e
+  -- Release and join all launched tasks even if creation failed. A failure
+  -- cannot commit a partial frontier or leave a worker blocked on this gate.
+  gate.resolve (1 : Nat)
+  let mut tokens : Array CheckedToken := #[]
   for task in tasks do
     match task.get with
     | .ok values => tokens := tokens ++ values

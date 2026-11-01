@@ -207,12 +207,13 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
     ("imports", toJson (first.imports.map (·.module.toString))),
     ("constants", toJson data.constants.size)]
   let s ← get
-  let visible := closure s.imports (first.imports.map (·.module)).toList
+  let visibleNames := closure s.imports (first.imports.map (·.module)).toList
+  let visibleSet := visibleNames.toList
   let mut reason : Option String := none
   let mut insertMap : Std.HashMap Name ConstantInfo := {}
   let mut duplicateProofs : Array ConstantInfo := #[]
   if mode == "audit" || mode == "parallel" then
-    for imported in visible do
+    for imported in visibleSet do
       if s.segregated.contains imported then reason := some "segregated_dependency"
     for (_, ci) in map do
       unless ci.isUnsafe || ci.isPartial do
@@ -231,7 +232,7 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
             let origins := s.origins[n]?.getD {}
             let mut found := false
             for origin in origins do
-              if visible.contains origin then found := true
+              if visibleNames.contains origin then found := true
             unless found do reason := some s!"unimported_reference:{ci.name}:{n}"
   else insertMap := map
   if let some why := reason then
