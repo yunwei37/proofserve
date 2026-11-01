@@ -25,3 +25,11 @@ inferred even if the compute curve is stable.
 Native source compile qualified. Runtime not yet launched; only v3task queued.
 One bounded future task: all16cells,180s/native,1690scontroller/1740souter,
 M14GiB sampled/charged limits plus reserve within16, no -M, commonP0-7lock.
+
+The mathematical side also needs actual co-execution, not merely changing the
+available thread pool while submitting one candidate at a time. The same future
+finite task now includes MathBatchProbe:16sources x2budgets,1/2/4/8gated worker
+loops,2reversed orders, shared imported base with fixed main module.
+It preserves per-request result order and records actual TIDs. These are new
+matched batch conditions, not pooled with v2sequential inputs. Source compilation
+is first inside the future task; no extra Lean process started while v6queued.

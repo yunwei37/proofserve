@@ -42,7 +42,7 @@ def bundle(requests,rows,environment,native_result):
             raise ValueError("invalid accepted observation")
         observations.append({"request":index[k],"result":row})
     return dict(schema=SCHEMA,environment=environment,
-        budget_scope="stock Lean maxHeartbeats per Core context, NOT a global candidate quota",
+        budget_scope="stock Lean maxHeartbeats in Core/native-kernel contexts, NOT a global candidate quota",
         unit="1000 small-allocation heartbeats per user-facing unit; command deltas are raw",
         trusted_status="observational receipt; rerun original Lean, do not trust verdict on receipt alone",
         complete_work_accounting=False,unobserved_work=["native kernel polls","arbitrary asynchronous child work"],

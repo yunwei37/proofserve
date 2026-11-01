@@ -85,3 +85,17 @@ no matched second-machine execution in these results. Existing Workspace placeme
 other Pods, CronJobs, credentials and PVC scheduling remain unchanged. Portable
 requests can be replayed once the matched execution environment is available;
 do not substitute E cores, version drift or a different theorem for this result.
+
+## Input policy and experimental scope
+The current request option does not override arbitrary source-level options.
+Experimental selected inputs remove their top-level maxHeartbeats setting before
+injecting B; proof bodies stay the same. A general candidate can reset options
+or inspect budget. Therefore source policy and a global authority budget are
+still unresolved; the prototype does not claim to enforce a global B against
+arbitrary metaprograms.
+
+Likewise miniF2F membership alone does not prove search-dominated execution.
+The selected cohort includes a tiny closed-modulo/reflexivity control. Its
+'mathematical' label means the tactic input stream here, not a measured phase
+share for every source. Computational kernel replays measure the kernel stage
+explicitly; absolute stage costs are not directly compared with full frontend.
