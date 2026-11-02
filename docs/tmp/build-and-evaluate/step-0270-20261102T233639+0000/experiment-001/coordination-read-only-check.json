@@ -1,0 +1,9 @@
+{
+  "app_owner_chats_identified": false,
+  "remote_AI_processes_observed": 0,
+  "historical_OMP_receipts_only": true,
+  "message_sent": false,
+  "message_consumed": false,
+  "new_agent_or_session": false,
+  "remote_failure_inferred": false
+}

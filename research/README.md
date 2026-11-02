@@ -85,3 +85,6 @@ CPU/coverage scope [root0268](../docs/tmp/build-and-evaluate/step-0268-20261102T
 
 
 Hodge/source33 [root0269](../docs/tmp/build-and-evaluate/step-0269-20261102T191745+0000/step-report.md), [Wresult](../workloads/openai-math/noM-hodge-source33/README.md): original33/42/16strata; source224.1–427.4CPUh and separate mixed-protocol15.3–38.0modeledcheckCPUh are assumptions, notCI or whole checks. No Hodge target replay/grain measurement follows.
+
+
+Actual84terminal/source35 [root0270](../docs/tmp/build-and-evaluate/step-0270-20261102T233639+0000/step-report.md):35/42originals,17complete strata; source232.9–396.0CPUh/mixed transfer15.9–35.2CPUh are assumptions. Wpublished34is an earlierprefix, fullterminal includesDihedral. Raw input/source35frame and originalcosts are in root record; no new replay/grain denominator.

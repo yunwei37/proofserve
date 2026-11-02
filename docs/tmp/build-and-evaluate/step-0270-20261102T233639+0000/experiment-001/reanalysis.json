@@ -1,0 +1,77 @@
+{
+  "native_count": 84,
+  "native_wall_s": 1026.5426614657044,
+  "native_CPU_s": 1183.254075,
+  "controller_wall_s": 2066.092916989699,
+  "identities_retired": 85,
+  "cgroups_absent": 84,
+  "source_bytes_compared": 1240925,
+  "wait4_maxRSS_KiB": 7388300,
+  "sampled_peak_bytes": 7565619200,
+  "charged_peak_bytes": 1166446592,
+  "new_originals": [
+    {
+      "module": "OAI.AlgebraicGeometry.PELModuli.CMPoints.IntrinsicHolomorphicLogarithm",
+      "role": "original_probability_sample",
+      "wall_s": 9.698323517106473,
+      "cpu_s": 9.734670999999999,
+      "pid": 483120,
+      "birth": "770041386",
+      "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-Intrinsic77-KL1200-prepared-20261102/runs/76-noM"
+    },
+    {
+      "module": "OAI.RepresentationTheory.KazhdanLusztig.DihedralIntervals",
+      "role": "original_probability_sample",
+      "wall_s": 8.78414277266711,
+      "cpu_s": 20.154169999999997,
+      "pid": 483788,
+      "birth": "770124083",
+      "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-Intrinsic77-KL1200-prepared-20261102/runs/83-noM"
+    }
+  ],
+  "originals": 35,
+  "missing_originals": 7,
+  "complete_strata": 17,
+  "covered_modules": 144663,
+  "missing_module_domain": 18434,
+  "source_sum_CPU_s": 851.200151,
+  "source_sum_wall_s": 540.8201830079779,
+  "conditional_CPU_h": 218.22006508208332,
+  "conditional_native_elapsed_h": 189.04801323628894,
+  "marked_CPU_h": 57.54640427722222,
+  "marked_elapsed_h": 40.01860645029435,
+  "marked_CPU_share": 0.26370812535307503,
+  "marked_elapsed_share": 0.21168488240220518,
+  "known_HT_CPU_h": 227.98853702305556,
+  "missing_plus_one_CPU_s_h": 4.117083333333333,
+  "observed_ordinary_min_CPU_s": 1.2045249999999998,
+  "observed_ordinary_max_CPU_s": 40.791652,
+  "scenarios": [
+    {
+      "scenario": "observed_class_min",
+      "source_CPU_h": 232.9476668251389,
+      "modeled_check_low_h": 15.930213298772445,
+      "modeled_check_high_h": 20.573455784797538
+    },
+    {
+      "scenario": "observed_class_max",
+      "source_CPU_h": 395.9311676113889,
+      "modeled_check_low_h": 26.218412163419778,
+      "modeled_check_high_h": 35.16280603715361
+    }
+  ],
+  "scenario_ten_times_max_CPU_h": 1907.4148429063891,
+  "scenario_missing_check_equals_source_CPU_h": 183.5598029145331,
+  "scenario_missing_check_twice_source_CPU_h": 351.50243350286644,
+  "ordinary_transfer_CPU_factors": [
+    0.06312417401157756,
+    0.0895142771015193
+  ],
+  "computation_transfer_CPU_factors": [
+    0.08467146864040666,
+    0.08442149498070872
+  ],
+  "root_analysis_seconds": 0.4606211297214031,
+  "root_analysis_maxrss_kib": 20496,
+  "scenario_missing_check_three_times_source_CPU_h": 519.4450640911998
+}

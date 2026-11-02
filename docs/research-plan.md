@@ -1,6 +1,6 @@
 # Research plan: two verification-cost regimes
 
-Current frontier2026-11-02UTC, root0269. [Status](research-status.md) ·
+Current frontier2026-11-02UTC, root0270. [Status](research-status.md) ·
 [Evidence](evaluation.md) · [Results](../research/README.md) ·
 [User words](user-instruction.md) · [Novelty](novelty-20261101.md).
 [Exact previous plan](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-plan.md.gz).
@@ -32,7 +32,7 @@ Preserve live identities and real lock waiters; never infer a resume from old st
 | Branch | Current completion boundary | Record |
 |---|---|---|
 | Fixed source census |163097OAI files and8529Mathlib files already scanned with common masking; default-root lexical gap retained. No repeat download/census. | [0231](tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md) |
-| W source continuations |48job suffix complete; later19job attempt adds only LowBlock original. Source33/42/16strata,9missing. Dependencies/censors never receive original-draw weights. | [0263](tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md) |
+| W source continuations |48job suffix complete; later19job attempt adds only LowBlock original. Source35/42/17strata,7missing. Dependencies/censors never receive original-draw weights. | [0263](tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md) |
 | W target replay |31/31accepted,14paired strata; trusted imports. Keep its source denominator separate from source32coverage. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
 | Original O closures |Four complete overlapping closures/5085source union/161module-local reference blocks. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md) |
 | Falconer recovery |13205source/27successfulsegments, complete graph and reference union. Same-protocol Mathlib3segments also complete. Two full-check timeouts remain failures. No old checkpoint/reference queue restart. | [0264](tmp/build-and-evaluate/step-0264-20261102T061224+0000/step-report.md) |
@@ -44,17 +44,17 @@ Preserve live identities and real lock waiters; never infer a resume from old st
 
 | RQ | Unresolved evidence | Existing owner/integration boundary |
 |---|---|---|
-| RQ1 |9original source costs,11paired source/replay draws,13dynamic draws; native phase weights and uncertainty. | W/M; no -M/purposeful/dependency/zero-imputed substitute |
+| RQ1 |7original source costs,11paired source/replay draws,13dynamic draws; native phase weights and uncertainty. | W/M; no -M/purposeful/dependency/zero-imputed substitute |
 | RQ2 |Repeated/broader mathematics and released-software cases; causal preparation/production decomposition; arbitrary context and axiom qualification. | O/W; Falconer fills its selected closure only, not these global gaps |
 | RQ3 |Matched native module-task comparison; complete selected-config Envelope baseline/pairs/repeats; general failure/budget/object-transfer and cluster evidence. | M; follow actual new plans/terminals, no root heavy native run |
 | RQ4 |Whole declaration/axiom closure, observer/settings and cross-machine replication, released model-output software native evidence. | Existing W/M/O; no new generated candidates |
 
-Current source33data preserve conditional marked CPU26.467% over16complete strata,
-not a semantic phase/global fraction. Whole-frame224.1–427.4source/
-15.3–38.0modeledstream CPUh retain missing-cost/mixed-protocol transfer
+Current source35data preserve conditional marked CPU26.371% over17complete strata,
+not a semantic phase/global fraction. Whole-frame232.9–396.0source/
+15.9–35.2modeledstream CPUh retain missing-cost/mixed-protocol transfer
 assumptions. The new point exceeded the old marked support maximum; scenarios
 are neither CI nor guaranteed bounds. No-assumption upper remains unbounded.
-Forecast/classification historical31-input panels do not become33-input experiments.
+Forecast/classification historical31-input panels do not become35-input experiments.
 
 Kernel-helper allocation stability does not imply zero runtime overhead or a
 sufficient maxHB margin. Math stored proofs are also stable in limited panels;
@@ -84,7 +84,7 @@ are not pending despite stale owner README text.
 The paper remains an unfinished characterization with explicit missing evidence;
 self-review is not independent audit or submission acceptance.
 
-Paper root0269:24pages/220616B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0270:24pages/221094B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
@@ -100,3 +100,6 @@ O newly visible source-error report is retained for later independent attributio
 
 
 [Root0269](tmp/build-and-evaluate/step-0269-20261102T191745+0000/step-report.md) independently qualifies W28d21e0 Hodge176 terminal:176rc0=175dependencies+1original IndexedInverseMultiplier (3.929919wall/4.131784CPU-s). Source33/42,16/21complete strata/144565modules;9ordinary original costs missing/18532module domain incomplete. Conditional source217.424460CPUh, marked57.546404h=26.4673%; summed-elapsed marked21.1985%. KnownHTsubtotal217.945744h is not population estimate/CI; each missing+1CPU-s adds5.134167h. Source support scenarios224.1–427.4CPUh; separate mixed-protocol transfer15.3–38.0CPUh uses current checkpoint ordinary6.31–8.95% with historical unsegmented computation8.4421–8.4671%. Neither is actual full checking/CI/guarantee. Wpaired31/42/14strata/dynamic13missing unchanged.
+
+
+[Root0270](tmp/build-and-evaluate/step-0270-20261102T233639+0000/step-report.md) qualifies the actual84/84rc0terminal (19:44:26UTC), advancing the earlier Wsource34/77prefix:82dependencies+Intrinsic9.734671CPU/9.698324wall andDihedral20.154170CPU/8.784143wall. Original35/42,17/21complete strata/144663modules;7ordinary original costs missing/18434module domain incomplete. Conditional source218.220065CPUh, marked57.546404h=26.3708%; nativeelapsed marked21.1685%. KnownHTsubtotal227.988537h only; each missing+1CPU-s adds4.117083h. Source support scenarios232.9–396.0CPUh; separate mixed-protocol check transfer15.9–35.2CPUh, not actual full checking/CI/guarantees. Wpaired31/42/14strata/dynamic13missing unchanged.
