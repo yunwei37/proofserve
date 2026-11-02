@@ -1,0 +1,17 @@
+stratum,population_modules,completed_original_draws,estimated_source_CPU_h,estimated_variance_CPU_s2,share_of_covered_estimated_sampling_variance,model_scope
+0-50;11-100;0,45251,2,66.55068340916667,20205896110.159756,0.6268873992454411,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+99-100;11-100;1,1164,2,33.399669368333335,8938105522.473103,0.2773044904624216,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+0-50;1-10;0,25553,2,20.015249663749998,1703547709.9500363,0.05285252322187961,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+50-90;1-10;0,16606,2,15.280871183055552,885943488.6115425,0.027486373602350064,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+90-99;1-10;1,464,2,5.017079266666666,158103080.59128198,0.004905143947301901,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+50-90;101+;0,7598,2,7.138945724444444,124997742.04312545,0.003878051683219701,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+50-90;11-100;0,39933,2,43.173230175,91597574.27654278,0.002841812350333767,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+90-99;1-10;0,3670,2,6.69372472361111,67345523.14557181,0.0020893930972120285,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+99-100;1-10;1,223,2,8.601861448055555,30757075.80513854,0.0009542374737927788,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+90-99;11-100;1,1295,2,8.113350364583335,23729687.015755348,0.000736212920086006,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+50-90;1-10;1,345,2,0.6158557625,770095.0767966018,2.3892179650572448e-05,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+50-90;11-100;1,738,2,0.7572160849999999,577125.6228865007,1.790530738140884e-05,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+99-100;1-10;0,106,2,1.0253511469444443,392695.43107783096,1.2183365495983561e-05,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+0-50;1-10;1,1040,2,0.46879950000000004,330232.6046321905,1.024545793640058e-05,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+0-50;11-100;1,577,2,0.5656272498611111,4373.428242089843,1.3568549702142294e-07,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty
+90-99;101+;1,2,2,0.0069452322222222215,0.0,0.0,n2 design variance estimate conditional on16complete cells; excludes missingness/calibration/runtime uncertainty

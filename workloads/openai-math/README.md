@@ -19,33 +19,33 @@ licenses. Every manifest dependency revision is in static-4eaee875/dependencies.
 
 ## Current no-M source-cost evidence (2026-11-02)
 
-[Source33](noM-hodge-source33/) has33/42 original costs and16/21 complete
-strata, representing144565/163097source modules;18532(11.36%) remain in
-incomplete cells. Hodge's original draw returned4.131784CPU s after its
-dependencies were prepared; dependency work is not an extra random sample.
-All33 costs are completed native values, not timeout substitutions.
+[Source35](noM-next84-source35-KL/) has35/42 completed original costs and17/21
+complete strata,representing144663/163097modules;18434(11.30%) remain in
+incomplete cells. Hodge,Intrinsic,Dihedral returned;84job capture actually
+completed19:44:26UTC. All Wnative/controller/cgroups retired.
+IntegralPairings703.40s under1200s after two600s censors is longer-budget
+recovery,not same-budget improvement. Historical outcomes stay unchanged.
 
-The full fixed42 missing-min/max scenario is224.13–427.38CPUh construction.
-It is **not a confidence interval or a measured full-library build**.
-The [latest CPU staircase](noM-source33-latest-staircase/) uses complete
-segmented Falconer6.3124%/Mathlib8.9514% serial CPU ratios and explicitly
-older computation/parallel transfer experiments. Mathematical/computational
-proxy domains and missingness are separate. Parallel wall gains do not reduce
-CPU resource-hours; modeled full missing scenarios are15.37–37.98serial and
-20.90–51.70parallelCPUh. All extrapolation/calibration limitations are linked.
+Full missing-min/max scenario232.95–395.93construction CPUh;
+15.93–35.16serial/21.66–47.87parallel transferred check CPUh.
+These are **assumption scenarios,not95%CIs or actual full-library costs**.
+The [latest staircase](noM-next84-source35-KL/latest-staircase/) transfers
+complete segmented Falconer6.3124%/Mathlib8.9514% serial CPU ratios and older
+computation/parallel protocols. Wall gains do not reduce CPU resource-hours;
+summed module durations are not dependency-constrained makespan.
 
-Computation share is26.47% of the covered16-stratum source CPU,24.10% in the
-class-mean full-frame projection, and13.47–25.68% across missing-draw scenarios.
-The old17.14% applied only to a31cost/14stratum domain.
-Fresh target-only trusted-import replays are [31completed pairs](native-replay31/),
-a different protocol from O's complete closure streaming checks.
-[Half-cost quotas](noM-hodge-source33/half-cost-quota/) remain model-equivalent
-counts with n=2 uncertainty; ordinary bootstrap is not a population CI.
+Computation source share26.37%covered/24.02%class-mean full-frame projection/
+14.53–24.70%missing-draw scenario. Old17.14%used another14cell domain.
+Static markers are proxies,not dynamic attribution. Fresh target-only trusted-
+import replays remain [31pairs](native-replay31/),not full-closure streaming.
+[Half-cost quotas](noM-next84-source35-KL/half-cost-quota/) are model counts;
+n2bootstrap is not a populationCI.
 
-The [cleanup record](../cleanup-20261102.md) names exactly which legacy generated
-compiler outputs were reclaimed; raw inputs/logs/results remain. Historical
-reports below describe their observation date and must not be used to resume
-retired queues. The sole current native owner is in [W status](../W-status.md).
+[Seven remaining originals](noM-next84-source35-KL/remaining-originals.csv)
+are unmeasured,not failed. NativeCodeAssembly413job plan prepared-only.
+[Cleanup](../cleanup-20261102.md) names reclaimed legacy generated outputs;
+raw evidence and Hodge working data remain. [Wstatus](../W-status.md) owns
+current launch/retirement evidence; historical reports are not resume commands.
 
 ## Historical native evidence (separate resource conventions)
 

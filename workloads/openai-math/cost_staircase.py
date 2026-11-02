@@ -233,6 +233,15 @@ for assumption,y_by_class in [("observed_class_min",{d:min(ys) for d,ys in obser
      whole_library_measured=False,confidence_interval=False,
      interpretation="all fixed42 original weights; unknown draw costs assumed class min/max of observed; b/c/d fixed transfer models"))
 write("full-frame-missing-staircase.csv",missing_summaries)
+envelope_rows=[]
+for dom in ["ordinary_proxy","certificate_proxy","all"]:
+ for stage in ["a_build","b_serial_stream","c_parallel_stream","d_plus_qualified_chunk"]:
+  values=[r["CPU_h"]for r in missing_summaries if r["domain"]==dom and r["stage"]==stage]
+  envelope_rows.append(dict(domain=dom,stage=stage,min_model_CPU_h=min(values),
+   max_model_CPU_h=max(values),
+   scope="cross product of missing-cost class min/max and2selected closure transfer settings; not CI",
+   actual_whole_library=False))
+write("full-frame-scenario-envelope.csv",envelope_rows)
 # Sensitivity: varying computation share/coverage is not a new confidence interval.
 sensitivity=[]
 covered_CPU=sum(strata[h]/2*source[m]["cpu"] for h in complete for m in members[h])

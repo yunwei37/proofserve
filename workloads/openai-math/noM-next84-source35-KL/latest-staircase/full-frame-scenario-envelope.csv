@@ -1,0 +1,13 @@
+domain,stage,min_model_CPU_h,max_model_CPU_h,scope,actual_whole_library
+ordinary_proxy,a_build,175.40126254791667,338.3847633341667,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,b_serial_stream,11.07205981892509,30.290267472026624,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,c_parallel_stream,15.086203810747742,41.27191832760707,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,d_plus_qualified_chunk,15.086203810747742,41.27191832760707,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,a_build,57.546404277222216,57.546404277222216,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,b_serial_stream,4.858153479847351,4.872538565126986,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,c_parallel_stream,6.5766755072966845,6.596149169135773,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,d_plus_qualified_chunk,6.6061419586909516,6.6257028712556405,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,a_build,232.9476668251389,395.9311676113889,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,b_serial_stream,15.930213298772442,35.16280603715361,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,c_parallel_stream,21.662879318044425,47.86806749674284,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,d_plus_qualified_chunk,21.692345769438695,47.89762119886271,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False

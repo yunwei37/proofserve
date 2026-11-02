@@ -1,0 +1,3 @@
+cohort,modules,segments,build_CPU_s,check_CPU_s,CPU_check_over_build,complete,evidence,scope
+Falconer,13205,27,32292.603806999898,2038.443942,0.06312417401157776,True,research/decoupled-check/falconer-final-costs.csv,"complete selected closure, not all source frame"
+Mathlib,1330,3,1018.219383,91.145172,0.0895142771015193,True,research/decoupled-check/falconer-final-costs.csv,"complete selected closure, not all source frame"

@@ -1,5 +1,20 @@
 # W current state
 
+## W092 current:84complete,35original costs,no active Wnative
+Actual19:44:26UTC complete84/84compile_ok;all native/controller/cgroups retired.
+Notification transport dropped;confirmation23:37UTC,no native restart.
+Intrinsic9.734671CPU s/Dihedral20.154170CPU s recovered. IntegralPairings
+703.398393elapsed/738.797420CPU under longer1200s,not same-budget recovery.
+35/42costs,17/21complete cells,144663covered;18434(11.3025%)incomplete.
+Missing-cost construction232.9477–395.9312CPUh,ratio1.6997,not populationCI.
+Latest serial15.9302–35.1628/parallel21.6629–47.8681CPUh transferred models.
+Computation26.3708%covered/24.0220%classmean/14.5344–24.7036%scenario.
+New openai-math/noM-next84-source35-KL. Remaining7unmeasured endpoint reasons
+and W-cache dependency counts are in remaining-originals.csv. NativeCodeAssembly
+413job plan prepared-only;no new timing queued. Disk73%. Inspect live before
+next launch; older current-state headings below are historical snapshots.
+
+
 ## W091 current:34original costs; KL active
 Intrinsic original compiled19:30:40UTC,9.734671CPU s/9.698324elapsed.
 Original34/42,complete16/21,covered144565;11.3626%module domain remains.

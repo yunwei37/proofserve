@@ -1,0 +1,32 @@
+{
+  "observed_original_costs": 35,
+  "missing_original_draws": 7,
+  "complete_strata": 17,
+  "conditional_modules": 144663,
+  "full_frame_modules": 163097,
+  "fractional_half_quota_modules": 52809.80122805083,
+  "rounded_per_cell_half_quota_modules": 52818,
+  "conditional_fraction": 0.36511063644470254,
+  "bootstrap_draws": 65536,
+  "bootstrap_method": "exact ordinary within-cell n2 resampling; true N2 census held fixed; equal-cost outcomes collapsed with multiplicity",
+  "bootstrap_integer_95_reference": [
+    53708.0,
+    71445.0
+  ],
+  "bootstrap_fractional_95_reference": [
+    53701.11394064909,
+    71440.043370597
+  ],
+  "population_confidence_interval": "unknown; reference is NOT a population CI",
+  "reference_excludes_point": true,
+  "no_assumption_conditional_integer_quota_range": [
+    17,
+    72335
+  ],
+  "no_assumption_full_integer_quota_range": [
+    21,
+    81553
+  ],
+  "whole_library_actual_half_cost_quota": "unknown",
+  "estimand": "sum of per-stratum half-CPU quotas; differs from globally minimal count for half total CPU"
+}
