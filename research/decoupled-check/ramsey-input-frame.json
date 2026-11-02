@@ -1,0 +1,9 @@
+{
+  "modules": 11188,
+  "targets": 444,
+  "measured_same_capture_reused": 10744,
+  "new_source_nodes": 444,
+  "oracle_same_artifact_reused": 10744,
+  "source_pin": "4eaee87548250b2682affda7d05d947c05554bae",
+  "shared_source_cpu_h": 7.048263440277777
+}

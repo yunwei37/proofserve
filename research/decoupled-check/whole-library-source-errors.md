@@ -8,11 +8,16 @@ timeouts or cgroupOOM events in these records.
 |---|---:|---:|
 | Interpreter unknown declaration |4697|2539.656685|
 | Missing native implementation of an external Lean declaration |4421|6693.044138|
-| Missing compiled module data file |4|see CSV|\n| Compiler IR missing executable code (unqualified environment) |1|see CSV|\n| Interpreter missing IR |1|see CSV|
+| Missing compiled module data file |4|1.159221|
+| Compiler IR missing executable code (unqualified environment) |1|1.082514|
+| Interpreter missing IR |1|0.303168|
 
-The first two fail at line1during import/initialization. Examples name
-Lean.Option.register and Lean.registerTagAttributeExtra. The other6report
-missing Init iterator module data, also before candidate proof checking.
+The first two classes fail during import/initialization (examples are at
+line1), naming Lean.Option.register and Lean.registerTagAttributeExtra.
+Four cases lack Init iterator module data. One lacks Lake.binder interpreter
+IR. One BinPacking file reaches a compiler-IR missing-executable-code error
+after elaboration and still needs a qualified retry before attributing that
+diagnostic to its source. None is counted as a qualified proof rejection.
 [Distribution](whole-library-source-error-distribution.csv) and
 [examples](whole-library-source-error-examples.json) are derived from every
 original log; per-candidate rows stay onPVC in source-error-classification.csv.
@@ -46,3 +51,11 @@ validation cost, acceptance rate or check/build ratio follows from this point.
 - mask1: 140950blocked modules (1=failed producer ancestry,2=missing external provider ancestry).
 - mask2: 273blocked modules (1=failed producer ancestry,2=missing external provider ancestry).
 - mask3: 10262blocked modules (1=failed producer ancestry,2=missing external provider ancestry).
+
+
+## Controlled producer repair
+The metadata-only copy retry still failed. Using the complete original package
+paths passed all3previously failing original sources and the Init iterator
+import control, exit0/no-sorry. See ramsey-qualification.md and
+ramsey-producer-qualification.json. Runtime facets such as .ir.sig/shared
+libraries are preserved; no SDK/server configuration was changed.
