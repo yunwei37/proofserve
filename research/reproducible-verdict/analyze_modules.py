@@ -2,9 +2,11 @@
 from pathlib import Path
 import json,csv,collections,statistics
 def analyze(point,out):
- terminal=json.loads((point/'module-terminal.json').read_text())
+ terminal_file='module-terminal.json'if(point/'module-terminal.json').exists()else'census-terminal.json'
+ terminal=json.loads((point/terminal_file).read_text())
  modules=json.loads((point/'modules.json').read_text())
  repeats=terminal.get('repeats',[0,1])
+ if 'expected'in terminal:modules=[x for x in modules if x['module'].split('.')[-1]in terminal['expected']]
  complete={};missing=[]
  for rep in repeats:
   for x in modules:
@@ -18,6 +20,7 @@ def analyze(point,out):
      rr=[json.loads(s[len(prefix):])for s in(p/'stdout').read_text().splitlines()if s.startswith(prefix)]
      if result['returncode']or len(rr)!=(8 if mode=='front'else(rr[0]['selected']if rr else -1)) or not result['native_retired']or not result.get('cgroup_retired'):
       missing.append(key);continue
+     if 'expected'in terminal and len(rr)!=terminal['expected'][short]:raise ValueError('incomplete census '+key)
      unit={}
      for r in rr:
       if mode=='kernel':

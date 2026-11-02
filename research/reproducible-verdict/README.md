@@ -50,3 +50,5 @@ defect. The broad cross-machine/cross-observer hypothesis remains unproved.
 Corrected1536-observation results: [matrix-v2-results.md](matrix-v2-results.md). No thread-count mismatch; low-budget sync acceptance changes under trace. Lab incomplete.
 
 [Budget ladder](budget-monotonicity-results.md):0/100tested lower-pass/larger-budget violations; not a universal guarantee. Full private runtime cache test complete: 0/256verdict differences; synchronous counts 0/128differences. Actual math coexecution has84/192counter-vector differences and0verdict differences; see cache-and-coexecution-results.md. Computation expansion remains pending.
+
+Current actual three-repeat module results: [module-results-v11/results.md](module-results-v11/results.md). Judgments agree; sampled computation allocations stable; mathematical source ranges up to0.138453%. Full2524helper census is a separate foreground task, not yet a completed result.
