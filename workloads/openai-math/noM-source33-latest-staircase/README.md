@@ -77,3 +77,11 @@ regression exposed a new scenario assertion assuming every missing draw ordinary
 generalized to per-class min/max so the frozen31 snapshot with a missing marked
 draw reproduces too. This analysis correction changed no native capture.
 Whole-library O prefix remains incomplete and is not divided by this projection.
+
+The parallel-CPU-duration-tradeoff.csv cross-checks both clocks. In the full
+class-mean projection parallelism adds roughly36%CPU despite reducing summed
+module durations. These modeled duration ratios cannot establish a full-library
+makespan: import sharing, scheduling, available memory, dependency span and
+parallel checkpoint integration were not measured by this transfer. Merely
+having eight cores does not justify dividing either resource-hours or runtime
+by eight. This is a scope check on the requested staircase, not a new method.

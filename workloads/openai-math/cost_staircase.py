@@ -197,6 +197,20 @@ for scenario in scenarios:
        meaning="CPU overhead" if metric=="cpu" else "modeled reduction in summed module durations, not measured library makespan",
        qualified_chunk_modules=1,other_ge1s_module_not_qualified="OAI.NumberTheory.DirichletL.Cusp.ResiduesModThree"))
 write("conditional-staircase.csv",summaries)
+tradeoff=[]
+for scope in sorted({r["scope"]for r in summaries}):
+ for scenario in scenarios:
+  for dom in ["ordinary_proxy","certificate_proxy","all"]:
+   def value(clock,stage):
+    return next(r["estimate_h"]for r in summaries if r["scope"]==scope and r["scenario"]==scenario and r["domain"]==dom and r["clock"]==clock and r["stage"]==stage)
+   bcpu=value("CPU_h","b_serial_stream");ccpu=value("CPU_h","c_parallel_stream")
+   bw=value("serial_native_elapsed_h_model_not_makespan","b_serial_stream");cw=value("serial_native_elapsed_h_model_not_makespan","c_parallel_stream")
+   tradeoff.append(dict(scope=scope,scenario=scenario,domain=dom,
+    parallel_over_serial_CPU=ccpu/bcpu,added_CPU_fraction=ccpu/bcpu-1,
+    parallel_over_serial_summed_duration=cw/bw,summed_duration_speedup=bw/cw,
+    full_library_makespan_speedup="unknown",
+    interpretation="fixed-factor transfer; neither actual library makespan nor measured aggregate resource requirement"))
+write("parallel-CPU-duration-tradeoff.csv",tradeoff)
 write("chunk-marginal.csv",marginals)
 # Missing original draw scenarios are sensitivity endpoints, never imputed primary data.
 missing_summaries=[]
