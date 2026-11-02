@@ -1,0 +1,161 @@
+{
+  "/sys/devices/system/node/online": "0",
+  "/sys/bus/event_source/devices/cpu_core/cpus": "0-7",
+  "/sys/bus/event_source/devices/cpu_atom/cpus": "8-23",
+  "cpu0": [
+    {
+      "level": "2",
+      "type": "Unified",
+      "shared_cpu_list": "0",
+      "size": "2048K"
+    },
+    {
+      "level": "1",
+      "type": "Data",
+      "shared_cpu_list": "0",
+      "size": "48K"
+    },
+    {
+      "level": "3",
+      "type": "Unified",
+      "shared_cpu_list": "0-23",
+      "size": "36864K"
+    },
+    {
+      "level": "1",
+      "type": "Instruction",
+      "shared_cpu_list": "0",
+      "size": "32K"
+    }
+  ],
+  "cpu7": [
+    {
+      "level": "2",
+      "type": "Unified",
+      "shared_cpu_list": "7",
+      "size": "2048K"
+    },
+    {
+      "level": "1",
+      "type": "Data",
+      "shared_cpu_list": "7",
+      "size": "48K"
+    },
+    {
+      "level": "3",
+      "type": "Unified",
+      "shared_cpu_list": "0-23",
+      "size": "36864K"
+    },
+    {
+      "level": "1",
+      "type": "Instruction",
+      "shared_cpu_list": "7",
+      "size": "32K"
+    }
+  ],
+  "cpu8": [
+    {
+      "level": "2",
+      "type": "Unified",
+      "shared_cpu_list": "8-11",
+      "size": "4096K"
+    },
+    {
+      "level": "1",
+      "type": "Data",
+      "shared_cpu_list": "8",
+      "size": "32K"
+    },
+    {
+      "level": "3",
+      "type": "Unified",
+      "shared_cpu_list": "0-23",
+      "size": "36864K"
+    },
+    {
+      "level": "1",
+      "type": "Instruction",
+      "shared_cpu_list": "8",
+      "size": "64K"
+    }
+  ],
+  "cpu12": [
+    {
+      "level": "2",
+      "type": "Unified",
+      "shared_cpu_list": "12-15",
+      "size": "4096K"
+    },
+    {
+      "level": "1",
+      "type": "Data",
+      "shared_cpu_list": "12",
+      "size": "32K"
+    },
+    {
+      "level": "3",
+      "type": "Unified",
+      "shared_cpu_list": "0-23",
+      "size": "36864K"
+    },
+    {
+      "level": "1",
+      "type": "Instruction",
+      "shared_cpu_list": "12",
+      "size": "64K"
+    }
+  ],
+  "cpu16": [
+    {
+      "level": "2",
+      "type": "Unified",
+      "shared_cpu_list": "16-19",
+      "size": "4096K"
+    },
+    {
+      "level": "1",
+      "type": "Data",
+      "shared_cpu_list": "16",
+      "size": "32K"
+    },
+    {
+      "level": "3",
+      "type": "Unified",
+      "shared_cpu_list": "0-23",
+      "size": "36864K"
+    },
+    {
+      "level": "1",
+      "type": "Instruction",
+      "shared_cpu_list": "16",
+      "size": "64K"
+    }
+  ],
+  "cpu23": [
+    {
+      "level": "2",
+      "type": "Unified",
+      "shared_cpu_list": "20-23",
+      "size": "4096K"
+    },
+    {
+      "level": "1",
+      "type": "Data",
+      "shared_cpu_list": "23",
+      "size": "32K"
+    },
+    {
+      "level": "3",
+      "type": "Unified",
+      "shared_cpu_list": "0-23",
+      "size": "36864K"
+    },
+    {
+      "level": "1",
+      "type": "Instruction",
+      "shared_cpu_list": "23",
+      "size": "64K"
+    }
+  ]
+}

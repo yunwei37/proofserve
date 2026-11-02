@@ -8,6 +8,23 @@ open Lean
 
 @[extern "ps_process_ns"] opaque processNs : IO UInt64
 @[extern "ps_thread_ns"] opaque threadNs : IO UInt64
+@[extern "ps_configure_placement"] opaque configurePlacement (cpus : @& String) (coor : USize) : IO Unit
+@[extern "ps_bind_coordinator"] opaque bindCoordinator : IO Unit
+@[extern "ps_bind_worker"] opaque bindWorker : IO Unit
+@[extern "ps_wave_begin"] opaque waveBegin (jobs : USize) : IO Unit
+@[extern "ps_profile_begin"] opaque profileBegin : IO Unit
+@[extern "ps_profile_end"] opaque profileEnd (hb : UInt64) : IO Unit
+@[extern "ps_wave_finish"] opaque waveFinish : IO Unit
+@[extern "ps_profile_summary"] opaque profileSummary : IO String
+@[extern "ps_cpu_id"] opaque cpuId : IO UInt32
+
+def profileModule (label : String) (planNs fallbackNs : Nat) (fallbackCpu : UInt64) : IO Unit := do
+  let text ← profileSummary
+  let .ok metrics := Json.parse text | throw <| IO.userError "invalid native profile summary"
+  IO.println <| Json.compress <| Json.mkObj [
+    ("event",toJson "profile_module"),("module",toJson label),("plan_ns",toJson planNs),
+    ("fallback_ns",toJson fallbackNs),("fallback_cpu_ns",toJson fallbackCpu),("metrics",metrics)]
+
 
 /-- Structural comparison copied read-only from O's audited reader. -/
 def sameQuotKind (a b : QuotKind) : Bool :=
@@ -106,16 +123,18 @@ def makePlan (data : ModuleData) (map : Std.HashMap Name ConstantInfo) : Option 
   | .error ex => pure (.error ex)
 
 private def checkOne (base : Kernel.Environment) (ci : ConstantInfo) (index : Nat)
-    (observe : NameSet := {}) :
+    (observe : NameSet := {}) (profile : Bool := false) :
     IO CheckedToken := do
   let decl ← declarationOf ci
   let record := observe.contains ci.name
   let tid ← if record then IO.getTID else pure 0
+  if profile then profileBegin
   let c0 ← if record then threadNs else pure 0
-  let h0 ← if record then IO.getNumHeartbeats else pure 0
+  let h0 ← if record || profile then IO.getNumHeartbeats else pure 0
   let result ← originalCheck base decl
-  let h1 ← if record then IO.getNumHeartbeats else pure 0
+  let h1 ← if record || profile then IO.getNumHeartbeats else pure 0
   let c1 ← if record then threadNs else pure 0
+  if profile then profileEnd (h1-h0).toUInt64
   match result with
   | .error error =>
     let message ← error.toMessageData {} |>.toString
@@ -129,11 +148,12 @@ private def checkOne (base : Kernel.Environment) (ci : ConstantInfo) (index : Na
       IO.println <| Json.compress <| Json.mkObj [
         ("event",toJson "unit_check"),("target",toJson ci.name.toString),
         ("raw_HB",toJson (h1-h0)),("cpu_ns",toJson (c1-c0)),
-        ("tid",toJson tid),("accept",toJson true)]
+        ("tid",toJson tid),("cpu",toJson (← cpuId).toNat),("accept",toJson true)]
     return {frontier:=base,info:=actual,index}
 
 private def worker (base : Kernel.Environment) (plan : Plan)
-    (jobs : Array Nat) (queue : Std.Mutex Nat) (observe : NameSet) : IO (Array CheckedToken) := do
+    (jobs : Array Nat) (queue : Std.Mutex Nat) (observe : NameSet) (profile : Bool) : IO (Array CheckedToken) := do
+  bindWorker
   let mut results := #[]
   repeat
     let position ← queue.atomically do
@@ -142,11 +162,14 @@ private def worker (base : Kernel.Environment) (plan : Plan)
       pure i
     if position >= jobs.size then break
     let index := jobs[position]!
-    results := results.push (← checkOne base plan.constants[index]! index observe)
+    results := results.push (← checkOne base plan.constants[index]! index observe profile)
   return results
 
 private def checkedBatch (base : Kernel.Environment) (plan : Plan)
     (wave : Array Nat) (workers : Nat) (fault : String) (observe : NameSet := {}) : IO Kernel.Environment := do
+  bindCoordinator
+  let profile := (← IO.getEnv "PARALLEL_PROFILE") == some "1"
+  if profile then waveBegin wave.size.toUSize
   let queue ← Std.Mutex.new 0
   let count := min workers wave.size
   let gate ← IO.Promise.new
@@ -163,12 +186,12 @@ private def checkedBatch (base : Kernel.Environment) (plan : Plan)
           started.resolve (1 : Nat)
           unless gate.result?.get == some (1 : Nat) do
             throw <| IO.userError "invariant: worker gate abandoned"
-          worker base plan wave queue observe
+          worker base plan wave queue observe profile
         tasks := tasks.push task
         unless started.result?.get == some (1 : Nat) do
           throw <| IO.userError "invariant: worker did not start"
       else
-        tasks := tasks.push (← IO.asTask <| worker base plan wave queue observe)
+        tasks := tasks.push (← IO.asTask <| worker base plan wave queue observe profile)
   catch e => error := some e
   -- Release and join all launched tasks even if creation failed. A failure
   -- cannot commit a partial frontier or leave a worker blocked on this gate.
@@ -178,6 +201,7 @@ private def checkedBatch (base : Kernel.Environment) (plan : Plan)
     match task.get with
     | .ok values => tokens := tokens ++ values
     | .error e => if error.isNone then error := some e
+  bindCoordinator
   if let some e := error then throw e
   if fault=="duplicate" && tokens.size>1 then
     if let some second := tokens[1]? then tokens := tokens.set! 0 second
@@ -193,6 +217,7 @@ private def checkedBatch (base : Kernel.Environment) (plan : Plan)
     let other ← mkEmptyEnvironment
     commitChecked other.toKernelEnv tokens
     else commitChecked base tokens
+  if profile then waveFinish
   return checked
 
 partial def axiomsOf (env : Kernel.Environment) (todo : List Name) (seen : NameSet := {})
@@ -248,10 +273,20 @@ private def checkChunkedWave (base : Kernel.Environment)
 chunking is confined to one exact prepared constant; unknown inputs are replayed. -/
 def parallelReplay (data : ModuleData) (map : Std.HashMap Name ConstantInfo)
     (base : Kernel.Environment) (workers : Nat) (fault : String := "none")
-    (chunks : Array ChunkBundle := #[]) (observe : NameSet := {}) :
+    (chunks : Array ChunkBundle := #[]) (observe : NameSet := {}) (label : String := "") :
     IO (Kernel.Environment × Nat × Nat × String) := do
-  let some plan := makePlan data map |
-    return (← base.replay map,0,0,"upstream_complex_or_cycle")
+  bindCoordinator
+  let profile := (← IO.getEnv "PARALLEL_PROFILE") == some "1"
+  let t0 ← IO.monoNanosNow
+  let plan? := makePlan data map
+  let some plan := plan? | do
+    let planned ← IO.monoNanosNow
+    let c0 ← processNs
+    let checked ← base.replay map
+    let c1 ← processNs
+    if profile then profileModule label (planned-t0) ((← IO.monoNanosNow)-planned) (c1-c0)
+    return (checked,0,0,"upstream_complex_or_cycle")
+  let planned ← IO.monoNanosNow
   let mut checked := base
   let mut jobsDone := 0
   for wave in plan.waves do
@@ -265,6 +300,7 @@ def parallelReplay (data : ModuleData) (map : Std.HashMap Name ConstantInfo)
       parents := parents.push (plan.constants[i]!,bundle)
     if !parents.isEmpty then checked ← checkChunkedWave checked parents workers
     jobsDone := jobsDone + wave.size
+  if profile then profileModule label (planned-t0) 0 0
   return (checked,plan.waves.size,jobsDone,"parallel")
 
 /-- A compatible duplicate theorem still checks its incoming proof under a fresh

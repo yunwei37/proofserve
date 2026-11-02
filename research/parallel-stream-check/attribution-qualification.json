@@ -1,0 +1,38 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-attribution-20261102",
+  "controls": [
+    {
+      "key": "attribution-control",
+      "returncode": 0,
+      "native_retired": true,
+      "cgroup_retired": true,
+      "stop_reasons": []
+    },
+    {
+      "key": "attribution-bad-control",
+      "returncode": 1,
+      "native_retired": true,
+      "cgroup_retired": true,
+      "stop_reasons": []
+    }
+  ],
+  "observed_targets": 50,
+  "observations": 450,
+  "all_sample_counts_constant": true,
+  "actual_pin_maps_validated": true,
+  "artifact_parts": [
+    {
+      "suffix": ".olean",
+      "files": 9,
+      "bytes": 109744,
+      "all_equal": true
+    }
+  ],
+  "profile_modules": 658,
+  "measured_kernel_checks": 43101,
+  "control_dependency_s": 2.275082183,
+  "control_plan_and_fallback_s": 12.083318928,
+  "control_kernel_union_s": 12.866106956,
+  "control_remaining_s": 1.2954068841754527,
+  "control_only_not_performance_evidence": true
+}

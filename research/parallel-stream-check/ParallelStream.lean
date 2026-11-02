@@ -225,13 +225,16 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
   if (← get).visited.contains mod then return
   if (← get).pending.contains mod then throw <| IO.userError s!"cyclic import {mod}"
   modify fun s => { s with pending := s.pending.insert mod }
+  let localStart ← IO.monoNanosNow
   let parts ← moduleParts mod
   let some (first, _) := parts[0]? | throw <| IO.userError "empty module"
   let some (data, _) := parts[parts.size - 1]? | throw <| IO.userError "empty module"
   modify fun s => { s with
     regions := s.regions ++ parts.map (·.2),
     imports := s.imports.insert mod (first.imports.map (·.module)) }
+  let inputDone ← IO.monoNanosNow
   for imp in first.imports do visit mode mutation mutateOnly imp.module
+  let contextStart ← IO.monoNanosNow
   let chosen := if mutateOnly == some mod then mutation else "none"
   let target := (← IO.getEnv "DECOUPLED_MUTATE_CONSTANT").map String.toName
   let (map, skipped) := constantsOf data chosen target
@@ -267,6 +270,10 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
               if visibleNames.contains origin then found := true
             unless found do reason := some s!"unimported_reference:{ci.name}:{n}"
   else insertMap := map
+  if (← IO.getEnv "PARALLEL_PROFILE") == some "1" then
+    event [("event",toJson "dependency_phase"),("module",toJson mod.toString),
+      ("read_ns",toJson (inputDone-localStart)),
+      ("context_ns",toJson ((← IO.monoNanosNow)-contextStart))]
   if let some why := reason then
     try
       let _ ← unsafe localReplay mod chosen
@@ -290,21 +297,23 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
         let mut oracle : Option Kernel.Environment := none
         let extended := (← IO.getEnv "PARALLEL_DETERMINISM_CURVE") == some "1"
         let repeatCount := if extended then 3 else 1
+        let sampleCount := ((← IO.getEnv "PARALLEL_SAMPLE_COUNT").getD "100").toNat?.getD 100
+        let hardware := (← IO.getEnv "PARALLEL_HARDWARE_CURVE") == some "1"
         let observed := if extended then Id.run do
           let eligible := data.constants.filter fun ci =>
             match ci with
             | .thmInfo v => v.value.cleanupAnnotations.getAppFn.isConstOf `of_decide_eq_true
             | _ => false
           let eligible := eligible.qsort fun a b => a.name.toString < b.name.toString
-          if eligible.size < 100 then return ({} : NameSet)
+          if eligible.size < sampleCount then return ({} : NameSet)
           let mut selected : NameSet := {}
-          for i in [:100] do
-            selected := selected.insert eligible[i*(eligible.size-1)/99]!.name
+          for i in [:sampleCount] do
+            selected := selected.insert eligible[i*(eligible.size-1)/(sampleCount-1)]!.name
           return selected
           else {}
-        if extended && observed.size != 100 then
+        if extended && observed.size != sampleCount then
           throw <| IO.userError "expected exactly 100 computation targets"
-        let kinds := if extended then
+        let kinds := if hardware then ["p1","e1","mixed24"] else if extended then
           ["parallel1","parallel4","parallel8","parallel16"]
           else if bundleRoot.isSome && mod.toString.endsWith "EnvelopePsiB" then
           ["serial","parallel1","parallel2","parallel4","parallel8","chunk1","chunk2","chunk4","chunk8"]
@@ -314,6 +323,10 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
           event [("event",toJson "curve_begin"),("module",toJson mod.toString),
             ("kind",toJson kind),("repeat",toJson rep)]
           let n := (kind.toList.filter Char.isDigit |> String.ofList).toNat?.getD 1
+          if hardware then
+            let cpus := if kind=="p1" then "0" else if kind=="e1" then "8" else
+              String.intercalate "," ((List.range 24).map toString)
+            configurePlacement cpus 0
           let t0 ← IO.monoNanosNow
           let c0 ← processNs
           let (chunkBundle,retained) ← if kind.startsWith "chunk" then do
@@ -324,7 +337,7 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
           let (trial,waveCount,jobCount,route) ← if kind == "serial" then do
             let env ← s.checked.replay insertMap
             pure (env,0,0,"serial")
-            else parallelReplay data insertMap s.checked n "none" chunkBundle observed
+            else parallelReplay data insertMap s.checked n "none" chunkBundle observed mod.toString
           if let some reference := oracle then
             for (_,ci) in insertMap do
               let some expected := reference.find? ci.name | throw <| IO.userError "serial result missing constant"
@@ -351,13 +364,20 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
       let result : IO (Kernel.Environment × Nat × Nat × String) := if let some chosen := selected then
         pure (chosen,0,0,"curve_selected")
         else if mode == "parallel" then
-        parallelReplay data insertMap s.checked workers fault s.chunkBundle
+        parallelReplay data insertMap s.checked workers fault s.chunkBundle {} mod.toString
         else do
           let checked ← s.checked.replay insertMap
           pure (checked,0,0,"serial")
       let (checked,waves,jobs,path) ← result
+      let duplicateStart ← IO.monoNanosNow
+      let duplicateCPU ← processNs
       for h : i in [:duplicateProofs.size] do
         validateDuplicate checked duplicateProofs[i] (Name.num (Name.num `_proofserveDuplicate s.modules) i)
+      if !duplicateProofs.isEmpty && (← IO.getEnv "PARALLEL_PROFILE") == some "1" then
+        event [("event",toJson "serial_duplicate_phase"),("module",toJson mod.toString),
+          ("checks",toJson duplicateProofs.size),
+          ("wall_ns",toJson ((← IO.monoNanosNow)-duplicateStart)),
+          ("cpu_ns",toJson ((← processNs)-duplicateCPU))]
       event [("event",toJson "kernel_work"),("module",toJson mod.toString),
         ("waves",toJson waves),("jobs",toJson jobs),("path",toJson path),
         ("elapsed_ns",toJson ((← IO.monoNanosNow)-before))]
@@ -386,6 +406,9 @@ unsafe def main (args : List String) : IO UInt32 := do
   unless ["audit","naive","one","parallel"].contains mode do throw <| IO.userError "invalid mode"
   unless ["none","bvar","sibling"].contains mutation do throw <| IO.userError "invalid mutation"
   initSearchPath (← findSysroot)
+  let pinMap := (← IO.getEnv "PARALLEL_PIN_CPUS").getD ""
+  let coor := ((← IO.getEnv "PARALLEL_COORDINATOR_CPU").getD "0").toNat?.getD 0
+  configurePlacement pinMap coor.toUSize
   let mut roots : List Name := []
   for arg in rawRoots do
     if arg.startsWith "@" then
