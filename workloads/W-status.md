@@ -1,5 +1,17 @@
 # W current state
 
+## W075 completed31 replay; hard19source active
+- Actual31/31accepted terminal2026-11-02T01:00:09UTC, allnative/controller/
+ cgroups retired; exacttargetparts match, no upstream exclusions/errors.
+ CPU632.590445->272.695065s, elapsed393.895780->274.208513s.
+ Medianper-moduleCPUratio0.450881; elapsed0.567993. Fresh target-only over
+ trustedimports, NOT O's empty-environment fullclosurestream.
+- Conditional14cells source140.851561/replay54.905548CPUh; globalunknown.
+- Nextactualsourcegroup hard-two-suffix19 launched01:37:11UTC,
+ controller364584/birth763601470;17deps+2originaldraws. OneWcapture,
+ per-taskstockflock/no-M/P0–7/15GiBcharge/16GiBsampledresponse; no repeat17old
+ successes. Nextactualterminalcollect thenprioritizehighweightHodgedraw.
+
 ## W074 conditional cost staircase — offline, not full-library measurement
 - Current complete14strata build140.851561CPUh; explicit O/M transfer model
  serial9.571600/parallel13.075000/chunk13.104554CPUh. Parallel cuts elapsed,

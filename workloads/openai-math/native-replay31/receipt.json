@@ -1,0 +1,15 @@
+{
+  "source_costs": 31,
+  "accepted_replays": 31,
+  "paired_costs": 31,
+  "planned_costs": 42,
+  "complete_paired_cells": 14,
+  "population_cells": 21,
+  "statuses": {
+    "accepted": 31
+  },
+  "mismatched_producer_references": [],
+  "all_strata_cost_covered": false,
+  "is_full_library_acceptance": false,
+  "review": "self-review; actual ledger only"
+}

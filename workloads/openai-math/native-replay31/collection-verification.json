@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-02T01:37:10.604376+00:00",
+  "returned": 31,
+  "accepted": 31,
+  "retired_native_and_cgroups": 31,
+  "matched_target_parts_byte_equal": true,
+  "controller_retired": true,
+  "full_transitive_bytes_verified": false,
+  "raw_scope": "target-only fresh replay, trusted imports; not whole-closure stream"
+}
