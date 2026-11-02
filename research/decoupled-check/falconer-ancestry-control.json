@@ -1,0 +1,6 @@
+{
+  "modules": 13205,
+  "all_masks_equal_to_independent_DFS": true,
+  "elapsed_s": 65.2180095128715,
+  "scope": "untimed Python graph logic check; not native checker qualification"
+}
