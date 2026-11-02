@@ -1,0 +1,19 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hodge-original-prepared-20261101",
+  "native_completed": 723,
+  "unstarted": 996,
+  "original_draws_completed": 0,
+  "source_cost_frame_unchanged": 32,
+  "complete_strata_unchanged": 15,
+  "native_wall_s": 1686.9917390495539,
+  "native_CPU_s": 2103.506564,
+  "max_native_HWM_kib": 7064920,
+  "max_sampled_native_RSS_bytes": 7229169664,
+  "max_charged_cgroup_peak_bytes": 3380666368,
+  "all_identities_and_cgroups_retired": true,
+  "all_source_exact": true,
+  "no_M": true,
+  "pcore_lock": true,
+  "native_invocations": "723dependencyonly; not 723additional population draws",
+  "classification": "batch native-work allowance exhausted, no wall-censored child and no original target failure"
+}

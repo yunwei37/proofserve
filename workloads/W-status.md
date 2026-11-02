@@ -1,5 +1,21 @@
 # W current state
 
+## W079 Hodge723retired; same-budget censor retry active
+
+- Hodgefirstwindow actuallyended07:04:09UTC:723compiledeps/996unstarted,
+ 1686.991739nativewall/2103.506564CPU s, allnative/controller/cgroupsretired.
+ Nooriginaldrawcompleted; sourceframe32/15strata/35.8468%gap unchanged.
+- Refreshedactualsuccessor07:04:48UTC392764/birth765567165:
+ raw workloads/openai4341-noM-KLretry-Hodge-suffix-prepared-20261102.
+ First7same600sIntegralPairingsretry+Dihedraldeps, then996Hodgejobs;
+723successesnotrepeated. Oneper-taskflock/no-M/P0–7j8/15GiBcgroup/
+16GiBsampledresponse/1700nativework; verifyactualidentity/terminal.
+- openai-math/noM-hodge-prefix723 keeps smallresults/partialterminal/resource/
+successor records. NativeoriginalHodge/Dihedral outcomesstillpending.
+-07:01prepared1055job checkpoint was refreshedto1003beforelaunch; old
+ standaloneKLretry7pointstaysunlaunched. Do notlaunchduplicatequeues.
+
+
 ## W078 source32 model propagated
 
 - Covered15 construction174.251230CPUh -> modeledserial12.399599 ->

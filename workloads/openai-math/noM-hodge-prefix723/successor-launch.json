@@ -1,0 +1,21 @@
+{
+  "utc": "2026-11-02T07:04:48.240713+00:00",
+  "pid": 392764,
+  "birth_ticks": "765567165",
+  "args": [
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-KLretry-Hodge-suffix-prepared-20261102/controller.py",
+    "--point",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-KLretry-Hodge-suffix-prepared-20261102"
+  ],
+  "predecessor": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hodge-original-prepared-20261101",
+  "predecessor_actual_retirement": true,
+  "prior_native_successes_reused": 723,
+  "jobs": 1003,
+  "retry_budget_s": 600,
+  "no_M": true,
+  "one_Wrequest": true,
+  "native_work_allowance_s": 1700,
+  "lock_observation": []
+}
