@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-02T18:55:33.629087+00:00",
+  "pid": 475946,
+  "birth_ticks": "769831704",
+  "args": [
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-Hodge-suffix176-prepared-20261102/controller.py",
+    "--point",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-Hodge-suffix176-prepared-20261102"
+  ],
+  "jobs": 176,
+  "qualified_Hodge_dependencies_reused": 1543,
+  "predecessor_retired": true,
+  "no_M": true,
+  "one_request_per_task": true,
+  "native_work_allowance_s": 1700
+}
