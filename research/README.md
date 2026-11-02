@@ -1,97 +1,62 @@
 # Research result index
 
-Current2026-11-02UTC (root0263). [Status](../docs/research-status.md) ·
+Current2026-11-02UTC, root0264. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
-[Full evidence history](../docs/evaluation.md).
-Reports below identify the measured version, input, clock and trust boundary.
-Code/plans/queue entries are not completed measurements. Reviews are **自审**.
+[Full history](../docs/evaluation.md).
+[Exact previous index](../docs/tmp/build-and-evaluate/step-0264-20261102T061224+0000/experiment-001/before-research-README.md.gz).
+Reports identify input, version, clock and trust boundary. Reviews are **自审**;
+preparation, queues, controls and code are not performance or general acceptance.
 
-## Research directories and raw PVC locations
-| Directory | Work and key boundary | Reports | Raw PVC location |
-|---|---|---|---|
-| [mechanisms-2026-10-30](mechanisms-2026-10-30/README.md) | Historical tactic/profile/certificate/resource studies. Old-M7/200diagnostic changes and7+7accepted row proofs are not current noMcost evidence. | [Native panel](mechanisms-2026-10-30/native-cohort-result.md), [prior work](mechanisms-2026-10-30/prior-work.md) | /workspaces/.agent-state/gpu-smt-captures/mechanisms-2026-10-30/ |
-| [profile-2026-10-31](profile-2026-10-31/systime/final/README.md) |90guard-calibration cells/3modules, ratios2.03/1.61/1.01. Method correction, not intrinsic workload behavior. Stock replay13short targets median3.510s at its own scope. | [Calibration](profile-2026-10-31/systime/final/README.md), [startup/replay](profile-2026-10-31/startup-replay/README.md) | /workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/ |
-| [decoupled-check](decoupled-check/README.md) | Four complete closures,5085source-union nodes/161oracle blocks. Check/source-work6.76–14.55%; target components and O resource-share deviation differ. | [Results](decoupled-check/results.md), [components](decoupled-check/root-components.csv) | /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ |
-| [chunked-kernel-check](chunked-kernel-check/README.md) | Grain31artifacts; small Grid whole-path negatives. Barrier module-pipeline3.326x/CPU+27.8%; small Envelope runtime1.096x, one repeat slower. Not global/source gain. | [Grain](chunked-kernel-check/step-006-report.md), [Barrier](chunked-kernel-check/parallel-result.md), [Envelope](chunked-kernel-check/envelope-result.md) | /workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/parallel-barrier-v1; declaration-distribution-v1/; envelope-curve-v3/ |
-| [parallel-stream-check](parallel-stream-check/README.md) | Version-qualified shared-stream/within-module cases. v4context mismatch; repaired v14Mathlib18cells1.523x. Full Barrier/Grid uniform4pairs1.558/1.882x; Envelope full reference times out. Extra coordinator/Cadapter trust. | [Mathlib](parallel-stream-check/v14-math-results.md), [Barrier full](parallel-stream-check/full-barrier-results.md), [Grid full](parallel-stream-check/full-grid-results.md), [Envelope sequence](parallel-stream-check/envelope-stream-results.md) | /workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v4/; parallel-stream-check-v10/; parallel-stream-check-v12/; parallel-stream-check-v14/ |
+## Existing research directories
 
-## Root analyses with distinct boundaries
-| Root step | Evidence / interpretation |
+| Directory | Qualified work/boundary | Reports/raw location |
+|---|---|---|
+| [mechanisms-2026-10-30](mechanisms-2026-10-30/README.md) |Historical tactic/profile/resource studies. Old-M diagnostic data are not current noMcost/acceptance evidence. |[Prior work](mechanisms-2026-10-30/prior-work.md); PVC captures/mechanisms-2026-10-30/ |
+| [profile-2026-10-31](profile-2026-10-31/systime/final/README.md) |90guard-calibration cells/3modules; guard/noM ratios2.03/1.61/1.01, matching outputs at passing points, not failure equivalence. |[Startup/replay](profile-2026-10-31/startup-replay/README.md); PVC captures/profile-2026-10-31/ |
+| [decoupled-check](decoupled-check/README.md) |Four original overlapping closures/5085source union. New Falconer13205-module segmented chain9.2563%source wall, Mathlib same protocol14.6662%, complete module-local reference union. Added snapshot/metadata trust, Oshare deviations, two prior timeouts retained. |[Original results](decoupled-check/results.md), [Falconer](decoupled-check/falconer-final-analysis.md); PVC captures/decoupled-check-20261031/scale-study/falconer-project-20261101/ |
+| [chunked-kernel-check](chunked-kernel-check/README.md) |31artifact grain panel/13randommissing; small Grid whole-path negatives. Barrier fragment pipeline3.326x and small Envelope prepared-runtime1.096x are different scopes. |[Grain](chunked-kernel-check/step-006-report.md), [Barrier](chunked-kernel-check/parallel-result.md), [Envelope](chunked-kernel-check/envelope-result.md); PVC captures/chunked-kernel-check/ |
+| [parallel-stream-check](parallel-stream-check/README.md) |Defectivev4context mismatch preserved. Repairedv14Mathlib1.523x/8workers; full Barrier/Grid4worker pairs1.558/1.882x. Envelope full original reference times out. |[Mathlib](parallel-stream-check/v14-math-results.md), [Full Barrier](parallel-stream-check/full-barrier-results.md), [Full Grid](parallel-stream-check/full-grid-results.md); PVC captures/parallel-stream-check-v4,v10,v12,v14/ |
+| [reproducible-verdict](reproducible-verdict/README.md) |Observer-sensitive sync adapter, source counters and private-cache/budget controls. Root-qualifiedv12census2524local helpers,30288checks/22716stable thread pairs; no globalbudget/crossmachine guarantee. OwnerREADME pending text is stale. |[v11](reproducible-verdict/module-results-v11/results.md), [cache/coexecution](reproducible-verdict/cache-and-coexecution-results.md); PVC captures/reproducible-verdict-v*/ |
+| [cost-prediction](cost-prediction/README.md) |Finite grouped forecast/native policy work; no general deterministic bounds or causal service gain. Simulated mechanism combinations are not native throughput. |[Root0254](../docs/tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md), [0256](../docs/tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md) |
+
+PVC capture root is /workspaces/.agent-state/gpu-smt-captures/.
+Pinned sources/SDKs/builds stay under /workspaces/.agent-state/gpu-smt-workloads/
+and owning raw capture directories, outside Git. Historical failed, partial and
+superseded captures remain; no static README authorizes restarting them.
+
+## Workloads and distinct denominators
+
+- [W records](../workloads/W-status.md) retain historical timestamps; current root
+  source coverage32/42/15strata differs from31target-replay pairs/14strata.
+- [Fixed openai/math frame](../workloads/openai-math/README.md):163097source modules.
+  [Source costs](../workloads/openai-math/noM-standard-artifacts-a/README.md) and
+  [stratified analysis](../workloads/openai-math/cost-regimes-noM/README.md)
+  retain old snapshots. Root0263adds LowBlock15_1 only: source10missing,
+  paired11missing and dynamic13missing are different gaps.
+- [Released software](../workloads/ai-verification-software/README.md): published
+  model outputs differ from reference solutions/checker fixtures. Vericoding
+  snapshots overlap; Vero agent-output availability remains unestablished.
+- Full-library phase weights, axioms/context closure, repetitions, released-software
+  native evidence and cluster behavior remain missing.
+
+## Root-qualified evidence map
+
+| Root | Evidence and limitation |
 |---|---|
-| [0231](../docs/tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md) | Complete same-mask lexical census: Mathlib7sites/4files vsOAI1354379/5848,10668.32xsites/decimalMB. Full fixed archive at /workspaces/.agent-state/gpu-smt-captures/step-0231-20261101T001556+0000-static/source.tar.gz; partial13952file cache is not the population. |
-| [0238](../docs/tmp/build-and-evaluate/step-0238-20261101T061522+0000/step-report.md) | CompletedW48/new31of42random coverage; nativewall179.256s not queue-inclusive9217.808s. Raw workloads/openai4341-noM-original-c-suffix48-prepared-20261101/ under capture root. |
-| [0239](../docs/tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md) | v10Envelope RSS interruption; later cgroup/native retirement verified. Total childCPUunknown, not zero; no full curve. |
-| [0241](../docs/tmp/build-and-evaluate/step-0241-20261101T080929+0000/step-report.md) | Repaired1330module matrix:3fixed-order repeats/mode,68.605→45.050s/8workers; CPU+36.25%, not serving/source gain. |
-| [0243](../docs/tmp/build-and-evaluate/step-0243-20261101T091434+0000/step-report.md) | Envelope10752prefix+nine target paths. Strongdecl8→chunk8=1.319x; not one full configuration. Sample13.971GiB vswait4peak14.019GiB. |
-| [0244](../docs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/step-report.md) | Actual full Barrier/Grid pairs; one ordered pair each, equal800s native budgets and Grid repair gap. Separate incrementalGrid4.024x/CPU+97.76%. |
-| [0245](../docs/tmp/build-and-evaluate/step-0245-20261101T111249+0000/step-report.md) | Original Envelope serial full reference rc124/1680.158s;10744complete records+222byte fragment. Missing IDs are unknown, not proof failures or a complete-input parity defect. |
-| [0246](../docs/tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md) | OAI source-provenance shares: Grid9.76%compiler/52.70%replay-call wall, Amplitudes8.69/46.93%. Shared old captures, not global/CPU weights. |
-| [0247](../docs/tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md) | Pinned native module-task source audit; strict checked-import DAG is not a bundled-checker upper bound. Native competing-path throughput remains unmeasured. |
+| [0231](../docs/tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md) |Fixed whole-source lexical census. Full source archive at captures/step-0231-20261101T001556+0000-static/source.tar.gz; the13952file extraction is partial. No repeated census/download. |
+| [0234](../docs/tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md) |Grain-call threadCPU and small Grid whole-path negatives; sourceproxy is not a runtime class. |
+| [0235](../docs/tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md), [0236](../docs/tmp/build-and-evaluate/step-0236-20261101T051231+0000/step-report.md) |Barrier fragments and Envelope small-helper curves, different clocks/trust/proof transformations. |
+| [0237](../docs/tmp/build-and-evaluate/step-0237-20261101T060743+0000/step-report.md), [0239](../docs/tmp/build-and-evaluate/step-0239-20261101T062456+0000/step-report.md) |Context counterexample and later RSS interruption retained; neither is acceptance of False or zero total cost. |
+| [0241](../docs/tmp/build-and-evaluate/step-0241-20261101T080929+0000/step-report.md), [0242](../docs/tmp/build-and-evaluate/step-0242-20261101T081822+0000/step-report.md), [0243](../docs/tmp/build-and-evaluate/step-0243-20261101T091434+0000/step-report.md), [0244](../docs/tmp/build-and-evaluate/step-0244-20261101T101651+0000/step-report.md) |Version-qualified repairedMathlib, incremental targets and complete Barrier/Grid pairs. No cross-version pooling or multiplied ratios. |
+| [0245](../docs/tmp/build-and-evaluate/step-0245-20261101T111249+0000/step-report.md) |Original Envelope full-reference timeout:10744completeaccepts+fragment, missing IDs unknown. |
+| [0246](../docs/tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md), [0247](../docs/tmp/build-and-evaluate/step-0247-20261101T131749+0000/step-report.md) |Closure-provenance composition; official native module-task baseline differs from strict checked-import DAG. Matched native comparison stillmissing. |
+| [0254](../docs/tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md), [0255](../docs/tmp/build-and-evaluate/step-0255-20261101T200059+0000/step-report.md), [0256](../docs/tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md) |Anegative/tradeoff policies, Bobserver counterexample, narrowed novelty/closest same-corpus overlap. No generic mechanism firstness. |
+| [0257](../docs/tmp/build-and-evaluate/step-0257-20261101T215746+0000/step-report.md), [0258](../docs/tmp/build-and-evaluate/step-0258-20261101T225830+0000/step-report.md), [0259](../docs/tmp/build-and-evaluate/step-0259-20261102T000306+0000/step-report.md) |Private-input cache finite positives; failed Mv5partial and completed stage panel remain separate protocols. |
+| [0260](../docs/tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md), [0261](../docs/tmp/build-and-evaluate/step-0261-20261102T023802+0000/step-report.md), [0262](../docs/tmp/build-and-evaluate/step-0262-20261102T030442+0000/step-report.md) |31targetpairs; Bcount spans0/0.0367/0.1385/2.3339%, not budget-padding guarantees; v12census qualified within3modules. |
+| [0263](../docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md) |Source32increment,10missing; current207.8–630.8source/10.8–41.9modeledstream CPUh scenarios, notCI or full checks. Old31ranges retained as history. |
+| [0264](../docs/tmp/build-and-evaluate/step-0264-20261102T061224+0000/step-report.md) |Full Falconer source/segmented/refset audit and same-protocol Mathlib; raw source/protocol/failures frozen, no root native run or new scientific contract. |
 
-## Workloads outside research/
-- [Current W records](../workloads/W-status.md) and [workload index](../workloads/README.md)
-  retain their original timestamps; stale status text does not authorize restart.
-- [openai/math](../workloads/openai-math/README.md): fixed163097source-module frame.
-- [NoM original-frame costs](../workloads/openai-math/noM-standard-artifacts-a/README.md)
-  and [conditional strata](../workloads/openai-math/cost-regimes-noM/README.md):
-  root source coverage32/42 draws/15complete strata, conditional marked CPU33.025% only
-  over104632 modules.10 ordinary draws/58465 modules in incomplete strata; not finite fullCPU/globalshare. Target-only paired replay remains31/42/14strata; old W reductions retain their historical snapshots.
-- [Released AI software](../workloads/ai-verification-software/README.md):
-  model outputs, reference solutions and checker fixtures are different evidence.
-  Vericoding snapshots overlap; Vero agent output remains unestablished.
-
-W raw capture root: /workspaces/.agent-state/gpu-smt-captures/workloads/ .
-Pinned sources/toolchains: /workspaces/.agent-state/gpu-smt-workloads/ .
-Root reductions/raw freezes: linked docs/tmp/build-and-evaluate/step-* directories.
-Original native files, failures, interrupted/partial outputs and other authors'
-files stay in their owning locations. Old-Mdata remain history, never silently
-scaled into newpoints. No native status is inferred from this static index.
-
-[Current index consolidation](../docs/tmp/build-and-evaluate/step-0248-20261101T141922+0000/step-report.md) preserves the
-[exact prior index](../docs/tmp/build-and-evaluate/step-0248-20261101T141922+0000/experiment-001/before-research-README.md.gz).
-
-## Current novelty audit
-[Root A/B/C decision](../docs/novelty-20261101.md) integrates
-[M prior-work](reproducible-verdict/prior-work.md) and
-[W method audit](../workloads/openai-math/cost-method-prior-art-20261101/README.md).
-M's [six classification controls](reproducible-verdict/step-002-report.md)
-are not a reproducibility guarantee; O's cost-prediction report is now integrated in root0254.
-[Root cleanup](../docs/cleanup-20261101.md) retains PDFs and all native evidence.
-
-[Root0253 v1matrix](../docs/tmp/build-and-evaluate/step-0253-20261101T185439+0000/step-report.md): finite768rows,0acceptance changes, observer counts/labels and parser-adapter differences separated. Rawfreeze in its experiment-001; correctedv2 not pooled. No new rootnative.
-
-[Cost prediction](cost-prediction/analysis.md) and [root0254](../docs/tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md):31completed original costs, fixed source-only forecasts;60CPU-s native counts15/15/13. Strong A unsupported; raw at cost-prediction-20261101-v2, rootfreeze linked. All three novelty reports actually received. Bv2terminal complete; root0255 row-qualified it separately.
-
-[Root0255 paper/Bv2](../docs/tmp/build-and-evaluate/step-0255-20261101T200059+0000/step-report.md):17pages177246bytes; A finite negative/tradeoff
-and same-corpus novelty overlap in actual paper. Mv2 raw reconstruction1536rows/16selected inputs,
-10qualification rows/17native phases;8off/trace acceptance changes repeat one sync-path input at1000,
-not stock frontend pass-set loss.35PID/birth identities/cgroups retired. General guarantees remain unproven.
-
-[Root0256](../docs/tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md): independent narrow-class27/29
-conditional trace match and separate9batch/12call native routing point.
-Type route0.333whole roots equalsFIFO;known-panel upper1root but45.04%budget idle,
-unseen NearPin class-bound transfer fails. Not pooled with60CPU-s source jobs.
-M budget ladder0/100violations;48JSON-only cache comparisons preserve verdict,
-notcoldruntime. Raw/source/failed/partial texts archived in experiment-001;34recorded identities retired.
-
-[Root0257](../docs/tmp/build-and-evaluate/step-0257-20261101T215746+0000/step-report.md): Mv8private-input cache512rows/256pairs,
-0verdict/diagnostic/axiom changes;128sync vectors same/42asyncparent counts vary.
-Retains v6probecompile failure/0candidate rows. Actual inputresidency cold0/warmall
-2238400pages; notglobalcoldboot. Wsame14strata CPUshare17.1434% versus serial-native-elapsed14.8102%;
-missing11draws exactHTsensitivity10.842083h peruniform1CPU-s, not globaltotal.
-
-[Root0258](../docs/tmp/build-and-evaluate/step-0258-20261101T225830+0000/step-report.md): M5partial terminal,15nativephases/31retired
-identities. Math256rows complete;192comparisons0acceptdiff/84countervectorsdifferent.
-Grid32accepted-prefixrows;Envelope0rows/importavailabilityfailure rc1.
-Raw/source/partialfailure frozen;fullcross-regimecomparison stillmissing.
-No rootnative/agent,foreignimplementationrepair or queuedwork restart.
-
-- [Root0259](../docs/tmp/build-and-evaluate/step-0259-20261102T000306+0000/step-report.md): qualified original-module stage panel;336rows/252pairs, kernel156pairs stable allocation, mathsource49/96vectors differ. Mathematicalkernel only1activeworker; no globalbudget guarantee. Earlier partial/failures retained.
-
-- [Root0260](../docs/tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md): W31fresh target pairs complete, conditional ratio0.3898 with trusted imports; separate Mv11three-repeat stage count panel, no generalbudget guarantee; first fullFalconer checker timeout retained, recovery/parity stillmissing.
-
-- [Root0261](../docs/tmp/build-and-evaluate/step-0261-20261102T023802+0000/step-report.md): direct Bscope revision; observed count spans0/0.0367/0.1385/2.3339%, not guaranteed budget margins. Whole-frame W178.2–627.4source/8.3–41.6modeledstream CPUh are assumption scenarios, distinct from31targetreplays.
-
-- [Root0262](../docs/tmp/build-and-evaluate/step-0262-20261102T030442+0000/step-report.md): independently qualified Mv12eligible-helper census,2524targets/30288acceptedchecks/22716thread comparisons,0allocation differences. All3pinnedmodule helper-form coverage, not generic computational determinism; earlier24target and mathematical panels remain separate.
-
-- [Root0263](../docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md): qualified newLowBlock15_1 sourcecost184.589CPU-s, originalsource32/42/15complete strata,10missing; targetreplay31/dynamicdenominatorsunchanged. Source19terminal retains1dependencywallcensor/6uninvoked. Updatedassumption scenarios207.8–630.8source/10.8–41.9modeledstream CPUh,notCI or measuredfullcost.
+[Novelty audit](../docs/novelty-20261101.md) covers prior Isabelle/Coq/Lean checking,
+Mathlib, services, SATzilla and the closest same-corpus technical report.
+A/Bgeneric mechanisms and Cgeneral decomposition/composition have precedents;
+finite controlled boundaries and limits are the current empirical increment.

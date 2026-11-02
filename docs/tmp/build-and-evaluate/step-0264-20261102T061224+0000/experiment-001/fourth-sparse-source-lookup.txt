@@ -1,0 +1,1 @@
+The familiar workload source directory is a partial extraction, as established earlier. Missing selected Falconer files there were a root lookup error, not source absence. Qualified all2461 selected sources against the existing fixed full archive instead; no download, full lexical census, foreign mutation or native Lean rerun.

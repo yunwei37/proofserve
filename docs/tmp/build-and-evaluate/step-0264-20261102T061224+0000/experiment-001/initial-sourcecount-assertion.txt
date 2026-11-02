@@ -1,0 +1,1 @@
+First reducer asserted prepared constant counts equal reconstructed module headers: 2461 prepared counts are null, and 3 nonnull metadata counts differ (27/28,251/253,279/281). All import edges match. Prepared counts are not the intended graph criterion; retain differences and use native accepted-output counts. No native rerun or data edits.

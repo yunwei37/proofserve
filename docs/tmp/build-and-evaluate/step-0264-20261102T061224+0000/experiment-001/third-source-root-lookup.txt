@@ -1,0 +1,1 @@
+Pinned original source directory has a lean/ subdirectory. Initial comparison omitted it and raised FileNotFoundError before any comparison; corrected lookup, no source/data mutation.

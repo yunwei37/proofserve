@@ -1,0 +1,1 @@
+The eighteen older control terminals omit previous_snapshot; the performance terminals record it. Root initially indexed that absent field and raised KeyError. Preserve the distinction, record it as not emitted, retain native rejection/snapshot sequence and do not fabricate per-call environment fields. No Lean rerun or foreign edit.

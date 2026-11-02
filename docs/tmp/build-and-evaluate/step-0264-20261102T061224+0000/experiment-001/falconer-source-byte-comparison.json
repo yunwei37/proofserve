@@ -1,0 +1,9 @@
+{
+  "archive": "/workspaces/.agent-state/gpu-smt-captures/step-0231-20261101T001556+0000-static/source.tar.gz",
+  "archive_bytes": 896084751,
+  "selected_sources_compared": 2461,
+  "selected_source_bytes": 9279240,
+  "all_byte_equal": true,
+  "elapsed_s": 17.402905204333365,
+  "scope": "selected Falconer source qualification only; no new whole-library lexical census or download"
+}

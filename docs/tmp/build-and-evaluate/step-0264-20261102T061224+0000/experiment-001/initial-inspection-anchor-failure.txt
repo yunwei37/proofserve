@@ -1,0 +1,1 @@
+Read-only inspection used a prose substring absent from the current TeX, raising ValueError. No files/data/native processes modified. Located the actual Falconer paragraph by line search instead.

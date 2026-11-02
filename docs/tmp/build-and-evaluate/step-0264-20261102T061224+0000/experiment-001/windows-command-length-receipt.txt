@@ -1,0 +1,1 @@
+Initial Windows invocation exceeded command-line length before process creation; identical script uploaded in three parts on existing PVC, joined and executed. No native Lean/foreign source mutation.

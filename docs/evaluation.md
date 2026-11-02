@@ -676,3 +676,25 @@ ActualpaperMethods/RQ1 and pairedscope updated,notonlylogs. Bcensus/otherRQ
 evidence unchanged;0rootnewnative/agent/foreignedit.
 
 Final0263 paper22pages/207423bytes,compile3.822121s/sample191152128B/E22–23;6contacts/all22pages self-reviewed;17oldtable bodies/title/fullabstract/4RQ/sections unchanged. Rootrenderings34/21278715bytes removed,raw/PDF/log/source retained.
+
+## Root0264 — selected large-project recovery completed, not a new general mechanism
+
+[Root report](tmp/build-and-evaluate/step-0264-20261102T061224+0000/step-report.md).27successful Falconer segments accept13205unique modules
+with complete native import graph;16new original module-local reference chunks
+plus5077exact previously qualified common artifacts cover the same set.
+Source13205records/8128new+5077reused:22077.770248wall/
+32292.603807CPU-s. Falconer2043.585476wall/2038.443942CPU-s, ratio9.2563%.
+Same checkpoint protocol/quota500 Mathlib3segments91.279127/622.379412sourcewall
+=14.6662%, one ordered capture each; older unsegmented10.5551% is another adapter.
+Two full-check timeouts remain3000.415754failedwall, excluded from successful
+protocol cost, not hidden or mathematical rejections. Queue/control/qualification
+and collector cleanup are separate from timed native intervals.
+Base starts empty; later stock imports trust this run's own certified deltas and
+unsafe-cast private metadata. Not arbitrary-snapshot safety, general context/
+axiomclosure, service performance or a first checkpoint mechanism.
+Oshare deviation remains:sourcecaps11.875/11.75GiB/check11.75,wait4checkRSS10.368GiB.
+IndependentRSS sampling/native-child PIDbirth not emitted;4recorded controller
+identities retire,63PID-only submission records are not birth-audited.
+Source32/paired31/dynamic13missing and B2524scope remain unchanged.
+
+Final0264paper22pages/209773bytes,compile3.026542s/sample189231104B/E22–23;6contacts/allpages self-reviewed;17old tables/title/fullabstract/4RQ/sections/four implication bodies unchanged. Removed only34current rootrenderings/20931774bytes; allraw/PDF/source/failures retained.
