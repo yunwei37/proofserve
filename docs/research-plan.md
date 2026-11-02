@@ -1,6 +1,6 @@
 # Research plan: two verification-cost regimes
 
-Current frontier2026-11-02UTC, root0267. [Status](research-status.md) ·
+Current frontier2026-11-02UTC, root0268. [Status](research-status.md) ·
 [Evidence](evaluation.md) · [Results](../research/README.md) ·
 [User words](user-instruction.md) · [Novelty](novelty-20261101.md).
 [Exact previous plan](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-plan.md.gz).
@@ -84,11 +84,16 @@ are not pending despite stale owner README text.
 The paper remains an unfinished characterization with explicit missing evidence;
 self-review is not independent audit or submission acceptance.
 
-Paper root0267:23pages/217908B,19oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0268:23pages/219436B,19prior table bodies/title/fullabstract/4RQ/sections/fourimplications unchanged;1newCPUtable/20total,fullcompile/all-page self-review completed,0newrootnative/agent.
 
-Direct finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
+Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
 
 New RQ3 boundary [0266](tmp/build-and-evaluate/step-0266-20261102T083616+0000/step-report.md): four complete later-version Barrier curves8/12/16/24workers add E cores and get slower. Do not repeat completed curves or call this homogeneous strong scaling. Resident-leaf determinism remains a separate actual owner capture; no result imputed. Whole-library O and Wremaining original draws are ongoing owner paths, not new root queues.
 
 Streaming leaf count/byte capture now independently qualified by [0267](tmp/build-and-evaluate/step-0267-20261102T092013+0000/step-report.md):100targets overlap oldBarriercensus;12full-leaftrials/1200acceptedobservations/12exactoleanoutputs complete. Do not wait/restart17c4989; no globalmaxHB/TCB/property upgrade or poolingwith2524census. Existing ownerroutes handle further work.
+
+
+CPU and coverage update [0268](tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md): Falconer native check/source CPU2038.443942/32292.603807s=6.3124%; matching checkpoint Mathlib91.145172/1018.219383s=8.9514%. Separate native elapsed ratios9.26%/historical10.56%/checkpoint14.67% remain. Source/protocol/CPU units are not pooled. Whole-source bounded attempt accepts2488/163097source+10744dependencies;160609source missing,9124source-compilation rc1 unclassified, not mathematical rejection or measured full-library cost.
+
+O newly visible source-error report is retained for later independent attribution qualification; root0268 audits9124rc1count and2488source accepted, not all log causes or a repaired producer run.

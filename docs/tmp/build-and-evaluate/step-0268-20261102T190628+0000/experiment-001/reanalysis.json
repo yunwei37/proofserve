@@ -1,0 +1,51 @@
+{
+  "results": [
+    {
+      "closure": "Falconer",
+      "modules": 13205,
+      "segments": 27,
+      "source_cpu_s": 32292.603807,
+      "check_cpu_s": 2038.443942,
+      "cpu_ratio": 0.06312417401157756,
+      "source_wall_s": 22077.770248265006,
+      "check_wall_s": 2043.5854757986963,
+      "wall_ratio": 0.09256303751776258
+    },
+    {
+      "closure": "Mathlib Nat.Basic",
+      "modules": 1330,
+      "segments": 3,
+      "source_cpu_s": 1018.219383,
+      "check_cpu_s": 91.145172,
+      "cpu_ratio": 0.0895142771015193,
+      "source_wall_s": 622.3794121909887,
+      "check_wall_s": 91.2791267875582,
+      "wall_ratio": 0.14666154599527065
+    }
+  ],
+  "historical_math_wall_s": 65.69264411274344,
+  "historical_math_wall_ratio": 0.10555079879889155,
+  "coverage": {
+    "source_frame": 163097,
+    "accepted_source": 2488,
+    "accepted_dependencies": 10744,
+    "missing_source": 160609,
+    "compilation_rc1_unattributed": 9124,
+    "complete": false,
+    "source_return_counts": {
+      "1": 9124,
+      "0": 19
+    },
+    "attribution": "pending O owner investigation; not kernel/mathematical rejection"
+  },
+  "disk": {
+    "total_bytes": 134951424000,
+    "used_bytes": 97466384384,
+    "available_bytes": 37468262400,
+    "used_percent": 72.22330931758083
+  },
+  "cache_deletion_executed": false,
+  "cleanup_target_already_met": true,
+  "root_analysis_seconds": 9.126601856201887,
+  "root_analysis_maxrss_kib": 312464
+}

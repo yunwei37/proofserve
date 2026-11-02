@@ -733,3 +733,10 @@ M17c4989completecapture independentlyreconstructed:100overlappingtargets×12,
 metadata/extensions stilltrusted,19oldtables/frozenstorypreserved.
 CPUcallwindow3.575→9.941s,not free overhead/globalbudget guarantee.
 3PIDbirth/cgroupretired;0newrootnative/agent. W32/Owholeprefix denominators unchanged.
+
+
+## 2026-11-02 — root0268 CPU and coverage reconciliation
+
+CPU and coverage update [0268](tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md): Falconer native check/source CPU2038.443942/32292.603807s=6.3124%; matching checkpoint Mathlib91.145172/1018.219383s=8.9514%. Separate native elapsed ratios9.26%/historical10.56%/checkpoint14.67% remain. Source/protocol/CPU units are not pooled. Whole-source bounded attempt accepts2488/163097source+10744dependencies;160609source missing,9124source-compilation rc1 unclassified, not mathematical rejection or measured full-library cost.
+
+Independent root read of13205source raw results and30checkpoint native results retains the complete selected-closure qualification from0264. CPU is native user+system, sourcej8 and checkpoint protocols unchanged. No native rerun. Root small analysis on E22–23 only. The original two1500s failed attempts, O4GiB share deviation, trusted metadata, missing independent native-child birth/RSS sampling and all global evidence gaps remain. Whole-source .olean-only production does not replace W normal .olean/.ilean/C sample costs. The finite whole-source and Hodge attempts ended by their declared windows; no restart authorized or made.

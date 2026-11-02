@@ -1,0 +1,24 @@
+{
+  "pages": 23,
+  "PDF_bytes": 219436,
+  "contacts_viewed": 6,
+  "old_tables_unchanged": 19,
+  "new_CPU_table": 1,
+  "title_abstract_RQs_sections_implications_unchanged": true,
+  "links": 170,
+  "labels": {
+    "measured": 56,
+    "partialev": 22,
+    "unproven": 1
+  },
+  "renderings_removed": 35,
+  "rendering_bytes_removed": 22334648,
+  "PVC_available_bytes": 37456236544,
+  "PVC_used_bytes": 97478410240,
+  "PVC_total_bytes": 134951424000,
+  "review": "self-review",
+  "native_runs": 0,
+  "agents": 0,
+  "cache_deletion": false,
+  "PVC_used_percent": 72.23222056552734
+}

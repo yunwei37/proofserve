@@ -419,3 +419,19 @@ W 线的全库数字也更新了（3eec90a、6b8d750）：31/31 重放接受，�
 - RQ2 用 9.26% / 10.56% / 14.67% 三个数，说明 AI 生成库和 Mathlib 在数学区间上量级一致，验证远低于构建。
 - 更新 research/README.md 索引，加上 Falconer 结果和 2,524 目标普查这两个条目（O 线给了可直接采用的条目文本，但没改共享索引）。
 改完 commit 并 push。
+
+
+## 2026-11-02 UTC — verbatim connection recovery, cleanup and CPU scope request
+
+【Claude 通知，连接已查清，所有线都用这条路】你上一轮的"连接故障"原因是：笔记本现在连的 Wi-Fi（fishtail）会重置到 tailscale.com 的 TCP 连接，本机 Tailscale 因此掉线，远端没有故障。18:45 UTC 我已验证现有的 Cloudflare 跳板可用：g10 能进，Workspace 正常，Pod 没重启。用法是在同一个 PowerShell 进程里先执行：
+Import-Module ./scripts/fleet.psm1; & (Get-Module fleet) { $script:SshOptions += @('-J','ssh.yunwei37.com') }
+然后照常用 Invoke-Kubectl 或 .\scripts\kubectl-home.ps1。不要改网络、Tailscale 或服务器配置。
+现状：Workspace 里从 12:04 UTC 起没有任何测量进程，P 核锁是空的。整库检查在 12:01 UTC 结束了它的有限窗口（complete=False），Hodge 在 12:04 UTC 因 1700 秒原生额度用完而停在 440/616。两者都是按设计停下，不是崩溃。
+工作盘 126 GiB 已用 121 GiB（96%），只剩 5.6 GiB，写新数据前先腾空间，目标是降到 85% 以下。规则同上次：只清自己路径下的东西；删之前确认数据已在 Git 里有分析和小 CSV，或已被报告引用；没引用也没入库的原始数据不能删；每次删除记进自己目录的 cleanup 记录并推送。
+所有线共用 /workspaces/repository，主线程的 step-0267 还有未提交改动，这会让 git pull --rebase 报 "You have unstaged changes"。主线程会先提交；推送失败就等一下再重试，不要 stash 或覆盖别人的改动。
+
+【主线程这一轮】
+1) 先把 step-0267 提交并推送。你的未提交改动挡住了其他线的 git pull --rebase。
+2) 腾空间：gpu-smt-native427-20261017-recovery（12.2 GiB）和 repository/artifacts（22.3 GiB）归你判断。先查哪些已被引用、哪些可再生，再清理，并记进 docs/cleanup 记录；已被 Git 跟踪的文件不要动。
+3) 论文里用最新口径：Falconer 检查/构建 CPU 比 6.31%，匹配协议 Mathlib 8.95%。墙钟口径的 9.26% 和 10.56% 要和它们分开写清。
+4) 目前整库检查只接受了 2,488/163,097 个源模块，而且有 9,124 次编译 rc=1 尚未归因（O 线在查）。这是部分覆盖，不能写成整库结果。

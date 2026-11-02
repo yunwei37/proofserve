@@ -79,3 +79,6 @@ A/Bgeneric mechanisms and Cgeneral decomposition/composition have precedents;
 finite controlled boundaries and limits are the current empirical increment.
 
 [Root0265](../docs/tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md) implements the direct finalized-number request; prior raw qualifications remain0262/0264. No native rerun or generic mechanism firstness.
+
+
+CPU/coverage scope [root0268](../docs/tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md): Falconer6.31% and matched-checkpoint Mathlib8.95% are native CPU ratios.9.26%/10.56%/14.67% are separate wall ratios. Whole-source accepted2488/163097;9124compilation rc1 unclassified, bounded incomplete attempt. Raw process reanalysis and small CPU table are linked in the root report.

@@ -1,6 +1,6 @@
 # Research status
 
-Snapshot2026-11-02UTC, root0267. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-02UTC, root0268. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
@@ -35,7 +35,7 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | Target-only replay |31/31 accepted, trusted compiled imports, source632.590/replay272.695CPU-s; median per-module ratio0.451 (0.087–0.885).14paired strata140.852/54.906CPUh, nominal weak interval[0,0.9401], effectiveDF1.19. Separate from source32coverage/full closure. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
 | Native checking grain |29available random+2purposeful artifacts/34units;13original draws missing.12decision-shaped calls>=1CPU-s use10.09%total call CPU; available-case weights are conditional, not global. | [0234](tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md) |
 | Four original O closures |Nat1330/NearPin3333/Grid3793/Amplitudes5083: complete check/source-work10.56/6.76/14.52/14.55%. Same5085-node source union/161reference blocks, overlapping dependencies and warm observations. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md) |
-| Large Falconer closure |13205source records;27checkpoint processes2043.585s/source22077.770s=9.2563%; complete graph/accept set and module-local reference union agree. Same-protocol Mathlib3segments91.279/622.379s=14.6662%. One capture each, trusted certified deltas, not uninterrupted/service/4GiB gain. | [0264](tmp/build-and-evaluate/step-0264-20261102T061224+0000/step-report.md) |
+| Large Falconer closure |13205source/27segments; native CPU2038.444/32292.604s=6.31%; matched checkpoint Mathlib91.145/1018.219s=8.95%. Separate wall9.26%/historicalMathlib10.56%/checkpoint14.67%. Selected closures, one capture each, trusted metadata and Oshare deviation retained. | [0268](tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md) |
 | Provenance composition |Grid4OAI nodes9.76%compiler work/52.70%replay-call wall; Amplitudes8nodes8.69/46.93%. Target components6.54/0.46/80.28/82.35% for Nat/NearPin/Grid/Amplitudes. Not CPU, global weights or causal import shares. | [0246](tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md) |
 | Small Grid partitions |Both finite variants have no whole-path gain, despite some smaller kernel subclocks. Older sampled guard lacks independent charged-cap qualification. | [0234](tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md) |
 | Barrier/Envelope helper cases |Barrier fragment pipeline3.326x/CPU+27.8%; small Envelope kernel6.292x but whole prepared-runtime1.096x/CPU+53.6%, one slower repeat. Different boundaries, not multiplicative. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md), [0236](tmp/build-and-evaluate/step-0236-20261101T051231+0000/step-report.md) |
@@ -86,6 +86,11 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0267:23pages/217908B,19oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0268:23pages/219436B,19prior table bodies/title/fullabstract/4RQ/sections/fourimplications unchanged;1newCPUtable/20total,fullcompile/all-page self-review completed,0newrootnative/agent.
 
-Direct finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
+Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
+
+
+CPU and coverage update [0268](tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md): Falconer native check/source CPU2038.443942/32292.603807s=6.3124%; matching checkpoint Mathlib91.145172/1018.219383s=8.9514%. Separate native elapsed ratios9.26%/historical10.56%/checkpoint14.67% remain. Source/protocol/CPU units are not pooled. Whole-source bounded attempt accepts2488/163097source+10744dependencies;160609source missing,9124source-compilation rc1 unclassified, not mathematical rejection or measured full-library cost.
+
+O newly visible source-error report is retained for later independent attribution qualification; root0268 audits9124rc1count and2488source accepted, not all log causes or a repaired producer run.
