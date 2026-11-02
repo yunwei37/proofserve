@@ -1,0 +1,71 @@
+[
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--stat",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/paper/references.bib",
+      "docs/novelty-20261101.md",
+      "docs/cleanup-20261101.md",
+      "docs/background-related-work.md",
+      "docs/research-status.md",
+      "docs/research-plan.md",
+      "research/README.md",
+      "docs/idea-story.md",
+      "docs/evaluation.md",
+      "docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000"
+    ],
+    "returncode": 0,
+    "stdout": " .../experiment-001/first-complete-layout/main.log  | 865 ---------------------\n .../initial-underscore-compile-failure/main.log    | 495 ------------\n .../step-0263-20261102T040256+0000/outer-audit.md  |   2 +\n .../step-0263-20261102T040256+0000/step-report.md  |   2 +\n 4 files changed, 4 insertions(+), 1360 deletions(-)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "add",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/paper/references.bib",
+      "docs/novelty-20261101.md",
+      "docs/cleanup-20261101.md",
+      "docs/background-related-work.md",
+      "docs/research-status.md",
+      "docs/research-plan.md",
+      "research/README.md",
+      "docs/idea-story.md",
+      "docs/evaluation.md",
+      "docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/paper/references.bib",
+      "docs/novelty-20261101.md",
+      "docs/cleanup-20261101.md",
+      "docs/background-related-work.md",
+      "docs/research-status.md",
+      "docs/research-plan.md",
+      "research/README.md",
+      "docs/idea-story.md",
+      "docs/evaluation.md",
+      "docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000"
+    ],
+    "returncode": 2,
+    "stdout": "docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/tectonic.stderr:49: trailing whitespace.\n+LaTeX Warning: Citation `coqAsyncManual2023' on page 1 undefined on input line \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/tectonic.stderr:54: trailing whitespace.\n+LaTeX Warning: Citation `leanHeartbeats2026' on page 2 undefined on input line \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/tectonic.stderr:68: trailing whitespace.\n+LaTeX Warning: Citation `wenzelParallel2009' on page 2 undefined on input line \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/tectonic.stderr:115: trailing whitespace.\n+<inserted text> \n",
+    "stderr": ""
+  }
+]

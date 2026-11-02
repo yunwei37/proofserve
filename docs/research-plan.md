@@ -1,6 +1,6 @@
 # Research plan: two verification-cost regimes
 
-Current frontier2026-11-01UTC. [Status](research-status.md) ·
+Current frontier2026-11-02UTC (root0263). [Status](research-status.md) ·
 [Evidence](evaluation.md) · [Result index](../research/README.md) ·
 [User words](user-instruction.md). Prior detailed plans remain in root reports.
 
@@ -38,7 +38,7 @@ No stronger resource/failure-equivalence claim is created by matching settings.
 - Fixed whole-source census and default-root coverage, including corrected
   maskedMathlib7sites/4files. Lexical concentration is not a runtime weight.
 - W48 suffix continuation:48successfulcompiler cells,46dependencies+2draws.
-  Root coverage31/42draws/14complete strata; no old queue restart.
+  That historical continuation supplied31/42 source draws; the later completed19-job continuation adds LowBlock15_1, yielding32/42/15complete source strata. Target replay stays31/42/14paired strata; no completed queue restart.
 - O four complete matched closures/source union5085 and161oracle chunks.
   No automatic restoration of this finite completed matrix.
 - Published M small-helper, declaration-wave, repairedMathlib matrix,
@@ -52,7 +52,7 @@ each case, and [evaluation](evaluation.md) for all retained failed/partial runs.
 ## Evidence still needed within the existing questions
 | Question | Actual unresolved evidence | Owner / integration boundary |
 |---|---|---|
-| RQ1 |11original source draws/59629modules incomplete; native phase weights and uncertainty; no informative globalCPU/share estimate yet. Grain panel separately lacks13draws. | W; root does not fill with old-M/purposeful/dependency costs |
+| RQ1 |10 original source draws/58465 ordinary modules in incomplete strata; native phase weights and uncertainty; no informative globalCPU/share estimate yet. Grain panel separately lacks13draws. | W; root does not fill with old-M/purposeful/dependency costs |
 | RQ2 |Repeated/broader mathematical and software cases; causal preparation/production decomposition; context and axiom qualification beyond existing positives. | O/W; observed namespace shares are selected work compositions |
 | RQ3 |Matched native module-local parallel baseline; complete selected-config Envelope pairing/repetitions; general failure/budget/object-transfer/cluster evidence. | M; existing lines' actual new plans, not root-launched heavy work |
 | RQ4 |Whole declaration/axiom closure, observer/settings replication and released-software native coverage. | Existing W/M/O scope; no replacement model outputs generated |
@@ -223,3 +223,38 @@ Wsource31/42/scenarioassumptions and13dynamicmissing unchanged;O/Whealthy
 partial/reference/checkpoint requests protected.0newrootnative/agent/foreignedit.
 
 Paper now root0262:21pages206438bytes,complete compile/all-page static self-review;17prior tables/title/fullabstract/4RQ/sections/four implications unchanged. B2524helper census is qualified within3modules; general maxHB/crossmachine/global guarantees remainmissing. Wscenario assumptions unchanged.0rootnative/agent.
+
+
+## New source draw and terminal source19: root0263
+[Root0263](tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md) independently qualifies source19 actual complete terminal:
+13nativecalls/12rc0compiles/1SIGALRMwallcensor/6dependency-uninvoked.
+Successes are11dependencies+1original LowBlock15_1; DihedralIntervals original
+notinvoked. All14recordednative/controllerPIDbirth identities and13cgroups retired.
+noM/P0–7/j8/authoreddefaultHB/olean-ilean-C/15GiBcharged+separateRSS/noOOM.
+13sourcefiles byte-match pinned4eaee875. NewLowBlock184.589081CPU-s/
+124.512017648nativewall, outputs7246016/985771/47699B,notnewkernel/replay evidence.
+IntegralPairings dependencyrc-14/600.197701524s/633.525530CPU-s:
+resourcecensor,notmathematicalreject/targetfalse.6uninvoked areunknown,not6failures.
+Native1456.905625wall/1560.934089CPU separate from8019.708321queue-inclusive.
+No oldqueue resume/retry/budgetextension.
+
+Rootoriginal42frame +1verifiedcost now32/42source,10missing/allordinary,
+15complete strata/104632modules.9marked strata coverall5848marked files;
+sourceCPUestimate57.546404h marked/116.704826ordinary, conditionalshare33.024963%;
+summednativeelapsedshare27.020391%. Old14stratum17.1434/14.8102% remains
+historicalcoverage,notfixed-populationtime trend. Full-libraryCPU/globalshare
+unknown; proxy!=semanticphase. KnownHTsubtotal195.029837h/notconfidencebound;
+uniform+1CPU-s/missingdraw sensitivity10.680417h.32observedCPU817.179526/
+nativeelapsed518.407798s. Target-onlypaired replay remains31/42/14strata,
+dynamicgrain29random+2purposeful/13missing unchanged.
+
+NewLowBlockcost exceeds previousmarkedclassmax163.845944,showing oldsupport
+was anassumption.Updated32cost/10ordinarymissing supportminmax scenarios:
+source207.894666–630.701677h→outward207.8–630.8;modeledstream10.826785–
+41.839086h→10.8–41.9 with OclosureCPUtransfer. NotCI/guaranteedbounds/
+measuredfullstream. Old178.2–627.4/8.3–41.6retainedasdated31snapshot;
+unknownchecks2xsource reversesgap885.083vs630.702h. No-assumptionupperunbounded.
+ActualpaperMethods/RQ1 and pairedscope updated,notonlylogs. Bcensus/otherRQ
+evidence unchanged;0rootnewnative/agent/foreignedit.
+
+Paper now root0263:22pages/207423bytes, complete compile/all-page static self-review;17prior table bodies/title/fullabstract/4RQ/sections/four implications unchanged. Source32/42/15strata differs from paired target replay31/42/14strata and dynamic panel13missing. Updated scenarios207.8–630.8source/10.8–41.9modeledstream CPUh retain explicit assumptions.0rootnative/agent.

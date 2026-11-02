@@ -1,6 +1,6 @@
 # Research status
 
-Snapshot2026-11-01UTC. Current frontier, not a new experiment or live-process
+Snapshot2026-11-02UTC (root0263). Current frontier, not a new experiment or live-process
 inventory. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Related work](background-related-work.md) ·
 [Detailed history](evaluation.md) · [Novelty verdict](novelty-20261101.md) · [Root cleanup](cleanup-20261101.md).
@@ -37,7 +37,7 @@ outputs, without proving failure-budget equivalence.
 | Evidence | Result and actual boundary | Root audit |
 |---|---|---|
 | Fixed lexical census | Mathlib8529files/7masked sites; OAI163097/1354379sites in5848files,10668.32xsites/MB. Not runtime or exhaustive regime classification. Default root misses33.30%sites. | [0231](tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md) |
-| W probability frame |31/42draws,14/21complete strata/103468modules. Conditional marked-source CPU share17.1434%;11draws/59629modules still missing. No informative global share/totalCPU estimate. | [0238](tmp/build-and-evaluate/step-0238-20261101T061522+0000/step-report.md) |
+| W probability frame |32/42 source draws,15/21 complete strata/104632 modules. Conditional marked-source CPU share33.025%;10 ordinary draws/58465 modules in incomplete strata. Target-only paired replay remains31/42/14strata. No finite full-library CPU/global share estimate. | [0263](tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md) |
 | Four O closures | Nat1330/NearPin3333/Grid3793/Amplitudes5083; check/source-work10.56/6.76/14.52/14.55%. One5085-node source union/161oracle chunks, overlapping warm observations. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md) |
 | Target components | Nat/NearPin/Grid/Amplitudes read-map-replay/source ratios6.54/0.46/80.28/82.35%. Excludes shared startup/base, not standalone latency or CPU shares. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md) |
 | Source provenance | Grid4OAI nodes9.76%compiler work/52.70%replay-call wall; Amplitudes8nodes8.69%/46.93%. NearPin2nodes0.569%replay/source work. Not global semantic weights. | [0246](tmp/build-and-evaluate/step-0246-20261101T121151+0000/step-report.md) |
@@ -278,3 +278,38 @@ Wsource31/42/scenarioassumptions and13dynamicmissing unchanged;O/Whealthy
 partial/reference/checkpoint requests protected.0newrootnative/agent/foreignedit.
 
 Paper now root0262:21pages206438bytes,complete compile/all-page static self-review;17prior tables/title/fullabstract/4RQ/sections/four implications unchanged. B2524helper census is qualified within3modules; general maxHB/crossmachine/global guarantees remainmissing. Wscenario assumptions unchanged.0rootnative/agent.
+
+
+## New source draw and terminal source19: root0263
+[Root0263](tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md) independently qualifies source19 actual complete terminal:
+13nativecalls/12rc0compiles/1SIGALRMwallcensor/6dependency-uninvoked.
+Successes are11dependencies+1original LowBlock15_1; DihedralIntervals original
+notinvoked. All14recordednative/controllerPIDbirth identities and13cgroups retired.
+noM/P0–7/j8/authoreddefaultHB/olean-ilean-C/15GiBcharged+separateRSS/noOOM.
+13sourcefiles byte-match pinned4eaee875. NewLowBlock184.589081CPU-s/
+124.512017648nativewall, outputs7246016/985771/47699B,notnewkernel/replay evidence.
+IntegralPairings dependencyrc-14/600.197701524s/633.525530CPU-s:
+resourcecensor,notmathematicalreject/targetfalse.6uninvoked areunknown,not6failures.
+Native1456.905625wall/1560.934089CPU separate from8019.708321queue-inclusive.
+No oldqueue resume/retry/budgetextension.
+
+Rootoriginal42frame +1verifiedcost now32/42source,10missing/allordinary,
+15complete strata/104632modules.9marked strata coverall5848marked files;
+sourceCPUestimate57.546404h marked/116.704826ordinary, conditionalshare33.024963%;
+summednativeelapsedshare27.020391%. Old14stratum17.1434/14.8102% remains
+historicalcoverage,notfixed-populationtime trend. Full-libraryCPU/globalshare
+unknown; proxy!=semanticphase. KnownHTsubtotal195.029837h/notconfidencebound;
+uniform+1CPU-s/missingdraw sensitivity10.680417h.32observedCPU817.179526/
+nativeelapsed518.407798s. Target-onlypaired replay remains31/42/14strata,
+dynamicgrain29random+2purposeful/13missing unchanged.
+
+NewLowBlockcost exceeds previousmarkedclassmax163.845944,showing oldsupport
+was anassumption.Updated32cost/10ordinarymissing supportminmax scenarios:
+source207.894666–630.701677h→outward207.8–630.8;modeledstream10.826785–
+41.839086h→10.8–41.9 with OclosureCPUtransfer. NotCI/guaranteedbounds/
+measuredfullstream. Old178.2–627.4/8.3–41.6retainedasdated31snapshot;
+unknownchecks2xsource reversesgap885.083vs630.702h. No-assumptionupperunbounded.
+ActualpaperMethods/RQ1 and pairedscope updated,notonlylogs. Bcensus/otherRQ
+evidence unchanged;0rootnewnative/agent/foreignedit.
+
+Paper now root0263:22pages/207423bytes, complete compile/all-page static self-review;17prior table bodies/title/fullabstract/4RQ/sections/four implications unchanged. Source32/42/15strata differs from paired target replay31/42/14strata and dynamic panel13missing. Updated scenarios207.8–630.8source/10.8–41.9modeledstream CPUh retain explicit assumptions.0rootnative/agent.

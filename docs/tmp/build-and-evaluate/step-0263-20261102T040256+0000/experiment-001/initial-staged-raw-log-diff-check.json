@@ -1,0 +1,71 @@
+[
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--stat",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/paper/references.bib",
+      "docs/novelty-20261101.md",
+      "docs/cleanup-20261101.md",
+      "docs/background-related-work.md",
+      "docs/research-status.md",
+      "docs/research-plan.md",
+      "research/README.md",
+      "docs/idea-story.md",
+      "docs/evaluation.md",
+      "docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000"
+    ],
+    "returncode": 0,
+    "stdout": " docs/cleanup-20261101.md |   8 ++++\n docs/evaluation.md       |  35 ++++++++++++++\n docs/novelty-20261101.md |  33 +++++++++++++\n docs/paper/main.pdf      | Bin 206438 -> 207423 bytes\n docs/paper/main.tex      | 119 ++++++++++++++++++++++++-----------------------\n docs/research-plan.md    |  41 ++++++++++++++--\n docs/research-status.md  |  39 +++++++++++++++-\n research/README.md       |   8 ++--\n 8 files changed, 216 insertions(+), 67 deletions(-)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "add",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/paper/references.bib",
+      "docs/novelty-20261101.md",
+      "docs/cleanup-20261101.md",
+      "docs/background-related-work.md",
+      "docs/research-status.md",
+      "docs/research-plan.md",
+      "research/README.md",
+      "docs/idea-story.md",
+      "docs/evaluation.md",
+      "docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      "docs/paper/main.tex",
+      "docs/paper/main.pdf",
+      "docs/paper/references.bib",
+      "docs/novelty-20261101.md",
+      "docs/cleanup-20261101.md",
+      "docs/background-related-work.md",
+      "docs/research-status.md",
+      "docs/research-plan.md",
+      "research/README.md",
+      "docs/idea-story.md",
+      "docs/evaluation.md",
+      "docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000"
+    ],
+    "returncode": 2,
+    "stdout": "docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/first-complete-layout/main.log:316: trailing whitespace.\n+* modes: \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/first-complete-layout/main.log:382: trailing whitespace.\n+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/first-complete-layout/main.log:608: trailing whitespace.\n+\\TU/lmtt/m/n/10 Shared.t \\TU/lmr/m/n/10 and \\TU/lmtt/m/n/10 Shared.t : True := \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/first-complete-layout/main.log:769: trailing whitespace.\n+[] [] [][][][][][] [] [][][] [] [][][][][][][][][][] [] [][][][][] [] [][][][] \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/main.log:316: trailing whitespace.\n+* modes: \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/main.log:386: trailing whitespace.\n+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/main.log:406: trailing whitespace.\n+LaTeX Warning: Citation `coqAsyncManual2023' on page 1 undefined on input line \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/main.log:414: trailing whitespace.\n+LaTeX Warning: Citation `leanHeartbeats2026' on page 2 undefined on input line \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/main.log:430: trailing whitespace.\n+LaTeX Warning: Citation `wenzelParallel2009' on page 2 undefined on input line \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/main.log:491: trailing whitespace.\n+<inserted text> \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/tectonic.stderr:49: trailing whitespace.\n+LaTeX Warning: Citation `coqAsyncManual2023' on page 1 undefined on input line \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/tectonic.stderr:54: trailing whitespace.\n+LaTeX Warning: Citation `leanHeartbeats2026' on page 2 undefined on input line \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/tectonic.stderr:68: trailing whitespace.\n+LaTeX Warning: Citation `wenzelParallel2009' on page 2 undefined on input line \ndocs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/experiment-001/initial-underscore-compile-failure/tectonic.stderr:115: trailing whitespace.\n+<inserted text> \n",
+    "stderr": ""
+  }
+]

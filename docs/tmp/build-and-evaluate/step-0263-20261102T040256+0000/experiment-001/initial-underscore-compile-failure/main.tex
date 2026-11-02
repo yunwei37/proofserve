@@ -1,0 +1,1958 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[letterpaper,margin=0.75in,columnsep=0.25in]{geometry}
+\usepackage{booktabs,amsmath,graphicx,microtype,hyperref}
+\hypersetup{colorlinks=true,allcolors=blue}
+\newcommand{\missing}[1]{\textbf{[RESULT: #1]}}
+\newcommand{\measured}[1]{\textbf{[Measured: #1]}}
+\newcommand{\partialev}[1]{\textbf{[Partial: #1]}}
+\newcommand{\unproven}[1]{\textbf{[Unproven: #1]}}
+\newcommand{\expref}[2]{\href{https://github.com/yunwei37/proofserve/blob/main/docs/tmp/build-and-evaluate/step-#1/step-report.md}{E#2}}
+\title{Checking or Recomputing? Two Cost Regimes in\\Verifying AI-Generated Formal Artifacts}
+\author{Anonymous research draft}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+The cost of checking released AI-generated mathematics depends on what
+its proof asks the machine to do. A mathematical witness can be checked without repeating its
+producer's search, while a computational certificate can require the
+kernel to recompute the calculation encoded in the proof.
+We characterize these two cost regimes using released \texttt{openai/math}
+artifacts and their version-matched Mathlib dependency.
+\measured{\expref{0231-20261101T001556+0000}{0231}}
+The same comment/string-masked scanner finds 1,354,379
+\texttt{decide +kernel} sites in 163,097 generated-library files,
+versus 7 sites in 8,529 Mathlib files: approximately
+10,668.3 times the source-megabyte density.
+Only 5,848 generated-library files (3.5856\%) contain this form.
+This is lexical concentration, not a measured fraction of verification time.
+\partialev{runtime weights incomplete} Runtime-weighted prevalence remains
+\missing{pending from the incomplete native sample}.
+We examine repeated imports and production/checking coupling, and test
+single-process streaming and source-qualified finite-index chunking
+as design-implication prototypes.
+\measured{\expref{0235-20261101T041713+0000}{0235}}
+Four selected matched closure checks cost 6.76--14.55\% of serial
+source compiler work. These aggregates hide costly recomputation within
+computational targets.
+\measured{\expref{0235-20261101T041713+0000}{0235}}
+A dependency-aware prototype reduces independent replay wall time
+3.33-fold on one compiled module, with 27.8\% more native CPU.
+The meaning of \emph{verified} is a separate boundary: the default build
+omits 33.30\% of kernel-decision sites, outcomes depend on settings and
+observation, and whole-library axiom closure remains unestablished.
+\measured{\expref{0254-20261101T195608+0000}{0254}}
+At one source-compilation budget point, predicted ordering completes no more
+modules than FIFO; upper admission reduces interruptions and completions.
+The contribution is a characterization and its tested implications, not a
+general accelerator or a replacement trusted kernel.
+\end{abstract}
+
+\section{Introduction}
+Checking a proof need not resemble producing it.
+Mathematical proof production can involve search, tactics and elaboration;
+an independent kernel can instead check the supplied witness.
+A computational proof exposes a different boundary: when its
+justification depends on reducing a large decidable expression,
+checking executes the relevant computation.
+Replaying the unchanged certificate can repeat that work.
+
+Our primary workload is the released \texttt{openai/math} research library
+~\cite{openaiMathSource}. Its pinned Mathlib dependency supplies a
+version-matched reference~\cite{mathlibD13fSource2026}.
+The generated release contains far more source-level kernel evaluation,
+concentrated in a small subset of files.
+This motivates a distinction between mathematical-witness checking and
+proof-embedded recomputation, rather than treating verification as one
+uniform solver call. Files can mix both regimes; tokens cannot assign CPU.
+
+The distinction suggests two systems responses.
+For mathematical proofs, can checking avoid producer elaboration and
+repeated import preparation?
+For computation, can independent claims be checked by several unchanged
+kernels and assembled into the original theorem?
+A faster untrusted numeric answer, weaker import trust scope or new axiom
+is not equivalent verification.
+We organize the study around four questions:
+\begin{description}
+\item[RQ1] Where do verification costs fall, and how prevalent are the
+computation-replaying and mathematical-proof-checking regimes across the library?
+\item[RQ2] Why does independent verification fail to realize the potential
+low cost of mathematical-proof checking?
+\item[RQ3] Can computational checking scale across cores or a cluster
+without expanding the trusted base?
+\item[RQ4] What gaps remain between a reported verified result and build
+coverage, reproducible outcomes and known axiom dependencies?
+\end{description}
+
+\paragraph{Claim scope after the prior-work audit.}
+We distinguish \emph{Measured}, a version/input/clock-qualified observation
+with a linked experiment; \emph{Partial}, an observation missing stated
+evidence for the broader claim; and \emph{Unproven}, a candidate without
+a qualifying result. These labels assess evidence, not novelty or general
+soundness. An established technique can produce a new empirical observation.
+
+\textbf{A: cost prediction and admission.}
+\partialev{\expref{0254-20261101T195608+0000}{0254}; bounded trials, no per-instance guarantee.}
+Prediction-based resource decisions already have algorithm-selection and
+proof-task scheduling precedents~\cite{satzilla2008,coqAsyncManual2023}.
+Our source-only forecasts have substantial held-out errors on the completed
+subset, and one native budgeted ordering test completes no more modules
+than FIFO. Upper admission avoids interruptions with fewer completions.
+A separate known-root artifact trial improves admission availability but
+fails unseen-root transfer. These are limits and scoped tradeoffs, not a new
+predictor or safe resource bound.
+
+\textbf{B: measured boundaries of reproducible work accounting.}
+\measured{\expref{0261-20261102T023802+0000}{0261}; \expref{0262-20261102T030442+0000}{0262}; pinned proof and source scopes.}
+A later three-module census of2,524 eligible stored computational proofs
+has zero observed allocation-count spread across the tested thread counts. Two mathematical source programs
+have observed spans of0.0367\% and0.1385\%; a separate concurrent
+candidate panel has a maximum theorem-command span of2.33\%, without
+acceptance-set changes.
+These are empirical applicability limits and observed count allowances,
+rather than a newly proposed deterministic-budget mechanism.
+\unproven{required acceptance-preserving budget margins and general replay.}
+Lean heartbeats and SMT-LIB reproducible limits already replace elapsed time
+with internal work accounting~\cite{leanHeartbeats2026,smtlib27}.
+Applying and testing that idea here is not a new deterministic-budget
+mechanism. An upstream shared-thunk fix already addresses scheduling-dependent
+heartbeat charging~\cite{leanSharedThunk2026}; its backport status in our
+pinned SDK is not established. A deterministic local counter does not establish a deterministic
+whole concurrent pipeline or turn exhaustion into mathematical rejection.
+
+\textbf{C: parallel decomposition and checked composition.}
+\partialev{selected cases measured; general automation and full costs missing.}
+Proof futures, asynchronous checking and certificate decomposition predate
+this study~\cite{wenzelParallel2009,coqAsync2015,selfCertification2012}.
+We apply them to source-qualified finite-index certificates and compare
+chunking with declaration parallelism (Table~\ref{tab:envelopepooled}).
+This is a bounded engineering case, not the first parallel checker or
+a general automatic splitter. Additional coordinator/adapter trust means
+RQ3's stronger unchanged-trusted-base goal remains open.
+
+Each RQ separates evidence, missing results and design implications.
+We use public generated-software outputs and retained candidate streams
+as contrasts, never generate replacements for unavailable releases.
+Streaming and chunking are prototypes testing the characterization;
+warm imports, ordinary scheduling and external search/checking are prior
+techniques. Missing native profiles and full-library weights remain explicit.
+
+\section{Methodology}\label{sec:method}
+\subsection{Sources and the common lexical boundary}
+The primary release is
+\texttt{4eaee87548250b2682affda7d05d947c05554bae},
+with Lean~4.34.1 and Mathlib
+\texttt{d13f23b723b8a846827a245b89c10fc7d3f11612}.
+We compare all released Lean files in the primary inventory with the
+reference repository's \texttt{Mathlib/} subtree, excluding tests,
+archive and tooling directories from that reference denominator.
+The reference source tree is checked at its exact Git revision.
+All 163,097 primary source members are independently rescanned from the
+pinned official archive and matched by path/byte size to the complete
+inventory; decoding and lexical checks succeed.
+The local extracted cache is partial and is not used as the population.
+A complete received-archive-prefix scan and full-archive scan agree exactly;
+they are repeated validation, not additional corpus observations.
+The same existing scanner erases nested comments and string literals and
+matches \texttt{decide}, whitespace, \texttt{+}, whitespace and
+\texttt{kernel}, allowing zero whitespace.
+One MB is 1,000,000 original UTF-8 source bytes.
+Sites and containing files are not dynamic calls, distinct propositions,
+accepted proofs or native time.
+
+Vericoding releases 1,503 model-tagged Lean snapshots, 1,490 distinct source
+texts; its original 626 are a subset~\cite{vericodingOutputs2026}.
+Publisher labels are not our native verdicts or axiom audit.
+The inspected Vero release does not establish availability of evaluated
+agent outputs~\cite{vero2026}; scaffolds/references do not replace them.
+Lean Kernel Verify supplies checking code and KIR fixtures with separate
+output provenance~\cite{leanKernelVerify}.
+\missing{Version-qualified generated-software native costs and axiom audit.}
+The contrast streams retain 7,808 miniF2F, 5,952 ProofNet per recorded pass
+and 3,566 AutoVerus sources, including unsuccessful attempts.
+Source-sorted replay is not historical arrival traffic.
+
+\subsection{Cost boundaries and regime classification}
+Source production includes imports, elaboration, tactics, proof construction,
+first checking and requested artifact emission.
+AI inference time is excluded unless separately supplied by publisher logs.
+Independent checking consumes compiled declarations under a declared trust
+scope. A kernel-only subclock omits preparation/cleanup and cannot replace
+either complete process clock.
+
+The regimes describe checking work, not disjoint proof languages.
+Computational checking normalizes embedded calculations; mathematical
+checking can avoid the producer's search and elaboration.
+A module may contain both. A C++ checker sample includes inference, equality,
+normalization and cleanup, not solely final validation.
+User-cycle percentages are not elapsed-time shares.
+\missing{Representative no-memory-option source-compilation phase profiles,
+classification error, observer uncertainty and runtime-weighted prevalence.}
+
+\subsection{Sampling and current native point}
+The original frame remains 163,097 modules, with 21 nonempty strata formed
+from four source-size bins, three internal-import-depth bins and
+masked kernel-decision presence.
+Seed 20261030 selects two draws per stratum, 42 total.
+Inclusion probability is $2/N_h$; purposeful modules and prerequisites
+receive no additional population weight.
+For complete strata,
+\[
+\widehat T_h=N_h\bar y_h,\qquad
+\widehat V_h=N_h^2(1-n_h/N_h)s_h^2/n_h,\quad n_h=2.
+\]
+Missing draws stay missing, not replaced by completed-response counts.
+Two-draw normal-cost intervals are fragile under heavy tails.
+The retained W no-\texttt{-M} source panel initially covers 29 original
+random draws and two purposeful modules.
+A completed 48-process continuation adds 46 prerequisites and two original
+draws, not 48 new probability samples.
+All original sources, no-\texttt{-M} arguments, PID/birth retirement and
+matching native clock sums are checked.
+A later19-job continuation contributes one more original draw, LowBlock15_1;
+its other original draw is uninvoked after a prerequisite timeout.
+\measured{\expref{0263-20261102T040256+0000}{0263}}
+Source-frame coverage is now32/42 with15 complete strata and10 missing
+costs. Target-only paired replay still covers31draws/14strata, and the
+dynamic checking-grain panel retains its separate denominator.
+Prerequisites and purposeful modules receive no sampling weight.
+These are local compilation costs with prerequisite objects available,
+not cold transitive builds, whole Lake execution or generation time.
+\missing{Complete no-memory-option sample and per-regime cost estimates.}
+
+The platform is phobos-vt, Intel Core i9-14900K,
+observed 64,205,640\,KiB RAM.
+Timed native captures share one P0--7 lock; preparation/analysis use E cores.
+Eight requested workers are not assumed to use eight CPU cores.
+Current measurements omit \texttt{-M}, including \texttt{-M0}.
+The required memory-protection boundary is external cgroup;
+a result records its actual enforcement rather than assuming conformance.
+The W point uses 15\,GiB charged native memory and separate one-second
+sampled native/controller RSS response.
+Charged pages, leader RSS and tree RSS differ; sampled response can overshoot
+and is not a kernel hard aggregate-RSS quota.
+Every result must record its actual enforcement boundary.
+
+\paragraph{A measurement correction, not a workload finding.}
+The pinned runtime initializes its native memory limit to zero;
+\texttt{check\_memory} returns before RSS queries while zero
+~\cite{leanMemoryGuard2026}.
+Our earlier optional \texttt{-M} setting introduced periodic accounting.
+Three ordered plain repetitions per arm give guarded/no-\texttt{-M}
+wall-median ratios 2.03/1.61/1.01 for Grid/UMoments9/EnvelopePsiB,
+with matching verdicts, diagnostics and emitted artifacts.
+The same outer 15\,GiB cgroup remains; output and heartbeat settings match
+within each module. These passing cases are not resource-failure equivalence.
+The earlier five-source \texttt{openai/math} panel's 75--94\% versus
+roughly 2\% user-cycle contrast, and a 13-short-module 1.28 replay/build
+ratio, also used \texttt{-M} builds. The panel is not a Mathlib native sample.
+They motivate questions, not current runtime conclusions.
+Affected costs/projections remain archived, never scaled by Grid's ratio.
+
+\subsection{Outcomes, observation and trust}
+Process wall, user/system CPU, queue/capture lifecycle and extra rechecks
+keep their own denominators.
+Unprofiled, sampled and traced executions are separate conditions.
+Ordinary error, timeout, cgroup OOM, watchdog interruption, platform loss and
+never-started dependency are distinct; none proves falsehood.
+Raw, failed and partial captures remain retained on the PVC.
+
+Import-relative stock \texttt{leanchecker} trusts imported declarations.
+Its \texttt{--fresh} mode replays the loaded constant map into an empty kernel.
+Both use the upstream kernel and designated unsafe/partial exclusions
+~\cite{leanCheckerDocs}; neither is an independent implementation or an
+axiom-closure audit. A cheaper trust scope cannot substitute for equivalence.
+
+\section{Kernel-evaluation forms are concentrated; runtime weights remain open}
+\label{sec:regimes}
+\paragraph{RQ1: checking versus recomputing.}
+\partialev{\expref{0231-20261101T001556+0000}{0231}; global runtime weights missing.}
+Table~\ref{tab:corpora} gives the complete, common-boundary source comparison.
+Unmasked Mathlib text contains eight sites in five files.
+One is a documentation comment in \texttt{Mathlib/Tactic/Echelon/Cert.lean}.
+Removing comments gives seven in four files; the table uses this common
+masked boundary, not eight unmasked sites against masked generated code.
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+Corpus & Lean files & Source MB & Kernel-decision sites & Containing files & Sites/MB\\
+\midrule
+Mathlib \texttt{d13f} &8,529&98.450&7&4&0.0711\\
+\texttt{openai/math} &163,097&1785.499&1,354,379&5,848&758.544\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0231-20261101T001556+0000}{0231}} Nested-comment/string-masked \texttt{decide +kernel} sites.
+Decimal MB uses original source bytes. Lexical counts are not time weights.}
+\label{tab:corpora}
+\end{table*}
+
+The density ratio is 10,668.3, approximately $1.1\times10^4$.
+Only 3.5856\% of generated-library files contain the form.
+These are concrete candidates for inspecting recomputation, not an exhaustive
+runtime classification: expensive reduction can occur without the token,
+and a positive file can mix computation and symbolic reasoning.
+The32 completed no-\texttt{-M} random source targets sum to518.408seconds
+of native wall intervals and817.180user-plus-system CPU seconds.
+This is not a full-build makespan or population expansion.
+The separate purposeful Grid and Amplitudes points differ in output/heartbeat
+scope and do not fill missing strata.
+Unprofiled process costs do not supply a kernel-cycle partition.
+A source-defined proxy marks files containing a masked explicit kernel-decision
+form; it does not establish which dynamic phase dominates them.
+\measured{\expref{0263-20261102T040256+0000}{0263}; original-frame source-cost increment.}
+For the15 completed strata (104,632modules), stratified compiler CPU estimates
+are57.546hours in marked files and116.705hours in other files:
+a conditional marked-file share of33.02\%.
+All nine marked strata now have both draws, covering5,848marked modules;
+six ordinary strata and58,465ordinary modules remain incompletely observed.
+These are source-compilation estimates, including imports, tactics and emission,
+not kernel-check-only hours or semantic computation-regime weights.
+The earlier14-stratum snapshot's17.14\% share uses a different covered domain.
+The increase reflects newly observed cost and coverage, not a temporal trend
+for a fixed population. Two draws per stratum and ordinary-class nonresponse
+still leave full-library CPU and the global marked-time share unestablished.
+\missing{Representative no-\texttt{-M} phase profiles and full-library
+regime-specific cost weights after completing the original sample.}
+The 3.5856\% source-file concentration must not become a cost fraction.
+
+\paragraph{Clock choice and nonresponse alter the estimand.}
+\measured{\expref{0263-20261102T040256+0000}{0263}; same15complete source strata, offline arithmetic.}
+The conditional marked share is33.02\% of weighted compiler CPU but27.02\%
+of summed native elapsed time, a6.00percentage-point difference.
+The latter adds native process durations; it is not parallel Lake makespan
+or queue latency. Neither is a kernel-phase share or whole-library fraction.
+The previous14-stratum17.14\%/14.81\% contrast remains a separate snapshot.
+
+The six incomplete strata contain58,465of163,097modules (35.85\%),
+not necessarily that many unbuilt files. Ten original source costs are absent.
+The32 known terms in the eventual complete-sample Horvitz--Thompson point
+sum to195.030CPU-hours. This is an algebraic subtotal, not a lower confidence
+bound or a global estimate with missing costs set to zero.
+Increasing every remaining missing draw by one CPU-second increases that
+eventual point by10.680CPU-hours. This is weight sensitivity, not a
+prediction; without additional assumptions it supplies no finite upper total.
+
+\paragraph{Whole-frame costs require explicit missing-cost scenarios.}
+\partialev{\expref{0263-20261102T040256+0000}{0263}; updated32-cost sensitivity, not measurements or confidence limits.}
+Preserving32known costs and original inclusion weights, assume the10remaining
+missing draws cost between the observed minimum and maximum of their source
+class. All10are ordinary-marker draws, with support1.204525--40.791652CPU-s.
+Whole-frame construction scenarios then span207.8--630.8CPU-hours,
+with endpoints rounded outward.
+Transferring selected complete-closure CPU fractions to known and missing
+modules gives10.8--41.9modeled serial-stream CPU-hours.
+Ordinary modules inherit fractions0.039699--0.064497 and marked modules
+0.084421--0.084671 in this model; source markers do not justify that transfer.
+These are assumption scenarios, not measured whole-library checking costs
+or confidence intervals. Their known terms include incomplete-stratum draws,
+not just the15complete strata, and differ from RQ2's trusted-import target checks.
+
+The newly observed LowBlock15_1 costs184.589CPU-s, above the previous
+31-draw marked-class maximum of163.846CPU-s.
+It exceeds the support assumption used in the earlier178.2--627.4source/
+8.3--41.6stream scenarios; those ranges remain dated calculations, not current
+bounds or coverage guarantees.
+Without missing-cost assumptions the pessimistic completion-cost bound
+remains unbounded. At the current class-maximum source scenario, assigning
+no checking savings to missing draws raises modeled stream work to449.4CPU-hours;
+twice their source work raises it to885.1, above the630.8-hour source scenario.
+A subunit factor assigned to unknown modules cannot establish general benefit.
+The10unobserved original source costs remain missing in the primary evidence.
+
+\paragraph{Source features do not establish bounded prediction error.}
+\measured{\expref{0254-20261101T195608+0000}{0254}; 31 completed source-compiler observations.}
+Five fixed log-ridge models predict native compiler CPU from source-only
+features, with no Lean execution or post-production proof/artifact features.
+Their penalty, transforms, marker-based domains and splits are frozen before
+fitting. Project folds hold whole source projects out; ordinary module
+cross-validation can leak shared project structure.
+Table~\ref{tab:prediction} shows project-held-out errors.
+Adding explicit computation markers and their interactions does not
+consistently improve prediction; paired project-bootstrap intervals for the
+error differences include zero. This does not establish a harmful effect
+either, or refute the distinction between checking work regimes.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+CPU forecast & Median error & P90 error\\
+\midrule
+Constant &86.50\%&366.74\%\\
+Source bytes &34.03\%&100.55\%\\
+Source/imports &48.08\%&77.62\%\\
+Static source features &34.95\%&77.38\%\\
+Static plus marker regime &50.07\%&93.02\%\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0254-20261101T195608+0000}{0254}} Absolute relative errors on the 31 completed
+original draws, project-grouped five-fold validation. These are compiler CPU
+forecasts, not independent-kernel costs, population estimates or error bounds.}
+\label{tab:prediction}
+\end{table}
+
+The original eleven missing costs remain missing.
+An auxiliary set has 6,214 compiler modules and 5,085 conditional replay-wall
+labels, mostly dependencies; it does not make the primary sample complete
+or turn compiler CPU into kernel replay cost.
+The separate calibration-fit upper estimates cover 28 of 31 observed inputs.
+Small dependent projects and nonresponse prevent guaranteed future coverage,
+let alone a deterministic per-request bound.
+Confidence intervals resample project blocks of fixed held-out errors,
+rather than the complete training procedure.
+\partialev{completed-subset forecasts; missing/censored heavy inputs and
+general calibration remain unresolved.}
+
+\paragraph{A source label can match observed kernel work without bounding cost.}
+\measured{\expref{0256-20261101T205729+0000}{0256}; independent reconstruction of retained call traces.}
+The fixed explicit-marker rule agrees with a narrower dynamic reference on
+27 of 29 observed original draws. The reference is whether decision-shaped
+helpers consume at least half of that module's measured kernel-call CPU,
+not all possible large reductions or production-cost dominance.
+The confusion counts are 14 true positives, 13 true negatives,
+one false positive and one false negative.
+Both errors belong to the Catalan project: one marked module has 43.79\%
+helper CPU, while an unmarked ordinary \texttt{decide} elaborates to helpers
+using 61.67\%. Expensive unrecognized proof forms can escape this definition.
+
+A conditional project-block bootstrap spans 77.78--100\% accuracy over
+20 observed projects. Thirteen original dynamic draws remain absent:
+even unweighted accuracy on the 42-draw frame can range from 27/42 to
+40/42 without assumptions about them. The primary panel deliberately
+oversamples marker-positive sources; 93.10\% is not population accuracy.
+The two extra purposeful hot modules both match, but stay outside that rate.
+Agreement with W's same source rule is scanner consistency, not independent
+dynamic evidence.
+
+Mislabeled modules contain 1.0284 of 213.3623 kernel-call CPU seconds (0.482\%).
+This is exposed work, not additional CPU caused by choosing a wrong checker:
+that penalty needs both routes on those inputs.
+Classification, numeric forecasting and safe admission are separate obligations.
+Cost-sensitive algorithm selection without runtime regression is itself
+established prior work~\cite{satzilla2012}.
+\partialev{operational label only; missing-label, population and routing-penalty
+evidence remain unresolved.}
+
+\paragraph{Native checking work has different useful granularities.}
+\measured{\expref{0234-20261101T030854+0000}{0234}; conditional replay panel.}
+The earlier checking-grain capture is a different panel, unchanged by
+the two new source-compilation draws. It replays 31 retained compiled targets:
+29 available probability-sample artifacts and two purposeful modules.
+It contains 34 successful native target executions, including stock/timed
+pairs for UMoments9, BarrierData41 and Grid.
+Each target trusts its declared imported environment and replays its own
+eligible declarations; this is not full-closure checking or source compilation.
+A wrapper around the original C++ checking call records per-call thread CPU.
+Decision-shaped theorem bodies have \texttt{of\_decide\_eq\_true} at their
+head after annotation cleanup. This syntactic proof-term class does not
+exhaust computational proofs; it is defined by stored terms rather than the
+source tactic name \texttt{native\_decide}.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+Module & Calls & CPU (s) & Max (ms) & $\geq1$s\\
+\midrule
+UMoments9 &1164&75.436&85.5&0\\
+BarrierData41 &1320&46.910&164.6&0\\
+Grid &4608&263.619&185.7&0\\
+EnvelopePsiB &40&58.006&6163.3&10\\
+ResiduesModThree &2&3.620&2274.5&2\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0234-20261101T030854+0000}{0234}} Decision-shaped theorem checking in five selected modules from
+the complete 31-artifact replay panel. Calls, CPU and maxima refer to these
+declarations, not all module work; $\geq1$s uses thread CPU.}
+\label{tab:grain}
+\end{table}
+
+Grid's 4,608 such declarations cost 263.619 CPU seconds in aggregate,
+but none exceeds 186\,ms individually (Table~\ref{tab:grain}).
+UMoments9 and BarrierData41 similarly contain many subsecond calls.
+EnvelopePsiB instead has ten calls above one CPU second, totaling
+55.782 of its 58.006 seconds (96.17\%).
+These require different decomposition opportunities despite both carrying
+kernel-decision forms.
+
+Across the unweighted panel, all native checking calls consume 588.773
+thread-CPU seconds; this decision-shaped class consumes 574.744 seconds.
+Its twelve calls above one second consume 59.402 seconds:
+10.09\% of all checking-call CPU, or 10.34\% of this class's CPU.
+Weighting only the 29 available probability-sample artifacts gives
+28.23\% and 34.93\%, respectively.
+These are conditional available-case ratios, not unbiased full-library
+estimates or upper bounds on parallelizable work: thirteen original draws
+are absent and nonresponse is not corrected.
+They must not be multiplied into source-compiler or whole-closure costs.
+
+The stock/timed acceptance sets agree for all three paired modules.
+Their single ordered timed/stock replay-CPU ratios are
+0.9100/1.0016/1.0745. Formatting occurs outside each native-call timer,
+but allocation/cache and observer effects can still change the experiment.
+This is not a zero-overhead or unperturbed source-profile claim.
+The capture records P0--7, no \texttt{-M}, an external 14\,GiB charged-memory
+cap and a separate sampled RSS response.
+All 34 target processes and their cgroups, plus the controller, are retired.
+
+Checking an unchanged computation-based certificate repeats the reductions
+needed by its justification. It need not repeat the producer's search, but
+cannot treat an untrusted numerical answer as a theorem.
+For a mathematical witness a low checking share is possible when source
+production dominates; it is not established for every mathematical module.
+
+\paragraph{System-design implication.}
+\partialev{implication of scoped observations; general benefit unproven.}
+Choose the acceptance boundary before the accelerator.
+Mathematical witnesses motivate production/checking separation;
+computational certificates motivate independent kernel work.
+Measure the native grain before dividing it: many short declarations suggest
+dependency-aware declaration parallelism, while measured long calls can
+justify within-goal splitting.
+Tokens and old guarded profiles establish neither a global partition nor
+an accelerator ceiling.
+
+\section{Cheap checking can be hidden by imports and production coupling}
+\label{sec:decoupled}
+\paragraph{RQ2: why independent verification remains costly.}
+\partialev{selected costs measured; causal import decomposition missing.}
+Source compilation imports, elaborates, executes tactics and constructs
+proofs before checking. A post-compilation checker can omit that production,
+but a new process still locates objects and prepares its environment.
+A potentially small kernel cost therefore need not imply cheap independent
+verification.
+
+The earlier no-\texttt{-M} stock-checker point completes 15 target replays.
+For 13 selected short modules its process-wall median is 3.510 seconds,
+including lookup, imports, replay and cleanup.
+It is not an exclusive kernel timer or a contemporaneous construction pair.
+It cannot establish a current construction/replay ratio or its cause
+by division against an earlier, differently configured build.
+\missing{Matched no-\texttt{-M} import-only/checking/cleanup components
+and a comparable independent-process baseline decomposition.}
+Repeated imports and coupling are explanations to test, not a residual
+assigned to an unmeasured stage.
+
+Trust scope changes the work too. Separate no-\texttt{-M} controls take
+2.195 seconds import-relative and 73.134 seconds fresh-scope for Mathlib
+Nat.Basic, a 33.32 ratio.
+A NearPinDeletion fresh-scope control reaches its 180-second wall bound.
+These are scope contrasts, not interchangeable verification methods.
+A stream that checks dependencies needs a full-closure baseline.
+
+
+\paragraph{Fresh target replay saves work within a narrower trust scope.}
+\measured{\expref{0260-20261102T020415+0000}{0260}; 31 matched original-draw targets.}
+All 31 fresh target-replay processes accept the retained target declarations;
+their target artifact parts match the measured producer copies byte-for-byte.
+Each process loads trusted compiled imports before replaying the target,
+as in the module-local checker boundary. Full transitive artifact-byte
+identity is unestablished, and the earlier namespace-setup failures remain
+archived. These results are target checks, not independent closure checks.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Observed clock (s) & Source & Target replay & Ratio\\
+\midrule
+Native CPU sum &632.590&272.695&0.4311\\
+Native elapsed sum &393.896&274.209&0.6961\\
+\bottomrule
+\end{tabular}
+\caption{Thirty-one completed original-draw source/target pairs.
+Compiled imports remain trusted in target replay. Neither ratio is
+whole-library verification, a parallel makespan or a production speedup.}
+\label{tab:target31}
+\end{table}
+
+Every observed module has a replay/source ratio below one in both clocks.
+The median module CPU ratio is0.451 (observed range0.087--0.885), distinct from the ratio of sums
+in Table~\ref{tab:target31}. Source and replay are ordered observations,
+without randomized ordering or repeated pairs.
+The queue-inclusive controller clock is14,768.395s, separate from the
+274.209s sum of native intervals. CPU excludes coordination and lock waiting.
+The no-\texttt{-M}, P0--7, requested-eight-thread processes have a15GiB
+charged cap and a separate sampled-RSS response; all recorded identities
+and cgroups retire without resource stops.
+
+\partialev{conditional paired estimator; full-frame cost and context matching remain missing.}
+For the original31-draw replay panel's14 complete paired strata, original inverse probabilities give
+140.852 source CPU-hours versus54.906 target-replay CPU-hours,
+a ratio of0.3898. The nominal paired t/delta95\% interval is[0,0.9401];
+with two draws per stratum and effective degrees of freedom about1.19,
+it is fragile and excludes nonresponse, machine drift and context uncertainty.
+The ordinary and marked subgroup intervals each extend above one.
+Eleven original source/paired draws remain missing, so this is not a
+full-library cost estimate. These target-only costs cannot replace the
+empty-environment closure-stream costs below, nor can those selected-closure
+ratios replace this paired target estimand.
+
+\paragraph{Prototype: streamed original-kernel replay in one process.}
+\measured{\expref{0235-20261101T041713+0000}{0235}; four selected overlapping closures.}
+O's implementation reads module-data parts, traverses imports, retains their
+mapped regions and calls the upstream \texttt{Kernel.Environment.replay}.
+A visited set avoids processing an already visited module within the stream.
+Checking compiled declarations is separate from source elaboration.
+The implementation also has an import-relative single-module mode and
+malformed-proof controls.
+The first complete matched control covers the dependency closure of
+Mathlib \texttt{Data.Nat.Basic}: 1,330 modules and 132,484 declaration entries.
+Every module is reconstructed with the stock Lean~4.34.1 compiler, requesting
+\texttt{.olean}, \texttt{.ilean} and C output.
+The streamed checker then consumes these newly emitted objects, rather than
+the initially distributed cache, from one empty checked kernel environment.
+All commands omit \texttt{-M} and use P0--7 with external cgroup protection.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Closure (modules) & Source (s) & Check (s) & Ratio\\
+\midrule
+\texttt{Nat.Basic} (1,330) &622.379&65.693&10.56\%\\
+NearPin (3,333) &2556.623&172.811&6.76\%\\
+Grid (3,793) &3878.707&563.082&14.52\%\\
+Amplitudes (5,083) &6173.195&898.034&14.55\%\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0235-20261101T041713+0000}{0235}} One-pass no-\texttt{-M}, same-artifact closure comparisons.
+Source work sums compiler subprocess wall; checking is one stream's process
+wall. Shared dependencies are counted once within each closure, so rows are
+not independent trials. These are different tasks, not parallel Lake or
+serving speedups. Computational closures exceed the listed O-line share.}
+\label{tab:stream}
+\end{table}
+
+The checking process takes 65.693 seconds versus 622.379 seconds of serial
+source compiler work (Table~\ref{tab:stream}).
+This is a comparison between producing and validating artifacts, not a
+9.47-fold acceleration of production or serving.
+The numerator includes process setup, object reads, replay and retirement;
+the denominator includes each module's imports, elaboration, tactics,
+first checking and standard artifact emission.
+Neither clock includes shared-lock wait or coordinator work.
+The streamed process consumes 65.509 user and 0.163 system CPU seconds;
+its \texttt{wait4} peak RSS is 754,252\,KiB.
+
+Forty-two completed single-module-oracle chunks independently reimport each
+target's environment before native replay; every chunk exits zero and its
+requested and accepted sets agree. Together they match all 1,330 streamed
+acceptances. A separate stock-checker preflight covers 13 modules.
+Three invalid proof terms---a loose variable, unknown constant and wrong
+sort---are rejected through both streaming and module-local replay.
+These checks establish differential evidence for the tested artifacts,
+not universal transparency or an axiom-closure audit.
+Upstream replay excludes 2,269 unsafe/partial entries in this closure;
+axioms keep their ordinary Lean semantics.
+The stock reader's well-formed-object assumption is retained.
+
+The closure includes compiler and standard libraries, not only mathematical
+theorems. Its 80 Mathlib-namespace modules account for 0.849 seconds of
+kernel replay and 49.607 seconds of source compiler work.
+That component ratio (1.71\%) omits shared-base checking, reads and process
+overhead; this namespace also contains tactics and helpers.
+It cannot replace the full-closure 10.56\% process comparison or establish a
+mathematical-module population estimate.
+This one-pass, warm-cache control demonstrates a lower-cost checking boundary
+at complete dependency scope. It does not isolate the causal shares of import
+reuse and omitted production.
+
+\paragraph{A computational target and its dependencies have different ratios.}
+\measured{\expref{0235-20261101T041713+0000}{0235}; target and closure clocks differ.}
+The reconstructed Grid closure also completes: 3,793 source modules,
+3,878.707 seconds of serial compiler work, and 563.082 seconds of matched
+stream checking (14.52\%).
+Its exact accepted set matches 119 completed module-oracle chunks, including
+42 previously completed chunks for identical shared dependencies.
+The stream reports 382,707 entries and 3,554 upstream unsafe/partial exclusions.
+This advances the earlier observation whose module-local parity was pending.
+The predeclared Amplitudes and \texttt{NearPinDeletion} cases now also
+complete both construction and exact module-oracle acceptance parity,
+with 5,083 and 3,333 modules, respectively.
+Their matched stream/source-work fractions are 14.55\% and 6.76\%.
+All four cases use one 5,085-node source union: shared immutable dependencies
+are built once and charged to each containing closure.
+There are 161 completed oracle chunks covering those 5,085 unique modules,
+not four disjoint samples or repeated confidence trials.
+
+Within that process, Grid's own kernel replay takes 255.487 seconds, versus
+318.231 seconds for its source compiler invocation: 80.28\%.
+The target replay subclock excludes shared-process startup and dependency
+checking; source compilation includes target imports and artifact emission.
+This component ratio is not standalone checking latency or a sampled CPU share.
+Table~\ref{tab:components} uses a common read/map/replay subclock for the
+four targets. The selected AI mathematical lemma \texttt{NearPinDeletion}
+needs 4.47\,ms at that boundary versus 0.962 seconds of source compiler
+wall; Amplitudes needs 110.026 versus 133.615 seconds.
+The contrast supports two different cost regimes on these inputs, without
+assigning every remaining producer millisecond to imports.
+The smaller whole-closure fraction includes source work for dependencies
+and cannot establish that a computational target itself is cheap to validate.
+No source-only or timing classifier for every module follows.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Target & Source (s) & Component (s) & Ratio\\
+\midrule
+\texttt{Nat.Basic} &0.410718&0.026844&6.54\%\\
+NearPinDeletion &0.962274&0.004473&0.46\%\\
+Grid &318.231&255.489&80.28\%\\
+Amplitudes &133.615&110.026&82.35\%\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0235-20261101T041713+0000}{0235}} Matched target read/map/kernel-replay components after dependency
+checking, versus target source compiler process wall. Components exclude
+shared-base checking and startup; these are not standalone latency ratios.}
+\label{tab:components}
+\end{table}
+
+\paragraph{Closure totals can hide the cost of generated nodes.}
+\measured{\expref{0246-20261101T121151+0000}{0246}; selected provenance composition.}
+We also split each selected closure by source provenance, rather than
+assigning an entire closure to its root's proof style.
+The four Grid \texttt{OAI} modules account for 9.76\% of its summed source
+compiler work but 52.70\% of its measured replay-call intervals
+(Table~\ref{tab:namespacecost}).
+The corresponding eight Amplitudes modules account for 8.69\% and 46.93\%.
+Thus removing source production changes which part of the dependency
+graph accounts for the work; a low complete-closure check/source ratio
+can coexist with substantial computational replay in generated nodes.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lrrr}
+\toprule
+Closure & OAI modules & Source share & Replay share\\
+\midrule
+NearPinDeletion &2&0.0743\%&0.00627\%\\
+Grid &4&9.76\%&52.70\%\\
+Amplitudes &8&8.69\%&46.93\%\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0246-20261101T121151+0000}{0246}} Shares attributable to fixed-source \texttt{OAI} modules within
+each complete selected closure. Source shares use summed native compiler
+wall; replay shares use summed per-module monotonic replay-call intervals
+after dependencies have been checked. Replay shares exclude read/map,
+startup, logging and cleanup, and are not full-process CPU shares.
+These are overlapping selected closures, not population-weighted samples.}
+\label{tab:namespacecost}
+\end{table}
+
+The generated modules' replay intervals total 294.675 seconds for Grid
+and 421.071 seconds for Amplitudes, versus 378.547 and 536.442 seconds
+of their respective source compiler work: 77.84\% and 78.49\%.
+By contrast, the two generated NearPinDeletion-closure modules require
+10.80\,ms of replay versus 1.898 seconds of compiler work, or 0.569\%.
+The 1,330-module Mathlib control contains no \texttt{OAI} nodes.
+Membership is established by namespace and pinned source path, not a
+complete semantic classifier of computational proofs.
+The two clocks measure different tasks: compilation includes imports,
+elaboration, tactics and artifact emission, whereas replay consumes
+compiled declarations in a checked environment.
+These shares do not isolate a causal import cost, establish a standalone
+latency gain, or fill the missing whole-library regime weights.
+Shared dependencies make the closures correlated; all values come from
+the earlier single-pass captures, not new repetitions.
+
+The actual O native cgroup limit is 11.875\,GiB.
+Grid source compilation reaches 7,940,196\,KiB peak RSS (7.57\,GiB),
+exceeding the listed 4\,GiB O-line share; the streamed closure reaches
+2,328,540\,KiB. This is an observed resource deviation, not a qualified
+4\,GiB comparison or authority to increase that share.
+\missing{Repeated generated-library closure comparisons, causal
+component attribution, uncertainty and full axiom coverage.}
+The complete passing-set comparisons do not establish universal shared-context
+transparency: duplicate theorem names, conflicting definitions and undeclared
+sibling visibility require separate qualification.
+A context-auditing continuation is not part of these timing results.
+
+\paragraph{Predictive admission trades completion for fewer budget cuts.}
+\measured{\expref{0254-20261101T195608+0000}{0254}; one ordered source-compilation policy point.}
+A separate native test gives FIFO, predicted-cost ordering and upper admission
+60 CPU seconds each, compiling the same 31 eligible original source modules
+one child at a time. These are distinct module proofs, not alternative
+candidates for one theorem.
+Frozen held-out forecasts are precomputed; extraction and forecasting cost
+are excluded. Each policy charges child and driver CPU.
+The test uses P0--7, eight compiler threads, no \texttt{-M}, normal
+\texttt{.olean}/\texttt{.ilean}/C outputs, and retained filesystem caches.
+Approximate operating-system CPU limits are not Lean heartbeat semantics.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+Policy & Done & CPU (s) & Cuts & Deferred\\
+\midrule
+FIFO &15&59.44&1&15\\
+Predicted order &15&59.46&1&15\\
+Upper admission &13&41.85&0&18\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0254-20261101T195608+0000}{0254}} One fixed-order native 60-CPU-second
+budget per policy. Completion counts are not a production throughput gain.
+A cut is an operating-system budget interruption, not a mathematical rejection.}
+\label{tab:admission}
+\end{table}
+
+All 43 completed calls exit zero; two other calls receive \texttt{SIGXCPU}.
+Upper admission leaves 18.15 allocated CPU seconds unused and completes fewer
+modules. Different selected IDs and ordered warm runs prevent a causal
+latency comparison from their wall clocks.
+A matched offline replay at the same budget and arrival order also yields
+15/15/13 completions. A separate larger-budget, randomized-arrival simulation
+favors predicted ordering, but is neither this native test nor evidence
+of a simulator/native contradiction.
+No general pass-at-$k$ follows from one reference proof per distinct module.
+
+The native child cap is 11.5\,GiB, with a 512\,MiB parent allowance,
+exceeding the listed O-line 4\,GiB share; this is not retroactively qualified
+as a 4\,GiB experiment. Maximum \texttt{wait4} RSS is 6.76\,GiB while the
+charged peak is 937,037,824 bytes, measured at different accounting boundaries.
+All 45 recorded temporary cgroups are absent after completion.
+Per-child PID/birth records are not emitted by this runner; complete
+\texttt{wait4} outputs establish returns, not an invented independent
+identity audit. There is one observed policy order, not replicated
+service-level benefit or a bounded-error admission mechanism.
+
+\paragraph{A correct regime label is insufficient for CPU-budgeted routing.}
+\measured{\expref{0256-20261101T205729+0000}{0256}; separate compiled-artifact admission experiment.}
+A second native point uses three selected root requests: Nat.Basic,
+BarrierData41 and Grid, each including its complete dependency closure.
+A fixed source label routes the ordinary root to serial checking and
+the two marked roots to the qualified four-worker original-kernel checker,
+without proof rewriting. FIFO uses serial checking for all three.
+Upper admission adds historical type envelopes from these same roots;
+this is recurrent known-work calibration, not a bound learned from class alone.
+
+Nine batches rotate three cyclic arrivals and policy order, allocating
+120 CPU seconds per policy in each arrival. Queue wait, source production,
+offline features and plan generation are excluded. Only whole completed roots
+count; partial dependency accepts do not complete a request.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+Policy & Done & Cuts & Discarded & Unused\\
+\midrule
+FIFO &0.33&1.00&97.34&0.65\\
+Type route &0.33&1.33&97.33&0.61\\
+Upper admission &1.00&0.00&0.00&54.05\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0256-20261101T205729+0000}{0256}} Means across three cyclic arrivals per
+policy, each with a 120-CPU-second budget. Done counts whole roots;
+discarded and unused CPU are seconds. These are descriptive observations,
+not three same-arrival repetitions or a population confidence interval.}
+\label{tab:class-admission}
+\end{table}
+
+Type routing completes no more roots than FIFO, although mean batch wall
+is 76.87 rather than 119.49 seconds. Spending the same work sooner before
+interruption is not higher successful-completion throughput.
+All five completed native requests are the ordinary root, with exactly
+the reference's 1,330 accepted IDs; seven calls receive \texttt{SIGXCPU}.
+Neither computational root completes at this budget. Their prior full-pair
+parity is not newly established by interrupted requests.
+One routed batch dispatches a second interrupted request because discrete
+CPU limits leave a whole-second allowance; this quantization is retained.
+No observed batch exceeds its recorded CPU allocation.
+
+Upper admission finishes the ordinary root in every arrival and avoids
+discarded-root work, but defers both computational roots and leaves
+45.04\% of allocated CPU unused. The existing ordinary NearPin closure takes
+172.73 CPU seconds, already exceeding the frozen ordinary envelope of 71.74.
+Class membership therefore fails as an unseen-work upper bound.
+Completed parallel full-pair costs also consume more CPU than serial;
+a label's wall-time opportunity need not improve a CPU-budget objective.
+The three selected requests have one reference each, not a pass-at-$k$ study
+or a representative service mix.
+
+Commands retain no \texttt{-M}, P0--7 and the shared lock. All recorded native
+identities and child cgroups retire, with no OOM, sampled-RSS stop or wall timeout.
+The existing O child cap remains 11.5\,GiB with a 512\,MiB driver allowance,
+above its listed 4\,GiB share. Peak sampled child RSS is 1,389,350,912 bytes
+and charged memory is 322,310,144 bytes; the driver peak is unrecorded.
+This does not establish whole-lane 4\,GiB compliance.
+\partialev{known-panel availability benefit; unseen admission guarantees,
+representative mixes and end-to-end feature cost missing.}
+
+
+\partialev{\expref{0260-20261102T020415+0000}{0260}; source construction completed, first full check interrupted.}
+A later Falconer extension reports all13,205 source nodes constructed,
+including5,077 successful common nodes reused within the same capture.
+Its first full-stream attempt reaches the1,500s timeout: rc124 after
+1,500.211s, with8,942 complete unique accept records and8,943 headers.
+One final75-byte accept fragment is incomplete and is not counted.
+The collector's subsequent JSON parsing failure does not establish a
+mathematical rejection or full accepted-set mismatch.
+No complete check/source ratio exists for this attempt.
+The native receipt records no OOM, an11.75GiB charged cap and
+4,168,736,768 charged peak bytes versus8,684,232KiB wait4 RSS;
+this remains outside the listed O4GiB share.
+That receipt omits exact native PID/birth, so the now-absent cgroup is
+not presented as a complete identity audit.
+The owning lane's repaired, separately qualified checking paths remain
+distinct from this terminal failure.
+\missing{Complete Falconer checking, matched reference acceptance and final ratio.}
+
+\paragraph{System-design implication.}
+\partialev{implication of scoped observations; general benefit unproven.}
+Expose the cheap checking boundary if one exists: separate production and
+checking APIs, reuse compatible contexts and charge the complete lifecycle.
+Warm imports are established engineering~\cite{kimina,kiminaPaper};
+the characterization must show where they matter and what remains expensive.
+
+\section{Recomputation motivates parallel original-kernel checking}
+\label{sec:chunked}
+\paragraph{RQ3: scale without adding trusted proof rules.}
+\partialev{finite transformations; unchanged implementation TCB unproven.}
+A monolithic reduction can leave cores unavailable to one checking invocation.
+Parallelism requires independently checkable claims and a checked connection
+to the unchanged original proposition.
+A source split, numeric evaluator or worker success flag alone is insufficient.
+
+\paragraph{The existing module-parallel baseline has a different boundary.}
+\measured{\expref{0247-20261101T131749+0000}{0247}; source audit only, no throughput comparison.}
+The bundled checker already launches \texttt{replayFromImports} tasks for
+selected modules before collecting their results~\cite{lean434CheckerSource2026}.
+Each task loads its imports through the stock importer and checks its local
+declarations; task dispatch does not wait for imported modules' checking
+tasks to finish.
+Our shared stream instead reuses a checked prefix.
+A dependency-DAG model that requires every imported module to finish checking
+before the next module starts therefore adds a barrier absent from the
+existing task dispatcher.
+Such a model is not an upper bound on the bundled checker.
+Module-local tasks also repeat environment preparation, so shared-stream
+call weights alone cannot predict their process costs.
+The CLI selects module-name prefixes, which need not equal an explicitly
+chosen artifact closure.
+\missing{Native same-closure module-local task comparison with matched workers,
+memory protection, acceptance scope and complete lifecycle accounting.}
+The stream speedups below compare the stated serial baselines; they do not
+establish superiority over this unmeasured native module-parallel path.
+
+\paragraph{Prototype: generated claims and checked assembly.}
+\measured{\expref{0234-20261101T030854+0000}{0234}; small Grid whole-path negative.}
+M freezes a real Grid \texttt{PointBox.calc} equality and structurally forms
+18 scalar-equality leaves.
+The prototype groups them for one, two, four or eight workers, constructs
+decision proofs and submits declarations through the original C++ kernel's
+\texttt{Environment.addDeclCore} API.
+Checked leaves are emitted as modules; a composition proof uses
+extensionality lemmas and is checked against the original target.
+Code checks the target, sorry/metavariable absence and expected axiom boundary.
+The completed flat-partition diagnostic below exercises this acceptance path.
+
+The controls distinguish original monolithic $k=0$, the same decomposition
+with $k=1$, and $k=2,4,8$.
+This separates decomposition from parallel execution.
+Preparation, repeated reductions, serialization/communication, assembly,
+checking, memory and retirement belong in end-to-end cost.
+The corrected flat-partition matrix completes 15 native cells:
+the original and $k=1,2,4,8$, each repeated three times.
+All accept; final propositions and the \texttt{[propext]} axiom dependencies
+match the extracted original, with no \texttt{sorry} or new axiom dependency.
+Both original and split paths export a checked final module.
+Same-$k$ repeated artifacts are byte-identical; different partitions
+intentionally construct different proof terms.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Arm & Kernel span (ms) & Worker CPU (ms) & Native (s)\\
+\midrule
+Original &146.08&146.03&1.974\\
+$k=1$ &144.07&144.04&5.973\\
+$k=2$ &140.50&149.35&5.862\\
+$k=4$ &151.68&237.61&5.897\\
+$k=8$ &178.02&392.06&5.927\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0234-20261101T030854+0000}{0234}} Medians of three no-\texttt{-M} repetitions on one real Grid
+equality. Kernel span covers the worker checks; worker CPU sums their thread
+clocks. Native wall includes preparation, checks and artifact handling.}
+\label{tab:flat}
+\end{table}
+
+Table~\ref{tab:flat} shows a negative whole-path result for this partition.
+Relative to the same decomposition at $k=1$, pure-kernel scaling is
+1.025, 0.950 and 0.809 at $k=2,4,8$; the eight-job case spends 2.72 times
+the worker CPU. More occupied cores do not imply useful acceleration.
+The split native pipeline takes roughly three times the original's wall time.
+At $k=2,4,8$, ordinary module reimport takes median
+3.643/3.659/3.660 seconds; final theorem checking takes about 0.16--0.20\,ms.
+Environment reconstruction, rather than the small assembly proof alone,
+dominates the observed merge stage.
+This standalone goal pipeline is not a warmed service or a full Grid build.
+
+The flat grouping places both exponential record components in one $k=2$
+job, while several $k=8$ jobs touch the same components.
+This supports an imbalance/repeated-reduction hypothesis, not a complete
+CPU attribution. A subsequent component-preserving control also completes
+15 accepting cells.
+Its original/$k=1$/$k=4$ kernel-span medians are
+151.03/147.72/78.75\,ms, showing a local reduction at this boundary.
+Whole native wall nevertheless rises from 1.982 seconds original to
+5.838 seconds at $k=4$.
+Twenty-seven same-$k$ artifact byte comparisons differ; native inspection
+finds exact typed \texttt{ConstantInfo} equality for all 27 pairs,
+including theorem types and bodies. This is not extension-state equality
+or an established explanation of serialization differences.
+Both controls remain negative for end-to-end acceleration of this small goal,
+not bounds on other decompositions or larger goals.
+
+Both partition points' recorded PID/birth identities are retired.
+Their recorded resource response is a 14\,GiB sampled tree-RSS stop with a
+180-second self alarm. Their frozen runners and receipts do not establish a
+dedicated charged-memory cgroup, so these diagnostics are not presented as
+the required final cgroup-controlled resource comparison.
+No observed cell times out or reaches its sampled stop.
+Aggregate heartbeat equivalence to the monolithic request is not implemented.
+\missing{Final resource-qualified parallel comparison, corrupt-leaf and
+budget/failure equivalence, shape coverage and heterogeneous-module transfer.}
+One frozen equality is not full Grid or a general extraction algorithm.
+
+\paragraph{Declaration-level replay on a complete module.}
+The measured subsecond calls motivate a second prototype: dependency-aware
+replay of the original declarations, without rewriting their proof terms.
+BarrierData41 has 3,425 supported safe, acyclic declarations.
+The prototype creates ready frontiers, checks jobs with the stock kernel,
+exports checked module fragments and normally imports them for successor
+frontiers. It explicitly rejects unsupported or cyclic input.
+The final native audit compares every typed \texttt{ConstantInfo}, including
+theorem bodies, and returns names in the original array order.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Replay path & Pipeline wall (s) & Native CPU (s)\\
+\midrule
+Direct stock API &46.992&46.956\\
+Wave, 1 worker &53.321&53.205\\
+Wave, 2 workers &31.072&54.556\\
+Wave, 4 workers &20.233&58.335\\
+Wave, 8 workers &14.127&60.016\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0235-20261101T041713+0000}{0235}; scoped prototype.} BarrierData41 independent compiled-module replay, three ordered
+repetitions per path. Wall spans first stage-configuration write through
+final audit retirement, including graph planning, native processes, imports,
+exports and driver gaps. Lease wait and initial directory/environment setup
+are excluded; CPU sums native processes, excluding the Python coordinator.}
+\label{tab:waves}
+\end{table}
+
+All 15 cells accept the same 3,425 typed constants and ordered names;
+all 99 native stages exit zero and their recorded identities/cgroups retire.
+Eight workers reduce the measured pipeline median from 46.992 to 14.127
+seconds, 3.326-fold against the direct stock-API baseline
+(Table~\ref{tab:waves}); per-repetition ratios range from 3.284 to 3.359.
+Native CPU increases 27.8\%.
+One-worker wave replay is 13.5\% slower than direct stock replay, so a
+wave-one-only baseline would overstate the gain.
+The point uses P0--7, no \texttt{-M}, and an external 14\,GiB charged-memory cap.
+
+The output contract is the final typed-constant/name audit.
+Intermediate serialization is a cost of this implementation, not an extra
+required output imposed on the direct baseline.
+Original proof terms and the original kernel are retained under this local
+checked-fragment protocol; this is not a proof for arbitrary coordinators,
+untrusted object transfer or changed failure/budget semantics.
+The import-relative dependency trust matches the stock module API.
+Upstream checking already dispatches independent modules as tasks
+~\cite{lean434CheckerSource2026}; this case isolates parallelism inside one
+module, without establishing whole-library or source-elaboration speedup.
+Other modules, warm-service throughput and repeated failure behavior remain
+\missing{unmeasured at the matched resource/trust boundary}.
+
+\paragraph{Parallel leaves can lose their gain at the module boundary.}
+A larger measured helper, \texttt{envelopeExpB16\_calc} in
+EnvelopePsiB, checks 31 finite-index interval-exponential equalities.
+The prepared transformation groups indices into 1, 2, 4 or 8 chunks,
+retaining each index's original computation.
+An original-kernel-checked merge lemma reconstructs the original target;
+an explicit equality control connects that target to the released helper.
+This case tests parallel rechecking of a prepared transformation, not the
+cost of automatically producing that transformation.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Path & Kernel span (s) & Runtime (s) & CPU (s)\\
+\midrule
+Original &6.125&9.848&9.836\\
+1 chunk &6.177&14.347&14.319\\
+2 chunks &3.531&11.490&14.892\\
+4 chunks &1.967&10.331&15.307\\
+8 chunks &0.973&8.982&15.110\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0236-20261101T051231+0000}{0236}} EnvelopePsiB helper, medians of three repetitions. Kernel span
+runs from the first worker's stock checking-call entry to the last exit.
+Runtime includes both sequential producer and merger process lifecycles,
+imports, exports and interphase cleanup. Native CPU excludes the Python
+parent; transformation generation, base/merge-lemma compilation and the
+original library producer build are excluded.}
+\label{tab:envelope}
+\end{table}
+
+Eight chunks shorten the kernel span 6.292-fold, but runtime decreases
+only from 9.848 to 8.982 seconds: 1.096-fold, or 8.79\% less wall time.
+Native CPU rises 53.6\%.
+Paired runtime ratios are 1.096, 1.103 and 0.949; the last repetition
+is 5.35\% slower than its original.
+Three repetitions, with reversed setting order in the second, do not
+establish population uncertainty or guaranteed nonregression.
+At eight chunks, merger import alone takes a median 3.142 seconds,
+whereas final kernel assembly takes 0.296\,ms.
+The paired nonkernel residual added over the original is 4.24--4.91
+seconds; this residual includes multiple operations and is not a causal
+attribution to imports alone.
+
+All 15 performance cells accept the same extracted target and the exact
+axiom set \texttt{[propext]}, without \texttt{sorry} or added axioms.
+A false-decision control reaches explicit original-kernel rejection.
+The 28 recorded native phases retire with their cgroups, with P0--7,
+no \texttt{-M} and an external 14\,GiB charged-memory cap.
+Sampled own-tree RSS peaks at 9.087\,GB and charged memory at
+2.588\,GB; these are distinct measurements, not equivalent limits.
+All 84 same-setting repeat artifact comparisons are recorded equal;
+proof artifacts intentionally differ across chunk counts.
+Aggregate heartbeat-budget transparency and arbitrary tactic-backtracking
+parity remain unimplemented.
+This helper's small and variable runtime gain complements the Barrier
+module case; their different baseline and output interfaces prevent
+combining the speedup ratios into a library estimate.
+It also identifies a concrete design cost: preserve checking parallelism
+without rebuilding a prepared environment at every assembly boundary.
+
+\paragraph{Checking inside one prepared stream.}
+A combined prototype avoids module-export round trips between target trials.
+It checks the import prefix once, then compares direct stock replay with
+1, 2, 4 and 8-worker declaration replay against the same immutable checked
+prefix. Unlike the earlier checked-fragment protocol, it commits checked
+results through an internal-ABI adapter; its additional implementation
+trust is discussed in Section~\ref{sec:meaning}.
+
+One completed repaired v14 Grid process checks its 3,793-module closure and runs five
+ordered target trials (Table~\ref{tab:gridstream}).
+Each parallel trial processes 7,898 declarations in eight dependency waves;
+its complete typed constants, including proof bodies, match direct serial
+replay. There is no chunk substitution in these Grid trials.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Grid trial & Incremental wall (s) & Process CPU (s)\\
+\midrule
+Direct serial &265.010&264.853\\
+1 worker &270.264&270.158\\
+2 workers &155.577&310.739\\
+4 workers &94.183&375.643\\
+8 workers &65.856&523.784\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0244-20261101T101651+0000}{0244}} One ordered Grid trial sequence inside one process and checked
+prefix. Trial clocks include planning, checking and the result-identity audit;
+they exclude the already checked prefix and process startup.
+These are incremental target costs, not complete independent invocations.
+There is one observation per path, without randomized order or confidence bounds.}
+\label{tab:gridstream}
+\end{table}
+
+Eight workers reduce the incremental target wall time 4.024-fold,
+with 97.76\% more process CPU.
+CPU/wall is 7.95, an observed average occupancy rather than a count of
+operating-system threads. Four workers take 94.183 seconds; one worker
+remains slower than direct serial replay.
+The complete process takes 1,054.529 seconds and 2,116.247 cgroup CPU seconds,
+including the prefix and all five trials.
+Neither that total nor the incremental ratios measure a complete single-mode
+speedup. The process exits successfully under P0--7/no-\texttt{-M}/
+14\,GiB charged-memory protection; sampled RSS and charged peaks are
+2.936\,GB and 0.919\,GB, respectively.
+Upstream unsafe/partial exclusions remain 3,554 among 382,707 input entries.
+This repairs the earlier scheduling-defective requested-eight observation;
+the two versions are not pooled.
+One ordered observation does not establish repeated Grid uncertainty or
+library-wide performance, and the extra CPU has no matched causal profile.
+
+\paragraph{A repaired complete-closure comparison.}
+The later frozen version adds a shared worker-start gate and set-based
+import-visibility membership, while retaining the local-cycle repair.
+Its startup and audit costs remain inside the measured process boundary;
+we do not isolate either implementation change's causal benefit.
+A fresh matrix uses the same constructed 1,330-module
+\texttt{Mathlib.Data.Nat.Basic} closure for the original serial stream,
+audited serial replay and 1, 2, 4 or 8-worker streams
+(Table~\ref{tab:repairedstream}).
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrr}
+\toprule
+Stream path & Wall median [min,max] (s) & CPU (s)\\
+\midrule
+Original serial &68.605 [65.989,71.805]&68.570\\
+Audited serial &71.326 [71.304,72.125]&71.180\\
+1 worker &77.859 [76.171,77.967]&77.438\\
+2 workers &57.569 [57.529,58.216]&80.811\\
+4 workers &47.598 [47.362,49.214]&84.644\\
+8 workers &45.050 [44.270,45.292]&93.430\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0241-20261101T080929+0000}{0241}} Complete artifact-closure process costs on repaired frozen v14,
+three fresh-process repetitions per path in repeated fixed order.
+Filesystem caches are not flushed. CPU is a separate median.
+The fresh original-stream baseline is distinct from the earlier single
+65.693-second observation and from source compiler work.}
+\label{tab:repairedstream}
+\end{table}
+
+All 18 cells exit zero and accept the same 1,330-module set, with 132,484
+entries and 2,269 upstream unsafe/partial exclusions per cell.
+The parallel paths execute 55,255 ordinary-declaration jobs in 3,616 waves
+across 858 modules; 472 complex/cyclic modules use upstream serial replay.
+There are no module-local context fallbacks on this fixed closure, and
+certificate proof rewriting is inactive.
+
+Eight workers reduce process-wall median 34.33\%, or 1.523-fold, with
+36.25\% more native CPU.
+Same-repeat wall ratios are 1.515, 1.594 and 1.491.
+Audited and one-worker paths remain slower than the original stream.
+Three fixed-order repetitions do not establish population confidence or
+production-service throughput.
+All native identities, temporary cgroups and the finite matrix controller
+retire under P0--7/no-\texttt{-M}/14\,GiB charged protection.
+The repaired source requalifies 20 native boundary controls and the three
+actual-certificate scenarios.
+This completes one repaired-version artifact-checking comparison; it neither
+retroactively qualifies the defective v4 table nor proves universal context
+equivalence or an unchanged implementation TCB.
+The earlier 622.379-second source-work denominator is not remeasured here,
+and no compiler-build speedup follows from these same-artifact stream ratios.
+
+A second complete process uses the same repaired frozen source for
+BarrierData41. It checks a 4,448-module prefix once and then runs the same
+five ordered target paths.
+Incremental serial and 1/2/4/8-worker wall costs are
+53.960, 56.443, 29.829, 16.468 and 10.186 seconds.
+All parallel trials return the same 3,425 typed constants, including proof
+bodies, across six dependency waves.
+Eight workers reduce target wall time 5.297-fold, with process CPU rising
+from 53.934 to 80.155 seconds, or 48.62\%.
+CPU/wall at that boundary is about 7.87, without implying only eight
+operating-system threads.
+The complete process takes 468.112 seconds and 867.564 CPU seconds,
+including the checked prefix and all five target trials.
+It accepts 4,449 modules with 3,595 upstream unsafe/partial exclusions;
+all recorded native identities and cgroups retire without resource stops.
+This is one ordered observation per path, not repeated uncertainty.
+Its incremental 5.297-fold result is distinct from the earlier
+3.326-fold checked-fragment pipeline result: neither their baselines nor
+their lifecycle/output boundaries match.
+We do not attribute the difference to the worker-start gate or report it
+as a cold-mode, source-build or library-wide improvement.
+
+\paragraph{Complete closure costs are smaller gains than target curves.}
+\measured{\expref{0244-20261101T101651+0000}{0244}; one ordered pair per closure.}
+Two new pairs run the original serial stream and repaired uniform
+four-worker stream from empty checked environments on the same artifacts
+(Table~\ref{tab:fullcomputestream}).
+Each arm uses one complete configuration, independently checking every
+dependency, with retained filesystem caches.
+The external charged-memory cap is 14\,GiB, both arms have an 800-second
+native budget, and all timed native execution uses P0--7 without
+\texttt{-M}. No certificate proof rewriting is active.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+Closure & Modules & Serial (s) & Four (s) & Ratio\\
+\midrule
+BarrierData41 &4,449&474.851&304.862&1.558\\
+Grid &3,793&557.568&296.293&1.882\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0244-20261101T101651+0000}{0244}} Actual complete native-process pairs, one observation per arm.
+Clocks run from subprocess launch through \texttt{wait4}; subsequent
+sampler join and cgroup removal are verified but outside that wall clock.
+Each pair runs serial first. Grid's arms are separated by a controller
+repair gap; its completed reference is retained without rerunning.}
+\label{tab:fullcomputestream}
+\end{table}
+
+Barrier's complete closure takes 35.80\% less wall with 24.63\% more
+cgroup CPU (474.582 to 591.467 seconds).
+Grid takes 46.86\% less wall with 33.56\% more cgroup CPU
+(557.350 to 744.406 seconds).
+Complete \texttt{wait4} CPU accounting is retained separately and differs
+from cgroup usage by less than 0.001 seconds for each of these arms.
+The full accepted sets and import graphs match between each pair and its
+corresponding earlier complete-prefix curve:
+425,463 entries with 3,595 upstream exclusions for Barrier, and
+382,707 with 3,554 for Grid.
+All sampled native identities, controllers and temporary cgroups retire
+without resource stops or OOM events.
+
+The first Grid controller finishes its serial arm and then fails while
+writing pair metadata, before launching the second arm.
+The corrected continuation reuses that result and measures only the
+missing parallel arm. We compare the two native-process clocks, not a
+continuous pair-session time across the repair gap.
+Neither pair is randomized or repeated.
+Grid's earlier matching source work is 3,878.707 seconds, a serial sum
+of compiler invocations rather than a parallel Lake build wall time;
+the measured stream pair does not remeasure that production cost.
+A matching complete source-work sum for Barrier is \missing{Barrier closure
+source work}; its leaf compiler time cannot fill that cell.
+The complete four-worker ratios cannot be replaced by, or multiplied with,
+the eight-worker incremental target ratios.
+Full eight-worker closure costs and general service throughput remain
+unmeasured. The coordinator and internal-ABI adapter still add trusted
+implementation code; acceptance-set parity is not a proof of universal
+malformed-input equivalence.
+
+\paragraph{Pooled certificates pass a broader native qualification.}
+\measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}
+A separate native control selects all ten measured Envelope helpers whose
+earlier checking calls exceed one CPU second.
+Before transformation, each input \texttt{ConstantInfo} must equal its
+prepared selector, including the original proof.
+The original kernel then checks certificate support, 80 pooled children and
+ten assembled parent theorems; their transitive axiom union is
+\texttt{[propext]}, without \texttt{sorry}.
+Corrupting an incoming original proof or a prepared child produces explicit
+original-kernel rejection in two additional controls.
+The control imports its prefix through the stock loader and rechecks the
+ready local declarations; it does not independently check the entire closure.
+Its three native processes retire without resource stops, but it supplies
+no paired performance result.
+The earlier v10 complete-prefix attempt remains an RSS interruption;
+passing these controls does not repair that historical result.
+The subsequent complete-prefix observation below uses a different frozen
+version and prefix-worker policy.
+
+\paragraph{Splitting must beat declaration parallelism.}
+\measured{\expref{0243-20261101T091434+0000}{0243}; one target sequence, no full single-mode pair.}
+A repaired v14 Envelope process independently checks 10,751 dependency
+modules before nine ordered target trials.
+The prefix uses four requested workers; target paths request 1, 2, 4 or 8.
+This uses a fresh checking environment, not flushed filesystem caches.
+All 110 leaf declaration names, types and universe levels match serial.
+Ordinary paths retain their original proof bodies.
+Chunk paths deliberately replace ten eligible parent proofs after matching
+their complete incoming constants to the prepared references.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Envelope target path & Wall (s) & Process CPU (s)\\
+\midrule
+Serial &61.913&61.889\\
+Declaration, 1 worker &61.470&61.444\\
+Declaration, 2 workers &33.856&67.204\\
+Declaration, 4 workers &22.515&76.542\\
+Declaration, 8 workers &17.539&97.815\\
+Chunk, 1 worker &61.852&61.815\\
+Chunk, 2 workers &37.920&72.995\\
+Chunk, 4 workers &20.768&80.182\\
+Chunk, 8 workers &13.299&102.888\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0243-20261101T091434+0000}{0243}} One ordered Envelope target sequence after independently checking
+the shared dependency prefix. Clocks include payload reading, support replay,
+children, merges, ordinary declarations and result audit.
+Source scanning, producer compilation and certificate generation are
+excluded. Each path has one observation, not a repeated median.}
+\label{tab:envelopepooled}
+\end{table}
+
+The stronger baseline is declaration-level parallelism, not just serial
+checking. Eight-worker chunking takes 13.299 seconds versus 17.539 seconds
+for eight-worker declaration replay: 1.319-fold, or 24.17\% less wall,
+with 5.19\% more CPU.
+Against serial it is 4.655-fold, with 66.25\% more CPU.
+Chunking at two workers is slower than two-worker declaration replay.
+The four chunk settings check 150 child proofs and 40 parent merges;
+the transformed parents' transitive axiom union remains
+\texttt{[propext]}, without \texttt{sorry}.
+These are source-qualified finite-index certificates, not a general
+decomposition algorithm or an untrusted selector.
+
+The complete process accepts 10,752 modules, with 785,706 input entries and
+4,444 upstream unsafe/partial exclusions, and retires in 1,665.530 seconds
+with 2,772.428 cgroup CPU seconds.
+Its 331.132 seconds of target trials leave 1,334.398 seconds of nontrial
+residual, including prefix verification, reading, startup and cleanup.
+That residual is not an import-only clock, and the complete process runs
+all nine paths rather than one chosen configuration.
+A separate original-stream serial attempt reaches its 1,680-second
+native limit, returning timeout status 124 after 1,680.158 seconds.
+It retains 10,744 complete acceptance records from the 10,752-module graph,
+plus one truncated 222-byte record; there is no completion event.
+The eight modules without complete acceptance records are unobserved at
+this boundary, not eight mathematical rejections.
+Cgroup CPU is 1,679.367 seconds, sampled RSS peaks at 7.830\,GB and charged
+memory at 1.836\,GB; no memory stop or kernel OOM occurs.
+The native process, sampled children, controller and cgroup retire.
+This is a time-censored original-stream attempt, not a completed serial
+reference or an acceptance-set discrepancy on completed inputs.
+It neither supplies a full-closure speedup nor identifies which checking
+call consumed the remaining budget.
+The earlier 1,665.530-second process includes a parallel prefix and all
+nine target paths, so dividing these two process clocks is invalid.
+
+The one-second RSS samples peak at 13.971\,GiB, below the 14\,GiB sampled
+stop; \texttt{wait4} nevertheless records 14.019\,GiB between observations.
+Charged peak is 8,910,696,448 bytes, below the separate 14\,GiB charged cap.
+No resource stop or OOM occurs, and the native peak remains below the
+16\,GiB lane allocation; no hard 14\,GiB RSS guarantee follows.
+All native identities, the controller and cgroup retire.
+This one success differs from the earlier v10 failure in both source and
+prefix-worker policy; it does not isolate a memory fix or establish
+near-budget robustness.
+The additional WaveExpData ancestor takes 44.990 seconds at its prefix
+checking-route boundary, but has no per-goal cost qualification in this
+capture and is outside the earlier ten-helper panel.
+\missing{Repeated and single-configuration complete-closure comparisons,
+broader repaired-version coverage and aggregate failure/budget transparency.}
+
+A cluster cannot silently trust remote object files or worker verdicts as
+new proof assertions. Specify what the acceptance authority checks,
+dependency identity, transfer and recovery.
+\missing{Multi-machine protocol, native soundness/differential evidence
+and complete cluster costs.}
+Single-host code and multi-core timings are not distributed results.
+
+Earlier certificate proofs establish selected feasibility; seven Int/list
+original/certificate pairs all accept, but currently matched transfer costs
+remain unestablished.
+Changing a certified algorithm and parallelizing a fixed decomposition are
+distinct. Reflection and proof parallelism are established approaches
+~\cite{mathlib,lean49DecideSource,isabelleBuild2024}.
+
+\paragraph{System-design implication.}
+\partialev{implication of scoped observations; general benefit unproven.}
+Expose work at a kernel-checkable boundary; retain original checking rules
+and the required axiom closure.
+Keeping generation/scheduling outside the trusted decision is a design
+requirement, not a proved property of the combined in-memory prototype.
+Preserve shared subcomputations when choosing work units and account for
+environment reconstruction. Validate decomposition and parallelism separately,
+then check the complete assembled theorem at equal CPU/memory resources.
+Faster leaves or transformed subgoal success alone are insufficient.
+
+\section{Verified leaves build, outcome and axiom boundaries open}
+\label{sec:meaning}
+\paragraph{RQ4: what has actually been established?}
+\measured{\expref{0231-20261101T001556+0000}{0231}; lexical/build coverage only.}
+The publisher's default root reaches 130,834 of 163,097 modules.
+The other 32,263 contain 451,008 of 1,354,379 masked kernel-decision sites,
+33.30\%. This is not an omitted CPU fraction or a statement that outside
+files fail. All 562 PlanarPacking and 466 Transonic modules are outside.
+A successful default build cannot establish all released-artifact coverage.
+
+\paragraph{Source sites, declarations and axioms differ.}
+\partialev{retained-object census; whole axiom closure missing.}
+In the retained 363-object census, 45,661 decision-shaped auxiliaries have
+42,610 globally distinct expression-type keys.
+Source occurrences can expand into several helpers; imported objects use
+another boundary. Neither these keys nor Lean's branch-local auxiliary
+cache establishes safe cross-proof reuse~\cite{leanAuxLemma434,leanDecide434}.
+Zero direct native-evaluation tokens does not establish zero transitive
+axiom dependence. Vericoding source flags and publisher labels similarly
+do not establish native acceptance or known axiom closure.
+\missing{Repository-wide declaration reachability, admissions and axiom closure.}
+
+\paragraph{A shared context can change which proof is checked.}
+\measured{\expref{0237-20261101T060743+0000}{0237}; a specific acceptance-contract mismatch.}
+A later combined streaming prototype exposes a concrete context failure.
+A valid earlier sibling provides \texttt{Shared.t : True}.
+A different incoming module imports only \texttt{Init.Prelude}; its raw
+declarations give \texttt{Shared.helper : True := Shared.t} and
+\texttt{Shared.t : True := Shared.helper}.
+These are deliberately cyclic proof data, not successfully compiled source.
+Version 4 accepts the incoming module after the sibling: the old
+\texttt{Shared.t} makes the helper check, masking the incoming local cycle.
+The same binary's isolated module-local original-kernel path rejects it
+with an unknown-constant error for \texttt{Shared.t}.
+
+This is a demonstrated acceptance-contract mismatch, not an original-kernel
+bug or an accepted proof of \texttt{False}: both claimed propositions are
+\texttt{True}. The defect is substituting an out-of-import binding while
+validating the incoming proof.
+The repaired prototype follows incoming local dependencies transitively;
+a cycle takes module-local replay.
+It rejects this input with one and eight workers, and completes 20 native
+boundary controls, including sibling visibility, corrupted duplicate proofs,
+conflicting definitions and stale/duplicate checked tokens.
+All 22 recorded control processes, including historical acceptance and the
+isolated rejection, retire without resource interruption.
+These controls bound the tested cases, not arbitrary corrupted modules.
+The previous 18-cell, 1,330-module positive-input performance table belongs
+to the defective version and is not a repaired-version throughput result.
+\missing{Repaired-version performance beyond the selected closure and
+broader module-context differential evidence.}
+
+A second boundary is implementation trust.
+This combined in-memory prototype commits checked results through a
+checked-token coordinator and a pinned internal-ABI C map-insertion adapter.
+Those components are additional trusted implementation code, although the
+original kernel still checks mathematical declarations.
+They differ from the earlier Barrier checked-fragment/normal-import protocol.
+Neither prototype establishes a universally unchanged implementation TCB.
+
+\paragraph{Reproducibility requirements differ across measured stages.}
+\measured{\expref{0261-20261102T023802+0000}{0261}; \expref{0262-20261102T030442+0000}{0262}; module and candidate boundaries.}
+For the2,524 eligible computational targets in a later three-module census,
+each checked12times across one/two/four/eight worker pools and three repeats,
+allocation counts have0\% observed spread and every judgment agrees.
+No additional allowance is needed to cover those observed raw counts.
+This is the limited sense in which deterministic accounting comes without
+an observed count margin here; it does not establish fixed complete
+recomputation work, zero implementation overhead or a property of all
+computational proofs.
+
+The mathematical source programs InteriorH1Derivative and ReindexSingle
+have observed count spans0.036739\% and0.138453\%, respectively, with
+identical judgments. A separate 16-source concurrent-candidate panel has
+83 changed theorem-command counts among192 pairs (84 changed full command
+vectors), a maximum theorem-command span of2.333868\%, and no acceptance
+changes. The latter span and the module-level0.14\% use different units
+and inputs; they are not pooled.
+All percentages describe the observed maximum relative to the observed
+minimum, rather than a universal fluctuation bound.
+
+\partialev{observed count allowances; required budget margins remain unmeasured.}
+These measurements identify where stable accounting was obtained and
+where a replay policy would have to address observed count variability.
+They do not show that only tactic-search-dominated mathematics needs
+such treatment: the selected mathematical stored proofs also have stable
+counts, their kernel arm has only one active theorem, and search paths
+were not traced. Shared preparation, realization and allocation attribution
+remain alternative explanations.
+Nor does2.33\% establish sufficient or necessary \texttt{maxHeartbeats}
+padding: that limit applies per Core context, not to the aggregate measured
+command deltas, and this experiment does not sweep acceptance thresholds.
+The later2,524-helper census is separately qualified below and extends
+the earlier24-target sample within the same three pinned modules and proof
+form. It does not extend the result to other computational proofs.
+General computational or mathematical determinism is not claimed.
+
+Orthogonal controls support this bounded interpretation:
+256 cold/warm comparisons preserve verdicts and diagnostics and128 synchronous
+count vectors match, while100 valid lower-pass/higher-budget pairs across
+five budgets have no monotonicity counterexample.
+These are finite observations under their stated cache and adapter settings,
+not universal replay or monotonicity guarantees.
+
+\partialev{historical setting controls; general reproducibility unresolved.}
+Six released EPFL exact-program controls fail at recursion depth128 but
+pass at256/default512 in reconstructed contexts; producer context is unknown.
+A historical \texttt{-M8192} diagnostic changes seven error flags among
+200 profiler/control pairs.
+That is neither full-source accepted-set loss nor a current no-\texttt{-M}
+observer-cost estimate.
+A C-timing control preserves diagnostics but changes allocation-heartbeat
+deltas; equal error flags do not establish exact budget accounting.
+\missing{General cross-machine observer/outcome stability and broad software coverage.}
+
+\measured{\expref{0255-20261101T200059+0000}{0255};
+finite corrected-adapter matrix.}
+A fresh no-\texttt{-M} matrix contains 1,536 configuration observations of
+16 selected retained miniF2F inputs, with two budgets, stock/synchronous
+frontends, three observers, four thread counts and reversed-order repeats.
+Ten corrected qualification controls distinguish valid, false, sorry,
+parse-error and extra-axiom inputs; they do not establish general transparency.
+At budget 1,000, off/trace comparison has eight acceptance-flag changes
+among 256 pairs. All come from one input repeated across configurations,
+and all occur in the synchronous accounting path: accepted without tracing,
+budget-exhausted with tracing.
+The stock/synchronous comparison has eight changes among 384 pairs at
+that budget; at 3,000 it has none.
+Thread-count comparisons show no acceptance differences at either budget.
+Thus this is not a demonstrated trace-induced stock-frontend pass-set loss.
+It does defeat observer-independent accounting for the tested synchronous
+path. Allocation observations are partial, not a complete candidate work
+budget, and these selected observations imply neither population frequency
+nor cross-machine stability. The 17 native phases and recorded identities
+retire without resource stops; no new deterministic-budget mechanism follows.
+
+\measured{\expref{0256-20261101T205729+0000}{0256}; separate finite budget ladder and input-file control.}
+Sixteen selected sources on the synchronous, observer-off path yield
+160 observations at five budgets and one/eight available threads.
+All 100 lower-budget-accepted/larger-budget comparisons retain acceptance.
+This supports only those chains, not monotonicity for arbitrary sources,
+observers or machines. Eight intended budget-aware controls fail in the
+adapter's imported-constant realization before their intended logic runs;
+they supply no monotonicity counterexample.
+A separate three-pair input-JSON residency treatment preserves verdicts
+and diagnostics in 48 comparisons. Only seven request-file pages are
+evicted or warmed: SDK/Mathlib cache state is not cold.
+Fifteen parent-thread counts differ by one; asynchronous work is outside
+that counter, and these observations do not isolate caching as the cause.
+A later private-runtime cache point now completes this narrower treatment.
+
+\measured{\expref{0257-20261101T215746+0000}{0257}; same-machine private-input residency experiment.}
+After six runtime qualification controls, eight independent native phases
+produce 512 configuration rows and 256 matched cold/warm comparisons.
+Sixteen retained sources use budgets 1,000/3,000, stock/synchronous paths,
+one/eight available threads and two reversed treatment orders.
+All comparisons preserve verdicts, diagnostics and axiom-policy results.
+All 128 synchronous command-counter vectors match; 42 stock parent-thread
+counter pairs differ, by up to 24 raw units. Those parent counters exclude
+asynchronous candidate work and do not isolate a causal cache effect.
+
+The treatment uses private SDK/import copies: 101,743 files totaling
+8,846,348,681 bytes. Metadata and inode checks distinguish them from live
+original inputs; no whole-library bytewise comparison is claimed.
+After treating all selected files and the source/request inputs,
+residency checks report zero versus all 2,238,400 pages resident.
+This is cold/warm private input residency, not a cold operating-system boot,
+global eviction or cross-machine replay.
+Cold native phases take 66.18--72.51 seconds and warm phases 8.83--15.04
+seconds; these are complete harness/import/frontend clocks, not kernel-only
+speedups. Preparation and file treatment are outside those native clocks.
+No OOM or sampled-RSS stop occurs; all nine phases and recorded identities retire.
+
+The predecessor fails while compiling the probe because its private executable
+input closure lacks required IR-signature inputs. It exits 1 after 12.079
+seconds, with zero candidate rows; its failure is preserved separately.
+The corrected point's stability is finite positive evidence for this
+same-machine treatment, not observer-independent accounting, complete
+candidate budgets or universal verdict reproducibility.
+
+\measured{\expref{0258-20261101T225830+0000}{0258};
+completed mathematical subset of a partial co-execution attempt.}
+Eight concurrent mathematical batch cells produce 256 rows for the same
+16 selected sources and two budgets, with one/two/four/eight recorded worker
+thread IDs and two opposite execution orders.
+Worker-one versus higher-worker configurations have no verdict or
+acceptance-flag changes in 192 comparisons, but 84 command-counter vectors
+differ. These configurations preserve observed acceptance without
+establishing exact allocation-count transparency or isolating concurrency
+as the sole cause.
+
+The planned two-regime comparison stops when its first Envelope process
+cannot find the target object on its configured import path.
+It exits 1 after 0.916 seconds, with no Envelope proof-replay rows:
+an input-availability failure, not original-kernel rejection.
+The four completed Grid prefix cells do not complete the planned repeated
+computational comparison. The originally planned repeated cross-regime contrast remains incomplete;
+the later, separately qualified stage panel below does not complete that
+earlier protocol. No throughput or general determinism claim follows.
+
+
+\measured{\expref{0259-20261102T000306+0000}{0259}; reanalysis of the same partial mathematical subset.}
+Of its 192 comparisons, 83 have changed theorem-command allocation counts,
+26 have changed opening-command counts, and none has a changed terminal
+count; these sets overlap. Three pairs also change the nested timeout
+diagnostic location, while retaining budget-exhausted outcomes.
+Thus outcome stability does not imply identical diagnostics, and the
+variation is not confined to opening commands. These records do not
+identify a changed search tree or isolate allocation's causal source.
+
+\measured{\expref{0259-20261102T000306+0000}{0259}; separate, completed original-module stage panel.}
+A new qualified capture checks five retained original modules:
+three computational modules (UMoments9, BarrierData41 and EnvelopePsiB)
+and two mathematical modules (InteriorH1Derivative and ReindexSingle).
+Its 58 successful native phases include two stock-source controls and
+56 stage cells, with requested worker pools of one/two/four/eight and
+two reversed orders. Table~\ref{tab:stagecounts} separates stages rather
+than treating allocation counts as a complete candidate budget.
+Every recorded stage comparison preserves verdict and diagnostics.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Stage / regime & Rows & Pairs & Changes\\
+\midrule
+Kernel, computational &192&144&0\\
+Kernel, mathematical &16&12&0\\
+Source, mathematical &128&96&49\\
+\bottomrule
+\end{tabular}
+\caption{Finite allocation-count observations, not independent candidate
+samples or native kernel poll counts. Pairs compare requested worker-one
+against higher-worker configurations within each order.
+Mathematical stored-proof cells have only one active checking thread.}
+\label{tab:stagecounts}
+\end{table}
+
+The kernel cells use eight closed stored theorem proofs per computational
+module and the sole eligible theorem in each mathematical module.
+They rename each proof and call the original C++ kernel in the fully
+imported target context. Computational cells use up to eight recorded
+checking threads; mathematical kernel cells have one active thread even
+when a larger pool is requested. Those mathematical cells therefore do
+not establish concurrent kernel stability.
+The source cells use eight full-source clones per cell of each of the two
+mathematical programs, with synchronous elaboration, heartbeat budget
+2,000,000 and recursion depth20,000. They are repeated configurations of
+two programs, not 128 independent candidates or stock-budget equivalents.
+Their actual active thread counts are one/two/four/eight.
+
+\partialev{stage-qualified accounting; broader regime and budget claims remain open.}
+The observed distinction concerns the measured stage: both regimes'
+selected stored proofs have stable counts, while the mathematical source
+commands vary. It does not establish that only mathematical workloads
+need reproducible accounting. Kernel imports remain trusted; computational
+full-source cells are absent and native kernel poll counts are unmeasured.
+Source command clocks include tactics and kernel work but exclude
+parsing/import/header preparation; subtracting them from the selected-proof
+clocks would not identify a source-phase share.
+The capture is no-\texttt{-M}, P0--7, with a14GiB charged cap and separate RSS
+sampling; all117 recorded process identities and cgroups retire.
+Earlier namespace, linking and eligibility failures remain archived;
+they contain no completed candidate matrix.
+\missing{Matched concurrent mathematical-kernel treatment, computational
+full-source accounting, independent full-closure checking and general
+cross-machine/global-budget guarantees.}
+
+
+\measured{\expref{0260-20261102T020415+0000}{0260}; independent three-repeat stage capture.}
+A later completed capture repeats the same selected-unit protocol three
+times at each requested pool size, separately from the earlier two-repeat
+point. All86 native phases exit0, including two stock-source controls.
+Its312 stored-proof rows yield234 comparisons with no allocation-count,
+verdict or diagnostic changes. Its192 mathematical source-clone rows yield
+144 comparisons,78 with changed allocation vectors (40/38 across the two
+programs), and no verdict or diagnostic changes.
+The mathematical kernel arms still have just one active proof each.
+Across96 observations per mathematical source, the pooled raw-count ranges
+are0.036739\% and0.138453\% above the observed minimum.
+These finite ranges are not a demonstrated minimum budget margin:
+the high-limit module experiment does not sweep acceptance thresholds.
+The same synchronous options, trusted-import boundary, two actual source
+programs and sampled eight computational helpers per module still apply.
+Native kernel poll counts and complete candidate work remain unmeasured;
+the all-helper census below is a separate capture; these earlier
+three-repeat denominators remain unchanged.
+All173 recorded native/controller identities and cgroups retire;
+the earlier capture's denominator is not relabeled as three repeats.
+
+
+\measured{\expref{0262-20261102T030442+0000}{0262}; completed census of eligible computation helpers in three pinned modules.}
+The independent census covers all1,164,1,320 and40 local theorem helpers
+whose annotation-cleaned proof head is \texttt{of\_decide\_eq\_true},
+in UMoments9, BarrierData41 and EnvelopePsiB, respectively.
+All36 native processes finish successfully.
+Every helper appears once per cell, across four worker counts and three
+fixed-order repeats:30,288 accepted checks of2,524 unique targets.
+All22,716 worker-one versus higher-worker comparisons preserve allocation
+counts, verdicts and diagnostics; each target's range across all12
+observations is zero. Recorded checking-thread counts match the requested
+one/two/four/eight workers in every cell.
+
+This is a census of the declared local proof form in these three modules,
+not of all declarations, source computations or computational proofs.
+The probe prepares closed stored proofs before accounting, checks them under
+fresh names with the original kernel, and trusts the fully imported target
+context. The three target objects match the retained original producer
+artifacts byte-for-byte. Import/preparation work, transitive axiom closure
+and native kernel poll counts are outside the allocation observation.
+Summed checking-thread CPU still varies: its three-repeat median rises
+from73.958s at one worker to95.416s at eight workers for UMoments9.
+Equal allocation counts therefore do not establish zero runtime overhead
+or a sufficient acceptance-preserving budget margin.
+All73 recorded process identities and36 cgroups retire without resource
+stops. This qualified census strengthens the finite applicability evidence
+while leaving cross-machine and complete-candidate budget claims unresolved.
+
+The retained candidate contrasts have different failure/cost boundaries.
+One miniF2F point spends73.21\% of summed physical worker-attempt time on
+budget-source attempts, not that share of concurrent makespan.
+ProofNet pass1 has an11.57\% budget-source request-time share.
+AutoVerus's slowest1.6\% consumes about3.4\%, a slow-tail rather than
+budget-failure metric.
+These historical resource points aren't a regime classifier for the library.
+Ordinary errors and resource exhaustion do not establish falsehood.
+
+\paragraph{System-design implication.}
+\partialev{implication of scoped observations; general benefit unproven.}
+Report build domain, checked constants, trusted imports, axiom/admission
+policy, executable/options, resource accounting and observer configuration.
+A Boolean result hides these boundaries.
+Faster delivery of a narrower checking scope isn't equivalent verification.
+
+\section{Limits and unfinished evidence}
+The complete lexical comparison establishes concentration, not runtime
+prevalence or a universal two-way partition.
+The no-\texttt{-M} sample remains incomplete and purposeful modules receive
+no population weights.
+\missing{Current per-regime profiles, expansion estimates and uncertainty.}
+Generated-software contexts/provenance differ; software-stage costs remain
+\missing{pending}.
+
+The prototypes have bounded acceptance and cost observations, rather than
+general accepted-set transparency, soundness or cluster results.
+Broader differentials, axiom closure, failures and resource-qualified lifecycle
+comparisons remain open. Ordinary warm-state reuse and frozen arithmetic oracles
+are prior mechanisms, not the contribution.
+The historical GPU screen was slower and removed no timeout; that does not
+rule out all devices or workloads.
+All failed, partial and withdrawn evidence remains, including interrupted
+state-reuse records whose missing entries aren't zero cache opportunity.
+
+\section{Related work}
+\paragraph{Closest same-corpus cost study.}
+A public technical report already studies another revision of
+\texttt{openai/math}, including build/check costs, source-based forecasts,
+computation-heavy checking outliers, parallel external checking, default-root
+coverage and verification meanings~\cite{openaiMathTooling2026}.
+Its machine load and timing/acceptance boundaries differ from ours; we
+do not transfer its numbers or dismiss the conceptual overlap.
+We claim neither the first cost characterization of this corpus nor
+the first observation that checking may recompute.
+The empirical increment examined here is controlled boundary matching,
+explicit missingness and tested limitations of proposed responses.
+
+
+\paragraph{Parallel proof checking and deterministic budgets.}
+Wenzel's Isabelle proof futures check promised propositions and
+well-founded fulfilment dependencies~\cite{wenzelParallel2009}.
+Coq's asynchronous document processing separates opaque proof tasks and
+complete checking~\cite{coqAsync2015}; its scheduler already predicts task
+durations using historical auxiliary data~\cite{coqAsyncManual2023}.
+Lean 4.17 overlaps kernel checking with elaboration, and 4.19 parallelizes
+theorem-body elaboration~\cite{leanParallelRelease2025,leanKernelParallel2025}.
+Certificate splitting and composition also have established precedents
+~\cite{selfCertification2012}.
+These are citation precedents, not performance baselines we have rerun.
+Likewise Lean's thread-local allocation heartbeats and SMT-LIB's
+reproducible-resource option precede candidate B
+~\cite{leanHeartbeats2026,smtlib27}. Neither their existence nor our controls
+establish a new whole-pipeline replay guarantee.
+SATzilla already uses instance predictions for algorithm decisions
+~\cite{satzilla2008}; candidate A requires application-specific evidence.
+
+\paragraph{Proof-assistant runtime and build performance.}
+Performance engineering of proof assistants predates AI-generated proofs.
+Lean's architecture and reference-counting work study efficient execution
+of functional metaprograms~\cite{lean4,countingBeans}.
+Tebbi and Gross's Ltac profiler attributes nested tactic invocations in
+Coq~\cite{ltacProfiler2015}. Huch and Wenzel study distributed Isabelle/AFP
+builds and schedules for multithreaded sessions~\cite{isabelleBuild2024}.
+These establish runtime, tactic and dependency-scheduling costs as important
+problems. Our work measures which of these boundaries dominate particular
+generated artifacts; low realized core use does not by itself establish a
+new scheduling or runtime technique.
+
+\paragraph{Mathlib compilation and continuous integration.}
+The Mathlib maintenance study already describes continuous build/component
+performance tracking and optimization~\cite{growingMathlib2025}.
+The official Mathlib benchmark suite already records global and per-module
+build metrics, including task time, wall time, instructions, RSS and profiles
+~\cite{mathlibBench2026}. Standard stratification and known inclusion
+probabilities are established sampling methods~\cite{samplingStatCan}; our
+method applies them to this frame, with incomplete response kept explicit.
+Community profiling has already examined per-file build times and
+typeclass, tactic, import and checking phases in Mathlib~\cite{stollMathlib2024}.
+We do not claim the first library cost profile.
+Mathlib's official cache downloads compiled artifacts keyed by toolchain,
+source and imported dependencies; CI constructs and publishes those
+artifacts~\cite{mathlibCache2026}.
+This makes incremental CI, cached downstream builds and fresh source
+compilation different cost boundaries.
+Prior Isabelle-build work also discusses Mathlib's cached workflow in its
+contemporary setting~\cite{isabelleBuild2024}.
+We do not import its CI duration or community profiler percentages into our
+hardware/version denominators.
+Our new-source study distinguishes default-root coverage, successful artifact
+growth, CPU/system time and uncompleted probability draws rather than
+treating a cache hit or a build command's completion as all-source coverage.
+
+\paragraph{Native replay and external proof checkers.}
+The archived \texttt{lean4checker} is now distributed with Lean as
+\texttt{leanchecker}. It replays declarations through the official kernel:
+it is a separate checking pass, not a separately implemented kernel
+~\cite{leanCheckerDocs}.
+Nanoda independently implements checking in Rust and exposes checking workers
+and explicit axiom/extension settings~\cite{nanoda2026}.
+Carneiro's Lean4Lean reimplements the checker in Lean and evaluates
+post-compilation replay on major libraries~\cite{lean4lean2025}.
+Lean Kernel Arena evaluates multiple implementations on exported environments,
+including acceptance, rejection and corner cases~\cite{leanArena}.
+Its instruction-derived virtual CPU scores and a local compiler wall clock
+have different meanings.
+These studies address checking performance and trust at post-export or
+compiled-environment boundaries. Our measurements additionally charge
+source elaboration, imports, emitted artifacts and failed candidate work;
+a faster external kernel is useful only for the share at its boundary.
+Axioms, admissions and native evaluation remain separate trust questions.
+
+\paragraph{RL verification services and prepared proof state.}
+Kimina Lean Server uses concurrent persistent REPLs and cached import headers
+for RL and proof feedback~\cite{kimina,kiminaPaper}.
+Its published throughput study establishes import reuse as a practical
+service technique, not a new mechanism here.
+DeepSeek-Prover-V1.5's verifier already provides process scheduling, REPL
+checks, timeouts and distinct pass/complete/system-error fields
+~\cite{deepseekVerifierArtifact}. These services are source-feedback paths,
+not matched independent-artifact replay baselines.
+Snapshots retain live proof state for tactic search~\cite{leanSnapshot};
+stock incremental elaboration reuses prior source state~\cite{leanIncremental}.
+APE-Bench evaluates file/repository-level proof engineering with pinned
+library versions and shared infrastructure~\cite{apeBench2026}.
+Such services and benchmarks establish why reusable contexts matter.
+Our comparison asks where resource-bounded time and memory go across
+research mathematics, software artifacts and candidate streams, and whether
+profiling or changed limits alter their measured verdicts.
+We do not transfer service speedups to a serial library build.
+
+\paragraph{Reuse, scheduling and certified computation.}
+Fine-grained verification caching~\cite{boogieCache}, tactic/prefix reuse
+~\cite{tactician2020,shred}, simplifier memoization~\cite{leanSimpCache},
+dynamic dependencies~\cite{salsaDependencies,adapton} and age-based scheduling
+~\cite{lubyRestart1993,soap2018} are established alternatives.
+The streaming and chunking prototypes test different regime-specific
+implications; external search with native checking is prior art.
+
+The empirical increment examined here is a boundary-consistent, two-regime study of released
+AI-generated formal artifacts, with a research-level library as the primary
+population and rejected/resource-limited attempts retained as contrasts.
+It joins source/build coverage to explicitly scoped native costs, treats
+mapped resident pages and mutable state as distinct metrics, and tests
+whether observation preserves outcomes.
+It complements build engineering and checker benchmarks rather than claiming
+that their bottlenecks are new. Complete software and causal-profile
+findings remain explicit open results.
+
+
+\section{Conclusion}
+\measured{\expref{0231-20261101T001556+0000}{0231},\expref{0235-20261101T041713+0000}{0235}}
+The fixed release has concentrated kernel-decision syntax and selected
+cheap-witness versus costly-recomputation cases at declared cost boundaries.
+\partialev{population runtime weights, causality and generality missing.}
+A has bounded negative/tradeoff observations but no per-instance bound or
+completion gain in the source-compilation point. Historically calibrated
+artifact admission improves known-panel availability without unseen-root safety;
+B remains unproven as a general guarantee.
+C is a measured finite-index application of established decomposition
+and checking, with additional implementation trust and incomplete full costs.
+\missing{Final no-\texttt{-M} regime weights, matched native module-task
+comparison, complete Envelope single-mode pair, software/axiom and cluster evidence.}
+The defensible contribution is the scoped characterization and tested
+implications, not three general new mechanisms.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

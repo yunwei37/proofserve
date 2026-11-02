@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-01UTC. [Status](../docs/research-status.md) ·
+Current2026-11-02UTC (root0263). [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full evidence history](../docs/evaluation.md).
 Reports below identify the measured version, input, clock and trust boundary.
@@ -34,8 +34,8 @@ Code/plans/queue entries are not completed measurements. Reviews are **自审**.
 - [openai/math](../workloads/openai-math/README.md): fixed163097source-module frame.
 - [NoM original-frame costs](../workloads/openai-math/noM-standard-artifacts-a/README.md)
   and [conditional strata](../workloads/openai-math/cost-regimes-noM/README.md):
-  root coverage31/42draws/14complete strata, conditionalmarkedCPU17.1434% only
-  over103468modules.11draws/59629modules missing, not finite fullCPU/globalshare.
+  root source coverage32/42 draws/15complete strata, conditional marked CPU33.025% only
+  over104632 modules.10 ordinary draws/58465 modules in incomplete strata; not finite fullCPU/globalshare. Target-only paired replay remains31/42/14strata; old W reductions retain their historical snapshots.
 - [Released AI software](../workloads/ai-verification-software/README.md):
   model outputs, reference solutions and checker fixtures are different evidence.
   Vericoding snapshots overlap; Vero agent output remains unestablished.
@@ -93,3 +93,5 @@ No rootnative/agent,foreignimplementationrepair or queuedwork restart.
 - [Root0261](../docs/tmp/build-and-evaluate/step-0261-20261102T023802+0000/step-report.md): direct Bscope revision; observed count spans0/0.0367/0.1385/2.3339%, not guaranteed budget margins. Whole-frame W178.2–627.4source/8.3–41.6modeledstream CPUh are assumption scenarios, distinct from31targetreplays.
 
 - [Root0262](../docs/tmp/build-and-evaluate/step-0262-20261102T030442+0000/step-report.md): independently qualified Mv12eligible-helper census,2524targets/30288acceptedchecks/22716thread comparisons,0allocation differences. All3pinnedmodule helper-form coverage, not generic computational determinism; earlier24target and mathematical panels remain separate.
+
+- [Root0263](../docs/tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md): qualified newLowBlock15_1 sourcecost184.589CPU-s, originalsource32/42/15complete strata,10missing; targetreplay31/dynamicdenominatorsunchanged. Source19terminal retains1dependencywallcensor/6uninvoked. Updatedassumption scenarios207.8–630.8source/10.8–41.9modeledstream CPUh,notCI or measuredfullcost.

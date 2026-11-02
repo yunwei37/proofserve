@@ -1,0 +1,1 @@
+Initial offline full-row equality failed because controller adds probability_sample_target/queue_plus_setup_cleanup_s/queue_scope to native result. All shared fields match; corrected comparison to exact native-result subset. No native rerun or data mutation.

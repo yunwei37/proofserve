@@ -641,3 +641,38 @@ Wsource31/42/scenarioassumptions and13dynamicmissing unchanged;O/Whealthy
 partial/reference/checkpoint requests protected.0newrootnative/agent/foreignedit.
 
 Final0262paper21pages206438bytes,compile2.986518s/sample189632512B/E22–23;6contacts/all21pages self-reviewed;17oldtable bodies/title/fullabstract/4RQ/sections unchanged. Rootrenderings33/21221442bytes removed,raw/PDF/log/source preserved.
+
+
+## New source draw and terminal source19: root0263
+[Root0263](tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md) independently qualifies source19 actual complete terminal:
+13nativecalls/12rc0compiles/1SIGALRMwallcensor/6dependency-uninvoked.
+Successes are11dependencies+1original LowBlock15_1; DihedralIntervals original
+notinvoked. All14recordednative/controllerPIDbirth identities and13cgroups retired.
+noM/P0–7/j8/authoreddefaultHB/olean-ilean-C/15GiBcharged+separateRSS/noOOM.
+13sourcefiles byte-match pinned4eaee875. NewLowBlock184.589081CPU-s/
+124.512017648nativewall, outputs7246016/985771/47699B,notnewkernel/replay evidence.
+IntegralPairings dependencyrc-14/600.197701524s/633.525530CPU-s:
+resourcecensor,notmathematicalreject/targetfalse.6uninvoked areunknown,not6failures.
+Native1456.905625wall/1560.934089CPU separate from8019.708321queue-inclusive.
+No oldqueue resume/retry/budgetextension.
+
+Rootoriginal42frame +1verifiedcost now32/42source,10missing/allordinary,
+15complete strata/104632modules.9marked strata coverall5848marked files;
+sourceCPUestimate57.546404h marked/116.704826ordinary, conditionalshare33.024963%;
+summednativeelapsedshare27.020391%. Old14stratum17.1434/14.8102% remains
+historicalcoverage,notfixed-populationtime trend. Full-libraryCPU/globalshare
+unknown; proxy!=semanticphase. KnownHTsubtotal195.029837h/notconfidencebound;
+uniform+1CPU-s/missingdraw sensitivity10.680417h.32observedCPU817.179526/
+nativeelapsed518.407798s. Target-onlypaired replay remains31/42/14strata,
+dynamicgrain29random+2purposeful/13missing unchanged.
+
+NewLowBlockcost exceeds previousmarkedclassmax163.845944,showing oldsupport
+was anassumption.Updated32cost/10ordinarymissing supportminmax scenarios:
+source207.894666–630.701677h→outward207.8–630.8;modeledstream10.826785–
+41.839086h→10.8–41.9 with OclosureCPUtransfer. NotCI/guaranteedbounds/
+measuredfullstream. Old178.2–627.4/8.3–41.6retainedasdated31snapshot;
+unknownchecks2xsource reversesgap885.083vs630.702h. No-assumptionupperunbounded.
+ActualpaperMethods/RQ1 and pairedscope updated,notonlylogs. Bcensus/otherRQ
+evidence unchanged;0rootnewnative/agent/foreignedit.
+
+Final0263 paper22pages/207423bytes,compile3.822121s/sample191152128B/E22–23;6contacts/all22pages self-reviewed;17oldtable bodies/title/fullabstract/4RQ/sections unchanged. Rootrenderings34/21278715bytes removed,raw/PDF/log/source retained.
