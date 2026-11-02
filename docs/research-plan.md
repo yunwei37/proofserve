@@ -1,6 +1,6 @@
 # Research plan: two verification-cost regimes
 
-Current frontier2026-11-02UTC, root0264. [Status](research-status.md) ·
+Current frontier2026-11-02UTC, root0265. [Status](research-status.md) ·
 [Evidence](evaluation.md) · [Results](../research/README.md) ·
 [User words](user-instruction.md) · [Novelty](novelty-20261101.md).
 [Exact previous plan](tmp/build-and-evaluate/step-0264-20261102T061224+0000/experiment-001/before-docs-research-plan.md.gz).
@@ -84,4 +84,8 @@ are not pending despite stale owner README text.
 The paper remains an unfinished characterization with explicit missing evidence;
 self-review is not independent audit or submission acceptance.
 
-Paper root0264:22pages/209773bytes,complete compile and all-page self-review;17prior tables/title/fullabstract/4RQ/sections/four implication bodies unchanged. No independent review/venue acceptance. Root0newnative/agent.
+Paper root0265:22pages/211433bytes,complete compile and all-page self-review;17prior tables/title/fullabstract/4RQ/sections/four implication bodies unchanged. No independent review/venue acceptance. Root0newnative/agent.
+
+Direct finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
+
+Paper root0265:22pages/211433bytes,complete compile and all-page self-review;17prior tables/title/fullabstract/4RQ/sections/four implication bodies unchanged. No independent review/venue acceptance. Root0newnative/agent.

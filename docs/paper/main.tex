@@ -902,6 +902,32 @@ Sixteen new module-local reference chunks cover 8,128 modules; the remaining
 The resulting reference and segmented acceptance sets both contain 13,205 IDs.
 This is finite positive-set agreement, not universal context or axiom closure.
 
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lrr}
+\toprule
+Closure / checking protocol & Check / source (s) & Ratio\\
+\midrule
+Falconer, checkpoints & 2,043.59 / 22,077.77 & 9.26\%\\
+Mathlib, historical stream & 65.69 / 622.38 & 10.56\%\\
+Mathlib, checkpoints & 91.28 / 622.38 & 14.67\%\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0265-20261102T065555+0000}{0265}} Three mathematical-closure
+observations. Falconer has 13,205 modules/27 processes; both Mathlib Nat.Basic
+rows have 1,330 modules, with one and three processes respectively.
+Each ratio uses its own complete checking/source wall sums.}
+\label{tab:mathclosureratios}
+\end{table}
+
+Table~\ref{tab:mathclosureratios} places the three observed ratios side by side:
+9.26\% for the selected AI-generated Falconer library, 10.56\% for the
+historical Mathlib stream and 14.67\% for checkpointed Mathlib.
+In these mathematical closures, checking is of the same order---roughly
+one tenth of construction---and substantially below the source-compiler work.
+The closures and protocols differ; these ratios are not multiplied or
+averaged into one gain or a population estimate.
 The same checkpoint adapter and 500-new-module quota checks the 1,330-module
 Mathlib control in three processes: 91.279s versus 622.379s of retained source
 work, or 14.6662\%. Each closure has one ordered capture with retained page
@@ -911,8 +937,10 @@ does not isolate AI authorship, tactics, dependency composition or import cost.
 
 Each segment exports original-kernel-accepted declarations and audit metadata;
 the next stock importer trusts that certified delta before checking new terms.
-Startup, artifact reads, prefix restoration, snapshot writing and native exit
-are within the summed process clocks. Queue wait, driver reduction, reference
+Startup, artifact reads, all 26 snapshot exports and 26 prefix restores,
+and native exit are within the 2,043.59s summed process clock.
+Snapshot write-return costs follow normal page-cache semantics; isolated
+snapshot seconds and physical-flush durability latency were not measured. Queue wait, driver reduction, reference
 qualification and producer/tool preparation are excluded.
 The clock ends immediately after wait4, before collector/cgroup cleanup.
 Five finite checkpoint cases span 18 native processes, including two bad-proof
@@ -1550,26 +1578,28 @@ original kernel still checks mathematical declarations.
 They differ from the earlier Barrier checked-fragment/normal-import protocol.
 Neither prototype establishes a universally unchanged implementation TCB.
 
-\paragraph{Reproducibility requirements differ across measured stages.}
-\measured{\expref{0261-20261102T023802+0000}{0261}; \expref{0262-20261102T030442+0000}{0262}; module and candidate boundaries.}
-For the2,524 eligible computational targets in a later three-module census,
-each checked12times across one/two/four/eight worker pools and three repeats,
-allocation counts have0\% observed spread and every judgment agrees.
-No additional allowance is needed to cover those observed raw counts.
-This is the limited sense in which deterministic accounting comes without
-an observed count margin here; it does not establish fixed complete
-recomputation work, zero implementation overhead or a property of all
-computational proofs.
+\paragraph{Measured kernel recomputation needs no extra count allowance.}
+\measured{\expref{0265-20261102T065555+0000}{0265}; the qualified three-module census.}
+Across all 2,524 eligible computational targets, allocation-heartbeat variation
+is 0\% for every target under 1/2/4/8 workers and three repeats:
+30,288 accepted checks, with P95=0\% and maximum=0\%.
+All 22,716 matched comparisons preserve counts, verdicts and diagnostics;
+there is no nonzero case in this census.
+For these measured computation-stage units, determinism therefore needs
+no extra allocation-count budget to cover the observed worker/repeat envelope.
+This is the bounded empirical meaning of determinism without an extra budget
+here, not a guarantee for future runs, all computational proofs or zero runtime
+overhead.
 
-The mathematical source programs InteriorH1Derivative and ReindexSingle
-have observed count spans0.036739\% and0.138453\%, respectively, with
-identical judgments. A separate 16-source concurrent-candidate panel has
-83 changed theorem-command counts among192 pairs (84 changed full command
-vectors), a maximum theorem-command span of2.333868\%, and no acceptance
-changes. The latter span and the module-level0.14\% use different units
-and inputs; they are not pooled.
-All percentages describe the observed maximum relative to the observed
-minimum, rather than a universal fluctuation bound.
+The mathematical source panels instead have an observed maximum span of
+2.333868\% (about 2.33\%) over the separate 16-source concurrent-candidate panel,
+with 83/192 changed theorem-command counts (84/192 full command vectors)
+and no acceptance changes.
+The two full-source modules have spans 0.036739\% and0.138453\%,
+a coarse 0.03--0.14\% module-level envelope, with identical judgments.
+These different units and inputs are not pooled.
+All percentages use the observed maximum relative to the observed minimum;
+they bound only the measured runs, not future executions.
 
 \partialev{observed count allowances; required budget margins remain unmeasured.}
 These measurements identify where stable accounting was obtained and
@@ -1788,9 +1818,10 @@ in UMoments9, BarrierData41 and EnvelopePsiB, respectively.
 All36 native processes finish successfully.
 Every helper appears once per cell, across four worker counts and three
 fixed-order repeats:30,288 accepted checks of2,524 unique targets.
-All22,716 worker-one versus higher-worker comparisons preserve allocation
+All 22,716 worker-one versus higher-worker comparisons preserve allocation
 counts, verdicts and diagnostics; each target's range across all12
-observations is zero. Recorded checking-thread counts match the requested
+observations is zero. Across targets, both the nearest-rank P95 and maximum
+relative range are 0\%; all 2,524/2,524 targets have zero observed variation. Recorded checking-thread counts match the requested
 one/two/four/eight workers in every cell.
 
 This is a census of the declared local proof form in these three modules,

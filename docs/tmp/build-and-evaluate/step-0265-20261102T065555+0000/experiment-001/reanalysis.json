@@ -1,0 +1,45 @@
+{
+  "targets": 2524,
+  "observations": 30288,
+  "pairs": 22716,
+  "p95_relative_range_pct": 0.0,
+  "max_relative_range_pct": 0.0,
+  "zero_range_targets": 2524,
+  "three_ratio_rows": [
+    {
+      "cohort": "Falconer closure",
+      "protocol": "checkpointed",
+      "modules": "13205",
+      "segments": "27",
+      "check_wall_sum_s": "2043.5854757986963",
+      "source_wall_sum_s": "22077.770248265006",
+      "check_over_source": "0.09256303751776258",
+      "peak_rss_gib": "10.36832046508789"
+    },
+    {
+      "cohort": "Mathlib Nat.Basic closure",
+      "protocol": "unsegmented historical",
+      "modules": "1330",
+      "segments": "1",
+      "check_wall_sum_s": "65.69264411274344",
+      "source_wall_sum_s": "622.3794121909887",
+      "check_over_source": "0.10555079879889155",
+      "peak_rss_gib": "0.7193107604980469"
+    },
+    {
+      "cohort": "Mathlib Nat.Basic closure",
+      "protocol": "checkpointed matched protocol",
+      "modules": "1330",
+      "segments": "3",
+      "check_wall_sum_s": "91.2791267875582",
+      "source_wall_sum_s": "622.3794121909887",
+      "check_over_source": "0.14666154599527065",
+      "peak_rss_gib": "1.32440185546875"
+    }
+  ],
+  "snapshot_exports": 26,
+  "snapshot_restores": 26,
+  "root_analysis_seconds": 0.043455847539007664,
+  "root_analysis_maxrss_kib": 18600,
+  "native_reruns": 0
+}

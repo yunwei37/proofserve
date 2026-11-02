@@ -698,3 +698,18 @@ identities retire,63PID-only submission records are not birth-audited.
 Source32/paired31/dynamic13missing and B2524scope remain unchanged.
 
 Final0264paper22pages/209773bytes,compile3.026542s/sample189231104B/E22–23;6contacts/allpages self-reviewed;17old tables/title/fullabstract/4RQ/sections/four implication bodies unchanged. Removed only34current rootrenderings/20931774bytes; allraw/PDF/source/failures retained.
+
+## Root0265 — direct finalized-number wording and index update
+[Step](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md). Owner commitsa0a2916/395a8b3
+restate already raw-qualified results. Root rechecks all2524published count ranges,
+12observations each, nearest-rankP95=max=0%,30288checks/22716pairs.
+RQ4 says no extra allocation-count allowance for these observed prepared kernel
+runs; it does not guarantee future execution or a sufficient native maxHB margin.
+Math source modules0.036739/0.138453% (coarse0.03–0.14% envelope) and a separate
+16-source panel maximum2.333868% are not pooled or causal tactic-path evidence.
+RQ2adds a three-row9.26%/10.56%/14.67% comparison, differentclosures/protocols,
+not multiplied/averaged;26exports/26restores already inside2043.59s.
+Index directly links both final owner reports. No new native experiment, generic
+determinism/checkpoint mechanism or globalcost guarantee.
+
+Final0265paper22pages/211433bytes,compile3.026121s/sample189284352B/E22–23;6contacts/allpages self-reviewed;17old tables/title/fullabstract/4RQ/sections/four implication bodies unchanged. Removed only34current rootrenderings/21179451bytes; allraw/PDF/source/failures retained.

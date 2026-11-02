@@ -1,11 +1,24 @@
 # Research result index
 
-Current2026-11-02UTC, root0264. [Status](../docs/research-status.md) ·
+Current2026-11-02UTC, root0265. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0264-20261102T061224+0000/experiment-001/before-research-README.md.gz).
 Reports identify input, version, clock and trust boundary. Reviews are **自审**;
 preparation, queues, controls and code are not performance or general acceptance.
+
+## Latest complete results
+
+- [Falconer mathematical closure](decoupled-check/falconer-paper-result.md):
+  13,205accepted modules/27checkpointed processes;2,043.59/22,077.77s=9.26%.
+  All26exports/26restores included; module-local acceptance set agrees.
+  Historical Mathlib10.56% and same-checkpoint Mathlib14.67% are separate
+  closure/protocol observations, never multiplied or averaged into one gain.
+- [2,524-target computation census](reproducible-verdict/census-results-v12/results.md):
+  1/2/4/8actual workers ×3repeats,30,288acceptedchecks/22,716stable pairs;
+  every target has0%allocation variation, P95=maximum=0%.
+  No extra allocation-count headroom was needed for these observed runs; future runs, maxHB
+  threshold guarantees and zero runtime overhead are not established.
 
 ## Existing research directories
 
@@ -13,10 +26,10 @@ preparation, queues, controls and code are not performance or general acceptance
 |---|---|---|
 | [mechanisms-2026-10-30](mechanisms-2026-10-30/README.md) |Historical tactic/profile/resource studies. Old-M diagnostic data are not current noMcost/acceptance evidence. |[Prior work](mechanisms-2026-10-30/prior-work.md); PVC captures/mechanisms-2026-10-30/ |
 | [profile-2026-10-31](profile-2026-10-31/systime/final/README.md) |90guard-calibration cells/3modules; guard/noM ratios2.03/1.61/1.01, matching outputs at passing points, not failure equivalence. |[Startup/replay](profile-2026-10-31/startup-replay/README.md); PVC captures/profile-2026-10-31/ |
-| [decoupled-check](decoupled-check/README.md) |Four original overlapping closures/5085source union. New Falconer13205-module segmented chain9.2563%source wall, Mathlib same protocol14.6662%, complete module-local reference union. Added snapshot/metadata trust, Oshare deviations, two prior timeouts retained. |[Original results](decoupled-check/results.md), [Falconer](decoupled-check/falconer-final-analysis.md); PVC captures/decoupled-check-20261031/scale-study/falconer-project-20261101/ |
+| [decoupled-check](decoupled-check/README.md) |Four original overlapping closures/5085source union. New Falconer13205-module segmented chain9.2563%source wall, Mathlib same protocol14.6662%, complete module-local reference union. Added snapshot/metadata trust, Oshare deviations, two prior timeouts retained. |[Original results](decoupled-check/results.md), [Falconer final paper result](decoupled-check/falconer-paper-result.md); PVC captures/decoupled-check-20261031/scale-study/falconer-project-20261101/ |
 | [chunked-kernel-check](chunked-kernel-check/README.md) |31artifact grain panel/13randommissing; small Grid whole-path negatives. Barrier fragment pipeline3.326x and small Envelope prepared-runtime1.096x are different scopes. |[Grain](chunked-kernel-check/step-006-report.md), [Barrier](chunked-kernel-check/parallel-result.md), [Envelope](chunked-kernel-check/envelope-result.md); PVC captures/chunked-kernel-check/ |
 | [parallel-stream-check](parallel-stream-check/README.md) |Defectivev4context mismatch preserved. Repairedv14Mathlib1.523x/8workers; full Barrier/Grid4worker pairs1.558/1.882x. Envelope full original reference times out. |[Mathlib](parallel-stream-check/v14-math-results.md), [Full Barrier](parallel-stream-check/full-barrier-results.md), [Full Grid](parallel-stream-check/full-grid-results.md); PVC captures/parallel-stream-check-v4,v10,v12,v14/ |
-| [reproducible-verdict](reproducible-verdict/README.md) |Observer-sensitive sync adapter, source counters and private-cache/budget controls. Root-qualifiedv12census2524local helpers,30288checks/22716stable thread pairs; no globalbudget/crossmachine guarantee. OwnerREADME pending text is stale. |[v11](reproducible-verdict/module-results-v11/results.md), [cache/coexecution](reproducible-verdict/cache-and-coexecution-results.md); PVC captures/reproducible-verdict-v*/ |
+| [reproducible-verdict](reproducible-verdict/README.md) |Observer-sensitive sync adapter, source counters and private-cache/budget controls. Root-qualifiedv12census2524local helpers,30288checks/22716stable thread pairs; no globalbudget/crossmachine guarantee.  |[Completed2,524-target census](reproducible-verdict/census-results-v12/results.md), [v11](reproducible-verdict/module-results-v11/results.md), [cache/coexecution](reproducible-verdict/cache-and-coexecution-results.md); PVC captures/reproducible-verdict-v*/ |
 | [cost-prediction](cost-prediction/README.md) |Finite grouped forecast/native policy work; no general deterministic bounds or causal service gain. Simulated mechanism combinations are not native throughput. |[Root0254](../docs/tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md), [0256](../docs/tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md) |
 
 PVC capture root is /workspaces/.agent-state/gpu-smt-captures/.
@@ -60,3 +73,5 @@ superseded captures remain; no static README authorizes restarting them.
 Mathlib, services, SATzilla and the closest same-corpus technical report.
 A/Bgeneric mechanisms and Cgeneral decomposition/composition have precedents;
 finite controlled boundaries and limits are the current empirical increment.
+
+[Root0265](../docs/tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md) implements the direct finalized-number request; prior raw qualifications remain0262/0264. No native rerun or generic mechanism firstness.
