@@ -1,5 +1,5 @@
 from pathlib import Path
-import json,csv,collections,statistics,math
+import json,csv,collections,statistics,math,re
 def csvout(path,rows):
  if not rows:return
  with path.open('w',newline='') as f:
@@ -17,13 +17,17 @@ def fit(rows):
 def analyze(point,out):
  out.mkdir(exist_ok=True,parents=True)
  full=[];cores=[];workers=[];phases=[];module_work={}
- for phase in ['p12','p48','types','observer']:
+ for phase in ['p12','p48','types','observer','placement']:
   f=point/(phase+'-results.json')
   if not f.exists():continue
   for c in json.loads(f.read_text()):
-   if c['returncode'] or not c.get('complete_events') or not c['accepted_set_equal_to_serial']:continue
+   if (c['returncode'] or not c.get('complete_events') or not c['accepted_set_equal_to_serial']
+    or len(c['accepted_IDs'])!=4449 or len(set(c['accepted_IDs']))!=4449
+    or not c.get('native_retired') or not c.get('cgroup_retired') or c.get('stop_reasons')):continue
    name=c['key'].removeprefix('full-');ev=read_events(point/'runs'/c['key']/'stdout')
-   row=dict(name=name,workers=len(c['worker_pins']),profile=c['profile_enabled'],worker_pins=c['worker_pins'],
+   requested=int(re.match(r'^[PEM](\d+)',name).group(1))
+   assert not c['worker_pins'] or len(c['worker_pins'])==requested
+   row=dict(name=name,workers=requested,profile=c['profile_enabled'],worker_pins=c['worker_pins'],
     coordinator_cpu=c['coordinator_cpu'],wall_s=c['wall_s'],CPU_s=c['user_s']+c['system_s'],
     peak_RSS_MiB=c['peak_rss_kib']/1024,accepted_modules=len(c['accepted_IDs']))
    full.append(row)
@@ -41,6 +45,9 @@ def analyze(point,out):
    batch_cpu=sum(int(e['metrics']['batch_cpu_ns']) for e in mods)/1e9
    serial=dep+plan+fallback+dup;remaining=c['wall_s']-serial-union
    phases.append(dict(name=name,workers=row['workers'],read_context_s=dep,plan_s=plan,upstream_serial_kernel_s=fallback,
+    upstream_serial_kernel_CPU_s=sum(int(e['fallback_cpu_ns']) for e in mods)/1e9,
+    ordinary_checks=sum(int(e['metrics']['checks']) for e in mods),
+    ordinary_raw_HB=sum(int(e['metrics']['raw_HB']) for e in mods),
     serial_duplicate_s=dup,implementation_serial_s=serial,parallel_kernel_occupancy_s=union,
     overhead_residual_s=remaining,batch_wall_s=batch,batch_non_kernel_wall_s=batch-union,
     other_residual_s=remaining-(batch-union),kernel_CPU_s=kernel_cpu,batch_CPU_s=batch_cpu,
@@ -113,6 +120,64 @@ def analyze(point,out):
   if len(med)==3:summary['E_vs_P_sampled_kernel_work_rate']=med[0]['sample50_kernel_CPU_median_s']/med[1]['sample50_kernel_CPU_median_s']
   (out/'hardware-determinism.json').write_text(json.dumps(summary,indent=2))
  return full,phases
+
+def supplements(point,out,full,phases):
+ inventory=[]
+ for phase in ['p12','p48','types','observer','placement']:
+  f=point/(phase+'-terminal.json')
+  inventory.append(dict(phase=phase,terminal=json.loads(f.read_text())['state'] if f.exists() else 'not_terminal',
+   results_present=(point/(phase+'-results.json')).exists()))
+ (out/'analysis-status.json').write_text(json.dumps(dict(phase_inventory=inventory,
+  complete_full_cells=len(full),scope='completed native cells only; unfinished cells excluded, not failures'),indent=2))
+ by_full={r['name']:r for r in full};by_phase={r['name']:r for r in phases}
+ per_module=[]
+ for name in by_phase:
+  for m in read_events(point/'runs'/('full-'+name)/'stdout'):
+   if m.get('event')!='profile_module':continue
+   mm=m['metrics']
+   assert sum(w['checks'] for w in mm['workers'])==mm['checks']
+   assert sum(w['cpu_ns'] for w in mm['workers'])==mm['kernel_cpu_ns']
+   assert sum(w['raw_HB'] for w in mm['workers'])==mm['raw_HB']
+   per_module.append(dict(name=name,module=m['module'],checks=mm['checks'],raw_HB=mm['raw_HB'],
+    kernel_union_s=mm['kernel_union_ns']/1e9,kernel_CPU_s=mm['kernel_cpu_ns']/1e9,
+    batch_non_kernel_wall_s=(mm['batch_wall_ns']-mm['kernel_union_ns'])/1e9,
+    batch_non_kernel_CPU_s=(mm['batch_cpu_ns']-mm['kernel_cpu_ns'])/1e9))
+ csvout(out/'module-phases.csv',per_module)
+ pair_rows=[];delta_rows=[];module_delta=[]
+ pairs=[('P1','P2'),('P2','P4'),('P4','P8'),('P8','E16'),('P8','M24'),
+  ('P8','P8-noProfile'),('M24','M24-noProfile'),
+  ('P8-noProfile','P8-unpinned'),('M24-noProfile','M24-unpinned'),
+  ('P8-unpinned','M24-unpinned')]
+ terms=['read_context_s','plan_s','upstream_serial_kernel_s','serial_duplicate_s',
+  'parallel_kernel_occupancy_s','batch_non_kernel_wall_s','other_residual_s']
+ for left,right in pairs:
+  if left not in by_full or right not in by_full:continue
+  a=by_full[left];b=by_full[right];delta=b['wall_s']-a['wall_s']
+  pair_rows.append(dict(baseline=left,condition=right,wall_delta_s=delta,
+   wall_change_pct=100*(b['wall_s']/a['wall_s']-1),CPU_delta_s=b['CPU_s']-a['CPU_s'],
+   CPU_change_pct=100*(b['CPU_s']/a['CPU_s']-1),
+   note='one fixed-order observation per full configuration; not a confidence interval'))
+  if left in by_phase and right in by_phase:
+   da=by_phase[left];db=by_phase[right]
+   for key in terms:
+    d=db[key]-da[key]
+    delta_rows.append(dict(baseline=left,condition=right,term=key,delta_s=d,
+     signed_share_of_net_wall_delta_pct=100*d/delta if delta else None))
+   assert math.isclose(sum(db[k]-da[k] for k in terms),delta,abs_tol=1e-6)
+   aa={r['module']:r for r in per_module if r['name']==left}
+   bb={r['module']:r for r in per_module if r['name']==right}
+   ranked=[]
+   for module in aa.keys()&bb.keys():
+    row=dict(baseline=left,condition=right,module=module)
+    for key in ['kernel_union_s','kernel_CPU_s','batch_non_kernel_wall_s','batch_non_kernel_CPU_s']:
+     row['delta_'+key]=bb[module][key]-aa[module][key]
+    ranked.append(row)
+   module_delta.extend(sorted(ranked,key=lambda x:abs(x['delta_kernel_union_s'])+
+    abs(x['delta_batch_non_kernel_wall_s']),reverse=True)[:30])
+ csvout(out/'condition-comparisons.csv',pair_rows)
+ csvout(out/'signed-phase-deltas.csv',delta_rows)
+ csvout(out/'top-module-deltas.csv',module_delta)
+
 if __name__=='__main__':
  import sys
- rows,ph=analyze(Path(sys.argv[1]),Path(sys.argv[2]));print(json.dumps(dict(full_cells=len(rows),phase_rows=len(ph))))
+ rows,ph=analyze(Path(sys.argv[1]),Path(sys.argv[2]));supplements(Path(sys.argv[1]),Path(sys.argv[2]),rows,ph);print(json.dumps(dict(full_cells=len(rows),phase_rows=len(ph))))

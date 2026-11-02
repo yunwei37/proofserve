@@ -1,0 +1,2 @@
+name,workers,profile,worker_pins,coordinator_cpu,wall_s,CPU_s,peak_RSS_MiB,accepted_modules
+P1,1,True,[0],0,655.4481407236308,647.069201,3028.12890625,4449
