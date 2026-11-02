@@ -89,3 +89,5 @@ No rootnative/agent,foreignimplementationrepair or queuedwork restart.
 - [Root0259](../docs/tmp/build-and-evaluate/step-0259-20261102T000306+0000/step-report.md): qualified original-module stage panel;336rows/252pairs, kernel156pairs stable allocation, mathsource49/96vectors differ. Mathematicalkernel only1activeworker; no globalbudget guarantee. Earlier partial/failures retained.
 
 - [Root0260](../docs/tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md): W31fresh target pairs complete, conditional ratio0.3898 with trusted imports; separate Mv11three-repeat stage count panel, no generalbudget guarantee; first fullFalconer checker timeout retained, recovery/parity stillmissing.
+
+- [Root0261](../docs/tmp/build-and-evaluate/step-0261-20261102T023802+0000/step-report.md): direct Bscope revision; observed count spans0/0.0367/0.1385/2.3339%, not guaranteed budget margins. Whole-frame W178.2–627.4source/8.3–41.6modeledstream CPUh are assumption scenarios, distinct from31targetreplays.

@@ -1,0 +1,69 @@
+{
+  "theorem_command_pairs": 192,
+  "theorem_command_count_changes": 83,
+  "command_vector_changes": 84,
+  "verdict_changes": 0,
+  "maximum_theorem_command_range_percent": 2.333868257117233,
+  "scenarios": [
+    {
+      "assumption": "min",
+      "source_CPU_h": 178.22569632027776,
+      "stream_low_CPU_h": 8.322086223934205,
+      "stream_high_CPU_h": 12.057370109315531,
+      "missing_no_saving_stream_CPU_h": 24.25075077171415,
+      "missing_twice_source_stream_CPU_h": 37.288511095464145,
+      "missing_checker_source_break_even": 12.809923002502046
+    },
+    {
+      "assumption": "max",
+      "source_CPU_h": 627.3482034915277,
+      "stream_low_CPU_h": 27.328571238334074,
+      "stream_high_CPU_h": 41.55514267393753,
+      "missing_no_saving_stream_CPU_h": 473.37325794296413,
+      "missing_twice_source_stream_CPU_h": 935.5335254379642,
+      "missing_checker_source_break_even": 1.3331635287108046
+    },
+    {
+      "assumption": "ten_times_max",
+      "source_CPU_h": 4786.7906109465275,
+      "stream_low_CPU_h": 203.11478215158573,
+      "stream_high_CPU_h": 314.63451270769804,
+      "missing_no_saving_stream_CPU_h": 4632.815665397964,
+      "missing_twice_source_stream_CPU_h": 9254.418340347964,
+      "missing_checker_source_break_even": 1.0333163528710805
+    }
+  ],
+  "M12_latest_qualification": {
+    "controller": {
+      "pid": 366671,
+      "birth": "763672770",
+      "argv": [
+        "flock",
+        "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "1740",
+        "taskset",
+        "-c",
+        "0-7",
+        "python3",
+        "-u",
+        "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v12/run_all_helpers.py"
+      ],
+      "utc": "2026-11-02T01:49:04.293662+00:00",
+      "foreground": true
+    },
+    "PID_birth_live": false,
+    "terminal_files": [
+      "census-terminal.json",
+      "build-terminal.json"
+    ],
+    "census_outcome_adopted": false,
+    "census-terminal.json": "complete"
+  },
+  "reused_root0260_for_M11_W31": true,
+  "new_root_native": 0,
+  "root_analysis_seconds": 0.054304675199091434,
+  "root_analysis_maxrss_kib": 14676
+}

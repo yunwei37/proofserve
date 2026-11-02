@@ -171,3 +171,30 @@ Nativecgroup absent/noOOM; nativePIDbirth absent in receipt, not invented.
 Recovery checks are separate actual owner paths; fullparity/ratio remainmissing.
 
 Paper now root0260:20pages198939bytes,complete compile/all-page static self-review;16prior tables plus1target table/title/fullabstract/4RQ/sections/four implications unchanged. FullFalconerparity/ratio and generalB/globalcost remainmissing; target-only and repeated-stage scopes preserved.0rootnative/agent.
+
+
+## Direct B boundary and missing-cost scenario revision: root0261
+[Root0261](tmp/build-and-evaluate/step-0261-20261102T023802+0000/step-report.md) implements the user's narrowed empirical argument in the
+Bcontribution/RQ4 and adds Wwhole-frame scenario ranges inRQ1.
+Prepared24computationtargets:0%observed allocation spread across12checks each;
+two mathsource spans0.036739%/0.138453%; concurrentminiF2F theoremcommand
+83/192changes (fullvector84/192), max2.333868%,0acceptancechanges.
+Cache256verdict/diagnostic and128syncvectors stable;100ladderpairs no counterexample.
+No newbudgetmechanism or inference that onlymath/tacticsearch needs margins.
+Percentages are observed count allowances, not required/sufficient maxHBpadding:
+Corebudgetscope differs and threshold/causal-search evidence is absent.
+M12census has an actualcomplete receipt now, not stillrunning; this revision
+does not silently adopt its unreviewed2524-target outcomes or generalize v11.
+
+Wsource178.225696–627.348203CPUh (outward-rounded178.2–627.4),
+modeledstream8.322086–41.555143h (8.3–41.6) under explicit missing-cost
+support and Oclosure CPU-ratio transfer. Not confidence/guaranteed bounds
+or measured wholelibrary costs; no-assumptionupper unbounded.
+Missingchecks2xsource reverses gap935.534vs627.348h; no tautological generalgain.
+MeasuredW31targetreplay medianCPUratio0.451(range0.087–0.885) remains
+target-only/trustedimports, separate from modeledemptyenvstream.
+14stratum140.852/54.906CPUh are retained as conditionalmeasured-estimator
+quantities, not relabeled wholelibrary or replaced by a differentestimand.
+Original31/42source/11missing,13dynamicmissing remain.0newrootnative/agent.
+
+Paper now root0261:21pages204566bytes,complete compile/all-page static self-review;17prior tables/title/fullabstract/4RQ/sections/four implications unchanged. Bobserved count allowances are not guaranteed maxHBmargins; Wwholeframe ranges are scenarios, not confidence/measured cost bounds.0rootnative/agent.
