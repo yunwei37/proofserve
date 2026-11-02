@@ -1,0 +1,2 @@
+cohort,source_modules,checker_complete,graph_match,build_compiler_wall_sum_s,check_wall_s,check_cpu_s,peak_rss_kib,cgroup_peak_bytes,returncode,accepted_modules,stream_over_build,original_kernel_module_local_parity_complete,scope
+Falconer complete closure,13205,False,False,22077.770248265006,1500.2047552242875,1499.492716,8491156,3769057280,124,9040,,False,complete closure with original kernel and indexed context audit; source work is summed compiler invocations

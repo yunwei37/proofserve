@@ -55,13 +55,15 @@ def main():
   return 0 if len(results)==5 and all(x['qualified']for x in results)else 2
  assert json.loads((O/'checkpoint-controls.json').read_text())['complete']
  # Independent restarts read only successful prior segment terminals.
+ tag='math-segment'if sys.argv[1]=='math-segment'else'segment'
  prior=[]
- for p in sorted(O.glob('segment-*-terminal.json')):
+ for p in sorted(O.glob(tag+'-*-terminal.json')):
   v=json.loads(p.read_text())
   if v['cell']['returncode']==0 and not v['malformed']and(v['checkpoint']or v['complete']):prior.append(v)
  if prior and prior[-1]['complete']:print('already complete');return 0
  previous=prior[-1]['snapshot']if prior else None
  number=len(prior)
- row=runpart('segment-'+str(number).zfill(3),['@'+str(D/'roots.txt')],env(),previous,500)
+ roots=['Mathlib.Data.Nat.Basic']if tag=='math-segment'else['@'+str(D/'roots.txt')]
+ row=runpart(tag+'-'+str(number).zfill(3),roots,env(),previous,500)
  return 0 if row['cell']['returncode']==0 and not row['malformed']and(row['checkpoint']or row['complete'])else 2
 if __name__=='__main__':raise SystemExit(main())
