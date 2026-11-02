@@ -1,0 +1,5 @@
+kind,paths,logical_bytes,freeable_bytes,reference
+completed_Falconer_checkpoint_intermediate,41,6426104960,6426222592,falconer-paper-result.md;falconer-paper-evidence.json
+duplicate_extracted_pinned_source,163097,1785499363,2107781120,whole-library-plan.md;whole-library-input-availability.csv
+retired_partial_whole_checkpoint_intermediate,52,12279339520,6139797504,whole-library-progress.md;whole-library-segments.csv
+source_build_generated_C_or_ilean,16256,398705409,431464448,results.md;falconer-source-costs.csv
