@@ -1,0 +1,9 @@
+stratum,actual_project_modules,source_CPU_s,fractional_within10_cost_share,integer_top_k,integer_top_k_fraction,integer_top_k_cost_share,weight_scope,census
+0-50;1-10;0,400,694.276476,0.1864014358452784,40,0.1,0.18640143584527843,actual project stratum size; not global source-frame weights,True
+0-50;101+;0,175,534.293384,0.14491437067841367,18,0.10285714285714286,0.14820007765621146,actual project stratum size; not global source-frame weights,True
+0-50;11-100;0,1192,3336.937241,0.15931424381259446,120,0.10067114093959731,0.1601698633804183,actual project stratum size; not global source-frame weights,True
+50-90;1-10;0,108,250.171058,0.18193175886876573,11,0.10185185185185185,0.18469210375246525,actual project stratum size; not global source-frame weights,True
+50-90;101+;0,135,528.665254,0.19814741314548356,14,0.1037037037037037,0.20337198858164415,actual project stratum size; not global source-frame weights,True
+50-90;11-100;0,447,1553.122779,0.1983384479740478,45,0.10067114093959731,0.19919587889838036,actual project stratum size; not global source-frame weights,True
+90-99;101+;0,2,10.069733,0.14819836831820665,1,0.5,0.7409918415910333,actual project stratum size; not global source-frame weights,True
+90-99;11-100;0,2,11.319497,0.1265483439767686,1,0.5,0.6327417198838429,actual project stratum size; not global source-frame weights,True

@@ -1,0 +1,14 @@
+{
+  "actual_project_modules": 2461,
+  "source_CPU_s": 6918.855422,
+  "strata": 8,
+  "source_file_population_complete": true,
+  "whole_openai_math_population_complete": false,
+  "union_within10_CPU_share": 0.17339558897058283,
+  "union_integer_top_counts": 250,
+  "union_integer_top_CPU_share": 0.1764443753396297,
+  "actual_modules_for_half_cost": 906,
+  "CPU_share_at_that_integer": 0.5003800511558081,
+  "original_capture_single_observation": true,
+  "project_selection_uncertainty": "purposeful ordinary project; not random whole-library coverage"
+}

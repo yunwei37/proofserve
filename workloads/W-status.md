@@ -1,5 +1,21 @@
 # W current state
 
+## W081 within-layer n2 limit; complete Falconer census
+
+- Requestedwithin15completecells top10quota share15.63%CPUweighted /
+15.47%moduleweighted. But2samples/cell forcesinterpolated10–20%; notan
+unbiasedtruepopulationtail, andquota10%differsfromglobalcost-ranked10%.
+- RealcompleteFalconer2461AI-sourcecensus6918.855422CPU s:
+top1/5/10shares3.6211/11.2151/18.4758%; withinlayer17.3396%.
+906actualmodulescover50.0380%; namesin within_stratum_concentration.
+Ordinaryselectedproject, nofull163097claim orpoolinginto42SRSdraws.
+- HalfCPUcounts:actual32needs3; conditional104632-domainmodel16376;
+fullmin/maxmissingcostscenarios23381/25100. Two scenariosnotcountbounds,
+fullactualcountunknown. n2analyticidentificationexamplesnotbenchmarkdata.
+- Newsourceanalysisonly; activeHodge616preserved, recheckactualterminal.
+No neworiginaldraw collectedyet inthisstep, gap/scenariorange unchanged.
+
+
 ## W080 distribution + same-budget retry terminal; Hodge616active
 
 - Raw32CPU817.179526s,median6.770575/P90R7 63.553991/max184.589081s.

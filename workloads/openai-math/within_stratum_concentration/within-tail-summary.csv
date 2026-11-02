@@ -1,0 +1,2 @@
+scope,complete_strata,population_modules,total_estimated_CPU_h,union_of_each_stratum_fraction,selected_equivalent_module_mass,union_selected_estimated_CPU_h,CPU_weighted_within10_cost_share,module_weighted_average_within10_share,true_population_tail_established,confidence_interval,scope_note
+complete_strata_only,15,104632,174.25123012819444,0.1,10463.2,27.235466502361113,0.15629999560017066,0.1547236027392495,False,unknown,weights correct known sampling proportions; n2 resolution and missingstrata remain

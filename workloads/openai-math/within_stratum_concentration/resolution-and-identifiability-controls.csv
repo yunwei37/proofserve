@@ -1,0 +1,5 @@
+case,observed_draws,population_modules,sample_interpolated_top10_share,complete_population_top10_share,scope
+equal_pair,2,2,0.1,0.1,analytic fractional-curve control; not native measurements
+extreme_pair,2,2,0.1999999999998,0.1999999999998,analytic fractional-curve control; not native measurements
+same_pair_near_uniform,2,1000,0.18181818181818182,0.10081818181818182,constructed compatible completion; NOT empirical data or realistic cost prediction
+same_pair_hidden_hotspot,2,1000,0.18181818181818182,0.9999999991,constructed compatible completion; NOT empirical data or realistic cost prediction

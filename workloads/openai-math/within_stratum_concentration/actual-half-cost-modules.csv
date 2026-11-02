@@ -1,0 +1,4 @@
+rank,module,CPU_s,cumulative_CPU_s,scope
+1,OAI.Analysis.PlanarPacking.Certificate.LowBlock15_1,184.58908100000002,184.58908100000002,actual selected32 only
+2,OAI.Analysis.PlanarPacking.Certificate.UMoments9,163.845944,348.435025,actual selected32 only
+3,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,113.882318,462.31734300000005,actual selected32 only

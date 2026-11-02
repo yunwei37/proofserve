@@ -1,0 +1,5 @@
+scope,represented_modules,source_CPU_h,target_cost_share,fractional_modules_for_half_cost,rounded_up_module_count,fractional_count_fraction,rounded_count_fraction,actual_named_modules_available,interpretation
+actual_selected32,32,0.2269943127777778,0.5,2.52821841929842,3,0.07900682560307562,0.09375,True,observed minimal integer count in selected32
+conditional_complete_strata_HT,104632.0,174.25123012819444,0.5,16375.811970722041,16376,0.156508639524448,0.15651043657772,False,"model-equivalent modules, not known actual identities or a full-library measurement"
+missing_ordinary_min_assumption,163097.0,207.89466631027776,0.5,23380.980415730242,23381,0.14335628745918222,0.14335640753661932,False,"model-equivalent modules, not known actual identities or a full-library measurement"
+missing_ordinary_max_assumption,163097.0,630.7016773065278,0.5,25099.133701198225,25100,0.15389083613554036,0.1538961476912512,False,"model-equivalent modules, not known actual identities or a full-library measurement"

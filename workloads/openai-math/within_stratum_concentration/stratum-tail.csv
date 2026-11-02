@@ -1,0 +1,22 @@
+stratum,population_modules,planned_draws,completed_draws,complete,census_if_complete,requested_within_top_fraction,minimum_observed_integer_fraction,original_inverse_probability_weight,smaller_CPU_s,larger_CPU_s,fractional_top10_cost_share,actual_larger_observed_half_share,estimated_stratum_CPU_h,cost_of_stratum_top10_equivalent_modules_h,scope
+0-50;1-10;0,25553,2,2,True,False,0.1,0.5,12776.5,1.2045249999999998,4.435118,0.15728364366326025,0.7864182183163013,20.015249663749998,3.1480713959444446,n2 empirical interpolation; true populationtail unknown except census
+0-50;1-10;1,1040,2,2,True,False,0.1,0.5,520.0,1.069679,2.175856,0.13408304023835824,0.6704152011917911,0.46879950000000004,0.06285806222222222,n2 empirical interpolation; true populationtail unknown except census
+0-50;101+;0,9146,2,0,False,False,0.1,,4573.0,,,,,,,incomplete; no tail imputation
+0-50;11-100;0,45251,2,2,True,False,0.1,0.5,22625.5,2.153143,8.435903,0.1593326348757008,0.796663174378504,66.55068340916667,10.603695740361111,n2 empirical interpolation; true populationtail unknown except census
+0-50;11-100;1,577,2,2,True,False,0.1,0.5,288.5,3.414231,3.643856,0.10325336029436871,0.5162668014718436,0.5656272498611111,0.05840291422222222,n2 empirical interpolation; true populationtail unknown except census
+50-90;1-10;0,16606,2,2,True,False,0.1,0.5,8303.0,1.520206,5.105246999999999,0.15411012650757616,0.7705506325378808,15.280871183055552,2.3549369911666664,n2 empirical interpolation; true populationtail unknown except census
+50-90;1-10;1,345,2,2,True,False,0.1,0.5,172.5,3.875291,8.977351,0.139696585340197,0.698482926700985,0.6158557625,0.08603294708333334,n2 empirical interpolation; true populationtail unknown except census
+50-90;101+;0,7598,2,2,True,False,0.1,0.5,3799.0,1.9108310000000002,4.8541609999999995,0.14350825544213505,0.7175412772106752,7.138945724444444,1.024497646611111,n2 empirical interpolation; true populationtail unknown except census
+50-90;11-100;0,39933,2,1,False,False,0.1,,19966.5,,,,,,,incomplete; no tail imputation
+50-90;11-100;1,738,2,2,True,False,0.1,0.5,369.0,2.6629519999999998,4.7245219999999994,0.1279062911084357,0.6395314555421786,0.7572160849999999,0.09685270099999999,n2 empirical interpolation; true populationtail unknown except census
+90-99;1-10;0,3670,2,2,True,False,0.1,0.5,1835.0,4.329357,8.802745999999999,0.13406452873542035,0.6703226436771018,6.69372472361111,0.8973910505555555,n2 empirical interpolation; true populationtail unknown except census
+90-99;1-10;1,464,2,2,True,False,0.1,0.5,232.0,11.76809,66.08314,0.16976774804970968,0.8488387402485484,5.017079266666666,0.851738248888889,n2 empirical interpolation; true populationtail unknown except census
+90-99;101+;0,2023,2,0,False,False,0.1,,1011.5,,,,,,,incomplete; no tail imputation
+90-99;101+;1,2,2,2,True,True,0.1,0.5,1.0,10.399795,14.603041,0.11681107695143064,0.5840553847571531,0.0069452322222222215,0.0008112800555555557,n2 empirical interpolation; true populationtail unknown except census
+90-99;11-100;0,7225,2,0,False,False,0.1,,3612.5,,,,,,,incomplete; no tail imputation
+90-99;11-100;1,1295,2,2,True,False,0.1,0.5,647.5,18.789948,26.319027000000002,0.11669086695053481,0.5834543347526739,8.113350364583335,0.9467538879166667,n2 empirical interpolation; true populationtail unknown except census
+99-100;1-10;0,106,2,2,True,False,0.1,0.5,53.0,28.854841,40.791652,0.11713914152145466,0.5856957076072733,1.0253511469444443,0.12010875311111112,n2 empirical interpolation; true populationtail unknown except census
+99-100;1-10;1,223,2,2,True,False,0.1,0.5,111.5,113.882318,163.845944,0.11799011221983596,0.5899505610991798,8.601861448055555,1.0149345975555557,n2 empirical interpolation; true populationtail unknown except census
+99-100;101+;0,40,2,0,False,False,0.1,,20.0,,,,,,,incomplete; no tail imputation
+99-100;11-100;0,98,2,1,False,False,0.1,,49.0,,,,,,,incomplete; no tail imputation
+99-100;11-100;1,1164,2,2,True,False,0.1,0.5,582.0,22.006812,184.58908100000002,0.17869578946566958,0.893478947328348,33.399669368333335,5.968380285666668,n2 empirical interpolation; true populationtail unknown except census

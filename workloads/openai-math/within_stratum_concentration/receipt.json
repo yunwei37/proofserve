@@ -1,0 +1,20 @@
+{
+  "source_frame": "/workspaces/repository/workloads/openai-math/noM-hard19-source32/sample-costs.csv",
+  "observed_original_costs": 32,
+  "complete_strata": 15,
+  "missing_original_draws": 10,
+  "all_strata_have_two_planned_draws": true,
+  "population_modules": 163097,
+  "conditional_modules": 104632,
+  "no_assumption_global_count_min": 1,
+  "no_assumption_global_count_universal_nonsharp_max": 81549,
+  "full_library_actual_half_cost_count": "unknown",
+  "full_library_within10_cost_share": "unknown",
+  "current_n2_plugin_bound": [
+    0.1,
+    0.2
+  ],
+  "bounds_scope": "algebraic bound on interpolation estimator, NOT true populationtail",
+  "no_native_run": true,
+  "checks": "same withinshare under two contrarypopulationcompletions; CPUweights equation; observed and HT totals"
+}
