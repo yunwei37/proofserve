@@ -1,3 +1,10 @@
+> Updated 2026-11-02: source construction is complete (13,205 nodes).
+> The original full check and a reachability-cached full check both timed out;
+> neither has a complete ratio. See [terminal diagnosis](falconer-interruption-20261102.md),
+> [durable checkpoint protocol](falconer-checkpoint-plan.md), and the
+> [segmented result](falconer-segmented-result.md) for current recovery.
+> The historical summary below remains unchanged.
+
 # Complete Falconer project extension: observed status
 
 Self-review.

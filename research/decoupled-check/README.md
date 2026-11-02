@@ -145,3 +145,17 @@ retry. Successful constructed modules remain immutable. Progress updates use
 fsync plus atomic replacement, so a container interruption cannot truncate the
 only checkpoint. Original native attempts and their elapsed costs stay recorded.
 The active window keeps its loaded code; later windows use these resume rules.
+
+## Falconer recovery, 2026-11-02
+
+All 13,205 source nodes are built. Full checker attempts at 1,500s did not
+complete. [Diagnosis](falconer-interruption-20261102.md),
+[recovery cost records](falconer-recovery-costs.csv),
+[checkpoint protocol and native controls](falconer-checkpoint-plan.md),
+[segmented current result](falconer-segmented-result.md),
+[original module-local parity](falconer-parity-progress.md).
+The final reducer is falconer-finalize.py --reduce-only; full ratios
+remain unavailable until both complete checking and native reference comparison
+are observed. No unfinished prefix is extrapolated.
+[The 17 vs14.33 admission control explanation](admission-control-reconciliation.md)
+is a separate completed reconciliation.
