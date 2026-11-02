@@ -1,0 +1,26 @@
+{
+  "utc": "2026-11-02T19:10:00.077037+00:00",
+  "pid": 480233,
+  "birth_ticks": "769918349",
+  "args": [
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-Intrinsic77-KL1200-prepared-20261102/controller.py",
+    "--point",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-Intrinsic77-KL1200-prepared-20261102"
+  ],
+  "jobs": 84,
+  "no_M": true,
+  "one_W_native_at_a_time": true,
+  "one_shared_Pcore_lock_request_per_task": true,
+  "predecessor_retired": true,
+  "observed_lock_before_submission": [
+    "3: FLOCK  ADVISORY  WRITE 480217 08:10:1443914 0 EOF"
+  ],
+  "native_work_allowance_s": 1700,
+  "ordinary_dependency_wall_s": 600,
+  "original_target_wall_s": 1200,
+  "IntegralPairings_retry_wall_s": 1200,
+  "retry_scope": "longer wall allowance diagnostic after two retained600s censors; not a same-budget recovery claim",
+  "memory_scope": "15GiB charged child cgroup plus1s16GiB sampled native/controller RSS response"
+}
