@@ -1,9 +1,9 @@
 # Research status
 
-Snapshot2026-11-02UTC, root0265. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-02UTC, root0266. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
-[Exact previous status](tmp/build-and-evaluate/step-0264-20261102T061224+0000/experiment-001/before-docs-research-status.md.gz).
+[Exact previous status](tmp/build-and-evaluate/step-0266-20261102T083616+0000/experiment-001/before-docs-research-status.md.gz).
 
 ## Scientific contract and operating scope
 
@@ -45,6 +45,7 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | B measured stages |2524local eligible helpers in3pinned modules,30288checks/22716thread comparisons:0allocation/verdict/diagnostic differences. Math source ranges0.0367/0.1385%, separate16-source panel max2.3339%/0pass changes. Not free runtime, sufficient maxHB padding or global/cross-machine guarantee. | [0262](tmp/build-and-evaluate/step-0262-20261102T030442+0000/step-report.md), [0261](tmp/build-and-evaluate/step-0261-20261102T023802+0000/step-report.md) |
 | B cache/budgets |Private-input cache256verdict/diagnostic pairs stable,128sync vectors stable;100valid budget-monotonicity pairs no counterexample. Limited treatments, not universal semantics. Sync trace acceptance loss repeats one input; observer transparency not established. | [0257](tmp/build-and-evaluate/step-0257-20261101T215746+0000/step-report.md), [0255](tmp/build-and-evaluate/step-0255-20261101T200059+0000/step-report.md) |
 | A prediction/admission |Grouped source forecast error and native CPU-budget policies do not establish bounded prediction or route benefit.29/42dynamic labels agree27/29conditionally; known-root upper admission has finite availability tradeoffs, not general service gain. | [0254](tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md), [0256](tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md) |
+| Heterogeneous full closure |Barrier4449modules,8P/8P+4E/8P+8E/8P+16E:284.720/299.807/310.591/319.705s;24versus8 wall+12.29%,nativeCPU+75.31%. One fixed-order capture/settings,not homogeneous scaling or a cross-version speed ratio. | [0266](tmp/build-and-evaluate/step-0266-20261102T083616+0000/step-report.md) |
 
 ## Terminal failures and trust that remain visible
 
@@ -84,8 +85,6 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0265:22pages/211433bytes,complete compile and all-page self-review;17prior tables/title/fullabstract/4RQ/sections/four implication bodies unchanged. No independent review/venue acceptance. Root0newnative/agent.
+Paper root0266:23pages/215085bytes,complete compile and all-page self-review;18prior tables/title/fullabstract/4RQ/sections/four implication bodies unchanged,+1heterogeneous table. Self-review,not independent/venue acceptance;0newrootnative/agent.
 
 Direct finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
-
-Paper root0265:22pages/211433bytes,complete compile and all-page self-review;17prior tables/title/fullabstract/4RQ/sections/four implication bodies unchanged. No independent review/venue acceptance. Root0newnative/agent.

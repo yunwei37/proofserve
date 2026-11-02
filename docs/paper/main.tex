@@ -1382,10 +1382,72 @@ A matching complete source-work sum for Barrier is \missing{Barrier closure
 source work}; its leaf compiler time cannot fill that cell.
 The complete four-worker ratios cannot be replaced by, or multiplied with,
 the eight-worker incremental target ratios.
-Full eight-worker closure costs and general service throughput remain
-unmeasured. The coordinator and internal-ABI adapter still add trusted
-implementation code; acceptance-set parity is not a proof of universal
+These pairs do not measure complete eight-worker costs for that version or
+general service throughput. A later-version heterogeneous closure curve is
+reported separately below. The coordinator and internal-ABI adapter still add
+trusted implementation code; acceptance-set parity is not a proof of universal
 malformed-input equivalence.
+
+\paragraph{More heterogeneous workers do not accelerate the full closure.}
+\measured{\expref{0266-20261102T083616+0000}{0266}; one fixed-order observation per setting.}
+A later frozen driver checks the same complete 4,449-module Barrier closure
+from an empty checked environment at 8, 12, 16 and 24 requested workers
+(Table~\ref{tab:heterogeneous}).
+The allowed CPU masks expand from eight performance cores (8P) to
+8P+4E, 8P+8E and 8P+16E, where E denotes efficiency cores.
+This changes both worker count and available hardware; it is not
+homogeneous strong scaling or a matched comparison with the earlier v14
+four-worker result.
+All four invocations retain the original kernel and proof terms, accept the
+same module set as the retained serial reference, and traverse the same
+import graph: 425,463 entries and 3,595 upstream unsafe/partial exclusions.
+The added coordinator and internal-ABI adapter remain trusted implementation.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Hardware / workers & Wall (s) & Native CPU (s)\\
+\midrule
+8P / 8 &284.720&668.786\\
+8P+4E / 12 &299.807&809.696\\
+8P+8E / 16 &310.591&937.934\\
+8P+16E / 24 &319.705&1172.473\\
+\bottomrule
+\end{tabular}
+\caption{\measured{\expref{0266-20261102T083616+0000}{0266}} Complete Barrier closure, one fresh process per setting in the
+fixed order shown, with retained filesystem caches.
+Wall spans launch through \texttt{wait4}, including reads, planning,
+checking and native result audit; sampler join and cgroup deletion follow
+the clock. CPU is native user plus system time. No per-target observer
+is enabled for this curve.}
+\label{tab:heterogeneous}
+\end{table}
+
+At 24 versus eight workers, wall time increases 12.29\% and native CPU
+increases 75.31\%.
+Each setting routes 1,231 complex/cyclic modules through the upstream
+fallback and 3,218 through parallel replay.
+At 8P, fallback windows take 99.819 seconds and time outside recorded
+kernel-work windows takes 46.726 seconds, together 51.47\% of process wall.
+The parallel-route windows also increase, from 138.175 to 161.525 seconds.
+These are disjoint elapsed windows, not a causal CPU profile; a fallback
+module can contain ordinary work, so its entire cost is not proved
+inherently serial.
+Workers may migrate within their allowed masks. Live snapshots show
+E-core placements in the 12- and 16-worker cells; the 24-worker mask is
+recorded at launch without a live thread snapshot.
+External E-core load, frequency, P/E-specific CPU shares and order effects
+are not independently controlled.
+The four processes and their cgroups retire without a sampled resource stop
+or OOM, under separate 14\,GiB charged-memory and sampled-RSS protections
+and without \texttt{-M}.
+This observed negative result bounds this heterogeneous extension:
+the earlier P-core gains do not imply continued complete-closure speedup
+when adding E cores.
+It neither isolates contention or scheduling as the cause nor establishes
+a hardware-independent scaling limit, repeated uncertainty or cluster behavior.
+The separate resident-leaf determinism experiment is not a result of this curve.
 
 \paragraph{Pooled certificates pass a broader native qualification.}
 \measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}

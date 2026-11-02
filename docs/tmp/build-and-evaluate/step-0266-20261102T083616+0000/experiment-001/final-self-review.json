@@ -1,0 +1,27 @@
+{
+  "pages": 23,
+  "PDF_bytes": 215085,
+  "contacts_viewed": 6,
+  "old_table_bodies_unchanged": 18,
+  "new_tables": 1,
+  "title_abstract_RQs_sections_four_implication_bodies_unchanged": true,
+  "labels": {
+    "measured": 53,
+    "partialev": 21,
+    "unproven": 1
+  },
+  "canonical_links_checked": 151,
+  "citation_keys": 50,
+  "new_root_native": 0,
+  "review": "self-review, not independent or venue acceptance",
+  "renderings_removed": 35,
+  "rendering_bytes_removed": 21721574,
+  "PVC_free_bytes": 9622892544,
+  "compiler_exact_log_files_gzipped": [
+    "experiment-001/tectonic.stderr",
+    "experiment-001/tectonic.stdout",
+    "experiment-001/first-full-build/tectonic.stderr",
+    "experiment-001/first-full-build/tectonic.stdout",
+    "experiment-001/first-full-build/main.log"
+  ]
+}

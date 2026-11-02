@@ -1,9 +1,9 @@
 # Research result index
 
-Current2026-11-02UTC, root0265. [Status](../docs/research-status.md) ·
+Current2026-11-02UTC, root0266. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
-[Exact previous index](../docs/tmp/build-and-evaluate/step-0264-20261102T061224+0000/experiment-001/before-research-README.md.gz).
+[Exact previous index](../docs/tmp/build-and-evaluate/step-0266-20261102T083616+0000/experiment-001/before-research-README.md.gz).
 Reports identify input, version, clock and trust boundary. Reviews are **自审**;
 preparation, queues, controls and code are not performance or general acceptance.
 
@@ -19,6 +19,8 @@ preparation, queues, controls and code are not performance or general acceptance
   every target has0%allocation variation, P95=maximum=0%.
   No extra allocation-count headroom was needed for these observed runs; future runs, maxHB
   threshold guarantees and zero runtime overhead are not established.
+
+- [Heterogeneous Barrier closure](parallel-stream-check/extended-results/heterogeneous-scaling.md):4,449modules at8/12/16/24workers,284.720→319.705s and668.786→1172.473nativeCPU-s.8P→8P+16E is12.29%slower/75.31%more CPU in one ordered capture; neither homogeneous scaling nor a cluster result. [Root0266](../docs/tmp/build-and-evaluate/step-0266-20261102T083616+0000/step-report.md).
 
 ## Existing research directories
 

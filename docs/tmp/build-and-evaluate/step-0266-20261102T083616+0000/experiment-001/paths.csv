@@ -1,0 +1,13 @@
+workers,route,modules,wall_s
+8,upstream_complex_or_cycle,1231,99.81879984100004
+8,parallel,3218,138.17474344999974
+8,outside_recorded_kernel_work,0,46.72609415603702
+12,upstream_complex_or_cycle,1231,100.60133085700001
+12,parallel,3218,147.29365475000003
+12,outside_recorded_kernel_work,0,51.912108844040006
+16,upstream_complex_or_cycle,1231,101.47335316600001
+16,parallel,3218,153.84378534400008
+16,outside_recorded_kernel_work,0,55.27409316954376
+24,upstream_complex_or_cycle,1231,101.62630572400006
+24,parallel,3218,161.52496071900003
+24,outside_recorded_kernel_work,0,56.55354763808015

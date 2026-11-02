@@ -1,0 +1,1 @@
+First finalization completed PDF preservation/render cleanup/log gzip, then diff --check failed: docs/research-status.md:91: new blank line at EOF. Normalize final EOF only; do not rerun native/compiler/render/finalizer.

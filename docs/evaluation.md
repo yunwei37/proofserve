@@ -713,3 +713,14 @@ Index directly links both final owner reports. No new native experiment, generic
 determinism/checkpoint mechanism or globalcost guarantee.
 
 Final0265paper22pages/211433bytes,compile3.026121s/sample189284352B/E22–23;6contacts/allpages self-reviewed;17old tables/title/fullabstract/4RQ/sections/four implication bodies unchanged. Removed only34current rootrenderings/21179451bytes; allraw/PDF/source/failures retained.
+
+## Root0266 — heterogeneous full-closure negative
+[step-0266-20261102T083616+0000](tmp/build-and-evaluate/step-0266-20261102T083616+0000/step-report.md), [outer self-audit](tmp/build-and-evaluate/step-0266-20261102T083616+0000/outer-audit.md).
+M4798b3e complete4cell/4449module v16 curve independently reconstructed;
+24vs8 allowed8P+16Evs8P wall+12.2876%/CPU+75.3137%,oneorderedcapture.
+9PIDbirth/4cgroups retired,raw frozen,0newrootnative/agent. Distinct masks,
+not equal-core scaling or cross-version ratio; source32/paired31/grainmissing13
+and all global/cluster/axiom gaps unchanged. OpublicationDNS failed then owner
+cdf1504 repairs existing path; rootdoesnotrestart. New paper table/localRQ3 only.
+
+Final0266paper23pages/215085B,compile3.932703s/sample190861312B/E22–23;6contacts/allpages self-reviewed;18oldtables/title/fullabstract/4RQ/sections/4implications unchanged,+1table. Removedonly35rootrenderings/21721574B; allraw/source/failed/partial preserved.
