@@ -150,8 +150,8 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
   let mut separate := false
   let mut insertMap : Std.HashMap Name ConstantInfo := {}
   if mode == "audit" then
-    for imported in visible do
-      if s.segregated.contains imported then
+    for imported in s.segregated do
+      if ((s.moduleIndices[imported]?).any (fun i => visible.testBit i)) then
         separate := true
         reason := some "segregated_dependency"
     for (_, ci) in map do
