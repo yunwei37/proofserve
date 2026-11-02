@@ -198,3 +198,28 @@ quantities, not relabeled wholelibrary or replaced by a differentestimand.
 Original31/42source/11missing,13dynamicmissing remain.0newrootnative/agent.
 
 Paper now root0261:21pages204566bytes,complete compile/all-page static self-review;17prior tables/title/fullabstract/4RQ/sections/four implications unchanged. Bobserved count allowances are not guaranteed maxHBmargins; Wwholeframe ranges are scenarios, not confidence/measured cost bounds.0rootnative/agent.
+
+
+## Qualified computation-helper census: root0262
+[Root0262](tmp/build-and-evaluate/step-0262-20261102T030442+0000/step-report.md) now independently qualifies actual Mv12 terminal/raw/source:
+36rc0processes/30288accepted checks of2524unique local helpers
+(UMoments91164/BarrierData411320/Envelope40),each12observations at1/2/4/8workers
+and3fixed-order repeats.22716j1-versus-higher pairs0allocation/verdict/diagnostic
+differences; all2524per-target observedranges0%. ActualTID counts match requested.
+73PIDbirth identities/controller366671 and36cgroups retired;noOOM/RSSstop,
+noM/P0–7/14GiBcharged.3target.olean byte-match retained originalWproducers.
+OriginalnoinlineIOkernel-check/timing code matches prior qualifiedprobe;
+selection expands8→all eligiblelocal of_decide_eq_true-headed theorems,
+freshnames/proofbodies preserved, importtargetcontext stilltrusted.
+This is all eligiblehelpers in3modules, not allcomputationalproofs/globalcandidate
+work/nativekernelpoll counts or threshold/crossmachine budget guarantee.
+UnitCPUvaries despite fixedallocations;UMj1→j8median73.957600→95.415988s,
+notzero-overhead or isolatedconcurrencycausality.
+wait4RSS12727196KiB/sample13028470784B/charged6533206016B distinct.
+Wholecontroller1283.999848s includesall36cells,not singleconfiggain.
+ActualBintro/RQ4 nowuses qualifiedcensus, keeps v11math/24target panel separate;
+prior0261receipt-only caution was accurate then, this step supplies missingaudit.
+Wsource31/42/scenarioassumptions and13dynamicmissing unchanged;O/Whealthy
+partial/reference/checkpoint requests protected.0newrootnative/agent/foreignedit.
+
+Paper now root0262:21pages206438bytes,complete compile/all-page static self-review;17prior tables/title/fullabstract/4RQ/sections/four implications unchanged. B2524helper census is qualified within3modules; general maxHB/crossmachine/global guarantees remainmissing. Wscenario assumptions unchanged.0rootnative/agent.

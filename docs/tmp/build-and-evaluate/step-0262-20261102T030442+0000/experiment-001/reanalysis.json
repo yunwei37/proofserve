@@ -1,0 +1,445 @@
+{
+  "native_phases": 36,
+  "modules": 3,
+  "eligible_helpers": 2524,
+  "observations": 30288,
+  "j1_vs_higher_pairs": 22716,
+  "changed_allocation_pairs": 0,
+  "changed_allocation_targets": 0,
+  "verdict_differences": 0,
+  "diagnostic_differences": 0,
+  "summary": [
+    {
+      "module": "UMoments9",
+      "eligible_local_helpers": 1164,
+      "observations": 13968,
+      "j1_vs_higher_pairs": 10476,
+      "changed_allocation_targets": 0,
+      "max_observed_allocation_range_percent": 0.0,
+      "active_TID_counts": {
+        "1": [
+          1
+        ],
+        "2": [
+          2
+        ],
+        "4": [
+          4
+        ],
+        "8": [
+          8
+        ]
+      },
+      "unit_CPU_medians": {
+        "1": 73.957599536,
+        "2": 77.031288368,
+        "4": 85.277454959,
+        "8": 95.415987508
+      }
+    },
+    {
+      "module": "BarrierData41",
+      "eligible_local_helpers": 1320,
+      "observations": 15840,
+      "j1_vs_higher_pairs": 11880,
+      "changed_allocation_targets": 0,
+      "max_observed_allocation_range_percent": 0.0,
+      "active_TID_counts": {
+        "1": [
+          1
+        ],
+        "2": [
+          2
+        ],
+        "4": [
+          4
+        ],
+        "8": [
+          8
+        ]
+      },
+      "unit_CPU_medians": {
+        "1": 45.897525942,
+        "2": 47.933611161,
+        "4": 54.850949794,
+        "8": 58.903771225
+      }
+    },
+    {
+      "module": "EnvelopePsiB",
+      "eligible_local_helpers": 40,
+      "observations": 480,
+      "j1_vs_higher_pairs": 360,
+      "changed_allocation_targets": 0,
+      "max_observed_allocation_range_percent": 0.0,
+      "active_TID_counts": {
+        "1": [
+          1
+        ],
+        "2": [
+          2
+        ],
+        "4": [
+          4
+        ],
+        "8": [
+          8
+        ]
+      },
+      "unit_CPU_medians": {
+        "1": 62.397957947,
+        "2": 59.84484087,
+        "4": 64.98317245,
+        "8": 68.790484678
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "module": "OAI.Analysis.PlanarPacking.Certificate.UMoments9",
+      "resolved": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-assets/overlay-complete-v2/OAI/Analysis/PlanarPacking/Certificate/UMoments9.olean",
+      "original": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/24-noM/artifacts/UMoments9.olean",
+      "bytes": 8526872,
+      "byte_equal": true
+    },
+    {
+      "module": "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41",
+      "resolved": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-assets/overlay-complete-v2/OAI/MathematicalPhysics/Transonic/Certificates/BarrierData41.olean",
+      "original": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/23-noM/artifacts/BarrierData41.olean",
+      "bytes": 9160440,
+      "byte_equal": true
+    },
+    {
+      "module": "OAI.Analysis.Triangular.Envelope.EnvelopePsiB",
+      "resolved": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-assets/overlay-complete-v2/OAI/Analysis/Triangular/Envelope/EnvelopePsiB.olean",
+      "original": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/17-noM/artifacts/EnvelopePsiB.olean",
+      "bytes": 2268344,
+      "byte_equal": true
+    }
+  ],
+  "controller": {
+    "pid": 366671,
+    "birth": "763672770",
+    "argv": [
+      "flock",
+      "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "1740",
+      "taskset",
+      "-c",
+      "0-7",
+      "python3",
+      "-u",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v12/run_all_helpers.py"
+    ],
+    "utc": "2026-11-02T01:49:04.293662+00:00",
+    "foreground": true
+  },
+  "retired_identity_count": 73,
+  "retired_identities": [
+    [
+      366671,
+      "763672770"
+    ],
+    [
+      368254,
+      "763832156"
+    ],
+    [
+      368255,
+      "763832157"
+    ],
+    [
+      368276,
+      "763839926"
+    ],
+    [
+      368278,
+      "763839926"
+    ],
+    [
+      368288,
+      "763843970"
+    ],
+    [
+      368290,
+      "763843971"
+    ],
+    [
+      368301,
+      "763846566"
+    ],
+    [
+      368303,
+      "763846567"
+    ],
+    [
+      368316,
+      "763848128"
+    ],
+    [
+      368318,
+      "763848128"
+    ],
+    [
+      368334,
+      "763852962"
+    ],
+    [
+      368336,
+      "763852963"
+    ],
+    [
+      368377,
+      "763855982"
+    ],
+    [
+      368378,
+      "763855984"
+    ],
+    [
+      368389,
+      "763857622"
+    ],
+    [
+      368391,
+      "763857624"
+    ],
+    [
+      368404,
+      "763858586"
+    ],
+    [
+      368406,
+      "763858587"
+    ],
+    [
+      368515,
+      "763864627"
+    ],
+    [
+      368517,
+      "763864628"
+    ],
+    [
+      368528,
+      "763869543"
+    ],
+    [
+      368530,
+      "763869544"
+    ],
+    [
+      368541,
+      "763872536"
+    ],
+    [
+      368543,
+      "763872537"
+    ],
+    [
+      368565,
+      "763875005"
+    ],
+    [
+      368567,
+      "763875006"
+    ],
+    [
+      368581,
+      "763876514"
+    ],
+    [
+      368583,
+      "763876515"
+    ],
+    [
+      368746,
+      "763879096"
+    ],
+    [
+      368748,
+      "763879097"
+    ],
+    [
+      368758,
+      "763883115"
+    ],
+    [
+      368760,
+      "763883117"
+    ],
+    [
+      368801,
+      "763890655"
+    ],
+    [
+      368803,
+      "763890656"
+    ],
+    [
+      368823,
+      "763891649"
+    ],
+    [
+      368825,
+      "763891650"
+    ],
+    [
+      368834,
+      "763893277"
+    ],
+    [
+      368836,
+      "763893278"
+    ],
+    [
+      368845,
+      "763895819"
+    ],
+    [
+      368847,
+      "763895821"
+    ],
+    [
+      368857,
+      "763900573"
+    ],
+    [
+      368859,
+      "763900574"
+    ],
+    [
+      368873,
+      "763902813"
+    ],
+    [
+      368875,
+      "763902814"
+    ],
+    [
+      369039,
+      "763906008"
+    ],
+    [
+      369041,
+      "763906010"
+    ],
+    [
+      369052,
+      "763910932"
+    ],
+    [
+      369054,
+      "763910933"
+    ],
+    [
+      369066,
+      "763917678"
+    ],
+    [
+      369068,
+      "763917679"
+    ],
+    [
+      369080,
+      "763925252"
+    ],
+    [
+      369082,
+      "763925253"
+    ],
+    [
+      369236,
+      "763929299"
+    ],
+    [
+      369238,
+      "763929301"
+    ],
+    [
+      369278,
+      "763931522"
+    ],
+    [
+      369280,
+      "763931523"
+    ],
+    [
+      369293,
+      "763933075"
+    ],
+    [
+      369295,
+      "763933077"
+    ],
+    [
+      369484,
+      "763937786"
+    ],
+    [
+      369486,
+      "763937788"
+    ],
+    [
+      369494,
+      "763940339"
+    ],
+    [
+      369496,
+      "763940340"
+    ],
+    [
+      369506,
+      "763942016"
+    ],
+    [
+      369508,
+      "763942017"
+    ],
+    [
+      369521,
+      "763942987"
+    ],
+    [
+      369523,
+      "763942989"
+    ],
+    [
+      369543,
+      "763949525"
+    ],
+    [
+      369545,
+      "763949526"
+    ],
+    [
+      369556,
+      "763955337"
+    ],
+    [
+      369558,
+      "763955338"
+    ],
+    [
+      369596,
+      "763958320"
+    ],
+    [
+      369598,
+      "763958321"
+    ]
+  ],
+  "whole_controller_wall_s": 1283.9998480742797,
+  "native_wall_sum_s": 1283.805375223048,
+  "max_wait4_RSS_KiB": 12727196,
+  "max_sampled_RSS_B": 13028470784,
+  "max_charged_memory_B": 6533206016,
+  "kernel_poll_counter": "null/unmeasured",
+  "context": "full original target imported and trusted, fresh renamed closed stored proof",
+  "new_root_native": 0,
+  "root_analysis_seconds": 0.7255112687125802,
+  "root_analysis_maxrss_kib": 68064
+}

@@ -91,3 +91,5 @@ No rootnative/agent,foreignimplementationrepair or queuedwork restart.
 - [Root0260](../docs/tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md): W31fresh target pairs complete, conditional ratio0.3898 with trusted imports; separate Mv11three-repeat stage count panel, no generalbudget guarantee; first fullFalconer checker timeout retained, recovery/parity stillmissing.
 
 - [Root0261](../docs/tmp/build-and-evaluate/step-0261-20261102T023802+0000/step-report.md): direct Bscope revision; observed count spans0/0.0367/0.1385/2.3339%, not guaranteed budget margins. Whole-frame W178.2–627.4source/8.3–41.6modeledstream CPUh are assumption scenarios, distinct from31targetreplays.
+
+- [Root0262](../docs/tmp/build-and-evaluate/step-0262-20261102T030442+0000/step-report.md): independently qualified Mv12eligible-helper census,2524targets/30288acceptedchecks/22716thread comparisons,0allocation differences. All3pinnedmodule helper-form coverage, not generic computational determinism; earlier24target and mathematical panels remain separate.

@@ -1,0 +1,1 @@
+Root finalizer literal substitution accidentally changed novelty date 20261101 to 20262101; failed while validating links after copying the correct PDF. No native run or data mutation. Corrected literal paths and repeated finalization; final PDF/source unchanged.
