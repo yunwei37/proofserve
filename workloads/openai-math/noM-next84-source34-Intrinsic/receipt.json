@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-02T19:31:27.562942+00:00",
+  "original_costs": 34,
+  "complete_cells": 16,
+  "covered_modules": 144565,
+  "missing_domain_modules": 18532,
+  "missing_domain_fraction": 0.11362563382526962,
+  "source_scenario_CPU_h": [
+    232.68974110152777,
+    396.2120666719444
+  ],
+  "scenario_is_CI": false,
+  "source_errors_are_not_completion_costs": true,
+  "capture_is_final": false
+}

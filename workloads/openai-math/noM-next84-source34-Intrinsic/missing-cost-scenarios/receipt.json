@@ -1,0 +1,17 @@
+{
+  "source_frame": "workloads/openai-math/noM-next84-source34-Intrinsic/sample-costs.csv",
+  "source_draws_known": 34,
+  "missing_original_draws": 8,
+  "known_HT_terms_CPU_h": 227.71421637583333,
+  "future_complete_sample_point_algebraic_floor_h": 227.71421637583333,
+  "actual_completed_HT_point_upper": "unbounded without missing-cost assumptions",
+  "population_CPU_confidence_lower": "unknown",
+  "population_CPU_confidence_upper": "unknown",
+  "missing_draws_plus_one_CPU_second_total_h": 4.130694444444444,
+  "scenario_count": 9,
+  "rows": 27,
+  "class_sum_checks": 9,
+  "stream_ratios_are_assumptions_for_unmeasured_modules": true,
+  "nominal_budget_scenario_changes_to_budgeted_work_not_successful_full_build": true,
+  "no_native_run": true
+}

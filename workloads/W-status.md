@@ -1,5 +1,20 @@
 # W current state
 
+## W091 current:34original costs; KL active
+Intrinsic original compiled19:30:40UTC,9.734671CPU s/9.698324elapsed.
+Original34/42,complete16/21,covered144565;11.3626%module domain remains.
+Its partner NativeCodeAssembly still missing, so no newly complete stratum.
+Fixed missing-cost scenario232.6897–396.2121CPUh (ratio1.70275), not95%CI.
+Latest serial transfer15.9139–35.1880/parallel21.6407–47.9023CPUh;
+computation share14.5241–24.7310%in those scenarios,26.4673%covered.
+Current raw owner remains Intrinsic77-KL1200 controller480233/birth769918349.
+First77jobs returned; IntegralPairings index77 actuallyrunning at19:31:12,
+longer1200s dependency retry; six KL descendants/original remain after it.
+Do not restart or parallel Wnative; block for actual return/terminal.
+New files openai-math/noM-next84-source34-Intrinsic; source33 preserved.
+Older current-state paragraphs below are timestamped historical snapshots.
+
+
 ## W088 current frontier: source33 and latest CPU model
 - Actual Hodge target completed19:06:39UTC; all176remaining tasks compile_ok,
   original source cost4.131784CPU s/3.929919elapsed. Four dependency windows
