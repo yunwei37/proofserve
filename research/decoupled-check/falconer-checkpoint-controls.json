@@ -1,0 +1,35 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "case": "duplicates",
+      "qualified": true,
+      "parts": 4,
+      "last_key": "control_duplicates_3"
+    },
+    {
+      "case": "bad_duplicate",
+      "qualified": true,
+      "parts": 3,
+      "last_key": "control_bad_duplicate_2"
+    },
+    {
+      "case": "sibling",
+      "qualified": true,
+      "parts": 3,
+      "last_key": "control_sibling_2"
+    },
+    {
+      "case": "definitions",
+      "qualified": true,
+      "parts": 4,
+      "last_key": "control_definitions_3"
+    },
+    {
+      "case": "private",
+      "qualified": true,
+      "parts": 4,
+      "last_key": "control_private_3"
+    }
+  ]
+}
