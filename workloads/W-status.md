@@ -1,5 +1,17 @@
 # W current state
 
+## W076 missing11impact quantified
+- Ifmissingdraws lieinsideobservedclasscostranges, eventualsourceHTpoint
+ 178.225696–627.348203CPUh;10xclassmaxstress4786.790611h. Theseare
+ scenarioends,NOTconfidencebounds; no-assumption successfulcostupperunbounded.
+- Serialstreamfixed O CPUanchor transfer8.322086–41.555143h inrange.
+ Atmaxsourcecosts, no-savingsonmissing=473.373258h; k=1.333164break-even,
+ 2xmissingcheckerCPUreversescomparison. No checkerwork inventedasobserved.
+- Oppositelyplaced10xtailsyield computationalsource share0.6165–66.0565%;
+ not aCI. Current17.14%coveredsourceCPUdoesnotboundeligiblecheckingelapsed.
+- Smallfinaltwo-domainsource/streamtableandper-drawstressCSVs in
+ openai-math/missing_draw_stress. Currentnative19jobcapturepreserved.
+
 ## W075 completed31 replay; hard19source active
 - Actual31/31accepted terminal2026-11-02T01:00:09UTC, allnative/controller/
  cgroups retired; exacttargetparts match, no upstream exclusions/errors.

@@ -1,0 +1,16 @@
+{
+  "source_draws_known": 31,
+  "missing_original_draws": 11,
+  "known_HT_terms_CPU_h": 165.18793599652776,
+  "future_complete_sample_point_algebraic_floor_h": 165.18793599652776,
+  "actual_completed_HT_point_upper": "unbounded without missing-cost assumptions",
+  "population_CPU_confidence_lower": "unknown",
+  "population_CPU_confidence_upper": "unknown",
+  "missing_draws_plus_one_CPU_second_total_h": 10.842083333333333,
+  "scenario_count": 9,
+  "rows": 27,
+  "class_sum_checks": 9,
+  "stream_ratios_are_assumptions_for_unmeasured_modules": true,
+  "nominal_budget_scenario_changes_to_budgeted_work_not_successful_full_build": true,
+  "no_native_run": true
+}

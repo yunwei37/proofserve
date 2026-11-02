@@ -1,0 +1,3 @@
+domain,observed_draws,observed_min_CPU_s,observed_median_CPU_s,observed_max_CPU_s,covered_domain_mean_CPU_s,missing_draws,missing_inverse_probability_weight,stream_low_anchor,stream_high_anchor
+ordinary_proxy,14,1.2045249999999998,4.6446395,40.791652,4.25309132109957,10,38449.5,0.0396987066193567,0.06449656733749293
+certificate_proxy,17,1.069679,10.399795,163.845944,18.55854946029035,1,582.0,0.08442149498070872,0.08467146864040666
