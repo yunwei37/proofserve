@@ -16,7 +16,7 @@ The full source archive has actually been extracted on PVC:163097files/
 1785499363bytes. The initial immutable provider overlay contains2469source
 module artifacts;160628source modules lack ready typed artifacts.
 This is a source-to-typed-input prerequisite, not160628kernel rejections.
-Forty-two external import names have no initial provider; package source setup
+Forty-one external import names have no initial provider; package source setup
 and source errors are distinct from kernel acceptance and remain explicit.
 The upstream package file and pinned dependencies are retained. Providers are
 the matching SDK/Mathlib/packages and exact B/Falconer compiler outputs from
@@ -125,3 +125,25 @@ different partitioned protocol, charging repeated dependency work.
 The aggregate coverage table spans all six source groups even when checking
 fails or prerequisites are missing. A full-source acceptance union alone must
 also retain the traversed native dependency graph before a whole-library claim.
+
+
+## Pinned Lake module identity correction
+Preflight found3files (CM/Challenge/Solution) in the Hodge srcDir directory but
+outside the HodgeConjecture submodule glob. They remain ordinary
+ComparatorChallenges.HodgeConjectureCMAbelianVarieties modules under source root
+lean; blindly stripping the custom root would give incorrect bare module names.
+The initial and corrected source manifests are both preserved. Total source
+count163097 and all2469ready typed-root names are unchanged; no successful
+kernel data are reinterpreted. Remaining external provider gaps decrease42->41.
+This corrects only this capture; no W inventory or source is edited.
+
+
+## Static external-provider frontier
+[whole-library-external-frontier.csv](whole-library-external-frontier.csv) shows
+10535source modules reaching the41currently unavailable external import
+providers. This is static source reachability, not a measurement of compilation
+failure, kernel rejection, time or the amount of CPU that can be checked.
+[whole-library-missing-external.csv](whole-library-missing-external.csv) lists
+names and their source reachability. Required package pins are in the original
+project lakefile and dependency metadata. Complete measurement still requires
+these typed dependency inputs or an explicitly reported coverage gap.

@@ -1,0 +1,7 @@
+cohort,source_modules,source_modules_reaching_initial_external_gap
+OAI.Algorithms.SubexponentialSAT,3977,0
+OAI.Analysis.MutuallyUnbiased,3386,0
+OAI.Analysis.PlanarPacking,562,0
+OAI.Combinatorics.Ramsey,444,0
+OAI.MathematicalPhysics.Transonic,466,0
+remainder,154262,10535

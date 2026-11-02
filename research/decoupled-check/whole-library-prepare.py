@@ -15,6 +15,10 @@ def atomic(p,v):
  t.replace(p)
 def name(path,roots):
  root=max((x for x in roots if path.startswith(x+'/')),key=len)
+ # The pinned Hodge library applies its srcDir only to HodgeConjecture submodules.
+ # CM/Challenge/Solution are ordinary ComparatorChallenges library members.
+ if root!='lean' and not path[len(root)+1:].startswith('HodgeConjecture/'):
+  root='lean'
  return path[len(root)+1:-5].replace('/','.')
 def main():
  O.mkdir(exist_ok=True)
@@ -24,12 +28,16 @@ def main():
  inventory=list(csv.DictReader(gzip.open(INV/'files.csv.gz','rt')))
  bypath={x['path']:x for x in inventory}
  rows={name(x['path'],roots):dict(module=name(x['path'],roots),path=x['path'],bytes=int(x['size']),
-       source_root=max((q for q in roots if x['path'].startswith(q+'/')),key=len))for x in inventory}
+       source_root=('lean'if not name(x['path'],roots).startswith('HodgeConjecture.')else max((q for q in roots if x['path'].startswith(q+'/')),key=len)))for x in inventory}
  assert len(rows)==len(inventory)==163097
  for m,v in rows.items():
   v['cohort']=next((g for g in GROUPS if m==g or m.startswith(g+'.')),'remainder');v['imports']=[]
  with gzip.open(INV/'content/imports.csv.gz','rt')as f:
-  for x in csv.DictReader(f):rows[x['module']]['imports'].append(x['imports'])
+  for x in csv.DictReader(f):
+   key=x['module']
+   if key in ['CM','Challenge','Solution']:
+    key='ComparatorChallenges.HodgeConjectureCMAbelianVarieties.'+key
+   rows[key]['imports'].append(x['imports'])
  order=list(graphlib.TopologicalSorter({m:{q for q in x['imports']if q in rows}for m,x in rows.items()}).static_order())
  atomic(O/'frame.json',[rows[m]for m in order])
  count=0;source=O/'sources'

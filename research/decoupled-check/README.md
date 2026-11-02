@@ -14,6 +14,18 @@ Mathlib is14.67%; historical unsegmented Mathlib is10.56%. These are serial
 native process work ratios, not service throughput or parallel Lake latency.
 [Recomputed evidence](falconer-paper-evidence.json) · [comparison CSV](falconer-paper-table.csv).
 
+## Whole-library direct measurement (started 2026-11-02)
+
+[Plan](whole-library-plan.md) · [actual progress](whole-library-progress.md) ·
+[coverage](whole-library-coverage.csv) · [initial typed-input availability](whole-library-input-availability.csv).
+All163097pinned source files are restored on PVC. Only2469have initial matching
+compiled terms; missing terms require separately recorded source production.
+The resumable500-new-module checker uses the qualified original kernel and
+bounded P-core tasks. No full-library CPU cost or validation of extrapolation
+is claimed before actual complete coverage. The source and dependency coverage,
+failed launches, source errors/censors, kernel outcomes and memory failures
+remain explicit. Snapshots enable restart but do not shrink imported state.
+
 ## Implementation and trust
 StreamCheck.lean reads original Lean 4.34.1 olean parts, recursively visits
 imports in dependency order, and calls the stock Kernel.Environment.replay.

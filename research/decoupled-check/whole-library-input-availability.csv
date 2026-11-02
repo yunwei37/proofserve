@@ -1,0 +1,7 @@
+cohort,source_modules,initial_typed_artifacts,missing_typed_artifacts
+OAI.Algorithms.SubexponentialSAT,3977,0,3977
+OAI.Analysis.MutuallyUnbiased,3386,0,3386
+OAI.Analysis.PlanarPacking,562,8,554
+OAI.Combinatorics.Ramsey,444,0,444
+OAI.MathematicalPhysics.Transonic,466,0,466
+remainder,154262,2461,151801
