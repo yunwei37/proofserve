@@ -1,0 +1,3 @@
+group,successful_source_nodes,compiler_wall_sum_s,compiler_cpu_sum_s,median_module_compiler_wall_s,scope
+Falconer AI,2461,6476.297931414098,6918.855422,2.759714065119624,"summed original successful compiler cells, not parallel Lake makespan"
+Dependencies,10744,15601.472316850908,25373.748385,0.9497211119160056,"summed original successful compiler cells, not parallel Lake makespan"
