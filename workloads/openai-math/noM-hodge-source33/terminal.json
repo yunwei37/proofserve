@@ -1,0 +1,15 @@
+{
+  "rows": 176,
+  "planned_jobs": 176,
+  "native_rows": 176,
+  "elapsed_including_queue_s": 665.5416164556518,
+  "native_wall_sum_s": 598.4099626624957,
+  "stop": null,
+  "native_allowance_s": 1700,
+  "one_request_at_a_time": true,
+  "statuses": {
+    "compile_ok": 176
+  },
+  "utc": "2026-11-02T19:06:39.212953+00:00",
+  "complete": true
+}

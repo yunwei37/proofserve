@@ -1,0 +1,7 @@
+scenario,domain,source_CPU_h,check_CPU_low_transfer_h,check_CPU_high_transfer_h,transfer_protocol,full_check_measured,confidence_interval
+observed_class_min,ordinary_proxy,166.58357226180553,10.51545040292445,14.911608048004224,latest segmented ordinary + historical unsegmented computation; not a complete matched protocol,False,False
+observed_class_min,certificate_proxy,57.54640427722222,4.858153479847351,4.872538565126985,latest segmented ordinary + historical unsegmented computation; not a complete matched protocol,False,False
+observed_class_min,all,224.12997653902775,15.373603882771802,19.78414661313121,latest segmented ordinary + historical unsegmented computation; not a complete matched protocol,False,False
+observed_class_max,ordinary_proxy,369.83048013430556,23.345243582783255,33.10510807933016,latest segmented ordinary + historical unsegmented computation; not a complete matched protocol,False,False
+observed_class_max,certificate_proxy,57.54640427722222,4.858153479847351,4.872538565126985,latest segmented ordinary + historical unsegmented computation; not a complete matched protocol,False,False
+observed_class_max,all,427.3768844115278,28.203397062630607,37.977646644457145,latest segmented ordinary + historical unsegmented computation; not a complete matched protocol,False,False

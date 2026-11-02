@@ -1,0 +1,5 @@
+point,successful_source_rows,native_wall_s,native_CPU_s,source_scope
+/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hodge-original-prepared-20261101,723,1686.9917390495539,2103.506564,new Hodge closure source producers;15 initially cached costs not measured here
+/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-KLretry-Hodge-suffix-prepared-20261102,380,1084.9973948104307,1367.235461,new Hodge closure source producers;15 initially cached costs not measured here
+/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-Hodge-suffix616-prepared-20261102,440,1686.8023702707142,2017.384415,new Hodge closure source producers;15 initially cached costs not measured here
+/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-Hodge-suffix176-prepared-20261102,176,598.4099626624957,724.102854,new Hodge closure source producers;15 initially cached costs not measured here

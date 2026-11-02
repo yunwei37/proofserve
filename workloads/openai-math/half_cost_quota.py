@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """Per-stratum half-cost quota plug-in; n=2 bootstrap is a diagnostic, not a CI."""
-import collections, csv, itertools, json, math, os
+import argparse, collections, csv, itertools, json, math, os
 from pathlib import Path
 os.sched_setaffinity(0, set(range(8,16)))
 root=Path(__file__).resolve().parents[2]
-out=root/"workloads/openai-math/half-cost-quota-source32"
-out.mkdir(exist_ok=True)
+ap=argparse.ArgumentParser(description=__doc__)
+ap.add_argument("--frame",type=Path,default=root/"workloads/openai-math/noM-hard19-source32/sample-costs.csv")
+ap.add_argument("--out",type=Path,default=root/"workloads/openai-math/half-cost-quota-source32")
+args=ap.parse_args()
+out=args.out
+out.mkdir(parents=True,exist_ok=True)
 def read(p): return list(csv.DictReader(p.open()))
 def write(name,rs):
  with (out/name).open("w",newline="") as f:
   w=csv.DictWriter(f,list(rs[0]),lineterminator="\n");w.writeheader();w.writerows(rs)
-frame=read(root/"workloads/openai-math/noM-hard19-source32/sample-costs.csv")
+frame=read(args.frame)
 groups=collections.defaultdict(list);audit=[]
 N={";".join(r[k] for k in ("size_percentile_bin","import_depth_bin","has_decide_kernel")):int(r["population_modules"]) for r in read(root/"workloads/openai-math/build-planning-4eaee875/strata.csv")}
 for r in frame:
@@ -22,13 +26,13 @@ for r in frame:
  assert math.isclose(y,float(r["cpu_s"]),rel_tol=1e-12)
  groups[r["stratum"]].append(y)
  audit.append(dict(module=r["module"],stratum=r["stratum"],status=raw["status"],CPU_s=y,wall_s=raw["wall_s"],actual_self_wall_s=raw["actual_self_wall_s"],censored=False,source_file=r["source_file"],source_line=r["source_line"]))
-assert len(frame)==42 and len(audit)==32
+assert len(frame)==42
 rows=[]
 for h,ys in sorted(groups.items()):
  if len(ys)!=2:continue
  lo,hi=sorted(ys);n=N[h];k=n*(lo+hi)/(4*hi)
  rows.append(dict(stratum=h,population_modules=n,smaller_CPU_s=lo,larger_CPU_s=hi,stratum_CPU_h=n*(lo+hi)/7200,half_cost_equivalent_modules=k,rounded_half_cost_modules=math.ceil(k),census=n==2))
-assert len(rows)==15 and sum(r["population_modules"] for r in rows)==104632
+assert rows and all(sum(1 for r in frame if r["stratum"]==h)==2 for h in N)
 write("per-stratum.csv",rows);write("completed-source-audit.csv",audit)
 noncensus=[r for r in rows if not r["census"]];census=[r for r in rows if r["census"]]
 reference=[];fractional=[]
@@ -38,10 +42,10 @@ for flags in itertools.product((0,1),repeat=len(noncensus)):
 def quantile(xs,p):
  xs=sorted(xs);q=(len(xs)-1)*p;i=int(q);return xs[i]+(xs[min(i+1,len(xs)-1)]-xs[i])*(q-i)
 point=sum(r["rounded_half_cost_modules"] for r in rows)
-assert point==33971 and min(reference)==point and quantile(reference,.025)>point
-summary=dict(observed_original_costs=32,missing_original_draws=10,complete_strata=15,conditional_modules=104632,full_frame_modules=sum(N.values()),fractional_half_quota_modules=sum(r["half_cost_equivalent_modules"] for r in rows),rounded_per_cell_half_quota_modules=point,conditional_fraction=point/104632,
+assert min(reference)==point
+summary=dict(observed_original_costs=len(audit),missing_original_draws=42-len(audit),complete_strata=len(rows),conditional_modules=sum(r["population_modules"] for r in rows),full_frame_modules=sum(N.values()),fractional_half_quota_modules=sum(r["half_cost_equivalent_modules"] for r in rows),rounded_per_cell_half_quota_modules=point,conditional_fraction=point/sum(r["population_modules"] for r in rows),
  bootstrap_draws=len(reference),bootstrap_method="exact ordinary within-cell n2 resampling; true N2 census held fixed; equal-cost outcomes collapsed with multiplicity",bootstrap_integer_95_reference=[quantile(reference,.025),quantile(reference,.975)],bootstrap_fractional_95_reference=[quantile(fractional,.025),quantile(fractional,.975)],
- population_confidence_interval="unknown; reference is NOT a population CI",reference_excludes_point=True,
+ population_confidence_interval="unknown; reference is NOT a population CI",reference_excludes_point=not quantile(reference,.025)<=point<=quantile(reference,.975),
  no_assumption_conditional_integer_quota_range=[len(rows),sum(math.ceil(r["population_modules"]/2) for r in rows)],
  no_assumption_full_integer_quota_range=[len(N),sum(math.ceil(n/2) for n in N.values())],
  whole_library_actual_half_cost_quota="unknown",

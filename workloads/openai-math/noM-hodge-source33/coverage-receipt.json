@@ -1,0 +1,20 @@
+{
+  "complete_original_costs": 33,
+  "complete_strata": 16,
+  "covered_domain_modules": 144565,
+  "missing_module_domain": 18532,
+  "missing_fraction": 0.11362563382526962,
+  "missing_original_costs": 9,
+  "covered_source_CPU_h": 217.42446030319445,
+  "covered_marker_positive_CPU_h": 57.54640427722222,
+  "covered_marker_share": 0.26467309242471987,
+  "source_scenario_CPU_h": [
+    224.1299765390278,
+    427.3768844115277
+  ],
+  "scenario_high_over_low": 1.906826079273285,
+  "scenario_is_population_CI": false,
+  "original_Hodge_CPU_s": 4.131784,
+  "original_Hodge_wall_s": 3.9299191646277905,
+  "source_scope": "olean+ilean+C compiler, imports included per invocation; excludes driver/link/dependency-acquisition"
+}
