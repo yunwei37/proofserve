@@ -2,14 +2,14 @@
 
 Self-review.
 
-- accepted_modules: 3500
+- accepted_modules: 4000
 - expected_modules: 13205
 - complete: False
 - native_graph_match: False
-- segments: 7
-- native_wall_sum_s: 265.4915127698332
+- segments: 8
+- native_wall_sum_s: 350.68161700852215
 - ratio_over_source: None
-- pending: 9705
+- pending: 9205
 - single_uninterrupted_process: False
 
 Each native process checks at most500 new modules then exports only original-kernel-accepted constants and pure audit metadata. Delta snapshots import only the successful preceding certified snapshot. New processes reload that checked prefix; they do not rerun its proofs. This is one chained validation of frozen artifacts, not a standalone verifier of an untrusted supplied snapshot or a cross-candidate result cache. All startup, snapshot writing/loading and normal exits are charged. A complete ratio here is segmented work, never an uninterrupted single-process number. The failed1500s full-check attempts and separately run module-local differential chunks remain explicit. Native final import-graph equality and all13,205 acceptance events are required for completion; module-local reference equality is a separate condition.
