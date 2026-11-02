@@ -1,5 +1,21 @@
 # W current state
 
+## W082 live whole-frame join, not a new CPU total
+
+- W/Oshare163097sourcepaths,163094names;3Comparatornamecorrections,
+nooriginal42draw affected. Frozenfile-strata/weightsnotchanged.
+- O08:57snapshot36acceptedsource/8964external, nonterminal.41providerfrontiers
+reach10535files statically, notnativefailurecount; olean-onlysourceproduction
+muststaydistinct fromW3facetconstruction andkernelcheckCPU.
+-1567qualifiedexistingWproducer-copy candidates,1566missingOlib, listed in
+openai-math/whole-frame-alignment-20261102. Notimported orclosedqualified;
+Oowner musthandleparts/imports/theory/replay. No runtime/lib mutation byW.
+- SamecompletedFalconercostcensus:AI2461halfcount906/top1018.48%;
+wholeclosure13205halfcount2408/top1036.22%. Denominatorsmustnotmix.
+- HealthyHodge616point remainsqueued per-taskbehindOwindow; no restart,
+sourceframe32/42/15cells and207.9–630.7scenario unchanged.
+
+
 ## W081 within-layer n2 limit; complete Falconer census
 
 - Requestedwithin15completecells top10quota share15.63%CPUweighted /

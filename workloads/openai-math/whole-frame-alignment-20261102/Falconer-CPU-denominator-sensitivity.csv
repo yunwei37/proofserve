@@ -1,0 +1,4 @@
+scope,actual_modules,actual_source_CPU_s,fractional_top10_CPU_share,actual_minimal_modules_for_half_CPU,scope_note
+Falconer_AI_source_only,2461,6918.855422,0.18475794573410595,906,complete measured source census in this closure; no extrapolation to whole AI library
+external_dependencies_only,10744,25373.748385,0.40430008804156425,1586,complete measured source census in this closure; no extrapolation to whole AI library
+whole_Falconer_closure,13205,32292.603807,0.3622016773377867,2408,complete measured source census in this closure; no extrapolation to whole AI library

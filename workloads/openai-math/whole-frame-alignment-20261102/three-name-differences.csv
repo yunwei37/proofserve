@@ -1,0 +1,4 @@
+path,W_frozen_module,O_native_module,W_frozen_stratum,source_unit_match
+lean/ComparatorChallenges/HodgeConjectureCMAbelianVarieties/CM.lean,CM,ComparatorChallenges.HodgeConjectureCMAbelianVarieties.CM,0-50;11-100;0,True
+lean/ComparatorChallenges/HodgeConjectureCMAbelianVarieties/Challenge.lean,Challenge,ComparatorChallenges.HodgeConjectureCMAbelianVarieties.Challenge,0-50;1-10;0,True
+lean/ComparatorChallenges/HodgeConjectureCMAbelianVarieties/Solution.lean,Solution,ComparatorChallenges.HodgeConjectureCMAbelianVarieties.Solution,0-50;101+;0,True
