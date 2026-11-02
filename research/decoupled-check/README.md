@@ -4,6 +4,16 @@ This O-line experiment tests the user's two-cost-regime characterization:
 ordinary mathematical proof production versus computational certificates.
 It does not assume that a 2% sampled C++ share implies a 50x realizable speedup.
 
+## Complete Falconer mathematical closure (2026-11-02)
+
+[Paper-ready Falconer result](falconer-paper-result.md): **13,205 modules,
+27 checkpointed processes, 2,043.59 / 22,077.77 s = 9.26%**. Snapshot export
+and certified-prefix import are included; acceptance set and import graph
+match the complete original module-local reference. Matched checkpointed
+Mathlib is14.67%; historical unsegmented Mathlib is10.56%. These are serial
+native process work ratios, not service throughput or parallel Lake latency.
+[Recomputed evidence](falconer-paper-evidence.json) · [comparison CSV](falconer-paper-table.csv).
+
 ## Implementation and trust
 StreamCheck.lean reads original Lean 4.34.1 olean parts, recursively visits
 imports in dependency order, and calls the stock Kernel.Environment.replay.
@@ -154,8 +164,9 @@ complete. [Diagnosis](falconer-interruption-20261102.md),
 [checkpoint protocol and native controls](falconer-checkpoint-plan.md),
 [segmented current result](falconer-segmented-result.md),
 [original module-local parity](falconer-parity-progress.md).
-The final reducer is falconer-finalize.py --reduce-only; full ratios
-remain unavailable until both complete checking and native reference comparison
-are observed. No unfinished prefix is extrapolated.
+Both complete segmented checking and the original module-local reference are
+now observed. The [paper-ready result](falconer-paper-result.md) supersedes
+the earlier incomplete status. The final reducer is falconer-finalize.py
+--reduce-only; no unfinished prefix is extrapolated.
 [The 17 vs14.33 admission control explanation](admission-control-reconciliation.md)
 is a separate completed reconciliation.

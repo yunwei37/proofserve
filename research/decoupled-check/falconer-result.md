@@ -1,9 +1,9 @@
-> Updated 2026-11-02: source construction is complete (13,205 nodes).
-> The original full check and a reachability-cached full check both timed out;
-> neither has a complete ratio. See [terminal diagnosis](falconer-interruption-20261102.md),
-> [durable checkpoint protocol](falconer-checkpoint-plan.md), and the
-> [segmented result](falconer-segmented-result.md) for current recovery.
-> The historical summary below remains unchanged.
+> Completed 2026-11-02: all 13,205 modules have matching source, segmented
+> original-kernel and module-local reference acceptance. Checking costs
+> 2,043.59 s / 22,077.77 s = 9.26%, including checkpoint I/O.
+> See [paper-ready result](falconer-paper-result.md) and
+> [full completed reduction](falconer-final-analysis.md).
+> The earlier partial observation below remains historical evidence.
 
 # Complete Falconer project extension: observed status
 

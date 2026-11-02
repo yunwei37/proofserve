@@ -1,0 +1,4 @@
+cohort,protocol,modules,segments,check_wall_sum_s,source_wall_sum_s,check_over_source,peak_rss_gib
+Falconer closure,checkpointed,13205,27,2043.5854757986963,22077.770248265006,0.09256303751776258,10.36832046508789
+Mathlib Nat.Basic closure,unsegmented historical,1330,1,65.69264411274344,622.3794121909887,0.10555079879889155,0.7193107604980469
+Mathlib Nat.Basic closure,checkpointed matched protocol,1330,3,91.2791267875582,622.3794121909887,0.14666154599527065,1.32440185546875
