@@ -181,3 +181,14 @@ retries then pushes without another commit; non-ancestor history stops after
 one fetch and never pushes. All3controls passed; raw qualification remains
 in publication-qualification/result.json. No live DNS/security configuration
 was altered.
+
+
+## Resumed actual owner after publication repair
+The retained6511c25checkpoint commit and repaircdf1504are pushed. The former
+controller400547/birth765801115and all recorded native cgroups were verified
+retired before replacement. Actual continuation resumed at PID407237/birth766081979,
+same boot identity recorded onPVC, using certifiedWholeall00010and nextcheck11.
+The new controller was re-observed with matching birth; its first new locked
+task joins the existing queue. No preceding500-module segment was relaunched.
+The global CPU-hour result remains pending; raw current owner is
+continuation-resume-cdf1504-submission.json under the same capture.
