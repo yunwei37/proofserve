@@ -78,7 +78,7 @@ are outside this experiment. No external numerical solver is trusted.
 
 [Protocol](protocol.md), build.py, run.py and curve.py operate from frozen copies
 under the PVC; paths and exact commands are in each raw command/launch record.
-All timings use the shared blocking P0–7flock, no-M, one bounded native task.
+Historical timings use shared blocking pcore.lock on P0–7, no-M, one bounded native task. The extended heterogeneous experiment retains that lock and explicitly expands the allowed footprint to0–11/15/23.
 Native1680s/outer1740s, own sampled RSS stop14GiB plus charged cgroup memory limit,
 inside the16GiB lane. A sampling stop is not a hard RSS quota: Envelope wait4peak
 14.0187GiB exceeded the14GiB threshold between1s observations while samples
@@ -142,5 +142,11 @@ The new [full Barrier curve](extended-results/heterogeneous-scaling.md)
 8P /8P+4E /8P+8E /8P+16E completes with identical4,449accepted IDs,
 but wall increases284.720->319.705s and CPU668.786->1172.473s.
 One fixed-order repetition; allowed masks, migration and phase limitations are
-explicit. This is not additional scaling or cluster evidence. The parallel
-heartbeat/artifact experiment is separate and pending.
+explicit. This is not additional scaling or cluster evidence. The [parallel heartbeat/artifact experiment](extended-results/parallel-determinism.md) is complete:100targets x12checks, zero allocation-count/verdict variation,12 .oleanfiles equal each other and the original.
+
+The observer-enabled resident Barrier leaf runs50.358->9.033s at1->16workers
+(3repeats,5.575x), while total CPU50.334->139.099s. It checks all3,425ordinary
+declarations each time, sampling100for counters. Full closure8P->24results
+remain slower; these scopes are not interchangeable. Stable counts and bytes
+under parallel kernel checking are observed, not a universal deterministic-budget
+or cost-free concurrency guarantee.

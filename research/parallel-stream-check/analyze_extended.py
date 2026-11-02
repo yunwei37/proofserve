@@ -4,6 +4,22 @@ def writecsv(path,rows):
  if not rows:return
  with path.open('w',newline='') as f:
   w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+def same_bytes(a,b):
+ if a.stat().st_size!=b.stat().st_size:return False
+ with a.open('rb') as fa,b.open('rb') as fb:
+  while True:
+   aa=fa.read(1024*1024);bb=fb.read(1024*1024)
+   if aa!=bb:return False
+   if not aa:return True
+def artifact_observations(point):
+ root=point/'barrier-checked-output';rows=[]
+ for suffix in ['.olean','.olean.server','.olean.private']:
+  files=sorted(root.glob('*'+suffix))
+  if files:
+   rows.append(dict(suffix=suffix,files=len(files),bytes=files[0].stat().st_size,
+    all_equal=all(same_bytes(files[0],f) for f in files),
+    unequal_files=[f.name for f in files if not same_bytes(files[0],f)]))
+ return rows
 def analyze(point,out):
  out.mkdir(parents=True,exist_ok=True)
  if (point/'scaling-terminal.json').exists():
@@ -65,7 +81,7 @@ def analyze(point,out):
    zero_range_targets=sum(r['range_pct']==0 for r in coverage),
    P95_range_pct=ranges[math.ceil(.95*len(ranges))-1] if ranges else None,max_range_pct=max(ranges) if ranges else None,
    all_accepted=bool(units) and all(r['accepted'] for r in units),complete_coverage=len(groups)==100 and len(units)==1200 and len(curves)==12,snapshot_events=len(snapshots),
-   artifacts=json.loads((point/'determinism-artifacts.json').read_text()) if (point/'determinism-artifacts.json').exists() else None)
+   artifacts=artifact_observations(point))
   (out/'determinism-status.json').write_text(json.dumps(status,indent=2))
   writecsv(out/'parallel-target-heartbeats.csv',coverage)
   writecsv(out/'parallel-observations.csv',units)

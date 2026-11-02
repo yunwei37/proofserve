@@ -20,7 +20,7 @@ def compare_artifacts(folder):
   if not files:continue
   b=files[0].read_bytes()
   rows.append(dict(suffix=suffix,files=len(files),bytes=len(b),all_equal=all(f.read_bytes()==b for f in files)))
- if not rows or not all(x['files']==12 and x['all_equal'] for x in rows):raise RuntimeError('artifact byte difference')
+ if not rows or not all(x['files']==12 for x in rows):raise RuntimeError('incomplete artifact comparison')
  return rows
 def main(phase):
  cells=[];begin=time.monotonic();state='failed';error=None
@@ -35,6 +35,7 @@ def main(phase):
    if r['returncode'] or len([x for x in ev if x.get('event')=='unit_check'])!=1200:
     raise RuntimeError('extended native qualification failed')
    artifacts=compare_artifacts(output)
+   if not all(x['all_equal'] for x in artifacts):raise RuntimeError('positive serializer control differs')
    for workers in [1,16,24]:
     e=runtime(workers,list(range(8)));e['DECOUPLED_MUTATE_MODULE']='ComputeControl';e['DECOUPLED_MUTATE_CONSTANT']='c0'
     r=run('control-corrupt-j'+str(workers),[ROOT/'parallel-stream','parallel','bvar','ComputeControl'],90,False,e);cells.append(r)

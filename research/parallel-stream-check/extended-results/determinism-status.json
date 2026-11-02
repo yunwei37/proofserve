@@ -1,0 +1,22 @@
+{
+  "state": "complete",
+  "error": null,
+  "targets": 100,
+  "observations": 1200,
+  "curves": 12,
+  "zero_range_targets": 100,
+  "P95_range_pct": 0.0,
+  "max_range_pct": 0.0,
+  "all_accepted": true,
+  "complete_coverage": true,
+  "snapshot_events": 12,
+  "artifacts": [
+    {
+      "suffix": ".olean",
+      "files": 12,
+      "bytes": 9160440,
+      "all_equal": true,
+      "unequal_files": []
+    }
+  ]
+}

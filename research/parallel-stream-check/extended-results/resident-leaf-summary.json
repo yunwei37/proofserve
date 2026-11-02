@@ -1,0 +1,90 @@
+[
+  {
+    "workers": 1,
+    "repeats": 3,
+    "leaf_jobs": 3425,
+    "waves": 6,
+    "median_wall_s": 50.35848143,
+    "min_wall_s": 50.325883123,
+    "max_wall_s": 50.61815337,
+    "median_CPU_s": 50.333893215,
+    "min_CPU_s": 50.307186012,
+    "max_CPU_s": 50.59060117,
+    "median_sampled100_kernel_CPU_s": 3.575259697,
+    "min_sampled100_kernel_CPU_s": 3.565923171,
+    "max_sampled100_kernel_CPU_s": 3.60356052,
+    "sampled_distinct_TIDs": [
+      2,
+      2,
+      2
+    ],
+    "speedup_vs_one_worker": 1.0,
+    "mean_active_cores": 0.999511736368894
+  },
+  {
+    "workers": 4,
+    "repeats": 3,
+    "leaf_jobs": 3425,
+    "waves": 6,
+    "median_wall_s": 16.003184325,
+    "min_wall_s": 15.641993882,
+    "max_wall_s": 16.028518697,
+    "median_CPU_s": 63.645761021,
+    "min_CPU_s": 62.095825176,
+    "max_CPU_s": 63.740831678,
+    "median_sampled100_kernel_CPU_s": 4.471970042,
+    "min_sampled100_kernel_CPU_s": 4.393280956,
+    "max_sampled100_kernel_CPU_s": 4.592072349,
+    "sampled_distinct_TIDs": [
+      7,
+      8,
+      8
+    ],
+    "speedup_vs_one_worker": 3.1467788164715773,
+    "mean_active_cores": 3.977068546387564
+  },
+  {
+    "workers": 8,
+    "repeats": 3,
+    "leaf_jobs": 3425,
+    "waves": 6,
+    "median_wall_s": 10.320512182,
+    "min_wall_s": 10.301402427,
+    "max_wall_s": 10.38619792,
+    "median_CPU_s": 81.332565347,
+    "min_CPU_s": 81.032227242,
+    "max_CPU_s": 81.818621261,
+    "median_sampled100_kernel_CPU_s": 5.82982647,
+    "min_sampled100_kernel_CPU_s": 5.688486711,
+    "max_sampled100_kernel_CPU_s": 5.876255634,
+    "sampled_distinct_TIDs": [
+      9,
+      13,
+      11
+    ],
+    "speedup_vs_one_worker": 4.879455645411688,
+    "mean_active_cores": 7.880671415596223
+  },
+  {
+    "workers": 16,
+    "repeats": 3,
+    "leaf_jobs": 3425,
+    "waves": 6,
+    "median_wall_s": 9.0329784,
+    "min_wall_s": 8.970838478,
+    "max_wall_s": 9.047644066,
+    "median_CPU_s": 139.099353271,
+    "min_CPU_s": 136.474098764,
+    "max_CPU_s": 140.815848918,
+    "median_sampled100_kernel_CPU_s": 9.940651023,
+    "min_sampled100_kernel_CPU_s": 9.551898722,
+    "max_sampled100_kernel_CPU_s": 10.098570237,
+    "sampled_distinct_TIDs": [
+      17,
+      17,
+      17
+    ],
+    "speedup_vs_one_worker": 5.574958690258796,
+    "mean_active_cores": 15.399057443888056
+  }
+]

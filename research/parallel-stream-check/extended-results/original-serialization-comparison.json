@@ -1,0 +1,8 @@
+{
+  "input": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/runs/23-noM/artifacts/BarrierData41.olean",
+  "output": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v16/barrier-checked-output/r0-parallel1.olean",
+  "input_bytes": 9160440,
+  "output_bytes": 9160440,
+  "equal": true,
+  "scope": "additional comparison with original input, not required for parallel pair agreement"
+}
