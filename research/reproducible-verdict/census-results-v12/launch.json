@@ -1,0 +1,20 @@
+{
+  "pid": 366671,
+  "birth": "763672770",
+  "argv": [
+    "flock",
+    "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=5",
+    "1740",
+    "taskset",
+    "-c",
+    "0-7",
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v12/run_all_helpers.py"
+  ],
+  "utc": "2026-11-02T01:49:04.293662+00:00",
+  "foreground": true
+}

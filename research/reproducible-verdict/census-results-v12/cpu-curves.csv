@@ -1,0 +1,13 @@
+module,stage,workers,repeats,units_per_cell,unique_TIDs,median_unit_sum_cpu_s,min_unit_sum_cpu_s,max_unit_sum_cpu_s,min_unit_sum_HB,max_unit_sum_HB
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,kernel,1,3,1164,"[1, 1, 1]",73.957599536,73.610873471,75.724087332,730085874,730085874
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,kernel,2,3,1164,"[2, 2, 2]",77.031288368,76.70486815,77.157439969,730085874,730085874
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,kernel,4,3,1164,"[4, 4, 4]",85.277454959,81.635593466,88.773108014,730085874,730085874
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,kernel,8,3,1164,"[8, 8, 8]",95.415987508,94.558486491,95.807014194,730085874,730085874
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,kernel,1,3,1320,"[1, 1, 1]",45.897525942,45.6006861,46.836910015,460658346,460658346
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,kernel,2,3,1320,"[2, 2, 2]",47.933611161,47.780279603,52.524318147,460658346,460658346
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,kernel,4,3,1320,"[4, 4, 4]",54.850949794,53.264685716,55.805432099,460658346,460658346
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,kernel,8,3,1320,"[8, 8, 8]",58.903771225,58.805271748,59.244843476,460658346,460658346
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,kernel,1,3,40,"[1, 1, 1]",62.397957947,57.157992091,64.481080577,433104450,433104450
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,kernel,2,3,40,"[2, 2, 2]",59.84484087,57.947013707,67.293743297,433104450,433104450
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,kernel,4,3,40,"[4, 4, 4]",64.98317245,63.817920224,67.116774989,433104450,433104450
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,kernel,8,3,40,"[8, 8, 8]",68.790484678,67.588103046,71.483632022,433104450,433104450

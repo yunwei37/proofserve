@@ -1,0 +1,77 @@
+{
+  "raw_point": "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v12",
+  "state": "complete",
+  "complete_cells": 36,
+  "missing_cells": [],
+  "repeats": [
+    0,
+    1,
+    2
+  ],
+  "expected": {
+    "UMoments9": 1164,
+    "BarrierData41": 1320,
+    "EnvelopePsiB": 40
+  },
+  "observations": 30288,
+  "matched_pairs": 22716,
+  "verdict_differences": 0,
+  "diagnostic_differences": 0,
+  "heartbeat_differences": 0,
+  "distribution": [
+    {
+      "module": "UMoments9",
+      "targets": 1164,
+      "observations": 13968,
+      "zero_range_targets": 1164,
+      "zero_range_pct": 100.0,
+      "nonzero_range_targets": 0,
+      "p50_relative_range_pct": 0.0,
+      "p95_relative_range_pct": 0.0,
+      "max_relative_range_pct": 0.0
+    },
+    {
+      "module": "BarrierData41",
+      "targets": 1320,
+      "observations": 15840,
+      "zero_range_targets": 1320,
+      "zero_range_pct": 100.0,
+      "nonzero_range_targets": 0,
+      "p50_relative_range_pct": 0.0,
+      "p95_relative_range_pct": 0.0,
+      "max_relative_range_pct": 0.0
+    },
+    {
+      "module": "EnvelopePsiB",
+      "targets": 40,
+      "observations": 480,
+      "zero_range_targets": 40,
+      "zero_range_pct": 100.0,
+      "nonzero_range_targets": 0,
+      "p50_relative_range_pct": 0.0,
+      "p95_relative_range_pct": 0.0,
+      "max_relative_range_pct": 0.0
+    },
+    {
+      "module": "ALL",
+      "targets": 2524,
+      "observations": 30288,
+      "zero_range_targets": 2524,
+      "zero_range_pct": 100.0,
+      "nonzero_range_targets": 0,
+      "p50_relative_range_pct": 0.0,
+      "p95_relative_range_pct": 0.0,
+      "max_relative_range_pct": 0.0
+    }
+  ],
+  "maximum_sampled_tree_rss_gib": 12.133708953857422,
+  "controller_after_lock_wall_s": 1283.9998480742797,
+  "errors": [],
+  "all_native_returned_zero": true,
+  "all_native_and_cgroups_retired": true,
+  "stop_reasons": [],
+  "native_kernel_poll_count": "unobserved",
+  "scope": "allocation heartbeats per executing worker; kernel-only CPU separate from source command CPU; native kernel poll count unobserved",
+  "analysis": "analyze_modules.py plus independent raw JSON/unique-target/12-observation/cell-retirement check; percentile nearest rank",
+  "collected_utc": "2026-11-02T06:37:40.162168+00:00"
+}

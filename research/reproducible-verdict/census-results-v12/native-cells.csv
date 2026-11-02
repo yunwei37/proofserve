@@ -1,0 +1,289 @@
+key,returncode,wall_s,user_s,system_s,peak_rss_kib,sampled_tree_peak_bytes,native_retired,cgroup_retired,memory_events
+kernel-UMoments9-r0-j1,0,77.69431494828314,77.031094,0.604752,4106364,4206559232,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r0-j2,0,40.43257013428956,78.235771,0.668863,4159348,4261126144,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r0-j4,0,25.958922035060823,89.804508,0.715895,4215120,4318072832,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r0-j8,0,15.608609973452985,95.580057,0.719949,4282048,4386754560,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r0-j1,0,48.33937251102179,47.883498,0.42705699999999996,3456828,3541446656,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r0-j2,0,30.193940094672143,53.599544,0.540906,3498132,3583725568,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r0-j4,0,16.39407819043845,54.241778,0.50196,3562000,3649466368,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r0-j8,0,9.625725265592337,59.752426,0.6268159999999999,3718852,3810058240,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r0-j1,0,60.41369186807424,58.812906,1.5495079999999999,8021424,8215728128,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r0-j2,0,49.15625394694507,59.588762,1.557095,8959420,9172684800,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r0-j4,0,29.92884834483266,66.157046,1.760488,10840840,10933571584,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r0-j8,0,24.686387448571622,71.60284300000001,2.825967,12640460,12945588224,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r1-j8,0,15.06771353725344,96.870113,0.68191,4284092,4383424512,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r1-j4,0,25.809949512593448,86.256859,0.7718379999999999,4232664,4336201728,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r1-j2,0,40.18954618088901,77.775581,0.664204,4158780,4260347904,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r1-j1,0,75.38753211218864,74.788961,0.555379,4106376,4206710784,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r1-j8,0,9.934301155619323,59.663153,0.620034,3730524,3821711360,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r1-j4,0,16.272598353214562,55.739986,0.582989,3588256,3676250112,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r1-j2,0,25.418642111122608,48.749353,0.5001439999999999,3492056,3577618432,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r1-j1,0,47.52667097467929,47.017448,0.47784699999999997,3459204,3543785472,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r1-j8,0,22.403533942066133,68.033117,2.482996,12727196,13023862784,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r1-j4,0,31.950487141497433,67.419261,2.654726,10742712,10862362624,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r1-j2,0,49.23447657842189,61.285369,1.4813939999999999,8959292,9176268800,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r1-j1,0,67.457210409455,65.918011,1.511743,8021732,8215965696,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r2-j1,0,75.73405990283936,75.12398,0.55869,4105096,4205408256,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r2-j2,0,40.46826285123825,78.275202,0.660874,4154052,4255404032,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r2-j4,0,22.221295196563005,82.66016,0.7200759999999999,4211692,4314333184,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-UMoments9-r2-j8,0,15.528080376796424,96.503157,0.714096,4279420,4384002048,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r2-j1,0,47.09863987378776,46.65192,0.41317,3455768,3540406272,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r2-j2,0,25.520374718122184,48.892595,0.496005,3495260,3581026304,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r2-j4,0,16.76439519971609,56.77473,0.503989,3568024,3655311360,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-BarrierData41-r2-j8,0,9.703963284380734,60.095261,0.6139789999999999,3719176,3810209792,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r2-j1,0,65.37833333108574,63.85666,1.461773,8021896,8216358912,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r2-j2,0,58.12073083035648,67.875588,2.643437,8884784,9039101952,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r2-j4,0,29.829235035926104,65.085417,1.672802,10844356,10973876224,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"
+kernel-EnvelopePsiB-r2-j8,0,22.352627852000296,69.219298,2.505924,12721976,13028470784,True,True,"low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 0
+"

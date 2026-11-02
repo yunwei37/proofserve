@@ -1,0 +1,5 @@
+module,targets,observations,zero_range_targets,zero_range_pct,nonzero_range_targets,p50_relative_range_pct,p95_relative_range_pct,max_relative_range_pct
+UMoments9,1164,13968,1164,100.0,0,0.0,0.0,0.0
+BarrierData41,1320,15840,1320,100.0,0,0.0,0.0,0.0
+EnvelopePsiB,40,480,40,100.0,0,0.0,0.0,0.0
+ALL,2524,30288,2524,100.0,0,0.0,0.0,0.0

@@ -42,3 +42,12 @@ variation during real coexecution. They do not yet prove the proposed division:
 computational regimes naturally deterministic, mathematical regimes requiring
 deterministic budgets. Native C++ kernel poll counters differ from allocation
 heartbeats and are still unobserved.
+
+## Subsequent completed computation census
+The v5 partial stage is not repaired or relabeled. A new foreground v12 point
+completed all2,524eligible computation helpers, at1/2/4/8workers x3repeats.
+All30,288original-kernel observations accepted; every target's allocation
+count was constant. See [census-results-v12/results.md](census-results-v12/results.md).
+This strengthens the prepared-computation evidence; variable source elaboration
+and stable prepared kernel rechecking are different phases. It does not prove
+a subject-matter-only split or a universal deterministic-budget guarantee.
