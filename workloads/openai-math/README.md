@@ -17,7 +17,37 @@ Lean4.34.1; Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612.
 The root and lean licenses are Apache-2.0; third-party dependencies retain their
 licenses. Every manifest dependency revision is in static-4eaee875/dependencies.csv.
 
-## Latest archived native evidence
+## Current no-M source-cost evidence (2026-11-02)
+
+[Source33](noM-hodge-source33/) has33/42 original costs and16/21 complete
+strata, representing144565/163097source modules;18532(11.36%) remain in
+incomplete cells. Hodge's original draw returned4.131784CPU s after its
+dependencies were prepared; dependency work is not an extra random sample.
+All33 costs are completed native values, not timeout substitutions.
+
+The full fixed42 missing-min/max scenario is224.13–427.38CPUh construction.
+It is **not a confidence interval or a measured full-library build**.
+The [latest CPU staircase](noM-source33-latest-staircase/) uses complete
+segmented Falconer6.3124%/Mathlib8.9514% serial CPU ratios and explicitly
+older computation/parallel transfer experiments. Mathematical/computational
+proxy domains and missingness are separate. Parallel wall gains do not reduce
+CPU resource-hours; modeled full missing scenarios are15.37–37.98serial and
+20.90–51.70parallelCPUh. All extrapolation/calibration limitations are linked.
+
+Computation share is26.47% of the covered16-stratum source CPU,24.10% in the
+class-mean full-frame projection, and13.47–25.68% across missing-draw scenarios.
+The old17.14% applied only to a31cost/14stratum domain.
+Fresh target-only trusted-import replays are [31completed pairs](native-replay31/),
+a different protocol from O's complete closure streaming checks.
+[Half-cost quotas](noM-hodge-source33/half-cost-quota/) remain model-equivalent
+counts with n=2 uncertainty; ordinary bootstrap is not a population CI.
+
+The [cleanup record](../cleanup-20261102.md) names exactly which legacy generated
+compiler outputs were reclaimed; raw inputs/logs/results remain. Historical
+reports below describe their observation date and must not be used to resume
+retired queues. The sole current native owner is in [W status](../W-status.md).
+
+## Historical native evidence (separate resource conventions)
 
 Lean4.34.1 and pinned Mathlib cache are prepared on the existing PVC.
 No full-library build or globally finite CPU-hour confidence interval has
@@ -45,7 +75,7 @@ weight. Missing/censored/budget-exceeded observations remain in the frame;
 they are not zero-cost outcomes or replaced by easier sources.
 [Current W state](../W-status.md) records sole active capture ownership.
 
-At the new standard-artifact point,26unchanged sources compiled without
+At the historical -M standard-artifact point,26unchanged sources compiled without
 sorry. Sum native CPU712.009670s; group471.845673s. Largest complete cell
 (45,251small non-kernel/depth11–100modules) estimates74.1775CPUh with a
 fragile cell-only nominal95%interval[0,623.1803]. This is not a full-build

@@ -1,5 +1,33 @@
 # W current state
 
+## W088 current frontier: source33 and latest CPU model
+- Actual Hodge target completed19:06:39UTC; all176remaining tasks compile_ok,
+  original source cost4.131784CPU s/3.929919elapsed. Four dependency windows
+  are retained; no dependency sample weights or timeout imputation.
+- Original33/42,16/21complete strata,144565covered;18532missing module-domain
+  (11.3626%). Source construction224.13–427.38CPUh missing-cost scenario,
+  ratio1.9068. These are assumptions, not full-build measurement or95%CI.
+- LatestCPUstairs: noM-source33-latest-staircase. Full classmean source238.78,
+  serial16.30–21.10, parallel22.16–28.70CPUh; missing-draw scenarios source
+  224.13–427.38,serial15.37–37.98,parallel20.90–51.70. Parallel CPU rises.
+- Computation sourceCPU share26.47%covered,24.10%classmean,13.47–25.68%
+  missing-draw scenarios. Old17.14% has a different14cell denominator.
+- Current sole W controller:480233/birth769918349, actual start19:10:00UTC,
+  PVC workloads/openai4341-noM-Intrinsic77-KL1200-prepared-20261102.
+  84jobs:77Intrinsic original closure then7KL including original Dihedral.
+  At19:18:25 both controller/waiter identities matched,0returns, queued behind
+  M's bounded parallel attribution under shared P-core lock. Not a failure.
+  Verify actual terminal before continuing; never trust this snapshot alone.
+- NoM/P0-7/j8/15GiBcharged cgroup/16GiB sampled RSS response/per-task flock.
+  IntegralPairings retry explicitly1200s after two retained600s censors;
+  not same-budget recovery. No second W native capture. Blocking notification
+  is waiting for an original return or terminal; no minute polling required.
+- W reclaimed1.642GiB regenerable legacy artifacts; other-lane cleanup also
+  lowered disk usage to73%. Retain all Hodge working/raw files.
+
+## Historical step snapshots (not current launch instructions)
+
+
 ## W082 live whole-frame join, not a new CPU total
 
 - W/Oshare163097sourcepaths,163094names;3Comparatornamecorrections,
