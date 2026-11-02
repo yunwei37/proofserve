@@ -1,0 +1,151 @@
+scope,top_module_fraction,cost_share,atoms_included,interpretation
+selected_completed_draws,0.0,0.0,0,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.03125,0.22588559199903402,1,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.0625,0.4263873652164898,2,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.09375,0.5657475845766601,3,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.125,0.6466149312213679,4,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.15625,0.6965325450407821,5,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.1875,0.7433991450735391,6,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.21875,0.7787094288997152,7,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.25,0.8109165830960869,8,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.28125,0.8378467879039836,9,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.3125,0.8608404476839522,10,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.34375,0.8787105001453498,11,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.375,0.8931113626554563,12,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.40625,0.9058378134158,13,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.4375,0.9168235891411698,14,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.46875,0.9275956970072202,15,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.5,0.9379188912767742,16,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.53125,0.9441662908231011,17,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.5625,0.9501064310806042,18,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.59375,0.9558879293312101,19,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.625,0.9613152777398388,20,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.65625,0.9666132041590084,21,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.6875,0.9713554803378661,22,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.71875,0.9758250441042006,23,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.75,0.9802841083416959,24,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.78125,0.9844621755733999,25,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.8125,0.9877208866831053,26,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.84375,0.9903835280376317,27,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.875,0.993018375010046,28,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.90625,0.99535669962441,29,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.9375,0.9972170081020847,30,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,0.96875,0.9986910110129211,31,unweighted selected completed draws; not a population sample distribution
+selected_completed_draws,1.0,0.9999999999999996,32,unweighted selected completed draws; not a population sample distribution
+complete_strata_HT_distribution,0.0,0.0,0,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.0055623518617631314,0.17125790966513707,1,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.006627991436654179,0.20038064804720995,2,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.007693631011545225,0.22062261969746955,3,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.009910925911766955,0.2450625690815363,4,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.010417463108800366,0.2485089939079995,5,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.01092400030583378,0.2509468956724597,6,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.017112355684685374,0.2781132429981042,7,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.022674707546448507,0.29853070540214344,8,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.0288630629253001,0.3179255809649367,9,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.028872620230904502,0.31794885999874783,10,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.031089915131126234,0.3223011278229938,11,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.031099472436730637,0.3223177063684785,12,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.03274810765349033,0.32478635313269477,13,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.05028576343757168,0.35053627323068653,14,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.2665245813900145,0.6548008609917055,15,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.345878889823381,0.7223738987669388,16,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.3821870938145118,0.7517710412105645,17,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.3857137395825369,0.7545501521795014,18,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.5078226546372047,0.844881548796571,19,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.5253603104212861,0.8575458465992887,20,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.5270089456380457,0.8586114977682745,21,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.5297662283049163,0.8602873227876805,22,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.5325235109717869,0.8618575422836847,23,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.5360501567398119,0.8634239735783115,24,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.541019955654102,0.8652276355144706,25,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.7572587736065448,0.9428867986515436,26,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.7935669775976757,0.9544589263771579,27,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.8729212860310421,0.9745803695637727,28,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,0.9950302010857099,0.9991132964239321,29,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+complete_strata_HT_distribution,1.0,1.0,30,"HT empirical distribution conditional on complete strata only; nonlinear tail estimates, no confidence guarantee"
+missing_class_min_assumption,0.0,0.0,0,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.0035684286038369806,0.14354337202569217,1,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.004252070853541144,0.1679531997420221,2,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.004935713103245308,0.18491942847159196,3,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.006358179488279981,0.20540427938204509,4,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.006683139481412901,0.2082929718926036,5,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.0069835741920452245,0.21080041540194625,6,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.007308534185178146,0.21284379337276382,7,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.011278564289962415,0.235613831313604,8,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.014846992893799395,0.2527271512613612,9,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.018817022998583666,0.26898336882086343,10,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.018823154319208814,0.26900288062628763,11,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.020245620704243485,0.2726508242492873,12,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.020251752024868636,0.27266471990132934,13,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.021309404832706918,0.27473386743190936,14,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.03256037817985616,0.29631669748913225,15,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.17128457298417507,0.5513423777664548,16,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.22219292813479094,0.6079801220857818,17,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.24548581518973372,0.632619947262491,18,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.24774827250041387,0.6349493168109971,19,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.32608509046763584,0.7106624520206812,20,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.3373360638147851,0.7212772961145637,21,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.33839371662262335,0.7221704937630604,22,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.46081472988466987,0.81961081546312,23,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.4625836158850255,0.8210154429905779,24,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.4643525018853811,0.8223315550563952,25,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.4666149591960612,0.8236444919625909,26,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.469803245921139,0.8251562686555151,27,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.6085274407254578,0.8902479083186733,28,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.6318203277804006,0.8999473273907305,29,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.6827286829310165,0.9168125326865186,30,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.7610655008982384,0.9373753145986222,31,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.7891040301170469,0.9447352020235077,32,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.8171425593358553,0.9520950894483932,33,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.9395635725979019,0.9842296165135531,34,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.9457654034102405,0.9858575470034442,35,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.9519672342225792,0.9874854774933353,36,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.9741166299809316,0.9932995149572318,37,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.996266025739284,0.9991135524211283,38,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.996388652151787,0.9991457408638351,39,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.99651127856429,0.9991779293065418,40,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,0.9968117132749222,0.9992567909911733,41,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_min_assumption,1.0,1.0000000000000002,42,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.0,0.0,0,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.0035684286038369806,0.04731539886777541,1,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.004252070853541144,0.055361473851196503,2,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.004935713103245308,0.0609539569334375,3,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.006358179488279981,0.06770626376514213,4,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.03439670870708842,0.14986353544980416,5,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.06243523792589686,0.23202080713446618,6,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.18485625118794338,0.5907335045085761,7,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.19105808200028204,0.6089058378365961,8,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.1972599128126207,0.6270781711646162,9,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.2194093085709731,0.6919793616218305,10,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.2415587043293255,0.7568805520790449,11,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.24188366432245842,0.7578327356345418,12,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.2420062907349614,0.7581920501837859,13,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.2421289171474644,0.7585513647330299,14,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.24242935185809672,0.7594316853786779,15,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.24272978656872904,0.7602581999582695,16,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.24305474656186196,0.7609317472099639,17,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.24702477666664624,0.7684373074612056,18,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.25059320527048323,0.7740782753990012,19,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.2545632353752675,0.7794367214704194,20,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.25456936669589264,0.7794431530377098,21,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.2559918330809273,0.78064560429083,22,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.2559979644015524,0.7806501846368927,23,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.25705561720939074,0.7813322261644398,24,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.26830659055654,0.7884464537211822,25,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.40703078536085885,0.8725091423257632,26,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.4579391405114748,0.8911783252049308,27,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.48123202756641753,0.899300212964817,28,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.4834944848770977,0.9000680300206841,29,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.5618313028443196,0.9250249273083891,30,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.5730822761914689,0.9285238389971254,31,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.5741399289993072,0.9288182587422517,32,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.6965609422613537,0.9609369669903586,33,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.6983298282617093,0.9613999665060062,34,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.7000987142620649,0.9618337891651095,35,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.702361171572745,0.9622665652141058,36,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.7055494582978228,0.9627648837098696,37,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.8442736531021416,0.9842206768277056,38,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.8675665401570845,0.9874178420865652,39,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.9184748953077003,0.9929770253793634,40,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,0.9968117132749222,0.9997550201712658,41,hypothetical missing draw costs; NOT observed population or confidence bounds
+missing_class_max_assumption,1.0,1.0,42,hypothetical missing draw costs; NOT observed population or confidence bounds

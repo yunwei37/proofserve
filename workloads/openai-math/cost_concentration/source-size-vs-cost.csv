@@ -1,0 +1,13 @@
+scope,top_source_byte_fraction,native_CPU_share_in_largest_source_files,native_CPU_share_in_most_expensive_files,scope_note
+selected_completed_draws,0.01,0.01499731201048226,0.07228338943969088,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+selected_completed_draws,0.05,0.13048273164885926,0.3461866559295075,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+selected_completed_draws,0.1,0.43190571101019004,0.5819210539056017,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+selected_completed_draws,0.2,0.6948217187712558,0.7575232586040096,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+selected_completed_draws,0.5,0.9278479879585234,0.9379188912767742,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+selected_completed_draws,1.0,0.9999999999999997,0.9999999999999996,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+complete_strata_HT_distribution,0.01,0.22908849946953613,0.24566861963592565,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+complete_strata_HT_distribution,0.05,0.34905178388699754,0.35011669687595626,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+complete_strata_HT_distribution,0.1,0.3881187014569953,0.42048801379582296,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+complete_strata_HT_distribution,0.2,0.4675628272165166,0.5611956770369046,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+complete_strata_HT_distribution,0.5,0.7676447687377587,0.8390946550360677,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"
+complete_strata_HT_distribution,1.0,1.0000000000000002,1.0,"source bytes and nativeCPU order differ; conditional descriptive association, not predictive policy evidence"

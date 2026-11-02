@@ -1,0 +1,25 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-KLretry-Hodge-suffix-prepared-20261102",
+  "returned": 387,
+  "native_invoked": 381,
+  "Hodge_dependencies_completed": 380,
+  "original_draws_completed": 0,
+  "original_frame_completed": 32,
+  "complete_strata": 15,
+  "scenario_range_unchanged": [
+    207.89466631027776,
+    630.7016773065278
+  ],
+  "first_censor_elapsed_s": 600.1977015240118,
+  "retry_censor_elapsed_s": 600.1922647599131,
+  "retry_CPU_s": 634.316372,
+  "retry_nominal_wall_budget_s": 600,
+  "no_native_or_controller_left": true,
+  "all_cgroups_retired": true,
+  "native_wall_s": 1685.1896595703438,
+  "native_CPU_s": 2001.551833,
+  "peak_HWM_kib": 7348896,
+  "max_sampled_native_RSS_bytes": 7525269504,
+  "max_cgroup_charged_bytes": 2414825472,
+  "retry_outcome": "observed beyond same600s budget twice; no proof of inevitable failure under other conditions"
+}

@@ -1,0 +1,17 @@
+{
+  "source_frame": "/workspaces/repository/workloads/openai-math/noM-hard19-source32/sample-costs.csv",
+  "source_costs": 32,
+  "original_draws": 42,
+  "missing_draws": 10,
+  "complete_strata": 15,
+  "conditional_modules": 104632,
+  "population_modules": 163097,
+  "original_weights_preserved": true,
+  "tail_quantities_are_nonlinear": true,
+  "unweighted_minimum_integer_module_fraction": 0.03125,
+  "whole_library_tail_concentration_established": false,
+  "intervals_established": false,
+  "construction_CPU_is_not_checked_closure_CPU": true,
+  "no_native_run": true,
+  "checks": "all4curves end1; sums match source32and15-cell estimator"
+}

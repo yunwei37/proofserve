@@ -1,0 +1,11 @@
+{
+  "raw_source_cells_checked": 13205,
+  "raw_stream_segment_cells": 27,
+  "O_complete_modules": 13205,
+  "W_fullframe_modules": 163097,
+  "W_intersection": 2461,
+  "external_to_Wframe": 10744,
+  "mathematical_acceptance_parity_source": "research/decoupled-check/falconer-paper-evidence.json; reported by O, not newly replayed by W",
+  "whole163097stream_complete_evidence_available": false,
+  "new_native_run": false
+}

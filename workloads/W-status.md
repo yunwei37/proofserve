@@ -1,5 +1,25 @@
 # W current state
 
+## W080 distribution + same-budget retry terminal; Hodge616active
+
+- Raw32CPU817.179526s,median6.770575/P90R7 63.553991/max184.589081s.
+ Fractional top10%58.1921%raw versus42.0488%complete15strataweighted.
+ No full-librarymajorityclaim; integer32resolution3.125%. Sourcebytesorder
+ differs; curveCSVs inopenai-math/cost_concentration.
+- OactualFalconer13205closureCPUbuild8.970168h/check.566234h=6.3124%,
+ insideoldordinaryCPUanchors. Only2461W-frame modules/10744external;
+ no whole163097checknumerator established. ReconciliationCSV/IDs/clocks noted.
+- Same600sIntegralPairingsretry stillunfinished600.192265s; no restored
+ originaldraw,frame32/15cells/35.8468%gap and207.9–630.7rangeunchanged.
+ Predecessor07:33:17terminal380Hodgesuccess/1censor/6skip/616unstarted;
+ all381native/controller/cgroupsretired. No thirdidenticalretry.
+- Actualcurrent07:35:58UTC399234/birth765754231:
+ workloads/openai4341-noM-Hodge-suffix616-prepared-20261102.
+ 1103Hodgesuccessesreused,616remainingincludingunchangedoriginaltarget.
+ Per-taskflock/no-M/P0–7j8/15GiBcgroup/16GiBsampledresponse/1700nativework;
+ verifyactualPID/birth/terminal,protecthealthygroup. No parallelWcapture.
+
+
 ## W079 Hodge723retired; same-budget censor retry active
 
 - Hodgefirstwindow actuallyended07:04:09UTC:723compiledeps/996unstarted,

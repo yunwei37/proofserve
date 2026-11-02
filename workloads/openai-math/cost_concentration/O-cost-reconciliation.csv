@@ -1,0 +1,3 @@
+observed_input,clock,modules,W_internal_modules,external_to_W_frame,build_s,check_s,build_h,check_h,check_over_build,CPU_ratio_inside_old_ordinary_anchor_envelope,source_rows_verified,stream_segments,verification_scope
+"complete Falconer closure, not whole openai/math",CPU,13205,2461,10744,32292.603806999898,2038.443942,8.970167724166638,0.5662344283333334,0.06312417401157776,True,13205,27,O reported full parity; W rechecked cost arithmetic/raw sourceCPU only
+"complete Falconer closure, not whole openai/math",summed_native_elapsed,13205,2461,10744,22077.770248265006,2043.5854757986963,6.13271395785139,0.5676626321663045,0.09256303751776258,True,13205,27,O reported full parity; W rechecked cost arithmetic/raw sourceCPU only
