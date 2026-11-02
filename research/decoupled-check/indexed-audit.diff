@@ -1,0 +1,61 @@
+--- qualified measurement-v1/AuditedStream.lean
++++ IndexedAudit.lean
+@@ -6,6 +6,8 @@
+ not a mathematical rejection and is sent to module-local replay. -/
+ structure AuditState where
+   checked : Kernel.Environment
++  ancestorMasks : Std.HashMap Name Nat := {}
++  moduleIndices : Std.HashMap Name Nat := {}
+   visited : NameSet := {}
+   pending : NameSet := {}
+   regions : Array CompactedRegion := #[]
+@@ -137,13 +139,19 @@
+     ("imports", toJson (first.imports.map (·.module.toString))),
+     ("constants", toJson data.constants.size), ("aliased_constant_entries", toJson aliases)]
+   let s ← get
+-  let visible := closure s.imports (first.imports.map (·.module)).toList
++  -- Every imported module has completed visit. Its cached ancestry plus its
++  -- own bit equals its transitive import closure. No kernel replay is omitted.
++  let mut visible : Nat := 0
++  for imp in first.imports do
++    let some index := s.moduleIndices[imp.module]? |
++      throw <| IO.userError s!"unvisited import {imp.module}"
++    visible := visible ||| (s.ancestorMasks[imp.module]?.getD 0) ||| (2 ^ index)
+   let mut reason : Option String := none
+   let mut separate := false
+   let mut insertMap : Std.HashMap Name ConstantInfo := {}
+   if mode == "audit" then
+-    for imported in visible do
+-      if s.segregated.contains imported then
++    for imported in s.segregated do
++      if ((s.moduleIndices[imported]?).any (fun i => visible.testBit i)) then
+         separate := true
+         reason := some "segregated_dependency"
+     for (_, ci) in map do
+@@ -152,7 +160,7 @@
+           let origins := s.origins[ci.name]?.getD {}
+           let mut imported := false
+           for origin in origins do
+-            if visible.contains origin then imported := true
++            if ((s.moduleIndices[origin]?).any (fun i => visible.testBit i)) then imported := true
+           if !sameConstant old ci then
+             if sameTheoremInterface old ci then
+               unless imported do reason := some s!"duplicate_proof_requires_native:{ci.name}"
+@@ -165,7 +173,7 @@
+             let origins := s.origins[n]?.getD {}
+             let mut found := false
+             for origin in origins do
+-              if visible.contains origin then found := true
++              if ((s.moduleIndices[origin]?).any (fun i => visible.testBit i)) then found := true
+             unless found do
+               separate := true
+               reason := some s!"unimported_reference:{ci.name}:{n}"
+@@ -207,6 +215,8 @@
+         ("context", toJson "shared"), ("error", toJson e.toString)]
+       throw e
+   modify fun s => { s with
++    ancestorMasks := s.ancestorMasks.insert mod visible,
++    moduleIndices := s.moduleIndices.insert mod s.modules,
+     pending := s.pending.erase mod, visited := s.visited.insert mod,
+     modules := s.modules + 1, constants := s.constants + data.constants.size,
+     skipped := s.skipped + skipped }

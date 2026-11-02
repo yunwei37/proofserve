@@ -75,8 +75,8 @@ def main():
   pending=[r['module']for r in frame if r['module']not in done]
   if not pending:
    save('oracle-complete.json',dict(complete=True,modules=len(done),reused_qualified_common=len(common&old)));return 0
-  chunk=pending[:128];key='oracle-'+str(len(done)).zfill(5)
-  r,es=cell(key,[CHECKER,'one','none']+chunk,1400,env)
+  chunk=pending[:512];key='oracle-'+str(len(done)).zfill(5)
+  r,es=cell(key,[D.parent/'measurement-v1/audited-stream','one','none']+chunk,1400,env)
   # Complete accept events survive an interrupted chunk; no truncated or missing item is accepted.
   accepted=[m for m in r['accepted']if m in chunk]
   complete=r['returncode']==0 and accepted==chunk and not r['malformed_json_lines']
