@@ -1,6 +1,6 @@
 # Research status
 
-Snapshot2026-11-02UTC, root0268. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-02UTC, root0269. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
@@ -30,8 +30,8 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | Evidence | Qualified result | Root record |
 |---|---|---|
 | Lexical census | Mathlib8529files/7masked sites; OAI163097files/1354379sites in5848files. 10668.32xsites/MB; default root misses33.30%sites. Not runtime or exhaustive semantic classes. | [0231](tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md) |
-| Source probability frame |32/42 draws;15/21 complete strata/104632modules. All9marked strata cover5848marked files. Conditional marked compiler CPU57.546/174.251h=33.025%; summed-elapsed share27.020%.10ordinary draws/58465modules in incomplete strata remain. No full-library CPU/global semantic weight. | [0263](tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md) |
-| Whole-frame scenarios |32known+10ordinary missing assumed within observed support:207.8–630.8source/10.8–41.9modeledstream CPUh. O selected-closure CPU fractions transferred, not measured full checks, CI or guaranteed bounds. No-assumption upper unbounded. New LowBlock184.589CPU-s exceeds old marked max163.846. | [0263](tmp/build-and-evaluate/step-0263-20261102T040256+0000/step-report.md) |
+| Source probability frame |33/42originals;16/21complete strata/144565modules. All9marked cells/5848files complete; marked compilerCPU57.546/217.424h=26.467%, summed-elapsed21.1985%.9ordinary costs missing/18532module domain incomplete. | [0269](tmp/build-and-evaluate/step-0269-20261102T191745+0000/step-report.md) |
+| Whole-frame scenarios |33known+9ordinary missing within observed support:224.1–427.4source CPUh; mixed checkpoint-ordinary/unsegmented-computation transfer15.3–38.0checking CPUh. Assumptions, not CI/guaranteed or measured full checking; no-assumption upper unbounded. | [0269](tmp/build-and-evaluate/step-0269-20261102T191745+0000/step-report.md) |
 | Target-only replay |31/31 accepted, trusted compiled imports, source632.590/replay272.695CPU-s; median per-module ratio0.451 (0.087–0.885).14paired strata140.852/54.906CPUh, nominal weak interval[0,0.9401], effectiveDF1.19. Separate from source32coverage/full closure. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
 | Native checking grain |29available random+2purposeful artifacts/34units;13original draws missing.12decision-shaped calls>=1CPU-s use10.09%total call CPU; available-case weights are conditional, not global. | [0234](tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md) |
 | Four original O closures |Nat1330/NearPin3333/Grid3793/Amplitudes5083: complete check/source-work10.56/6.76/14.52/14.55%. Same5085-node source union/161reference blocks, overlapping dependencies and warm observations. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md) |
@@ -73,7 +73,7 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 
 ## Open evidence and next action
 
-Source10/paired11/dynamic13 gaps differ; do not change one denominator with another.
+Source9/paired11/dynamic13 gaps differ; do not change one denominator with another.
 Full-library phase weights, causality/repeats, whole axioms/declaration closure,
 released-software native coverage and cluster behavior remain unresolved.
 Bundled LeanChecker already dispatches module-local tasks independently:
@@ -86,7 +86,7 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0268:23pages/219436B,19prior table bodies/title/fullabstract/4RQ/sections/fourimplications unchanged;1newCPUtable/20total,fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0269:24pages/220616B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
@@ -94,3 +94,6 @@ Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261
 CPU and coverage update [0268](tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md): Falconer native check/source CPU2038.443942/32292.603807s=6.3124%; matching checkpoint Mathlib91.145172/1018.219383s=8.9514%. Separate native elapsed ratios9.26%/historical10.56%/checkpoint14.67% remain. Source/protocol/CPU units are not pooled. Whole-source bounded attempt accepts2488/163097source+10744dependencies;160609source missing,9124source-compilation rc1 unclassified, not mathematical rejection or measured full-library cost.
 
 O newly visible source-error report is retained for later independent attribution qualification; root0268 audits9124rc1count and2488source accepted, not all log causes or a repaired producer run.
+
+
+[Root0269](tmp/build-and-evaluate/step-0269-20261102T191745+0000/step-report.md) independently qualifies W28d21e0 Hodge176 terminal:176rc0=175dependencies+1original IndexedInverseMultiplier (3.929919wall/4.131784CPU-s). Source33/42,16/21complete strata/144565modules;9ordinary original costs missing/18532module domain incomplete. Conditional source217.424460CPUh, marked57.546404h=26.4673%; summed-elapsed marked21.1985%. KnownHTsubtotal217.945744h is not population estimate/CI; each missing+1CPU-s adds5.134167h. Source support scenarios224.1–427.4CPUh; separate mixed-protocol transfer15.3–38.0CPUh uses current checkpoint ordinary6.31–8.95% with historical unsegmented computation8.4421–8.4671%. Neither is actual full checking/CI/guarantee. Wpaired31/42/14strata/dynamic13missing unchanged.

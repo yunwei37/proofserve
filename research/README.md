@@ -82,3 +82,6 @@ finite controlled boundaries and limits are the current empirical increment.
 
 
 CPU/coverage scope [root0268](../docs/tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md): Falconer6.31% and matched-checkpoint Mathlib8.95% are native CPU ratios.9.26%/10.56%/14.67% are separate wall ratios. Whole-source accepted2488/163097;9124compilation rc1 unclassified, bounded incomplete attempt. Raw process reanalysis and small CPU table are linked in the root report.
+
+
+Hodge/source33 [root0269](../docs/tmp/build-and-evaluate/step-0269-20261102T191745+0000/step-report.md), [Wresult](../workloads/openai-math/noM-hodge-source33/README.md): original33/42/16strata; source224.1–427.4CPUh and separate mixed-protocol15.3–38.0modeledcheckCPUh are assumptions, notCI or whole checks. No Hodge target replay/grain measurement follows.

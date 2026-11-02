@@ -212,8 +212,8 @@ All original sources, no-\texttt{-M} arguments, PID/birth retirement and
 matching native clock sums are checked.
 A later 19-job continuation contributes one more original draw, LowBlock15\_1;
 its other original draw is uninvoked after a prerequisite timeout.
-\measured{\expref{0263-20261102T040256+0000}{0263}}
-Source-frame coverage is now 32/42 with 15 complete strata and 10 missing
+\measured{\expref{0269-20261102T191745+0000}{0269}}
+Source-frame coverage is now 33/42 with 16 complete strata and 9 missing
 costs. Target-only paired replay still covers 31 draws/14 strata, and the
 dynamic checking-grain panel retains its separate denominator.
 Prerequisites and purposeful modules receive no sampling weight.
@@ -293,23 +293,27 @@ Only 3.5856\% of generated-library files contain the form.
 These are concrete candidates for inspecting recomputation, not an exhaustive
 runtime classification: expensive reduction can occur without the token,
 and a positive file can mix computation and symbolic reasoning.
-The 32 completed no-\texttt{-M} random source targets sum to 518.408 seconds
-of native wall intervals and 817.180 user-plus-system CPU seconds.
+The 33 completed no-\texttt{-M} random source targets sum to 522.338 seconds
+of native wall intervals and 821.311 user-plus-system CPU seconds.
 This is not a full-build makespan or population expansion.
 The separate purposeful Grid and Amplitudes points differ in output/heartbeat
 scope and do not fill missing strata.
 Unprofiled process costs do not supply a kernel-cycle partition.
 A source-defined proxy marks files containing a masked explicit kernel-decision
 form; it does not establish which dynamic phase dominates them.
-\measured{\expref{0263-20261102T040256+0000}{0263}; original-frame source-cost increment.}
-For the 15 completed strata (104,632 modules), stratified compiler CPU estimates
-are 57.546 hours in marked files and 116.705 hours in other files:
-a conditional marked-file share of 33.02\%.
-All nine marked strata now have both draws, covering 5,848 marked modules;
-six ordinary strata and 58,465 ordinary modules remain incompletely observed.
+\measured{\expref{0269-20261102T191745+0000}{0269}; original-frame source-cost increment.}
+The original Hodge draw completes in 3.930 native elapsed seconds and
+4.132 CPU seconds. Its final 176-call continuation contains 175 dependencies
+and this one original draw; their combined work is not the draw's sampling cost.
+For the 16 completed strata (144,565 modules), stratified compiler CPU estimates
+are 57.546 hours in marked files and 159.878 hours in other files:
+a conditional marked-file share of 26.47\%.
+All nine marked strata have both draws, covering 5,848 marked modules;
+five ordinary strata and 18,532 ordinary modules remain incompletely observed.
 These are source-compilation estimates, including imports, tactics and emission,
 not kernel-check-only hours or semantic computation-regime weights.
-The earlier 14-stratum snapshot's 17.14\% share uses a different covered domain.
+The earlier 14- and 15-stratum shares, 17.14\% and 33.02\%, use different
+covered domains, rather than successive measurements of the same population.
 The increase reflects newly observed cost and coverage, not a temporal trend
 for a fixed population. Two draws per stratum and ordinary-class nonresponse
 still leave full-library CPU and the global marked-time share unestablished.
@@ -318,48 +322,58 @@ regime-specific cost weights after completing the original sample.}
 The 3.5856\% source-file concentration must not become a cost fraction.
 
 \paragraph{Clock choice and nonresponse alter the estimand.}
-\measured{\expref{0263-20261102T040256+0000}{0263}; same 15 complete source strata, offline arithmetic.}
-The conditional marked share is33.02\% of weighted compiler CPU but 27.02\%
-of summed native elapsed time, a 6.00-percentage-point difference.
+\measured{\expref{0269-20261102T191745+0000}{0269}; same 16 complete source strata, offline arithmetic.}
+The conditional marked share is 26.47\% of weighted compiler CPU but 21.20\%
+of summed native elapsed time, a 5.27-percentage-point difference.
 The latter adds native process durations; it is not parallel Lake makespan
-or queue latency. Neither is a kernel-phase share or whole-library fraction.
-The previous 14-stratum 17.14\%/14.81\% contrast remains a separate snapshot.
+or an isolated checking-phase share of whole-library time.
+CPU weights include worker execution; elapsed weights reflect each module's
+wall duration at the measured concurrency point.
+Earlier 14- and 15-stratum clock contrasts remain separate coverage snapshots.
 
-The six incomplete strata contain 58,465 of 163,097 modules (35.85\%),
-not necessarily that many unbuilt files. Ten original source costs are absent.
-The 32 known terms in the eventual complete-sample Horvitz--Thompson point
-sum to 195.030 CPU-hours. This is an algebraic subtotal, not a lower confidence
-bound or a global estimate with missing costs set to zero.
-Increasing every remaining missing draw by one CPU-second increases that
-eventual point by 10.680 CPU-hours. This is weight sensitivity, not a
-prediction; without additional assumptions it supplies no finite upper total.
+The five incomplete strata contain 18,532 of 163,097 modules (11.36\%),
+not necessarily that many unbuilt files. Nine original source costs are absent.
+The 33 known terms in the eventual complete-sample Horvitz--Thompson point
+sum to 217.946 CPU-hours. This is an algebraic subtotal, not a lower confidence
+limit or a zero-filled population estimate.
+Increasing every missing draw by one CPU second would increase the eventual
+point by 5.134 CPU-hours under the fixed original weights.
+This sensitivity does not predict the missing costs or their variance.
 
 \paragraph{Whole-frame costs require explicit missing-cost scenarios.}
-\partialev{\expref{0263-20261102T040256+0000}{0263}; updated 32-cost sensitivity, not measurements or confidence limits.}
-Preserving 32 known costs and original inclusion weights, assume the 10 remaining
-missing draws cost between the observed minimum and maximum of their source
-class. All 10 are ordinary-marker draws, with support 1.204525--40.791652 CPU-s.
-Whole-frame construction scenarios then span 207.8--630.8 CPU-hours,
+\partialev{\expref{0269-20261102T191745+0000}{0269}; fixed 33-source sensitivity, not measurements
+or confidence limits.}
+Preserving 33 known costs and original inclusion weights, assume the 9 remaining
+ordinary-marker draws cost between the observed ordinary minimum and maximum,
+1.204525--40.791652 CPU-s.
+Whole-frame construction scenarios then span 224.1--427.4 CPU-hours,
 with endpoints rounded outward.
-Transferring selected complete-closure CPU fractions to known and missing
-modules gives 10.8--41.9 modeled serial-stream CPU-hours.
-Ordinary modules inherit fractions 0.039699--0.064497 and marked modules
-0.084421--0.084671 in this model; source markers do not justify that transfer.
-These are assumption scenarios, not measured whole-library checking costs
-or confidence intervals. Their known terms include incomplete-stratum draws,
-not just the 15complete strata, and differ from RQ2's trusted-import target checks.
+The earlier 32-draw 207.8--630.8-hour source range remains a dated assumption
+scenario; the smaller current width follows additional coverage.
 
-The newly observed LowBlock15\_1 costs 184.589 CPU-s, above the previous
-31-draw marked-class maximum of 163.846 CPU-s.
-It exceeds the support assumption used in the earlier 178.2--627.4 source/
-8.3--41.6 stream scenarios; those ranges remain dated calculations, not current
-bounds or coverage guarantees.
-Without missing-cost assumptions the pessimistic completion-cost bound
-remains unbounded. At the current class-maximum source scenario, assigning
-no checking savings to missing draws raises modeled stream work to 449.4 CPU-hours;
-twice their source work raises it to 885.1, above the 630.8-hour source scenario.
+A separate transfer model gives 15.3--38.0 checking CPU-hours.
+It assigns ordinary modules the latest complete checkpoint-closure CPU
+fractions 0.063124--0.089514 and marked modules the older unsegmented
+computation fractions 0.084421--0.084671.
+This deliberately mixes protocol-specific anchors; it is neither a measured
+matched protocol nor evidence that source markers identify checking cost.
+The earlier 10.8--41.9-hour transfer used a different capture and anchor set.
+Neither model is measured whole-library checking cost, a confidence interval
+or a guaranteed saving. Their known terms include incomplete-stratum draws,
+not just the 16 complete strata; they also differ from RQ2's trusted-import
+target checks and its complete selected closures.
+
+The LowBlock15\_1 observation remains 184.589 CPU-s, above the old
+31-draw marked-class maximum of 163.846 CPU-s, demonstrating that observed
+support is only an assumption.
+Without missing-cost assumptions, the completion-cost upper remains unbounded.
+Assigning all missing draws ten times the observed ordinary maximum raises
+the source scenario to 2,312.3 CPU-hours.
+At the current class-maximum source scenario, giving missing draws no
+checking savings yields 224.4 modeled checking CPU-hours; twice their source
+work yields 433.8, above the 427.4-hour source scenario.
 A subunit factor assigned to unknown modules cannot establish general benefit.
-The 10 unobserved original source costs remain missing in the primary evidence.
+All 9 unobserved original source costs remain missing in the primary evidence.
 
 \paragraph{Source features do not establish bounded prediction error.}
 \measured{\expref{0254-20261101T195608+0000}{0254}; 31 completed source-compiler observations.}
