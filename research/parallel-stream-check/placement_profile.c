@@ -13,7 +13,7 @@
 typedef unsigned long long U;
 typedef struct { uint64_t a,b; } Interval;
 typedef struct {
- long tid; int epoch, assigned;
+ long tid;
  uint64_t wall0,cpu0; int core0;
  uint64_t count[24], cpu[24], hb[24], narrow[24], narrow_hb[24];
  uint64_t max_job, migrations;
@@ -23,11 +23,11 @@ static Local *registry[128];
 static size_t registry_n;
 static pthread_mutex_t registry_lock=PTHREAD_MUTEX_INITIALIZER;
 static _Thread_local Local *local;
-static _Thread_local int coordinator;
+static _Thread_local int bound_core=-1;
 static int cpus[24],cpu_n,coordinator_cpu;
 static cpu_set_t original_allowed;
 static int have_allowed;
-static atomic_int epoch=1, next_slot;
+static atomic_int wave_slot;
 static uint64_t wave0,wavecpu0,union_sum,batch_sum,batch_cpu_sum,wave_max_sum,waves;
 static size_t wave_jobs;
 static uint64_t ns(clockid_t id) {struct timespec t;clock_gettime(id,&t);return (uint64_t)t.tv_sec*1000000000+t.tv_nsec;}
@@ -35,15 +35,16 @@ static lean_obj_res ok(void) {return lean_io_result_mk_ok(lean_box(0));}
 static Local *getlocal(void) {
  if(local)return local;
  local=calloc(1,sizeof(Local));if(!local)abort();
- local->tid=(long)syscall(SYS_gettid);local->assigned=-1;
+ local->tid=(long)syscall(SYS_gettid);
  pthread_mutex_lock(&registry_lock);
  if(registry_n==128)abort();
  registry[registry_n++]=local;pthread_mutex_unlock(&registry_lock);
  return local;
 }
 static int bindcpu(int cpu) {
+ if(bound_core==cpu)return 0;
  cpu_set_t mask;CPU_ZERO(&mask);CPU_SET(cpu,&mask);
- return sched_setaffinity(0,sizeof(mask),&mask);
+ int rc=sched_setaffinity(0,sizeof(mask),&mask);if(!rc)bound_core=cpu;return rc;
 }
 LEAN_EXPORT lean_obj_res ps_configure_placement(b_lean_obj_arg text,size_t coor,lean_obj_arg w) {
  const char *s=lean_string_cstr(text);int selected[24],n=0;
@@ -52,28 +53,29 @@ LEAN_EXPORT lean_obj_res ps_configure_placement(b_lean_obj_arg text,size_t coor,
   const char *end=s;long x=0;
   while(*end>='0'&&*end<='9'){x=x*10+(*end-'0');end++;if(x>=24)break;}
   if(end==s||x<0||x>=24||n==24||!CPU_ISSET(x,&original_allowed))return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("invalid worker CPU map")));
+  for(int i=0;i<n;i++)if(selected[i]==x)return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("duplicate worker core")));
   selected[n++]=(int)x;s=end;if(*s==',')s++;else if(*s) return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("invalid CPU separator")));
  }
  if(n && (coor>=24||!CPU_ISSET(coor,&original_allowed)))return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("invalid coordinator CPU")));
  for(int i=0;i<n;i++)cpus[i]=selected[i];
- cpu_n=n;coordinator_cpu=(int)coor;atomic_store(&next_slot,0);atomic_fetch_add(&epoch,1);
- coordinator=1;
+ cpu_n=n;coordinator_cpu=(int)coor;atomic_store(&wave_slot,0);
+
  if(n && bindcpu(coordinator_cpu))return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("coordinator affinity denied")));
  return ok();
 }
 LEAN_EXPORT lean_obj_res ps_bind_coordinator(lean_obj_arg w) {
- coordinator=1; if(cpu_n && bindcpu(coordinator_cpu))return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("coordinator binding denied")));
+ if(cpu_n && bindcpu(coordinator_cpu))return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("coordinator binding denied")));
  return ok();
 }
 LEAN_EXPORT lean_obj_res ps_bind_worker(lean_obj_arg w) {
  if(!cpu_n)return ok();
- Local *l=getlocal();int e=atomic_load(&epoch);
- if(l->epoch!=e){l->epoch=e;l->assigned=cpus[atomic_fetch_add(&next_slot,1)%cpu_n];if(bindcpu(l->assigned))return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("worker binding denied")));}
- if(coordinator && bindcpu(l->assigned))return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("coordinator worker binding denied")));
+ int slot=atomic_fetch_add(&wave_slot,1);
+ if(slot>=cpu_n)return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("active wave exceeds distinct CPU pins")));
+ if(bindcpu(cpus[slot]))return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("worker binding denied")));
  return ok();
 }
 LEAN_EXPORT lean_obj_res ps_wave_begin(size_t jobs,lean_obj_arg w) {
- wave_jobs=jobs;wave0=ns(CLOCK_MONOTONIC);wavecpu0=ns(CLOCK_PROCESS_CPUTIME_ID);return ok();
+ atomic_store(&wave_slot,0);wave_jobs=jobs;wave0=ns(CLOCK_MONOTONIC);wavecpu0=ns(CLOCK_PROCESS_CPUTIME_ID);return ok();
 }
 LEAN_EXPORT lean_obj_res ps_profile_begin(lean_obj_arg w) {
  Local *l=getlocal();l->core0=sched_getcpu();l->wall0=ns(CLOCK_MONOTONIC);l->cpu0=ns(CLOCK_THREAD_CPUTIME_ID);return ok();

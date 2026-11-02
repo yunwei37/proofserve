@@ -169,7 +169,8 @@ private def checkedBatch (base : Kernel.Environment) (plan : Plan)
     (wave : Array Nat) (workers : Nat) (fault : String) (observe : NameSet := {}) : IO Kernel.Environment := do
   bindCoordinator
   let profile := (← IO.getEnv "PARALLEL_PROFILE") == some "1"
-  if profile then waveBegin wave.size.toUSize
+  let hasPins := !((← IO.getEnv "PARALLEL_PIN_CPUS").getD "").isEmpty
+  if profile || hasPins then waveBegin wave.size.toUSize
   let queue ← Std.Mutex.new 0
   let count := min workers wave.size
   let gate ← IO.Promise.new

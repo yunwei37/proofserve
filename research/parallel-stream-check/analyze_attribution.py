@@ -16,7 +16,7 @@ def fit(rows):
   caveat='effective fit includes algorithm/observer overhead; not an inherent serial fraction; single-run points')
 def analyze(point,out):
  out.mkdir(exist_ok=True,parents=True)
- full=[];cores=[];workers=[];phases=[]
+ full=[];cores=[];workers=[];phases=[];module_work={}
  for phase in ['p12','p48','types','observer']:
   f=point/(phase+'-results.json')
   if not f.exists():continue
@@ -30,19 +30,21 @@ def analyze(point,out):
    if not c['profile_enabled']:continue
    dep=sum(int(e['read_ns'])+int(e['context_ns']) for e in ev if e.get('event')=='dependency_phase')/1e9
    mods=[e for e in ev if e.get('event')=='profile_module']
+   module_work[name]={e['module']:e['metrics'] for e in mods if e['metrics']['checks']>0}
    plan=sum(int(e['plan_ns']) for e in mods)/1e9
    fallback=sum(int(e['fallback_ns']) for e in mods)/1e9
    dup=sum(int(e['wall_ns']) for e in ev if e.get('event')=='serial_duplicate_phase')/1e9
    union=sum(int(e['metrics']['kernel_union_ns']) for e in mods)/1e9
    batch=sum(int(e['metrics']['batch_wall_ns']) for e in mods)/1e9
    kernel_cpu=sum(int(e['metrics']['kernel_cpu_ns']) for e in mods)/1e9
+   span=sum(int(e['metrics']['sum_wave_max_cpu_ns']) for e in mods)/1e9
    batch_cpu=sum(int(e['metrics']['batch_cpu_ns']) for e in mods)/1e9
    serial=dep+plan+fallback+dup;remaining=c['wall_s']-serial-union
    phases.append(dict(name=name,workers=row['workers'],read_context_s=dep,plan_s=plan,upstream_serial_kernel_s=fallback,
     serial_duplicate_s=dup,implementation_serial_s=serial,parallel_kernel_occupancy_s=union,
     overhead_residual_s=remaining,batch_wall_s=batch,batch_non_kernel_wall_s=batch-union,
     other_residual_s=remaining-(batch-union),kernel_CPU_s=kernel_cpu,batch_CPU_s=batch_cpu,
-    batch_non_kernel_CPU_s=batch_cpu-kernel_cpu,process_wall_s=c['wall_s']))
+    batch_non_kernel_CPU_s=batch_cpu-kernel_cpu,wave_span_proxy_s=span,kernel_parallelism_proxy=kernel_cpu/span if span else None,process_wall_s=c['wall_s']))
    core=collections.defaultdict(lambda:collections.Counter())
    th=collections.defaultdict(lambda:collections.Counter())
    for m in mods:
@@ -60,6 +62,22 @@ def analyze(point,out):
     workers.append(dict(name=name,TID=tid,cpu=cpu,core_type='P' if cpu<8 else 'E',**counts))
  csvout(out/'full-cells.csv',full);csvout(out/'phase-ledger.csv',phases)
  csvout(out/'per-core-throughput.csv',cores);csvout(out/'worker-placement.csv',workers)
+ comparisons=[];changed=[]
+ if 'P1' in module_work:
+  base=module_work['P1']
+  for name,rows in module_work.items():
+   if name=='P1':continue
+   shared=base.keys()&rows.keys();different=[]
+   for module in shared:
+    a=base[module];b=rows[module]
+    if a['raw_HB']!=b['raw_HB']:
+     different.append(module);changed.append(dict(name=name,module=module,baseline_HB=a['raw_HB'],current_HB=b['raw_HB'],
+      delta_HB=b['raw_HB']-a['raw_HB']))
+   comparisons.append(dict(name=name,matched_modules=len(shared),module_count_equal=set(base)==set(rows),
+    changed_module_HB_counts=len(different),total_baseline_HB=sum(base[k]['raw_HB'] for k in shared),
+    total_current_HB=sum(rows[k]['raw_HB'] for k in shared)))
+ csvout(out/'aggregate-work-comparisons.csv',comparisons)
+ if changed:csvout(out/'changed-module-work.csv',sorted(changed,key=lambda r:abs(r['delta_HB']),reverse=True)[:100])
  selected=[next((r for r in full if r['name']=='P'+str(n)),None) for n in [1,2,4,8]]
  if all(selected):(out/'fixed-serial-fit.json').write_text(json.dumps(fit(selected),indent=2))
  f=point/'det24-terminal.json'

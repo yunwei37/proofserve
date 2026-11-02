@@ -45,17 +45,28 @@ def main(phase):
     if x.get('event')=='profile_module':
      m=x['metrics'];assert m['kernel_union_ns']<=m['batch_wall_ns']
      assert all(w['within_check_migrations']==0 for w in m['workers'])
+   os.sched_setaffinity(0,set(range(8)))
+   two=runtime(2,list(range(8)),[0,1],0,True)
+   r2=run('attribution-two-core-control',[ROOT/'parallel-stream','parallel','none','ComputeControl'],180,True,two);cells.append(r2)
+   ev2=events(r2['key'])
+   core_checks=collections.Counter()
+   for item in ev2:
+    if item.get('event')=='profile_module':
+     for worker in item['metrics']['workers']:core_checks[worker['cpu']]+=worker['checks']
+   if r2['returncode'] or set(core_checks)!={0,1} or not all(core_checks.values()):raise RuntimeError('two actual CPU control incomplete')
+   os.sched_setaffinity(0,set(range(24)))
    ee=runtime(24,list(range(24)),list(range(24)),0,True)
    ee['DECOUPLED_MUTATE_MODULE']='ComputeControl';ee['DECOUPLED_MUTATE_CONSTANT']='c0'
    bad=run('attribution-bad-control',[ROOT/'parallel-stream','parallel','bvar','ComputeControl'],180,True,ee);cells.append(bad)
    if bad['returncode']!=1 or not any(x.get('event')=='reject' for x in events(bad['key'])):raise RuntimeError('bad original proof not rejected')
    (ROOT/'qualified.json').write_text(json.dumps(dict(cells=cells,samples=450,pin_maps_verified=True,artifacts=file_results(output)),indent=2))
-  elif phase in ['p12','p48','types','observer']:
+  elif phase in ['p12','p48','types','observer','placement']:
    assert (ROOT/'qualified.json').exists()
    specs={'p12':[('P1',1,list(range(8)),[0],0,True),('P2',2,list(range(8)),[0,1],0,True)],
     'p48':[('P4',4,list(range(8)),list(range(4)),0,True),('P8',8,list(range(8)),list(range(8)),0,True)],
     'types':[('E16',16,list(range(8,24)),list(range(8,24)),8,True),('M24',24,list(range(24)),list(range(24)),0,True)],
-    'observer':[('P8-noProfile',8,list(range(8)),list(range(8)),0,False),('M24-noProfile',24,list(range(24)),list(range(24)),0,False)]}[phase]
+    'observer':[('P8-noProfile',8,list(range(8)),list(range(8)),0,False),('M24-noProfile',24,list(range(24)),list(range(24)),0,False)],
+    'placement':[('P8-unpinned',8,list(range(8)),[],0,False),('M24-unpinned',24,list(range(24)),[],0,False)]}[phase]
    reference=set(json.loads(Path('/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v14/barrier-full-reference1-r1-summary.json').read_text())['accepted'])
    for name,workers,allowed,pins,coor,profile in specs:
     os.sched_setaffinity(0,set(allowed));e=runtime(workers,allowed,pins,coor,profile)

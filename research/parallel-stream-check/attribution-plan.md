@@ -19,7 +19,7 @@ gate, validation, commit, logging, startup/cleanup; do not label it all necessar
 collaboration. Batch wall minus kernel union and batch CPU minus kernel CPU
 provide narrower cooperation measurements, with same-process denominators.
 
-Sticky per-worker physical affinity: P1map0,P2map0-1,P4map0-3,P8map0-7,
+Distinct active-task affinity per frontier: P1map0,P2map0-1,P4map0-3,P8map0-7,
 coordinator0; E16map8-23,coordinator8; mixed24map0-23,coordinator0.
 Actual per-check core and TID aggregates are retained. Only one NUMAnode exists,
 so cross-NUMA is not an explanation here. Cache/core-type effects require
@@ -34,3 +34,21 @@ Ecapacity cannot explain a slowdown; an additional overhead/placement/capacity
 loss term is required. Single-run full points are descriptive, without a
 replication confidence interval; leaf triplets have min/median/max.
 Frozen sources/binaries/raw live on PVC parallel-stream-attribution-20261102.
+
+## Qualification correction before primary fit
+The v1sticky TIDmodulomapping aliased two active threads ontoCPU0atrequested
+two workers, because the Lean pool used three OSthreads. v1P2is invalid for
+scaling; v1data and source remain unchanged. CPU membership alone was an
+insufficient preflight. v2assigns a distinct slot0..count-1at each frontier,
+rejects duplicate maps/oversubscription and repins the selected active tasks.
+Per-check migration remains separately counted. Refresh all primary points
+on the corrected source; old timings are not silently mixed into the fit.
+
+## Placement ablation
+The corrected per-frontier map is P-first for mixed CPUs: narrow waves use
+the available P entries first. This is an explicit policy, not unweighted OS
+scheduling. OSthreads may change core between frontiers; within-check migrations
+are counted separately. Add profile-off unpinned P8/mixed24 on the same binary,
+paired to the already-planned profile-off pinned P8/mixed24. This isolates
+placement from observer cost and avoids attributing the old unpinned slowdown
+to a new deliberate placement policy. No new background service or host change.
