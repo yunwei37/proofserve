@@ -3,13 +3,13 @@
 Review: 自审. P0–7/shared flock/no Lean -M/external11.5GiB child cgroup/512MiB parent reserve.
 
 - source_modules: 163097
-- accepted_source_ids: 3
-- accepted_dependency_ids: 4997
-- missing_source_ids: 163094
-- native_check_attempts: 11
-- kernel_wall_s: 576.7981657059863
-- kernel_cpu_s: 576.294785
-- kernel_cpu_h: 0.16008188472222223
+- accepted_source_ids: 36
+- accepted_dependency_ids: 5464
+- missing_source_ids: 163061
+- native_check_attempts: 12
+- kernel_wall_s: 667.5705179590732
+- kernel_cpu_s: 666.967132
+- kernel_cpu_h: 0.18526864777777777
 - kernel_peak_rss_gib: 3.7225418090820312
 - complete: False
 
