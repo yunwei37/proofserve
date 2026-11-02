@@ -136,3 +136,11 @@ The complete [Grid pair](full-grid-results.md) now costs557.568->296.293s,
 and resumed parallel arm have a disclosed controller-repair gap. The full
 source-work staircase is3878.707->557.568->296.293s. The next missing complete
 cohort reference is Envelope; do not fill it from the nine-variant process time.
+
+## Beyond-eight heterogeneous footprint
+The new [full Barrier curve](extended-results/heterogeneous-scaling.md)
+8P /8P+4E /8P+8E /8P+16E completes with identical4,449accepted IDs,
+but wall increases284.720->319.705s and CPU668.786->1172.473s.
+One fixed-order repetition; allowed masks, migration and phase limitations are
+explicit. This is not additional scaling or cluster evidence. The parallel
+heartbeat/artifact experiment is separate and pending.

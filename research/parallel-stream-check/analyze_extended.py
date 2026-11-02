@@ -8,8 +8,19 @@ def analyze(point,out):
  out.mkdir(parents=True,exist_ok=True)
  if (point/'scaling-terminal.json').exists():
   t=json.loads((point/'scaling-terminal.json').read_text())
-  rows=[]
+  rows=[];phase_rows=[]
   for c in t['cells']:
+   ev=[json.loads(line) for line in (point/'runs'/c['key']/'stdout').read_text().splitlines() if line.startswith('{')]
+   durations=collections.defaultdict(float);counts=collections.Counter()
+   for event in ev:
+    if event.get('event')=='kernel_work':
+     durations[event['path']]+=int(event['elapsed_ns'])/1e9;counts[event['path']]+=1
+   measured_sum=sum(durations.values())
+   for route,seconds in durations.items():
+    phase_rows.append(dict(workers=int(c['key'].split('j')[-1]),route=route,modules=counts[route],
+     wall_s=seconds,process_wall_fraction=seconds/c['wall_s']))
+   phase_rows.append(dict(workers=int(c['key'].split('j')[-1]),route='outside_recorded_kernel_work',modules=0,
+    wall_s=c['wall_s']-measured_sum,process_wall_fraction=(c['wall_s']-measured_sum)/c['wall_s']))
    workers=int(c['key'].split('j')[-1])
    rows.append(dict(workers=workers,P_cores=8,E_cores=workers-8,allowed_cpus=','.join(map(str,c['affinity'])),
     wall_s=c['wall_s'],user_s=c['user_s'],system_s=c['system_s'],CPU_s=c['user_s']+c['system_s'],
@@ -21,6 +32,7 @@ def analyze(point,out):
    if base:
     for r in rows:r['speedup_vs_8P']=base['wall_s']/r['wall_s'];r['CPU_ratio_vs_8P']=r['CPU_s']/base['CPU_s']
    writecsv(out/'heterogeneous-scaling.csv',rows)
+   writecsv(out/'scaling-paths.csv',phase_rows)
   (out/'scaling-status.json').write_text(json.dumps(dict(state=t['state'],error=t['error'],cells=len(rows)),indent=2))
  if (point/'determinism-terminal.json').exists():
   t=json.loads((point/'determinism-terminal.json').read_text())
@@ -52,7 +64,7 @@ def analyze(point,out):
   status=dict(state=t['state'],error=t['error'],targets=len(groups),observations=len(units),curves=len(curves),
    zero_range_targets=sum(r['range_pct']==0 for r in coverage),
    P95_range_pct=ranges[math.ceil(.95*len(ranges))-1] if ranges else None,max_range_pct=max(ranges) if ranges else None,
-   all_accepted=all(r['accepted'] for r in units),snapshot_events=len(snapshots),
+   all_accepted=bool(units) and all(r['accepted'] for r in units),complete_coverage=len(groups)==100 and len(units)==1200 and len(curves)==12,snapshot_events=len(snapshots),
    artifacts=json.loads((point/'determinism-artifacts.json').read_text()) if (point/'determinism-artifacts.json').exists() else None)
   (out/'determinism-status.json').write_text(json.dumps(status,indent=2))
   writecsv(out/'parallel-target-heartbeats.csv',coverage)
