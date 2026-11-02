@@ -1,0 +1,3 @@
+module,observations,min_raw_HB,max_raw_HB,relative_range
+InteriorH1Derivative,96,92995454,93029620,0.0003673943029516291
+ReindexSingle,96,8090121,8101322,0.0013845281176882995

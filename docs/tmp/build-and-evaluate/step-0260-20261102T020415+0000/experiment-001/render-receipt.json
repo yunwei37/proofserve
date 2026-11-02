@@ -1,0 +1,36 @@
+{
+  "pages": 20,
+  "affected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "contacts": [
+    "/workspaces/.agent-state/gpu-smt-captures/step-0260-20261102T020415+0000-paper/contact1.jpg",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0260-20261102T020415+0000-paper/contact2.jpg",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0260-20261102T020415+0000-paper/contact3.jpg",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0260-20261102T020415+0000-paper/contact4.jpg",
+    "/workspaces/.agent-state/gpu-smt-captures/step-0260-20261102T020415+0000-paper/contact5.jpg"
+  ],
+  "PDF_bytes": 198939,
+  "title_and_four_RQs_match_user_authorized_draft": true,
+  "abstract_changes_authorized_by_current_user": true,
+  "implication_sections": 4
+}

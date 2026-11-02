@@ -198,3 +198,31 @@ count differences (overlap) and3timeout-text differences,0outcome changes.
 No newrootnative/agent; old v5/v9/inventory/link/eligibility failures preserved.
 
 Paper now root0259:19pages193486bytes,complete compile/all-page static self-review;15prior tables plus1stage table/title/fullabstract/4RQ/sections/four implications unchanged. Completed narrowstagepanel does not establish concurrentmathkernel/computationalsource or generalB/Cguarantees.0rootnative/agent.
+
+
+## Completed target panel and repeated stages: root0260
+[Root0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) independently reconstructs W31target-only replays:
+31accepted/exact target-part matches; sourceCPU632.590445/replay272.695065s
+(ratio0.431077), nativeelapsed393.895780/274.208513s(0.696145).
+Queue-inclusive14768.395s is separate. Same14strata conditional source140.851561/
+target-replay54.905548CPUh, ratio0.389811/nominal95%[0,0.940135],2draws/cell,
+fragile effectiveDF1.185. Trustedimports/fulltransitiveidentity not established;
+not empty-environment closure checking, full-library cost or source/service gain.
+Original source31/42,11missing source/paired and13dynamic missing remain.
+
+M v11 separately complete86rc0phases/84cells/504rows/378comparisons:
+storedproof312rows/234pairs0allocation/verdict/diagnostic differences;
+mathsource192rows/144pairs78allocationchanges/0verdict/diagnostic changes.
+Only2actualprograms; kernelmath1activeproof/module, computational8selectedhelpers.
+Pooled observed source count ranges0.036739%/0.138453%, not certified budget padding.
+All205M/W recorded PIDbirth identities/controllers/cgroups retired; no rootnative/agent.
+Prepared/queued Mv12full2524helper census is not this sampled result.
+
+Falconer source summary reports13205constructed, but original fullcheck rc124/
+1500.210998s,8942completeaccepts/8943headers plus75bytecutfragment.
+CollectorJSONerror is operational, not math rejection or finalacceptsetmismatch.
+Nativecgroup absent/noOOM; nativePIDbirth absent in receipt, not invented.
+11.75GiBcharged cap deviates from listedO4; no retroactive authorization.
+Recovery checks are separate actual owner paths; fullparity/ratio remainmissing.
+
+Paper now root0260:20pages198939bytes,complete compile/all-page static self-review;16prior tables plus1target table/title/fullabstract/4RQ/sections/four implications unchanged. FullFalconerparity/ratio and generalB/globalcost remainmissing; target-only and repeated-stage scopes preserved.0rootnative/agent.

@@ -561,3 +561,31 @@ count differences (overlap) and3timeout-text differences,0outcome changes.
 No newrootnative/agent; old v5/v9/inventory/link/eligibility failures preserved.
 
 Final0259paper19pages193486bytes,compile3.653617s/sample191868928B/E22–23;5contacts/all19pages self-reviewed;15oldtable bodies/title/fullabstract/4RQ/sections unchanged. Rootrenderings29/19060165bytes removed,raw/PDF/log/source preserved.
+
+
+## Completed target panel and repeated stages: root0260
+[Root0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) independently reconstructs W31target-only replays:
+31accepted/exact target-part matches; sourceCPU632.590445/replay272.695065s
+(ratio0.431077), nativeelapsed393.895780/274.208513s(0.696145).
+Queue-inclusive14768.395s is separate. Same14strata conditional source140.851561/
+target-replay54.905548CPUh, ratio0.389811/nominal95%[0,0.940135],2draws/cell,
+fragile effectiveDF1.185. Trustedimports/fulltransitiveidentity not established;
+not empty-environment closure checking, full-library cost or source/service gain.
+Original source31/42,11missing source/paired and13dynamic missing remain.
+
+M v11 separately complete86rc0phases/84cells/504rows/378comparisons:
+storedproof312rows/234pairs0allocation/verdict/diagnostic differences;
+mathsource192rows/144pairs78allocationchanges/0verdict/diagnostic changes.
+Only2actualprograms; kernelmath1activeproof/module, computational8selectedhelpers.
+Pooled observed source count ranges0.036739%/0.138453%, not certified budget padding.
+All205M/W recorded PIDbirth identities/controllers/cgroups retired; no rootnative/agent.
+Prepared/queued Mv12full2524helper census is not this sampled result.
+
+Falconer source summary reports13205constructed, but original fullcheck rc124/
+1500.210998s,8942completeaccepts/8943headers plus75bytecutfragment.
+CollectorJSONerror is operational, not math rejection or finalacceptsetmismatch.
+Nativecgroup absent/noOOM; nativePIDbirth absent in receipt, not invented.
+11.75GiBcharged cap deviates from listedO4; no retroactive authorization.
+Recovery checks are separate actual owner paths; fullparity/ratio remainmissing.
+
+Final0260paper20pages198939bytes,compile3.701247s/sample191758336B/E22–23;5contacts/all20pages self-reviewed;16oldtable bodies/title/fullabstract/4RQ/sections unchanged. Rootrenderings30/19890766bytes removed,raw/PDF/log/source preserved.

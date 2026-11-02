@@ -1,0 +1,71 @@
+{
+  "native": {
+    "key": "primary",
+    "requested_key": "primary",
+    "args": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "1500",
+      "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/measurement-v1/audited-stream",
+      "audit",
+      "none",
+      "@/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101/roots.txt"
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-o-project-363204-primary.scope",
+    "memory_max_bytes": 12616466432,
+    "measured": true,
+    "limit_s": 1500,
+    "wall_s": 1500.210998415947,
+    "user_s": 1473.495198,
+    "system_s": 9.467307,
+    "peak_rss_kib": 8684232,
+    "minor_faults": 2577317,
+    "major_faults": 1970,
+    "returncode": 124,
+    "cgroup_peak_bytes": 4168736768,
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  "complete_accepts": 8942,
+  "complete_headers": 8943,
+  "fragment": [
+    {
+      "line": 17886,
+      "bytes": 75,
+      "trailing_newline": false,
+      "fragment": "{\"constants\":0,\"context\":\"shared\",\"event\":\"accept\",\"imports\":[\"Init\",\"Init\""
+    }
+  ],
+  "coordinator_terminal": {
+    "status": "window exit without terminal",
+    "returncode": 1
+  },
+  "reported_source_summary": {
+    "closure_modules": 13205,
+    "successful_source_nodes": 13205,
+    "construction_complete": true,
+    "reused_same_capture_nodes": 5077,
+    "source_compiler_wall_s": 22077.823345420882,
+    "successful_source_work_s": 22077.770248265006,
+    "retained_failed_native_work_s": 0.05309715587645769,
+    "matched_stream_wall_s": null,
+    "acceptance_parity_complete": false,
+    "finalized_check_over_source_ratio": null,
+    "module_local_fallbacks": null,
+    "status": "partial",
+    "failure": null
+  },
+  "PID_birth_emitted_by_native_receipt": false,
+  "cgroup_absent": true,
+  "ratio_computed": false
+}

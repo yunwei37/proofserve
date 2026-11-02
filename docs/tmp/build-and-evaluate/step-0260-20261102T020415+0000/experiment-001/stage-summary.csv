@@ -1,0 +1,8 @@
+module,regime,stage,unique_units,rows,pairs,HB_vector_differences,verdict_differences,diagnostic_differences,maximum_relative_raw_count_range,unit_CPU_min_s,unit_CPU_max_s,active_TID_counts_by_requested_workers
+UMoments9,computation,kernel,8,96,72,0,0,0,0.0,0.049547909,0.107918352,"{'1': [1], '2': [2], '4': [4], '8': [8]}"
+BarrierData41,computation,kernel,8,96,72,0,0,0,0.0,0.002186901,0.110156482,"{'1': [1], '2': [2], '4': [4], '8': [8]}"
+EnvelopePsiB,computation,kernel,8,96,72,0,0,0,0.0,0.000203791,7.708092786,"{'1': [1], '2': [2], '4': [4], '8': [8]}"
+InteriorH1Derivative,mathematical,front,8,96,72,40,0,0,0.0003606711203383102,4.953241243,6.845410351,"{'1': [1], '2': [2], '4': [4], '8': [8]}"
+InteriorH1Derivative,mathematical,kernel,1,12,9,0,0,0,0.0,0.145716994,0.183937629,"{'1': [1], '2': [1], '4': [1], '8': [1]}"
+ReindexSingle,mathematical,front,8,96,72,38,0,0,0.0013841567817749147,0.678096573,0.875967027,"{'1': [1], '2': [2], '4': [4], '8': [8]}"
+ReindexSingle,mathematical,kernel,1,12,9,0,0,0,0.0,0.037711427,0.046718411,"{'1': [1], '2': [1], '4': [1], '8': [1]}"

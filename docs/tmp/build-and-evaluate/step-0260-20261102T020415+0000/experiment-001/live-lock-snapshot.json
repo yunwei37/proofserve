@@ -1,0 +1,31 @@
+{
+  "utc": "2026-11-02T02:09:39.316028+00:00",
+  "free_bytes": 23631826944,
+  "locks": [
+    {
+      "pid": 366179,
+      "birth": "763652389",
+      "command": "flock /workspaces/.agent-state/gpu-smt-captures/pcore.lock taskset -c 0-7 timeout --signal=TERM --kill-after=10 1740 python3 -u /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101/bounded-recheck-v1/falconer-recheck.py stream "
+    },
+    {
+      "pid": 366583,
+      "birth": "763670243",
+      "command": "flock /workspaces/.agent-state/gpu-smt-captures/pcore.lock taskset -c 0-7 python3 -u /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hard-two-suffix19-prepared-20261101/runner.py --point /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hard-two-suffix19-prepared-20261101 --index 1 --arm noM --wall-limit 600 "
+    },
+    {
+      "pid": 366671,
+      "birth": "763672770",
+      "command": "flock /workspaces/.agent-state/gpu-smt-captures/pcore.lock timeout --signal=TERM --kill-after=5 1740 taskset -c 0-7 python3 -u /workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v12/run_all_helpers.py "
+    },
+    {
+      "pid": 366729,
+      "birth": "763678886",
+      "command": "flock /workspaces/.agent-state/gpu-smt-captures/pcore.lock taskset -c 0-7 timeout --signal=TERM --kill-after=10 1740 python3 -u /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101/bounded-recheck-v1/falconer-recheck.py math "
+    },
+    {
+      "pid": 367214,
+      "birth": "763697067",
+      "command": "flock /workspaces/.agent-state/gpu-smt-captures/pcore.lock taskset -c 0-7 timeout --signal=TERM --kill-after=10 1740 python3 -u /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101/bounded-recheck-v1/oracle-reference-worker.py oracle "
+    }
+  ]
+}
