@@ -125,3 +125,21 @@ Fullmatchedregimecomparison remainsmissing;192finite math comparisons are not
 wholekernel or universal budget evidence. W/Ohealthy partials remain protected.
 
 Paper now root0258:19pages189874bytes,complete compile/all-page static self-review;15prior tables/title/fullabstract/4RQ/sections/four implications unchanged. No completecross-regimecomparison or generalB/Cguarantee follows.0rootnative/agent.
+
+
+## Original-module stage qualification: root0259
+[Root0259](tmp/build-and-evaluate/step-0259-20261102T000306+0000/step-report.md) reconstructs Mv10 actual complete terminal:58rc0nativephases,
+56stagecells/336rows/252workercomparisons;117PID/birth identities and all cgroups retired.
+Stored proofs: computational192rows/144pairs, mathematical16rows/12pairs,
+0allocation/verdict/diagnostic differences. Mathematical kernel has only one eligible
+proof per module and one active thread regardless of requested pool: no matched
+concurrent-kernel treatment. Two mathematical source programs, eight clones percell:
+128rows/96pairs/49allocation-vector differences,0verdict/diagnostic changes.
+Syncbudget2000000/recursion20000/asyncfalse, not stock-budget equivalence.
+Stage boundary, not math-only determinism, nativepollcount or completecandidate budget.
+Full target imports trusted; computational source arm absent. Bgeneric guarantee remains unproven.
+Old Mv5 partial remains partial: same192comparisons have83theorem/26opening/0terminal
+count differences (overlap) and3timeout-text differences,0outcome changes.
+No newrootnative/agent; old v5/v9/inventory/link/eligibility failures preserved.
+
+Paper now root0259:19pages193486bytes,complete compile/all-page static self-review;15prior tables plus1stage table/title/fullabstract/4RQ/sections/four implications unchanged. Completed narrowstagepanel does not establish concurrentmathkernel/computationalsource or generalB/Cguarantees.0rootnative/agent.

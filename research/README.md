@@ -85,3 +85,5 @@ identities. Math256rows complete;192comparisons0acceptdiff/84countervectorsdiffe
 Grid32accepted-prefixrows;Envelope0rows/importavailabilityfailure rc1.
 Raw/source/partialfailure frozen;fullcross-regimecomparison stillmissing.
 No rootnative/agent,foreignimplementationrepair or queuedwork restart.
+
+- [Root0259](../docs/tmp/build-and-evaluate/step-0259-20261102T000306+0000/step-report.md): qualified original-module stage panel;336rows/252pairs, kernel156pairs stable allocation, mathsource49/96vectors differ. Mathematicalkernel only1activeworker; no globalbudget guarantee. Earlier partial/failures retained.

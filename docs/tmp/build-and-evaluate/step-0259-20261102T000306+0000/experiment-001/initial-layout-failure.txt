@@ -1,0 +1,2 @@
+Initial compilation rc0, table overflow; initial PDF/log/build receipt retained. Shortened redundant stage/table headings only, no native rerun.
+Overfull \hbox (38.41284pt too wide) in paragraph at lines 1536--1548

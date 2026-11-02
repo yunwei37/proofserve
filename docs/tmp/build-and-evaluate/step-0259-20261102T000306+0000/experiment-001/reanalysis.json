@@ -1,0 +1,720 @@
+{
+  "complete_native_phases": 58,
+  "stock_source_controls": 2,
+  "stage_cells": 56,
+  "stage_rows": 336,
+  "stage_pairs": 252,
+  "summary": [
+    {
+      "module": "UMoments9",
+      "regime": "computation",
+      "stage": "kernel",
+      "unique_units": 8,
+      "rows": 64,
+      "pairs": 48,
+      "HB_vector_differences": 0,
+      "verdict_differences": 0,
+      "diagnostic_differences": 0,
+      "maximum_relative_raw_count_range": 0.0,
+      "unit_CPU_min_s": 0.049471743,
+      "unit_CPU_max_s": 0.109171273,
+      "active_TID_counts_by_requested_workers": {
+        "1": [
+          1
+        ],
+        "2": [
+          2
+        ],
+        "4": [
+          4
+        ],
+        "8": [
+          8
+        ]
+      }
+    },
+    {
+      "module": "BarrierData41",
+      "regime": "computation",
+      "stage": "kernel",
+      "unique_units": 8,
+      "rows": 64,
+      "pairs": 48,
+      "HB_vector_differences": 0,
+      "verdict_differences": 0,
+      "diagnostic_differences": 0,
+      "maximum_relative_raw_count_range": 0.0,
+      "unit_CPU_min_s": 0.002189413,
+      "unit_CPU_max_s": 0.108211192,
+      "active_TID_counts_by_requested_workers": {
+        "1": [
+          1
+        ],
+        "2": [
+          2
+        ],
+        "4": [
+          4
+        ],
+        "8": [
+          7,
+          8
+        ]
+      }
+    },
+    {
+      "module": "EnvelopePsiB",
+      "regime": "computation",
+      "stage": "kernel",
+      "unique_units": 8,
+      "rows": 64,
+      "pairs": 48,
+      "HB_vector_differences": 0,
+      "verdict_differences": 0,
+      "diagnostic_differences": 0,
+      "maximum_relative_raw_count_range": 0.0,
+      "unit_CPU_min_s": 0.000192717,
+      "unit_CPU_max_s": 7.280230839,
+      "active_TID_counts_by_requested_workers": {
+        "1": [
+          1
+        ],
+        "2": [
+          2
+        ],
+        "4": [
+          4
+        ],
+        "8": [
+          8
+        ]
+      }
+    },
+    {
+      "module": "InteriorH1Derivative",
+      "regime": "mathematical",
+      "stage": "front",
+      "unique_units": 8,
+      "rows": 64,
+      "pairs": 48,
+      "HB_vector_differences": 25,
+      "verdict_differences": 0,
+      "diagnostic_differences": 0,
+      "maximum_relative_raw_count_range": 0.000367394302951626,
+      "unit_CPU_min_s": 4.991842507,
+      "unit_CPU_max_s": 6.988076408,
+      "active_TID_counts_by_requested_workers": {
+        "1": [
+          1
+        ],
+        "2": [
+          2
+        ],
+        "4": [
+          4
+        ],
+        "8": [
+          8
+        ]
+      }
+    },
+    {
+      "module": "InteriorH1Derivative",
+      "regime": "mathematical",
+      "stage": "kernel",
+      "unique_units": 1,
+      "rows": 8,
+      "pairs": 6,
+      "HB_vector_differences": 0,
+      "verdict_differences": 0,
+      "diagnostic_differences": 0,
+      "maximum_relative_raw_count_range": 0.0,
+      "unit_CPU_min_s": 0.144656967,
+      "unit_CPU_max_s": 0.148688766,
+      "active_TID_counts_by_requested_workers": {
+        "1": [
+          1
+        ],
+        "2": [
+          1
+        ],
+        "4": [
+          1
+        ],
+        "8": [
+          1
+        ]
+      }
+    },
+    {
+      "module": "ReindexSingle",
+      "regime": "mathematical",
+      "stage": "front",
+      "unique_units": 8,
+      "rows": 64,
+      "pairs": 48,
+      "HB_vector_differences": 24,
+      "verdict_differences": 0,
+      "diagnostic_differences": 0,
+      "maximum_relative_raw_count_range": 0.0013263555159320252,
+      "unit_CPU_min_s": 0.684704857,
+      "unit_CPU_max_s": 0.850483462,
+      "active_TID_counts_by_requested_workers": {
+        "1": [
+          1
+        ],
+        "2": [
+          2
+        ],
+        "4": [
+          4
+        ],
+        "8": [
+          8
+        ]
+      }
+    },
+    {
+      "module": "ReindexSingle",
+      "regime": "mathematical",
+      "stage": "kernel",
+      "unique_units": 1,
+      "rows": 8,
+      "pairs": 6,
+      "HB_vector_differences": 0,
+      "verdict_differences": 0,
+      "diagnostic_differences": 0,
+      "maximum_relative_raw_count_range": 0.0,
+      "unit_CPU_min_s": 0.037712181,
+      "unit_CPU_max_s": 0.046225207,
+      "active_TID_counts_by_requested_workers": {
+        "1": [
+          1
+        ],
+        "2": [
+          1
+        ],
+        "4": [
+          1
+        ],
+        "8": [
+          1
+        ]
+      }
+    }
+  ],
+  "earlier_v5_refinement": {
+    "pairs": 192,
+    "changed_vector": 84,
+    "opening": 26,
+    "theorem": 83,
+    "terminal": 0
+  },
+  "earlier_v5_diagnostic_pairs": 3,
+  "retired_identity_count": 117,
+  "retired_identities": [
+    [
+      343092,
+      "762772761"
+    ],
+    [
+      348129,
+      "762876852"
+    ],
+    [
+      348130,
+      "762876854"
+    ],
+    [
+      348153,
+      "762877616"
+    ],
+    [
+      348155,
+      "762877617"
+    ],
+    [
+      348160,
+      "762877804"
+    ],
+    [
+      348162,
+      "762877806"
+    ],
+    [
+      348167,
+      "762878030"
+    ],
+    [
+      348169,
+      "762878031"
+    ],
+    [
+      348175,
+      "762878232"
+    ],
+    [
+      348177,
+      "762878234"
+    ],
+    [
+      348185,
+      "762878423"
+    ],
+    [
+      348187,
+      "762878425"
+    ],
+    [
+      348200,
+      "762878609"
+    ],
+    [
+      348202,
+      "762878610"
+    ],
+    [
+      348207,
+      "762878779"
+    ],
+    [
+      348209,
+      "762878781"
+    ],
+    [
+      348215,
+      "762878936"
+    ],
+    [
+      348217,
+      "762878937"
+    ],
+    [
+      348225,
+      "762879105"
+    ],
+    [
+      348227,
+      "762879108"
+    ],
+    [
+      348247,
+      "762879281"
+    ],
+    [
+      348249,
+      "762879283"
+    ],
+    [
+      348256,
+      "762880798"
+    ],
+    [
+      348258,
+      "762880798"
+    ],
+    [
+      348265,
+      "762881842"
+    ],
+    [
+      348267,
+      "762881844"
+    ],
+    [
+      348278,
+      "762882788"
+    ],
+    [
+      348280,
+      "762882791"
+    ],
+    [
+      348293,
+      "762883721"
+    ],
+    [
+      348295,
+      "762883722"
+    ],
+    [
+      348304,
+      "762888016"
+    ],
+    [
+      348306,
+      "762888018"
+    ],
+    [
+      348315,
+      "762890773"
+    ],
+    [
+      348317,
+      "762890774"
+    ],
+    [
+      348327,
+      "762892177"
+    ],
+    [
+      348329,
+      "762892178"
+    ],
+    [
+      348343,
+      "762893156"
+    ],
+    [
+      348345,
+      "762893157"
+    ],
+    [
+      348350,
+      "762893465"
+    ],
+    [
+      348352,
+      "762893467"
+    ],
+    [
+      348359,
+      "762893775"
+    ],
+    [
+      348361,
+      "762893776"
+    ],
+    [
+      348369,
+      "762894086"
+    ],
+    [
+      348371,
+      "762894087"
+    ],
+    [
+      348383,
+      "762894396"
+    ],
+    [
+      348385,
+      "762894397"
+    ],
+    [
+      348391,
+      "762895085"
+    ],
+    [
+      348393,
+      "762895087"
+    ],
+    [
+      348401,
+      "762895501"
+    ],
+    [
+      348403,
+      "762895502"
+    ],
+    [
+      348413,
+      "762895792"
+    ],
+    [
+      348415,
+      "762895793"
+    ],
+    [
+      348428,
+      "762896014"
+    ],
+    [
+      348430,
+      "762896014"
+    ],
+    [
+      348435,
+      "762896175"
+    ],
+    [
+      348437,
+      "762896176"
+    ],
+    [
+      348443,
+      "762896337"
+    ],
+    [
+      348445,
+      "762896338"
+    ],
+    [
+      348454,
+      "762896486"
+    ],
+    [
+      348456,
+      "762896487"
+    ],
+    [
+      348474,
+      "762896650"
+    ],
+    [
+      348476,
+      "762896651"
+    ],
+    [
+      348488,
+      "762896835"
+    ],
+    [
+      348489,
+      "762896836"
+    ],
+    [
+      348498,
+      "762897027"
+    ],
+    [
+      348500,
+      "762897028"
+    ],
+    [
+      348506,
+      "762897229"
+    ],
+    [
+      348508,
+      "762897230"
+    ],
+    [
+      348513,
+      "762897452"
+    ],
+    [
+      348515,
+      "762897454"
+    ],
+    [
+      348528,
+      "762897607"
+    ],
+    [
+      348530,
+      "762897610"
+    ],
+    [
+      348538,
+      "762897780"
+    ],
+    [
+      348540,
+      "762897782"
+    ],
+    [
+      348546,
+      "762897936"
+    ],
+    [
+      348548,
+      "762897937"
+    ],
+    [
+      348553,
+      "762898115"
+    ],
+    [
+      348555,
+      "762898116"
+    ],
+    [
+      348568,
+      "762899053"
+    ],
+    [
+      348570,
+      "762899054"
+    ],
+    [
+      348579,
+      "762900095"
+    ],
+    [
+      348581,
+      "762900096"
+    ],
+    [
+      348588,
+      "762901045"
+    ],
+    [
+      348590,
+      "762901046"
+    ],
+    [
+      348597,
+      "762902686"
+    ],
+    [
+      348599,
+      "762902687"
+    ],
+    [
+      348614,
+      "762903669"
+    ],
+    [
+      348616,
+      "762903670"
+    ],
+    [
+      348627,
+      "762905229"
+    ],
+    [
+      348629,
+      "762905230"
+    ],
+    [
+      348638,
+      "762907613"
+    ],
+    [
+      348640,
+      "762907614"
+    ],
+    [
+      348649,
+      "762911929"
+    ],
+    [
+      348650,
+      "762911930"
+    ],
+    [
+      348663,
+      "762912267"
+    ],
+    [
+      348665,
+      "762912269"
+    ],
+    [
+      348674,
+      "762912578"
+    ],
+    [
+      348676,
+      "762912579"
+    ],
+    [
+      348682,
+      "762912888"
+    ],
+    [
+      348684,
+      "762912889"
+    ],
+    [
+      348689,
+      "762913199"
+    ],
+    [
+      348691,
+      "762913200"
+    ],
+    [
+      348704,
+      "762913420"
+    ],
+    [
+      348705,
+      "762913422"
+    ],
+    [
+      348716,
+      "762913739"
+    ],
+    [
+      348718,
+      "762913741"
+    ],
+    [
+      348725,
+      "762914156"
+    ],
+    [
+      348726,
+      "762914157"
+    ],
+    [
+      348733,
+      "762914847"
+    ],
+    [
+      348734,
+      "762914848"
+    ],
+    [
+      348747,
+      "762914994"
+    ],
+    [
+      348749,
+      "762914995"
+    ],
+    [
+      348757,
+      "762915142"
+    ],
+    [
+      348759,
+      "762915144"
+    ],
+    [
+      348765,
+      "762915291"
+    ],
+    [
+      348767,
+      "762915292"
+    ]
+  ],
+  "controller": {
+    "pid": 343092,
+    "birth": "762772761",
+    "argv": [
+      "flock",
+      "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "1740",
+      "taskset",
+      "-c",
+      "0-7",
+      "python3",
+      "-u",
+      "/workspaces/.agent-state/gpu-smt-captures/reproducible-verdict-v10/run_modules.py"
+    ],
+    "utc": "2026-11-01T23:19:04.198469+00:00"
+  },
+  "whole_controller_wall_s": 386.0009980443865,
+  "max_wait4_RSS_KiB": 8961096,
+  "max_sampled_RSS_B": 9178025984,
+  "max_charged_memory_B": 2636451840,
+  "source_settings": {
+    "maxHeartbeats": 2000000,
+    "maxRecDepth": 20000,
+    "Elab.async": false,
+    "not_stock_budget_equivalent": true
+  },
+  "kernel_native_poll_counter": "unmeasured/null",
+  "kernel_context": "stock-imported full target module remains trusted",
+  "per_unit_thread_CPU": "CLOCK_THREAD_CPUTIME_ID in actual checking thread; source commands include tactics+kernel; not phase decomposition",
+  "new_root_native": 0,
+  "root_analysis_seconds": 0.24389169365167618,
+  "root_analysis_maxrss_kib": 32588
+}

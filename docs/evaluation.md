@@ -543,3 +543,21 @@ Partialrunpreserved,notkernelrejectionorcompleteregimecomparison.0rootnative/age
 paperaddsqualifiedfiniteobservationandexplicitmissingcontrast,noperformanceratio.
 
 Final0258paper19pages189874bytes,compile2.836982s/sample190308352B/E22–23;5contacts/all19pages self-reviewed;15oldtable bodies/title/fullabstract/4RQ/sections unchanged. Rootrenderings29/18431726bytes removed,raw/PDF/log/source preserved.
+
+
+## Original-module stage qualification: root0259
+[Root0259](tmp/build-and-evaluate/step-0259-20261102T000306+0000/step-report.md) reconstructs Mv10 actual complete terminal:58rc0nativephases,
+56stagecells/336rows/252workercomparisons;117PID/birth identities and all cgroups retired.
+Stored proofs: computational192rows/144pairs, mathematical16rows/12pairs,
+0allocation/verdict/diagnostic differences. Mathematical kernel has only one eligible
+proof per module and one active thread regardless of requested pool: no matched
+concurrent-kernel treatment. Two mathematical source programs, eight clones percell:
+128rows/96pairs/49allocation-vector differences,0verdict/diagnostic changes.
+Syncbudget2000000/recursion20000/asyncfalse, not stock-budget equivalence.
+Stage boundary, not math-only determinism, nativepollcount or completecandidate budget.
+Full target imports trusted; computational source arm absent. Bgeneric guarantee remains unproven.
+Old Mv5 partial remains partial: same192comparisons have83theorem/26opening/0terminal
+count differences (overlap) and3timeout-text differences,0outcome changes.
+No newrootnative/agent; old v5/v9/inventory/link/eligibility failures preserved.
+
+Final0259paper19pages193486bytes,compile3.653617s/sample191868928B/E22–23;5contacts/all19pages self-reviewed;15oldtable bodies/title/fullabstract/4RQ/sections unchanged. Rootrenderings29/19060165bytes removed,raw/PDF/log/source preserved.

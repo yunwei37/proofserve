@@ -1,0 +1,16 @@
+{
+  "utc": "2026-11-02T00:07:54.082675+00:00",
+  "PVC_free_bytes": 24181141504,
+  "locks": [
+    {
+      "pid": 355435,
+      "birth": "763053372",
+      "command": "flock /workspaces/.agent-state/gpu-smt-captures/pcore.lock taskset -c 0-7 timeout --signal=TERM --kill-after=10 1740 python3 -u /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101/falconer-window.py "
+    },
+    {
+      "pid": 355439,
+      "birth": "763053491",
+      "command": "flock /workspaces/.agent-state/gpu-smt-captures/pcore.lock taskset -c 0-7 python3 -u /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original31-kernel-replay-namespace-v2-20261101/runner.py --point /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original31-kernel-replay-namespace-v2-20261101 --index 17 --arm noM --wall-limit 600 "
+    }
+  ]
+}

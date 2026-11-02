@@ -1,0 +1,50 @@
+[
+  {
+    "repeat": 0,
+    "workers": 4,
+    "id": "minif2f-945",
+    "budget": 1000,
+    "baseline": [
+      "Tactic `simp` failed with a nested error:\n(deterministic) timeout at `isDefEq`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+      "(deterministic) timeout at `\u00abtactic execution\u00bb`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command."
+    ],
+    "current": [
+      "Tactic `simp` failed with a nested error:\n(deterministic) timeout at `whnf`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+      "(deterministic) timeout at `\u00abtactic execution\u00bb`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command."
+    ],
+    "verdict_a": "budget_exhausted",
+    "verdict_b": "budget_exhausted"
+  },
+  {
+    "repeat": 0,
+    "workers": 8,
+    "id": "minif2f-945",
+    "budget": 1000,
+    "baseline": [
+      "Tactic `simp` failed with a nested error:\n(deterministic) timeout at `isDefEq`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+      "(deterministic) timeout at `\u00abtactic execution\u00bb`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command."
+    ],
+    "current": [
+      "Tactic `simp` failed with a nested error:\n(deterministic) timeout at `whnf`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+      "(deterministic) timeout at `\u00abtactic execution\u00bb`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command."
+    ],
+    "verdict_a": "budget_exhausted",
+    "verdict_b": "budget_exhausted"
+  },
+  {
+    "repeat": 0,
+    "workers": 8,
+    "id": "minif2f-5777",
+    "budget": 1000,
+    "baseline": [
+      "(deterministic) timeout at `isDefEq`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+      "(deterministic) timeout at `\u00abtactic execution\u00bb`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command."
+    ],
+    "current": [
+      "(deterministic) timeout at `whnf`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+      "(deterministic) timeout at `\u00abtactic execution\u00bb`, maximum number of heartbeats (1000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command."
+    ],
+    "verdict_a": "budget_exhausted",
+    "verdict_b": "budget_exhausted"
+  }
+]
