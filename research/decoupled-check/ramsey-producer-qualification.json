@@ -1,0 +1,33 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "module": "ComparatorChallenges.AbhyankarSathaye",
+      "returncode": 0,
+      "qualified": true,
+      "key": "qualified-producer-0-attempt001",
+      "sorry_warning": false
+    },
+    {
+      "module": "ComparatorChallenges.AffineBernstein",
+      "returncode": 0,
+      "qualified": true,
+      "key": "qualified-producer-1",
+      "sorry_warning": false
+    },
+    {
+      "module": "ComparatorChallenges.AlgorithmicThinTrees",
+      "returncode": 0,
+      "qualified": true,
+      "key": "qualified-producer-2",
+      "sorry_warning": false
+    },
+    {
+      "module": "InitDataControl",
+      "returncode": 0,
+      "qualified": true,
+      "key": "qualified-producer-3",
+      "sorry_warning": false
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "counts": {
+    "interpreter_unknown_declaration": 4697,
+    "missing_native_external_implementation": 4421,
+    "missing_module_data_file": 4,
+    "compiler_IR_missing_executable_code_unqualified_environment": 1,
+    "interpreter_missing_IR": 1
+  },
+  "examples": {
+    "interpreter_unknown_declaration": {
+      "module": "ComparatorChallenges.AbhyankarSathaye",
+      "key": "all-build-29-0",
+      "excerpt": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/whole-library-20261102/sources/lean/ComparatorChallenges/AbhyankarSathaye.lean:1:0: error: (interpreter) unknown declaration 'Lean.Option.register._at_._private.Lean.Meta.Tactic.Simp.SimpTheorems.0.Lean.Meta.initFn._@.Lean.Meta.Tactic.Simp.SimpTheorems.838478111._hygCtx._hyg.4.spec_0'\n"
+    },
+    "missing_native_external_implementation": {
+      "module": "ComparatorChallenges.AffineBernstein",
+      "key": "all-build-29-1",
+      "excerpt": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/whole-library-20261102/sources/lean/ComparatorChallenges/AffineBernstein.lean:1:0: error: Could not find native implementation of external declaration 'Lean.registerTagAttributeExtra' (symbols 'l_Lean_registerTagAttributeExtra___boxed' or 'l_Lean_registerTagAttributeExtra').\nFor declarations from `Init`, `Std`, or `Lean`, you need to set `supportInterpreter := true` in the relevant `lean_exe` statement in your `lakefile.lean`.\n"
+    },
+    "missing_module_data_file": {
+      "module": "OAI.Internal.RootAlias",
+      "key": "all-build-30-54",
+      "excerpt": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/whole-library-20261102/sources/lean/OAI/Internal/RootAlias.lean:1:0: error: missing data file for module Init.Data.Iterators.Lemmas.Monadic.Basic\n"
+    },
+    "compiler_IR_missing_executable_code_unqualified_environment": {
+      "module": "OAI.Computability.BinPacking.Games.RepetitionUpper",
+      "key": "all-build-38-115",
+      "excerpt": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/whole-library-20261102/sources/lean/OAI/Computability/BinPacking/Games/RepetitionUpper.lean:7:4: error: failed to compile definition, compiler IR check failed at `OAI.BinPackingGames.Soundness.RepetitionUpper.bernoulliAverage._closed_0`. Error: depends on declaration 'Nat.cast._at_.Std.Http.Internal.Test.defaultConfig.spec_0', which has no executable code; consider marking definition as 'noncomputable'\n/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/whole-library-20261102/sources/lean/OAI/Computability/BinPacking/Games/RepetitionUpper.lean:71:4: error: failed to compile definition, compiler IR check failed at `OAI.BinPackingGames.Soundness.RepetitionUpper.zeroProbability._closed_0`. Error: depends on declaration 'Nat.cast._at_.Std.Http.Internal.Test.defaultConfig.spec_0', which has no executable code; consider marking definition as 'noncomputable'\n/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/whole-library-20261102/sources/lean/OAI/Computability/BinPacking/Games/RepetitionUpper.lean:128:4: error: failed to compile definition, compiler IR check failed at `OAI.BinPackingGames.Soundness.RepetitionUpper.decoderThreshold._closed_0`. Error: depends on declaration 'Nat.cast._at_.Std.Http.Internal.Test.defaultConfig.spec_0', which has no executable code; consider marking definition as 'noncomputable'\n"
+    },
+    "interpreter_missing_IR": {
+      "module": "lakefile",
+      "key": "all-build-48-155",
+      "excerpt": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/whole-library-20261102/sources/lean/lakefile.lean:1:0: error: (interpreter) IR of declaration 'Lake.binder' not available; this may point to a missing `meta` check in a metaprogram\n"
+    }
+  }
+}

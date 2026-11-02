@@ -1,0 +1,6 @@
+category,count,cpu_s,wall_s
+interpreter_unknown_declaration,4697,2539.656685,2613.080011774786
+missing_native_external_implementation,4421,6693.044137999999,6763.542789303698
+missing_module_data_file,4,1.159221,1.2219066005200148
+compiler_IR_missing_executable_code_unqualified_environment,1,1.082514,0.5457927724346519
+interpreter_missing_IR,1,0.303168,0.7969974335283041

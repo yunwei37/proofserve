@@ -182,3 +182,14 @@ the earlier incomplete status. The final reducer is falconer-finalize.py
 --reduce-only; no unfinished prefix is extrapolated.
 [The 17 vs14.33 admission control explanation](admission-control-reconciliation.md)
 is a separate completed reconciliation.
+
+
+## 2026-11-02 cleanup and producer correction
+
+[Cleanup record](cleanup-20261102.md) retires regenerable certified snapshot
+intermediates and duplicate extracted sources; all native commands/results/logs
+and original typed proof inputs remain. Old snapshot-restoration audits require
+regenerating the retired deltas; their historical measured costs remain valid.
+[Whole-library source diagnosis](whole-library-source-errors.md) identifies
+a producer/SDK configuration defect. Its9124errors and151485blocked modules
+are not proof-rejection counts. The whole-library point is partial coverage.

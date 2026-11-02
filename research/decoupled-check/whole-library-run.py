@@ -122,10 +122,29 @@ def reduce():
     missing_source_ids=len(source-accepted),native_check_attempts=len(checks),
     kernel_wall_s=sum(v['wall_s']for v in checks),kernel_cpu_s=cpu,kernel_cpu_h=cpu/3600,
     kernel_peak_rss_gib=max((v['peak_rss_kib']for v in checks),default=0)/1024**2,complete=source<=accepted)
+ valid_checks=[v for v in costs if v['operation']=='kernel_check'and v['valid']]
+ source_attempts=[v for v in costs if v['operation']=='source_production']
+ source_failures=sum(not v['valid']for v in source_attempts)
+ current=checks[-1]['key']if checks else 'not_started'
+ minimum=(len(source-accepted)+499)//500
+ text+=f'**Accepted source: {len(source&accepted)} / {len(source)}; certified dependencies: {len(accepted-source)}; kernel CPU: {cpu/3600:.6f} h; current check: {current} (attempt {len(checks)}, successful {len(valid_checks)}); remaining: at least {minimum} source-equivalent500-module segments.**\n\n'
+ text+='Missing typed inputs, new dependencies, resource failures and repeated work prevent a credible total-segment or ETA point estimate. The322-type number is only a source-count lower bound, not an extrapolated completion promise.\n\n'
  text+='\n'.join('- '+k+': '+str(v)for k,v in status.items())+'\n\n'
+ text+=f'- source_failures_or_censors: {source_failures}\n'
+ if(O/'all-state.json').exists():
+  current_state=json.loads((O/'all-state.json').read_text())
+  text+=f'- dependency_blocked_source_modules: {len(current_state["blocked"])}\n'
+ distribution=OWN/'whole-library-source-error-distribution.csv'
+ if distribution.exists():
+  text+='\n## Source error classification (all retained logs)\n\n'
+  for row in csv.DictReader(distribution.open()):
+   text+='- '+row['category']+': '+row['count']+'\n'
+  text+='These are producer/import configuration and data-layout errors, not qualified proof rejections. See whole-library-source-errors.md.\n\n'
  text+='All costs are observed prefixes until every source ID and required native dependency is covered. No claim of validating8.3–41.6CPUh is made from partial data. LatestWsource32 scenarios207.894666–630.701677construction/10.826785–41.839086modeled streamCPUh remain separate. Source production for missing typed inputs is recorded separately. Native snapshots include only successful preceding certification; startup/reload/export/exit are included. Checkpoint frequency does not bound live environment size: failure at12GiB requires partitioning, not merely a smaller quota. Native failures/timeouts/memory events remain raw, not false mathematical verdicts.\n\n'
  for p in sorted(O.glob('*-state.json')):
-  s=json.loads(p.read_text());text+='- '+s['cohort']+': '+s.get('status','pending')+'; source errors/censors='+str(len(s['source_failures']))+'; blocked='+str(len(s['blocked']))+'.\n'
+  s=json.loads(p.read_text())
+  if p.name!=s['cohort']+'-state.json':continue
+  text+='- '+s['cohort']+': '+s.get('status','pending')+'; source errors/censors='+str(len(s['source_failures']))+'; blocked='+str(len(s['blocked']))+'.\n'
  text+='\nRawPVC: '+str(O)+'. Commands: whole-library-run.py reduce; queue --cohort all; window --cohort <directory>. See whole-library-plan.md.\n'
  (OWN/'whole-library-progress.md').write_text(text);atomic(O/'reduced.json',status);return status
 def publish():

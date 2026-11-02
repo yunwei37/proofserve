@@ -1,0 +1,48 @@
+# Whole-library source-production errors: environment failure, not proof rejection
+
+2026-11-02 UTC. Review: 自审. All9124failed source invocations have now had
+their retained stdout and stderr read. They returned1; there were no source
+timeouts or cgroupOOM events in these records.
+
+| Error category | Count | CPU seconds |
+|---|---:|---:|
+| Interpreter unknown declaration |4697|2539.656685|
+| Missing native implementation of an external Lean declaration |4421|6693.044138|
+| Missing compiled module data file |4|see CSV|\n| Compiler IR missing executable code (unqualified environment) |1|see CSV|\n| Interpreter missing IR |1|see CSV|
+
+The first two fail at line1during import/initialization. Examples name
+Lean.Option.register and Lean.registerTagAttributeExtra. The other6report
+missing Init iterator module data, also before candidate proof checking.
+[Distribution](whole-library-source-error-distribution.csv) and
+[examples](whole-library-source-error-examples.json) are derived from every
+original log; per-candidate rows stay onPVC in source-error-classification.csv.
+
+## Root cause and evidence boundary
+The previous capture made one hardlink namespace for kernel-term reading and
+source production. It overlaid newly recompiled Init/Std/Lean metadata/IR on the
+shipping SDK, then launched the shipping Lean compiler against that namespace.
+The copied namespace also omitted mandatory native/interpreter facets: the official SDK has SimpTheorems.ir.sig and shared libraries that the copy did not retain. The unmodified kernel can inspect those typed declarations without executing
+their Meta initializers; the compiler/interpreter cannot generally mix them
+with the distribution's builtin native implementations. This producer/checker
+environment mix is an O-line capture defect. It is not evidence that9124
+released proofs fail, nor a new corpus-level “already verified” gap.
+A controlled repair uses the complete original package paths for production, preserving .ir.sig/native libraries, and only a separate OAI overlay for newly built candidates. Recompiled typed artifacts are reserved for kernel checking. The initial metadata-only copy retry failed and is retained; the direct-package-path differential is recorded separately.
+
+The151485blocked source modules are source-DAG propagation of unavailable
+artifacts, not independent rejection events. Some paths also reach41external
+providers absent from this point. The absence of qualified proof diagnostics
+does not establish that these candidates will pass once the environment is
+fixed. All errors and original classifications are preserved; no failed row
+is converted into a successful build.
+
+The native checker accepted2488source IDs and10744dependency IDs,31successful
+native invocations/one exec-mode launch fault,0.694505CPUh all-attempt cost.
+These remain partial-coverage observations. Nineteen source builds succeeded;
+the others did not reach a qualified producer environment. No whole-library
+validation cost, acceptance rate or check/build ratio follows from this point.
+
+## Blocked-path causal census
+
+- mask1: 140950blocked modules (1=failed producer ancestry,2=missing external provider ancestry).
+- mask2: 273blocked modules (1=failed producer ancestry,2=missing external provider ancestry).
+- mask3: 10262blocked modules (1=failed producer ancestry,2=missing external provider ancestry).
