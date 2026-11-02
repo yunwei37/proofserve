@@ -3,14 +3,14 @@
 Review: 自审. P0–7/shared flock/no Lean -M/external11.5GiB child cgroup/512MiB parent reserve.
 
 - source_modules: 163097
-- accepted_source_ids: 36
-- accepted_dependency_ids: 10464
-- missing_source_ids: 163061
-- native_check_attempts: 22
-- kernel_wall_s: 1820.341024613008
-- kernel_cpu_s: 1817.046226
-- kernel_cpu_h: 0.5047350627777778
-- kernel_peak_rss_gib: 5.355030059814453
+- accepted_source_ids: 256
+- accepted_dependency_ids: 10744
+- missing_source_ids: 162841
+- native_check_attempts: 23
+- kernel_wall_s: 2168.0041435556486
+- kernel_cpu_s: 2163.792622
+- kernel_cpu_h: 0.6010535061111111
+- kernel_peak_rss_gib: 5.8629150390625
 - complete: False
 
 All costs are observed prefixes until every source ID and required native dependency is covered. No claim of validating8.3–41.6CPUh is made from partial data. LatestWsource32 scenarios207.894666–630.701677construction/10.826785–41.839086modeled streamCPUh remain separate. Source production for missing typed inputs is recorded separately. Native snapshots include only successful preceding certification; startup/reload/export/exit are included. Checkpoint frequency does not bound live environment size: failure at12GiB requires partitioning, not merely a smaller quota. Native failures/timeouts/memory events remain raw, not false mathematical verdicts.

@@ -1,7 +1,7 @@
 cohort,source_modules,kernel_accepted_source_modules,missing
 OAI.Combinatorics.Ramsey,444,0,444
 OAI.Analysis.MutuallyUnbiased,3386,0,3386
-OAI.Analysis.PlanarPacking,562,2,560
+OAI.Analysis.PlanarPacking,562,7,555
 OAI.MathematicalPhysics.Transonic,466,0,466
 OAI.Algorithms.SubexponentialSAT,3977,0,3977
-remainder,154262,34,154228
+remainder,154262,249,154013
