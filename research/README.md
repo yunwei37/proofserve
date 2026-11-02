@@ -1,9 +1,9 @@
 # Research result index
 
-Current2026-11-02UTC, root0266. [Status](../docs/research-status.md) ·
+Current2026-11-02UTC, root0267. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
-[Exact previous index](../docs/tmp/build-and-evaluate/step-0266-20261102T083616+0000/experiment-001/before-research-README.md.gz).
+[Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
 Reports identify input, version, clock and trust boundary. Reviews are **自审**;
 preparation, queues, controls and code are not performance or general acceptance.
 
@@ -21,6 +21,8 @@ preparation, queues, controls and code are not performance or general acceptance
   threshold guarantees and zero runtime overhead are not established.
 
 - [Heterogeneous Barrier closure](parallel-stream-check/extended-results/heterogeneous-scaling.md):4,449modules at8/12/16/24workers,284.720→319.705s and668.786→1172.473nativeCPU-s.8P→8P+16E is12.29%slower/75.31%more CPU in one ordered capture; neither homogeneous scaling nor a cluster result. [Root0266](../docs/tmp/build-and-evaluate/step-0266-20261102T083616+0000/step-report.md).
+
+- [Parallel count and byte comparison](parallel-stream-check/extended-results/parallel-determinism.md):100overlapping Barrier helpers/1200acceptedchecks at1/4/8/16caps×3,allcount ranges0%;12actual9,160,440Boleanoutputs equal one another/original. Checked3425constantpayloads,retainedmetadata trust;CPU still varies. [Root0267](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/step-report.md).
 
 ## Existing research directories
 

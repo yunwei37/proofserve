@@ -1447,7 +1447,9 @@ the earlier P-core gains do not imply continued complete-closure speedup
 when adding E cores.
 It neither isolates contention or scheduling as the cause nor establishes
 a hardware-independent scaling limit, repeated uncertainty or cluster behavior.
-The separate resident-leaf determinism experiment is not a result of this curve.
+The separately instrumented resident-leaf observation in Section~\ref{sec:meaning}
+uses different output and timing boundaries; its counts and leaf costs cannot
+replace these complete-process observations.
 
 \paragraph{Pooled certificates pass a broader native qualification.}
 \measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}
@@ -1909,6 +1911,49 @@ AutoVerus's slowest1.6\% consumes about3.4\%, a slow-tail rather than
 budget-failure metric.
 These historical resource points aren't a regime classifier for the library.
 Ordinary errors and resource exhaustion do not establish falsehood.
+
+\paragraph{Parallel checking preserves observed counts and serialized payloads.}
+\measured{\expref{0267-20261102T092013+0000}{0267}; finite streaming and serialization comparison.}
+A separate v16 process checks Barrier's 4,448-module dependency prefix,
+then repeats its entire 3,425-declaration leaf in six waves at per-wave
+worker caps 1, 4, 8 and 16, three times each, reversing order in the middle
+repeat.
+The 100 observed helpers are evenly spaced in the sorted eligible list
+and overlap the earlier Barrier census; they are not additional independent
+targets or a new population sample.
+All 1,200 observed checks accept, and every target has zero allocation-count
+range across its 12 observations: both P95 and maximum are 0\%.
+All leaf constants structurally match the one-worker reference.
+Each trial substitutes all 3,425 checked constants into the module metadata
+and actually serializes an output: all twelve 9,160,440-byte
+\texttt{.olean} files match one another and the original input byte for byte.
+Only that one artifact part exists for this input; no absent companion is
+counted as equal.
+Extension metadata retains the input policy and is not independently
+revalidated. This establishes neither whole elaborator/axiom equivalence nor
+byte identity of every transitive artifact.
+
+These observer-enabled trials share a resident checked prefix and the
+allowed 8P+8E mask; workers may migrate within it.
+Median leaf wall decreases from 50.358 to 9.033 seconds at caps one and 16,
+while leaf process CPU rises from 50.334 to 139.099 seconds.
+Those windows include leaf planning/checking/structural audit and observer
+work, but exclude the following serialization; they are not unprofiled
+complete-process throughput.
+CPU summed inside the same 100 executing-worker call windows rises from
+3.575 to 9.941 seconds despite fixed allocation counts.
+The clocks include counter reads around the original-kernel call and
+precede per-row logging; no cause among placement, frequency, contention
+and other runtime effects is isolated.
+Distinct TIDs accumulated over six waves are unions over time, not
+simultaneous concurrency counts.
+The complete native process takes 556.858 seconds and 1,651.508 CPU seconds,
+including prefix checking, all twelve trials and all serialization.
+This finite result strengthens the prepared-stage count and output boundary,
+without establishing zero observer/runtime cost, native kernel poll counts,
+a near-threshold budget guarantee or a future-machine property.
+It is separate from both the earlier 2,524-target protocol and the
+negative heterogeneous complete-closure curve.
 
 \paragraph{System-design implication.}
 \partialev{implication of scoped observations; general benefit unproven.}

@@ -724,3 +724,12 @@ and all global/cluster/axiom gaps unchanged. OpublicationDNS failed then owner
 cdf1504 repairs existing path; rootdoesnotrestart. New paper table/localRQ3 only.
 
 Final0266paper23pages/215085B,compile3.932703s/sample190861312B/E22–23;6contacts/allpages self-reviewed;18oldtables/title/fullabstract/4RQ/sections/4implications unchanged,+1table. Removedonly35rootrenderings/21721574B; allraw/source/failed/partial preserved.
+
+## Root0267 — streaming count and serialized payload boundary
+[step-0267-20261102T092013+0000](tmp/build-and-evaluate/step-0267-20261102T092013+0000/step-report.md),[outer self-audit](tmp/build-and-evaluate/step-0267-20261102T092013+0000/outer-audit.md).
+M17c4989completecapture independentlyreconstructed:100overlappingtargets×12,
+1200accepts/900countpairs0change;12actual9160440B.oleans equaloriginal andeachother.
+4448checkedprefix/12full3425jobleafcells,nottrustedimportsubstitution;
+metadata/extensions stilltrusted,19oldtables/frozenstorypreserved.
+CPUcallwindow3.575→9.941s,not free overhead/globalbudget guarantee.
+3PIDbirth/cgroupretired;0newrootnative/agent. W32/Owholeprefix denominators unchanged.

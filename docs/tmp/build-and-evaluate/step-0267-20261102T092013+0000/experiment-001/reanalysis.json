@@ -1,0 +1,57 @@
+{
+  "targets": 100,
+  "observations": 1200,
+  "pairs": 900,
+  "per_target_range_P95_pct": 0,
+  "per_target_range_max_pct": 0,
+  "all_sampled_targets_in_old_Barrier_census": true,
+  "artifacts": 12,
+  "artifact_bytes": 9160440,
+  "artifact_equal_original": true,
+  "graph_modules": 4449,
+  "leaf_jobs": 3425,
+  "leaf_waves": 6,
+  "identities": 3,
+  "controller_wall_s": 556.9550565937534,
+  "native_wall_s": 556.8582075210288,
+  "native_CPU_s": 1651.50819,
+  "wait4_RSS_KiB": 3507392,
+  "sampled_RSS_B": 3591426048,
+  "charged_peak_B": 1282400256,
+  "leaf_summary": [
+    {
+      "workers": 1,
+      "median_leaf_wall_s": 50.35848143,
+      "median_leaf_CPU_s": 50.333893215,
+      "median_sampled100_call_CPU_s": 3.575259697,
+      "sampled_TID_unions": "2;2;2"
+    },
+    {
+      "workers": 4,
+      "median_leaf_wall_s": 16.003184325,
+      "median_leaf_CPU_s": 63.645761021,
+      "median_sampled100_call_CPU_s": 4.471970042,
+      "sampled_TID_unions": "7;8;8"
+    },
+    {
+      "workers": 8,
+      "median_leaf_wall_s": 10.320512182,
+      "median_leaf_CPU_s": 81.332565347,
+      "median_sampled100_call_CPU_s": 5.82982647,
+      "sampled_TID_unions": "9;13;11"
+    },
+    {
+      "workers": 16,
+      "median_leaf_wall_s": 9.0329784,
+      "median_leaf_CPU_s": 139.099353271,
+      "median_sampled100_call_CPU_s": 9.940651023,
+      "sampled_TID_unions": "17;17;17"
+    }
+  ],
+  "leaf_median_wall_ratio": 5.574958690258796,
+  "sampled_call_CPU_ratio": 2.7803997095207373,
+  "raw_gzip_bytes": 279235,
+  "root_analysis_seconds": 0.573118862695992,
+  "root_analysis_maxrss_kib": 60688,
+  "new_root_native": 0
+}
