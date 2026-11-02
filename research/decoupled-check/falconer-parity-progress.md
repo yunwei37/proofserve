@@ -2,11 +2,11 @@
 
 Self-review.
 
-- verified: 10197
+- verified: 10709
 - expected: 13205
-- remaining: 3008
+- remaining: 2496
 - reused_exact_common: 5077
-- chunks: 10
+- chunks: 11
 - complete: False
 
 Only complete native accept events count. Common nodes retain the earlier exact-artifact qualification; new nodes run the frozen original measurement-v1 checker in one mode. Independently saved chunks survive queue exit. No partial prefix finalizes a whole-closure ratio.
