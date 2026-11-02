@@ -1,5 +1,19 @@
 # W current state
 
+## W078 source32 model propagated
+
+- Covered15 construction174.251230CPUh -> modeledserial12.399599 ->
+ parallel16.852124 -> chunk16.881678. Newcheckingcostsnotmeasured.
+- Fullclassmean projection243.322615/16.854466/22.922091/22.951645CPUh;
+ distinctfromW077missingdrawscenarios207.9–630.7CPUh. FullHTpointstillunknown.
+- Envelopequalifiedchunkabsolute149.605elapsedseconds saved /106.393CPUadded
+ unchanged; relativecovered15elapsed-0.3985%/CPU+0.1754%. NoLowBlockeligibility
+ invented. ParallelCPUincreasesremainexplicit.
+-96historicalnumericrowreproductions/96newdirectweightedsums agree.
+ openai-math/noM-source32-staircase; source32 only, actualreplaypanelstill31.
+ HealthyHodge sourceclosureprotected; same600sKLretry7notlaunchedyet.
+
+
 ## W077 source32: one original draw recovered
 
 - LowBlock15_1 exactsource124.512018elapsed/184.589081CPU s accepted.

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Conditional cost staircase: measured calibration, explicit transfer assumptions."""
+import argparse
 import collections
 import csv
 import json
@@ -11,8 +12,13 @@ import sys
 
 os.sched_setaffinity(0, set(range(8, 16)))
 ROOT = Path(__file__).resolve().parents[2]
-OUT = Path(__file__).with_suffix("")
-OUT.mkdir(exist_ok=True)
+DEFAULT_FRAME=ROOT/"workloads/openai-math/noM-original-c-suffix48/sample-costs.csv"
+ap=argparse.ArgumentParser(description=__doc__)
+ap.add_argument("--frame",type=Path,default=DEFAULT_FRAME)
+ap.add_argument("--out",type=Path,default=Path(__file__).with_suffix(""))
+args=ap.parse_args()
+OUT=args.out
+OUT.mkdir(parents=True,exist_ok=True)
 sys.path.insert(0, str(ROOT/"workloads/openai-math"))
 from estimate_paired_replay_costs import total_part
 sys.path.insert(0, "/workspaces/.agent-state/gpu-smt-captures/workloads/statistics-python-deps")
@@ -82,7 +88,7 @@ strata = {}
 for x in read(ROOT/"workloads/openai-math/build-planning-4eaee875/strata.csv"):
     h = ";".join(x[k] for k in ["size_percentile_bin","import_depth_bin","has_decide_kernel"])
     strata[h] = int(x["population_modules"])
-frame = read(ROOT/"workloads/openai-math/noM-original-c-suffix48/sample-costs.csv")
+frame = read(args.frame)
 members = collections.defaultdict(list)
 source = {}
 for x in frame:
@@ -93,7 +99,9 @@ for x in frame:
         assert row["source_exact"] and row["compilation_outputs"] == "olean_ilean_c"
         source[x["module"]] = dict(cpu=row["user_cpu_s"]+row["system_cpu_s"],wall=row["wall_s"])
 complete = [h for h, ms in members.items() if all(m in source for m in ms)]
-assert len(frame) == 42 and len(source) == 31 and len(complete) == 14
+assert len(frame)==42 and len({x["module"] for x in frame})==42
+assert all(len(v)==2 for v in members.values())
+covered_scope=f"covered{len(complete)}_conditional"
 domain = lambda h: "certificate_proxy" if h.endswith(";1") else "ordinary_proxy"
 covered = {d:sum(strata[h] for h in complete if domain(h)==d) for d in ["certificate_proxy","ordinary_proxy"]}
 population = {d:sum(N for h,N in strata.items() if domain(h)==d) for d in covered}
@@ -127,8 +135,8 @@ write("module-staircase.csv",modules)
 
 summaries=[];marginals=[]
 for scenario in scenarios:
- for scope in ["covered14_conditional","full_frame_class_mean_projection"]:
-  scales = {d:1. if scope=="covered14_conditional" else population[d]/covered[d] for d in covered}
+ for scope in [covered_scope,"full_frame_class_mean_projection"]:
+  scales = {d:1. if scope==covered_scope else population[d]/covered[d] for d in covered}
   for dom in ["all","ordinary_proxy","certificate_proxy"]:
    hs=[h for h in complete if dom=="all" or domain(h)==dom]
    for metric in ["cpu","wall"]:
@@ -167,14 +175,16 @@ write("conditional-staircase.csv",summaries)
 write("chunk-marginal.csv",marginals)
 # Sensitivity: varying computation share/coverage is not a new confidence interval.
 sensitivity=[]
-for p in [0.,24.146734908888885/(24.146734908888885+116.70482585097221),.5,1.]:
+covered_CPU=sum(strata[h]/2*source[m]["cpu"] for h in complete for m in members[h])
+covered_compute_CPU=sum(strata[h]/2*source[m]["cpu"] for h in complete if domain(h)=="certificate_proxy" for m in members[h])
+for p in [0.,covered_compute_CPU/covered_CPU,.5,1.]:
  for f in [0.,.1,1.]:
   saving=p*f*(1-ewall)
   sensitivity.append(dict(compute_share_at_c=p,qualified_chunk_fraction_of_compute_at_c=f,
       idealized_c_to_d_elapsed_reduction=saving,CPU_fractional_increase=p*f*(ecpu-1),
-      interpretation="hypothetical c-stage shares; source-build 17.14% is not measured c-stage prevalence"))
+      interpretation="hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence"))
 write("chunk-share-sensitivity.csv",sensitivity)
-receipt=dict(original_costs=31,planned=42,complete_strata=14,total_strata=21,
+receipt=dict(source_frame=str(args.frame),original_costs=len(source),planned=42,complete_strata=len(complete),total_strata=21,
  covered_modules=sum(strata[h] for h in complete),population_modules=sum(strata.values()),
  missing_population_modules=sum(strata[h] for h in strata if h not in complete),
  no_new_native_run=True,no_M=True,source_regime_is_proxy=True,
