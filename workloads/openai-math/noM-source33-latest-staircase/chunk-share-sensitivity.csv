@@ -1,0 +1,13 @@
+compute_share_at_c,qualified_chunk_fraction_of_compute_at_c,idealized_c_to_d_elapsed_reduction,CPU_fractional_increase,interpretation
+0.0,0.0,0.0,0.0,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+0.0,0.1,0.0,0.0,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+0.0,1.0,0.0,0.0,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+0.26467309242471987,0.0,0.0,0.0,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+0.26467309242471987,0.1,0.006397825780914281,0.0013725028312027274,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+0.26467309242471987,1.0,0.0639782578091428,0.013725028312027272,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+0.5,0.0,0.0,0.0,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+0.5,0.1,0.012086279195029987,0.0025928265291892184,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+0.5,1.0,0.12086279195029986,0.025928265291892183,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+1.0,0.0,0.0,0.0,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+1.0,0.1,0.024172558390059974,0.005185653058378437,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence
+1.0,1.0,0.24172558390059973,0.051856530583784366,hypothetical c-stage shares; covered source-build share is not measured c-stage prevalence

@@ -16,6 +16,8 @@ DEFAULT_FRAME=ROOT/"workloads/openai-math/noM-original-c-suffix48/sample-costs.c
 ap=argparse.ArgumentParser(description=__doc__)
 ap.add_argument("--frame",type=Path,default=DEFAULT_FRAME)
 ap.add_argument("--out",type=Path,default=Path(__file__).with_suffix(""))
+ap.add_argument("--latest-serial",action="store_true",
+                help="use complete segmented Falconer/Mathlib CPU and wall anchors; retain older computational and parallel transfer evidence")
 args=ap.parse_args()
 OUT=args.out
 OUT.mkdir(parents=True,exist_ok=True)
@@ -82,6 +84,24 @@ for name,b,m,evidence,scope in [
     calibrations.append(dict(calibration=name,comparison="method_over_reference",source_CPU_s=float(b["cpu_s_median"]),method_CPU_s=float(m["cpu_s_median"]),
         CPU_factor=float(m["cpu_s_median"])/float(b["cpu_s_median"]),source_wall_s=float(b["wall_s_median"]),method_wall_s=float(m["wall_s_median"]),
         wall_factor=float(m["wall_s_median"])/float(b["wall_s_median"]),evidence=evidence,scope=scope))
+if args.latest_serial:
+    finals={r["cohort"]:r for r in read(ROOT/"research/decoupled-check/falconer-final-costs.csv")}
+    fsrc=read(ROOT/"research/decoupled-check/falconer-source-costs.csv")
+    fcpu=sum(float(r["source_user_s"])+float(r["source_system_s"]) for r in fsrc)
+    mbuild=next(r for r in calibrations if r["calibration"]=="math")
+    for cohort,key,bcpu,bwall in [
+        ("Mathlib","math",mbuild["source_CPU_s"],mbuild["source_wall_s"]),
+        ("Falconer","ordinary-oai",fcpu,float(finals["Falconer"]["source_wall_sum_s"]))]:
+        row=finals[cohort]
+        assert row["complete"]=="True"
+        qcpu=float(row["cpu_s"]);qwall=float(row["wall_s"])
+        o[key]=dict(cpu=qcpu/bcpu,wall=qwall/bwall)
+        calibrations.append(dict(calibration="latest_segmented_"+cohort,
+            comparison="stream_over_build",source_CPU_s=bcpu,method_CPU_s=qcpu,
+            CPU_factor=o[key]["cpu"],source_wall_s=bwall,method_wall_s=qwall,
+            wall_factor=o[key]["wall"],
+            evidence="research/decoupled-check/falconer-final-costs.csv; Falconer source CPU from falconer-source-costs.csv",
+            scope="complete selected segmented closure incl checkpoint/reload/exit; dependencies included; not population ratio"))
 write("calibration.csv",calibrations)
 
 strata = {}
@@ -110,6 +130,11 @@ scenarios = {
  "NatBasic_Grid_closure_transfer": {"ordinary_proxy":"math","certificate_proxy":"compute-grid"},
  "NearPin_Amplitudes_closure_transfer": {"ordinary_proxy":"ordinary-oai","certificate_proxy":"compute-amplitudes"}
 }
+
+if args.latest_serial:
+    scenarios={
+        "Mathlib_segmented_Grid_unsegmented_transfer": {"ordinary_proxy":"math","certificate_proxy":"compute-grid"},
+        "Falconer_segmented_Amplitudes_unsegmented_transfer": {"ordinary_proxy":"ordinary-oai","certificate_proxy":"compute-amplitudes"}}
 
 def factors(m, d, metric, scenario):
     b = o[scenarios[scenario][d]][metric]
@@ -173,6 +198,27 @@ for scenario in scenarios:
        qualified_chunk_modules=1,other_ge1s_module_not_qualified="OAI.NumberTheory.DirichletL.Cusp.ResiduesModThree"))
 write("conditional-staircase.csv",summaries)
 write("chunk-marginal.csv",marginals)
+# Missing original draw scenarios are sensitivity endpoints, never imputed primary data.
+missing_summaries=[]
+observed_by_class={d:[source[x["module"]]["cpu"] for x in frame if x["module"] in source and domain(x["stratum"])==d] for d in ["ordinary_proxy","certificate_proxy"]}
+for assumption,y_by_class in [("observed_class_min",{d:min(ys) for d,ys in observed_by_class.items()}),("observed_class_max",{d:max(ys) for d,ys in observed_by_class.items()})]:
+ for scenario in scenarios:
+  per_domain={}
+  for dom in ["ordinary_proxy","certificate_proxy"]:
+   costs=[0.]*4
+   for x in frame:
+    if domain(x["stratum"])!=dom:continue
+    m=x["module"];h=x["stratum"];value=source[m]["cpu"] if m in source else y_by_class[dom]
+    for i,f in enumerate(factors(m,dom,"cpu",scenario)):costs[i]+=value*f*strata[h]/2/3600
+   per_domain[dom]=costs
+  per_domain["all"]=[sum(per_domain[d][i]for d in ["ordinary_proxy","certificate_proxy"])for i in range(4)]
+  for dom,costs in per_domain.items():
+   for stage,hours in zip(["a_build","b_serial_stream","c_parallel_stream","d_plus_qualified_chunk"],costs):
+    missing_summaries.append(dict(missing_draw_assumption=assumption,scenario=scenario,domain=dom,
+     stage=stage,CPU_h=hours,over_build=hours/costs[0],certificate_source_CPU_share=per_domain["certificate_proxy"][0]/per_domain["all"][0],
+     whole_library_measured=False,confidence_interval=False,
+     interpretation="all fixed42 original weights; unknown draw costs assumed class min/max of observed; b/c/d fixed transfer models"))
+write("full-frame-missing-staircase.csv",missing_summaries)
 # Sensitivity: varying computation share/coverage is not a new confidence interval.
 sensitivity=[]
 covered_CPU=sum(strata[h]/2*source[m]["cpu"] for h in complete for m in members[h])
@@ -188,6 +234,10 @@ receipt=dict(source_frame=str(args.frame),original_costs=len(source),planned=42,
  covered_modules=sum(strata[h] for h in complete),population_modules=sum(strata.values()),
  missing_population_modules=sum(strata[h] for h in strata if h not in complete),
  no_new_native_run=True,no_M=True,source_regime_is_proxy=True,
+ serial_anchor_version="latest complete segmented Mathlib/Falconer" if args.latest_serial else "historical unsegmented",
+ parallel_transfer_scope="older independent M experiments; transfer to segmented serial and unseen targets is NOT measured or matched",
+ computation_serial_scope="historical complete Grid/Amplitudes unsegmented closures; no latest segmented computational anchor",
+ scenario_names=list(scenarios),
  no_full_library_measurement=True,calibration_uncertainty_in_CI=False,
  chunk_preparation_CPU_h="unknown; eligibility/support generation not timed in selected leaf curves",
  chunk_hardware_memory="Envelope combined process peak14.0187GiB; not a whole-library memory proof",
@@ -196,6 +246,6 @@ receipt=dict(source_frame=str(args.frame),original_costs=len(source),planned=42,
 (OUT/"receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
 print(json.dumps(receipt))
 for x in summaries:
- if x["scenario"]=="NatBasic_Grid_closure_transfer" and x["domain"]=="all":print(json.dumps(x))
+ if x["scenario"]==next(iter(scenarios)) and x["domain"]=="all":print(json.dumps(x))
 for x in marginals:
- if x["scenario"]=="NatBasic_Grid_closure_transfer" and x["domain"]=="all":print(json.dumps(x))
+ if x["scenario"]==next(iter(scenarios)) and x["domain"]=="all":print(json.dumps(x))
