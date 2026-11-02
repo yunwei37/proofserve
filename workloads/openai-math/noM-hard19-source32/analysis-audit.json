@@ -1,0 +1,10 @@
+{
+  "original_frame": 42,
+  "same_binary_labels": 42,
+  "same_marker_counts": 42,
+  "source_costs_qualified": 32,
+  "old31_numeric_reproducibility": true,
+  "domain_sums_checked": 9,
+  "no_new_native_run_for_analysis": true,
+  "definition": "masked explicit(decide+kernel,native_decide,bv_decide,ofReduceBool)>0; W sensitivity rules separate; O dynamictruth decision-helperCPU>=50% of kernel-callCPU only"
+}

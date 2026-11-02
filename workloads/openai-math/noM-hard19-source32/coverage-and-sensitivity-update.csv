@@ -1,0 +1,3 @@
+snapshot,completed_original_draws,complete_strata,missing_original_draws,missing_strata,missing_population_modules,missing_population_fraction,source_scenario_low_CPU_h,source_scenario_high_CPU_h,high_over_low,range_width_CPU_h,stream_fixed_anchor_low_CPU_h,stream_fixed_anchor_high_CPU_h,scope
+source31,31,14,11,7,59629,0.3656045175570366,178.22569632027776,627.3482034915277,3.5199649458188182,449.12250717124994,8.322086223934205,41.55514267393753,observed-class-range assumptions; not confidence bounds; fixed stream transfer
+source32,32,15,10,6,58465,0.35846766034936267,207.89466631027776,630.7016773065278,3.033755932753084,422.80701099625,10.826785025027789,41.83908622690073,observed-class-range assumptions; not confidence bounds; fixed stream transfer

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Missing-original-draw stress scenarios; no invented confidence bounds."""
+import argparse
 import collections
 import csv
 import json
@@ -10,15 +11,21 @@ import statistics
 
 os.sched_setaffinity(0,set(range(8,16)))
 ROOT=Path(__file__).resolve().parents[2]
-OUT=Path(__file__).with_suffix("")
-OUT.mkdir(exist_ok=True)
+DEFAULT_FRAME=ROOT/"workloads/openai-math/noM-original-c-suffix48/sample-costs.csv"
+ap=argparse.ArgumentParser(description=__doc__)
+ap.add_argument("--frame",type=Path,default=DEFAULT_FRAME)
+ap.add_argument("--out",type=Path,default=Path(__file__).with_suffix(""))
+args=ap.parse_args()
+OUT=args.out
+OUT.mkdir(parents=True,exist_ok=True)
 def read(p):return list(csv.DictReader(p.open()))
 def write(n,rows):
  with (OUT/n).open("w",newline="") as f:
   w=csv.DictWriter(f,list(rows[0]),lineterminator="\n")
   w.writeheader();w.writerows(rows)
 
-frame=read(ROOT/"workloads/openai-math/noM-original-c-suffix48/sample-costs.csv")
+frame=read(args.frame)
+assert len(frame)==42 and len({x["module"] for x in frame})==42
 strata={";".join(x[k] for k in ["size_percentile_bin","import_depth_bin","has_decide_kernel"]):int(x["population_modules"])
  for x in read(ROOT/"workloads/openai-math/build-planning-4eaee875/strata.csv")}
 D=lambda h:"certificate_proxy" if h.endswith(";1") else "ordinary_proxy"
@@ -33,7 +40,8 @@ for x in frame:
   byclass[d].append(cost)
  else:
   missing.append(dict(module=x["module"],stratum=h,domain=d,weight=strata[h]/2))
-assert len(known)==31 and len(missing)==11
+assert len(known)+len(missing)==42
+assert all(byclass[d] for d in ["ordinary_proxy","certificate_proxy"])
 cal={x["calibration"]:float(x["CPU_factor"]) for x in read(ROOT/"workloads/openai-math/cost_staircase/calibration.csv")}
 ranges={"ordinary_proxy":(cal["ordinary-oai"],cal["math"]),
         "certificate_proxy":(cal["compute-amplitudes"],cal["compute-grid"])}
@@ -87,8 +95,10 @@ write("source-vs-stream-scenarios.csv",table)
 # not a lower confidence bound on the finite population.
 K=sum(strata[h]*y/2 for h,y in known.values())/3600
 W=sum(x["weight"] for x in missing)
-assert math.isclose(K,165.1879359965278,rel_tol=1e-10)
-assert math.isclose(W/3600,10.842083333333333,rel_tol=1e-12)
+if args.frame.resolve()==DEFAULT_FRAME.resolve():
+ assert math.isclose(K,165.1879359965278,rel_tol=1e-10)
+ assert math.isclose(W/3600,10.842083333333333,rel_tol=1e-12)
+assert math.isclose(K,sum(strata[h]*cost/2/3600 for h,cost in known.values()),rel_tol=1e-12)
 for row in table:
  if row["domain"]=="all":
   children=[x for x in table if x["scenario"]==row["scenario"] and x["domain"]!="all"]
@@ -98,7 +108,7 @@ write("assumed-cost-levels.csv",[dict(domain=d,observed_draws=len(byclass[d]),ob
  observed_median_CPU_s=s["median"],observed_max_CPU_s=s["max"],covered_domain_mean_CPU_s=s["covered_mean"],
  missing_draws=sum(x["domain"]==d for x in missing),missing_inverse_probability_weight=sum(x["weight"] for x in missing if x["domain"]==d),
  stream_low_anchor=ranges[d][0],stream_high_anchor=ranges[d][1]) for d,s in stats.items()])
-receipt=dict(source_draws_known=31,missing_original_draws=11,known_HT_terms_CPU_h=K,
+receipt=dict(source_frame=str(args.frame),source_draws_known=len(known),missing_original_draws=len(missing),known_HT_terms_CPU_h=K,
  future_complete_sample_point_algebraic_floor_h=K,actual_completed_HT_point_upper="unbounded without missing-cost assumptions",
  population_CPU_confidence_lower="unknown",population_CPU_confidence_upper="unknown",
  missing_draws_plus_one_CPU_second_total_h=W/3600,

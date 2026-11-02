@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-02T06:42:35.980942+00:00",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-KL-censor-retry7-prepared-20261102",
+  "jobs": 7,
+  "first_dep": "IntegralPairings",
+  "retry_native_budget_s": 600,
+  "target": "DihedralIntervals",
+  "native_launched": false,
+  "active_Hodge_untouched": true
+}

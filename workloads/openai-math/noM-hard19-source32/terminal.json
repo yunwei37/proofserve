@@ -1,0 +1,17 @@
+{
+  "rows": 19,
+  "planned_jobs": 19,
+  "native_rows": 13,
+  "elapsed_including_queue_s": 8019.708320814185,
+  "native_wall_sum_s": 1456.905624974519,
+  "stop": null,
+  "native_allowance_s": 1700,
+  "one_request_at_a_time": true,
+  "statuses": {
+    "wall_budget_exceeded": 1,
+    "dependency_not_compiled": 6,
+    "compile_ok": 12
+  },
+  "utc": "2026-11-02T03:50:51.034416+00:00",
+  "complete": true
+}

@@ -1,5 +1,24 @@
 # W current state
 
+## W077 source32: one original draw recovered
+
+- LowBlock15_1 exactsource124.512018elapsed/184.589081CPU s accepted.
+ Coverage32/42,15/21;58465modules(35.8468%)in six incomplete ordinary cells.
+- All9computational-proxy source cells complete:5848domain57.546404CPUh,
+ fragile nominal95%[0,360.655210]. Current15cell share33.024963%;
+ prior14cell17.1434%usesdifferentdenominator.
+- Scenario207.894666–630.701677sourceCPUh vs Oanchor-transferstream
+ 10.826785–41.839086h; ratio3.033756, nottwofold orconfidencebounds.
+- W/O42/42source labels/counts identical. O27/29dynamic accuracy and0.482%
+ exposedkernelCPU use helper/kernel-callCPU>=50% truth, notsourceCPU.
+- TableDensity1Panel0 restored114.023s; old32.483sallowance/32.602smeasured
+ censor retained. IntegralPairings600.198s stillunfinished; same600sretry7prepared.
+- Actual soleHodge group launched06:35:12UTC379983/birth765389553;
+ verify actualidentity/terminal. Per-taskflock/no-M/P0–7/j8/15GiBcgroup/
+ 16GiBsampledresponse;1700nativework allowance, notqueuetime.
+- New snapshot openai-math/noM-hard19-source32. Fresh targetreplay still31.
+
+
 ## W076 missing11impact quantified
 - Ifmissingdraws lieinsideobservedclasscostranges, eventualsourceHTpoint
  178.225696–627.348203CPUh;10xclassmaxstress4786.790611h. Theseare

@@ -1,0 +1,22 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hard-two-suffix19-prepared-20261101",
+  "collected_utc": "2026-11-02T06:36:14.863475+00:00",
+  "returned": 19,
+  "native_returned": 13,
+  "statuses": {
+    "compile_ok": 12,
+    "wall_budget_exceeded": 1,
+    "dependency_not_compiled": 6
+  },
+  "new_original_sample_completed": 1,
+  "all_native_controller_and_cgroups_retired": true,
+  "native_wall_s": 1456.905624974519,
+  "native_CPU_s": 1560.934089,
+  "output_facets": "olean_ilean_c",
+  "source_exact": true,
+  "no_M": true,
+  "pcore_lock": true,
+  "recovered_group_remainder_dependency": "TableDensity1Panel0:32.48348355386406s actual allowance /32.602485762909055s measured censor ->114.02328191697598s complete",
+  "still_censored_dependency": "IntegralPairings:600.1977015240118s / nominal600s; no false-proof inference",
+  "skipped_original": "DihedralIntervals: dependency blocked; not a native timeout"
+}

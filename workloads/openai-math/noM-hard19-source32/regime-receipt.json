@@ -1,0 +1,28 @@
+{
+  "modules": 163097,
+  "complete_noM_original_costs": 32,
+  "original_sample": 42,
+  "complete_cells": 15,
+  "population_cells": 21,
+  "primary_rule": "explicit_any: masked explicit-marker density>0; not cost-tuned",
+  "marker_terms": [
+    "decide_plus_kernel",
+    "native_decide",
+    "bv_decide",
+    "ofReduceBool"
+  ],
+  "current_noM_Cpp_profile_cross_validation_cases": 0,
+  "legacy_profile_cases": 0,
+  "no_new_native_run": true,
+  "input_results": [
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/results.jsonl",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix-20261101/results.jsonl",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-original-c-suffix48-prepared-20261101/results.jsonl",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-hard-two-suffix19-prepared-20261101/results.jsonl"
+  ],
+  "excluded": {
+    "not_original_random_draw": 86
+  },
+  "all_module_labels_gzip": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-cost-regimes-source32-v2-20261102/all-module-labels.csv.gz",
+  "global_CI_established": false
+}
