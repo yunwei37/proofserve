@@ -21,7 +21,10 @@ def environment():
 def run(key,argv,limit=600,measured=False,env=None):
  global ACTIVE
  assert not any(str(x).startswith('-M') for x in argv)
- if measured:assert sorted(os.sched_getaffinity(0))==list(range(8))
+ if measured:
+  requested=json.loads(env.get('PARALLEL_ALLOWED_CPUS','[]')) if env else list(range(8))
+  assert requested and sorted(os.sched_getaffinity(0))==requested
+  assert set(requested)<=set(range(24))
  out=ROOT/'runs'/key;out.mkdir(parents=True,exist_ok=False)
  current=Path('/sys/fs/cgroup')/Path('/proc/self/cgroup').read_text().strip().split('::',1)[1].lstrip('/')
  assert current.name.startswith('cri-containerd-') and 'pod' in current.parent.name

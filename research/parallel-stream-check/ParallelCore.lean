@@ -7,6 +7,7 @@ import Std.Sync.Mutex
 open Lean
 
 @[extern "ps_process_ns"] opaque processNs : IO UInt64
+@[extern "ps_thread_ns"] opaque threadNs : IO UInt64
 
 /-- Structural comparison copied read-only from O's audited reader. -/
 def sameQuotKind (a b : QuotKind) : Bool :=
@@ -98,10 +99,23 @@ def makePlan (data : ModuleData) (map : Std.HashMap Name ConstantInfo) : Option 
   if total != constants.size then return none
   return some {constants,waves}
 
-private def checkOne (base : Kernel.Environment) (ci : ConstantInfo) (index : Nat) :
+@[noinline] private def originalCheck (base : Kernel.Environment) (decl : Declaration) :
+    IO (Except Kernel.Exception Kernel.Environment) := do
+  match base.addDeclCore 0 0 decl (cancelTk? := none) with
+  | .ok checked => pure (.ok checked)
+  | .error ex => pure (.error ex)
+
+private def checkOne (base : Kernel.Environment) (ci : ConstantInfo) (index : Nat)
+    (observe : NameSet := {}) :
     IO CheckedToken := do
   let decl ← declarationOf ci
-  let result := base.addDeclCore 0 0 decl (cancelTk? := none)
+  let record := observe.contains ci.name
+  let tid ← if record then IO.getTID else pure 0
+  let c0 ← if record then threadNs else pure 0
+  let h0 ← if record then IO.getNumHeartbeats else pure 0
+  let result ← originalCheck base decl
+  let h1 ← if record then IO.getNumHeartbeats else pure 0
+  let c1 ← if record then threadNs else pure 0
   match result with
   | .error error =>
     let message ← error.toMessageData {} |>.toString
@@ -111,10 +125,15 @@ private def checkOne (base : Kernel.Environment) (ci : ConstantInfo) (index : Na
       throw <| IO.userError "invariant: checked kernel result missing"
     unless sameConstant actual ci do
       throw <| IO.userError s!"invariant: checked result representation differs:{ci.name}"
+    if record then
+      IO.println <| Json.compress <| Json.mkObj [
+        ("event",toJson "unit_check"),("target",toJson ci.name.toString),
+        ("raw_HB",toJson (h1-h0)),("cpu_ns",toJson (c1-c0)),
+        ("tid",toJson tid),("accept",toJson true)]
     return {frontier:=base,info:=actual,index}
 
 private def worker (base : Kernel.Environment) (plan : Plan)
-    (jobs : Array Nat) (queue : Std.Mutex Nat) : IO (Array CheckedToken) := do
+    (jobs : Array Nat) (queue : Std.Mutex Nat) (observe : NameSet) : IO (Array CheckedToken) := do
   let mut results := #[]
   repeat
     let position ← queue.atomically do
@@ -123,11 +142,11 @@ private def worker (base : Kernel.Environment) (plan : Plan)
       pure i
     if position >= jobs.size then break
     let index := jobs[position]!
-    results := results.push (← checkOne base plan.constants[index]! index)
+    results := results.push (← checkOne base plan.constants[index]! index observe)
   return results
 
 private def checkedBatch (base : Kernel.Environment) (plan : Plan)
-    (wave : Array Nat) (workers : Nat) (fault : String) : IO Kernel.Environment := do
+    (wave : Array Nat) (workers : Nat) (fault : String) (observe : NameSet := {}) : IO Kernel.Environment := do
   let queue ← Std.Mutex.new 0
   let count := min workers wave.size
   let gate ← IO.Promise.new
@@ -144,12 +163,12 @@ private def checkedBatch (base : Kernel.Environment) (plan : Plan)
           started.resolve (1 : Nat)
           unless gate.result?.get == some (1 : Nat) do
             throw <| IO.userError "invariant: worker gate abandoned"
-          worker base plan wave queue
+          worker base plan wave queue observe
         tasks := tasks.push task
         unless started.result?.get == some (1 : Nat) do
           throw <| IO.userError "invariant: worker did not start"
       else
-        tasks := tasks.push (← IO.asTask <| worker base plan wave queue)
+        tasks := tasks.push (← IO.asTask <| worker base plan wave queue observe)
   catch e => error := some e
   -- Release and join all launched tasks even if creation failed. A failure
   -- cannot commit a partial frontier or leave a worker blocked on this gate.
@@ -229,7 +248,7 @@ private def checkChunkedWave (base : Kernel.Environment)
 chunking is confined to one exact prepared constant; unknown inputs are replayed. -/
 def parallelReplay (data : ModuleData) (map : Std.HashMap Name ConstantInfo)
     (base : Kernel.Environment) (workers : Nat) (fault : String := "none")
-    (chunks : Array ChunkBundle := #[]) :
+    (chunks : Array ChunkBundle := #[]) (observe : NameSet := {}) :
     IO (Kernel.Environment × Nat × Nat × String) := do
   let some plan := makePlan data map |
     return (← base.replay map,0,0,"upstream_complex_or_cycle")
@@ -238,7 +257,7 @@ def parallelReplay (data : ModuleData) (map : Std.HashMap Name ConstantInfo)
   for wave in plan.waves do
     let chunkJobs := wave.filter fun i => chunks.any (fun b => sameConstant plan.constants[i]! b.reference)
     let plainJobs := wave.filter fun i => !chunkJobs.contains i
-    checked ← checkedBatch checked plan plainJobs workers fault
+    checked ← checkedBatch checked plan plainJobs workers fault observe
     let mut parents := #[]
     for i in chunkJobs do
       let some bundle := chunks.find? (fun b => sameConstant plan.constants[i]! b.reference) |

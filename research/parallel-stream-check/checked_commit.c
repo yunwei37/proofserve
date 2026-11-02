@@ -37,3 +37,9 @@ LEAN_EXPORT lean_obj_res ps_process_ns(lean_obj_arg world) {
  uint64_t ns=(uint64_t)ts.tv_sec*1000000000ull+(uint64_t)ts.tv_nsec;
  return lean_io_result_mk_ok(lean_box_uint64(ns));
 }
+
+LEAN_EXPORT lean_obj_res ps_thread_ns(lean_obj_arg world) {
+ struct timespec ts; clock_gettime(CLOCK_THREAD_CPUTIME_ID,&ts);
+ uint64_t ns=(uint64_t)ts.tv_sec*1000000000ull+(uint64_t)ts.tv_nsec;
+ return lean_io_result_mk_ok(lean_box_uint64(ns));
+}

@@ -1,0 +1,49 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v16",
+  "native_controls": [
+    {
+      "key": "control-extended",
+      "returncode": 0,
+      "native_retired": true,
+      "cgroup_retired": true,
+      "stop_reasons": []
+    },
+    {
+      "key": "control-corrupt-j1",
+      "returncode": 1,
+      "native_retired": true,
+      "cgroup_retired": true,
+      "stop_reasons": []
+    },
+    {
+      "key": "control-corrupt-j16",
+      "returncode": 1,
+      "native_retired": true,
+      "cgroup_retired": true,
+      "stop_reasons": []
+    },
+    {
+      "key": "control-corrupt-j24",
+      "returncode": 1,
+      "native_retired": true,
+      "cgroup_retired": true,
+      "stop_reasons": []
+    }
+  ],
+  "artifact_parts": [
+    {
+      "suffix": ".olean",
+      "files": 12,
+      "bytes": 109744,
+      "all_equal": true
+    }
+  ],
+  "observed_targets": 100,
+  "observations": 1200,
+  "varying_simple_controls": 0,
+  "notes": [
+    "short source control; no performance claim",
+    "original corrupt proof rejected at 1/16/24 workers",
+    "two preparation parse failures retained on PVC, final compiler/runtime qualified"
+  ]
+}

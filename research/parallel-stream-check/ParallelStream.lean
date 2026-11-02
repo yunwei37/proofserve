@@ -189,6 +189,38 @@ def loadBundle (root : System.FilePath) (k : Nat) : IO (Array ChunkBundle × Arr
     bundles := bundles.push {reference,support,children,mergeName,k}
   return (bundles,regions)
 
+/-- Re-serialize the same module parts after substituting checked constants.
+Exported/server erasures and extension metadata retain their original policy;
+the last part's safe ordinary declarations must match the checked environment.
+This is an experimental serialization comparison, not an extension validator. -/
+def saveCheckedParts (mod : Name) (parts : Array (ModuleData × CompactedRegion))
+    (checked : Kernel.Environment) (out : System.FilePath) : IO Unit := do
+  let mut output := #[]
+  let mut substituted := 0
+  for h : i in [:parts.size] do
+    let data := parts[i].1
+    let mut constants := #[]
+    for ci in data.constants do
+      if !ci.isUnsafe && !ci.isPartial then
+        if let some actual := checked.find? ci.name then
+          if sameConstant ci actual then
+            constants := constants.push actual
+            substituted := substituted + 1
+          else
+            if i+1 == parts.size then
+              throw <| IO.userError s!"snapshot final payload mismatch:{ci.name}"
+            constants := constants.push ci
+        else throw <| IO.userError s!"snapshot checked name missing:{ci.name}"
+      else constants := constants.push ci
+    let path := if i==0 then out else if i==1 then
+      OLeanLevel.server.adjustFileName out else OLeanLevel.private.adjustFileName out
+    output := output.push (path,{data with constants})
+  saveModuleDataParts mod output
+  event [("event",toJson "snapshot"),("module",toJson mod.toString),
+    ("file",toJson out.toString),("parts",toJson parts.size),
+    ("checked_substitutions",toJson substituted),
+    ("extension_entries_revalidated",toJson false)]
+
 partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Name) : AuditM Unit := do
   if (← get).visited.contains mod then return
   if (← get).pending.contains mod then throw <| IO.userError s!"cyclic import {mod}"
@@ -256,10 +288,31 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
       if curveModules.contains mod.toString then
         let bundleRoot ← IO.getEnv "PARALLEL_CHUNK_ASSETS_CURVE"
         let mut oracle : Option Kernel.Environment := none
-        let kinds := if bundleRoot.isSome && mod.toString.endsWith "EnvelopePsiB" then
+        let extended := (← IO.getEnv "PARALLEL_DETERMINISM_CURVE") == some "1"
+        let repeatCount := if extended then 3 else 1
+        let observed := if extended then Id.run do
+          let eligible := data.constants.filter fun ci =>
+            match ci with
+            | .thmInfo v => v.value.cleanupAnnotations.getAppFn.isConstOf `of_decide_eq_true
+            | _ => false
+          let eligible := eligible.qsort fun a b => a.name.toString < b.name.toString
+          if eligible.size < 100 then return ({} : NameSet)
+          let mut selected : NameSet := {}
+          for i in [:100] do
+            selected := selected.insert eligible[i*(eligible.size-1)/99]!.name
+          return selected
+          else {}
+        if extended && observed.size != 100 then
+          throw <| IO.userError "expected exactly 100 computation targets"
+        let kinds := if extended then
+          ["parallel1","parallel4","parallel8","parallel16"]
+          else if bundleRoot.isSome && mod.toString.endsWith "EnvelopePsiB" then
           ["serial","parallel1","parallel2","parallel4","parallel8","chunk1","chunk2","chunk4","chunk8"]
           else ["serial","parallel1","parallel2","parallel4","parallel8"]
-        for kind in kinds do
+        for rep in [:repeatCount] do
+         for kind in (if rep % 2 == 0 then kinds else kinds.reverse) do
+          event [("event",toJson "curve_begin"),("module",toJson mod.toString),
+            ("kind",toJson kind),("repeat",toJson rep)]
           let n := (kind.toList.filter Char.isDigit |> String.ofList).toNat?.getD 1
           let t0 ← IO.monoNanosNow
           let c0 ← processNs
@@ -271,7 +324,7 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
           let (trial,waveCount,jobCount,route) ← if kind == "serial" then do
             let env ← s.checked.replay insertMap
             pure (env,0,0,"serial")
-            else parallelReplay data insertMap s.checked n "none" chunkBundle
+            else parallelReplay data insertMap s.checked n "none" chunkBundle observed
           if let some reference := oracle then
             for (_,ci) in insertMap do
               let some expected := reference.find? ci.name | throw <| IO.userError "serial result missing constant"
@@ -285,9 +338,12 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
           let c1 ← processNs
           let t1 ← IO.monoNanosNow
           event [("event",toJson "curve_cell"),("module",toJson mod.toString),("kind",toJson kind),
-            ("workers",toJson n),("elapsed_ns",toJson (t1-t0)),("cpu_ns",toJson (c1-c0)),
+            ("workers",toJson n),("repeat",toJson rep),("elapsed_ns",toJson (t1-t0)),("cpu_ns",toJson (c1-c0)),
             ("waves",toJson waveCount),("jobs",toJson jobCount),("route",toJson route),
             ("retained_certificate_regions",toJson retained.size),("accept",toJson true)]
+          if let some root ← IO.getEnv "PARALLEL_CHECKED_OUTPUT" then
+            let out := System.FilePath.mk root / s!"r{rep}-{kind}.olean"
+            saveCheckedParts mod parts trial out
           -- Region lifetime extends through the entire stream: a committed proof can
           -- reference the prepared payload's compacted objects.
           modify fun state => {state with regions:=state.regions ++ retained}
