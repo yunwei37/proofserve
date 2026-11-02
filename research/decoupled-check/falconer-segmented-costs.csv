@@ -1,3 +1,4 @@
 key,returncode,valid,newly_accepted,wall_s,cpu_s,peak_rss_kib,snapshot,previous
 segment-000,0,True,500,53.08393500838429,53.047326000000005,1390532,Verifiedsegment_000,
 segment-001,0,True,500,22.69834459759295,22.673123,1018808,Verifiedsegment_001,Verifiedsegment_000
+segment-002,0,True,500,10.833738037385046,10.822192,1001188,Verifiedsegment_002,Verifiedsegment_001
