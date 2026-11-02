@@ -1,0 +1,19 @@
+{
+  "utc": "2026-11-02T23:46:54.227970+00:00",
+  "pid": 486527,
+  "birth_ticks": "771579764",
+  "args": [
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-NativeCodeAssembly-prepared-20261102/controller.py",
+    "--point",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-NativeCodeAssembly-prepared-20261102"
+  ],
+  "jobs": 413,
+  "no_M": true,
+  "per_task_flock": true,
+  "one_W_native": true,
+  "per_case_wall_s": 1200,
+  "native_group_allowance_s": 1700,
+  "predecessor_retired": true
+}
