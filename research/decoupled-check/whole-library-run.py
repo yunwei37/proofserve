@@ -132,14 +132,28 @@ def publish():
  files=['research/decoupled-check/'+x for x in ['whole-library-progress.md','whole-library-coverage.csv','whole-library-segments.csv']if(OWN/x).exists()]
  assert subprocess.check_output(['git','symbolic-ref','--short','HEAD'],cwd=R,text=True).strip()=='main'
  subprocess.run(['git','add','--']+files,cwd=R,check=True)
- if subprocess.run(['git','diff','--cached','--quiet','--']+files,cwd=R).returncode==0:return
- a=subprocess.check_output(['git','show','-s','--format=%an%n%ae','58ab893'],cwd=R,text=True).splitlines()
- subprocess.run(['git','-c','user.name='+a[0],'-c','user.email='+a[1],'commit','--only','-m','research: retain bounded whole-library original-kernel progress','--']+files,cwd=R,check=True)
+ changed=subprocess.run(['git','diff','--cached','--quiet','--']+files,cwd=R).returncode!=0
+ if changed:
+  a=subprocess.check_output(['git','show','-s','--format=%an%n%ae','58ab893'],cwd=R,text=True).splitlines()
+  subprocess.run(['git','-c','user.name='+a[0],'-c','user.email='+a[1],'commit','--only','-m','research: retain bounded whole-library original-kernel progress','--']+files,cwd=R,check=True)
+ # A previous attempt may have committed and then lost DNS during push.
+ # Even an unchanged reduction must publish that already-existing commit.
  subprocess.run(['git','pull','--rebase','--no-autostash','origin','main'],cwd=R)
  helper="!python3 -c 'import os; print(\"username=x-access-token\"); print(\"password=\"+os.environ[\"ENVBUILDER_GIT_PASSWORD\"])'"
- subprocess.run(['git','-c','credential.helper='+helper,'fetch','origin','main'],cwd=R,check=True)
- subprocess.run(['git','merge-base','--is-ancestor','origin/main','HEAD'],cwd=R,check=True)
- subprocess.run(['git','-c','credential.helper='+helper,'push','origin','main'],cwd=R,check=True)
+ for attempt in range(3):
+  try:
+   subprocess.run(['git','-c','credential.helper='+helper,'fetch','origin','main'],cwd=R,check=True)
+   # Do not retry conflicts or non-ancestor history as network failures.
+   subprocess.run(['git','merge-base','--is-ancestor','origin/main','HEAD'],cwd=R,check=True)
+   subprocess.run(['git','-c','credential.helper='+helper,'push','origin','main'],cwd=R,check=True)
+   return
+  except subprocess.CalledProcessError as error:
+   with(O/'publication-errors.jsonl').open('a')as f:
+    f.write(json.dumps(dict(attempt=attempt+1,returncode=error.returncode,
+                           phase='git publication',raw_data_retained=True))+'\n')
+   if 'merge-base'in error.cmd or attempt==2:raise
+   time.sleep(5*(attempt+1))
+
 def queue(cohort,limit):
  os.sched_setaffinity(0,{8})
  for i in range(limit):

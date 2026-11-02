@@ -147,3 +147,37 @@ failure, kernel rejection, time or the amount of CPU that can be checked.
 names and their source reachability. Required package pins are in the original
 project lakefile and dependency metadata. Complete measurement still requires
 these typed dependency inputs or an explicitly reported coverage gap.
+
+
+## First10successful segments; actual publication interruption
+The first500-module retry completed normally:60.783418s wall,60.667841CPU s,
+native RSS1.32665GiB, noOOM. Ten successful500-module segments now certify
+5000unique IDs (3source targets/4997dependencies), with a closed native import
+graph and a contiguous certified predecessor chain. Actual prefix cost:
+576.785225s wall/576.290981CPU s, maximumRSS3.722542GiB.
+The separately retained initial exec failure adds0.012940wall/0.003804CPU s
+to the all-attempt accounting; it checked no term.
+
+The controller actually exited after segment10because GitHub DNS failed
+during push, after commit6511c25was written. No native process remained from
+that episode. DNS was subsequently resolved, and6511c25was successfully pushed.
+No kernel prefix was restarted or relabeled. Publisher now retries transient
+fetch/push failures at most3times and attempts publication even if reduction
+made no new change, so an already committed unpublished checkpoint is not
+silently stranded. Non-ancestor history is never force-pushed.
+The old frozen worker/controller/log are retained; continuation uses the next
+source version and the same certified Wholeall00010snapshot.
+
+[whole-library-first-segments.json](whole-library-first-segments.json) records
+the raw-event audit: exactly500accepts per successful segment, no duplicate
+new IDs, correct prior snapshot, original native graph closure and the
+current state's exact acceptance union. This is first-prefix qualification,
+not a full-library CPU estimate or full source acceptance result.
+
+
+Publisher qualification (simulated subprocess controls, not a scientific
+measurement): unchanged reductions still push; one transient fetch failure
+retries then pushes without another commit; non-ancestor history stops after
+one fetch and never pushes. All3controls passed; raw qualification remains
+in publication-qualification/result.json. No live DNS/security configuration
+was altered.

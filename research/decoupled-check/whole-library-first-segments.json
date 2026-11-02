@@ -1,0 +1,12 @@
+{
+  "successful_segments": 10,
+  "accepted_modules": 5000,
+  "source_ids": 3,
+  "dependency_ids": 4997,
+  "last_snapshot": "Wholeall00010",
+  "successful_native_wall_s": 576.7852252777666,
+  "successful_native_cpu_s": 576.290981,
+  "peak_rss_gib": 3.7225418090820312,
+  "native_graph_closed": true,
+  "full_source_complete": false
+}
