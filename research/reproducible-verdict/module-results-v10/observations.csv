@@ -1,0 +1,337 @@
+module,regime,stage,repeat,workers,unit,heartbeats,total_HB,cpu_ns,verdict,errors,tid
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,1,OAI.SharpPlanar.CachedData.cm9_1_0_0.c0_0._proof_1_1,[472728],472728,49835994,accepted,,348166
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,1,OAI.SharpPlanar.CachedData.cm9_1_0_1.c4_13._proof_1_1,[721483],721483,69941617,accepted,,348166
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,1,OAI.SharpPlanar.CachedData.cm9_1_1_1.c2_3._proof_1_1,[559765],559765,56823120,accepted,,348166
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,1,OAI.SharpPlanar.CachedData.cm9_3_0_1.c0_7._proof_1_1,[585131],585131,58962801,accepted,,348166
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,1,OAI.SharpPlanar.CachedData.cm9_3_1_0.c5_10._proof_1_1,[700212],700212,67879642,accepted,,348166
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,1,OAI.SharpPlanar.CachedData.cm9_4_0_0.c3_14._proof_1_1,[735122],735122,72642306,accepted,,348166
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,1,OAI.SharpPlanar.CachedData.cm9_4_1_0.c1_4._proof_1_1,[550925],550925,55751389,accepted,,348166
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,1,OAI.SharpPlanar.CachedData.cm9_4_1_1.checked._proof_1_1,[725734],725734,71373967,accepted,,348166
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,2,OAI.SharpPlanar.CachedData.cm9_1_0_0.c0_0._proof_1_1,[472728],472728,62182285,accepted,,348173
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,2,OAI.SharpPlanar.CachedData.cm9_1_0_1.c4_13._proof_1_1,[721483],721483,73706679,accepted,,348174
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,2,OAI.SharpPlanar.CachedData.cm9_1_1_1.c2_3._proof_1_1,[559765],559765,71039789,accepted,,348173
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,2,OAI.SharpPlanar.CachedData.cm9_3_0_1.c0_7._proof_1_1,[585131],585131,61376422,accepted,,348174
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,2,OAI.SharpPlanar.CachedData.cm9_3_1_0.c5_10._proof_1_1,[700212],700212,85732085,accepted,,348173
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,2,OAI.SharpPlanar.CachedData.cm9_4_0_0.c3_14._proof_1_1,[735122],735122,76454375,accepted,,348174
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,2,OAI.SharpPlanar.CachedData.cm9_4_1_0.c1_4._proof_1_1,[550925],550925,70087364,accepted,,348173
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,2,OAI.SharpPlanar.CachedData.cm9_4_1_1.checked._proof_1_1,[725734],725734,73983790,accepted,,348174
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,4,OAI.SharpPlanar.CachedData.cm9_1_0_0.c0_0._proof_1_1,[472728],472728,68116390,accepted,,348181
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,4,OAI.SharpPlanar.CachedData.cm9_1_0_1.c4_13._proof_1_1,[721483],721483,82277681,accepted,,348182
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,4,OAI.SharpPlanar.CachedData.cm9_1_1_1.c2_3._proof_1_1,[559765],559765,68097209,accepted,,348183
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,4,OAI.SharpPlanar.CachedData.cm9_3_0_1.c0_7._proof_1_1,[585131],585131,69280377,accepted,,348184
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,4,OAI.SharpPlanar.CachedData.cm9_3_1_0.c5_10._proof_1_1,[700212],700212,91644325,accepted,,348181
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,4,OAI.SharpPlanar.CachedData.cm9_4_0_0.c3_14._proof_1_1,[735122],735122,83410606,accepted,,348182
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,4,OAI.SharpPlanar.CachedData.cm9_4_1_0.c1_4._proof_1_1,[550925],550925,62069012,accepted,,348183
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,4,OAI.SharpPlanar.CachedData.cm9_4_1_1.checked._proof_1_1,[725734],725734,78526086,accepted,,348184
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,8,OAI.SharpPlanar.CachedData.cm9_1_0_0.c0_0._proof_1_1,[472728],472728,64447253,accepted,,348197
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,8,OAI.SharpPlanar.CachedData.cm9_1_0_1.c4_13._proof_1_1,[721483],721483,94216608,accepted,,348193
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,8,OAI.SharpPlanar.CachedData.cm9_1_1_1.c2_3._proof_1_1,[559765],559765,81584479,accepted,,348198
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,8,OAI.SharpPlanar.CachedData.cm9_3_0_1.c0_7._proof_1_1,[585131],585131,77851773,accepted,,348196
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,8,OAI.SharpPlanar.CachedData.cm9_3_1_0.c5_10._proof_1_1,[700212],700212,89995696,accepted,,348194
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,8,OAI.SharpPlanar.CachedData.cm9_4_0_0.c3_14._proof_1_1,[735122],735122,98412118,accepted,,348195
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,8,OAI.SharpPlanar.CachedData.cm9_4_1_0.c1_4._proof_1_1,[550925],550925,84511600,accepted,,348199
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,0,8,OAI.SharpPlanar.CachedData.cm9_4_1_1.checked._proof_1_1,[725734],725734,109171273,accepted,,348192
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,1,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast0._proof_1_1,[27170],27170,4180241,accepted,,348206
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,1,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast70._proof_1_1,[871935],871935,108211192,accepted,,348206
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,1,OAI.SepticProfile.ExteriorCertificates.C41.fourthFast239._proof_1_1,[617540],617540,72441597,accepted,,348206
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,1,OAI.SepticProfile.ExteriorCertificates.C41.mono57._proof_1_1,[35061],35061,4718614,accepted,,348206
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,1,OAI.SepticProfile.ExteriorCertificates.C41.res181._proof_1_1,[86146],86146,10447490,accepted,,348206
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,1,OAI.SepticProfile.ExteriorCertificates.C41.rprod64._proof_1_1,[33520],33520,3930447,accepted,,348206
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,1,OAI.SepticProfile.ExteriorCertificates.C41.squareFast125._proof_1_1,[256937],256937,30368233,accepted,,348206
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,1,OAI.SepticProfile.ExteriorCertificates.C41.upper9._proof_1_1,[19679],19679,2711046,accepted,,348206
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,2,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast0._proof_1_1,[27170],27170,3523681,accepted,,348214
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,2,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast70._proof_1_1,[871935],871935,93203199,accepted,,348213
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,2,OAI.SepticProfile.ExteriorCertificates.C41.fourthFast239._proof_1_1,[617540],617540,63029592,accepted,,348214
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,2,OAI.SepticProfile.ExteriorCertificates.C41.mono57._proof_1_1,[35061],35061,3895839,accepted,,348213
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,2,OAI.SepticProfile.ExteriorCertificates.C41.res181._proof_1_1,[86146],86146,8954953,accepted,,348214
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,2,OAI.SepticProfile.ExteriorCertificates.C41.rprod64._proof_1_1,[33520],33520,3287573,accepted,,348213
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,2,OAI.SepticProfile.ExteriorCertificates.C41.squareFast125._proof_1_1,[256937],256937,25936151,accepted,,348214
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,2,OAI.SepticProfile.ExteriorCertificates.C41.upper9._proof_1_1,[19679],19679,2208591,accepted,,348213
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,4,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast0._proof_1_1,[27170],27170,3597373,accepted,,348224
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,4,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast70._proof_1_1,[871935],871935,91498952,accepted,,348221
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,4,OAI.SepticProfile.ExteriorCertificates.C41.fourthFast239._proof_1_1,[617540],617540,62355848,accepted,,348223
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,4,OAI.SepticProfile.ExteriorCertificates.C41.mono57._proof_1_1,[35061],35061,4150514,accepted,,348222
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,4,OAI.SepticProfile.ExteriorCertificates.C41.res181._proof_1_1,[86146],86146,9326055,accepted,,348224
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,4,OAI.SepticProfile.ExteriorCertificates.C41.rprod64._proof_1_1,[33520],33520,3305661,accepted,,348221
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,4,OAI.SepticProfile.ExteriorCertificates.C41.squareFast125._proof_1_1,[256937],256937,25750491,accepted,,348223
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,4,OAI.SepticProfile.ExteriorCertificates.C41.upper9._proof_1_1,[19679],19679,2284083,accepted,,348222
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,8,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast0._proof_1_1,[27170],27170,3791094,accepted,,348231
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,8,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast70._proof_1_1,[871935],871935,104724629,accepted,,348239
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,8,OAI.SepticProfile.ExteriorCertificates.C41.fourthFast239._proof_1_1,[617540],617540,62986634,accepted,,348237
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,8,OAI.SepticProfile.ExteriorCertificates.C41.mono57._proof_1_1,[35061],35061,4174799,accepted,,348241
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,8,OAI.SepticProfile.ExteriorCertificates.C41.res181._proof_1_1,[86146],86146,11094619,accepted,,348235
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,8,OAI.SepticProfile.ExteriorCertificates.C41.rprod64._proof_1_1,[33520],33520,3572451,accepted,,348238
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,8,OAI.SepticProfile.ExteriorCertificates.C41.squareFast125._proof_1_1,[256937],256937,26930897,accepted,,348236
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,0,8,OAI.SepticProfile.ExteriorCertificates.C41.upper9._proof_1_1,[19679],19679,3011811,accepted,,348234
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,1,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1,[51563153],51563153,6306291605,accepted,,348254
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,1,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_pre._proof_1_1,[1298256],1298256,81665929,accepted,,348254
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,1,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_pre._proof_1_1,[613665],613665,65460583,accepted,,348254
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,1,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1,[39641768],39641768,5598523128,accepted,,348254
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,1,OAI.AtomicTriangular.FiniteCertificate.psiB13_calc._proof_1_1,[1367602],1367602,152795422,accepted,,348254
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,1,OAI.AtomicTriangular.FiniteCertificate.psiB19_mem._proof_1_1,[1319],1319,291137,accepted,,348254
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,1,OAI.AtomicTriangular.FiniteCertificate.psiB3_mem._proof_1_1,[1319],1319,222799,accepted,,348254
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,1,OAI.AtomicTriangular.FiniteCertificate.psiB9_mem._proof_1_1,[1319],1319,192717,accepted,,348254
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,2,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1,[51563153],51563153,7228106683,accepted,,348262
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,2,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_pre._proof_1_1,[1298256],1298256,102274581,accepted,,348263
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,2,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_pre._proof_1_1,[613665],613665,79048953,accepted,,348262
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,2,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1,[39641768],39641768,6271638408,accepted,,348263
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,2,OAI.AtomicTriangular.FiniteCertificate.psiB13_calc._proof_1_1,[1367602],1367602,183627202,accepted,,348262
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,2,OAI.AtomicTriangular.FiniteCertificate.psiB19_mem._proof_1_1,[1319],1319,348641,accepted,,348263
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,2,OAI.AtomicTriangular.FiniteCertificate.psiB3_mem._proof_1_1,[1319],1319,341677,accepted,,348262
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,2,OAI.AtomicTriangular.FiniteCertificate.psiB9_mem._proof_1_1,[1319],1319,255728,accepted,,348263
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,4,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1,[51563153],51563153,6354177957,accepted,,348271
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,4,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_pre._proof_1_1,[1298256],1298256,108002746,accepted,,348275
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,4,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_pre._proof_1_1,[613665],613665,68070673,accepted,,348274
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,4,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1,[39641768],39641768,5568299231,accepted,,348276
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,4,OAI.AtomicTriangular.FiniteCertificate.psiB13_calc._proof_1_1,[1367602],1367602,156535024,accepted,,348271
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,4,OAI.AtomicTriangular.FiniteCertificate.psiB19_mem._proof_1_1,[1319],1319,335228,accepted,,348275
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,4,OAI.AtomicTriangular.FiniteCertificate.psiB3_mem._proof_1_1,[1319],1319,273889,accepted,,348274
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,4,OAI.AtomicTriangular.FiniteCertificate.psiB9_mem._proof_1_1,[1319],1319,303844,accepted,,348276
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,8,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1,[51563153],51563153,6353721977,accepted,,348290
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,8,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_pre._proof_1_1,[1298256],1298256,112197984,accepted,,348284
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,8,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_pre._proof_1_1,[613665],613665,85433898,accepted,,348286
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,8,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1,[39641768],39641768,5608550947,accepted,,348291
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,8,OAI.AtomicTriangular.FiniteCertificate.psiB13_calc._proof_1_1,[1367602],1367602,164949496,accepted,,348287
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,8,OAI.AtomicTriangular.FiniteCertificate.psiB19_mem._proof_1_1,[1319],1319,302095,accepted,,348288
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,8,OAI.AtomicTriangular.FiniteCertificate.psiB3_mem._proof_1_1,[1319],1319,299138,accepted,,348285
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,0,8,OAI.AtomicTriangular.FiniteCertificate.psiB9_mem._proof_1_1,[1319],1319,296399,accepted,,348289
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,1,0,"[14991, 13398, 12409, 15573, 10361, 12118, 92933338, 9103, 8329]",93029620,5040225925,accepted,[],348299
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,1,1,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,4991842507,accepted,[],348299
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,1,2,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5003219402,accepted,[],348299
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,1,3,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5017210840,accepted,[],348299
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,1,4,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5002904575,accepted,[],348299
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,1,5,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5026891458,accepted,[],348299
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,1,6,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5009460931,accepted,[],348299
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,1,7,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5026105890,accepted,[],348299
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,2,0,"[14991, 13398, 12409, 15573, 10361, 12118, 92933338, 9103, 8329]",93029620,5095786808,accepted,[],348310
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,2,2,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5009176147,accepted,[],348310
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,2,4,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5003411010,accepted,[],348310
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,2,6,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5002258295,accepted,[],348310
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,2,1,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,6173244604,accepted,[],348311
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,2,3,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,6174831633,accepted,[],348311
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,2,5,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,6214789363,accepted,[],348311
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,2,7,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,6180792524,accepted,[],348311
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,4,0,"[14983, 13398, 12409, 15573, 10361, 12118, 92905378, 9101, 8291]",93001612,5473188825,accepted,[],348321
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,4,4,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5441379100,accepted,[],348321
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,4,1,"[9602, 13237, 12409, 15573, 10361, 11948, 92914811, 9101, 8291]",93005333,5462783501,accepted,[],348322
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,4,5,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5456697617,accepted,[],348322
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,4,2,"[9596, 13237, 12409, 15573, 10361, 11948, 92904976, 9101, 8291]",92995492,5479031683,accepted,[],348323
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,4,6,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5496391191,accepted,[],348323
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,4,3,"[9598, 13237, 12409, 15573, 10361, 11948, 92922987, 9103, 8329]",93013545,5462864163,accepted,[],348324
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,4,7,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5444320751,accepted,[],348324
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,8,0,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,6731434407,accepted,[],348340
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,8,1,"[10895, 13237, 12409, 15573, 10361, 11958, 92905597, 9101, 8291]",92997422,6370115346,accepted,[],348333
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,8,2,"[9603, 13237, 12409, 15573, 10361, 11948, 92905458, 9101, 8291]",92995981,6425074310,accepted,[],348335
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,8,3,"[9683, 13237, 12409, 15573, 10361, 12000, 92932117, 9103, 8329]",93022812,6237072152,accepted,[],348339
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,8,4,"[10245, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92996103,6351666782,accepted,[],348334
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,8,5,"[9596, 13237, 12409, 15573, 10361, 11948, 92904979, 9101, 8291]",92995495,6405727511,accepted,[],348336
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,8,6,"[10099, 13398, 12409, 15573, 10361, 12056, 92904939, 9101, 8291]",92996227,6275857440,accepted,[],348338
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,0,8,7,"[12446, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92998304,6664948752,accepted,[],348337
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,kernel,0,1,OAI.Analysis.PDE.Weak.interior_H1_derivative,[1335875],1335875,144919953,accepted,,348349
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,kernel,0,2,OAI.Analysis.PDE.Weak.interior_H1_derivative,[1335875],1335875,145588584,accepted,,348358
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,kernel,0,4,OAI.Analysis.PDE.Weak.interior_H1_derivative,[1335875],1335875,144656967,accepted,,348365
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,kernel,0,8,OAI.Analysis.PDE.Weak.interior_H1_derivative,[1335875],1335875,145322919,accepted,,348381
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,1,0,"[13529, 16112, 9524, 8235, 13661, 8723, 8686, 8483, 97377, 7890956, 8728, 9023, 8285]",8101322,704108012,accepted,[],348390
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,1,1,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,684704857,accepted,[],348390
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,1,2,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,686367341,accepted,[],348390
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,1,3,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,685829650,accepted,[],348390
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,1,4,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,692336619,accepted,[],348390
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,1,5,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,694010063,accepted,[],348390
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,1,6,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,690569885,accepted,[],348390
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,1,7,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,690372147,accepted,[],348390
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,2,0,"[8236, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 97028, 7890821, 8728, 9023, 8247]",8095256,704302844,accepted,[],348397
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,2,2,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,694691667,accepted,[],348397
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,2,4,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,692731695,accepted,[],348397
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,2,6,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,694444284,accepted,[],348397
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,2,1,"[13526, 16112, 9524, 8235, 13661, 8723, 8686, 8483, 97279, 7886644, 8728, 9023, 8285]",8096909,705960726,accepted,[],348398
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,2,3,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,691251815,accepted,[],348398
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,2,5,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,692893636,accepted,[],348398
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,2,7,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,691746517,accepted,[],348398
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,4,0,"[8236, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7888939, 8728, 9023, 8247]",8093276,718156754,accepted,[],348407
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,4,4,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,707017271,accepted,[],348407
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,4,1,"[8241, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7888803, 8728, 9023, 8247]",8093145,718397458,accepted,[],348410
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,4,5,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,706125430,accepted,[],348410
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,4,2,"[8691, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 97062, 7890584, 8728, 9023, 8247]",8095508,719059889,accepted,[],348408
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,4,6,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,706161507,accepted,[],348408
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,4,3,"[13060, 16112, 9524, 8235, 13661, 8723, 8686, 8483, 97245, 7888929, 8728, 9023, 8285]",8098694,719958588,accepted,[],348409
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,4,7,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,705847164,accepted,[],348409
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,8,0,"[8674, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885816, 8728, 9023, 8247]",8090591,736451099,accepted,[],348420
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,8,1,"[12640, 16112, 9524, 8235, 13661, 8723, 8686, 8483, 97377, 7885920, 8728, 9023, 8247]",8095359,740596687,accepted,[],348423
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,8,2,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,732450737,accepted,[],348421
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,8,3,"[8681, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7890741, 8728, 9023, 8285]",8095561,733830981,accepted,[],348422
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,8,4,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885838, 8728, 9023, 8247]",8090172,761372461,accepted,[],348425
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,8,5,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885789, 8728, 9023, 8247]",8090123,757706601,accepted,[],348424
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,8,6,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,813439323,accepted,[],348426
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,0,8,7,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,831276592,accepted,[],348419
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,kernel,0,1,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle.comparison,[355865],355865,37858589,accepted,,348434
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,kernel,0,2,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle.comparison,[355865],355865,37761645,accepted,,348441
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,kernel,0,4,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle.comparison,[355865],355865,37973041,accepted,,348449
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,kernel,0,8,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle.comparison,[355865],355865,46225207,accepted,,348462
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,1,OAI.SharpPlanar.CachedData.cm9_1_0_0.c0_0._proof_1_1,[472728],472728,49471743,accepted,,348512
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,1,OAI.SharpPlanar.CachedData.cm9_1_0_1.c4_13._proof_1_1,[721483],721483,69584270,accepted,,348512
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,1,OAI.SharpPlanar.CachedData.cm9_1_1_1.c2_3._proof_1_1,[559765],559765,56548518,accepted,,348512
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,1,OAI.SharpPlanar.CachedData.cm9_3_0_1.c0_7._proof_1_1,[585131],585131,58545162,accepted,,348512
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,1,OAI.SharpPlanar.CachedData.cm9_3_1_0.c5_10._proof_1_1,[700212],700212,67779502,accepted,,348512
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,1,OAI.SharpPlanar.CachedData.cm9_4_0_0.c3_14._proof_1_1,[735122],735122,73216160,accepted,,348512
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,1,OAI.SharpPlanar.CachedData.cm9_4_1_0.c1_4._proof_1_1,[550925],550925,55661267,accepted,,348512
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,1,OAI.SharpPlanar.CachedData.cm9_4_1_1.checked._proof_1_1,[725734],725734,70273587,accepted,,348512
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,2,OAI.SharpPlanar.CachedData.cm9_1_0_0.c0_0._proof_1_1,[472728],472728,51734873,accepted,,348504
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,2,OAI.SharpPlanar.CachedData.cm9_1_0_1.c4_13._proof_1_1,[721483],721483,73881434,accepted,,348505
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,2,OAI.SharpPlanar.CachedData.cm9_1_1_1.c2_3._proof_1_1,[559765],559765,59150166,accepted,,348504
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,2,OAI.SharpPlanar.CachedData.cm9_3_0_1.c0_7._proof_1_1,[585131],585131,60713354,accepted,,348505
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,2,OAI.SharpPlanar.CachedData.cm9_3_1_0.c5_10._proof_1_1,[700212],700212,71355497,accepted,,348504
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,2,OAI.SharpPlanar.CachedData.cm9_4_0_0.c3_14._proof_1_1,[735122],735122,76254914,accepted,,348505
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,2,OAI.SharpPlanar.CachedData.cm9_4_1_0.c1_4._proof_1_1,[550925],550925,58304331,accepted,,348504
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,2,OAI.SharpPlanar.CachedData.cm9_4_1_1.checked._proof_1_1,[725734],725734,72093200,accepted,,348505
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,4,OAI.SharpPlanar.CachedData.cm9_1_0_0.c0_0._proof_1_1,[472728],472728,54310117,accepted,,348494
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,4,OAI.SharpPlanar.CachedData.cm9_1_0_1.c4_13._proof_1_1,[721483],721483,81168957,accepted,,348495
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,4,OAI.SharpPlanar.CachedData.cm9_1_1_1.c2_3._proof_1_1,[559765],559765,78959201,accepted,,348496
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,4,OAI.SharpPlanar.CachedData.cm9_3_0_1.c0_7._proof_1_1,[585131],585131,80404349,accepted,,348497
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,4,OAI.SharpPlanar.CachedData.cm9_3_1_0.c5_10._proof_1_1,[700212],700212,75273931,accepted,,348494
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,4,OAI.SharpPlanar.CachedData.cm9_4_0_0.c3_14._proof_1_1,[735122],735122,79720759,accepted,,348495
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,4,OAI.SharpPlanar.CachedData.cm9_4_1_0.c1_4._proof_1_1,[550925],550925,72419808,accepted,,348496
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,4,OAI.SharpPlanar.CachedData.cm9_4_1_1.checked._proof_1_1,[725734],725734,93385254,accepted,,348497
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,8,OAI.SharpPlanar.CachedData.cm9_1_0_0.c0_0._proof_1_1,[472728],472728,79817937,accepted,,348481
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,8,OAI.SharpPlanar.CachedData.cm9_1_0_1.c4_13._proof_1_1,[721483],721483,94396336,accepted,,348482
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,8,OAI.SharpPlanar.CachedData.cm9_1_1_1.c2_3._proof_1_1,[559765],559765,83212282,accepted,,348487
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,8,OAI.SharpPlanar.CachedData.cm9_3_0_1.c0_7._proof_1_1,[585131],585131,78684195,accepted,,348480
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,8,OAI.SharpPlanar.CachedData.cm9_3_1_0.c5_10._proof_1_1,[700212],700212,105539472,accepted,,348486
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,8,OAI.SharpPlanar.CachedData.cm9_4_0_0.c3_14._proof_1_1,[735122],735122,100893696,accepted,,348483
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,8,OAI.SharpPlanar.CachedData.cm9_4_1_0.c1_4._proof_1_1,[550925],550925,77118229,accepted,,348484
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,1,8,OAI.SharpPlanar.CachedData.cm9_4_1_1.checked._proof_1_1,[725734],725734,94829105,accepted,,348485
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,1,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast0._proof_1_1,[27170],27170,3477057,accepted,,348552
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,1,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast70._proof_1_1,[871935],871935,87927391,accepted,,348552
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,1,OAI.SepticProfile.ExteriorCertificates.C41.fourthFast239._proof_1_1,[617540],617540,59042871,accepted,,348552
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,1,OAI.SepticProfile.ExteriorCertificates.C41.mono57._proof_1_1,[35061],35061,3816974,accepted,,348552
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,1,OAI.SepticProfile.ExteriorCertificates.C41.res181._proof_1_1,[86146],86146,8602356,accepted,,348552
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,1,OAI.SepticProfile.ExteriorCertificates.C41.rprod64._proof_1_1,[33520],33520,3232748,accepted,,348552
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,1,OAI.SepticProfile.ExteriorCertificates.C41.squareFast125._proof_1_1,[256937],256937,25183710,accepted,,348552
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,1,OAI.SepticProfile.ExteriorCertificates.C41.upper9._proof_1_1,[19679],19679,2197426,accepted,,348552
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,2,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast0._proof_1_1,[27170],27170,3518668,accepted,,348544
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,2,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast70._proof_1_1,[871935],871935,92725909,accepted,,348545
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,2,OAI.SepticProfile.ExteriorCertificates.C41.fourthFast239._proof_1_1,[617540],617540,62548832,accepted,,348544
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,2,OAI.SepticProfile.ExteriorCertificates.C41.mono57._proof_1_1,[35061],35061,3896257,accepted,,348545
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,2,OAI.SepticProfile.ExteriorCertificates.C41.res181._proof_1_1,[86146],86146,8828818,accepted,,348544
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,2,OAI.SepticProfile.ExteriorCertificates.C41.rprod64._proof_1_1,[33520],33520,3266454,accepted,,348545
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,2,OAI.SepticProfile.ExteriorCertificates.C41.squareFast125._proof_1_1,[256937],256937,26137255,accepted,,348544
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,2,OAI.SepticProfile.ExteriorCertificates.C41.upper9._proof_1_1,[19679],19679,2189413,accepted,,348545
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,4,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast0._proof_1_1,[27170],27170,3592246,accepted,,348534
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,4,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast70._proof_1_1,[871935],871935,94138231,accepted,,348535
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,4,OAI.SepticProfile.ExteriorCertificates.C41.fourthFast239._proof_1_1,[617540],617540,76783681,accepted,,348536
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,4,OAI.SepticProfile.ExteriorCertificates.C41.mono57._proof_1_1,[35061],35061,4064780,accepted,,348537
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,4,OAI.SepticProfile.ExteriorCertificates.C41.res181._proof_1_1,[86146],86146,8971234,accepted,,348534
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,4,OAI.SepticProfile.ExteriorCertificates.C41.rprod64._proof_1_1,[33520],33520,3305859,accepted,,348535
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,4,OAI.SepticProfile.ExteriorCertificates.C41.squareFast125._proof_1_1,[256937],256937,30796336,accepted,,348536
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,4,OAI.SepticProfile.ExteriorCertificates.C41.upper9._proof_1_1,[19679],19679,2264654,accepted,,348537
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,8,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast0._proof_1_1,[27170],27170,3599513,accepted,,348525
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,8,OAI.SepticProfile.ExteriorCertificates.C41.cubeFast70._proof_1_1,[871935],871935,95379104,accepted,,348521
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,8,OAI.SepticProfile.ExteriorCertificates.C41.fourthFast239._proof_1_1,[617540],617540,75374707,accepted,,348520
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,8,OAI.SepticProfile.ExteriorCertificates.C41.mono57._proof_1_1,[35061],35061,4203655,accepted,,348526
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,8,OAI.SepticProfile.ExteriorCertificates.C41.res181._proof_1_1,[86146],86146,9107545,accepted,,348522
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,8,OAI.SepticProfile.ExteriorCertificates.C41.rprod64._proof_1_1,[33520],33520,4180281,accepted,,348527
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,8,OAI.SepticProfile.ExteriorCertificates.C41.squareFast125._proof_1_1,[256937],256937,33210836,accepted,,348524
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,1,8,OAI.SepticProfile.ExteriorCertificates.C41.upper9._proof_1_1,[19679],19679,2268571,accepted,,348525
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,1,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1,[51563153],51563153,6944705448,accepted,,348594
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,1,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_pre._proof_1_1,[1298256],1298256,98282133,accepted,,348594
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,1,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_pre._proof_1_1,[613665],613665,75456315,accepted,,348594
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,1,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1,[39641768],39641768,6140397644,accepted,,348594
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,1,OAI.AtomicTriangular.FiniteCertificate.psiB13_calc._proof_1_1,[1367602],1367602,184613096,accepted,,348594
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,1,OAI.AtomicTriangular.FiniteCertificate.psiB19_mem._proof_1_1,[1319],1319,346238,accepted,,348594
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,1,OAI.AtomicTriangular.FiniteCertificate.psiB3_mem._proof_1_1,[1319],1319,268716,accepted,,348594
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,1,OAI.AtomicTriangular.FiniteCertificate.psiB9_mem._proof_1_1,[1319],1319,244724,accepted,,348594
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,2,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1,[51563153],51563153,6340727865,accepted,,348585
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,2,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_pre._proof_1_1,[1298256],1298256,84871314,accepted,,348586
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,2,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_pre._proof_1_1,[613665],613665,62633456,accepted,,348585
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,2,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1,[39641768],39641768,5603255229,accepted,,348586
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,2,OAI.AtomicTriangular.FiniteCertificate.psiB13_calc._proof_1_1,[1367602],1367602,148875445,accepted,,348585
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,2,OAI.AtomicTriangular.FiniteCertificate.psiB19_mem._proof_1_1,[1319],1319,307839,accepted,,348586
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,2,OAI.AtomicTriangular.FiniteCertificate.psiB3_mem._proof_1_1,[1319],1319,296207,accepted,,348585
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,2,OAI.AtomicTriangular.FiniteCertificate.psiB9_mem._proof_1_1,[1319],1319,206265,accepted,,348586
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,4,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1,[51563153],51563153,7280230839,accepted,,348576
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,4,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_pre._proof_1_1,[1298256],1298256,106585519,accepted,,348574
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,4,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_pre._proof_1_1,[613665],613665,68460978,accepted,,348575
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,4,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1,[39641768],39641768,5553908876,accepted,,348577
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,4,OAI.AtomicTriangular.FiniteCertificate.psiB13_calc._proof_1_1,[1367602],1367602,172537426,accepted,,348576
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,4,OAI.AtomicTriangular.FiniteCertificate.psiB19_mem._proof_1_1,[1319],1319,325665,accepted,,348574
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,4,OAI.AtomicTriangular.FiniteCertificate.psiB3_mem._proof_1_1,[1319],1319,269780,accepted,,348575
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,4,OAI.AtomicTriangular.FiniteCertificate.psiB9_mem._proof_1_1,[1319],1319,291610,accepted,,348577
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,8,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_calc._proof_1_1,[51563153],51563153,6434329143,accepted,,348559
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,8,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB16_pre._proof_1_1,[1298256],1298256,92282353,accepted,,348561
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,8,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB21_pre._proof_1_1,[613665],613665,71587565,accepted,,348560
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,8,OAI.AtomicTriangular.FiniteCertificate.envelopeExpB7_calc._proof_1_1,[39641768],39641768,5580719260,accepted,,348566
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,8,OAI.AtomicTriangular.FiniteCertificate.psiB13_calc._proof_1_1,[1367602],1367602,168039317,accepted,,348564
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,8,OAI.AtomicTriangular.FiniteCertificate.psiB19_mem._proof_1_1,[1319],1319,315738,accepted,,348563
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,8,OAI.AtomicTriangular.FiniteCertificate.psiB3_mem._proof_1_1,[1319],1319,370748,accepted,,348565
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,1,8,OAI.AtomicTriangular.FiniteCertificate.psiB9_mem._proof_1_1,[1319],1319,370934,accepted,,348562
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,1,0,"[14991, 13398, 12409, 15573, 10361, 12118, 92933338, 9103, 8329]",93029620,5045892101,accepted,[],348644
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,1,1,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,4994890051,accepted,[],348644
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,1,2,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5007226058,accepted,[],348644
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,1,3,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5007873676,accepted,[],348644
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,1,4,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,4998488952,accepted,[],348644
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,1,5,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,4998696671,accepted,[],348644
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,1,6,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,4999313674,accepted,[],348644
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,1,7,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5009397846,accepted,[],348644
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,2,0,"[14989, 13398, 12409, 15573, 10361, 12118, 92933338, 9103, 8329]",93029618,5111882672,accepted,[],348633
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,2,2,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5041946604,accepted,[],348633
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,2,4,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5053829501,accepted,[],348633
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,2,6,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5043655832,accepted,[],348633
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,2,1,"[9598, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995456,5630125367,accepted,[],348634
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,2,3,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5117622875,accepted,[],348634
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,2,5,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5153744304,accepted,[],348634
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,2,7,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5134587993,accepted,[],348634
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,4,0,"[14991, 13398, 12409, 15573, 10361, 12118, 92905423, 9101, 8291]",93001665,5390931762,accepted,[],348620
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,4,4,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5367181981,accepted,[],348620
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,4,1,"[9596, 13237, 12409, 15573, 10361, 11948, 92905916, 9101, 8291]",92996432,5377207624,accepted,[],348623
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,4,5,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5373835232,accepted,[],348623
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,4,2,"[9596, 13237, 12409, 15573, 10361, 11948, 92931865, 9103, 8329]",93022421,5376208098,accepted,[],348622
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,4,6,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,5282469949,accepted,[],348622
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,4,3,"[9596, 13237, 12409, 15573, 10361, 11948, 92904948, 9101, 8291]",92995464,6380969470,accepted,[],348621
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,4,7,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,6419824573,accepted,[],348621
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,8,0,"[11508, 13237, 12409, 15573, 10361, 11948, 92905951, 9101, 8291]",92998379,6988076408,accepted,[],348608
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,8,1,"[10096, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995954,6350363316,accepted,[],348603
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,8,2,"[9596, 13237, 12409, 15573, 10361, 11948, 92905026, 9101, 8291]",92995542,6774484263,accepted,[],348610
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,8,3,"[11240, 13237, 12409, 15573, 10361, 11948, 92904954, 9101, 8291]",92997114,6261735434,accepted,[],348609
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,8,4,"[9661, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995519,6562600701,accepted,[],348606
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,8,5,"[9596, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995454,6344139054,accepted,[],348607
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,8,6,"[9809, 13237, 12409, 15573, 10361, 11948, 92904938, 9101, 8291]",92995667,6325313989,accepted,[],348605
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,1,8,7,"[10657, 13398, 12409, 15573, 10361, 12118, 92932221, 9103, 8329]",93024169,6215650115,accepted,[],348604
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,kernel,1,1,OAI.Analysis.PDE.Weak.interior_H1_derivative,[1335875],1335875,147187377,accepted,,348688
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,kernel,1,2,OAI.Analysis.PDE.Weak.interior_H1_derivative,[1335875],1335875,148688766,accepted,,348680
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,kernel,1,4,OAI.Analysis.PDE.Weak.interior_H1_derivative,[1335875],1335875,148127722,accepted,,348670
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,kernel,1,8,OAI.Analysis.PDE.Weak.interior_H1_derivative,[1335875],1335875,144936640,accepted,,348658
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,1,0,"[13529, 16112, 9524, 8235, 13661, 8723, 8686, 8483, 97377, 7890956, 8728, 9023, 8285]",8101322,706010468,accepted,[],348731
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,1,1,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,686482334,accepted,[],348731
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,1,2,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,688513889,accepted,[],348731
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,1,3,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,691732977,accepted,[],348731
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,1,4,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,694328789,accepted,[],348731
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,1,5,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,695476419,accepted,[],348731
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,1,6,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,691780232,accepted,[],348731
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,1,7,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,695813786,accepted,[],348731
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,2,0,"[13528, 16112, 9524, 8235, 13661, 8723, 8686, 8483, 97377, 7890813, 8728, 9023, 8285]",8101178,710690520,accepted,[],348722
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,2,2,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,692633362,accepted,[],348722
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,2,4,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,692688780,accepted,[],348722
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,2,6,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,694610873,accepted,[],348722
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,2,1,"[8234, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885930, 8728, 9023, 8247]",8090265,708344299,accepted,[],348723
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,2,3,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,697096847,accepted,[],348723
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,2,5,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,694969626,accepted,[],348723
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,2,7,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,694933998,accepted,[],348723
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,4,0,"[13424, 16112, 9524, 8235, 13661, 8723, 8686, 8483, 97147, 7888849, 8728, 9023, 8247]",8098842,714724508,accepted,[],348711
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,4,4,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,698500428,accepted,[],348711
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,4,1,"[8234, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 97063, 7887637, 8728, 9023, 8247]",8092105,713542349,accepted,[],348712
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,4,5,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,699291918,accepted,[],348712
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,4,2,"[8337, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 97027, 7890678, 8728, 9023, 8285]",8095251,713788795,accepted,[],348713
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,4,6,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,698862626,accepted,[],348713
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,4,3,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,850483462,accepted,[],348714
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,4,7,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090121,849478473,accepted,[],348714
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,8,0,"[8903, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7888279, 8728, 9023, 8285]",8093321,739346540,accepted,[],348699
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,8,1,"[10350, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8092238,761453436,accepted,[],348701
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,8,2,"[8233, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7887893, 8728, 9023, 8247]",8092227,742671269,accepted,[],348698
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,8,3,"[8312, 15951, 9524, 8235, 13661, 8685, 8686, 8483, 96930, 7890602, 8728, 9023, 8247]",8095067,738421541,accepted,[],348702
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,8,4,"[9489, 15951, 9472, 8235, 13661, 8723, 8686, 8483, 97377, 7885913, 8728, 9023, 8247]",8091988,739243887,accepted,[],348700
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,8,5,"[8520, 15951, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885818, 8728, 9023, 8247]",8090439,741597937,accepted,[],348695
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,8,6,"[9120, 16003, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885791, 8728, 9023, 8247]",8091064,812070787,accepted,[],348697
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,1,8,7,"[8233, 16060, 9472, 8235, 13661, 8685, 8686, 8483, 96930, 7885787, 8728, 9023, 8247]",8090230,848283924,accepted,[],348696
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,kernel,1,1,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle.comparison,[355865],355865,37738091,accepted,,348771
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,kernel,1,2,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle.comparison,[355865],355865,37911647,accepted,,348763
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,kernel,1,4,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle.comparison,[355865],355865,37712181,accepted,,348755
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,kernel,1,8,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle.comparison,[355865],355865,37739966,accepted,,348742

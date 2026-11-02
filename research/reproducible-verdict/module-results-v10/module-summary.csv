@@ -1,0 +1,8 @@
+module,regime,stage,pairs,verdict_differences,diagnostic_differences,heartbeat_differences,min_HB,max_HB,maximum_unit_relative_range
+OAI.Analysis.PlanarPacking.Certificate.UMoments9,computation,kernel,48,0,0,0,472728,735122,0
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,computation,kernel,48,0,0,0,19679,871935,0
+OAI.Analysis.Triangular.Envelope.EnvelopePsiB,computation,kernel,48,0,0,0,1319,51563153,0
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,front,48,0,0,25,92995454,93029620,0.000367394302951626
+OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,mathematical,kernel,6,0,0,0,1335875,1335875,0
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,front,48,0,0,24,8090121,8101322,0.0013263555159320252
+OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,mathematical,kernel,6,0,0,0,355865,355865,0
