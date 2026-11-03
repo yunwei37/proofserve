@@ -4,18 +4,18 @@ Review: 自审.
 
 {
   "selected": 20,
-  "returned": 9,
-  "accepted": 9,
+  "returned": 10,
+  "accepted": 10,
   "failed": 0,
-  "cpu_s": 7.466829,
+  "cpu_s": 8.242118,
   "complete": false,
   "eligible": 190,
   "full_population": 444,
   "full_closure": false,
-  "median_cpu_ratio": 0.47940603127437426,
+  "median_cpu_ratio": 0.46522964727261135,
   "min_cpu_ratio": 0.39397533704775134,
   "max_cpu_ratio": 0.5809953576327802,
-  "pooled_cpu_ratio": 0.47114280459114477
+  "pooled_cpu_ratio": 0.4636794332142966
 }
 
 Seed20261103: four uniformly without-replacement targets from each source-byte quintile of190 completed targets. This dependency-ordered prefix is not a random sample of444: it contains Construction prerequisites and some finite certificates before downstream CycleClique certificates/patterns/Main. The254 missing targets are unobserved. Size is not a proof-cost model. K10 is supplemental, excluded from random-sample summaries.
