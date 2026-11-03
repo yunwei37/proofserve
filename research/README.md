@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-02UTC, root0267. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0274. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -97,3 +97,6 @@ Source36 [root0272](../docs/tmp/build-and-evaluate/step-0272-20261103T025723+000
 
 
 Corrected full attribution [root0273](../docs/tmp/build-and-evaluate/step-0273-20261103T031343+0000/step-report.md), [Mfinal](parallel-stream-check/attribution-results/final.md):12fullclosurecells+separatecompoundleaf. CPUgrowthinsideobservedordinarykernelbracketsdespitefixedcounts; phase/placement/observercomparisonsand50helpercount/bytequalification,notPMUcausality/generalbudget. Rawfrozeninrootstep;originalcaptureonPVC.
+
+
+Physical/source37 [root0274](../docs/tmp/build-and-evaluate/step-0274-20261103T040607+0000/step-report.md), [Wresult](../workloads/openai-math/final-seven-20261102/collection-remaining-six-20261103T0325/source37-PhysicalFieldPopulationLimit/README.md):37/42originals/18complete strata; source242.2–315.2CPUh/mixed checktransfer16.5–28.0CPUh scenarios, notCI/wholelibrarymeasurement.5source/11paired/13dynamicmissingremainseparate; no completednewcelluntilTracked.

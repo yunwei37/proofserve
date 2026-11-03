@@ -1,0 +1,2 @@
+module,role,wall_s,cpu_s,pid,birth,raw
+OAI.Probability.InvariantIsing.Fields.PhysicalFieldPopulationLimit,original_probability_sample,3.805639804340899,3.900684,527183,772932569,/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-PhysicalFieldPopulationLimit-targetP-remaining-six-20261103T0325/runs/00-noM
