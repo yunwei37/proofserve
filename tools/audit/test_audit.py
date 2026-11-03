@@ -174,5 +174,40 @@ class AuditTests(unittest.TestCase):
                 self.assertEqual(r["configuration"]["file"], str(f))
                 self.assertTrue(r["configuration"]["supplied_config"])
 
+    def test_real_native_v1_uint64_encoding(self):
+        p = Path(__file__).with_name("fixtures") / "native-v1.json"
+        original = json.loads(p.read_text())
+        r, costs = audit.load_receipt(p)
+        self.assertEqual(r["status"], "reported_complete")
+        self.assertEqual(r["accepted"], original["accepted"])
+        self.assertEqual(r["axioms"], original["axioms"])
+        self.assertAlmostEqual(r["invocation_cpu_s"], int(original["cpu_ns"])/1e9)
+        self.assertAlmostEqual(r["cumulative_segment_cpu_s"],
+                               int(original["cumulative_segment_cpu_ns"])/1e9)
+        self.assertEqual(costs, {})
+
+    def test_official_path_does_not_invent_module_ledger_or_axioms(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "official.json"
+            raw = dict(schema_version=1, execution_path="official-leanchecker", parallel=False,
+                status="complete", roots=["Demo"], accepted_roots=["Demo"], rejected_roots=[],
+                accepted=None, rejected=None, module_set_hash=None, axioms=None,
+                cpu_ns="1000000000", wall_ns=2000000000)
+            p.write_text(json.dumps(raw))
+            r, _ = audit.load_receipt(p)
+            self.assertEqual(r["status"], "reported_official_complete")
+            self.assertIsNone(r["axioms"])
+            self.assertIsNone(r["accepted"])
+            self.assertEqual(r["accepted_roots"], ["Demo"])
+            raw["status"] = "official_failure"
+            raw["rejected_roots"] = [{"root": "Demo", "exit_code": 2}]
+            p.write_text(json.dumps(raw))
+            self.assertEqual(audit.load_receipt(p)[0]["status"], "reported_official_failure")
+
+    def test_uint64_does_not_accept_boolean_signed_or_nonfinite_strings(self):
+        for value in (True, "-1", "+2", "NaN", "1.2", 2**64):
+            with self.assertRaises(ValueError):
+                audit.uint64(value, "clock")
+
 if __name__ == "__main__":
     unittest.main()

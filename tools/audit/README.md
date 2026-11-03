@@ -102,3 +102,14 @@ The lexical masker descends nested block comments and skips ordinary strings
 raw strings and character literals. This is not Lean's parser: unusual quoted identifiers,
 macro-generated imports and raw/interpolated string syntax may require compiler
 evidence. Do not treat the lexical counts as exact elaborated statistics.
+
+## Native JSON compatibility evidence
+
+The adapter accepts Lean UInt64 clock values as either unsigned JSON integers
+or unsigned decimal strings. The byte-preserved real native-v1 fixture covers
+M's completed 1330-module Nat.Basic closure receipt; parsing it is not a new
+verification run. Official fallback receipts have accepted roots rather than a
+per-module ledger, and expose neither axioms nor per-module CPU. They retain a
+separate reported_official status, including operational official_failure.
+The axiom set on the native path is declarations in the accepted module closure,
+including segregated modules; it is not minimal per-theorem axiom dependence.

@@ -164,6 +164,37 @@ def reachable(seeds, modules):
         pending.extend(x for x in modules[m]["imports"] if x in modules and x not in seen)
     return seen, missing
 
+def uint64(value, field):
+    """Lean may encode UInt64 as an unsigned decimal JSON string."""
+    if isinstance(value, str) and re.fullmatch(r"0|[1-9][0-9]*", value):
+        value = int(value)
+    if type(value) is not int or not 0 <= value < 2**64:
+        raise ValueError("invalid checker " + field)
+    return value
+
+def official_receipt(receipt, path):
+    state = receipt.get("status")
+    if state not in ("complete", "official_failure") or receipt.get("parallel") is not False:
+        raise ValueError("malformed official checker receipt")
+    for key in ("roots", "accepted_roots"):
+        if not isinstance(receipt.get(key), list) or not all(isinstance(v, str) for v in receipt[key]):
+            raise ValueError("invalid official " + key)
+    if not isinstance(receipt.get("rejected_roots"), list):
+        raise ValueError("invalid official rejected_roots")
+    if state == "complete" and receipt["rejected_roots"]:
+        raise ValueError("complete official receipt has failed roots")
+    return dict(status="reported_official_complete" if state == "complete" else "reported_official_failure", file=str(path),
+        execution_path="official-leanchecker", parallel=False,
+        lean_version=receipt.get("lean_version"), roots=receipt["roots"],
+        accepted_roots=receipt["accepted_roots"], rejected_roots=receipt["rejected_roots"],
+        accepted=None, rejected=None, axioms=None, axioms_scope="unavailable_on_official_path",
+        invocation_cpu_s=uint64(receipt.get("cpu_ns"), "cpu_ns")/1e9,
+        invocation_wall_s=uint64(receipt.get("wall_ns"), "wall_ns")/1e9,
+        per_module_costs_available=False,
+        coverage=receipt.get("coverage"),
+        source_binding="not established: official root receipt is not a source certificate",
+        receipt=receipt), {}
+
 def load_receipt(path):
     """Consume M checker v1 as reported compiled evidence, not source acceptance."""
     if path is None:
@@ -176,6 +207,8 @@ def load_receipt(path):
     if state == "error":
         return dict(status="checker_error", file=str(path), error=receipt.get("error"),
                     axioms=None, receipt=receipt), {}
+    if receipt.get("execution_path") == "official-leanchecker":
+        return official_receipt(receipt, path)
     required = ("accepted", "rejected", "roots", "axioms", "lean_version",
                 "module_set_hash", "module_set_hash_algorithm", "workers", "cpu_ns", "wall_ns")
     absent = [k for k in required if k not in receipt]
@@ -186,23 +219,26 @@ def load_receipt(path):
             raise ValueError("checker receipt " + key + " must be a string array")
     if not isinstance(receipt["rejected"], list):
         raise ValueError("checker receipt rejected must be an array")
-    for key in ("cpu_ns", "wall_ns", "workers"):
-        if type(receipt[key]) is not int or receipt[key] < (1 if key == "workers" else 0):
-            raise ValueError("invalid checker " + key)
+    for key in ("cpu_ns", "wall_ns"):
+        uint64(receipt[key], key)
+    if type(receipt["workers"]) is not int or receipt["workers"] < 1:
+        raise ValueError("invalid checker workers")
     if state == "complete" and receipt["rejected"]:
         raise ValueError("complete checker receipt contains rejection diagnostics")
     if len(set(receipt["accepted"])) != len(receipt["accepted"]):
         raise ValueError("checker receipt has duplicate accepted module names")
     return dict(status="reported_" + state, file=str(path),
+        execution_path=receipt.get("execution_path", "native_v1_without_path_field"),
+        parallel=receipt.get("parallel"),
         lean_version=receipt["lean_version"], accepted=receipt["accepted"],
         rejected=receipt["rejected"], roots=receipt["roots"], axioms=receipt["axioms"],
         axioms_scope="complete_checked_closure" if state == "complete" else "last_successful_prefix_only",
         module_set_hash=receipt["module_set_hash"],
         module_set_hash_algorithm=receipt["module_set_hash_algorithm"],
-        workers=receipt["workers"], invocation_cpu_s=receipt["cpu_ns"]/1e9,
-        invocation_wall_s=receipt["wall_ns"]/1e9,
-        cumulative_segment_cpu_s=(receipt["cumulative_segment_cpu_ns"]/1e9
-            if type(receipt.get("cumulative_segment_cpu_ns")) is int else None),
+        workers=receipt["workers"], invocation_cpu_s=uint64(receipt["cpu_ns"], "cpu_ns")/1e9,
+        invocation_wall_s=uint64(receipt["wall_ns"], "wall_ns")/1e9,
+        cumulative_segment_cpu_s=(uint64(receipt["cumulative_segment_cpu_ns"], "cumulative_segment_cpu_ns")/1e9
+            if receipt.get("cumulative_segment_cpu_ns") is not None else None),
         per_module_costs_available=False,
         source_binding="not established: receipt v1 covers compiled artifacts; source digest is not included",
         trusted_local_checkpoints=receipt.get("trusted_local_checkpoints"),
