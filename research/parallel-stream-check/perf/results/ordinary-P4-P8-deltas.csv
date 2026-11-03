@@ -1,0 +1,5 @@
+P4,P8,extra_CPU_s,extra_original_kernel_CPU_s,fraction_of_extra_CPU_in_kernel
+full-plain-P4-r1-after,full-plain-P8-r1-after,76.2681419999999,69.93851667199999,0.917008266334849
+full-plain-P4-r1-after,full-plain-P8-r1-before,70.16694899999993,65.89360342300006,0.939097457736122
+full-plain-P4-r1-before,full-plain-P8-r1-after,69.4171399999999,66.821275781,0.9626048520725586
+full-plain-P4-r1-before,full-plain-P8-r1-before,63.31594699999994,62.776362532000064,0.9914779057478226

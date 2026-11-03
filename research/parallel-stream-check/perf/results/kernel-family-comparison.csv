@@ -1,0 +1,12 @@
+scope,category,P1_Gcycles,P2_Gcycles,P4_Gcycles,P8_Gcycles,P8_minus_P4_Gcycles,meaning
+ordinary_kernel_anchored,allocation_and_free,77.343014846,74.36547519,68.476621753,76.992238032,8.515616279,period-weighted samples; inline RC may appear in other families
+ordinary_kernel_anchored,hash_and_cache_lookup,262.801764756,258.772537512,266.394725102,311.379993311,44.985268209,period-weighted samples; inline RC may appear in other families
+ordinary_kernel_anchored,other_kernel_type_inference,104.860518193,83.415232216,87.944848153,92.923246601,4.978398448,period-weighted samples; inline RC may appear in other families
+ordinary_kernel_anchored,other_or_unresolved,0.130363641,0.064133775,1.21641244,0.084878373,-1.131534067,period-weighted samples; inline RC may appear in other families
+ordinary_kernel_anchored,reference_counts_and_destruction,87.889126287,82.688425335,88.559751583,107.170072491,18.610320908,period-weighted samples; inline RC may appear in other families
+ordinary_kernel_anchored,whnf_and_defeq_including_unresolved_inlines,140.998253364,128.718535565,140.837028642,149.643434275,8.806405633,period-weighted samples; inline RC may appear in other families
+ordinary_worker_kernel_unanchored,allocation_and_free,28.331500205,29.580466137,29.108398092,32.592942965,3.484544873,period-weighted samples; inline RC may appear in other families
+ordinary_worker_kernel_unanchored,hash_and_cache_lookup,147.362101988,164.305144032,179.078140476,241.127399219,62.049258743,period-weighted samples; inline RC may appear in other families
+ordinary_worker_kernel_unanchored,other_kernel_type_inference,4.747073853,5.068382352,4.826563227,5.071166975,0.244603748,period-weighted samples; inline RC may appear in other families
+ordinary_worker_kernel_unanchored,reference_counts_and_destruction,27.231220627,27.215499084,34.106827052,44.546127743,10.439300691,period-weighted samples; inline RC may appear in other families
+ordinary_worker_kernel_unanchored,whnf_and_defeq_including_unresolved_inlines,129.22754171,130.555977981,141.619565213,151.348867079,9.729301866,period-weighted samples; inline RC may appear in other families

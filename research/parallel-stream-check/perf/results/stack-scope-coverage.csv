@@ -1,0 +1,5 @@
+workers,strict_Gcycles,unanchored_worker_kernel_Gcycles,strict_fraction_of_both,total_sampled_Gcycles,interpretation
+1,674.023041087,336.899438383,0.6667405807815971,1409.795401612,"stack coverage indicator, not fraction of all original-check CPU"
+2,628.024339593,356.725469586,0.6377501510932944,1345.288357475,"stack coverage indicator, not fraction of all original-check CPU"
+4,653.429387673,388.73949406,0.6269899237313884,1393.985930214,"stack coverage indicator, not fraction of all original-check CPU"
+8,738.193863083,474.686503981,0.6086287511355584,1563.853739006,"stack coverage indicator, not fraction of all original-check CPU"

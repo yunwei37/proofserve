@@ -1,6 +1,9 @@
 key,workers,arm,repeat,TID,observed_start_cores,checks,allocation_units,kernel_cpu_s,caveat
 full-plain-P1-r1-after,1,plain,r1-after,553831,0,237863,3283925639,469.327067399,core set across checks is not a time ordered migration trace
 full-plain-P1-r1-before,1,plain,r1-before,542132,0,237863,3283925639,465.913061446,core set across checks is not a time ordered migration trace
+full-plain-P2-r1-after,2,plain,r1-after,564141,0;1,79525,1189000412,171.160817667,core set across checks is not a time ordered migration trace
+full-plain-P2-r1-after,2,plain,r1-after,564143,0;1,79758,1203105130,152.163138518,core set across checks is not a time ordered migration trace
+full-plain-P2-r1-after,2,plain,r1-after,564144,0;1,78580,891820097,124.143849012,core set across checks is not a time ordered migration trace
 full-plain-P2-r1-before,2,plain,r1-before,556444,0;1,79045,852108801,124.758408381,core set across checks is not a time ordered migration trace
 full-plain-P2-r1-before,2,plain,r1-before,556445,0;1,80026,1455252477,184.33380443,core set across checks is not a time ordered migration trace
 full-plain-P2-r1-before,2,plain,r1-before,556446,0;1,78792,976564361,139.223554532,core set across checks is not a time ordered migration trace
