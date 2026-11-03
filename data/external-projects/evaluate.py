@@ -19,7 +19,7 @@ def main():
  p.add_argument('--upstream-commit',required=True);p.add_argument('--checker-commit',required=True)
  p.add_argument('--workers',type=int,default=4)
  a=p.parse_args();a.project=a.project.resolve(strict=True);a.out=a.out.resolve()
- assert list(os.sched_getaffinity(0))==list(range(8)),'invoke with flock P-core lock and taskset0-7'
+ assert sorted(os.sched_getaffinity(0))==list(range(8)),'invoke with flock P-core lock and taskset0-7'
  source_audit=json.loads(a.source_audit.read_text())
  expected=set(source_audit['coverage']['covered_modules'])
  compiled={'.'.join(x.relative_to(a.project/'.lake/build/lib/lean').with_suffix('').parts)for x in(a.project/'.lake/build/lib/lean').rglob('*.olean')}

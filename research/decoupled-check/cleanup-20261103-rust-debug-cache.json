@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-03T22:47:56.769225+00:00",
+  "path": "/workspaces/.agent-state/gpu-smt-rust-development/target/debug",
+  "allocated_bytes_before": 2931290112,
+  "before": {
+    "total": 134951424000,
+    "used": 112661819392,
+    "free": 22272827392
+  },
+  "after": {
+    "total": 134951424000,
+    "used": 109730529280,
+    "free": 25204117504
+  },
+  "observed_used_decrease_bytes": 2931290112,
+  "reason": "O-owned regenerable Rust debug/incremental build outputs after complete passed workspace tests/clippy/docs/release build and portable release CI. No Rust build, binary, FD or mapping uses this path. Release binary, source packages, registry source cache, installed bundles and all validation/raw research logs retained.",
+  "qualification": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/rust-validation-23930903085593.json"
+}

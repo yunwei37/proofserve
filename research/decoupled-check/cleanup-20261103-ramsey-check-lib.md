@@ -52,3 +52,9 @@ The deleted check-lib contained only hardlinks. Tracing its inodes found190remai
   "reason": "The190remaining local aliases of the same retired Ramsey check-lib artifacts; all now single-link, no live process or current checker configuration reference. Common artifacts still linked by active SubexponentialSAT and other captures remain untouched.",
   "raw_manifest": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/cleanup-producer-ai-manifest-20261103.json"
 }
+
+## Validated Rust cache and retained deliverables
+
+The O-owned Rust debug/incremental tree was also retired after the full tests, clippy, rustdoc and release build had passed, with no live Rust process, mapping or FD. This recovered 2931290112 bytes. The release binary, source .crate files, registry sources, installed bundle and original qualification logs remain. Total observed reclamation of this cleanup boundary (Ramsey namespace metadata, its last190artifact aliases and Rust debug cache) is5394014976bytes; earlier737MBsource-auxiliary cleanup is separate. The observed final volume usage is81.31%, below the85% capture stop.
+
+Per-file artifact manifests are retained only on the PVC; the committed CSV is a compact file-type summary.
