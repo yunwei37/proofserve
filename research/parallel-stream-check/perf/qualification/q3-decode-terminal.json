@@ -1,0 +1,22 @@
+{
+  "state": "complete",
+  "events": 5,
+  "sample_counts": {
+    "cpu_core/cpu-cycles/u": 3980
+  },
+  "samples_without_period": {},
+  "worker_TIDs": [
+    504919,
+    504920,
+    504921,
+    504922,
+    504923,
+    504924,
+    504925,
+    504926,
+    504927,
+    504928
+  ],
+  "scope": "weighted samples, not exact per-category hardware counts",
+  "inline_limitation": "SDK C++ inline debug coverage incomplete; atomic instructions require annotation"
+}

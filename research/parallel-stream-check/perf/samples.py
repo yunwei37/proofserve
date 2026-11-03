@@ -12,9 +12,9 @@ def family(stack):
   low=name.lower()
   if any(x in low for x in ['lean_inc_ref','lean_dec_ref','lean_mark_mt','lean::object_ref::~','lean::object_ref::operator=']):
    return 'reference_counts_and_destruction'
-  if any(x in low for x in ['mi_malloc','mi_free','_mi_','malloc','calloc','realloc','operator new','operator delete','lean_alloc','lean_free']):
+  if low.startswith(('mi_','_mi_','cfree')) or any(x in low for x in ['mi_malloc','mi_free','_mi_','malloc','calloc','realloc','operator new','operator delete','lean_alloc','lean_free']):
    return 'allocation_and_free'
-  if any(x in low for x in ['__hash_table','hashmap','dhashmap','::find(','::cache_','::hash(','sharecommon','share_common']):
+  if any(x in low for x in ['__hash_table','hashmap','dhashmap','lean_environment_find','environment::find(','::find(','::cache_','::hash(','sharecommon','share_common']):
    return 'hash_and_cache_lookup'
   if any(x in low for x in ['type_checker::whnf','type_checker::is_def_eq','type_checker::quick_is_def_eq',
     'type_checker::reduce_','type_checker::unfold_']):

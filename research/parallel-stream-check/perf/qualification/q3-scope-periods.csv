@@ -1,0 +1,6 @@
+event,scope,sampled_period
+cpu_core/cpu-cycles/u,ordinary_kernel_anchored,116332468423
+cpu_core/cpu-cycles/u,ordinary_worker_kernel_unanchored,9108531759
+cpu_core/cpu-cycles/u,ordinary_worker_other_or_truncated,2371826822
+cpu_core/cpu-cycles/u,outside_or_unresolved,9314120992
+cpu_core/cpu-cycles/u,serial_or_other_kernel,29330679014
