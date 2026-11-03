@@ -50,8 +50,13 @@ Sampled RSS and cgroup-charged memory are different quantities; neither a
 sampled threshold nor an observed peak is a kernel hard RSS quota.
 Host-restart interruptions are excluded, not relabeled as native censors.
 
-The strata combine fixed source-size percentile boundaries, source import
-depth bins, and any explicit comment/string-masked decide +kernel occurrence.
+The strata combine fixed source-size percentile boundaries (4,400 / 15,057 /
+80,757 bytes for the frozen 50th/90th/99th-percentile cuts), source import
+depth bins (1–10 / 11–100 / 101+), and any explicit comment/string-masked
+decide +kernel occurrence. Depth is the longest unit-weight source-import
+chain inside the pinned universe, excluding external dependency depth. Source
+module identity uses the longest matching of lean/ and the nested
+lean/ComparatorChallenges/HodgeConjectureCMAbelianVarieties/ source roots.
 regime_proxy is computation_certificate for that occurrence, otherwise
 ordinary_mathematics. This matches the W probability design; it is **not**
 an elaborated cost classifier and can miss macro-generated or other expensive

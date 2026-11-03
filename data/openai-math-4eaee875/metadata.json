@@ -17,5 +17,16 @@
   "checker_numbers": "fixed selected-closure transfers, not actual whole-library verification",
   "classifications": "lexical any decide +kernel, not runtime cost ground truth",
   "interval_scope": "source sampling with fixed transfer factors; calibration/model uncertainty excluded",
-  "scenario_scope": "missing-cost class min/max and selected closure factor sensitivity, not CI"
+  "scenario_scope": "missing-cost class min/max and selected closure factor sensitivity, not CI",
+  "source_size_cut_bytes": [
+    4400,
+    15057,
+    80757
+  ],
+  "source_roots": [
+    "lean",
+    "lean/ComparatorChallenges/HodgeConjectureCMAbelianVarieties"
+  ],
+  "import_depth_scope": "longest source-import chain internal to the pinned universe; external dependency depth excluded",
+  "completed_cost_semantics": "native compiler completion; not axiom-free or independent proof acceptance"
 }
