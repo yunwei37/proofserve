@@ -354,11 +354,18 @@ def audit(project, build_roots=None, receipt=None, cost_log=None, lake_config=No
 def summary(report):
     coverage = report["coverage"]
     omitted = coverage["omitted_modules"]
-    return (f'{report["source_files_parsed"]}/{report["source_files_discovered"]} local source files parsed; {report["source_bytes"]} parsed source bytes.\n'
+    compiled = report["compiled_evidence"]
+    axioms = compiled.get("axioms")
+    axiom_text = ("unavailable" if axioms is None else
+                  f'{len(axioms)} reported declarations ({compiled["axioms_scope"]})')
+    text = (f'{report["source_files_parsed"]}/{report["source_files_discovered"]} local source files parsed; {report["source_bytes"]} parsed source bytes.\n'
         f'Default/build coverage: {coverage["status"]}; omitted: '
         + ("unknown" if omitted is None else str(len(omitted))) + ".\n"
         + f'Explicit decide +kernel sites: {report["lexical_counts"].get("decide_plus_kernel", 0)} (lexical).\n'
-        + f'Costs: {report["costs_status"]}; compiled axioms: {report["compiled_evidence"]["status"]}.\n')
+        + f'Costs: {report["costs_status"]}; compiled receipt: {compiled["status"]}; axioms: {axiom_text}.\n')
+    if compiled["status"] != "unavailable":
+        text += "Receipt describes compiled artifacts; current source binding is not established.\n"
+    return text
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)

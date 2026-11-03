@@ -199,6 +199,11 @@ class AuditTests(unittest.TestCase):
             self.assertIsNone(r["axioms"])
             self.assertIsNone(r["accepted"])
             self.assertEqual(r["accepted_roots"], ["Demo"])
+            report = dict(source_files_parsed=1, source_files_discovered=1, source_bytes=1,
+                coverage=dict(omitted_modules=None, status="unknown"), lexical_counts={},
+                costs_status="unavailable", compiled_evidence=r)
+            self.assertIn("axioms: unavailable", audit.summary(report))
+            self.assertIn("source binding is not established", audit.summary(report))
             raw["status"] = "official_failure"
             raw["rejected_roots"] = [{"root": "Demo", "exit_code": 2}]
             p.write_text(json.dumps(raw))
