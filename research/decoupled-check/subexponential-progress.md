@@ -4,7 +4,7 @@ Review: 自审.
 
 **Historical whole-library point:2488 /163097accepted source IDs;10744dependencies;0.694505kernelCPUh;32attempts/31successful;9124producer errors/151485blocked. It is partial and retired, not this SubexponentialSAT denominator.**
 
-**SubexponentialSAT phase stream: baseline source coverage 14721/14721 closure nodes (reused 10744, new 3977) (3977/3977targets); kernel accepts 0/3977targets and 5500dependencies; kernelCPU 0.185545h; current segment 11; at least 19 segments (500 nodes each) remain.**
+**SubexponentialSAT phase stream: baseline source coverage 14721/14721 closure nodes (reused 10744, new 3977) (3977/3977targets); kernel accepts 0/3977targets and 6000dependencies; kernelCPU 0.210218h; current segment 12; at least 18 segments (500 nodes each) remain.**
 
 These are separate experiment costs. No global CPU estimate is formed by adding or rescaling this prefix. Producer uses official SDK/cache Meta/IR; checker consumes exact source-produced terms. Same-capture immutable shared source artifacts and actual compiler costs are charged once per complete closure; newly built targets use -o/-i/-c. This is summed source compiler work, not a fresh parallel Lake wall time. Oracle cost is a separate qualification. All timing uses P0–7/shared flock/no-M,12GiB total allocation. A complete CPU ratio requires full source, stream and original module-local coverage.
 
@@ -20,11 +20,11 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 - source_reused_cpu_s: 25373.748385
 - source_new_cpu_s: 21532.088263999998
 - kernel_accepted_targets: 0
-- kernel_accepted_dependencies: 5500
-- kernel_cpu_s: 667.960789
-- kernel_cpu_h: 0.1855446636111111
-- current_segment: 11
-- remaining_segments_min: 19
+- kernel_accepted_dependencies: 6000
+- kernel_cpu_s: 756.783746
+- kernel_cpu_h: 0.21021770722222222
+- current_segment: 12
+- remaining_segments_min: 18
 - oracle_qualified: 10744
-- kernel_peak_rss_gib: 3.5612640380859375
+- kernel_peak_rss_gib: 3.727142333984375
 - kernel_over_source_cpu: None
