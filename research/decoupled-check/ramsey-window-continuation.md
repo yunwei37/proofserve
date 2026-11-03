@@ -30,3 +30,21 @@ promise a global filesystem hard quota or control another line's writes.
 The primary full ratio still requires444/444 source targets,11188/11188
 stream modules and11188/11188 module-local qualifications. Existing2488/163097
 global acceptance is not relabelled as full coverage.
+
+
+## Superseded by the user's stop decision (2026-11-03 UTC)
+
+Full Ramsey production was cancelled after the190th target completed.
+The next queued but unstarted flock request was removed, and the controller
+retired; no native process was interrupted. Do not resume its444-target
+source/stream/oracle queue. All retained source terms and raw records remain.
+The earlier target-production2.083CPUh planning transfer was contradicted:
+only190/444targets already cost6.151694CPUh, with254unobserved. It was not
+a bound. The CPU-interval full-closure diagnostic suffix was not executed.
+
+Use the20size-stratified **module-local** retained-prefix references instead,
+with K10 as a separately reported supplemental case. Neither the sample
+nor its bootstrap can establish a complete Ramsey streaming fraction.
+SubexponentialSAT3977targets replaces Ramsey as the next attempted complete
+directory; the prior Transonic preparation remains unlaunched.
+See ramsey-stop.json, ramsey-prefix-bias.json and subexponential-plan.md.

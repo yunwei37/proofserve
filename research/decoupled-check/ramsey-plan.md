@@ -98,3 +98,21 @@ model is a budget only; no forecast enters the final ratio.
 The direct original-package-path differential has actually passed4controls.
 The initial metadata-only copy failure remains separate. Production retains
 complete runtime facets; recompiled core data are used only as checker input.
+
+
+## Superseded by the user's stop decision (2026-11-03 UTC)
+
+Full Ramsey production was cancelled after the190th target completed.
+The next queued but unstarted flock request was removed, and the controller
+retired; no native process was interrupted. Do not resume its444-target
+source/stream/oracle queue. All retained source terms and raw records remain.
+The earlier target-production2.083CPUh planning transfer was contradicted:
+only190/444targets already cost6.151694CPUh, with254unobserved. It was not
+a bound. The CPU-interval full-closure diagnostic suffix was not executed.
+
+Use the20size-stratified **module-local** retained-prefix references instead,
+with K10 as a separately reported supplemental case. Neither the sample
+nor its bootstrap can establish a complete Ramsey streaming fraction.
+SubexponentialSAT3977targets replaces Ramsey as the next attempted complete
+directory; the prior Transonic preparation remains unlaunched.
+See ramsey-stop.json, ramsey-prefix-bias.json and subexponential-plan.md.

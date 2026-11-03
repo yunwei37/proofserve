@@ -36,7 +36,7 @@ def native():
  return n
 def next_action():
  frame=json.loads((A/'frame.json').read_text());s=state()
- if s['phase']in ['complete','failure']:return None
+ if s['phase']in ['complete','failure','planning_stop']:return None
  built=set(s['built'])
  for i,v in enumerate(frame):
   if v['module']not in built:return['build',str(i)]
@@ -186,6 +186,14 @@ def queue():
  # The source is finite; every successful task advances a source, stream or
  # reference cursor. Stop on a real failure, retaining original evidence.
  while True:
+  current=reduce()
+  if current['phase']=='source' and current['source_targets_built']:
+   n=current['source_targets_built']
+   remaining=current['source_new_cpu_s']/n*(3977-n)/3600+2272.467495/3600+2.0
+   atomic(A/'remaining-estimate.json',dict(observed_targets=n,remaining_cpu_h_scenario=remaining,limit_h=12,scope='Dependency-ordered prefix mean; planning scenario, not bound; includes stream and reference reserve.'))
+   if remaining>12:
+    s=state();s['phase']='planning_stop';s['planning_stop']=dict(reason='Remaining native CPU forecast exceeds user12h decision',remaining_cpu_h=remaining)
+    atomic(A/'state.json',s);reduce();publish();break
   action=next_action()
   if action is None:reduce();publish();break
   key='task-'+str(time.monotonic_ns())
