@@ -32,3 +32,13 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 ## User12h route decision after the finite pilot
 
 Review: 自审. All25source calls succeeded; mean4.227595CPU-s/target. Full comparison projection **12.350CPUh**, including7.048263h retained common source work, exceeds12h. Remaining native forecast including2h reference reserve is7.272h; this is not charged as already executed. Conservatively honoring the total-comparison condition, the full queue is not launched. All25typed inputs/raw results are retained, fresh stream0/3977. Next: complete Transonic466. This25-file dependency-ordered pilot is not an unbiased3977cost estimate or proof failure.
+
+
+## Active user clarification (supersedes preceding route stop)
+
+Resume from25/3977successful target builds.12hmeans remaining new work:
+5.272200h projected production+stream,7.272200h including2h reference reserve.
+The7.048263h completed dependency source work will not rerun and remains
+charged only in the full-closure comparison denominator. Wait for the already
+started Transonic pilot to retire, then continue. Previous stop interpretation
+is retained above as history; it is no longer the current route decision.

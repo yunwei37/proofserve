@@ -1,0 +1,10 @@
+{
+  "prior_interpretation_retained": "subexponential-pilot-route-decision.json",
+  "current": {
+    "time_utc": "2026-11-03T06:24:59Z",
+    "text": "12h applies only to future new work; common source records stay charged in full-closure denominator but are not rerun. Resume25successful targets. Transonic follows later."
+  },
+  "retained_target_builds": 25,
+  "rebuild_prior_targets": false,
+  "threshold_basis": "Remaining newly executed native work, not already recorded dependency CPU"
+}

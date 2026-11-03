@@ -79,3 +79,13 @@ Historical whole-library accepted2488/163097; certified dependencies10744; kerne
 ### SubexponentialSAT route stopped after25successful sources
 
 Pilot mean4.227595CPU-s; total-comparison scenario12.350CPUh exceeds the user12h condition (including retained common work). No full queue was launched, no new kernel accepts. Preserve25/3977source builds; next attempt is Transonic466. Historical whole-library counts stay unchanged; no source build is silently counted as fresh stream acceptance.
+
+
+### User clarification: SubexponentialSAT resumes from25/3977
+
+The12hcondition applies to **new remaining work**, excluding7.048263h of
+already recorded dependencies. Resume the25successful target source outputs;
+fresh stream remains0/3977,0CPUh. Remaining production+stream scenario5.2722h,
+separate reference reserve2h. Transonic pilot was already running when the
+clarification arrived: allow this bounded window to retire, no further queue.
+The preceding total-cost route stop is superseded, preserved as history.

@@ -66,3 +66,31 @@ cost predictor or semantic interval classifier. All six sorry/admit matches
 were read: they are English 'admit' words in comments, zero 'sorry' tokens;
 this is not a dependency-axiom audit. See subexponential-input-census.json.
 The empirical pilot and per-window12h reassessment remain necessary.
+
+
+## User clarification: resume the3977-target directory
+
+The user clarified12h means **future new work**, excluding completed common
+dependencies. The25-file pilot succeeded at4.22759456CPU-s/target. Its
+12.349822h total-comparison scenario includes7.048263h already measured
+common production. Remaining production+fresh stream is5.272200h; adding
+the explicit separate2h reference reserve gives7.272200h. Resume the25exact
+typed outputs and their original clocks, no repeat. The earlier conservative
+route decision is preserved as superseded evidence, not erased.
+
+Transonic's already-started bounded pilot is allowed to retire naturally,
+with no subsequent Transonic queue. Only afterwards start the resumed
+SubexponentialSAT queue, still same repaired providers/P-core lock/no-M/
+12GiB cgroup protocol. Per-window remaining-work scenarios alone control
+the user's12h condition; retained dependency work stays in the full ratio.
+
+Final report must show:
+(1) full fresh-closure checker / full recorded source-work(including common
+dependency records), CPU and summed native wall;
+(2) the same full fresh-closure checker / **new target-only source work**,
+excluding retained dependency source costs. This second ratio measures the
+incremental production point; it is not a target-only checker or pure kernel
+fraction, since checking still traverses common dependencies. Reference
+qualification and lock/setup time are separately reported, not folded in.
+Acceptance must match exact full frame and module-local references, with
+native malformed-proof controls and a post-run review of9eea8be static risks.
