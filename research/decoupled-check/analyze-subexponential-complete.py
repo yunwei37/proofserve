@@ -27,6 +27,10 @@ def main():
  full_cpu_ratio=kc/(nc+rc),incremental_cpu_ratio=kc/nc,full_summed_child_wall_ratio=kw/(nw+rw),incremental_summed_child_wall_ratio=kw/nw,
  checker_peak_rss_gib=max(v["cell"]["peak_rss_kib"]for v in checks)/1024**2,separate_reference_cpu_s=sum(cpu(v)for v in refs),
  separate_reference_wall_s=sum(v["cell"]["wall_s"]for v in refs),negative_controls_rejected=3)
+ final_events=[json.loads(l)for l in(A/(checks[-1]["cell"]["key"]+".stdout")).read_text().splitlines()if l.startswith("{")]
+ terminal=next(v for v in reversed(final_events)if v.get("event")=="complete")
+ assert terminal["modules"]==14721
+ out["native_complete_event"]=terminal
  (D/"subexponential-complete-metrics.json").write_text(json.dumps(out,indent=2)+"\n")
  parts=[dict(component="retained dependency source work",cpu_s=rc,child_wall_s=rw,executed_now=False),
  dict(component="new target source work(all attempts)",cpu_s=nc,child_wall_s=nw,executed_now=True),
@@ -39,6 +43,7 @@ def main():
  text+="| Accounting scope | Source CPU-s | Checker CPU-s | CPU ratio | Summed child-wall ratio |\n|---|---:|---:|---:|---:|\n"
  text+=f"| Full closure, retained dependencies included |{nc+rc:.3f}|{kc:.3f}|**{out['full_cpu_ratio']:.2%}**|{out['full_summed_child_wall_ratio']:.2%}|\n"
  text+=f"| New-target production only, retained dependencies excluded |{nc:.3f}|{kc:.3f}|**{out['incremental_cpu_ratio']:.2%}**|{out['incremental_summed_child_wall_ratio']:.2%}|\n\n"
+ text+=f"Native final accounting: **{terminal.get('unique_shared_kernel_declarations','unknown')}** shared kernel declarations; **{terminal.get('module_local_fallbacks','unknown')}** original module-local fallbacks; **{terminal.get('skipped_unsafe_partial','unknown')}** unsafe/partial entries outside this safe-declaration replay policy. Fallback CPU is included. Accepted-module equality is under the identical documented stream/reference adapter policy, not a claim that every unsafe runtime definition was kernel-replayed or that all declarations used only one shared environment.\n\n"
  text+="Both rows use the **same fresh full-closure checker**, including dependency rechecking. The second removes only already-completed dependency source costs, so it is not target-only checking or a pure kernel fraction. Retained source costs are actual matching-artifact compiler records, charged once, never rerun or estimated. Source emits olean/ilean/C, excluding C linking; it is not a fresh parallel Lake service.\n\n"
  text+=f"Checker**{kc/3600:.6f}CPUh**, peakRSS**{out['checker_peak_rss_gib']:.3f}GiB**. Separate reference qualification**{out['separate_reference_cpu_s']/3600:.6f}CPUh**. Source failures{out['source_failures']}, sorry warnings{out['source_sorry_warnings']}; all source attempts charged. Negative controls and parent dispatch/publication excluded from primary ratios, retained separately.\n\n"
  text+="Wall ratios sum native child intervals including startup, excluding FIFO waits, Git, interruptions and untimed setup. No continuous from-scratch episode wall run or global163097-module total is claimed. P0–7/flock/no-M/external11.75GiB native cgroup+256MiB parent reserve; one O native at a time.\n\n"
