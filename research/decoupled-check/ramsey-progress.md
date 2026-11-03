@@ -4,7 +4,7 @@ Review: 自审.
 
 **Historical whole-library point:2488 /163097accepted source IDs;10744dependencies;0.694505kernelCPUh;32attempts/31successful;9124producer errors/151485blocked. It is partial and retired, not this Ramsey denominator.**
 
-**Ramsey phase source: baseline source coverage 10927/11188 closure nodes (reused 10744, new 183) (183/444targets); kernel accepts 0/444targets and 0dependencies; kernelCPU 0.000000h; current segment 0; at least 23 segments (500 nodes each) remain.**
+**Ramsey phase source: baseline source coverage 10928/11188 closure nodes (reused 10744, new 184) (184/444targets); kernel accepts 0/444targets and 0dependencies; kernelCPU 0.000000h; current segment 0; at least 23 segments (500 nodes each) remain.**
 
 These are separate experiment costs. No global CPU estimate is formed by adding or rescaling this prefix. Producer uses official SDK/cache Meta/IR; checker consumes exact source-produced terms. Same-capture immutable shared source artifacts and actual compiler costs are charged once per complete closure; newly built targets use -o/-i/-c. This is summed source compiler work, not a fresh parallel Lake wall time. Oracle cost is a separate qualification. All timing uses P0–7/shared flock/no-M,12GiB total allocation. A complete CPU ratio requires full source, stream and original module-local coverage.
 
@@ -12,13 +12,13 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 - phase: source
 - target_modules: 444
 - closure_modules: 11188
-- source_built: 10927
+- source_built: 10928
 - reused_source_nodes: 10744
-- new_source_nodes_built: 183
-- source_targets_built: 183
-- source_cpu_s: 42941.906294
+- new_source_nodes_built: 184
+- source_targets_built: 184
+- source_cpu_s: 43658.172927
 - source_reused_cpu_s: 25373.748385
-- source_new_cpu_s: 17568.157909
+- source_new_cpu_s: 18284.424542
 - kernel_accepted_targets: 0
 - kernel_accepted_dependencies: 0
 - kernel_cpu_s: 0
