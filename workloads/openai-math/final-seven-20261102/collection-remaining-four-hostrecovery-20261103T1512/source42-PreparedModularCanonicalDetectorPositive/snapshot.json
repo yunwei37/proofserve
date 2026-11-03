@@ -1,0 +1,37 @@
+{
+  "utc": "2026-11-03T22:07:28.804659+00:00",
+  "completed_original_costs": 42,
+  "complete_strata": 21,
+  "covered_modules": 163097,
+  "uncovered_modules": 0,
+  "missing_domain_fraction": 0.0,
+  "scenario_CPU_h": {
+    "a_build": [
+      279.1200782927778,
+      279.1200782927778
+    ],
+    "b_serial_stream": [
+      18.84480863478984,
+      24.70654581935713
+    ],
+    "c_parallel_stream": [
+      25.63415295493866,
+      33.62091969193577
+    ],
+    "d_plus_qualified_chunk": [
+      25.663619406332927,
+      33.65047339405564
+    ]
+  },
+  "computation_share_scenario": [
+    0.2061707800786011,
+    0.2061707800786011
+  ],
+  "new_original_module": "OAI.Combinatorics.Progressions.Estimates.PreparedModularCanonicalDetectorPositive",
+  "new_original_status": "compile_ok",
+  "new_original_CPU_s": "106.391648",
+  "raw_point": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-PreparedModularCanonicalDetectorPositive-targetP-remaining-four-hostrecovery-20261103T1512",
+  "scenario_is_CI": false,
+  "actual_whole_library": false,
+  "audit": "automatic provenance checks passed; thread scientific self-review remains separate"
+}
