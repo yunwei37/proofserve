@@ -24,8 +24,13 @@ normalization/definitional equality also performs repeated constant access.
 Those paths provide concrete places for RCand lookup costs to appear.
 The theorem insertion path additionally canonicalizes persistent terms before
 checking, so hash-consing/canonicalization must be considered separately from
-semantic whnf/defeq. No assertion of a global lock is made without examining
-its implementation and measured samples.
+semantic whnf/defeq. The matched sharecommon header/source was subsequently
+read directly: its tables belong to each helper instance, and the theorem
+path constructs a local helper. A hypothetical global hash-consing-table lock
+is therefore not supported by that path; local hash/allocation/cache costs
+still need measured samples. This is a source observation, not measured time.
+- https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/runtime/sharecommon.h
+- https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/runtime/sharecommon.cpp
 
 - [Type checker](https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/kernel/type_checker.cpp)
 - The local frozen ParallelCore.c / SDKinclude/lean/lean.h and static-sites

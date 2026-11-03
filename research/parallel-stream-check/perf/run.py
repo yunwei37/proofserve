@@ -27,7 +27,7 @@ def main():
   for ev in selectors():argv+=['-e',ev]
   argv+=['--']+app
  else:
-  argv=['perf','record','--no-buildid-cache','-z','1','-s','--running-time',
+  argv=['perf','record','--no-buildid-cache','--compression-level=1','-s','--running-time',
    '--call-graph','dwarf,16384','-F','99','-o',str(ROOT/(key+'.perf.data'))]
   # No :S groups and no --per-thread: those can disable inheritance. Only the
   # cycles event samples; period=0 followers still provide exit-time -s counts.

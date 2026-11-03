@@ -1,0 +1,24 @@
+{
+  "pid": 504330,
+  "birth": "772216809",
+  "argv": [
+    "flock",
+    "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=5",
+    "300",
+    "taskset",
+    "-c",
+    "0-7",
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/perf_run.py",
+    "record",
+    "8",
+    "q3",
+    "--control"
+  ],
+  "utc": "2026-11-03T01:33:04Z",
+  "delta": "record compression optional argument requires --compression-level=1; q2 retained"
+}

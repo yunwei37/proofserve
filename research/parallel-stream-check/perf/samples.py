@@ -14,7 +14,7 @@ def family(stack):
    return 'reference_counts_and_destruction'
   if any(x in low for x in ['mi_malloc','mi_free','_mi_','malloc','calloc','realloc','operator new','operator delete','lean_alloc','lean_free']):
    return 'allocation_and_free'
-  if any(x in low for x in ['__hash_table','hashmap','dhashmap','::find(','::cache_','::hash(']):
+  if any(x in low for x in ['__hash_table','hashmap','dhashmap','::find(','::cache_','::hash(','sharecommon','share_common']):
    return 'hash_and_cache_lookup'
   if any(x in low for x in ['type_checker::whnf','type_checker::is_def_eq','type_checker::quick_is_def_eq',
     'type_checker::reduce_','type_checker::unfold_']):
@@ -31,7 +31,8 @@ def process_event(p):
   return
  if first is None:
   first={'keys':sorted(p),'sample':sample,'callchain':p.get('callchain',[])[:5],
-   'symbol':p.get('symbol'),'ev_name':event}
+   'symbol':p.get('symbol'),'ev_name':event,'dso':p.get('dso'),'symoff':p.get('symoff'),
+   'dso_map_start':p.get('dso_map_start'),'dso_map_end':p.get('dso_map_end')}
   (OUT/'first-sample-shape.json').write_text(json.dumps(first,indent=2,default=str))
  chain=p.get('callchain',[]);stack=[(e.get('sym') or {}).get('name') or '[unknown]' for e in chain]
  leaf=p.get('symbol') or (stack[0] if stack else '[unknown]')
@@ -47,10 +48,10 @@ def process_event(p):
  totals[(event,scope)]+=weight
  categories[(event,scope,category,tid)]+=weight
  symbols[(event,scope,leaf)]+=weight
- addresses[(event,scope,tid,leaf,sample.get('ip',0))]+=weight
+ addresses[(event,scope,tid,leaf,p.get('dso','[unknown]'),p.get('symoff'),sample.get('ip',0))]+=weight
 def write(name,keys,rows):
  with (OUT/name).open('w',newline='') as f:
-  w=csv.writer(f);w.writerow(keys);w.writerows(rows)
+  w=csv.writer(f,lineterminator=chr(10));w.writerow(keys);w.writerows(rows)
 def trace_end():
  write('scope-periods.csv',['event','scope','sampled_period'],
   [(*k,v) for k,v in sorted(totals.items())])
@@ -61,7 +62,7 @@ def trace_end():
  # Preserve all per-IP/thread weights compactly for later inline annotation.
  # Only small derived tables, never this complete address file, enter Git.
  with gzip.open(OUT/'address-periods.csv.gz','wt',newline='') as f:
-  w=csv.writer(f);w.writerow(['event','scope','TID','leaf_symbol','sample_IP','sampled_period'])
+  w=csv.writer(f,lineterminator=chr(10));w.writerow(['event','scope','TID','leaf_symbol','DSO','symbol_offset','sample_IP','sampled_period'])
   w.writerows((*k,v) for k,v in addresses.items())
  (OUT/'decode-terminal.json').write_text(json.dumps(dict(state='complete' if not samples_without_period else 'invalid_missing_period',
   events=len(totals),sample_counts=dict(sample_counts),samples_without_period=dict(samples_without_period),

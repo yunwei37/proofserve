@@ -1,0 +1,17 @@
+{
+  "state": "partial",
+  "error": "RuntimeError('native cell incomplete or verdict mismatch; preserve all outputs')",
+  "cells": [
+    {
+      "arm": "plain",
+      "native_state": "complete",
+      "returncode": 0
+    },
+    {
+      "arm": "stat",
+      "native_state": "complete",
+      "returncode": 0
+    }
+  ],
+  "utc": "2026-11-03T01:32:09Z"
+}

@@ -1,0 +1,7 @@
+{"counter-value" : "211793745860.000000", "unit" : "", "event" : "cpu_core/cpu-cycles/u", "event-runtime" : 78040993754, "pcnt-running" : 100.00, "metric-value" : "0.000000", "metric-unit" : "GHz"}
+{"counter-value" : "332175553747.000000", "unit" : "", "event" : "cpu_core/instructions/u", "event-runtime" : 78040993754, "pcnt-running" : 100.00, "metric-value" : "1.568392", "metric-unit" : "insn per cycle"}
+{"counter-value" : "244000585055.000000", "unit" : "", "event" : "cpu_core/ref-cycles/u", "event-runtime" : 78040993754, "pcnt-running" : 100.00, "metric-value" : "0.000000", "metric-unit" : "(null)"}
+{"counter-value" : "9108073.000000", "unit" : "", "event" : "cpu_core/mem_load_retired.l3_miss/u", "event-runtime" : 78040993754, "pcnt-running" : 100.00, "metric-value" : "0.000000", "metric-unit" : "(null)"}
+{"counter-value" : "683461088.000000", "unit" : "", "event" : "cpu_core/mem_inst_retired.lock_loads/u", "event-runtime" : 78040993754, "pcnt-running" : 100.00, "metric-value" : "0.000000", "metric-unit" : "(null)"}
+{"counter-value" : "92331273.000000", "unit" : "", "event" : "cpu_core/mem_load_l3_hit_retired.xsnp_hitm/u", "event-runtime" : 78040993754, "pcnt-running" : 100.00, "metric-value" : "0.000000", "metric-unit" : "(null)"}
+{"counter-value" : "54811816.000000", "unit" : "", "event" : "cpu_core/ocr.demand_rfo.l3_hit.snoop_hitm/u", "event-runtime" : 78040993754, "pcnt-running" : 100.00, "metric-value" : "0.000000", "metric-unit" : "(null)"}
