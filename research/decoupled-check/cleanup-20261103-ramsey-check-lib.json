@@ -1,0 +1,24 @@
+{
+  "utc": "2026-11-03T22:28:49.703781+00:00",
+  "target": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/check-lib",
+  "files": 53910,
+  "logical_bytes": 10072981160,
+  "allocated_bytes": 10205233152,
+  "single_link_allocated_bytes": 0,
+  "before": {
+    "total": 134951424000,
+    "used": 113693478912,
+    "free": 21241167872
+  },
+  "after": {
+    "total": 134951424000,
+    "used": 113686503424,
+    "free": 21248143360
+  },
+  "observed_used_decrease_bytes": 6975488,
+  "live_references": [],
+  "queued_checker_configs": "no exact target reference",
+  "basis": "Latest explicit instruction to remove retired Ramsey check-lib rebuildable outputs.190-target production/20-sample andK10results remain in committedCSV and progress. Entire raw Ramsey ledger/results/stdout/stderr/commands/source snapshots and all other directories retained.",
+  "hardlink_limit": "Removing a pathname does not free contents while other capture links remain; observed disk delta is reported separately.",
+  "raw_manifest": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/cleanup-check-lib-manifest-20261103.csv"
+}

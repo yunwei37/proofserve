@@ -1,0 +1,20 @@
+{
+  "utc": "2026-11-03T22:31:38.189488+00:00",
+  "path": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/producer-ai",
+  "removed_aliases": 190,
+  "logical_bytes": 2455614280,
+  "allocated_bytes": 2456064000,
+  "before": {
+    "total": 134951424000,
+    "used": 113779716096,
+    "free": 21154930688
+  },
+  "after": {
+    "total": 134951424000,
+    "used": 111323652096,
+    "free": 23610994688
+  },
+  "observed_used_decrease_bytes": 2456064000,
+  "reason": "The190remaining local aliases of the same retired Ramsey check-lib artifacts; all now single-link, no live process or current checker configuration reference. Common artifacts still linked by active SubexponentialSAT and other captures remain untouched.",
+  "raw_manifest": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/cleanup-producer-ai-manifest-20261103.json"
+}

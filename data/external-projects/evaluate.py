@@ -1,16 +1,29 @@
 #!/usr/bin/env python3
 """One installed-tool external-project cell; original inputs must be built first."""
 from pathlib import Path
-import argparse,json,os,subprocess,time,threading,csv,shutil
+import argparse,json,os,subprocess,time,threading,csv,shutil,signal
 LOCK=Path('/workspaces/.agent-state/gpu-smt-captures/pcore.lock')
+ACTIVE=None
+def abort(signum,frame):
+ if ACTIVE is not None:
+  try:(ACTIVE/'cgroup.kill').write_text('1')
+  except OSError:pass
+ raise SystemExit(128+signum)
+signal.signal(signal.SIGTERM,abort)
+signal.signal(signal.SIGINT,abort)
 def main():
+ global ACTIVE
  p=argparse.ArgumentParser(description=__doc__)
- p.add_argument('--project',type=Path,required=True);p.add_argument('--prefix',type=Path,required=True)
+ p.add_argument('--source-audit',type=Path,required=True);p.add_argument('--project',type=Path,required=True);p.add_argument('--prefix',type=Path,required=True)
  p.add_argument('--out',type=Path,required=True);p.add_argument('--name',required=True)
  p.add_argument('--upstream-commit',required=True);p.add_argument('--checker-commit',required=True)
  p.add_argument('--workers',type=int,default=4)
  a=p.parse_args();a.project=a.project.resolve(strict=True);a.out=a.out.resolve()
  assert list(os.sched_getaffinity(0))==list(range(8)),'invoke with flock P-core lock and taskset0-7'
+ source_audit=json.loads(a.source_audit.read_text())
+ expected=set(source_audit['coverage']['covered_modules'])
+ compiled={'.'.join(x.relative_to(a.project/'.lake/build/lib/lean').with_suffix('').parts)for x in(a.project/'.lake/build/lib/lean').rglob('*.olean')}
+ assert expected and expected<=compiled,('default-source preparation incomplete',sorted(expected-compiled))
  a.out.mkdir(parents=True,exist_ok=False)
  cli=(a.prefix/'bin/proofserve').resolve(strict=True);sdk=cli.parents[1]
  metadata=json.loads((sdk/'share/proofserve/bundle.json').read_text())
@@ -19,6 +32,7 @@ def main():
  env.pop('LEAN_PATH',None)
  rows=[]
  def run(label,args):
+  global ACTIVE
   assert shutil.disk_usage('/workspaces').used/shutil.disk_usage('/workspaces').total<.85,'disk ceiling; no native call started'
   # The independent Python parent owns both the sampled-RSS stop and cgroup.
   current=Path('/sys/fs/cgroup')/Path('/proc/self/cgroup').read_text().strip().split('::')[1].lstrip('/')
@@ -28,6 +42,7 @@ def main():
   with(a.out/(label+'.stdout')).open('w')as fo,(a.out/(label+'.stderr')).open('w')as fe:
    start=time.monotonic()
    q=subprocess.Popen(['timeout','--signal=TERM','--kill-after=5','1740']+list(map(str,args)),cwd=a.project,env=env,stdout=fo,stderr=fe,preexec_fn=enter,start_new_session=True)
+   ACTIVE=cg
    stop=threading.Event();sample=dict(peak_tree_rss=0,resource_failure=False,disk_failure=False)
    def watch():
     while not stop.wait(1):
@@ -47,7 +62,7 @@ def main():
       sample['resource_failure']=True;(cg/'cgroup.kill').write_text('1');return
    thread=threading.Thread(target=watch);thread.start()
    _,status,usage=os.wait4(q.pid,0);q.returncode=os.waitstatus_to_exitcode(status)
-   wall=time.monotonic()-start;stop.set();thread.join()
+   wall=time.monotonic()-start;stop.set();thread.join();ACTIVE=None
   row=dict(project=a.name,upstream_commit=a.upstream_commit,bundle_commit=metadata['source_commit'],checker_commit=a.checker_commit,arm=label,repeat=1,returncode=q.returncode,cpu_s=usage.ru_utime+usage.ru_stime,wall_s=wall,wait4_peak_rss_kib=usage.ru_maxrss,cgroup_peak_bytes=int((cg/'memory.peak').read_text()),memory_events=(cg/'memory.events').read_text(),**sample)
   rows.append(row);(a.out/(label+'.result.json')).write_text(json.dumps(row,indent=2)+'\n')
   try:cg.rmdir()
@@ -58,6 +73,7 @@ def main():
  receipt=json.loads((a.out/'proofserve.stdout').read_text())
  assert receipt['status']=='complete'and receipt['execution_path']=='proofserve-parallel'
  roots=receipt['roots'];accepted=set(receipt['accepted'])
+ assert expected<=set(roots),'never accept an unintentionally partial source build as the complete project'
  # Default leanchecker checks each named module while trusting imported proofs.
  # The common local-root set is exact; it is not full-closure checking parity.
  code=run('official-default',[sdk/'bin/lake','env',sdk/'bin/leanchecker','-v']+roots)
