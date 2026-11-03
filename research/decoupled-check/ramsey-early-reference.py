@@ -13,6 +13,8 @@ es,bad=m.events(c["key"]);ids=[v["module"]for v in es if v.get("event")=="accept
 good=c["returncode"]==0 and not bad and ids==[mod]
 m.append(dict(operation="oracle",cell=c,valid=good,accepted=ids,requested=[mod],advanced_before_source_complete=True))
 if good:
+ # Retain any dispatcher-side terminal/resource transition made while this job ran.
+ s=m.state()
  s["oracle_ids"]=sorted(set(s["oracle_ids"])|set(ids));s["tasks"]+=1
  m.atomic(A/"state.json",s)
 m.atomic(A/"early-reference-k10-terminal.json",dict(complete=good,cell=c,accepted=ids,source_progress_preserved=True))

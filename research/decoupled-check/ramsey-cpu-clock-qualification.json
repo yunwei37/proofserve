@@ -1,0 +1,209 @@
+{
+  "review": "\u81ea\u5ba1",
+  "scope": "four native observations on small controls, not full-workload qualification",
+  "build_v1_succeeded": false,
+  "build_v1_failure": "SDK C compiler has no time.h header",
+  "build_v2_succeeded": true,
+  "primary_changed": false,
+  "checkpoint_cross_restore_tested": false,
+  "records": [
+    {
+      "label": "base",
+      "corruption": false,
+      "module": "Init.Prelude",
+      "qualified": true,
+      "cell": {
+        "key": "clock-v2-base-valid",
+        "requested_key": "clock-v2-base-valid",
+        "args": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=5",
+          "120",
+          "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/checkpoint-audit",
+          "audit",
+          "none",
+          "Init.Prelude"
+        ],
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-o-project-540271-clock-v2-base-valid.scope",
+        "memory_max_bytes": 12616466432,
+        "measured": true,
+        "limit_s": 120,
+        "wall_s": 0.23779018502682447,
+        "user_s": 0.213976,
+        "system_s": 0.008964,
+        "peak_rss_kib": 78072,
+        "minor_faults": 2065,
+        "major_faults": 0,
+        "returncode": 0,
+        "cgroup_peak_bytes": 17264640,
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+      },
+      "accepted": [
+        "Init.Prelude"
+      ],
+      "errors": [],
+      "module_cpu": []
+    },
+    {
+      "label": "base",
+      "corruption": true,
+      "module": "Mathlib.Data.Nat.Basic",
+      "qualified": true,
+      "cell": {
+        "key": "clock-v2-base-bad",
+        "requested_key": "clock-v2-base-bad",
+        "args": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=5",
+          "120",
+          "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/checkpoint-audit",
+          "one",
+          "bvar",
+          "Mathlib.Data.Nat.Basic"
+        ],
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-o-project-540271-clock-v2-base-bad.scope",
+        "memory_max_bytes": 12616466432,
+        "measured": true,
+        "limit_s": 120,
+        "wall_s": 0.24869800079613924,
+        "user_s": 0.140121,
+        "system_s": 0.095069,
+        "peak_rss_kib": 897660,
+        "minor_faults": 16990,
+        "major_faults": 0,
+        "returncode": 1,
+        "cgroup_peak_bytes": 78417920,
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+      },
+      "accepted": [],
+      "errors": [
+        "while replaying declaration 'Nat.set_induction':\n(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it"
+      ],
+      "module_cpu": []
+    },
+    {
+      "label": "clock",
+      "corruption": false,
+      "module": "Init.Prelude",
+      "qualified": true,
+      "cell": {
+        "key": "clock-v2-clock-valid",
+        "requested_key": "clock-v2-clock-valid",
+        "args": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=5",
+          "120",
+          "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/cpu-profile/clock-audit-v2",
+          "audit",
+          "none",
+          "Init.Prelude"
+        ],
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-o-project-540271-clock-v2-clock-valid.scope",
+        "memory_max_bytes": 12616466432,
+        "measured": true,
+        "limit_s": 120,
+        "wall_s": 0.290681429207325,
+        "user_s": 0.25542,
+        "system_s": 0.010015,
+        "peak_rss_kib": 73520,
+        "minor_faults": 2252,
+        "major_faults": 0,
+        "returncode": 0,
+        "cgroup_peak_bytes": 17059840,
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+      },
+      "accepted": [
+        "Init.Prelude"
+      ],
+      "errors": [],
+      "module_cpu": [
+        {
+          "event": "module_cpu",
+          "exclusive_process_cpu_ns": "229191700",
+          "module": "Init.Prelude"
+        }
+      ]
+    },
+    {
+      "label": "clock",
+      "corruption": true,
+      "module": "Mathlib.Data.Nat.Basic",
+      "qualified": true,
+      "cell": {
+        "key": "clock-v2-clock-bad",
+        "requested_key": "clock-v2-clock-bad",
+        "args": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=5",
+          "120",
+          "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/cpu-profile/clock-audit-v2",
+          "one",
+          "bvar",
+          "Mathlib.Data.Nat.Basic"
+        ],
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-o-project-540271-clock-v2-clock-bad.scope",
+        "memory_max_bytes": 12616466432,
+        "measured": true,
+        "limit_s": 120,
+        "wall_s": 0.28342209104448557,
+        "user_s": 0.175317,
+        "system_s": 0.09518599999999999,
+        "peak_rss_kib": 891380,
+        "minor_faults": 17120,
+        "major_faults": 0,
+        "returncode": 1,
+        "cgroup_peak_bytes": 78426112,
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+      },
+      "accepted": [],
+      "errors": [
+        "while replaying declaration 'Nat.set_induction':\n(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it"
+      ],
+      "module_cpu": []
+    }
+  ]
+}
