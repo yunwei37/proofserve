@@ -1,0 +1,3 @@
+scenario,source_CPU_h,modeled_check_low_h,modeled_check_high_h
+observed_class_min,278.10515157055556,18.780742223767287,24.615695387506392
+observed_class_max,279.0581900594444,18.84090199117964,24.701005938889203

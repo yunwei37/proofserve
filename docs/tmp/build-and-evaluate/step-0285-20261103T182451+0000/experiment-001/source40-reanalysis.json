@@ -1,0 +1,74 @@
+{
+  "native_count": 1,
+  "native_wall_s": 16.947551851000753,
+  "native_CPU_s": 24.167262,
+  "controller_wall_s": 262.00613065700054,
+  "identities_retired": 2,
+  "cgroups_absent": 1,
+  "source_bytes_compared": 34579,
+  "wait4_maxRSS_KiB": 7400788,
+  "sampled_peak_bytes": 7578406912,
+  "charged_peak_bytes": 893702144,
+  "new_originals": [
+    {
+      "module": "OAI.Computability.DirectedFeedback.RankGraph.PacketLocality",
+      "role": "original_probability_sample",
+      "wall_s": 16.947551851000753,
+      "cpu_s": 24.167262,
+      "pid": 29556,
+      "birth": "1093783",
+      "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-PacketLocality-targetP-remaining-four-hostrecovery-20261103T1512/runs/00-noM"
+    }
+  ],
+  "originals": 40,
+  "missing_originals": 2,
+  "complete_strata": 20,
+  "covered_modules": 163057,
+  "missing_module_domain": 40,
+  "source_sum_CPU_s": 978.678429,
+  "source_sum_wall_s": 651.1595912922767,
+  "conditional_CPU_h": 278.09176795944444,
+  "conditional_native_elapsed_h": 242.28971719448447,
+  "marked_CPU_h": 57.54640427722222,
+  "marked_elapsed_h": 40.01860645029435,
+  "marked_CPU_share": 0.20693314548460318,
+  "marked_elapsed_share": 0.16516840629341137,
+  "known_HT_CPU_h": 278.09176795944444,
+  "missing_plus_one_CPU_s_h": 0.011111111111111112,
+  "observed_ordinary_min_CPU_s": 1.2045249999999998,
+  "observed_ordinary_max_CPU_s": 86.97798900000001,
+  "scenarios": [
+    {
+      "scenario": "observed_class_min",
+      "source_CPU_h": 278.10515157055556,
+      "modeled_check_low_h": 18.780742223767287,
+      "modeled_check_high_h": 24.615695387506392
+    },
+    {
+      "scenario": "observed_class_max",
+      "source_CPU_h": 279.0581900594444,
+      "modeled_check_low_h": 18.84090199117964,
+      "modeled_check_high_h": 24.701005938889203
+    }
+  ],
+  "scenario_ten_times_max_CPU_h": 287.75598895944444,
+  "scenario_missing_check_equals_source_CPU_h": 19.746319494370606,
+  "scenario_missing_check_twice_source_CPU_h": 20.71274159437061,
+  "ordinary_transfer_CPU_factors": [
+    0.06312417401157756,
+    0.0895142771015193
+  ],
+  "computation_transfer_CPU_factors": [
+    0.08467146864040666,
+    0.08442149498070872
+  ],
+  "root_analysis_seconds": 0.1887963850003871,
+  "root_analysis_maxrss_kib": 19180,
+  "sampling_variance_CPU_s2": 36409250823.301125,
+  "sampling_df": 2.6085790546092245,
+  "sampling_tcritical": 3.470416608317999,
+  "covered_nominal95_CPU_h": [
+    94.14804014468515,
+    462.0354957742037
+  ]
+}

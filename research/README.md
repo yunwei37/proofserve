@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0284. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0285. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -9,13 +9,15 @@ preparation, queues, controls and code are not performance or general acceptance
 
 ## Latest complete results
 
+- [Hybrid policy and source40](../docs/tmp/build-and-evaluate/step-0285-20261103T182451+0000/step-report.md):6plain/2diagnostic/8controls complete, same4449accepts;wall-23.67%/CPU+0.106%. Source40/42/20cells,nominalcoveredCI94.15–462.04CPUh;sourceassumptions278.1–279.1 and mixedtransfer18.7–24.8CPUh,notfullframeprecision/gain.
+
 - [Complete persistence PMUs and aligned memory](../docs/tmp/build-and-evaluate/step-0280-20261103T131855+0000/step-report.md): remaining6stat complete primary32qualification;8P lockedloads−98.06%/modifiedlineforwarding−94.42%/RFO−72.28%,ordinaryL3miss+0.762%. Separate4449matched-boundary memory pair endsAnonymous+6.98MiB/RSS+7.35MiB,not precise retained bytes or global fit. Original proof/kernel retained;unsafequiescence/coordinator still trusted.
 
 - [Persistence method correction and historical-cache reclamation](../docs/tmp/build-and-evaluate/step-0279-20261103T122418+0000/step-report.md): root0279 independently qualifies the complete24plain/first1Pstat subset and13controls; 8P CPU−14.13%/wall−5.13%, 1P CPU−2.02%, paired excessCPU reduction65.21%. Historical3.33×/1.52×/1.88× explicitly unmarked; overall32matrix remains separate. Exact cleanup manifests preserve tracked/raw data.
 
 - [Supplemental checking-thread PMU qualification](../docs/tmp/build-and-evaluate/step-0278-20261103T081624+0000/step-report.md):14historical checkingTIDs have complete seven-event/eight-shard READs; instructions+0.037%,cycles+10.60%,L3missloads+36.46%. PMUthreadlifetime differs from observer CPU; failedP4r2retained, no uniqueRCcause. [Owner supplement](parallel-stream-check/perf/supplemental-worker-report.md).
 
-- [Fixed-work whole-command PMU and sampling uncertainty](../docs/tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md): original16full cells qualified; instructions nearly fixed while cycles/coherence events rise. No unique RC cause. Covered19source strata nominal95% interval43.99–449.74CPUh/df2.13, distinct from the historical38-draw missing-cost scenario247.5–270.3CPUh and current39-draw271.6–296.8CPUh. [Owner PMU](parallel-stream-check/perf/full-matrix-report.md); later worker-count repairs remain separate.
+- [Fixed-work whole-command PMU and sampling uncertainty](../docs/tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md): original16full cells qualified; instructions nearly fixed while cycles/coherence events rise. No unique RC cause. Covered19source strata nominal95% interval43.99–449.74CPUh/df2.13, distinct from the historical38-draw missing-cost scenario247.5–270.3CPUh and historical39-draw271.6–296.8CPUh. [Owner PMU](parallel-stream-check/perf/full-matrix-report.md); later worker-count repairs remain separate.
 
 - [Ramsey completed sample](decoupled-check/ramsey-sampled-result.md), [root0275](../docs/tmp/build-and-evaluate/step-0275-20261103T061615+0000/step-report.md):20/20 retained-prefix module-local references accept, pooledCPU35.91%; weighted190-file estimate34.99% is prefix-only. Production stopped190/444, stream0/444; trusted imports and selection bias remain. Raw/source frozen in rootstep and original PVC size-sample directory.
 

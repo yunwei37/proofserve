@@ -1,0 +1,1 @@
+{"compiler_returncode": 0, "postcheck": "git diff --check rejected extra EOF blankline", "paths": ["docs/evaluation.md", "docs/novelty-20261101.md"], "PDF_rebuilt": false, "native_runs": 0}

@@ -1,0 +1,1 @@
+{"error": "ValueError I/O operation on closed file at final output; variance CSV file handle shadowed transfer factor f", "scope": "offline root only, raw/native unchanged", "fix": "rename variance CSV file handle to vf"}
