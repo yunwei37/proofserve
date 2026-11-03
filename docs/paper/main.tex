@@ -258,6 +258,12 @@ Ordinary error, timeout, cgroup OOM, watchdog interruption, platform loss and
 never-started dependency are distinct; none proves falsehood.
 Raw, failed and partial captures remain retained on the PVC.
 
+Runs interrupted by a host reboot are recorded as host-reboot interruptions.
+They contribute neither cost values nor censored observations, and do not
+count as completed samples. Completed records undergo an integrity check
+before reuse or continuation; interrupted raw records are preserved.
+
+
 Import-relative stock \texttt{leanchecker} trusts imported declarations.
 Its \texttt{--fresh} mode replays the loaded constant map into an empty kernel.
 Both use the upstream kernel and designated unsafe/partial exclusions

@@ -442,3 +442,12 @@ Import-Module ./scripts/fleet.psm1; & (Get-Module fleet) { $script:SshOptions +=
 1) 查这两块里哪些已被报告引用、哪些可再生、哪些是 Git 已跟踪的。已跟踪的不要动；没有引用也没入库的原始数据不要删，先写清楚再问我。可再生的、已被报告引用的中间产物直接清掉，记进 docs/cleanup 记录并推送。
 2) 目标是至少腾出 15 GiB，把使用率降到 75% 以下。
 另外，M 线已完成 24 次 plain 对照（7bdd161，3 次重复：8P CPU −14.13%、墙钟 −5.13%，1P CPU −2.02%）和第一组 PMU（16442dc，1P lock-load −98.30%）。写进论文时注意：这说明之前的额外 CPU 主要来自原型没标记持久对象，属于我们的方法修正，不是 Lean 或负载的性质；相关的旧并行数字（3.33×、1.52×、1.88×）要标明是未标记时的结果。
+
+
+## 2026-11-03 UTC — verbatim host-reboot recovery and measurement exclusion
+
+【Claude 通知：phobos-vt 已恢复，接着干】phobos-vt 在约 14:38 UTC 掉线，主机 14:48 UTC 重启（uptime 确认，原因未知），14:50 UTC Ready。Workspace 已回到 phobos-vt（Pod 6qph8），volume healthy，唯一副本 r-50a43bb5 在 phobos-vt 上，PVC 数据都在，工作盘 73%，privileged 还在。
+重启杀掉了 Workspace 里的全部进程，现在没有任何测量在跑，P 核锁是空的。掉线时正在跑的运行一律记为"被主机重启中断"，不计入成本或删失，也不能用作完整样本；已完成的记录要先核对完整性（重启可能截断最后写入的文件）再续跑。不要重复已完成的工作。如果掉线再次发生，不要改调度或做恢复操作，保留现场等我处理。
+仓库里有 9 个已修改未提交的文件，只动自己路径下的；推送失败就等一下重试，不要 stash 或覆盖别人的改动。连接继续用 Cloudflare 跳板：Import-Module ./scripts/fleet.psm1; & (Get-Module fleet) { $script:SshOptions += @('-J','ssh.yunwei37.com') }
+
+【主线程这一轮】先核对并提交你那部分未提交的文件。把 M 线已有的墙钟分解记为待写入：8P 的约 299 秒里，串行回退 115 秒、依赖和上下文审查 31 秒、规划 11 秒、并行波次 123 秒、未归因约 18 秒；这个分解还没有修正版重测，写进论文时标为"部分"。论文的方法学里写明：被主机重启打断的运行不计入任何成本数字。

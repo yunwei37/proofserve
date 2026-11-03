@@ -1,0 +1,6 @@
+{
+  "compiler_rc": 0,
+  "final_diffcheck_first_rc": 2,
+  "message": "docs/novelty-20261101.md:393: new blank line at EOF",
+  "correction": "normalize own novelty EOF only; no compiler/native/render/cleanup rerun"
+}

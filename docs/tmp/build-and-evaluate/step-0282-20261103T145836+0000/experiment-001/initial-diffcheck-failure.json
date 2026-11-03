@@ -1,0 +1,6 @@
+{
+  "compiler_rc": 0,
+  "diffcheck_rc": 2,
+  "message": "docs/evaluation.md:852: new blank line at EOF",
+  "correction": "normalize own evaluation EOF only; no compiler/native rerun"
+}

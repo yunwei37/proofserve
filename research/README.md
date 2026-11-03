@@ -116,3 +116,6 @@ Tracked/source38 [root0276](../docs/tmp/build-and-evaluate/step-0276-20261103T06
 
 
 Official checker/rejection scope [root0281](../docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/step-report.md): three original-SDK procedures are complete but lack matched stream work ledgers; two real corrupted-root controls accept the same4448prefix then original-kernel reject. No cross-scope speedup or universal safety claim.
+
+
+Post-reboot handling and pending M wall breakdown: [root0282](../docs/tmp/build-and-evaluate/step-0282-20261103T145836+0000/step-report.md). Interrupted runs enter no cost/censor/completed-sample totals. Existing299s approximate partition awaits corrected remeasurement/integration, Partial only.

@@ -1,0 +1,9 @@
+ M artifacts/autoverus-native-2026-10-09/README.md
+ M docs/design.md
+ M docs/prior-art.md
+ M docs/tmp/bootstrap/step-0002-20261007T224656+0000/experiment-002/plan.md
+ M docs/tmp/bootstrap/step-0002-20261007T224656+0000/gpu-preflight-request.md
+ M research/parallel-stream-check/ParallelCore.lean
+ M research/parallel-stream-check/build.py
+ M research/parallel-stream-check/checked_commit.c
+ M research/parallel-stream-check/placement_profile.c

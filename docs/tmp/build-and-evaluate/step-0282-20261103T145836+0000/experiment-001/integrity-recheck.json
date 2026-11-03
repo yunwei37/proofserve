@@ -1,0 +1,226 @@
+{
+  "UTC": "2026-11-03T14:58:38.560225+00:00",
+  "pod": "coder-81668d0b-bcba-4058-a2e6-473350357c52-5ff9c6487-6qph8",
+  "boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944",
+  "uptime": "638.12 14070.74",
+  "branch": "main",
+  "tracked_dirty": [
+    " M artifacts/autoverus-native-2026-10-09/README.md",
+    " M docs/design.md",
+    " M docs/prior-art.md",
+    " M docs/tmp/bootstrap/step-0002-20261007T224656+0000/experiment-002/plan.md",
+    " M docs/tmp/bootstrap/step-0002-20261007T224656+0000/gpu-preflight-request.md",
+    " M research/parallel-stream-check/ParallelCore.lean",
+    " M research/parallel-stream-check/build.py",
+    " M research/parallel-stream-check/checked_commit.c",
+    " M research/parallel-stream-check/placement_profile.c"
+  ],
+  "completed_root0281_files": [
+    {
+      "path": "docs/paper/main.tex",
+      "bytes": 141767,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/paper/main.pdf",
+      "bytes": 242735,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/paper/references.bib",
+      "bytes": 57589,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/research-status.md",
+      "bytes": 24823,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/research-plan.md",
+      "bytes": 20989,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "research/README.md",
+      "bytes": 16548,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/novelty-20261101.md",
+      "bytes": 56909,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/evaluation.md",
+      "bytes": 80249,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/cleanup-20261101.md",
+      "bytes": 21841,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/outer-audit.md",
+      "bytes": 6993,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/step-report.md",
+      "bytes": 6633,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/before-docs-paper-references.bib.gz",
+      "bytes": 17928,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/before-docs-research-plan.md.gz",
+      "bytes": 8814,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/before-docs-paper-main.tex.gz",
+      "bytes": 48903,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/build.py",
+      "bytes": 3924,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/before-docs-novelty-20261101.md.gz",
+      "bytes": 25410,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/post-review-rendering-cleanup.csv",
+      "bytes": 6043,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/paper-edit.py",
+      "bytes": 9982,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/five-native-resources.csv",
+      "bytes": 721,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/paper-build.json",
+      "bytes": 1220,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/negative-prefix-errors.csv",
+      "bytes": 691,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/reducer.py",
+      "bytes": 7021,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/before-docs-cleanup-20261101.md.gz",
+      "bytes": 5612,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/before-docs-evaluation.md.gz",
+      "bytes": 31688,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/render-receipt.json",
+      "bytes": 1129,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/qualified-auxiliary-raw-source.tar.gz",
+      "bytes": 4739177,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/step0281-finalize.py",
+      "bytes": 5727,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/tectonic.stderr.gz",
+      "bytes": 1207,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/before-research-README.md.gz",
+      "bytes": 6019,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/tectonic.stdout.gz",
+      "bytes": 264,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/reanalysis.json",
+      "bytes": 3304,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/owner-latest-read.json",
+      "bytes": 1375,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/render.py",
+      "bytes": 2134,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/final-self-review.json",
+      "bytes": 577,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/before-docs-paper-main.pdf.gz",
+      "bytes": 236167,
+      "matches_pushed_root0281": true
+    },
+    {
+      "path": "docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/before-docs-research-status.md.gz",
+      "bytes": 10108,
+      "matches_pushed_root0281": true
+    }
+  ],
+  "retained_recent_archives": [
+    {
+      "path": "/workspaces/repository/docs/tmp/build-and-evaluate/step-0279-20261103T122418+0000/experiment-001/qualified-original-raw-source.tar.gz",
+      "compressed_bytes": 29520732,
+      "members_read": 271,
+      "payload_bytes_read": 322547403,
+      "gzip_to_EOF": true
+    },
+    {
+      "path": "/workspaces/repository/docs/tmp/build-and-evaluate/step-0280-20261103T131855+0000/experiment-001/new-qualified-raw-source.tar.gz",
+      "compressed_bytes": 12124594,
+      "members_read": 88,
+      "payload_bytes_read": 126607018,
+      "gzip_to_EOF": true
+    },
+    {
+      "path": "/workspaces/repository/docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/experiment-001/qualified-auxiliary-raw-source.tar.gz",
+      "compressed_bytes": 4739177,
+      "members_read": 62,
+      "payload_bytes_read": 47994391,
+      "gzip_to_EOF": true
+    }
+  ],
+  "root_analysis_seconds": 2.392752067999936,
+  "root_analysis_maxrss_kib": 36484,
+  "new_native_runs": 0
+}
