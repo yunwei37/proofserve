@@ -1,0 +1,7 @@
+{
+  "complete_native_points": 1,
+  "problems": [],
+  "expected_native_points": 16,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103",
+  "sampling_scope": "period-weighted estimates; unresolved inline RC retained"
+}

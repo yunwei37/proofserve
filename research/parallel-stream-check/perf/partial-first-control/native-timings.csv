@@ -1,0 +1,2 @@
+key,workers,arm,repeat,wall_s,user_s,system_s,cpu_s,sampled_tree_peak_bytes,charged_peak_bytes,accepted_count,accepted_reference_equal,checks,allocation_units,application_wall_s,application_user_s,application_system_s,application_peak_RSS_KiB,application_exit,kernel_cpu_s,kernel_union_s,batch_cpu_s,batch_wall_s
+full-plain-P4-r1-before,4,plain,r1-before,360.8873820565641,653.738098,5.271506,659.0096040000001,3273822208,1277435904,4449,True,237863,3283925639,360.87,653.73,5.27,3245236,0,474.845978776,169.212161446,480.471111155,174.178395064
