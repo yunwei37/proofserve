@@ -1,0 +1,4 @@
+key,requested_workers,native_rc,guard_wall_s,wait4_CPU_s,application_wall_s,historical_checking_TIDs,complete_TIDs,accepted_modules,checks,allocation_units,observer_CPU_s,HWM_KiB,sampled_peak_bytes,charged_peak_bytes,raw_perf_bytes,READ_records,post_native_drain_s,cgroup_absent
+full-record-P8-r2-count-only,8,0,330.6487446818501,729.4426070000001,329.24,9,9,4449,237863,3283925639,537.001279479,3391748,3465015296,1196441600,173032,1019,0,True
+full-record-P4-r2-count-only,4,0,351.7192780729383,660.636024,350.56,5,1,4449,237863,3283925639,476.804387235,3237996,3331428352,858439680,143120,672,0,True
+full-record-P4-r3-count-only-drain5,4,0,355.722622170113,658.1479459999999,349.94,5,5,4449,237863,3283925639,474.358940427,3254908,3317121024,913235968,154696,800,5.000239286,True

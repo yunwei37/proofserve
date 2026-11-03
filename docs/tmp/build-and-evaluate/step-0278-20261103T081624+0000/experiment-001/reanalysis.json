@@ -1,0 +1,164 @@
+{
+  "utc": "2026-11-03T08:18:11.368336+00:00",
+  "native_attempts": 3,
+  "accepted_each": 4449,
+  "checks": 237863,
+  "allocation_units": 3283925639,
+  "identities_retired": 16,
+  "cgroups_absent": 3,
+  "complete_checking_TIDs": 14,
+  "partial_attempt_complete_TIDs": 1,
+  "partial_attempt_total_TIDs": 5,
+  "totals": {
+    "full-record-P4-r3-count-only-drain5": {
+      "cpu-cycles": 1366503123771,
+      "instructions": 2505965975665,
+      "ref-cycles": 1505272364377,
+      "mem_load_retired.l3_miss": 212641848,
+      "mem_inst_retired.lock_loads": 5287278662,
+      "mem_load_l3_hit_retired.xsnp_hitm": 530642071,
+      "ocr.demand_rfo.l3_hit.snoop_hitm": 351933616,
+      "observer_CPU_s": 474.358940427,
+      "IPC": 1.8338530897386756,
+      "cycles_per_ref": 0.9078112081972397
+    },
+    "full-record-P8-r2-count-only": {
+      "cpu-cycles": 1511320483021,
+      "instructions": 2506900137431,
+      "ref-cycles": 1701909591554,
+      "mem_load_retired.l3_miss": 290178790,
+      "mem_inst_retired.lock_loads": 5293004268,
+      "mem_load_l3_hit_retired.xsnp_hitm": 758859454,
+      "ocr.demand_rfo.l3_hit.snoop_hitm": 500139862,
+      "observer_CPU_s": 537.001279479,
+      "IPC": 1.658748204364915,
+      "cycles_per_ref": 0.8880145517254094
+    }
+  },
+  "delta": [
+    {
+      "metric": "cpu-cycles",
+      "P4": 1366503123771,
+      "P8": 1511320483021,
+      "change_percent": 10.597660314918445
+    },
+    {
+      "metric": "instructions",
+      "P4": 2505965975665,
+      "P8": 2506900137431,
+      "change_percent": 0.037277511948352604
+    },
+    {
+      "metric": "ref-cycles",
+      "P4": 1505272364377,
+      "P8": 1701909591554,
+      "change_percent": 13.063232397705239
+    },
+    {
+      "metric": "mem_load_retired.l3_miss",
+      "P4": 212641848,
+      "P8": 290178790,
+      "change_percent": 36.46363250191467
+    },
+    {
+      "metric": "mem_inst_retired.lock_loads",
+      "P4": 5287278662,
+      "P8": 5293004268,
+      "change_percent": 0.10829022576681613
+    },
+    {
+      "metric": "mem_load_l3_hit_retired.xsnp_hitm",
+      "P4": 530642071,
+      "P8": 758859454,
+      "change_percent": 43.00778160501337
+    },
+    {
+      "metric": "ocr.demand_rfo.l3_hit.snoop_hitm",
+      "P4": 351933616,
+      "P8": 500139862,
+      "change_percent": 42.111989097398414
+    },
+    {
+      "metric": "observer_CPU_s",
+      "P4": 474.358940427,
+      "P8": 537.001279479,
+      "change_percent": 13.205683231270338
+    },
+    {
+      "metric": "IPC",
+      "P4": 1.8338530897386756,
+      "P8": 1.658748204364915,
+      "change_percent": -9.548468541649257
+    },
+    {
+      "metric": "cycles_per_ref",
+      "P4": 0.9078112081972397,
+      "P8": 0.8880145517254094,
+      "change_percent": -2.180701922720596
+    }
+  ],
+  "raw_receipts": [
+    {
+      "key": "full-record-P8-r2-count-only",
+      "fresh_decode_argv": [
+        "perf",
+        "report",
+        "-D",
+        "--stdio",
+        "--stats",
+        "-i",
+        "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/full-record-P8-r2-count-only.perf.data"
+      ],
+      "fresh_decode_rc": 0,
+      "binary_parser_READs": 1019,
+      "owner_CSV_exact": true,
+      "hardware_attrs": 7,
+      "IDs_per_hardware_attr": 8,
+      "PERF_RECORD_SAMPLE": 0
+    },
+    {
+      "key": "full-record-P4-r2-count-only",
+      "fresh_decode_argv": [
+        "perf",
+        "report",
+        "-D",
+        "--stdio",
+        "--stats",
+        "-i",
+        "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/full-record-P4-r2-count-only.perf.data"
+      ],
+      "fresh_decode_rc": 0,
+      "binary_parser_READs": 672,
+      "owner_CSV_exact": true,
+      "hardware_attrs": 7,
+      "IDs_per_hardware_attr": 8,
+      "PERF_RECORD_SAMPLE": 0
+    },
+    {
+      "key": "full-record-P4-r3-count-only-drain5",
+      "fresh_decode_argv": [
+        "perf",
+        "report",
+        "-D",
+        "--stdio",
+        "--stats",
+        "-i",
+        "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/full-record-P4-r3-count-only-drain5.perf.data"
+      ],
+      "fresh_decode_rc": 0,
+      "binary_parser_READs": 800,
+      "owner_CSV_exact": true,
+      "hardware_attrs": 7,
+      "IDs_per_hardware_attr": 8,
+      "PERF_RECORD_SAMPLE": 0
+    }
+  ],
+  "archive_bytes": 3722998,
+  "root_analysis_seconds": 3.106923402287066,
+  "root_analysis_maxrss_kib": 56352,
+  "native_runs": 0,
+  "agents": 0,
+  "HWM_KiB": 3391748,
+  "sampled_peak_bytes": 3465015296,
+  "charged_peak_bytes": 1196441600
+}

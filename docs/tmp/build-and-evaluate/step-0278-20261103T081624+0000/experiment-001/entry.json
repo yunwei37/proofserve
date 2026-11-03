@@ -1,0 +1,7 @@
+{
+  "utc": "2026-11-03T08:16:24.316517+00:00",
+  "HEAD": "71d2ecf441face611857c58dcd0b8e314551c7c6",
+  "scope": "independent qualification of three completed count-only PMU points including failed metadata attempt; root offline only, no native rerun",
+  "native_runs": 0,
+  "agents": 0
+}

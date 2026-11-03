@@ -1,6 +1,6 @@
 # Research status
 
-Snapshot2026-11-03UTC, root0277. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-03UTC, root0278. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
@@ -53,6 +53,8 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 
 | Fixed-work PMU and uncertainty |16full Barrier processes share graph/count work; extra4→8 CPU91.70–99.15% in observer brackets, whole-command cycles+8.31% at instructions+0.0396%. No unique RC cause.19complete source strata nominal95% interval43.99–449.74CPUh/df2.13; not full-frame CI. | [0277](tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md) |
 
+| Supplemental checking-thread PMU |Two valid counting-only points have14historical checkingTIDs/complete7×8READsets. Instructions+0.037%,cycles+10.60%,L3missloads+36.46%,IPC1.834→1.659. Thread-lifetime scope, not pure kernel/uniqueRC cause. FailedP4r2retained. | [0278](tmp/build-and-evaluate/step-0278-20261103T081624+0000/step-report.md) |
+
 ## Terminal failures and trust that remain visible
 
 - Defective Mv4 accepted a cyclicTrue proof after an undeclared sibling; same-binary
@@ -91,7 +93,7 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0277:25pages/231340B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0278:26pages/233329B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
@@ -126,3 +128,7 @@ Historical0268scope audited rc1count only. Root0271now independently classifies 
 
 [Root0277](tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md) independently qualifies the original16 completed PMU matrix processes: each4449unique accepted modules,425463entries/3595upstream exclusions/0contextfallback; per-module237863checks/3283925639allocation units unchanged. Four ordinary4→8 pairings place91.70–99.15% extra nativeCPU in observer brackets including HB/timing reads, not pure C++cycles. Separate whole-command user PMUs: instructions+0.0396%,cycles+8.3107%,lockedloads+0.1171%,L3missloads+11.9794%,modified-line forwarding+46.4111%,RFOsnoopHITM+49.7555%,IPC1.833725→1.693693. Whole-command scope/fixedorder/pagecache/one counter cell preclude a unique RC/cache/frequency cause or removable stall share. Original sampled-worker metadata and separate owner counting-only repairs are not root-qualified causal attribution. Old0273's95.95% bracket observation remains separate.
 Same38original source costs,19complete strata/161034domain: independent finite-population stratified variance32376792892.27296CPU-s², nominal95%t/Satterthwaite43.987706–449.738374CPUh around246.863040h,df2.130943. Two cells contribute62.4086%/27.6065% variance. n2/cell fragile, excludes incomplete strata/nonresponse/transfer/drift, notfullframeCI/bound. Missing-cost scenarios247.5–270.3source/16.8–24.0mixedtransfer unchanged, distinct uncertainties;4source/11paired/13dynamic gaps unchanged.
+
+
+[Root0278](tmp/build-and-evaluate/step-0278-20261103T081624+0000/step-report.md) independently qualifies three supplemental counting-only attempts, not original16 missing-counter imputation. All3rc0/full4449same graph/425463entries/3595upstream exclusions/0fallback; per-module237863checks/3283925639units equal. Direct perf binary headers/READ records independently parsed and compared to fresh perf report-D plus existing CSV:1019/672/800READs,zero samples. P8r2 has9complete historical checkingTIDs, P4r3drain5has5complete, each7events×8expectedIDs unique. P4r2only1/5complete remains excluded. Valid checking-thread lifetime sums P4→P8:instructions+0.0372775%,cycles+10.5976603%,lockedloads+0.1082902%,L3missloads+36.4636325%,modifiedlineforwarding+43.0077816%,RFOsnoopHITM+42.1119891%,IPC1.833853090→1.658748204;observerCPU474.358940→537.001279s(+13.2056832%). PMUthreadlifetime notbracketgated; historicalTIDs notsimultaneousworkers. No uniqueRC/coherencecause/removablestallshare. P4parent+5.000239286s drain changes ancestry andtailtiming; no universalmetadatafix/ordinaryspeedup/CI. Original16/0273clock scopes unchanged.
+Threecgroupsabsent/noOOM/stop,16emittedPIDbirthidentitiesretired;noM/P0–7/sharedlock/1100native/1740outer-afterlock/14GiBcharged+14GiBsampleRSSresponse. HWM3391748KiB/sample3465015296B/charged1196441600B separate, nothardRSS/fullMtreeclaim. Root3.106923s/56352KiB/E22–23/0native/Agent. Source38/42/19cells/4missing, nominal43.99–449.74CPUhdf2.13 and247.5–270.3source/16.8–24.0mixedtransfer assumptions unchanged;paired11/dynamic13/B/RQ2denominators unchanged.

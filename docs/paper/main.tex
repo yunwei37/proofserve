@@ -1644,6 +1644,33 @@ Original sampled-worker READ metadata is incomplete for some settings;
 later counting-only repair points have separate denominators and are not
 used here to fill missing original attribution.
 
+\paragraph{Supplemental counts retain the trend on checking threads.}
+\measured{\expref{0278-20261103T081624+0000}{0278}; two separate counting-only processes.}
+A later 4-worker process and an 8-worker process provide complete inherited
+counts for all 5 and 9 historical TIDs that execute observed kernel calls.
+Each has all eight expected CPU-shard READ IDs exactly once for each of
+seven hardware events. Historical TID counts are not simultaneous
+concurrency. Both accept the same 4,449 modules and preserve every module's
+check and allocation-count pair.
+
+Summing these checking-thread lifetime counts, 4-to-8-worker instructions
+increase 0.037\% and locked loads 0.108\%, while cycles increase 10.60\%,
+L3-miss loads 36.46\%, modified-line forwarding 43.01\%, and demand-RFO
+snoop-HITM responses 42.11\%. Aggregate IPC falls from 1.834 to 1.659.
+The corresponding observer-bracket CPU rises 13.21\%; hardware counts
+cover whole thread lifetimes and are not gated to those brackets.
+Thus the trend is also present among threads that perform checking,
+without establishing an exclusive coherence or reference-counting cause.
+
+The first 4-worker counter attempt has complete READ sets for only one
+of five checking TIDs and remains excluded from aggregate comparisons.
+The later 4-worker process adds a parent that waits five seconds after
+the measured child exits. Both parentage and teardown timing differ, so
+complete metadata does not isolate a universal recorder fix.
+These supplemental points neither fill the original sampled recordings'
+missing counters nor supply an ordinary runtime speedup or confidence
+interval. Effective frequency and fixed-order effects remain unresolved.
+
 \paragraph{Pooled certificates pass a broader native qualification.}
 \measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}
 A separate native control selects all ten measured Envelope helpers whose

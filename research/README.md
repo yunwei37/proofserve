@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0277. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0278. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -8,6 +8,8 @@ Reports identify input, version, clock and trust boundary. Reviews are **自审*
 preparation, queues, controls and code are not performance or general acceptance.
 
 ## Latest complete results
+
+- [Supplemental checking-thread PMU qualification](../docs/tmp/build-and-evaluate/step-0278-20261103T081624+0000/step-report.md):14historical checkingTIDs have complete seven-event/eight-shard READs; instructions+0.037%,cycles+10.60%,L3missloads+36.46%. PMUthreadlifetime differs from observer CPU; failedP4r2retained, no uniqueRCcause. [Owner supplement](parallel-stream-check/perf/supplemental-worker-report.md).
 
 - [Fixed-work whole-command PMU and sampling uncertainty](../docs/tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md): original16full cells qualified; instructions nearly fixed while cycles/coherence events rise. No unique RC cause. Covered19source strata nominal95% interval43.99–449.74CPUh/df2.13, distinct from missing-cost scenario247.5–270.3CPUh. [Owner PMU](parallel-stream-check/perf/full-matrix-report.md); later worker-count repairs remain separate.
 

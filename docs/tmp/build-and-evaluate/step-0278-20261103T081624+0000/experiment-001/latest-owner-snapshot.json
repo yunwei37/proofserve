@@ -1,0 +1,38 @@
+{
+  "utc": "2026-11-03T08:21:43.958916+00:00",
+  "W": {
+    "526699": {
+      "expected_birth": "772878773",
+      "observed_birth": "772878773",
+      "state": "S"
+    },
+    "561457": {
+      "expected_birth": "773951593",
+      "observed_birth": "773951593",
+      "state": "S"
+    }
+  },
+  "git_log": "388017d SubexponentialSAT source: build 11669/14721; kernel 0/3977, 0.0000 CPUh\n71d2ecf SubexponentialSAT source: build 11644/14721; kernel 0/3977, 0.0000 CPUh\n9a595ea SubexponentialSAT source: build 11619/14721; kernel 0/3977, 0.0000 CPUh\n9c085ff research: qualify persistence intervention against positive and corrupt native inputs\nebe3ab4 SubexponentialSAT source: build 11594/14721; kernel 0/3977, 0.0000 CPUh\n",
+  "M_latest": "9c085ff research: qualify persistence intervention against positive and corrupt native inputs\n5f2e64f research: confirm replayed frontier and ConstantInfo RC states in native controls\n5fd4814 research: freeze causal persistence ablation and inspect stock import policy\n",
+  "M_persistent_paths": [
+    "/workspaces/.agent-state/gpu-smt-captures/step0174-git-persistence.json",
+    "/workspaces/.agent-state/gpu-smt-captures/step0175-git-persistence.json",
+    "/workspaces/.agent-state/gpu-smt-captures/step0177-git-persistence.json",
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-persistence-20261103",
+    "/workspaces/.agent-state/gpu-smt-captures/step0176-git-persistence.json"
+  ],
+  "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-persistence-20261103": [
+    [
+      "qualification-terminal.json",
+      "{\n  \"state\": \"qualified\",\n  \"error\": null,\n  \"cells\": [\n    {\n      \"key\": \"qual-official-import-probe\",\n      \"argv\": [\n        \"timeout\",\n        \"--signal=TERM\",\n        \"--kill-after=5\",\n        \"180\",\n        \"/workspaces/.agent-state/gpu-smt-captures/parallel-stream-persistence-20261103/persistence-probe\",\n        \"ComputeControl\"\n      ],\n      \"affinity\": [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7\n      ],\n      \"measured\": true,\n      \"wall_limit_s\": 180,\n      \"own_rss_sample_stop_gib\": 14,\n      \"cgroup\": \"/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-591390-qual-official-import-probe.scope\",\n      \"cgroup_charged_memory_max_gib\": 14,\n      \"pid\": 591391,\n      \"birth\": \"774451769\",\n      \"returncode\": 0,\n      \"wall_s\": 0.17189426347613335,\n      \"user_s\": 0.077291,\n      \"system_s\": 0.060282999999999996,\n      \"peak_rss_kib\": 433352,\n      \"native_retired\": true,\n      \"sampled_tree_peak_bytes\": 2064384,\n      \"stop_reasons\": [],\n      \"memory_events\": \"low 0\\nhigh 0\\nmax 0\\noom 0\\noom_kill 0\\noom_group_kill 0\\nsock_throttled 0\\n\",\n      \"charged_peak_bytes\": 48316416,\n      \"cgroup_cpu_stat\": \"usage_usec 136759\\nuser_usec 77430\\nsystem_usec 59329\\nnice_usec 0\\ncore_sched.force_idle_usec 0\\nnr_periods 0\\nnr_throttled 0\\nthrottled_usec 0\\nnr_bursts 0\\nburst_usec 0\\n\",\n      \"cgroup_usage_s\": 0.136759,\n      \"cgroup_user_s\": 0."
+    ],
+    [
+      "full-plain-m1-P8-r1-terminal.json",
+      "{\n  \"state\": \"complete\",\n  \"error\": null,\n  \"cell\": {\n    \"key\": \"full-plain-m1-P8-r1\",\n    \"argv\": [\n      \"timeout\",\n      \"--signal=TERM\",\n      \"--kill-after=5\",\n      \"1100\",\n      \"/usr/bin/time\",\n      \"-o\",\n      \"/workspaces/.agent-state/gpu-smt-captures/parallel-stream-persistence-20261103/full-plain-m1-P8-r1-application.time\",\n      \"-f\",\n      \"%e,%U,%S,%M,%x\",\n      \"/workspaces/.agent-state/gpu-smt-captures/parallel-stream-persistence-20261103/parallel-stream\",\n      \"parallel\",\n      \"none\",\n      \"OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41\"\n    ],\n    \"affinity\": [\n      0,\n      1,\n      2,\n      3,\n      4,\n      5,\n      6,\n      7\n    ],\n    \"measured\": true,\n    \"wall_limit_s\": 1100,\n    \"own_rss_sample_stop_gib\": 14,\n    \"cgroup\": \"/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-596509-full-plain-m1-P8-r1.scope\",\n    \"cgroup_charged_memory_max_gib\": 14,\n    \"pid\": 596510,\n    \"birth\": \"774558553\",\n    \"returncode\": 0,\n    \"wall_s\": 298.8780238525942,\n    \"user_s\": 614.112139,\n    \"system_s\": 7.45436,\n    \"peak_rss_kib\": 3409096,\n    \"native_retired\": true,\n    \"sampled_tree_peak_bytes\": 3487604736,\n    \"stop_reasons\": [],\n    \"memory_events\": \"low 0\\nhigh 0\\nmax 0\\noom 0\\noom_kill 0\\noom_group_kill 0\\nsock_throttled 0\\n\",\n    \"charged_peak_bytes\": 1179889664,\n    \"cgroup_cpu_stat\": \"usage_usec 621565919\\nuser_usec 614110915\\nsystem_usec 7455003\\n"
+    ],
+    [
+      "full-plain-m0-P8-r1-terminal.json",
+      "{\n  \"state\": \"complete\",\n  \"error\": null,\n  \"cell\": {\n    \"key\": \"full-plain-m0-P8-r1\",\n    \"argv\": [\n      \"timeout\",\n      \"--signal=TERM\",\n      \"--kill-after=5\",\n      \"1100\",\n      \"/usr/bin/time\",\n      \"-o\",\n      \"/workspaces/.agent-state/gpu-smt-captures/parallel-stream-persistence-20261103/full-plain-m0-P8-r1-application.time\",\n      \"-f\",\n      \"%e,%U,%S,%M,%x\",\n      \"/workspaces/.agent-state/gpu-smt-captures/parallel-stream-persistence-20261103/parallel-stream\",\n      \"parallel\",\n      \"none\",\n      \"OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41\"\n    ],\n    \"affinity\": [\n      0,\n      1,\n      2,\n      3,\n      4,\n      5,\n      6,\n      7\n    ],\n    \"measured\": true,\n    \"wall_limit_s\": 1100,\n    \"own_rss_sample_stop_gib\": 14,\n    \"cgroup\": \"/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-597852-full-plain-m0-P8-r1.scope\",\n    \"cgroup_charged_memory_max_gib\": 14,\n    \"pid\": 597853,\n    \"birth\": \"774599410\",\n    \"returncode\": 0,\n    \"wall_s\": 312.8035001317039,\n    \"user_s\": 711.942195,\n    \"system_s\": 7.169742,\n    \"peak_rss_kib\": 3413928,\n    \"native_retired\": true,\n    \"sampled_tree_peak_bytes\": 3493785600,\n    \"stop_reasons\": [],\n    \"memory_events\": \"low 0\\nhigh 0\\nmax 0\\noom 0\\noom_kill 0\\noom_group_kill 0\\nsock_throttled 0\\n\",\n    \"charged_peak_bytes\": 1083457536,\n    \"cgroup_cpu_stat\": \"usage_usec 719111212\\nuser_usec 711943327\\nsystem_usec 7167884\\"
+    ]
+  ]
+}
