@@ -1,0 +1,33 @@
+{
+  "reused_dependency_nodes": 10744,
+  "commands_and_results_read": 10744,
+  "missing": [],
+  "lean_memory_flags": [],
+  "affinities": {
+    "[0, 1, 2, 3, 4, 5, 6, 7]": 10744
+  },
+  "timeout_limits_s": {
+    "180": 5075,
+    "300": 5669
+  },
+  "cgroup_caps_bytes": {
+    "12750684160": 5075,
+    "12616466432": 5669
+  },
+  "source_returncodes": {
+    "0": 10744
+  },
+  "measured_flags": {
+    "True": 10744
+  },
+  "summed_memory_events": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0,
+    "sock_throttled": 0
+  },
+  "scope": "Retained source provenance only; does not rerun dependencies or establish new target acceptance."
+}
