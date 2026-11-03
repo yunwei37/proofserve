@@ -4437,6 +4437,7 @@ Mathlib.Order.Category.FinPartOrd,False,1.1580499999999998,0.8774481071159244,bu
 Mathlib.Combinatorics.SimpleGraph.Dart,False,0.8733589999999999,0.6562498342245817,build-08587,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101,True
 Mathlib.Combinatorics.Digraph.Orientation,False,0.776325,0.6263155285269022,build-08642,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101,True
 Mathlib.Combinatorics.SimpleGraph.Cayley,False,1.270924,1.0009365836158395,build-08720,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101,True
+OAI.Combinatorics.Ramsey.CycleClique.Construction.FastLayoutGraph,True,0.8639399999999999,0.837189712561667,source-04438,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102,False
 Mathlib.Algebra.Order.BigOperators.Ring.Finset,False,3.349207,1.422740119509399,build-02485,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031,True
 Mathlib.Algebra.Group.AddChar,False,3.095885,1.6256761206313968,build-03290,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031,True
 Mathlib.RingTheory.Coprime.Lemmas,False,1.9751699999999999,1.0848626429215074,build-03477,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031,True
