@@ -1,0 +1,11 @@
+{
+  "archive": "/workspaces/.agent-state/gpu-smt-captures/step-0231-20261101T001556+0000-static/source.tar.gz",
+  "archive_bytes": 896084751,
+  "selected_sources_compared": 3,
+  "selected_source_bytes": 11197,
+  "all_current_control_sources_byte_equal": true,
+  "historical_source_copies_available": false,
+  "historical_per_invocation_byte_comparison": "unavailable; duplicate source namespace retired before root audit; original source archive retained",
+  "elapsed_s": 16.70691638160497,
+  "scope": "three selected controls only, no corpus census/download"
+}

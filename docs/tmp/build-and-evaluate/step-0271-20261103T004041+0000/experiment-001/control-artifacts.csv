@@ -1,0 +1,13 @@
+module,facet,path,bytes
+ComparatorChallenges.AbhyankarSathaye,-o,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case0.olean,27168
+ComparatorChallenges.AbhyankarSathaye,-i,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case0.ilean,2710
+ComparatorChallenges.AbhyankarSathaye,-c,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case0.c,1991
+ComparatorChallenges.AffineBernstein,-o,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case1.olean,95504
+ComparatorChallenges.AffineBernstein,-i,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case1.ilean,12995
+ComparatorChallenges.AffineBernstein,-c,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case1.c,1352
+ComparatorChallenges.AlgorithmicThinTrees,-o,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case2.olean,530048
+ComparatorChallenges.AlgorithmicThinTrees,-i,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case2.ilean,35966
+ComparatorChallenges.AlgorithmicThinTrees,-c,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case2.c,52792
+InitDataControl,-o,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case3.olean,2016
+InitDataControl,-i,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case3.ilean,447
+InitDataControl,-c,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/qualification/case3.c,1092

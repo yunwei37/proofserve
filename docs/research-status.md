@@ -1,6 +1,6 @@
 # Research status
 
-Snapshot2026-11-02UTC, root0270. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-02UTC, root0271. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
@@ -47,6 +47,7 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | A prediction/admission |Grouped source forecast error and native CPU-budget policies do not establish bounded prediction or route benefit.29/42dynamic labels agree27/29conditionally; known-root upper admission has finite availability tradeoffs, not general service gain. | [0254](tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md), [0256](tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md) |
 | Heterogeneous full closure |Barrier4449modules,8P/8P+4E/8P+8E/8P+16E:284.720/299.807/310.591/319.705s;24versus8 wall+12.29%,nativeCPU+75.31%. One fixed-order capture/settings,not homogeneous scaling or a cross-version speed ratio. | [0266](tmp/build-and-evaluate/step-0266-20261102T083616+0000/step-report.md) |
 | Streaming count/bytes |100overlapping Barrier helpers×12observations at1/4/8/16caps,1200accepted,allcount ranges0%.12actual9,160,440B.oleanfiles equal each other/original;3425checkedpayloads substituted,extensionmetadata trusted. UnitCPU3.575→9.941s;not zero runtime or globalbudget. | [0267](tmp/build-and-evaluate/step-0267-20261102T092013+0000/step-report.md) |
+| Whole-source producer diagnostics |9124rc1:9118unavailable interpreter/native declarations,4module-data,2IR/codegen.4finitecontrols pass;139declaration diagnostics notline1. Whole-source2488/163097stillpartial, no proof rejection/yield/globalcost conclusion. | [0271](tmp/build-and-evaluate/step-0271-20261103T004041+0000/step-report.md) |
 
 ## Terminal failures and trust that remain visible
 
@@ -86,17 +87,20 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0270:24pages/221094B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0271:24pages/222054B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
 
 CPU and coverage update [0268](tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md): Falconer native check/source CPU2038.443942/32292.603807s=6.3124%; matching checkpoint Mathlib91.145172/1018.219383s=8.9514%. Separate native elapsed ratios9.26%/historical10.56%/checkpoint14.67% remain. Source/protocol/CPU units are not pooled. Whole-source bounded attempt accepts2488/163097source+10744dependencies;160609source missing,9124source-compilation rc1 unclassified, not mathematical rejection or measured full-library cost.
 
-O newly visible source-error report is retained for later independent attribution qualification; root0268 audits9124rc1count and2488source accepted, not all log causes or a repaired producer run.
+Historical0268scope audited rc1count only. Root0271now independently classifies the retained9124diagnostics and qualifies finitecontrols, without asserting uniform phase/singlefacet/all-source repair.
 
 
 [Root0269](tmp/build-and-evaluate/step-0269-20261102T191745+0000/step-report.md) independently qualifies W28d21e0 Hodge176 terminal:176rc0=175dependencies+1original IndexedInverseMultiplier (3.929919wall/4.131784CPU-s). Source33/42,16/21complete strata/144565modules;9ordinary original costs missing/18532module domain incomplete. Conditional source217.424460CPUh, marked57.546404h=26.4673%; summed-elapsed marked21.1985%. KnownHTsubtotal217.945744h is not population estimate/CI; each missing+1CPU-s adds5.134167h. Source support scenarios224.1–427.4CPUh; separate mixed-protocol transfer15.3–38.0CPUh uses current checkpoint ordinary6.31–8.95% with historical unsegmented computation8.4421–8.4671%. Neither is actual full checking/CI/guarantee. Wpaired31/42/14strata/dynamic13missing unchanged.
 
 
 [Root0270](tmp/build-and-evaluate/step-0270-20261102T233639+0000/step-report.md) qualifies the actual84/84rc0terminal (19:44:26UTC), advancing the earlier Wsource34/77prefix:82dependencies+Intrinsic9.734671CPU/9.698324wall andDihedral20.154170CPU/8.784143wall. Original35/42,17/21complete strata/144663modules;7ordinary original costs missing/18434module domain incomplete. Conditional source218.220065CPUh, marked57.546404h=26.3708%; nativeelapsed marked21.1685%. KnownHTsubtotal227.988537h only; each missing+1CPU-s adds4.117083h. Source support scenarios232.9–396.0CPUh; separate mixed-protocol check transfer15.9–35.2CPUh, not actual full checking/CI/guarantees. Wpaired31/42/14strata/dynamic13missing unchanged.
+
+
+[Root0271](tmp/build-and-evaluate/step-0271-20261103T004041+0000/step-report.md) reads all9124retained rc1source records/stdout/stderr:4697unknowninterpreterdecl+4421missingnativeexternal=9118unavailabledecldiagnostics,4missingmoduledata,1compilerIRmissingcode,1LakeinterpreterIR.139of9118are not atsource line1, so no uniform import/phase claim.4successful qualification controls=3pinned sourcefiles+1Init import control, plus preserved failedmetadata-copy retry. Current3source bytes11197match fixed full archive; old duplicate failure-input source copies are absent, so no direct historical-byte recheck. Old600s/11.5GiB/olean-only versuscontrols300s/11.75GiB/3facets and unlogged per-open env trace prevent isolatedfacet/cost causal claims.9124do not become proofrejection or repairedpasses. Historical2488/163097source+10744dependencies remains partial; currentRamsey is a separate unfinished closure, not its denominator.

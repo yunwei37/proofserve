@@ -88,3 +88,6 @@ Hodge/source33 [root0269](../docs/tmp/build-and-evaluate/step-0269-20261102T1917
 
 
 Actual84terminal/source35 [root0270](../docs/tmp/build-and-evaluate/step-0270-20261102T233639+0000/step-report.md):35/42originals,17complete strata; source232.9–396.0CPUh/mixed transfer15.9–35.2CPUh are assumptions. Wpublished34is an earlierprefix, fullterminal includesDihedral. Raw input/source35frame and originalcosts are in root record; no new replay/grain denominator.
+
+
+Producer diagnostics [root0271](../docs/tmp/build-and-evaluate/step-0271-20261103T004041+0000/step-report.md), [Oreport](decoupled-check/whole-library-source-errors.md), [finitecontrols](decoupled-check/ramsey-qualification.md): all9124rc1logs classified;4controls do not prove all-source repair, uniformphase or isolatedruntimefacet.2488/163097historicalsource acceptance unchanged; Ramsey is separate/pending. No new native run byroot.

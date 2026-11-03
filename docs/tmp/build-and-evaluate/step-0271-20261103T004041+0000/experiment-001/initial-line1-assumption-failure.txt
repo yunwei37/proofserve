@@ -1,0 +1,1 @@
+Read-only first reduction assumed all interpreter/native availability diagnostics were at source line1. Assertion failed after reading all9124logs; no native calls, no foreign or paper mutation. Corrected reducer reports line-position exception count and does not claim a uniform failing phase. Original script preserved.

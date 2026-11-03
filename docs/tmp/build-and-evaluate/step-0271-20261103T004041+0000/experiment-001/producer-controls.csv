@@ -1,0 +1,5 @@
+module,key,returncode,wall_s,cpu_s,maxRSS_KiB,charged_peak_B
+ComparatorChallenges.AbhyankarSathaye,qualified-producer-0-attempt001,0,1.058030947111547,1.064049,2138652,243068928
+ComparatorChallenges.AffineBernstein,qualified-producer-1,0,3.5008856244385242,3.582729,6928336,694312960
+ComparatorChallenges.AlgorithmicThinTrees,qualified-producer-2,0,3.210227956995368,3.432048,6956988,715358208
+InitDataControl,qualified-producer-3,0,0.08808509632945061,0.07387099999999999,168600,46260224

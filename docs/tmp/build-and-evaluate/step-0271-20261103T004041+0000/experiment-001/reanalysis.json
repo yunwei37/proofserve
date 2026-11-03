@@ -1,0 +1,83 @@
+{
+  "failures": 9124,
+  "classified_counts": {
+    "interpreter_unknown_declaration": 4697,
+    "missing_native_external_implementation": 4421,
+    "missing_module_data_file": 4,
+    "compiler_IR_missing_executable_code_unqualified_environment": 1,
+    "interpreter_missing_IR": 1
+  },
+  "initialization_errors": 9118,
+  "initialization_all_line1": false,
+  "initialization_not_line1_count": 139,
+  "failed_source_cpu_s": 9235.245726,
+  "failed_source_wall_s": 9379.187497884966,
+  "failed_source_maxRSS_KiB": 6239176,
+  "failed_source_charged_peak_B": 353288192,
+  "failed_source_charged_cap_B": 12348030976,
+  "failed_source_timeout_s": 600,
+  "qualified_control_charged_cap_B": 12616466432,
+  "qualified_control_timeout_s": 300,
+  "controls": [
+    {
+      "module": "ComparatorChallenges.AbhyankarSathaye",
+      "key": "qualified-producer-0-attempt001",
+      "returncode": 0,
+      "wall_s": 1.058030947111547,
+      "cpu_s": 1.064049,
+      "maxRSS_KiB": 2138652,
+      "charged_peak_B": 243068928
+    },
+    {
+      "module": "ComparatorChallenges.AffineBernstein",
+      "key": "qualified-producer-1",
+      "returncode": 0,
+      "wall_s": 3.5008856244385242,
+      "cpu_s": 3.582729,
+      "maxRSS_KiB": 6928336,
+      "charged_peak_B": 694312960
+    },
+    {
+      "module": "ComparatorChallenges.AlgorithmicThinTrees",
+      "key": "qualified-producer-2",
+      "returncode": 0,
+      "wall_s": 3.210227956995368,
+      "cpu_s": 3.432048,
+      "maxRSS_KiB": 6956988,
+      "charged_peak_B": 715358208
+    },
+    {
+      "module": "InitDataControl",
+      "key": "qualified-producer-3",
+      "returncode": 0,
+      "wall_s": 0.08808509632945061,
+      "cpu_s": 0.07387099999999999,
+      "maxRSS_KiB": 168600,
+      "charged_peak_B": 46260224
+    }
+  ],
+  "current_controls_match_fixed_archive": [
+    "ComparatorChallenges.AbhyankarSathaye",
+    "ComparatorChallenges.AffineBernstein",
+    "ComparatorChallenges.AlgorithmicThinTrees"
+  ],
+  "historical_source_copies_available": false,
+  "source_bytes_compared": 11197,
+  "metadata_copy_retry_rc": 1,
+  "control_identity_fields": {
+    "pid": 0,
+    "birth": 0,
+    "birth_ticks": 0,
+    "sampled_native_rss_peak_bytes": 0
+  },
+  "accepted_source": 2488,
+  "accepted_dependencies": 10744,
+  "accepted_total": 13232,
+  "source_frame": 163097,
+  "failed_control_is_not_source_proof_rejection": true,
+  "all_failures_pass_after_repair": "unproven",
+  "single_runtime_facet_cause": "not isolated",
+  "producer_search_paths": "reported by frozen construction code; command records omit per-open path trace and environment fields",
+  "root_analysis_seconds": 30.297352846711874,
+  "root_analysis_maxrss_kib": 321316
+}

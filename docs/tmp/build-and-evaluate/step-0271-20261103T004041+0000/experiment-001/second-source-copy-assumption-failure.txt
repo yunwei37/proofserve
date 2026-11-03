@@ -1,0 +1,1 @@
+Read-only reducer expected old whole-library extracted source copies to remain live. They were absent after earlier owner cleanup; no source mismatch was observed. Corrected qualification compares current3controls against retained fixed full-source archive, and explicitly leaves historical per-invocation byte comparison unavailable. No source restored/edited and no native rerun.
