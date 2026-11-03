@@ -1,0 +1,17 @@
+{
+  "source_frame": "/workspaces/repository/workloads/openai-math/final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source40-PacketLocality/sample-costs.csv",
+  "source_draws_known": 40,
+  "missing_original_draws": 2,
+  "known_HT_terms_CPU_h": 278.09176795944444,
+  "future_complete_sample_point_algebraic_floor_h": 278.09176795944444,
+  "actual_completed_HT_point_upper": "unbounded without missing-cost assumptions",
+  "population_CPU_confidence_lower": "unknown",
+  "population_CPU_confidence_upper": "unknown",
+  "missing_draws_plus_one_CPU_second_total_h": 0.011111111111111112,
+  "scenario_count": 9,
+  "rows": 27,
+  "class_sum_checks": 9,
+  "stream_ratios_are_assumptions_for_unmeasured_modules": true,
+  "nominal_budget_scenario_changes_to_budgeted_work_not_successful_full_build": true,
+  "no_native_run": true
+}
