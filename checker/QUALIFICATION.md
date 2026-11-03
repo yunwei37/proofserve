@@ -44,3 +44,9 @@ The repaired branch computes the complex prefix first. Disabling split fallback
 replays the whole module only when that prefix is nonempty. Ordinary-only
 modules continue through the same dependency-wave path as the default.
 Both release ablations are included in the portable correctness contract.
+
+The repaired executable remains fixed at ba316991. The collector is continued
+at a native boundary to give its upcoming real-prefix negative controls the
+project's Lake environment. Its completed native measurements are retained,
+not rerun or replaced. Collector source and executable source revisions are
+recorded separately; this does not change a measured native command.

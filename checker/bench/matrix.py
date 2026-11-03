@@ -13,8 +13,23 @@ def main():
  cfg=json.loads(Path(sys.argv[1]).read_text());root=Path(cfg['raw']).resolve()
  root.mkdir(parents=True,exist_ok=True);guard.ROOT=root
  binary=Path(cfg['binary']);project=Path(cfg['project']);lease=Path(cfg['lease'])
- rows=[];refs={};cleanup=[]
+ rows=json.loads((root/'completed.json').read_text())if(root/'completed.json').exists()else[]
+ refs={};cleanup=json.loads((root/'cleanup.json').read_text())if(root/'cleanup.json').exists()else[]
  def one(key,argv,dataset,workers,repeat,arm='native',state=None,interrupt=False,limit=1100):
+  previous=next((r for r in rows if r['key']==key),None)
+  if previous:
+   result=json.loads((root/'runs'/key/'result.json').read_text())
+   assert result['native_retired']and result['cgroup_retired']
+   receipt=None
+   if arm in ['native','full-math']and result['returncode']==0:
+    receipt=json.loads((root/(key+'-receipt.json')).read_text())
+    assert receipt['status']=='complete'
+    if dataset in refs:assert refs[dataset]==receipt['accepted']
+    else:refs[dataset]=receipt['accepted']
+   elif arm=='native'and not previous['manual_interruption']:
+    raise RuntimeError('old failed native cell requires explicit review')
+   print('RETAIN_COMPLETED',key,flush=True)
+   return result,receipt
   fs=os.statvfs(root);used=1-fs.f_bavail/fs.f_blocks
   if used>=.85:raise RuntimeError('disk85% boundary; preserve and stop')
   e=guard.environment();e['PATH']=str(guard.SDK/'bin')+':'+e['PATH'];e['LEAN_PATH']=cfg.get('overlay','')if dataset in['grid','barrier']else''
@@ -92,7 +107,7 @@ def main():
  # Original-kernel bad proof after a real Mathlib prefix.
  for mutation in ['bvar','unknown','sort']:
   os.environ['DECOUPLED_MUTATE_MODULE']=roots['math']
-  one('bad-real-prefix-'+mutation,[binary,'--internal-segment','audit',mutation,roots['math']],'math',4,1,'bad-control')
+  one('bad-real-prefix-'+mutation,[guard.SDK/'bin/lake','env',binary,'--internal-segment','audit',mutation,roots['math']],'math',4,1,'bad-control')
  os.environ.pop('DECOUPLED_MUTATE_MODULE',None)
  # Actual abrupt kill,then resume the same successful-prefix directory.
  state=root/'math-interrupted-state'
