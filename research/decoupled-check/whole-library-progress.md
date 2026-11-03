@@ -34,3 +34,39 @@ All costs are observed prefixes until every source ID and required native depend
 - all: incomplete_missing_typed_inputs; source errors/censors=9124; blocked=151485.
 
 RawPVC: /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/whole-library-20261102. Commands: whole-library-run.py reduce; queue --cohort all; window --cohort <directory>. See whole-library-plan.md.
+
+
+<!-- current-directory-start -->
+## Corrected-environment directory continuation
+
+Updated 2026-11-03T00:10:49.967144+00:00; review: 自审.
+
+The retired whole-library point is still **2488 / 163097 accepted source
+modules**, **10744 certified dependencies**, **0.694505 kernel CPU hours**,
+**9124 failed producer calls**, and **151485 blocked source modules**.
+No successful result is imputed to the missing or environment-failed nodes.
+
+Current Ramsey phase: **source**. Source **2/444** targets,
+kernel **0/444** targets,
+**0** freshly checked dependencies;
+kernel CPU **0.000000 h**, new target source CPU
+**0.001467 h**. The source denominator additionally includes
+**7.048263 h** of measured, immutable common dependency construction.
+Current check segment **0**, at least
+**23** segments remain.
+See [Ramsey progress](ramsey-progress.md). The complete ratio remains unavailable.
+
+The corrected producer has passed the four actual controls. It removes the
+known environment cause; it does not establish that every released source
+will elaborate or fit the experimental task bound. Of the 151485 blocked
+nodes, **140950 (93.05%)** have only failed-producer ancestry in the retained
+DAG and could become schedulable if those producers succeed. **10535**
+still reach missing external providers (273 external-only;10262 mixed).
+These are structural opportunities, not 140950 newly accepted proofs.
+
+The next directory selected after Ramsey is **Transonic (466 targets)**:
+31 external roots, all outside OAI; no additional OAI subtree is required.
+PlanarPacking (562 targets) additionally requires an OAI Triangular module,
+so Transonic is the smaller self-contained next comparison. It is prepared
+offline only until Ramsey and its reference checks actually finish.
+<!-- current-directory-end -->
