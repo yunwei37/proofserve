@@ -1,0 +1,10 @@
+dataset,arm,repeat,wall_s,cpu_s,peak_rss_GiB,sampled_tree_peak_GiB,checked_modules,source
+math,reference,1,66.48986901199987,65.879563,0.693389892578125,0.6848831176757812,1330,"default-persistent plain, no-M/no-profile"
+math,reference,2,66.11312372299972,66.1048,0.6957206726074219,0.6972427368164062,1330,"default-persistent plain, no-M/no-profile"
+math,reference,3,66.12815876600007,66.110876,0.6961021423339844,0.6969451904296875,1330,"default-persistent plain, no-M/no-profile"
+math,parallel1,1,72.49105004900002,72.142271,0.7709388732910156,0.7630729675292969,1330,"default-persistent plain, no-M/no-profile"
+math,parallel1,2,71.67076769000005,71.312644,0.7679481506347656,0.7551918029785156,1330,"default-persistent plain, no-M/no-profile"
+math,parallel1,3,71.76662032200011,71.402125,0.77166748046875,0.7555580139160156,1330,"default-persistent plain, no-M/no-profile"
+math,parallel8,1,39.76166064500012,73.075963,0.78448486328125,0.7666282653808594,1330,"default-persistent plain, no-M/no-profile"
+math,parallel8,2,39.65266127800032,72.99164,0.7828826904296875,0.7689437866210938,1330,"default-persistent plain, no-M/no-profile"
+math,parallel8,3,39.6292504879998,72.880005,0.78704833984375,0.7719841003417969,1330,"default-persistent plain, no-M/no-profile"

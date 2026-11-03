@@ -12,9 +12,10 @@ def union(intervals):
  return ans
 def overlap(intervals,a,b):
  return sum(max(0,min(y,b)-max(x,a))for x,y in intervals)
-def analyze():
- t=json.loads((P/'diagnostic-terminal.json').read_text());assert t['qualified']
- ev=[json.loads(s)for s in(P/'runs/diagnostic/stdout').read_text().splitlines()if s.startswith('{')]
+def analyze(raw=P,key="diagnostic",out=OUT,trace=None):
+ P=Path(raw);OUT=Path(out);OUT.mkdir(parents=True,exist_ok=True)
+ t=json.loads((P/(key+"-terminal.json")).read_text());assert t['qualified']
+ ev=[json.loads(s)for s in(P/'runs'/key/'stdout').read_text().splitlines()if s.startswith('{')]
  assert sum(x.get('event')=='accept'for x in ev)==4449
  metrics={x['module']:x for x in ev if x.get('event')=='profile_module'}
  rows=[];module_rows=[];ph=collections.Counter();cur=None;waves=[];weights={}
@@ -37,7 +38,7 @@ def analyze():
     barrier_span_s=sum(max([j[3]for j in w['jobs']]+[0])for w in waves)/1e9,
     batch_s=int(m['batch_wall_ns'])/1e9))
   cur=None;waves=[];weights={}
- for line in(P/'barrier-wave-trace.jsonl').open():
+ for line in(Path(trace) if trace else P/'barrier-wave-trace.jsonl').open():
   x=json.loads(line)
   if x['event']=='plan':finish();cur=x
   elif x['event']=='wave':
@@ -94,4 +95,8 @@ def analyze():
  (P/'all-wave-analysis.json').write_text(json.dumps(rows))
  (OUT/'diagnostic-summary.json').write_text(json.dumps(dict(total=total,method='C interval clocks; fixed measured service costs; local module DAG, serial module order retained'),indent=2))
  print(json.dumps(total,indent=2));print('BINS',dict(bins))
-if __name__=='__main__':analyze()
+if __name__=='__main__':
+ import argparse
+ a=argparse.ArgumentParser();a.add_argument("--raw",default=str(P));a.add_argument("--key",default="diagnostic")
+ a.add_argument("--out",default=str(OUT));a.add_argument("--trace")
+ args=a.parse_args();analyze(args.raw,args.key,args.out,args.trace)
