@@ -4,7 +4,7 @@ Review: 自审.
 
 **Historical whole-library point:2488 /163097accepted source IDs;10744dependencies;0.694505kernelCPUh;32attempts/31successful;9124producer errors/151485blocked. It is partial and retired, not this SubexponentialSAT denominator.**
 
-**SubexponentialSAT phase stream: baseline source coverage 14721/14721 closure nodes (reused 10744, new 3977) (3977/3977targets); kernel accepts 0/3977targets and 4500dependencies; kernelCPU 0.125479h; current segment 9; at least 21 segments (500 nodes each) remain.**
+**SubexponentialSAT phase stream: baseline source coverage 14721/14721 closure nodes (reused 10744, new 3977) (3977/3977targets); kernel accepts 0/3977targets and 5000dependencies; kernelCPU 0.159981h; current segment 10; at least 20 segments (500 nodes each) remain.**
 
 These are separate experiment costs. No global CPU estimate is formed by adding or rescaling this prefix. Producer uses official SDK/cache Meta/IR; checker consumes exact source-produced terms. Same-capture immutable shared source artifacts and actual compiler costs are charged once per complete closure; newly built targets use -o/-i/-c. This is summed source compiler work, not a fresh parallel Lake wall time. Oracle cost is a separate qualification. All timing uses P0–7/shared flock/no-M,12GiB total allocation. A complete CPU ratio requires full source, stream and original module-local coverage.
 
@@ -20,11 +20,11 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 - source_reused_cpu_s: 25373.748385
 - source_new_cpu_s: 21532.088263999998
 - kernel_accepted_targets: 0
-- kernel_accepted_dependencies: 4500
-- kernel_cpu_s: 451.724564
-- kernel_cpu_h: 0.12547904555555556
-- current_segment: 9
-- remaining_segments_min: 21
+- kernel_accepted_dependencies: 5000
+- kernel_cpu_s: 575.932321
+- kernel_cpu_h: 0.1599812002777778
+- current_segment: 10
+- remaining_segments_min: 20
 - oracle_qualified: 10744
-- kernel_peak_rss_gib: 3.0676918029785156
+- kernel_peak_rss_gib: 3.284282684326172
 - kernel_over_source_cpu: None
