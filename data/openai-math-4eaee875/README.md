@@ -11,10 +11,33 @@ The frozen 12 independent precision draws are not pooled into the original42.
 This directory is the stable small-table interface; research raw logs remain
 in their original retained locations. Column names below form the v1 contract.
 
+## Original42 results
+
+These are statistical estimates of the sum of native per-module Lean compilation
+CPU (imports + .olean/.ilean/C emission), not a timed whole-Lake build.
+
+| Source regime proxy | CPU hours | Nominal 95% sampling interval |
+|---|---:|---:|
+| All modules | 279.12 | 95.18–463.06 |
+| Ordinary mathematics | 221.57 | 0–450.82 |
+| Explicit decide +kernel | 57.55 | 0–360.66 |
+
+The total interval is calculated jointly; component interval endpoints do not
+add. Sparse cells and heavy tails limit the t approximation. Classification,
+runtime variability and transfer-calibration uncertainty are not included.
+
+For the same original42 estimate, selected closure-factor transfers give
+**18.84–24.71 CPU h serial** and **25.63–33.62 CPU h parallel** checking.
+These ranges are sensitivity scenarios, **not confidence intervals or actual
+whole-library checking**. Parallel elapsed speedups are not CPU savings.
+Regime-specific estimates, intervals and factor provenance are in the CSVs.
+
 ## Files and units
 
 | File | Contents |
 |---|---|
+| final-estimates.csv | Primary original42 estimates and separate completed-panel working models, by source regime and stage |
+| transfer-scenarios.csv | Selected-factor sensitivity envelopes, not sampling confidence intervals |
 | sample-costs.csv | 42 original identities, statuses, native CPU/wall, weights and proxy classes |
 | strata.csv | 21 populations, sample sizes, inclusion probabilities, N_h/2 weights |
 | closure-ratios.csv | Selected closure measurements used for checker transfer factors, CPU and wall kept separate |
@@ -158,3 +181,14 @@ Factors are applied per observed module before sampling variance is calculated.
 In conditional panels, each known original has weight one and only the six fresh
 remainder outcomes contribute sampling variance. This is not a uniform-worker
 whole-library run. No further sample/precision target follows the frozen12.
+
+
+## Preserved per-return diagnostics
+
+precision-results/ retains each actual returned boundary from the frozen
+analyzer. Its legacy next-stage-planning.csv and projected-additional fields are
+unexecuted diagnostics from the pre-closeout plan, **not an active experiment
+queue**. The former3x precision target is withdrawn. The current instruction is
+exactly the fixed12 attempts, then stop. Root-level final-estimates.csv and the
+public cost tables are the data interface for the paper; per-return directories
+preserve provenance and incomplete/failed cases.
