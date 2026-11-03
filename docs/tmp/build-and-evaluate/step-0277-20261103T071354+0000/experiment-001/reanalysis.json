@@ -1,0 +1,94 @@
+{
+  "native_points": 16,
+  "accepted_per_point": 4449,
+  "entries": 425463,
+  "unsafe_partial_exclusions": 3595,
+  "checks": 237863,
+  "allocation_units": 3283925639,
+  "identities_retired": 58,
+  "cgroups_absent": 16,
+  "wait4_HWM_KiB": 3439628,
+  "sampled_peak_bytes": 3539369984,
+  "charged_peak_bytes": 1277435904,
+  "ordinary_extra_bracket_fraction_min": 0.917008266334849,
+  "ordinary_extra_bracket_fraction_max": 0.9914779057478226,
+  "stat_IPC4": 1.8337249432086706,
+  "stat_IPC8": 1.693692703200084,
+  "whole_stat_P4_P8": [
+    {
+      "event": "cpu_core/cpu-cycles/u",
+      "P4": 1821258323442,
+      "P8": 1972618508418,
+      "change_percent": 8.310747741152058
+    },
+    {
+      "event": "cpu_core/instructions/u",
+      "P4": 3339686815722,
+      "P8": 3341009573905,
+      "change_percent": 0.03960725229601447
+    },
+    {
+      "event": "cpu_core/ref-cycles/u",
+      "P4": 2056468941837,
+      "P8": 2256781226165,
+      "change_percent": 9.740593706660384
+    },
+    {
+      "event": "cpu_core/mem_load_retired.l3_miss/u",
+      "P4": 523881148,
+      "P8": 586639174,
+      "change_percent": 11.979439657179647
+    },
+    {
+      "event": "cpu_core/mem_inst_retired.lock_loads/u",
+      "P4": 5811018482,
+      "P8": 5817823037,
+      "change_percent": 0.1170974592677343
+    },
+    {
+      "event": "cpu_core/mem_load_l3_hit_retired.xsnp_hitm/u",
+      "P4": 531789977,
+      "P8": 778599290,
+      "change_percent": 46.411050165392645
+    },
+    {
+      "event": "cpu_core/ocr.demand_rfo.l3_hit.snoop_hitm/u",
+      "P4": 344815349,
+      "P8": 516379898,
+      "change_percent": 49.755484927673564
+    }
+  ],
+  "source19_point_CPU_h": 246.86303979652777,
+  "source19_variance_CPU_s2": 32376792892.27296,
+  "source19_df": 2.1309429863742992,
+  "source19_tcritical": 4.058960594863139,
+  "source19_nominal95_CPU_h": [
+    43.98770573961548,
+    449.73837385344007
+  ],
+  "source_variance_top": [
+    {
+      "stratum": "0-50;11-100;0",
+      "N": 45251,
+      "n": 2,
+      "point_CPU_h": 66.55068340916667,
+      "variance_CPU_s2": 20205896110.159756,
+      "originals": "OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle;OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative",
+      "variance_share": 0.6240857819794156
+    },
+    {
+      "stratum": "99-100;11-100;1",
+      "N": 1164,
+      "n": 2,
+      "point_CPU_h": 33.399669368333335,
+      "variance_CPU_s2": 8938105522.473103,
+      "originals": "OAI.Analysis.PlanarPacking.Certificate.LowBlock15_1;OAI.MathematicalPhysics.Transonic.Certificates.Barrier50",
+      "variance_share": 0.27606519126872103
+    }
+  ],
+  "raw_tar_bytes": 15192357,
+  "root_analysis_seconds": 10.744780454784632,
+  "root_analysis_maxrss_kib": 31312,
+  "native_runs": 0,
+  "agents": 0
+}

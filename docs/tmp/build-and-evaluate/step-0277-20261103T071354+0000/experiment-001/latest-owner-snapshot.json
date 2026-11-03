@@ -1,0 +1,18 @@
+{
+  "W_identities": {
+    "526699": {
+      "expected_birth": 772878773,
+      "actual_birth": 772878773,
+      "same_identity": true,
+      "state": "S"
+    },
+    "561457": {
+      "expected_birth": 773951593,
+      "actual_birth": 773951593,
+      "same_identity": true,
+      "state": "S"
+    }
+  },
+  "git_log": "414db68 SubexponentialSAT source: build 11194/14721; kernel 0/3977, 0.0000 CPUh\n5e6ad79 Prepare complete-run risk review using actual source and memory outcomes\nc32e767 SubexponentialSAT source: build 11169/14721; kernel 0/3977, 0.0000 CPUh\nda5fbc7 SubexponentialSAT source: build 11144/14721; kernel 0/3977, 0.0000 CPUh\n",
+  "note": "original M16 complete; supplemental owner worker report read, not independently requalified; O source prefixes not complete ratios"
+}

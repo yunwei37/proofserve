@@ -1,11 +1,11 @@
 # Research plan: two verification-cost regimes
 
-Current frontier2026-11-03UTC, root0276. [Status](research-status.md) ·
+Current frontier2026-11-03UTC, root0277. [Status](research-status.md) ·
 [Evidence](evaluation.md) · [Results](../research/README.md) ·
 [User words](user-instruction.md) · [Novelty](novelty-20261101.md).
 [Exact previous plan](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-plan.md.gz).
 
-Current owner snapshot at root0275: Ramsey full production is stopped at190/444, not a running closure to restore;20-file sample complete. M original PMUmatrix is13/16 at entry, P2 pending; raw inherited worker READ metadata defects prevent treating all counters as qualified. W source38 now completes Tracked; Allocated preparation belongs to its existing master. Owner's SubexponentialSAT plan is preparation, not a root dispatch/result. Refresh actual terminals before any next integration.
+Current owner snapshot at root0277: original M16/16matrix is complete, not pending P2. Supplemental P8 count-only and P4 external-parent/drain points are owner-complete with separate metadata qualifications; root qualifies original16 graph/clocks/whole-command counters here, not new worker-level causal claims. Ramsey production remains stopped190/444 and20-file sample complete. W38 costs unchanged; Allocated untimed preparation window returns264rows with missing dependency at07:18:28UTC, not an original cost or root restart. Its existing master/controller still matched actualbirth at07:20read. SubexponentialSAT remains a source prefix, not a complete closure ratio or root dispatch. Refresh actual terminals.
 
 ## Fixed questions and ownership
 
@@ -46,17 +46,12 @@ Preserve live identities and real lock waiters; never infer a resume from old st
 
 | RQ | Unresolved evidence | Existing owner/integration boundary |
 |---|---|---|
-| RQ1 |5original source costs,11paired source/replay draws,13dynamic draws; native phase weights and uncertainty. | W/M; no -M/purposeful/dependency/zero-imputed substitute |
+| RQ1 |4original source costs,11paired source/replay draws,13dynamic draws; native phase weights and uncertainty. | W/M; no -M/purposeful/dependency/zero-imputed substitute |
 | RQ2 |Repeated/broader mathematics and released-software cases; causal preparation/production decomposition; arbitrary context and axiom qualification. | O/W; Falconer fills its selected closure only, not these global gaps |
 | RQ3 |Matched native module-task comparison; complete selected-config Envelope baseline/pairs/repeats; general failure/budget/object-transfer and cluster evidence. | M; follow actual new plans/terminals, no root heavy native run |
 | RQ4 |Whole declaration/axiom closure, observer/settings and cross-machine replication, released model-output software native evidence. | Existing W/M/O; no new generated candidates |
 
-Current source37data preserve conditional marked CPU24.484% over18complete strata,
-not a semantic phase/global fraction. Whole-frame242.2–315.2source/
-16.5–28.0modeledstream CPUh retain missing-cost/mixed-protocol transfer
-assumptions. The new point exceeded the old marked support maximum; scenarios
-are neither CI nor guaranteed bounds. No-assumption upper remains unbounded.
-Forecast/classification historical31-input panels do not become37-input experiments.
+Current source38data preserve conditional marked CPU23.311% over19complete strata/161034modules, not semantic phase/global weights. Nominal sampling uncertainty43.99–449.74CPUh/df2.13 is fragile and conditional on covered strata; missing-cost scenarios247.5–270.3source/16.8–24.0modeled checking CPUh answer a separate question. No-assumption upper remains unbounded. Historical31-input forecasts remain31-input experiments.
 
 Kernel-helper allocation stability does not imply zero runtime overhead or a
 sufficient maxHB margin. Math stored proofs are also stable in limited panels;
@@ -86,7 +81,7 @@ are not pending despite stale owner README text.
 The paper remains an unfinished characterization with explicit missing evidence;
 self-review is not independent audit or submission acceptance.
 
-Paper root0276:25pages/229052B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0277:25pages/231340B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
@@ -122,3 +117,7 @@ Historical0268scope audited rc1count only. Root0271now independently classifies 
 
 
 [Root0276](tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md) independently qualifies TrackedTestBounds actual06:22:07UTC original return5.198824wall/5.412330CPU-s. Fixed42frame adds onlythisID;prior37rawcosts match W38publishedrows.38/42originals,19/21complete strata/161034coveredmodules;4ordinarycostsmissing/2063module domain(1.26489%)in2cells. Conditional246.863040CPUh/marked57.546404h=23.311065%, summednativeelapsed215.217114h/marked40.018606h=18.594528%. Differentcovered domain than18-cell24.4844%,notpopulationtimetrend/semanticphaseweight. KnownHTsubtotal246.863040h equalsthecomplete-stratumsubtotalonlybecausemissing2cellshave0observations;notfullpoint/CI. Missing+1CPU-s eachadds0.573056h. Sourceobservedsupportscenarios247.5–270.3CPUh; separatemixed-protocolchecktransfer16.8–24.0CPUh,notmeasuredfullchecking/CI/guarantees.10xordinarymaxsource480.621868h;missingcheck1x40.184493/2x63.560375/4x110.312141/12x297.319203h. Fourtimesno longer exceedsactualmaxsource270.238923;explicit12xstressdoes,notmeasurement. Paired31/42/14strata/11missing,dynamic13missingunchanged.
+
+
+[Root0277](tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md) independently qualifies the original16 completed PMU matrix processes: each4449unique accepted modules,425463entries/3595upstream exclusions/0contextfallback; per-module237863checks/3283925639allocation units unchanged. Four ordinary4→8 pairings place91.70–99.15% extra nativeCPU in observer brackets including HB/timing reads, not pure C++cycles. Separate whole-command user PMUs: instructions+0.0396%,cycles+8.3107%,lockedloads+0.1171%,L3missloads+11.9794%,modified-line forwarding+46.4111%,RFOsnoopHITM+49.7555%,IPC1.833725→1.693693. Whole-command scope/fixedorder/pagecache/one counter cell preclude a unique RC/cache/frequency cause or removable stall share. Original sampled-worker metadata and separate owner counting-only repairs are not root-qualified causal attribution. Old0273's95.95% bracket observation remains separate.
+Same38original source costs,19complete strata/161034domain: independent finite-population stratified variance32376792892.27296CPU-s², nominal95%t/Satterthwaite43.987706–449.738374CPUh around246.863040h,df2.130943. Two cells contribute62.4086%/27.6065% variance. n2/cell fragile, excludes incomplete strata/nonresponse/transfer/drift, notfullframeCI/bound. Missing-cost scenarios247.5–270.3source/16.8–24.0mixedtransfer unchanged, distinct uncertainties;4source/11paired/13dynamic gaps unchanged.

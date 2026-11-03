@@ -1,6 +1,6 @@
 # Research status
 
-Snapshot2026-11-03UTC, root0276. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-03UTC, root0277. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
@@ -32,7 +32,7 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | Lexical census | Mathlib8529files/7masked sites; OAI163097files/1354379sites in5848files. 10668.32xsites/MB; default root misses33.30%sites. Not runtime or exhaustive semantic classes. | [0231](tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md) |
 | Source probability frame |38/42originals;19/21complete strata/161034modules.9marked cells/5848files complete; markedCPU57.546/246.863h=23.311%, nativeelapsed18.5945%.4ordinary costs missing/2063module domain incomplete. | [0276](tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md) |
 | Whole-frame scenarios |38known+4ordinary missing within observed support:247.5–270.3sourceCPUh; mixed-protocol check transfer16.8–24.0CPUh. Assumptions, not CI/guarantee/measured full checking; no-assumption upper unbounded. | [0276](tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md) |
-| Target-only replay |31/31 accepted, trusted compiled imports, source632.590/replay272.695CPU-s; median per-module ratio0.451 (0.087–0.885).14paired strata140.852/54.906CPUh, nominal weak interval[0,0.9401], effectiveDF1.19. Separate from current source37coverage/full closure. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
+| Target-only replay |31/31 accepted, trusted compiled imports, source632.590/replay272.695CPU-s; median per-module ratio0.451 (0.087–0.885).14paired strata140.852/54.906CPUh, nominal weak interval[0,0.9401], effectiveDF1.19. Separate from current source38coverage/full closure. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
 | Native checking grain |29available random+2purposeful artifacts/34units;13original draws missing.12decision-shaped calls>=1CPU-s use10.09%total call CPU; available-case weights are conditional, not global. | [0234](tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md) |
 | Four original O closures |Nat1330/NearPin3333/Grid3793/Amplitudes5083: complete check/source-work10.56/6.76/14.52/14.55%. Same5085-node source union/161reference blocks, overlapping dependencies and warm observations. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md) |
 | Large Falconer closure |13205source/27segments; native CPU2038.444/32292.604s=6.31%; matched checkpoint Mathlib91.145/1018.219s=8.95%. Separate wall9.26%/historicalMathlib10.56%/checkpoint14.67%. Selected closures, one capture each, trusted metadata and Oshare deviation retained. | [0268](tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md) |
@@ -50,6 +50,8 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | Corrected full attribution |12full Barrier cells+compoundleaf complete; P4→P8 extraCPU95.95%in observed kernel-call brackets, natural mixedwall+6.36%on/+5.53%off. Fixedcount work with CPUinflation; causes notisolated. | [0273](tmp/build-and-evaluate/step-0273-20261103T031343+0000/step-report.md) |
 | Whole-source producer diagnostics |9124rc1:9118unavailable interpreter/native declarations,4module-data,2IR/codegen.4finitecontrols pass;139declaration diagnostics notline1. Whole-source2488/163097stillpartial, no proof rejection/yield/globalcost conclusion. | [0271](tmp/build-and-evaluate/step-0271-20261103T004041+0000/step-report.md) |
 | Ramsey retained-prefix sample | Production stopped190/444; no full stream.20/20 module-local references accept, pooled CPU35.91%; prefix-only weighted34.99%, resampling29.41–40.41% omits selection/missing-target uncertainty. Trusted imports, not a comparable full-closure ratio. | [0275](tmp/build-and-evaluate/step-0275-20261103T061615+0000/step-report.md) |
+
+| Fixed-work PMU and uncertainty |16full Barrier processes share graph/count work; extra4→8 CPU91.70–99.15% in observer brackets, whole-command cycles+8.31% at instructions+0.0396%. No unique RC cause.19complete source strata nominal95% interval43.99–449.74CPUh/df2.13; not full-frame CI. | [0277](tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md) |
 
 ## Terminal failures and trust that remain visible
 
@@ -89,7 +91,7 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0276:25pages/229052B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0277:25pages/231340B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
@@ -120,3 +122,7 @@ Historical0268scope audited rc1count only. Root0271now independently classifies 
 
 
 [Root0276](tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md) independently qualifies TrackedTestBounds actual06:22:07UTC original return5.198824wall/5.412330CPU-s. Fixed42frame adds onlythisID;prior37rawcosts match W38publishedrows.38/42originals,19/21complete strata/161034coveredmodules;4ordinarycostsmissing/2063module domain(1.26489%)in2cells. Conditional246.863040CPUh/marked57.546404h=23.311065%, summednativeelapsed215.217114h/marked40.018606h=18.594528%. Differentcovered domain than18-cell24.4844%,notpopulationtimetrend/semanticphaseweight. KnownHTsubtotal246.863040h equalsthecomplete-stratumsubtotalonlybecausemissing2cellshave0observations;notfullpoint/CI. Missing+1CPU-s eachadds0.573056h. Sourceobservedsupportscenarios247.5–270.3CPUh; separatemixed-protocolchecktransfer16.8–24.0CPUh,notmeasuredfullchecking/CI/guarantees.10xordinarymaxsource480.621868h;missingcheck1x40.184493/2x63.560375/4x110.312141/12x297.319203h. Fourtimesno longer exceedsactualmaxsource270.238923;explicit12xstressdoes,notmeasurement. Paired31/42/14strata/11missing,dynamic13missingunchanged.
+
+
+[Root0277](tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md) independently qualifies the original16 completed PMU matrix processes: each4449unique accepted modules,425463entries/3595upstream exclusions/0contextfallback; per-module237863checks/3283925639allocation units unchanged. Four ordinary4→8 pairings place91.70–99.15% extra nativeCPU in observer brackets including HB/timing reads, not pure C++cycles. Separate whole-command user PMUs: instructions+0.0396%,cycles+8.3107%,lockedloads+0.1171%,L3missloads+11.9794%,modified-line forwarding+46.4111%,RFOsnoopHITM+49.7555%,IPC1.833725→1.693693. Whole-command scope/fixedorder/pagecache/one counter cell preclude a unique RC/cache/frequency cause or removable stall share. Original sampled-worker metadata and separate owner counting-only repairs are not root-qualified causal attribution. Old0273's95.95% bracket observation remains separate.
+Same38original source costs,19complete strata/161034domain: independent finite-population stratified variance32376792892.27296CPU-s², nominal95%t/Satterthwaite43.987706–449.738374CPUh around246.863040h,df2.130943. Two cells contribute62.4086%/27.6065% variance. n2/cell fragile, excludes incomplete strata/nonresponse/transfer/drift, notfullframeCI/bound. Missing-cost scenarios247.5–270.3source/16.8–24.0mixedtransfer unchanged, distinct uncertainties;4source/11paired/13dynamic gaps unchanged.

@@ -342,6 +342,19 @@ Increasing every missing draw by one CPU second would increase the eventual
 point by 0.573 CPU-hours under the fixed original weights.
 This sensitivity does not predict missing costs or variance.
 
+\paragraph{Narrow missing-cost scenarios do not imply precise sampling.}
+\partialev{\expref{0277-20261103T071354+0000}{0277}; nominal sampling uncertainty for the 19 complete strata.}
+Recomputing the finite-population stratified variance from the same two
+original draws per stratum gives an approximate 95\% Student-$t$ interval
+of 43.99--449.74 CPU-hours around the covered-domain estimate of 246.863 hours,
+with Satterthwaite effective degrees of freedom 2.13.
+Two strata contribute 62.41\% and 27.61\% of the estimated variance.
+This nominal interval is fragile with two observations per cell; it omits
+the two incomplete strata, nonresponse, runtime drift and protocol-transfer
+uncertainty. It is neither a full-frame confidence interval nor a guaranteed
+bound. The narrower missing-cost scenarios below address a different
+uncertainty and do not establish population-estimate precision.
+
 \paragraph{Whole-frame costs require explicit missing-cost scenarios.}
 \partialev{\expref{0276-20261103T062502+0000}{0276}; fixed 38-source sensitivity, not measurements
 or confidence limits.}
@@ -1601,6 +1614,35 @@ and frequency cause remain unestablished.
 All cells omit \texttt{-M}; charged-memory and sampled-RSS guards are separate.
 The original mathematical kernel is retained, while the coordinator, observer
 and internal-ABI adapter remain trusted implementation.
+
+\paragraph{Whole-command counters narrow the CPU-growth hypotheses.}
+\measured{\expref{0277-20261103T071354+0000}{0277}; a separate complete 16-process Barrier matrix.}
+Each of four worker settings (4, 8, 1, 2, in that order) has ordinary
+before/after, counter and sampled-recording processes.
+All 16 accept the same 4,449-module closure with identical per-module
+check and allocation-count vectors: 237,863 checks and 3,283,925,639 units.
+Across the four ordinary 4-to-8-worker before/after pairings,
+91.70--99.15\% of extra native CPU lies inside the observer brackets
+around original kernel calls. As above, these include heartbeat and timing
+reads and are not pure C++ kernel cycles.
+The earlier 95.95\% observation belongs to its separate capture.
+
+In the whole-command user-mode counter runs, 4-to-8-worker instructions
+increase only 0.0396\%, while cycles increase 8.31\% and aggregate IPC falls
+from 1.834 to 1.694. Retired locked loads change 0.117\%, L3-miss loads
+increase 11.98\%, modified-line forwarding 46.41\%, and demand-RFO
+snoop-HITM responses 49.76\%.
+These counts cover startup, coordination and checking together; they are
+not gated to the observer brackets. Locked-load counts are operations,
+and forwarding/RFO events do not identify reference counting uniquely.
+The observations support investigating coherence, ownership and cache
+costs under nearly fixed instruction work, without isolating one cause
+or a removable stall fraction.
+Fixed order, retained page caches and one counter run per setting leave
+order, frequency and instrumentation effects unresolved.
+Original sampled-worker READ metadata is incomplete for some settings;
+later counting-only repair points have separate denominators and are not
+used here to fill missing original attribution.
 
 \paragraph{Pooled certificates pass a broader native qualification.}
 \measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}

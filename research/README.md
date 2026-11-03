@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0276. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0277. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -8,6 +8,8 @@ Reports identify input, version, clock and trust boundary. Reviews are **自审*
 preparation, queues, controls and code are not performance or general acceptance.
 
 ## Latest complete results
+
+- [Fixed-work whole-command PMU and sampling uncertainty](../docs/tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md): original16full cells qualified; instructions nearly fixed while cycles/coherence events rise. No unique RC cause. Covered19source strata nominal95% interval43.99–449.74CPUh/df2.13, distinct from missing-cost scenario247.5–270.3CPUh. [Owner PMU](parallel-stream-check/perf/full-matrix-report.md); later worker-count repairs remain separate.
 
 - [Ramsey completed sample](decoupled-check/ramsey-sampled-result.md), [root0275](../docs/tmp/build-and-evaluate/step-0275-20261103T061615+0000/step-report.md):20/20 retained-prefix module-local references accept, pooledCPU35.91%; weighted190-file estimate34.99% is prefix-only. Production stopped190/444, stream0/444; trusted imports and selection bias remain. Raw/source frozen in rootstep and original PVC size-sample directory.
 
@@ -46,7 +48,7 @@ superseded captures remain; no static README authorizes restarting them.
 ## Workloads and distinct denominators
 
 - [W records](../workloads/W-status.md) retain historical timestamps; current root
-  source coverage32/42/15strata differs from31target-replay pairs/14strata.
+  source coverage38/42/19strata differs from31target-replay pairs/14strata.
 - [Fixed openai/math frame](../workloads/openai-math/README.md):163097source modules.
   [Source costs](../workloads/openai-math/noM-standard-artifacts-a/README.md) and
   [stratified analysis](../workloads/openai-math/cost-regimes-noM/README.md)
