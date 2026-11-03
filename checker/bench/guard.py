@@ -49,6 +49,12 @@ def run(key,argv,limit=600,measured=False,env=None):
      except (OSError,ValueError,IndexError):pass
     total=sum(x['rss'] for x in members);peak[0]=max(peak[0],total)
     f.write(json.dumps(dict(rss_bytes=total,processes=members))+'\n');f.flush()
+    fs=os.statvfs(ROOT)
+    if 1-fs.f_bavail/fs.f_blocks>=.85:
+     stops.append('disk85_budget')
+     try:(cg/'cgroup.kill').write_text('1')
+     except OSError:pass
+     break
     if total>int(15.75*1024**3):
      stops.append('sampled_own_RSS_budget')
      try:(cg/'cgroup.kill').write_text('1')

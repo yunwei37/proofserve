@@ -109,7 +109,7 @@ def main():
    assert j and set(modules)<=set(j['accepted'])
    break
   events={k:int(v)for k,v in(line.split()for line in r['memory_events'].splitlines())}
-  memory=events.get('oom_kill',0)>0 or bool(r['stop_reasons'])
+  memory=events.get('oom_kill',0)>0 or 'sampled_own_RSS_budget'in r['stop_reasons']
   if not memory:break
  dump(root/'terminal.json',dict(complete=True,cells=len(rows),meaning='all finite requested attempts returned; individual failures remain explicit'))
  print('MATRIX_TERMINAL',flush=True)
