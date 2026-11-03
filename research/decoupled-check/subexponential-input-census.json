@@ -1,0 +1,76 @@
+{
+  "source_pin": "4eaee87548250b2682affda7d05d947c05554bae",
+  "modules": 3977,
+  "bytes": 35509858,
+  "lexical_occurrences": {
+    "explicit_kernel": 0,
+    "plain_by_decide": 26593,
+    "native_decide": 0,
+    "plus_native": 0,
+    "interval_cases": 6,
+    "omega": 16550,
+    "simp": 39918,
+    "sorry_admit": 6
+  },
+  "modules_with_lexical_token": {
+    "explicit_kernel": 0,
+    "plain_by_decide": 1932,
+    "native_decide": 0,
+    "plus_native": 0,
+    "interval_cases": 4,
+    "omega": 2741,
+    "simp": 3300,
+    "sorry_admit": 6
+  },
+  "largest_sources": [
+    [
+      147641,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.DisjointReuse.SparsePriorityProgram"
+    ],
+    [
+      141240,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLog.MomentsAssemblyProgram"
+    ],
+    [
+      101030,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.SignatureTupleRefinement"
+    ],
+    [
+      100839,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLog.LeafRingSetupProgramNative"
+    ],
+    [
+      87733,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.SparseCodeProgram"
+    ]
+  ],
+  "most_plain_by_decide": [
+    [
+      293,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.SignatureTupleRefinement"
+    ],
+    [
+      257,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLog.LeafRingSetupProgramNative"
+    ],
+    [
+      246,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.HashGreedyRun"
+    ],
+    [
+      227,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.SignatureHeadLoaderCore"
+    ],
+    [
+      214,
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.SparseCodeProgram"
+    ]
+  ],
+  "scope": "Lexical planning-risk census, including comments/strings; not elaborated goals, a semantic cost classifier, or an axiom audit.",
+  "reviewed_sorry_admit_matches": {
+    "sorry_tokens": 0,
+    "admit_comment_words": 6,
+    "admit_proof_tokens_observed": 0,
+    "scope": "All six lexical matches manually read in original source; each is an English admit word inside a comment. Not a transitive axiom audit."
+  }
+}

@@ -53,3 +53,16 @@ module-local reference set. Only then report a complete ratio alongside
 Falconer6.31% and matched-protocol Mathlib8.95%. Startup/import/export are
 included; reference qualification is separate. A bounded unsuccessful or
 partial episode is reported as such, never as full-directory cost.
+
+
+## Static risk check before the pilot
+
+All3977source files were read without Lean. There are0explicit decide+kernel
+or native_decide/decide+native tokens, but **26593plain by-decide sites across
+1932files**, so marker absence is not evidence of a purely noncomputational
+regime. The largest file is147641bytes, versus multi-MB Ramsey certificate
+samples. These lexical counts include comments/strings and are not a
+cost predictor or semantic interval classifier. All six sorry/admit matches
+were read: they are English 'admit' words in comments, zero 'sorry' tokens;
+this is not a dependency-axiom audit. See subexponential-input-census.json.
+The empirical pilot and per-window12h reassessment remain necessary.
