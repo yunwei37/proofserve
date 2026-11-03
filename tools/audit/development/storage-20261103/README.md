@@ -29,3 +29,5 @@ attempts and original target products are excluded. Every selected parent and
 native PID/birth is retired; canonical bytes stay available to subsequent imports.
 The plan is published before unlinking. Application rechecks identities, bytes
 and inode/mtime/size; total PVC changes may include concurrent lane activity.
+
+Applied second pass: {"utc": "2026-11-03T23:36:02.330449+00:00", "removed_files": 3760, "duplicate_bytes_removed": 2034283424, "used_fraction_before": 0.8366031330503041, "used_fraction_after": 0.8214725867583287, "free_bytes_after": 24075751424, "scope": "Retired successful E-preparation binary duplicates only; canonical cache retained. No raw source/log/failure/censor/interruption/original target product removed; active preparation untouched."}
