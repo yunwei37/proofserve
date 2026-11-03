@@ -1,0 +1,43 @@
+{
+  "reason": "latest direct user asks immediate per-cell decode; keep current native alive, pause only its waiting controller; supersede unused after-all waiter",
+  "series": {
+    "pid": 521779,
+    "birth": "772750714",
+    "source": "8512f8bdc8cbcfa4cfee63079e4ef6fc038335e9",
+    "utc": "2026-11-03T03:02:03Z"
+  },
+  "waiter": {
+    "pid": 524740,
+    "birth": "772832313",
+    "source": "29196c181934761fb8a4c607ff703369ee50460e",
+    "utc": "2026-11-03T03:15:39Z",
+    "native_source_pid": 521779,
+    "one_shot": true,
+    "no_native_concurrency": true
+  },
+  "series_state": "T",
+  "active": {
+    "pid": 523189,
+    "birth": "772793965",
+    "key": "full-stat-P4-r1",
+    "argv": [
+      "flock",
+      "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "1740",
+      "taskset",
+      "-c",
+      "0-7",
+      "python3",
+      "-u",
+      "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/perf_run.py",
+      "stat",
+      "4",
+      "r1"
+    ],
+    "utc": "2026-11-03T03:09:16Z"
+  },
+  "utc": "2026-11-03T03:20:47Z"
+}

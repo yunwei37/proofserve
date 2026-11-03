@@ -1,0 +1,8 @@
+key,workers,arm,repeat,event,counter_value,pcnt_running,event_runtime,scope
+full-stat-P4-r1,4,stat,r1,cpu_core/cpu-cycles/u,1821258323442.000000,100.0,653673118750,whole command; not original-kernel interval
+full-stat-P4-r1,4,stat,r1,cpu_core/instructions/u,3339686815722.000000,100.0,653673118750,whole command; not original-kernel interval
+full-stat-P4-r1,4,stat,r1,cpu_core/ref-cycles/u,2056468941837.000000,100.0,653673118750,whole command; not original-kernel interval
+full-stat-P4-r1,4,stat,r1,cpu_core/mem_load_retired.l3_miss/u,523881148.000000,100.0,653673118750,whole command; not original-kernel interval
+full-stat-P4-r1,4,stat,r1,cpu_core/mem_inst_retired.lock_loads/u,5811018482.000000,100.0,653673118750,whole command; not original-kernel interval
+full-stat-P4-r1,4,stat,r1,cpu_core/mem_load_l3_hit_retired.xsnp_hitm/u,531789977.000000,100.0,653673118750,whole command; not original-kernel interval
+full-stat-P4-r1,4,stat,r1,cpu_core/ocr.demand_rfo.l3_hit.snoop_hitm/u,344815349.000000,100.0,653673118750,whole command; not original-kernel interval
