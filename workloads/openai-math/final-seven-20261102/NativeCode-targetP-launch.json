@@ -1,0 +1,19 @@
+{
+  "utc": "2026-11-03T01:00:33.087660+00:00",
+  "pid": 498608,
+  "birth_ticks": "772021650",
+  "args": [
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-NativeCodeAssembly-targetP-20261103/controller.py",
+    "--point",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-NativeCodeAssembly-targetP-20261103"
+  ],
+  "jobs": 1,
+  "original_module": "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.NativeCodeAssembly",
+  "no_M": true,
+  "one_request_per_task": true,
+  "dependency_prep": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-NativeCodeAssembly-rest-20261103",
+  "prep_retired": true,
+  "per_case_wall_s": 1200
+}

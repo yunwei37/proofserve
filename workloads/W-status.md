@@ -1,5 +1,17 @@
 # W current state
 
+## W100 current: NativeCode original Ptarget queued,source35unchanged
+All412dependencies ready:1retainedP+216firstE+195remainingE. Efinal01:00:11UTC,
+allnative/cgroups/controller retired. Current singleW Ppoint:
+workloads/openai4341-noM-final-NativeCodeAssembly-targetP-20261103,
+controller498608/birth772021650,actualstart01:00:33UTC.
+Oneoriginal/noM/P0-7/sharedflock/j8/authoredHB/3facets/1200maximum.
+At01:06:27 stillqueuedbehindotherhealthyowners,nooriginalreturn,noELean.
+Do not restart orstartanotherWLean whilethisrequestexists.
+Sixotherplans prepared-only;source35and17completecells unchanged.
+InspectactualPID/birth/terminal;olderlaunchparagraphsbelowhistorical.
+
+
 ## W096 current owner: Eprep NativeCode,original sample still35
 NativeCode Pqueue withdrawn00:05:13UTC after verifying unstarted flock/nochild;
 one completed dependency retained,no originalinvoked,no nativechildstopped.

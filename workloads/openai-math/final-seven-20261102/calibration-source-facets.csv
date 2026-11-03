@@ -1,0 +1,3 @@
+cohort,source_modules,duplicate_source_rows,compiler_outputs,all_no_M,source_CPU_s,scope
+Falconer,13205,0,olean+ilean+C,True,32292.603806999898,complete calibrated closure; whole-library fallback producers are a separateolean-only point
+Mathlib,1330,0,olean+ilean+C,True,1018.219383,"complete calibration source closure,not full OAI source population"
