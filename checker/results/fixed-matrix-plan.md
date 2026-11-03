@@ -35,3 +35,9 @@ Large reproducible output snapshots are retired only after a complete receipt,
 acceptance vector, command, and native result are retained. Input artifacts,
 interrupted prefixes, logs, and failures are kept. Cleanup paths are recorded.
 No per-cell commits or new profiling experiments are performed.
+
+The full-library input manifest includes the top-level Mathlib umbrella module,
+in addition to the 8,529 modules under the Mathlib source directory. This avoids
+silently presenting a directory-only manifest as every Mathlib module. Its
+collector is continued only at a completed native-cell boundary; the executable
+and completed performance measurements remain unchanged.

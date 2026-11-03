@@ -9,7 +9,7 @@ def emit(path,rows):
 def main():
  raw=Path(sys.argv[1]);out=Path(sys.argv[2]);out.mkdir(parents=True,exist_ok=True)
  terminal=json.loads((raw/'terminal.json').read_text());assert terminal['complete']
- cfg=json.loads((raw/'config.json').read_text());rows=json.loads((raw/'completed.json').read_text())
+ cfg=json.loads(Path(terminal.get('configuration',str(raw/'config.json'))).read_text());rows=json.loads((raw/'completed.json').read_text())
  for r in rows:
   assert r['commit']==cfg['commit']
   n=json.loads((raw/'runs'/r['key']/'result.json').read_text())
@@ -23,7 +23,7 @@ def main():
  emit(out/'fixed-cells.csv',rows)
  primary=[r for r in rows if re.fullmatch(r'(math|grid|barrier)-P[1248]-r[123]',r['key'])]
  assert len(primary)==36
- identities={};accepts={}
+ identities={};accepts={};axioms={};module_hashes={}
  for r in primary+[r for r in rows if '-no-persistence-'in r['key']or'-no-split-fallback-'in r['key']]:
   assert r['returncode']==0
   receipt=json.loads((raw/(r['key']+'-receipt.json')).read_text())
@@ -32,7 +32,11 @@ def main():
   if r['dataset']in identities:
    assert identities[r['dataset']]==sig,'input artifact identity changed'
    assert accepts[r['dataset']]==receipt['accepted']
-  else:identities[r['dataset']]=sig;accepts[r['dataset']]=receipt['accepted']
+   assert axioms[r['dataset']]==receipt['axioms']
+   assert module_hashes[r['dataset']]==receipt['module_set_hash']
+  else:
+   identities[r['dataset']]=sig;accepts[r['dataset']]=receipt['accepted']
+   axioms[r['dataset']]=receipt['axioms'];module_hashes[r['dataset']]=receipt['module_set_hash']
  summary=[]
  for dataset in ['math','grid','barrier']:
   for arm in ['native','no-persistence','no-split-fallback']:
@@ -67,14 +71,19 @@ def main():
  kill=next(r for r in rows if r['key']=='math-interrupt');resume=next(r for r in rows if r['key']=='math-resume')
  assert kill['manual_interruption']and resume['returncode']==0
  j=json.loads((raw/'math-resume-receipt.json').read_text());assert j['accepted']==accepts['math']
+ assert j['axioms']==axioms['math']and j['module_set_hash']==module_hashes['math']
+ assert any(s['reused']for s in j['segments']),'interruption must reuse a certified segment'
  base=next(s for s in summary if s['dataset']=='math'and s['workers']==4 and s['arm']=='native')
- interruption=dict(accepted_equal=True,wall_s=kill['wall_s']+resume['wall_s'],cpu_s=kill['cpu_s']+resume['cpu_s'],
+ interruption=dict(accepted_equal=True,axioms_equal=True,module_set_hash_equal=True,
+  reused_segments=sum(s['reused']for s in j['segments']),wall_s=kill['wall_s']+resume['wall_s'],cpu_s=kill['cpu_s']+resume['cpu_s'],
   uninterrupted_wall_median_s=base['wall_s_median'],uninterrupted_cpu_median_s=base['cpu_s_median'])
  interruption['wall_overhead_fraction']=interruption['wall_s']/base['wall_s_median']-1
  (out/'fixed-resume.json').write_text(json.dumps(interruption,indent=2))
  full=[dict(r)for r in rows if r['arm']=='full-math']
  for r in full:
   r['requested_source_modules']=len(cfg['full_math_modules'])
+  r['directory_source_modules']=cfg.get('mathlib_directory_modules',len(cfg['full_math_modules']))
+  r['includes_umbrella_module']=cfg.get('includes_umbrella_module',False)
   states=raw/('full-math-quota'+('100'if '100'in r['key']else'500'))
   records=[json.loads(f.read_text())for f in states.glob('segment-*.json')]
   r['completed_segments']=sum(j.get('exit')==0 for j in records)
@@ -86,7 +95,8 @@ def main():
   else:r['resolved_workers']=None
  emit(out/'fixed-full-mathlib.csv',full)
  (out/'fixed-acceptance.json').write_text(json.dumps(dict(complete_native_points=48,
-  within_dataset_module_sets_equal=True,within_dataset_artifact_identities_equal=True,
+  within_dataset_module_sets_equal=True,within_dataset_axiom_sets_equal=True,
+  within_dataset_module_set_hashes_equal=True,within_dataset_artifact_identities_equal=True,
   bad_original_kernel_rejections=3,actual_interruption_resume_equal=True,
   official_whole_ledger_equivalence='not established',scope_counts={d:len(v)for d,v in accepts.items()}),indent=2))
  print(json.dumps(dict(native=summary,official=official,resume=interruption,full=full),indent=2))

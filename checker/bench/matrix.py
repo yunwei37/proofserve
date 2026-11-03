@@ -115,6 +115,7 @@ def main():
  one('math-resume',[binary,project,'--root',roots['math'],'--workers','4','--checkpoint-dir',state,'--json'],'math',4,1,state=state)
  # All source modules at the fixed version,not the Nat.Basic closure.
  modules=cfg['full_math_modules']
+ assert 'Mathlib'in modules,'full-scale inputs must include the umbrella Mathlib module'
  for quota in[500,100]:
   state=root/('full-math-quota'+str(quota))
   args=[binary,project,'--checkpoint-dir',state,'--segment-modules',str(quota),'--json']
@@ -126,6 +127,6 @@ def main():
   events={k:int(v)for k,v in(line.split()for line in r['memory_events'].splitlines())}
   memory=events.get('oom_kill',0)>0 or 'sampled_own_RSS_budget'in r['stop_reasons']
   if not memory:break
- dump(root/'terminal.json',dict(complete=True,cells=len(rows),meaning='all finite requested attempts returned; individual failures remain explicit'))
+ dump(root/'terminal.json',dict(complete=True,cells=len(rows),configuration=str(Path(sys.argv[1]).resolve()),meaning='all finite requested attempts returned; individual failures remain explicit'))
  print('MATRIX_TERMINAL',flush=True)
 if __name__=='__main__':main()
