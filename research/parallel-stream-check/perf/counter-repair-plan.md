@@ -1,29 +1,34 @@
 # Repair incomplete per-worker PMU READ evidence
-No current native cell is modified or repeated. First collect the original
-16-cell matrix and all four immediate decodes. The original partial P8 READ
-records and raw capture are retained. P4 metadata completeness is unknown;
-P1 is complete. This defect concerns PMU counter evidence, not proof verdicts.
+The original16 native cells and four immediate decodes must finish first.
+Their source, settings and outputs remain untouched. P8 original missing
+READ shards remain actual incomplete counter evidence, not a proof failure.
 
-If P8 still lacks matching per-worker counter shards at the end, run one
-additional P8 recorder control, with exactly one changed perf option: remove
---compression-level=1 and use the default uncompressed format. The original
-fd1e9be executable, inputs, PMU selectors, sampling frequency, DWARF size,
-worker placement, C observer, no-M setting and memory limits are unchanged.
+## Purpose-specific collection, not a compression-causality experiment
+The earlier uncompressed-only proposal was prepared but never launched.
+After reading the matched perf6.12 documentation, prefer the official
+record --no-samples --stat path: only inherited per-thread event counts are
+needed for this repair. Remove DWARF sampling/frequency and compression
+options, keep the same seven user-mode PMU selectors, running-time metadata
+and default inheritance. This reduces unnecessary data/decoding rather than
+attempting to identify compression as a cause. It is explicitly not a
+single-variable performance intervention. Do not mix its time with ordinary
+timing or reuse its counters as the original record's denominator.
+
+[Primary perf6.12 documentation](https://raw.githubusercontent.com/torvalds/linux/v6.12/tools/perf/Documentation/perf-record.txt)
+documents -s as per-thread counts/report-T and -n as no sampling. Neither
+requests --per-thread or grouped sample reads, which can disable inheritance.
+Actual attrs, expected shard IDs/READ coverage and native outcomes must still
+be checked. Documentation alone is not successful capture evidence.
+
 The adapter calls the frozen native cell implementation and edits only its
-perf argv before execution; actual command and terminal are retained normally.
-It asserts the original foreground16-cell terminal before any native launch.
+perf argv. Same fd1e9be executable, full4,449-module closure, worker placement,
+C observer, no-M policy and14GiB guard inside16GiB M budget. One blocking
+P-core lock task, native1100s/outer1740s after lock; serial E-core decoding.
+Native work/reference acceptance and retirement must match the original.
+Labels r2-count-only distinguish the repair. First P8, then a matched P4 if
+valid per-worker counts are obtained. No current native restarted or modified.
 
-Use one blocking P-core flock, after-lock wrapper1740s, native1100s,
-same14GiB sampled own-tree/cgroup budget inside the16GiB M allocation.
-Decode serially on E8-15 after native retirement. Verify reference accepted IDs,
-fixed checks/units, all expected worker/event CPU-shard IDs, sample losses and
-reported enabled/running fields. Do not call missing metadata zero or fix it
-using a different command's denominator. Compare new counts with their own
-run, not as a repeat of original r1 timing. Perf time stays instrumented.
-
-A full result repairs evidence only. It does not optimize Lean or identify
-compression as causal without the actual control. If it fails too, preserve
-both and state that per-worker counts remain partial. Any further intervention
-must follow the actual evidence; no blind perf grouping/inheritance changes.
-A matched P4 recorder control is needed if the new method succeeds and a
-complete four-worker per-worker comparison is claimed. Raw data is never Git.
+If the purpose-specific capture remains incomplete, preserve it and leave
+affected values unknown. Do not manufacture IPC from mismatched subsets,
+interpret enabled/running per-CPU contexts as simple multiplex scaling, or
+claim a repaired Lean/runtime. No Lean code or host setting is changed.

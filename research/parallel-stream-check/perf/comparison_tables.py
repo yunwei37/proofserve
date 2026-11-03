@@ -1,5 +1,6 @@
 """Small publication tables from the original complete native matrix only."""
 import collections,csv,json,sys
+from decimal import Decimal
 from pathlib import Path
 
 def rows(p):
@@ -38,7 +39,7 @@ def main():
     for n in [1,2,4,8]:
         ss=[r for r in rows(root/'stat-counters.csv') if r['key']=='full-stat-P'+str(n)+'-r1']
         assert len(ss)==7 and all(float(r['pcnt_running'])==100 for r in ss)
-        counts={r['event'].split('/')[1]:int(r['counter_value'])for r in ss}
+        counts={r['event'].split('/')[1]:int(Decimal(r['counter_value']))for r in ss}
         whole.append(dict(workers=n,cycles=counts['cpu-cycles'],instructions=counts['instructions'],
             IPC=counts['instructions']/counts['cpu-cycles'],ref_cycles=counts['ref-cycles'],
             cycles_per_ref_cycle=counts['cpu-cycles']/counts['ref-cycles'],

@@ -4,6 +4,11 @@ full-record-P1-r1,1,record,r1,cpu_core/cpu-cycles/u,ordinary_worker_kernel_unanc
 full-record-P1-r1,1,record,r1,cpu_core/cpu-cycles/u,ordinary_worker_other_or_truncated,15548211344
 full-record-P1-r1,1,record,r1,cpu_core/cpu-cycles/u,outside_or_unresolved,115931340198
 full-record-P1-r1,1,record,r1,cpu_core/cpu-cycles/u,serial_or_other_kernel,267393370600
+full-record-P2-r1,2,record,r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,628024339593
+full-record-P2-r1,2,record,r1,cpu_core/cpu-cycles/u,ordinary_worker_kernel_unanchored,356725469586
+full-record-P2-r1,2,record,r1,cpu_core/cpu-cycles/u,ordinary_worker_other_or_truncated,14821513693
+full-record-P2-r1,2,record,r1,cpu_core/cpu-cycles/u,outside_or_unresolved,96207154885
+full-record-P2-r1,2,record,r1,cpu_core/cpu-cycles/u,serial_or_other_kernel,249509879718
 full-record-P4-r1,4,record,r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,653429387673
 full-record-P4-r1,4,record,r1,cpu_core/cpu-cycles/u,ordinary_worker_kernel_unanchored,388739494060
 full-record-P4-r1,4,record,r1,cpu_core/cpu-cycles/u,ordinary_worker_other_or_truncated,10709988150
