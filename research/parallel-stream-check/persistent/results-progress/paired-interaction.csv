@@ -1,0 +1,4 @@
+repetition,metric,off_8_minus_4,on_8_minus_4,interaction,reduction_of_off_growth,interpretation
+1,wall_s,-34.364092259667814,-33.09980463143438,1.2642876282334328,,factorial difference; not an exact atomic-RC stall fraction
+1,CPU_s,66.52672700000005,23.146867999999927,-43.379859000000124,0.6520666348128037,factorial difference; not an exact atomic-RC stall fraction
+1,observer_CPU_s,63.39876376900003,17.96083858100002,-45.43792518800001,0.7167004920404726,factorial difference; not an exact atomic-RC stall fraction
