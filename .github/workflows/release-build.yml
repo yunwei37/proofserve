@@ -16,6 +16,12 @@ jobs:
             /Cargo.lock
             /LICENSE
             /README.md
+            /.gitignore
+            /.dockerignore
+            /Dockerfile
+            /native/
+            /examples/
+            /clients/python/
             /crates/
             /checker/
             /tools/audit/

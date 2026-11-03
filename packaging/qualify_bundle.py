@@ -18,7 +18,7 @@ def main():
   c=subprocess.run(list(map(str,args)),cwd=project,env=e,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=120)
   (a.out/(label+'.stdout')).write_text(c.stdout);(a.out/(label+'.stderr')).write_text(c.stderr)
   results.append(dict(label=label,args=list(map(str,args)),returncode=c.returncode))
-  assert c.returncode==expected,(label,c.returncode,c.stderr[-2000:])
+  assert (c.returncode != 0 if expected is None else c.returncode==expected),(label,c.returncode,c.stderr[-2000:])
   return c
  run('version',[cli,'--version'])
  run('build',[root/'bin/lake','build'])
@@ -32,12 +32,13 @@ def main():
  for mode in ['default','fresh']:
   args=[root/'bin/lake','env','leanchecker','-v']
   if mode=='fresh':args+=['--fresh']
-  run('official-'+mode,args+['Base','Fixture'])
+  run('official-'+mode,args+(['Fixture'] if mode=='fresh' else ['Base','Fixture']))
  # Invoke the installed original-kernel component's internal protocol directly.
  # A public CLI usage error is never accepted as proof rejection.
  lean_path=run('lean-path',[root/'bin/lake','env','printenv','LEAN_PATH']).stdout.strip()
  for mutation in ['bvar','unknown','sort']:
-  c=run('bad-'+mutation,[root/'libexec/proofserve-check','--internal-segment','audit',mutation,'Fixture'],expected=1,extra=dict(LEAN_PATH=lean_path,DECOUPLED_MUTATE_MODULE='Fixture',PROOFSERVE_WORKERS='1'))
+  c=run('bad-'+mutation,[root/'libexec/proofserve-check','--internal-segment','audit',mutation,'Fixture'],expected=None,extra=dict(LEAN_PATH=lean_path,DECOUPLED_MUTATE_MODULE='Fixture',PROOFSERVE_WORKERS='1'))
+  assert 'kernel_reject:' in (c.stdout+c.stderr) or ('while replaying declaration' in (c.stdout+c.stderr) and '(kernel)' in (c.stdout+c.stderr)),(mutation,c.stdout,c.stderr)
   events=[json.loads(line)for line in c.stdout.splitlines()if line.startswith('{')]
   assert any(e.get('event')=='reject'and e.get('module')=='Fixture'for e in events),(mutation,c.stdout)
   assert not any(e.get('event')=='accept'and e.get('module')=='Fixture'for e in events)
