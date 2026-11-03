@@ -1,0 +1,16 @@
+{
+  "source_pin": "4eaee87548250b2682affda7d05d947c05554bae",
+  "toolchain": "leanprover/lean4:v4.34.1",
+  "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "option_setting_lines": [
+    {
+      "line": 9,
+      "text": "  leanOptions := #[\u27e8`autoImplicit, false\u27e9]"
+    }
+  ],
+  "measured_oai_cli_flags": [
+    "-DautoImplicit=false"
+  ],
+  "original_config_file_bytes": 16876,
+  "raw_metadata": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/project-metadata.json"
+}

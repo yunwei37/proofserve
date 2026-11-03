@@ -57,3 +57,21 @@ It helps distinguish this selected directory from a workload whose visible
 proofs delegate reduction to native_decide or skip the kernel explicitly.
 The original successful source cells and their exact typed artifacts remain
 the inputs to the primary check.
+
+## Authored project settings checked against the pinned archive
+
+The complete pinned lean/lakefile.lean and lean/lean-toolchain were read from
+the retained source archive. The only package/library option-setting line is
+leanOptions := #[autoImplicit,false] in the OAI package; there are no further
+leanOptions/moreLeanArgs/weakLeanArgs overrides or kernel-skip/heartbeat/depth
+settings in that configuration. The measured target flag -DautoImplicit=false
+therefore matches the authored package setting. Leanv4.34.1 and the Mathlib
+d13f23b723b8a846827a245b89c10fc7d3f11612 pin also match.
+See [the extracted settings](ramsey-project-options.json); full raw metadata
+remains onPVC. Per-source set_option commands are left unchanged.
+
+The author's Lake file explicitly declares and pins external project
+dependencies. The41missing external module artifacts are absent from this
+capture's prepared provider paths; the census must not be described as41
+dependencies omitted by the upstream corpus. Ramsey and the chosen next
+Transonic closure do not require an additional external OAI subtree.
