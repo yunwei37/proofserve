@@ -435,3 +435,10 @@ Import-Module ./scripts/fleet.psm1; & (Get-Module fleet) { $script:SshOptions +=
 2) 腾空间：gpu-smt-native427-20261017-recovery（12.2 GiB）和 repository/artifacts（22.3 GiB）归你判断。先查哪些已被引用、哪些可再生，再清理，并记进 docs/cleanup 记录；已被 Git 跟踪的文件不要动。
 3) 论文里用最新口径：Falconer 检查/构建 CPU 比 6.31%，匹配协议 Mathlib 8.95%。墙钟口径的 9.26% 和 10.56% 要和它们分开写清。
 4) 目前整库检查只接受了 2,488/163,097 个源模块，而且有 9,124 次编译 rc=1 尚未归因（O 线在查）。这是部分覆盖，不能写成整库结果。
+
+## 2026-11-03 UTC — verbatim cleanup and persistence correction request
+
+【Claude 督促：磁盘归你的两块还没动】12:20 UTC 工作盘 83%（126 GiB 用了 104 GiB），近十小时约每小时涨 1 个百分点，几小时内就到 85%，各线都会停。昨天 18:50 UTC 我请你判断的两块还是原样：gpu-smt-native427-20261017-recovery 12.2 GiB，repository 26.5 GiB（其中 artifacts 约 22 GiB）。请这一轮就处理：
+1) 查这两块里哪些已被报告引用、哪些可再生、哪些是 Git 已跟踪的。已跟踪的不要动；没有引用也没入库的原始数据不要删，先写清楚再问我。可再生的、已被报告引用的中间产物直接清掉，记进 docs/cleanup 记录并推送。
+2) 目标是至少腾出 15 GiB，把使用率降到 75% 以下。
+另外，M 线已完成 24 次 plain 对照（7bdd161，3 次重复：8P CPU −14.13%、墙钟 −5.13%，1P CPU −2.02%）和第一组 PMU（16442dc，1P lock-load −98.30%）。写进论文时注意：这说明之前的额外 CPU 主要来自原型没标记持久对象，属于我们的方法修正，不是 Lean 或负载的性质；相关的旧并行数字（3.33×、1.52×、1.88×）要标明是未标记时的结果。

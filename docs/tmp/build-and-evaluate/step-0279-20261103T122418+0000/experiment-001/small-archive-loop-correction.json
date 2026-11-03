@@ -1,0 +1,8 @@
+{
+  "utc": "2026-11-03T12:48:43.783804+00:00",
+  "pid": 634897,
+  "birth": "776240674",
+  "signal": "SIGINT only root offline archival helper",
+  "reason": "Repeated whole candidate-list filesystem existence checks cost too much; replace with direct archive extraction-path lookup. Each deletion already full-byte verified against retained archive; context manager flushes log on KeyboardInterrupt.",
+  "owner_native_signal": false
+}

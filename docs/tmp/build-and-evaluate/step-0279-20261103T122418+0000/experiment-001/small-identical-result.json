@@ -1,0 +1,12 @@
+{
+  "utc": "2026-11-03T12:43:04.783972+00:00",
+  "paths_preserved": 112006,
+  "reclaimed_lastlink_blocks_bytes": 458776576,
+  "unique_bytes_lost": 0,
+  "tracked_touched": 0,
+  "disk": {
+    "total": 134951424000,
+    "used": 95668039680,
+    "free": 39266607104
+  }
+}

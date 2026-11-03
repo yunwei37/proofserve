@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-03T12:55:52.070483+00:00",
+  "removed_empty_directories": 149501,
+  "reclaimed_directory_blocks_bytes": 615575552,
+  "disk": {
+    "total": 134951424000,
+    "used": 95132397568,
+    "free": 39802249216
+  }
+}

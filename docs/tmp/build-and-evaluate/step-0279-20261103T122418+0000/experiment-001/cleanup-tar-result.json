@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-03T12:35:26.867637+00:00",
+  "expanded_duplicate_files": 3127,
+  "reclaimed_lastlink_blocks_bytes": 416993280,
+  "unique_raw_bytes_lost": 0,
+  "tracked_deleted": 0,
+  "errors": [],
+  "before": {
+    "total": 134951424000,
+    "used": 96330993664,
+    "free": 38603653120
+  },
+  "after": {
+    "total": 134951424000,
+    "used": 95923916800,
+    "free": 39010729984
+  }
+}

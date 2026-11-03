@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-03T12:29:14.321693+00:00",
+  "paths_preserved": 16610,
+  "raw_bytes_lost": 0,
+  "tracked_touched": 0,
+  "reclaimed_lastlink_blocks_bytes": 2435493888,
+  "before": {
+    "total": 134951424000,
+    "used": 101932052480,
+    "free": 33002594304
+  },
+  "after": {
+    "total": 134951424000,
+    "used": 99502166016,
+    "free": 35432480768
+  },
+  "restore": "Before future mutation of a retained historical path, copy its bytes into a distinct inode; restore original mtime from the per-path manifest if needed."
+}

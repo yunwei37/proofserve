@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0278. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0279. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -8,6 +8,8 @@ Reports identify input, version, clock and trust boundary. Reviews are **自审*
 preparation, queues, controls and code are not performance or general acceptance.
 
 ## Latest complete results
+
+- [Persistence method correction and historical-cache reclamation](../docs/tmp/build-and-evaluate/step-0279-20261103T122418+0000/step-report.md): root0279 independently qualifies the complete24plain/first1Pstat subset and13controls; 8P CPU−14.13%/wall−5.13%, 1P CPU−2.02%, paired excessCPU reduction65.21%. Historical3.33×/1.52×/1.88× explicitly unmarked; overall32matrix remains separate. Exact cleanup manifests preserve tracked/raw data.
 
 - [Supplemental checking-thread PMU qualification](../docs/tmp/build-and-evaluate/step-0278-20261103T081624+0000/step-report.md):14historical checkingTIDs have complete seven-event/eight-shard READs; instructions+0.037%,cycles+10.60%,L3missloads+36.46%. PMUthreadlifetime differs from observer CPU; failedP4r2retained, no uniqueRCcause. [Owner supplement](parallel-stream-check/perf/supplemental-worker-report.md).
 

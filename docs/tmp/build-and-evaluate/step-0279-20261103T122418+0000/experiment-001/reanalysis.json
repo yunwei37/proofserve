@@ -1,0 +1,14 @@
+{
+  "root_analysis_seconds": 20.701203977689147,
+  "root_analysis_maxrss_kib": 54172,
+  "plain_cells": 24,
+  "P1_stat_cells": 2,
+  "qualified_controls": 13,
+  "retired_actual_PID_births": 106,
+  "reference_modules": 4449,
+  "checks": 237863,
+  "units": 3283925639,
+  "source_scope": "same new executable flag0/1, original kernel; unsafe quiescence/coordinator/FFI trusted",
+  "overall32matrix_complete": false,
+  "archive_bytes": 29520732
+}

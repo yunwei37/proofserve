@@ -1,0 +1,23 @@
+{
+  "utc": "2026-11-03T12:32:23.705836+00:00",
+  "removed_intermediate_copies": 28456,
+  "reclaimed_lastlink_blocks_bytes": 2744176640,
+  "raw_unique_bytes_lost": 0,
+  "tracked_touched": 0,
+  "archive_errors": [
+    [
+      "/workspaces/repository/artifacts/lean-gpu-checking-2026-10-13/runtime-closure-20261013T154009Z/output-root/experiment021/full-recovery1-cpu/proofnet-rep0-cpu.zip",
+      "BadZipFile('File is not a zip file')"
+    ]
+  ],
+  "before": {
+    "total": 134951424000,
+    "used": 99540254720,
+    "free": 35394392064
+  },
+  "after": {
+    "total": 134951424000,
+    "used": 96279945216,
+    "free": 38654701568
+  }
+}

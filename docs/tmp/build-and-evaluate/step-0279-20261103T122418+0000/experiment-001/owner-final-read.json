@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-03T12:59:37.879411+00:00",
+  "M_returned_cells": 32,
+  "M_active": "full-stat-m0-P4-r1",
+  "M_overall_terminal_exists": true,
+  "M_overall_state": "all32_complete_requires_review",
+  "W_preparation": {
+    "utc": "2026-11-03T12:56:12.102777+00:00",
+    "window_index": 13,
+    "all_original_deps_ready": false,
+    "preparation_final": false,
+    "no_population_cost_measurements": true
+  },
+  "O_latest_commit": "3d8749ca SubexponentialSAT source: build 12419/14721; kernel 0/3977, 0.0000 CPUh"
+}

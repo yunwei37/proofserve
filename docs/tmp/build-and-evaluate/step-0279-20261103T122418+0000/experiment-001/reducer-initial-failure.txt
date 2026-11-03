@@ -1,0 +1,1 @@
+Initial offline assertion incorrectly equated off-arm immediately-after-no-op ST root with after-enqueue MT root. Source makes these separate times. Corrected after=ST, ready=MT; no native rerun.

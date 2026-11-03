@@ -1,0 +1,53 @@
+{
+  "utc": "2026-11-03T12:59:37.883354+00:00",
+  "attributed_reclaimed_bytes": 16290934784,
+  "attributed_reclaimed_GiB": 15.172115325927734,
+  "goal15GiB_met": true,
+  "used_below75": true,
+  "PVC_used_bytes": 94716596224,
+  "PVC_total_bytes": 134951424000,
+  "PVC_free_bytes": 40218050560,
+  "PVC_used_percent": 70.18569602051772,
+  "release_receipts": [
+    {
+      "receipt": "cleanup-generated-result.json",
+      "bytes": 8891338752
+    },
+    {
+      "receipt": "cleanup-identical-result.json",
+      "bytes": 2435493888
+    },
+    {
+      "receipt": "cleanup-retained-archive-result.json",
+      "bytes": 2744176640
+    },
+    {
+      "receipt": "cleanup-tar-result.json",
+      "bytes": 416993280
+    },
+    {
+      "receipt": "small-identical-result.json",
+      "bytes": 458776576
+    },
+    {
+      "receipt": "cleanup-small-archive-result.json",
+      "bytes": 36114432
+    },
+    {
+      "receipt": "cleanup-empty-directories-result.json",
+      "bytes": 615575552
+    },
+    {
+      "receipt": "cleanup-bench-result.json",
+      "bytes": 478969856
+    },
+    {
+      "receipt": "git-repack-result.json",
+      "bytes": 213495808
+    }
+  ],
+  "protected_tracked_paths": 38372,
+  "missing_tracked": [],
+  "unique_raw_lost": 0,
+  "foreign_native_signals": 0
+}

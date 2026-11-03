@@ -1224,7 +1224,7 @@ Wave, 4 workers &20.233&58.335\\
 Wave, 8 workers &14.127&60.016\\
 \bottomrule
 \end{tabular}
-\caption{\measured{\expref{0235-20261101T041713+0000}{0235}; scoped prototype.} BarrierData41 independent compiled-module replay, three ordered
+\caption{\measured{\expref{0235-20261101T041713+0000}{0235}; scoped prototype.} Historical unmarked prototype. BarrierData41 independent compiled-module replay, three ordered
 repetitions per path. Wall spans first stage-configuration write through
 final audit retirement, including graph planning, native processes, imports,
 exports and driver gaps. Lease wait and initial directory/environment setup
@@ -1235,7 +1235,7 @@ are excluded; CPU sums native processes, excluding the Python coordinator.}
 All 15 cells accept the same 3,425 typed constants and ordered names;
 all 99 native stages exit zero and their recorded identities/cgroups retire.
 Eight workers reduce the measured pipeline median from 46.992 to 14.127
-seconds, 3.326-fold against the direct stock-API baseline
+seconds, 3.326-fold for the historical unmarked prototype against the direct stock-API baseline
 (Table~\ref{tab:waves}); per-repetition ratios range from 3.284 to 3.359.
 Native CPU increases 27.8\%.
 One-worker wave replay is 13.5\% slower than direct stock replay, so a
@@ -1408,7 +1408,8 @@ across 858 modules; 472 complex/cyclic modules use upstream serial replay.
 There are no module-local context fallbacks on this fixed closure, and
 certificate proof rewriting is inactive.
 
-Eight workers reduce process-wall median 34.33\%, or 1.523-fold, with
+For the historical unmarked prototype, eight workers reduce process-wall
+median 34.33\%, or 1.523-fold, with
 36.25\% more native CPU.
 Same-repeat wall ratios are 1.515, 1.594 and 1.491.
 Audited and one-worker paths remain slower than the original stream.
@@ -1467,7 +1468,7 @@ BarrierData41 &4,449&474.851&304.862&1.558\\
 Grid &3,793&557.568&296.293&1.882\\
 \bottomrule
 \end{tabular}
-\caption{\measured{\expref{0244-20261101T101651+0000}{0244}} Actual complete native-process pairs, one observation per arm.
+\caption{\measured{\expref{0244-20261101T101651+0000}{0244}} Historical unmarked prototype: actual complete native-process pairs, one observation per arm.
 Clocks run from subprocess launch through \texttt{wait4}; subsequent
 sampler join and cgroup removal are verified but outside that wall clock.
 Each pair runs serial first. Grid's arms are separated by a controller
@@ -1670,6 +1671,53 @@ complete metadata does not isolate a universal recorder fix.
 These supplemental points neither fill the original sampled recordings'
 missing counters nor supply an ordinary runtime speedup or confidence
 interval. Effective frequency and fixed-order effects remain unresolved.
+
+
+\paragraph{Persistent frontiers correct a prototype lifetime choice.}
+\measured{\expref{0279-20261103T122418+0000}{0279}; complete 24-cell plain submatrix and first 1P counter pair.}
+A matched intervention uses the same new executable with persistence disabled
+or enabled, three ordered repetitions at each of 1/2/4/8 workers.
+The enabled arm calls the official runtime persistence primitive on each
+replay frontier before enqueueing workers, after joining the previous wave.
+The original proof terms and mathematical kernel remain unchanged.
+Each of the 24 complete processes accepts exactly the same 4,449 modules
+and reproduces every module's check/allocation vector
+(237,863 observed checks and 3,283,925,639 units).
+The 13 qualification controls preserve positive outcomes and reject malformed
+proofs or stale/duplicate coordination tokens.
+
+At eight workers, median process CPU falls from 722.297 to 620.240 seconds
+(14.13\%) and wall time from 314.839 to 298.675 seconds (5.13\%).
+At one worker, median CPU falls from 640.427 to 627.502 seconds (2.02\%).
+The three directly paired four-to-eight-worker contrasts remove a median
+43.380 seconds, or 65.21\% of the extra process CPU
+(range 61.80--71.76\%); positive residual growth remains.
+These are observed repeats and ranges, not confidence intervals.
+Most of this finite prototype's excess CPU therefore responds to correcting
+its unmarked shared-object lifetime choice. The earlier negative scaling
+must not be read as a property of Lean or of computational proofs.
+Marking also touches the object graph and changes reclamation, so this
+contrast is not an exact decomposition into reference-counting stall time.
+
+The first one-worker whole-command PMU pair records retired lock-load
+events falling from 5,800,924,030 to 98,707,245 (98.30\%), cycles falling
+2.39\% and instructions increasing 1.195\%; all 14 event readings report
+100\% running time. These are user-mode process-lifetime counters,
+not hardware-gated checking intervals or three-repeat PMU estimates.
+Locked-load events include runtime operations and do not directly measure
+stall seconds. The one-worker coherence counts are near zero and do not
+establish a multiworker contention effect.
+The remaining planned counter cells are outside this admitted subset.
+
+This is a method correction to our prototype. The historical 3.326-fold
+Barrier pipeline, 1.523-fold mathematical closure and 1.882-fold Grid pair
+remain measurements of their unmarked implementations and scopes.
+The new Barrier ablation does not replace their different baselines or
+provide corrected gains for those workloads.
+Persistence retains objects by design; full-library retained-memory cost
+and arbitrary extension-task safety remain unproved.
+The new unsafe FFI call requires quiescence at its declared enqueue site;
+the original mathematical kernel does not remove trust in the coordinator.
 
 \paragraph{Pooled certificates pass a broader native qualification.}
 \measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}

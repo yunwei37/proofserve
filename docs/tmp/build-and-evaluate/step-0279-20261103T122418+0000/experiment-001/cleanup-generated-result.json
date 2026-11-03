@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-03T12:26:45.433539+00:00",
+  "deleted_files": 103225,
+  "lastlink_reclaimed_blocks_bytes": 8891338752,
+  "before": {
+    "total": 134951424000,
+    "used": 110784286720,
+    "free": 24150360064
+  },
+  "after": {
+    "total": 134951424000,
+    "used": 101923999744,
+    "free": 33010647040
+  },
+  "raw_source_archives_deleted": 0,
+  "tracked_files_deleted": 0,
+  "active_conflicts": 0
+}

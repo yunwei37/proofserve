@@ -1,0 +1,35 @@
+{
+  "utc": "2026-11-03T12:45:04.716055+00:00",
+  "argv": [
+    "git",
+    "-c",
+    "pack.threads=2",
+    "repack",
+    "-a",
+    "-d",
+    "--keep-unreachable"
+  ],
+  "returncode": 0,
+  "seconds": 167.2188168587163,
+  "object_count_before": 41669,
+  "object_count_after": 41669,
+  "all_old_objects_retained": true,
+  "prune": false,
+  "reflog_expiration": false,
+  "worktree_changes": false,
+  "before_blocks": 3172818944,
+  "after_blocks": 2959323136,
+  "reclaimed_bytes": 213495808,
+  "before_count": "count: 26656\nsize: 885212\nin-pack: 15013\npacks: 6\nsize-pack: 2212307\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+  "after_count": "count: 0\nsize: 0\nin-pack: 41669\npacks: 1\nsize-pack: 2889764\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+  "before_disk": {
+    "total": 134951424000,
+    "used": 96069709824,
+    "free": 38864936960
+  },
+  "after_disk": {
+    "total": 134951424000,
+    "used": 95470764032,
+    "free": 39463882752
+  }
+}

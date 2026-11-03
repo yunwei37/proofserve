@@ -1,0 +1,19 @@
+{
+  "utc": "2026-11-03T12:26:01.057164+00:00",
+  "candidate_files": 103225,
+  "candidate_path_blocks": 9080586240,
+  "reasons": {
+    "retired reproducible Lean build cache; source and raw archives retained": 3736743936,
+    "retired stock Lean4.27.0 distribution library; pinned source/version/build commands retained": 2587172864,
+    "retired reproducible ELF executable/library/object; historical source/build logs and results retained": 1886765056,
+    "retired reproducible Rust target cache": 869904384
+  },
+  "tracked_protected": 38372,
+  "live_conflicts": [],
+  "executed": false,
+  "disk": {
+    "total": 134951424000,
+    "used": 110779133952,
+    "free": 24155512832
+  }
+}
