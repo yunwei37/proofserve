@@ -216,7 +216,7 @@ def main():
         records.append(row)
         out=analyze(records,module,point,row["status"])
         publish(out,module)
-    dump(A.raw/"collection-terminal.json",dict(utc=utc(),all_six_attempts_returned=True,
+    dump(A.raw/"collection-terminal.json",dict(utc=utc(),all_planned_remaining_attempts_returned=True,planned_remaining_attempts=len(seeds),
         completed_originals=sum(x.get("status")=="compile_ok"for x in records),
         note="missing/dependency failures have no completed cost; thread must inspect final outcomes"))
     event(dict(event="collection_complete"))

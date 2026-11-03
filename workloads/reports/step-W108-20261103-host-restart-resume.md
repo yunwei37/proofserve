@@ -26,3 +26,5 @@ outage response follows latest user instruction: preserve scene and wait for
 operator, no scheduling or recovery actions. Continue live blocking through
 remaining originals, then independent conditional precision panels for the
 two high-variance strata. No extra sample launched before original completion.
+
+Forward verification: actual source38 seed filtering yields exactly four remaining identities. Terminal metadata now reports the remaining-plan count rather than a hard-coded six; no native behavior/cost changes.
