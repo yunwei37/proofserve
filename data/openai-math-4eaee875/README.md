@@ -119,3 +119,28 @@ exchangeable draws. Adaptive cell selection and heavy tails limit interpretation
 of the whole-frame hybrid nominal interval. All six costs must return before
 a cell is substituted. No further draws, precision target or stopping threshold
 is planned after these12, regardless of the eventual interval width.
+
+
+## Final table derivation (after the authorized returns)
+
+```sh
+# Optional statistical analysis dependency; audit/summarize use stdlib only.
+python3 -m pip install scipy
+python3 data/openai-math-4eaee875/final_table.py
+# After the fixed12 ledger has returned:
+python3 data/openai-math-4eaee875/export_precision.py --results /path/to/panel-results.jsonl
+python3 data/openai-math-4eaee875/final_table.py --precision-costs data/openai-math-4eaee875/precision-costs.csv
+```
+
+final_table.py refuses to emit a full-frame table while original42 costs are
+incomplete. It preserves original42 HT separately from the conditional-panel
+working model, with build / serial stream / parallel stream CPU by each regime
+and total. Nominal source-sampling intervals hold selected transfer factors
+fixed; transfer-scenarios.csv is a separate selected-factor sensitivity table.
+Partial panels retain the original cell, with failed/censored attempts visible
+in precision-costs.csv. Non-completed attempt CPU is not a successful sample cost.
+These scripts do not start Lean or request more samples. The current provisional
+snapshot has no final-estimates.csv yet; the actual41 input was correctly refused.
+A numeric check on the actual20 complete cells exactly reproduced the published
+278.091768 estimate and 94.148040–462.035496 nominal interval; this is not a
+pretend observation for the missing original or additional12.
