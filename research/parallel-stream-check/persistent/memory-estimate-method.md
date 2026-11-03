@@ -13,8 +13,7 @@ all future marked frontiers can live forever inside14GiB.
 
 The currently resolved OAI compiled subset is only1299 modules/2,211,613,376
 logical bytes. Earlier complete lexical source frame at pin4eaee875 has
-163,097 files/1,785,499,363 source bytes (see ../chunked-kernel-check/
-static-summary.json from the research root). It must not be called fully
+163,097 files/1,785,499,363 source bytes (see [the complete source census](../../chunked-kernel-check/static-summary.json)). It must not be called fully
 compiled. Extending this selected compiled subset's mean artifact density to
 that source-file count would suggest roughly260GiB, not a16GiB resident
 library. This is deliberately a conditional, selection-biased scenario, not

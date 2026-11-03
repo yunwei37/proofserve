@@ -5,3 +5,6 @@ repetition,metric,off_8_minus_4,on_8_minus_4,interaction,reduction_of_off_growth
 2,wall_s,-35.27037689741701,-30.97816508449614,4.292211812920868,,factorial difference; not an exact atomic-RC stall fraction
 2,CPU_s,64.87334300000009,24.784702000000152,-40.08864099999994,0.6179524461996645,factorial difference; not an exact atomic-RC stall fraction
 2,observer_CPU_s,62.69950621300001,20.98028476799999,-41.71922144500002,0.6653835726117733,factorial difference; not an exact atomic-RC stall fraction
+3,wall_s,-28.990970518440008,-35.15356823429465,-6.162597715854645,,factorial difference; not an exact atomic-RC stall fraction
+3,CPU_s,74.34232099999997,20.99651099999994,-53.34581000000003,0.7175698751724479,factorial difference; not an exact atomic-RC stall fraction
+3,observer_CPU_s,70.13525203500001,17.51236086800003,-52.62289116699998,0.7503058681636913,factorial difference; not an exact atomic-RC stall fraction

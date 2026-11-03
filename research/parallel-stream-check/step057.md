@@ -15,3 +15,4 @@ checked. No confidence interval, exact atomic-stall fraction or whole-process
 allocation equivalence claimed. Marking changes lifetime/cache touches as well
 as RC updates. PMU and full-library memory acceptance remain unknown. No new
 axiom/checker bypass. All original data/versions remain on PVC and in history.
+\nCorrection in step058: the intended relative census-link substitution did not\napply in step057; step058 asserts and corrects the actual text. No data changed.\n
