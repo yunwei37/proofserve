@@ -1,0 +1,21 @@
+{
+  "kind": "functional development qualification,not timed evaluation",
+  "source": "checker-package-20261103/lake-build-7 + portable-contract-5",
+  "build": true,
+  "portable_fixture": true,
+  "stock_acceptance_parity": true,
+  "workers": [
+    1,
+    2,
+    4
+  ],
+  "bad_mutations": [
+    "bvar",
+    "unknown",
+    "sort"
+  ],
+  "axioms": true,
+  "bounded_resume": true,
+  "unsupported_version_rejected": true,
+  "formal_matrix_complete": false
+}
