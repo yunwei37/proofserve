@@ -45,6 +45,7 @@ Regime-specific estimates, intervals and factor provenance are in the CSVs.
 | scenario-ranges.csv | Full-frame missing-cost / closure-factor sensitivity ranges, **not confidence intervals** |
 | metadata.json | Pins, snapshot coverage and measurement scope |
 | precision-design.csv | Exactly 12 fixed independent remainder draws, kept separate from original42 |
+| precision-costs.csv | All fixed precision identities with actual costs or explicit unmeasured/failed status |
 | summarize.py | Recompute covered-cell CPU/variance from this small bundle only |
 | export.py | Rebuild tables from preserved original-frame evidence; no native measurement |
 
@@ -192,3 +193,12 @@ queue**. The former3x precision target is withdrawn. The current instruction is
 exactly the fixed12 attempts, then stop. Root-level final-estimates.csv and the
 public cost tables are the data interface for the paper; per-return directories
 preserve provenance and incomplete/failed cases.
+
+## Precision snapshot
+
+At2026-11-03T23:58UTC, five of twelve fixed precision draws have completed
+costs. The seven remaining costs are blank, not imputed. No six-member panel
+is complete, so the conditional working-model rows still equal original42;
+there is no claimed precision improvement yet. See measurement/precision-five-review.md
+for the actual protocol/retirement and table-parity checks. This timestamped
+snapshot is separate from the live finite collector and does not imply it stopped.
