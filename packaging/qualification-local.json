@@ -1,0 +1,151 @@
+{
+  "complete": true,
+  "bundle": {
+    "version": "0.1.0",
+    "source_commit": "703055a11b749013d7251d93bb7127bd5222a447",
+    "platform": "linux-x86_64",
+    "lean_toolchain": "leanprover/lean4:v4.34.1",
+    "python_requirement": "3.11+",
+    "input": "compiled Lake project; no source checkout or build-host paths required"
+  },
+  "checker_commit": "c8e7c615413819bee0931dde09450b8222c6d62a",
+  "archive_bytes": 954665072,
+  "installed_project_accepts": [
+    "Init.Prelude",
+    "Base",
+    "Fixture"
+  ],
+  "audit_source_modules": 2,
+  "malformed_proofs_rejected": 3,
+  "commands": [
+    {
+      "label": "version",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/bin/proofserve",
+        "--version"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "build",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/bin/lake",
+        "build"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "project-check",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/bin/proofserve",
+        "check",
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/bundle-qualification-v3/project with spaces",
+        "--workers",
+        "1",
+        "--json"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "project-audit",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/bin/proofserve",
+        "audit",
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/bundle-qualification-v3/project with spaces",
+        "--json",
+        "-",
+        "--receipt",
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/bundle-qualification-v3/project with spaces/.proofserve/receipt.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "official-default",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/bin/lake",
+        "env",
+        "leanchecker",
+        "-v",
+        "Base",
+        "Fixture"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "official-fresh",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/bin/lake",
+        "env",
+        "leanchecker",
+        "-v",
+        "--fresh",
+        "Fixture"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "lean-path",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/bin/lake",
+        "env",
+        "printenv",
+        "LEAN_PATH"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "bad-bvar",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/libexec/proofserve-check",
+        "--internal-segment",
+        "audit",
+        "bvar",
+        "Fixture"
+      ],
+      "returncode": 2
+    },
+    {
+      "label": "bad-unknown",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/libexec/proofserve-check",
+        "--internal-segment",
+        "audit",
+        "unknown",
+        "Fixture"
+      ],
+      "returncode": 2
+    },
+    {
+      "label": "bad-sort",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/libexec/proofserve-check",
+        "--internal-segment",
+        "audit",
+        "sort",
+        "Fixture"
+      ],
+      "returncode": 2
+    },
+    {
+      "label": "unsupported",
+      "args": [
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1/lib/proofserve/versions/0.1.0-703055a11b74/bin/proofserve",
+        "check",
+        "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/bundle-qualification-v3/project with spaces"
+      ],
+      "returncode": 2
+    }
+  ],
+  "raw": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/bundle-qualification-v3",
+  "earlier_failures": [
+    {
+      "attempt": "v1",
+      "reason": "official --fresh requires a single root; corrected test invocation"
+    },
+    {
+      "attempt": "v2",
+      "reason": "internal native kernel rejection exits2 with explicit reject event; qualification had incorrectly required1"
+    }
+  ],
+  "scope": "Real extracted/relocated local release shape; correctness only, not measured speed or published release"
+}

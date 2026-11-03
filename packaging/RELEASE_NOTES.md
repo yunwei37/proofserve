@@ -19,7 +19,12 @@ means independent project checking. HTTP /check is unchanged.
 
 ## Qualification
 
-Pending: real bundle relocation/install; complete Docker Mathlib qualification;
+Passed: real954665072-byte archive assembly, extraction into an independent
+installation prefix, project check/audit and three malformed-proof rejections.
+The actual test uses a compiled two-module project, not a performance workload.
+Tool sources and retained failure corrections are in qualification-local.json.
+
+Pending: complete Docker Mathlib qualification;
 three previously unused external projects including an AI-assisted project;
 official leanchecker accepted-set comparison; backend malformed-proof CI.
 No performance improvement over official leanchecker is advertised before
@@ -33,3 +38,5 @@ Research data and complete Git history are retained. See repository-size.json
 for pinned HEAD logical size, full reachable-history logical size and live
 .git allocation; these are distinct measurements, not interchangeable
 download sizes. No history rewrite, release, tag or registry upload occurred.
+
+Rust full-workspace tests, doctests, clippy and release build passed locally. All four crates passed cargo publish --workspace --dry-run --locked. Engine CI41723961875 passed, including real original-kernel checker/resume/bad-proof and legacy service contracts. No package was uploaded.

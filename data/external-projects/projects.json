@@ -1,0 +1,58 @@
+{
+  "tool_bundle_commit": "703055a11b749013d7251d93bb7127bd5222a447",
+  "checker_commit": "c8e7c615413819bee0931dde09450b8222c6d62a",
+  "projects": [
+    {
+      "repo": "CrocSwap/integer-mult-bounds",
+      "pin": "7c49fe32c55de02c2c873655c804b16e4c3fef0a",
+      "sub": "multitape-origin-return/lean",
+      "lean_toolchain": "leanprover/lean4:v4.34.1",
+      "source_modules": 64,
+      "bytes": 648315,
+      "ai_written": "AI-assisted (public subproject disclosure)",
+      "ai_evidence": "https://github.com/CrocSwap/integer-mult-bounds/blob/7c49fe32c55de02c2c873655c804b16e4c3fef0a/multitape-origin-return/README.md",
+      "source_tree_artifact": "/workspaces/.agent-state/proofserve-o-line/external-projects/integer-mult-bounds-source-tree.json",
+      "prior_use_search": {
+        "commit": "344a41ad^",
+        "paths": "research,data,docs",
+        "matches": [],
+        "scope": "Repository evidence of prior development use; not proof of absence outside retained records"
+      }
+    },
+    {
+      "repo": "newspeaklanguage/newspeak",
+      "pin": "e2232d8fdb9a6061d00419fa83134e4e60caf172",
+      "sub": "formal-semantics/lean",
+      "lean_toolchain": "leanprover/lean4:v4.34.1",
+      "source_modules": 105,
+      "bytes": 1934270,
+      "ai_written": "not established",
+      "ai_evidence": null,
+      "source_tree_artifact": "/workspaces/.agent-state/proofserve-o-line/external-projects/newspeak-source-tree.json",
+      "prior_use_search": {
+        "commit": "344a41ad^",
+        "paths": "research,data,docs",
+        "matches": [],
+        "scope": "Repository evidence of prior development use; not proof of absence outside retained records"
+      }
+    },
+    {
+      "repo": "lambdaclass/stabileo",
+      "pin": "715279c26a5665f25a03ffa645882dad67749c8b",
+      "sub": "verify",
+      "lean_toolchain": "leanprover/lean4:v4.34.1",
+      "source_modules": 20,
+      "bytes": 403470,
+      "ai_written": "not established",
+      "ai_evidence": null,
+      "source_tree_artifact": "/workspaces/.agent-state/proofserve-o-line/external-projects/stabileo-source-tree.json",
+      "prior_use_search": {
+        "commit": "344a41ad^",
+        "paths": "research,data,docs",
+        "matches": [],
+        "scope": "Repository evidence of prior development use; not proof of absence outside retained records"
+      }
+    }
+  ],
+  "measurement_status": "source snapshots prepared; no external timing result yet"
+}

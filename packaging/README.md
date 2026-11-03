@@ -5,7 +5,10 @@ an image. Publication is an operator action after qualification.
 
 ## Runtime
 
-Linux x86_64 and Python3.11+. The archive carries the original matching Lean
+Linux x86_64, compatible GNU libc and Python3.11+. The prepared release workflow
+builds on Ubuntu22.04 (GNU libc2.35 baseline); build_libc in bundle.json records
+the actual builder. The development archive was built and tested on Debian13,
+so it is a local qualification artifact rather than a portability claim. The archive carries the original matching Lean
 SDK, so the checker does not depend on the build Workspace, Elan, Rust or a
 source checkout. A project must already have its compiled Lake artifacts.
 Only the three ProofServe commands are linked into the user's bin directory.

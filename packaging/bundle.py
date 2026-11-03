@@ -53,7 +53,7 @@ def main():
         target.chmod(0o755)
     metadata = dict(version=version, source_commit=commit, platform="linux-x86_64",
         lean_toolchain=(share / "lean-toolchain").read_text().strip(),
-        python_requirement="3.11+",
+        python_requirement="3.11+", build_libc=platform.libc_ver(),
         input="compiled Lake project; no source checkout or build-host paths required")
     (share / "bundle.json").write_text(json.dumps(metadata, indent=2) + "\n")
     archive = a.out / (name + ".tar.gz")

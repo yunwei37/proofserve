@@ -23,7 +23,7 @@ try:
         # the bundled Lake ahead of that project's Elan/matching toolchain.
         os.environ["PATH"] = os.pathsep.join(p for p in os.environ.get("PATH", "").split(os.pathsep) if Path(p).resolve() != root / "bin")
         os.environ.pop("LEAN_SYSROOT", None)
-        print("ProofServe: declared version differs from bundle; requesting the project's matching official checker. No toolchain is installed or migrated.", file=sys.stderr)
+        print("ProofServe: unsupported native bundle version; requesting the project's matching official checker. No toolchain is installed or migrated.", file=sys.stderr)
     program = root / "libexec/proofserve-check"
     os.execv(program, [str(program), *args])
 except (OSError, ValueError) as error:

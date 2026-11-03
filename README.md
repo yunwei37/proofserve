@@ -13,8 +13,8 @@ bin/proofserve check /path/to/lake-project
 bin/proofserve audit /path/to/lake-project --json -
 ~~~
 
-Trust: the original Lean kernel and the project's declared axioms. Checkpoints
-are trusted local state. Acceptance does not prove an axiom-free development,
+Trust: the original Lean kernel, artifact/frontier adapter, declared axioms and
+trusted local checkpoints. Acceptance does not prove an axiom-free development,
 the intended specification, or a safe parser for hostile binary artifacts.
 
 **Speed versus official leanchecker:** release-tool external evaluation is
@@ -22,8 +22,8 @@ being prepared; no numerical speed claim is made yet. Research prototypes
 are not substitutes for that comparison.
 
 Version0.1.0 bundles and containers are being qualified, **not yet published**.
-Unsupported project toolchains fail explicitly; the bundled compiler never
-silently migrates a project.
+Other declared toolchains use their matching official checker when available,
+or fail explicitly. The bundled compiler never silently migrates a project.
 
 ## Install without cloning
 
