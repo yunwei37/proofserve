@@ -52,3 +52,24 @@ are counted separately. Add profile-off unpinned P8/mixed24 on the same binary,
 paired to the already-planned profile-off pinned P8/mixed24. This isolates
 placement from observer cost and avoids attributing the old unpinned slowdown
 to a new deliberate placement policy. No new background service or host change.
+
+
+## Complete the placement / observer control before a causal interpretation
+The original sequence has profile-on pinned, profile-off pinned and
+profile-off unpinned pairs. It does not directly locate ordinary kernel CPU
+versus coordination in the old natural-placement setting. After that sequence
+actually retires, run one finite lock task containing profile-on unpinned
+P8/mixed24 using the exact same frozen binary. This completes the two-by-two
+placement/observer control; it is not a new workload, method or repeated probe.
+Do not edit the frozen running runner or insert work between its phases.
+attribution_unpinned_profile.py refuses to run from the Git checkout or before
+the original series is complete, and preserves partial cells without retry.
+Each native <=750s; outer lock task <=1740s; same14GiB guard, no-M.
+These two cells are prepared, not yet submitted or measured. No direct
+uncontrolled-run attribution is claimed until they complete and are reviewed.
+
+For unpinned checks, the recorded core is the check-start core. A differing
+endpoint detects migration, but matching endpoints cannot exclude a move away
+and back. Per-core CPU attribution there is approximate; thread CPU and kernel
+wall-interval union remain well defined. Pinned checks have a singleton
+affinity for the entire call, avoiding this ambiguity.

@@ -1,0 +1,144 @@
+{
+  "state": "complete",
+  "error": null,
+  "cells": [
+    {
+      "key": "full-P4",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "750",
+        "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-attribution-20261102-v2/parallel-stream",
+        "parallel",
+        "none",
+        "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 750,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-487485-full-P4.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 487487,
+      "birth": "771650011",
+      "returncode": 0,
+      "wall_s": 346.35149384848773,
+      "user_s": 643.981949,
+      "system_s": 4.982693,
+      "peak_rss_kib": 3260544,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 3329720320,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 869920768,
+      "cgroup_cpu_stat": "usage_usec 648964005\nuser_usec 643982405\nsystem_usec 4981600\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 648.964005,
+      "cgroup_user_s": 643.982405,
+      "cgroup_system_s": 4.9816,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true,
+      "accepted_set_equal_to_serial": true,
+      "profile_enabled": true,
+      "worker_pins": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "coordinator_cpu": 0,
+      "complete_events": [
+        {
+          "constants": 425463,
+          "event": "complete",
+          "mode": "parallel",
+          "module_local_fallbacks": 0,
+          "modules": 4449,
+          "retained_regions": 13307,
+          "skipped_unsafe_partial": 3595
+        }
+      ]
+    },
+    {
+      "key": "full-P8",
+      "argv": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "750",
+        "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-attribution-20261102-v2/parallel-stream",
+        "parallel",
+        "none",
+        "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41"
+      ],
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measured": true,
+      "wall_limit_s": 750,
+      "own_rss_sample_stop_gib": 14,
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-487485-full-P8.scope",
+      "cgroup_charged_memory_max_gib": 14,
+      "pid": 488261,
+      "birth": "771684659",
+      "returncode": 0,
+      "wall_s": 315.06238772533834,
+      "user_s": 716.572104,
+      "system_s": 7.3788979999999995,
+      "peak_rss_kib": 3428732,
+      "native_retired": true,
+      "sampled_tree_peak_bytes": 3398643712,
+      "stop_reasons": [],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+      "charged_peak_bytes": 1200734208,
+      "cgroup_cpu_stat": "usage_usec 723950291\nuser_usec 716573019\nsystem_usec 7377271\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_usage_s": 723.950291,
+      "cgroup_user_s": 716.573019,
+      "cgroup_system_s": 7.377271,
+      "wait4_usage_complete": true,
+      "cgroup_retired": true,
+      "accepted_set_equal_to_serial": true,
+      "profile_enabled": true,
+      "worker_pins": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "coordinator_cpu": 0,
+      "complete_events": [
+        {
+          "constants": 425463,
+          "event": "complete",
+          "mode": "parallel",
+          "module_local_fallbacks": 0,
+          "modules": 4449,
+          "retained_regions": 13307,
+          "skipped_unsafe_partial": 3595
+        }
+      ]
+    }
+  ],
+  "wall_s": 661.7259808275849,
+  "utc": "2026-11-03T00:09:38Z"
+}

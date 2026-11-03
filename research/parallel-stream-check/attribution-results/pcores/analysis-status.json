@@ -1,0 +1,36 @@
+{
+  "phase_inventory": [
+    {
+      "phase": "p12",
+      "terminal": "complete",
+      "results_present": true
+    },
+    {
+      "phase": "p48",
+      "terminal": "complete",
+      "results_present": true
+    },
+    {
+      "phase": "types",
+      "terminal": "not_terminal",
+      "results_present": false
+    },
+    {
+      "phase": "observer",
+      "terminal": "not_terminal",
+      "results_present": false
+    },
+    {
+      "phase": "placement",
+      "terminal": "not_terminal",
+      "results_present": false
+    },
+    {
+      "phase": "placement-profile",
+      "terminal": "not_terminal",
+      "results_present": false
+    }
+  ],
+  "complete_full_cells": 4,
+  "scope": "completed native cells only; unfinished cells excluded, not failures"
+}

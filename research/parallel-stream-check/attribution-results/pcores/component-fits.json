@@ -1,0 +1,171 @@
+{
+  "components": {
+    "implementation_serial_s": {
+      "S_s": 158.4573389206087,
+      "P_s": 3.916356880834774,
+      "nonnegative_two_term_parameters": true,
+      "RMSE_s": 0.7666035454722747,
+      "points": [
+        {
+          "workers": 1,
+          "observed_s": 161.842542394,
+          "predicted_s": 162.37369580144346,
+          "residual_s": -0.531153407443469
+        },
+        {
+          "workers": 2,
+          "observed_s": 161.618767836,
+          "predicted_s": 160.41551736102608,
+          "residual_s": 1.2032504749739132
+        },
+        {
+          "workers": 4,
+          "observed_s": 159.54475056799998,
+          "predicted_s": 159.43642814081738,
+          "residual_s": 0.10832242718259977
+        },
+        {
+          "workers": 8,
+          "observed_s": 158.166464036,
+          "predicted_s": 158.94688353071305,
+          "residual_s": -0.7804194947130441
+        }
+      ],
+      "caveat": "effective fit includes algorithm/observer overhead; not an inherent serial fraction; single-run points"
+    },
+    "parallel_kernel_occupancy_s": {
+      "S_s": 70.52457751730432,
+      "P_s": 396.06278237161746,
+      "nonnegative_two_term_parameters": true,
+      "RMSE_s": 11.810113187252808,
+      "points": [
+        {
+          "workers": 1,
+          "observed_s": 474.499789409,
+          "predicted_s": 466.5873598889218,
+          "residual_s": 7.912429520078206
+        },
+        {
+          "workers": 2,
+          "observed_s": 251.670928395,
+          "predicted_s": 268.5559687031131,
+          "residual_s": -16.885040308113076
+        },
+        {
+          "workers": 4,
+          "observed_s": 164.808387394,
+          "predicted_s": 169.5402731102087,
+          "residual_s": -4.731885716208694
+        },
+        {
+          "workers": 8,
+          "observed_s": 133.736921818,
+          "predicted_s": 120.0324253137565,
+          "residual_s": 13.704496504243508
+        }
+      ],
+      "caveat": "effective fit includes algorithm/observer overhead; not an inherent serial fraction; single-run points"
+    },
+    "batch_non_kernel_wall_s": {
+      "S_s": 6.1582075973913,
+      "P_s": -4.824817852034788,
+      "nonnegative_two_term_parameters": false,
+      "RMSE_s": 0.361140537192985,
+      "points": [
+        {
+          "workers": 1,
+          "observed_s": 1.571145764999983,
+          "predicted_s": 1.333389745356512,
+          "residual_s": 0.23775601964347093
+        },
+        {
+          "workers": 2,
+          "observed_s": 3.2493790270000034,
+          "predicted_s": 3.745798671373906,
+          "residual_s": -0.4964196443739026
+        },
+        {
+          "workers": 4,
+          "observed_s": 4.776969930000007,
+          "predicted_s": 4.952003134382603,
+          "residual_s": -0.17503320438259617
+        },
+        {
+          "workers": 8,
+          "observed_s": 5.988802194999977,
+          "predicted_s": 5.555105365886951,
+          "residual_s": 0.43369682911302565
+        }
+      ],
+      "caveat": "effective fit includes algorithm/observer overhead; not an inherent serial fraction; single-run points"
+    },
+    "other_residual_s": {
+      "S_s": 17.142694982706534,
+      "P_s": 0.4249525322365037,
+      "nonnegative_two_term_parameters": true,
+      "RMSE_s": 0.049809699514049524,
+      "points": [
+        {
+          "workers": 1,
+          "observed_s": 17.534663155630767,
+          "predicted_s": 17.567647514943037,
+          "residual_s": -0.03298435931226962
+        },
+        {
+          "workers": 2,
+          "observed_s": 17.44131714031272,
+          "predicted_s": 17.355171248824785,
+          "residual_s": 0.08614589148793428
+        },
+        {
+          "workers": 4,
+          "observed_s": 17.22138595648775,
+          "predicted_s": 17.24893311576566,
+          "residual_s": -0.027547159277908406
+        },
+        {
+          "workers": 8,
+          "observed_s": 17.170199676338342,
+          "predicted_s": 17.1958140492361,
+          "residual_s": -0.025614372897756255
+        }
+      ],
+      "caveat": "effective fit includes algorithm/observer overhead; not an inherent serial fraction; single-run points"
+    }
+  },
+  "whole": {
+    "S_s": 252.28281901801085,
+    "P_s": 395.5792739326539,
+    "effective_serial_fraction": 0.38940821165967243,
+    "nonnegative_two_term_parameters": true,
+    "RMSE_s": 11.37476120460161,
+    "points": [
+      {
+        "workers": 1,
+        "observed_s": 655.4481407236308,
+        "predicted_s": 647.8620929506648,
+        "residual_s": 7.586047772966026
+      },
+      {
+        "workers": 2,
+        "observed_s": 433.9803923983127,
+        "predicted_s": 450.0724559843378,
+        "residual_s": -16.09206358602512
+      },
+      {
+        "workers": 4,
+        "observed_s": 346.35149384848773,
+        "predicted_s": 351.17763750117433,
+        "residual_s": -4.826143652686596
+      },
+      {
+        "workers": 8,
+        "observed_s": 315.06238772533834,
+        "predicted_s": 301.7302282595926,
+        "residual_s": 13.332159465745747
+      }
+    ],
+    "caveat": "effective fit includes algorithm/observer overhead; not an inherent serial fraction; single-run points"
+  },
+  "scope": "descriptive same-implementation fixed-order four-point OLS; effective intercepts, not inherent serial fractions"
+}

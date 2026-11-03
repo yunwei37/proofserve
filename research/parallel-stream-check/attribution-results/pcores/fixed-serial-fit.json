@@ -1,0 +1,34 @@
+{
+  "S_s": 252.28281901801085,
+  "P_s": 395.5792739326539,
+  "effective_serial_fraction": 0.38940821165967243,
+  "nonnegative_two_term_parameters": true,
+  "RMSE_s": 11.37476120460161,
+  "points": [
+    {
+      "workers": 1,
+      "observed_s": 655.4481407236308,
+      "predicted_s": 647.8620929506648,
+      "residual_s": 7.586047772966026
+    },
+    {
+      "workers": 2,
+      "observed_s": 433.9803923983127,
+      "predicted_s": 450.0724559843378,
+      "residual_s": -16.09206358602512
+    },
+    {
+      "workers": 4,
+      "observed_s": 346.35149384848773,
+      "predicted_s": 351.17763750117433,
+      "residual_s": -4.826143652686596
+    },
+    {
+      "workers": 8,
+      "observed_s": 315.06238772533834,
+      "predicted_s": 301.7302282595926,
+      "residual_s": 13.332159465745747
+    }
+  ],
+  "caveat": "effective fit includes algorithm/observer overhead; not an inherent serial fraction; single-run points"
+}

@@ -11,13 +11,14 @@ def fit(rows):
  mx=statistics.mean(x);my=statistics.mean(y)
  p=sum((a-mx)*(b-my) for a,b in zip(x,y))/sum((a-mx)**2 for a in x);s=my-p*mx
  residuals=[b-(s+p*a) for a,b in zip(x,y)]
- return dict(S_s=s,P_s=p,effective_serial_fraction=s/(s+p),RMSE_s=math.sqrt(statistics.mean(v*v for v in residuals)),
+ return dict(S_s=s,P_s=p,effective_serial_fraction=s/(s+p) if s+p else None,
+  nonnegative_two_term_parameters=s>=0 and p>=0,RMSE_s=math.sqrt(statistics.mean(v*v for v in residuals)),
   points=[dict(workers=r['workers'],observed_s=r['wall_s'],predicted_s=s+p/r['workers'],residual_s=d) for r,d in zip(rows,residuals)],
   caveat='effective fit includes algorithm/observer overhead; not an inherent serial fraction; single-run points')
 def analyze(point,out):
  out.mkdir(exist_ok=True,parents=True)
  full=[];cores=[];workers=[];phases=[];module_work={}
- for phase in ['p12','p48','types','observer','placement']:
+ for phase in ['p12','p48','types','observer','placement','placement-profile']:
   f=point/(phase+'-results.json')
   if not f.exists():continue
   for c in json.loads(f.read_text()):
@@ -148,17 +149,28 @@ def analyze(point,out):
 
 def supplements(point,out,full,phases):
  inventory=[]
- for phase in ['p12','p48','types','observer','placement']:
+ for phase in ['p12','p48','types','observer','placement','placement-profile']:
   f=point/(phase+'-terminal.json')
   inventory.append(dict(phase=phase,terminal=json.loads(f.read_text())['state'] if f.exists() else 'not_terminal',
    results_present=(point/(phase+'-results.json')).exists()))
  (out/'analysis-status.json').write_text(json.dumps(dict(phase_inventory=inventory,
   complete_full_cells=len(full),scope='completed native cells only; unfinished cells excluded, not failures'),indent=2))
  by_full={r['name']:r for r in full};by_phase={r['name']:r for r in phases}
- per_module=[]
+ per_module=[];namespaces=[]
  for name in by_phase:
-  for m in read_events(point/'runs'/('full-'+name)/'stdout'):
+  source_events=read_events(point/'runs'/('full-'+name)/'stdout')
+  groups=collections.defaultdict(lambda:collections.Counter())
+  for item in source_events:
+   if item.get('event')=='accept':groups[item['module'].split('.')[0]]['modules']+=1
+   elif item.get('event')=='dependency_phase':
+    groups[item['module'].split('.')[0]]['read_context_s']+=(item['read_ns']+item['context_ns'])/1e9
+  for m in source_events:
    if m.get('event')!='profile_module':continue
+   g=groups[m['module'].split('.')[0]];mm=m['metrics']
+   for key,value in [('plan_s',m['plan_ns']),('upstream_serial_s',m['fallback_ns']),
+    ('ordinary_kernel_CPU_s',mm['kernel_cpu_ns']),('ordinary_kernel_occupied_wall_s',mm['kernel_union_ns']),
+    ('frontier_span_proxy_s',mm['sum_wave_max_cpu_ns'])]:g[key]+=value/1e9
+   g['ordinary_checks']+=mm['checks'];g['ordinary_allocation_units']+=mm['raw_HB']
    mm=m['metrics']
    assert sum(w['checks'] for w in mm['workers'])==mm['checks']
    assert sum(w['cpu_ns'] for w in mm['workers'])==mm['kernel_cpu_ns']
@@ -169,6 +181,11 @@ def supplements(point,out,full,phases):
     kernel_union_s=mm['kernel_union_ns']/1e9,kernel_CPU_s=work,
     batch_non_kernel_wall_s=(mm['batch_wall_ns']-mm['kernel_union_ns'])/1e9,
     batch_non_kernel_CPU_s=(mm['batch_cpu_ns']-mm['kernel_cpu_ns'])/1e9))
+  for namespace,g in sorted(groups.items()):
+   namespaces.append(dict(name=name,namespace=namespace,**{k:g[k] for k in [
+    'modules','read_context_s','plan_s','upstream_serial_s','ordinary_kernel_CPU_s',
+    'ordinary_kernel_occupied_wall_s','frontier_span_proxy_s','ordinary_checks','ordinary_allocation_units']}))
+ csvout(out/'namespace-costs.csv',namespaces)
  csvout(out/'module-phases.csv',per_module)
  p1=[r for r in per_module if r['name']=='P1' and r['checks']]
  if p1:
@@ -184,7 +201,10 @@ def supplements(point,out,full,phases):
  pairs=[('P1','P2'),('P2','P4'),('P4','P8'),('P8','E16'),('P8','M24'),
   ('P8','P8-noProfile'),('M24','M24-noProfile'),
   ('P8-noProfile','P8-unpinned'),('M24-noProfile','M24-unpinned'),
-  ('P8-unpinned','M24-unpinned')]
+  ('P8-unpinned','M24-unpinned'),
+  ('P8','P8-unpinnedProfile'),('M24','M24-unpinnedProfile'),
+  ('P8-unpinned','P8-unpinnedProfile'),('M24-unpinned','M24-unpinnedProfile'),
+  ('P8-unpinnedProfile','M24-unpinnedProfile')]
  terms=['read_context_s','plan_s','upstream_serial_kernel_s','serial_duplicate_s',
   'parallel_kernel_occupancy_s','batch_non_kernel_wall_s','other_residual_s']
  for left,right in pairs:
@@ -214,6 +234,19 @@ def supplements(point,out,full,phases):
  csvout(out/'condition-comparisons.csv',pair_rows)
  csvout(out/'signed-phase-deltas.csv',delta_rows)
  csvout(out/'top-module-deltas.csv',module_delta)
+ # OLS is linear: component intercepts/slopes must sum to the whole fit.
+ # An ordinary-kernel intercept captures wave saturation, not serial imports.
+ if all('P'+str(n) in by_phase for n in [1,2,4,8]):
+  fitted={}
+  component_terms=['implementation_serial_s','parallel_kernel_occupancy_s','batch_non_kernel_wall_s','other_residual_s']
+  for term in component_terms:
+   fitted[term]=fit([dict(workers=n,wall_s=by_phase['P'+str(n)][term]) for n in [1,2,4,8]])
+   fitted[term].pop('effective_serial_fraction')
+  total_fit=fit([by_full['P'+str(n)] for n in [1,2,4,8]])
+  for parameter in ['S_s','P_s']:
+   assert math.isclose(sum(fitted[term][parameter] for term in component_terms),total_fit[parameter],abs_tol=1e-6)
+  (out/'component-fits.json').write_text(json.dumps(dict(components=fitted,whole=total_fit,
+   scope='descriptive same-implementation fixed-order four-point OLS; effective intercepts, not inherent serial fractions'),indent=2))
 
 if __name__=='__main__':
  import sys
