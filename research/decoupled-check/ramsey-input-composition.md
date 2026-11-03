@@ -40,3 +40,20 @@ The retired global attempt still accepted only 2,488 / 163,097 source IDs and
 10,744 dependency IDs, with 0.694505 kernel CPU hours, 9,124 producer errors
 and 151,485 blocked nodes. Neither that partial denominator nor the model
 forecast is substituted for this full-directory experiment.
+
+## Source-token check relevant to the two cost regions
+
+All444unmodified target source texts were scanned, including comments and
+strings. There are zero occurrences of each of these tokens/patterns:
+native_decide, sorry, admit, debug.skipKernelTC, and maxHeartbeats followed
+by0. The raw per-pattern result is retained onPVC in
+source-option-token-census.json. By contrast,396958decide +kernel markers
+occur across180target files, as listed in the per-file census.
+
+This is source-level characterization only. It does not establish the absence
+of axioms in imported dependencies, prove that any candidate checks, or replace
+the planned complete original-kernel and module-local acceptance comparison.
+It helps distinguish this selected directory from a workload whose visible
+proofs delegate reduction to native_decide or skip the kernel explicitly.
+The original successful source cells and their exact typed artifacts remain
+the inputs to the primary check.
