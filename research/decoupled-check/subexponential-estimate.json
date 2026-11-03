@@ -1,0 +1,15 @@
+{
+  "targets": 3977,
+  "target_bytes": 35509858,
+  "dependencies": 10744,
+  "closure": 14721,
+  "source_cpu_retained_s": 25373.748385,
+  "source_cpu_new_forecast_s": 11180.937835552213,
+  "checker_cpu_forecast_s": 2272.4674949020828,
+  "comparison_cpu_forecast_h": 10.785320476515082,
+  "remaining_comparison_cpu_forecast_h": 3.7370570362373043,
+  "additional_module_local_qualification_reserve_h": 2.0,
+  "remaining_including_qualification_forecast_h": 5.737057036237305,
+  "estimate_basis": "Same-protocol Falconer target mean and checker CPU per closure module. Transfer scenario, not CI or bound; no source-feature regression.",
+  "timed_preflight_pending": true
+}
