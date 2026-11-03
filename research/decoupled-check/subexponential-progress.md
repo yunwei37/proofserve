@@ -25,6 +25,6 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 - kernel_cpu_h: 0.9442508183333332
 - current_segment: 30
 - remaining_segments_min: 0
-- oracle_qualified: 11304
+- oracle_qualified: 11320
 - kernel_peak_rss_gib: 14.73128890991211
 - kernel_over_source_cpu: None
