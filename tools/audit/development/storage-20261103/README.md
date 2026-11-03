@@ -18,3 +18,14 @@ intermediate-artifact cleanup under the existing user cleanup instruction,
 not deletion/imputation of research observations.
 
 Applied under the committed plan: {"utc": "2026-11-03T21:29:21.657769+00:00", "removed_files": 4035, "logical_duplicate_bytes_removed": 4383976072, "skipped": 0, "used_fraction_before": 0.8384460859634946, "used_fraction_after": 0.8060533051062877, "free_bytes_before": 21785153536, "free_bytes_after": 26156605440, "limits": "shared PVC delta may include concurrent writers; no raw log/source/failure/censor/cache copy removed", "result": "retained byte-identical intermediate copies remain; active preparation untouched"}
+
+## Second retired-prerequisite pass
+
+At23:34UTC disk was83.45% with the finite precision collection still healthy.
+This next plan selects only retired completed E-preparation points, excludes the
+current preparation point, and byte-compares successful binary duplicates with
+retained canonical cache copies. Source/raw logs, interrupted/failed/clipped
+attempts and original target products are excluded. Every selected parent and
+native PID/birth is retired; canonical bytes stay available to subsequent imports.
+The plan is published before unlinking. Application rechecks identities, bytes
+and inode/mtime/size; total PVC changes may include concurrent lane activity.
