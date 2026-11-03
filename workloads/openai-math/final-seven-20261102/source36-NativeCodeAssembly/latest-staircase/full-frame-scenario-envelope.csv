@@ -1,0 +1,13 @@
+domain,stage,min_model_CPU_h,max_model_CPU_h,scope,actual_whole_library
+ordinary_proxy,a_build,181.23694321458333,304.49586169875,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,b_serial_stream,11.440432340803756,27.256726940367805,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,c_parallel_stream,15.588128749216887,37.138576250593985,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,d_plus_qualified_chunk,15.588128749216887,37.138576250593985,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,a_build,57.546404277222216,57.546404277222216,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,b_serial_stream,4.858153479847351,4.872538565126986,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,c_parallel_stream,6.5766755072966845,6.596149169135773,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,d_plus_qualified_chunk,6.6061419586909516,6.6257028712556405,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,a_build,238.78334749180556,362.0422659759722,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,b_serial_stream,16.298585820651105,32.12926550549479,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,c_parallel_stream,22.16480425651357,43.734725419729756,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,d_plus_qualified_chunk,22.19427070790784,43.764279121849626,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False

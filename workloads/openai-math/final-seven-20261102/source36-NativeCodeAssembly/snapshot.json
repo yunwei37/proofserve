@@ -1,0 +1,32 @@
+{
+  "utc": "2026-11-03T01:14:20.481962+00:00",
+  "completed_original_costs": 36,
+  "complete_strata": 18,
+  "covered_modules": 151888,
+  "uncovered_modules": 11209,
+  "missing_domain_fraction": 0.0687259728873002,
+  "scenario_CPU_h": {
+    "a_build": [
+      238.78334749180556,
+      362.0422659759722
+    ],
+    "b_serial_stream": [
+      16.298585820651105,
+      32.12926550549479
+    ],
+    "c_parallel_stream": [
+      22.16480425651357,
+      43.734725419729756
+    ]
+  },
+  "computation_share_scenario": [
+    0.15894940918594685,
+    0.2409983982622451
+  ],
+  "covered_source_CPU_h": 235.03292506819443,
+  "covered_computation_CPU_h": 57.54640427722222,
+  "new_original_module": "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.NativeCodeAssembly",
+  "new_CPU_s": 7.020013,
+  "new_native_elapsed_s": 4.981634316965938,
+  "scenario_is_CI": false
+}

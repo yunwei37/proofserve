@@ -1,5 +1,16 @@
 # W current state
 
+## W101 current: NativeCode recovered,source36
+01:09:45UTC original Pcompile_ok,7.020013CPU/4.981634elapsed;allowners/cgroups
+retired.36/42costs,18/21complete cells,151888represented,6.8726%gap.
+Source scenario238.7833–362.0423CPUh;serial16.2986–32.1293/
+parallel22.1648–43.7347. Computation24.4844%covered/15.8949–24.0998%scenario.
+New data openai-math/final-seven-20261102/source36-NativeCodeAssembly.
+No active WLean at this exact snapshot. NextPhysical thenTracked Eprerequisites,
+originals Ponly,oneWLean. Alwayschecklatest report/realPID beforelaunch.
+Older current-state headings below are historical snapshots.
+
+
 ## W100 current: NativeCode original Ptarget queued,source35unchanged
 All412dependencies ready:1retainedP+216firstE+195remainingE. Efinal01:00:11UTC,
 allnative/cgroups/controller retired. Current singleW Ppoint:
