@@ -150,3 +150,4 @@ declarations each time, sampling100for counters. Full closure8P->24results
 remain slower; these scopes are not interchangeable. Stable counts and bytes
 under parallel kernel checking are observed, not a universal deterministic-budget
 or cost-free concurrency guarantee.
+\n## Causal audit of shared replay-frontier lifetime\n\nThe [matched persistence ablation](persistent/three-repeat-8P.md) now has three\nplain repetitions for the full-closure8P endpoint. Same binary, same accepted\nIDs/check/allocation vectors. Marking quiescent reconstructed frontiers avoids\nRC updates, with lower CPU in this endpoint; the complete worker/stat/memory\nmatrix is still unfinished. This audits a prototype implementation choice,\nnot a fundamental negative scalability property of Lean. Matched SDK stock\nleanchecker uses finalizeImport false/false; see [object layers and scopes](persistent/source-and-scope.md).\n
