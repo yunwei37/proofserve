@@ -1,3 +1,5 @@
+**最新状态：部分结果，已停止。** [收口记录](measurement-closeout.md)。保留以下原始结果，不再接续全量。
+
 # Ramsey: halted production and completed module-local sample
 
 Review: 自审.

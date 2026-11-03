@@ -1,0 +1,19 @@
+{
+  "utc": "2026-11-03T21:36:08.735994+00:00",
+  "removed_files": 20,
+  "removed_logical_bytes": 737440680,
+  "before": {
+    "total": 134951424000,
+    "used": 108383662080,
+    "free": 26550984704
+  },
+  "after": {
+    "total": 134951424000,
+    "used": 107646177280,
+    "free": 27288469504
+  },
+  "live_references_checked": "all /proc cmdline,environ,maps,cwd,exe,root,fd; none",
+  "document_reference_check": "git grep exact absolute path and basename, no references for these20 files",
+  "preserved": "all olean/IR/proof inputs; logs/result/ledger/source snapshots; document-referenced paths; all other owners",
+  "basis": "each generated output matched a successful archived compiler call; Ramsey190/444 source and20-sample analysis retained"
+}

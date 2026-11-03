@@ -8,7 +8,7 @@ def main():
  cli=(a.prefix/'bin/proofserve').resolve(strict=True);root=cli.parents[1];project=a.out/'project with spaces';project.mkdir()
  toolchain=(root/'share/proofserve/lean-toolchain').read_text()
  (project/'lean-toolchain').write_text(toolchain)
- (project/'lakefile.toml').write_text('name = "bundle_qualification"\nversion = "0.1.0"\ndefaultTargets = ["Fixture"]\n[[lean_lib]]\nname = "Fixture"\n')
+ (project/'lakefile.toml').write_text('name = "bundle_qualification"\nversion = "0.1.0"\ndefaultTargets = ["Fixture"]\n[[lean_lib]]\nname = "Base"\n[[lean_lib]]\nname = "Fixture"\n')
  (project/'Base.lean').write_text('prelude\nimport Init.Prelude\ntheorem bundle_base : True := True.intro\n')
  (project/'Fixture.lean').write_text('prelude\nimport Base\ntheorem bundle_ok : True := bundle_base\n')
  env=os.environ.copy();env.pop('LEAN_PATH',None);env.update(PATH=str(root/'bin')+os.pathsep+env.get('PATH',''),LEAN_SYSROOT=str(root),LD_LIBRARY_PATH=str(root/'lib/lean'))
@@ -28,7 +28,7 @@ def main():
  receipt_file=project/'.proofserve/receipt.json';assert receipt_file.is_file()
  audit=run('project-audit',[cli,'audit',project,'--json','-','--receipt',receipt_file])
  report=json.loads(audit.stdout)
- assert report['schema_version']=='proofserve-audit/v1'
+ assert report['schema']=='proofserve-audit/v1'
  for mode in ['default','fresh']:
   args=[root/'bin/lake','env','leanchecker','-v']
   if mode=='fresh':args+=['--fresh']
