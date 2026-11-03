@@ -38,6 +38,12 @@ Parallel wall gains do not imply lower CPU resource-hours; summed module
 durations are not library makespan. Source CPU excludes separate native C
 compilation/linking, package acquisition and full Lake orchestration.
 
+The narrowed missing-cost envelope is **not total-cost precision**: the19-cell
+nominal source-sampling95% interval is43.99–449.74CPUh(df2.13), excluding
+missingness/calibration uncertainty and fragile under n=2/heavy tails.
+[Sampling-uncertainty audit](final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/sampling-uncertainty.md)
+identifies two cells supplying90.02% of estimated variance.
+
 Computation-proxy source share is21.2946–23.2461% in these missing-cost
 scenarios. Static markers are not dynamic attribution. n=2 per stratum and
 fixed calibration ratios still leave sampling/model uncertainty after all
