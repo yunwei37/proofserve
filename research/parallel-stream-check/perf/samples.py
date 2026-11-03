@@ -1,10 +1,10 @@
 # perf script's native Python API. No browser, server, or raw ASCII expansion.
-import os,json,csv,collections
+import os,json,csv,collections,gzip
 from pathlib import Path
 OUT=Path(os.environ['PERF_ANALYSIS_OUT']);OUT.mkdir(parents=True,exist_ok=True)
 WORKERS=set(json.loads(Path(os.environ['PERF_NATIVE_TERMINAL']).read_text())['cell']['observed_worker_TIDs'])
 totals=collections.Counter();categories=collections.Counter();symbols=collections.Counter()
-addresses=collections.Counter();first=None
+addresses=collections.Counter();first=None;samples_without_period=collections.Counter();sample_counts=collections.Counter()
 def family(stack):
  # Exclusive nearest operation in a leaf->root call chain, never sum inclusive
  # percentages. Missing inline debug information is an explicit limitation.
@@ -24,13 +24,17 @@ def family(stack):
  return 'other_or_unresolved'
 def process_event(p):
  global first
- sample=p['sample'];event=p['ev_name'];tid=sample['tid'];weight=sample.get('period',1)
+ sample=p['sample'];event=p['ev_name'];tid=sample['tid'];weight=sample.get('period')
+ sample_counts[event]+=1
+ if weight is None or weight<=0:
+  samples_without_period[event]+=1
+  return
  if first is None:
   first={'keys':sorted(p),'sample':sample,'callchain':p.get('callchain',[])[:5],
    'symbol':p.get('symbol'),'ev_name':event}
   (OUT/'first-sample-shape.json').write_text(json.dumps(first,indent=2,default=str))
- chain=p.get('callchain',[]);stack=[e.get('sym',{}).get('name','[unknown]') for e in chain]
- leaf=p.get('symbol',stack[0] if stack else '[unknown]')
+ chain=p.get('callchain',[]);stack=[(e.get('sym') or {}).get('name') or '[unknown]' for e in chain]
+ leaf=p.get('symbol') or (stack[0] if stack else '[unknown]')
  if not stack:stack=[leaf]
  has_check=any('ParallelCore_0__checkOne' in x for x in stack)
  has_cpp=any('lean_add_decl' in x or 'lean::type_checker::' in x or 'lean::environment::add' in x for x in stack)
@@ -43,7 +47,7 @@ def process_event(p):
  totals[(event,scope)]+=weight
  categories[(event,scope,category,tid)]+=weight
  symbols[(event,scope,leaf)]+=weight
- addresses[(event,scope,leaf,sample.get('ip',0))]+=weight
+ addresses[(event,scope,tid,leaf,sample.get('ip',0))]+=weight
 def write(name,keys,rows):
  with (OUT/name).open('w',newline='') as f:
   w=csv.writer(f);w.writerow(keys);w.writerows(rows)
@@ -54,8 +58,12 @@ def trace_end():
   [(*k,v) for k,v in sorted(categories.items())])
  write('symbol-periods.csv',['event','scope','leaf_symbol','sampled_period'],
   [(*k,v) for k,v in symbols.most_common(1000)])
- write('hot-addresses.csv',['event','scope','leaf_symbol','sample_IP','sampled_period'],
-  [(*k,v) for k,v in addresses.most_common(2000)])
- (OUT/'decode-terminal.json').write_text(json.dumps(dict(state='complete',events=len(totals),
+ # Preserve all per-IP/thread weights compactly for later inline annotation.
+ # Only small derived tables, never this complete address file, enter Git.
+ with gzip.open(OUT/'address-periods.csv.gz','wt',newline='') as f:
+  w=csv.writer(f);w.writerow(['event','scope','TID','leaf_symbol','sample_IP','sampled_period'])
+  w.writerows((*k,v) for k,v in addresses.items())
+ (OUT/'decode-terminal.json').write_text(json.dumps(dict(state='complete' if not samples_without_period else 'invalid_missing_period',
+  events=len(totals),sample_counts=dict(sample_counts),samples_without_period=dict(samples_without_period),
   worker_TIDs=sorted(WORKERS),scope='weighted samples, not exact per-category hardware counts',
   inline_limitation='SDK C++ inline debug coverage incomplete; atomic instructions require annotation'),indent=2))

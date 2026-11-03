@@ -1,0 +1,22 @@
+{
+  "state": "complete",
+  "native_returncode": 0,
+  "targets": 50,
+  "observations": 450,
+  "zero_range_targets": 50,
+  "all_accepted": true,
+  "complete_coverage": true,
+  "artifacts": [
+    {
+      "suffix": ".olean",
+      "files": 9,
+      "bytes": 9160440,
+      "all_equal": true
+    }
+  ],
+  "E_vs_P_sampled_kernel_work_rate": 0.7225552330466612,
+  "original_olean_bytes": 9160440,
+  "original_olean_reference": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-assets/overlay-complete-v2/OAI/MathematicalPhysics/Transonic/Certificates/BarrierData41.olean",
+  "all_olean_equal_to_original": true,
+  "allocation_budget_scope": "per-target observed allocation deltas; native kernel poll units unobserved"
+}

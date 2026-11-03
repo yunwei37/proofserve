@@ -1,0 +1,3 @@
+core_type,observations,targets,min_ratio,median_ratio,max_ratio,total_CPU_ratio,caveat
+P,66,41,1.6070218044023914,2.301103530673754,3.202092119288317,2.4194235811713773,"same target and core type; solo references are CPU0/8, not every physical core"
+E,84,48,1.9707617762617824,2.8338725101414273,4.159370728704047,2.8998381890157283,"same target and core type; solo references are CPU0/8, not every physical core"

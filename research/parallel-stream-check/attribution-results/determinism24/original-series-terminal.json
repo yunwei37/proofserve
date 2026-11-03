@@ -1,0 +1,37 @@
+{
+  "state": "complete",
+  "error": null,
+  "phases": [
+    {
+      "phase": "p12",
+      "returncode": 0,
+      "state": "complete"
+    },
+    {
+      "phase": "p48",
+      "returncode": 0,
+      "state": "complete"
+    },
+    {
+      "phase": "types",
+      "returncode": 0,
+      "state": "complete"
+    },
+    {
+      "phase": "observer",
+      "returncode": 0,
+      "state": "complete"
+    },
+    {
+      "phase": "placement",
+      "returncode": 0,
+      "state": "complete"
+    },
+    {
+      "phase": "det24",
+      "returncode": 0,
+      "state": "complete"
+    }
+  ],
+  "utc": "2026-11-03T00:57:31Z"
+}
