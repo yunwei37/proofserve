@@ -29,6 +29,7 @@ full-plain-P8-r1-before,8,plain,r1-before,531750,0;1;2;3;4;5;6;7,26838,373804700
 full-plain-P8-r1-before,8,plain,r1-before,531751,0;1;2;3;4;5;6;7,26114,503476651,73.697308828,core set across checks is not a time ordered migration trace
 full-plain-P8-r1-before,8,plain,r1-before,531754,0;1;2;3;4;5;6;7,26568,356778553,61.326549251,core set across checks is not a time ordered migration trace
 full-plain-P8-r1-before,8,plain,r1-before,531755,0;1;2;3;4;5;6;7,26708,377123907,60.02888308,core set across checks is not a time ordered migration trace
+full-record-P1-r1,1,record,r1,548214,0,237863,3283925639,473.577084228,core set across checks is not a time ordered migration trace
 full-record-P4-r1,4,record,r1,527073,0;1;2;3,47825,673459814,101.031500812,core set across checks is not a time ordered migration trace
 full-record-P4-r1,4,record,r1,527074,0;1;2;3,49037,705262222,99.633344921,core set across checks is not a time ordered migration trace
 full-record-P4-r1,4,record,r1,527075,0;1;2;3,47144,402109071,59.517567746,core set across checks is not a time ordered migration trace

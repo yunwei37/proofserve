@@ -1,4 +1,19 @@
 key,event,scope,TID,region,sampled_cycles,limitation
+full-record-P1-r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,548214,IP_0x11_after_outer_LOCK_incl,17570464167,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,548214,IP_0x91_after_child_LOCK_incl,5759776142,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,548214,destruction_path_IP_ge_0x14,58195134465,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,548214,other_header_fastpath_IP,3868202458,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,ordinary_worker_kernel_unanchored,548214,IP_0x11_after_outer_LOCK_incl,17890138855,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,ordinary_worker_kernel_unanchored,548214,IP_0x91_after_child_LOCK_incl,2105117063,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,ordinary_worker_kernel_unanchored,548214,destruction_path_IP_ge_0x14,3245498548,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,ordinary_worker_kernel_unanchored,548214,other_header_fastpath_IP,2587743466,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,ordinary_worker_other_or_truncated,548214,destruction_path_IP_ge_0x14,51629503,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,outside_or_unresolved,548208,destruction_path_IP_ge_0x14,3010080605,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,outside_or_unresolved,548208,other_header_fastpath_IP,184084364,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,serial_or_other_kernel,548208,IP_0x11_after_outer_LOCK_incl,2615206062,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,serial_or_other_kernel,548208,IP_0x91_after_child_LOCK_incl,670048757,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,serial_or_other_kernel,548208,destruction_path_IP_ge_0x14,15769365732,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
+full-record-P1-r1,cpu_core/cpu-cycles/u,serial_or_other_kernel,548208,other_header_fastpath_IP,607176435,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
 full-record-P4-r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,527073,IP_0x11_after_outer_LOCK_incl,4826874918,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
 full-record-P4-r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,527073,IP_0x91_after_child_LOCK_incl,984434644,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
 full-record-P4-r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,527073,destruction_path_IP_ge_0x14,14684133912,cycle sampling can skid; adjacent-IP weight is not exact atomic stall time
