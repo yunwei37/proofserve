@@ -20,6 +20,8 @@ in their original retained locations. Column names below form the v1 contract.
 | sampling-intervals.csv | Covered-cell nominal source-sampling intervals and fixed-factor transfers, by regime |
 | scenario-ranges.csv | Full-frame missing-cost / closure-factor sensitivity ranges, **not confidence intervals** |
 | metadata.json | Pins, snapshot coverage and measurement scope |
+| precision-design.csv | Exactly 12 fixed independent remainder draws, kept separate from original42 |
+| summarize.py | Recompute covered-cell CPU/variance from this small bundle only |
 | export.py | Rebuild tables from preserved original-frame evidence; no native measurement |
 
 sample-costs.csv columns are fixed:
@@ -86,3 +88,27 @@ Upstream source is Apache-2.0; dependencies retain their own licenses.
 Measurement tables and tooling are distributed under this repository's license.
 Cite the upstream immutable commit, this package path and the repository
 revision of the snapshot used. No claim of final paper acceptance is implied.
+
+
+## Read the published package alone
+
+No Lean toolchain, raw captures or Workspace path is needed:
+
+```sh
+python3 data/openai-math-4eaee875/summarize.py
+python3 data/openai-math-4eaee875/summarize.py --json
+```
+
+The summarizer recomputes covered-cell totals and finite-population variance
+from the small original tables, and carries the published sampling intervals
+and scenario ranges as separate fields. It never fills incomplete strata.
+
+The frozen additional12 design is independent SRS of each of two remainders.
+Each selected cell conditions on its two already observed original members:
+T = sum(known2) + (N - 2) * mean(fresh6).
+The known members carry weight one in that conditional component. The original
+42 HT estimate remains separately available; do not pool old2+new6 as eight
+exchangeable draws. Adaptive cell selection and heavy tails limit interpretation
+of the whole-frame hybrid nominal interval. All six costs must return before
+a cell is substituted. No further draws, precision target or stopping threshold
+is planned after these12, regardless of the eventual interval width.
