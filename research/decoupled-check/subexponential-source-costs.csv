@@ -14714,3 +14714,9 @@ OAI.Algorithms.SubexponentialSAT.SqrtLog.OuterNativeMassQueries,True,3.281309000
 OAI.Algorithms.SubexponentialSAT.SqrtLog.OuterNativePreparedInputs,True,3.277339,3.2402066249997006,source-14712,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103,False
 OAI.Algorithms.SubexponentialSAT.SqrtLog.OuterNativeMassWitness,True,3.2774039999999998,3.2653078840012313,source-14713,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103,False
 OAI.Algorithms.SubexponentialSAT.SqrtLog.OuterNativePreparedContexts,True,3.4231309999999997,3.383029199001612,source-14714,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103,False
+OAI.Algorithms.SubexponentialSAT.SqrtLog.OuterNativeTrial,True,3.377212,3.323703486999875,source-14715,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103,False
+OAI.Algorithms.SubexponentialSAT.SqrtLog.OuterNativeServices,True,3.546678,3.4916387949997443,source-14716,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103,False
+OAI.Algorithms.SubexponentialSAT.SqrtLog.OuterNativeServiceBudget,True,4.350566000000001,4.159400953998556,source-14717,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103,False
+OAI.Algorithms.SubexponentialSAT.SqrtLog.OuterNativeSupply,True,3.431472,3.4901261029990565,source-14718,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103,False
+OAI.Algorithms.SubexponentialSAT.SqrtLog.ExecutionNativeFinal,True,3.238909,3.2508283610004582,source-14719,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103,False
+OAI.Algorithms.SubexponentialSAT.Main,True,2.793532,2.8341378910008643,source-14720,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103,False
