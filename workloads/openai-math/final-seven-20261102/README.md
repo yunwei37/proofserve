@@ -43,3 +43,9 @@ compiler/kernel result. Other lanes may be profiling on Pcores; concurrent Eprep
 is background context,not a claim of globally idle hardware.
 Implementation currently syntax-checked only; first real prerequisite will
 qualify runtime behavior after the healthy current plan actually retires.
+
+Later Edriver version resumes only successful-progress finite windows and
+clipped-remainder censors,archiving each window terminal before updating the
+latest pointer. It stops on full1200s censor,resource/native/setup failure.
+No original target or timed Prequest is launched by this dependency-only loop.
+The currently running first Ewindow uses its frozen older driver unchanged.

@@ -14,12 +14,7 @@ import time
 def dump(p, x):
     p.write_text(json.dumps(x, indent=2)+"\n")
 
-def main():
-    ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--point",type=Path,required=True)
-    a=ap.parse_args()
-    os.sched_setaffinity(0,set(range(8,16)))
-    p=a.point
+def run_window(p):
     plan=json.loads((p/"plan.json").read_text())
     ready=set(plan.get("initial_ready",[]))
     ledger=p/"preparation-results.jsonl"
@@ -175,7 +170,32 @@ def main():
         no_population_cost_measurements=True,affinity=sorted(os.sched_getaffinity(0)))
     dump(p/"preparation-terminal.json",result)
     print(json.dumps(result),flush=True)
-    return 0
+    return result
+
+def main():
+    ap=argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--point",type=Path,required=True)
+    a=ap.parse_args()
+    os.sched_setaffinity(0,set(range(8,16)))
+    windows=a.point/"preparation-windows"
+    windows.mkdir(exist_ok=True)
+    while True:
+        result=run_window(a.point)
+        ledger=a.point/"preparation-results.jsonl"
+        last=json.loads(ledger.read_text().splitlines()[-1]) if ledger.exists() else {}
+        resumable=(result["new_rows"]>0 and
+                   (result["stop"]=="finite preparation window exhausted; unstarted jobs retained"
+                    or (result["stop"]=="unfinished dependency; retain diagnostics and review allowance before continuing"
+                        and last.get("status")=="group_remainder_censor")))
+        final=result["all_original_deps_ready"] or not resumable
+        result["preparation_final"]=final
+        result["window_index"]=len(list(windows.glob("*.json")))
+        dump(windows/(str(result["window_index"]).zfill(3)+"-terminal.json"),result)
+        dump(a.point/"preparation-terminal.json",result)
+        if final:
+            return 0 if result["all_original_deps_ready"] else 2
+        # Only a finite-window stop or clipped remainder resumes; a complete
+        # allowance/resource/native failure never spins into identical retries.
 
 if __name__=="__main__":
     raise SystemExit(main())
