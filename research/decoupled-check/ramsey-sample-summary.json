@@ -1,15 +1,15 @@
 {
   "selected": 20,
-  "returned": 10,
-  "accepted": 10,
+  "returned": 11,
+  "accepted": 11,
   "failed": 0,
-  "cpu_s": 8.242118,
+  "cpu_s": 9.098849,
   "complete": false,
   "eligible": 190,
   "full_population": 444,
   "full_closure": false,
-  "median_cpu_ratio": 0.46522964727261135,
-  "min_cpu_ratio": 0.39397533704775134,
+  "median_cpu_ratio": 0.45105326327084844,
+  "min_cpu_ratio": 0.2602624037873538,
   "max_cpu_ratio": 0.5809953576327802,
-  "pooled_cpu_ratio": 0.4636794332142966
+  "pooled_cpu_ratio": 0.43189516360051133
 }

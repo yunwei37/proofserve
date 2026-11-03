@@ -9,3 +9,4 @@ OAI.Combinatorics.Ramsey.CycleClique.Construction.LowerBound,2,3202,other-unmark
 OAI.Combinatorics.Ramsey.CycleClique.Construction.OptimalPathSystem,2,3535,other-unmarked,1.7513379999999998,0.839602,1.6304102931171656,0.8500274224206805,0.47940603127437426,0.5213579833303931,True,0,3098848,sample-07
 OAI.Combinatorics.Ramsey.CycleClique.Construction.LongestPaths,3,4126,other-unmarked,1.9346539999999999,0.872632,1.8048735707998276,0.8835475714877248,0.45105326327084844,0.48953432848827283,True,0,3108212,sample-08
 OAI.Combinatorics.Ramsey.CycleClique.Construction.EndpointFullAttachment,3,4247,other-unmarked,1.927131,0.775289,1.8037510933354497,0.7927313512191176,0.4023021787309737,0.4394904342113076,True,0,3111076,sample-09
+OAI.Combinatorics.Ramsey.CycleClique.Construction.TriangleFacts,3,5012,other-unmarked-plain-decide,3.291797,0.8567309999999999,2.7067019501700997,0.8676571352407336,0.2602624037873538,0.3205588022671675,True,0,3117000,sample-10
