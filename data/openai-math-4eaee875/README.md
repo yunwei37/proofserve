@@ -5,7 +5,9 @@ A small, citable data package for **openai/math at
 42 original probability draws (two per stratum, seed 20261030).
 
 **Current snapshot: 41 completed costs / 42 original draws.** The last draw
-is still being prepared. Blank costs are missing, never zero or imputed.
+is still being prepared. Blank costs are missing, never zero or imputed. A completed_cost means a
+native compiler return under the frozen flags, not an axiom-free proof or
+independent-checker certificate; upstream admits/axioms are not removed.
 The frozen 12 independent precision draws are not pooled into the original42.
 This directory is the stable small-table interface; research raw logs remain
 in their original retained locations. Column names below form the v1 contract.

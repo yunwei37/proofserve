@@ -19,57 +19,47 @@ TOKENS = ("decide", "native_decide", "bv_decide", "ofReduceBool", "omega",
 NAME = r"(?!\d)[\w][\w'.]*"
 IMPORT = re.compile(r"(?m)^\s*(?:(?:public|private|meta)\s+)*import[ \t]+([^\n;]+)")
 
+SPECIAL = re.compile(r"""--|/-|(?<![\w])r(?P<hashes>\#*)"|'(?:\\.|[^'\\\n])'|" """.rstrip())
+BLOCK = re.compile(r"/-|-/")
+STRING = re.compile(r'(?:\\.|[^"\\])*"', re.S)
+
 def mask(text):
     """Mask nested comments and quoted strings, retaining offsets/newlines."""
-    out = list(text)
-    i = 0
-    while i < len(text):
-        start = i
-        if text.startswith("--", i):
-            i = text.find("\n", i)
-            if i < 0:
-                i = len(text)
-        elif text.startswith("/-", i):
-            i += 2
-            depth = 1
-            while i < len(text) and depth:
-                if text.startswith("/-", i):
-                    depth += 1
-                    i += 2
-                elif text.startswith("-/", i):
-                    depth -= 1
-                    i += 2
-                else:
-                    i += 1
-            if depth:
-                raise ValueError("unterminated block comment")
-        elif (raw := re.compile(r'r(#{0,})"').match(text, i)) and (i == 0 or not (text[i-1].isalnum() or text[i-1] == "_")):
-            delimiter = '"' + raw[1]
-            end = text.find(delimiter, raw.end())
+    pieces = []
+    position = 0
+    while (match := SPECIAL.search(text, position)) is not None:
+        start = match.start()
+        pieces.append(text[position:start])
+        token = match[0]
+        if token == "--":
+            end = text.find("\n", match.end())
             if end < 0:
+                end = len(text)
+        elif token == "/-":
+            end, depth = match.end(), 1
+            while depth:
+                next_token = BLOCK.search(text, end)
+                if next_token is None:
+                    raise ValueError("unterminated block comment")
+                depth += 1 if next_token[0] == "/-" else -1
+                end = next_token.end()
+        elif match.group("hashes") is not None:
+            delimiter = '"' + match.group("hashes")
+            closing = text.find(delimiter, match.end())
+            if closing < 0:
                 raise ValueError("unterminated raw string")
-            i = end + len(delimiter)
-        elif (char := re.compile(r"'(?:\\.|[^'\\\n])'").match(text, i)):
-            i = char.end()
-        elif text[i] == '"':
-            i += 1
-            while i < len(text):
-                if text[i] == "\\":
-                    i += 2
-                elif text[i] == '"':
-                    i += 1
-                    break
-                else:
-                    i += 1
-            else:
+            end = closing + len(delimiter)
+        elif token == '"':
+            literal = STRING.match(text, match.end())
+            if literal is None:
                 raise ValueError("unterminated string literal")
+            end = literal.end()
         else:
-            i += 1
-            continue
-        for j in range(start, min(i, len(text))):
-            if text[j] != "\n":
-                out[j] = " "
-    return "".join(out)
+            end = match.end()
+        pieces.append(re.sub(r"[^\n]", " ", text[start:end]))
+        position = end
+    pieces.append(text[position:])
+    return "".join(pieces)
 
 def lexical(text):
     code = mask(text)
@@ -240,13 +230,18 @@ def read_costs(path, modules):
 
 def audit(project, build_roots=None, receipt=None, cost_log=None):
     project = Path(project).resolve(strict=True)
+    receipt = Path(receipt) if receipt is not None else None
+    cost_log = Path(cost_log) if cost_log is not None else None
+    if build_roots is not None and (isinstance(build_roots, str)
+            or not all(isinstance(m, str) and m for m in build_roots)):
+        raise ValueError("build_roots must be an array of nonempty module names")
     config = configuration(project)
     root_paths = {project}
     for target in config["targets"]:
         root_paths.add(inside(project, target["srcDir"]))
     # Dependencies are intentionally not traversed as local source. M's checker
     # receipt owns the compiled dependency/axiom closure.
-    excluded = {".lake", ".git", "build", "__pycache__"}
+    excluded = {".lake", ".git", ".proofserve", "__pycache__"}
     paths = []
     for folder, dirs, files in os.walk(project, followlinks=False):
         dirs[:] = sorted(d for d in dirs if d not in excluded and not Path(folder, d).is_symlink())

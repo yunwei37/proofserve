@@ -1,0 +1,23 @@
+{
+  "schema": "proofserve-audit/v1",
+  "lean_toolchain": "leanprover/lean4:v4.34.1",
+  "source_modules": 9110,
+  "source_bytes": 101809919,
+  "lexical_counts": {
+    "simp": 138415,
+    "simp_all": 2253,
+    "rfl": 59979,
+    "grind": 6725,
+    "norm_num": 976,
+    "decide": 964,
+    "omega": 220,
+    "decide_plus_kernel": 17,
+    "native_decide": 19
+  },
+  "costs_status": "unavailable",
+  "coverage_status": "unknown",
+  "source_errors": 0,
+  "source_error_examples": [],
+  "source_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "scope": "actual existing Mathlib static source audit; no native process/build, no measured speed, no external-project checker acceptance"
+}

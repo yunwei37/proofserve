@@ -139,5 +139,19 @@ class AuditTests(unittest.TestCase):
         self.assertEqual(r["counts"]["decide_plus_kernel"], 0)
         self.assertEqual(r["imports"], ["Δοκιμή.Test"])
 
+    def test_python_api_accepts_paths_but_not_string_root_array(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.project(d)
+            self.assertEqual(audit.audit(str(p))["source_modules"], 3)
+            with self.assertRaises(ValueError):
+                audit.audit(p, build_roots="Demo")
+
+    def test_legitimate_build_source_directory_is_not_discarded(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.project(d)
+            (p / "build").mkdir()
+            (p / "build/Example.lean").write_text("example : True := by trivial")
+            self.assertEqual(audit.audit(p)["source_modules"], 4)
+
 if __name__ == "__main__":
     unittest.main()
