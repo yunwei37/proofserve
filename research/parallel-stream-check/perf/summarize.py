@@ -28,6 +28,7 @@ def main():
    accepted_reference_equal=c['accepted_set_equal_to_reference'],
    checks=c['ordinary_checks'],allocation_units=c['ordinary_allocation_units'])
   native.update({'application_'+k:v for k,v in c.get('application_time',{}).items()})
+  native.update({k:c.get(k) for k in ['cgroup_usage_s','cgroup_user_s','cgroup_system_s']})
   metrics=collections.Counter()
   with (root/'runs'/key/'stdout').open() as g:
    for line in g:
@@ -51,7 +52,9 @@ def main():
    workers=set(c['observed_worker_TIDs']);trs=report_threads(tf)
    for r in trs:
     threads.append(dict(base,**r,observed_original_check_worker=r['TID'] in workers,
-     scope='thread lifetime, not just original-check interval'))
+     scope='thread lifetime, not just original-check interval',
+     IPC=r['cpu_core/instructions,period=0/u']/r['cpu_core/cpu-cycles/u'] if r['cpu_core/cpu-cycles/u'] else None,
+     retired_L3_misses_per_kinsn=1000*r['cpu_core/mem_load_retired.l3_miss,period=0/u']/r['cpu_core/instructions,period=0/u'] if r['cpu_core/instructions,period=0/u'] else None))
    if workers-set(r['TID'] for r in trs):problems.append(dict(key=key,state='missing worker READcounts'))
   cat=d/'category-thread-periods.csv'
   if cat.exists():
@@ -64,6 +67,12 @@ def main():
  write(out/'native-timings.csv',times);write(out/'stat-counters.csv',stats)
  write(out/'record-thread-counters.csv',threads);write(out/'sample-category-threads.csv',cats)
  write(out/'sample-scopes.csv',scopes)
+ aggregated=collections.Counter()
+ for r in cats:
+  aggregated[(r['key'],r['workers'],r['event'],r['scope'],r['category'])]+=int(r['sampled_period'])
+ write(out/'category-by-workers.csv',[dict(key=k[0],workers=k[1],event=k[2],scope=k[3],category=k[4],
+  sampled_cycles=v,interpretation='exclusive sampled family; inlined RC not fully resolved')
+  for k,v in sorted(aggregated.items())])
  brackets=[]
  for n in [1,2,4,8]:
   ts=[r for r in times if r['workers']==n]
