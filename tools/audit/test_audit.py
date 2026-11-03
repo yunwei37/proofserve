@@ -214,5 +214,16 @@ class AuditTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 audit.uint64(value, "clock")
 
+    def test_name_coverage_uses_real_compiled_receipt_without_source_claim(self):
+        receipt = audit.load_receipt(Path(__file__).with_name("fixtures") / "native-v1.json")[0]
+        result = audit.verification_coverage({"Mathlib.Data.Nat.Basic": {}, "Missing.Local": {}}, receipt, True)
+        self.assertEqual(result["reported_local_names"], ["Mathlib.Data.Nat.Basic"])
+        self.assertEqual(result["absent_local_names"], ["Missing.Local"])
+        self.assertEqual(result["source_binding"], "not established")
+
+    def test_name_coverage_unknown_for_unevaluated_config_or_official_path(self):
+        self.assertIsNone(audit.verification_coverage({"Demo": {}}, {"accepted": ["Demo"]}, False)["absent_local_names"])
+        self.assertIsNone(audit.verification_coverage({"Demo": {}}, {"accepted": None}, True)["absent_local_names"])
+
 if __name__ == "__main__":
     unittest.main()

@@ -97,7 +97,7 @@ def configuration(project, config_override=None):
                     extraDepTargets=spec.get("extraDepTargets", [])))
         defaults = raw.get("defaultTargets")
         return dict(file=str(toml) if config_override else "lakefile.toml", targets=targets, defaults=defaults,
-            supplied_config=config_override is not None,
+            supplied_config=config_override is not None, module_identity_source="declarative_toml",
             default_scope_supported=isinstance(defaults, list),
             reasons=[] if isinstance(defaults, list) else ["defaultTargets absent; do not guess Lake fallback behavior"])
     if lean.exists():
@@ -121,6 +121,7 @@ def configuration(project, config_override=None):
             targets.append(dict(name=m[2], kind=m[1], srcDir=src,
                                 roots=[m[2]], globs=None))
         return dict(file="lakefile.lean", targets=targets, defaults=None,
+            module_identity_source="advisory_unexecuted_lean_config",
             default_scope_supported=False,
             reasons=["executable lakefile.lean is not evaluated; pass --build-roots for an explicitly declared import-closure audit"])
     raise ValueError("expected lakefile.toml or lakefile.lean in project root")
@@ -244,6 +245,28 @@ def load_receipt(path):
         trusted_local_checkpoints=receipt.get("trusted_local_checkpoints"),
         mathlib_manifest=receipt.get("mathlib_manifest"), receipt=receipt), {}
 
+def verification_coverage(modules, compiled, identity_supported):
+    """Compare reported compiled module names; never certify current source."""
+    if not identity_supported:
+        return dict(status="unknown_source_module_identity",
+            reported_local_names=None, absent_local_names=None,
+            source_binding="not established",
+            reason="executable Lake source-root identity needs a supplied declarative export")
+    accepted = compiled.get("accepted")
+    if not isinstance(accepted, list):
+        return dict(status="unknown_no_native_module_ledger",
+            reported_local_names=None, absent_local_names=None,
+            source_binding="not established",
+            reason="missing/unrecognized/official receipt has no native module ledger")
+    names = set(modules)
+    observed = set(accepted)
+    return dict(status="reported_compiled_module_names_only",
+        reported_local_names=sorted(names & observed),
+        absent_local_names=sorted(names-observed),
+        reported_names_without_local_source_count=len(observed-names),
+        source_binding="not established",
+        reason="name intersection with reported compiled artifacts, not current source verification")
+
 def read_costs(path, modules):
     if path is None:
         return {}, []
@@ -343,6 +366,7 @@ def audit(project, build_roots=None, receipt=None, cost_log=None, lake_config=No
             missing_roots=sorted(missing), reasons=reasons,
             scope="local source import closure only; custom targets and external compiled dependencies require evaluated evidence"),
         lexical_counts=totals, modules=[modules[m] for m in sorted(modules)], errors=errors,
+        verification_coverage=verification_coverage(modules, compiled, config["module_identity_source"] == "declarative_toml"),
         cost_errors=cost_errors, compiled_evidence=compiled, costs_status="unavailable" if not costs else "supplied_log",
         limitations=[
             "Lexical occurrences outside comments/strings are not tactic executions, elaborated identities, kernel costs or an axiom closure.",

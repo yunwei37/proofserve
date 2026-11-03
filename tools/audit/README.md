@@ -113,3 +113,17 @@ per-module ledger, and expose neither axioms nor per-module CPU. They retain a
 separate reported_official status, including operational official_failure.
 The axiom set on the native path is declarations in the accepted module closure,
 including segregated modules; it is not minimal per-theorem axiom dependence.
+
+## Reported verification coverage
+
+With a supported declarative source-root map and a native receipt, the
+verification_coverage field lists local module names present in the reported
+compiled ledger and local names absent from it. This is **name comparison**,
+not source certification. Accepted names without a local source file may be
+dependencies or stale artifacts; the audit does not guess which.
+
+For an unevaluated executable Lake configuration, module identity is advisory
+and this comparison is unknown until a declarative export is supplied.
+Official fallback, unknown receipts and missing receipts have no native module
+ledger, so the missing-local list remains null rather than an invented empty
+list. These cases are distinguished from zero missing names.
