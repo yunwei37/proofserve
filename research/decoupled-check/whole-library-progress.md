@@ -61,3 +61,7 @@ not newly accepted proofs or a global validation cost.
 Next is Transonic:466 targets,5115 dependency nodes in the retained native
 header DAG, pending actual full native set equality; no extra OAI subtree.
 <!-- current-directory-end -->
+
+### Ramsey complete-directory route cancelled
+
+Ramsey producer retired at190/444targets; no Ramsey lock request remains. Full stream coverage0/444 and kernelCPU0 remain unchanged. Module-local sampling will use retained outputs; next complete directory is SubexponentialSAT, conditional on the explicit12h planning estimate. Historical whole-library counts remain2488/163097accepted,10744certified dependencies,0.694505kernelCPUh,9124producer errors/151485blocked. See [Ramsey stop](ramsey-progress.md).

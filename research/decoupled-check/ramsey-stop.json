@@ -1,0 +1,38 @@
+{
+  "stop": {
+    "time_utc": "2026-11-03T05:26:23Z",
+    "reason": "User stopped complete Ramsey production after current window; current window already returned; cancel only the next still-waiting flock request.",
+    "controller_pid": 491697,
+    "controller_birth": "771798493",
+    "cancelled_waiter_pid": 548230,
+    "cancelled_waiter_birth": "773592704",
+    "locks_before": "1: OFDLCK ADVISORY  READ -1 103:04:189267997 201 201\n4: FLOCK  ADVISORY  WRITE 546552 08:10:1443914 0 EOF\n4: -> FLOCK  ADVISORY  WRITE 548230 08:10:1443914 0 EOF\n20: OFDLCK ADVISORY  READ -1 103:04:189267997 100 100\n21: OFDLCK ADVISORY  READ -1 103:04:189267981 203 203\n22: OFDLCK ADVISORY  READ -1 103:04:189267981 201 201\n23: OFDLCK ADVISORY  READ -1 103:04:189267981 100 100\n24: OFDLCK ADVISORY  READ -1 103:04:189267998 203 203\n25: OFDLCK ADVISORY  READ -1 103:04:189267998 201 201\n26: OFDLCK ADVISORY  READ -1 103:04:189267998 103 103\n27: OFDLCK ADVISORY  READ -1 103:04:189267998 100 101\n",
+    "retained_targets": 190,
+    "native_signalled": false
+  },
+  "reduced": {
+    "complete": false,
+    "phase": "source",
+    "target_modules": 444,
+    "closure_modules": 11188,
+    "source_built": 10934,
+    "reused_source_nodes": 10744,
+    "new_source_nodes_built": 190,
+    "source_targets_built": 190,
+    "source_cpu_s": 47519.846815,
+    "source_reused_cpu_s": 25373.748385,
+    "source_new_cpu_s": 22146.098430000002,
+    "kernel_accepted_targets": 0,
+    "kernel_accepted_dependencies": 0,
+    "kernel_cpu_s": 0,
+    "kernel_cpu_h": 0.0,
+    "current_segment": 0,
+    "remaining_segments_min": 23,
+    "oracle_qualified": 10745,
+    "kernel_peak_rss_gib": 0.0,
+    "kernel_over_source_cpu": null
+  },
+  "controller_retired": true,
+  "next_waiter_removed": true,
+  "full_run_cancelled": true
+}

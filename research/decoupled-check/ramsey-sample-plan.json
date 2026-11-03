@@ -1,0 +1,191 @@
+{
+  "seed": 20261103,
+  "target_population": 444,
+  "eligible_built_prefix": 190,
+  "strata": 5,
+  "per_stratum": 4,
+  "selected": [
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CliqueThree",
+      "stratum": 1,
+      "population": 38,
+      "bytes": 1304,
+      "source_cpu_s": 1.548348,
+      "source_wall_s": 1.5003811679780483,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.PackingCertificate",
+      "stratum": 1,
+      "population": 38,
+      "bytes": 1561,
+      "source_cpu_s": 1.547605,
+      "source_wall_s": 1.5129042649641633,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificateMatrixChunks",
+      "stratum": 1,
+      "population": 38,
+      "bytes": 1579,
+      "source_cpu_s": 1.739192,
+      "source_wall_s": 1.7031754525378346,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.SmallIndependent",
+      "stratum": 1,
+      "population": 38,
+      "bytes": 1768,
+      "source_cpu_s": 1.9198739999999999,
+      "source_wall_s": 1.8828314654529095,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.FiniteConstraints",
+      "stratum": 2,
+      "population": 38,
+      "bytes": 2936,
+      "source_cpu_s": 1.671008,
+      "source_wall_s": 1.5975058572366834,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.LayoutRefutation",
+      "stratum": 2,
+      "population": 38,
+      "bytes": 3031,
+      "source_cpu_s": 1.8309479999999998,
+      "source_wall_s": 1.8077962035313249,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.LowerBound",
+      "stratum": 2,
+      "population": 38,
+      "bytes": 3202,
+      "source_cpu_s": 1.905368,
+      "source_wall_s": 1.7619504565373063,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.OptimalPathSystem",
+      "stratum": 2,
+      "population": 38,
+      "bytes": 3535,
+      "source_cpu_s": 1.7513379999999998,
+      "source_wall_s": 1.6304102931171656,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.LongestPaths",
+      "stratum": 3,
+      "population": 38,
+      "bytes": 4126,
+      "source_cpu_s": 1.9346539999999999,
+      "source_wall_s": 1.8048735707998276,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.EndpointFullAttachment",
+      "stratum": 3,
+      "population": 38,
+      "bytes": 4247,
+      "source_cpu_s": 1.927131,
+      "source_wall_s": 1.8037510933354497,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.TriangleFacts",
+      "stratum": 3,
+      "population": 38,
+      "bytes": 5012,
+      "source_cpu_s": 3.291797,
+      "source_wall_s": 2.7067019501700997,
+      "descriptive_group": "other-unmarked-plain-decide"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.ConnectedLongPath",
+      "stratum": 3,
+      "population": 38,
+      "bytes": 5101,
+      "source_cpu_s": 1.992928,
+      "source_wall_s": 1.831666674464941,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.TerminalWeights",
+      "stratum": 4,
+      "population": 38,
+      "bytes": 5647,
+      "source_cpu_s": 1.846421,
+      "source_wall_s": 1.63253188226372,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.RamseyReduction",
+      "stratum": 4,
+      "population": 38,
+      "bytes": 6147,
+      "source_cpu_s": 2.1161779999999997,
+      "source_wall_s": 1.6110002463683486,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.RawReplacementProfiles",
+      "stratum": 4,
+      "population": 38,
+      "bytes": 6714,
+      "source_cpu_s": 1.9718259999999999,
+      "source_wall_s": 1.696646025404334,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.InteriorDetour",
+      "stratum": 4,
+      "population": 38,
+      "bytes": 7167,
+      "source_cpu_s": 2.352884,
+      "source_wall_s": 2.257035970687866,
+      "descriptive_group": "other-unmarked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK13Part004",
+      "stratum": 5,
+      "population": 38,
+      "bytes": 2605222,
+      "source_cpu_s": 392.855551,
+      "source_wall_s": 197.81841486506164,
+      "descriptive_group": "kernel-marked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK14Part004",
+      "stratum": 5,
+      "population": 38,
+      "bytes": 3411752,
+      "source_cpu_s": 572.562336,
+      "source_wall_s": 292.1219973433763,
+      "descriptive_group": "kernel-marked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK15Part002",
+      "stratum": 5,
+      "population": 38,
+      "bytes": 3426622,
+      "source_cpu_s": 589.625301,
+      "source_wall_s": 318.2088628811762,
+      "descriptive_group": "kernel-marked"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK15Part007",
+      "stratum": 5,
+      "population": 38,
+      "bytes": 3882980,
+      "source_cpu_s": 684.9660680000001,
+      "source_wall_s": 357.63902026601136,
+      "descriptive_group": "kernel-marked"
+    }
+  ],
+  "supplemental_k10": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK10",
+  "scope": "Random within retained size quintiles only; not a random444-target sample."
+}
