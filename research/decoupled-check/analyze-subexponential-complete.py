@@ -31,6 +31,37 @@ def main():
  terminal=next(v for v in reversed(final_events)if v.get("event")=="complete")
  assert terminal["modules"]==14721
  out["native_complete_event"]=terminal
+ successful=[v for v in builds if v["valid"]];durations=sorted(cpu(v)for v in successful)
+ source_max_rss=max(v["cell"]["peak_rss_kib"]for v in builds)/1024**2
+ event_counts={}
+ for v in builds:
+  for line in v["cell"]["memory_events"].splitlines():
+   key,value=line.split();event_counts[key]=event_counts.get(key,0)+int(value)
+ bad_source=[v for v in builds if not v["valid"]]
+ old_provider_terms=["unknown declaration","missing native","executable code","unknown module prefix","object file"]
+ provider_failures=[]
+ for v in bad_source:
+  text=(A/(v["cell"]["key"]+".stdout")).read_text(errors="replace")+(A/(v["cell"]["key"]+".stderr")).read_text(errors="replace")
+  if any(x in text.lower()for x in old_provider_terms):provider_failures.append(v["cell"]["key"])
+ risks=dict(source_successful_attempt_mean_cpu_s=sum(durations)/len(durations),pilot_mean_cpu_s=4.22759456,
+  source_attempt_p50_cpu_s=durations[(len(durations)-1)//2],source_attempt_p90_cpu_s=durations[int((len(durations)-1)*.9)],
+  source_attempt_p99_cpu_s=durations[int((len(durations)-1)*.99)],source_attempt_max_cpu_s=max(durations),source_max_rss_gib=source_max_rss,
+  source_returncode124_count=sum(v["cell"]["returncode"]==124 for v in builds),source_cgroup_events=event_counts,
+  failed_attempts_with_old_provider_error_text=provider_failures,source_cleanup_pending_count=sum("cleanup_pending"in v["cell"]for v in builds),
+  static_plain_by_decide_sites=26593,static_explicit_kernel_sites=0,
+  plain_decide_runtime_attribution="not measured per tactic; cannot attribute aggregate cost or absence of heavy calls to markers",
+  scope="Actual complete-directory outcomes; not a claim all9124old failures were rerun or all163097sources work.")
+ out["post_run_risk_review"]=risks
+ (D/"subexponential-risk-review.json").write_text(json.dumps(risks,indent=2)+"\n")
+ review="# SubexponentialSAT: post-run review of9eea8be planning risks\n\nReview: 自审.\n\n"
+ review+=f"- **Provider/runtime initialization:** {len(provider_failures)} failed attempts with text matching the earlier Meta/IR/provider failure family, out of{len(builds)}source attempts. Full native acceptance is directory scoped; historical9124environment failures remain unchanged and are not silently rerun.\n"
+ review+=f"- **Cost transfer:** successful-source mean{risks['source_successful_attempt_mean_cpu_s']:.6f}CPU-s versus25-source pilot4.227595; P50/P90/P99/max = {risks['source_attempt_p50_cpu_s']:.3f}/{risks['source_attempt_p90_cpu_s']:.3f}/{risks['source_attempt_p99_cpu_s']:.3f}/{risks['source_attempt_max_cpu_s']:.3f}s. This is retrospective complete coverage, not a bounded predictor.\n"
+ review+="- **Markers beyond+kernel:** zero explicit sites coexist with26593plain by-decide sites in1932files. Their tactic-specific CPU was not instrumented; the measured whole-stream fraction does not prove they were individually cheap or inactive. Large-source maximum147641bytes was a static risk indicator, not a cost bound.\n"
+ review+=f"- **Operational limits:** source timeout-returncodes124={risks['source_returncode124_count']}; cgroupOOM-kill events={event_counts.get('oom_kill',0)}, max events={event_counts.get('max',0)}; maximum sourceRSS={source_max_rss:.3f}GiB. RSS and cgroup-charged memory are distinct observations. Pending native cgroup cleanup records={risks['source_cleanup_pending_count']}. Limits were not relaxed.\n"
+ review+=f"- **Admissions/diagnostics:** {out['source_sorry_warnings']}source sorry-warning records. The six static sorry/admit matches were six English admit words in comments, zero sorry tokens; no dependency-axiom audit is claimed. Source failures(all causes)={out['source_failures']} remain charged and preserved.\n"
+ review+="- **Checking correctness:** all14721stream IDs equal the complete source frame and original module-local reference set under the documented safe-declaration policy. Three in-memory malformed theorem bodies were actually rejected by the original kernel. Rejections do not imply hardened parsing of hostile binary oleans.\n"
+ review+="- **Input condition:** checking consumes completed source-produced typed artifacts, not raw AI tactic scripts. Removing completed dependency production from the incremental denominator does not remove their fresh checking from the numerator. Startup/checkpoint work is included; no source-only RL-service throughput gain is inferred.\n"
+ (D/"subexponential-risk-review.md").write_text(review)
  (D/"subexponential-complete-metrics.json").write_text(json.dumps(out,indent=2)+"\n")
  parts=[dict(component="retained dependency source work",cpu_s=rc,child_wall_s=rw,executed_now=False),
  dict(component="new target source work(all attempts)",cpu_s=nc,child_wall_s=nw,executed_now=True),
