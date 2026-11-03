@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0281. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0283. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -119,3 +119,5 @@ Official checker/rejection scope [root0281](../docs/tmp/build-and-evaluate/step-
 
 
 Post-reboot handling and pending M wall breakdown: [root0282](../docs/tmp/build-and-evaluate/step-0282-20261103T145836+0000/step-report.md). Interrupted runs enter no cost/censor/completed-sample totals. Existing299s approximate partition awaits corrected remeasurement/integration, Partial only.
+
+Default-persistent complete Mathlib retest [root0283](../docs/tmp/build-and-evaluate/step-0283-20261103T162836+0000/step-report.md):9processes/3repeats per arm, original serial66.128s to8worker39.653s=1.668x,CPU+10.42%. Same ordered1330graph; historical1.523x preserved, not isolated marking causality. Grid/Barrier remeasurement remains incomplete.

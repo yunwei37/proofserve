@@ -1,0 +1,5 @@
+key,returncode,accepted,rejects,complete,wall_s
+control-v2-P1,0,2,0,1,0.39827312600004916
+control-v2-P8,0,2,0,1,0.2289074329999039
+bad-v2-P1,1,1,1,0,0.23226130900002318
+bad-v2-P8,1,1,1,0,0.22993210000004183

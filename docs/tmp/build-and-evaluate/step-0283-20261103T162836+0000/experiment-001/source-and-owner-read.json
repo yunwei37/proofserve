@@ -1,0 +1,29 @@
+{
+  "UTC": "2026-11-03T16:30:52.759605+00:00",
+  "boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944",
+  "stream_source_equal_prior": true,
+  "original_check_source_preserved": true,
+  "quiescent_default_persistence": true,
+  "runtime_from_frozen_matrix_not_per_open_trace": true,
+  "processes": [
+    {
+      "pid": 5528,
+      "birth": "68581",
+      "state": "S",
+      "command": "python3 -u /workspaces/.agent-state/gpu-smt-captures/parallel-stream-wall-20261103/matrix-v2.py "
+    },
+    {
+      "pid": 13026,
+      "birth": "368257",
+      "state": "S",
+      "command": "python3 -u /workspaces/.agent-state/gpu-smt-captures/parallel-stream-wall-hybrid-20261103/after_matrix-v2.py 5528 68581 "
+    },
+    {
+      "pid": 6816,
+      "birth": "118331",
+      "state": "S",
+      "command": "python3 -u /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-after-reboot-20261103T1507/prepare_dependencies.py --point /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-after-reboot-20261103T1507 "
+    }
+  ],
+  "matrix_terminal_exists": false
+}

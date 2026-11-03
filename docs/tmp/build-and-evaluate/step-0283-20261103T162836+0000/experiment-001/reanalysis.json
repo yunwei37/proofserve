@@ -1,0 +1,61 @@
+{
+  "UTC": "2026-11-03T16:28:37.235632+00:00",
+  "boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944",
+  "summary": [
+    {
+      "arm": "reference",
+      "repeats": 3,
+      "wall_median": 66.12815876600007,
+      "wall_min": 66.11312372299972,
+      "wall_max": 66.48986901199987,
+      "CPU_median": 66.1048,
+      "CPU_min": 65.879563,
+      "CPU_max": 66.110876
+    },
+    {
+      "arm": "parallel1",
+      "repeats": 3,
+      "wall_median": 71.76662032200011,
+      "wall_min": 71.67076769000005,
+      "wall_max": 72.49105004900002,
+      "CPU_median": 71.402125,
+      "CPU_min": 71.312644,
+      "CPU_max": 72.142271
+    },
+    {
+      "arm": "parallel8",
+      "repeats": 3,
+      "wall_median": 39.65266127800032,
+      "wall_min": 39.6292504879998,
+      "wall_max": 39.76166064500012,
+      "CPU_median": 72.99164,
+      "CPU_min": 72.880005,
+      "CPU_max": 73.075963
+    }
+  ],
+  "ratio_of_medians": 1.6676852608298602,
+  "wall_reduction_percent": 40.03664699282717,
+  "CPU_increase_percent": 10.41806343866105,
+  "same_repeat_wall_ratios": [
+    1.672210564987072,
+    1.6673060922566605,
+    1.668670437913643
+  ],
+  "ordered_modules": 1330,
+  "entries": 132484,
+  "unsafe_partial_exclusions": 2269,
+  "ordinary_jobs": 55255,
+  "waves": 3616,
+  "route_counts": {
+    "upstream_complex_or_cycle": 472,
+    "parallel": 858
+  },
+  "actual_PID_births_retired": 26,
+  "cgroups_absent": 13,
+  "native_runs": 0,
+  "archive_members": 99,
+  "archive_payload_bytes": 6583965,
+  "archive_bytes": 683719,
+  "root_analysis_seconds": 0.8811030370006847,
+  "root_analysis_maxrss_kib": 26236
+}

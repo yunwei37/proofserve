@@ -1726,6 +1726,46 @@ The new unsafe FFI call requires quiescence at its declared enqueue site;
 the original mathematical kernel does not remove trust in the coordinator.
 
 
+
+\paragraph{A complete retest uses persistence by default.}
+\measured{\expref{0283-20261103T162836+0000}{0283}; the complete nine-process Mathlib subset.}
+The same 1,330-module closure is retested with the original serial stream
+and the corrected prototype at one and eight workers, three fresh processes
+per arm. Persistence is now the default at quiescent wave boundaries;
+these timing runs disable profiling and wave tracing.
+All nine accept the same ordered module graph, with 132,484 entries and
+2,269 upstream unsafe/partial exclusions. The parallel paths retain the
+same 55,255 ordinary jobs and 3,616 waves, with no module-local fallback.
+
+Serial, one-worker and eight-worker wall medians are 66.128, 71.767 and
+39.653 seconds; their observed ranges are 66.113--66.490,
+71.671--72.491 and 39.629--39.762 seconds.
+Against the original serial stream, eight workers give a 1.668-fold ratio
+of medians (40.04\% less wall time); same-repeat ratios are
+1.672, 1.667 and 1.669. Native CPU medians are 66.105, 71.402 and
+72.992 seconds, so the eight-worker result costs 10.42\% more CPU.
+The one-worker prototype remains slower than the original serial baseline.
+
+This is a new complete comparison for this closure, not an isolated
+estimate of persistence's effect on the historical 1.523-fold result.
+Dates, runtime settings and generated code differ; the earlier
+same-executable toggle supplies the controlled persistence contrast.
+In particular the old one-worker arm configured eight runtime threads,
+whereas the new arm configures one. Repetitions retain page caches,
+the reference moves to the end only in the second repeat, and shared-host
+effects remain uncontrolled; the ranges are not confidence intervals.
+The original kernel and proof payloads remain, but quiescent FFI marking,
+checked-token coordination and context metadata still require trust.
+Four small one/eight-worker controls preserve positive outcomes and
+reject malformed proofs in the original kernel; they do not prove
+arbitrary extension safety. All thirteen processes and their cgroups
+retire without a resource stop under P0--7, no \texttt{-M},
+14\,GiB charged protection and separate sampled-RSS response.
+The complete-process clock ends after \texttt{wait4}, before sampler
+join and cgroup deletion; lease waiting is excluded.
+Grid and historical Barrier retests remain incomplete and supply no
+additional result here. No source-build or production-service speedup follows.
+
 \paragraph{The complete counter matrix supports the prototype correction.}
 \measured{\expref{0280-20261103T131855+0000}{0280}; all eight stat cells, one observation per arm/worker setting.}
 The remaining six stat processes complete the 32-cell primary matrix,

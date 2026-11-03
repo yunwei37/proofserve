@@ -1,0 +1,9 @@
+{
+  "initial_step_report_bytes": 1603,
+  "initial_outer_audit_bytes": 1842,
+  "complete_template_chars": 5678,
+  "template_transfer_compared_exact_by_client": true,
+  "repaired_report_bytes": 5581,
+  "raw_measurements_unchanged": true,
+  "reason": "middle of report missing in first long stdin transfer; exact failed files retained; no native rerun"
+}

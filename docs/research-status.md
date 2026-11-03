@@ -1,39 +1,39 @@
 # Research status
 
-Snapshot2026-11-03UTC, root0282. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-03UTC, root0283. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
 
 Root0281 independently qualifies [three official checker scopes and two real-root rejects](tmp/build-and-evaluate/step-0281-20261103T141838+0000/step-report.md). Stock default65.423s checks one root with trusted imports; fresh1/8 take534.698/580.090s, approximately1CPU occupancy and sequential replay of final imported map, not equivalent to4449 per-module ledger. No stock speedup/isolated thread effect. Both flags reject the same corrupted real-root theorem after identical4448accepted prefix, native rc1/noOOM or resource stop. Finite correctness controls, not arbitrary unsafe-FFI safety; native matched module-task baseline remains missing. Prior0279/0280 primary, memory and storage conclusions retain their denominators.
 
-## Post-reboot policy and pending wall decomposition — root0282
+## Corrected Mathlib comparison — root0283
 
-[Root report](tmp/build-and-evaluate/step-0282-20261103T145836+0000/step-report.md).
-The user reports phobos-vt lost around14:38UTC, rebooted14:48, Ready14:50.
-Current6qph8 is onphobos-vt/privileged. The cause remains unknown.
-Host-reboot interrupted runs are excluded from all cost values, censored
-observations and completed samples; retain raw. Completed root0281 files
-match the pushed commit and recent0279/0280/0281raw archives read fully
-through gzipEOF. No completed work rerun or owner queue resumed.
-The nine pre-existing modified tracked paths are five October historical
-documents and four M implementation files; current paper/root records had
-no pending edits. Preserve all nine without staging/stash/overwrite.
+[Root report](tmp/build-and-evaluate/step-0283-20261103T162836+0000/step-report.md);
+[M report](../research/parallel-stream-check/wall-ceiling/corrected-math-results.md).
+Exactly9/9 planned Mathlib cells complete: original serial and default-persistent
+1/8workers, three fresh processes each, no profile/trace. All ordered1330IDs,
+imports/counts,132484entries/2269exclusions match the historical reference;
+parallel55255jobs/3616waves, zero module-local fallback.
+Wall medians66.128/71.767/39.653s;8versus original serial1.667685x,
+wall-40.0366%,CPU+10.4181%. Same-repeat ratios1.672211/1.667306/1.668670.
+Observed ranges are not confidence intervals. Default marking is a prototype
+method correction; old1.523x stays historical, not a causal old/new comparison.
+Older1worker configured8runtime threads, new1worker1; dates/code/cache/host differ.
+Four small original-kernel positive/bad-proof controls also qualified.
+13cgroups absent/noOOM/sample-stop;26actual PID/birth identities retired.
+Original kernel unchanged, unsafe quiescence/coordinator/context trust remains.
+No native rerun or replacement queue by root; active owner controller is separate.
 
-**Pending paper integration; Partial evidence:** the existing M eight-worker
-wall decomposition is approximately299s: serial fallback115s,
-dependency/context audit31s, planning11s, parallel waves123s,
-unattributed18s. These rounded components total298s; the figures are approximate,
-not an exact accounting identity or pure kernel CPU decomposition.
-There is no corrected-version remeasurement yet. Do not describe it as
-a corrected measured partition, infer an intrinsic serial fraction, or fill
-a corrected speedup. Qualify capture/version/window definitions before adding
-numbers to the paper; label Partial if written. Current paper change is the
-interruption methodology, with old20table bodies and frozen narrative retained.
+The supplied~299s Barrier wall partition remains Partial/pending paper integration.
+M now publishes a separate traced294.587s diagnostic and observer control;
+this step freezes no diagnostic-derived phase/model claim or Grid partial cost.
+Grid12cell and historical Barrier retests remain incomplete at this read.
+No generic gain, intrinsic serial limit, full-library or service result follows.
 
-A subsequent outage means preserve the scene and wait for the user;
-do not change scheduling or perform recovery. No infrastructure mutation,
-owner interruption, agent/session/queue or new native collection.
+Host-reboot interruptions remain excluded from cost/censors/completed samples;
+raw retained, completed records checked before reuse. A later outage means
+preserve scene and wait for user, no recovery/scheduling changes.
 
 ## Scientific contract and operating scope
 
@@ -123,7 +123,7 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0282:27pages/242746B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0283:27pages/245183B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
