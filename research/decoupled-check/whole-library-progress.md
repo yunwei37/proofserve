@@ -37,36 +37,27 @@ RawPVC: /workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/whole
 
 
 <!-- current-directory-start -->
-## Corrected-environment directory continuation
+## Corrected-environment Ramsey window
 
-Updated 2026-11-03T00:10:49.967144+00:00; review: 自审.
+Review: 自审. Historical whole-library point remains **2488 / 163097**
+accepted source modules, **10744 certified dependencies**, **0.694505 kernel
+CPU hours**, **9124 producer errors**, **151485 blocked source modules**.
+That partial run is retired; none of these counts is silently repaired.
 
-The retired whole-library point is still **2488 / 163097 accepted source
-modules**, **10744 certified dependencies**, **0.694505 kernel CPU hours**,
-**9124 failed producer calls**, and **151485 blocked source modules**.
-No successful result is imputed to the missing or environment-failed nodes.
+Current Ramsey: **source**; source **3/444**,
+kernel **0/444**, freshly checked dependencies
+**0**; source CPU
+**7.050252 h** (new targets
+**0.001988 h**), kernel CPU
+**0.000000 h**; segment **0**;
+at least **23** check segments remain.
+Complete: **False**. [Full progress](ramsey-progress.md).
 
-Current Ramsey phase: **source**. Source **2/444** targets,
-kernel **0/444** targets,
-**0** freshly checked dependencies;
-kernel CPU **0.000000 h**, new target source CPU
-**0.001467 h**. The source denominator additionally includes
-**7.048263 h** of measured, immutable common dependency construction.
-Current check segment **0**, at least
-**23** segments remain.
-See [Ramsey progress](ramsey-progress.md). The complete ratio remains unavailable.
-
-The corrected producer has passed the four actual controls. It removes the
-known environment cause; it does not establish that every released source
-will elaborate or fit the experimental task bound. Of the 151485 blocked
-nodes, **140950 (93.05%)** have only failed-producer ancestry in the retained
-DAG and could become schedulable if those producers succeed. **10535**
-still reach missing external providers (273 external-only;10262 mixed).
-These are structural opportunities, not 140950 newly accepted proofs.
-
-The next directory selected after Ramsey is **Transonic (466 targets)**:
-31 external roots, all outside OAI; no additional OAI subtree is required.
-PlanarPacking (562 targets) additionally requires an OAI Triangular module,
-so Transonic is the smaller self-contained next comparison. It is prepared
-offline only until Ramsey and its reference checks actually finish.
+The environment fix could remove failed-producer-only ancestry blocking for
+**140950 / 151485 nodes (93.05%)**, conditional on those producers actually
+compiling. **10535** blocked nodes still reach missing external providers:
+273 external-only and10262 mixed. These are static scheduling opportunities,
+not newly accepted proofs or a global validation cost.
+Next is Transonic:466 targets,5115 dependency nodes in the retained native
+header DAG, pending actual full native set equality; no extra OAI subtree.
 <!-- current-directory-end -->
