@@ -1,5 +1,5 @@
 {
-  "complete_native_points": 5,
+  "complete_native_points": 6,
   "problems": [],
   "expected_native_points": 16,
   "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103",

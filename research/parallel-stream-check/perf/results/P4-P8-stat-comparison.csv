@@ -1,0 +1,8 @@
+event,P4,P8,change_percent,counter_scope
+cpu_core/cpu-cycles/u,1821258323442.0,1972618508418.0,8.310747741152058,"whole-command user mode, each stat100%running"
+cpu_core/instructions/u,3339686815722.0,3341009573905.0,0.03960725229601447,"whole-command user mode, each stat100%running"
+cpu_core/ref-cycles/u,2056468941837.0,2256781226165.0,9.740593706660384,"whole-command user mode, each stat100%running"
+cpu_core/mem_load_retired.l3_miss/u,523881148.0,586639174.0,11.979439657179647,"whole-command user mode, each stat100%running"
+cpu_core/mem_inst_retired.lock_loads/u,5811018482.0,5817823037.0,0.1170974592677343,"whole-command user mode, each stat100%running"
+cpu_core/mem_load_l3_hit_retired.xsnp_hitm/u,531789977.0,778599290.0,46.411050165392645,"whole-command user mode, each stat100%running"
+cpu_core/ocr.demand_rfo.l3_hit.snoop_hitm/u,344815349.0,516379898.0,49.755484927673564,"whole-command user mode, each stat100%running"

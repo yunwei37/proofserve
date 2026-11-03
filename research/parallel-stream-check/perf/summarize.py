@@ -1,5 +1,5 @@
 """Summarize native/PMU strata without borrowing historical denominators."""
-import collections,csv,json,sys
+import collections,csv,json,sys,gzip
 from pathlib import Path
 def write(p,rows):
  if not rows:return
@@ -86,6 +86,27 @@ def main():
      relative_to_plain_min=r['wall_s']/lo-1,relative_to_plain_max=r['wall_s']/hi-1,
      interpretation='observed bracket, not CI; perf and ordinary times kept separate'))
  write(out/'perf-overhead-brackets.csv',brackets)
+ rc_offsets=collections.Counter()
+ for d in sorted(root.glob('decode-full-record-P*-r1')):
+  af=d/'address-periods.csv.gz'
+  if not af.exists():continue
+  key=d.name.removeprefix('decode-')
+  with gzip.open(af,'rt') as f:
+   for row in csv.DictReader(f):
+    if row['leaf_symbol']!='lean_dec_ref_cold':continue
+    v=row.get('symbol_offset','')
+    if v=='':region='offset_unknown'
+    else:
+     v=int(v)
+     if v==0x11:region='IP_0x11_after_outer_LOCK_incl'
+     elif v==0x91:region='IP_0x91_after_child_LOCK_incl'
+     elif v<0x14:region='other_header_fastpath_IP'
+     else:region='destruction_path_IP_ge_0x14'
+    rc_offsets[(key,row['event'],row['scope'],row['TID'],region)]+=int(row['sampled_period'])
+ write(out/'cold-reference-offset-samples.csv',[dict(key=k[0],event=k[1],scope=k[2],TID=k[3],region=k[4],
+  sampled_cycles=v,limitation='cycle sampling can skid; adjacent-IP weight is not exact atomic stall time')
+  for k,v in sorted(rc_offsets.items())])
+
  (out/'analysis-status.json').write_text(json.dumps(dict(complete_native_points=len(times),problems=problems,
   expected_native_points=16,raw=str(root),sampling_scope='period-weighted estimates; unresolved inline RC retained'),indent=2))
 if __name__=='__main__':main()
