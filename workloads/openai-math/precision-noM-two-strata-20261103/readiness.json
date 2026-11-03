@@ -1,0 +1,13 @@
+{
+  "source_modules": 2602,
+  "source_bytes": 28223670,
+  "downloaded": 84,
+  "all_sources_present": true,
+  "native_runs": 0,
+  "new_candidates_generated": 0,
+  "source_copy_bytes_verified": true,
+  "source_snapshot": "/workspaces/.agent-state/gpu-smt-captures/workloads/precision-noM-two-strata-20261103/source-replay",
+  "external_import_modules": 844,
+  "unresolved_external_modules": [],
+  "compiled_object_qualification": "presence only; actual compile/import remains required; no panel Lean launched"
+}

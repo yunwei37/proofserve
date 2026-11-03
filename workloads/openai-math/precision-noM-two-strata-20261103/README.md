@@ -52,3 +52,27 @@ before the first panel. After each complete batch update actual nominal bounds
 and additional sample/CPU requirements toward high/low<=3. If more draws are
 needed, declare the next independent conditional stage and retain previous
 members explicitly rather than silently pooling an adaptively stopped n.
+
+## Source readiness and analysis (W110)
+All2,602 closure sources (28,223,670 bytes) are present in the PVC replay
+snapshot;84 previously missing blobs were fetched from the pinned public
+snapshot. Expected sizes and replay-copy bytes were checked.844 external
+import object candidates resolve; presence is not a successful native import.
+No new candidate was generated and no panel native measurement has started.
+Original four outstanding draws run first. Existing legacy -M jobs are not used.
+
+The new analyze_precision.py keeps original42 HT separate from conditional
+selected-cell estimates. All six responses are required before a panel is
+substituted; incomplete responses do not silently change its weights. It refuses
+a whole-frame interval until all42 original draws have completed costs.
+Four exact finite-population arithmetic controls pass, including unbiased total
+and variance over every size-two draw, census, and rejection of invalid counts.
+These are estimator controls, not native workload observations.
+
+The next-stage sample/leaf-CPU table is a pilot plug-in planning forecast.
+Dependency preparation CPU is unmeasured and excluded, not zero. The original
+two observations and next independent six are never naively pooled as n=8.
+Adaptive choice of high-variance cells and repeated looks mean that the resulting
+whole-frame hybrid t interval has no global conditional coverage guarantee.
+Calibration and nonresponse uncertainty are separate. Finish both planned panels
+regardless of interim target crossing; new stages require fresh remainder draws.

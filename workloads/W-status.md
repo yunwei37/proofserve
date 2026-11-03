@@ -1,5 +1,12 @@
 # W current state
 
+## W110: conditional analyzer/source preparation ready, original run protected
+Panel sources2602/28.2MB ready, native0. Four exact estimator controls pass;
+real source38 refuses full interval. Selected-cell fresh draws represent remainder,
+not naive n8 pooling. Current original master8141/E6816 healthy at16:07UTC;
+Allocated new Eledger97 rows. Wait on native ownership, not stale terminal windows.
+See precision-noM-two-strata-20261103 and W110 report.
+
 ## W109 current: four-original master attached; precision prepared only
 New master8141/birth169629,raw workloads/remaining-four-hostrecovery-20261103T1512,
 started2026-11-03T15:16:16Z from628ebd1e. It attaches E6816/birth118331,
