@@ -1,0 +1,37 @@
+{
+  "utc": "2026-11-03T17:07:49.632428+00:00",
+  "completed_original_costs": 39,
+  "complete_strata": 19,
+  "covered_modules": 161034,
+  "uncovered_modules": 2063,
+  "missing_domain_fraction": 0.012648914449683317,
+  "scenario_CPU_h": {
+    "a_build": [
+      271.6532603273612,
+      296.7062596040278
+    ],
+    "b_serial_stream": [
+      18.373471918228102,
+      26.280760126409923
+    ],
+    "c_parallel_stream": [
+      24.991934444035664,
+      35.76586094644383
+    ],
+    "d_plus_qualified_chunk": [
+      25.02140089542993,
+      35.79541464856369
+    ]
+  },
+  "computation_share_scenario": [
+    0.19395075909089793,
+    0.21183770887886555
+  ],
+  "new_original_module": "OAI.Combinatorics.Progressions.Sampling.AllocatedForecastPrimitiveCapBound",
+  "new_original_status": "compile_ok",
+  "new_original_CPU_s": "86.97798900000001",
+  "raw_point": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-AllocatedForecastPrimitiveCapBound-targetP-remaining-four-hostrecovery-20261103T1512",
+  "scenario_is_CI": false,
+  "actual_whole_library": false,
+  "audit": "automatic provenance checks passed; thread scientific self-review remains separate"
+}
