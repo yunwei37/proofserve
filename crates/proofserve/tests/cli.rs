@@ -32,7 +32,7 @@ fn runtime_threads_inherit_the_same_cpu_budget() {
         .join(",");
     let mut child = Command::new(env!("CARGO_BIN_EXE_proofserve"))
         .args([
-            "check",
+            "batch",
             "--repl",
             "/usr/bin/python3",
             "--project",
@@ -94,7 +94,7 @@ fn structured_resource_logs_do_not_corrupt_jsonl_results() {
     use std::io::{BufRead, Write};
     let mut child = Command::new(env!("CARGO_BIN_EXE_proofserve"))
         .args([
-            "check",
+            "batch",
             "--repl",
             "/usr/bin/python3",
             "--project",
@@ -391,9 +391,9 @@ fn termination_retires_owned_attempts_in_all_cli_modes() {
     .to_string();
     for (mode, signal) in [
         ("serve", "-TERM"),
-        ("check", "-TERM"),
+        ("batch", "-TERM"),
         ("measure", "-TERM"),
-        ("check", "-INT"),
+        ("batch", "-INT"),
     ] {
         let marker = directory.join(format!("{mode}{signal}.pid"));
         let listener = TcpListener::bind("127.0.0.1:0").unwrap();
@@ -541,7 +541,7 @@ fn termination_retires_owned_attempts_in_all_cli_modes() {
 
 #[test]
 fn termination_interrupts_idle_cli_input_without_waiting_for_eof() {
-    for mode in ["check", "measure"] {
+    for mode in ["batch", "measure"] {
         let mut child = Command::new(env!("CARGO_BIN_EXE_proofserve"))
             .args([
                 mode,

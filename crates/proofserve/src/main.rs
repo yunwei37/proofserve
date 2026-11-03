@@ -1,4 +1,5 @@
 //! Local engine executable. Library use does not require a network service.
+mod project;
 mod resources;
 use proofserve_core::{Batch, VerificationBackend};
 use proofserve_engine::{
@@ -69,9 +70,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let command = args.next().unwrap_or_else(|| "--help".into());
     if command == "--help" || command == "help" {
         println!(
-            "proofserve <serve|check|measure> (--repl PATH | --lean PATH) --project DIR --environment ID [--lean-arg ARG ...] [--source-file FILE] [--stderr-dir DIR] [--cpus CPU,CPU,...] [--worker-cores N] [--memory-gib GiB] [--policy fifo|source-size|task-interleave|task-memory] [--prepared-host PATH --sysroot DIR] [--listen 127.0.0.1:3000]\nproofserve compare BASELINE.json CANDIDATE.json"
+            "proofserve check PROJECT [--workers N] [--checkpoint-dir DIR] [--root MODULE ...]\nproofserve audit PROJECT [--json FILE|-] [--receipt FILE]\nproofserve serve (--repl PATH | --lean PATH) --project DIR --environment ID [OPTIONS]\n\nAdvanced candidate interfaces: batch, measure, compare.\nProject commands require the full release bundle: proofserve-check and proofserve-audit beside this executable or on PATH."
         );
         return Ok(());
+    }
+    if command == "--version" || command == "-V" {
+        println!("proofserve {}", env!("CARGO_PKG_VERSION"));
+        return Ok(());
+    }
+    if matches!(command.as_str(), "check" | "audit") {
+        return project::run(&command, std::env::args_os().skip(2).collect());
     }
     if command == "compare" {
         let baseline = args.next().ok_or("baseline capture path required")?;
@@ -85,8 +93,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("{}", serde_json::to_string_pretty(&report)?);
         return Ok(());
     }
-    if !matches!(command.as_str(), "serve" | "check" | "measure") {
-        return Err("expected serve, check, measure or compare".into());
+    if !matches!(command.as_str(), "serve" | "batch" | "measure") {
+        return Err("expected check, audit, serve, batch, measure or compare".into());
     }
     let mut options = HashMap::new();
     let mut lean_args = Vec::new();
@@ -303,7 +311,7 @@ async fn run(
                 .await?;
             stdout.write_all(b"\n").await?;
             stdout.flush().await?;
-        } else if command == "check" {
+        } else if command == "batch" {
             let mut lines = BufReader::new(tokio::io::stdin()).lines();
             let mut stdout = tokio::io::stdout();
             while let Some(line) = lines.next_line().await? {

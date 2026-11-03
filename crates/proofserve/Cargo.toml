@@ -1,5 +1,5 @@
 [package]
-description = "Local HTTP and JSONL interface for the verification engine"
+description = "Independent Lean project check and audit CLI with a Kimina-compatible service"
 readme = "README.md"
 name = "proofserve"
 version.workspace = true
