@@ -69,30 +69,8 @@ Ramsey producer retired at190/444targets; no Ramsey lock request remains. Full s
 <!-- retained-prefix-sample -->
 Production stopped190/444; full stream0/444,0CPUh. Size sample **20/20 accepted**, **0 failures**, **0.226578 referenceCPUh**. [Sample](ramsey-sample-result.md).
 
-
 <!-- subexponential-current -->
 ## SubexponentialSAT complete-directory attempt
 
-Source **25/3977**; native stream **0/3977** and **0** dependencies; new sourceCPU **0.029358h**, streamCPU **0.000000h**, segment **0**; complete **False**. [Directory progress](subexponential-progress.md).
-Historical whole-library accepted2488/163097; certified dependencies10744; kernelCPU0.694505h; source errors9124/blocked151485 stay unchanged. Ramsey190/444 production is cancelled. Directory costs are not a global full-library measurement.
-
-### SubexponentialSAT route stopped after25successful sources
-
-Pilot mean4.227595CPU-s; total-comparison scenario12.350CPUh exceeds the user12h condition (including retained common work). No full queue was launched, no new kernel accepts. Preserve25/3977source builds; next attempt is Transonic466. Historical whole-library counts stay unchanged; no source build is silently counted as fresh stream acceptance.
-
-
-### User clarification: SubexponentialSAT resumes from25/3977
-
-The12hcondition applies to **new remaining work**, excluding7.048263h of
-already recorded dependencies. Resume the25successful target source outputs;
-fresh stream remains0/3977,0CPUh. Remaining production+stream scenario5.2722h,
-separate reference reserve2h. Transonic pilot was already running when the
-clarification arrived: allow this bounded window to retire, no further queue.
-The preceding total-cost route stop is superseded, preserved as history.
-
-
-<!-- transonic-current -->
-## Transonic complete-directory attempt
-
-Source **15/466**; native stream **0/466** and **0** dependencies; new sourceCPU **0.077530h**, streamCPU **0.000000h**, segment **0**; complete **False**. [Directory progress](transonic-progress.md).
+Source **50/3977**; native stream **0/3977** and **0** dependencies; new sourceCPU **0.063228h**, streamCPU **0.000000h**, segment **0**; complete **False**. [Directory progress](subexponential-progress.md).
 Historical whole-library accepted2488/163097; certified dependencies10744; kernelCPU0.694505h; source errors9124/blocked151485 stay unchanged. Ramsey190/444 production is cancelled. Directory costs are not a global full-library measurement.
