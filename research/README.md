@@ -94,3 +94,6 @@ Producer diagnostics [root0271](../docs/tmp/build-and-evaluate/step-0271-2026110
 
 
 Source36 [root0272](../docs/tmp/build-and-evaluate/step-0272-20261103T025723+0000/step-report.md), [Wresult](../workloads/openai-math/final-seven-20261102/source36-NativeCodeAssembly/README.md): NativeCodeAssembly actualP0–7 compiler endpoint,36/42originals/18complete strata.238.7–362.1sourceCPUh/16.2–32.2mixed checking transferCPUh are assumptions, not measured full-library cost/CI.6source/11paired/13dynamic costs missing remain separate.
+
+
+Corrected full attribution [root0273](../docs/tmp/build-and-evaluate/step-0273-20261103T031343+0000/step-report.md), [Mfinal](parallel-stream-check/attribution-results/final.md):12fullclosurecells+separatecompoundleaf. CPUgrowthinsideobservedordinarykernelbracketsdespitefixedcounts; phase/placement/observercomparisonsand50helpercount/bytequalification,notPMUcausality/generalbudget. Rawfrozeninrootstep;originalcaptureonPVC.

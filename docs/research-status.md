@@ -1,6 +1,6 @@
 # Research status
 
-Snapshot2026-11-03UTC, root0272. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-03UTC, root0273. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
@@ -47,6 +47,7 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | A prediction/admission |Grouped source forecast error and native CPU-budget policies do not establish bounded prediction or route benefit.29/42dynamic labels agree27/29conditionally; known-root upper admission has finite availability tradeoffs, not general service gain. | [0254](tmp/build-and-evaluate/step-0254-20261101T195608+0000/step-report.md), [0256](tmp/build-and-evaluate/step-0256-20261101T205729+0000/step-report.md) |
 | Heterogeneous full closure |Barrier4449modules,8P/8P+4E/8P+8E/8P+16E:284.720/299.807/310.591/319.705s;24versus8 wall+12.29%,nativeCPU+75.31%. One fixed-order capture/settings,not homogeneous scaling or a cross-version speed ratio. | [0266](tmp/build-and-evaluate/step-0266-20261102T083616+0000/step-report.md) |
 | Streaming count/bytes |100overlapping Barrier helpers×12observations at1/4/8/16caps,1200accepted,allcount ranges0%.12actual9,160,440B.oleanfiles equal each other/original;3425checkedpayloads substituted,extensionmetadata trusted. UnitCPU3.575→9.941s;not zero runtime or globalbudget. | [0267](tmp/build-and-evaluate/step-0267-20261102T092013+0000/step-report.md) |
+| Corrected full attribution |12full Barrier cells+compoundleaf complete; P4→P8 extraCPU95.95%in observed kernel-call brackets, natural mixedwall+6.36%on/+5.53%off. Fixedcount work with CPUinflation; causes notisolated. | [0273](tmp/build-and-evaluate/step-0273-20261103T031343+0000/step-report.md) |
 | Whole-source producer diagnostics |9124rc1:9118unavailable interpreter/native declarations,4module-data,2IR/codegen.4finitecontrols pass;139declaration diagnostics notline1. Whole-source2488/163097stillpartial, no proof rejection/yield/globalcost conclusion. | [0271](tmp/build-and-evaluate/step-0271-20261103T004041+0000/step-report.md) |
 
 ## Terminal failures and trust that remain visible
@@ -87,7 +88,7 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0272:24pages/221953B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0273:24pages/226135B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
@@ -107,3 +108,6 @@ Historical0268scope audited rc1count only. Root0271now independently classifies 
 
 
 [Root0272](tmp/build-and-evaluate/step-0272-20261103T025723+0000/step-report.md) independently qualifies the actual NativeCodeAssembly original terminal01:09:45UTC:4.981634wall/7.020013CPU-s, not E-core prerequisite timing. Exact42frame gains only that ID, prior35costs unchanged. Current36/42,18/21complete strata/151888modules;6ordinary original costs missing/11209module domain incomplete. Conditional source235.032925CPUh, marked57.546404h=24.4844%; nativeelapsed203.778943h/marked19.6382%. KnownHTsubtotal235.032925h equals complete-stratum subtotal here because incompletecells have0observations, not whole-frame point/CI. Missing+1CPU-s each adds3.113611h. Source support scenarios238.7–362.1CPUh; mixed-protocol checking transfer16.2–32.2CPUh, not actual full checking/CI/guarantees. Source35scenarios retained ashistory. Paired31/42/14strata/11missing and dynamic13missing remain distinct.
+
+
+[Root0273](tmp/build-and-evaluate/step-0273-20261103T031343+0000/step-report.md) independently qualifies corrected-v2 twelve full Barrier cells+one compound leaf process and3finite controls. Every fullclosure has4449unique accepts/identicalimports/counts/referenceIDset,425463entries/3595unsafe-partialexclusions/0contextfallback.8observedcohorts preserve237863ordinarychecks/3283925639allocationunitsandper-modulesums. P4→P8nativeCPU+74.986s,observer-bracketCPU+71.953s=95.9549%; brackets includeheartbeat/timingreads,notpurecycles. NaturalP8→mixed24wall+19.230s/CPU+458.725s,phasewindows4.629serial+7.410occupancy+3.386batchoutside+3.805other;notinstructioncausality. Naturalwall+6.36%on/+5.53%off; P-first+3.25%on/-0.37%off,1orderedobservation/cell,notCI/isolatedcausalA-B.50overlappinghelpers×9=450accepted/zeroobservedcountranges;9actual9160440Boleansidenticaltooriginal,extensionmetadata trusted. Mixedchecks/same-targetsolo-typemedianCPUratiosP2.301/E2.834,notcontrolledphysicalcore/frequencyorRC/cachecause. Old2524census/100helperpaneldenominatorsunchanged.

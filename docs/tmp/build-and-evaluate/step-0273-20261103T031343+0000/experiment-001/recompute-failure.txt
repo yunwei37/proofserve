@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/dev/stdin", line 3, in <module>
+  File "recompute273.py", line 58, in <module>
+AssertionError

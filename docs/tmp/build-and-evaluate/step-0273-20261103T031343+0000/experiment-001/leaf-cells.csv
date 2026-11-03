@@ -1,0 +1,10 @@
+accept,cpu_ns,elapsed_ns,event,jobs,kind,module,repeat,retained_certificate_regions,route,waves,workers
+True,62435019525,62496106823,curve_cell,3425,p1,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,0,0,parallel,6,1
+True,87071837522,87133497191,curve_cell,3425,e1,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,0,0,parallel,6,1
+True,200685747280,9233442928,curve_cell,3425,mixed24,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,0,0,parallel,6,24
+True,198925617646,9128779624,curve_cell,3425,mixed24,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,1,0,parallel,6,24
+True,85768250530,85814768472,curve_cell,3425,e1,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,1,0,parallel,6,1
+True,62757374258,63810387033,curve_cell,3425,p1,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,1,0,parallel,6,1
+True,62710239623,63157782229,curve_cell,3425,p1,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,2,0,parallel,6,1
+True,86133145068,86184757457,curve_cell,3425,e1,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,2,0,parallel,6,1
+True,204031425647,9437229478,curve_cell,3425,mixed24,OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41,2,0,parallel,6,24

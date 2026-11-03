@@ -1518,6 +1518,51 @@ The separately instrumented resident-leaf observation in Section~\ref{sec:meanin
 uses different output and timing boundaries; its counts and leaf costs cannot
 replace these complete-process observations.
 
+\paragraph{Observed CPU growth extends inside the checking calls.}
+\measured{\expref{0273-20261103T031343+0000}{0273}; a separate corrected placement and observer protocol.}
+Twelve fresh-process cells each check the same 4,449-module Barrier closure
+and match the retained serial reference's accepted IDs and import graph.
+The earlier two-worker placement trial is excluded: two active workers
+had shared CPU0. The corrected driver gives active tasks distinct per-wave
+slots; its same-source profile-on P1/P2/P4/P8 wall times are
+655.448/433.980/346.351/315.062 seconds, with native CPU
+647.069/625.008/648.965/723.951 seconds.
+E16 and P-first mixed24 take 425.347/325.296 wall seconds and
+1,121.948/1,100.116 CPU seconds.
+These are different versions and treatments from Table~\ref{tab:heterogeneous},
+not a continuous tuning curve. Observed use of up to 24 cores is reported
+without retroactively changing the earlier eight-core allocation.
+
+Eight observer-enabled full cells have the same 237,863 ordinary checks
+and 3,283,925,639 observed allocation units, including identical per-module sums.
+At P4 to P8, native CPU rises 74.986 seconds, of which 71.953 seconds
+(95.95\%) lie in the observer brackets around original-kernel calls.
+Those brackets include heartbeat and timing reads; they are not a pure
+kernel-cycle count.
+The observer records thread CPU, interval-union wall occupancy and
+per-check start cores; occupancy must not be added as concurrent CPU.
+Implementation-serialized preparation, complex replay and duplicate checks
+are not proved inherent dependency lower bounds.
+
+Natural-placement P8 to mixed24 adds 19.230 wall seconds with the observer
+enabled: 4.629 seconds in implementation-serialized windows, 7.410 in
+ordinary-call wall occupancy, 3.386 in batch time outside that occupancy,
+and 3.805 in the remaining process residual.
+Native CPU increases 458.725 seconds, including 438.492 in ordinary-call brackets.
+The natural-placement wall regression is 6.36\% with the observer and
+5.53\% without it. Under deliberate P-first placement, the corresponding
+wall differences are +3.25\% and -0.37\%.
+Each cell is one ordered observation with retained filesystem caches;
+the sign-sensitive control differences do not isolate observer overhead,
+thermal drift or placement as the cause.
+Unpinned per-core attribution uses check-start cores and detects differing
+endpoints, without reconstructing intervening migrations.
+A fixed intrinsic serial fraction, atomic-reference-count cause, cache cause
+and frequency cause remain unestablished.
+All cells omit \texttt{-M}; charged-memory and sampled-RSS guards are separate.
+The original mathematical kernel is retained, while the coordinator, observer
+and internal-ABI adapter remain trusted implementation.
+
 \paragraph{Pooled certificates pass a broader native qualification.}
 \measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}
 A separate native control selects all ten measured Envelope helpers whose
@@ -2021,6 +2066,27 @@ without establishing zero observer/runtime cost, native kernel poll counts,
 a near-threshold budget guarantee or a future-machine property.
 It is separate from both the earlier 2,524-target protocol and the
 negative heterogeneous complete-closure curve.
+
+\measured{\expref{0273-20261103T031343+0000}{0273}; separate resident hardware calibration.}
+One further process checks the complete Barrier closure, then runs nine
+resident leaf trials: P1 on CPU0, E1 on CPU8 and mixed24, three repeats each
+with the middle order reversed.
+Fifty overlapping real helpers yield 450 accepted observations; every
+target's allocation-count range is zero.
+All nine actually emitted 9,160,440-byte \texttt{.olean} files equal the
+original input byte for byte, with 3,425 checked payload substitutions
+and trusted extension metadata.
+These helpers are not added to the earlier 2,524-target census.
+Normalizing each mixed check against that target's median solo CPU cost
+on the same core type gives median ratios 2.301 for P and 2.834 for E;
+all 150 mixed observations cost more CPU than their solo-type reference.
+The references are CPU0 and CPU8, not the same physical core or controlled
+frequency for every mixed observation.
+This shows concurrency-associated CPU growth at fixed observed counts,
+without identifying an instruction-level cause or a general budget guarantee.
+The compound native process costs 782.484 wall and 1,688.835 CPU seconds,
+including the checked prefix, all nine trials and serialization;
+it is not nine independent complete-closure measurements.
 
 \paragraph{System-design implication.}
 \partialev{implication of scoped observations; general benefit unproven.}

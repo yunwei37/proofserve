@@ -1,6 +1,6 @@
 # Research plan: two verification-cost regimes
 
-Current frontier2026-11-03UTC, root0272. [Status](research-status.md) ·
+Current frontier2026-11-03UTC, root0273. [Status](research-status.md) ·
 [Evidence](evaluation.md) · [Results](../research/README.md) ·
 [User words](user-instruction.md) · [Novelty](novelty-20261101.md).
 [Exact previous plan](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-plan.md.gz).
@@ -84,7 +84,7 @@ are not pending despite stale owner README text.
 The paper remains an unfinished characterization with explicit missing evidence;
 self-review is not independent audit or submission acceptance.
 
-Paper root0272:24pages/221953B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0273:24pages/226135B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
@@ -109,3 +109,6 @@ Historical0268scope audited rc1count only. Root0271now independently classifies 
 
 
 [Root0272](tmp/build-and-evaluate/step-0272-20261103T025723+0000/step-report.md) independently qualifies the actual NativeCodeAssembly original terminal01:09:45UTC:4.981634wall/7.020013CPU-s, not E-core prerequisite timing. Exact42frame gains only that ID, prior35costs unchanged. Current36/42,18/21complete strata/151888modules;6ordinary original costs missing/11209module domain incomplete. Conditional source235.032925CPUh, marked57.546404h=24.4844%; nativeelapsed203.778943h/marked19.6382%. KnownHTsubtotal235.032925h equals complete-stratum subtotal here because incompletecells have0observations, not whole-frame point/CI. Missing+1CPU-s each adds3.113611h. Source support scenarios238.7–362.1CPUh; mixed-protocol checking transfer16.2–32.2CPUh, not actual full checking/CI/guarantees. Source35scenarios retained ashistory. Paired31/42/14strata/11missing and dynamic13missing remain distinct.
+
+
+[Root0273](tmp/build-and-evaluate/step-0273-20261103T031343+0000/step-report.md) independently qualifies corrected-v2 twelve full Barrier cells+one compound leaf process and3finite controls. Every fullclosure has4449unique accepts/identicalimports/counts/referenceIDset,425463entries/3595unsafe-partialexclusions/0contextfallback.8observedcohorts preserve237863ordinarychecks/3283925639allocationunitsandper-modulesums. P4→P8nativeCPU+74.986s,observer-bracketCPU+71.953s=95.9549%; brackets includeheartbeat/timingreads,notpurecycles. NaturalP8→mixed24wall+19.230s/CPU+458.725s,phasewindows4.629serial+7.410occupancy+3.386batchoutside+3.805other;notinstructioncausality. Naturalwall+6.36%on/+5.53%off; P-first+3.25%on/-0.37%off,1orderedobservation/cell,notCI/isolatedcausalA-B.50overlappinghelpers×9=450accepted/zeroobservedcountranges;9actual9160440Boleansidenticaltooriginal,extensionmetadata trusted. Mixedchecks/same-targetsolo-typemedianCPUratiosP2.301/E2.834,notcontrolledphysicalcore/frequencyorRC/cachecause. Old2524census/100helperpaneldenominatorsunchanged.

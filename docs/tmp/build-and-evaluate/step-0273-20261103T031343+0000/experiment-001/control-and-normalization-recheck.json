@@ -1,0 +1,25 @@
+{
+  "control_rcs": {
+    "attribution-control": 0,
+    "attribution-two-core-control": 0,
+    "attribution-bad-control": 1
+  },
+  "actual_two_core_checks": {
+    "0": 20619,
+    "1": 21682
+  },
+  "same_type_ratios": {
+    "P": {
+      "count": 66,
+      "minimum": 1.6070218044023914,
+      "median": 2.301103530673754,
+      "maximum": 3.202092119288317
+    },
+    "E": {
+      "count": 84,
+      "minimum": 1.9707617762617824,
+      "median": 2.8338725101414273,
+      "maximum": 4.159370728704047
+    }
+  }
+}

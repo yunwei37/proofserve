@@ -1,0 +1,42 @@
+# Root step0273 outer audit — 自审
+**自审; not independent audit/venue acceptance.** BUILD_AND_EVALUATE;centralcharacterization/fourRQcontractunchanged. Rootonlydocs/paper/records,index.
+
+## EXPERIMENT_GATE
+Readcurrentverbatimuserdecisions/canonical0272/tworootreports/ownerlatestM028finalandM030shortperfqualification,Olatestprefix. No rootnative/Agent/session/queue. Existingownersremainautonomous. FullfiniteMsequenceactuallycomplete,notpending. Preserveinvalidv1P2aliasCPU0andallraw;correctedv2selectedbyactualcapture/source,notfiletitle.
+Independent13stdoutreconstruction:12freshsingleconfig+1compoundcompleteclosure,each4449uniqueheaders/acceptswithidenticalper-moduleconstantcounts/imports,rootreachability,retainedOserialreferenceIDset.425463entries/3595upstreamunsafe-partialexclusions/0contextfallback. Mathematicalkernel originaladdDeclCore retained;frozenC/Leanobserver/coordinator/ABIcodeistrusted. Extrae773018wrapperusesexistingfrozenbinarypath;commandsomitenv,soconfigurationprovenanceisfrozenrunner/terminal,notper-openlogornewbinaryidentitygate.
+16primary/compound/controlnativeattemptsresourcesread;42actualnativeparents/sampledchildren/controllersPIDbirthretired/16cgroupsabsent/noOOM/sample-stop. Full+compoundwait4HWM3864992KiB/sample3958272000B/charged1774395392Bseparate;14GiBcharged+sampledRSSresponse,nothardRSS/full16GiBlaneaudit. Actualbeyond8footprintisreported,notretroactiveresourceauthorization. Wait4wallstopsbeforecollectorjoin/cgroupcleanup,originalflockqueueoutsideclock.12fullwallsum4398.095417/CPU10382.227379snotasingleconfigurationgain;compound782.483628wall/1688.834875CPUincludesprefix/all9trials/serialization.
+Initialread-onlyreducerincorrectlyexpecteddependency_phaseeventswithobserveroff. Fouroffcellsomittheseevents,notzerophasecosts;rawcompletegraph/clocksvalid. Initialcode/tracepreserved;correctedreduceonlyuses8observedcohortsforphasecomparisons. Nonewrootnativeorrepairruntask.
+
+Same-sourcecorrectedprofile-onP1/P2/P4/P8wall655.448141/433.980392/346.351494/315.062388s,CPU647.069201/625.007943/648.964642/723.951002. E16wall425.347178/CPU1121.947796;P-firstM24wall325.296082/CPU1100.115790. Oldv1P2excluded;notcross-versiontuningwith0266/oldv14. V2atomicdistinctslotsperwaveandactualP2core0/1nonzerochecksread;rawper-moduleTID/coreunionsnotclaimedper-waveconcurrencysnapshots.
+All8observedcohorts237863checks/3283925639allocationunitsandper-modulevectorsidentical. P4→P8CPU+74.986360s,kernelbrackets+71.953059=95.954863%;observerincludesclock/HBreads,notpureC++cycles. P1→P2CPUnotmonotonic;donotclaimallsettingsCPUalwaysincreases. NaturalprofileonP8→M24wall+19.229983/CPU+458.724846,kernelbrackets+438.492075. Nonoverlappingelapsedidentity4.629134serial+7.410035kerneloccupancy+3.385942batchoutside+3.804872other. ImplementationserialnotinherentDAGlowerbound,residualnotpurecoordinationcause. Naturalwall+6.3622%on/+5.5342%off;P-first+3.2481%on/-0.3655%off. Sign-sensitiveorderedobservationsnotreplicatedCI/orisolatedobserver/placement/frequency/thermalcausality.
+Unpinnedper-coreCPUatcheck-start,endpointchangesdeduplicated596P8/576M24,notfullschedulertrace/migrationexclusion. Pinnedwithin-checkendpoints0doesnotmeanzerobetween-waveplacementchanges. NoPMU/RC/cache/frequencyclaimorintrinsicserialfractionfitadopted.
+
+Compound50realoverlappinghelpers×3modes×3repeats=450accepted,alltargetranges0. Nineactual9160440Boleanscomparebyte-for-bytewithoriginal;3425checkedpayloadsubstitutionsandextensionmetadatatrusted,notIR/C/ilean/transitivebytes/wholeaxiomguarantee. Notnewindependentcensustargets. Mixed150checksnormalizedtosame-targetsolo-typemedianP2.301104/E2.833873,all>1. CPU0/8soloreferencesnotsamephysicalcore/frequencyforothermixedplacements. SumtargetmediansE/Pworkrate0.728104andratioofmodemedianhelpersums0.722555aredifferentaggregations,notcontradictoryhardwareconstants. PaperdoesnotneedageneralEworkrate. Old2524/30288/22716and100/1200denominatorsunchanged.
+
+## WRITE_GATE
+ActualRQ3completecurve/phase/observerplacementlimitsandRQ4scoped50helpercalibrationadded;20oldtablebodies/title/fullabstract/fourRQ/sections/fourdesignimplicationsidentical,nounrequestednewtableorframing. Canonicalstatus/plan/index/evaluation/noveltysynchronized. Rootraw/source/commands/results/stdout/stderr/memory/terminals/ownerreports/smallderivedCSV/beforeentryandread-onlyfailurepreserved,nobuildtree/SDK/nativeobjectcopies. No newclaimforglobalsoftware/axioms/cluster/nativebaseline/Envelopepair.
+Compile/render/linkverificationpendingatinitialreport;actualreceiptsappendedlater.
+
+## REVIEW_GATE — root self-review and routing
+Directionstilltwoverificationcostregimes,notnovelmechanismorhardwarecausalbreakthrough. Acceptfixedobservedallocation/CPUinflationattributionasmeasuredscope;rejectpurekernelcycles/allCPUmonotonic/fixedserialfraction/RC/cachecause/25%Ecapacity/zeroobserveroverhead/generalbudget. Rootfinalreduce13.254891s/115880KiB/E22–23includesrawfreezeand9bytecomparisons;failedread-onlyschemaassumptionseparate,preserved.
+OwnerM030newshort650moduleperfcontrolhasactualinheritedcounters/stacksbutisnotthis4449closurecurveorP1/2/4/8PMUcomparison. Newadmittedperfseriesonlyownerlatestterminalcanqualify;don'trestartoldfiniteMsequence. Wsource36alreadyqualified0272,6source/11paired/13dynamicgapsstaydifferent. Oread10923/11188source/179newtargets,kernel0/444prefix,nothistorical2488/163097wholelibrarycompletion. ExistingCLICloudflare-Jrouteonly;nohealthroutinechanges,newcommunicationtargetorfalse dispatch. Remainingglobalphaseweights/causalrepeats/software/axioms/cluster/nativebaseline/Envelopepairgapsremain. Self-reviewnotindependent/venueacceptance.
+
+## Audit disposition
+Protocolcorrectionisread-only:missingoffobserverphasesremainunknown,notzero. Currentgraphs/referenceIDs/scopedclocksactualresourcesreadbeforepaperintegration. Hardwarecausalitynotinferredfromtimingorper-corelabels. Preserveoldinvalidv1/negativecurvesandallinitialfailures. No independentreviewclaimed.
+
+
+## Actual completed verification
+
+Root reanalysis takes 13.255 s and peaks at 115,880 KiB. No native verifier runs. Full Tectonic0.17.0 compilation exits0 in 3.206 s; sampled own-tree peak is 188,280,832 bytes on CPUs22–23, below root4GiB. All citations resolve and no overfull boxes appear; underfull warnings remain. The compiler retires naturally. No new speedup or visual/publication acceptance is claimed.
+
+## Actual completed final verification
+Root successful reanalysis13.254891s/115880KiB. Final compiler rc0 in3.206183s/
+sample188280832B/E22–23naturalretirement. Full raw/source/costs/entrybefore preserved.
+Final24pages226135B/all6contacts statically viewed,no observed clipping/overlap.
+All20table bodies/title/fullabstract/4RQ/sections/4designimplications identical
+to root0272. No new table. Links180/citationkeys50pass;labels{'measured': 59, 'partialev': 22, 'unproven': 1}.
+Only36final reviewed images/23438773B removed; per-file manifest
+and FDchecks. AllPDF/log/raw/source/failed/partial/foreign objects remain.
+CurrentPVCfree33195950080B/75.389% used, not a repeated claim
+of prior cleanup or a reason to delete other lines' runtime/snapshots.
+Self-review only. Persist ownedmainpaths by ordinarypush; no stash/reset/force.
