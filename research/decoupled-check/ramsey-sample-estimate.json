@@ -1,0 +1,20 @@
+{
+  "complete_sample": true,
+  "accepted": 20,
+  "ordinary_process_failures": 0,
+  "selected": 20,
+  "eligible_retained_prefix": 190,
+  "full_target_population": 444,
+  "individual_ratio_p10": 0.35510334709836494,
+  "individual_ratio_median": 0.40617944709342846,
+  "individual_ratio_p90": 0.48825980267264796,
+  "sampled_pooled_cpu_ratio": 0.35911538856470154,
+  "estimated_retained190_independent_module_local_cpu_s": 7748.952058,
+  "observed_retained190_source_cpu_s": 22146.098430000002,
+  "estimated_retained190_independent_module_local_ratio": 0.3499014547638312,
+  "bootstrap95_low": 0.2941298300528686,
+  "bootstrap95_high": 0.40410394585867015,
+  "bootstrap_reps": 10000,
+  "scope": "Only size-stratified190-built-prefix estimate of independent module-local references; not444 or streaming.",
+  "full_closure_ratio": null
+}

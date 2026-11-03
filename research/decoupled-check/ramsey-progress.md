@@ -1,4 +1,4 @@
-# Ramsey complete-closure measurement: actual progress
+# Ramsey: halted production and completed module-local sample
 
 Review: 自审.
 
@@ -37,3 +37,7 @@ The current native window had already exited. PID548230/birth773592704 was confi
 
 <!-- retained-prefix-sample -->
 Production stopped190/444; full stream0/444,0CPUh. Size sample **20/20 accepted**, **0 failures**, **0.226578 referenceCPUh**. [Sample](ramsey-sample-result.md).
+
+## Completed sample
+
+All20/20size-stratified original-kernel references accepted; zero operational failures; total815.679164checkerCPU-s. Individual ratio median40.62%; sample-pooled35.91%. The estimated sum of **independent module-local** checking of190retained modules divided by their known sourceCPU is **34.99%**; not a stream or444-target result. Supplemental K10remains20.66%. [Paper-ready sampled result](ramsey-sampled-result.md). Sample controller retired; no Ramsey native/queued task remains.
