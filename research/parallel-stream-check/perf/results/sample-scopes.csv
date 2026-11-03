@@ -1,0 +1,6 @@
+key,workers,arm,repeat,event,scope,sampled_period
+full-record-P4-r1,4,record,r1,cpu_core/cpu-cycles/u,ordinary_kernel_anchored,653429387673
+full-record-P4-r1,4,record,r1,cpu_core/cpu-cycles/u,ordinary_worker_kernel_unanchored,388739494060
+full-record-P4-r1,4,record,r1,cpu_core/cpu-cycles/u,ordinary_worker_other_or_truncated,10709988150
+full-record-P4-r1,4,record,r1,cpu_core/cpu-cycles/u,outside_or_unresolved,91610104332
+full-record-P4-r1,4,record,r1,cpu_core/cpu-cycles/u,serial_or_other_kernel,249496955999

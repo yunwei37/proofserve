@@ -1,10 +1,10 @@
-"""Offline CPU8-15 analysis; <=1GiB decode group alongside <=14GiB native."""
+"""Offline CPU8-15 analysis; <=14GiB guard, serial relative to own native."""
 import json,os,sys,shutil
 from pathlib import Path
 P=Path(__file__).resolve().parent
 assert str(P).startswith('/workspaces/.agent-state/gpu-smt-captures/')
 assert set(os.sched_getaffinity(0))<=set(range(8,16))
-import decode_guard
+import native as decode_guard
 def main():
  key=sys.argv[1]
  assert key.startswith('full-record-') and '/' not in key
