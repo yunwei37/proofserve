@@ -1,0 +1,13 @@
+domain,stage,min_model_CPU_h,max_model_CPU_h,scope,actual_whole_library
+ordinary_proxy,a_build,184.6618140776389,257.6340848476389,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,b_serial_stream,11.656624485130457,23.06192886184788,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,c_parallel_stream,15.88270074439527,31.422965985436623,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,d_plus_qualified_chunk,15.88270074439527,31.422965985436623,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,a_build,57.546404277222216,57.546404277222216,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,b_serial_stream,4.858153479847351,4.872538565126986,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,c_parallel_stream,6.5766755072966845,6.596149169135773,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+certificate_proxy,d_plus_qualified_chunk,6.6061419586909516,6.6257028712556405,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,a_build,242.20821835486112,315.18048912486114,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,b_serial_stream,16.51477796497781,27.934467426974862,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,c_parallel_stream,22.459376251691957,38.0191151545724,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,d_plus_qualified_chunk,22.48884270308622,38.04866885669226,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False

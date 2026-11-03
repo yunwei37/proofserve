@@ -1,0 +1,37 @@
+{
+  "utc": "2026-11-03T03:32:28.174180+00:00",
+  "completed_original_costs": 37,
+  "complete_strata": 18,
+  "covered_modules": 151888,
+  "uncovered_modules": 11209,
+  "missing_domain_fraction": 0.0687259728873002,
+  "scenario_CPU_h": {
+    "a_build": [
+      242.20821835486112,
+      315.18048912486114
+    ],
+    "b_serial_stream": [
+      16.51477796497781,
+      27.934467426974862
+    ],
+    "c_parallel_stream": [
+      22.459376251691957,
+      38.0191151545724
+    ],
+    "d_plus_qualified_chunk": [
+      22.48884270308622,
+      38.04866885669226
+    ]
+  },
+  "computation_share_scenario": [
+    0.18258238140630834,
+    0.2375906344883415
+  ],
+  "new_original_module": "OAI.Probability.InvariantIsing.Fields.PhysicalFieldPopulationLimit",
+  "new_original_status": "compile_ok",
+  "new_original_CPU_s": "3.900684",
+  "raw_point": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-PhysicalFieldPopulationLimit-targetP-remaining-six-20261103T0325",
+  "scenario_is_CI": false,
+  "actual_whole_library": false,
+  "audit": "automatic provenance checks passed; thread scientific self-review remains separate"
+}
