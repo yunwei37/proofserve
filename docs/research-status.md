@@ -1,6 +1,6 @@
 # Research status
 
-Snapshot2026-11-03UTC, root0275. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-03UTC, root0276. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
@@ -30,8 +30,8 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | Evidence | Qualified result | Root record |
 |---|---|---|
 | Lexical census | Mathlib8529files/7masked sites; OAI163097files/1354379sites in5848files. 10668.32xsites/MB; default root misses33.30%sites. Not runtime or exhaustive semantic classes. | [0231](tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md) |
-| Source probability frame |37/42originals;18/21complete strata/151888modules unchanged.9marked cells/5848files complete; markedCPU57.546/235.033h=24.484%, nativeelapsed19.6382%.5ordinary costs missing/11209module domain incomplete. | [0274](tmp/build-and-evaluate/step-0274-20261103T040607+0000/step-report.md) |
-| Whole-frame scenarios |37known+5ordinary missing within observed support:242.2–315.2sourceCPUh; mixed-protocol check transfer16.5–28.0CPUh. Assumptions, not CI/guarantee/measured full checking; no-assumption upper unbounded. | [0274](tmp/build-and-evaluate/step-0274-20261103T040607+0000/step-report.md) |
+| Source probability frame |38/42originals;19/21complete strata/161034modules.9marked cells/5848files complete; markedCPU57.546/246.863h=23.311%, nativeelapsed18.5945%.4ordinary costs missing/2063module domain incomplete. | [0276](tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md) |
+| Whole-frame scenarios |38known+4ordinary missing within observed support:247.5–270.3sourceCPUh; mixed-protocol check transfer16.8–24.0CPUh. Assumptions, not CI/guarantee/measured full checking; no-assumption upper unbounded. | [0276](tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md) |
 | Target-only replay |31/31 accepted, trusted compiled imports, source632.590/replay272.695CPU-s; median per-module ratio0.451 (0.087–0.885).14paired strata140.852/54.906CPUh, nominal weak interval[0,0.9401], effectiveDF1.19. Separate from current source37coverage/full closure. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
 | Native checking grain |29available random+2purposeful artifacts/34units;13original draws missing.12decision-shaped calls>=1CPU-s use10.09%total call CPU; available-case weights are conditional, not global. | [0234](tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md) |
 | Four original O closures |Nat1330/NearPin3333/Grid3793/Amplitudes5083: complete check/source-work10.56/6.76/14.52/14.55%. Same5085-node source union/161reference blocks, overlapping dependencies and warm observations. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md) |
@@ -76,7 +76,7 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 
 ## Open evidence and next action
 
-Source5/paired11/dynamic13 gaps differ; do not change one denominator with another.
+Source4/paired11/dynamic13 gaps differ; do not change one denominator with another.
 Full-library phase weights, causality/repeats, whole axioms/declaration closure,
 released-software native coverage and cluster behavior remain unresolved.
 Bundled LeanChecker already dispatches module-local tasks independently:
@@ -89,7 +89,7 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0275:25pages/229042B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0276:25pages/229052B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
@@ -117,3 +117,6 @@ Historical0268scope audited rc1count only. Root0271now independently classifies 
 [Root0274](tmp/build-and-evaluate/step-0274-20261103T040607+0000/step-report.md) independently qualifies PhysicalFieldPopulationLimit actual03:32:26UTC original return3.805640wall/3.900684CPU-s. Fixed42frame adds onlythisID;prior36costs match.37/42originals,18/21complete strata/151888coveredmodules unchanged becauseTrackedTestBoundsstillmissing in9146cell.5ordinary costs missing/11209module domain incomplete. Conditional235.032925CPUh/marked24.4844%/elapsed19.6382% unchanged;KnownHTsubtotal239.987877hincludesoneincomplete-celloriginal,notfullestimate/CI. Eachmissing+1CPU-sadds1.843333h. Sourceobservedsupportscenarios242.2–315.2CPUh; separate mixed-protocolchecktransfer16.5–28.0CPUh,notmeasuredfullchecking/CI/guarantees. Stressmissingcheck3xnow242.0hdoesnotexceedsource315.2;explicit4x317.1hdoes. Paired31/42/14strata/11missing,dynamic13missingnotfilledbysource37.
 
 [Root0275](tmp/build-and-evaluate/step-0275-20261103T061615+0000/step-report.md) independently qualifies the completed20-file Ramsey sample and the190-source stopped prefix. Source CPU22146.098430s is separate from815.679164sample checkerCPU-s; sampled source2271.356756s gives35.9115% pooled, individual P10/median/P90=35.5103/40.6179/48.8260%. Five38-file size strata,4uniform without-replacement samples each, seed20261103 exactly reproduced. Independent module-local prefix estimate7748.952058CPU-s/22146.098430=34.9901%;10000within-stratum percentile resamples29.4130–40.4104%, not an interval for dependency-order bias,254missing targets or whole streaming.190Construction files median4457B versus81652.5B in254unbuilt;24/180marked built. K10supplement excluded:356.442522/1725.133882CPU-s=20.6617%, no+kernel marker but finite ordinary-decide certificates. Imports trusted; process/import floor not kernel dominance. Historical whole-source2488/163097 and completeFalconer/Mathlib fractions unchanged. No newrootnative/Agent/queue or foreign edit.
+
+
+[Root0276](tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md) independently qualifies TrackedTestBounds actual06:22:07UTC original return5.198824wall/5.412330CPU-s. Fixed42frame adds onlythisID;prior37rawcosts match W38publishedrows.38/42originals,19/21complete strata/161034coveredmodules;4ordinarycostsmissing/2063module domain(1.26489%)in2cells. Conditional246.863040CPUh/marked57.546404h=23.311065%, summednativeelapsed215.217114h/marked40.018606h=18.594528%. Differentcovered domain than18-cell24.4844%,notpopulationtimetrend/semanticphaseweight. KnownHTsubtotal246.863040h equalsthecomplete-stratumsubtotalonlybecausemissing2cellshave0observations;notfullpoint/CI. Missing+1CPU-s eachadds0.573056h. Sourceobservedsupportscenarios247.5–270.3CPUh; separatemixed-protocolchecktransfer16.8–24.0CPUh,notmeasuredfullchecking/CI/guarantees.10xordinarymaxsource480.621868h;missingcheck1x40.184493/2x63.560375/4x110.312141/12x297.319203h. Fourtimesno longer exceedsactualmaxsource270.238923;explicit12xstressdoes,notmeasurement. Paired31/42/14strata/11missing,dynamic13missingunchanged.

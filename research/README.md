@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0275. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0276. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -102,3 +102,6 @@ Corrected full attribution [root0273](../docs/tmp/build-and-evaluate/step-0273-2
 
 
 Physical/source37 [root0274](../docs/tmp/build-and-evaluate/step-0274-20261103T040607+0000/step-report.md), [Wresult](../workloads/openai-math/final-seven-20261102/collection-remaining-six-20261103T0325/source37-PhysicalFieldPopulationLimit/README.md):37/42originals/18complete strata; source242.2–315.2CPUh/mixed checktransfer16.5–28.0CPUh scenarios, notCI/wholelibrarymeasurement.5source/11paired/13dynamicmissingremainseparate; no completednewcelluntilTracked.
+
+
+Tracked/source38 [root0276](../docs/tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md), [Wresult](../workloads/openai-math/final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/README.md):38/42originals/19complete strata/161034domain; source247.5–270.3CPUh/mixedtransfer16.8–24.0CPUh assumptions,notCI/wholelibrarymeasurement.4source/11paired/13dynamicmissingseparate;root0275Ramseysampleunchanged.
