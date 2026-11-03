@@ -6,3 +6,10 @@ workers,event,off,on,relative_change,repetitions_per_arm,scope
 1,mem_inst_retired.lock_loads,5800924030.000000,98707245.000000,-0.9829842203604932,1,whole-command user-mode; raw event semantics retained
 1,mem_load_l3_hit_retired.xsnp_hitm,103913.000000,79184.000000,-0.2379779238401355,1,whole-command user-mode; raw event semantics retained
 1,ocr.demand_rfo.l3_hit.snoop_hitm,55.000000,455.000000,7.2727272727272725,1,whole-command user-mode; raw event semantics retained
+8,cpu-cycles,1969934773331.000000,1685877381562.000000,-0.14419634376456128,1,whole-command user-mode; raw event semantics retained
+8,instructions,3343139005793.000000,3382326167887.000000,0.011721666980073632,1,whole-command user-mode; raw event semantics retained
+8,ref-cycles,2253400189791.000000,1940821040490.000000,-0.13871444172106479,1,whole-command user-mode; raw event semantics retained
+8,mem_load_retired.l3_miss,532289687.000000,536343258.000000,0.007615347618034914,1,whole-command user-mode; raw event semantics retained
+8,mem_inst_retired.lock_loads,5818993726.000000,112656010.000000,-0.9806399499115047,1,whole-command user-mode; raw event semantics retained
+8,mem_load_l3_hit_retired.xsnp_hitm,779885830.000000,43550844.000000,-0.9441574108353783,1,whole-command user-mode; raw event semantics retained
+8,ocr.demand_rfo.l3_hit.snoop_hitm,517381271.000000,143426518.000000,-0.7227837070275395,1,whole-command user-mode; raw event semantics retained

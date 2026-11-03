@@ -6,6 +6,13 @@ full-stat-m0-P1-r1,1,False,cpu_core/mem_load_retired.l3_miss/u,435651099.000000,
 full-stat-m0-P1-r1,1,False,cpu_core/mem_inst_retired.lock_loads/u,5800924030.000000,100.0,whole command user-mode stat; not exact original-check interval
 full-stat-m0-P1-r1,1,False,cpu_core/mem_load_l3_hit_retired.xsnp_hitm/u,103913.000000,100.0,whole command user-mode stat; not exact original-check interval
 full-stat-m0-P1-r1,1,False,cpu_core/ocr.demand_rfo.l3_hit.snoop_hitm/u,55.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m0-P8-r1,8,False,cpu_core/cpu-cycles/u,1969934773331.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m0-P8-r1,8,False,cpu_core/instructions/u,3343139005793.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m0-P8-r1,8,False,cpu_core/ref-cycles/u,2253400189791.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m0-P8-r1,8,False,cpu_core/mem_load_retired.l3_miss/u,532289687.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m0-P8-r1,8,False,cpu_core/mem_inst_retired.lock_loads/u,5818993726.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m0-P8-r1,8,False,cpu_core/mem_load_l3_hit_retired.xsnp_hitm/u,779885830.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m0-P8-r1,8,False,cpu_core/ocr.demand_rfo.l3_hit.snoop_hitm/u,517381271.000000,100.0,whole command user-mode stat; not exact original-check interval
 full-stat-m1-P1-r1,1,True,cpu_core/cpu-cycles/u,1626777977341.000000,100.0,whole command user-mode stat; not exact original-check interval
 full-stat-m1-P1-r1,1,True,cpu_core/instructions/u,3379133715519.000000,100.0,whole command user-mode stat; not exact original-check interval
 full-stat-m1-P1-r1,1,True,cpu_core/ref-cycles/u,1982205460666.000000,100.0,whole command user-mode stat; not exact original-check interval
@@ -13,3 +20,10 @@ full-stat-m1-P1-r1,1,True,cpu_core/mem_load_retired.l3_miss/u,431765309.000000,1
 full-stat-m1-P1-r1,1,True,cpu_core/mem_inst_retired.lock_loads/u,98707245.000000,100.0,whole command user-mode stat; not exact original-check interval
 full-stat-m1-P1-r1,1,True,cpu_core/mem_load_l3_hit_retired.xsnp_hitm/u,79184.000000,100.0,whole command user-mode stat; not exact original-check interval
 full-stat-m1-P1-r1,1,True,cpu_core/ocr.demand_rfo.l3_hit.snoop_hitm/u,455.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m1-P8-r1,8,True,cpu_core/cpu-cycles/u,1685877381562.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m1-P8-r1,8,True,cpu_core/instructions/u,3382326167887.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m1-P8-r1,8,True,cpu_core/ref-cycles/u,1940821040490.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m1-P8-r1,8,True,cpu_core/mem_load_retired.l3_miss/u,536343258.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m1-P8-r1,8,True,cpu_core/mem_inst_retired.lock_loads/u,112656010.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m1-P8-r1,8,True,cpu_core/mem_load_l3_hit_retired.xsnp_hitm/u,43550844.000000,100.0,whole command user-mode stat; not exact original-check interval
+full-stat-m1-P8-r1,8,True,cpu_core/ocr.demand_rfo.l3_hit.snoop_hitm/u,143426518.000000,100.0,whole command user-mode stat; not exact original-check interval
