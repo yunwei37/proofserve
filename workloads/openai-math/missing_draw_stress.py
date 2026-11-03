@@ -19,9 +19,9 @@ args=ap.parse_args()
 OUT=args.out
 OUT.mkdir(parents=True,exist_ok=True)
 def read(p):return list(csv.DictReader(p.open()))
-def write(n,rows):
+def write(n,rows,fields=None):
  with (OUT/n).open("w",newline="") as f:
-  w=csv.DictWriter(f,list(rows[0]),lineterminator="\n")
+  w=csv.DictWriter(f,fields if fields is not None else list(rows[0]),lineterminator="\n")
   w.writeheader();w.writerows(rows)
 
 frame=read(args.frame)
@@ -68,7 +68,7 @@ for x in missing:
   y=assumption[x["domain"]]
   draws.append(dict(**x,scenario=rule,assumed_native_CPU_s=y,weighted_contribution_h=x["weight"]*y/3600,
    scope="hypothetical missing draw; not an observation or imputation adopted for primary estimate"))
-write("missing-draw-scenarios.csv",draws)
+write("missing-draw-scenarios.csv",draws,fields=["module","stratum","domain","weight","scenario","assumed_native_CPU_s","weighted_contribution_h","scope"])
 table=[]
 for rule,assumption in rules.items():
  source={}
@@ -88,7 +88,7 @@ for rule,assumption in rules.items():
    stream_twice_source_on_missing_h=(kh+2*M)/3600,
    missing_checker_over_source_break_even=(K+M-kh)/M if M else "",
    computational_source_share="",scope="scenario endpoint, NOT confidence/guaranteed bounds; stream uses fixed O closure-ratio transfer",
-   budget_changes_estimand=rule.startswith("nominal_budgeted")))
+   budget_changes_estimand=bool(missing)and rule.startswith("nominal_budgeted")))
  for x in table[-3:]:x["computational_source_share"]=source["certificate_proxy"]/source["all"]
 write("source-vs-stream-scenarios.csv",table)
 # The known terms are algebraically lower for a future nonnegative-cost HT point,
@@ -109,12 +109,12 @@ write("assumed-cost-levels.csv",[dict(domain=d,observed_draws=len(byclass[d]),ob
  missing_draws=sum(x["domain"]==d for x in missing),missing_inverse_probability_weight=sum(x["weight"] for x in missing if x["domain"]==d),
  stream_low_anchor=ranges[d][0],stream_high_anchor=ranges[d][1]) for d,s in stats.items()])
 receipt=dict(source_frame=str(args.frame),source_draws_known=len(known),missing_original_draws=len(missing),known_HT_terms_CPU_h=K,
- future_complete_sample_point_algebraic_floor_h=K,actual_completed_HT_point_upper="unbounded without missing-cost assumptions",
+ future_complete_sample_point_algebraic_floor_h=K,actual_completed_HT_point_upper="unbounded without missing-cost assumptions" if missing else K,
  population_CPU_confidence_lower="unknown",population_CPU_confidence_upper="unknown",
  missing_draws_plus_one_CPU_second_total_h=W/3600,
  scenario_count=len(rules),rows=len(table),class_sum_checks=9,
  stream_ratios_are_assumptions_for_unmeasured_modules=True,
- nominal_budget_scenario_changes_to_budgeted_work_not_successful_full_build=True,no_native_run=True)
+ nominal_budget_scenario_changes_to_budgeted_work_not_successful_full_build=bool(missing),no_native_run=True)
 (OUT/"receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
 print(json.dumps(receipt))
 for x in table:
