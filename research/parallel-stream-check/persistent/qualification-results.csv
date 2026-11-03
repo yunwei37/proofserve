@@ -1,0 +1,14 @@
+key,returncode,wall_s,CPU_s,sampled_RSS_peak_bytes,ru_maxrss_KiB,accepted_equal,work_equal
+qual-official-import-probe,0,0.17189426347613335,0.137574,2064384,433352,not a positive replay comparison,not a positive replay comparison
+qual-m0-P1-valid,0,66.97948351223022,66.87145,487354368,479864,True,True
+qual-m0-P1-bvar,1,67.00792235694826,66.85267300000001,485507072,474952,not a positive replay comparison,not a positive replay comparison
+qual-m1-P1-valid,0,65.48947218153626,65.391742,489435136,476948,True,True
+qual-m1-P1-bvar,1,65.36664441041648,65.271743,488566784,477160,not a positive replay comparison,not a positive replay comparison
+qual-m0-P8-valid,0,31.415513631887734,77.576023,574910464,560600,True,True
+qual-m0-P8-bvar,1,31.566483271308243,77.23166400000001,574889984,559792,not a positive replay comparison,not a positive replay comparison
+qual-m1-P8-valid,0,29.04084134567529,63.219935,571244544,559752,True,True
+qual-m1-P8-bvar,1,29.309242075309157,63.4263,572088320,557920,not a positive replay comparison,not a positive replay comparison
+qual-m0-stale,1,0.5172811318188906,0.5097510000000001,2322432,83196,not a positive replay comparison,not a positive replay comparison
+qual-m0-duplicate,1,0.5437258379533887,0.53205,2166784,83924,not a positive replay comparison,not a positive replay comparison
+qual-m1-stale,1,0.5359073355793953,0.517308,1875968,83112,not a positive replay comparison,not a positive replay comparison
+qual-m1-duplicate,1,0.5508046159520745,0.53897,2285568,83612,not a positive replay comparison,not a positive replay comparison
