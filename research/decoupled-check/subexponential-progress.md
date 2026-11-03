@@ -4,7 +4,7 @@ Review: 自审.
 
 **Historical whole-library point:2488 /163097accepted source IDs;10744dependencies;0.694505kernelCPUh;32attempts/31successful;9124producer errors/151485blocked. It is partial and retired, not this SubexponentialSAT denominator.**
 
-**SubexponentialSAT phase stream: baseline source coverage 14721/14721 closure nodes (reused 10744, new 3977) (3977/3977targets); kernel accepts 2256/3977targets and 10744dependencies; kernelCPU 0.724881h; current segment 26; at least 4 segments (500 nodes each) remain.**
+**SubexponentialSAT phase stream: baseline source coverage 14721/14721 closure nodes (reused 10744, new 3977) (3977/3977targets); kernel accepts 2756/3977targets and 10744dependencies; kernelCPU 0.773769h; current segment 27; at least 3 segments (500 nodes each) remain.**
 
 These are separate experiment costs. No global CPU estimate is formed by adding or rescaling this prefix. Producer uses official SDK/cache Meta/IR; checker consumes exact source-produced terms. Same-capture immutable shared source artifacts and actual compiler costs are charged once per complete closure; newly built targets use -o/-i/-c. This is summed source compiler work, not a fresh parallel Lake wall time. Oracle cost is a separate qualification. All timing uses P0–7/shared flock/no-M,12GiB total allocation. A complete CPU ratio requires full source, stream and original module-local coverage.
 
@@ -19,12 +19,12 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 - source_cpu_s: 46905.836649
 - source_reused_cpu_s: 25373.748385
 - source_new_cpu_s: 21532.088263999998
-- kernel_accepted_targets: 2256
+- kernel_accepted_targets: 2756
 - kernel_accepted_dependencies: 10744
-- kernel_cpu_s: 2609.56994
-- kernel_cpu_h: 0.7248805388888888
-- current_segment: 26
-- remaining_segments_min: 4
+- kernel_cpu_s: 2785.5698820000002
+- kernel_cpu_h: 0.7737694116666667
+- current_segment: 27
+- remaining_segments_min: 3
 - oracle_qualified: 10744
-- kernel_peak_rss_gib: 11.228492736816406
+- kernel_peak_rss_gib: 11.550178527832031
 - kernel_over_source_cpu: None
