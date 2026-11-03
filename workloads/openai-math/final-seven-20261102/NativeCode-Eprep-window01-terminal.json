@@ -1,0 +1,27 @@
+{
+  "utc": "2026-11-03T00:34:02.611636+00:00",
+  "operation": "untimed_dependency_preparation",
+  "new_rows": 216,
+  "stop": "finite preparation window exhausted; unstarted jobs retained",
+  "original_dependency_blockers": {
+    "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.NativeCodeAssembly": [
+      "OAI.Algorithms.SubexponentialSAT.SqrtLog.CodeRowsProgram",
+      "OAI.Algorithms.SubexponentialSAT.SqrtLog.LeafOuterProgramStage",
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.NativeCode",
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.NativeLeafSetup",
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.SparseCodeRows"
+    ]
+  },
+  "all_original_deps_ready": false,
+  "no_population_cost_measurements": true,
+  "affinity": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}
