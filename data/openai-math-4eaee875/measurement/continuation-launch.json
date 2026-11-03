@@ -1,0 +1,13 @@
+{
+  "utc": "2026-11-03T21:47:11.966850+00:00",
+  "pid": 94991,
+  "birth_ticks": "2515152",
+  "phase": "waiting_existing_original_owner",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/precision-final12-closeout-20261103",
+  "existing_pid": 8141,
+  "existing_birth": "169629",
+  "new_native_started": false,
+  "planned_precision_attempts": 12,
+  "output_path_only_patch": true,
+  "after_twelve_more_experiments": false
+}

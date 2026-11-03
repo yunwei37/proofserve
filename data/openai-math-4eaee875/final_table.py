@@ -88,7 +88,7 @@ def tables(data, precision=None):
                         nominal95_high_CPU_h=high, satterthwaite_df=df,
                         ordinary_CPU_factor=of, computation_CPU_factor=cf,
                         source_CPU_share=sum(c["estimate"] for c in selected)/source_total,
-                        qualified_precision_costs=qualified, applied_conditional_cells=applied,
+                        qualified_precision_costs=qualified, applied_conditional_cells=applied if estimator == "conditional_panels_working_model" else 0,
                         interval_scope="source sampling only; fixed transfers; hybrid is nominal, not global adaptive coverage",
                         whole_library_measurement=False))
     sensitivity = []
