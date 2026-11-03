@@ -2,6 +2,20 @@
 
 ## Unreleased — preparing 0.1.0
 
+### Independent project-tool closeout
+
+- Add project check and audit CLI delegation; preserve backend receipts,
+  diagnostics, exit codes and Unix signal delivery.
+- Move the former candidate JSONL check command to batch. HTTP /check and
+  serve behavior remain unchanged.
+- Prepare a relocatable bundle with the matching Lean4.34.1 SDK and explicit
+  declared-version rejection. Installer, container and external-project
+  qualification remain pending; nothing has been published.
+- Retain all research data/history. The older service-only qualification
+  entries below describe their original version points; current readiness is
+  tracked in [prepared release notes](packaging/RELEASE_NOTES.md).
+
+
 ### Added
 
 - A minimal Python batch client with no runtime dependencies.

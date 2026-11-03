@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+"""Portable bundle entrypoint; never substitute a different project toolchain."""
+import json, os, sys
+from pathlib import Path
+
+root = Path(__file__).resolve().parents[1]
+args = sys.argv[1:]
+try:
+    matched = True
+    if args != ["--help"]:
+        if not args or args[0].startswith("-"):
+            raise ValueError("usage: proofserve check PROJECT [OPTIONS]; PROJECT comes first")
+        expected = (root / "share/proofserve/lean-toolchain").read_text().strip()
+        declared = (Path(args[0]) / "lean-toolchain").read_text().strip()
+        normalize = lambda s: s.removeprefix("leanprover/lean4:")
+        matched = normalize(declared) == normalize(expected)
+    if matched:
+        os.environ["PATH"] = str(root / "bin") + os.pathsep + os.environ.get("PATH", "")
+        os.environ["LEAN_SYSROOT"] = str(root)
+        os.environ["LD_LIBRARY_PATH"] = str(root / "lib/lean") + os.pathsep + os.environ.get("LD_LIBRARY_PATH", "")
+    else:
+        # The native frontend selects the project's official checker. Never put
+        # the bundled Lake ahead of that project's Elan/matching toolchain.
+        os.environ["PATH"] = os.pathsep.join(p for p in os.environ.get("PATH", "").split(os.pathsep) if Path(p).resolve() != root / "bin")
+        os.environ.pop("LEAN_SYSROOT", None)
+        print("ProofServe: declared version differs from bundle; requesting the project's matching official checker. No toolchain is installed or migrated.", file=sys.stderr)
+    program = root / "libexec/proofserve-check"
+    os.execv(program, [str(program), *args])
+except (OSError, ValueError) as error:
+    print(json.dumps({"schema_version": 1, "status": "error", "error": str(error)}), file=sys.stderr)
+    raise SystemExit(2)

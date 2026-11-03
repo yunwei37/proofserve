@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""Use the bundled audit implementation without importing a source checkout."""
+import os, sys
+from pathlib import Path
+
+if sys.version_info < (3, 11):
+    raise SystemExit("proofserve audit requires Python 3.11 or newer; use the container otherwise")
+program = Path(__file__).resolve().parents[1] / "libexec/proofserve-audit.py"
+os.execv(sys.executable, [sys.executable, str(program), *sys.argv[1:]])

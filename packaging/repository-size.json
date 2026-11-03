@@ -1,0 +1,23 @@
+{
+  "snapshot_commit": "3cbbc4c2f22cdda1821131d422ead16cfd4d3b5b",
+  "observed_utc": "2026-11-03T19:24:20Z",
+  "head_tracked_blob_paths": 29856,
+  "head_logical_checkout_bytes": 3897436649,
+  "head_unique_blob_bytes": 3865299200,
+  "main_complete_reachable_history_objects": {
+    "commit": 1340,
+    "tree": 10704,
+    "blob": 30879
+  },
+  "main_complete_reachable_history_uncompressed_bytes": {
+    "commit": 378683,
+    "tree": 13688626,
+    "blob": 4601285691
+  },
+  "missing_objects": [],
+  "history_enumeration_complete": true,
+  "git_directory_allocated_bytes": 3115560960,
+  "git_count_objects": "count: 1568\nsize: 145652\nin-pack: 41669\npacks: 1\nsize-pack: 2889764\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+  "shallow_repository": "false",
+  "scope": "Pinned HEAD tree and full ancestor history; .git allocation is a concurrent live observation. No files removed or history rewritten."
+}

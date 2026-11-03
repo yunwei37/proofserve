@@ -14,7 +14,7 @@ if "--self-test" in sys.argv:
     env["RUST_LOG"] = "proofserve_engine::resources=info,proofserve_lean::prepared=info"
     server = subprocess.Popen(
         ["/bin/sh", "/usr/local/bin/start-proofserve", "serve",
-         "--listen", "127.0.0.1:3000", "--memory-gib", "3"],
+         "--listen", "127.0.0.1:3000", "--memory-gib", "5"],
         env=env,
     )
 
@@ -83,3 +83,32 @@ for row in cold + repeat + batch[:1]:
 assert any(m.get("severity") == "error" for m in batch[1]["response"].get("messages", [])), batch[1]
 assert batch[2]["response"].get("sorries"), batch[2]
 print(json.dumps({"qualification": "passed", "observations": observations}), flush=True)
+
+
+# Installed-form project controls, distinct from the full-Mathlib service import.
+if "--self-test" in sys.argv:
+    from pathlib import Path
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix="proofserve-image-", dir="/opt") as td:
+        project = Path(td)
+        (project / "lean-toolchain").write_text(Path("/opt/proofserve/share/proofserve/lean-toolchain").read_text())
+        (project / "lakefile.toml").write_text('name = "containerQualification"\ndefaultTargets = ["Qualification"]\n[[lean_lib]]\nname = "Qualification"\n')
+        (project / "Qualification.lean").write_text("import Std\ntheorem container_roundtrip : (2 : Nat) + 2 = 4 := by rfl\n")
+        subprocess.run(["lake", "build"], cwd=project, check=True, timeout=120)
+        receipt = json.loads(subprocess.check_output(
+            ["/opt/proofserve/bin/proofserve", "check", str(project), "--workers", "1"],
+            text=True, timeout=240))
+        assert receipt["status"] == "complete" and "Qualification" in receipt["accepted"], receipt
+        audit = json.loads(subprocess.check_output(
+            ["/opt/proofserve/bin/proofserve", "audit", str(project), "--json", "-",
+             "--receipt", str(project / ".proofserve/receipt.json")],
+            text=True, timeout=60))
+        assert audit["source_modules"] == 1 and not audit["errors"], audit
+        declared = (project / "lean-toolchain").read_text()
+        (project / "lean-toolchain").write_text("leanprover/lean4:v4.33.0\n")
+        unsupported = subprocess.run(["/opt/proofserve/bin/proofserve", "check", str(project)],
+                                     text=True, capture_output=True, timeout=10)
+        assert unsupported.returncode == 2 and "unsupported" in unsupported.stderr, unsupported
+        (project / "lean-toolchain").write_text(declared)
+        print(json.dumps({"installed_project_check": "passed", "accepted_modules": len(receipt["accepted"]),
+                          "audit_source_modules": audit["source_modules"], "unsupported_version_rejected": True}), flush=True)

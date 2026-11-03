@@ -2,9 +2,9 @@ name: engine
 
 on:
   push:
-    paths: ["Cargo.toml", "Cargo.lock", "crates/**", "native/**", "examples/**", "clients/python/**", "packaging/**", "Dockerfile", ".dockerignore", ".github/workflows/engine.yml"]
+    paths: ["Cargo.toml", "Cargo.lock", "crates/**", "checker/**", "tools/audit/**", "native/**", "examples/**", "clients/python/**", "packaging/**", "Dockerfile", ".dockerignore", ".github/workflows/engine.yml"]
   pull_request:
-    paths: ["Cargo.toml", "Cargo.lock", "crates/**", "native/**", "examples/**", "clients/python/**", "packaging/**", "Dockerfile", ".dockerignore", ".github/workflows/engine.yml"]
+    paths: ["Cargo.toml", "Cargo.lock", "crates/**", "checker/**", "tools/audit/**", "native/**", "examples/**", "clients/python/**", "packaging/**", "Dockerfile", ".dockerignore", ".github/workflows/engine.yml"]
   workflow_dispatch:
 
 jobs:
@@ -28,6 +28,8 @@ jobs:
             /examples/
             /clients/python/
             /packaging/
+            /checker/
+            /tools/audit/
           sparse-checkout-cone-mode: false
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -72,6 +74,8 @@ jobs:
             /examples/
             /clients/python/
             /packaging/
+            /checker/
+            /tools/audit/
           sparse-checkout-cone-mode: false
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -120,7 +124,7 @@ jobs:
           if-no-files-found: ignore
 
   container-package:
-    # Run one isolated image build, leaving room within the 4 GiB O-line budget.
+    # Manual image qualification only: no registry upload.
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
@@ -139,12 +143,14 @@ jobs:
             /examples/
             /clients/python/
             /packaging/
+            /checker/
+            /tools/audit/
           sparse-checkout-cone-mode: false
       - uses: docker/setup-buildx-action@v3
         with:
           driver-opts: |
-            memory=3g
-            memory-swap=3g
+            memory=6g
+            memory-swap=6g
       - name: Build pinned Lean Mathlib REPL environment without publishing
         uses: docker/build-push-action@v6
         with:
@@ -152,3 +158,25 @@ jobs:
           push: false
           load: true
           tags: proofserve:ci
+
+  checker-contract:
+    if: github.event_name != 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            checker
+            tools/audit
+      - name: Prepare the checker-declared original SDK
+        shell: bash
+        run: |
+          version="$(sed -n 's#leanprover/lean4:v##p' checker/lean-toolchain)"
+          curl -fL "https://github.com/leanprover/lean4/releases/download/v$version/lean-$version-linux.tar.zst" -o "$RUNNER_TEMP/lean.tar.zst"
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-$version-linux/bin" >> "$GITHUB_PATH"
+      - name: Build and exercise original-kernel bad-proof and resume contracts
+        run: |
+          lake -d checker build
+          python3 checker/tests/contract.py
+          python3 tools/audit/test_audit.py

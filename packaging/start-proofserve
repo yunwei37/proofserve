@@ -1,7 +1,15 @@
 #!/bin/sh
 set -eu
-cd /opt/mathlib
-exec lake env /usr/local/bin/proofserve "$@" \
-  --repl /opt/repl/.lake/build/bin/repl \
-  --project /opt/mathlib \
-  --environment lean4.18.0-mathlib-aa936c36-repl-2f0a3cb8
+if [ "$#" -eq 0 ]; then set -- --help; fi
+case "$1" in
+  serve|batch|measure)
+    cd /opt/mathlib
+    exec lake env /opt/proofserve/bin/proofserve "$@" \
+      --repl /opt/repl/.lake/build/bin/repl \
+      --project /opt/mathlib \
+      --environment "$(cat /opt/proofserve-context)"
+    ;;
+  *)
+    exec /opt/proofserve/bin/proofserve "$@"
+    ;;
+esac

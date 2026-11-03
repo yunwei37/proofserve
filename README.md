@@ -1,93 +1,145 @@
 # ProofServe
 
-**A Lean verification service with a Kimina-compatible API.** Submit batches
-of proof candidates and receive ordered results with original Lean diagnostics.
+**Independent checking and coverage audit for Lean projects.** Check compiled
+proof terms with the original Lean kernel, using parallel workers and resumable
+local checkpoints. Audit what the project builds and what its receipt covers.
 
-In a matched miniF2F run under the same four-core/48GiB resource budget,
-ProofServe was **1.24× faster**, with identical final statuses and accepted IDs.
+The prepared Linux bundle includes the matching Lean4.34.1 SDK, checker and
+audit tool. No Rust compiler, repository clone or Workspace path is required.
+Use Python3.11+ and an already-built Lake project declaring that Lean version:
+
+~~~sh
+bin/proofserve check /path/to/lake-project
+bin/proofserve audit /path/to/lake-project --json -
+~~~
+
+Trust: the original Lean kernel and the project's declared axioms. Checkpoints
+are trusted local state. Acceptance does not prove an axiom-free development,
+the intended specification, or a safe parser for hostile binary artifacts.
+
+**Speed versus official leanchecker:** release-tool external evaluation is
+being prepared; no numerical speed claim is made yet. Research prototypes
+are not substitutes for that comparison.
+
+Version0.1.0 bundles and containers are being qualified, **not yet published**.
+Unsupported project toolchains fail explicitly; the bundled compiler never
+silently migrates a project.
+
+## Install without cloning
+
+Use the prepared release archive and its installer:
+
+~~~sh
+python3 install.py --archive proofserve-0.1.0-linux-x86_64.tar.gz
+~/.local/bin/proofserve check /path/to/lake-project
+~~~
+
+After the operator publishes the first release, the same installer can fetch
+the matching asset automatically:
+
+~~~sh
+curl -fsSL https://raw.githubusercontent.com/yunwei37/proofserve/main/packaging/install.py | python3 -
+~~~
+
+That network command requires a published release and is not advertised as
+working before one exists. Local archives install offline. Installation keeps
+older versions and links only ProofServe commands; it does not replace a
+system Lean or Elan installation.
+[Bundle layout and build recipe](packaging/README.md) ·
+[Prepared release notes](packaging/RELEASE_NOTES.md).
+
+## Check a project
+
+~~~sh
+proofserve check ./project --workers 4 --checkpoint-dir ./project/.proofserve
+~~~
+
+The checker discovers compiled roots and checks their dependency closure.
+Workers default to the available CPU allocation. Checkpointed runs can resume
+on the same input; backend receipts record acceptance, rejection, axioms,
+module-set identity, CPU and wall time. The source project must be built first.
+Use a fresh checkpoint directory after changing input artifacts until the
+backend's input-invalidation contract is qualified.
+
+The supported bundled checker version is Lean4.34.1. An unsupported declaration
+returns an explicit error rather than checking under a different compiler.
+The checker's receipt format and correctness tests live in [checker/](checker/).
+
+## Audit coverage
+
+~~~sh
+proofserve audit ./project --json audit.json --receipt ./project/.proofserve/receipt.json
+~~~
+
+The audit reports local source coverage, explicit kernel-computation syntax,
+optional source-matched cost logs and recognized compiled evidence. It keeps
+unknown default-build coverage and unavailable axiom/cost information explicit.
+Lexical counts are not tactic executions or a kernel acceptance decision.
+[Audit scope and format](tools/audit/).
+
+## Container
+
+The recipe pins one matching checker/SDK toolchain, Mathlib revision and REPL
+source. Its public commands have the same shape:
+
+~~~sh
+docker run --rm -v "$PWD":/project proofserve:0.1.0 check /project
+docker run --rm -v "$PWD":/project proofserve:0.1.0 audit /project --json -
+~~~
+
+These commands use a locally loaded prepared image; no public registry image
+is claimed before publication. Builders can use docker build -t proofserve:0.1.0 .
+The full image test must pass its Mathlib service imports and installed-form
+project controls before release. Earlier service-only image failures remain
+in [historical qualification](docs/releases/0.1.0.md).
+
+## Existing Kimina-compatible service
+
+~~~sh
+docker run --rm -p 127.0.0.1:3000:3000 proofserve:0.1.0 serve --listen 0.0.0.0:3000
+~~~
+
+Submit batches to /check or use the existing [Python client](clients/python/).
+HTTP routes and native response contracts are unchanged. An absent transport
+error is not acceptance: inspect Lean messages and sorries.
+
+In one retained miniF2F comparison at a four-core/48GiB resource point,
+ProofServe was **1.24× faster** than four warm Kimina REPLs, with identical
+final statuses and accepted IDs:
 
 | 7,808 candidates | Elapsed | Accepted |
 |---|---:|---:|
 | Four warm Kimina REPLs | 25,176.49 s | 3,014 |
 | ProofServe with Mathlib preparation | 20,323.01 s | 3,014 |
 
-[Benchmark data and protocol](bench/lean-warm-resource/README.md) include
-retry-order, CPU-eligibility and raw-diagnostic differences. The result is one
-measured comparison; it is not a guarantee for every workload or isolated COW gain.
+[Data and protocol](bench/lean-warm-resource/README.md) retain retry-order,
+CPU-eligibility and raw-diagnostic differences. This service result is neither
+an isolated COW gain nor a speed claim for the independent project checker.
+No new service functionality is planned in this release.
 
-## Quick start
-
-Full Mathlib container qualification is still open: the tested prepared path
-times out even with a 180-second budget. The entrypoint now uses the existing
-fresh-REPL default; that correction still needs a full image recheck.
-[Qualification results](docs/releases/0.1.0.md#corrective-qualification-result-and-closeout).
-
-The pinned Linux x86-64 recipe is available for testing:
+## Source and Rust APIs
 
 ~~~sh
-docker build -t proofserve . && docker run --rm -p 127.0.0.1:3000:3000 proofserve
-~~~
-
-The recipe pins Lean 4.18.0, Mathlib and REPL at fixed revisions. You do not
-need to supply a Lean installation or project. The first build downloads the
-toolchain and Mathlib cache. CPU and memory defaults are discovered automatically;
-research CPU IDs and a 48 GiB machine are not required.
-
-Then submit a proof:
-
-~~~sh
-curl http://localhost:3000/check -H 'Content-Type: application/json' \
-  -d '{"snippets":[{"id":"one","code":"import Mathlib\nexample : (2 : Nat) + 2 = 4 := by norm_num"}],"timeout":180}'
-~~~
-
-[Environment and resource options](docs/getting-started.md).
-
-## Python client
-
-~~~sh
-pip install ./clients/python
-python examples/check_batch.py
-~~~
-
-~~~python
-from proofserve import Client
-
-response = Client("http://localhost:3000").check(
-    [{"id": "one", "code": "import Mathlib\nexample : (2 : Nat) + 2 = 4 := by norm_num"},
-     {"id": "two", "code": "example : False := by decide"}],
-    timeout=180,
-)
-for result in response["results"]:
-    print(result["id"], result["response"], result["error"])
-~~~
-
-No Python runtime dependencies. The core /check shape follows Kimina:
-snippets, timeout, reuse and ordered raw results. An absent transport error
-alone is not acceptance: inspect Lean messages and sorries.
-[Client](clients/python/README.md) · [API scope](docs/api.md).
-
-## Rust crates and CLI
-
-~~~sh
+git clone --depth 1 https://github.com/yunwei37/proofserve.git
+cd proofserve
 cargo build --release --locked -p proofserve
-target/release/proofserve --help
 ~~~
 
-| Package | Role |
+Research data stays in this repository by design. A shallow clone omits old
+history but still downloads the large current tree; use bundles or containers
+for ordinary installation. [Pinned size accounting](packaging/repository-size.json)
+separates logical HEAD size, reachable history and .git disk allocation.
+
+| Component | Role |
 |---|---|
-| proofserve-core | Requests, outcomes and extension traits |
-| proofserve-engine | Admission, scheduling, resource accounting and reuse |
-| proofserve-lean | Native Lean REPL and source backends |
-| proofserve | HTTP service and CLI |
+| checker/ | Original-kernel checking, parallelism, checkpoints and receipt v1 |
+| tools/audit/ | Source/build coverage and compiled-evidence audit |
+| proofserve | Project CLI and existing HTTP/JSONL service |
+| proofserve-core / engine / lean | Existing service types, resources and backends |
 
-[Architecture](docs/architecture.md) · [Contributing](CONTRIBUTING.md) ·
-[Changelog](CHANGELOG.md) · [Prepared release notes](docs/releases/0.1.0.md) ·
-[Apache-2.0](LICENSE).
+cargo install provides the Rust launcher/service, not the full Lean bundle.
+The previous candidate JSONL check command is now batch; measure/compare remain
+for retained captures. [CLI component contract](packaging/INTERFACES.md).
 
-Version 0.1.0 is being prepared. No published registry image, crates.io package
-or stable binary release is advertised here. The corrected Docker recipe still needs full environment qualification.
-[Research status and retained results](docs/research-status.md) ·
-[Reproduction](bench/README.md) · [Paper](docs/paper/main.tex).
-
-Research inputs and failed/partial results remain in the repository; they are
-excluded from published crate packages and Docker build context.
+[Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md) · [Apache-2.0](LICENSE) ·
+[Research status](docs/research-status.md) · [Paper](docs/paper/main.tex).

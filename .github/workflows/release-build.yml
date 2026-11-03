@@ -1,0 +1,58 @@
+name: prepare portable release
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+jobs:
+  linux-bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            /Cargo.toml
+            /Cargo.lock
+            /LICENSE
+            /README.md
+            /crates/
+            /checker/
+            /tools/audit/
+            /packaging/
+          sparse-checkout-cone-mode: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.98.1
+      - name: Select the exact original Lean SDK
+        shell: bash
+        run: |
+          version="$(sed -n 's#leanprover/lean4:v##p' checker/lean-toolchain)"
+          curl -fL "https://github.com/leanprover/lean4/releases/download/v$version/lean-$version-linux.tar.zst" -o "$RUNNER_TEMP/lean.tar.zst"
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-$version-linux/bin" >> "$GITHUB_PATH"
+          echo "BUNDLE_SDK=$RUNNER_TEMP/lean-$version-linux" >> "$GITHUB_ENV"
+      - name: Build and qualify source components
+        run: |
+          cargo test --workspace --all-targets --locked
+          cargo test --workspace --doc --locked
+          cargo publish --workspace --dry-run --locked
+          cargo build --release --locked -p proofserve
+          lake -d checker build
+          python3 checker/tests/contract.py
+          python3 tools/audit/test_audit.py
+      - name: Assemble and install without a source checkout
+        shell: bash
+        run: |
+          python3 packaging/bundle.py --rust-bin target/release/proofserve --checker-bin checker/.lake/build/bin/proofserve-check --lean-sysroot "$BUNDLE_SDK" --out "$RUNNER_TEMP/prepared"
+          python3 packaging/install.py --archive "$RUNNER_TEMP"/prepared/*.tar.gz --prefix "$RUNNER_TEMP/relocated"
+          python3 packaging/qualify_bundle.py --prefix "$RUNNER_TEMP/relocated" --out "$RUNNER_TEMP/bundle-qualification"
+          cp packaging/install.py "$RUNNER_TEMP/prepared/install.py"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: proofserve-prepared-linux-x86_64
+          path: |
+            ${{ runner.temp }}/prepared/*.tar.gz
+            ${{ runner.temp }}/prepared/install.py
+            ${{ runner.temp }}/bundle-qualification/*.json
+          if-no-files-found: error
