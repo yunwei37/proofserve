@@ -2,7 +2,7 @@
 
 The project now has two deliverables: a usable open-source Lean verification tool and a six-page empirical + system paper. This replaces the earlier instruction to keep four research directions open indefinitely.
 
-The title and four research questions stay unchanged. RQ1 and RQ2 use measurement evidence; RQ3 and RQ4 use the tool and its evaluation. The coordinator proposes 17 November as a working target, not a user-imposed deadline. The venue is undecided.
+The title stays unchanged. The latest review authorizes up to four revised questions: RQ1 compares proof-checking cost regimes; RQ2 estimates compiler cost and coverage; RQ3 evaluates original-kernel multi-core performance and additional trust; RQ4 evaluates coverage, repeated verdicts and axiom receipts. Cluster scaling is outside the evaluated scope. The coordinator proposes 17 November as a working target, not a user-imposed deadline. The venue is undecided.
 
 ## Deliverables and owners
 
@@ -35,7 +35,7 @@ No tags, crates.io publication, upstream issue/PR or announcement is authorized.
 
 ## Paper closure
 
-Use the existing 10pt two-column format, six pages including references, and at most four figures/tables. Established measurements are written now; designated release results occupy clearly pending positions until they return. Submission must contain no missing result macros; unsupported claims belong in limitations. The manuscript no longer embeds inline evidence-grade markers or a claim-to-evidence table. [Evidence map](paper/evidence.md) carries those details. No alternative long paper is maintained.
+Use the existing 10pt two-column format, six pages including references, and at most four figures/tables. All 42 original costs are now complete; the independent precision panel remains separate. The current original estimate is 279.12 CPU-hours, with a nominal interval of 95.18–463.06. Established measurements are written now; designated release results occupy clearly pending positions until they return. Submission must contain no missing result macros; unsupported claims belong in limitations. The manuscript no longer embeds inline evidence-grade markers or a claim-to-evidence table. [Evidence map](paper/evidence.md) carries those details. No alternative long paper is maintained.
 
 The empirical story must disclose our -M and persistence corrections, the broad sampling interval, and the prior art behind all mechanisms. Lean 4.35 already ships lake check; do not describe it only as a future roadmap item or claim an unmeasured advantage over it.
 

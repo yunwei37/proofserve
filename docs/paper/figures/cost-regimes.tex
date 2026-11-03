@@ -1,0 +1,43 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\definecolor{mathblue}{RGB}{27,93,155}
+\definecolor{comporange}{RGB}{207,92,19}
+\begin{document}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+width=8.0cm,height=5.1cm,
+xlabel={Source compiler CPU (s)},ylabel={Target replay CPU (s)},
+xmin=0.75,xmax=220,ymin=0.45,ymax=180,
+title={(a) Paired module processes, no \texttt{-M}},
+title style={font=\small},label style={font=\small},
+tick label style={font=\footnotesize},
+legend style={font=\footnotesize,at={(0.02,0.98)},anchor=north west,draw=none,fill=white},
+grid=both,minor grid style={gray!12},major grid style={gray!25}]
+\addplot[gray,dashed,domain=0.75:180,no marks]{x};
+\addlegendentry{Equal CPU}
+\addplot[only marks,mark=*,mark size=1.8pt,color=mathblue,restrict expr to domain={\thisrow{proxy}}{0:0}] table[x=source_cpu_s,y=check_cpu_s,col sep=comma] {cost-regimes-cpu.csv};
+\addlegendentry{Unmarked proxy (14)}
+\addplot[only marks,mark=triangle*,mark size=2.2pt,color=comporange,restrict expr to domain={\thisrow{proxy}}{1:1}] table[x=source_cpu_s,y=check_cpu_s,col sep=comma] {cost-regimes-cpu.csv};
+\addlegendentry{Kernel-marked proxy (17)}
+\end{loglogaxis}
+\begin{axis}[
+at={(0,-2.1cm)},anchor=north west,
+width=8.0cm,height=3.9cm,
+xlabel={Target replay component / source wall (\%)},
+xmin=0,xmax=100,ytick={0,1,2,3},
+yticklabels={NearPin,Mathlib Nat.Basic,Grid,Amplitudes},
+ymin=-0.65,ymax=3.6,
+title={(b) Matched target windows, no \texttt{-M}},
+title style={font=\small},label style={font=\small},
+tick label style={font=\footnotesize},
+xmajorgrids,grid style={gray!20},
+xbar,bar width=9pt,
+nodes near coords,point meta=x,
+nodes near coords style={font=\footnotesize,/pgf/number format/fixed,/pgf/number format/precision=2},
+enlarge y limits=false]
+\addplot[fill=mathblue,draw=mathblue,restrict expr to domain={\thisrow{proxy}}{0:0}] table[x=ratio_percent,y=y,col sep=comma] {cost-regimes-target-wall.csv};
+\addplot[fill=comporange,draw=comporange,restrict expr to domain={\thisrow{proxy}}{1:1}] table[x=ratio_percent,y=y,col sep=comma] {cost-regimes-target-wall.csv};
+\end{axis}
+\end{tikzpicture}
+\end{document}

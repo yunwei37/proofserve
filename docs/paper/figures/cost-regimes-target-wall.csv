@@ -1,0 +1,5 @@
+module,source_wall_s,target_component_wall_s,ratio_percent,y,proxy
+Mathlib.Data.Nat.Basic,0.41071774903684855,0.026843838,6.535835878276504,1,0
+OAI.Analysis.PlanarPacking.Grid,318.230851566419,255.488732184,80.28408651342723,2,1
+OAI.Analysis.PlanarPacking.Certificate.Amplitudes,133.615322179161,110.026430792,82.34566889302461,3,1
+OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion,0.9622739339247346,0.004472574,0.46479218051331195,0,0

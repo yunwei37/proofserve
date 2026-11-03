@@ -1,21 +1,22 @@
 # ProofServe: current status
 
-The project is closing around two deliverables: an independent Lean project verification tool and a six-page empirical + system paper. The paper keeps its title and four RQs. The coordinator's working target is 17 November; publication still needs user confirmation.
+We are closing two deliverables: an independent Lean project verification tool and a six-page empirical + system paper. The coordinator's working target is 17 November, not a user-imposed deadline. Publication still needs user confirmation.
 
-## Ready to use as evidence
+## Established evidence
 
-- [Public measurement package](../data/openai-math-4eaee875/README.md): 41 of 42 original costs, with missingness preserved. Twenty complete strata estimate 278.09 CPU-hours, with a fragile nominal 95% interval of 94.15–462.04 hours. This is not a full-library confidence bound.
-- [Native checker](../checker/README.md): original-kernel checking, parallel declarations, checkpoint/resume, receipt v1 and explicit version fallback. Development controls exist.
-- [Audit tool](../tools/audit/README.md): portable source/default-target inventory, lexical computation counts, receipt/axiom reporting and explicit cost logs.
+- [Measurement package](../data/openai-math-4eaee875/README.md): **42/42 original costs**, all 21 strata complete. Estimated native compiler work is **279.12 CPU-hours**, with a fragile nominal 95% interval of **95.18–463.06**. The fixed independent precision panel remains separate.
+- [Six-page paper](paper/main.tex): a data figure shows module CPU pairs and matched target wall windows. Computational certificates retain 80.28–82.35% of source wall time in two selected cases; ordinary controls retain 0.46–6.54%. Different clocks and scopes stay explicit.
+- Default coverage omits **19.78% of source modules** and **33.30% of kernel-decision sites**. The latter is not a module percentage. Historical 2,524-target testing records 30,288 accepted checks without verdict differences.
+- [External static audits](../data/external-projects/audit-before-build.csv): installed-tool results cover CrocSwap 64/64, Newspeak 105/105 and Solar 12/32 default-import modules. These are static coverage findings, not native checking acceptance.
 
-## Still required
+## Remaining delivery
 
-The final [release matrix](../checker/results/README.md), official scope-matched comparisons, CI rejection evidence and timed interruption pair are incomplete. The old one-point executable record is excluded from the frozen matrix. Three unseen public projects, including a published AI project, and clean package/container acceptance are also pending. Development success is not release acceptance.
+The final [release matrix](../checker/results/README.md), official comparisons, bad-proof CI, timed interruption pair and full external package/container acceptance await owner returns. Their pending paper tables contain no prototype performance substitutions.
 
-The [six-page paper](paper/main.tex) has been rewritten, compiled and visually checked on all six pages; the [evidence map](paper/evidence.md) identifies admitted numbers and empty system-result slots. Research prototype results explain causes only. No release speedup is claimed yet.
+[Checker](../checker/README.md) and [audit](../tools/audit/README.md) implement the workflow. The paper now compares the earlier same-corpus report directly: its roughly 410 CPU-hours include about 330 compilation hours and 80 Comparator hours; its complete cloud build is a separate wall-time result. [Evidence map](paper/evidence.md) records pins and measurement boundaries.
 
 ## Boundaries
 
-No new scheduling, prediction, certificate-repair, GPU, serving-feature or attribution work. Do not restart existing collectors. Root changes paper/docs only; implementation remains with M/W/O. No tag, package publication, upstream issue/PR or announcement.
+Root integrates paper/docs only. No new collection, replacement agent, scheduling, prediction, certificate repair, GPU, serving features or deeper attribution. Preserve existing collectors and results. No tag, package publication, upstream issue/PR or announcement.
 
-[Plan and ownership](research-plan.md) · [Data](../data/openai-math-4eaee875/README.md) · [Result index](../research/README.md) · [Historical evidence](evaluation.md)
+[Plan](research-plan.md) · [Evidence index](../research/README.md) · [Historical evidence](evaluation.md)
