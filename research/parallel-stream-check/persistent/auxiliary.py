@@ -23,8 +23,8 @@ def main():
   original=cell.run
   def with_snapshots(key,argv,*args,**kwargs):
    supplied=args[-1]if args else kwargs['env']
-   supplied.update(DECOUPLED_MEMORY_PROFILE='1',DECOUPLED_MEMORY_STEP='100')
-   (ROOT/(key+'-auxiliary-config.json')).write_text(json.dumps(dict(kind=kind,memory_step=100,
+   supplied.update(DECOUPLED_MEMORY_PROFILE='1',DECOUPLED_MEMORY_STEP='1')
+   (ROOT/(key+'-auxiliary-config.json')).write_text(json.dumps(dict(kind=kind,memory_step=1,
      instrumentation='existing compiled memory checkpoints; exclude from primary timing'),indent=2))
    return original(key,argv,*args,**kwargs)
   cell.run=with_snapshots

@@ -17,8 +17,8 @@ arguments CLI invocation: stock re-enumerates the search path per prefix,
 which would add quadratic discovery and be an artificially weak baseline.
 
 For memory scaling, reuse the existing compiled DECOUPLED_MEMORY_PROFILE
-checkpoint feature in two separate full-closure8P runs, flags0/1, step100.
-Read own smaps_rollup after matched module boundaries, align with cumulative
+checkpoint feature in two separate full-closure8P runs, flags0/1, step1.
+Read own smaps_rollup after every matched module boundary, including the final4,449th boundary, align with cumulative
 frontier/check counters, separate anonymous/file-backed resident data.
 These are observer-enabled diagnostics, not primary timing replicates.
 Peak RSS differences are not exact retained-object sizes. Extrapolation
@@ -30,3 +30,4 @@ the invalid first root theorem must still be rejected after its full marked
 prefix. They are correctness diagnostics, not completed valid timing points.
 No auxiliary task runs concurrently with the primary finite matrix. Each
 separately acquires the shared P-core lock and the existing finite guard.
+\nPrepared-only refinement: step1 rather than100 includes the heavy final modules\nand the exact endpoint; these two observer-enabled runs remain outside all\nprimary timing and stat groups. No current matrix flags/binary are changed.\n
