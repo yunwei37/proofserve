@@ -1,0 +1,27 @@
+{
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-wall-hybrid-20261103",
+  "qualified_build": "extended-build-fixed2.json",
+  "commands": 5,
+  "all_native_zero": true,
+  "failed_attempts": [
+    {
+      "key": "build-0",
+      "cause": "reserved Lean token prefix"
+    },
+    {
+      "key": "build-fix-0",
+      "cause": "continuation indentation"
+    },
+    {
+      "key": "build-complex-fixture",
+      "cause": "minimal Prelude lacks infix equality notation"
+    }
+  ],
+  "failed_sources_retained": [
+    "failed-build0-source.lean",
+    "failed-build-fix0-source.lean",
+    "failed-complexControl-prelude-notation.lean"
+  ],
+  "fixture_fix": "build-complex-fixture-fixed",
+  "full_performance_not_completed": true
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "key": "complex-control-s0-P1",
+    "returncode": 0,
+    "qualified": true,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "accepted_IDs": [
+      "Init.Prelude",
+      "ComplexControl"
+    ],
+    "reject_events": []
+  },
+  {
+    "key": "complex-control-s0-P1-bad",
+    "returncode": 1,
+    "qualified": true,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "accepted_IDs": [
+      "Init.Prelude"
+    ],
+    "reject_events": [
+      {
+        "context": "shared",
+        "error": "while replaying declaration 'good':\n(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+        "event": "reject",
+        "module": "ComplexControl"
+      }
+    ]
+  },
+  {
+    "key": "complex-control-s0-P8",
+    "returncode": 0,
+    "qualified": true,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "accepted_IDs": [
+      "Init.Prelude",
+      "ComplexControl"
+    ],
+    "reject_events": []
+  },
+  {
+    "key": "complex-control-s0-P8-bad",
+    "returncode": 1,
+    "qualified": true,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "accepted_IDs": [
+      "Init.Prelude"
+    ],
+    "reject_events": [
+      {
+        "context": "shared",
+        "error": "while replaying declaration 'good':\n(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+        "event": "reject",
+        "module": "ComplexControl"
+      }
+    ]
+  },
+  {
+    "key": "complex-control-s1-P1",
+    "returncode": 0,
+    "qualified": true,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "accepted_IDs": [
+      "Init.Prelude",
+      "ComplexControl"
+    ],
+    "reject_events": []
+  },
+  {
+    "key": "complex-control-s1-P1-bad",
+    "returncode": 1,
+    "qualified": true,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "accepted_IDs": [
+      "Init.Prelude"
+    ],
+    "reject_events": [
+      {
+        "context": "shared",
+        "error": "kernel_reject:good:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+        "event": "reject",
+        "module": "ComplexControl"
+      }
+    ]
+  },
+  {
+    "key": "complex-control-s1-P8",
+    "returncode": 0,
+    "qualified": true,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "accepted_IDs": [
+      "Init.Prelude",
+      "ComplexControl"
+    ],
+    "reject_events": []
+  },
+  {
+    "key": "complex-control-s1-P8-bad",
+    "returncode": 1,
+    "qualified": true,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "accepted_IDs": [
+      "Init.Prelude"
+    ],
+    "reject_events": [
+      {
+        "context": "shared",
+        "error": "kernel_reject:good:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+        "event": "reject",
+        "module": "ComplexControl"
+      }
+    ]
+  }
+]
