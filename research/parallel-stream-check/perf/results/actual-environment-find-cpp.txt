@@ -1,0 +1,42 @@
+
+/workspaces/.agent-state/gpu-smt-captures/parallel-stream-attribution-20261102-v2/parallel-stream:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000bc23e0 <lean::environment::find(lean::name const&) const>:
+  bc23e0:	push   %rbx
+  bc23e1:	mov    %rdi,%rbx
+  bc23e4:	mov    (%rsi),%rdi
+  bc23e7:	test   $0x1,%dil
+  bc23eb:	jne    bc23f7 <lean::environment::find(lean::name const&) const+0x17>
+  bc23ed:	mov    (%rdi),%eax
+  bc23ef:	test   %eax,%eax
+  bc23f1:	jle    bc241f <lean::environment::find(lean::name const&) const+0x3f>
+  bc23f3:	inc    %eax
+  bc23f5:	mov    %eax,(%rdi)
+  bc23f7:	mov    (%rdx),%rsi
+  bc23fa:	test   $0x1,%sil
+  bc23fe:	jne    bc240a <lean::environment::find(lean::name const&) const+0x2a>
+  bc2400:	mov    (%rsi),%eax
+  bc2402:	test   %eax,%eax
+  bc2404:	jle    bc242e <lean::environment::find(lean::name const&) const+0x4e>
+  bc2406:	inc    %eax
+  bc2408:	mov    %eax,(%rsi)
+  bc240a:	call   c9bf70 <lean_environment_find>
+  bc240f:	mov    %rbx,%rdi
+  bc2412:	mov    %rax,%rsi
+  bc2415:	call   bc4e60 <std::__1::optional<lean::constant_info> lean::to_optional<lean::constant_info>(lean_object*)>
+  bc241a:	mov    %rbx,%rax
+  bc241d:	pop    %rbx
+  bc241e:	ret
+  bc241f:	cmp    $0x90000001,%eax
+  bc2424:	jb     bc23f7 <lean::environment::find(lean::name const&) const+0x17>
+  bc2426:	lock decl (%rdi)
+  bc2429:	mov    (%rsi),%rdi
+  bc242c:	jmp    bc23f7 <lean::environment::find(lean::name const&) const+0x17>
+  bc242e:	cmp    $0x90000001,%eax
+  bc2433:	jb     bc240a <lean::environment::find(lean::name const&) const+0x2a>
+  bc2435:	lock decl (%rsi)
+  bc2438:	mov    (%rdx),%rsi
+  bc243b:	jmp    bc240a <lean::environment::find(lean::name const&) const+0x2a>

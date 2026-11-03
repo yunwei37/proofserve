@@ -1,0 +1,109 @@
+
+/workspaces/.agent-state/gpu-smt-captures/parallel-stream-attribution-20261102-v2/parallel-stream:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000c9bf70 <lean_environment_find>:
+  c9bf70:	push   %r15
+  c9bf72:	push   %r14
+  c9bf74:	push   %rbx
+  c9bf75:	mov    %rsi,%r14
+  c9bf78:	mov    0x8(%rdi),%rbx
+  c9bf7c:	mov    (%rbx),%eax
+  c9bf7e:	test   %eax,%eax
+  c9bf80:	jle    c9c034 <lean_environment_find+0xc4>
+  c9bf86:	inc    %eax
+  c9bf88:	mov    %eax,(%rbx)
+  c9bf8a:	mov    (%rdi),%eax
+  c9bf8c:	cmp    $0x2,%eax
+  c9bf8f:	jl     c9c047 <lean_environment_find+0xd7>
+  c9bf95:	dec    %eax
+  c9bf97:	mov    %eax,(%rdi)
+  c9bf99:	cmpb   $0x0,0x18(%rbx)
+  c9bf9d:	mov    0x8(%rbx),%rdi
+  c9bfa1:	je     c9bfb3 <lean_environment_find+0x43>
+  c9bfa3:	mov    %r14,%rsi
+  c9bfa6:	call   c9bbd0 <l_Std_DHashMap_Internal_Raw_u2080_Const_get_x3f___at___00Lean_SMap_find_x3f_x27___at___00Lean_Kernel_Environment_find_x3f_spec__0_spec__0___redArg>
+  c9bfab:	test   $0x1,%r14b
+  c9bfaf:	je     c9bfd1 <lean_environment_find+0x61>
+  c9bfb1:	jmp    c9bfe2 <lean_environment_find+0x72>
+  c9bfb3:	mov    0x10(%rbx),%r15
+  c9bfb7:	mov    %r14,%rsi
+  c9bfba:	call   c9bbd0 <l_Std_DHashMap_Internal_Raw_u2080_Const_get_x3f___at___00Lean_SMap_find_x3f_x27___at___00Lean_Kernel_Environment_find_x3f_spec__0_spec__0___redArg>
+  c9bfbf:	test   $0x1,%al
+  c9bfc1:	jne    c9bff3 <lean_environment_find+0x83>
+  c9bfc3:	movzbl 0x7(%rax),%ecx
+  c9bfc7:	test   %ecx,%ecx
+  c9bfc9:	je     c9bffd <lean_environment_find+0x8d>
+  c9bfcb:	test   $0x1,%r14b
+  c9bfcf:	jne    c9bfe2 <lean_environment_find+0x72>
+  c9bfd1:	mov    (%r14),%ecx
+  c9bfd4:	cmp    $0x2,%ecx
+  c9bfd7:	jl     c9c071 <lean_environment_find+0x101>
+  c9bfdd:	dec    %ecx
+  c9bfdf:	mov    %ecx,(%r14)
+  c9bfe2:	mov    (%rbx),%ecx
+  c9bfe4:	cmp    $0x2,%ecx
+  c9bfe7:	jl     c9c059 <lean_environment_find+0xe9>
+  c9bfe9:	dec    %ecx
+  c9bfeb:	mov    %ecx,(%rbx)
+  c9bfed:	pop    %rbx
+  c9bfee:	pop    %r14
+  c9bff0:	pop    %r15
+  c9bff2:	ret
+  c9bff3:	mov    %rax,%rcx
+  c9bff6:	shr    $1,%rcx
+  c9bff9:	test   %ecx,%ecx
+  c9bffb:	jne    c9bfcb <lean_environment_find+0x5b>
+  c9bffd:	test   $0x1,%r14b
+  c9c001:	jne    c9c012 <lean_environment_find+0xa2>
+  c9c003:	movzbl 0x7(%r14),%eax
+  c9c008:	test   %eax,%eax
+  c9c00a:	je     c9c01c <lean_environment_find+0xac>
+  c9c00c:	mov    0x18(%r14),%rsi
+  c9c010:	jmp    c9c021 <lean_environment_find+0xb1>
+  c9c012:	mov    %r14,%rax
+  c9c015:	shr    $1,%rax
+  c9c018:	test   %eax,%eax
+  c9c01a:	jne    c9c00c <lean_environment_find+0x9c>
+  c9c01c:	mov    $0x6bb,%esi
+  c9c021:	mov    %r15,%rdi
+  c9c024:	mov    %r14,%rdx
+  c9c027:	call   c9be40 <l_Lean_PersistentHashMap_findAux___at___00Lean_PersistentHashMap_find_x3f___at___00Lean_SMap_find_x3f_x27___at___00Lean_Kernel_Environment_find_x3f_spec__0_spec__1_spec__3___redArg>
+  c9c02c:	test   $0x1,%r14b
+  c9c030:	je     c9bfd1 <lean_environment_find+0x61>
+  c9c032:	jmp    c9bfe2 <lean_environment_find+0x72>
+  c9c034:	cmp    $0x90000001,%eax
+  c9c039:	jb     c9bf8a <lean_environment_find+0x1a>
+  c9c03f:	lock decl (%rbx)
+  c9c042:	jmp    c9bf8a <lean_environment_find+0x1a>
+  c9c047:	test   %eax,%eax
+  c9c049:	je     c9bf99 <lean_environment_find+0x29>
+  c9c04f:	call   4c1c900 <lean_dec_ref_cold>
+  c9c054:	jmp    c9bf99 <lean_environment_find+0x29>
+  c9c059:	test   %ecx,%ecx
+  c9c05b:	je     c9bfed <lean_environment_find+0x7d>
+  c9c05d:	mov    %rbx,%rdi
+  c9c060:	mov    %rax,%rbx
+  c9c063:	call   4c1c900 <lean_dec_ref_cold>
+  c9c068:	mov    %rbx,%rax
+  c9c06b:	pop    %rbx
+  c9c06c:	pop    %r14
+  c9c06e:	pop    %r15
+  c9c070:	ret
+  c9c071:	test   %ecx,%ecx
+  c9c073:	je     c9bfe2 <lean_environment_find+0x72>
+  c9c079:	mov    %r14,%rdi
+  c9c07c:	mov    %rax,%r14
+  c9c07f:	call   4c1c900 <lean_dec_ref_cold>
+  c9c084:	mov    %r14,%rax
+  c9c087:	jmp    c9bfe2 <lean_environment_find+0x72>
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section __lcxx_override:
+
+Disassembly of section .plt:

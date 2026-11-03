@@ -1,0 +1,460 @@
+key,scope,function,symbol_offset,instruction_role,estimated_sampled_cycles
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,51,other_or_unknown_instruction,343091617
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,129,other_or_unknown_instruction,234650553
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,93,other_or_unknown_instruction,329027811
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,147,other_or_unknown_instruction,2585
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,26,environment_RC_header_load,32597755
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,17,after_outer_atomic_RC_update,17653733125
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,72,other_or_unknown_instruction,1386797208
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,41,other_or_unknown_instruction,64301688
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,119,other_or_unknown_instruction,2709057536
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,134,other_or_unknown_instruction,422606825
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,17,after_outer_atomic_RC_update,2486945581
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,210,after_inner_atomic_RC_update,2742219523
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,207,other_or_unknown_instruction,27115272
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,0,outer_RC_header_load,894583883
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,73,after_receiver_atomic_RC_update,3065673295
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,116,after_inner_RC_header_load_at_release,4137199957
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,15,after_receiver_RC_header_load,3835526495
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,28,after_environment_RC_header_load,6663944881
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,105,after_child_RC_header_load,29423629397
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,14,after_inner_RC_header_load,5993931941
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,88,other_or_unknown_instruction,1914739720
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,84,other_or_unknown_instruction,3329106925
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,82,other_or_unknown_instruction,4113578146
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,12,inner_RC_header_load,462140854
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,98,other_or_unknown_instruction,2358737822
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,105,after_child_RC_header_load,2817598455
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,160,other_or_unknown_instruction,783448896
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,19,other_or_unknown_instruction,1093376493
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,103,child_RC_header_load,390964522
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,48,other_or_unknown_instruction,477369977
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,248,other_or_unknown_instruction,64784107
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,114,inner_RC_header_load_at_release,301155776
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,145,after_child_atomic_RC_update,4564658051
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,45,other_or_unknown_instruction,4000398602
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,38,other_or_unknown_instruction,26136138
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,196,other_or_unknown_instruction,54678220
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,93,other_or_unknown_instruction,1109785054
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,103,child_RC_header_load,1426703904
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,93,other_or_unknown_instruction,289794778
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,134,other_or_unknown_instruction,1893245063
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,15,after_receiver_RC_header_load,4112678114
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,176,other_or_unknown_instruction,1601161600
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,105,after_child_RC_header_load,1110282005
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,84,other_or_unknown_instruction,604258894
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,145,after_child_atomic_RC_update,1840264042
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,45,other_or_unknown_instruction,3515978126
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,23,other_or_unknown_instruction,26723047
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,17,after_outer_atomic_RC_update,23545716401
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,14,after_inner_RC_header_load,7120383817
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,28,after_environment_RC_header_load,4775921723
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,116,after_inner_RC_header_load_at_release,3394188963
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,20,other_or_unknown_instruction,371654987
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,98,other_or_unknown_instruction,444014018
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,82,other_or_unknown_instruction,2692840067
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,2,after_outer_RC_header_load,78282800
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,98,other_or_unknown_instruction,496285004
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,61,other_or_unknown_instruction,26114710
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,110,other_or_unknown_instruction,601480077
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,110,other_or_unknown_instruction,1610079177
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,2,after_outer_RC_header_load,578558932
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,26,other_or_unknown_instruction,115517216
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,2,after_outer_RC_header_load,1182534728
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,97,other_or_unknown_instruction,90900521
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,74,other_or_unknown_instruction,737468383
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,7,other_or_unknown_instruction,168903534
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,20,other_or_unknown_instruction,78347817
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,0,outer_RC_header_load,495819943
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,88,other_or_unknown_instruction,555462961
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,8,other_or_unknown_instruction,52121870
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,22,other_or_unknown_instruction,51438501
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,110,other_or_unknown_instruction,469125505
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,126,other_or_unknown_instruction,25972926
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,115,other_or_unknown_instruction,732374401
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,145,after_child_atomic_RC_update,890082653
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,103,child_RC_header_load,688299681
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,123,other_or_unknown_instruction,26101459
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,180,other_or_unknown_instruction,26067653
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,61,other_or_unknown_instruction,78165304
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,23,other_or_unknown_instruction,79207113
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,119,other_or_unknown_instruction,1014898144
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,80,other_or_unknown_instruction,416111364
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,84,other_or_unknown_instruction,724600990
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,165,other_or_unknown_instruction,26018727
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,0,other_or_unknown_instruction,1085633883
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,51,other_or_unknown_instruction,582940010
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,45,other_or_unknown_instruction,26108147
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,126,other_or_unknown_instruction,78202846
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,160,other_or_unknown_instruction,184225426
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,129,other_or_unknown_instruction,463500963
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,53,other_or_unknown_instruction,543433035
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,56,other_or_unknown_instruction,52006711
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,115,other_or_unknown_instruction,1150725525
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,119,other_or_unknown_instruction,52102463
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,73,after_receiver_atomic_RC_update,3000845755
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,74,other_or_unknown_instruction,156704575
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,88,other_or_unknown_instruction,78610979
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,208,other_or_unknown_instruction,58282499
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,0,outer_RC_header_load,700218484
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,36,other_or_unknown_instruction,26117170
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,119,other_or_unknown_instruction,26110850
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,72,other_or_unknown_instruction,698594517
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,72,other_or_unknown_instruction,52348274
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,49,other_or_unknown_instruction,26092844
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,142,child_atomic_RC_update,26119175
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,176,other_or_unknown_instruction,208835506
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,67,other_or_unknown_instruction,58119116
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,179,other_or_unknown_instruction,52186062
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,207,other_or_unknown_instruction,112569945
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,51,other_or_unknown_instruction,26125577
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,61,other_or_unknown_instruction,703458699
+full-record-P4-r1,ordinary_worker_other_or_truncated,lean_dec_ref_cold,187,other_or_unknown_instruction,32649712
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,14,outer_atomic_RC_update,144089501
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,142,child_atomic_RC_update,542600691
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,160,other_or_unknown_instruction,52271047
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,176,other_or_unknown_instruction,26880339
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,115,other_or_unknown_instruction,26021615
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,17,after_outer_atomic_RC_update,25967798
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,0,other_or_unknown_instruction,92690631
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,215,other_or_unknown_instruction,297106553
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,210,after_inner_atomic_RC_update,3120197907
+full-record-P4-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,0,other_or_unknown_instruction,78328615
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,41,other_or_unknown_instruction,26101027
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,14,after_inner_RC_header_load,26124767
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,26,other_or_unknown_instruction,105151595
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,80,other_or_unknown_instruction,1142510791
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,64,other_or_unknown_instruction,80094711
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,74,other_or_unknown_instruction,52480576
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,105,after_child_RC_header_load,1510518795
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,7,other_or_unknown_instruction,26104607
+full-record-P4-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,58,other_or_unknown_instruction,26112538
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,257,other_or_unknown_instruction,26101405
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,183,other_or_unknown_instruction,25658031
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,208,other_or_unknown_instruction,52218224
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,123,other_or_unknown_instruction,52539210
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,14,outer_atomic_RC_update,78076313
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,78,other_or_unknown_instruction,222656948
+full-record-P4-r1,serial_or_other_kernel,lean_environment_find,0,other_or_unknown_instruction,26106233
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,165,other_or_unknown_instruction,25875822
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,256,other_or_unknown_instruction,92675195
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,132,other_or_unknown_instruction,119223578
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,126,other_or_unknown_instruction,139214645
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,58,other_or_unknown_instruction,96434383
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,179,other_or_unknown_instruction,53076478
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,142,child_atomic_RC_update,52260799
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,19,other_or_unknown_instruction,680511801
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,56,other_or_unknown_instruction,316877808
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,56,other_or_unknown_instruction,52132331
+full-record-P4-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,40,other_or_unknown_instruction,26113758
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,74,other_or_unknown_instruction,26162038
+full-record-P4-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,78,other_or_unknown_instruction,26100507
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,173,other_or_unknown_instruction,24922152
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,19,other_or_unknown_instruction,127097445
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,243,other_or_unknown_instruction,27295646
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,70,receiver_atomic_RC_update,59564814
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,123,other_or_unknown_instruction,330857505
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,228,other_or_unknown_instruction,349047481
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,40,other_or_unknown_instruction,25772339
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,84,other_or_unknown_instruction,920977173
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,48,other_or_unknown_instruction,78888828
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,34,after_name_RC_header_load,32067781
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,42,other_or_unknown_instruction,251101256
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,207,other_or_unknown_instruction,220056286
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,176,other_or_unknown_instruction,77941624
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,98,other_or_unknown_instruction,136376784
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,80,other_or_unknown_instruction,52116309
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,7,other_or_unknown_instruction,167604522
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,0,outer_RC_header_load,1237051108
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,254,other_or_unknown_instruction,25658837
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,67,other_or_unknown_instruction,167641298
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,26,other_or_unknown_instruction,174255861
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,53,other_or_unknown_instruction,52207172
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,228,other_or_unknown_instruction,143531231
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,248,other_or_unknown_instruction,162678678
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,8,other_or_unknown_instruction,116574609
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,233,other_or_unknown_instruction,129683075
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,72,other_or_unknown_instruction,130990046
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,134,other_or_unknown_instruction,188597809
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,0,other_or_unknown_instruction,294736304
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,160,other_or_unknown_instruction,122466698
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,126,other_or_unknown_instruction,26038714
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,20,other_or_unknown_instruction,109101117
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,110,other_or_unknown_instruction,249089110
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,142,child_atomic_RC_update,105256384
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,82,other_or_unknown_instruction,166947378
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,256,other_or_unknown_instruction,78001414
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,103,child_RC_header_load,78465695
+full-record-P4-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,23,other_or_unknown_instruction,251557928
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,203,other_or_unknown_instruction,41221243
+full-record-P4-r1,serial_or_other_kernel,lean_dec_ref_cold,168,other_or_unknown_instruction,26107369
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,8,other_or_unknown_instruction,26695660
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,134,other_or_unknown_instruction,52223130
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,64,other_or_unknown_instruction,90061839
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,183,other_or_unknown_instruction,31884052
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,179,other_or_unknown_instruction,147434848
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,36,other_or_unknown_instruction,26046347
+full-record-P4-r1,outside_or_unresolved,lean_dec_ref_cold,22,other_or_unknown_instruction,26102599
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,131,other_or_unknown_instruction,53029267
+full-record-P4-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,42,other_or_unknown_instruction,26162446
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,165,other_or_unknown_instruction,76281149
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,12,inner_RC_header_load,653350209
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,16,other_or_unknown_instruction,84403361
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,93,other_or_unknown_instruction,58260152
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,47,other_or_unknown_instruction,52894237
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,26,environment_RC_header_load,63633170
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,14,outer_atomic_RC_update,259913225
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,0,other_or_unknown_instruction,342209833
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,196,other_or_unknown_instruction,32155875
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,233,other_or_unknown_instruction,26516756
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,42,other_or_unknown_instruction,109719898
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,88,after_name_atomic_RC_update,25944968
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,58,other_or_unknown_instruction,77616809
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,237,other_or_unknown_instruction,26275234
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,183,other_or_unknown_instruction,25709794
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,257,other_or_unknown_instruction,32150044
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,51,other_or_unknown_instruction,84308173
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,177,other_or_unknown_instruction,32160796
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,173,other_or_unknown_instruction,31980221
+full-record-P4-r1,ordinary_kernel_anchored,lean_dec_ref_cold,22,other_or_unknown_instruction,25692695
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,177,other_or_unknown_instruction,32081003
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,100,other_or_unknown_instruction,32125039
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,97,other_or_unknown_instruction,32143469
+full-record-P4-r1,ordinary_kernel_anchored,lean_environment_find,79,other_or_unknown_instruction,30331087
+full-record-P4-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,47,other_or_unknown_instruction,25815170
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,41,other_or_unknown_instruction,32161202
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,78,other_or_unknown_instruction,64231216
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,115,other_or_unknown_instruction,26101184
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,48,other_or_unknown_instruction,26119002
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,131,other_or_unknown_instruction,84389550
+full-record-P4-r1,ordinary_worker_kernel_unanchored,lean_environment_find,207,inner_atomic_RC_update,26175406
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,145,after_child_atomic_RC_update,32462872
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,105,after_child_RC_header_load,1416571863
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,82,other_or_unknown_instruction,1294179823
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,56,other_or_unknown_instruction,26129344
+full-record-P8-r1,ordinary_worker_other_or_truncated,lean_dec_ref_cold,17,after_outer_atomic_RC_update,10340
+full-record-P8-r1,ordinary_worker_other_or_truncated,lean_dec_ref_cold,184,other_or_unknown_instruction,2585
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,12,inner_RC_header_load,1706530103
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,45,other_or_unknown_instruction,8516412348
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,116,after_inner_RC_header_load_at_release,11172378692
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,105,after_child_RC_header_load,31722195399
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,28,after_environment_RC_header_load,12958904636
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,51,other_or_unknown_instruction,638522476
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,17,after_outer_atomic_RC_update,27296617768
+full-record-P8-r1,ordinary_worker_other_or_truncated,lean_dec_ref_cold,64,other_or_unknown_instruction,2585
+full-record-P8-r1,ordinary_worker_other_or_truncated,lean_dec_ref_cold,0,outer_RC_header_load,2585
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,134,other_or_unknown_instruction,1799138758
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,15,after_receiver_RC_header_load,8666062547
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,14,after_inner_RC_header_load,16024920639
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,88,other_or_unknown_instruction,609350484
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,61,other_or_unknown_instruction,279569131
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,41,other_or_unknown_instruction,114408337
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,84,other_or_unknown_instruction,3778247773
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,210,after_inner_atomic_RC_update,7203806510
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,26,other_or_unknown_instruction,449926398
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,248,other_or_unknown_instruction,632835167
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,73,after_receiver_atomic_RC_update,4801915814
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,145,after_child_atomic_RC_update,5931877425
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,28,after_environment_RC_header_load,14965938641
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,72,other_or_unknown_instruction,1533833738
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,80,other_or_unknown_instruction,2005292047
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,0,outer_RC_header_load,2929777575
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,116,after_inner_RC_header_load_at_release,9371405412
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,110,other_or_unknown_instruction,1116170514
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,160,other_or_unknown_instruction,1093050943
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,2,after_outer_RC_header_load,2469230740
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,210,after_inner_atomic_RC_update,7026571196
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,142,child_atomic_RC_update,460475493
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,179,other_or_unknown_instruction,141025665
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,47,other_or_unknown_instruction,63939265
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,88,other_or_unknown_instruction,1524423503
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,84,other_or_unknown_instruction,661771047
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,129,other_or_unknown_instruction,130769765
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,84,other_or_unknown_instruction,159694145
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,17,after_outer_atomic_RC_update,32716709090
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,115,other_or_unknown_instruction,1568928043
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,78,other_or_unknown_instruction,111401611
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,98,other_or_unknown_instruction,3044213112
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,20,other_or_unknown_instruction,26079987
+full-record-P8-r1,ordinary_worker_other_or_truncated,lean_dec_ref_cold,115,other_or_unknown_instruction,32147078
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,119,other_or_unknown_instruction,2265352060
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,19,other_or_unknown_instruction,969707474
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,179,other_or_unknown_instruction,164622048
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,14,after_inner_RC_header_load,15377804550
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,105,after_child_RC_header_load,1816615476
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,45,other_or_unknown_instruction,12840654540
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,256,other_or_unknown_instruction,25328008
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,15,after_receiver_RC_header_load,11261992019
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,19,other_or_unknown_instruction,831393574
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,93,other_or_unknown_instruction,488871822
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,103,child_RC_header_load,147979651
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,145,after_child_atomic_RC_update,2613680589
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,105,after_child_RC_header_load,3954419878
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,145,after_child_atomic_RC_update,1222168744
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,179,other_or_unknown_instruction,181747213
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,19,other_or_unknown_instruction,419629003
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,93,other_or_unknown_instruction,663185062
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,82,other_or_unknown_instruction,2795889642
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,208,other_or_unknown_instruction,216881209
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,7,other_or_unknown_instruction,160766641
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,215,other_or_unknown_instruction,131251062
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,100,other_or_unknown_instruction,26124657
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,26,other_or_unknown_instruction,83190516
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,12,inner_RC_header_load,2672047607
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,17,after_outer_atomic_RC_update,2075993892
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,110,other_or_unknown_instruction,545274899
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,51,other_or_unknown_instruction,267460422
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,72,other_or_unknown_instruction,313847172
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,119,other_or_unknown_instruction,912617665
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,98,other_or_unknown_instruction,754958102
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,20,other_or_unknown_instruction,679688714
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,103,child_RC_header_load,539942736
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,0,outer_RC_header_load,420266079
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,80,other_or_unknown_instruction,495987738
+full-record-P8-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,34,after_name_RC_header_load,78296124
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,93,other_or_unknown_instruction,317300484
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,110,other_or_unknown_instruction,26138441
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,0,outer_RC_header_load,408135295
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,88,other_or_unknown_instruction,173648603
+full-record-P8-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,40,other_or_unknown_instruction,52713765
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,103,child_RC_header_load,78371159
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,74,other_or_unknown_instruction,127161881
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,48,other_or_unknown_instruction,780743196
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,0,other_or_unknown_instruction,377055447
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,134,other_or_unknown_instruction,453943764
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,129,other_or_unknown_instruction,1224919505
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,132,other_or_unknown_instruction,141583588
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,103,child_RC_header_load,1604876929
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,123,other_or_unknown_instruction,122935658
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,98,other_or_unknown_instruction,496941300
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,176,other_or_unknown_instruction,1107346129
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,73,after_receiver_atomic_RC_update,4522334746
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,74,other_or_unknown_instruction,992560376
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,74,other_or_unknown_instruction,83450830
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,53,other_or_unknown_instruction,52241396
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,207,other_or_unknown_instruction,52659158
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,137,other_or_unknown_instruction,26123156
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,137,other_or_unknown_instruction,47649667
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,119,other_or_unknown_instruction,26011625
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,61,other_or_unknown_instruction,108721765
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,56,other_or_unknown_instruction,78867407
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,176,other_or_unknown_instruction,182494234
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,142,child_atomic_RC_update,77905973
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,207,other_or_unknown_instruction,52086378
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,176,other_or_unknown_instruction,52394303
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,160,other_or_unknown_instruction,378830900
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,22,other_or_unknown_instruction,26115888
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,115,other_or_unknown_instruction,261731518
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,121,other_or_unknown_instruction,77631698
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,74,other_or_unknown_instruction,26124640
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,72,other_or_unknown_instruction,52253979
+full-record-P8-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,23,other_or_unknown_instruction,78193804
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,80,other_or_unknown_instruction,52254090
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,160,other_or_unknown_instruction,260557018
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,48,other_or_unknown_instruction,51717325
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,233,other_or_unknown_instruction,428250315
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,126,other_or_unknown_instruction,179826776
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,257,other_or_unknown_instruction,52205237
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,64,other_or_unknown_instruction,26122470
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,256,other_or_unknown_instruction,280675434
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,20,other_or_unknown_instruction,32174833
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,184,other_or_unknown_instruction,26117693
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,49,other_or_unknown_instruction,52205575
+full-record-P8-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,61,other_or_unknown_instruction,26121506
+full-record-P8-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,53,other_or_unknown_instruction,26127139
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,188,other_or_unknown_instruction,26110254
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,131,other_or_unknown_instruction,26119842
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,22,other_or_unknown_instruction,78251695
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,187,other_or_unknown_instruction,313284493
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,2,after_outer_RC_header_load,26222543
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,203,other_or_unknown_instruction,52171077
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,48,other_or_unknown_instruction,78399871
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,2,other_or_unknown_instruction,102645772
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,70,receiver_atomic_RC_update,102396217
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,53,other_or_unknown_instruction,56897681
+full-record-P8-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,15,after_receiver_RC_header_load,26117295
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,126,other_or_unknown_instruction,78643814
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,26,other_or_unknown_instruction,52315162
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,23,other_or_unknown_instruction,351315070
+full-record-P8-r1,outside_or_unresolved,lean_dec_ref_cold,61,other_or_unknown_instruction,26084132
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,100,other_or_unknown_instruction,26114988
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,196,other_or_unknown_instruction,66688312
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,243,other_or_unknown_instruction,24142004
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,26,environment_RC_header_load,416753115
+full-record-P8-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,38,other_or_unknown_instruction,26143131
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,47,other_or_unknown_instruction,134803902
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,0,other_or_unknown_instruction,108556357
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,110,other_or_unknown_instruction,268104307
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,84,other_or_unknown_instruction,132800676
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,0,outer_RC_header_load,855916136
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,176,other_or_unknown_instruction,77898971
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,51,other_or_unknown_instruction,52802164
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,41,other_or_unknown_instruction,78139790
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,58,other_or_unknown_instruction,117210311
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,7,other_or_unknown_instruction,206544954
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,177,other_or_unknown_instruction,25956497
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,26,environment_RC_header_load,190222612
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,142,child_atomic_RC_update,134494878
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,0,other_or_unknown_instruction,139812253
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,119,other_or_unknown_instruction,51297315
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,48,other_or_unknown_instruction,83298075
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,215,other_or_unknown_instruction,78207233
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,61,other_or_unknown_instruction,26122851
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,34,after_name_RC_header_load,26104447
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,134,other_or_unknown_instruction,142678892
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,72,other_or_unknown_instruction,83553873
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,88,other_or_unknown_instruction,89891343
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,129,other_or_unknown_instruction,25713779
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,93,other_or_unknown_instruction,113900908
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,80,other_or_unknown_instruction,52145259
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,207,other_or_unknown_instruction,167353206
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,78,other_or_unknown_instruction,50567804
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,203,other_or_unknown_instruction,51677008
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,14,outer_atomic_RC_update,266004854
+full-record-P8-r1,serial_or_other_kernel,lean_dec_ref_cold,14,outer_atomic_RC_update,26123716
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,63,other_or_unknown_instruction,89514854
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,16,other_or_unknown_instruction,26073381
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,207,other_or_unknown_instruction,51693507
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,165,other_or_unknown_instruction,84331343
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,134,other_or_unknown_instruction,26127535
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,210,other_or_unknown_instruction,320824040
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,53,other_or_unknown_instruction,662910530
+full-record-P8-r1,serial_or_other_kernel,lean::environment::find(lean::name const&) const,0,other_or_unknown_instruction,26148436
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,98,other_or_unknown_instruction,63325973
+full-record-P8-r1,serial_or_other_kernel,lean_environment_find,8,other_or_unknown_instruction,26114542
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,2,after_outer_RC_header_load,1837145636
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,233,other_or_unknown_instruction,58278131
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,76,other_or_unknown_instruction,32170499
+full-record-P8-r1,ordinary_kernel_anchored,lean_dec_ref_cold,56,other_or_unknown_instruction,26170626
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,67,other_or_unknown_instruction,55981543
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,165,other_or_unknown_instruction,58285998
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,8,other_or_unknown_instruction,88968737
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,257,other_or_unknown_instruction,57121019
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,97,other_or_unknown_instruction,26166658
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,248,other_or_unknown_instruction,77873771
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,49,other_or_unknown_instruction,63559283
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,0,other_or_unknown_instruction,122875206
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,237,other_or_unknown_instruction,63713286
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,14,outer_atomic_RC_update,105237354
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,160,other_or_unknown_instruction,25363631
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,207,inner_atomic_RC_update,58328751
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,228,other_or_unknown_instruction,58096215
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,42,other_or_unknown_instruction,89920433
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,53,other_or_unknown_instruction,89766459
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,58,other_or_unknown_instruction,57321918
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,71,other_or_unknown_instruction,58199713
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,16,other_or_unknown_instruction,90441977
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,23,other_or_unknown_instruction,57033692
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,67,other_or_unknown_instruction,25236873
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,228,other_or_unknown_instruction,49307296
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,63,other_or_unknown_instruction,83776603
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean::environment::find(lean::name const&) const,70,receiver_atomic_RC_update,64199724
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,82,other_or_unknown_instruction,117918101
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,131,other_or_unknown_instruction,32148998
+full-record-P8-r1,ordinary_kernel_anchored,lean::environment::find(lean::name const&) const,42,other_or_unknown_instruction,52596379
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,257,other_or_unknown_instruction,57703029
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,132,other_or_unknown_instruction,32163274
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,137,other_or_unknown_instruction,25641147
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_dec_ref_cold,179,other_or_unknown_instruction,32121708
+full-record-P8-r1,ordinary_worker_kernel_unanchored,lean_environment_find,196,other_or_unknown_instruction,26117893
+full-record-P8-r1,ordinary_kernel_anchored,lean_environment_find,147,other_or_unknown_instruction,31014397

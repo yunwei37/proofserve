@@ -1,0 +1,82 @@
+
+/workspaces/.agent-state/gpu-smt-captures/parallel-stream-attribution-20261102-v2/parallel-stream:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000004c1c900 <lean_dec_ref_cold>:
+ 4c1c900:	mov    (%rdi),%eax
+ 4c1c902:	cmp    $0x1,%eax
+ 4c1c905:	je     4c1c914 <lean_dec_ref_cold+0x14>
+ 4c1c907:	cmp    $0xa0000001,%eax
+ 4c1c90c:	jb     4c1c913 <lean_dec_ref_cold+0x13>
+ 4c1c90e:	lock incl (%rdi)
+ 4c1c911:	je     4c1c914 <lean_dec_ref_cold+0x14>
+ 4c1c913:	ret
+ 4c1c914:	push   %r14
+ 4c1c916:	push   %rbx
+ 4c1c917:	push   %rax
+ 4c1c918:	xor    %ebx,%ebx
+ 4c1c91a:	movabs $0xffffffffffff,%r14
+ 4c1c924:	data16 data16 cs nopw 0x0(%rax,%rax,1)
+ 4c1c930:	mov    0x4(%rdi),%esi
+ 4c1c933:	mov    %esi,%eax
+ 4c1c935:	shr    $0x1a,%eax
+ 4c1c938:	cmp    $0x3c,%eax
+ 4c1c93b:	ja     4c1c9b8 <lean_dec_ref_cold+0xb8>
+ 4c1c93d:	shr    $0xd,%esi
+ 4c1c940:	and    $0x7f8,%esi
+ 4c1c946:	je     4c1c9a0 <lean_dec_ref_cold+0xa0>
+ 4c1c948:	xor    %eax,%eax
+ 4c1c94a:	jmp    4c1c95d <lean_dec_ref_cold+0x5d>
+ 4c1c94c:	nopl   0x0(%rax)
+ 4c1c950:	dec    %edx
+ 4c1c952:	mov    %edx,(%rcx)
+ 4c1c954:	add    $0x8,%rax
+ 4c1c958:	cmp    %rax,%rsi
+ 4c1c95b:	je     4c1c9a0 <lean_dec_ref_cold+0xa0>
+ 4c1c95d:	mov    0x8(%rdi,%rax,1),%rcx
+ 4c1c962:	test   $0x1,%cl
+ 4c1c965:	jne    4c1c954 <lean_dec_ref_cold+0x54>
+ 4c1c967:	mov    (%rcx),%edx
+ 4c1c969:	cmp    $0x2,%edx
+ 4c1c96c:	jge    4c1c950 <lean_dec_ref_cold+0x50>
+ 4c1c96e:	cmp    $0x1,%edx
+ 4c1c971:	jne    4c1c986 <lean_dec_ref_cold+0x86>
+ 4c1c973:	movzwl 0x6(%rcx),%edx
+ 4c1c977:	shl    $0x30,%rdx
+ 4c1c97b:	or     %rbx,%rdx
+ 4c1c97e:	mov    %rdx,(%rcx)
+ 4c1c981:	mov    %rcx,%rbx
+ 4c1c984:	jmp    4c1c954 <lean_dec_ref_cold+0x54>
+ 4c1c986:	cmp    $0xa0000001,%edx
+ 4c1c98c:	jb     4c1c954 <lean_dec_ref_cold+0x54>
+ 4c1c98e:	lock incl (%rcx)
+ 4c1c991:	jne    4c1c954 <lean_dec_ref_cold+0x54>
+ 4c1c993:	jmp    4c1c973 <lean_dec_ref_cold+0x73>
+ 4c1c995:	data16 cs nopw 0x0(%rax,%rax,1)
+ 4c1c9a0:	call   4c6cb00 <mi_free>
+ 4c1c9a5:	mov    %rbx,%rdi
+ 4c1c9a8:	test   %rdi,%rdi
+ 4c1c9ab:	je     4c1c9cb <lean_dec_ref_cold+0xcb>
+ 4c1c9ad:	mov    (%rdi),%rbx
+ 4c1c9b0:	and    %r14,%rbx
+ 4c1c9b3:	jmp    4c1c930 <lean_dec_ref_cold+0x30>
+ 4c1c9b8:	shr    $0x18,%esi
+ 4c1c9bb:	mov    %rbx,%rdx
+ 4c1c9be:	call   4c25be0 <_ZN4leanL19lean_del_core_otherEP11lean_objecthS1_>
+ 4c1c9c3:	mov    %rax,%rdi
+ 4c1c9c6:	test   %rdi,%rdi
+ 4c1c9c9:	jne    4c1c9ad <lean_dec_ref_cold+0xad>
+ 4c1c9cb:	add    $0x8,%rsp
+ 4c1c9cf:	pop    %rbx
+ 4c1c9d0:	pop    %r14
+ 4c1c9d2:	ret
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section __lcxx_override:
+
+Disassembly of section .plt:
