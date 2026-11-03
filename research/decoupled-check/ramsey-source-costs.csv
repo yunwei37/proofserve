@@ -9973,6 +9973,7 @@ Mathlib.AlgebraicGeometry.Morphisms.WeaklyEtale,False,1.41543,1.2254810146987438
 Mathlib.AlgebraicGeometry.Sites.Etale,False,2.198211,2.1403580708429217,build-07035,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101,True
 OAI.Combinatorics.Ramsey.CycleClique.Construction.TerminalArithmetic,True,4.418598,3.7348828352987766,source-09972,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102,False
 OAI.Combinatorics.Ramsey.CycleClique.Construction.Definitions,True,1.875189,1.7660902589559555,source-09973,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102,False
+OAI.Combinatorics.Ramsey.CycleClique.Construction.Patterns,True,2.708142,2.090675573796034,source-09974,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102,False
 Mathlib.Geometry.Euclidean.Angle.Oriented.Rotation,False,6.573954,3.8898425390943885,build-09235,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101,True
 Mathlib.LinearAlgebra.Matrix.Stochastic,False,2.717138,1.577430235221982,build-07754,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101,True
 Mathlib.LinearAlgebra.Matrix.Swap,False,1.497858,1.2263490334153175,build-09561,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101,True
