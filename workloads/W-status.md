@@ -1,5 +1,14 @@
 # W current state
 
+## W115: source40 returned; Ground preparation active
+Packet compile_ok24.167262CPU/16.947552elapsed seconds17:50:37UTC;
+published9bc03030, exact source/native retirement/actual cgroup removal checked.
+40/42costs,20/21cells,163057covered;40modules incomplete.
+Missing-draw scenario278.11–279.06CPUh is not a95%CI. Covered20-cell
+nominal interval94.15–462.04CPUh(df2.609), excludes missing40/calibration.
+Fixed two precision cells now80.0456%of covered variance; panels not launched.
+Ground E29873/birth1096083 actually launched17:50:41UTC; master8141 retained.
+
 ## W114: source39 returned; Packet preparation follows
 Allocated returned17:07:49UTC:86.977989native CPU/79.405758elapsed seconds,
 source exact, native retired, actual cgroup removed, no memory events.

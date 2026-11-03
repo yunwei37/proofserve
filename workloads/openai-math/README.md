@@ -19,40 +19,39 @@ licenses. Every manifest dependency revision is in static-4eaee875/dependencies.
 
 ## Current no-M source-cost evidence (2026-11-03)
 
-[Source39](final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source39-AllocatedForecastPrimitiveCapBound/)
-has39/42 completed original costs and19/21 complete strata, representing
-161034/163097modules;2063(1.2649%) remain in incomplete cells.
-AllocatedForecastPrimitiveCapBound returned86.977989native CPU/79.405758elapsed
-seconds at2026-11-03T17:07UTC, no-M/P0–7/shared-lock/authored-heartbeat/
-three-output-facet point. Source bytes, native retirement and actual cgroup
-removal checked; no memory event. Prerequisite E-core work has no sample weight.
+[Source40](final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source40-PacketLocality/) has40/42 completed original costs and20/21 complete
+strata, covering163057/163097modules.40modules(0.024525%) remain in the
+incomplete cell. Allocated returned86.977989CPU/79.405758elapsed s; Packet
+returned24.167262CPU/16.947552elapsed s. Both use no-M,j8,P0–7/shared lock,
+authored/native heartbeats and three output facets. Retirement and actual
+cgroup removal checked. E-core prerequisites have no population sample weight.
 
-The full-frame observed-class min/max missing-draw scenario is
-**271.65–296.71construction CPUh**, with18.37–26.28serial and24.99–35.77parallel
-transferred checker CPUh. These are **assumption scenarios, not95%CIs or
-actual full-library costs**. [Current calibration and staircase](final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source39-AllocatedForecastPrimitiveCapBound/latest-staircase/)
-uses segmented Falconer6.3124%/Mathlib8.9514% serial CPU ratios and explicit
-computational/parallel transfers. Parallel wall gains do not imply lower CPUh.
-Source CPU excludes separate C compilation/linking, package acquisition and Lake.
+The observed-class missing-draw scenario is **278.11–279.06construction CPUh**,
+with18.78–24.70serial and25.55–33.61parallel transferred checker CPUh.
+These are **assumption scenarios, not95%CIs or actual full-library costs**.
+[Staircase/calibration](final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source40-PacketLocality/latest-staircase/) uses segmented
+Falconer6.3124%/Mathlib8.9514% serial CPU ratios plus explicitly scoped
+computational/parallel transfers. Parallel wall speed does not imply lower CPUh.
+Source CPU excludes separate C compilation/linking, acquisition and Lake.
 
-The narrowed missing-cost envelope is not statistical precision. The previously
-covered19-cell nominal interval remains43.99–449.74CPUh(df2.13), not a full-frame
-interval. The added draw belongs to an incomplete cell. Missingness/calibration
-and n=2/heavy-tail limitations remain. [Sampling uncertainty audit](final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/sampling-uncertainty.md)
-identified two covered cells contributing90.02% of estimated variance.
-[Two independent precision panels](precision-noM-two-strata-20261103/) are fixed
-and prepared, not yet launched; all42 original responses precede them.
+[Covered20-cell sampling uncertainty](final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source40-PacketLocality/sampling-uncertainty.md) is
+point278.091768CPUh, nominal95% interval**94.15–462.04CPUh**,df2.609.
+This excludes40incomplete-cell modules and calibration/runtime uncertainty;
+n=2/heavy tails make it fragile. It is not a full-library confidence interval.
+The fixed two selected precision cells now contribute80.0456% of covered
+estimated variance, instead of the old19-cell90.02%.
+[Two independent panels](precision-noM-two-strata-20261103/) remain fixed at
+six draws each and have not launched. Original42 responses come first.
+Computation-proxy source share is20.6217–20.6923% in the missing-cost scenarios;
+static markers are not dynamic attribution.
 
-Computation-proxy source share is19.3951–21.1838% in the missing-cost scenarios.
-Static markers are not dynamic attribution. Earlier source35–38 snapshots,
-the31target-only trusted-import replays and half-cost model quotas remain,
-without relabeling old data or treating n2 bootstrap as population coverage.
-
-Three originals remain: PacketLocality,GroundMainFinalStructuralRefinementOutputs,
-PreparedModularCanonicalDetectorPositive. The finite master has actually moved
-to Packet prerequisites. [Wstatus](../W-status.md) records owner identities;
-verify actual PID/birth/terminal, and do not revive historical controllers.
-All original/failed/interrupted and clipped-window records are retained.
+GroundMainFinalStructuralRefinementOutputs and
+PreparedModularCanonicalDetectorPositive remain. Ground prerequisites were
+actually launched next; [Wstatus](../W-status.md) gives owner provenance.
+Verify PID/birth/terminal rather than historical running labels. All prior
+costs, failures, clipped windows and host-reboot interruptions remain.
+Earlier source snapshots,31target-only trusted-import replays and half-cost
+model quotas are separate evidence; n2 bootstrap is not a populationCI.
 
 ## Historical native evidence (separate resource conventions)
 

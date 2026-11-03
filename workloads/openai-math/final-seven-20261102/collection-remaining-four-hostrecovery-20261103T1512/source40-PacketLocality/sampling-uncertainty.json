@@ -1,0 +1,13 @@
+{
+  "scope": "covered20_only_NOT_full_library",
+  "estimate_cpu_h": 278.09176795944444,
+  "lower_cpu_h": 94.14804014444879,
+  "upper_cpu_h": 462.03549577444005,
+  "estimated_variance_cpu_s2": 36409250823.301125,
+  "satterthwaite_dof": 2.6085790546092245,
+  "confidence": 0.95,
+  "selected_two_variance_fraction": 0.8004559548361081,
+  "covered_modules": 163057,
+  "missing_modules": 40,
+  "full_library_CI": false
+}
