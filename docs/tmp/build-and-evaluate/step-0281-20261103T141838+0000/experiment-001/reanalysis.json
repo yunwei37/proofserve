@@ -1,0 +1,106 @@
+{
+  "root_analysis_seconds": 4.75269334949553,
+  "root_analysis_maxrss_kib": 139796,
+  "source_equal_root0280": [
+    "source/ParallelCore.lean",
+    "source/ParallelStream.lean",
+    "source/persistence.c",
+    "source/checked_commit.c",
+    "source/placement_profile.c",
+    "native.py",
+    "attribution.py"
+  ],
+  "stock_native_controls": 3,
+  "real_root_negative_controls": 2,
+  "retired_actual_PID_births": 20,
+  "negative_prefix_modules": 4448,
+  "prefix_equal_ordered_reference": true,
+  "all_five_cgroups_absent": true,
+  "no_OOM_or_sample_stop": true,
+  "resources": [
+    {
+      "key": "aux-stock-default-m0-P8",
+      "returncode": 0,
+      "wall_s": 65.42305364459753,
+      "user_s": 59.52255,
+      "system_s": 5.462938,
+      "CPU_s": 64.985488,
+      "CPU_over_wall": 0.9933117514358999,
+      "HWM_KiB": 3067856,
+      "sampled_RSS_B": 3119648768,
+      "charged_peak_B": 339066880
+    },
+    {
+      "key": "aux-stock-fresh-m0-P1",
+      "returncode": 0,
+      "wall_s": 534.6983972489834,
+      "user_s": 528.747763,
+      "system_s": 5.783808,
+      "CPU_s": 534.531571,
+      "CPU_over_wall": 0.9996879993472175,
+      "HWM_KiB": 3503200,
+      "sampled_RSS_B": 3578155008,
+      "charged_peak_B": 609669120
+    },
+    {
+      "key": "aux-stock-fresh-m0-P8",
+      "returncode": 0,
+      "wall_s": 580.0903478348628,
+      "user_s": 573.117667,
+      "system_s": 6.7881789999999995,
+      "CPU_s": 579.905846,
+      "CPU_over_wall": 0.9996819429325942,
+      "HWM_KiB": 3516404,
+      "sampled_RSS_B": 3591274496,
+      "charged_peak_B": 621260800
+    },
+    {
+      "key": "aux-bad-root-m0-P8",
+      "returncode": 1,
+      "wall_s": 315.6381647530943,
+      "user_s": 705.860451,
+      "system_s": 7.415731,
+      "CPU_s": 713.2761820000001,
+      "CPU_over_wall": 2.259790676954275,
+      "HWM_KiB": 3427444,
+      "sampled_RSS_B": 3457028096,
+      "charged_peak_B": 1235685376
+    },
+    {
+      "key": "aux-bad-root-m1-P8",
+      "returncode": 1,
+      "wall_s": 298.07784159854054,
+      "user_s": 608.55151,
+      "system_s": 7.4918949999999995,
+      "CPU_s": 616.043405,
+      "CPU_over_wall": 2.0667198933549185,
+      "HWM_KiB": 3445104,
+      "sampled_RSS_B": 3528650752,
+      "charged_peak_B": 1060925440
+    }
+  ],
+  "negatives": [
+    {
+      "key": "aux-bad-root-m0-P8",
+      "prefix_modules": 4448,
+      "prefix_checks": 234438,
+      "prefix_allocation_units": 2821724037,
+      "root": "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41",
+      "error": "kernel_reject:OAI.SepticProfile.ExteriorCertificates.C41.fourth226:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+      "root_accept": false,
+      "complete_event": false
+    },
+    {
+      "key": "aux-bad-root-m1-P8",
+      "prefix_modules": 4448,
+      "prefix_checks": 234438,
+      "prefix_allocation_units": 2821724037,
+      "root": "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41",
+      "error": "kernel_reject:OAI.SepticProfile.ExteriorCertificates.C41.fourth226:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+      "root_accept": false,
+      "complete_event": false
+    }
+  ],
+  "archive_bytes": 4739177,
+  "native_reruns": 0
+}

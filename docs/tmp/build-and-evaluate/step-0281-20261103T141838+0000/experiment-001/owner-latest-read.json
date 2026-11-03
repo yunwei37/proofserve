@@ -1,0 +1,47 @@
+{
+  "UTC": "2026-11-03T14:19:53.391854+00:00",
+  "526699": {
+    "expected_birth": "772878773",
+    "actual_birth": "772878773",
+    "state": "S",
+    "same_birth": true
+  },
+  "561457": {
+    "expected_birth": "773951593",
+    "actual_birth": "773951593",
+    "state": "S",
+    "same_birth": true
+  },
+  "W_terminal_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-remaining-six-20261103T0325/preparation-terminal.json",
+  "W_terminal": {
+    "utc": "2026-11-03T13:52:33.105223+00:00",
+    "operation": "untimed_dependency_preparation",
+    "new_rows": 86,
+    "stop": "unfinished dependency; retain diagnostics and review allowance before continuing",
+    "original_dependency_blockers": {
+      "OAI.Combinatorics.Progressions.Sampling.AllocatedForecastPrimitiveCapBound": [
+        "OAI.Combinatorics.Progressions.Sampling.AllocatedRecoveredForecastDecay"
+      ]
+    },
+    "all_original_deps_ready": false,
+    "no_population_cost_measurements": true,
+    "affinity": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "preparation_final": false,
+    "window_index": 15
+  },
+  "latest_O": "9aa1cf86 SubexponentialSAT source: build 12944/14721; kernel 0/3977, 0.0000 CPUh",
+  "disk": {
+    "total": 134951424000,
+    "used": 96346984448,
+    "free": 38587662336
+  }
+}

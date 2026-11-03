@@ -1,11 +1,11 @@
 # Research status
 
-Snapshot2026-11-03UTC, root0280. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-03UTC, root0281. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
 
-Root0280 independently completes qualification of the primary32 through root0279’s26 plus remaining6stat natives, and separately qualifies the complete2native aligned-memory pair. [Report](tmp/build-and-evaluate/step-0280-20261103T131855+0000/step-report.md): 8P lockloads−98.06%/modifiedlineforwarding−94.42%/RFO−72.28%,cycles−14.42%,instructions+1.172%,L3miss+0.762%;56readings100%running. Whole-command user counters/one stat per setting, not RCstall seconds/CI. Memory finalAnonymous+6.98MiB/RSS+7.35MiB,nonmonotone prefix deltas; not leaked-object bytes/full-library fit. Stock/bad-root controls require their actual separate latest qualification. Prior0279storage15.172GiB was completed, never recounted.
+Root0281 independently qualifies [three official checker scopes and two real-root rejects](tmp/build-and-evaluate/step-0281-20261103T141838+0000/step-report.md). Stock default65.423s checks one root with trusted imports; fresh1/8 take534.698/580.090s, approximately1CPU occupancy and sequential replay of final imported map, not equivalent to4449 per-module ledger. No stock speedup/isolated thread effect. Both flags reject the same corrupted real-root theorem after identical4448accepted prefix, native rc1/noOOM or resource stop. Finite correctness controls, not arbitrary unsafe-FFI safety; native matched module-task baseline remains missing. Prior0279/0280 primary, memory and storage conclusions retain their denominators.
 
 ## Scientific contract and operating scope
 
@@ -95,7 +95,7 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0280:27pages/240689B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0281:27pages/242735B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 

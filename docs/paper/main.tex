@@ -1770,6 +1770,33 @@ This one completed pair neither establishes a full-library memory bound nor
 an unbounded resident service, and cannot project the incomplete compiled
 AI-library subset onto the full source population.
 
+
+\paragraph{Official checker controls retain a different verification scope.}
+\measured{\expref{0281-20261103T141838+0000}{0281}; three installed-SDK controls and two real-root rejection controls.}
+With the same eight-P-core mask, the installed Lean 4.34.1 checker takes
+65.423 seconds in its default one-root mode.
+Its \texttt{--fresh} mode takes 534.698 and 580.090 seconds with one and eight
+configured threads, respectively; each run's total CPU/wall ratio is about one.
+The matched source imports the dependencies and checks the leaf in default
+mode, whereas \texttt{--fresh} replays the final imported constant map into
+an empty kernel environment, sequentially.
+The slower eight-thread observation is retained, but one observation per setting
+does not isolate a thread-count effect.
+These controls lack the stream's per-module check/allocation ledger and use
+the SDK's duplicate policy. Dividing their clocks by the stream time would
+not establish a matched-workload speedup.
+The native module-task comparison with an equivalent verification ledger
+therefore remains \missing{matched native module-task baseline}.
+
+Two further eight-worker runs corrupt only the first real root theorem's
+proof in memory, replacing it by a loose bound variable.
+Both persistence settings accept exactly the same ordered 4,448-module prefix
+and reject the root with the same original-kernel diagnostic for theorem
+\texttt{C41.fourth226}; neither emits a root acceptance or completion event.
+The two native exit codes are 1, with no resource stop or OOM.
+These finite negative controls extend the earlier small controls to the real
+prefix; they do not prove unsafe coordinator/FFI safety for arbitrary inputs.
+
 \paragraph{Pooled certificates pass a broader native qualification.}
 \measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}
 A separate native control selects all ten measured Envelope helpers whose

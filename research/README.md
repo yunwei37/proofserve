@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0280. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0281. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -113,3 +113,6 @@ Physical/source37 [root0274](../docs/tmp/build-and-evaluate/step-0274-20261103T0
 
 
 Tracked/source38 [root0276](../docs/tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md), [Wresult](../workloads/openai-math/final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/README.md):38/42originals/19complete strata/161034domain; source247.5–270.3CPUh/mixedtransfer16.8–24.0CPUh assumptions,notCI/wholelibrarymeasurement.4source/11paired/13dynamicmissingseparate;root0275Ramseysampleunchanged.
+
+
+Official checker/rejection scope [root0281](../docs/tmp/build-and-evaluate/step-0281-20261103T141838+0000/step-report.md): three original-SDK procedures are complete but lack matched stream work ledgers; two real corrupted-root controls accept the same4448prefix then original-kernel reject. No cross-scope speedup or universal safety claim.
