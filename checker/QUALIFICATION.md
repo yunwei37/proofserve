@@ -31,3 +31,16 @@ No claim is made that reviewing one symbol proves ABI compatibility.
 These controls do not replace the release performance matrix, complete Mathlib
 scale test, real interruption experiment, external-project acceptance, or CI
 closure. Segmentation still retains a cumulative checked prefix on restoration.
+
+## Ablation repair before the final matrix
+
+The first frozen evaluation, c8e7c615, completed ordinary native points but its
+no-split switch was found to disable parallelism in ordinary-only modules too.
+That is a protocol defect for the requested ablation. The collector is retired
+at a native task boundary, with all original records preserved. Its data are
+not used to fill the repaired version's final matrix.
+
+The repaired branch computes the complex prefix first. Disabling split fallback
+replays the whole module only when that prefix is nonempty. Ordinary-only
+modules continue through the same dependency-wave path as the default.
+Both release ablations are included in the portable correctness contract.

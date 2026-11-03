@@ -1,0 +1,9 @@
+{
+  "commit": "c8e7c615413819bee0931dde09450b8222c6d62a",
+  "completed_points": 16,
+  "reason": "no-split ablation also serialized ordinary-only modules",
+  "native_interrupted": false,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/checker-release-c8e7c615",
+  "final_matrix_eligible": false,
+  "old_rows_preserved": true
+}

@@ -1,0 +1,93 @@
+"""Reduce a completed frozen matrix; failures remain visible,never imputed."""
+import json,csv,re,statistics,sys
+from pathlib import Path
+def emit(path,rows):
+ if not rows:return
+ keys=list(dict.fromkeys(k for r in rows for k in r))
+ with path.open('w',newline='')as f:
+  w=csv.DictWriter(f,fieldnames=keys);w.writeheader();w.writerows(rows)
+def main():
+ raw=Path(sys.argv[1]);out=Path(sys.argv[2]);out.mkdir(parents=True,exist_ok=True)
+ terminal=json.loads((raw/'terminal.json').read_text());assert terminal['complete']
+ cfg=json.loads((raw/'config.json').read_text());rows=json.loads((raw/'completed.json').read_text())
+ for r in rows:
+  assert r['commit']==cfg['commit']
+  n=json.loads((raw/'runs'/r['key']/'result.json').read_text())
+  assert n['native_retired']and n['cgroup_retired']
+  r['wait4_cpu_s']=r['cpu_s']
+  # Abruptly killed parents cannot reap descendant CPU. The closed native cgroup
+  # provides the same whole-tree CPU metric for successful and interrupted arms.
+  assert 'cgroup_usage_s'in n
+  r['cpu_s']=n['cgroup_usage_s'];r['cpu_source']='closed native cgroup'
+  r['cpu_user_s']=n.get('cgroup_user_s');r['cpu_system_s']=n.get('cgroup_system_s')
+ emit(out/'fixed-cells.csv',rows)
+ primary=[r for r in rows if re.fullmatch(r'(math|grid|barrier)-P[1248]-r[123]',r['key'])]
+ assert len(primary)==36
+ identities={};accepts={}
+ for r in primary+[r for r in rows if '-no-persistence-'in r['key']or'-no-split-fallback-'in r['key']]:
+  assert r['returncode']==0
+  receipt=json.loads((raw/(r['key']+'-receipt.json')).read_text())
+  identity=json.loads((raw/r['key']/'identity.json').read_text())
+  sig=dict(inputs=identity['inputs'],manifest=identity['manifest'],roots=identity['roots'])
+  if r['dataset']in identities:
+   assert identities[r['dataset']]==sig,'input artifact identity changed'
+   assert accepts[r['dataset']]==receipt['accepted']
+  else:identities[r['dataset']]=sig;accepts[r['dataset']]=receipt['accepted']
+ summary=[]
+ for dataset in ['math','grid','barrier']:
+  for arm in ['native','no-persistence','no-split-fallback']:
+   if arm!='native'and dataset=='barrier':continue
+   ns=[1,2,4,8]if arm=='native'else[8]
+   for n in ns:
+    prefix=dataset+'-P'+str(n)+('-'+arm if arm!='native'else'')+'-r'
+    g=[r for r in rows if r['key'].startswith(prefix)]
+    assert len(g)==3 and all(r['returncode']==0 for r in g)
+    s=dict(dataset=dataset,arm=arm,workers=n,repeats=3,modules=g[0]['modules'],commit=cfg['commit'])
+    for metric in ['wall_s','cpu_s','peak_rss_kib','rss_sample_bytes']:
+     z=[r[metric]for r in g];s.update({metric+'_median':statistics.median(z),metric+'_min':min(z),metric+'_max':max(z)})
+    summary.append(s)
+ for s in summary:
+  baseline=next(x for x in summary if x['dataset']==s['dataset']and x['arm']=='native'and x['workers']==1)
+  s['native_1worker_wall_ratio']=baseline['wall_s_median']/s['wall_s_median']
+ emit(out/'fixed-native-summary.csv',summary)
+ official=[]
+ for dataset in ['math','grid','barrier']:
+  for mode in ['default','fresh']:
+   g=[r for r in rows if r['key'].startswith(dataset+'-official-'+mode+'-')]
+   assert len(g)==3
+   s=dict(dataset=dataset,mode=mode,complete_runs=sum(r['returncode']==0 for r in g),planned_runs=3,
+     scope='leaf with trusted imports'if mode=='default'else'final imported map,not per-input proof ledger',
+     native_speedup='not computed: different proof ledger')
+   if len(g)==s['complete_runs']:
+    for metric in ['wall_s','cpu_s','rss_sample_bytes']:
+     z=[r[metric]for r in g];s.update({metric+'_median':statistics.median(z),metric+'_min':min(z),metric+'_max':max(z)})
+   official.append(s)
+ emit(out/'fixed-official-summary.csv',official)
+ bad=[r for r in rows if r['arm']=='bad-control'];assert len(bad)==3 and all(r['returncode']!=0 for r in bad)
+ kill=next(r for r in rows if r['key']=='math-interrupt');resume=next(r for r in rows if r['key']=='math-resume')
+ assert kill['manual_interruption']and resume['returncode']==0
+ j=json.loads((raw/'math-resume-receipt.json').read_text());assert j['accepted']==accepts['math']
+ base=next(s for s in summary if s['dataset']=='math'and s['workers']==4 and s['arm']=='native')
+ interruption=dict(accepted_equal=True,wall_s=kill['wall_s']+resume['wall_s'],cpu_s=kill['cpu_s']+resume['cpu_s'],
+  uninterrupted_wall_median_s=base['wall_s_median'],uninterrupted_cpu_median_s=base['cpu_s_median'])
+ interruption['wall_overhead_fraction']=interruption['wall_s']/base['wall_s_median']-1
+ (out/'fixed-resume.json').write_text(json.dumps(interruption,indent=2))
+ full=[dict(r)for r in rows if r['arm']=='full-math']
+ for r in full:
+  r['requested_source_modules']=len(cfg['full_math_modules'])
+  states=raw/('full-math-quota'+('100'if '100'in r['key']else'500'))
+  records=[json.loads(f.read_text())for f in states.glob('segment-*.json')]
+  r['completed_segments']=sum(j.get('exit')==0 for j in records)
+  r['completed_prefix_modules']=sum(sum(e.get('event')=='accept'for e in j.get('events',[]))for j in records if j.get('exit')==0)
+  if r['returncode']==0:
+   j=json.loads((raw/(r['key']+'-receipt.json')).read_text())
+   assert set(cfg['full_math_modules'])<=set(j['accepted'])
+   r['resolved_workers']=j['workers']
+  else:r['resolved_workers']=None
+ emit(out/'fixed-full-mathlib.csv',full)
+ (out/'fixed-acceptance.json').write_text(json.dumps(dict(complete_native_points=48,
+  within_dataset_module_sets_equal=True,within_dataset_artifact_identities_equal=True,
+  bad_original_kernel_rejections=3,actual_interruption_resume_equal=True,
+  official_whole_ledger_equivalence='not established',scope_counts={d:len(v)for d,v in accepts.items()}),indent=2))
+ print(json.dumps(dict(native=summary,official=official,resume=interruption,full=full),indent=2))
+if __name__=='__main__':main()

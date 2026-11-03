@@ -20,6 +20,9 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
  fallback=invoke([project,'--official','--checkpoint-dir',d/'official'])
  assert fallback['execution_path']=='official-leanchecker' and fallback['parallel']is False
  assert set(fallback['accepted_roots'])=={'Base','Fixture'} and fallback['accepted']is None
+ for flag in ['--no-persistence','--no-split-fallback']:
+  ablated=invoke([project,'--workers','2','--checkpoint-dir',d/flag[2:],flag])
+  assert ablated['accepted']==full['accepted'] and ablated['axioms']==full['axioms']
  for n in [2,4]:
   other=invoke([project,'--workers',n,'--checkpoint-dir',d/('workers'+str(n))])
   assert other['accepted']==full['accepted'] and other['axioms']==full['axioms']

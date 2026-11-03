@@ -171,7 +171,11 @@ private def batch (base : Kernel.Environment) (plan : Plan) (wave : Array Nat)
     All remaining acyclic ordinary declarations use original-kernel workers. -/
 def parallelReplay (data : ModuleData) (map : Std.HashMap Name ConstantInfo)
     (base : Kernel.Environment) (workers : Nat) : IO Kernel.Environment := do
-  let serialPart := if (← IO.getEnv "PROOFSERVE_SPLIT") == some "0" then map else complexPrefix map
+  let split := (← IO.getEnv "PROOFSERVE_SPLIT") != some "0"
+  let serialPart := complexPrefix map
+  -- The ablation restores whole-module fallback only for a complex module.
+  -- Ordinary-only modules retain exactly the normal dependency-wave path.
+  if !split && !serialPart.isEmpty then return ← base.replay map
   let remaining := map.filter fun n _ => !serialPart.contains n
   let checked ← if serialPart.isEmpty then pure base else base.replay serialPart
   let some plan := makePlan data remaining | return ← checked.replay remaining

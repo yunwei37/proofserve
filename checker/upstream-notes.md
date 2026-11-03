@@ -18,7 +18,7 @@ One Barrier observation took 534.698 and 580.090 seconds, respectively, with
 about one CPU core active. These single observations do not establish an
 intrinsic negative scaling effect. Default leanchecker checks selected leaves
 against trusted imports; its 65.423 seconds cannot be divided into the time of
-a 4,449-module stream with per-input proof checks.
+a 4,449-module stream with module-wise context checks.
 
 ## Marking reconstructed shared frontiers
 

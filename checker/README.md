@@ -80,7 +80,7 @@ original-kernel checks. Its own token layout and the upstream private
 lean_environment_add symbol require a matched SDK build. Persistent marking
 happens after all prior workers have joined and before new workers begin.
 
-Checkpoint files must be local trusted outputs, protected from modification by
+Project setup through Lake and the selected toolchain are trusted local code.\nThis tool does not sandbox project configuration.\n\nCheckpoint files must be local trusted outputs, protected from modification by
 an adversary. Their Lean-serialized metadata uses unsafeCast. Hashes detect
 ordinary stale artifacts, not malicious collisions or tampering.
 
