@@ -3,7 +3,7 @@ import json,csv,collections,statistics,math,re
 def csvout(path,rows):
  if not rows:return
  with path.open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+  w=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator=chr(10));w.writeheader();w.writerows(rows)
 def read_events(path):
  return [json.loads(s) for s in path.read_text().splitlines() if s.startswith('{')]
 def fit(rows):
@@ -17,7 +17,7 @@ def fit(rows):
   caveat='effective fit includes algorithm/observer overhead; not an inherent serial fraction; single-run points')
 def analyze(point,out):
  out.mkdir(exist_ok=True,parents=True)
- full=[];cores=[];workers=[];phases=[];module_work={}
+ full=[];cores=[];workers=[];phases=[];module_work={};migration_summaries=[]
  for phase in ['p12','p48','types','observer','placement','placement-profile']:
   f=point/(phase+'-results.json')
   if not f.exists():continue
@@ -29,7 +29,7 @@ def analyze(point,out):
    requested=int(re.match(r'^[PEM](\d+)',name).group(1))
    assert not c['worker_pins'] or len(c['worker_pins'])==requested
    row=dict(name=name,workers=requested,profile=c['profile_enabled'],worker_pins=c['worker_pins'],
-    coordinator_cpu=c['coordinator_cpu'],wall_s=c['wall_s'],CPU_s=c['user_s']+c['system_s'],
+    coordinator_cpu=c['coordinator_cpu'] if c['worker_pins'] else None,wall_s=c['wall_s'],CPU_s=c['user_s']+c['system_s'],
     peak_RSS_MiB=c['peak_rss_kib']/1024,accepted_modules=len(c['accepted_IDs']))
    full.append(row)
    if not c['profile_enabled']:continue
@@ -59,17 +59,33 @@ def analyze(point,out):
     for w in m['metrics']['workers']:
      for key in ['checks','cpu_ns','raw_HB','narrow_checks','narrow_HB','within_check_migrations']:
       core[int(w['cpu'])][key]+=int(w[key]);th[(w['tid'],w['cpu'])][key]+=int(w[key])
+   # Native output repeats the per-thread/module endpoint count on every
+   # core row for that thread. Deduplicate before summing unpinned changes.
+   endpoint_changes=0
+   for m in mods:
+    copied=collections.defaultdict(list)
+    for w in m['metrics']['workers']:copied[w['tid']].append(w['within_check_migrations'])
+    for values in copied.values():
+     assert len(set(values))==1
+     endpoint_changes+=values[0]
+   migration_summaries.append(dict(name=name,ordinary_checks=sum(m['metrics']['checks'] for m in mods),
+    endpoint_changed_checks=endpoint_changes,worker_TIDs=len({w['tid'] for m in mods for w in m['metrics']['workers']}),
+    scope='one per thread/module; endpoint changes are a lower bound, not all migrations',
+    core_attribution='singleton pin' if c['worker_pins'] else 'check-start CPU only'))
    for cpu,counts in sorted(core.items()):
     seconds=counts['cpu_ns']/1e9
     cores.append(dict(name=name,cpu=cpu,core_type='P' if cpu<8 else 'E',checks=counts['checks'],kernel_CPU_s=seconds,
      raw_HB=counts['raw_HB'],checks_per_active_CPU_s=counts['checks']/seconds if seconds else None,
      HB_per_active_CPU_s=counts['raw_HB']/seconds if seconds else None,
      kernel_core_utilization=seconds/c['wall_s'],narrow_checks=counts['narrow_checks'],
-     narrow_HB=counts['narrow_HB'],within_check_migrations=counts['within_check_migrations']))
+     narrow_HB=counts['narrow_HB'],within_check_migrations=counts['within_check_migrations'] if c['worker_pins'] else None))
    for (tid,cpu),counts in sorted(th.items()):
-    workers.append(dict(name=name,TID=tid,cpu=cpu,core_type='P' if cpu<8 else 'E',**counts))
+    values=dict(counts)
+    if not c['worker_pins']:values['within_check_migrations']=None
+    workers.append(dict(name=name,TID=tid,cpu=cpu,core_type='P' if cpu<8 else 'E',**values))
  csvout(out/'full-cells.csv',full);csvout(out/'phase-ledger.csv',phases)
  csvout(out/'per-core-throughput.csv',cores);csvout(out/'worker-placement.csv',workers)
+ csvout(out/'endpoint-migration-summary.csv',migration_summaries)
  comparisons=[];changed=[]
  if 'P1' in module_work:
   base=module_work['P1']

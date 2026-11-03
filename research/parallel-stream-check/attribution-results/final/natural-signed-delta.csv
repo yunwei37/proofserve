@@ -1,0 +1,8 @@
+baseline,condition,term,delta_s,signed_share_of_net_wall_delta_pct
+P8-unpinnedProfile,M24-unpinnedProfile,read_context_s,4.996426998999997,25.98248292550205
+P8-unpinnedProfile,M24-unpinnedProfile,plan_s,1.1597422799999997,6.03090648459664
+P8-unpinnedProfile,M24-unpinnedProfile,upstream_serial_kernel_s,-1.551044988000001,-8.065763779889378
+P8-unpinnedProfile,M24-unpinnedProfile,serial_duplicate_s,0.02400924,0.12485315375950344
+P8-unpinnedProfile,M24-unpinnedProfile,parallel_kernel_occupancy_s,7.410034586999984,38.533755656320125
+P8-unpinnedProfile,M24-unpinnedProfile,batch_non_kernel_wall_s,3.385942350000022,17.607620268087082
+P8-unpinnedProfile,M24-unpinnedProfile,other_residual_s,3.8048723374383258,19.78614529162391

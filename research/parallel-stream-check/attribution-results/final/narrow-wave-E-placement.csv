@@ -1,0 +1,3 @@
+name,narrow_wave_allocation_units,E_start_core_allocation_units,E_start_share_pct,scope
+M24,628619632,0,0.0,waves <=8 jobs; allocation units not wall time; unpinned start-core attribution
+M24-unpinnedProfile,628619632,312792612,49.75864514520921,waves <=8 jobs; allocation units not wall time; unpinned start-core attribution

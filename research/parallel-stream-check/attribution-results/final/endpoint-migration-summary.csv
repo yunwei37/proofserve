@@ -1,0 +1,9 @@
+name,ordinary_checks,endpoint_changed_checks,worker_TIDs,scope,core_attribution
+P1,237863,0,1,"one per thread/module; endpoint changes are a lower bound, not all migrations",singleton pin
+P2,237863,0,3,"one per thread/module; endpoint changes are a lower bound, not all migrations",singleton pin
+P4,237863,0,6,"one per thread/module; endpoint changes are a lower bound, not all migrations",singleton pin
+P8,237863,0,9,"one per thread/module; endpoint changes are a lower bound, not all migrations",singleton pin
+E16,237863,0,17,"one per thread/module; endpoint changes are a lower bound, not all migrations",singleton pin
+M24,237863,0,25,"one per thread/module; endpoint changes are a lower bound, not all migrations",singleton pin
+P8-unpinnedProfile,237863,596,9,"one per thread/module; endpoint changes are a lower bound, not all migrations",check-start CPU only
+M24-unpinnedProfile,237863,576,26,"one per thread/module; endpoint changes are a lower bound, not all migrations",check-start CPU only
