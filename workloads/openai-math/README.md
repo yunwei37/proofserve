@@ -17,35 +17,45 @@ Lean4.34.1; Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612.
 The root and lean licenses are Apache-2.0; third-party dependencies retain their
 licenses. Every manifest dependency revision is in static-4eaee875/dependencies.csv.
 
-## Current no-M source-cost evidence (2026-11-02)
+## Current no-M source-cost evidence (2026-11-03)
 
-[Source35](noM-next84-source35-KL/) has35/42 completed original costs and17/21
-complete strata,representing144663/163097modules;18434(11.30%) remain in
-incomplete cells. Hodge,Intrinsic,Dihedral returned;84job capture actually
-completed19:44:26UTC. All Wnative/controller/cgroups retired.
-IntegralPairings703.40s under1200s after two600s censors is longer-budget
-recovery,not same-budget improvement. Historical outcomes stay unchanged.
+[Source38](final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/)
+has38/42 completed original costs and19/21 complete strata, representing
+161034/163097modules;2063(1.2649%) remain in incomplete cells.
+NativeCodeAssembly,PhysicalFieldPopulationLimit and TrackedTestBounds have
+actually returned under the same no-M/P0–7/shared-lock/authored-heartbeat/
+three-output-facet convention. Tracked source CPU5.412330s, native elapsed
+5.198824s; retirement and cgroup cleanup checked. Prerequisite E-core work
+is excluded from source cost and receives no sample weight.
 
-Full missing-min/max scenario232.95–395.93construction CPUh;
-15.93–35.16serial/21.66–47.87parallel transferred check CPUh.
-These are **assumption scenarios,not95%CIs or actual full-library costs**.
-The [latest staircase](noM-next84-source35-KL/latest-staircase/) transfers
-complete segmented Falconer6.3124%/Mathlib8.9514% serial CPU ratios and older
-computation/parallel protocols. Wall gains do not reduce CPU resource-hours;
-summed module durations are not dependency-constrained makespan.
+The full-frame observed-class min/max missing-draw scenario is
+**247.55–270.24construction CPUh**, with16.85–23.91serial and22.92–32.54parallel
+transferred checker CPUh. These are **assumption scenarios, not95%CIs or
+actual full-library costs**. [Calibration and staircase](final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/latest-staircase/)
+uses complete segmented Falconer6.3124%/Mathlib8.9514% serial CPU ratios,
+older computational/parallel protocols and explicit fixed-factor transfers.
+Parallel wall gains do not imply lower CPU resource-hours; summed module
+durations are not library makespan. Source CPU excludes separate native C
+compilation/linking, package acquisition and full Lake orchestration.
 
-Computation source share26.37%covered/24.02%class-mean full-frame projection/
-14.53–24.70%missing-draw scenario. Old17.14%used another14cell domain.
-Static markers are proxies,not dynamic attribution. Fresh target-only trusted-
-import replays remain [31pairs](native-replay31/),not full-closure streaming.
-[Half-cost quotas](noM-next84-source35-KL/half-cost-quota/) are model counts;
-n2bootstrap is not a populationCI.
+Computation-proxy source share is21.2946–23.2461% in these missing-cost
+scenarios. Static markers are not dynamic attribution. n=2 per stratum and
+fixed calibration ratios still leave sampling/model uncertainty after all
+originals complete. The scenario endpoints can change when a new original
+changes observed class extrema. [Source35](noM-next84-source35-KL/),
+[source36](final-seven-20261102/source36-NativeCodeAssembly/) and
+[source37](final-seven-20261102/collection-remaining-six-20261103T0325/source37-PhysicalFieldPopulationLimit/)
+remain historical evidence, not discarded or relabeled observations.
+The [31target-only trusted-import replays](native-replay31/) are separate
+from closure streaming. [Half-cost quotas](noM-next84-source35-KL/half-cost-quota/)
+remain model counts; n2 bootstrap is not a populationCI.
 
-[Seven remaining originals](noM-next84-source35-KL/remaining-originals.csv)
-are unmeasured,not failed. NativeCodeAssembly413job plan prepared-only.
-[Cleanup](../cleanup-20261102.md) names reclaimed legacy generated outputs;
-raw evidence and Hodge working data remain. [Wstatus](../W-status.md) owns
-current launch/retirement evidence; historical reports are not resume commands.
+Four originals remain: AllocatedForecastPrimitiveCapBound,PacketLocality,
+GroundMainFinalStructuralRefinementOutputs,PreparedModularCanonicalDetectorPositive.
+The finite continuation has moved to Allocated E-core prerequisites;
+[Wstatus](../W-status.md) gives actual launch provenance. Do not restart
+healthy raw controllers based on a historical paragraph. All native failures,
+clipped-window censors and earlier budget recoveries remain in raw captures.
 
 ## Historical native evidence (separate resource conventions)
 

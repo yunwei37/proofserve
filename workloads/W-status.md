@@ -1,5 +1,20 @@
 # W current state
 
+## W104 current: Tracked recovered,source38; Allocated preparation active
+2026-11-03T06:22:12Z source38 published8421db3. Tracked original
+compile_ok5.412330CPU/5.198824elapsed s,all native/cgroup cleanup confirmed.
+38/42costs,19/21completecells;161034 represented,2063(1.2649%)incomplete.
+Source missing-cost scenario247.5533–270.2389CPUh;serial16.8522–23.9116/
+parallel22.9191–32.5377 transferred CPUh; computation21.2946–23.2461%.
+Not populationCIs or actual whole-library checking.
+Finite master526699/birth772878773 remains. Current sole WLean Epreparation
+AllocatedForecastPrimitiveCapBound561457/birth773951593,launched06:22:12Z.
+Raw workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-remaining-six-20261103T0325.
+No W Prequest while Epreparation runs. Four originals remain; then Packet,
+Ground and Prepared. Do not restart retired NativeCode/Physical/Tracked or
+healthy Allocated. Check actual PID/birth/terminal before any action.
+Older headings below are historical snapshots.
+
 ## W103 current: Physical recovered, source37; Tracked preparation active
 2026-11-03T03:32:30Z source37 data published da98f21. Physical original
 compile_ok 3.900684 CPU /3.805640 elapsed s; native and cgroup retired.
