@@ -1,0 +1,9 @@
+{
+  "exit_code": 1,
+  "failed_script": "step0275-recompute.py",
+  "error_type": "FileNotFoundError",
+  "operation": "stat requested source output ilean current path",
+  "path": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102/check-lib/OAI/Combinatorics/Ramsey/CycleClique/Construction/FastLayoutGraph.ilean",
+  "native_runs": 0,
+  "repair": "record actual present facets separately; preserve original code, no native rerun"
+}

@@ -1,0 +1,83 @@
+{
+  "current_facets_present": {
+    "-o": 190,
+    "-i": 10,
+    "-c": 10
+  },
+  "source_targets": 190,
+  "full_targets": 444,
+  "stream_targets": 0,
+  "stream_cpu_s": 0,
+  "source_cpu_s": 22146.098430000002,
+  "source_wall_s": 10617.642844885588,
+  "selected": 20,
+  "accepted": 20,
+  "sample_check_cpu_s": 815.679164,
+  "sample_source_cpu_s": 2271.356756,
+  "sample_pooled_ratio": 0.35911538856470154,
+  "individual_p10": 0.35510334709836494,
+  "individual_median": 0.40617944709342846,
+  "individual_p90": 0.48825980267264796,
+  "estimated_prefix_check_cpu_s": 7748.952058,
+  "estimated_prefix_ratio": 0.3499014547638312,
+  "bootstrap_low": 0.2941298300528686,
+  "bootstrap_high": 0.40410394585867015,
+  "source_HWM_KiB": 12549444,
+  "check_HWM_KiB": 3234980,
+  "source_charged_peak_B": 11818405888,
+  "check_charged_peak_B": 391852032,
+  "cgroups_absent": 211,
+  "recorded_births_retired": [
+    {
+      "pid": 549487,
+      "birth": "773636437"
+    },
+    {
+      "pid": 491697,
+      "birth": "771798493"
+    },
+    {
+      "pid": 548230,
+      "birth": "773592704"
+    }
+  ],
+  "pid_only_retired": [
+    553133,
+    552342,
+    550633,
+    550773,
+    551055,
+    549488,
+    551631,
+    553847,
+    552484,
+    556462,
+    550920,
+    552060,
+    551202,
+    551484,
+    551913,
+    551773,
+    550491,
+    552195,
+    551344,
+    550344
+  ],
+  "native_child_births_emitted": false,
+  "independent_RSS_sample_emitted": false,
+  "source_archive_bytes_compared": 108933392,
+  "selected_source_frozen_bytes": 18489463,
+  "archive_size": 896084751,
+  "raw_frozen_bytes": 2951329,
+  "built_median_bytes": 4457.0,
+  "unbuilt_median_bytes": 81652.5,
+  "built_marked": 24,
+  "all_marked": 180,
+  "K10_source_cpu_s": 1725.133882,
+  "K10_reference_cpu_s": 356.442522,
+  "K10_wall_ratio": 0.5293962480123264,
+  "root_analysis_seconds": 19.554882709868252,
+  "root_analysis_maxrss_kib": 192112,
+  "native_runs": 0,
+  "agents": 0
+}

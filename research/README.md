@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0274. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0275. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -8,6 +8,8 @@ Reports identify input, version, clock and trust boundary. Reviews are **自审*
 preparation, queues, controls and code are not performance or general acceptance.
 
 ## Latest complete results
+
+- [Ramsey completed sample](decoupled-check/ramsey-sampled-result.md), [root0275](../docs/tmp/build-and-evaluate/step-0275-20261103T061615+0000/step-report.md):20/20 retained-prefix module-local references accept, pooledCPU35.91%; weighted190-file estimate34.99% is prefix-only. Production stopped190/444, stream0/444; trusted imports and selection bias remain. Raw/source frozen in rootstep and original PVC size-sample directory.
 
 - [Falconer mathematical closure](decoupled-check/falconer-paper-result.md):
   13,205accepted modules/27checkpointed processes;2,043.59/22,077.77s=9.26%.

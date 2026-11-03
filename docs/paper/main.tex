@@ -1031,6 +1031,44 @@ The accepted prefix does not establish whole-library checking cost, validate
 the RQ1 scenario ranges, or replace the complete selected Falconer closure.
 No missing module is assigned zero cost.
 
+
+\paragraph{A stopped certificate project yields a limited module-local sample.}
+\measured{\expref{0275-20261103T061615+0000}{0275}; complete 20-file sample, incomplete directory.}
+Ramsey production stops after 190 of 444 target files, consuming
+22,146.098 native CPU-s for those new source files; no full-closure stream
+runs. Four files are sampled without replacement from each of five equal-sized
+source-byte strata of the retained 190-file prefix (seed 20261103).
+All 20 separate original-kernel module-local processes accept.
+Their summed checking CPU is 815.679s versus 2,271.357s for the same files'
+source compilation, a pooled ratio of 35.91\%.
+Individual CPU ratios have P10/median/P90 of 35.51/40.62/48.83\%.
+Startup and imported-context loading are charged to each separate checker
+process, and those imports remain trusted. These observations therefore do
+not form a matched comparison with the shared-stream closure ratios above.
+
+Weighting each sampled stratum mean by its 38 retained files estimates
+7,748.952 CPU-s for independent module-local checking of the 190-file prefix,
+or 34.99\% of its known source CPU.
+A within-stratum percentile bootstrap (10,000 resamples) gives
+29.41--40.41\%; with only four observations per stratum, this describes
+resampling variation inside the observed prefix, not uncertainty from
+dependency-order selection or the 254 unbuilt targets.
+The built files all belong to Construction; their median source size is
+4,457 bytes versus 81,652.5 bytes among the unbuilt files.
+Only 24 of 180 kernel-marked files are built.
+Neither the sample fraction nor its interval is extrapolated to all 444 files
+or to whole-closure streaming.
+
+A separate, excluded-from-sampling reference checks CertificatesK10 in
+356.443 CPU-s against 1,725.134 source CPU-s (20.66\%).
+This finite-certificate file has no \texttt{+kernel} marker but uses ordinary
+\texttt{by decide}; marker absence cannot identify a cheap mathematical case.
+The small-file process/import floor and the large certificate work must
+remain distinct from a pure kernel-phase fraction.
+\partialev{trusted imports, one observation per sampled file, a selected prefix,
+and the recorded O resource-share deviation remain; full-directory cost,
+axiom closure and repeated captures are missing.}
+
 \paragraph{System-design implication.}
 \partialev{implication of scoped observations; general benefit unproven.}
 Expose the cheap checking boundary if one exists: separate production and

@@ -1,0 +1,1 @@
+Initial root read assumed all emitted ilean/C facets remained at current paths; FastLayoutGraph.ilean absent. This is a root current-presence assertion, not a native compiler failure. Retain commands and record actual presence instead.
