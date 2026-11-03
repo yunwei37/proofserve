@@ -89,3 +89,10 @@ fresh stream remains0/3977,0CPUh. Remaining production+stream scenario5.2722h,
 separate reference reserve2h. Transonic pilot was already running when the
 clarification arrived: allow this bounded window to retire, no further queue.
 The preceding total-cost route stop is superseded, preserved as history.
+
+
+<!-- transonic-current -->
+## Transonic complete-directory attempt
+
+Source **15/466**; native stream **0/466** and **0** dependencies; new sourceCPU **0.077530h**, streamCPU **0.000000h**, segment **0**; complete **False**. [Directory progress](transonic-progress.md).
+Historical whole-library accepted2488/163097; certified dependencies10744; kernelCPU0.694505h; source errors9124/blocked151485 stay unchanged. Ramsey190/444 production is cancelled. Directory costs are not a global full-library measurement.
