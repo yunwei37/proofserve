@@ -1,0 +1,11 @@
+workers,metric,off_repetitions,on_repetitions,off_median,on_median,relative_change,scope
+8,wall_s,1,1,312.8035001317039,298.8780238525942,-0.044518287913167476,same executable plain; partial groups explicit
+8,CPU_s,1,1,719.111937,621.5664989999999,-0.13564708494054678,same executable plain; partial groups explicit
+8,application_CPU_s,1,1,719.1,621.5600000000001,-0.13564177444027248,same executable plain; partial groups explicit
+8,cgroup_CPU_s,1,1,719.111212,621.565919,-0.13564702006064677,same executable plain; partial groups explicit
+8,original_check_observer_CPU_s,1,1,534.1913851,436.863603139,-0.1821964649294754,same executable plain; partial groups explicit
+8,mark_window_wall_s,1,1,0.015434774,0.293059188,17.98694389694336,same executable plain; partial groups explicit
+8,mark_window_CPU_s,1,1,0.006472908,0.28269802,42.67403646089207,same executable plain; partial groups explicit
+8,sampled_peak_GiB,1,1,3.2538414001464844,3.2480850219726562,-0.0017691022597380313,same executable plain; partial groups explicit
+8,ru_maxrss_peak_GiB,1,1,3.2557754516601562,3.2511672973632812,-0.001415378414541868,same executable plain; partial groups explicit
+8,charged_peak_GiB,1,1,1.0090484619140625,1.0988578796386719,0.08900406780686243,same executable plain; partial groups explicit
