@@ -92,7 +92,7 @@ def analyze(raw=P,key="diagnostic",out=OUT,trace=None):
   for f in['measured_window_s','max_job_cpu_s','sum_job_cpu_s','kernel_active_s']:b[f]+=r[f]
  for name,data in [('diagnostic-modules.csv',module_rows),('wave-width-bins.csv',[dict(width=k,**v)for k,v in bins.items()]),('heaviest-waves.csv',sorted(rows,key=lambda r:-r['measured_window_s'])[:40])]:
   with(OUT/name).open('w',newline='')as f:w=csv.DictWriter(f,fieldnames=list(data[0]));w.writeheader();w.writerows(data)
- (P/'all-wave-analysis.json').write_text(json.dumps(rows))
+ (P/(key+'-wave-analysis.json')).write_text(json.dumps(rows))
  (OUT/'diagnostic-summary.json').write_text(json.dumps(dict(total=total,method='C interval clocks; fixed measured service costs; local module DAG, serial module order retained'),indent=2))
  print(json.dumps(total,indent=2));print('BINS',dict(bins))
 if __name__=='__main__':

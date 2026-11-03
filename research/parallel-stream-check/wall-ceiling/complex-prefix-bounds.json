@@ -1,0 +1,23 @@
+{
+  "counts": {
+    "original_constants": 183645,
+    "serial_constants": 14932,
+    "prefix_ordinary": 1636,
+    "inductives": 3819,
+    "constructors": 5542,
+    "recursors": 3931,
+    "quotients": 4,
+    "ordinary_parallel_constants": 168713
+  },
+  "bounds": {
+    "observed_diagnostic_wall_s": 211.6749327510006,
+    "retained_prefix_barrier_floor_s": 166.4265666390006,
+    "optimistic_zero_prefix_barrier_floor_s": 164.6341683550006,
+    "retained_prefix_local_DAG_floor_s": 138.6024091060006,
+    "optimistic_zero_prefix_local_DAG_floor_s": 136.8100108220006,
+    "current_barrier_optimistic_additional_speedup": 1.2857290492370088,
+    "local_DAG_optimistic_additional_speedup": 1.547218156618703
+  },
+  "assumptions": "fixed measured threadCPU weights, retained module order and metadata/observer work; conditional model not machine-independent ceiling",
+  "unknown": "remaining1.792s prefix contains multiple independent groups; true critical path unmeasured; zero-prefix bound deliberately optimistic"
+}
