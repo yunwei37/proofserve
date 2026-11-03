@@ -1707,7 +1707,7 @@ not hardware-gated checking intervals or three-repeat PMU estimates.
 Locked-load events include runtime operations and do not directly measure
 stall seconds. The one-worker coherence counts are near zero and do not
 establish a multiworker contention effect.
-The remaining planned counter cells are outside this admitted subset.
+The remaining counter cells were subsequently collected and are reported below.
 
 This is a method correction to our prototype. The historical 3.326-fold
 Barrier pipeline, 1.523-fold mathematical closure and 1.882-fold Grid pair
@@ -1718,6 +1718,57 @@ Persistence retains objects by design; full-library retained-memory cost
 and arbitrary extension-task safety remain unproved.
 The new unsafe FFI call requires quiescence at its declared enqueue site;
 the original mathematical kernel does not remove trust in the coordinator.
+
+
+\paragraph{The complete counter matrix supports the prototype correction.}
+\measured{\expref{0280-20261103T131855+0000}{0280}; all eight stat cells, one observation per arm/worker setting.}
+The remaining six stat processes complete the 32-cell primary matrix,
+together with the already reported 24 plain and two one-worker stat runs.
+All 56 counter readings report 100\% running time, with the same accepted
+module graph and per-module check/allocation vectors.
+At eight workers, persistence reduces retired lock-load events from
+5,818,993,726 to 112,656,010 (98.06\%), modified-line forwarding from
+779,885,830 to 43,550,844 (94.42\%), and demand-RFO snoop-HITM responses
+from 517,381,271 to 143,426,518 (72.28\%).
+User-mode cycles fall 14.42\% and aggregate IPC rises from 1.697 to 2.006,
+while instructions increase 1.172\%.
+L3-miss loads increase 0.762\% at eight workers and also increase at two
+and four workers: the intervention does not generally reduce ordinary misses.
+
+Within this same stat matrix, moving from four to eight workers increases
+user cycles 8.431\% without marking and 0.679\% with marking.
+Modified-line forwarding grows 47.616\% versus falling 0.883\%;
+RFO snoop-HITM responses grow 50.308\% versus 10.852\%.
+These outcomes strengthen the prototype-lifetime explanation while
+preserving the distinction between event counts and stall time.
+The two coherence event types are not disjoint counts to sum.
+The marked runs retain positive total-CPU growth, rising system time and
+a changing cycles/reference-cycles ratio; effective frequency is uncontrolled.
+Whole-command user counters exclude system execution and are not gated
+to original-check brackets. One stat observation per setting supplies no
+repeat confidence interval, and stat clocks do not enter the plain medians.
+
+\paragraph{Aligned memory snapshots bound a finite resident tradeoff.}
+\measured{\expref{0280-20261103T131855+0000}{0280}; separate observer-enabled eight-worker pair.}
+Two further full-closure processes record \texttt{smaps\_rollup} after every
+module, giving 4,449 boundaries per arm matched by module ID, input entries,
+checks, allocation units and cumulative frontiers.
+At the final heavy module, marking adds 7,315,456 bytes of anonymous memory
+(6.98\,MiB) and 7,708,672 bytes of RSS (7.35\,MiB).
+Across prefixes the anonymous-memory difference ranges from about
+$-208$ to $+265$\,MiB and is nonmonotone.
+These net resident differences include allocator/layout and transient-storage
+effects; they do not measure the exact objects retained by persistence.
+No checkpoint reports swap, but snapshots and one-second tree sampling
+cannot rule out unobserved transient behavior.
+
+The memory-observed runs use 63--69 system-CPU seconds, compared with about
+ten seconds in the primary eight-worker runs.
+Their clocks are separate diagnostics, not additional plain replicates or a
+production speedup. Persistence still delays reclamation until process exit.
+This one completed pair neither establishes a full-library memory bound nor
+an unbounded resident service, and cannot project the incomplete compiled
+AI-library subset onto the full source population.
 
 \paragraph{Pooled certificates pass a broader native qualification.}
 \measured{\expref{0243-20261101T091434+0000}{0243}; finite input/child controls, not general soundness.}

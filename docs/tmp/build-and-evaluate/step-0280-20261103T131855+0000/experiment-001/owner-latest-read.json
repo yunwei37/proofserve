@@ -1,0 +1,41 @@
+{
+  "utc": "2026-11-03T13:26:56.718236+00:00",
+  "M_primary_state": "all32_complete_requires_review",
+  "auxiliary_terminal_snapshot": [
+    {
+      "file": "aux-stock-default-m0-P8-terminal.json",
+      "state": "stock_scope_completed_no_M_work_equivalence_claim",
+      "rc": 0,
+      "scope": "stock module-local leaf, imports trusted; not4449 independent module checks"
+    }
+  ],
+  "Wprep": {
+    "utc": "2026-11-03T13:24:22.598004+00:00",
+    "window_index": 14,
+    "all_original_deps_ready": false,
+    "preparation_final": false,
+    "no_population_cost_measurements": true
+  },
+  "Widentities": [
+    {
+      "pid": 526699,
+      "expected_birth": "772878773",
+      "actual_birth": "772878773",
+      "state": "S",
+      "same": true
+    },
+    {
+      "pid": 561457,
+      "expected_birth": "773951593",
+      "actual_birth": "773951593",
+      "state": "S",
+      "same": true
+    }
+  ],
+  "O_latest_git": "49cae30b SubexponentialSAT source: build 12544/14721; kernel 0/3977, 0.0000 CPUh",
+  "disk": {
+    "total": 134951424000,
+    "used": 95165931520,
+    "free": 39768715264
+  }
+}

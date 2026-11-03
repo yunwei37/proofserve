@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0279. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0280. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -8,6 +8,8 @@ Reports identify input, version, clock and trust boundary. Reviews are **自审*
 preparation, queues, controls and code are not performance or general acceptance.
 
 ## Latest complete results
+
+- [Complete persistence PMUs and aligned memory](../docs/tmp/build-and-evaluate/step-0280-20261103T131855+0000/step-report.md): remaining6stat complete primary32qualification;8P lockedloads−98.06%/modifiedlineforwarding−94.42%/RFO−72.28%,ordinaryL3miss+0.762%. Separate4449matched-boundary memory pair endsAnonymous+6.98MiB/RSS+7.35MiB,not precise retained bytes or global fit. Original proof/kernel retained;unsafequiescence/coordinator still trusted.
 
 - [Persistence method correction and historical-cache reclamation](../docs/tmp/build-and-evaluate/step-0279-20261103T122418+0000/step-report.md): root0279 independently qualifies the complete24plain/first1Pstat subset and13controls; 8P CPU−14.13%/wall−5.13%, 1P CPU−2.02%, paired excessCPU reduction65.21%. Historical3.33×/1.52×/1.88× explicitly unmarked; overall32matrix remains separate. Exact cleanup manifests preserve tracked/raw data.
 
