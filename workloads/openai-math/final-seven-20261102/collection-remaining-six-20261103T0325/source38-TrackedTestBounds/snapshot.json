@@ -1,0 +1,37 @@
+{
+  "utc": "2026-11-03T06:22:09.313309+00:00",
+  "completed_original_costs": 38,
+  "complete_strata": 19,
+  "covered_modules": 161034,
+  "uncovered_modules": 2063,
+  "missing_domain_fraction": 0.012648914449683317,
+  "scenario_CPU_h": {
+    "a_build": [
+      247.55329953958335,
+      270.2389225954167
+    ],
+    "b_serial_stream": [
+      16.85218179978822,
+      23.91155558728181
+    ],
+    "c_parallel_stream": [
+      22.91910489313023,
+      32.53770799828667
+    ],
+    "d_plus_qualified_chunk": [
+      22.948571344524495,
+      32.56726170040653
+    ]
+  },
+  "computation_share_scenario": [
+    0.21294639471078997,
+    0.23246066355912434
+  ],
+  "new_original_module": "OAI.Analysis.CircleDomains.Selection.TrackedTestBounds",
+  "new_original_status": "compile_ok",
+  "new_original_CPU_s": "5.41233",
+  "raw_point": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-TrackedTestBounds-targetP-remaining-six-20261103T0325",
+  "scenario_is_CI": false,
+  "actual_whole_library": false,
+  "audit": "automatic provenance checks passed; thread scientific self-review remains separate"
+}
