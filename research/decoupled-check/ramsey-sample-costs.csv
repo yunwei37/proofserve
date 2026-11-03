@@ -1,3 +1,4 @@
 module,stratum,bytes,descriptive_group,source_cpu_s,check_cpu_s,source_wall_s,check_wall_s,cpu_ratio,wall_ratio,valid,returncode,peak_rss_kib,raw_key
 OAI.Combinatorics.Ramsey.CycleClique.Construction.CliqueThree,1,1304,other-unmarked,1.548348,0.899583,1.5003811679780483,1.1123555777594447,0.5809953576327802,0.7413819911232845,True,0,3102164,sample-00
 OAI.Combinatorics.Ramsey.CycleClique.Construction.PackingCertificate,1,1561,other-unmarked,1.547605,0.806696,1.5129042649641633,0.8183480054140091,0.5212544544635097,0.5409119561397981,True,0,3104452,sample-01
+OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificateMatrixChunks,1,1579,other-unmarked,1.739192,0.83848,1.7031754525378346,0.8715902604162693,0.4821089333437596,0.51174425929962,True,0,3107688,sample-02
