@@ -1,3 +1,5 @@
+**Historical whole-library attempt: 部分结果，已停止。** 当前仅保留已授权的 SubexponentialSAT 接续；不得恢复全库队列。[收口记录](measurement-closeout.md)。
+
 # Whole-library native check: actual progress
 
 Review: 自审. P0–7/shared flock/no Lean -M/external11.5GiB child cgroup/512MiB parent reserve.
@@ -72,5 +74,5 @@ Production stopped190/444; full stream0/444,0CPUh. Size sample **20/20 accepted*
 <!-- subexponential-current -->
 ## SubexponentialSAT complete-directory attempt
 
-Source **3977/3977**; native stream **0/3977** and **5000** dependencies; new sourceCPU **5.981136h**, streamCPU **0.159981h**, segment **10**; complete **False**. [Directory progress](subexponential-progress.md).
+Source **3977/3977**; native stream **0/3977** and **5500** dependencies; new sourceCPU **5.981136h**, streamCPU **0.185545h**, segment **11**; complete **False**. [Directory progress](subexponential-progress.md).
 Historical whole-library accepted2488/163097; certified dependencies10744; kernelCPU0.694505h; source errors9124/blocked151485 stay unchanged. Ramsey190/444 production is cancelled. Directory costs are not a global full-library measurement.
