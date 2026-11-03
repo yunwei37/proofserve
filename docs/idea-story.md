@@ -27,43 +27,11 @@ This section records the initial scientific disposition of the expanded research
 
 ## Current frontier
 
-The user directs four continuing areas: reliable early failure/timeout
-determination, first-success multi-candidate scheduling, Lean code-verification
-workloads, and the layered Rust engine. There is no project deadline or
-performance-based closure rule. Resource primitives remain prior techniques;
-prospective novelty must come from workload-level methods. The external CPU
-oracle is frozen, with no new oracle experiments or contribution claim.
+The 3 November direct closure instruction replaces indefinite four-direction research with two deliverables: ProofServe as a Lean project check/audit tool, and the six-page empirical + system paper. The title and four current RQ meanings are unchanged. RQ1–RQ2 use the public measurement package; RQ3–RQ4 use committed release-tool evaluation. Prior mechanisms and experiments remain historical evidence, not a continuing research queue.
 
-The complete own arithmetic counterexample pair retains all7,808originals,
-exact accepted/status parity and8.86%more native elapsed. It removes no
-timeouts and remains a small component:
-[full result](../artifacts/arithmetic-counterexample-2026-10-23/native-gpu-full-layout-fixed-20261024T1650/result-review.md).
+The coordinator proposes 17 November as a working target, not a user-imposed deadline. Scheduling, prediction, certificate repair, GPU, serving features and further attribution stop. Existing collectors are preserved. Root integrates results without starting replacements.
 
-The480source failure profile is complete:
-[actual tactic/phase ranking](../artifacts/lean-failure-profile-2026-10-25/full480-analysis/result-review.md).
-Its source-memory diagnostic distinguishes sampled process occupancy, old
-address-space failures, missing observations and new-RSS-point uncertainty:
-[memory evidence](../artifacts/source-memory-attribution-2026-10-25/result-review.md).
-Neither thread-CPU fractions nor sampled RSS maxima are whole-flow removable
-fractions or a justified failure predictor.
-
-The [Rust architecture](architecture.md) now includes typed backend/policy/
-resource interfaces, dynamic admission, retirement, prepared import parents
-and task-aware ordering. Pinned native contracts and whole-input policy checks
-are implementation evidence; actual Mathlib/new-resource/full population
-throughput and a useful systems contribution remain unproven.
-[Task-aware implementation/model scopes](../artifacts/task-aware-engine-2026-10-25/result-review.md).
-
-For current runtime/terminal state and the next inner work item, inspect the
-latest timestamped reports under docs/tmp/build-and-evaluate and the owning
-capture's actual terminal files. A narrative checkpoint is not a live-process
-health record. Existing captures, raw failures and historical resources remain;
-do not restart or change an active capture to match a newer resource point.
-
-The complete Initial Narrative, all four RQs, Lean/SMT scope and OSDI-quality
-objective remain intact and open. This thread performs implementation,
-experiments, writing and self-review; no independent audit is claimed.
-The current manuscript remains [docs/paper](paper/main.tex).
+[Current plan](research-plan.md), [status](research-status.md) and [paper evidence map](paper/evidence.md) are the current authority for deliverables and completion. The Initial Narrative below/above and all evolution entries remain history; their earlier no-closure wording does not override the new instruction.
 
 ## Narrative evolution
 
@@ -274,3 +242,9 @@ mechanism novelty. Title/fourRQ/sections remain; controlled scoped evidence and
 negative results are potential empirical increments, no first-characterization
 claim. Root255 applies this scientific-strength correction to the actual paper.
 Initial Narrative and all prior evolution preserved.
+
+## 2026-11-03 — direct closure into empirical paper and usable tool
+
+The author chooses closure, a valuable open-source project, and a six-page empirical + system paper. This explicitly replaces the preceding indefinite research instruction and releases the old body/table freeze. The title and four current RQ texts remain. Root accepts this reconstruction because it follows the author's decision and separates the strongest measured costs from a tool's still-required practical acceptance.
+
+The system contribution is usable original-kernel checking, audit/receipts and its evaluation, not new generic parallelism or a new serving mechanism. Only release-form checker/audit results may populate systems evaluation; prototypes explain causes. Missing release results are kept visibly pending in the working draft and cannot be replaced by earlier ratios. The broad population interval remains. [Evidence and remaining work](paper/evidence.md). No independent review, venue choice, completed release or acceptance is claimed.

@@ -451,3 +451,15 @@ Import-Module ./scripts/fleet.psm1; & (Get-Module fleet) { $script:SshOptions +=
 仓库里有 9 个已修改未提交的文件，只动自己路径下的；推送失败就等一下重试，不要 stash 或覆盖别人的改动。连接继续用 Cloudflare 跳板：Import-Module ./scripts/fleet.psm1; & (Get-Module fleet) { $script:SshOptions += @('-J','ssh.yunwei37.com') }
 
 【主线程这一轮】先核对并提交你那部分未提交的文件。把 M 线已有的墙钟分解记为待写入：8P 的约 299 秒里，串行回退 115 秒、依赖和上下文审查 31 秒、规划 11 秒、并行波次 123 秒、未归因约 18 秒；这个分解还没有修正版重测，写进论文时标为"部分"。论文的方法学里写明：被主机重启打断的运行不计入任何成本数字。
+
+## 2026-11-03 — verbatim closure and six-page paper decision
+
+- 「论文接下来怎么做算是 novel 的? 你想想?'」
+- 「看看进度」
+- 「这个你自己去做决定, 不要问我」
+- 「? 没有盯着?? 不是说定时任务每小时检查吗」
+- 「你来继续驱动 codex 做啊」
+- 「你能不能想想我们创建这个项目到现在有多少进展? 这个项目有价值和未来吗」
+- 「去整理收口」
+- 「把它变成有价值的开源项目, 和一个测量轮」
+- 「篇幅 6 页. 是一个 empirical + system paper」

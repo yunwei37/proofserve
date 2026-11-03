@@ -3,3 +3,25 @@ __pycache__/
 
 # Rust workspace build output (research artifacts remain tracked)
 /target/
+
+# Historical generated research outputs retained on the PVC
+/artifacts/**/*.bin
+/artifacts/**/*.json
+/artifacts/**/*.jsonl
+/artifacts/**/*.gz
+/artifacts/**/*.log
+/artifacts/**/*.stdout
+/artifacts/**/*.stderr
+/artifacts/**/*.profraw
+/artifacts/**/*.olean
+/artifacts/**/*.ilean
+/artifacts/**/*.o
+/artifacts/**/*.a
+/artifacts/**/*.so
+/artifacts/**/*.ptx
+/artifacts/**/*.cubin
+/artifacts/**/*.fatbin
+/artifacts/**/*.pdf
+/artifacts/**/*.png
+/artifacts/**/cuopt-headers/
+/a.out
