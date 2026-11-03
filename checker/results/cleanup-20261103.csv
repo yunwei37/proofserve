@@ -1,0 +1,2 @@
+path,logical_bytes,reason,evidence,download
+/workspaces/.agent-state/gpu-smt-captures/checker-version-4350/sdk,3137937793,regenerable official toolchain; completed builds/contracts retained,checker/docs/version-source-audit.json and checker/results/version-qualification.json,https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst

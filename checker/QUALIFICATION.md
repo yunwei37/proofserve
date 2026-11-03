@@ -1,23 +1,33 @@
-# Initial backend qualification — 自审,2026-11-03
-Original-kernel parallel stream and copied O checkpoint reader are built as a
-new portable Lean package. Default persistence and split fallback are enabled;
-both explicit release ablations available. New CLI and receipt1 are implemented.
-Raw: existing PVC captures/checker-package-20261103,not committed binaries.
+# Development qualification
 
-lake-build1 failed(missing C headers/ambiguous Options/JSON UInt32),build2 failed
-(host fscanf symbol unavailable in matched SDK linker); both retained. Build3
-and help completed. Build4 and5 completed. Initial import-heavy test reached
-its90s finite limit on E cores; no cost or semantic success inferred. Tiny
-portable tests avoid that expensive dependency; they do not establish real-library
-performance. First tiny contract failed because Base was not a Lake library,
-second exposed missing mutation enum support,both retained and corrected.
-Build6 and portable-contract4 completed: correct2-module closure,workers1/2/4
-same accepts and axioms,stock leanchecker parity,loose-var/unknown-constant/
-wrong-sort rejection,one-module bounded checkpoint/resume parity,unknown declared
-toolchain explicit error. These are functional development controls,not P-core
-timing cells. Final checkpoint-lock build7 and portable-contract5 also pass,with all native\nprocesses and cgroups retired. Axioms include accepted segregated modules.
-All native controls used finite external timeout and14GiB own-tree guard on E8–15.
-No formal release matrix or external-project acceptance is complete.
-Remaining: release Mathlib/Grid/Barrier1/2/4/8x3;8worker ablations;official scope
-comparison; actual interrupted-process resume overhead;O release CI and external
-projects. Segmentation does not remove cumulative prefix memory growth.
+Self-review, 2026-11-03. Raw development attempts remain on the existing PVC in
+checker-package-20261103. They are not formal P-core performance measurements.
+
+The package integrates the original-kernel parallel stream with a writable copy
+of O's checkpoint reader. Persistence and split fallback are enabled by default.
+The CLI and receipt format are documented separately.
+
+Initial build attempts exposed missing C headers, an ambiguous Options name,
+missing UInt32 JSON instances, and a host fscanf symbol unavailable in the
+matched SDK linker. These attempts are retained. The C reader now uses portable
+character input. Later builds succeeded.
+
+An initial import-heavy E-core control reached its 90-second limit. It does not
+establish semantic success or library performance. The subsequent small fixture
+uses two prelude-only modules. Its first attempts exposed a missing Lake library
+declaration and a missing mutation enum entry; both were corrected.
+
+Final native controls pass: the two-module closure, equal acceptance and axiom
+sets at 1, 2, and 4 workers, stock CLI acceptance parity, rejection of loose
+variables, unknown constants, and wrong sorts, bounded checkpoint/resume parity,
+and explicit errors for a mismatched declared toolchain. Native processes and
+their cgroups retired without resource stops.
+
+The matched Lean 4.34.0 build and the same small contract also pass. The official
+fallback is exercised separately and reports roots rather than inventing a
+module ledger. The current stable Lean 4.35.0 also builds and passes the small contract.\nA 4.34.1 executable also successfully routes a 4.35.0 project through its\nofficial checker, with the fallback path and limited coverage explicit.
+No claim is made that reviewing one symbol proves ABI compatibility.
+
+These controls do not replace the release performance matrix, complete Mathlib
+scale test, real interruption experiment, external-project acceptance, or CI
+closure. Segmentation still retains a cumulative checked prefix on restoration.

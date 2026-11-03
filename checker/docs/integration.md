@@ -1,15 +1,20 @@
-# O-lane integration contract
-Build: cd checker && lake build. No dependencies beyond pinned4.34.1 SDK and C compiler.
-Native executable .lake/build/bin/proofserve-check. CLI and receipt schema are
-documented in README.md and docs/receipt-schema.md. Invoke executable directly;
-it discovers project search paths through lake env and rejects unknown toolchains.
-Current roots default to compiled project artifacts; --root repeats support
-custom Lake layouts. Rust wrapper must preserve exit0/1/2 and JSON/stderr.
---max-segments N is a finite batch stop; repeat the command to continue.
-CI command after build: python3 tests/contract.py. It creates a portable temporary
-Lake project,checks1/2/4workers and stock CLI parity,three original-kernel bad
-terms,axiom reporting,successful-prefix resume and unsupported-version error.
-CI wiring is O-owned and not modified here. No publication performed.
-Evaluation must use a fresh checkpoint directory for each timing cell; otherwise
-the receipt explicitly reuses earlier successful work. Never time cached completion
-as a new verification. Native command CPU and frontend reported CPU are distinct.
+# CLI integration contract
+
+Build with the matching toolchain by running lake build in checker/.
+The native executable is .lake/build/bin/proofserve-check. Its CLI and receipt
+format are documented in README.md and docs/receipt-schema.md.
+
+Invoke the executable directly. It discovers the project search path through
+lake env. The wrapper must preserve native exit codes 0, 1, and 2, JSON stdout,
+and stderr warnings. Custom layouts can repeat --root MODULE.
+--max-segments N stops a finite batch; repeating the command resumes it.
+
+After building, run python3 tests/contract.py. This creates a temporary portable
+Lake project and checks correctness, worker parity, official acceptance parity,
+three bad proof terms, axiom reporting, bounded resume, and version errors.
+CI wiring and release packaging are O-owned and are not modified here.
+
+Each timing cell requires a fresh checkpoint directory. A cached complete
+receipt is not a fresh verification. Record the exact executable commit.
+Official fallback is identified in the receipt and is excluded from native
+parallel performance results.

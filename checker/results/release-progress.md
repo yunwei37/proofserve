@@ -1,11 +1,14 @@
-# Release evaluation,partial — 自审
-Executable source51769793,actual public CLI,Mathlib.Data.Nat.Basic requested
-through the real Lake project. First1worker repeat completed1330 accepts in3
-native segments,exit0,no resource stop,all native/cgroups retired. Raw commands,
-original segment stdout/stderr,checkpoints,identity and receipt remain on PVC.
-84.384505s wall,83.531199s totalCPU are ONE observation,not a median or speedup.
-Actual receiptCPU includes self+waited children and wall includes setup/identity/
-snapshot imports,exports. Inputs are actual project artifacts,not borrowed
-prototype-clock denominators. Full12 Mathlib cells,other datasets,ablations,
-stock full-scope comparison and actual interruption overhead remain unfinished.
-No paper-level release speed claim yet.
+# Initial release evaluation: superseded one-point record
+
+This is a self-reviewed observation of executable commit 51769793. The public
+CLI completed the Mathlib.Data.Nat.Basic closure: 1,330 modules in three native
+segments. Native and cgroup processes retired without resource stops.
+
+Wall time was 84.384505 seconds and total CPU was 83.531199 seconds. This is one
+observation, not a median or a speedup. Setup, identity checks, checkpoint import,
+and checkpoint export are included. Raw commands, logs, checkpoints, identity,
+and receipt remain under the PVC capture checker-release-51769793.
+
+The complete fixed matrix will use a newly frozen executable after version
+support changes. This old point remains preserved and will not fill a cell in
+that new executable's matrix. No release speedup is established here.

@@ -11,10 +11,15 @@ def invoke(args,expected=0,env=None):
 with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
  d=Path(td);project=d/'project';project.mkdir()
  for f in ['Base.lean','Fixture.lean','lakefile.lean','lean-toolchain']:shutil.copyfile(ROOT/'tests'/f,project/f)
+ version=subprocess.check_output(['lean','--version'],text=True).split('version ',1)[1].split(',',1)[0]
+ (project/'lean-toolchain').write_text('leanprover/lean4:v'+version+'\n')
  subprocess.run(['lake','build'],cwd=project,check=True,timeout=60)
  full=invoke([project,'--workers','1','--checkpoint-dir',d/'full'])
  assert full['status']=='complete'and set(full['accepted'])=={'Base','Fixture'}
  assert 'fixtureAssumption'in full['axioms']
+ fallback=invoke([project,'--official','--checkpoint-dir',d/'official'])
+ assert fallback['execution_path']=='official-leanchecker' and fallback['parallel']is False
+ assert set(fallback['accepted_roots'])=={'Base','Fixture'} and fallback['accepted']is None
  for n in [2,4]:
   other=invoke([project,'--workers',n,'--checkpoint-dir',d/('workers'+str(n))])
   assert other['accepted']==full['accepted'] and other['axioms']==full['axioms']
@@ -33,7 +38,8 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
   rr=subprocess.run([str(BINARY),'--internal-segment','audit',mutation,'Fixture'],env=e,text=True,capture_output=True,timeout=60)
   assert rr.returncode!=0,(mutation,rr.stdout,rr.stderr)
   assert 'reject'in rr.stdout and 'Fixture'in rr.stdout,(mutation,rr.stderr)
- (project/'lean-toolchain').write_text('leanprover/lean4:v4.33.0\\n')
+  assert ('kernel_reject:'in(rr.stdout+rr.stderr) or ('while replaying declaration'in(rr.stdout+rr.stderr) and '(kernel)'in(rr.stdout+rr.stderr))),(mutation,rr.stdout,rr.stderr)
+ (project/'lean-toolchain').write_text('leanprover/lean4:not-supported\\n')
  badversion=subprocess.run([str(BINARY),str(project)],text=True,capture_output=True,timeout=10)
  assert badversion.returncode==2 and 'unsupported'in badversion.stderr
  print(json.dumps(dict(correct=True,axioms=True,resume=True,bad_proofs=3)))

@@ -1,0 +1,19 @@
+{
+  "native": [
+    "4.34.0",
+    "4.34.1",
+    "4.35.0"
+  ],
+  "cross_version_official": "4.34.1 frontend -> 4.35.0 project",
+  "source_review_only": [
+    "4.32.2",
+    "4.33.1",
+    "4.36.0-rc2"
+  ],
+  "scope": "small portable contract,not whole-library equivalence",
+  "raw": [
+    "checker-package-20261103",
+    "checker-version-4340",
+    "checker-version-4350"
+  ]
+}

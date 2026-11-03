@@ -12,6 +12,7 @@ structure CheckOptions where
   roots : Array String := #[]
   persist : Bool := true
   split : Bool := true
+  official : Bool := false
 
 partial def parseOptions (args : List String) (o : CheckOptions := {}) : Except String CheckOptions :=
   match args with
@@ -31,6 +32,7 @@ partial def parseOptions (args : List String) (o : CheckOptions := {}) : Except 
   | "--root"::m::xs => parseOptions xs {o with roots:=o.roots.push m}
   | "--no-persistence"::xs => parseOptions xs {o with persist:=false}
   | "--no-split-fallback"::xs => parseOptions xs {o with split:=false}
+  | "--official"::xs => parseOptions xs {o with official:=true}
   | "--json"::xs => parseOptions xs o
   | x::xs =>
     if x.startsWith "-" then .error s!"unknown option {x}"
@@ -74,6 +76,50 @@ partial def inputIdentity (mod : Name) (seen : NameSet := {}) :
     files := files ++ more
   return (seen,files)
 
+def projectRevision (project : System.FilePath) : IO Json := do
+  try
+    let r ← IO.Process.output {cmd:="git",args:=#["rev-parse","HEAD"],cwd:=some project}
+    if r.exitCode==0 then pure (toJson r.stdout.trimAscii.toString) else pure Json.null
+  catch _ => pure Json.null
+
+def readManifest (project : System.FilePath) : IO Json := do
+  if ← (project/"lake-manifest.json").pathExists then
+    IO.ofExcept (Json.parse (← IO.FS.readFile (project/"lake-manifest.json")))
+  else pure Json.null
+
+/-- Foreign artifacts are never decoded by this executable.
+    Official fresh mode has a different duplicate-proof and coverage protocol. -/
+def officialFallback (o : CheckOptions) (project dir : System.FilePath)
+    (version : String) (start : Nat) (cpuStart : UInt64) : IO UInt32 := do
+  IO.eprintln "ProofServe: using the project's official leanchecker --fresh; parallel checking and checkpoint resume are unavailable on this path."
+  let lib := project/".lake/build/lib/lean"
+  let roots ← if o.roots.isEmpty then discover lib lib else pure o.roots
+  unless !roots.isEmpty do throw <| IO.userError "no compiled roots for official checker"
+  let mut rows := #[]
+  let mut accepted := #[]
+  let mut rejected := #[]
+  let mut failed := false
+  for root in roots.qsort (· < ·) do
+    let r ← IO.Process.output {cmd:="lake",args:=#["env","leanchecker","--fresh",root],cwd:=some project}
+    let row := Json.mkObj [("root",toJson root),("exit_code",toJson r.exitCode.toNat),
+      ("stdout",toJson r.stdout),("stderr",toJson r.stderr)]
+    rows := rows.push row
+    if r.exitCode==0 then accepted := accepted.push root
+    else
+      failed := true
+      rejected := rejected.push row
+  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "official-leanchecker"),
+    ("parallel",toJson false),("project_revision",← projectRevision project),("mathlib_manifest",← readManifest project),("lean_version",toJson version),("roots",toJson roots),
+    ("coverage",toJson "official --fresh final imported environment for each root; no per-module ledger"),
+    ("status",toJson (if failed then "official_failure" else "complete")),
+    ("accepted_roots",toJson accepted),("rejected_roots",toJson rejected),
+    ("accepted",Json.null),("rejected",Json.null),("module_set_hash",Json.null),
+    ("axioms",Json.null),("cpu_ns",toJson ((← totalCpuNs)-cpuStart)),
+    ("wall_ns",toJson ((← IO.monoNanosNow)-start)),("official_results",toJson rows)]
+  writeJson (dir/"receipt.json") receipt
+  IO.println receipt.compress
+  return if failed then 2 else 0
+
 unsafe def frontend (args : List String) : IO UInt32 := do
   let start ← IO.monoNanosNow
   let cpuStart ← totalCpuNs
@@ -83,11 +129,15 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   IO.FS.createDirAll dir
   checkpointLock (dir/".lock").toString
   let declared ← IO.FS.readFile (project/"lean-toolchain")
-  unless declared.trimAscii.toString=="leanprover/lean4:v4.34.1" do
-    throw <| IO.userError "unsupported declared Lean toolchain; require leanprover/lean4:v4.34.1"
+  let declared := declared.trimAscii.toString
+  unless declared.startsWith "leanprover/lean4:v" do
+    throw <| IO.userError "unsupported Lean toolchain identifier"
+  let expected := (declared.drop "leanprover/lean4:v".length).toString
   let version ← IO.Process.output {cmd:="lake",args:=#["env","lean","--version"],cwd:=some project}
-  unless version.exitCode==0 && version.stdout.startsWith "Lean (version 4.34.1," do
-    throw <| IO.userError s!"unsupported Lean version: require4.34.1; {version.stdout} {version.stderr}"
+  unless version.exitCode==0 && version.stdout.startsWith s!"Lean (version {expected}," do
+    throw <| IO.userError s!"unsupported or mismatched project toolchain: {declared}; {version.stdout} {version.stderr}"
+  if o.official || expected != Lean.versionString then
+    return ← officialFallback o project dir version.stdout start cpuStart
   let paths ← IO.Process.output {cmd:="lake",args:=#["env","printenv","LEAN_PATH"],cwd:=some project}
   unless paths.exitCode==0 do throw <| IO.userError paths.stderr
   let pathText := paths.stdout.trimAscii.toString
@@ -108,9 +158,8 @@ unsafe def frontend (args : List String) : IO UInt32 := do
     let (next,more) ← inputIdentity root.toName seen
     seen := next
     inputs := inputs ++ more
-  let manifest ← if ← (project/"lake-manifest.json").pathExists then
-    pure (← IO.ofExcept (Json.parse (← IO.FS.readFile (project/"lake-manifest.json"))))
-    else pure Json.null
+  let manifest ← readManifest project
+  let revision ← projectRevision project
   let identity := Json.mkObj [("checker_checkpoint_abi",toJson 1),("lean",toJson version.stdout),("roots",toJson roots),
     ("inputs",toJson inputs),("manifest",manifest),("project",toJson project.toString),("search_path",toJson absolutePaths),
     ("persistence",toJson o.persist),("split_fallback",toJson o.split)]
@@ -185,11 +234,11 @@ unsafe def frontend (args : List String) : IO UInt32 := do
     if o.maxSegments>0 && part>=o.maxSegments then
       operational := true
       break
-  let receipt := Json.mkObj [("schema_version",toJson 1),("lean_version",toJson version.stdout),
+  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("parallel",toJson true),("lean_version",toJson version.stdout),
     ("status",toJson (if complete then "complete" else if operational then "incomplete" else "rejected")),
-    ("mathlib_manifest",manifest),("roots",toJson roots),("accepted",toJson accepted),("rejected",toJson rejected),
+    ("project_revision",revision),("mathlib_manifest",manifest),("roots",toJson roots),("accepted",toJson accepted),("rejected",toJson rejected),
     ("module_set_hash",toJson (hash (accepted.qsort (· < ·)))),
-    ("module_set_hash_algorithm",toJson "lean4.34.1-hash64-noncryptographic"),
+    ("module_set_hash_algorithm",toJson "lean-hash64-toolchain-specific-noncryptographic"),
     ("axioms",toJson ((axioms.toList.foldl (fun (s : NameSet) n => s.insert n.toName) {}).toList.map Name.toString |>.toArray.qsort (· < ·))),("workers",toJson workers),
     ("cumulative_segment_cpu_ns",toJson cpu),("cpu_ns",toJson ((← totalCpuNs)-cpuStart)),("wall_ns",toJson ((← IO.monoNanosNow)-start)),
     ("segments",toJson segments),("trusted_local_checkpoints",toJson true)]
@@ -205,7 +254,7 @@ unsafe def main (args : List String) : IO UInt32 := do
       event [("event",toJson "segment_cpu"),("cpu_ns",toJson ((← processNs)-start))]
       return code
     if args==["--help"] then
-      IO.println "proofserve-check PROJECT [--workers N] [--checkpoint-dir D] [--root MODULE] [--segment-modules N] [--json] [--no-persistence] [--no-split-fallback]"
+      IO.println "proofserve-check PROJECT [--workers N] [--checkpoint-dir D] [--root MODULE] [--segment-modules N] [--json] [--official] [--no-persistence] [--no-split-fallback]"
       return 0
     frontend args
   catch e =>
