@@ -76,3 +76,17 @@ Adaptive choice of high-variance cells and repeated looks mean that the resultin
 whole-frame hybrid t interval has no global conditional coverage guarantee.
 Calibration and nonresponse uncertainty are separate. Finish both planned panels
 regardless of interim target crossing; new stages require fresh remainder draws.
+
+## Frozen no-M execution plans
+prepare_precision.py has prepared12 actual source-native plans under
+the PVC prepared-current-v2 directory (prepared-jobs.csv).
+Canonical longest-root mapping is retained, including the nested Hodge source
+root. Each original source byte copy is checked, each leaf uses the conditional
+role, and E prerequisite preparation explicitly excludes that role.
+The current stock Pcore runner and outer-cgroup settings are reused unchanged;
+the controller adds only the conditional sampling-design label.
+No plan is launched here. Initial object candidates will be refreshed against
+retired successful preparations after original42 has returned.
+An initial preparation attempt stopped before native invocation on a wrong
+metadata lookup; its directory is preserved, and the v2 plans passed source,
+role, no-M, and syntax checks. This was a preparation error, not native failure.
