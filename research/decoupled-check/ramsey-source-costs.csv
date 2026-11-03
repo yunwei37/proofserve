@@ -10435,6 +10435,7 @@ OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK15Part000,True,92
 OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK15Part001,True,1189.8173829999998,556.26805463247,source-10433,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102,False
 OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK15Part002,True,589.625301,318.2088628811762,source-10434,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102,False
 OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK15Part003,True,671.832231,357.1503319842741,source-10435,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102,False
+OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK15Part004,True,641.645162,342.5859295455739,source-10436,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/ramsey-20261102,False
 Mathlib.MeasureTheory.Integral.Bochner.Set,False,9.743127999999999,4.73778504692018,build-04238,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031,True
 Mathlib.Probability.Distributions.Geometric,False,2.457339,1.4628961263224483,build-10166,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101,True
 Mathlib.MeasureTheory.Measure.HasOuterApproxClosed,False,1.994792,1.4228850426152349,build-09647,/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/falconer-project-20261101,True
