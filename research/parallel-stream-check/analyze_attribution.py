@@ -118,6 +118,31 @@ def analyze(point,out):
     median_CPU_s=statistics.median(int(r['cpu_ns'])/1e9 for r in rr),sample50_kernel_CPU_median_s=statistics.median(cpu)))
   csvout(out/'hardware-leaf-summary.csv',med)
   if len(med)==3:summary['E_vs_P_sampled_kernel_work_rate']=med[0]['sample50_kernel_CPU_median_s']/med[1]['sample50_kernel_CPU_median_s']
+  # Compare actual serialized bytes with original input as well as other trials.
+  reference=Path('/workspaces/.agent-state/gpu-smt-captures/parallel-stream-assets/overlay-complete-v2/OAI/MathematicalPhysics/Transonic/Certificates/BarrierData41.olean')
+  if reference.exists():
+   original=reference.read_bytes()
+   artifacts=sorted((point/'hardware-leaf-output').glob('*.olean'))
+   summary['original_olean_bytes']=len(original)
+   summary['original_olean_reference']=str(reference)
+   summary['all_olean_equal_to_original']=len(artifacts)==9 and all(f.read_bytes()==original for f in artifacts)
+  else:
+   summary['all_olean_equal_to_original']=None
+   summary['original_reference_status']='not found; no original-byte equality claim'
+  summary['allocation_budget_scope']='per-target observed allocation deltas; native kernel poll units unobserved'
+  # Target by target calibration avoids a per-core aggregate being presented as
+  # a universal capacity. The same sampled names appear in all nine trials.
+  calibrated=[]
+  for target,rr in sorted(by.items()):
+   values={}
+   for kind in ['p1','e1','mixed24']:
+    costs=[r['CPU_ns']/1e9 for r in rr if r['kind']==kind]
+    if costs:values[kind]=statistics.median(costs)
+   if len(values)==3:
+    calibrated.append(dict(target=target,P1_CPU_median_s=values['p1'],E1_CPU_median_s=values['e1'],
+     M24_CPU_median_s=values['mixed24'],E_to_P_work_rate=values['p1']/values['e1'],
+     mixed_to_P_CPU_ratio=values['mixed24']/values['p1']))
+  csvout(out/'hardware-target-costs.csv',calibrated)
   (out/'hardware-determinism.json').write_text(json.dumps(summary,indent=2))
  return full,phases
 
@@ -138,11 +163,23 @@ def supplements(point,out,full,phases):
    assert sum(w['checks'] for w in mm['workers'])==mm['checks']
    assert sum(w['cpu_ns'] for w in mm['workers'])==mm['kernel_cpu_ns']
    assert sum(w['raw_HB'] for w in mm['workers'])==mm['raw_HB']
+   span=mm['sum_wave_max_cpu_ns']/1e9;work=mm['kernel_cpu_ns']/1e9
    per_module.append(dict(name=name,module=m['module'],checks=mm['checks'],raw_HB=mm['raw_HB'],
-    kernel_union_s=mm['kernel_union_ns']/1e9,kernel_CPU_s=mm['kernel_cpu_ns']/1e9,
+    waves=mm['waves'],frontier_span_s=span,work_span_proxy=work/span if span else None,
+    kernel_union_s=mm['kernel_union_ns']/1e9,kernel_CPU_s=work,
     batch_non_kernel_wall_s=(mm['batch_wall_ns']-mm['kernel_union_ns'])/1e9,
     batch_non_kernel_CPU_s=(mm['batch_cpu_ns']-mm['kernel_cpu_ns'])/1e9))
  csvout(out/'module-phases.csv',per_module)
+ p1=[r for r in per_module if r['name']=='P1' and r['checks']]
+ if p1:
+  work=sum(r['kernel_CPU_s'] for r in p1);buckets=[]
+  for low,high in [(1,2),(2,4),(4,8),(8,float('inf'))]:
+   rr=[r for r in p1 if r['work_span_proxy']>=low-1e-10 and r['work_span_proxy']<high]
+   cpu=sum(r['kernel_CPU_s'] for r in rr)
+   buckets.append(dict(proxy_from=low,proxy_to=high if math.isfinite(high) else 'inf',
+    modules=len(rr),CPU_s=cpu,CPU_share_pct=100*cpu/work,frontier_span_s=sum(r['frontier_span_s'] for r in rr)))
+  csvout(out/'P1-work-span-distribution.csv',buckets)
+  csvout(out/'P1-top-span-modules.csv',sorted(p1,key=lambda r:r['frontier_span_s'],reverse=True)[:30])
  pair_rows=[];delta_rows=[];module_delta=[]
  pairs=[('P1','P2'),('P2','P4'),('P4','P8'),('P8','E16'),('P8','M24'),
   ('P8','P8-noProfile'),('M24','M24-noProfile'),

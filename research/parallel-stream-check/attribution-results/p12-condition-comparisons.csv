@@ -1,0 +1,2 @@
+baseline,condition,wall_delta_s,wall_change_pct,CPU_delta_s,CPU_change_pct,note
+P1,P2,-221.4677483253181,-33.78875223916453,-22.061257999999953,-3.4094124656073643,one fixed-order observation per full configuration; not a confidence interval

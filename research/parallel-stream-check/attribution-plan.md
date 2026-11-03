@@ -33,7 +33,7 @@ Estimate E/Pwork rate from matched kernel costs. Fixed S with positive added
 Ecapacity cannot explain a slowdown; an additional overhead/placement/capacity
 loss term is required. Single-run full points are descriptive, without a
 replication confidence interval; leaf triplets have min/median/max.
-Frozen sources/binaries/raw live on PVC parallel-stream-attribution-20261102.
+Primary corrected frozen sources/binaries/raw live on PVC parallel-stream-attribution-20261102-v2. The unsuffixed point is retained invalid-placement evidence.
 
 ## Qualification correction before primary fit
 The v1sticky TIDmodulomapping aliased two active threads ontoCPU0atrequested
