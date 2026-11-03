@@ -10,13 +10,18 @@ def main():
  assert m.state()["phase"]=="complete"
  frame=json.loads((A/"frame.json").read_text())
  ledger=[json.loads(l)for l in(A/"ledger.jsonl").read_text().splitlines()]
- final=next(v for v in reversed(ledger)if v["operation"]=="stream"and v["valid"])
- assert final["previous"],"complete14721-node point must have a certified predecessor"
- # These roots were absent from the predecessor, so a mutation cannot hide
- # behind a module already marked visited by the restored checkpoint.
- tail=set(final["accepted"])
- candidates=[v for v in frame if v["target"]and v["module"]in tail and re.search(r"(?m)^\s*(?:private\s+)?theorem\s",Path(v["source"]).read_text())]
- chosen=sorted(candidates,key=lambda v:(Path(v["source"]).stat().st_size,v["module"]))[:3];assert len(chosen)==3
+ # Use the earliest certified prefix followed by three theorem-bearing targets.
+ # Late prefixes previously exceeded12GiB RSS despite a lower charged cgroup
+ # peak. Negative controls need a certified prefix, not the largest prefix.
+ # This selection does not change or repeat any primary cost measurement.
+ chosen=[]
+ for final in ledger:
+  if final["operation"]!="stream"or not final["valid"]or not final["previous"]:continue
+  tail=set(final["accepted"])
+  candidates=[v for v in frame if v["target"]and v["module"]in tail and re.search(r"(?m)^\s*(?:private\s+)?theorem\s",Path(v["source"]).read_text())]
+  if len(candidates)>=3:
+   chosen=sorted(candidates,key=lambda v:(Path(v["source"]).stat().st_size,v["module"]))[:3];break
+ assert len(chosen)==3
  n=m.native();out=[]
  for i,v in enumerate(chosen):
   pair=dict(module=v["module"],certified_predecessor=final["previous"],modes=[])

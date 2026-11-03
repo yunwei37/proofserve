@@ -1,0 +1,12 @@
+{
+  "upstream_commit": "7c49fe32c55de02c2c873655c804b16e4c3fef0a",
+  "path": "lake-manifest.json",
+  "json_pointer": "/name",
+  "before": "multitape-proof-toolkit",
+  "after": "«multitape-origin-return»",
+  "reason": "Stock Lake4.34.1 rejects the upstream stale unescaped hyphenated Name before any build. Match the unchanged TOML package name using Lean Name quoting.",
+  "proof_source_changes": false,
+  "dependency_revisions_changed": false,
+  "original_manifest": "/workspaces/.agent-state/proofserve-o-line/external-projects/croc-upstream-lake-manifest.json",
+  "original_error": "/workspaces/.agent-state/proofserve-o-line/external-projects/croc-selective-cache.log"
+}

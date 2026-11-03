@@ -1,0 +1,14 @@
+{
+  "review": "\u81ea\u5ba1",
+  "certified_predecessor": "SubexponentialSATCertified0020",
+  "certified_prefix_modules": 10500,
+  "roots": [
+    "OAI.Algorithms.SubexponentialSAT.SqrtLog.SquarefreeMask",
+    "OAI.Algorithms.SubexponentialSAT.DyadicWidth",
+    "OAI.Algorithms.SubexponentialSAT.LeanCompat"
+  ],
+  "all_absent_from_certified_prefix": true,
+  "stream_reference_policy_unchanged": true,
+  "native_execution": "pending; these are input selection assertions only",
+  "reason": "earliest theorem-bearing target segment avoids previously observed >12GiB late-prefix RSS; no budget increase"
+}
