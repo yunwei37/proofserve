@@ -1,0 +1,52 @@
+{
+  "all444": {
+    "modules": 444,
+    "bytes": 222614562,
+    "median_bytes": 6350.0,
+    "min_bytes": 240,
+    "max_bytes": 5581257,
+    "groups": {
+      "other-unmarked": 220,
+      "kernel-marked": 180,
+      "unmarked-certificate-family": 20,
+      "other-unmarked-plain-decide": 24
+    },
+    "prefixes": {
+      "CycleClique-other": 185,
+      "Construction": 259
+    }
+  },
+  "built190": {
+    "modules": 190,
+    "bytes": 108933392,
+    "median_bytes": 4457.0,
+    "min_bytes": 351,
+    "max_bytes": 5562611,
+    "groups": {
+      "other-unmarked": 155,
+      "unmarked-certificate-family": 8,
+      "kernel-marked": 24,
+      "other-unmarked-plain-decide": 3
+    },
+    "prefixes": {
+      "Construction": 190
+    }
+  },
+  "unbuilt254": {
+    "modules": 254,
+    "bytes": 113681170,
+    "median_bytes": 81652.5,
+    "min_bytes": 240,
+    "max_bytes": 5581257,
+    "groups": {
+      "other-unmarked": 65,
+      "kernel-marked": 156,
+      "unmarked-certificate-family": 12,
+      "other-unmarked-plain-decide": 21
+    },
+    "prefixes": {
+      "CycleClique-other": 185,
+      "Construction": 69
+    }
+  }
+}
