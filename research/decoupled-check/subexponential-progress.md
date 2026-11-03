@@ -28,3 +28,6 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 - oracle_qualified: 10744
 - kernel_peak_rss_gib: 0.0
 - kernel_over_source_cpu: None
+
+
+Host-reboot continuation:2425completed source targets retained; pending dispatch interrupted, unknown time excluded, next frame13169built normally. See [interruption audit](subexponential-reboot-20261103.md). No continuous wall-clock comparison across reboot.

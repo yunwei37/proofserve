@@ -74,3 +74,6 @@ Production stopped190/444; full stream0/444,0CPUh. Size sample **20/20 accepted*
 
 Source **2425/3977**; native stream **0/3977** and **0** dependencies; new sourceCPU **3.800363h**, streamCPU **0.000000h**, segment **0**; complete **False**. [Directory progress](subexponential-progress.md).
 Historical whole-library accepted2488/163097; certified dependencies10744; kernelCPU0.694505h; source errors9124/blocked151485 stay unchanged. Ramsey190/444 production is cancelled. Directory costs are not a global full-library measurement.
+
+
+Host-reboot continuation:2425completed source targets retained; pending dispatch interrupted, unknown time excluded, next frame13169built normally. See [interruption audit](subexponential-reboot-20261103.md). No continuous wall-clock comparison across reboot.
