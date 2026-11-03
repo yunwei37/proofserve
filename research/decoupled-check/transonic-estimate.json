@@ -1,0 +1,16 @@
+{
+  "targets": 466,
+  "dependencies": 5115,
+  "closure": 5581,
+  "marker_counts": {
+    "explicit_kernel": 307,
+    "other_proxy": 159
+  },
+  "source_dependency_actual_cpu_h": 2.729578753611111,
+  "source_target_forecast_cpu_h": 3.2088342840962722,
+  "check_forecast_cpu_h": 3.428167044484383,
+  "total_comparison_forecast_cpu_h": 9.366580082191767,
+  "qualification_reserve_cpu_h": 2,
+  "remaining_forecast_cpu_h": 8.637001328580656,
+  "scope": "Planning transfer from W completed ordinary/computational class means; checker target assumes no saving, shared dependencies use measured Falconer/module transfer. No hard cost or memory bound."
+}

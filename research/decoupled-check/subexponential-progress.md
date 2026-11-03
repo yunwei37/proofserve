@@ -28,3 +28,7 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 - oracle_qualified: 10744
 - kernel_peak_rss_gib: 0.0
 - kernel_over_source_cpu: None
+
+## User12h route decision after the finite pilot
+
+Review: 自审. All25source calls succeeded; mean4.227595CPU-s/target. Full comparison projection **12.350CPUh**, including7.048263h retained common source work, exceeds12h. Remaining native forecast including2h reference reserve is7.272h; this is not charged as already executed. Conservatively honoring the total-comparison condition, the full queue is not launched. All25typed inputs/raw results are retained, fresh stream0/3977. Next: complete Transonic466. This25-file dependency-ordered pilot is not an unbiased3977cost estimate or proof failure.

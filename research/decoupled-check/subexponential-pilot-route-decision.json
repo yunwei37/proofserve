@@ -1,0 +1,12 @@
+{
+  "pilot_targets": 25,
+  "pilot_all_success": true,
+  "observed_new_source_cpu_s": 105.689864,
+  "observed_mean_cpu_s": 4.22759456,
+  "comparison_total_forecast_cpu_h": 12.349822068088889,
+  "remaining_cpu_h_including_reference_reserve": 7.272200332255556,
+  "reference_reserve_h": 2,
+  "threshold_cpu_h": 12,
+  "decision": "Do not launch full SubexponentialSAT queue; switch to smaller complete Transonic directory as user instructed.",
+  "scope": "Total comparison threshold interpreted conservatively, including7.048263h already measured common source costs. Remaining runtime is lower; no claim it already consumed12h."
+}

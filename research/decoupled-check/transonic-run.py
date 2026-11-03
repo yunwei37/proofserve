@@ -36,7 +36,7 @@ def native():
  return n
 def next_action():
  frame=json.loads((A/'frame.json').read_text());s=state()
- if s['phase']in ['complete','failure']:return None
+ if s['phase']in ['complete','failure','planning_stop']:return None
  built=set(s['built'])
  for i,v in enumerate(frame):
   if v['module']not in built:return['build',str(i)]
@@ -118,37 +118,12 @@ def source_window():
   if worker(action):return 2
  return 0
 def sync_whole(summary):
- p=OWN/'whole-library-progress.md';text=p.read_text()
- marker='<!-- current-directory-start -->'
+ p=OWN/'whole-library-progress.md';text=p.read_text();marker='<!-- transonic-current -->'
  if marker in text:text=text[:text.index(marker)].rstrip()
- body=f"""
-{marker}
-## Corrected-environment Transonic window
-
-Review: 自审. Historical whole-library point remains **2488 / 163097**
-accepted source modules, **10744 certified dependencies**, **0.694505 kernel
-CPU hours**, **9124 producer errors**, **151485 blocked source modules**.
-That partial run is retired; none of these counts is silently repaired.
-
-Current Transonic: **{summary['phase']}**; source **{summary['source_targets_built']}/466**,
-kernel **{summary['kernel_accepted_targets']}/466**, freshly checked dependencies
-**{summary['kernel_accepted_dependencies']}**; source CPU
-**{summary['source_cpu_s']/3600:.6f} h** (new targets
-**{summary['source_new_cpu_s']/3600:.6f} h**), kernel CPU
-**{summary['kernel_cpu_h']:.6f} h**; segment **{summary['current_segment']}**;
-at least **{summary['remaining_segments_min']}** check segments remain.
-Complete: **{summary['complete']}**. [Full progress](transonic-progress.md).
-
-The environment fix could remove failed-producer-only ancestry blocking for
-**140950 / 151485 nodes (93.05%)**, conditional on those producers actually
-compiling. **10535** blocked nodes still reach missing external providers:
-273 external-only and10262 mixed. These are static scheduling opportunities,
-not newly accepted proofs or a global validation cost.
-This directory has466 targets and5115 dependency nodes in the retained native
-header DAG; full native set equality remains mandatory before a complete ratio.
-<!-- current-directory-end -->
-"""
- p.write_text(text+'\n\n'+body)
+ text+='\n\n'+marker+'\n## Transonic complete-directory attempt\n\n'
+ text+=f"Source **{summary['source_targets_built']}/466**; native stream **{summary['kernel_accepted_targets']}/466** and **{summary['kernel_accepted_dependencies']}** dependencies; new sourceCPU **{summary['source_new_cpu_s']/3600:.6f}h**, streamCPU **{summary['kernel_cpu_h']:.6f}h**, segment **{summary['current_segment']}**; complete **{summary['complete']}**. [Directory progress](transonic-progress.md).\n"
+ text+='Historical whole-library accepted2488/163097; certified dependencies10744; kernelCPU0.694505h; source errors9124/blocked151485 stay unchanged. Ramsey190/444 production is cancelled. Directory costs are not a global full-library measurement.\n'
+ p.write_text(text)
 def reduce():
  s=state();frame=json.loads((A/'frame.json').read_text());targets={v['module']for v in frame if v['target']}
  rows=[json.loads(v)for v in(A/'ledger.jsonl').read_text().splitlines()]if(A/'ledger.jsonl').exists()else[]
@@ -180,7 +155,7 @@ def reduce():
  sync_whole(summary)
  text='# Transonic complete-closure measurement: actual progress\n\nReview: 自审.\n\n'
  text+='**Historical whole-library point:2488 /163097accepted source IDs;10744dependencies;0.694505kernelCPUh;32attempts/31successful;9124producer errors/151485blocked. It is partial and retired, not this Transonic denominator.**\n\n'
- text+=f'**Transonic phase {s["phase"]}: baseline source coverage {len(source)}/{len(frame)} closure nodes (reused {summary["reused_source_nodes"]}, new {summary["new_source_nodes_built"]}) ({summary["source_targets_built"]}/444targets); kernel accepts {summary["kernel_accepted_targets"]}/444targets and {summary["kernel_accepted_dependencies"]}dependencies; kernelCPU {kernel_cpu/3600:.6f}h; current segment {s["segments"]}; at least {summary["remaining_segments_min"]} segments (500 nodes each) remain.**\n\n'
+ text+=f'**Transonic phase {s["phase"]}: baseline source coverage {len(source)}/{len(frame)} closure nodes (reused {summary["reused_source_nodes"]}, new {summary["new_source_nodes_built"]}) ({summary["source_targets_built"]}/466targets); kernel accepts {summary["kernel_accepted_targets"]}/466targets and {summary["kernel_accepted_dependencies"]}dependencies; kernelCPU {kernel_cpu/3600:.6f}h; current segment {s["segments"]}; at least {summary["remaining_segments_min"]} segments (500 nodes each) remain.**\n\n'
  text+='These are separate experiment costs. No global CPU estimate is formed by adding or rescaling this prefix. Producer uses official SDK/cache Meta/IR; checker consumes exact source-produced terms. Same-capture immutable shared source artifacts and actual compiler costs are charged once per complete closure; newly built targets use -o/-i/-c. This is summed source compiler work, not a fresh parallel Lake wall time. Oracle cost is a separate qualification. All timing uses P0–7/shared flock/no-M,12GiB total allocation. A complete CPU ratio requires full source, stream and original module-local coverage.\n\n'
  text+='\n'.join('- '+k+': '+str(v)for k,v in summary.items())+'\n'
  if s.get('failure'):text+='\nFailure: '+json.dumps(s['failure'])+'\n'
@@ -211,6 +186,17 @@ def queue():
  # The source is finite; every successful task advances a source, stream or
  # reference cursor. Stop on a real failure, retaining original evidence.
  while True:
+  current=reduce()
+  if current['phase']=='source' and current['source_targets_built']:
+   n=current['source_targets_built']
+   projected_targets=max(3.2088342840962722*3600,current['source_new_cpu_s']/n*466)
+   projected_check=projected_targets+789.597938
+   comparison=(current['source_reused_cpu_s']+projected_targets+projected_check)/3600
+   remaining=(projected_targets-current['source_new_cpu_s']+projected_check)/3600+2.0
+   atomic(A/'remaining-estimate.json',dict(observed_targets=n,total_comparison_cpu_h_scenario=comparison,remaining_cpu_h_scenario=remaining,limit_h=12,scope='Max of pre-run class scenario and dependency-ordered prefix mean; no target-check saving, not a bound.'))
+   if comparison>12 or remaining>12:
+    s=state();s['phase']='planning_stop';s['planning_stop']=dict(reason='Comparison or remaining CPU forecast exceeds user12h decision',total_comparison_cpu_h=comparison,remaining_cpu_h=remaining)
+    atomic(A/'state.json',s);reduce();publish();break
   action=next_action()
   if action is None:reduce();publish();break
   key='task-'+str(time.monotonic_ns())

@@ -75,3 +75,7 @@ Production stopped190/444; full stream0/444,0CPUh. Size sample **20/20 accepted*
 
 Source **25/3977**; native stream **0/3977** and **0** dependencies; new sourceCPU **0.029358h**, streamCPU **0.000000h**, segment **0**; complete **False**. [Directory progress](subexponential-progress.md).
 Historical whole-library accepted2488/163097; certified dependencies10744; kernelCPU0.694505h; source errors9124/blocked151485 stay unchanged. Ramsey190/444 production is cancelled. Directory costs are not a global full-library measurement.
+
+### SubexponentialSAT route stopped after25successful sources
+
+Pilot mean4.227595CPU-s; total-comparison scenario12.350CPUh exceeds the user12h condition (including retained common work). No full queue was launched, no new kernel accepts. Preserve25/3977source builds; next attempt is Transonic466. Historical whole-library counts stay unchanged; no source build is silently counted as fresh stream acceptance.
