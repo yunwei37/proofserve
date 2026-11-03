@@ -4,8 +4,7 @@ A small, citable data package for **openai/math at
 4eaee87548250b2682affda7d05d947c05554bae**: 163,097 source modules, 21 strata,
 42 original probability draws (two per stratum, seed 20261030).
 
-**Current snapshot: 41 completed costs / 42 original draws.** The last draw
-is still being prepared. Blank costs are missing, never zero or imputed. A completed_cost means a
+**Current snapshot: 42 completed costs / 42 original draws; all 21 strata complete.** Blank costs are missing, never zero or imputed. A completed_cost means a
 native compiler return under the frozen flags, not an axiom-free proof or
 independent-checker certificate; upstream admits/axioms are not removed.
 The frozen 12 independent precision draws are not pooled into the original42.
@@ -82,8 +81,8 @@ From a repository checkout with retained research inputs:
 
 ```sh
 python3 data/openai-math-4eaee875/export.py \
-  --frame workloads/openai-math/final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source41-GroundMainFinalStructuralRefinementOutputs/sample-costs.csv \
-  --staircase workloads/openai-math/final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source41-GroundMainFinalStructuralRefinementOutputs/latest-staircase
+  --frame workloads/openai-math/final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source42-PreparedModularCanonicalDetectorPositive/sample-costs.csv \
+  --staircase workloads/openai-math/final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source42-PreparedModularCanonicalDetectorPositive/latest-staircase
 ```
 
 This exports evidence; it does not download upstream source or reproduce a
@@ -139,8 +138,23 @@ and total. Nominal source-sampling intervals hold selected transfer factors
 fixed; transfer-scenarios.csv is a separate selected-factor sensitivity table.
 Partial panels retain the original cell, with failed/censored attempts visible
 in precision-costs.csv. Non-completed attempt CPU is not a successful sample cost.
-These scripts do not start Lean or request more samples. The current provisional
-snapshot has no final-estimates.csv yet; the actual41 input was correctly refused.
+These scripts do not start Lean or request more samples. The original42 snapshot now includes final-estimates.csv and transfer-scenarios.csv;
+all 18 baseline rows numerically match the independently frozen staircase. The
+original actual41 input was correctly refused before this completion.
 A numeric check on the actual20 complete cells exactly reproduced the published
 278.091768 estimate and 94.148040–462.035496 nominal interval; this is not a
 pretend observation for the missing original or additional12.
+
+
+Original42 baseline completed at22:07:31UTC on2026-11-03. The original master
+and last native process retired; cgroup cleanup confirmed, no memory events.
+The fixed additional12 are a separate active finite collection; these baseline
+tables do not pretend those samples have already returned. Ordinary parallel
+CPU transfer uses the Nat.Basic eight-worker profile and computation uses the
+Grid four-worker profile, with the historical named EnvelopePsiB parallel8
+override retained. That override is a parallel/serial CPU ratio measured for a
+single leaf after a fixed prefix, **not** a complete-closure or population ratio.
+Factors are applied per observed module before sampling variance is calculated.
+In conditional panels, each known original has weight one and only the six fresh
+remainder outcomes contribute sampling variance. This is not a uniform-worker
+whole-library run. No further sample/precision target follows the frozen12.

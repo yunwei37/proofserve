@@ -1,13 +1,13 @@
 domain,stage,min_model_CPU_h,max_model_CPU_h,scope,actual_whole_library
-ordinary_proxy,a_build,220.98930111000007,221.4658203544445,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
-ordinary_proxy,b_serial_stream,13.949767097964548,19.82435281172303,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
-ordinary_proxy,c_parallel_stream,19.007215729871948,27.011615889450518,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
-ordinary_proxy,d_plus_qualified_chunk,19.007215729871948,27.011615889450518,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,a_build,221.5736740155556,221.5736740155556,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,b_serial_stream,13.986655154942488,19.834007254230144,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,c_parallel_stream,19.057477447641975,27.024770522799994,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+ordinary_proxy,d_plus_qualified_chunk,19.057477447641975,27.024770522799994,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
 certificate_proxy,a_build,57.546404277222216,57.546404277222216,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
 certificate_proxy,b_serial_stream,4.858153479847351,4.872538565126986,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
 certificate_proxy,c_parallel_stream,6.5766755072966845,6.596149169135773,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
 certificate_proxy,d_plus_qualified_chunk,6.6061419586909516,6.6257028712556405,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
-all,a_build,278.53570538722227,279.0122246316667,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
-all,b_serial_stream,18.8079205778119,24.69689137685002,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
-all,c_parallel_stream,25.583891237168633,33.60776505858629,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
-all,d_plus_qualified_chunk,25.6133576885629,33.63731876070616,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,a_build,279.1200782927778,279.1200782927778,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,b_serial_stream,18.84480863478984,24.70654581935713,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,c_parallel_stream,25.63415295493866,33.62091969193577,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False
+all,d_plus_qualified_chunk,25.663619406332927,33.65047339405564,cross product of missing-cost class min/max and2selected closure transfer settings; not CI,False

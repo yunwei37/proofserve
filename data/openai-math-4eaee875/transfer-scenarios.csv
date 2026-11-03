@@ -1,0 +1,10 @@
+estimator,domain,stage,min_transfer_estimate_CPU_h,max_transfer_estimate_CPU_h,scope
+original42_HT_unchanged,all,build,279.12007829277775,279.12007829277775,"selected closure-factor sensitivity, not CI or a population bound"
+original42_HT_unchanged,all,serial_stream,18.844808634789842,24.706545819357128,"selected closure-factor sensitivity, not CI or a population bound"
+original42_HT_unchanged,all,parallel_stream,25.634152954938667,33.620919691935775,"selected closure-factor sensitivity, not CI or a population bound"
+original42_HT_unchanged,ordinary_mathematics,build,221.57367401555555,221.57367401555555,"selected closure-factor sensitivity, not CI or a population bound"
+original42_HT_unchanged,ordinary_mathematics,serial_stream,13.98665515494249,19.834007254230144,"selected closure-factor sensitivity, not CI or a population bound"
+original42_HT_unchanged,ordinary_mathematics,parallel_stream,19.057477447641983,27.0247705228,"selected closure-factor sensitivity, not CI or a population bound"
+original42_HT_unchanged,computation_certificate,build,57.54640427722222,57.54640427722222,"selected closure-factor sensitivity, not CI or a population bound"
+original42_HT_unchanged,computation_certificate,serial_stream,4.858153479847351,4.872538565126985,"selected closure-factor sensitivity, not CI or a population bound"
+original42_HT_unchanged,computation_certificate,parallel_stream,6.5766755072966845,6.596149169135774,"selected closure-factor sensitivity, not CI or a population bound"

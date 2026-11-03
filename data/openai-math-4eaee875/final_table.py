@@ -31,12 +31,13 @@ def tables(data, precision=None):
         raise ValueError("original42 costs incomplete; do not emit a final full-frame table")
     cells = {}
     for h in strata:
-        values = [float(r["cpu_s"]) for r in original if r["stratum"] == h["stratum"]]
+        known = [(r["module"], float(r["cpu_s"])) for r in original if r["stratum"] == h["stratum"]]
+        values = [v for _, v in known]
         N, n = int(h["population_modules"]), int(h["sample_size"])
         assert len(values) == n == 2
         cells[h["stratum"]] = dict(estimate=N*statistics.mean(values),
             variance=N*N*(1-n/N)*statistics.variance(values)/n, n=n,
-            domain=h["regime_proxy"], known=values, population=N)
+            domain=h["regime_proxy"], known=known, fresh=None, population=N)
     models = {"original42_HT_unchanged": cells}
     applied = 0
     qualified = 0
@@ -56,9 +57,10 @@ def tables(data, precision=None):
             if len(good) != 6:
                 continue
             c = expanded[h]
-            z = [float(r["cpu_s"]) for r in good]
+            fresh = [(r["module"], float(r["cpu_s"])) for r in good]
+            z = [v for _, v in fresh]
             R = c["population"] - len(c["known"])
-            c.update(estimate=sum(c["known"])+R*statistics.mean(z),
+            c.update(estimate=sum(v for _, v in c["known"])+R*statistics.mean(z), fresh=fresh,
                 variance=R*R*(1-6/R)*statistics.variance(z)/6, n=6)
             applied += 1
         models["conditional_panels_working_model"] = expanded
@@ -80,15 +82,34 @@ def tables(data, precision=None):
                     selected = [c for c in source.values() if domain == "all" or c["domain"] == domain]
                     weighted = []
                     for c in selected:
-                        f = of if c["domain"] == "ordinary_mathematics" else cf
-                        weighted.append(dict(estimate=c["estimate"]*f, variance=c["variance"]*f*f, n=c["n"]))
+                        base = 1 if stage == "build" else ordinary if c["domain"] == "ordinary_mathematics" else compute
+                        def factor(module):
+                            if stage != "parallel_stream":
+                                return base
+                            parallel = (factors["envelope_parallel8"] if module == "OAI.Analysis.Triangular.Envelope.EnvelopePsiB"
+                                else factors["math_parallel8"] if c["domain"] == "ordinary_mathematics"
+                                else factors["grid_parallel4"])
+                            return base*parallel
+                        known = [v*factor(m) for m, v in c["known"]]
+                        N = c["population"]
+                        if c["fresh"] is not None:
+                            z = [v*factor(m) for m, v in c["fresh"]]
+                            n, R = len(z), N-len(known)
+                            weighted.append(dict(estimate=sum(known)+R*statistics.mean(z),
+                                variance=R*R*(1-n/R)*statistics.variance(z)/n, n=n))
+                        else:
+                            n = len(known)
+                            weighted.append(dict(estimate=N*statistics.mean(known),
+                                variance=N*N*(1-n/N)*statistics.variance(known)/n, n=n))
                     point, low, high, df = interval(weighted)
                     output.append(dict(estimator=estimator, transfer_scenario=scenario, domain=domain,
                         stage=stage, estimate_CPU_h=point, nominal95_low_CPU_h=low,
                         nominal95_high_CPU_h=high, satterthwaite_df=df,
                         ordinary_CPU_factor=of, computation_CPU_factor=cf,
                         source_CPU_share=sum(c["estimate"] for c in selected)/source_total,
-                        qualified_precision_costs=qualified, applied_conditional_cells=applied if estimator == "conditional_panels_working_model" else 0,
+                        module_CPU_factor_override=("EnvelopePsiB=" + str(factors["envelope_parallel8"])
+                            if stage == "parallel_stream" else ""),
+                        qualified_precision_costs=qualified if estimator == "conditional_panels_working_model" else 0, applied_conditional_cells=applied if estimator == "conditional_panels_working_model" else 0,
                         interval_scope="source sampling only; fixed transfers; hybrid is nominal, not global adaptive coverage",
                         whole_library_measurement=False))
     sensitivity = []
