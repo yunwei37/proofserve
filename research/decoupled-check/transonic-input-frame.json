@@ -1,0 +1,9 @@
+{
+  "targets": 466,
+  "dependencies": 5115,
+  "closure_nodes": 5581,
+  "reused_cpu_s": 9826.483513,
+  "native_launched": false,
+  "frame_basis": "original-native dependency headers from the qualified Ramsey common closure; pending native equality check",
+  "source_pin": "4eaee87548250b2682affda7d05d947c05554bae"
+}

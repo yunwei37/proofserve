@@ -161,6 +161,48 @@ def worker(args):
   else:s['phase']='failure';s['failure']=dict(operation=operation,key=c['key'])
  atomic(A/'state.json',s)
  return 0 if good else 2
+def source_window():
+ # Keep each native compiler's 1400s limit and clock unchanged. A new call
+ # starts only in the first 200s of a 1740s outer lock window.
+ begin=time.monotonic()
+ for _ in range(25):
+  action=next_action()
+  if action is None or action[0]!='build':return 0
+  if time.monotonic()-begin>=200:return 0
+  if worker(action):return 2
+ return 0
+def sync_whole(summary):
+ p=OWN/'whole-library-progress.md';text=p.read_text()
+ marker='<!-- current-directory-start -->'
+ if marker in text:text=text[:text.index(marker)].rstrip()
+ body=f"""
+{marker}
+## Corrected-environment Ramsey window
+
+Review: 自审. Historical whole-library point remains **2488 / 163097**
+accepted source modules, **10744 certified dependencies**, **0.694505 kernel
+CPU hours**, **9124 producer errors**, **151485 blocked source modules**.
+That partial run is retired; none of these counts is silently repaired.
+
+Current Ramsey: **{summary['phase']}**; source **{summary['source_targets_built']}/444**,
+kernel **{summary['kernel_accepted_targets']}/444**, freshly checked dependencies
+**{summary['kernel_accepted_dependencies']}**; source CPU
+**{summary['source_cpu_s']/3600:.6f} h** (new targets
+**{summary['source_new_cpu_s']/3600:.6f} h**), kernel CPU
+**{summary['kernel_cpu_h']:.6f} h**; segment **{summary['current_segment']}**;
+at least **{summary['remaining_segments_min']}** check segments remain.
+Complete: **{summary['complete']}**. [Full progress](ramsey-progress.md).
+
+The environment fix could remove failed-producer-only ancestry blocking for
+**140950 / 151485 nodes (93.05%)**, conditional on those producers actually
+compiling. **10535** blocked nodes still reach missing external providers:
+273 external-only and10262 mixed. These are static scheduling opportunities,
+not newly accepted proofs or a global validation cost.
+Next is Transonic:466 targets,5115 dependency nodes in the retained native
+header DAG, pending actual full native set equality; no extra OAI subtree.
+<!-- current-directory-end -->
+"""
+ p.write_text(text+'\n\n'+body)
 def reduce():
  s=state();frame=json.loads((A/'frame.json').read_text());targets={v['module']for v in frame if v['target']}
  rows=[json.loads(v)for v in(A/'ledger.jsonl').read_text().splitlines()]if(A/'ledger.jsonl').exists()else[]
@@ -189,6 +231,7 @@ def reduce():
  oracle_qualified=len(s['oracle_ids']),kernel_peak_rss_gib=max((v['cell']['peak_rss_kib']for v in checks),default=0)/1024**2)
  summary['kernel_over_source_cpu']=kernel_cpu/summary['source_cpu_s']if complete else None
  atomic(A/'reduced.json',summary)
+ sync_whole(summary)
  text='# Ramsey complete-closure measurement: actual progress\n\nReview: 自审.\n\n'
  text+='**Historical whole-library point:2488 /163097accepted source IDs;10744dependencies;0.694505kernelCPUh;32attempts/31successful;9124producer errors/151485blocked. It is partial and retired, not this Ramsey denominator.**\n\n'
  text+=f'**Ramsey phase {s["phase"]}: baseline source coverage {len(source)}/{len(frame)} closure nodes (reused {summary["reused_source_nodes"]}, new {summary["new_source_nodes_built"]}) ({summary["source_targets_built"]}/444targets); kernel accepts {summary["kernel_accepted_targets"]}/444targets and {summary["kernel_accepted_dependencies"]}dependencies; kernelCPU {kernel_cpu/3600:.6f}h; current segment {s["segments"]}; at least {summary["remaining_segments_min"]} segments (500 nodes each) remain.**\n\n'
@@ -200,7 +243,7 @@ def reduce():
  if complete:(OWN/'ramsey-result.md').write_text(text)
  return summary
 def publish():
- files=['research/decoupled-check/'+n for n in ['ramsey-progress.md','ramsey-source-costs.csv','ramsey-native-costs.csv','ramsey-result.md']if(OWN/n).exists()]
+ files=['research/decoupled-check/'+n for n in ['whole-library-progress.md','ramsey-progress.md','ramsey-source-costs.csv','ramsey-native-costs.csv','ramsey-result.md']if(OWN/n).exists()]
  assert subprocess.check_output(['git','symbolic-ref','--short','HEAD'],cwd=R,text=True).strip()=='main'
  subprocess.run(['git','add','--']+files,cwd=R,check=True)
  if subprocess.run(['git','diff','--cached','--quiet','--']+files,cwd=R).returncode!=0:
@@ -225,17 +268,21 @@ def queue():
   action=next_action()
   if action is None:reduce();publish();break
   key='task-'+str(time.monotonic_ns())
-  cmd=['flock',LOCK,'taskset','-c','0-7','timeout','--signal=TERM','--kill-after=10','1740','python3','-u',str(Path(__file__).resolve()),'worker']+action
+  if shutil.disk_usage('/workspaces').used/shutil.disk_usage('/workspaces').total>=.85:
+   s=state();s['phase']='failure';s['failure']=dict(operation='disk_ceiling',limit=.85);atomic(A/'state.json',s);reduce();publish();break
+  suffix=['window']if action[0]=='build'else['worker']+action
+  cmd=['flock',LOCK,'taskset','-c','0-7','timeout','--signal=TERM','--kill-after=10','1740','python3','-u',str(Path(__file__).resolve())]+suffix
   with(A/(key+'.log')).open('w')as f:
    locks=Path('/proc/locks').read_text();p=subprocess.Popen(cmd,stdout=f,stderr=subprocess.STDOUT,start_new_session=True)
    atomic(A/(key+'.submission.json'),dict(pid=p.pid,args=cmd,locks_before=locks));rc=p.wait()
   s=state()
-  if action[0]!='build'or s['tasks']%25==0 or rc:reduce();publish()
+  reduce();publish()
   if rc:break
  atomic(A/'queue-terminal.json',dict(state=state(),reduced=reduce()))
 def main():
- p=argparse.ArgumentParser();p.add_argument('op',choices=['prepare-frame','worker','reduce','queue']);p.add_argument('args',nargs='*');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('op',choices=['prepare-frame','worker','window','reduce','queue']);p.add_argument('args',nargs='*');a=p.parse_args()
  if a.op=='worker':raise SystemExit(worker(a.args))
+ elif a.op=='window':raise SystemExit(source_window())
  elif a.op=='prepare-frame':prepare_frame()
  elif a.op=='queue':queue()
  else:os.sched_setaffinity(0,{8});print(json.dumps(reduce(),indent=2))
