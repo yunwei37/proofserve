@@ -68,6 +68,18 @@ def main():
    for k in a:
     pmueffects.append(dict(workers=n,event=k,off=str(a[k]),on=str(b[k]),relative_change=float(b[k]/a[k]-1),
      repetitions_per_arm=1,scope='whole-command user-mode; raw event semantics retained'))
+ scaling=[]
+ for mode in [0,1]:
+  if not all((mode,n)in counters for n in [4,8]):continue
+  a,b=counters[mode,4],counters[mode,8]
+  for k in list(a)+['IPC','cycles_per_refcycle']:
+   if k=='IPC':x,y=a['instructions']/a['cpu-cycles'],b['instructions']/b['cpu-cycles']
+   elif k=='cycles_per_refcycle':x,y=a['cpu-cycles']/a['ref-cycles'],b['cpu-cycles']/b['ref-cycles']
+   else:x,y=a[k],b[k]
+   scaling.append(dict(persistent=bool(mode),event=k,P4=str(x),P8=str(y),
+    relative_change=float(y/x-1),repetitions_each=1,
+    scope='same32-key primary matrix; whole-command user-mode, not exact kernel interval'))
+ emit(out/'stat-scaling.csv',scaling)
  emit(out/'paired-effects.csv',effects);emit(out/'paired-interaction.csv',interaction)
  emit(out/'stat-summary.csv',pmu);emit(out/'stat-effects.csv',pmueffects)
  emit(out/'stat-vs-plain.csv',overhead)

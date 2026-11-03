@@ -28,6 +28,7 @@ def main():
    ru_maxrss_peak_GiB=c['peak_rss_kib']/1024**2,charged_peak_GiB=c['charged_peak_bytes']/1024**3,
    accepted_count=len(c['accepted_IDs']),accepted_equal=c['accepted_set_equal_to_reference'],
    checks=c['checks'],allocation_units=c['allocation_units'],work_equal=c['work_equal_to_frozen_reference'])
+  row.update(native_retired=c['native_retired'],cgroup_retired=c['cgroup_retired'],stop_reasons=json.dumps(c['stop_reasons']))
   if 'application_time'in c:
    a=c['application_time']
    row.update(application_wall_s=float(a['wall_s']),application_CPU_s=float(a['user_s'])+float(a['system_s']))

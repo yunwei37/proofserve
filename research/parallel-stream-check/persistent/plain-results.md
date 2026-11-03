@@ -1,7 +1,7 @@
 # Complete plain causal matrix: full Barrier closure
 All24 declared plain cells returned,3 repetitions per flag at1/2/4/8P.
 Same executable, only PARALLEL_PERSIST_BASE0/1; no-M; shared blocking P-core
-lock; same frozen4,449-module closure and source. Stat8 cells remain in progress.
+lock; same frozen4,449-module closure and source. All8 stat cells have now completed; see stat-results.md.
 
 Each table entry is median[min,max]. CPU=user+system wait4 seconds;
 original-check observer uses thread CPU including heartbeat/timer glue.
@@ -24,7 +24,7 @@ Every native cell has the same4,449 reference accepted IDs and exact module
 vectors:237,863 observed original checks and3,283,925,639 in-check allocation
 units. All18,990 marked roots remain persistent through enqueue; all unmarked
 roots become active MT. Native applications/groups retired after each cell.
-The overall finite matrix controller remains active for the8 stat cells.
+The finite primary matrix controller has now retired after all8 stat cells.
 
 At8P, on/off medians change wall-5.134%,CPU-14.130%,observer CPU-18.776%.
 The directly paired4-to-8 interaction removes a median65.21% of extra total
@@ -35,7 +35,7 @@ overhead. It is not a primitive-only instruction measurement.
 
 This supports a causal prototype contribution to the old negative scaling,
 not a general Lean limit. Persistence changes RC traffic, graph touches and
-reclamation; PMU outcomes have not yet returned. Peak RSS alone does not
+reclamation; Complete PMU outcomes are in stat-results.md. Peak RSS alone does not
 quantify retained objects. Full anonymous-memory, stock scope and real-root
 bad-proof diagnostics remain to execute. This same-pipeline1P is not asserted
 to be the best stock serial baseline. Old Grid/leaf gains require their own
