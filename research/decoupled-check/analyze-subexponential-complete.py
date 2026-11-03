@@ -8,7 +8,7 @@ def main():
  s=json.loads((A/"state.json").read_text());fr=json.loads((A/"frame.json").read_text())
  expected={v["module"]for v in fr};targets={v["module"]for v in fr if v["target"]}
  assert len(expected)==14721 and len(targets)==3977
- assert s["phase"]=="complete"and set(s["stream_ids"])==expected and expected<=set(s["oracle_ids"]),"incomplete coverage; no full cost ratio"
+ assert s["phase"]=="complete"and set(s["stream_ids"])==expected and set(s["oracle_ids"])==expected,"incomplete coverage; no full cost ratio"
  bad=json.loads((A/"negative-controls-terminal.json").read_text())
  assert bad["complete"]and bad["rejected"]==3
  ledger=[json.loads(l)for l in(A/"ledger.jsonl").read_text().splitlines()]
