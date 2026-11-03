@@ -55,12 +55,20 @@ turn a rejected/unfinished proof into an accepted one. CPU is user + system;
 wall time is separate. Hardware/protocol comparability remains the log producer's
 responsibility.
 
-`--receipt checker-receipt.json` currently retains the supplied JSON as
-**uninterpreted compiled evidence**. The final M checker v1 adapter is pending
-its schema. No axiom closure, accepted module set or native cost is inferred
-until that contract is implemented. In particular, spelling ofReduceBool in a
-source file does not establish transitive axiom dependence. This limitation is
-visible in both JSON and summary.
+`--receipt checker-receipt.json` consumes M's `schema_version=1` checker
+receipt. Complete receipts report the checked compiled closure's accepted
+modules, rejection events, axiom set, module hash and CPU/wall clocks.
+Incomplete/rejected receipts explicitly label axioms **last successful prefix
+only**; they never establish a full closure. `cpu_ns` is the current invocation
+and `cumulative_segment_cpu_ns` includes reused segments, when supplied.
+No per-module costs are derived from aggregate clocks.
+
+Receipt v1 does not bind compiled evidence to the current source digest.
+The JSON reports that source binding is not established; supplying an old
+receipt does not certify current source. Unknown schemas remain uninterpreted,
+malformed known schemas fail explicitly, and checker errors remain errors.
+The adapter imports reported evidence; it does not independently certify
+the checker or remove its documented trust boundary.
 
 ## Trust and supported scope
 
@@ -71,6 +79,6 @@ external directory symlinks or guess dynamic target configuration. A missing
 receipt or executable configuration is an explicit evidence gap.
 
 The lexical masker descends nested block comments and skips ordinary strings
-and character literals. This is not Lean's parser: unusual quoted identifiers,
+raw strings and character literals. This is not Lean's parser: unusual quoted identifiers,
 macro-generated imports and raw/interpolated string syntax may require compiler
 evidence. Do not treat the lexical counts as exact elaborated statistics.

@@ -16,7 +16,7 @@ import tomllib
 SCHEMA = "proofserve-audit/v1"
 TOKENS = ("decide", "native_decide", "bv_decide", "ofReduceBool", "omega",
           "simp", "simp_all", "norm_num", "grind", "rfl")
-NAME = r"[A-Za-z_][\w'.]*"
+NAME = r"(?!\d)[\w][\w'.]*"
 IMPORT = re.compile(r"(?m)^\s*(?:(?:public|private|meta)\s+)*import[ \t]+([^\n;]+)")
 
 def mask(text):
@@ -43,6 +43,12 @@ def mask(text):
                     i += 1
             if depth:
                 raise ValueError("unterminated block comment")
+        elif (raw := re.compile(r'r(#{0,})"').match(text, i)) and (i == 0 or not (text[i-1].isalnum() or text[i-1] == "_")):
+            delimiter = '"' + raw[1]
+            end = text.find(delimiter, raw.end())
+            if end < 0:
+                raise ValueError("unterminated raw string")
+            i = end + len(delimiter)
         elif (char := re.compile(r"'(?:\\.|[^'\\\n])'").match(text, i)):
             i = char.end()
         elif text[i] == '"':
@@ -168,15 +174,48 @@ def reachable(seeds, modules):
     return seen, missing
 
 def load_receipt(path):
-    """M's checker receipt is imported as evidence, never reconstructed from source."""
+    """Consume M checker v1 as reported compiled evidence, not source acceptance."""
     if path is None:
         return dict(status="unavailable", reason="no compiled checker receipt supplied"), {}
     receipt = json.loads(path.read_text(encoding="utf-8"))
-    # Until a checker contract is recognized, preserve the receipt but make no
-    # acceptance, axiom-closure or per-module cost inference.
-    return dict(status="supplied_uninterpreted", file=str(path),
-        reason="checker receipt adapter not yet negotiated; no inferred axioms",
-        receipt=receipt), {}
+    if not isinstance(receipt, dict) or receipt.get("schema_version") != 1:
+        return dict(status="supplied_uninterpreted", file=str(path),
+            reason="unrecognized checker receipt schema; no inferred axioms", receipt=receipt), {}
+    state = receipt.get("status")
+    if state == "error":
+        return dict(status="checker_error", file=str(path), error=receipt.get("error"),
+                    axioms=None, receipt=receipt), {}
+    required = ("accepted", "rejected", "roots", "axioms", "lean_version",
+                "module_set_hash", "module_set_hash_algorithm", "workers", "cpu_ns", "wall_ns")
+    absent = [k for k in required if k not in receipt]
+    if absent or state not in ("complete", "rejected", "incomplete"):
+        raise ValueError("malformed checker v1 receipt: " + ", ".join(absent or ["invalid status"]))
+    for key in ("accepted", "roots", "axioms"):
+        if not isinstance(receipt[key], list) or not all(isinstance(v, str) for v in receipt[key]):
+            raise ValueError("checker receipt " + key + " must be a string array")
+    if not isinstance(receipt["rejected"], list):
+        raise ValueError("checker receipt rejected must be an array")
+    for key in ("cpu_ns", "wall_ns", "workers"):
+        if type(receipt[key]) is not int or receipt[key] < (1 if key == "workers" else 0):
+            raise ValueError("invalid checker " + key)
+    if state == "complete" and receipt["rejected"]:
+        raise ValueError("complete checker receipt contains rejection diagnostics")
+    if len(set(receipt["accepted"])) != len(receipt["accepted"]):
+        raise ValueError("checker receipt has duplicate accepted module names")
+    return dict(status="reported_" + state, file=str(path),
+        lean_version=receipt["lean_version"], accepted=receipt["accepted"],
+        rejected=receipt["rejected"], roots=receipt["roots"], axioms=receipt["axioms"],
+        axioms_scope="complete_checked_closure" if state == "complete" else "last_successful_prefix_only",
+        module_set_hash=receipt["module_set_hash"],
+        module_set_hash_algorithm=receipt["module_set_hash_algorithm"],
+        workers=receipt["workers"], invocation_cpu_s=receipt["cpu_ns"]/1e9,
+        invocation_wall_s=receipt["wall_ns"]/1e9,
+        cumulative_segment_cpu_s=(receipt["cumulative_segment_cpu_ns"]/1e9
+            if type(receipt.get("cumulative_segment_cpu_ns")) is int else None),
+        per_module_costs_available=False,
+        source_binding="not established: receipt v1 covers compiled artifacts; source digest is not included",
+        trusted_local_checkpoints=receipt.get("trusted_local_checkpoints"),
+        mathlib_manifest=receipt.get("mathlib_manifest"), receipt=receipt), {}
 
 def read_costs(path, modules):
     if path is None:

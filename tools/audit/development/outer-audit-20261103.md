@@ -12,3 +12,8 @@ universal Lake-default resolution or whole-library measured checker CPU.
 Remaining work: receive final original, run only frozen12, finalize dataset and
 integrate M's actual receipt contract. Fixed transfer uncertainty is separate
 from nominal source-sampling intervals.
+
+
+Contract update: v1 receipt adapter is implemented against M's actual source.
+Twelve tests pass. Native receipts and external-project acceptance remain O/M
+qualification; the adapter makes no new native-acceptance claim.

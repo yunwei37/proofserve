@@ -96,5 +96,48 @@ class AuditTests(unittest.TestCase):
             self.assertEqual(r["compiled_evidence"]["status"], "supplied_uninterpreted")
             self.assertNotIn("axioms", r)
 
+    def receipt(self, status="complete"):
+        return dict(schema_version=1, status=status, accepted=["Demo"], rejected=[],
+            roots=["Demo"], axioms=["propext"], lean_version="Lean (version 4.34.1, ...)",
+            module_set_hash=42, module_set_hash_algorithm="lean4.34.1-hash64-noncryptographic",
+            workers=2, cpu_ns=2000000000, wall_ns=1500000000,
+            cumulative_segment_cpu_ns=4000000000, trusted_local_checkpoints=True)
+
+    def test_v1_receipt_complete_vs_prefix_axioms(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.project(d)
+            f = p / "receipt.json"
+            f.write_text(json.dumps(self.receipt()))
+            r = audit.audit(p, receipt=f)["compiled_evidence"]
+            self.assertEqual(r["status"], "reported_complete")
+            self.assertEqual(r["axioms"], ["propext"])
+            self.assertEqual(r["axioms_scope"], "complete_checked_closure")
+            self.assertEqual(r["invocation_cpu_s"], 2)
+            self.assertEqual(r["cumulative_segment_cpu_s"], 4)
+            self.assertIn("not established", r["source_binding"])
+            f.write_text(json.dumps(self.receipt("incomplete")))
+            self.assertEqual(audit.audit(p, receipt=f)["compiled_evidence"]["axioms_scope"],
+                             "last_successful_prefix_only")
+
+    def test_v1_receipt_rejects_contradictory_or_bad_clock(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.project(d)
+            f = p / "receipt.json"
+            r = self.receipt()
+            r["rejected"] = [{"error": "bad proof"}]
+            f.write_text(json.dumps(r))
+            with self.assertRaises(ValueError):
+                audit.audit(p, receipt=f)
+            r = self.receipt()
+            r["cpu_ns"] = -1
+            f.write_text(json.dumps(r))
+            with self.assertRaises(ValueError):
+                audit.audit(p, receipt=f)
+
+    def test_raw_string_and_unicode_import(self):
+        r = audit.lexical('def s := r#"literal " decide +kernel "#\nimport Δοκιμή.Test\n')
+        self.assertEqual(r["counts"]["decide_plus_kernel"], 0)
+        self.assertEqual(r["imports"], ["Δοκιμή.Test"])
+
 if __name__ == "__main__":
     unittest.main()
