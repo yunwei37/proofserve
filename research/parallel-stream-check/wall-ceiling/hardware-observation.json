@@ -1,0 +1,20 @@
+{
+  "kernel": "7.0.0-42-generic",
+  "boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944",
+  "machine": "x86_64",
+  "cpu_model": "Intel(R) Core(TM) i9-14900K",
+  "node": "phobos-vt",
+  "native_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "timings": "fresh native command only, lease wait excluded",
+  "flags": "no -M; no profiler/trace in plain curves; default persistence; runtime pool matches1/4/8",
+  "sdk": "Lean4.34.1 commit5045d0056413266e57c625dcd7c365b10e377c52"
+}
