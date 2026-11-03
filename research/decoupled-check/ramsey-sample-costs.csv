@@ -3,3 +3,4 @@ OAI.Combinatorics.Ramsey.CycleClique.Construction.CliqueThree,1,1304,other-unmar
 OAI.Combinatorics.Ramsey.CycleClique.Construction.PackingCertificate,1,1561,other-unmarked,1.547605,0.806696,1.5129042649641633,0.8183480054140091,0.5212544544635097,0.5409119561397981,True,0,3104452,sample-01
 OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificateMatrixChunks,1,1579,other-unmarked,1.739192,0.83848,1.7031754525378346,0.8715902604162693,0.4821089333437596,0.51174425929962,True,0,3107688,sample-02
 OAI.Combinatorics.Ramsey.CycleClique.Construction.SmallIndependent,1,1768,other-unmarked,1.9198739999999999,0.8252079999999999,1.8828314654529095,0.9500356130301952,0.4298240405359935,0.5045781475728986,True,0,3116648,sample-03
+OAI.Combinatorics.Ramsey.CycleClique.Construction.FiniteConstraints,2,2936,other-unmarked,1.671008,0.80976,1.5975058572366834,0.8210582099854946,0.48459373025144103,0.5139625662504523,True,0,3103896,sample-04
