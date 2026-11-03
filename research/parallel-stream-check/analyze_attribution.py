@@ -144,6 +144,30 @@ def analyze(point,out):
      M24_CPU_median_s=values['mixed24'],E_to_P_work_rate=values['p1']/values['e1'],
      mixed_to_P_CPU_ratio=values['mixed24']/values['p1']))
   csvout(out/'hardware-target-costs.csv',calibrated)
+  # Keep mixed P/E observations separate. A median that mixes P and E core
+  # execution can confound slow-core cost with concurrent cost inflation.
+  normalized=[]
+  for target,rr in sorted(by.items()):
+   solo={kind:statistics.median(r['CPU_ns'] for r in rr if r['kind']==kind)
+    for kind in ['p1','e1'] if any(r['kind']==kind for r in rr)}
+   for r in rr:
+    if r['kind']!='mixed24':continue
+    kind='p1' if r['cpu']<8 else 'e1'
+    if kind not in solo or not solo[kind]:continue
+    normalized.append(dict(target=target,repeat=r['repeat'],CPU=r['cpu'],core_type='P' if kind=='p1' else 'E',
+     mixed_CPU_s=r['CPU_ns']/1e9,solo_type_median_CPU_s=solo[kind]/1e9,
+     mixed_to_solo_same_type_ratio=r['CPU_ns']/solo[kind]))
+  csvout(out/'hardware-same-type-normalized.csv',normalized)
+  groups=[]
+  for core_type in ['P','E']:
+   rr=[x for x in normalized if x['core_type']==core_type]
+   if not rr:continue
+   ratios=[x['mixed_to_solo_same_type_ratio'] for x in rr]
+   groups.append(dict(core_type=core_type,observations=len(rr),targets=len({x['target'] for x in rr}),
+    min_ratio=min(ratios),median_ratio=statistics.median(ratios),max_ratio=max(ratios),
+    total_CPU_ratio=sum(x['mixed_CPU_s'] for x in rr)/sum(x['solo_type_median_CPU_s'] for x in rr),
+    caveat='same target and core type; solo references are CPU0/8, not every physical core'))
+  csvout(out/'hardware-same-type-summary.csv',groups)
   (out/'hardware-determinism.json').write_text(json.dumps(summary,indent=2))
  return full,phases
 
