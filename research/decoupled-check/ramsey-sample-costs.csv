@@ -1,0 +1,2 @@
+module,stratum,bytes,descriptive_group,source_cpu_s,check_cpu_s,source_wall_s,check_wall_s,cpu_ratio,wall_ratio,valid,returncode,peak_rss_kib,raw_key
+OAI.Combinatorics.Ramsey.CycleClique.Construction.CliqueThree,1,1304,other-unmarked,1.548348,0.899583,1.5003811679780483,1.1123555777594447,0.5809953576327802,0.7413819911232845,True,0,3102164,sample-00

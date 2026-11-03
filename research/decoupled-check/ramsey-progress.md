@@ -34,3 +34,7 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 Review: 自审. Stopped at **190/444** target source builds (**10934/11188** closure nodes), including one window completed after the earlier189 count. New target production consumed **22146.098430 CPU-s (6.151694 h)**; retained common source work is **25373.748385 CPU-s**. No full-closure stream ran: **0/444 stream-accepted targets**, **0 stream CPU-s**. The existing K10 module-local reference remains separate.
 
 The current native window had already exited. PID548230/birth773592704 was confirmed only as a **waiting** flock request in /proc/locks; only that next waiter was cancelled. Controller491697/birth771798493 then retired normally. No Lean was signalled. The shared lock is owned by another line; no Ramsey waiter remains. Reason: sustained heavy certificate production, near-budget11.53GiB K10, and shared P-core opportunity cost. Complete Ramsey production is cancelled; all190 typed outputs and raw/failed/partial records remain. Subsequent numbers will be size-stratified module-local samples of this dependency-ordered, nonrandom prefix, not a complete directory ratio.
+
+
+<!-- retained-prefix-sample -->
+Production stopped190/444; full stream0/444,0CPUh. Size sample **1/20 accepted**, **0 failures**, **0.000250 referenceCPUh**. [Sample](ramsey-sample-result.md).
