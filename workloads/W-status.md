@@ -1,5 +1,18 @@
 # W current state
 
+## W096 current owner: Eprep NativeCode,original sample still35
+NativeCode Pqueue withdrawn00:05:13UTC after verifying unstarted flock/nochild;
+one completed dependency retained,no originalinvoked,no nativechildstopped.
+Current Eprep controller488346/birth771693713 launched00:05:53UTC,
+PVC workloads/openai4341-Eprep-NativeCodeAssembly-20261103.
+First4realdependencies compile_ok; source35/17cells unchanged. E8-15,no
+population costclock;1200percase/1700preparationwindow;15GiBcharged/16GiBsampled.
+No other WLean or Ptiming request. Next NativeCode original only P0-7/flock,
+same authoredHB/3facets after actual Eclosure readiness/retirement.
+Six other plans prepared-only. Do not restart oldNativeCode413controller.
+Current status must be rechecked from real PID/birth/terminal,not this note.
+
+
 ## W092 current:84complete,35original costs,no active Wnative
 Actual19:44:26UTC complete84/84compile_ok;all native/controller/cgroups retired.
 Notification transport dropped;confirmation23:37UTC,no native restart.

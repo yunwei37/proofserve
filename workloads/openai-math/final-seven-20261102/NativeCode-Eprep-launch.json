@@ -1,0 +1,27 @@
+{
+  "utc": "2026-11-03T00:05:53.723561+00:00",
+  "pid": 488346,
+  "birth_ticks": "771693713",
+  "args": [
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-NativeCodeAssembly-20261103/prepare_dependencies.py",
+    "--point",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-NativeCodeAssembly-20261103"
+  ],
+  "operation": "untimed_dependency_preparation",
+  "affinity": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "original_targets_excluded": true,
+  "cost_clocks_recorded": false,
+  "one_W_Lean": true,
+  "prior_queued_timing_requests_retired": true
+}

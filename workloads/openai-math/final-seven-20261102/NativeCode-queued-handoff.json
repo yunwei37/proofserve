@@ -1,0 +1,64 @@
+{
+  "utc": "2026-11-03T00:05:13.067688+00:00",
+  "reason": "owner withdraws unstarted timed dependency queue for untimed E prerequisite preparation",
+  "actual_rows": 1,
+  "controller_retired": true,
+  "queued_waiter_retired": true,
+  "no_native_child_stopped": true,
+  "original_target_invoked": false,
+  "original_cost_status": "unmeasured,not censored",
+  "old_launch": {
+    "utc": "2026-11-02T23:46:54.227970+00:00",
+    "pid": 486527,
+    "birth_ticks": "771579764",
+    "args": [
+      "python3",
+      "-u",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-NativeCodeAssembly-prepared-20261102/controller.py",
+      "--point",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-NativeCodeAssembly-prepared-20261102"
+    ],
+    "jobs": 413,
+    "no_M": true,
+    "per_task_flock": true,
+    "one_W_native": true,
+    "per_case_wall_s": 1200,
+    "native_group_allowance_s": 1700,
+    "predecessor_retired": true
+  },
+  "old_current": {
+    "index": 1,
+    "module": "OAI.Algorithms.SubexponentialSAT.BinomialMatrix",
+    "pid": 487486,
+    "birth_ticks": "771650010",
+    "utc": "2026-11-02T23:58:36.686059+00:00",
+    "submitted_monotonic_s": 7716500.101231479,
+    "command": [
+      "flock",
+      "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+      "taskset",
+      "-c",
+      "0-7",
+      "python3",
+      "-u",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-NativeCodeAssembly-prepared-20261102/runner.py",
+      "--point",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-NativeCodeAssembly-prepared-20261102",
+      "--index",
+      "1",
+      "--arm",
+      "noM",
+      "--wall-limit",
+      "1200"
+    ],
+    "one_outstanding_W_request": true,
+    "lock_observation_before_submission": [
+      "4: FLOCK  ADVISORY  WRITE 487457 08:10:1443914 0 EOF"
+    ],
+    "existing_waiters_observed": false
+  },
+  "queued_lock_evidence": [
+    "3: -> FLOCK  ADVISORY  WRITE 487486 08:10:1443914 0 EOF"
+  ],
+  "raw_results_unchanged": true
+}
