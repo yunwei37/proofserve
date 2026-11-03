@@ -1,0 +1,15 @@
+{
+  "returncode": 0,
+  "records": 800,
+  "scanned_lines": 15280,
+  "missing_time_fields": 0,
+  "command": [
+    "perf",
+    "report",
+    "-D",
+    "--stdio",
+    "--stats",
+    "-i",
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/full-record-P4-r3-count-only-drain5.perf.data"
+  ]
+}

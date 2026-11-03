@@ -1,0 +1,10 @@
+table,byte_identical_after_supplemental_captures
+native-timings.csv,True
+stat-counters.csv,True
+record-thread-counters.csv,True
+C-worker-check-work.csv,True
+sample-category-threads.csv,True
+sample-scopes.csv,True
+category-by-workers.csv,True
+perf-overhead-brackets.csv,True
+cold-reference-offset-samples.csv,True

@@ -15,8 +15,12 @@ def report_threads(path):
 def main():
  root=Path(sys.argv[1]);out=Path(sys.argv[2]);out.mkdir(parents=True,exist_ok=True)
  times=[];stats=[];threads=[];cats=[];scopes=[];problems=[];profile_workers=[]
+ original_keys={'full-'+arm+'-P'+str(n)+'-'+rep for n in [1,2,4,8]
+  for arm,rep in [('plain','r1-before'),('stat','r1'),('record','r1'),('plain','r1-after')]}
  for f in sorted(root.glob('full-*-terminal.json')):
-  t=json.loads(f.read_text());c=t.get('cell');key=f.name.removesuffix('-terminal.json')
+  key=f.name.removesuffix('-terminal.json')
+  if key not in original_keys:continue
+  t=json.loads(f.read_text());c=t.get('cell')
   if not c or t['state']!='complete':
    problems.append(dict(key=key,state=t['state']));continue
   base=dict(key=key,workers=c['workers'],arm=c['arm'],repeat=c['repeat'])

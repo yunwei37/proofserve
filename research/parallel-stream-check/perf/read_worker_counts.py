@@ -34,6 +34,8 @@ def workers(point,key):
         rows.append(dict(key=key,workers=c['workers'],TID=tid,checks=w['checks'],
             allocation_units=w['units'],kernel_CPU_s=w['CPU_ns']/1e9,
             cycles=cyc,instructions=ins,IPC=ins/cyc,
+            reference_cycles=value(tid,'ref-cycles'),
+            cycles_per_reference_cycle=cyc/value(tid,'ref-cycles'),
             retired_L3_miss_loads=value(tid,'mem_load_retired.l3_miss'),
             locked_loads=value(tid,'mem_inst_retired.lock_loads'),
             modified_line_forwarding=value(tid,'mem_load_l3_hit_retired.xsnp_hitm'),

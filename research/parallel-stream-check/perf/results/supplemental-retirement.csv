@@ -1,0 +1,4 @@
+key,native_accepted_IDs_equal,native_retired,cgroup_retired,launch_actor_retired,metadata_qualified
+full-record-P8-r2-count-only,True,True,True,True,True
+full-record-P4-r3-count-only-drain5,True,True,True,True,True
+full-record-P4-r2-count-only,True,True,True,True,False
