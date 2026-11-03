@@ -1,0 +1,8 @@
+workers,event,off,on,relative_change,repetitions_per_arm,scope
+1,cpu-cycles,1666676090741.000000,1626777977341.000000,-0.023938732679762268,1,whole-command user-mode; raw event semantics retained
+1,instructions,3339240343207.000000,3379133715519.000000,0.011946840661875353,1,whole-command user-mode; raw event semantics retained
+1,ref-cycles,2031500117407.000000,1982205460666.000000,-0.02426515082062586,1,whole-command user-mode; raw event semantics retained
+1,mem_load_retired.l3_miss,435651099.000000,431765309.000000,-0.008919500051576823,1,whole-command user-mode; raw event semantics retained
+1,mem_inst_retired.lock_loads,5800924030.000000,98707245.000000,-0.9829842203604932,1,whole-command user-mode; raw event semantics retained
+1,mem_load_l3_hit_retired.xsnp_hitm,103913.000000,79184.000000,-0.2379779238401355,1,whole-command user-mode; raw event semantics retained
+1,ocr.demand_rfo.l3_hit.snoop_hitm,55.000000,455.000000,7.2727272727272725,1,whole-command user-mode; raw event semantics retained

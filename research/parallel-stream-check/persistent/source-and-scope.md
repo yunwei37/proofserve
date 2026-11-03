@@ -11,7 +11,7 @@ the premise that all environments loaded by the stock checker are leaked.
 | Stock finalizeImport true kernel base | persistent | native official-import probe |
 | Outer Environment wrapper after either finalize mode | single-thread | final record update constructs a new wrapper |
 | Replay base before task enqueue, unmarked | single-thread | all18,990 primary frontiers per full cell |
-| Same replay base after task enqueue, unmarked | active MT | actual post-enqueue/pre-gate header counts |
+| Same replay base after task enqueue, unmarked | active MT | actual post-enqueue header counts |
 | Replay-created/stored Nat.add/Nat.mul wrappers | active MT after sharing | diagnostic ComputeControl probe, distinct from compacted input |
 | Marked replay base before and after enqueue | persistent | every primary frontier; diagnostic CI probes disabled during primary timing |
 
@@ -37,3 +37,9 @@ all4,449 modules with our exact per-module check/allocation vectors. Planned
 native stock timing controls are labeled by their actual scope. The original
 kernel is unchanged; unsafe coordinator/FFI correctness is still trusted glue.
 No new mathematical axiom or skipped proof check is introduced.
+
+
+Read-only ready-snapshot detail: waves with multiple workers hold the common
+gate until the root read; the single-worker path has no gate and may already
+be checking at that read. The marker itself is always before enqueue in both
+paths. This wording does not move the marker or mutate running code.

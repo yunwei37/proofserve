@@ -51,7 +51,10 @@ def main():
    path=root/f'full-stat-m{mode}-P{n}-r1-stat.json'
    v=statcounts(path);counters[mode,n]=v
    row=dict(workers=n,persistent=bool(mode),repetitions=1,
-    IPC=float(v['instructions']/v['cpu-cycles']),scope='whole-command user-mode; not gated kernel interval')
+    IPC=float(v['instructions']/v['cpu-cycles']),
+    cycles_per_refcycle=float(v['cpu-cycles']/v['ref-cycles']),
+    L3_load_misses_per_kinstruction=float(v['mem_load_retired.l3_miss']*1000/v['instructions']),
+    scope='whole-command user-mode; not gated kernel interval; cycle/refcycle is not calibrated GHz')
    row.update({k:str(x)for k,x in v.items()});pmu.append(row)
    plain=[measures(x)for rep in [1,2,3]if(x:=terminal(root,'plain',mode,n,rep))]
    if plain:

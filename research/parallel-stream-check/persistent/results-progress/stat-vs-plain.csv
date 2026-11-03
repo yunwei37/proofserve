@@ -1,0 +1,9 @@
+workers,persistent,metric,stat,plain_median,plain_repetitions,relative_change,caveat
+1,False,wall_s,642.979137821123,641.1862413603812,3,0.002796217924043054,"one stat vs plain median; order and run variance remain, not a precise observer-only estimate"
+1,False,CPU_s,642.09479,640.426738,3,0.002604594563320628,"one stat vs plain median; order and run variance remain, not a precise observer-only estimate"
+1,False,observer_CPU_s,464.944533146,463.588339968,3,0.002925425557712691,"one stat vs plain median; order and run variance remain, not a precise observer-only estimate"
+1,False,sampled_peak_GiB,2.9735260009765625,2.95477294921875,3,0.006346698064489509,"one stat vs plain median; order and run variance remain, not a precise observer-only estimate"
+1,True,wall_s,627.438085604459,628.271997589618,3,-0.0013273104457277585,"one stat vs plain median; order and run variance remain, not a precise observer-only estimate"
+1,True,CPU_s,626.657835,627.5018080000001,3,-0.001344973017193496,"one stat vs plain median; order and run variance remain, not a precise observer-only estimate"
+1,True,observer_CPU_s,451.166415806,451.756282293,3,-0.0013057183931256544,"one stat vs plain median; order and run variance remain, not a precise observer-only estimate"
+1,True,sampled_peak_GiB,2.959888458251953,2.956096649169922,3,0.0012827080884165731,"one stat vs plain median; order and run variance remain, not a precise observer-only estimate"
