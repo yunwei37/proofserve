@@ -1,0 +1,26 @@
+{
+  "source_frame": "/workspaces/repository/workloads/openai-math/final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source41-GroundMainFinalStructuralRefinementOutputs/sample-costs.csv",
+  "original_costs": 41,
+  "planned": 42,
+  "complete_strata": 20,
+  "total_strata": 21,
+  "covered_modules": 163057,
+  "population_modules": 163097,
+  "missing_population_modules": 40,
+  "no_new_native_run": true,
+  "no_M": true,
+  "source_regime_is_proxy": true,
+  "serial_anchor_version": "latest complete segmented Mathlib/Falconer",
+  "parallel_transfer_scope": "older independent M experiments; transfer to segmented serial and unseen targets is NOT measured or matched",
+  "computation_serial_scope": "historical complete Grid/Amplitudes unsegmented closures; no latest segmented computational anchor",
+  "scenario_names": [
+    "Mathlib_segmented_Grid_unsegmented_transfer",
+    "Falconer_segmented_Amplitudes_unsegmented_transfer"
+  ],
+  "no_full_library_measurement": true,
+  "calibration_uncertainty_in_CI": false,
+  "chunk_preparation_CPU_h": "unknown; eligibility/support generation not timed in selected leaf curves",
+  "chunk_hardware_memory": "Envelope combined process peak14.0187GiB; not a whole-library memory proof",
+  "full_frame_projection_assumption": "unobserved modules have same within-class mean as complete-cell domain; not established",
+  "external_dependency_cost": "not separately identified; selected closure transfer mixes base/dependencies; no additional shared-base CPU invented"
+}

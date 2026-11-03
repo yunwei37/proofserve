@@ -1,0 +1,37 @@
+{
+  "utc": "2026-11-03T19:14:43.145215+00:00",
+  "completed_original_costs": 41,
+  "complete_strata": 20,
+  "covered_modules": 163057,
+  "uncovered_modules": 40,
+  "missing_domain_fraction": 0.00024525282500597803,
+  "scenario_CPU_h": {
+    "a_build": [
+      278.53570538722227,
+      279.0122246316667
+    ],
+    "b_serial_stream": [
+      18.8079205778119,
+      24.69689137685002
+    ],
+    "c_parallel_stream": [
+      25.583891237168633,
+      33.60776505858629
+    ],
+    "d_plus_qualified_chunk": [
+      25.6133576885629,
+      33.63731876070616
+    ]
+  },
+  "computation_share_scenario": [
+    0.20625047649145528,
+    0.20660333007296428
+  ],
+  "new_original_module": "OAI.SetTheory.PartitionPrinciple.Geometry.GroundMainFinalStructuralRefinementOutputs",
+  "new_original_status": "compile_ok",
+  "new_original_CPU_s": "78.70421200000001",
+  "raw_point": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-GroundMainFinalStructuralRefinementOutputs-targetP-remaining-four-hostrecovery-20261103T1512",
+  "scenario_is_CI": false,
+  "actual_whole_library": false,
+  "audit": "automatic provenance checks passed; thread scientific self-review remains separate"
+}
