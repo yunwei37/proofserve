@@ -16,3 +16,5 @@ stat tuples and byte equality; actual removals and disk observations follow.
 The old compiler output bytes remain in canonical cache; this is duplicate
 intermediate-artifact cleanup under the existing user cleanup instruction,
 not deletion/imputation of research observations.
+
+Applied under the committed plan: {"utc": "2026-11-03T21:29:21.657769+00:00", "removed_files": 4035, "logical_duplicate_bytes_removed": 4383976072, "skipped": 0, "used_fraction_before": 0.8384460859634946, "used_fraction_after": 0.8060533051062877, "free_bytes_before": 21785153536, "free_bytes_after": 26156605440, "limits": "shared PVC delta may include concurrent writers; no raw log/source/failure/censor/cache copy removed", "result": "retained byte-identical intermediate copies remain; active preparation untouched"}
