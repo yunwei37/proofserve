@@ -1,5 +1,20 @@
 # W current state
 
+## W108 current: host restart recovered, Allocated180 dependencies resumed
+Old host reboot killed all processes; source38/42known costs unchanged.
+2857completed dependencies verified, native bulk-import integrity passes;
+one in-flight dependency host_restart_interrupted, not a cost/censor.
+New Allocated Epreparation6816/birth118331 launched2026-11-03T15:07:43Z:
+workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-after-reboot-20261103T1507.
+Only180remaining dependencies, original still unmeasured. Old master526699
+and old Econtroller561457 are retired; do not restart old raw point.
+Nextfinite driver will attach this new healthy preparation, skip Physical/
+Tracked costs, then run Allocated/Packet/Ground/Prepared originals serially.
+Future outage: preserve and wait for operator; no infrastructure recovery.
+After originals, user requests independent conditional panels in two
+high-variance cells, no old-M settings or naive n8 pooling.
+Verify latest actualPID/birth/terminal before any action; older headings historical.
+
 ## W104 current: Tracked recovered,source38; Allocated preparation active
 2026-11-03T06:22:12Z source38 published8421db3. Tracked original
 compile_ok5.412330CPU/5.198824elapsed s,all native/cgroup cleanup confirmed.

@@ -1,0 +1,9 @@
+{
+  "point": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-after-reboot-20261103T1507",
+  "utc": "2026-11-03T15:07:43.756349+00:00",
+  "pid": 6816,
+  "birth_ticks": "118331",
+  "scope": "host-restart continuation;2857 validated complete dependencies reused; only180remaining; interrupted attempt excluded from costs/censors",
+  "old_raw_unmodified": true,
+  "source_helper": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-remaining-six-20261103T0325/prepare_dependencies.py"
+}

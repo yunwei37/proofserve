@@ -139,7 +139,7 @@ def analyze(records,module,point,status):
     (out/"README.md").write_text(
       "# Fixed original sample update\n\n"+
       "This is an execution snapshot, with raw point and coverage in snapshot.json. "+
-      "Prior 36 completed values are unchanged. No dependency receives a sample weight. "+
+      "All completed baseline values are unchanged. No dependency receives a sample weight. "+
       "Source CPU is user+system; no -M; authored/native heartbeats; three output facets. "+
       "E-core prerequisite preparation is untimed and excluded.\n\n"+
       "The full-frame min/max envelope is a missing-cost/transfer scenario, not a confidence "+
@@ -191,8 +191,8 @@ def main():
     os.sched_setaffinity(0,set(range(8,16)));mainbranch()
     records=baseline_records()
     frame=readcsv(A.frame)
-    assert len(frame)==42 and sum(r["status"]=="completed_cost"for r in frame)==36
-    seeds=readcsv(F/"six-prepared.csv")
+    assert len(frame)==42 and 0<sum(r["status"]=="completed_cost"for r in frame)<42
+    seeds=[s for s in readcsv(F/"six-prepared.csv") if next(r for r in frame if r["module"]==s["module"])["status"]!="completed_cost"]
     attachplan=json.loads((A.attach_preparation/"plan.json").read_text())
     attach=next(c["module"]for c in attachplan["cases"]if c["role"]=="original_probability_sample")
     seeds.sort(key=lambda r:r["module"]!=attach)  # Existing active preparation first.

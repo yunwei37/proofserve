@@ -1,0 +1,41 @@
+{
+  "module": "WRecoveryImports",
+  "status": "compile_ok",
+  "operation": "untimed_dependency_preparation",
+  "original_probability_target": false,
+  "affinity": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "pcore_lock": false,
+  "nominal_wall_budget_s": 600.0,
+  "actual_wall_budget_s": 600.0,
+  "source_exact": true,
+  "native_pid": 5961,
+  "native_birth_ticks": "91497",
+  "cgroup_memory_events": {
+    "low": "0",
+    "high": "0",
+    "max": "0",
+    "oom": "0",
+    "oom_kill": "0",
+    "oom_group_kill": "0",
+    "sock_throttled": "0"
+  },
+  "charged_memory_peak_bytes": 8847167488,
+  "resource_watchdog_fired": false,
+  "native_retired": true,
+  "sampled_RSS_peak_bytes": 8488648704,
+  "published": [
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/allocated-recovery-20261103T1500/import-integrity/diagnostic-cache/WRecoveryImports.olean"
+  ],
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/allocated-recovery-20261103T1500/import-integrity/preparation-attempts/00000-0",
+  "returncode": 0,
+  "cgroup_retired": true
+}

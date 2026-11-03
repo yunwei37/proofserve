@@ -1,0 +1,20 @@
+{
+  "utc": "2026-11-03T15:01:47.836837+00:00",
+  "source": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-remaining-six-20261103T0325",
+  "ledger_newline_complete": true,
+  "verified": 2857,
+  "bad": [],
+  "interrupted": [
+    {
+      "module": "OAI.Combinatorics.Progressions.Estimates.AllocatedPeriodicAmbientSiteExpansion",
+      "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-remaining-six-20261103T0325/preparation-attempts/02867-2857",
+      "status": "host_restart_interrupted",
+      "not_cost": true,
+      "not_censor": true,
+      "original_probability_sample": false
+    }
+  ],
+  "result_lag_unrecorded": [],
+  "old_files_unchanged": true,
+  "boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944"
+}
