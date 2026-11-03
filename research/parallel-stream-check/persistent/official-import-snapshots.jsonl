@@ -1,0 +1,2 @@
+{"environment_wrapper_class":1,"event":"official_import_snapshot","existing_ci":[{"class":0,"name":"Nat.add"},{"class":0,"name":"Nat.mul"}],"input_ci_observations":[100,0,0,0,0],"kernel_base_class":1,"label":"stock_finalize_leak_false"}
+{"environment_wrapper_class":1,"event":"official_import_snapshot","existing_ci":[{"class":0,"name":"Nat.add"},{"class":0,"name":"Nat.mul"}],"input_ci_observations":[100,0,0,0,0],"kernel_base_class":0,"label":"same_finalize_leak_true"}

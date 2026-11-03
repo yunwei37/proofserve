@@ -24,8 +24,8 @@ unsafe def main (args : List String) : IO UInt32 := do
     let part := level.adjustFileName file
     if ← part.pathExists then files := files.push part
   let parts ← readModuleDataParts files
-  let (first,_) := parts[0]!
-  let (last,_) := parts[parts.size-1]!
+  let some (first,_) := parts[0]? | throw <| IO.userError "empty module parts"
+  let some (last,_) := parts[parts.size-1]? | throw <| IO.userError "empty module parts"
   let (_,s) ← importModulesCore first.imports |>.run
   let ordinary ← finalizeImport s first.imports {} 0 false false (isModule := true)
   snapshot "stock_finalize_leak_false" ordinary last.constants

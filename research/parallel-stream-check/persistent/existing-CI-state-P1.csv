@@ -1,0 +1,15 @@
+key,constant,stage,object_class,observations
+qual-m0-P1-valid,Nat.add,before,single_thread,1
+qual-m0-P1-valid,Nat.add,before,active_MT,2364
+qual-m0-P1-valid,Nat.add,after,single_thread,1
+qual-m0-P1-valid,Nat.add,after,active_MT,2364
+qual-m0-P1-valid,Nat.mul,before,single_thread,1
+qual-m0-P1-valid,Nat.mul,before,active_MT,2364
+qual-m0-P1-valid,Nat.mul,after,single_thread,1
+qual-m0-P1-valid,Nat.mul,after,active_MT,2364
+qual-m1-P1-valid,Nat.add,before,persistent,2364
+qual-m1-P1-valid,Nat.add,before,single_thread,1
+qual-m1-P1-valid,Nat.add,after,persistent,2365
+qual-m1-P1-valid,Nat.mul,before,persistent,2364
+qual-m1-P1-valid,Nat.mul,before,single_thread,1
+qual-m1-P1-valid,Nat.mul,after,persistent,2365
