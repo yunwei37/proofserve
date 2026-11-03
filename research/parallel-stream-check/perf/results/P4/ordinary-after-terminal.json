@@ -1,0 +1,91 @@
+{
+  "state": "complete",
+  "error": null,
+  "cell": {
+    "key": "full-plain-P4-r1-after",
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "1100",
+      "/usr/bin/time",
+      "-o",
+      "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/full-plain-P4-r1-after-application.time",
+      "-f",
+      "%e,%U,%S,%M,%x",
+      "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-attribution-20261102-v2/parallel-stream",
+      "parallel",
+      "none",
+      "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41"
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "measured": true,
+    "wall_limit_s": 1100,
+    "own_rss_sample_stop_gib": 14,
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-529001-full-plain-P4-r1-after.scope",
+    "cgroup_charged_memory_max_gib": 14,
+    "pid": 529002,
+    "birth": "772964870",
+    "returncode": 0,
+    "wall_s": 347.71039238013327,
+    "user_s": 647.158305,
+    "system_s": 5.000297,
+    "peak_rss_kib": 3234252,
+    "native_retired": true,
+    "sampled_tree_peak_bytes": 3312627712,
+    "stop_reasons": [],
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "charged_peak_bytes": 866185216,
+    "cgroup_cpu_stat": "usage_usec 652157877\nuser_usec 647157393\nsystem_usec 5000483\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+    "cgroup_usage_s": 652.157877,
+    "cgroup_user_s": 647.157393,
+    "cgroup_system_s": 5.000483,
+    "wait4_usage_complete": true,
+    "cgroup_retired": true,
+    "accepted_count": 4449,
+    "accepted_set_equal_to_reference": true,
+    "complete_events": [
+      {
+        "constants": 425463,
+        "event": "complete",
+        "mode": "parallel",
+        "module_local_fallbacks": 0,
+        "modules": 4449,
+        "retained_regions": 13307,
+        "skipped_unsafe_partial": 3595
+      }
+    ],
+    "arm": "plain",
+    "workers": 4,
+    "repeat": "r1-after",
+    "C_observer": true,
+    "binary": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-attribution-20261102-v2/parallel-stream",
+    "counter_scope": "whole command; per-thread READ/call-stack scopes analyzed separately",
+    "application_time": {
+      "wall_s": "347.69",
+      "user_s": "647.15",
+      "system_s": "4.99",
+      "peak_RSS_KiB": "3234252",
+      "exit": "0"
+    },
+    "ordinary_checks": 237863,
+    "ordinary_allocation_units": 3283925639,
+    "observed_worker_TIDs": [
+      529118,
+      529122,
+      529123,
+      529124,
+      529125
+    ]
+  },
+  "utc": "2026-11-03T03:43:33Z"
+}
