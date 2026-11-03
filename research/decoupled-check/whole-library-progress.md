@@ -44,11 +44,11 @@ accepted source modules, **10744 certified dependencies**, **0.694505 kernel
 CPU hours**, **9124 producer errors**, **151485 blocked source modules**.
 That partial run is retired; none of these counts is silently repaired.
 
-Current Ramsey: **source**; source **163/444**,
+Current Ramsey: **source**; source **164/444**,
 kernel **0/444**, freshly checked dependencies
 **0**; source CPU
-**8.370732 h** (new targets
-**1.322468 h**), kernel CPU
+**8.532751 h** (new targets
+**1.484487 h**), kernel CPU
 **0.000000 h**; segment **0**;
 at least **23** check segments remain.
 Complete: **False**. [Full progress](ramsey-progress.md).
