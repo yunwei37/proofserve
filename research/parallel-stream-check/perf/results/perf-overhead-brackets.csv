@@ -1,3 +1,5 @@
 workers,arm,instrumented_wall_s,ordinary_min_s,ordinary_max_s,relative_to_plain_min,relative_to_plain_max,interpretation
 4,record,349.72360995877534,347.71039238013327,360.8873820565641,0.005789926394955458,-0.03093422672239332,"observed bracket, not CI; perf and ordinary times kept separate"
 4,stat,350.94637847691774,347.71039238013327,360.8873820565641,0.009306555592525134,-0.02754599931700641,"observed bracket, not CI; perf and ordinary times kept separate"
+8,record,319.6362741505727,315.3897589528933,320.8683924721554,0.013464340794634655,-0.003839949183182978,"observed bracket, not CI; perf and ordinary times kept separate"
+8,stat,314.3850013008341,315.3897589528933,320.8683924721554,-0.0031857649893104467,-0.0202057644923187,"observed bracket, not CI; perf and ordinary times kept separate"

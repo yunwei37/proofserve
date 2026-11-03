@@ -14,7 +14,7 @@ def report_threads(path):
   if x.strip() and x.split()[0].isdigit() and len(x.split())==len(names)]
 def main():
  root=Path(sys.argv[1]);out=Path(sys.argv[2]);out.mkdir(parents=True,exist_ok=True)
- times=[];stats=[];threads=[];cats=[];scopes=[];problems=[]
+ times=[];stats=[];threads=[];cats=[];scopes=[];problems=[];profile_workers=[]
  for f in sorted(root.glob('full-*-terminal.json')):
   t=json.loads(f.read_text());c=t.get('cell');key=f.name.removesuffix('-terminal.json')
   if not c or t['state']!='complete':
@@ -29,7 +29,7 @@ def main():
    checks=c['ordinary_checks'],allocation_units=c['ordinary_allocation_units'])
   native.update({'application_'+k:v for k,v in c.get('application_time',{}).items()})
   native.update({k:c.get(k) for k in ['cgroup_usage_s','cgroup_user_s','cgroup_system_s']})
-  metrics=collections.Counter()
+  metrics=collections.Counter();worker_work=collections.defaultdict(collections.Counter);worker_cpus=collections.defaultdict(set)
   with (root/'runs'/key/'stdout').open() as g:
    for line in g:
     if line.startswith('{'):
@@ -37,7 +37,16 @@ def main():
      if e.get('event')=='profile_module':
       for name in ['kernel_cpu_ns','kernel_union_ns','batch_cpu_ns','batch_wall_ns']:
        metrics[name]+=e['metrics'].get(name,0)
+      for w in e['metrics']['workers']:
+       tw=worker_work[w['tid']];worker_cpus[w['tid']].add(w['cpu'])
+       tw['checks']+=w['checks'];tw['allocation_units']+=w['raw_HB'];tw['kernel_cpu_ns']+=w['cpu_ns']
   native.update({k.removesuffix('_ns')+'_s':v/1e9 for k,v in metrics.items()});times.append(native)
+  for tid,w in sorted(worker_work.items()):
+   profile_workers.append(dict(base,TID=tid,observed_start_cores=';'.join(map(str,sorted(worker_cpus[tid]))),
+    checks=w['checks'],allocation_units=w['allocation_units'],kernel_cpu_s=w['kernel_cpu_ns']/1e9,
+    caveat='core set across checks is not a time ordered migration trace'))
+  if sum(w['checks'] for w in worker_work.values())!=c['ordinary_checks']:
+   problems.append(dict(key=key,state='worker profile check sum mismatch'))
   sf=root/(key+'-stat.json')
   if sf.exists():
    for line in sf.read_text().splitlines():
@@ -50,11 +59,21 @@ def main():
   tf=d/'thread-counters.txt'
   if tf.exists():
    workers=set(c['observed_worker_TIDs']);trs=report_threads(tf)
+   rf=d/'read-times.csv';rids=collections.defaultdict(set);globalids=collections.defaultdict(set)
+   if rf.exists():
+    with rf.open() as g:
+     for rr in csv.DictReader(g):
+      if rr['event'].startswith('cpu_core/'):
+       rids[(int(rr['TID']),rr['event'])].add(rr['id']);globalids[rr['event']].add(rr['id'])
+   complete_events=len(globalids)==7 and all(len(v)==len(c['affinity'])for v in globalids.values())
+
    for r in trs:
+    certified=complete_events and all(rids[(r['TID'],e)]==ids for e,ids in globalids.items())
     threads.append(dict(base,**r,observed_original_check_worker=r['TID'] in workers,
-     scope='thread lifetime, not just original-check interval',
-     IPC=r['cpu_core/instructions,period=0/u']/r['cpu_core/cpu-cycles/u'] if r['cpu_core/cpu-cycles/u'] else None,
-     retired_L3_misses_per_kinsn=1000*r['cpu_core/mem_load_retired.l3_miss,period=0/u']/r['cpu_core/instructions,period=0/u'] if r['cpu_core/instructions,period=0/u'] else None))
+     scope='observed READ records; not just original-check interval',
+     all_CPU_shards_READ_present=certified,READ_coverage='all expected captured CPU shard IDs' if certified else ('missing CPU shard READs' if rf.exists() else 'not retained; unknown'),
+     IPC=r['cpu_core/instructions,period=0/u']/r['cpu_core/cpu-cycles/u'] if certified and r['cpu_core/cpu-cycles/u'] else None,
+     retired_L3_misses_per_kinsn=1000*r['cpu_core/mem_load_retired.l3_miss,period=0/u']/r['cpu_core/instructions,period=0/u'] if certified and r['cpu_core/instructions,period=0/u'] else None))
    if workers-set(r['TID'] for r in trs):problems.append(dict(key=key,state='missing worker READcounts'))
   cat=d/'category-thread-periods.csv'
   if cat.exists():
@@ -65,6 +84,7 @@ def main():
    with sf.open() as g:
     scopes.extend(dict(base,**r) for r in csv.DictReader(g))
  write(out/'native-timings.csv',times);write(out/'stat-counters.csv',stats)
+ write(out/'C-worker-check-work.csv',profile_workers)
  write(out/'record-thread-counters.csv',threads);write(out/'sample-category-threads.csv',cats)
  write(out/'sample-scopes.csv',scopes)
  aggregated=collections.Counter()

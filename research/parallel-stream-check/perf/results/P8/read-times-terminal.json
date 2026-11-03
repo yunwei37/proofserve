@@ -1,0 +1,15 @@
+{
+  "returncode": 0,
+  "records": 877,
+  "scanned_lines": 41734880,
+  "missing_time_fields": 0,
+  "command": [
+    "perf",
+    "report",
+    "-D",
+    "--stdio",
+    "--stats",
+    "-i",
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/full-record-P8-r1.perf.data"
+  ]
+}

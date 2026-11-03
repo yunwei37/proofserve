@@ -4,7 +4,7 @@ from pathlib import Path
 OUT=Path(os.environ['PERF_ANALYSIS_OUT']);OUT.mkdir(parents=True,exist_ok=True)
 WORKERS=set(json.loads(Path(os.environ['PERF_NATIVE_TERMINAL']).read_text())['cell']['observed_worker_TIDs'])
 totals=collections.Counter();categories=collections.Counter();symbols=collections.Counter()
-addresses=collections.Counter();first=None;samples_without_period=collections.Counter();sample_counts=collections.Counter()
+addresses=collections.Counter();id_counts=collections.Counter();id_periods=collections.Counter();first=None;samples_without_period=collections.Counter();sample_counts=collections.Counter()
 def family(stack):
  # Exclusive nearest operation in a leaf->root call chain, never sum inclusive
  # percentages. Missing inline debug information is an explicit limitation.
@@ -26,6 +26,7 @@ def process_event(p):
  global first
  sample=p['sample'];event=p['ev_name'];tid=sample['tid'];weight=sample.get('period')
  sample_counts[event]+=1
+ idkey=(sample['pid'],tid,event,sample['id']);id_counts[idkey]+=1;id_periods[idkey]+=weight or 0
  if weight is None or weight<=0:
   samples_without_period[event]+=1
   return
@@ -53,6 +54,8 @@ def write(name,keys,rows):
  with (OUT/name).open('w',newline='') as f:
   w=csv.writer(f,lineterminator=chr(10));w.writerow(keys);w.writerows(rows)
 def trace_end():
+ write('sample-ids.csv',['PID','TID','event','id','samples','period_sum'],
+  [(*k,v,id_periods[k])for k,v in sorted(id_counts.items())])
  write('scope-periods.csv',['event','scope','sampled_period'],
   [(*k,v) for k,v in sorted(totals.items())])
  write('category-thread-periods.csv',['event','scope','category','TID','sampled_period'],
