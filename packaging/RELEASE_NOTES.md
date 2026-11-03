@@ -24,6 +24,12 @@ installation prefix, project check/audit and three malformed-proof rejections.
 The actual test uses a compiled two-module project, not a performance workload.
 Tool sources and retained failure corrections are in qualification-local.json.
 
+The Ubuntu22.04 portable-release workflow41725630396 also passed on commit5de37517:
+source tests, source-package dry-run, native checker contracts, standalone
+archive installation, project check/audit, official default/fresh controls and
+three actual malformed-proof rejections. See qualification-ci.json. It uploaded
+Actions build artifacts only; it did not create a public release or registry upload.
+
 Pending: complete Docker Mathlib qualification;
 three previously unused external projects including an AI-assisted project;
 official leanchecker accepted-set comparison; backend malformed-proof CI.

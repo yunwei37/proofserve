@@ -12,8 +12,9 @@ entrypoints use the original checker executable and unmodified audit.py.
 
 The bundle contains the matching original Lean4.34.1 SDK. Its check launcher
 compares the project's declared lean-toolchain with the bundled version before
-putting that SDK on PATH. Unsupported declarations fail with exit2; no silent
-migration or download occurs. The project must be built already. Checkpoints
+putting that SDK on PATH. A different declaration delegates to the frontend official fallback using the
+project matching toolchain. If that toolchain is unavailable, it fails with exit2;
+no silent migration or download occurs. The project must be built already. Checkpoints
 are trusted local state; the backend owns input-change invalidation and resume
 qualification. Packaging does not infer acceptance or axiom sets.
 

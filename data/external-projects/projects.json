@@ -37,22 +37,23 @@
       }
     },
     {
-      "repo": "lambdaclass/stabileo",
-      "pin": "715279c26a5665f25a03ffa645882dad67749c8b",
-      "sub": "verify",
+      "repo": "paradigmxyz/solar",
+      "pin": "f4f5c9a1d7443a0265a85eff8ee24824d9ab92a7",
+      "sub": "scripts/evm-rules/lean",
       "lean_toolchain": "leanprover/lean4:v4.34.1",
-      "source_modules": 20,
-      "bytes": 403470,
+      "source_modules": 32,
+      "bytes": 73109,
       "ai_written": "not established",
       "ai_evidence": null,
-      "source_tree_artifact": "/workspaces/.agent-state/proofserve-o-line/external-projects/stabileo-source-tree.json",
-      "prior_use_search": {
-        "commit": "344a41ad^",
-        "paths": "research,data,docs",
-        "matches": [],
-        "scope": "Repository evidence of prior development use; not proof of absence outside retained records"
-      }
+      "source_tree_artifact": "/workspaces/.agent-state/proofserve-o-line/external-projects/solar-source-tree.json"
     }
   ],
-  "measurement_status": "source snapshots prepared; no external timing result yet"
+  "measurement_status": "source snapshots prepared; no external timing result yet",
+  "candidate_changes_before_measurement": [
+    {
+      "removed": "lambdaclass/stabileo",
+      "reason": "full Mathlib import adds a second dependency-heavy case; choose dependency-free EVM project for the fixed three-project acceptance set. Only configuration reviewed, no timed outcome used to choose.",
+      "original_sources_retained": true
+    }
+  ]
 }

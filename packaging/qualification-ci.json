@@ -1,0 +1,68 @@
+{
+  "run_id": 41725630396,
+  "url": "https://github.com/yunwei37/proofserve/actions/runs/41725630396",
+  "commit": "5de3751778da0712e3a30680befaa38a636e03e1",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "linux-bundle",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run dtolnay/rust-toolchain@stable",
+          "conclusion": "success"
+        },
+        {
+          "name": "Select the exact original Lean SDK",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and qualify source components",
+          "conclusion": "success"
+        },
+        {
+          "name": "Assemble and install without a source checkout",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "qualification_output": [
+    "2026-11-03T21:55:47.6322726Z {\"archive\": \"/home/runner/work/_temp/prepared/proofserve-0.1.0-linux-x86_64.tar.gz\", \"bytes\": 875703603, \"metadata\": {\"version\": \"0.1.0\", \"source_commit\": \"5de3751778da0712e3a30680befaa38a636e03e1\", \"platform\": \"linux-x86_64\", \"lean_toolchain\": \"leanprover/lean4:v4.34.1\", \"python_requirement\": \"3.11+\", \"build_libc\": [\"glibc\", \"2.35\"], \"input\": \"compiled Lake project; no source checkout or build-host paths required\"}}",
+    "2026-11-03T21:56:09.6110694Z Installed 0.1.0 (5de3751778da) into /home/runner/work/_temp/relocated",
+    "2026-11-03T21:56:13.5217842Z {\"complete\": true, \"malformed_proofs_rejected\": 3, \"source_commit\": \"5de3751778da0712e3a30680befaa38a636e03e1\"}",
+    "2026-11-03T21:55:47.6322637Z {\"archive\": \"/home/runner/work/_temp/prepared/proofserve-0.1.0-linux-x86_64.tar.gz\", \"bytes\": 875703603, \"metadata\": {\"version\": \"0.1.0\", \"source_commit\": \"5de3751778da0712e3a30680befaa38a636e03e1\", \"platform\": \"linux-x86_64\", \"lean_toolchain\": \"leanprover/lean4:v4.34.1\", \"python_requirement\": \"3.11+\", \"build_libc\": [\"glibc\", \"2.35\"], \"input\": \"compiled Lake project; no source checkout or build-host paths required\"}}",
+    "2026-11-03T21:56:09.6110651Z Installed 0.1.0 (5de3751778da) into /home/runner/work/_temp/relocated",
+    "2026-11-03T21:56:13.5217786Z {\"complete\": true, \"malformed_proofs_rejected\": 3, \"source_commit\": \"5de3751778da0712e3a30680befaa38a636e03e1\"}"
+  ],
+  "raw_logs": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/ci/41725630396-logs.zip",
+  "published": false
+}

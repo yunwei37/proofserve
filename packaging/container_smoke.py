@@ -85,6 +85,10 @@ assert batch[2]["response"].get("sorries"), batch[2]
 print(json.dumps({"qualification": "passed", "observations": observations}), flush=True)
 
 
+# Retire the fully qualified service before starting independent project controls.
+if "--self-test" in sys.argv:
+    retire()
+
 # Installed-form project controls, distinct from the full-Mathlib service import.
 if "--self-test" in sys.argv:
     from pathlib import Path
@@ -93,7 +97,7 @@ if "--self-test" in sys.argv:
         project = Path(td)
         (project / "lean-toolchain").write_text(Path("/opt/proofserve/share/proofserve/lean-toolchain").read_text())
         (project / "lakefile.toml").write_text('name = "containerQualification"\ndefaultTargets = ["Qualification"]\n[[lean_lib]]\nname = "Qualification"\n')
-        (project / "Qualification.lean").write_text("import Std\ntheorem container_roundtrip : (2 : Nat) + 2 = 4 := by rfl\n")
+        (project / "Qualification.lean").write_text('prelude\nimport Init.Prelude\ntheorem container_roundtrip : True := True.intro\n')
         subprocess.run(["lake", "build"], cwd=project, check=True, timeout=120)
         receipt = json.loads(subprocess.check_output(
             ["/opt/proofserve/bin/proofserve", "check", str(project), "--workers", "1"],
@@ -105,7 +109,7 @@ if "--self-test" in sys.argv:
             text=True, timeout=60))
         assert audit["source_modules"] == 1 and not audit["errors"], audit
         declared = (project / "lean-toolchain").read_text()
-        (project / "lean-toolchain").write_text("leanprover/lean4:v4.33.0\n")
+        (project / "lean-toolchain").write_text('leanprover/lean4:v4.33.0\n')
         unsupported = subprocess.run(["/opt/proofserve/bin/proofserve", "check", str(project)],
                                      text=True, capture_output=True, timeout=10)
         assert unsupported.returncode == 2 and "unsupported" in unsupported.stderr, unsupported

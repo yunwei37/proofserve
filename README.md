@@ -55,14 +55,14 @@ proofserve check ./project --workers 4 --checkpoint-dir ./project/.proofserve
 ~~~
 
 The checker discovers compiled roots and checks their dependency closure.
-Workers default to the available CPU allocation. Checkpointed runs can resume
+The backend chooses its default from the visible CPU allocation. Checkpointed runs can resume
 on the same input; backend receipts record acceptance, rejection, axioms,
 module-set identity, CPU and wall time. The source project must be built first.
 Use a fresh checkpoint directory after changing input artifacts until the
 backend's input-invalidation contract is qualified.
 
-The supported bundled checker version is Lean4.34.1. An unsupported declaration
-returns an explicit error rather than checking under a different compiler.
+The supported bundled checker version is Lean4.34.1. A different declared version uses its matching official checker when available,
+otherwise returns an explicit error; the receipt identifies the execution path.
 The checker's receipt format and correctness tests live in [checker/](checker/).
 
 ## Audit coverage
