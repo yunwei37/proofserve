@@ -1,0 +1,14 @@
+[
+  {
+    "reference": "full-plain-P4-r1-before",
+    "kernel_extra_s": 62.776362532000064,
+    "total_extra_s": 63.31594699999998,
+    "kernel_fraction": 0.9914779057478219
+  },
+  {
+    "reference": "full-plain-P4-r1-after",
+    "kernel_extra_s": 65.89360342300006,
+    "total_extra_s": 70.16694899999997,
+    "kernel_fraction": 0.9390974577361214
+  }
+]
