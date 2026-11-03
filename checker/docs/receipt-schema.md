@@ -41,3 +41,33 @@ Official --fresh checks a final imported environment per root. It has a distinct
 duplicate-proof policy and must not be presented as identical to the native
 per-module procedure. A failed official invocation is official_failure and exits
 2; its diagnostic is retained without inventing a kernel-rejection classification.
+
+## JSON types
+
+UInt64 values are decimal strings, following Lean's JSON instances. In particular,
+cpu_ns, cumulative_segment_cpu_ns, and module_set_hash are strings, not JSON
+floating-point numbers. wall_ns, workers, schema_version, and segment indices
+are JSON integers. Consumers should parse decimal strings losslessly.
+
+| Field | Native type | Official fallback type |
+|---|---|---|
+| execution_path | proofserve-parallel | official-leanchecker |
+| parallel | true | false |
+| project_revision | string or null | string or null |
+| mathlib_manifest | object or null | object or null |
+| roots | array of strings | array of strings |
+| accepted | array of module names | null |
+| rejected | array of diagnostic objects | null |
+| module_set_hash | decimal UInt64 string | null |
+| axioms | array of declared axiom names | null |
+| workers | positive integer | absent |
+| segments | array of {segment: integer, reused: boolean} | absent |
+| accepted_roots | absent | array of strings |
+| rejected_roots | absent | array of official-result objects |
+| official_results | absent | array of {root, exit_code, stdout, stderr} |
+
+A native rejected diagnostic identifies a module that did not verify; inspect
+its error text before classifying the cause. It does not mean the theorem's
+statement is false. Configuration errors can instead produce only an error JSON
+object on stderr and no new receipt. A caller must respect the process exit code
+and must not treat an older receipt file as the output of that failed invocation.

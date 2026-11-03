@@ -4,7 +4,8 @@ ProofServe independently rechecks a Lean project's compiled declarations with
 the original Lean kernel. It visits the requested dependency closure, checks
 independent declarations in parallel, and saves checkpoints for resuming a run.
 
-Build with the matching Lean toolchain:
+The native backend currently targets Linux. On other platforms, use a Linux
+container. Build with the matching Lean toolchain:
 ~~~sh
 cd checker
 lake build
@@ -61,7 +62,8 @@ receipt is not a fresh verification run.
 | 4.36.0-rc2, current prerelease | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
 
 Source review is not ABI or native execution qualification. Rebuild with the
-target SDK (for example, elan run leanprover/lean4:v4.35.0 lake build);\nnever reuse a native binary to decode another version's artifacts.
+target SDK (for example, elan run leanprover/lean4:v4.35.0 lake build);
+never reuse a native binary to decode another version's artifacts.
 The source audit is in docs/version-source-audit.json.
 
 A mismatched project version uses the project's official leanchecker --fresh
@@ -80,7 +82,10 @@ original-kernel checks. Its own token layout and the upstream private
 lean_environment_add symbol require a matched SDK build. Persistent marking
 happens after all prior workers have joined and before new workers begin.
 
-Project setup through Lake and the selected toolchain are trusted local code.\nThis tool does not sandbox project configuration.\n\nCheckpoint files must be local trusted outputs, protected from modification by
+Project setup through Lake and the selected toolchain are trusted local code.
+This tool does not sandbox project configuration.
+
+Checkpoint files must be local trusted outputs, protected from modification by
 an adversary. Their Lean-serialized metadata uses unsafeCast. Hashes detect
 ordinary stale artifacts, not malicious collisions or tampering.
 

@@ -25,7 +25,9 @@ their cgroups retired without resource stops.
 
 The matched Lean 4.34.0 build and the same small contract also pass. The official
 fallback is exercised separately and reports roots rather than inventing a
-module ledger. The current stable Lean 4.35.0 also builds and passes the small contract.\nA 4.34.1 executable also successfully routes a 4.35.0 project through its\nofficial checker, with the fallback path and limited coverage explicit.
+module ledger. The current stable Lean 4.35.0 also builds and passes the small contract.
+A 4.34.1 executable also successfully routes a 4.35.0 project through its
+official checker, with the fallback path and limited coverage explicit.
 No claim is made that reviewing one symbol proves ABI compatibility.
 
 These controls do not replace the release performance matrix, complete Mathlib

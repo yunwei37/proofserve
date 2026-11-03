@@ -9,7 +9,9 @@ import, scan, and I/O costs in the actual CLI denominator. A leaf-only check is
 not comparable to a fully checked dependency closure.
 
 Official --fresh accepts one target, imports its final merged environment, and
-calls Kernel.Environment.replay from empty. ProofServe checks modules in dependency order with explicit import visibility.\nIts reader preserves the upstream matching-imported-theorem interface policy;\nit does not claim to recheck every duplicate proof body. A matching
+calls Kernel.Environment.replay from empty. ProofServe checks modules in dependency order with explicit import visibility.
+Its reader preserves the upstream matching-imported-theorem interface policy;
+it does not claim to recheck every duplicate proof body. A matching
 target name alone does not prove matching declaration work. If the proof ledgers
 cannot be matched, report both procedures without a speedup ratio.
 
