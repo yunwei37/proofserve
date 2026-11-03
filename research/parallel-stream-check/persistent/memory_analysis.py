@@ -49,6 +49,8 @@ def main():
    if k in x and k in y:row.update({k+'_off':x[k],k+'_on':y[k],k+'_delta':y[k]-x[k]})
   delta.append(row)
  write(out/'memory-checkpoints.csv',a+b);write(out/'memory-deltas.csv',delta)
+ write(out/'memory-deltas-sample.csv',[x for x in delta if x['modules']==1 or x['modules']%100==0 or x['modules']==4449])
+ write(out/'memory-final.csv',[a[-1],b[-1]])
  print(json.dumps(dict(matched_module_boundaries=len(delta),final=delta[-1],
   interpretation='resident mappings/anonymous data, not exact retained-object sizes')))
 if __name__=='__main__':main()

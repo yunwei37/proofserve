@@ -29,3 +29,11 @@ including the actual final heavy modules. Net RSS differences include allocator/
 resident-page effects and must not be described as exact retained-object bytes.
 Finite process-per-closure work can release mappings at exit; an unbounded
 resident whole-OAI service is not established by this ablation.
+
+
+Actual aligned pair in memory-results.md: endpoint Anonymous+6.98MiB,RSS
++7.35MiB; wait4 peak3.261/3.268GiB off/on. Across-frontier net differences
+include allocator/transient state and are not exact retained-object accounting.
+Do not promote the selected OAI subset's~260GiB scenario into a whole-library
+forecast. The primary marker-window cost is~0.28s; finite closure fits, unbounded
+service/full-source-library fit remains unproven.
