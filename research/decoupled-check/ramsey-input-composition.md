@@ -1,0 +1,42 @@
+# Ramsey input composition and measured-denominator boundary
+
+Review: 自审. Input is the unchanged openai/math commit
+4eaee87548250b2682affda7d05d947c05554bae. This is an offline census of the
+444 Ramsey sources already extracted for the running comparison; it executes
+no Lean process and adds no timed work.
+
+| Textual class | Modules | Source bytes | decide +kernel occurrences |
+|---|---:|---:|---:|
+| ordinary-proxy | 264 | 36078209 | 0 |
+| kernel-marked | 180 | 186536353 | 396958 |
+
+The marker is a static proxy, not a measured kernel-time classification.
+The regex \bdecide\s+\+kernel\b is applied to the unmodified text;
+comments/strings are not parsed, and marker absence does not establish that
+kernel conversion is cheap. The per-file input rows are in
+[ramsey-target-census.csv](ramsey-target-census.csv).
+Ramsey is therefore not interchangeable with the no-marker Falconer branch.
+Its complete-closure result must be reported as a mixed mathematical and
+computational workload. No measured marker-class checking ratio is claimed.
+
+The source-work denominator includes all 11,188 closure nodes once: 10,744
+common dependency nodes whose exact immutable terms and compiler costs are
+retained from the same pinned capture, plus 444 newly produced Ramsey targets.
+It measures original Lean elaboration and output of .olean, .ilean and C
+source, including each call's imports; it does not include an external C/C++
+compiler or linker, and is not a fresh parallel Lake build's elapsed time.
+Common source work alone is 25,373.748385 CPU seconds (7.048263 hours).
+New target cost is unknown until the source cursor completes.
+
+The checking numerator will recheck all 11,188 modules through the original
+kernel in this Ramsey run, including checkpoint export/restore and any local
+fallbacks. Independent module-local parity work is reported separately.
+A ratio over the whole closure can hide a high target-only compute cost
+behind a large common dependency denominator; both source components will be
+listed. Without matched per-target checker measurements, subtraction from
+an older dependency-only run would be a cross-run estimate and is not done.
+
+The retired global attempt still accepted only 2,488 / 163,097 source IDs and
+10,744 dependency IDs, with 0.694505 kernel CPU hours, 9,124 producer errors
+and 151,485 blocked nodes. Neither that partial denominator nor the model
+forecast is substituted for this full-directory experiment.
