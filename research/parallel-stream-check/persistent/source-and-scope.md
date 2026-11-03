@@ -43,3 +43,11 @@ Read-only ready-snapshot detail: waves with multiple workers hold the common
 gate until the root read; the single-worker path has no gate and may already
 be checking at that read. The marker itself is always before enqueue in both
 paths. This wording does not move the marker or mutate running code.
+
+Stock import-header observations are at the importer return, not a census
+inside Replay.lean. Matched Replay uses StateRefT state and serial replayConstant/
+replayConstants calls; intermediate newly reconstructed SDK objects were not
+header-probed. Do not infer that the stock replay retains ST headers forever,
+has no atomic RC, or persistently marks every new CI. Those were not measured.
+The stock 'already persistent' premise is corrected by distinct importer/base/
+CI layers, not replaced by a different unobserved whole-runtime assertion.

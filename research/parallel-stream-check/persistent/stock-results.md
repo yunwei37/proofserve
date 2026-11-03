@@ -48,3 +48,11 @@ reported as corrected gains. Do not multiply an old gain by the5.134% full-
 Barrier wall reduction, switch denominators, or substitute a different scope.
 The old8P+E result also remains unmarked-only; no corrected heterogeneous-core
 result was measured here.
+
+Additional source check: Replay.lean explicitly replays constants one at a time
+through StateRefT and addDeclCore, and can skip duplicate theorems with matching
+name/type/level/all metadata without comparing proof values. This supports the
+procedure-scope warning; it does not prove which duplicate cases occur here.
+The native header probe observed importer return only; intermediate stock
+Replay RC state is unmeasured. No claim that every reconstructed stock CI
+remains ST/persistent or that stock has zero atomic RC is made.
