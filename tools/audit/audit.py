@@ -1,0 +1,313 @@
+#!/usr/bin/env python3
+"""Read-only Lake source audit. Python 3.11+, standard library only."""
+from __future__ import annotations
+import argparse
+import collections
+import csv
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+import re
+import sys
+import tomllib
+
+SCHEMA = "proofserve-audit/v1"
+TOKENS = ("decide", "native_decide", "bv_decide", "ofReduceBool", "omega",
+          "simp", "simp_all", "norm_num", "grind", "rfl")
+NAME = r"[A-Za-z_][\w'.]*"
+IMPORT = re.compile(r"(?m)^\s*(?:(?:public|private|meta)\s+)*import[ \t]+([^\n;]+)")
+
+def mask(text):
+    """Mask nested comments and quoted strings, retaining offsets/newlines."""
+    out = list(text)
+    i = 0
+    while i < len(text):
+        start = i
+        if text.startswith("--", i):
+            i = text.find("\n", i)
+            if i < 0:
+                i = len(text)
+        elif text.startswith("/-", i):
+            i += 2
+            depth = 1
+            while i < len(text) and depth:
+                if text.startswith("/-", i):
+                    depth += 1
+                    i += 2
+                elif text.startswith("-/", i):
+                    depth -= 1
+                    i += 2
+                else:
+                    i += 1
+            if depth:
+                raise ValueError("unterminated block comment")
+        elif (char := re.compile(r"'(?:\\.|[^'\\\n])'").match(text, i)):
+            i = char.end()
+        elif text[i] == '"':
+            i += 1
+            while i < len(text):
+                if text[i] == "\\":
+                    i += 2
+                elif text[i] == '"':
+                    i += 1
+                    break
+                else:
+                    i += 1
+            else:
+                raise ValueError("unterminated string literal")
+        else:
+            i += 1
+            continue
+        for j in range(start, min(i, len(text))):
+            if text[j] != "\n":
+                out[j] = " "
+    return "".join(out)
+
+def lexical(text):
+    code = mask(text)
+    counts = {k: len(re.findall(r"(?<![\w'])" + k + r"(?![\w'])", code)) for k in TOKENS}
+    counts["decide_plus_kernel"] = len(re.findall(r"\bdecide\s*\+\s*kernel\b", code))
+    imports = []
+    for match in IMPORT.finditer(code):
+        imports.extend(x for x in re.findall(NAME, match[1]) if x not in ("all", "in"))
+    # Same frozen W stratification proxy: any explicit decide +kernel occurrence.
+    return dict(counts=counts, imports=sorted(set(imports)),
+                regime_proxy="computation_certificate" if counts["decide_plus_kernel"] else "ordinary_mathematics")
+
+def inside(project, path):
+    p = (project / path).resolve()
+    if not p.is_relative_to(project):
+        raise ValueError("source directory escapes project: " + str(path))
+    return p
+
+def configuration(project):
+    """Never evaluate arbitrary Lake/Lean code. Unsupported default scope is unknown."""
+    toml = project / "lakefile.toml"
+    lean = project / "lakefile.lean"
+    if toml.exists():
+        raw = tomllib.loads(toml.read_text(encoding="utf-8"))
+        package_src = raw.get("srcDir", ".")
+        targets = []
+        for kind in ("lean_lib", "lean_exe"):
+            for spec in raw.get(kind, []):
+                if not isinstance(spec.get("name"), str):
+                    raise ValueError("target has no literal name")
+                targets.append(dict(name=spec["name"], kind=kind,
+                    srcDir=str(Path(package_src) / spec.get("srcDir", ".")),
+                    roots=spec.get("roots", [spec.get("root", spec["name"])]),
+                    globs=spec.get("globs"), needs=spec.get("needs", []),
+                    extraDepTargets=spec.get("extraDepTargets", [])))
+        defaults = raw.get("defaultTargets")
+        return dict(file="lakefile.toml", targets=targets, defaults=defaults,
+            default_scope_supported=isinstance(defaults, list),
+            reasons=[] if isinstance(defaults, list) else ["defaultTargets absent; do not guess Lake fallback behavior"])
+    if lean.exists():
+        # Only names/source roots are advisory. No default build coverage claims
+        # from regex parsing an executable Lean configuration.
+        text = lean.read_text(encoding="utf-8")
+        code = mask(text)
+        targets = []
+        pattern = re.compile(r"(?m)^\s*(lean_lib|lean_exe)\s+(" + NAME + r")\b")
+        found = list(pattern.finditer(code))
+        for i, m in enumerate(found):
+            end = found[i + 1].start() if i + 1 < len(found) else len(text)
+            block = text[m.end():end]
+            # Restrict literals to lines whose srcDir token survived comment masking.
+            src = "."
+            for sm in re.finditer(r'(?m)^\s*srcDir\s*:=\s*"([^"\n]+)"\s*$', block):
+                absolute = m.end() + sm.start()
+                if "srcDir" in code[absolute:absolute + len(sm[0])]:
+                    src = sm[1]
+                    break
+            targets.append(dict(name=m[2], kind=m[1], srcDir=src,
+                                roots=[m[2]], globs=None))
+        return dict(file="lakefile.lean", targets=targets, defaults=None,
+            default_scope_supported=False,
+            reasons=["executable lakefile.lean is not evaluated; pass --build-roots for an explicitly declared import-closure audit"])
+    raise ValueError("expected lakefile.toml or lakefile.lean in project root")
+
+def roots_for(target, modules):
+    if target.get("needs") or target.get("extraDepTargets"):
+        raise ValueError("custom dependency targets require an evaluated build inventory")
+    roots = target["roots"]
+    if not isinstance(roots, list) or not all(isinstance(x, str) for x in roots):
+        raise ValueError("non-literal target roots")
+    globs = target["globs"]
+    if globs is None:
+        return set(roots)
+    result = set()
+    if not isinstance(globs, list):
+        raise ValueError("unsupported globs")
+    for glob in globs:
+        if not isinstance(glob, str):
+            raise ValueError("unsupported glob")
+        if glob.endswith(".+"):
+            result.update(m for m in modules if m.startswith(glob[:-1]))
+        elif glob.endswith(".*"):
+            root = glob[:-2]
+            result.update(m for m in modules if m == root or m.startswith(root + "."))
+        elif re.fullmatch(NAME, glob):
+            result.add(glob)
+        else:
+            raise ValueError("unsupported glob: " + glob)
+    return result
+
+def reachable(seeds, modules):
+    seen, pending, missing = set(), list(seeds), set()
+    while pending:
+        m = pending.pop()
+        if m in seen:
+            continue
+        if m not in modules:
+            missing.add(m)
+            continue
+        seen.add(m)
+        pending.extend(x for x in modules[m]["imports"] if x in modules and x not in seen)
+    return seen, missing
+
+def load_receipt(path):
+    """M's checker receipt is imported as evidence, never reconstructed from source."""
+    if path is None:
+        return dict(status="unavailable", reason="no compiled checker receipt supplied"), {}
+    receipt = json.loads(path.read_text(encoding="utf-8"))
+    # Until a checker contract is recognized, preserve the receipt but make no
+    # acceptance, axiom-closure or per-module cost inference.
+    return dict(status="supplied_uninterpreted", file=str(path),
+        reason="checker receipt adapter not yet negotiated; no inferred axioms",
+        receipt=receipt), {}
+
+def read_costs(path, modules):
+    if path is None:
+        return {}, []
+    costs, rejected = {}, []
+    with path.open(encoding="utf-8", newline="") as f:
+        for n, row in enumerate(csv.DictReader(f), 2):
+            try:
+                m = row["module"]
+                if m not in modules or row["source_digest_blake2b"] != modules[m]["source_digest_blake2b"]:
+                    raise ValueError("module/source digest mismatch")
+                if m in costs:
+                    raise ValueError("duplicate module cost; select a run explicitly")
+                values = {k: float(row[k]) for k in ("user_cpu_s", "system_cpu_s", "wall_s")}
+                if not all(math.isfinite(v) and v >= 0 for v in values.values()):
+                    raise ValueError("invalid cost")
+                costs[m] = dict(**values, cpu_s=values["user_cpu_s"] + values["system_cpu_s"],
+                    status=row["status"], source="supplied_cost_log", file=str(path), line=n)
+            except (KeyError, ValueError) as e:
+                rejected.append(dict(line=n, error=str(e)))
+    return costs, rejected
+
+def audit(project, build_roots=None, receipt=None, cost_log=None):
+    project = Path(project).resolve(strict=True)
+    config = configuration(project)
+    root_paths = {project}
+    for target in config["targets"]:
+        root_paths.add(inside(project, target["srcDir"]))
+    # Dependencies are intentionally not traversed as local source. M's checker
+    # receipt owns the compiled dependency/axiom closure.
+    excluded = {".lake", ".git", "build", "__pycache__"}
+    paths = []
+    for folder, dirs, files in os.walk(project, followlinks=False):
+        dirs[:] = sorted(d for d in dirs if d not in excluded and not Path(folder, d).is_symlink())
+        for f in sorted(files):
+            p = Path(folder, f)
+            if f.endswith(".lean") and f != "lakefile.lean" and not p.is_symlink():
+                paths.append(p)
+    modules, errors = {}, []
+    for p in paths:
+        source_root = max((x for x in root_paths if p.is_relative_to(x)), key=lambda x: len(x.parts))
+        name = ".".join(p.relative_to(source_root).with_suffix("").parts)
+        if name in modules:
+            errors.append(dict(path=str(p.relative_to(project)), error="ambiguous source-root module identity: " + name))
+            continue
+        data = p.read_bytes()
+        try:
+            row = lexical(data.decode("utf-8"))
+        except (UnicodeDecodeError, ValueError) as e:
+            errors.append(dict(path=str(p.relative_to(project)), error=str(e)))
+            continue
+        row.update(module=name, path=p.relative_to(project).as_posix(), source_bytes=len(data),
+                   source_digest_blake2b=hashlib.blake2b(data, digest_size=32).hexdigest(),
+                   cost=None)
+        modules[name] = row
+    reasons = list(config["reasons"])
+    scope = "unknown"
+    covered, seeds, missing = set(), set(), set()
+    if build_roots is not None:
+        seeds = set(build_roots)
+        covered, missing = reachable(seeds, modules)
+        scope = "explicit_import_roots" if not missing and not errors else "incomplete_explicit_import_roots"
+    elif config["default_scope_supported"]:
+        by_name = {x["name"]: x for x in config["targets"]}
+        try:
+            for target in config["defaults"]:
+                if target not in by_name:
+                    raise ValueError("unknown/custom default target: " + str(target))
+                seeds.update(roots_for(by_name[target], modules))
+            covered, missing = reachable(seeds, modules)
+            if missing:
+                raise ValueError("default module roots absent: " + ", ".join(sorted(missing)))
+            scope = "static_declarative_defaults" if not errors else "incomplete_static_defaults"
+        except ValueError as e:
+            reasons.append(str(e))
+            scope = "unknown"
+    totals = dict(sum((collections.Counter(r["counts"]) for r in modules.values()), collections.Counter()))
+    compiled, _ = load_receipt(receipt)
+    costs, cost_errors = read_costs(cost_log, modules)
+    for m, cost in costs.items():
+        if m in modules:
+            modules[m]["cost"] = cost
+    identity = "\n".join(m + "\0" + modules[m]["source_digest_blake2b"] for m in sorted(modules))
+    return dict(schema=SCHEMA, project=str(project),
+        lean_toolchain=(project / "lean-toolchain").read_text().strip() if (project / "lean-toolchain").exists() else None,
+        source_modules=len(modules), source_bytes=sum(x["source_bytes"] for x in modules.values()),
+        module_source_digest_blake2b=hashlib.blake2b(identity.encode(), digest_size=32).hexdigest(),
+        configuration=config,
+        coverage=dict(status=scope, roots=sorted(seeds), covered_modules=sorted(covered),
+            omitted_modules=sorted(set(modules)-covered) if scope in ("static_declarative_defaults", "explicit_import_roots") else None,
+            missing_roots=sorted(missing), reasons=reasons,
+            scope="local source import closure only; custom targets and external compiled dependencies require evaluated evidence"),
+        lexical_counts=totals, modules=[modules[m] for m in sorted(modules)], errors=errors,
+        cost_errors=cost_errors, compiled_evidence=compiled, costs_status="unavailable" if not costs else "supplied_log",
+        limitations=[
+            "Lexical occurrences outside comments/strings are not tactic executions, elaborated identities, kernel costs or an axiom closure.",
+            "Regime proxy is any explicit decide +kernel occurrence; no occurrence does not establish low computation cost.",
+            "Executable Lake configuration is never evaluated. Unknown coverage is not zero omitted modules.",
+            "No native Lean invocation, build, network fetch or acceptance decision is performed.",
+            "Source digest is provenance, not a download or acceptance gate."])
+
+def summary(report):
+    coverage = report["coverage"]
+    omitted = coverage["omitted_modules"]
+    return (f'{report["source_modules"]} local source modules; {report["source_bytes"]} source bytes.\n'
+        f'Default/build coverage: {coverage["status"]}; omitted: '
+        + ("unknown" if omitted is None else str(len(omitted))) + ".\n"
+        + f'Explicit decide +kernel sites: {report["lexical_counts"].get("decide_plus_kernel", 0)} (lexical).\n'
+        + f'Costs: {report["costs_status"]}; compiled axioms: {report["compiled_evidence"]["status"]}.\n')
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("project", type=Path)
+    ap.add_argument("--json", type=Path, help="write JSON here; '-' writes JSON to stdout, summary to stderr")
+    ap.add_argument("--build-roots", nargs="+", help="explicit roots; does not claim these are Lake defaults")
+    ap.add_argument("--receipt", type=Path, help="compiled checker receipt (no axioms guessed from source)")
+    ap.add_argument("--costs", type=Path, help="source-matched per-module CPU/wall CSV; see README")
+    args = ap.parse_args(argv)
+    try:
+        report = audit(args.project, args.build_roots, args.receipt, args.costs)
+    except (OSError, ValueError, tomllib.TOMLDecodeError) as e:
+        ap.exit(2, f"proofserve audit: {e}\n")
+    payload = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
+    if args.json and str(args.json) == "-":
+        print(payload, end="")
+        print(summary(report), file=sys.stderr, end="")
+    else:
+        if args.json:
+            args.json.write_text(payload, encoding="utf-8")
+        print(summary(report), end="")
+    return 1 if report["errors"] or report["cost_errors"] else 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())

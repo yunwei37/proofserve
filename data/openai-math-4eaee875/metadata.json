@@ -1,0 +1,21 @@
+{
+  "schema": "proofserve-openai-math-costs/v1",
+  "upstream": "https://github.com/openai/math",
+  "commit": "4eaee87548250b2682affda7d05d947c05554bae",
+  "population_modules": 163097,
+  "lean": "4.34.1",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "original_sample_size": 42,
+  "completed_original_costs": 41,
+  "missing_original_costs": 1,
+  "sampling_seed": 20261030,
+  "source_frame": "workloads/openai-math/final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source41-GroundMainFinalStructuralRefinementOutputs/sample-costs.csv",
+  "source_staircase": "workloads/openai-math/final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source41-GroundMainFinalStructuralRefinementOutputs/latest-staircase",
+  "primary_clock": "native user + system CPU seconds",
+  "memory_option_MiB": 0,
+  "scope": "per-module native compile incl imports and olean/ilean/C; not whole Lake build",
+  "checker_numbers": "fixed selected-closure transfers, not actual whole-library verification",
+  "classifications": "lexical any decide +kernel, not runtime cost ground truth",
+  "interval_scope": "source sampling with fixed transfer factors; calibration/model uncertainty excluded",
+  "scenario_scope": "missing-cost class min/max and selected closure factor sensitivity, not CI"
+}
