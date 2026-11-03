@@ -91,3 +91,6 @@ Actual84terminal/source35 [root0270](../docs/tmp/build-and-evaluate/step-0270-20
 
 
 Producer diagnostics [root0271](../docs/tmp/build-and-evaluate/step-0271-20261103T004041+0000/step-report.md), [Oreport](decoupled-check/whole-library-source-errors.md), [finitecontrols](decoupled-check/ramsey-qualification.md): all9124rc1logs classified;4controls do not prove all-source repair, uniformphase or isolatedruntimefacet.2488/163097historicalsource acceptance unchanged; Ramsey is separate/pending. No new native run byroot.
+
+
+Source36 [root0272](../docs/tmp/build-and-evaluate/step-0272-20261103T025723+0000/step-report.md), [Wresult](../workloads/openai-math/final-seven-20261102/source36-NativeCodeAssembly/README.md): NativeCodeAssembly actualP0–7 compiler endpoint,36/42originals/18complete strata.238.7–362.1sourceCPUh/16.2–32.2mixed checking transferCPUh are assumptions, not measured full-library cost/CI.6source/11paired/13dynamic costs missing remain separate.

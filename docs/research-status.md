@@ -1,6 +1,6 @@
 # Research status
 
-Snapshot2026-11-02UTC, root0271. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-03UTC, root0272. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
@@ -30,9 +30,9 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | Evidence | Qualified result | Root record |
 |---|---|---|
 | Lexical census | Mathlib8529files/7masked sites; OAI163097files/1354379sites in5848files. 10668.32xsites/MB; default root misses33.30%sites. Not runtime or exhaustive semantic classes. | [0231](tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md) |
-| Source probability frame |35/42originals;17/21complete strata/144663modules.9marked cells/5848files complete; markedCPU57.546/218.220h=26.371%, nativeelapsed21.1685%.7ordinary costs missing/18434module domain incomplete. | [0270](tmp/build-and-evaluate/step-0270-20261102T233639+0000/step-report.md) |
-| Whole-frame scenarios |35known+7ordinary missing within observed support:232.9–396.0sourceCPUh; mixed-protocol check transfer15.9–35.2CPUh. Assumptions, not CI/guarantee/measured full checking; no-assumption upper unbounded. | [0270](tmp/build-and-evaluate/step-0270-20261102T233639+0000/step-report.md) |
-| Target-only replay |31/31 accepted, trusted compiled imports, source632.590/replay272.695CPU-s; median per-module ratio0.451 (0.087–0.885).14paired strata140.852/54.906CPUh, nominal weak interval[0,0.9401], effectiveDF1.19. Separate from source32coverage/full closure. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
+| Source probability frame |36/42originals;18/21complete strata/151888modules.9marked cells/5848files complete; markedCPU57.546/235.033h=24.484%, nativeelapsed19.6382%.6ordinary costs missing/11209module domain incomplete. | [0272](tmp/build-and-evaluate/step-0272-20261103T025723+0000/step-report.md) |
+| Whole-frame scenarios |36known+6ordinary missing within observed support:238.7–362.1sourceCPUh; mixed-protocol check transfer16.2–32.2CPUh. Assumptions, not CI/guarantee/measured full checking; no-assumption upper unbounded. | [0272](tmp/build-and-evaluate/step-0272-20261103T025723+0000/step-report.md) |
+| Target-only replay |31/31 accepted, trusted compiled imports, source632.590/replay272.695CPU-s; median per-module ratio0.451 (0.087–0.885).14paired strata140.852/54.906CPUh, nominal weak interval[0,0.9401], effectiveDF1.19. Separate from current source36coverage/full closure. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
 | Native checking grain |29available random+2purposeful artifacts/34units;13original draws missing.12decision-shaped calls>=1CPU-s use10.09%total call CPU; available-case weights are conditional, not global. | [0234](tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md) |
 | Four original O closures |Nat1330/NearPin3333/Grid3793/Amplitudes5083: complete check/source-work10.56/6.76/14.52/14.55%. Same5085-node source union/161reference blocks, overlapping dependencies and warm observations. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md) |
 | Large Falconer closure |13205source/27segments; native CPU2038.444/32292.604s=6.31%; matched checkpoint Mathlib91.145/1018.219s=8.95%. Separate wall9.26%/historicalMathlib10.56%/checkpoint14.67%. Selected closures, one capture each, trusted metadata and Oshare deviation retained. | [0268](tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md) |
@@ -74,7 +74,7 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 
 ## Open evidence and next action
 
-Source7/paired11/dynamic13 gaps differ; do not change one denominator with another.
+Source6/paired11/dynamic13 gaps differ; do not change one denominator with another.
 Full-library phase weights, causality/repeats, whole axioms/declaration closure,
 released-software native coverage and cluster behavior remain unresolved.
 Bundled LeanChecker already dispatches module-local tasks independently:
@@ -87,7 +87,7 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0271:24pages/222054B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0272:24pages/221953B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 
@@ -104,3 +104,6 @@ Historical0268scope audited rc1count only. Root0271now independently classifies 
 
 
 [Root0271](tmp/build-and-evaluate/step-0271-20261103T004041+0000/step-report.md) reads all9124retained rc1source records/stdout/stderr:4697unknowninterpreterdecl+4421missingnativeexternal=9118unavailabledecldiagnostics,4missingmoduledata,1compilerIRmissingcode,1LakeinterpreterIR.139of9118are not atsource line1, so no uniform import/phase claim.4successful qualification controls=3pinned sourcefiles+1Init import control, plus preserved failedmetadata-copy retry. Current3source bytes11197match fixed full archive; old duplicate failure-input source copies are absent, so no direct historical-byte recheck. Old600s/11.5GiB/olean-only versuscontrols300s/11.75GiB/3facets and unlogged per-open env trace prevent isolatedfacet/cost causal claims.9124do not become proofrejection or repairedpasses. Historical2488/163097source+10744dependencies remains partial; currentRamsey is a separate unfinished closure, not its denominator.
+
+
+[Root0272](tmp/build-and-evaluate/step-0272-20261103T025723+0000/step-report.md) independently qualifies the actual NativeCodeAssembly original terminal01:09:45UTC:4.981634wall/7.020013CPU-s, not E-core prerequisite timing. Exact42frame gains only that ID, prior35costs unchanged. Current36/42,18/21complete strata/151888modules;6ordinary original costs missing/11209module domain incomplete. Conditional source235.032925CPUh, marked57.546404h=24.4844%; nativeelapsed203.778943h/marked19.6382%. KnownHTsubtotal235.032925h equals complete-stratum subtotal here because incompletecells have0observations, not whole-frame point/CI. Missing+1CPU-s each adds3.113611h. Source support scenarios238.7–362.1CPUh; mixed-protocol checking transfer16.2–32.2CPUh, not actual full checking/CI/guarantees. Source35scenarios retained ashistory. Paired31/42/14strata/11missing and dynamic13missing remain distinct.

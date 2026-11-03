@@ -1,0 +1,68 @@
+{
+  "native_count": 1,
+  "native_wall_s": 4.981634316965938,
+  "native_CPU_s": 7.020013,
+  "controller_wall_s": 552.3761649392545,
+  "identities_retired": 2,
+  "cgroups_absent": 1,
+  "source_bytes_compared": 22249,
+  "wait4_maxRSS_KiB": 7328472,
+  "sampled_peak_bytes": 7458926592,
+  "charged_peak_bytes": 789512192,
+  "new_originals": [
+    {
+      "module": "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.NativeCodeAssembly",
+      "role": "original_probability_sample",
+      "wall_s": 4.981634316965938,
+      "cpu_s": 7.020013,
+      "pid": 499397,
+      "birth": "772076392",
+      "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-NativeCodeAssembly-targetP-20261103/runs/00-noM"
+    }
+  ],
+  "originals": 36,
+  "missing_originals": 6,
+  "complete_strata": 18,
+  "covered_modules": 151888,
+  "missing_module_domain": 11209,
+  "source_sum_CPU_s": 858.2201640000001,
+  "source_sum_wall_s": 545.8018173249438,
+  "conditional_CPU_h": 235.03292506819443,
+  "conditional_native_elapsed_h": 203.7789431461741,
+  "marked_CPU_h": 57.54640427722222,
+  "marked_elapsed_h": 40.01860645029435,
+  "marked_CPU_share": 0.24484401179334864,
+  "marked_elapsed_share": 0.19638244183840095,
+  "known_HT_CPU_h": 235.03292506819443,
+  "missing_plus_one_CPU_s_h": 3.113611111111111,
+  "observed_ordinary_min_CPU_s": 1.2045249999999998,
+  "observed_ordinary_max_CPU_s": 40.791652,
+  "scenarios": [
+    {
+      "scenario": "observed_class_min",
+      "source_CPU_h": 238.78334749180553,
+      "modeled_check_low_h": 16.29858582065111,
+      "modeled_check_high_h": 21.09583252106951
+    },
+    {
+      "scenario": "observed_class_max",
+      "source_CPU_h": 362.0422659759722,
+      "modeled_check_low_h": 24.079203239524503,
+      "modeled_check_high_h": 32.129265505494786
+    }
+  ],
+  "scenario_ten_times_max_CPU_h": 1505.1263341459721,
+  "scenario_missing_check_equals_source_CPU_h": 143.07118441074394,
+  "scenario_missing_check_twice_source_CPU_h": 270.0805253185217,
+  "ordinary_transfer_CPU_factors": [
+    0.06312417401157756,
+    0.0895142771015193
+  ],
+  "computation_transfer_CPU_factors": [
+    0.08467146864040666,
+    0.08442149498070872
+  ],
+  "root_analysis_seconds": 0.08793180901557207,
+  "root_analysis_maxrss_kib": 17452,
+  "scenario_missing_check_three_times_source_CPU_h": 397.0898662262995
+}

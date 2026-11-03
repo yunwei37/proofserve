@@ -1,0 +1,1 @@
+One read-only management query returned: No K3s HA server from inventory/fleet.json had a reachable ready API. This is an observation gap, not proof of a remote workload failure; no remote restart/configuration change. Next same existing Cloudflare-J route retried.
