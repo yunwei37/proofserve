@@ -1,0 +1,34 @@
+{
+  "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK10",
+  "source_kernel_markers": 0,
+  "source_plain_decide_tactic_occurrences": 12872,
+  "source_cpu_s": 1725.133882,
+  "source_wall_s": 674.5630755294114,
+  "source_peak_rss_gib": 11.527206420898438,
+  "source_native_key": "source-10415",
+  "source_returncode": 0,
+  "source_warning_sorry": false,
+  "descriptive_groups": {
+    "other-unmarked": {
+      "modules": 220,
+      "source_bytes": 1147003,
+      "plain_decide_tactic_occurrences": 0
+    },
+    "kernel-marked": {
+      "modules": 180,
+      "source_bytes": 186536353,
+      "plain_decide_tactic_occurrences": 40
+    },
+    "unmarked-certificate-family": {
+      "modules": 20,
+      "source_bytes": 29158089,
+      "plain_decide_tactic_occurrences": 60381
+    },
+    "other-unmarked-plain-decide": {
+      "modules": 24,
+      "source_bytes": 5773117,
+      "plain_decide_tactic_occurrences": 13781
+    }
+  },
+  "grouping_is_regime_classification": false
+}

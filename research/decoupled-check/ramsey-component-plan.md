@@ -43,3 +43,20 @@ flock, no -M, the existing external cgroup and finite per-task timeouts.
 Compilation is preparation only; it waits until the current O native sequence
 retires, so there are not two O Lean processes. No live collector source or
 compiled module is modified.
+
+## Actual source evidence revises the descriptive grouping
+
+CertificatesK10 completed in1725.133882 CPU-s/674.563076 wall-s with no
++kernel marker. Direct inspection shows finite LayoutCertificate and
+ForbiddenMatrix data and12872 ordinary by-decide proof tactics.
+It is not a marker-free mathematical control.
+
+The original180marked/264unmarked split remains in the CSV. Additional
+descriptive groups are180kernel-marked,20unmarked-certificate-family,
+24other-unmarked-plain-decide and220other-unmarked files. These groups
+are not a validated cost-regime classifier. In particular, trivial decide
+subgoals also occur in ordinary mathematics. Component attribution must
+join measured per-module CPU to these distinct groups, keep unresolved
+interpretations separate and not force every unmarked file into “math”.
+No source CPU measurement is labelled kernel replay CPU. The primary
+complete-closure protocol and accepted sets remain unchanged.

@@ -51,7 +51,7 @@ source-option-token-census.json. By contrast,396958decide +kernel markers
 occur across180target files, as listed in the per-file census.
 
 This is source-level characterization only. It does not establish the absence
-of axioms in imported dependencies, prove that any candidate checks, or replace
+of axioms in the candidate or its imported dependencies, prove that any candidate checks, or replace
 the planned complete original-kernel and module-local acceptance comparison.
 It helps distinguish this selected directory from a workload whose visible
 proofs delegate reduction to native_decide or skip the kernel explicitly.
@@ -62,7 +62,7 @@ the inputs to the primary check.
 
 The complete pinned lean/lakefile.lean and lean/lean-toolchain were read from
 the retained source archive. The only package/library option-setting line is
-leanOptions := #[autoImplicit,false] in the OAI package; there are no further
+package-level autoImplicit=false; there are no further
 leanOptions/moreLeanArgs/weakLeanArgs overrides or kernel-skip/heartbeat/depth
 settings in that configuration. The measured target flag -DautoImplicit=false
 therefore matches the authored package setting. Leanv4.34.1 and the Mathlib
@@ -75,3 +75,22 @@ dependencies. The41missing external module artifacts are absent from this
 capture's prepared provider paths; the census must not be described as41
 dependencies omitted by the upstream corpus. Ramsey and the chosen next
 Transonic closure do not require an additional external OAI subtree.
+
+## Measured counterexample to marker-only regime classification
+
+The successful CertificatesK10 source call has zero decide +kernel markers,
+but contains explicit finite LayoutCertificate/ForbiddenMatrix data and
+thousands of ordinary by decide proofs. It used1725.133882 CPU-s,
+674.563076 wall-s and11.527206 GiB peakRSS, exit0/no-sorry warning.
+Its exact key and additional descriptive groups are in
+[ramsey-marker-counterexample.json](ramsey-marker-counterexample.json).
+Its source therefore disproves the inference “unmarked means cheap
+mathematical elaboration”; it does not yet establish its replay CPU fraction.
+
+The original marker class is retained unchanged. Extra columns now identify
+explicit Construction.CertificatesK* / CycleClique.CertificatesNNN families,
+ordinary by-decide syntax and four descriptive groups. These are source
+descriptions, not a validated two-regime classifier. Comments/strings and
+unrecognized tactic syntax remain limitations; ordinary mathematical proofs
+can also use decide on trivial subgoals. Actual module CPU attribution is
+required before assigning a mathematical/computational cost fraction.
