@@ -78,11 +78,11 @@ def inside(project, path):
         raise ValueError("source directory escapes project: " + str(path))
     return p
 
-def configuration(project):
+def configuration(project, config_override=None):
     """Never evaluate arbitrary Lake/Lean code. Unsupported default scope is unknown."""
-    toml = project / "lakefile.toml"
+    toml = config_override if config_override is not None else project / "lakefile.toml"
     lean = project / "lakefile.lean"
-    if toml.exists():
+    if config_override is not None or toml.exists():
         raw = tomllib.loads(toml.read_text(encoding="utf-8"))
         package_src = raw.get("srcDir", ".")
         targets = []
@@ -96,7 +96,8 @@ def configuration(project):
                     globs=spec.get("globs"), needs=spec.get("needs", []),
                     extraDepTargets=spec.get("extraDepTargets", [])))
         defaults = raw.get("defaultTargets")
-        return dict(file="lakefile.toml", targets=targets, defaults=defaults,
+        return dict(file=str(toml) if config_override else "lakefile.toml", targets=targets, defaults=defaults,
+            supplied_config=config_override is not None,
             default_scope_supported=isinstance(defaults, list),
             reasons=[] if isinstance(defaults, list) else ["defaultTargets absent; do not guess Lake fallback behavior"])
     if lean.exists():
@@ -228,14 +229,14 @@ def read_costs(path, modules):
                 rejected.append(dict(line=n, error=str(e)))
     return costs, rejected
 
-def audit(project, build_roots=None, receipt=None, cost_log=None):
+def audit(project, build_roots=None, receipt=None, cost_log=None, lake_config=None):
     project = Path(project).resolve(strict=True)
     receipt = Path(receipt) if receipt is not None else None
     cost_log = Path(cost_log) if cost_log is not None else None
     if build_roots is not None and (isinstance(build_roots, str)
             or not all(isinstance(m, str) and m for m in build_roots)):
         raise ValueError("build_roots must be an array of nonempty module names")
-    config = configuration(project)
+    config = configuration(project, Path(lake_config) if lake_config is not None else None)
     root_paths = {project}
     for target in config["targets"]:
         root_paths.add(inside(project, target["srcDir"]))
@@ -283,7 +284,7 @@ def audit(project, build_roots=None, receipt=None, cost_log=None):
             covered, missing = reachable(seeds, modules)
             if missing:
                 raise ValueError("default module roots absent: " + ", ".join(sorted(missing)))
-            scope = "static_declarative_defaults" if not errors else "incomplete_static_defaults"
+            scope = ("supplied_declarative_config" if config.get("supplied_config") else "static_declarative_defaults") if not errors else "incomplete_static_defaults"
         except ValueError as e:
             reasons.append(str(e))
             scope = "unknown"
@@ -300,7 +301,7 @@ def audit(project, build_roots=None, receipt=None, cost_log=None):
         module_source_digest_blake2b=hashlib.blake2b(identity.encode(), digest_size=32).hexdigest(),
         configuration=config,
         coverage=dict(status=scope, roots=sorted(seeds), covered_modules=sorted(covered),
-            omitted_modules=sorted(set(modules)-covered) if scope in ("static_declarative_defaults", "explicit_import_roots") else None,
+            omitted_modules=sorted(set(modules)-covered) if scope in ("static_declarative_defaults", "explicit_import_roots", "supplied_declarative_config") else None,
             missing_roots=sorted(missing), reasons=reasons,
             scope="local source import closure only; custom targets and external compiled dependencies require evaluated evidence"),
         lexical_counts=totals, modules=[modules[m] for m in sorted(modules)], errors=errors,
@@ -328,9 +329,10 @@ def main(argv=None):
     ap.add_argument("--build-roots", nargs="+", help="explicit roots; does not claim these are Lake defaults")
     ap.add_argument("--receipt", type=Path, help="compiled checker receipt (no axioms guessed from source)")
     ap.add_argument("--costs", type=Path, help="source-matched per-module CPU/wall CSV; see README")
+    ap.add_argument("--lake-config", type=Path, help="caller-supplied evaluated Lake TOML export; never evaluates Lake here")
     args = ap.parse_args(argv)
     try:
-        report = audit(args.project, args.build_roots, args.receipt, args.costs)
+        report = audit(args.project, args.build_roots, args.receipt, args.costs, args.lake_config)
     except (OSError, ValueError, tomllib.TOMLDecodeError) as e:
         ap.exit(2, f"proofserve audit: {e}\n")
     payload = json.dumps(report, ensure_ascii=False, indent=2) + "\n"

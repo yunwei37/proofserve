@@ -10,7 +10,7 @@ python3 -m unittest discover -s tools/audit -v
 ```
 
 The JSON schema is `proofserve-audit/v1`. The Python entry point is
-`audit(project, build_roots=None, receipt=None, cost_log=None)`; O can wrap the
+`audit(project, build_roots=None, receipt=None, cost_log=None, lake_config=None)`; O can wrap the
 CLI or import it for `proofserve audit`. JSON goes to the selected file; when
 `--json -` is used, stdout contains JSON and stderr contains the summary.
 Exit 0 means the audit ran without source/cost parsing errors. **It never means
@@ -39,6 +39,26 @@ results; exit 2 reports invalid configuration/input or an I/O error.
   lexical accounting. Source errors and ambiguous module identities are retained.
 - Costs only when supplied by an explicit source-matched log. No default
   milliseconds or runtime estimate is fabricated.
+
+## Executable Lake configuration
+
+Lake itself can export evaluated declarative configuration. Supply that export
+instead of trusting a regex interpretation of lakefile.lean:
+
+```sh
+# From the project directory. Choose an output that does not already exist.
+lake translate-config toml /absolute/path/to/new-export.toml
+python3 /path/to/proofserve/tools/audit/audit.py . --lake-config /absolute/path/to/new-export.toml --json audit.json
+```
+
+Always pass the explicit output filename: Lake's no-output form renames the
+original configuration. The audit never runs this command or evaluates Lake
+itself. The supplied export's path/provenance stays in the report and its
+coverage is labeled supplied_declarative_config. Matching the export to the
+current project/configuration is the caller's responsibility. Custom targets
+that cannot be represented remain unknown. This path follows Lake 4.34.1
+CLI/Main.lean translateConfig and CLI/Translate/Toml.lean; it is not a claim
+that arbitrary scripts reduce to an exact build inventory.
 
 ## Cost logs and compiled receipts
 

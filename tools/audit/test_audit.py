@@ -153,5 +153,20 @@ class AuditTests(unittest.TestCase):
             (p / "build/Example.lean").write_text("example : True := by trivial")
             self.assertEqual(audit.audit(p)["source_modules"], 4)
 
+    def test_supplied_lake_toml_retains_provenance_and_closure(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.project(d)
+            exported = (p / "lakefile.toml").read_text()
+            (p / "lakefile.toml").unlink()
+            (p / "lakefile.lean").write_text("import Lake\nopen Lake DSL\nlean_lib Demo")
+            with tempfile.TemporaryDirectory() as export_dir:
+                f = Path(export_dir) / "export.toml"
+                f.write_text(exported)
+                r = audit.audit(p, lake_config=str(f))
+                self.assertEqual(r["coverage"]["status"], "supplied_declarative_config")
+                self.assertEqual(r["coverage"]["omitted_modules"], ["Demo.Omitted"])
+                self.assertEqual(r["configuration"]["file"], str(f))
+                self.assertTrue(r["configuration"]["supplied_config"])
+
 if __name__ == "__main__":
     unittest.main()
