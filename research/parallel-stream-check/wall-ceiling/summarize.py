@@ -36,15 +36,19 @@ def stream_tables(only=None):
 def barrier_tables():
  P=CAP/'parallel-stream-barrier-corrected-20261103';old=CAP/'chunked-kernel-check/parallel-barrier-v1'
  assert json.loads((P/'terminal.json').read_text())['complete']
- data=[]
+ data=[];reference=None
  for phase,source in[('unmarked-old',old),('default-persistent-new',P)]:
   rows=json.loads((source/'completed.json').read_text());assert len(rows)==15
+  for c in rows:
+   c['native_cpu_s']=c['native_user_s']+c['native_system_s']
+   if reference is None:reference=c['acceptance']['names']
+   assert c['acceptance']['names']==reference and c['acceptance']['typed_constants_identical']
   for k in[0,1,2,4,8]:
    group=[x for x in rows if x['k']==k]
    assert len(group)==3 and all(x['accepted']and x['all_native_retired']for x in group)
    assert all(x['acceptance']['count']==3425 for x in group)
    r=dict(phase=phase,k=k,repeats=3,scope='single original module, imports trusted; wave export/reimport and final original CI audit')
-   for metric in['whole_pipeline_wall_s','native_user_s','native_system_s','peak_rss_kib']:
+   for metric in['whole_pipeline_wall_s','native_cpu_s','native_user_s','native_system_s','peak_rss_kib']:
     for stat,value in stats([x[metric]for x in group]).items():r[metric+'_'+stat]=value
    data.append(r)
   base=next(x for x in data if x['phase']==phase and x['k']==0)
