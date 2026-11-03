@@ -11,12 +11,13 @@
 #include <unistd.h>
 #include <sys/syscall.h>
 typedef unsigned long long U;
-typedef struct { uint64_t a,b; } Interval;
+typedef struct { uint64_t a,b,cpu; size_t index; } Interval;
 typedef struct {
  long tid;
  uint64_t wall0,cpu0; int core0;
  uint64_t count[24], cpu[24], hb[24], narrow[24], narrow_hb[24];
  uint64_t max_job, migrations;
+ size_t job_index;
  Interval *v; size_t len,cap;
 } Local;
 static Local *registry[128];
@@ -30,6 +31,22 @@ static int have_allowed;
 static atomic_int wave_slot;
 static uint64_t wave0,wavecpu0,union_sum,batch_sum,batch_cpu_sum,wave_max_sum,waves;
 static size_t wave_jobs;
+
+static FILE *tracefile;
+static int trace_configured;
+static uint64_t phase_ns[6],wave_id;
+static void configure_trace(void) {
+ if(trace_configured)return;
+ trace_configured=1;const char *p=getenv("PARALLEL_WALL_TRACE");
+ if(p && *p){tracefile=fopen(p,"ax");if(!tracefile)abort();}
+}
+LEAN_EXPORT lean_obj_res ps_trace_enabled(lean_obj_arg w) {
+ configure_trace();return lean_io_result_mk_ok(lean_box(tracefile!=NULL));
+}
+LEAN_EXPORT lean_obj_res ps_trace_plan(b_lean_obj_arg text,lean_obj_arg w) {
+ configure_trace();if(tracefile){fputs(lean_string_cstr(text),tracefile);fputc(10,tracefile);fflush(tracefile);}
+ return lean_io_result_mk_ok(lean_box(0));
+}
 static uint64_t ns(clockid_t id) {struct timespec t;clock_gettime(id,&t);return (uint64_t)t.tv_sec*1000000000+t.tv_nsec;}
 static lean_obj_res ok(void) {return lean_io_result_mk_ok(lean_box(0));}
 static Local *getlocal(void) {
@@ -74,8 +91,14 @@ LEAN_EXPORT lean_obj_res ps_bind_worker(lean_obj_arg w) {
  if(bindcpu(cpus[slot]))return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("worker binding denied")));
  return ok();
 }
+LEAN_EXPORT lean_obj_res ps_trace_job(size_t index,lean_obj_arg w) {
+ getlocal()->job_index=index;return ok();
+}
+LEAN_EXPORT lean_obj_res ps_trace_phase(size_t phase,lean_obj_arg w) {
+ if(phase<6)phase_ns[phase]=ns(CLOCK_MONOTONIC);return ok();
+}
 LEAN_EXPORT lean_obj_res ps_wave_begin(size_t jobs,lean_obj_arg w) {
- atomic_store(&wave_slot,0);wave_jobs=jobs;wave0=ns(CLOCK_MONOTONIC);wavecpu0=ns(CLOCK_PROCESS_CPUTIME_ID);return ok();
+ atomic_store(&wave_slot,0);wave_jobs=jobs;wave0=ns(CLOCK_MONOTONIC);phase_ns[0]=wave0;wavecpu0=ns(CLOCK_PROCESS_CPUTIME_ID);return ok();
 }
 LEAN_EXPORT lean_obj_res ps_profile_begin(lean_obj_arg w) {
  Local *l=getlocal();l->core0=sched_getcpu();l->wall0=ns(CLOCK_MONOTONIC);l->cpu0=ns(CLOCK_THREAD_CPUTIME_ID);return ok();
@@ -89,7 +112,7 @@ LEAN_EXPORT lean_obj_res ps_profile_end(uint64_t hb,lean_obj_arg w) {
  if(wave_jobs<=8){l->narrow[core]++;l->narrow_hb[core]+=hb;}
  if(cost>l->max_job)l->max_job=cost;
  if(l->len==l->cap){l->cap=l->cap?2*l->cap:64;l->v=realloc(l->v,l->cap*sizeof(Interval));if(!l->v)abort();}
- l->v[l->len++]=(Interval){l->wall0,wall1};return ok();
+ l->v[l->len++]=(Interval){l->wall0,wall1,cost,l->job_index};return ok();
 }
 static int by_start(const void*a,const void*b){const Interval*x=a,*y=b;return x->a<y->a?-1:x->a>y->a?1:0;}
 LEAN_EXPORT lean_obj_res ps_wave_finish(lean_obj_arg w) {
@@ -97,6 +120,16 @@ LEAN_EXPORT lean_obj_res ps_wave_finish(lean_obj_arg w) {
  for(size_t i=0;i<registry_n;i++){n+=registry[i]->len;if(registry[i]->max_job>maxjob)maxjob=registry[i]->max_job;}
  Interval *all=n?malloc(n*sizeof(Interval)):NULL;size_t k=0;
  for(size_t i=0;i<registry_n;i++){Local*l=registry[i];if(l->len)memcpy(all+k,l->v,l->len*sizeof(Interval));k+=l->len;l->len=0;l->max_job=0;}
+ configure_trace();
+ if(tracefile) {
+  fprintf(tracefile,"{\"event\":\"wave\",\"id\":%llu,\"width\":%zu,\"phase_ns\":[",
+   (U)wave_id++,wave_jobs);
+  for(unsigned i=0;i<6;i++)fprintf(tracefile,"%s%llu",i?",":"",(U)phase_ns[i]);
+  fprintf(tracefile,"],\"jobs\":[");
+  for(size_t i=0;i<n;i++)fprintf(tracefile,"%s[%zu,%llu,%llu,%llu]",i?",":"",
+   all[i].index,(U)all[i].a,(U)all[i].b,(U)all[i].cpu);
+  fprintf(tracefile,"]}");fputc(10,tracefile);fflush(tracefile);
+ }
  if(n){qsort(all,n,sizeof(Interval),by_start);uint64_t a=all[0].a,b=all[0].b;
   for(size_t i=1;i<n;i++){if(all[i].a<=b){if(all[i].b>b)b=all[i].b;}else{union_sum+=b-a;a=all[i].a;b=all[i].b;}}union_sum+=b-a;}
  free(all);wave_max_sum+=maxjob;waves++;

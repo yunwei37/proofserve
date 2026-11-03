@@ -43,3 +43,16 @@ LEAN_EXPORT lean_obj_res ps_thread_ns(lean_obj_arg world) {
  uint64_t ns=(uint64_t)ts.tv_sec*1000000000ull+(uint64_t)ts.tv_nsec;
  return lean_io_result_mk_ok(lean_box_uint64(ns));
 }
+
+/* Official matched-SDK primitive. Its BaseIO world argument is erased.
+ * Quiescence is established in checkedBatch before worker enqueue.
+ * Persistent graph memory is retained until this finite process exits. */
+#include <stdlib.h>
+#include <string.h>
+extern lean_obj_res lean_runtime_mark_persistent(lean_obj_arg);
+LEAN_EXPORT lean_obj_res ps_persist_base(lean_obj_arg base,lean_obj_arg world) {
+ const char *p=getenv("PARALLEL_PERSIST_BASE");
+ if(p && strcmp(p,"0") && strcmp(p,"1"))abort();
+ if(!p || strcmp(p,"0"))base=lean_runtime_mark_persistent(base);
+ return lean_io_result_mk_ok(base);
+}

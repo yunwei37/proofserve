@@ -18,6 +18,14 @@ open Lean
 @[extern "ps_profile_summary"] opaque profileSummary : IO String
 @[extern "ps_cpu_id"] opaque cpuId : IO UInt32
 
+/-- Quiescent frontier only: no task may still access this base when marked.
+    Default on; PARALLEL_PERSIST_BASE=0 is an explicit measurement ablation. -/
+@[extern "ps_persist_base"] opaque persistBase (base : Kernel.Environment) : IO Kernel.Environment
+@[extern "ps_trace_enabled"] opaque traceEnabled : IO Bool
+@[extern "ps_trace_plan"] opaque tracePlan (text : @& String) : IO Unit
+@[extern "ps_trace_job"] opaque traceJob (index : USize) : IO Unit
+@[extern "ps_trace_phase"] opaque tracePhase (phase : USize) : IO Unit
+
 def profileModule (label : String) (planNs fallbackNs : Nat) (fallbackCpu : UInt64) : IO Unit := do
   let text ← profileSummary
   let .ok metrics := Json.parse text | throw <| IO.userError "invalid native profile summary"
@@ -162,6 +170,7 @@ private def worker (base : Kernel.Environment) (plan : Plan)
       pure i
     if position >= jobs.size then break
     let index := jobs[position]!
+    if profile then traceJob index.toUSize
     results := results.push (← checkOne base plan.constants[index]! index observe profile)
   return results
 
@@ -171,6 +180,9 @@ private def checkedBatch (base : Kernel.Environment) (plan : Plan)
   let profile := (← IO.getEnv "PARALLEL_PROFILE") == some "1"
   let hasPins := !((← IO.getEnv "PARALLEL_PIN_CPUS").getD "").isEmpty
   if profile || hasPins then waveBegin wave.size.toUSize
+  -- The previous wave has joined; marking occurs before any new enqueue.
+  let base ← persistBase base
+  if profile then tracePhase 1
   let queue ← Std.Mutex.new 0
   let count := min workers wave.size
   let gate ← IO.Promise.new
@@ -197,12 +209,14 @@ private def checkedBatch (base : Kernel.Environment) (plan : Plan)
   -- Release and join all launched tasks even if creation failed. A failure
   -- cannot commit a partial frontier or leave a worker blocked on this gate.
   gate.resolve (1 : Nat)
+  if profile then tracePhase 2
   let mut tokens : Array CheckedToken := #[]
   for task in tasks do
     match task.get with
     | .ok values => tokens := tokens ++ values
     | .error e => if error.isNone then error := some e
   bindCoordinator
+  if profile then tracePhase 3
   if let some e := error then throw e
   if fault=="duplicate" && tokens.size>1 then
     if let some second := tokens[1]? then tokens := tokens.set! 0 second
@@ -214,11 +228,14 @@ private def checkedBatch (base : Kernel.Environment) (plan : Plan)
       throw <| IO.userError "invariant: base payload does not match job"
     if (base.find? token.info.name).isSome then
       throw <| IO.userError "invariant: base commit would overwrite constant"
+  if profile then tracePhase 4
   let checked ← if fault=="stale" && !tokens.isEmpty then do
     let other ← mkEmptyEnvironment
     commitChecked other.toKernelEnv tokens
     else commitChecked base tokens
-  if profile then waveFinish
+  if profile then
+    tracePhase 5
+    waveFinish
   return checked
 
 partial def axiomsOf (env : Kernel.Environment) (todo : List Name) (seen : NameSet := {})
@@ -288,6 +305,15 @@ def parallelReplay (data : ModuleData) (map : Std.HashMap Name ConstantInfo)
     if profile then profileModule label (planned-t0) ((← IO.monoNanosNow)-planned) (c1-c0)
     return (checked,0,0,"upstream_complex_or_cycle")
   let planned ← IO.monoNanosNow
+  if ← traceEnabled then
+    let names := plan.constants.foldl (fun (p : Nat × Std.HashMap Name Nat) ci =>
+      (p.1+1,p.2.insert ci.name p.1)) (0,{}) |>.2
+    let nodes := plan.constants.mapIdx fun i ci => Json.mkObj [
+      ("index",toJson i),("name",toJson ci.name.toString),
+      ("dependencies",toJson (ci.getUsedConstantsAsSet.toList.filterMap (names[·]?)))]
+    tracePlan <| Json.compress <| Json.mkObj [
+      ("event",toJson "plan"),("module",toJson label),("nodes",toJson nodes),
+      ("widths",toJson (plan.waves.map Array.size))]
   let mut checked := base
   let mut jobsDone := 0
   for wave in plan.waves do

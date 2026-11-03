@@ -11,8 +11,9 @@ e=environment();e.update(LEAN_PATH=str(ROOT)+':'+str(assets)+':'+str(assets.pare
 commands=[
  [SDK/'bin/lean','--root='+str(source),'-o',ROOT/'ParallelCore.olean','-c',ROOT/'ParallelCore.c',source/'ParallelCore.lean'],
  ['cc','-O2','-I'+str(SDK/'include'),'-c',source/'checked_commit.c','-o',ROOT/'checked_commit.o'],
+ ['cc','-O2','-I'+str(SDK/'include'),'-c',source/'placement_profile.c','-o',ROOT/'placement_profile.o'],
  [SDK/'bin/lean','--root='+str(source),'-c',ROOT/'ParallelStream.c',source/'ParallelStream.lean'],
- [SDK/'bin/leanc','-O2','-o',ROOT/'parallel-stream',ROOT/'ParallelStream.c',ROOT/'ParallelCore.c',ROOT/'checked_commit.o'],
+ [SDK/'bin/leanc','-O2','-o',ROOT/'parallel-stream',ROOT/'ParallelStream.c',ROOT/'ParallelCore.c',ROOT/'checked_commit.o',ROOT/'placement_profile.o'],
  [SDK/'bin/lean','--root='+str(assets),'-o',assets/'EnvelopeStreamBase.olean',assets/'EnvelopeStreamBase.lean'],
  [SDK/'bin/lean','--root='+str(source),source/'PrepareChunks.lean']]
 for i,c in enumerate(commands):

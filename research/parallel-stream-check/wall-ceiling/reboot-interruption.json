@@ -1,0 +1,38 @@
+{
+  "status": "interrupted_by_host_reboot",
+  "key": "control-P1",
+  "original_command": {
+    "key": "control-P1",
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "1100",
+      "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-wall-20261103/parallel-stream",
+      "parallel",
+      "none",
+      "ComputeControl"
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "measured": true,
+    "wall_limit_s": 1100,
+    "own_rss_sample_stop_gib": 14,
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf93d1ece_f7f3_4724_8463_8b5a1262e0d3.slice/proofserve-m-decl-657090-control-P1.scope",
+    "cgroup_charged_memory_max_gib": 14
+  },
+  "evidence": "original native result/terminal missing; operator confirms host reboot killed all old processes",
+  "old_boot_terminal_unknown": true,
+  "excluded_from_cost_and_complete_samples": true,
+  "observed_new_boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944",
+  "final_stdout_json_rows": 982,
+  "raw_unchanged": true
+}
