@@ -194,8 +194,8 @@ def queue():
    comparison=(current['source_reused_cpu_s']+projected_targets+projected_check)/3600
    remaining=(projected_targets-current['source_new_cpu_s']+projected_check)/3600+2.0
    atomic(A/'remaining-estimate.json',dict(observed_targets=n,total_comparison_cpu_h_scenario=comparison,remaining_cpu_h_scenario=remaining,limit_h=12,scope='Max of pre-run class scenario and dependency-ordered prefix mean; no target-check saving, not a bound.'))
-   if comparison>12 or remaining>12:
-    s=state();s['phase']='planning_stop';s['planning_stop']=dict(reason='Comparison or remaining CPU forecast exceeds user12h decision',total_comparison_cpu_h=comparison,remaining_cpu_h=remaining)
+   if remaining>12:
+    s=state();s['phase']='planning_stop';s['planning_stop']=dict(reason='Future remaining CPU forecast exceeds user12h decision',total_comparison_cpu_h=comparison,remaining_cpu_h=remaining)
     atomic(A/'state.json',s);reduce();publish();break
   action=next_action()
   if action is None:reduce();publish();break

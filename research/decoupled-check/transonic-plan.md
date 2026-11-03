@@ -29,3 +29,15 @@ must equal complete measured5581-node frame and module-local references.
 Startup/restore/export are included; reference qualification is separate.
 Only after complete coverage compare CPU fraction with Falconer6.31% and
 matched Mathlib8.95%. The earlier unused preparation remains provenance.
+
+
+## Deferred by the user's clarification
+
+The user clarified12h applies only to future newly executed work; retained
+common source costs do not consume that remaining-work decision. Transonic
+is queued **after** complete SubexponentialSAT. Its already-started finite
+window naturally retired with15/466targets,
+279.108691new sourceCPU-s,
+returncode0; retain its exact outputs and records, no next
+Transonic queue was started. Earlier total-comparison threshold wording above
+is superseded. These are partial producer outputs, not kernel validation.
