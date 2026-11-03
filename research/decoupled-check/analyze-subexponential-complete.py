@@ -10,7 +10,7 @@ def main():
  assert len(expected)==14721 and len(targets)==3977
  assert s["phase"]=="complete"and set(s["stream_ids"])==expected and set(s["oracle_ids"])==expected,"incomplete coverage; no full cost ratio"
  bad=json.loads((A/"negative-controls-terminal.json").read_text())
- assert bad["complete"]and bad["rejected"]==3
+ assert bad["complete"]and bad["rejected"]==3 and bad["native_rejection_processes"]==6
  ledger=[json.loads(l)for l in(A/"ledger.jsonl").read_text().splitlines()]
  builds=[v for v in ledger if v["operation"]=="build"];checks=[v for v in ledger if v["operation"]=="stream"];refs=[v for v in ledger if v["operation"]=="oracle"]
  assert all(v["valid"]for v in checks+refs)
@@ -26,7 +26,7 @@ def main():
  source_target_wall_s=nw,source_retained_dependency_wall_s=rw,source_full_wall_s=nw+rw,checker_wall_s=kw,
  full_cpu_ratio=kc/(nc+rc),incremental_cpu_ratio=kc/nc,full_summed_child_wall_ratio=kw/(nw+rw),incremental_summed_child_wall_ratio=kw/nw,
  checker_peak_rss_gib=max(v["cell"]["peak_rss_kib"]for v in checks)/1024**2,separate_reference_cpu_s=sum(cpu(v)for v in refs),
- separate_reference_wall_s=sum(v["cell"]["wall_s"]for v in refs),negative_controls_rejected=3)
+ separate_reference_wall_s=sum(v["cell"]["wall_s"]for v in refs),negative_controls_rejected=3,negative_control_native_rejection_processes=bad["native_rejection_processes"])
  final_events=[json.loads(l)for l in(A/(checks[-1]["cell"]["key"]+".stdout")).read_text().splitlines()if l.startswith("{")]
  terminal=next(v for v in reversed(final_events)if v.get("event")=="complete")
  assert terminal["modules"]==14721
@@ -59,7 +59,7 @@ def main():
  review+="- **Markers beyond+kernel:** zero explicit sites coexist with26593plain by-decide sites in1932files. Their tactic-specific CPU was not instrumented; the measured whole-stream fraction does not prove they were individually cheap or inactive. Large-source maximum147641bytes was a static risk indicator, not a cost bound.\n"
  review+=f"- **Operational limits:** source timeout-returncodes124={risks['source_returncode124_count']}; cgroupOOM-kill events={event_counts.get('oom_kill',0)}, max events={event_counts.get('max',0)}; maximum sourceRSS={source_max_rss:.3f}GiB. RSS and cgroup-charged memory are distinct observations. Pending native cgroup cleanup records={risks['source_cleanup_pending_count']}. Limits were not relaxed.\n"
  review+=f"- **Admissions/diagnostics:** {out['source_sorry_warnings']}source sorry-warning records. The six static sorry/admit matches were six English admit words in comments, zero sorry tokens; no dependency-axiom audit is claimed. Source failures(all causes)={out['source_failures']} remain charged and preserved.\n"
- review+="- **Checking correctness:** all14721stream IDs equal the complete source frame and original module-local reference set under the documented safe-declaration policy. Three in-memory malformed theorem bodies were actually rejected by the original kernel. Rejections do not imply hardened parsing of hostile binary oleans.\n"
+ review+="- **Checking correctness:** all14721stream IDs equal the complete source frame and original module-local reference set under the documented safe-declaration policy. Three in-memory malformed theorem bodies were actually rejected in both checkpoint-restored stream and original module-local replay (six native rejection processes). Rejections do not imply hardened parsing of hostile binary oleans.\n"
  review+="- **Input condition:** checking consumes completed source-produced typed artifacts, not raw AI tactic scripts. Removing completed dependency production from the incremental denominator does not remove their fresh checking from the numerator. Startup/checkpoint work is included; no source-only RL-service throughput gain is inferred.\n"
  (D/"subexponential-risk-review.md").write_text(review)
  (D/"subexponential-complete-metrics.json").write_text(json.dumps(out,indent=2)+"\n")
@@ -70,7 +70,7 @@ def main():
  with(D/"subexponential-component-costs.csv").open("w",newline="")as f:
   w=csv.DictWriter(f,fieldnames=parts[0],lineterminator="\n");w.writeheader();w.writerows(parts)
  text="# Complete SubexponentialSAT: production and original-kernel checking\n\nReview: 自审.\n\n"
- text+=f"**3977targets +10744dependencies =14721modules**, original4.34.1 kernel, exact accepted set equals measured-source frame and module-local reference set. Three deliberately malformed proofs rejected. Pins: source4eaee875, Mathlibd13f23b7. **{len(checks)}segments**,500new modules each. Startup/restore/export included in native clocks.\n\n"
+ text+=f"**3977targets +10744dependencies =14721modules**, original4.34.1 kernel, exact accepted set equals measured-source frame and module-local reference set. Three malformed theorem bodies rejected by both checkpoint-restored stream and original module-local replay. Pins: source4eaee875, Mathlibd13f23b7. **{len(checks)}segments**,500new modules each. Startup/restore/export included in native clocks.\n\n"
  text+="| Accounting scope | Source CPU-s | Checker CPU-s | CPU ratio | Summed child-wall ratio |\n|---|---:|---:|---:|---:|\n"
  text+=f"| Full closure, retained dependencies included |{nc+rc:.3f}|{kc:.3f}|**{out['full_cpu_ratio']:.2%}**|{out['full_summed_child_wall_ratio']:.2%}|\n"
  text+=f"| New-target production only, retained dependencies excluded |{nc:.3f}|{kc:.3f}|**{out['incremental_cpu_ratio']:.2%}**|{out['incremental_summed_child_wall_ratio']:.2%}|\n\n"
