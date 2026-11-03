@@ -1,0 +1,3 @@
+path,bytes,inode,device,published_analysis,retained_native_and_decoded_path,utc,removed
+/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/full-record-P4-r1.perf.data,70961241,4245665,2064,be4aeb4,/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/decode-full-record-P4-r1,2026-11-03T03:44:58Z,True
+/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/control-record-P8-q3.perf.data,7937797,4245559,2064,87cf454,/workspaces/.agent-state/gpu-smt-captures/parallel-stream-perf-20261103/decode-control-q3,2026-11-03T03:44:58Z,True
