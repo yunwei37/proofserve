@@ -1,0 +1,12 @@
+{
+  "service_lower_bounds_s": {
+    "1": 388.379266354,
+    "2": 206.64630931349998,
+    "4": 126.61251670349999,
+    "8": 95.2733798475,
+    "16": 83.4962888570625,
+    "32": 78.46776279875
+  },
+  "actual_batch_s": 111.65779401799989,
+  "interpretation": "fixed observed original-call threadCPU weights; maximum-job and work/n bound per barrier, excluding fixed phases; no optimal packing or hardware-independent claim"
+}
