@@ -1,0 +1,2 @@
+module,role,wall_s,cpu_s,pid,birth,raw
+OAI.Combinatorics.Progressions.Sampling.AllocatedForecastPrimitiveCapBound,original_probability_sample,79.40575820900085,86.97798900000001,20800,830787,/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-AllocatedForecastPrimitiveCapBound-targetP-remaining-four-hostrecovery-20261103T1512/runs/00-noM

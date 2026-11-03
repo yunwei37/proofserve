@@ -1,6 +1,6 @@
 # Research result index
 
-Current2026-11-03UTC, root0283. [Status](../docs/research-status.md) ·
+Current2026-11-03UTC, root0284. [Status](../docs/research-status.md) ·
 [Plan](../docs/research-plan.md) · [Paper](../docs/paper/main.tex) ·
 [Full history](../docs/evaluation.md).
 [Exact previous index](../docs/tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-research-README.md.gz).
@@ -15,7 +15,7 @@ preparation, queues, controls and code are not performance or general acceptance
 
 - [Supplemental checking-thread PMU qualification](../docs/tmp/build-and-evaluate/step-0278-20261103T081624+0000/step-report.md):14historical checkingTIDs have complete seven-event/eight-shard READs; instructions+0.037%,cycles+10.60%,L3missloads+36.46%. PMUthreadlifetime differs from observer CPU; failedP4r2retained, no uniqueRCcause. [Owner supplement](parallel-stream-check/perf/supplemental-worker-report.md).
 
-- [Fixed-work whole-command PMU and sampling uncertainty](../docs/tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md): original16full cells qualified; instructions nearly fixed while cycles/coherence events rise. No unique RC cause. Covered19source strata nominal95% interval43.99–449.74CPUh/df2.13, distinct from missing-cost scenario247.5–270.3CPUh. [Owner PMU](parallel-stream-check/perf/full-matrix-report.md); later worker-count repairs remain separate.
+- [Fixed-work whole-command PMU and sampling uncertainty](../docs/tmp/build-and-evaluate/step-0277-20261103T071354+0000/step-report.md): original16full cells qualified; instructions nearly fixed while cycles/coherence events rise. No unique RC cause. Covered19source strata nominal95% interval43.99–449.74CPUh/df2.13, distinct from the historical38-draw missing-cost scenario247.5–270.3CPUh and current39-draw271.6–296.8CPUh. [Owner PMU](parallel-stream-check/perf/full-matrix-report.md); later worker-count repairs remain separate.
 
 - [Ramsey completed sample](decoupled-check/ramsey-sampled-result.md), [root0275](../docs/tmp/build-and-evaluate/step-0275-20261103T061615+0000/step-report.md):20/20 retained-prefix module-local references accept, pooledCPU35.91%; weighted190-file estimate34.99% is prefix-only. Production stopped190/444, stream0/444; trusted imports and selection bias remain. Raw/source frozen in rootstep and original PVC size-sample directory.
 
@@ -121,3 +121,5 @@ Official checker/rejection scope [root0281](../docs/tmp/build-and-evaluate/step-
 Post-reboot handling and pending M wall breakdown: [root0282](../docs/tmp/build-and-evaluate/step-0282-20261103T145836+0000/step-report.md). Interrupted runs enter no cost/censor/completed-sample totals. Existing299s approximate partition awaits corrected remeasurement/integration, Partial only.
 
 Default-persistent complete Mathlib retest [root0283](../docs/tmp/build-and-evaluate/step-0283-20261103T162836+0000/step-report.md):9processes/3repeats per arm, original serial66.128s to8worker39.653s=1.668x,CPU+10.42%. Same ordered1330graph; historical1.523x preserved, not isolated marking causality. Grid/Barrier remeasurement remains incomplete.
+
+Grid/source39 [root0284](../docs/tmp/build-and-evaluate/step-0284-20261103T172738+0000/step-report.md): all12Grid cells complete,4/8strongserial ratios2.125/2.532x withCPU+12.83/18.57%; originalAllocated cost86.978CPU-s expands source39assumptions to271.6–296.8h/mixedtransfer18.3–26.3h.39/42originals/3missing,19completecells unchanged. No whole-library measurement/CI/cross-date marking causality.

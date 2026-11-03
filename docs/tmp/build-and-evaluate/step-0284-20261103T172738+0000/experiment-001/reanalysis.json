@@ -1,0 +1,92 @@
+{
+  "summary": [
+    {
+      "arm": "reference",
+      "repeats": 3,
+      "wall_s_median": 561.2125378050005,
+      "wall_s_min": 555.3260807289998,
+      "wall_s_max": 571.8858198329999,
+      "CPU_s_median": 558.4561209999999,
+      "CPU_s_min": 555.1999,
+      "CPU_s_max": 561.173153,
+      "ratio_of_wall_medians": 1
+    },
+    {
+      "arm": "parallel1",
+      "repeats": 3,
+      "wall_s_median": 581.4292146100001,
+      "wall_s_min": 579.7752253579993,
+      "wall_s_max": 582.425820507,
+      "CPU_s_median": 579.926791,
+      "CPU_s_min": 578.167421,
+      "CPU_s_max": 580.908781,
+      "ratio_of_wall_medians": 0.9652293412559941
+    },
+    {
+      "arm": "parallel4",
+      "repeats": 3,
+      "wall_s_median": 264.0974241270005,
+      "wall_s_min": 263.0295613400003,
+      "wall_s_max": 265.4762919349996,
+      "CPU_s_median": 630.129415,
+      "CPU_s_min": 626.75317,
+      "CPU_s_max": 634.773894,
+      "ratio_of_wall_medians": 2.1250208693255628
+    },
+    {
+      "arm": "parallel8",
+      "repeats": 3,
+      "wall_s_median": 221.6136559960005,
+      "wall_s_min": 217.7160909610002,
+      "wall_s_max": 223.33171565999874,
+      "CPU_s_median": 662.1821960000001,
+      "CPU_s_min": 661.5716080000001,
+      "CPU_s_max": 668.1145,
+      "ratio_of_wall_medians": 2.5323914958342133
+    }
+  ],
+  "source_equal_root0283": [
+    "source/ParallelCore.lean",
+    "source/ParallelStream.lean",
+    "source/checked_commit.c",
+    "source/placement_profile.c",
+    "matrix-v2.py",
+    "native.py"
+  ],
+  "originals": 3793,
+  "entries": 382707,
+  "exclusions": 3554,
+  "ordinary_jobs": 209672,
+  "waves": 14887,
+  "routes": {
+    "upstream_complex_or_cycle": 1117,
+    "parallel": 2676
+  },
+  "retired_PID_births": 25,
+  "cgroups_absent": 12,
+  "CPU4_increase_percent": 12.834185409528365,
+  "CPU8_increase_percent": 18.573719778424657,
+  "wall4to8_reduction_percent": 16.08640003643891,
+  "CPU4to8_increase_percent": 5.086698103119036,
+  "same_repeat_4_ratios": [
+    2.1742264136378275,
+    2.1027319087442207,
+    2.1139836394219724
+  ],
+  "same_repeat_8_ratios": [
+    2.62675035781091,
+    2.505829698234038,
+    2.5129101621168446
+  ],
+  "matrix_terminal": {
+    "complete": true,
+    "utc": "2026-11-03T17:17:37Z"
+  },
+  "kernel": "7.0.0-42-generic",
+  "archive_members": 92,
+  "archive_payload_B": 27159740,
+  "archive_B": 2654017,
+  "root_analysis_seconds": 2.911712750999868,
+  "root_analysis_maxrss_kib": 47016,
+  "new_native": 0
+}

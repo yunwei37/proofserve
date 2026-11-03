@@ -1,0 +1,65 @@
+{
+  "UTC": "2026-11-03T17:36:04.164206+00:00",
+  "boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944",
+  "git_latest": "052c4c7e SubexponentialSAT source: build 13769/14721; kernel 0/3977, 0.0000 CPUh\n026c6c9c SubexponentialSAT source: build 13744/14721; kernel 0/3977, 0.0000 CPUh\n9840b34c Qualify closed nonordinary replay prefix while keeping ordinary checks parallel\n7daa425d Complete corrected closure repeats:Grid2.125x at4workers and2.532x at8\ncc28cd24 SubexponentialSAT source: build 13719/14721; kernel 0/3977, 0.0000 CPUh\n6d835f4d SubexponentialSAT source: build 13694/14721; kernel 0/3977, 0.0000 CPUh\n",
+  "processes": [
+    {
+      "pid": 21117,
+      "birth": "839249",
+      "state": "S",
+      "command": "/usr/bin/python3 -u /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-PacketLocality-remaining-four-hostrecovery-20261103T1512/prepare_dependencies.py --point /workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-PacketLocality-remaining-four-hostrecovery-20261103T1512 "
+    },
+    {
+      "pid": 23773,
+      "birth": "922484",
+      "state": "S",
+      "command": "python3 -u /workspaces/.agent-state/gpu-smt-captures/parallel-stream-wall-hybrid-20261103/after_matrix-v4.py "
+    },
+    {
+      "pid": 26630,
+      "birth": "995954",
+      "state": "S",
+      "command": "timeout --signal=TERM --kill-after=5 1100 /workspaces/.agent-state/gpu-smt-captures/parallel-stream-wall-hybrid-20261103/parallel-stream parallel none OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41 "
+    },
+    {
+      "pid": 26631,
+      "birth": "995955",
+      "state": "S",
+      "command": "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-wall-hybrid-20261103/parallel-stream parallel none OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41 "
+    }
+  ],
+  "hybrid_terminal_files": [
+    "hybrid-diagnostic-P8-s1-r1-terminal.json",
+    "complex-control-s1-P8-terminal.json",
+    "complex-control-s1-P1-terminal.json",
+    "complex-control-s0-P8-terminal.json",
+    "complex-control-s0-P1-terminal.json",
+    "complex-control-s1-P1-bad-terminal.json",
+    "complex-control-s0-P8-bad-terminal.json",
+    "complex-control-s1-P8-bad-terminal.json",
+    "complex-control-s0-P1-bad-terminal.json",
+    "hybrid-diagnostic-P8-s0-r1-terminal.json"
+  ],
+  "hybrid_runs": [
+    "build-fixed2-3",
+    "build-complex-fixture",
+    "complex-control-s1-P8-bad",
+    "complex-control-s1-P1",
+    "build-fix-0",
+    "build-fixed2-1",
+    "hybrid-plain-P8-s0-r1",
+    "build-complex-fixture-fixed",
+    "build-fixed2-4",
+    "complex-control-s0-P1",
+    "build-0",
+    "complex-control-s0-P1-bad",
+    "hybrid-diagnostic-P8-s0-r1",
+    "build-fixed2-0",
+    "build-fixed2-2",
+    "hybrid-diagnostic-P8-s1-r1",
+    "complex-control-s0-P8-bad",
+    "complex-control-s1-P8",
+    "complex-control-s1-P1-bad",
+    "complex-control-s0-P8"
+  ]
+}

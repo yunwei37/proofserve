@@ -1,39 +1,57 @@
 # Research status
 
-Snapshot2026-11-03UTC, root0283. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
+Snapshot2026-11-03UTC, root0284. [Paper](paper/main.tex) · [Plan](research-plan.md) ·
 [Results](../research/README.md) · [Full history](evaluation.md) ·
 [Novelty audit](novelty-20261101.md) · [Related work](background-related-work.md).
 [Exact previous status](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-status.md.gz).
 
 Root0281 independently qualifies [three official checker scopes and two real-root rejects](tmp/build-and-evaluate/step-0281-20261103T141838+0000/step-report.md). Stock default65.423s checks one root with trusted imports; fresh1/8 take534.698/580.090s, approximately1CPU occupancy and sequential replay of final imported map, not equivalent to4449 per-module ledger. No stock speedup/isolated thread effect. Both flags reject the same corrupted real-root theorem after identical4448accepted prefix, native rc1/noOOM or resource stop. Finite correctness controls, not arbitrary unsafe-FFI safety; native matched module-task baseline remains missing. Prior0279/0280 primary, memory and storage conclusions retain their denominators.
 
-## Corrected Mathlib comparison — root0283
+## Corrected Grid and source39 — root0284
 
-[Root report](tmp/build-and-evaluate/step-0283-20261103T162836+0000/step-report.md);
-[M report](../research/parallel-stream-check/wall-ceiling/corrected-math-results.md).
-Exactly9/9 planned Mathlib cells complete: original serial and default-persistent
-1/8workers, three fresh processes each, no profile/trace. All ordered1330IDs,
-imports/counts,132484entries/2269exclusions match the historical reference;
-parallel55255jobs/3616waves, zero module-local fallback.
-Wall medians66.128/71.767/39.653s;8versus original serial1.667685x,
-wall-40.0366%,CPU+10.4181%. Same-repeat ratios1.672211/1.667306/1.668670.
-Observed ranges are not confidence intervals. Default marking is a prototype
-method correction; old1.523x stays historical, not a causal old/new comparison.
-Older1worker configured8runtime threads, new1worker1; dates/code/cache/host differ.
-Four small original-kernel positive/bad-proof controls also qualified.
-13cgroups absent/noOOM/sample-stop;26actual PID/birth identities retired.
-Original kernel unchanged, unsafe quiescence/coordinator/context trust remains.
-No native rerun or replacement queue by root; active owner controller is separate.
+[Root report](tmp/build-and-evaluate/step-0284-20261103T172738+0000/step-report.md). Root0283 Mathlib9 remains qualified;
+all12Grid cells are now independently qualified and the21cell matrix has its
+actual17:17:37UTC complete terminal. Source/runners equal root0283 frozen bytes.
+Original serial/parallel1/4/8 wall medians561.213/581.429/264.097/221.614s,
+CPU558.456/579.927/630.129/662.182s;4/8strongserial ratios2.125021/2.532391,
+CPU+12.8342/+18.5737%.4to8wall-16.0864%/CPU+5.0867%;1worker slower.
+All12ordered3793IDs/imports/counts exact historical original reference;
+382707entries/3554exclusions/209672jobs/14887waves/0modulelocalfallback.
+12cgroupsabsent/noOOM/sample-stop;25actualnative+controllerPID/birthsretired.
+No profile/HB vector invented for plain runs. Kernel7.0.0-42 after reboot,
+date/runtime/code/cache/order/host differences prevent old/new marking causality.
+Oldunmarked1.882x four-worker pair retained;2.532x is new8configuration.
+No full-library/source/service/cluster gain or universal coordinator safety.
 
-The supplied~299s Barrier wall partition remains Partial/pending paper integration.
-M now publishes a separate traced294.587s diagnostic and observer control;
-this step freezes no diagnostic-derived phase/model claim or Grid partial cost.
-Grid12cell and historical Barrier retests remain incomplete at this read.
-No generic gain, intrinsic serial limit, full-library or service result follows.
+W AllocatedForecastPrimitiveCapBound original returns79.405758wall/
+86.977989CPU-s at17:07:47.727918UTC. Exact64383sourcebytes match pinned4eaee875;
+noM/j8/P0–7/authoredHB/3facets/1200selfwall/15GiBcharged+
+16GiBsampledRSSresponse. Native20800/birth830787 andcontroller20263/birth777032
+retired;cgroupabsent/noOOM/stop. HWM9207032KiB/sample9414340608B/
+charged1419362304B distinct. Controller616.925765s includesqueue/setup/
+cleanup, not native cost. UntimedEdeps not weighted or cold-build requalified.
 
-Host-reboot interruptions remain excluded from cost/censors/completed samples;
-raw retained, completed records checked before reuse. A later outage means
-preserve scene and wait for user, no recovery/scheduling changes.
+Fixed42IDs/strata unchanged; onlyAllocated added to ownprior38frame.
+39/42originals,3ordinary costs missing.19completecells/161034domain unchanged;
+sameconditionalCPU23.311065%/elapsed18.594528% and coverednominalCI
+43.99–449.74CPUh/df2.13 remain, not full-frameCI.
+Newpartialcellhas1of2draws; knownHTsubtotal271.301439h differs from
+complete19cell246.863040h. Every3missing+1CPU-s adds0.292083h.
+New86.978ordinarycost exceedsold40.792support, expandsobservedmax:
+assumption source271.6–296.8CPUh, separate mixedtransfer18.3–26.3CPUh.
+Old247.5–270.3/16.8–24.0 are dated38costassumptions, not currentbounds.
+No-assumptionupperunbounded;10xordinarymaxsource525.349648h.
+Missingcheck1x43.756084/2x69.160905/4x119.970547/12x323.209115h;
+12xexceeds296.706260source, stress not measurement. Paired31/42/14/11missing,
+dynamic13missing/RQ2/Bdenominators unchanged.
+
+Root uses only completed owner raw; no new native/agent/session/queue or
+foreignimplementation/infra mutation. No restart of completedMath/Grid/Allocated.
+HistoricalBarrier exactprotocol retest remains unqualified/pending;
+supplied~299Barrierpartition staysPartial; separate294diagnostic/model still
+not root-phase-qualified. Hybrid finitecontrols do not yet supply full gains.
+Hostrebootinterrupted runs never enter cost/censor/completed samples;raw kept.
+A later outage means preserve scene/wait user, no recovery/scheduling changes.
 
 ## Scientific contract and operating scope
 
@@ -60,9 +78,9 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 | Evidence | Qualified result | Root record |
 |---|---|---|
 | Lexical census | Mathlib8529files/7masked sites; OAI163097files/1354379sites in5848files. 10668.32xsites/MB; default root misses33.30%sites. Not runtime or exhaustive semantic classes. | [0231](tmp/build-and-evaluate/step-0231-20261101T001556+0000/step-report.md) |
-| Source probability frame |38/42originals;19/21complete strata/161034modules.9marked cells/5848files complete; markedCPU57.546/246.863h=23.311%, nativeelapsed18.5945%.4ordinary costs missing/2063module domain incomplete. | [0276](tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md) |
-| Whole-frame scenarios |38known+4ordinary missing within observed support:247.5–270.3sourceCPUh; mixed-protocol check transfer16.8–24.0CPUh. Assumptions, not CI/guarantee/measured full checking; no-assumption upper unbounded. | [0276](tmp/build-and-evaluate/step-0276-20261103T062502+0000/step-report.md) |
-| Target-only replay |31/31 accepted, trusted compiled imports, source632.590/replay272.695CPU-s; median per-module ratio0.451 (0.087–0.885).14paired strata140.852/54.906CPUh, nominal weak interval[0,0.9401], effectiveDF1.19. Separate from current source38coverage/full closure. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
+| Source probability frame |39/42originals;19/21complete strata/161034modules unchanged. ConditionalCPU23.311%/elapsed18.5945%;3ordinary costs missing/2063module domain incomplete. | [0284](tmp/build-and-evaluate/step-0284-20261103T172738+0000/step-report.md) |
+| Whole-frame scenarios |39known+3ordinary missing within current observed support:271.6–296.8sourceCPUh; mixed-protocol check transfer18.3–26.3CPUh. Assumptions, not CI/guarantee/full checking; no-assumptionupperunbounded. | [0284](tmp/build-and-evaluate/step-0284-20261103T172738+0000/step-report.md) |
+| Target-only replay |31/31 accepted, trusted compiled imports, source632.590/replay272.695CPU-s; median per-module ratio0.451 (0.087–0.885).14paired strata140.852/54.906CPUh, nominal weak interval[0,0.9401], effectiveDF1.19. Separate from current source39coverage/full closure. | [0260](tmp/build-and-evaluate/step-0260-20261102T020415+0000/step-report.md) |
 | Native checking grain |29available random+2purposeful artifacts/34units;13original draws missing.12decision-shaped calls>=1CPU-s use10.09%total call CPU; available-case weights are conditional, not global. | [0234](tmp/build-and-evaluate/step-0234-20261101T030854+0000/step-report.md) |
 | Four original O closures |Nat1330/NearPin3333/Grid3793/Amplitudes5083: complete check/source-work10.56/6.76/14.52/14.55%. Same5085-node source union/161reference blocks, overlapping dependencies and warm observations. | [0235](tmp/build-and-evaluate/step-0235-20261101T041713+0000/step-report.md) |
 | Large Falconer closure |13205source/27segments; native CPU2038.444/32292.604s=6.31%; matched checkpoint Mathlib91.145/1018.219s=8.95%. Separate wall9.26%/historicalMathlib10.56%/checkpoint14.67%. Selected closures, one capture each, trusted metadata and Oshare deviation retained. | [0268](tmp/build-and-evaluate/step-0268-20261102T190628+0000/step-report.md) |
@@ -110,7 +128,7 @@ O's observed share deviations remain disclosed, never retroactively authorized.
 
 ## Open evidence and next action
 
-Source4/paired11/dynamic13 gaps differ; do not change one denominator with another.
+Source3/paired11/dynamic13 gaps differ; do not change one denominator with another.
 Full-library phase weights, causality/repeats, whole axioms/declaration closure,
 released-software native coverage and cluster behavior remain unresolved.
 Bundled LeanChecker already dispatches module-local tasks independently:
@@ -123,7 +141,7 @@ Root integrates only actual new qualified terminal evidence. Existing healthy
 captures and real lock waiters are protected; no old completed queue resumes.
 No schedule, model, resource, security or infrastructure change is implied.
 
-Paper root0283:27pages/245183B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
+Paper root0284:28pages/248551B,20oldtables/title/fullabstract/4RQ/sections/fourimplications unchanged;fullcompile/all-page self-review completed,0newrootnative/agent.
 
 Historical finalized-number update [0265](tmp/build-and-evaluate/step-0265-20261102T065555+0000/step-report.md): RQ2 now places9.26%/10.56%/14.67% side by side with distinct closure/protocol boundaries and26exports/26restores included. RQ4 foregrounds2,524/2,524 zero-range targets, P95=max=0%, observed no-extra-count allowance only; module-source envelope0.0367–0.1385% and separate candidate maximum2.3339% remain different units. No guaranteed maxHB margin/future/zero-runtime claim.
 

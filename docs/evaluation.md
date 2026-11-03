@@ -877,3 +877,49 @@ No generic gain, intrinsic serial limit, full-library or service result follows.
 Host-reboot interruptions remain excluded from cost/censors/completed samples;
 raw retained, completed records checked before reuse. A later outage means
 preserve scene and wait for user, no recovery/scheduling changes.
+
+## Corrected Grid and source39 — root0284
+
+[Root report](tmp/build-and-evaluate/step-0284-20261103T172738+0000/step-report.md). Root0283 Mathlib9 remains qualified;
+all12Grid cells are now independently qualified and the21cell matrix has its
+actual17:17:37UTC complete terminal. Source/runners equal root0283 frozen bytes.
+Original serial/parallel1/4/8 wall medians561.213/581.429/264.097/221.614s,
+CPU558.456/579.927/630.129/662.182s;4/8strongserial ratios2.125021/2.532391,
+CPU+12.8342/+18.5737%.4to8wall-16.0864%/CPU+5.0867%;1worker slower.
+All12ordered3793IDs/imports/counts exact historical original reference;
+382707entries/3554exclusions/209672jobs/14887waves/0modulelocalfallback.
+12cgroupsabsent/noOOM/sample-stop;25actualnative+controllerPID/birthsretired.
+No profile/HB vector invented for plain runs. Kernel7.0.0-42 after reboot,
+date/runtime/code/cache/order/host differences prevent old/new marking causality.
+Oldunmarked1.882x four-worker pair retained;2.532x is new8configuration.
+No full-library/source/service/cluster gain or universal coordinator safety.
+
+W AllocatedForecastPrimitiveCapBound original returns79.405758wall/
+86.977989CPU-s at17:07:47.727918UTC. Exact64383sourcebytes match pinned4eaee875;
+noM/j8/P0–7/authoredHB/3facets/1200selfwall/15GiBcharged+
+16GiBsampledRSSresponse. Native20800/birth830787 andcontroller20263/birth777032
+retired;cgroupabsent/noOOM/stop. HWM9207032KiB/sample9414340608B/
+charged1419362304B distinct. Controller616.925765s includesqueue/setup/
+cleanup, not native cost. UntimedEdeps not weighted or cold-build requalified.
+
+Fixed42IDs/strata unchanged; onlyAllocated added to ownprior38frame.
+39/42originals,3ordinary costs missing.19completecells/161034domain unchanged;
+sameconditionalCPU23.311065%/elapsed18.594528% and coverednominalCI
+43.99–449.74CPUh/df2.13 remain, not full-frameCI.
+Newpartialcellhas1of2draws; knownHTsubtotal271.301439h differs from
+complete19cell246.863040h. Every3missing+1CPU-s adds0.292083h.
+New86.978ordinarycost exceedsold40.792support, expandsobservedmax:
+assumption source271.6–296.8CPUh, separate mixedtransfer18.3–26.3CPUh.
+Old247.5–270.3/16.8–24.0 are dated38costassumptions, not currentbounds.
+No-assumptionupperunbounded;10xordinarymaxsource525.349648h.
+Missingcheck1x43.756084/2x69.160905/4x119.970547/12x323.209115h;
+12xexceeds296.706260source, stress not measurement. Paired31/42/14/11missing,
+dynamic13missing/RQ2/Bdenominators unchanged.
+
+Root uses only completed owner raw; no new native/agent/session/queue or
+foreignimplementation/infra mutation. No restart of completedMath/Grid/Allocated.
+HistoricalBarrier exactprotocol retest remains unqualified/pending;
+supplied~299Barrierpartition staysPartial; separate294diagnostic/model still
+not root-phase-qualified. Hybrid finitecontrols do not yet supply full gains.
+Hostrebootinterrupted runs never enter cost/censor/completed samples;raw kept.
+A later outage means preserve scene/wait user, no recovery/scheduling changes.

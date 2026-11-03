@@ -212,8 +212,8 @@ All original sources, no-\texttt{-M} arguments, PID/birth retirement and
 matching native clock sums are checked.
 A later 19-job continuation contributes one more original draw, LowBlock15\_1;
 its other original draw is uninvoked after a prerequisite timeout.
-\measured{\expref{0276-20261103T062502+0000}{0276}}
-Source-frame coverage is now 38/42 with 19 complete strata and 4 missing
+\measured{\expref{0284-20261103T172738+0000}{0284}}
+Source-frame coverage is now 39/42 with 19 complete strata and 3 missing
 costs. Target-only paired replay still covers 31 draws/14 strata, and the
 dynamic checking-grain panel retains its separate denominator.
 Prerequisites and purposeful modules receive no sampling weight.
@@ -299,23 +299,24 @@ Only 3.5856\% of generated-library files contain the form.
 These are concrete candidates for inspecting recomputation, not an exhaustive
 runtime classification: expensive reduction can occur without the token,
 and a positive file can mix computation and symbolic reasoning.
-The 38 completed no-\texttt{-M} random source targets sum to 554.806 seconds
-of native wall intervals and 867.533 user-plus-system CPU seconds.
+The 39 completed no-\texttt{-M} random source targets sum to 634.212 seconds
+of native wall intervals and 954.511 user-plus-system CPU seconds.
 This is not a full-build makespan or population expansion.
 The separate purposeful Grid and Amplitudes points differ in output/heartbeat
 scope and do not fill missing strata.
 Unprofiled process costs do not supply a kernel-cycle partition.
 A source-defined proxy marks files containing a masked explicit kernel-decision
 form; it does not establish which dynamic phase dominates them.
-\measured{\expref{0276-20261103T062502+0000}{0276}; one further original-frame source cost.}
-TrackedTestBounds completes in 5.199 native elapsed seconds and 5.412 CPU
-seconds. Its untimed E-core prerequisites receive no sampling weight.
-It completes the matching 9,146-module ordinary stratum, increasing the
-complete-stratum domain to 161,034 modules across 19 strata.
-Stratified compiler CPU is 57.546 hours in marked files and 189.317 hours
-in other files, a conditional marked share of 23.31\%.
-All nine marked strata have both draws, covering 5,848 marked modules;
-two ordinary strata and 2,063 ordinary modules remain incompletely observed.
+\measured{\expref{0284-20261103T172738+0000}{0284}; one further original-frame source cost.}
+AllocatedForecastPrimitiveCapBound completes in 79.406 native elapsed seconds
+and 86.978 CPU seconds. Its untimed E-core prerequisites receive no sampling
+weight. This is the first observed draw in a 2,023-module ordinary stratum,
+so the complete-stratum domain remains 161,034 modules across 19 strata.
+On that unchanged domain, stratified compiler CPU remains 57.546 hours
+in marked files and 189.317 hours in other files, a conditional marked share
+of 23.31\%. All nine marked strata have both draws, covering 5,848 marked
+modules; two ordinary strata and 2,063 ordinary modules remain incompletely
+observed, with three original costs still missing.
 These are source-compilation estimates, including imports, tactics and emission,
 not kernel-check-only hours or semantic computation-regime weights.
 The earlier 14-, 15-, 16- and 17-stratum shares, 17.14\%, 33.02\%,
@@ -339,13 +340,13 @@ Earlier clock contrasts use different covered domains and are not a
 population time trend.
 
 The two incomplete strata contain 2,063 of 163,097 modules (1.26\%),
-not necessarily that many unbuilt files. Four original source costs are absent.
-The 38 known terms in the eventual complete-sample Horvitz--Thompson point
-sum to 246.863 CPU-hours, equal here to the complete-stratum subtotal because
-both incomplete strata have zero observed draws.
-This is not a lower confidence limit or a zero-filled population estimate.
-Increasing every missing draw by one CPU second would increase the eventual
-point by 0.573 CPU-hours under the fixed original weights.
+not necessarily that many unbuilt files. Three original source costs are absent.
+The 39 known terms in the eventual complete-sample Horvitz--Thompson point
+sum to 271.301 CPU-hours. This subtotal includes one observed draw from an
+incomplete stratum and therefore differs from the 246.863-hour complete-stratum
+subtotal. Neither is a lower confidence limit or a zero-filled population
+estimate. Increasing every missing draw by one CPU second would increase
+the eventual point by 0.292 CPU-hours under the fixed original weights.
 This sensitivity does not predict missing costs or variance.
 
 \paragraph{Narrow missing-cost scenarios do not imply precise sampling.}
@@ -362,41 +363,42 @@ bound. The narrower missing-cost scenarios below address a different
 uncertainty and do not establish population-estimate precision.
 
 \paragraph{Whole-frame costs require explicit missing-cost scenarios.}
-\partialev{\expref{0276-20261103T062502+0000}{0276}; fixed 38-source sensitivity, not measurements
+\partialev{\expref{0284-20261103T172738+0000}{0284}; fixed 39-source sensitivity, not measurements
 or confidence limits.}
-Preserving 38 known costs and original inclusion weights, assume the four
+Preserving 39 known costs and original inclusion weights, assume the three
 remaining ordinary-marker draws cost between the observed ordinary minimum
-and maximum, 1.204525--40.791652 CPU-s.
-Whole-frame construction scenarios then span 247.5--270.3 CPU-hours,
+and maximum, 1.204525--86.977989 CPU-s.
+Whole-frame construction scenarios then span 271.6--296.8 CPU-hours,
 with endpoints rounded outward.
-The earlier 37-draw 242.2--315.2-hour range remains a dated assumption
-scenario; the smaller current width follows an additional observed cost.
+The new ordinary observation exceeds the old 40.791652-second class maximum:
+the earlier 38-draw 247.5--270.3-hour scenario was an assumption,
+and an additional observation need not merely narrow its range.
 
-A separate transfer model gives 16.8--24.0 checking CPU-hours.
+A separate transfer model gives 18.3--26.3 checking CPU-hours.
 It assigns ordinary modules the complete checkpoint-closure CPU
 fractions 0.063124--0.089514 and marked modules the older unsegmented
 computation fractions 0.084421--0.084671.
 This deliberately mixes protocol-specific anchors; it is neither a measured
 matched protocol nor evidence that source markers identify checking cost.
-The earlier 16.5--28.0-hour transfer used the 37-cost snapshot.
+The earlier 16.8--24.0-hour transfer used the 38-cost snapshot.
 Neither model is measured whole-library checking cost, a confidence interval
-or a guaranteed saving. Their known terms use all 38 observed draws; they
+or a guaranteed saving. Their known terms use all 39 observed draws; they
 also differ from RQ2's trusted-import target checks and complete selected closures.
 
 The LowBlock15\_1 observation remains 184.589 CPU-s, above the old
-31-draw marked-class maximum of 163.846 CPU-s, demonstrating that observed
-support is only an assumption.
+31-draw marked-class maximum of 163.846 CPU-s, another demonstration
+that observed support is only an assumption.
 Without missing-cost assumptions, the completion-cost upper remains unbounded.
-Assigning all missing draws ten times the observed ordinary maximum raises
-the source scenario to 480.6 CPU-hours.
+Assigning all missing draws ten times the current observed ordinary maximum
+raises the source scenario to 525.3 CPU-hours.
 At the current class-maximum source scenario, giving missing draws no
-checking savings yields 40.2 modeled checking CPU-hours; twice their source
-work yields 63.6 and four times yields 110.3, below the 270.2-hour source value.
+checking savings yields 43.8 modeled checking CPU-hours; twice their source
+work yields 69.2 and four times yields 120.0, below the 296.7-hour source value.
 A separate stress assumption of twelve times their source work yields
-297.3 checking CPU-hours, reversing that comparison.
+323.2 checking CPU-hours, reversing that comparison.
 These are different stress assumptions, not measured checking costs.
 A subunit factor assigned to unknown modules cannot establish general benefit.
-All four unobserved original source costs remain missing in the primary evidence.
+All three unobserved original source costs remain missing in the primary evidence.
 
 \paragraph{Source features do not establish bounded prediction error.}
 \measured{\expref{0254-20261101T195608+0000}{0254}; 31 completed source-compiler observations.}
@@ -1763,8 +1765,45 @@ retire without a resource stop under P0--7, no \texttt{-M},
 14\,GiB charged protection and separate sampled-RSS response.
 The complete-process clock ends after \texttt{wait4}, before sampler
 join and cgroup deletion; lease waiting is excluded.
-Grid and historical Barrier retests remain incomplete and supply no
-additional result here. No source-build or production-service speedup follows.
+The complete Grid retest is reported next; the historical Barrier retest
+remains incomplete. No source-build or production-service speedup follows.
+
+
+\paragraph{The corrected computational closure also scales at a CPU cost.}
+\measured{\expref{0284-20261103T172738+0000}{0284}; all twelve Grid processes, three repetitions per arm.}
+Using the same default-persistent executable and unprofiled protocol,
+the original serial stream and the one-, four- and eight-worker paths
+each accept the same ordered 3,793-module closure.
+Every run has 382,707 entries and 3,554 upstream unsafe/partial exclusions.
+The parallel paths retain 209,672 ordinary jobs in 14,887 waves across
+2,676 modules; 1,117 complex/cyclic modules use upstream replay.
+No module-local context fallback occurs.
+
+Serial and one/four/eight-worker wall medians are 561.213 and
+581.429/264.097/221.614 seconds. The corresponding observed ranges are
+555.326--571.886 and 579.775--582.426/263.030--265.476/217.716--223.332 seconds.
+Relative to the original serial stream, four workers give 2.125-fold
+and eight give 2.532-fold ratios of medians.
+Native CPU medians are 558.456 and 579.927/630.129/662.182 seconds:
+four and eight workers cost 12.83\% and 18.57\% more CPU than serial.
+Moving from four to eight reduces wall time 16.09\% while increasing CPU
+5.09\%; the one-worker prototype remains slower than the original baseline.
+
+The new four-worker point matches the configuration family of the historical
+1.882-fold Grid comparison; the eight-worker point is an additional
+configuration, not a relabeled replacement. Historical raw records and table
+values remain. These post-reboot observations use kernel 7.0.0-42;
+the old/new difference is not normalized across that boundary or attributed
+solely to persistence. The same-executable ablation above remains separate.
+All twelve native scopes and the matrix controller retire normally under
+the same no-\texttt{-M}, P0--7 and external memory protections.
+Profiling and tracing remain off; lease waiting, sampler join and cgroup
+deletion are outside the native clock.
+The three ordered repeats retain caches and give ranges, not confidence
+intervals or a hardware-independent scaling law.
+Original mathematical checking remains, with the declared reader,
+quiescence and checked-token trust. The selected closure does not establish
+source-build, whole-library, service or cluster gains.
 
 \paragraph{The complete counter matrix supports the prototype correction.}
 \measured{\expref{0280-20261103T131855+0000}{0280}; all eight stat cells, one observation per arm/worker setting.}
