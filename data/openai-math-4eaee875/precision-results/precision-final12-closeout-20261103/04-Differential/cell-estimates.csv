@@ -1,0 +1,22 @@
+stratum,population_modules,method,original_members,planned_new_members,completed_new_members,estimate_CPU_h,variance_CPU_s2,variance_df,note
+0-50;1-10;0,25553,original42_HT,2,0,0,20.015249663749998,1703547709.9500363,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+0-50;1-10;1,1040,original42_HT,2,0,0,0.46879950000000004,330232.6046321905,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+0-50;101+;0,9146,original42_HT,2,0,0,11.830114728333331,47775761.883773364,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+0-50;11-100;0,45251,original42_HT,2,6,4,66.55068340916667,20205896110.159756,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+0-50;11-100;1,577,original42_HT,2,0,0,0.5656272498611111,4373.428242089843,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+50-90;1-10;0,16606,original42_HT,2,0,0,15.280871183055552,885943488.6115425,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+50-90;1-10;1,345,original42_HT,2,0,0,0.6158557625,770095.0767966018,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+50-90;101+;0,7598,original42_HT,2,0,0,7.138945724444444,124997742.04312545,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+50-90;11-100;0,39933,original42_HT,2,0,0,43.173230175,91597574.27654278,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+50-90;11-100;1,738,original42_HT,2,0,0,0.7572160849999999,577125.6228865007,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+90-99;1-10;0,3670,original42_HT,2,0,0,6.69372472361111,67345523.14557181,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+90-99;1-10;1,464,original42_HT,2,0,0,5.017079266666666,158103080.59128198,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+90-99;101+;0,2023,original42_HT,2,0,0,31.228728162916667,4032457931.0281596,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+90-99;101+;1,2,original42_HT,2,0,0,0.0069452322222222215,0.0,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+90-99;11-100;0,7225,original42_HT,2,0,0,16.81285998611111,96144782.76503326,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+90-99;11-100;1,1295,original42_HT,2,0,0,8.113350364583335,23729687.015755348,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+99-100;1-10;0,106,original42_HT,2,0,0,1.0253511469444443,392695.43107783096,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+99-100;1-10;1,223,original42_HT,2,0,0,8.601861448055555,30757075.80513854,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+99-100;101+;0,40,original42_HT,2,0,0,1.0283103333333334,291305.7626565563,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+99-100;11-100;0,98,original42_HT,2,0,0,0.7956047788888889,774311.3886663968,1,unexpanded/incomplete panels retain baseline; no partial-response substitution
+99-100;11-100;1,1164,original42_HT,2,6,0,33.399669368333335,8938105522.473103,1,unexpanded/incomplete panels retain baseline; no partial-response substitution

@@ -1,0 +1,13 @@
+module,stratum,position,completed_cost,cpu_s,source_file,source_line,attempts,statuses
+OAI.Combinatorics.LowSpaceSubsetSum.Separators.SeparatorSamplingBounds,0-50;11-100;0,1,True,3.438967,/workspaces/.agent-state/gpu-smt-captures/workloads/precision-final12-closeout-20261103/panel-results.jsonl,1,1,compile_ok
+OAI.Analysis.LipschitzHilbert.Trees.SourcePathCostBudget,0-50;11-100;0,2,True,2.260606,/workspaces/.agent-state/gpu-smt-captures/workloads/precision-final12-closeout-20261103/panel-results.jsonl,2,1,compile_ok
+OAI.Geometry.RCD.Harmonic.RadialBallComparison,0-50;11-100;0,3,True,3.267433,/workspaces/.agent-state/gpu-smt-captures/workloads/precision-final12-closeout-20261103/panel-results.jsonl,3,1,compile_ok
+OAI.AlgebraicGeometry.CycleClass.Thom.NormalPair.Differential,0-50;11-100;0,4,True,2.446795,/workspaces/.agent-state/gpu-smt-captures/workloads/precision-final12-closeout-20261103/panel-results.jsonl,4,1,compile_ok
+OAI.NumberTheory.DukePrimeDegree.Arithmetic.ConductorModulus,0-50;11-100;0,5,False,,,,0,
+OAI.AlgebraicGeometry.AbelianModuli.ReferenceFamily.GeneratedHolomorphicMorphismValues,0-50;11-100;0,6,False,,,,0,
+OAI.Analysis.MutuallyUnbiased.MixedMerge.Block56,99-100;11-100;1,1,False,,,,0,
+OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical187,99-100;11-100;1,2,False,,,,0,
+OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical220,99-100;11-100;1,3,False,,,,0,
+OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical221,99-100;11-100;1,4,False,,,,0,
+OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical28,99-100;11-100;1,5,False,,,,0,
+OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical168,99-100;11-100;1,6,False,,,,0,
