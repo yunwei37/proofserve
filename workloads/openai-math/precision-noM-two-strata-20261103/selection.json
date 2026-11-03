@@ -1,0 +1,61 @@
+{
+  "prepared_only": true,
+  "native_runs": 0,
+  "selected_targets": 12,
+  "union_modules": 2602,
+  "union_source_bytes": 28223670,
+  "estimated_leaf_P_CPU_h": 0.18098744916666668,
+  "estimate_scope": "pilot mean planning only; excludes dependency preparation; not actual consumed CPU or guarantee",
+  "original42_unchanged": true,
+  "original42_selection_reproduced": true,
+  "all21populations_reproduced": true,
+  "old_ordinary_six_identity_preserved": true,
+  "no_M": true,
+  "cuts": [
+    4400,
+    15057,
+    80757
+  ],
+  "source_roots": [
+    "lean",
+    "lean/ComparatorChallenges/HodgeConjectureCMAbelianVarieties"
+  ],
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/workloads/precision-noM-two-strata-20261103",
+  "selections": {
+    "0-50;11-100;0": {
+      "seed": 20261031,
+      "population": 45251,
+      "remainder_population": 45249,
+      "excluded_originals": [
+        "OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative",
+        "OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle"
+      ],
+      "targets": [
+        "OAI.Combinatorics.LowSpaceSubsetSum.Separators.SeparatorSamplingBounds",
+        "OAI.Analysis.LipschitzHilbert.Trees.SourcePathCostBudget",
+        "OAI.Geometry.RCD.Harmonic.RadialBallComparison",
+        "OAI.AlgebraicGeometry.CycleClass.Thom.NormalPair.Differential",
+        "OAI.NumberTheory.DukePrimeDegree.Arithmetic.ConductorModulus",
+        "OAI.AlgebraicGeometry.AbelianModuli.ReferenceFamily.GeneratedHolomorphicMorphismValues"
+      ]
+    },
+    "99-100;11-100;1": {
+      "seed": 20261103,
+      "population": 1164,
+      "remainder_population": 1162,
+      "excluded_originals": [
+        "OAI.Analysis.PlanarPacking.Certificate.LowBlock15_1",
+        "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50"
+      ],
+      "targets": [
+        "OAI.Analysis.MutuallyUnbiased.MixedMerge.Block56",
+        "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical187",
+        "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical220",
+        "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical221",
+        "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical28",
+        "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical168"
+      ]
+    }
+  },
+  "schema_note": "stale raw attempt2 summary lacked roots and reconstructed cell counts differed; rejected before selecting anything; used frozen tracked static inventory instead"
+}

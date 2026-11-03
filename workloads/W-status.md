@@ -1,5 +1,18 @@
 # W current state
 
+## W109 current: four-original master attached; precision prepared only
+New master8141/birth169629,raw workloads/remaining-four-hostrecovery-20261103T1512,
+started2026-11-03T15:16:16Z from628ebd1e. It attaches E6816/birth118331,
+reuses2857qualified dependencies, never restarts completed originals.
+Latest source38/42 costs unchanged; post-boot Allocated E adds65successes.
+One WLean; no W Prequest until Eready. Other three originals follow.
+Two independent no-M precision panels frozen(6ordinary existing IDs plus
+6new computation IDs). No panel native run yet; originals first.
+See precision-noM-two-strata-20261103 and host-restart-20261103.
+Last transport submission failed before exec, then unchanged Cloudflare read
+confirmed actual active Eidentity. Future real outage: preserve/wait operator.
+Older headings are snapshots; verify actualPID/birth/terminal before action.
+
 ## W108 current: host restart recovered, Allocated180 dependencies resumed
 Old host reboot killed all processes; source38/42known costs unchanged.
 2857completed dependencies verified, native bulk-import integrity passes;

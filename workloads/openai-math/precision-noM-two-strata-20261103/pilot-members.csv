@@ -1,0 +1,5 @@
+stratum,module,native_CPU_s,source_file,source_line,role
+0-50;11-100;0,OAI.NumberTheory.PadicHodge.IntegralComparison.OrderedCech.ReindexSingle,2.153143,/workspaces/.agent-state/gpu-smt-captures/workloads/remaining-six-20261103T0325/selected-TrackedTestBounds.jsonl,5,known_original_member_not_pooled
+0-50;11-100;0,OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative,8.435903,/workspaces/.agent-state/gpu-smt-captures/workloads/remaining-six-20261103T0325/selected-TrackedTestBounds.jsonl,6,known_original_member_not_pooled
+99-100;11-100;1,OAI.Analysis.PlanarPacking.Certificate.LowBlock15_1,184.58908100000002,/workspaces/.agent-state/gpu-smt-captures/workloads/remaining-six-20261103T0325/selected-TrackedTestBounds.jsonl,35,known_original_member_not_pooled
+99-100;11-100;1,OAI.MathematicalPhysics.Transonic.Certificates.Barrier50,22.006812,/workspaces/.agent-state/gpu-smt-captures/workloads/remaining-six-20261103T0325/selected-TrackedTestBounds.jsonl,36,known_original_member_not_pooled

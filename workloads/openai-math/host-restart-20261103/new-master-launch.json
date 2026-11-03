@@ -1,0 +1,23 @@
+{
+  "utc": "2026-11-03T15:16:16.733258+00:00",
+  "pid": 8141,
+  "birth_ticks": "169629",
+  "args": [
+    "taskset",
+    "-c",
+    "8-15",
+    "python3",
+    "-u",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/remaining-four-hostrecovery-20261103T1512/complete_source_sample.py",
+    "--frame",
+    "/workspaces/repository/workloads/openai-math/final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/sample-costs.csv",
+    "--attach-preparation",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-Eprep-AllocatedForecastPrimitiveCapBound-after-reboot-20261103T1507",
+    "--raw",
+    "/workspaces/.agent-state/gpu-smt-captures/workloads/remaining-four-hostrecovery-20261103T1512"
+  ],
+  "source_commit": "628ebd1ecb3de64cee1ca5c34c3c04d8d58f2847",
+  "host_restart_recovery": true,
+  "known_original_costs": 38,
+  "remaining_originals": 4
+}
