@@ -1,0 +1,27 @@
+{
+  "total": {
+    "read_s": 26.416862614000088,
+    "context_s": 26.18004986699998,
+    "plan_s": 8.89205362199998,
+    "fallback_s": 94.32950015299998,
+    "batch_s": 111.65779401799989,
+    "checks": 237863,
+    "units": 3283925639,
+    "duplicate_s": 0.028307337,
+    "wall_s": 294.58717744600006,
+    "unassigned_s": 27.08260983500014,
+    "mark_s": 0.25910265,
+    "launch_no_kernel_s": 2.895734434,
+    "join_no_kernel_s": 0.495021903,
+    "validate_s": 0.173856764,
+    "commit_s": 0.18123968,
+    "kernel_active_s": 107.374926041,
+    "batch_observer_tail_s": 0.27791254599989657,
+    "dag_span_s": 54.69503993,
+    "barrier_span_s": 74.531836978,
+    "fixed_outside_batch_s": 182.92938342800016,
+    "conditional_current_barrier_floor_s": 257.46122040600017,
+    "conditional_current_local_DAG_floor_s": 237.62442335800017
+  },
+  "method": "C interval clocks; fixed measured service costs; local module DAG, serial module order retained"
+}

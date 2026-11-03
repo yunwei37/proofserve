@@ -1,0 +1,62 @@
+[
+  {
+    "key": "control-v2-P1",
+    "returncode": 0,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "qualified": true,
+    "accepted_IDs": [
+      "Init.Prelude",
+      "Waves"
+    ],
+    "reject_events": []
+  },
+  {
+    "key": "control-v2-P8",
+    "returncode": 0,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "qualified": true,
+    "accepted_IDs": [
+      "Init.Prelude",
+      "Waves"
+    ],
+    "reject_events": []
+  },
+  {
+    "key": "bad-v2-P1",
+    "returncode": 1,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "qualified": true,
+    "accepted_IDs": [
+      "Init.Prelude"
+    ],
+    "reject_events": [
+      {
+        "context": "shared",
+        "error": "kernel_reject:cc:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+        "event": "reject",
+        "module": "Waves"
+      }
+    ]
+  },
+  {
+    "key": "bad-v2-P8",
+    "returncode": 1,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "qualified": true,
+    "accepted_IDs": [
+      "Init.Prelude"
+    ],
+    "reject_events": [
+      {
+        "context": "shared",
+        "error": "kernel_reject:cc:(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it",
+        "event": "reject",
+        "module": "Waves"
+      }
+    ]
+  }
+]
