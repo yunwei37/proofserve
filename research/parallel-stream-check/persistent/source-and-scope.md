@@ -33,8 +33,7 @@ explicit implementation precondition, not a formal whole-system proof.
 
 Stock one-root default checks the leaf with trusted imports; --fresh replays one
 final imported environment. Neither is identical to independently rechecking
-all4,449 modules with our exact per-module check/allocation vectors. Planned
-native stock timing controls are labeled by their actual scope. The original
+all4,449 modules with our exact per-module check/allocation vectors. Actual stock timing controls have completed; stock-results.md labels their different scopes. The original
 kernel is unchanged; unsafe coordinator/FFI correctness is still trusted glue.
 No new mathematical axiom or skipped proof check is introduced.
 

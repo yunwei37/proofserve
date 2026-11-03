@@ -51,6 +51,5 @@ therefore cannot all be called additional user-space coherence stalls; no
 frequency/allocator causal ablation was performed. Keep these scopes distinct.
 
 All primary applications/groups and controller596466/birth774557767 retired,
-MATRIX_RETIRED0 observed. Qualifier13 controls stay preserved. Memory/stock/
-real-root fault diagnostics follow separately; no auxiliary timing enters this
-fixed32-key primary matrix. The first memory control is actually queued.
+MATRIX_RETIRED0 observed. Qualifier13 controls stay preserved. Memory/stock/real-root fault diagnostics have now completed separately; no auxiliary timing enters this
+fixed32-key primary matrix. All7 auxiliary launchers have retired; see causal-results.md.

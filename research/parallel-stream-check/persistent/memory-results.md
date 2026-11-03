@@ -44,3 +44,13 @@ Available OAI compiled1299 is not the full163,097-file source frame; the earlier
 Neither small observed net heap cost nor an estimated Mathlib fit establishes
 an unbounded resident OAI service. Finite process-per-closure reclamation is
 the measured scope. See memory-estimate-method.md for assumptions.
+
+## Primary high-water RSS, separate from the diagnostic pair
+Three-repeat primary8P wait4 high-water RSS has these actual medians/ranges:
+
+- Mark=False: 3.268742 GiB [3.255775,3.277969].
+- Mark=True: 3.281971 GiB [3.251167,3.300079].
+
+These are not the1Hz sampled-tree peaks or endpoint native smaps. The modest
+net difference and run ranges are not an exact retained-object estimate.
+All observed high-water values remain far below the14GiB guards/16GiB lane.

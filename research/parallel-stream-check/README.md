@@ -150,4 +150,22 @@ declarations each time, sampling100for counters. Full closure8P->24results
 remain slower; these scopes are not interchangeable. Stable counts and bytes
 under parallel kernel checking are observed, not a universal deterministic-budget
 or cost-free concurrency guarantee.
-\n## Causal audit of shared replay-frontier lifetime\n\nThe [matched persistence ablation](persistent/three-repeat-8P.md) now has three\nplain repetitions for the full-closure8P endpoint. Same binary, same accepted\nIDs/check/allocation vectors. Marking quiescent reconstructed frontiers avoids\nRC updates, with lower CPU in this endpoint; the complete worker/stat/memory\nmatrix is still unfinished. This audits a prototype implementation choice,\nnot a fundamental negative scalability property of Lean. Matched SDK stock\nleanchecker uses finalizeImport false/false; see [object layers and scopes](persistent/source-and-scope.md).\n
+\n## Causal audit of shared replay-frontier lifetime
+
+The [completed causal audit](persistent/causal-results.md) has32 primary runs
+and7 separate memory/original-SDK/real-root fault controls, all actually retired.
+Same4,449 accepted IDs and module check/allocation vectors in all positive
+same-work M runs. Quiescent Runtime.markPersistent removes a median65.21%
+of paired4-to-8 extra CPU in this prototype;8P wall-5.134%,CPU-14.130%.
+Lock-load/load-HITM/RFO-HITM reductions support the RC/coherence mechanism.
+
+This corrects a prototype object-state choice, not a kernel rule or novel
+technique. Residual CPU growth, instructions/L3-miss increases, unsafe-FFI
+scope and finite-lifetime memory tradeoffs remain explicit in the report.
+Both real malformed root proofs are rejected by the original kernel with
+identical diagnostics after the identical valid4,448-module prefix.
+
+Original SDK controls have different verification procedures/scopes; no
+mismatched stock speedup ratio is claimed. Old leaf/Grid/mixed-P/E results stay
+historical unmarked measurements, requiring exact-scope corrected retiming
+before new performance claims. No overall research/paper acceptance is implied.

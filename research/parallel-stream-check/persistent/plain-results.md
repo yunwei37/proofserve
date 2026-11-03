@@ -36,7 +36,7 @@ overhead. It is not a primitive-only instruction measurement.
 This supports a causal prototype contribution to the old negative scaling,
 not a general Lean limit. Persistence changes RC traffic, graph touches and
 reclamation; Complete PMU outcomes are in stat-results.md. Peak RSS alone does not
-quantify retained objects. Full anonymous-memory, stock scope and real-root
-bad-proof diagnostics remain to execute. This same-pipeline1P is not asserted
+quantify retained objects. Those diagnostics have now completed; see memory-results.md, stock-results.md
+and bad-root-results.md. This same-pipeline1P is not asserted
 to be the best stock serial baseline. Old Grid/leaf gains require their own
 exact-workload corrected retest; no historical result is silently replaced.
