@@ -1,0 +1,23 @@
+{
+  "utc": "2026-11-03T16:57:30.496097+00:00",
+  "operation": "untimed_dependency_preparation",
+  "new_rows": 66,
+  "stop": null,
+  "original_dependency_blockers": {
+    "OAI.Combinatorics.Progressions.Sampling.AllocatedForecastPrimitiveCapBound": []
+  },
+  "all_original_deps_ready": true,
+  "no_population_cost_measurements": true,
+  "affinity": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "preparation_final": true,
+  "window_index": 3
+}

@@ -1,5 +1,13 @@
 # W current state
 
+## W113: Allocated prerequisite controller retired; original Prequest queued
+E6816 retired normally16:57:30UTC:180compile_ok+3window-remainder censors.
+All183raw returns/source pins/published success bytes/cleanup rechecked.
+Original Allocated Pcontroller20263/birth777032 is separately queued behind
+existing lock work; no original cost has returned. Current sample38/42.
+Finite original master8141 remains; new panels prepared only.
+See host-restart-20261103/allocated-preparation-complete.
+
 ## W110: conditional analyzer/source preparation ready, original run protected
 Panel sources2602/28.2MB ready, native0. Four exact estimator controls pass;
 real source38 refuses full interval. Selected-cell fresh draws represent remainder,
