@@ -34,7 +34,7 @@ Both nodes change interpretation within existing RQs. Whole-command counters nar
 Root reanalysis takes 10.745 s and peaks at 31,312 KiB. No native verifier runs. Full Tectonic0.17.0 compilation exits0 in 3.271 s; sampled own-tree peak is 170,323,968 bytes on CPUs22–23, below root4GiB. All citations resolve and no overfull boxes appear; underfull warnings remain. The compiler retires naturally. No new speedup or visual/publication acceptance is claimed.
 
 
-Latest read: Allocated untimed preparation window terminal07:18:28UTC has264newrows and missing original dependency, not a new original cost or crash. Master526699/birth772878773 and controller561457/birth773951593 still matched sleeping at07:20read; finite-window completion does not establish master retirement. No root restart/dispatch.
+Latest read: Allocated untimed preparation window terminal07:18:28UTC has264newrows and missing original dependency, not a new original cost or crash. Master526699/birth772878773 and controller561457/birth773951593 still matched sleeping at this step final read; finite-window completion does not establish master retirement. No root restart/dispatch.
 
 ## Actual completed final verification
 Root reanalysis10.744780s/31312KiB. Final compiler rc0 in3.271107s/
@@ -47,3 +47,5 @@ and FDchecks. AllPDF/log/raw/source/failed/partial/foreign objects remain.
 CurrentPVCfree29683142656B/77.992% used, not a repeated claim
 of prior cleanup or a reason to delete other lines' runtime/snapshots.
 Self-review only. Persist ownedmainpaths by ordinarypush; no stash/reset/force.
+
+Record correction: the PID observation has no independently retained wall timestamp; replaced inferred07:20 label with this-step final-read scope. Actual terminal07:18:28UTC and PIDbirth values remain unchanged. No native/result/PDF change.

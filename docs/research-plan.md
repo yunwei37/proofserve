@@ -5,7 +5,7 @@ Current frontier2026-11-03UTC, root0277. [Status](research-status.md) ·
 [User words](user-instruction.md) · [Novelty](novelty-20261101.md).
 [Exact previous plan](tmp/build-and-evaluate/step-0267-20261102T092013+0000/experiment-001/before-docs-research-plan.md.gz).
 
-Current owner snapshot at root0277: original M16/16matrix is complete, not pending P2. Supplemental P8 count-only and P4 external-parent/drain points are owner-complete with separate metadata qualifications; root qualifies original16 graph/clocks/whole-command counters here, not new worker-level causal claims. Ramsey production remains stopped190/444 and20-file sample complete. W38 costs unchanged; Allocated untimed preparation window returns264rows with missing dependency at07:18:28UTC, not an original cost or root restart. Its existing master/controller still matched actualbirth at07:20read. SubexponentialSAT remains a source prefix, not a complete closure ratio or root dispatch. Refresh actual terminals.
+Current owner snapshot at root0277: original M16/16matrix is complete, not pending P2. Supplemental P8 count-only and P4 external-parent/drain points are owner-complete with separate metadata qualifications; root qualifies original16 graph/clocks/whole-command counters here, not new worker-level causal claims. Ramsey production remains stopped190/444 and20-file sample complete. W38 costs unchanged; Allocated untimed preparation window returns264rows with missing dependency at07:18:28UTC, not an original cost or root restart. Its existing master/controller still matched actualbirth at this step final read. SubexponentialSAT remains a source prefix, not a complete closure ratio or root dispatch. Refresh actual terminals.
 
 ## Fixed questions and ownership
 
