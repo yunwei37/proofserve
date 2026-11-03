@@ -288,7 +288,8 @@ def audit(project, build_roots=None, receipt=None, cost_log=None, lake_config=No
         except ValueError as e:
             reasons.append(str(e))
             scope = "unknown"
-    totals = dict(sum((collections.Counter(r["counts"]) for r in modules.values()), collections.Counter()))
+    totals = {key: sum(row["counts"][key] for row in modules.values())
+              for key in (*TOKENS, "decide_plus_kernel")}
     compiled, _ = load_receipt(receipt)
     costs, cost_errors = read_costs(cost_log, modules)
     for m, cost in costs.items():
@@ -297,7 +298,8 @@ def audit(project, build_roots=None, receipt=None, cost_log=None, lake_config=No
     identity = "\n".join(m + "\0" + modules[m]["source_digest_blake2b"] for m in sorted(modules))
     return dict(schema=SCHEMA, project=str(project),
         lean_toolchain=(project / "lean-toolchain").read_text().strip() if (project / "lean-toolchain").exists() else None,
-        source_modules=len(modules), source_bytes=sum(x["source_bytes"] for x in modules.values()),
+        source_modules=len(modules), source_files_discovered=len(paths),
+        source_files_parsed=len(modules), lexical_counts_complete=not errors, source_bytes=sum(x["source_bytes"] for x in modules.values()),
         module_source_digest_blake2b=hashlib.blake2b(identity.encode(), digest_size=32).hexdigest(),
         configuration=config,
         coverage=dict(status=scope, roots=sorted(seeds), covered_modules=sorted(covered),
@@ -316,7 +318,7 @@ def audit(project, build_roots=None, receipt=None, cost_log=None, lake_config=No
 def summary(report):
     coverage = report["coverage"]
     omitted = coverage["omitted_modules"]
-    return (f'{report["source_modules"]} local source modules; {report["source_bytes"]} source bytes.\n'
+    return (f'{report["source_files_parsed"]}/{report["source_files_discovered"]} local source files parsed; {report["source_bytes"]} parsed source bytes.\n'
         f'Default/build coverage: {coverage["status"]}; omitted: '
         + ("unknown" if omitted is None else str(len(omitted))) + ".\n"
         + f'Explicit decide +kernel sites: {report["lexical_counts"].get("decide_plus_kernel", 0)} (lexical).\n'

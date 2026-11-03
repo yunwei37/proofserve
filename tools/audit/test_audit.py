@@ -25,6 +25,8 @@ class AuditTests(unittest.TestCase):
             r = audit.audit(self.project(d))
             self.assertEqual(r["coverage"]["omitted_modules"], ["Demo.Omitted"])
             self.assertEqual(r["lexical_counts"]["decide_plus_kernel"], 1)
+            self.assertEqual(r["lexical_counts"]["bv_decide"], 0)
+            self.assertTrue(r["lexical_counts_complete"])
             self.assertIsNone(r["modules"][0]["cost"])
             self.assertEqual(r["compiled_evidence"]["status"], "unavailable")
 
@@ -63,7 +65,11 @@ class AuditTests(unittest.TestCase):
             (p / "lakefile.toml").write_text('name="demo"\ndefaultTargets=["custom"]\n')
             self.assertIsNone(audit.audit(p)["coverage"]["omitted_modules"])
             (p / "Demo/Omitted.lean").write_text("/- unterminated")
-            self.assertTrue(audit.audit(p)["errors"])
+            broken = audit.audit(p)
+            self.assertTrue(broken["errors"])
+            self.assertFalse(broken["lexical_counts_complete"])
+            self.assertEqual(broken["source_files_discovered"], 3)
+            self.assertEqual(broken["source_files_parsed"], 2)
 
     def test_source_root_escape_is_rejected(self):
         with tempfile.TemporaryDirectory() as d:
