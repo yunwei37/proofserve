@@ -1,0 +1,53 @@
+{
+  "utc": "2026-11-03T09:30:43Z",
+  "scope": "current available compiled search path; not proof of complete source-library build",
+  "closure": {
+    "modules": 4449,
+    "logical_artifact_bytes": 3194226992,
+    "artifact_parts": 13307
+  },
+  "compiled_available": {
+    "Mathlib": {
+      "available_modules": 8530,
+      "logical_artifact_bytes": 5604826360,
+      "artifact_parts": 25590
+    },
+    "OAI": {
+      "available_modules": 1299,
+      "logical_artifact_bytes": 2211613376,
+      "artifact_parts": 1299
+    },
+    "Init": {
+      "available_modules": 649,
+      "logical_artifact_bytes": 371185992,
+      "artifact_parts": 1947
+    },
+    "Std": {
+      "available_modules": 489,
+      "logical_artifact_bytes": 304063328,
+      "artifact_parts": 1467
+    },
+    "Lean": {
+      "available_modules": 1218,
+      "logical_artifact_bytes": 988783368,
+      "artifact_parts": 3654
+    }
+  },
+  "search_path": [
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-check-v16/fixtures",
+    "/workspaces/.agent-state/gpu-smt-captures/parallel-stream-assets/overlay-complete-v2",
+    "/workspaces/.agent-state/gpu-smt-captures/profile-2026-10-31/startup-replay/repair-v3/oleans",
+    "/workspaces/.agent-state/gpu-smt-workloads/rellich4341-oleans",
+    "/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/build/lib/lean",
+    "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean"
+  ],
+  "caveat": "W builds may add artifacts; on-disk logical bytes are not live anonymous memory or a memory bound"
+}
