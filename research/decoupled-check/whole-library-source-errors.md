@@ -59,3 +59,21 @@ paths passed all3previously failing original sources and the Init iterator
 import control, exit0/no-sorry. See ramsey-qualification.md and
 ramsey-producer-qualification.json. Runtime facets such as .ir.sig/shared
 libraries are preserved; no SDK/server configuration was changed.
+
+## Corrected-provider frontier checked on 2026-11-03 UTC
+
+The exact complete original providers used by the repaired Ramsey producer
+were checked for all41previously unresolved external module names.
+**0/41**compiled module inputs are present; the environment fix does not
+silently supply these separate library inputs. The per-name current result is
+[retained here](whole-library-corrected-external-frontier.csv), with all
+provider paths and raw results onPVC in corrected-provider-frontier.json.
+
+Consequently140950of151485blocked source nodes (93.05%) could lose their
+failed-producer-only blocker if those producers really compile. The10535
+external-ancestry nodes still need inputs (273external-only;10262mixed).
+Including2488old accepted IDs and9124failed producers eligible for qualified
+retry yields152562/163097nodes without this known external-input obstruction.
+This is a structural scheduling ceiling under the specified repair, neither
+an acceptance forecast nor a statement that the input corpus lacks these
+dependencies upstream. No missing or failed record is relabelled as valid.
