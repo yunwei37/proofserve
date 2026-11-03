@@ -28,3 +28,18 @@ run the former before the latter and refresh from actual successful publications
 The overlap is preparation work,not an observed CPU saving or new mechanism.
 Next native collections remain serial to the active NativeCode plan and actual
 retirement; shared-lock fairness remains per individual native task.
+
+## Untimed dependency mode for subsequent windows
+prepare_dependencies.py compiles dependencies only on E8–15. Original probability
+targets are explicitly excluded. It emits olean inputs and native/resource/status
+records,not elapsed/CPU cost observations. These ledgers are never passed to the
+source-cost estimator. Original targets remain fresh P0–7/shared-lock/3facet
+measurements with unchanged source and options. One WLean at a time; no ELean
+starts while the current Ptimed NativeCode plan is live or queued.
+1200s per dependency and finite1700s preparation window retain both full-budget
+and remainder censors. Memory remains15GiB charged/16GiB sampled owned-tree RSS.
+This uses user-authorized untimed E-core preparation and is not an accelerated
+compiler/kernel result. Other lanes may be profiling on Pcores; concurrent Eprep
+is background context,not a claim of globally idle hardware.
+Implementation currently syntax-checked only; first real prerequisite will
+qualify runtime behavior after the healthy current plan actually retires.
