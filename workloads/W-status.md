@@ -1,5 +1,20 @@
 # W current state
 
+## W103 current: Physical recovered, source37; Tracked preparation active
+2026-11-03T03:32:30Z source37 data published da98f21. Physical original
+compile_ok 3.900684 CPU /3.805640 elapsed s; native and cgroup retired.
+37/42 costs,18/21 complete cells;151888 represented,11209 incomplete-domain
+modules(6.8726%). Missing-cost scenario242.2082–315.1805 CPUh; serial
+16.5148–27.9345,parallel22.4594–38.0191 CPUh transferred models.
+Computation share18.2582–23.7591% scenario, not populationCI.
+Finite master526699/birth772878773, raw workloads/remaining-six-20261103T0325.
+Current sole WLean preparation TrackedTestBounds527419/birth772933434,
+E8–15; no original cost clock. No W Prequest while Epreparation runs.
+Do not restart it or the retired Physical/NativeCode runs.
+Verify actualPID/birth/terminal; later publication events are authoritative.
+Remaining fixed originals: Tracked,Allocated,Packet,Ground,Prepared.
+Older current-state headings below are historical snapshots.
+
 ## W101 current: NativeCode recovered,source36
 01:09:45UTC original Pcompile_ok,7.020013CPU/4.981634elapsed;allowners/cgroups
 retired.36/42costs,18/21complete cells,151888represented,6.8726%gap.

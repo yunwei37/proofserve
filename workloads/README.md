@@ -1,3 +1,4 @@
+<!-- Latest W sample update: source37 Physical; see W-status.md and reports/step-W103-20261103-Physical-source37.md. -->
 # Verification workloads
 
 Pinned characterization of already published proofs and candidates.
