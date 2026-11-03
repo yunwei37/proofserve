@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """One installed-tool external-project cell; original inputs must be built first."""
 from pathlib import Path
-import argparse,json,os,subprocess,time,threading,csv
+import argparse,json,os,subprocess,time,threading,csv,shutil
 LOCK=Path('/workspaces/.agent-state/gpu-smt-captures/pcore.lock')
 def main():
  p=argparse.ArgumentParser(description=__doc__)
@@ -19,6 +19,7 @@ def main():
  env.pop('LEAN_PATH',None)
  rows=[]
  def run(label,args):
+  assert shutil.disk_usage('/workspaces').used/shutil.disk_usage('/workspaces').total<.85,'disk ceiling; no native call started'
   # The independent Python parent owns both the sampled-RSS stop and cgroup.
   current=Path('/sys/fs/cgroup')/Path('/proc/self/cgroup').read_text().strip().split('::')[1].lstrip('/')
   cg=current.parent/('proofserve-o-external-'+str(os.getpid())+'-'+label+'.scope')
@@ -27,7 +28,7 @@ def main():
   with(a.out/(label+'.stdout')).open('w')as fo,(a.out/(label+'.stderr')).open('w')as fe:
    start=time.monotonic()
    q=subprocess.Popen(['timeout','--signal=TERM','--kill-after=5','1740']+list(map(str,args)),cwd=a.project,env=env,stdout=fo,stderr=fe,preexec_fn=enter,start_new_session=True)
-   stop=threading.Event();sample=dict(peak_tree_rss=0,resource_failure=False)
+   stop=threading.Event();sample=dict(peak_tree_rss=0,resource_failure=False,disk_failure=False)
    def watch():
     while not stop.wait(1):
      rss=0
@@ -38,8 +39,11 @@ def main():
        fields=Path('/proc',pid,'stat').read_text().split(') ')[1].split()
        rss+=int(fields[21])*os.sysconf('SC_PAGE_SIZE')
       except (OSError,ValueError,IndexError):pass
+     rss+=int(Path('/proc/self/stat').read_text().split(') ')[1].split()[21])*os.sysconf('SC_PAGE_SIZE')
      sample['peak_tree_rss']=max(sample['peak_tree_rss'],rss)
-     if rss>12*1024**3-128*1024**2:
+     if shutil.disk_usage('/workspaces').used/shutil.disk_usage('/workspaces').total>=.85:
+      sample['disk_failure']=True;(cg/'cgroup.kill').write_text('1');return
+     if rss>12*1024**3:
       sample['resource_failure']=True;(cg/'cgroup.kill').write_text('1');return
    thread=threading.Thread(target=watch);thread.start()
    _,status,usage=os.wait4(q.pid,0);q.returncode=os.waitstatus_to_exitcode(status)

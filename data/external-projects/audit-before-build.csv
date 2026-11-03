@@ -1,0 +1,4 @@
+project,upstream_commit,source_modules,static_default_covered,outside_static_default_graph,parse_errors,coverage_status,bundle_commit,ai_written,native_check_status
+CrocSwap/integer-mult-bounds,7c49fe32c55de02c2c873655c804b16e4c3fef0a,64,64,0,0,static_declarative_defaults,703055a11b749013d7251d93bb7127bd5222a447,AI-assisted (public subproject disclosure),not yet measured
+newspeaklanguage/newspeak,e2232d8fdb9a6061d00419fa83134e4e60caf172,105,105,0,0,static_declarative_defaults,703055a11b749013d7251d93bb7127bd5222a447,not established,not yet measured
+paradigmxyz/solar,f4f5c9a1d7443a0265a85eff8ee24824d9ab92a7,32,12,20,0,static_declarative_defaults,703055a11b749013d7251d93bb7127bd5222a447,not established,not yet measured

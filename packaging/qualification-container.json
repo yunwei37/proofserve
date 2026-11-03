@@ -1,0 +1,245 @@
+{
+  "run_id": 41724086160,
+  "url": "https://github.com/yunwei37/proofserve/actions/runs/41724086160",
+  "commit": "11835a9242d3e45baa9b47becc39074a53a91e43",
+  "conclusion": "success",
+  "lean_toolchain": "leanprover/lean4:v4.34.1",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "repl": "193cf4bb9a22bb3fc6d25774f0fe6a70db1fd6ee",
+  "build_memory_gib": 6,
+  "service_rss_budget_gib": 5,
+  "controls": [
+    {
+      "phase": "first_mathlib",
+      "request_budget_seconds": 180,
+      "wall_seconds": 124.57052329499999,
+      "result": {
+        "results": [
+          {
+            "error": null,
+            "id": "cold",
+            "response": {
+              "env": 0
+            },
+            "time": 124.556202849
+          }
+        ]
+      }
+    },
+    {
+      "phase": "repeat_mathlib_different_source",
+      "request_budget_seconds": 180,
+      "wall_seconds": 79.66898122299995,
+      "result": {
+        "results": [
+          {
+            "error": null,
+            "id": "repeat",
+            "response": {
+              "env": 0
+            },
+            "time": 79.651341769
+          }
+        ]
+      }
+    },
+    {
+      "phase": "small_native_batch",
+      "request_budget_seconds": 30,
+      "wall_seconds": 1.757657643000016,
+      "result": {
+        "results": [
+          {
+            "error": null,
+            "id": "accepted",
+            "response": {
+              "env": 0
+            },
+            "time": 1.086280251
+          },
+          {
+            "error": null,
+            "id": "rejected",
+            "response": {
+              "env": 0,
+              "messages": [
+                {
+                  "data": "Tactic `decide` proved that the proposition\n  False\nis false",
+                  "endPos": {
+                    "column": 28,
+                    "line": 1
+                  },
+                  "pos": {
+                    "column": 22,
+                    "line": 1
+                  },
+                  "severity": "error"
+                }
+              ]
+            },
+            "time": 1.416531975
+          },
+          {
+            "error": null,
+            "id": "incomplete",
+            "response": {
+              "env": 0,
+              "messages": [
+                {
+                  "data": "declaration uses `sorry`",
+                  "endPos": {
+                    "column": 7,
+                    "line": 1
+                  },
+                  "pos": {
+                    "column": 0,
+                    "line": 1
+                  },
+                  "severity": "warning"
+                }
+              ],
+              "sorries": [
+                {
+                  "endPos": {
+                    "column": 27,
+                    "line": 1
+                  },
+                  "goal": "\u22a2 False",
+                  "pos": {
+                    "column": 22,
+                    "line": 1
+                  },
+                  "proofState": 0
+                }
+              ]
+            },
+            "time": 1.750560474
+          }
+        ]
+      }
+    },
+    {
+      "qualification": "passed",
+      "observations": [
+        {
+          "phase": "first_mathlib",
+          "request_budget_seconds": 180,
+          "wall_seconds": 124.57052329499999,
+          "result": {
+            "results": [
+              {
+                "error": null,
+                "id": "cold",
+                "response": {
+                  "env": 0
+                },
+                "time": 124.556202849
+              }
+            ]
+          }
+        },
+        {
+          "phase": "repeat_mathlib_different_source",
+          "request_budget_seconds": 180,
+          "wall_seconds": 79.66898122299995,
+          "result": {
+            "results": [
+              {
+                "error": null,
+                "id": "repeat",
+                "response": {
+                  "env": 0
+                },
+                "time": 79.651341769
+              }
+            ]
+          }
+        },
+        {
+          "phase": "small_native_batch",
+          "request_budget_seconds": 30,
+          "wall_seconds": 1.757657643000016,
+          "result": {
+            "results": [
+              {
+                "error": null,
+                "id": "accepted",
+                "response": {
+                  "env": 0
+                },
+                "time": 1.086280251
+              },
+              {
+                "error": null,
+                "id": "rejected",
+                "response": {
+                  "env": 0,
+                  "messages": [
+                    {
+                      "data": "Tactic `decide` proved that the proposition\n  False\nis false",
+                      "endPos": {
+                        "column": 28,
+                        "line": 1
+                      },
+                      "pos": {
+                        "column": 22,
+                        "line": 1
+                      },
+                      "severity": "error"
+                    }
+                  ]
+                },
+                "time": 1.416531975
+              },
+              {
+                "error": null,
+                "id": "incomplete",
+                "response": {
+                  "env": 0,
+                  "messages": [
+                    {
+                      "data": "declaration uses `sorry`",
+                      "endPos": {
+                        "column": 7,
+                        "line": 1
+                      },
+                      "pos": {
+                        "column": 0,
+                        "line": 1
+                      },
+                      "severity": "warning"
+                    }
+                  ],
+                  "sorries": [
+                    {
+                      "endPos": {
+                        "column": 27,
+                        "line": 1
+                      },
+                      "goal": "\u22a2 False",
+                      "pos": {
+                        "column": 22,
+                        "line": 1
+                      },
+                      "proofState": 0
+                    }
+                  ]
+                },
+                "time": 1.750560474
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "installed_project_check": "passed",
+      "accepted_modules": 1139,
+      "audit_source_modules": 1,
+      "unsupported_version_rejected": true
+    }
+  ],
+  "raw_logs": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/ci/41724086160-logs.zip",
+  "published": false,
+  "scope": "Complete image build and network-disabled native service plus installed project controls; timings are qualification observations on the CI runner, not paper evaluation"
+}

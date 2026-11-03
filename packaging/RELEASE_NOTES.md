@@ -30,8 +30,15 @@ archive installation, project check/audit, official default/fresh controls and
 three actual malformed-proof rejections. See qualification-ci.json. It uploaded
 Actions build artifacts only; it did not create a public release or registry upload.
 
-Pending: complete Docker Mathlib qualification;
-three previously unused external projects including an AI-assisted project;
+Passed: complete Docker image build and network-disabled self-test on11835a92
+(run41724086160), with the same4.34.1 SDK, Mathlib and rebuilt REPL. Both
+full-Mathlib service imports, accepted/rejected/sorry responses, installed project
+check/audit and mismatched-version error passed. Exact controls and CI-runner
+observations are in qualification-container.json. The old prepared-parent timeout
+is retained as a historical failure; this image uses the stock fresh REPL and
+does not claim to repair or qualify that optional prepared adapter.
+
+Pending: three previously unused external projects including an AI-assisted project;
 official leanchecker accepted-set comparison; backend malformed-proof CI.
 No performance improvement over official leanchecker is advertised before
 those published-form measurements are complete.
