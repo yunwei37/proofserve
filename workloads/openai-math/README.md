@@ -19,49 +19,40 @@ licenses. Every manifest dependency revision is in static-4eaee875/dependencies.
 
 ## Current no-M source-cost evidence (2026-11-03)
 
-[Source38](final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/)
-has38/42 completed original costs and19/21 complete strata, representing
+[Source39](final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source39-AllocatedForecastPrimitiveCapBound/)
+has39/42 completed original costs and19/21 complete strata, representing
 161034/163097modules;2063(1.2649%) remain in incomplete cells.
-NativeCodeAssembly,PhysicalFieldPopulationLimit and TrackedTestBounds have
-actually returned under the same no-M/P0–7/shared-lock/authored-heartbeat/
-three-output-facet convention. Tracked source CPU5.412330s, native elapsed
-5.198824s; retirement and cgroup cleanup checked. Prerequisite E-core work
-is excluded from source cost and receives no sample weight.
+AllocatedForecastPrimitiveCapBound returned86.977989native CPU/79.405758elapsed
+seconds at2026-11-03T17:07UTC, no-M/P0–7/shared-lock/authored-heartbeat/
+three-output-facet point. Source bytes, native retirement and actual cgroup
+removal checked; no memory event. Prerequisite E-core work has no sample weight.
 
 The full-frame observed-class min/max missing-draw scenario is
-**247.55–270.24construction CPUh**, with16.85–23.91serial and22.92–32.54parallel
+**271.65–296.71construction CPUh**, with18.37–26.28serial and24.99–35.77parallel
 transferred checker CPUh. These are **assumption scenarios, not95%CIs or
-actual full-library costs**. [Calibration and staircase](final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/latest-staircase/)
-uses complete segmented Falconer6.3124%/Mathlib8.9514% serial CPU ratios,
-older computational/parallel protocols and explicit fixed-factor transfers.
-Parallel wall gains do not imply lower CPU resource-hours; summed module
-durations are not library makespan. Source CPU excludes separate native C
-compilation/linking, package acquisition and full Lake orchestration.
+actual full-library costs**. [Current calibration and staircase](final-seven-20261102/collection-remaining-four-hostrecovery-20261103T1512/source39-AllocatedForecastPrimitiveCapBound/latest-staircase/)
+uses segmented Falconer6.3124%/Mathlib8.9514% serial CPU ratios and explicit
+computational/parallel transfers. Parallel wall gains do not imply lower CPUh.
+Source CPU excludes separate C compilation/linking, package acquisition and Lake.
 
-The narrowed missing-cost envelope is **not total-cost precision**: the19-cell
-nominal source-sampling95% interval is43.99–449.74CPUh(df2.13), excluding
-missingness/calibration uncertainty and fragile under n=2/heavy tails.
-[Sampling-uncertainty audit](final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/sampling-uncertainty.md)
-identifies two cells supplying90.02% of estimated variance.
+The narrowed missing-cost envelope is not statistical precision. The previously
+covered19-cell nominal interval remains43.99–449.74CPUh(df2.13), not a full-frame
+interval. The added draw belongs to an incomplete cell. Missingness/calibration
+and n=2/heavy-tail limitations remain. [Sampling uncertainty audit](final-seven-20261102/collection-remaining-six-20261103T0325/source38-TrackedTestBounds/sampling-uncertainty.md)
+identified two covered cells contributing90.02% of estimated variance.
+[Two independent precision panels](precision-noM-two-strata-20261103/) are fixed
+and prepared, not yet launched; all42 original responses precede them.
 
-Computation-proxy source share is21.2946–23.2461% in these missing-cost
-scenarios. Static markers are not dynamic attribution. n=2 per stratum and
-fixed calibration ratios still leave sampling/model uncertainty after all
-originals complete. The scenario endpoints can change when a new original
-changes observed class extrema. [Source35](noM-next84-source35-KL/),
-[source36](final-seven-20261102/source36-NativeCodeAssembly/) and
-[source37](final-seven-20261102/collection-remaining-six-20261103T0325/source37-PhysicalFieldPopulationLimit/)
-remain historical evidence, not discarded or relabeled observations.
-The [31target-only trusted-import replays](native-replay31/) are separate
-from closure streaming. [Half-cost quotas](noM-next84-source35-KL/half-cost-quota/)
-remain model counts; n2 bootstrap is not a populationCI.
+Computation-proxy source share is19.3951–21.1838% in the missing-cost scenarios.
+Static markers are not dynamic attribution. Earlier source35–38 snapshots,
+the31target-only trusted-import replays and half-cost model quotas remain,
+without relabeling old data or treating n2 bootstrap as population coverage.
 
-Four originals remain: AllocatedForecastPrimitiveCapBound,PacketLocality,
-GroundMainFinalStructuralRefinementOutputs,PreparedModularCanonicalDetectorPositive.
-The finite continuation has moved to Allocated E-core prerequisites;
-[Wstatus](../W-status.md) gives actual launch provenance. Do not restart
-healthy raw controllers based on a historical paragraph. All native failures,
-clipped-window censors and earlier budget recoveries remain in raw captures.
+Three originals remain: PacketLocality,GroundMainFinalStructuralRefinementOutputs,
+PreparedModularCanonicalDetectorPositive. The finite master has actually moved
+to Packet prerequisites. [Wstatus](../W-status.md) records owner identities;
+verify actual PID/birth/terminal, and do not revive historical controllers.
+All original/failed/interrupted and clipped-window records are retained.
 
 ## Historical native evidence (separate resource conventions)
 

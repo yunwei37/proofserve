@@ -1,5 +1,14 @@
 # W current state
 
+## W114: source39 returned; Packet preparation follows
+Allocated returned17:07:49UTC:86.977989native CPU/79.405758elapsed seconds,
+source exact, native retired, actual cgroup removed, no memory events.
+Publishedf95bd19c. Source39/42,19/21cells; scenario271.65–296.71CPUh,
+serial18.37–26.28/parallel24.99–35.77transferred CPUh; not95%CIs.
+Computation-proxy share19.3951–21.1838%. Covered19-cell interval unchanged;
+three originals remain. Packet E21117/birth839249 launched17:07:52UTC,
+master8141/birth169629 protected. Two precision panels prepared, not launched.
+
 ## W113: Allocated prerequisite controller retired; original Prequest queued
 E6816 retired normally16:57:30UTC:180compile_ok+3window-remainder censors.
 All183raw returns/source pins/published success bytes/cleanup rechecked.
