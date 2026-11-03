@@ -40,7 +40,7 @@ def launch(point,args,prep,module):
         child=subprocess.Popen(args,cwd=R,stdin=subprocess.DEVNULL,stdout=f,stderr=subprocess.STDOUT)
     CHILDREN[child.pid]=child
     item=dict(utc=utc(),pid=child.pid,birth_ticks=birth(child.pid),args=args,
-              original_target=module,operation="untimed_E_preparation"if prep else"original_P_measurement")
+              source_target=module,operation="untimed_E_preparation"if prep else"source_P_measurement")
     dump(point/name,item);dump(A.raw/"active-child.json",dict(point=str(point),**item))
     event(dict(event="child_launched",point=str(point),**item))
 def refreshed_ready(plan):
@@ -72,14 +72,14 @@ def make_timed(prep,seed,module):
     disk_ok();p=B/("openai4341-noM-final-"+module.rsplit(".",1)[-1]+"-targetP-"+A.raw.name)
     p.mkdir(exist_ok=False)
     plan=json.loads((prep/"plan.json").read_text());ready=refreshed_ready(plan)
-    c=copy.deepcopy(next(x for x in plan["cases"]if x["role"]=="original_probability_sample"))
+    c=copy.deepcopy(next(x for x in plan["cases"]if x["module"]==module and x["role"]in {"original_probability_sample","conditional_remainder_sample"}))
     assert c["module"]==module and not(set(c["deps"])-ready)
     assert Path(c["args"][-1]).read_bytes()==Path(c["pinned_source"]).read_bytes()
     assert not any(x.startswith("-M")for x in c["args"])
     c["self_wall_s"]=1200
     for flag in ["-o","-i","-c"]:
         k=c["args"].index(flag)+1;c["args"][k]=str(p/"working/00"/Path(c["args"][k]).name)
-    dump(p/"plan.json",dict(cases=[c],initial_ready=sorted(ready),scope="fresh originalP,noM,authoredHB,3facets; Eprerequisites unmeasured"))
+    dump(p/"plan.json",dict(cases=[c],initial_ready=sorted(ready),scope="fresh sourceP,noM,authoredHB,3facets; Eprerequisites unmeasured"))
     for f in ["controller.py","runner.py"]:shutil.copyfile(seed/f,p/f)
     launch(p,[sys.executable,"-u",str(p/"controller.py"),"--point",str(p)],False,module)
     return p
@@ -151,13 +151,13 @@ def analyze(records,module,point,status):
     event(dict(event="original_recorded",output=str(out),**snapshot))
     return out
 
-def publish(out,module):
+def publish(out,module,message=None):
     mainbranch()
     paths=[str(out.relative_to(R))]
     subprocess.run(["git","add","--",*paths],cwd=R,check=True)
     identity=subprocess.check_output(["git","show","-s","--format=%an%n%ae","7930025"],cwd=R,text=True).splitlines()
     subprocess.run(["git","-c","user.name="+identity[0],"-c","user.email="+identity[1],
-                    "commit","--only","-m","workloads: record fixed original "+module.rsplit(".",1)[-1],*paths],
+                    "commit","--only","-m",message or "workloads: record fixed original "+module.rsplit(".",1)[-1],*paths],
                    cwd=R,check=True)
     helper="!f() { echo username=x-access-token; echo password=$GH_TOKEN; }; f"
     git=["git","-c","credential.helper=","-c","credential.helper="+helper]

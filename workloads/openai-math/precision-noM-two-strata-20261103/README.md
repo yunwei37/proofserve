@@ -90,3 +90,12 @@ retired successful preparations after original42 has returned.
 An initial preparation attempt stopped before native invocation on a wrong
 metadata lookup; its directory is preserved, and the v2 plans passed source,
 role, no-M, and syntax checks. This was a preparation error, not native failure.
+
+## Execution continuation
+run_precision_panels.py consumes a complete original42 frame and prepared jobs.
+It reuses the existing finite dependency and one-case Pcore runners, refreshes
+only retired successful object provenance, records every outcome, and publishes
+each leaf return. It is not a daemon or agent/session scheduler.
+The real source38 input is rejected before creating an output or native process.
+The active original controller remains its628ebd1e frozen snapshot; source edits
+here do not alter that running process. No panel run is active yet.
