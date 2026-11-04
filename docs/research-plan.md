@@ -2,6 +2,26 @@
 
 The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **Proceed with option A: W launches the frozen 22-core census protocol. Do not wait for another user decision.** This latest instruction supersedes the earlier stop-and-wait disposition; the failed gate remains part of the evidence.
 
+## Closure schedule (all times UTC, 2026)
+
+The two-day closure instruction supersedes the former November target. Deliver the usable tool and readable six-page paper by **6 November, 20:00**, using the results actually available.
+
+| Deadline or budget | Owner and handoff |
+|---|---|
+| 5 November, 06:00 | M freezes the checker; retain known limitations and review status. |
+| 5 November, 12:00 | Root finishes all paper prose and figure/table scripts; only returned numbers remain to integrate. |
+| 5 November, 14:00 | O finishes functional acceptance of the frozen installation. |
+| 6 November, 04:00 | W's full-corpus compilation campaign ends, complete or partial; publish actual coverage and outcomes. |
+| After compilation, at most 6 hours | M runs the final matrix on the quiet machine. |
+| Next, at most 2 hours | O runs final external-project timing. |
+| Next, stop by 6 November, 14:00 | M's full-library checking attempt reports the verified scope actually reached. |
+| 6 November, 16:00 | Root integrates returned numbers into a readable six-page paper with zero missing macros. |
+| 6 November, 20:00 | Close out the project with tool, paper and explicit remaining limitations. |
+
+Final timing runs sequentially: matrix, external timing, then library checking. No separate PlanarPacking comparison is scheduled or claimed. Preserve all successful, failed, interrupted and unattempted outcomes; the deadline does not turn partial coverage into a complete result. Root documents these handoffs and reads the existing owners' actual returns, without creating a competing collector or changing their implementation.
+
+If compilation stops short, report successfully costed native modules against the frozen frame, separately identify configuration units and the remaining failed/blocked/unattempted scope, and label distributions and P/E CPU sums as observed-subset results. Do not extrapolate these sums to the library. If checking stops short, report unique accepted modules, actual attempted scope and rejection/operational-stop status with tool/input commits; acceptance of a prefix is not whole-library parity. These are admitted closure outcomes, not reasons to wait past the deadline.
+
 ## Full-run usability gate
 
 W's [qualification report](../data/openai-math-4eaee875/measurement/census-gate/README.md) is committed as f97e6fbd, with measurement source 2c901ec4. The complete 20-module, four-condition, three-repeat matrix gives a cross-condition instruction spread of 1.3312% median and 3.1498% P95, exceeding the frozen 1%/3% criteria. All 480 foreground/control and 1,413 background attempts returned successfully; aggregate counter-overhead medians passed. Root independently recomputed these statistics from the raw records. This does not establish that every possible census protocol would fail.
@@ -12,11 +32,11 @@ The earlier 1–2 day estimate is a planning estimate, not a running campaign du
 
 ## Current manuscript and data handoff
 
-**Do not add full-corpus numerical results before they return.** The original42 estimate and uncertainty remain in the data package and evidence map for calibration. Section 3.2 is now reserved for directly observed census totals and distributions, with honest pending slots until final records arrive.
+**Do not add full-corpus numerical results before they return.** The original42 estimate and uncertainty remain in the data package and evidence map for calibration. Section 3.2 is reserved for directly observed complete-campaign or cutoff-subset totals and distributions, with honest pending slots until records arrive.
 
 Section 3.2 uses the prepared census-result structure; it does not present the sample extrapolation as the forthcoming census total. Report that the total-instruction gate failed without changing its thresholds. Cross-module comparisons use user-mode instructions, explicitly identified as a criterion selected after observing the gate results. Report P-core and E-core CPU seconds separately, without conversion, and wall time as an observation of this machine and configuration. This is not a passing replacement gate or hardware-independent cost scale.
 
-M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's possible full-library original-kernel attempt has unknown feasibility and is not mentioned as a paper result.
+M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's full-library original-kernel attempt has unknown completion coverage; the paper reserves a scoped report of how much was checked, with the hard stop above.
 
 Existing installed external check/audit cases and package/container CI remain versioned functional evidence and dated cost observations. Different proof obligations do not support a speedup ratio. Final system results must identify committed tool and input revisions and keep CPU/wall clocks separate.
 
@@ -45,6 +65,6 @@ Preserve the nealmcb distinction: 13.8 hours on 32 vCPUs is measured cloud wall 
 
 Use the same Workspace, volume and Cloudflare CLI path. Omit -M, preserve disk headroom and foreign work, and do not restart active collectors. A later host outage still means preserve the scene and wait for the user, without recovery or scheduling changes.
 
-No new root agent, session, replacement queue, scheduler, prediction, certificate repair, GPU direction, service feature or deeper attribution. No tag, registry upload, upstream issue/PR or announcement. Validated owned-path commits and pushes on main remain authorized. The coordinator's 17 November target is not a user-imposed deadline; the venue is undecided.
+No new root agent, session, replacement queue, scheduler, prediction, certificate repair, GPU direction, service feature or deeper attribution. No tag, registry upload, upstream issue/PR or announcement. Validated owned-path commits and pushes on main remain authorized. The user requires closure within two days: the project deadline is **6 November 2026, 20:00 UTC**. The venue is undecided.
 
 [Latest direct words](user-instruction.md) · [Status](research-status.md) · [Evidence map](paper/evidence.md) · [Result index](../research/README.md)
