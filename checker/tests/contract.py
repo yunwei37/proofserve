@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Release backend correctness contract; no machine-specific paths."""
-import json,os,subprocess,tempfile,shutil,threading,time
+import contextlib,sys,json,os,subprocess,tempfile,shutil,threading,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 BINARY=Path(os.environ.get('PROOFSERVE_CHECK',str(ROOT/'.lake/build/bin/proofserve-check'))).resolve()
@@ -8,7 +8,9 @@ def invoke(args,expected=0,env=None):
  r=subprocess.run([str(BINARY),*map(str,args)],text=True,capture_output=True,timeout=60,env=env)
  assert r.returncode==expected,(r.returncode,r.stdout,r.stderr)
  return json.loads(r.stdout)
-with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
+owned=os.environ.get('PROOFSERVE_CONTRACT_WORK')
+if owned:Path(owned).mkdir(parents=True,exist_ok=False)
+with(contextlib.nullcontext(owned)if owned else tempfile.TemporaryDirectory(prefix='proofserve-contract-'))as td:
  d=Path(td);project=d/'project';project.mkdir()
  for f in ['Base.lean','Parts.lean','Fixture.lean','ShadowLeft.lean','ShadowRight.lean','All.lean','Pkg.lean','Pkg/Child.lean','lakefile.lean','lean-toolchain']:
   (project/f).parent.mkdir(parents=True,exist_ok=True)
@@ -281,15 +283,15 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
   blocked_cached=invoke(blocked_roots,1)
   assert any(r.get('module')=='ZBlocked'for r in blocked_plain['rejected'])
   assert any(r.get('module')=='ZBlocked'for r in blocked_cached['rejected'])
-  assert 'unimported_reference'in(d/'blocked-cached/batch-1/driver-0.stdout').read_text()
+  assert 'unimported_reference'in(d/'blocked-cached/batch-1/segment-0.events').read_text()
  finally:blocked.write_bytes(original_blocked)
  # O's unchanged-certificate cases: project identity and optional-part inventory.
  subprocess.run(['lake','build','Parts'],cwd=project,check=True,timeout=60)
  part_args=[project,'--workers','1','--root','Parts','--closure-roots','1']
  part_file=project/'.lake/build/lib/lean/Parts.olean'
  staged=d/'optional-parts.olean'
- subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(part_file),'Parts',str(staged),'staged'],check=True,capture_output=True,text=True,timeout=30)
- part_file.write_bytes(staged.read_bytes())
+ subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(part_file),'Parts',str(staged),'staged-good'],check=True,capture_output=True,text=True,timeout=30)
+ for suffix in ['', '.server', '.private']:shutil.copy2(Path(str(staged)+suffix),Path(str(part_file)+suffix))
  part_state=d/'part-certificate'
  good_parts=invoke([*part_args,'--checkpoint-dir',part_state])
  cert_bytes=(part_state/'batch-0/certified.json').read_bytes()
@@ -305,8 +307,8 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
  foreign=d/'foreign-project';shutil.copytree(project,foreign)
  foreign_part=foreign/'.lake/build/lib/lean/Parts.olean'
  invalid=d/'foreign-invalid.olean'
- subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(foreign_part),'Parts',str(invalid),'bvar'],check=True,text=True,capture_output=True,timeout=30)
- os.replace(invalid,foreign_part)
+ subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(foreign_part),'Parts',str(invalid),'staged'],check=True,text=True,capture_output=True,timeout=30)
+ for suffix in ['', '.server', '.private']:shutil.copy2(Path(str(invalid)+suffix),Path(str(foreign_part)+suffix))
  transplant=d/'authentic-transplant';(transplant/'batch-0').mkdir(parents=True)
  shutil.copy2(part_state/'batch-0/certified.json',transplant/'batch-0/certified.json')
  transplanted=subprocess.run([str(BINARY),str(foreign),'--workers','1','--root','Parts','--closure-roots','1','--checkpoint-dir',str(transplant)],text=True,capture_output=True,timeout=60)
@@ -315,11 +317,12 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
  fresh_foreign=invoke([foreign,'--workers','1','--root','Parts','--closure-roots','1','--checkpoint-dir',d/'foreign-fresh'],1)
  assert fresh_foreign['status']=='rejected'
  original_part=part_file.read_bytes()
+ subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(part_file),'Parts',str(staged),'staged'],check=True,capture_output=True,text=True,timeout=30)
  for suffix in ['.server','.private']:
   shutil.copy2(Path(str(staged)+suffix),Path(str(part_file)+suffix))
  try:
   unchanged=subprocess.run([str(BINARY),*map(str,[*part_args,'--checkpoint-dir',part_state])],text=True,capture_output=True,timeout=60)
-  assert unchanged.returncode==2 and not unchanged.stdout and 'part inventory'in unchanged.stderr
+  assert unchanged.returncode==2 and not unchanged.stdout and 'certified closure input changed'in unchanged.stderr,(unchanged.returncode,unchanged.stdout,unchanged.stderr)
   assert part_file.read_bytes()==original_part and (part_state/'batch-0/certified.json').read_bytes()==cert_bytes
   private_fresh=invoke([*part_args,'--checkpoint-dir',d/'parts-fresh'],1)
   assert private_fresh['status']=='rejected'
@@ -330,14 +333,20 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
  # Inject the kernel's ENOSPC result into the final pending receipt only.
  # This works on ordinary Linux CI without mount or root privileges.
  if Path('/dev/full').exists():
-  full_state=d/'receipt-full';shutil.copytree(part_state,full_state)
+  full_seed=d/'receipt-seed'
+  full_args=[project,'--workers','1','--root','Base','--closure-roots','1']
+  invoke([*full_args,'--checkpoint-dir',full_seed])
+  full_state=d/'receipt-full';shutil.copytree(full_seed,full_state)
   old_receipt=(full_state/'receipt.json').read_bytes()
   (full_state/'receipt.json.pending').symlink_to('/dev/full')
-  disk_full=subprocess.run([str(BINARY),*map(str,[*part_args,'--checkpoint-dir',full_state])],text=True,capture_output=True,timeout=60)
-  assert disk_full.returncode==2 and not disk_full.stdout and 'publish checkpoint'in disk_full.stderr
+  disk_full=subprocess.run([str(BINARY),*map(str,[*full_args,'--checkpoint-dir',full_state])],text=True,capture_output=True,timeout=60)
+  assert disk_full.returncode==2 and not disk_full.stdout and 'publish checkpoint'in disk_full.stderr,(disk_full.returncode,disk_full.stdout,disk_full.stderr)
   assert (full_state/'receipt.json').read_bytes()==old_receipt
   json.loads(old_receipt)
  (project/'lean-toolchain').write_text('leanprover/lean4:not-supported\\n')
  badversion=subprocess.run([str(BINARY),str(project)],text=True,capture_output=True,timeout=10)
  assert badversion.returncode==2 and 'unsupported'in badversion.stderr
  print(json.dumps(dict(correct=True,axioms=True,resume=True,bad_proofs=3,closure_batches=True,batch_resume=True,changed_input_rejected=True,root_file=True,covered_roots_skipped=True,empty_root_file_rejected=True,empty_umbrella=True,empty_umbrella_bad_proofs=3,default_empty_umbrella=True,stale_empty_plan_rejected=True,incompatible_empty_imports_not_accepted=True,checked_import_reuse=True,hidden_bad_dependency_rejected=True,changed_completed_dependency_rejected=True,live_changed_dependency_rejected=True,incompatible_cached_contexts=True,unused_completed_input_change_rejected=True,leaf_empty_aggregator_detected=True,sibling_scope_rejected=True,dependency_root_order=True,permuted_batch_roots=True,cached_segment_base_restored=True,authentic_cross_project_certificate_refused=True,optional_part_inventory_refused=True,receipt_lean_refused=True,child_abi_refused=True,disk_full_fails_closed=True)))
+
+# All code-review regressions are part of this existing CI entry point.
+subprocess.run([sys.executable,str(ROOT/'tests/review_e0.py')],check=True,timeout=1800)

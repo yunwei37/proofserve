@@ -7,6 +7,10 @@
 > Old raw results and memory observations remain preserved; they do not qualify
 > the repaired checker or establish final performance.
 
+> **Current review repair:** the fresh e0c92d51 result above is historical.
+> A later code-only independent review identified additional adapter defects.
+> The new qualification is tracked in [e0 review repair](results/e0-review-repair/README.md).
+> No repaired-source independent execution review or release freeze is claimed.
 
 Self-review, 2026-11-03. Raw development attempts remain on the existing PVC in
 checker-package-20261103. They are not formal P-core performance measurements.

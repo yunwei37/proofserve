@@ -33,7 +33,7 @@ proofserve-check /path/to/project --workers 4 --checkpoint-dir /path/to/state --
 Repeat the command to resume successful segments. The default segment contains
 at most 500 new modules. A nonzero --max-segments value stops a batch after that
 many segments and returns an incomplete receipt. A live process holds a lock on
-its checkpoint directory. Inputs, the Lake manifest, and checkpoint configuration
+its checkpoint directory. Inputs, the checker executable, Lean identity, the Lake manifest, and checkpoint configuration
 must match before earlier successes can be reused.
 
 By default, roots are the compiled project modules under .lake/build/lib/lean.
@@ -108,7 +108,9 @@ receipt is not a fresh verification run.
 | 4.32.2 and 4.33.1 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
 | 4.36.0-rc2 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
 
-The independent-closure path has so far been exercised on 4.34.1. Other rows
+The current e0 review repair is being qualified only on 4.34.1. The other
+native contract entries above predate that repair and do not qualify the new
+source. The independent-closure path has so far been exercised on 4.34.1. Other rows
 include earlier matched-build qualification, not a new-path whole-library test.
 
 Source review is not ABI or native execution qualification. Rebuild with the
@@ -133,16 +135,22 @@ lean_environment_add symbol require a matched SDK build. Persistent marking
 happens after all prior workers have joined and before new workers begin.
 
 Project setup through Lake and the selected toolchain are trusted local code.
-This tool does not sandbox project configuration.
+This tool does not sandbox project configuration. The native adapter refuses
+proof terms that require project IR through Lean.reduceBool or Lean.reduceNat.
+It does not silently execute those terms through an official fallback. Use
+--official only when trusting the project code it can execute. Unsupported
+inputs return nonzero and are not mathematical rejections.
 
 Checkpoint files must be local trusted outputs, protected from modification by
 an adversary. Their Lean-serialized metadata uses unsafeCast. Hashes detect
 ordinary stale artifacts, not malicious collisions or tampering.
 
-Upstream unsafe and partial exclusions are preserved. Like Lean.Replay, an
-already available imported theorem with an identical interface does not require
-checking a duplicate proof body again. This is not a byte-for-byte audit of
-every redundant serialized proof. Axioms retain their Lean
+Upstream unsafe and partial exclusions are preserved. An imported theorem
+with an identical stored body can reuse its earlier kernel judgment. A changed
+body or different provenance requires original module-local replay. A matching
+theorem interface can still remain in the shared frontier; the documented
+limits do not claim arbitrary malformed-artifact body equivalence. This is not
+a byte-for-byte audit of every redundant serialized proof. Axioms retain their Lean
 meaning and are reported for the accepted closure, including segregated modules.
 No proof term is repaired or rewritten. This is not a demonstrated solution for
 checking a 260 GiB environment inside 16 GiB.
@@ -150,3 +158,11 @@ checking a 260 GiB environment inside 16 GiB.
 See docs/receipt-schema.md for the API, docs/release-evaluation.md for the frozen
 evaluation workflow, QUALIFICATION.md for development evidence,
 and results/ for release-form evaluation. No release has been published.
+
+
+The [large-library trust statement](docs/large-library-checking.md#repair-of-the-e0c92d51-review-findings)
+describes editable local certificates, noncryptographic file and executable
+identity, and explicit refusal of proof terms that require project native IR.
+A Git revision is provenance, not a binding from source commit to built artifacts.
+See the [receipt schema](docs/receipt-schema.md#input-identity-and-per-module-evidence)
+for per-module evidence and the limits of module-entry counts.

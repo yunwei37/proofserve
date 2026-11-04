@@ -11,7 +11,7 @@ unsafe def main (args : List String) : IO Unit := do
     let imports : Array Import := #[{module:="ShadowLeft".toName},{module:="ShadowRight".toName}]
     saveModuleData output moduleName.toName {data with imports}
     return
-  if kind=="staged" then
+  if kind=="staged" || kind=="staged-good" then
     -- The O review fixture: good exported/server parts plus an invalid private
     -- theorem. The optional parts are installed only after a genuine receipt.
     let good := {data with isModule:=true}
@@ -29,7 +29,7 @@ unsafe def main (args : List String) : IO Unit := do
     saveModuleDataParts moduleName.toName #[
       (System.FilePath.mk output,good),
       (System.FilePath.mk (output++".server"),good),
-      (System.FilePath.mk (output++".private"),bad)]
+      (System.FilePath.mk (output++".private"),if kind=="staged-good" then good else bad)]
     return
   let mut changed := false
   let mut constants : Array ConstantInfo := #[]

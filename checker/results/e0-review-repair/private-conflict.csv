@@ -1,0 +1,11 @@
+case,official_default_exit,official_fresh_exit,native_exit,same_acceptance
+3-private-upstream-PrivateConflictB,0,0,0,True
+3-private-upstream-PrivateConflictA2,0,0,0,True
+3-private-upstream-PrivateConflictA,0,0,0,True
+3-private-upstream-PrivateConflictB2,0,0,0,True
+3-private-upstream-PrivateConflictC,1,1,1,True
+3-private-identical-PrivateConflictB,0,0,0,True
+3-private-identical-PrivateConflictA2,0,0,0,True
+3-private-identical-PrivateConflictA,0,0,0,True
+3-private-identical-PrivateConflictB2,0,0,0,True
+3-private-identical-PrivateConflictC,1,1,1,True

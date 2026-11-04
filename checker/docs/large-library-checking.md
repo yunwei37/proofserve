@@ -250,7 +250,7 @@ Certificates must be protected as local trusted state; they are not proof
 objects suitable for accepting from an untrusted sender. The receipt's
 trusted_import_basis states this limitation even on a resumed invocation.
 
-Native child checkpoint ABI 3 and independent-closure ABI v5 invalidate earlier
+Historical child checkpoint ABI 3 and independent-closure ABI v5 invalidated earlier
 checkpoint formats. Use a new state directory after upgrading. A version or
 identity mismatch is an operational error with nonzero exit, not a success or
 an automatically trusted old result.
@@ -269,3 +269,57 @@ superseded. A [fresh e0c92d51 replay](../results/certificate-reuse-fix/subexp-fr
 has now accepted the retained 14,721-module frame from a new checkpoint
 directory. It is development qualification, not final performance evidence or
 an independent review of the repaired code.
+
+## Repair of the e0c92d51 review findings
+
+The checkpoint directory is not a module search-path entry. Internal snapshots
+are resolved through explicit ImportArtifacts for their exact generated paths,
+using a prefix disjoint from actual project module names. Actual modules are
+resolved only through the project's Lake-selected path. Module-system inputs
+require exported, server and private parts. Non-module inputs use the exported
+part, as the original importer does; stale inactive parts do not replace it.
+
+Conflicting or ambiguous duplicate declarations are checked in their declared
+module context. This includes identical non-theorem duplicates, which the
+original importer rejects when combined. A segregated module still contributes
+its declared axioms. A safe declaration cannot borrow an unsafe local name
+from an unrelated earlier module. These fixes change adapter behavior, not
+the original kernel.
+
+Certificate identity also includes the actual checker executable's 64-bit
+noncryptographic hash. The current internal identities are child ABI 4 and
+independent-closures-v6. Older state requires a fresh directory. All local
+certificate JSON and environment snapshots remain trusted, editable state:
+someone who edits certificates can forge acceptance or axiom lists. Neither
+the 64-bit input hash nor the executable hash resists deliberately constructed
+hash collisions. Ordinary change detection is the guarantee.
+
+The native adapter does not execute project IR during proof checking. It
+refuses safe declarations that depend on native evaluation primitives,
+directly or through wrappers. This explicit unsupported case is not acceptance
+and is not silently sent to an executable official path. Use --official only
+when trusting the project code it may execute. The original kernel remains
+the final checker for supported replay; FFI, ABI adaptation, input selection
+and receipt publication remain part of the adapter's additional trust.
+
+The code-only independent review concerned e0c92d51. The implementation lane's
+new controls and result inspection are self-review (自审); they are not an
+independent execution review of the repaired binary. Earlier 14,721-module
+qualification remains historical until the new binary completes its fresh run.
+
+The supplied low-severity prelude-only Quot control did not reproduce a
+difference: both official modes and the checkpoint path accepted it. No
+private quotInit layout adaptation was added on that evidence. A duplicate
+theorem with an imported matching interface still receives original module-local
+proof validation before new declarations enter the shared frontier. General
+malformed-artifact equivalence beyond the documented controls is not proved.
+
+Two finer context differences from the supplied review remain bounded
+limitations, not confirmed new counterexamples. A shared imported theorem keeps
+the already accepted body after its current body passes original module-local
+replay; the adapter does not prove arbitrary malformed-artifact body-equivalence.
+The malformed non-Prop theorem control is rejected by the original kernel and
+therefore does not establish that proposed counterexample. Restored importer
+contexts initialize quotient support; the tested prelude-only Quot artifact
+still agrees with both official modes. No additional private ABI write was
+introduced for that unconfirmed difference.

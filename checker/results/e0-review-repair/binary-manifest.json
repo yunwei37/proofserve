@@ -1,0 +1,14 @@
+{
+  "base_head": "bc4bbae3d8812b0faddfa6c1ab2745512c36da17",
+  "build": "build10",
+  "binary": "/workspaces/.agent-state/gpu-smt-captures/checker-review-e0-fix-20261104/proofserve-check-build10",
+  "source_git_blobs": {
+    "checker/Main.lean": "a71d8d1312322a927b29388a27196c623f1e7109",
+    "checker/ProofServe/Stream.lean": "18ba2de7fad311b0df12522026c9c2c7d81486cc",
+    "checker/ProofServe/Core.lean": "0e8b84dbfa336448a592a32625273a23b7355f93",
+    "checker/ProofServe/ModulePlan.lean": "2f2fc53f850924ba1901b262e74dfefae1d84dd6",
+    "checker/c/runtime.c": "540b3d41597593dbdd63715a2d64cb5e10cd8ede",
+    "checker/lakefile.lean": "3337a6c21f34e0dd9b94cdb549f0f2a9ff4a0dfb",
+    "checker/lean-toolchain": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5"
+  }
+}

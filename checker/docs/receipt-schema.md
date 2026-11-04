@@ -45,7 +45,7 @@ per-module procedure. A failed official invocation is official_failure and exits
 ## JSON types
 
 UInt64 values are decimal strings, following Lean's JSON instances. In particular,
-cpu_ns, cumulative_segment_cpu_ns, and module_set_hash are strings, not JSON
+cpu_ns, cumulative_segment_cpu_ns, checker_binary_hash, and module_set_hash are strings, not JSON
 floating-point numbers. wall_ns, workers, schema_version, and segment indices
 are JSON integers. Consumers should parse decimal strings losslessly.
 
@@ -101,7 +101,7 @@ identity. Generated environment snapshots may then be retired; interrupted
 batches keep their partial segment state. This retains the existing assumption
 that local checkpoints are trusted and input hashes detect ordinary changes,
 not adversarial tampering. Extra fields are additive within schema version 1.
-Native receipts now include checker_checkpoint_abi: 3. The JSON schema version
+Native receipts now include checker_checkpoint_abi: 4. The JSON schema version
 and the internal checkpoint ABI are different contracts. Receipt Lean version
 and child ABI must match before a completed batch can be reused.
 
@@ -130,7 +130,7 @@ adversary-resistant proof certificate. The --trusted-module-cache argument is
 an internal coordinator interface to trusted local state, not an untrusted
 proof upload interface.
 
-The checkpoint metadata ABI is child ABI 3 / independent-closures-v5. Old checkpoint configurations produce an
+The checkpoint metadata ABI is child ABI 4 / independent-closures-v6. Old checkpoint configurations produce an
 explicit mismatch error; they are not decoded using a new unsafe layout.
 
 
@@ -146,3 +146,50 @@ Receipt publication checks writes and file synchronization before atomic
 rename, then synchronizes the parent directory. Failure returns nonzero without
 complete stdout; a prior receipt may remain. Callers must pair the receipt
 with the current invocation's exit status, not merely parse an old file.
+
+## Input identity and per-module evidence
+
+Native checkpoint identity includes checker_binary_hash, the Lean 64-bit
+noncryptographic hash of the current executable's bytes. A changed executable,
+Lean identity, child ABI, canonical project, manifest, search path, or resolved
+artifact inventory refuses old state. This is change detection for trusted local
+state, not authentication against deliberately chosen collisions or forged JSON.
+
+project_revision is the Git HEAD when discoverable. project_dirty is a Boolean
+or null when Git cannot determine it. project_revision_binds_artifacts is false:
+the revision does not attest that the checked artifacts were built from that
+commit. Actual artifact identities are recorded separately.
+
+module_verifications lists each module's current evidence. action is
+kernel_replay, interface_or_empty, certificate_import, checkpoint_reuse,
+certificate_reuse, or empty_context. An interface_or_empty entry inserted no
+new declarations into the shared frontier. safe_input_constants counts safe
+input entries where available; frontier_insert_candidates counts the shared
+replay's candidate map, not successful kernel calls. kernel_call_count is null:
+the adapter does not expose an exact per-module kernel-call count. These counts
+must not be used as unique declaration counts. new_module_check_entries counts
+current kernel_replay rows, while module_check_entries retains the historical
+module-entry meaning including earlier successful work.
+
+Every listed import_only_modules entry now has an actual original-importer
+context check in this invocation, even if a dependency visit previously accepted
+its module name. Single-frontier completion additionally requires every requested
+root and every discovered closure module to occur in accepted.
+
+Worker events use a dedicated checked event file, not arbitrary stdout.
+A nonzero child exit or any rejection prevents complete regardless of terminal
+events. Raw stdout remains diagnostic output. Receipt-related text and JSON
+writes use checked durable publication. Old complete files must still be paired
+with the current process's exit status.
+
+The native adapter refuses safe declarations depending on project IR evaluation
+through Lean.reduceBool or Lean.reduceNat (including transitive wrappers).
+The open primitive axioms themselves are supported. Unsupported native
+evaluation is an operational refusal, not a false theorem. Explicit --official
+can execute project code and is appropriate only when that code is trusted;
+there is no silent fallback from this refusal.
+
+operational_errors preserves failed worker exit codes and stderr, with batch or
+segment identity. An unsupported native-evaluation refusal therefore remains
+visible in the primary receipt. An incomplete receipt does not certify a final
+axiom union for its unfinished requested closure.
