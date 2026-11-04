@@ -1,0 +1,1478 @@
+[
+  {
+    "mode": "base",
+    "case": "good-control",
+    "expected": "complete",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Token"
+    ],
+    "axioms": [
+      "ReviewP",
+      "reviewWitness"
+    ],
+    "evidence": {
+      "label": "good-donor",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/donor-state",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/002-good-donor.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/002-good-donor.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "bad-body-fresh",
+    "expected": "reject",
+    "exit": 1,
+    "complete": false,
+    "accepted": [],
+    "axioms": [],
+    "evidence": {
+      "label": "bad-fresh",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-bad",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/bad-fresh",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 1,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/005-bad-fresh.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/005-bad-fresh.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "cross-project-authentic-certificate",
+    "expected": "must refuse wrong-project certificate",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "cross-project-authentic-certificate",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-bad",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/transplanted-state",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/006-cross-project-authentic-certificate.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/006-cross-project-authentic-certificate.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "certificate_json_modified": false,
+    "donor_artifact_unchanged": true,
+    "current_artifact_has_bad_body": true
+  },
+  {
+    "mode": "base",
+    "case": "bad-body-official",
+    "expected": "reject",
+    "exit": 1,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "bad-official",
+      "command": [
+        "lake",
+        "env",
+        "leanchecker",
+        "-v",
+        "Token"
+      ],
+      "exit": 1,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/007-bad-official.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/007-bad-official.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "reuse-baseline",
+    "expected": "complete",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Base",
+      "BranchA",
+      "BranchB"
+    ],
+    "axioms": [
+      "ReviewP",
+      "extraWitness",
+      "reviewWitness"
+    ],
+    "evidence": {
+      "label": "chain-reuse",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain-normal",
+        "--json",
+        "--root",
+        "Base",
+        "--root",
+        "BranchA",
+        "--root",
+        "BranchB"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/009-chain-reuse.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/009-chain-reuse.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "no-reuse-baseline",
+    "expected": "same accepted and declared axioms",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Base",
+      "BranchA",
+      "BranchB"
+    ],
+    "axioms": [
+      "ReviewP",
+      "extraWitness",
+      "reviewWitness"
+    ],
+    "evidence": {
+      "label": "chain-no-reuse",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain-no-reuse",
+        "--json",
+        "--root",
+        "Base",
+        "--root",
+        "BranchA",
+        "--root",
+        "BranchB",
+        "--replay-shared-imports"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/010-chain-no-reuse.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/010-chain-no-reuse.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "same_accepted": true,
+    "same_axioms": true
+  },
+  {
+    "mode": "base",
+    "case": "completed-resume",
+    "expected": "same set, no fresh replay",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Base",
+      "BranchA",
+      "BranchB"
+    ],
+    "axioms": [
+      "ReviewP",
+      "extraWitness",
+      "reviewWitness"
+    ],
+    "evidence": {
+      "label": "chain-resume",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain-normal",
+        "--json",
+        "--root",
+        "Base",
+        "--root",
+        "BranchA",
+        "--root",
+        "BranchB"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/011-chain-resume.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/011-chain-resume.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "same_accepted": true,
+    "all_batches_reused": true,
+    "module_check_entries": 3,
+    "trusted_import_entries": 2
+  },
+  {
+    "mode": "base",
+    "case": "official-reference",
+    "expected": "same requested roots accepted",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "chain-official",
+      "command": [
+        "lake",
+        "env",
+        "leanchecker",
+        "-v",
+        "Base",
+        "BranchA",
+        "BranchB"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/012-chain-official.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/012-chain-official.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "axiom-reference",
+    "expected": "declared closure set equals original importer",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "original-importer-axioms",
+      "command": [
+        "lean",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-runner/checker-review-2df1d9d7-Mutate.lean",
+        "axioms",
+        "Base",
+        "BranchA",
+        "BranchB"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/013-original-importer-axioms.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/013-original-importer-axioms.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "original_axioms": [
+      "ReviewP",
+      "extraWitness",
+      "reviewWitness"
+    ],
+    "same_axioms": true
+  },
+  {
+    "mode": "base",
+    "case": "wrong-identity-lean",
+    "expected": "toolchain mismatch must refuse; tampering capability is separately scoped",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "wrong-identity-lean",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/wrong-identity-lean",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/014-wrong-identity-lean.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/014-wrong-identity-lean.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "trusted_metadata_deliberately_modified": true
+  },
+  {
+    "mode": "base",
+    "case": "wrong-receipt-lean",
+    "expected": "toolchain mismatch must refuse; tampering capability is separately scoped",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "wrong-receipt-lean",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/wrong-receipt-lean",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/015-wrong-receipt-lean.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/015-wrong-receipt-lean.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "trusted_metadata_deliberately_modified": true
+  },
+  {
+    "mode": "base",
+    "case": "forged-extra-acceptance",
+    "expected": "toolchain mismatch must refuse; tampering capability is separately scoped",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "forged-extra-acceptance",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/forged-extra-acceptance",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/016-forged-extra-acceptance.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/016-forged-extra-acceptance.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "trusted_metadata_deliberately_modified": true
+  },
+  {
+    "mode": "base",
+    "case": "forged-missing-axioms",
+    "expected": "toolchain mismatch must refuse; tampering capability is separately scoped",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Token"
+    ],
+    "axioms": [],
+    "evidence": {
+      "label": "forged-missing-axioms",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/forged-missing-axioms",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/017-forged-missing-axioms.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/017-forged-missing-axioms.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "trusted_metadata_deliberately_modified": true
+  },
+  {
+    "mode": "base",
+    "case": "wrong-child-abi",
+    "expected": "toolchain mismatch must refuse; tampering capability is separately scoped",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "wrong-child-abi",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/wrong-child-abi",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/018-wrong-child-abi.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/018-wrong-child-abi.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "trusted_metadata_deliberately_modified": true
+  },
+  {
+    "mode": "base",
+    "case": "torn-certificate",
+    "expected": "fail closed",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "torn-certificate",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/torn-certificate",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/019-torn-certificate.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/019-torn-certificate.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "torn-segment",
+    "expected": "fail closed",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "torn-segment",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/torn-segment",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/020-torn-segment.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/020-torn-segment.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "changed-complete-dependency",
+    "expected": "fail closed",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "changed-complete-dependency",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain-normal",
+        "--json",
+        "--root",
+        "Base",
+        "--root",
+        "BranchA",
+        "--root",
+        "BranchB"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/022-changed-complete-dependency.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/022-changed-complete-dependency.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "bad-beneath-empty",
+    "expected": "reject dependency, not empty success",
+    "exit": 1,
+    "complete": false,
+    "accepted": [],
+    "axioms": [],
+    "evidence": {
+      "label": "bad-beneath-empty",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/bad-empty",
+        "--json",
+        "--root",
+        "Umbrella"
+      ],
+      "exit": 1,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/023-bad-beneath-empty.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/023-bad-beneath-empty.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "nonempty-root",
+    "expected": "actual replay, not import_only",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Base",
+      "BranchA"
+    ],
+    "axioms": [
+      "ReviewP",
+      "reviewWitness"
+    ],
+    "evidence": {
+      "label": "nonempty-root",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/nonempty",
+        "--json",
+        "--root",
+        "BranchA"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/024-nonempty-root.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/024-nonempty-root.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "not_empty": true
+  },
+  {
+    "mode": "base",
+    "case": "empty-root",
+    "expected": "accept only after dependency/context checks",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Base",
+      "BranchA",
+      "BranchB",
+      "Umbrella"
+    ],
+    "axioms": [
+      "ReviewP",
+      "extraWitness",
+      "reviewWitness"
+    ],
+    "evidence": {
+      "label": "empty-root",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/empty",
+        "--json",
+        "--root",
+        "Umbrella"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/025-empty-root.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/025-empty-root.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "duplicates",
+    "expected": "deduplicate accepted modules",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Base",
+      "BranchA"
+    ],
+    "axioms": [
+      "ReviewP",
+      "reviewWitness"
+    ],
+    "evidence": {
+      "label": "duplicates",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/duplicates-state",
+        "--json",
+        "--root-file",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/duplicates.txt"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/026-duplicates.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/026-duplicates.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "unknown-name",
+    "expected": "fail, not synthetic acceptance",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "unknown-name",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/chain",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/unknown-name-state",
+        "--json",
+        "--root-file",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/unknown-name.txt"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/027-unknown-name.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/027-unknown-name.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "clashes-reuse",
+    "expected": "valid separate contexts complete",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "ClashLeft",
+      "ClashRight",
+      "UseLeft",
+      "UseRight"
+    ],
+    "axioms": [],
+    "evidence": {
+      "label": "clashes-reuse",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/clashes",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/clashes-reuse",
+        "--json",
+        "--root",
+        "ClashLeft",
+        "--root",
+        "ClashRight",
+        "--root",
+        "UseLeft",
+        "--root",
+        "UseRight"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/029-clashes-reuse.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/029-clashes-reuse.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "clashes-replay",
+    "expected": "valid separate contexts complete",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "ClashLeft",
+      "ClashRight",
+      "UseLeft",
+      "UseRight"
+    ],
+    "axioms": [],
+    "evidence": {
+      "label": "clashes-replay",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/clashes",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/clashes-replay",
+        "--json",
+        "--root",
+        "ClashLeft",
+        "--root",
+        "ClashRight",
+        "--root",
+        "UseLeft",
+        "--root",
+        "UseRight",
+        "--replay-shared-imports"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/030-clashes-replay.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/030-clashes-replay.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "combined-conflict",
+    "expected": "refuse combined incompatible imports",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "combined-conflict",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/clashes",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/combined-conflict",
+        "--json",
+        "--root",
+        "Combined"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/032-combined-conflict.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/032-combined-conflict.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "combined-official",
+    "expected": "refuse combined incompatible imports",
+    "exit": 1,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "combined-official",
+      "command": [
+        "lake",
+        "env",
+        "leanchecker",
+        "-v",
+        "Combined"
+      ],
+      "exit": 1,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/033-combined-official.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/033-combined-official.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "kill-certificate-write",
+    "expected": "no complete stdout; no certified.json",
+    "exit": -9,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "kill-certificate-write",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/killed-write",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": -9,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/034-kill-certificate-write.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/034-kill-certificate-write.stderr",
+      "stop": null,
+      "callback_fired": true
+    },
+    "final_certificate_exists": false
+  },
+  {
+    "mode": "base",
+    "case": "resume-pending-write",
+    "expected": "pending partial ignored, successful work resumes",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Token"
+    ],
+    "axioms": [
+      "ReviewP",
+      "reviewWitness"
+    ],
+    "evidence": {
+      "label": "resume-pending-write",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/killed-write",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/035-resume-pending-write.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/035-resume-pending-write.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "base",
+    "case": "filesystem-full",
+    "expected": "native nonzero and no new complete stdout; old receipt may remain",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "filesystem-full",
+      "command": [
+        "unshare",
+        "--mount",
+        "--propagation",
+        "private",
+        "python3",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/fs-full.py",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/fs-full",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/donor-state",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "full"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/036-filesystem-full.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/036-filesystem-full.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "namespace_control": {
+      "native_exit": 2,
+      "native_stdout": "",
+      "native_stderr": "{\"error\":\"cannot durably publish checkpoint: No space left on device\",\"schema_version\":1,\"status\":\"error\"}\n",
+      "old_receipt_complete": true,
+      "receipt_read_error": null,
+      "mode": "full"
+    },
+    "namespace_available": true
+  },
+  {
+    "mode": "base",
+    "case": "filesystem-readonly",
+    "expected": "native nonzero and no new complete stdout; old receipt may remain",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "filesystem-readonly",
+      "command": [
+        "unshare",
+        "--mount",
+        "--propagation",
+        "private",
+        "python3",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/fs-readonly.py",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/fs-readonly",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/donor-state",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/project-good",
+        "readonly"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/037-filesystem-readonly.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/037-filesystem-readonly.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "namespace_control": {
+      "native_exit": 2,
+      "native_stdout": "",
+      "native_stderr": "{\"error\":\"cannot open checkpoint lock\",\"schema_version\":1,\"status\":\"error\"}\n",
+      "old_receipt_complete": true,
+      "receipt_read_error": null,
+      "mode": "readonly"
+    },
+    "namespace_available": true
+  },
+  {
+    "mode": "extended",
+    "case": "base-only-certificate",
+    "expected": "good base actually checked",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Token"
+    ],
+    "axioms": [
+      "PartsP",
+      "partsWitness"
+    ],
+    "evidence": {
+      "label": "base-only",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/part-project",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/part-certificate",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/003-base-only.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/003-base-only.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "extended",
+    "case": "new-private-part-fresh",
+    "expected": "reject bad body in additional part",
+    "exit": 1,
+    "complete": false,
+    "accepted": [],
+    "axioms": [],
+    "evidence": {
+      "label": "new-private-part-fresh",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/part-project",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/new-private-fresh",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 1,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/004-new-private-part-fresh.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/004-new-private-part-fresh.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "original_exported_bytes_unchanged": true
+  },
+  {
+    "mode": "extended",
+    "case": "new-private-part-official",
+    "expected": "reject bad body",
+    "exit": 1,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "new-private-part-official",
+      "command": [
+        "lake",
+        "env",
+        "leanchecker",
+        "-v",
+        "Token"
+      ],
+      "exit": 1,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/005-new-private-part-official.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/005-new-private-part-official.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "extended",
+    "case": "new-private-part-resume",
+    "expected": "reject changed part inventory",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "new-private-part-resume",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/part-project",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/part-certificate",
+        "--json",
+        "--root",
+        "Token"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/006-new-private-part-resume.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/006-new-private-part-resume.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "certificate_json_unchanged": true,
+    "original_exported_bytes_unchanged": true
+  },
+  {
+    "mode": "extended",
+    "case": "new-private-part-actual-axioms",
+    "expected": "current private part has additional declared axiom",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "new-private-actual-axioms",
+      "command": [
+        "lean",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-runner/checker-review-2df1d9d7-Mutate.lean",
+        "axioms",
+        "Token"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/007-new-private-actual-axioms.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/007-new-private-actual-axioms.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "original_axioms": [
+      "PartsP",
+      "ReviewUnwitnessed",
+      "partsWitness"
+    ]
+  },
+  {
+    "mode": "extended",
+    "case": "filesystem-full",
+    "expected": "native nonzero and no new complete stdout; old receipt may remain",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "filesystem-full",
+      "command": [
+        "unshare",
+        "--mount",
+        "--propagation",
+        "private",
+        "python3",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/fs-full.py",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/fs-full",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/fs-donor",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/filesystem-input",
+        "full"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/010-filesystem-full.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/010-filesystem-full.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "namespace_control": {
+      "native_exit": 2,
+      "native_stdout": "",
+      "native_stderr": "{\"error\":\"cannot durably publish checkpoint: No space left on device\",\"schema_version\":1,\"status\":\"error\"}\n",
+      "old_receipt_complete": true,
+      "receipt_read_error": null,
+      "mode": "full"
+    },
+    "namespace_available": true
+  },
+  {
+    "mode": "extended",
+    "case": "filesystem-readonly",
+    "expected": "native nonzero and no new complete stdout; old receipt may remain",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "filesystem-readonly",
+      "command": [
+        "unshare",
+        "--mount",
+        "--propagation",
+        "private",
+        "python3",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/fs-readonly.py",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/fs-readonly",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/fs-donor",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/filesystem-input",
+        "readonly"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/011-filesystem-readonly.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/011-filesystem-readonly.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "namespace_control": {
+      "native_exit": 2,
+      "native_stdout": "",
+      "native_stderr": "{\"error\":\"cannot open checkpoint lock\",\"schema_version\":1,\"status\":\"error\"}\n",
+      "old_receipt_complete": true,
+      "receipt_read_error": null,
+      "mode": "readonly"
+    },
+    "namespace_available": true
+  },
+  {
+    "mode": "extended",
+    "case": "private-axioms-reuse",
+    "expected": "complete, include hidden declared axiom",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "PrivateBase",
+      "PrivateUse"
+    ],
+    "axioms": [
+      "PrivateP",
+      "_private.PrivateBase.0.hiddenWitness"
+    ],
+    "evidence": {
+      "label": "private-reuse",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/private-axioms",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/private-cache",
+        "--json",
+        "--root",
+        "PrivateBase",
+        "--root",
+        "PrivateUse"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/013-private-reuse.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/013-private-reuse.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "extended",
+    "case": "private-axioms-reference",
+    "expected": "same accepted/axioms",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "PrivateBase",
+      "PrivateUse"
+    ],
+    "axioms": [
+      "PrivateP",
+      "_private.PrivateBase.0.hiddenWitness"
+    ],
+    "evidence": {
+      "label": "private-no-reuse",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/private-axioms",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/private-replay",
+        "--json",
+        "--root",
+        "PrivateBase",
+        "--root",
+        "PrivateUse",
+        "--replay-shared-imports"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/014-private-no-reuse.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/014-private-no-reuse.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "same_accepted": true,
+    "same_axioms": true
+  },
+  {
+    "mode": "extended",
+    "case": "private-official",
+    "expected": "requested roots accepted",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "private-official",
+      "command": [
+        "lake",
+        "env",
+        "leanchecker",
+        "-v",
+        "PrivateBase",
+        "PrivateUse"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/015-private-official.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/015-private-official.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "edges",
+    "case": "existing-unrelated-root-file",
+    "expected": "check all explicit roots, no duplicate accepted names",
+    "exit": 0,
+    "complete": true,
+    "accepted": [
+      "Decoy",
+      "Core",
+      "NonEmpty"
+    ],
+    "axioms": [
+      "CoreP",
+      "DecoyP",
+      "coreWitness",
+      "decoyWitness"
+    ],
+    "evidence": {
+      "label": "unrelated-root-file",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/empty-plan-input",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/mixed",
+        "--json",
+        "--root-file",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/roots.txt"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/002-unrelated-root-file.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/002-unrelated-root-file.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "actual_closure": true
+  },
+  {
+    "mode": "edges",
+    "case": "mixed-root-official",
+    "expected": "both explicit roots accepted",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "mixed-root-official",
+      "command": [
+        "lake",
+        "env",
+        "leanchecker",
+        "-v",
+        "NonEmpty",
+        "Decoy"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/003-mixed-root-official.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/003-mixed-root-official.stderr",
+      "stop": null,
+      "callback_fired": false
+    }
+  },
+  {
+    "mode": "edges",
+    "case": "spoof-nonempty-as-empty",
+    "expected": "actual nonempty module must refuse despite correct bytes/forged plan",
+    "exit": 2,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "spoof-nonempty-as-empty",
+      "command": [
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/empty-plan-input",
+        "--workers",
+        "1",
+        "--closure-roots",
+        "1",
+        "--checkpoint-dir",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/forged-empty-plan",
+        "--json",
+        "--root",
+        "NonEmpty"
+      ],
+      "exit": 2,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/006-spoof-nonempty-as-empty.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/006-spoof-nonempty-as-empty.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "trusted_plan_deliberately_modified": true,
+    "artifact_hash_correct": true
+  },
+  {
+    "mode": "edges",
+    "case": "private-original-axioms",
+    "expected": "original importer reports hidden axiom too",
+    "exit": 0,
+    "complete": false,
+    "accepted": null,
+    "axioms": null,
+    "evidence": {
+      "label": "private-original-axioms",
+      "command": [
+        "lean",
+        "--run",
+        "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-runner/checker-review-2df1d9d7-Mutate.lean",
+        "axioms",
+        "PrivateBase",
+        "PrivateUse"
+      ],
+      "exit": 0,
+      "stdout": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/008-private-original-axioms.stdout",
+      "stderr": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/008-private-original-axioms.stderr",
+      "stop": null,
+      "callback_fired": false
+    },
+    "original_axioms": [
+      "PrivateP",
+      "_private.PrivateBase.0.hiddenWitness"
+    ]
+  }
+]

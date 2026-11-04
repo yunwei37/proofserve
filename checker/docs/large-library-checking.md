@@ -227,3 +227,39 @@ At present this describes the maximum planned coverage, not completed corpus
 verification: W's full artifacts are not available. The frozen evaluation
 driver currently stops on its failed capacity preflight; it does not silently
 generate this conditional sidecar or continue with a reduced denominator.
+
+
+## Certificate trust and validation
+
+A local certificate is reusable only in its original canonical project path,
+with the matching toolchain, child checkpoint ABI, Lake manifest, resolved
+search path, roots and checker options. A resumed completed batch performs a
+new resolution of its actual import closure in the current Lake environment.
+The complete set of resolved files must match, including the presence or
+absence of exported, server and private parts. Matching only the files named
+by the old certificate is insufficient. Current accepted module paths and
+the union of input bytes are checked again before final publication.
+
+Certificate reuse additionally trusts editable local metadata. A person who
+manually edits certificate contents can invent accepted modules or remove
+reported axioms. Ordinary noncryptographic hashes do not prevent this.
+Certificates must be protected as local trusted state; they are not proof
+objects suitable for accepting from an untrusted sender. The receipt's
+trusted_import_basis states this limitation even on a resumed invocation.
+
+Native child checkpoint ABI 3 and independent-closure ABI v5 invalidate earlier
+checkpoint formats. Use a new state directory after upgrading. A version or
+identity mismatch is an operational error with nonzero exit, not a success or
+an automatically trusted old result.
+
+JSON checkpoints and receipts use checked writes, file fsync, atomic rename,
+and parent-directory fsync. A write, sync, close or publication error prevents
+complete stdout and returns nonzero. An older complete receipt can remain after
+a failed invocation, so callers must still check the exit status. This does not
+make a build that changes concurrently supported.
+
+The 14,721-module result published with native source 2df1d9d7 predates these
+fixes. O's independent review found two false-acceptance cases in that reuse
+logic: an added valid module part with a bad proof, and an authentic certificate
+copied from a different project. That historical run has not been repeated on
+the fixed binary and is not final correctness or performance evidence.

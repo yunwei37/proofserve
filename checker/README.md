@@ -87,6 +87,9 @@ Interrupted batches retain ordinary segment checkpoints. On resume, certificates
 are reused only after their recorded input files are checked again. Keep the
 build artifacts unchanged during a run and protect the checkpoint directory.
 These are local trusted checkpoints, not portable proof objects or signatures.
+Manually editing a certificate can forge acceptance or omit axioms; see
+[certificate trust and validation](docs/large-library-checking.md#certificate-trust-and-validation).
+Reuse receipts state this limitation explicitly.
 A changed shared dependency is rejected during later-batch validation or resume.
 Conflicting unions of valid import contexts use original module-local checking
 for new modules rather than treating the union as a valid environment.

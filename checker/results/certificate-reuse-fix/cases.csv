@@ -1,0 +1,45 @@
+mode,case,expected,review_status,native_or_oracle_exit,native_complete,baseline_run,baseline_exit,evidence
+base,good-control,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/002-good-donor.stdout
+base,bad-body-fresh,kernel rejects,pass,1,False,1,1,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/005-bad-fresh.stdout
+base,cross-project-authentic-certificate,refuse with operational error,pass,2,False,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/006-cross-project-authentic-certificate.stdout
+base,bad-body-official,kernel rejects,pass,1,False,1,1,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/007-bad-official.stdout
+base,reuse-baseline,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/009-chain-reuse.stdout
+base,no-reuse-baseline,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/010-chain-no-reuse.stdout
+base,completed-resume,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/011-chain-resume.stdout
+base,official-reference,official/reference command succeeds (not native receipt),pass,0,False,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/012-chain-official.stdout
+base,axiom-reference,official/reference command succeeds (not native receipt),pass,0,False,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/013-original-importer-axioms.stdout
+base,wrong-identity-lean,refuse with operational error,pass,2,False,1,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/014-wrong-identity-lean.stdout
+base,wrong-receipt-lean,refuse with operational error,pass,2,False,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/015-wrong-receipt-lean.stdout
+base,forged-extra-acceptance,manual edits outside certificate integrity guarantee,documented trusted-state observation,2,False,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/016-forged-extra-acceptance.stdout
+base,forged-missing-axioms,manual edits outside certificate integrity guarantee,documented trusted-state observation,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/017-forged-missing-axioms.stdout
+base,wrong-child-abi,refuse with operational error,pass,2,False,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/018-wrong-child-abi.stdout
+base,torn-certificate,refuse with operational error,pass,2,False,1,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/019-torn-certificate.stdout
+base,torn-segment,refuse with operational error,pass,2,False,1,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/020-torn-segment.stdout
+base,changed-complete-dependency,refuse with operational error,pass,2,False,1,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/022-changed-complete-dependency.stdout
+base,bad-beneath-empty,kernel rejects,pass,1,False,1,1,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/023-bad-beneath-empty.stdout
+base,nonempty-root,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/024-nonempty-root.stdout
+base,empty-root,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/025-empty-root.stdout
+base,duplicates,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/026-duplicates.stdout
+base,unknown-name,refuse with operational error,pass,2,False,1,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/027-unknown-name.stdout
+base,clashes-reuse,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/029-clashes-reuse.stdout
+base,clashes-replay,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/030-clashes-replay.stdout
+base,combined-conflict,refuse with operational error,pass,2,False,1,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/032-combined-conflict.stdout
+base,combined-official,kernel rejects,pass,1,False,1,1,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/033-combined-official.stdout
+base,kill-certificate-write,interrupted; no completed certificate,pass,-9,False,1,-9,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/034-kill-certificate-write.stdout
+base,resume-pending-write,native complete,pass,0,True,1,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/035-resume-pending-write.stdout
+base,filesystem-full,native error; no stdout; old receipt parseable,pass,2,False,2,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/036-filesystem-full.stdout
+base,filesystem-readonly,native error; no stdout; old receipt parseable,pass,2,False,2,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-base/037-filesystem-readonly.stdout
+extended,base-only-certificate,native complete,pass,0,True,2,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/003-base-only.stdout
+extended,new-private-part-fresh,kernel rejects,pass,1,False,2,1,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/004-new-private-part-fresh.stdout
+extended,new-private-part-official,kernel rejects,pass,1,False,2,1,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/005-new-private-part-official.stdout
+extended,new-private-part-resume,refuse with operational error,pass,2,False,2,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/006-new-private-part-resume.stdout
+extended,new-private-part-actual-axioms,official/reference command succeeds (not native receipt),pass,0,False,,,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/007-new-private-actual-axioms.stdout
+extended,filesystem-full,native error; no stdout; old receipt parseable,pass,2,False,2,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/010-filesystem-full.stdout
+extended,filesystem-readonly,native error; no stdout; old receipt parseable,pass,2,False,2,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/011-filesystem-readonly.stdout
+extended,private-axioms-reuse,native complete,pass,0,True,3,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/013-private-reuse.stdout
+extended,private-axioms-reference,native complete,pass,0,True,3,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/014-private-no-reuse.stdout
+extended,private-official,official/reference command succeeds (not native receipt),pass,0,False,3,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-extended/015-private-official.stdout
+edges,existing-unrelated-root-file,native complete,pass,0,True,4,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/002-unrelated-root-file.stdout
+edges,mixed-root-official,official/reference command succeeds (not native receipt),pass,0,False,4,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/003-mixed-root-official.stdout
+edges,spoof-nonempty-as-empty,refuse with operational error,pass,2,False,4,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/006-spoof-nonempty-as-empty.stdout
+edges,private-original-axioms,official/reference command succeeds (not native receipt),pass,0,False,4,0,/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/review-edges/008-private-original-axioms.stdout

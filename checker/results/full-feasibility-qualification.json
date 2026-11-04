@@ -250,5 +250,8 @@
   },
   "all_native_and_controller_processes_retired": true,
   "full_corpus_complete": false,
-  "final_matrix_run": false
+  "final_matrix_run": false,
+  "correctness_qualification_status": "invalidated-by-O-review-of-certificate-reuse",
+  "requires_fixed_binary_full_replay": true,
+  "historical_completion_is_not_fixed_checker_qualification": true
 }

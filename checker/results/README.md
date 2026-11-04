@@ -1,5 +1,12 @@
 # Checker evaluation
 
+> **Superseded correctness qualification:** O's review of 2df1d9d7 found false
+> acceptance in certificate reuse without modifying certificate contents.
+> The historical 14,721-module result used that logic and must be repeated on
+> the fixed binary before it is final evidence. Raw results and reported
+> memory observations remain preserved; they are not a qualified fixed-checker run.
+
+
 Final paper performance data are pending. The user reclassified all existing
 ba316991 matrix cells as nonfinal previews because the workload build census
 now controls the machine. The final frozen tool will be measured after that

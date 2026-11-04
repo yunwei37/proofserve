@@ -10,3 +10,5 @@ lean_lib ShadowRight
 lean_lib All
 
 lean_lib Pkg
+
+lean_lib Parts

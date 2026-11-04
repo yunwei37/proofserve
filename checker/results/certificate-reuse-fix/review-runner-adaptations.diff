@@ -1,0 +1,26 @@
+--- packaging/checker-review-2df1d9d7-cases.py
++++ PVC/review-runner/checker-review-2df1d9d7-cases.py
+@@ -88,7 +88,7 @@
+     q.add_argument("--private-only",action="store_true")
+     q.add_argument("--edges",action="store_true")
+     q.add_argument("--parts-only",action="store_true")
+-    a=q.parse_args();assert sorted(os.sched_getaffinity(0))==[8,9]
++    a=q.parse_args();assert sorted(os.sched_getaffinity(0))==list(range(17,24))
+     a.checker=a.checker.resolve(strict=True);a.sdk=a.sdk.resolve(strict=True)
+     t=Review(a)
+     try:
+--- packaging/checker-review-2df1d9d7-Mutate.lean
++++ PVC/review-runner/checker-review-2df1d9d7-Mutate.lean
+@@ -42,10 +42,8 @@
+       let freshAx := "ReviewUnwitnessed".toName
+       let freshThm := "ReviewSmuggled".toName
+       let extraAx := ConstantInfo.axiomInfo {ax with name:=freshAx}
+-      let extraThm := ConstantInfo.thmInfo {th with name:=freshThm,all:=[freshThm],
+-        type:=mkConst freshAx,value:=.bvar 0}
+-      let bad := {good with constants:=good.constants++#[extraAx,extraThm],
+-        constNames:=good.constNames++#[freshAx,freshThm]}
++      let extraThm := ConstantInfo.thmInfo {th with name:=freshThm,all:=[freshThm], type:=mkConst freshAx,value:=.bvar 0}
++      let bad := {good with constants:=good.constants++#[extraAx,extraThm], constNames:=good.constNames++#[freshAx,freshThm]}
+       saveModuleDataParts moduleName.toName #[
+         (System.FilePath.mk output,good),
+         (System.FilePath.mk (output++".server"),good),

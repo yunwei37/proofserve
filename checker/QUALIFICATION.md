@@ -1,5 +1,12 @@
 # Development qualification
 
+> **Superseded correctness qualification:** O's review of 2df1d9d7 found false
+> acceptance in certificate reuse without modifying certificate contents.
+> The historical 14,721-module result used that logic and must be repeated on
+> the fixed binary before it is final evidence. Raw results and reported
+> memory observations remain preserved; they are not a qualified fixed-checker run.
+
+
 Self-review, 2026-11-03. Raw development attempts remain on the existing PVC in
 checker-package-20261103. They are not formal P-core performance measurements.
 

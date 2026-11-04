@@ -100,3 +100,46 @@ LEAN_EXPORT lean_obj_res ps_checkpoint_lock(b_lean_obj_arg path,lean_obj_arg wor
  /* Process-lifetime descriptor: inherited exec children close it. */
  return lean_io_result_mk_ok(lean_box(0));
 }
+
+/* Publication must observe write/flush/close errors before announcing success.
+   fsync the file before rename and the parent afterwards. Leave failed pending
+   files untrusted; never truncate the previously published receipt. */
+LEAN_EXPORT lean_obj_res ps_write_atomic(b_lean_obj_arg path, b_lean_obj_arg text,
+                                         lean_obj_arg world) {
+ const char *final=lean_string_cstr(path);
+ size_t n=strlen(final);
+ char *pending=malloc(n+9), *parent=strdup(final);
+ if(!pending || !parent) { free(pending);free(parent);
+  return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("cannot allocate receipt path"))); }
+ memcpy(pending,final,n);memcpy(pending+n,".pending",9);
+ char *slash=strrchr(parent,'/');
+ if(slash) { if(slash==parent) slash[1]=0; else *slash=0; }
+ else { free(parent);parent=strdup("."); }
+ if(!parent) {free(pending);
+  return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string("cannot allocate receipt directory"))); }
+ int fd=open(pending,O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC,0600),err=0;
+ if(fd<0) err=errno;
+ if(!err) {
+  const char *data=lean_string_cstr(text);size_t left=lean_string_size(text)-1;
+  while(left) {
+   ssize_t count=write(fd,data,left);
+   if(count<0 && errno==EINTR)continue;
+   if(count<=0){err=count<0?errno:EIO;break;}
+   left-=(size_t)count;data+=count;
+  }
+  if(!err && fsync(fd))err=errno;
+  if(close(fd) && !err)err=errno;
+ }
+ if(!err && rename(pending,final))err=errno;
+ if(!err) {
+  int dirfd=open(parent,O_RDONLY|O_DIRECTORY|O_CLOEXEC);
+  if(dirfd<0)err=errno;
+  else {if(fsync(dirfd))err=errno;if(close(dirfd) && !err)err=errno;}
+ }
+ free(pending);free(parent);
+ if(err) {
+  char message[320];snprintf(message,sizeof(message),"cannot durably publish checkpoint: %s",strerror(err));
+  return lean_io_result_mk_error(lean_mk_io_user_error(lean_mk_string(message)));
+ }
+ return lean_io_result_mk_ok(lean_box(0));
+}

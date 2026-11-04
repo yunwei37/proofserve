@@ -63,10 +63,10 @@ def requestedRoots (o : CheckOptions) : IO (Array String) := do
       pure names
   return o.roots ++ fromFile
 
-def writeJson (file : System.FilePath) (value : Json) : IO Unit := do
-  let pending := System.FilePath.mk (file.toString++".pending")
-  IO.FS.writeFile pending (value.pretty++"\n")
-  IO.FS.rename pending file
+@[extern "ps_write_atomic"] opaque writeAtomic (path content : @& String) : IO Unit
+
+def writeJson (file : System.FilePath) (value : Json) : IO Unit :=
+  writeAtomic file.toString (value.pretty++"\n")
 
 partial def discover (root : System.FilePath) (path : System.FilePath) : IO (Array String) := do
   let mut out := #[]
@@ -128,6 +128,40 @@ def runInputIdentity (args : List String) : IO UInt32 := do
   return 0
 
 
+/-- Resolve the current project afresh, including optional module-part inventory. -/
+def currentInputMetadata (project dir : System.FilePath) (roots : Array String)
+    (paths : List String) : IO Json := do
+  let rootFile := dir/"input-identity-roots.txt"
+  IO.FS.writeFile rootFile (String.intercalate "\n" roots.toList)
+  let result ← IO.Process.output {
+    cmd:=(← IO.appPath).toString,args:=#["--internal-input-identity",rootFile.toString],
+    cwd:=some project,env:=[("LEAN_PATH",some (String.intercalate ":" paths))].toArray}
+  IO.FS.writeFile (dir/"input-identity.stdout") result.stdout
+  IO.FS.writeFile (dir/"input-identity.stderr") result.stderr
+  unless result.exitCode==0 do
+    throw <| IO.userError s!"input identity scan failed: {result.stderr}"
+  IO.ofExcept (Json.parse result.stdout)
+
+/-- A completed receipt is valid only in the same project and checker ABI. -/
+def validateCertificateContext (identity receipt : Json) (project : System.FilePath)
+    (roots : Array String) (paths : List String) (version : String)
+    (manifest : Json) (o : CheckOptions) : IO Unit := do
+  unless (identity.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 3 do
+    throw <| IO.userError "closure certificate child ABI differs"
+  unless (receipt.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 3 &&
+      (receipt.getObjValAs? Nat "schema_version").toOption==some 1 &&
+      (receipt.getObjValAs? String "lean_version").toOption==some version do
+    throw <| IO.userError "closure certificate receipt ABI or toolchain differs"
+  unless (identity.getObjValAs? String "project").toOption==some project.toString &&
+      (identity.getObjValAs? (List String) "search_path").toOption==some paths do
+    throw <| IO.userError "closure certificate project or resolved search path differs"
+  unless (identity.getObjValAs? Bool "persistence").toOption==some o.persist &&
+      (identity.getObjValAs? Bool "split_fallback").toOption==some o.split &&
+      (identity.getObjValAs? (Array String) "roots").toOption==some (roots.qsort (· < ·)) &&
+      (identity.getObjValAs? String "lean").toOption==some version &&
+      (identity.getObjVal? "manifest").toOption==some manifest do
+    throw <| IO.userError "closure certificate configuration differs"
+
 def projectRevision (project : System.FilePath) : IO Json := do
   try
     let r ← IO.Process.output {cmd:="git",args:=#["rev-parse","HEAD"],cwd:=some project}
@@ -179,6 +213,15 @@ trusted state, exactly as a restored environment checkpoint is local trusted sta
 def validateBatchInputs (identity : Json) (seen : Std.HashMap String UInt64) :
     IO (Std.HashMap String UInt64) := do
   let inputs ← IO.ofExcept (identity.getObjValAs? (Array (String × UInt64)) "inputs")
+  let expectedInputs : Std.HashMap String UInt64 := Std.HashMap.ofList inputs.toList
+  -- Optional parts must remain absent too. Checking only recorded files permits
+  -- a newly added private part to inherit an exported-only certificate.
+  for (path, _) in inputs do
+    if path.endsWith ".olean" then
+      for level in [OLeanLevel.exported,OLeanLevel.server,OLeanLevel.private] do
+        let part := level.adjustFileName (System.FilePath.mk path)
+        unless (← part.pathExists)==expectedInputs.contains part.toString do
+          throw <| IO.userError s!"certified closure input part inventory changed: {part}"
   let mut seen := seen
   for (path, expected) in inputs do
     match seen[path]? with
@@ -346,10 +389,11 @@ matching input bytes; merely building an artifact never certifies it. -/
 def closureBatches (o : CheckOptions) (project dir : System.FilePath)
     (version : String) (roots : Array String) (absolutePaths : List String)
     (start : Nat) (cpuStart : UInt64) : IO UInt32 := do
+  searchPathRef.set (absolutePaths.map System.FilePath.mk)
   let manifest ← readManifest project
   let revision ← projectRevision project
   let identity := Json.mkObj [
-    ("checker_checkpoint_abi",toJson "independent-closures-v4"),
+    ("checker_checkpoint_abi",toJson "independent-closures-v5"),
     ("lean",toJson version),("project",toJson project.toString),
     ("roots",toJson roots),("search_path",toJson absolutePaths),
     ("manifest",manifest),("closure_roots",toJson o.closureRoots),
@@ -440,7 +484,14 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
       throw <| IO.userError "closure certificate toolchain differs"
     unless (childIdentity.getObjVal? "manifest").toOption == some manifest do
       throw <| IO.userError "closure certificate manifest differs"
+    validateCertificateContext childIdentity receipt project selected absolutePaths version manifest o
     inputsSeen ← validateBatchInputs childIdentity inputsSeen
+    if reused then
+      let current ← currentInputMetadata project batchDir selected absolutePaths
+      let actual ← IO.ofExcept (current.getObjValAs? (Array (String × UInt64)) "inputs")
+      let recorded ← IO.ofExcept (childIdentity.getObjValAs? (Array (String × UInt64)) "inputs")
+      unless actual.qsort (fun a b => a.1 < b.1)==recorded.qsort (fun a b => a.1 < b.1) do
+        throw <| IO.userError "closure certificate no longer matches currently resolved inputs"
     let names ← IO.ofExcept (receipt.getObjValAs? (Array String) "accepted")
     let reusedModules := (receipt.getObjValAs? (Array String) "certificate_reused_modules").toOption.getD #[]
     trustedEntries := trustedEntries+reusedModules.size
@@ -523,14 +574,22 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
     -- A completed but no longer needed module can change between batches too.
     -- Final acceptance binds the current union, not only later used imports.
     let _ ← validateBatchInputs (Json.mkObj [("inputs",toJson inputsSeen.toList.toArray)]) {}
+    -- Also re-resolve accepted names: a newly shadowing search-path artifact
+    -- must not inherit a prior path's acceptance at final publication.
+    for name in accepted do
+      let file ← findOLean name.toName
+      for level in [OLeanLevel.exported,OLeanLevel.server,OLeanLevel.private] do
+        let part := level.adjustFileName file
+        unless (← part.pathExists)==inputsSeen.contains part.toString do
+          throw <| IO.userError s!"current module resolution differs from certified inputs: {name}"
   let receipt := Json.mkObj [
-    ("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),
+    ("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("checker_checkpoint_abi",toJson 3),
     ("parallel",toJson true),("context_strategy",toJson "independent-closures"),
     ("checkpoint_kind",toJson "input-validated-local-certificates"),
     ("reuse_checked_imports",toJson o.reuseImports),
     ("module_check_entries",toJson kernelModules),
     ("trusted_import_entries",toJson trustedEntries),
-    ("trusted_import_basis",toJson "completed original-kernel receipts and matching local artifact hashes"),
+    ("trusted_import_basis",toJson "trusted editable local certificates bound to this project, toolchain, resolved input paths and complete part inventory; manual certificate edits can forge acceptance or axioms"),
     ("status",toJson (if complete then "complete" else if operational then "incomplete" else "rejected")),
     ("lean_version",toJson version),("project_revision",revision),
     ("mathlib_manifest",manifest),("roots",toJson roots),("accepted",toJson accepted),
@@ -591,14 +650,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   let rootsText := String.intercalate "\n" roots.toList
   -- Current receipt1 checkpoint is local trusted state; validate identity before reuse.
   searchPathRef.set (absolutePaths.map System.FilePath.mk)
-  let metadataRoots := dir/"input-identity-roots.txt"
-  IO.FS.writeFile metadataRoots rootsText
-  let identityExe ← IO.appPath
-  let metadata ← IO.Process.output {cmd:=identityExe.toString,args:=#["--internal-input-identity",metadataRoots.toString],cwd:=some project,env:=#[("LEAN_PATH",some (String.intercalate ":" absolutePaths))]}
-  IO.FS.writeFile (dir/"input-identity.stdout") metadata.stdout
-  IO.FS.writeFile (dir/"input-identity.stderr") metadata.stderr
-  unless metadata.exitCode==0 do throw <| IO.userError s!"input identity scan failed: {metadata.stderr}"
-  let metadata ← IO.ofExcept (Json.parse metadata.stdout)
+  let metadata ← currentInputMetadata project dir roots absolutePaths
   let names ← IO.ofExcept (metadata.getObjValAs? (Array String) "modules")
   let seen := names.foldl (fun (s : NameSet) n => s.insert n.toName) {}
   let inputs ← IO.ofExcept (metadata.getObjValAs? (Array (String × UInt64)) "inputs")
@@ -610,7 +662,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   let cacheIdentity ← match validatedCache with
     | none => pure Json.null
     | some file => IO.ofExcept (Json.parse (← IO.FS.readFile file))
-  let identity := Json.mkObj [("checker_checkpoint_abi",toJson 2),("module_cache",cacheIdentity),("lean",toJson version.stdout),("roots",toJson roots),
+  let identity := Json.mkObj [("checker_checkpoint_abi",toJson 3),("module_cache",cacheIdentity),("lean",toJson version.stdout),("roots",toJson roots),
     ("inputs",toJson inputs),("manifest",manifest),("project",toJson project.toString),("search_path",toJson absolutePaths),
     ("persistence",toJson o.persist),("split_fallback",toJson o.split)]
   let identityFile := dir/"identity.json"
@@ -689,7 +741,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
     if o.maxSegments>0 && part>=o.maxSegments then
       operational := true
       break
-  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("parallel",toJson true),("lean_version",toJson version.stdout),
+  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("checker_checkpoint_abi",toJson 3),("parallel",toJson true),("lean_version",toJson version.stdout),
     ("status",toJson (if complete then "complete" else if operational then "incomplete" else "rejected")),
     ("project_revision",revision),("mathlib_manifest",manifest),("roots",toJson roots),("accepted",toJson accepted),("rejected",toJson rejected),
     ("module_set_hash",toJson (hash (accepted.qsort (· < ·)))),
@@ -698,7 +750,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
     ("cumulative_segment_cpu_ns",toJson cpu),("cpu_ns",toJson ((← totalCpuNs)-cpuStart)),("wall_ns",toJson ((← IO.monoNanosNow)-start)),
     ("segments",toJson segments),("trusted_local_checkpoints",toJson true),
     ("certificate_reused_modules",toJson trustedModules),
-    ("trusted_import_basis",toJson "local completed-module certificates with input identities")]
+    ("trusted_import_basis",toJson "trusted editable local certificates with current input identities; manual certificate edits can forge acceptance or axioms")]
   writeJson (dir/"receipt.json") receipt
   IO.println receipt.compress
   return if complete then 0 else if operational then 2 else 1

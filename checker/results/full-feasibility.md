@@ -1,5 +1,12 @@
 # Full-source feasibility and retained-closure qualification
 
+> **Superseded correctness qualification:** O's review of 2df1d9d7 found false
+> acceptance in certificate reuse without modifying certificate contents.
+> The historical 14,721-module result used that logic and must be repeated on
+> the fixed binary before it is final evidence. Raw results and reported
+> memory observations remain preserved; they are not a qualified fixed-checker run.
+
+
 This report separates static planning, completed development qualification, and
 future final performance evaluation. No full-corpus or final-matrix run was
 started. Initial controls used CPUs 8–9 and a 16 GiB limit. The authorized

@@ -101,6 +101,9 @@ identity. Generated environment snapshots may then be retired; interrupted
 batches keep their partial segment state. This retains the existing assumption
 that local checkpoints are trusted and input hashes detect ordinary changes,
 not adversarial tampering. Extra fields are additive within schema version 1.
+Native receipts now include checker_checkpoint_abi: 3. The JSON schema version
+and the internal checkpoint ABI are different contracts. Receipt Lean version
+and child ABI must match before a completed batch can be reused.
 
 import_only_modules is an optional array of module names. Each member has zero
 own declarations in the inspected compiled private data, all actual imports
@@ -127,5 +130,19 @@ adversary-resistant proof certificate. The --trusted-module-cache argument is
 an internal coordinator interface to trusted local state, not an untrusted
 proof upload interface.
 
-The checkpoint metadata ABI changed. Old checkpoint configurations produce an
+The checkpoint metadata ABI is child ABI 3 / independent-closures-v5. Old checkpoint configurations produce an
 explicit mismatch error; they are not decoded using a new unsafe layout.
+
+
+Reuse binds the original canonical project, toolchain, manifest, search path,
+checker options and complete currently resolved artifact-part inventory. An
+optional private or server part appearing after certification invalidates
+reuse even when the recorded exported file has not changed. The
+trusted_import_basis text explicitly warns that manual certificate edits can
+forge acceptance or axiom reports. It is a trust disclosure, not a cryptographic
+attestation.
+
+Receipt publication checks writes and file synchronization before atomic
+rename, then synchronizes the parent directory. Failure returns nonzero without
+complete stdout; a prior receipt may remain. Callers must pair the receipt
+with the current invocation's exit status, not merely parse an old file.

@@ -11,6 +11,26 @@ unsafe def main (args : List String) : IO Unit := do
     let imports : Array Import := #[{module:="ShadowLeft".toName},{module:="ShadowRight".toName}]
     saveModuleData output moduleName.toName {data with imports}
     return
+  if kind=="staged" then
+    -- The O review fixture: good exported/server parts plus an invalid private
+    -- theorem. The optional parts are installed only after a genuine receipt.
+    let good := {data with isModule:=true}
+    let some (.axiomInfo ax) := data.constants.find? (fun ci => match ci with
+      | .axiomInfo a => a.type.isSort
+      | _ => false) | throw <| IO.userError "no proposition axiom template"
+    let some (.thmInfo th) := data.constants.find? (fun ci => match ci with
+      | .thmInfo _ => true
+      | _ => false) | throw <| IO.userError "no theorem template"
+    let freshAx := "ReviewUnwitnessed".toName
+    let freshThm := "ReviewSmuggled".toName
+    let extraAx := ConstantInfo.axiomInfo {ax with name:=freshAx}
+    let extraThm := ConstantInfo.thmInfo {th with name:=freshThm, all := [freshThm], type:=mkConst freshAx, value:=.bvar 0}
+    let bad := { good with constants := good.constants ++ #[extraAx, extraThm], constNames := good.constNames ++ #[freshAx, freshThm] }
+    saveModuleDataParts moduleName.toName #[
+      (System.FilePath.mk output,good),
+      (System.FilePath.mk (output++".server"),good),
+      (System.FilePath.mk (output++".private"),bad)]
+    return
   let mut changed := false
   let mut constants : Array ConstantInfo := #[]
   for original in data.constants do

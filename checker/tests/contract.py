@@ -10,7 +10,7 @@ def invoke(args,expected=0,env=None):
  return json.loads(r.stdout)
 with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
  d=Path(td);project=d/'project';project.mkdir()
- for f in ['Base.lean','Fixture.lean','ShadowLeft.lean','ShadowRight.lean','All.lean','Pkg.lean','Pkg/Child.lean','lakefile.lean','lean-toolchain']:
+ for f in ['Base.lean','Parts.lean','Fixture.lean','ShadowLeft.lean','ShadowRight.lean','All.lean','Pkg.lean','Pkg/Child.lean','lakefile.lean','lean-toolchain']:
   (project/f).parent.mkdir(parents=True,exist_ok=True)
   shutil.copyfile(ROOT/'tests'/f,project/f)
  version=subprocess.check_output(['lean','--version'],text=True).split('version ',1)[1].split(',',1)[0]
@@ -283,7 +283,61 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
   assert any(r.get('module')=='ZBlocked'for r in blocked_cached['rejected'])
   assert 'unimported_reference'in(d/'blocked-cached/batch-1/driver-0.stdout').read_text()
  finally:blocked.write_bytes(original_blocked)
+ # O's unchanged-certificate cases: project identity and optional-part inventory.
+ subprocess.run(['lake','build','Parts'],cwd=project,check=True,timeout=60)
+ part_args=[project,'--workers','1','--root','Parts','--closure-roots','1']
+ part_file=project/'.lake/build/lib/lean/Parts.olean'
+ staged=d/'optional-parts.olean'
+ subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(part_file),'Parts',str(staged),'staged'],check=True,capture_output=True,text=True,timeout=30)
+ part_file.write_bytes(staged.read_bytes())
+ part_state=d/'part-certificate'
+ good_parts=invoke([*part_args,'--checkpoint-dir',part_state])
+ cert_bytes=(part_state/'batch-0/certified.json').read_bytes()
+ for label,section,field,value in [
+  ('identity-lean','input_identity','lean','Lean (version 4.35.0)\\n'),
+  ('receipt-lean','receipt','lean_version','Lean (version 4.35.0)\\n'),
+  ('child-abi','input_identity','checker_checkpoint_abi',999)]:
+  state=d/label;shutil.copytree(part_state,state)
+  cert=state/'batch-0/certified.json';v=json.loads(cert.read_text())
+  v[section][field]=value;cert.write_text(json.dumps(v))
+  failure=subprocess.run([str(BINARY),*map(str,[*part_args,'--checkpoint-dir',state])],text=True,capture_output=True,timeout=60)
+  assert failure.returncode==2 and not failure.stdout,(label,failure.stdout,failure.stderr)
+ foreign=d/'foreign-project';shutil.copytree(project,foreign)
+ foreign_part=foreign/'.lake/build/lib/lean/Parts.olean'
+ invalid=d/'foreign-invalid.olean'
+ subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(foreign_part),'Parts',str(invalid),'bvar'],check=True,text=True,capture_output=True,timeout=30)
+ os.replace(invalid,foreign_part)
+ transplant=d/'authentic-transplant';(transplant/'batch-0').mkdir(parents=True)
+ shutil.copy2(part_state/'batch-0/certified.json',transplant/'batch-0/certified.json')
+ transplanted=subprocess.run([str(BINARY),str(foreign),'--workers','1','--root','Parts','--closure-roots','1','--checkpoint-dir',str(transplant)],text=True,capture_output=True,timeout=60)
+ assert transplanted.returncode==2 and not transplanted.stdout and 'project'in transplanted.stderr
+ assert (transplant/'batch-0/certified.json').read_bytes()==cert_bytes
+ fresh_foreign=invoke([foreign,'--workers','1','--root','Parts','--closure-roots','1','--checkpoint-dir',d/'foreign-fresh'],1)
+ assert fresh_foreign['status']=='rejected'
+ original_part=part_file.read_bytes()
+ for suffix in ['.server','.private']:
+  shutil.copy2(Path(str(staged)+suffix),Path(str(part_file)+suffix))
+ try:
+  unchanged=subprocess.run([str(BINARY),*map(str,[*part_args,'--checkpoint-dir',part_state])],text=True,capture_output=True,timeout=60)
+  assert unchanged.returncode==2 and not unchanged.stdout and 'part inventory'in unchanged.stderr
+  assert part_file.read_bytes()==original_part and (part_state/'batch-0/certified.json').read_bytes()==cert_bytes
+  private_fresh=invoke([*part_args,'--checkpoint-dir',d/'parts-fresh'],1)
+  assert private_fresh['status']=='rejected'
+  native_official=subprocess.run(['lake','env','leanchecker','-v','Parts'],cwd=project,text=True,capture_output=True,timeout=60)
+  assert native_official.returncode!=0
+ finally:
+  for suffix in ['.server','.private']:Path(str(part_file)+suffix).unlink()
+ # Inject the kernel's ENOSPC result into the final pending receipt only.
+ # This works on ordinary Linux CI without mount or root privileges.
+ if Path('/dev/full').exists():
+  full_state=d/'receipt-full';shutil.copytree(part_state,full_state)
+  old_receipt=(full_state/'receipt.json').read_bytes()
+  (full_state/'receipt.json.pending').symlink_to('/dev/full')
+  disk_full=subprocess.run([str(BINARY),*map(str,[*part_args,'--checkpoint-dir',full_state])],text=True,capture_output=True,timeout=60)
+  assert disk_full.returncode==2 and not disk_full.stdout and 'publish checkpoint'in disk_full.stderr
+  assert (full_state/'receipt.json').read_bytes()==old_receipt
+  json.loads(old_receipt)
  (project/'lean-toolchain').write_text('leanprover/lean4:not-supported\\n')
  badversion=subprocess.run([str(BINARY),str(project)],text=True,capture_output=True,timeout=10)
  assert badversion.returncode==2 and 'unsupported'in badversion.stderr
- print(json.dumps(dict(correct=True,axioms=True,resume=True,bad_proofs=3,closure_batches=True,batch_resume=True,changed_input_rejected=True,root_file=True,covered_roots_skipped=True,empty_root_file_rejected=True,empty_umbrella=True,empty_umbrella_bad_proofs=3,default_empty_umbrella=True,stale_empty_plan_rejected=True,incompatible_empty_imports_not_accepted=True,checked_import_reuse=True,hidden_bad_dependency_rejected=True,changed_completed_dependency_rejected=True,live_changed_dependency_rejected=True,incompatible_cached_contexts=True,unused_completed_input_change_rejected=True,leaf_empty_aggregator_detected=True,sibling_scope_rejected=True,dependency_root_order=True,permuted_batch_roots=True,cached_segment_base_restored=True)))
+ print(json.dumps(dict(correct=True,axioms=True,resume=True,bad_proofs=3,closure_batches=True,batch_resume=True,changed_input_rejected=True,root_file=True,covered_roots_skipped=True,empty_root_file_rejected=True,empty_umbrella=True,empty_umbrella_bad_proofs=3,default_empty_umbrella=True,stale_empty_plan_rejected=True,incompatible_empty_imports_not_accepted=True,checked_import_reuse=True,hidden_bad_dependency_rejected=True,changed_completed_dependency_rejected=True,live_changed_dependency_rejected=True,incompatible_cached_contexts=True,unused_completed_input_change_rejected=True,leaf_empty_aggregator_detected=True,sibling_scope_rejected=True,dependency_root_order=True,permuted_batch_roots=True,cached_segment_base_restored=True,authentic_cross_project_certificate_refused=True,optional_part_inventory_refused=True,receipt_lean_refused=True,child_abi_refused=True,disk_full_fails_closed=True)))
