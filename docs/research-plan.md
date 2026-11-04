@@ -1,6 +1,6 @@
 # ProofServe closure plan
 
-The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **W's usability gate completed and failed; the full run was not started.** The user's instruction applies: a failed gate means do not run.
+The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **W's usability gate completed and failed; the full run was not started.** The user's instruction applies: a failed gate means do not run. **Await the user's decision before any full-run restart, alternative protocol or new qualification.**
 
 ## Full-run usability gate
 
