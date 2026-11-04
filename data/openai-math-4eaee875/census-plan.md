@@ -1,6 +1,7 @@
 # Native compilation census: qualification first
 
-**Full census has not started; this gate never starts it automatically.**
+**Gate completed and failed; the full census remains unstarted.** The result
+is below; the gate never starts a census automatically.
 The 2026-11-04 instruction replaces the proposed E-first/P-later launch and all
 E/P conversion. All 163,097 source files are present. Precision sampling is
 permanently superseded (7/12 returned); all partial/original records are retained.
@@ -78,3 +79,119 @@ recorded own cgroup charge was only 2.06 GiB. It was not a node OOM.
 The new protocol drops that RSS cap. All failures/setup errors remain.
 The nealmcb report concerns a different revision and module set; its ~330 CPU
 hours extrapolate 26 modules rather than measuring pinned per-module CPU.
+
+## Actual qualification result — 2026-11-04
+
+**FAIL under the frozen cross-condition spread metric. Do not start the full
+census.** Measurement source commit:
+`2c901ec4f0bbf73b75b534bbc255fcc973aebe6f`.
+The controller ran 03:19:19–05:15:28 UTC (6,969.00 s), returned normally,
+retired all native children, removed its own cgroup, and released pcore.lock.
+No full-census process was launched. The initial E-first/j1 controller draft
+was never executed and is not this protocol.
+
+| Check | Observed | Interpretation |
+|---|---:|---|
+| Four conditions × 20 modules × 3 repeats | 240/240 successful | Complete foreground matrix |
+| Counter-on/off controls | 240/240 successful | Three paired controls/module/pool |
+| Real background compiles | 1,413/1,413 successful | Not census module costs |
+| Native/resource failures or kills | 0 | No failed-attempt cost imputed |
+| Four-condition instruction spread, median | 1.3312% | Exceeds 1% |
+| Four-condition instruction spread, P95 | 3.1498% | Exceeds 3% |
+| Active PMU running/enabled coverage | 100% in every measured row | No multiplex scaling |
+| Current olean/ilean/C bytes | All 1,893 attempts identical per module/kind | Direct byte comparison, not only hashes |
+| Historical original-sample bytes available | 17/20 modules, all three kinds equal | Three historical sets unavailable; not claimed checked |
+| Node minimum MemAvailable | 28.350 GiB | Above 8-GiB reserve |
+| Maximum own cgroup actual charge | 22.463 GiB | No RSS-sum admission; all memory event counters zero |
+| 22-concurrent-job samples | 3,057 | Median mean busy: P 98.90%, E 99.93% |
+
+For each module, first take the median total retired instructions in each of
+the four conditions, then compute max/min minus one. The reported median and
+P95 are across the 20 module spreads; P95 linearly interpolates index
+(n−1)×0.95. Twelve module spreads exceed 1%; one exceeds 3%. This is a
+descriptive purposeful subset, not a population confidence interval.
+
+Metric sensitivity is material: pooling absolute deviations of the other
+three condition medians relative only to P-quiet gives median 0.3988%, P95
+2.2380%. Those values meet the numerical thresholds under that different
+statistic. We retain both, rather than choosing the reference/statistic after
+seeing the result. Max/min tests invariance among all four conditions and is
+the conservative frozen-plan interpretation. The failed primary comparison
+is not changed into a pass.
+
+The largest exception is Transonic.Certificates.Barrier50: total instruction
+condition-median spread is 20.0772%, even though its three products match.
+Its user-mode spread is 0.4755%, kernel-mode spread 68.8188%. Across all
+20 modules the median user-mode spread is 0.01756%, versus 8.6162% for
+kernel-mode counts. Thus the split identifies variable kernel-mode work in
+the recorded totals; it does not identify a particular syscall/page-fault/
+scheduler path, nor imply a proof inconsistency. No new attribution run was
+added. Counter PMU types/events came from live sysfs (cpu_core type 4 and
+cpu_atom type 10, event 0xc0); raw counts and coverage are published.
+
+### CPU inflation and counter overhead
+
+| Descriptive statistic | P pool | E pool |
+|---|---:|---:|
+| Loaded/quiet CPU, median module ratio | 1.12821× | 1.25420× |
+| Loaded/quiet CPU, ratio of all foreground CPU sums | 1.10969× | 1.20515× |
+| Quiet foreground CPU sum (60 calls) | 724.713524 s | 1,367.001935 s |
+| Loaded foreground CPU sum (60 calls) | 804.206239 s | 1,647.444966 s |
+| Counter CPU overhead, median module paired median | 0.5274% | 0.2804% |
+| Counter wall overhead, same statistic | 0.1276% | 0.2497% |
+| P95 of module CPU-overhead medians | 1.9696% | 2.2190% |
+| Maximum module CPU-overhead median | 4.4679% | 15.2805% |
+
+CPU inflation is observed, not a correction factor. Some modules consume less
+CPU loaded (Barrier50: P 0.88139×, E 0.78804×); no guarantee of uniform inflation.
+P and E CPU are never converted. Overhead medians satisfy 1%, but these data
+do not establish a uniform <=1% bound for every module. They measure native
+wait4 CPU and launch-to-reap wall (including counter setup), not a separately
+isolated accounting of the controller's own CPU. Quiet means no additional
+W load; other explicitly permitted Workspaces were not paused or restricted.
+
+### Scope, departures and next choices
+
+The compiled definition is the original samples' -j8/LEAN_NUM_THREADS=8,
+no-M, olean/ilean/C definition. Only 20 original modules were rerun, not all
+42. Historical products missing for DihedralIntervals, OriginalBlock81 and
+KeySound82 cannot be certified by their past scalar costs; all current
+conditions/controls for those modules do agree directly with one another.
+A tiny pthread PMU ABI/inheritance setup control preceded the lease; its
+P-core portion used approximately 0.0418 CPU seconds without the gate lock.
+This was a preparation deviation, is retained, and is excluded from all Lean
+timing/overhead comparisons. The 480 Lean foreground/control calls and 1,413
+load calls were all inside the one exclusive pcore lease.
+
+The live post-run kernel is 7.0.0-42-generic, boot
+585778d2-4fc1-48f5-aa9d-01cb7301e944. Post-run environment observations are
+labelled as such, not backdated. This gate does not silently equate historical
+sample hardware/kernel conditions with current timing. All 20 pinned source
+content hashes still match, and retained historical bytes match where present.
+
+The full source archive is acquired, but source availability is not complete
+dependency readiness. The preserved initial readiness audit found 38 missing
+external import names affecting 7,754 modules; this gate uses 20 cached
+closures and does not resolve or misclassify those missing inputs as native
+failures. The initial readiness CSV predates acquisition; the separately
+published source-acquisition record confirms 163,097 source files present.
+
+No threshold, thread setting or admission rule was changed during this run.
+The default action is to stop here. Options for a later explicit decision:
+(1) keep the fixed -j8 protocol and report actual machine/condition-specific
+CPU, wall and raw instructions without claiming instruction invariance;
+(2) approve a different thread/compiler protocol and a separate qualification,
+preserving this failed gate; or (3) retain existing sample evidence and do not
+run a census. None is launched by this report.
+
+Small tables, immutable protocol, terminal record, environment and the byte
+comparison are under [measurement/census-gate/](measurement/census-gate/).
+All source hashes are provenance, not a download/install acceptance gate.
+Raw logs and compiler bytes remain on the existing PVC under
+/workspaces/.agent-state/gpu-smt-captures/workloads/census-gate-20261104/run-1.
+The analysis is self-review (自审), not an independent system-acceptance claim.
+
+The untracked obsolete full-controller source was preserved byte-for-byte at
+/workspaces/.agent-state/gpu-smt-captures/workloads/census-gate-20261104/obsolete-full-controller-draft-never-executed.py
+and removed from executable repository entry points. No historical tracked
+source, raw result or other author file was deleted.

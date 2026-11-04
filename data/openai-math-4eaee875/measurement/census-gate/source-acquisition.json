@@ -1,0 +1,17 @@
+{
+  "utc": "2026-11-04T01:15:41.074115+00:00",
+  "url": "https://codeload.github.com/openai/math/tar.gz/4eaee87548250b2682affda7d05d947c05554bae",
+  "counts": {
+    "seen": 163097,
+    "new_files": 149061,
+    "existing_byte_matches": 14036,
+    "new_bytes": 1515685741
+  },
+  "expected_files": 163097,
+  "complete": true,
+  "elapsed_s": 319.9064804949958,
+  "error": null,
+  "native_started": false,
+  "existing_files_overwritten": false,
+  "pvc_resized": false
+}

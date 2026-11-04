@@ -1,0 +1,134 @@
+[
+  {
+    "cpu": 0,
+    "threads": 1,
+    "returncode": 0,
+    "counts": {
+      "cpu_core_user": {
+        "instructions": 60126322,
+        "enabled_ns": 13411384,
+        "running_ns": 13411384,
+        "coverage": 1.0
+      },
+      "cpu_core_kernel": {
+        "instructions": 793610,
+        "enabled_ns": 13411384,
+        "running_ns": 13411384,
+        "coverage": 1.0
+      },
+      "cpu_atom_user": {
+        "instructions": 0,
+        "enabled_ns": 13402752,
+        "running_ns": 0,
+        "coverage": 0.0
+      },
+      "cpu_atom_kernel": {
+        "instructions": 0,
+        "enabled_ns": 13402752,
+        "running_ns": 0,
+        "coverage": 0.0
+      }
+    },
+    "user_s": 0.012653999999999999,
+    "system_s": 0.0019459999999999998
+  },
+  {
+    "cpu": 0,
+    "threads": 2,
+    "returncode": 0,
+    "counts": {
+      "cpu_core_user": {
+        "instructions": 120128461,
+        "enabled_ns": 26139341,
+        "running_ns": 26139341,
+        "coverage": 1.0
+      },
+      "cpu_core_kernel": {
+        "instructions": 1042256,
+        "enabled_ns": 26139341,
+        "running_ns": 26139341,
+        "coverage": 1.0
+      },
+      "cpu_atom_user": {
+        "instructions": 0,
+        "enabled_ns": 23917490,
+        "running_ns": 0,
+        "coverage": 0.0
+      },
+      "cpu_atom_kernel": {
+        "instructions": 0,
+        "enabled_ns": 23917490,
+        "running_ns": 0,
+        "coverage": 0.0
+      }
+    },
+    "user_s": 0.02719,
+    "system_s": 0.0
+  },
+  {
+    "cpu": 10,
+    "threads": 1,
+    "returncode": 0,
+    "counts": {
+      "cpu_core_user": {
+        "instructions": 0,
+        "enabled_ns": 25594775,
+        "running_ns": 0,
+        "coverage": 0.0
+      },
+      "cpu_core_kernel": {
+        "instructions": 0,
+        "enabled_ns": 25594775,
+        "running_ns": 0,
+        "coverage": 0.0
+      },
+      "cpu_atom_user": {
+        "instructions": 60126330,
+        "enabled_ns": 25613723,
+        "running_ns": 25613723,
+        "coverage": 1.0
+      },
+      "cpu_atom_kernel": {
+        "instructions": 901579,
+        "enabled_ns": 25613723,
+        "running_ns": 25613723,
+        "coverage": 1.0
+      }
+    },
+    "user_s": 0.025054999999999997,
+    "system_s": 0.001927
+  },
+  {
+    "cpu": 10,
+    "threads": 2,
+    "returncode": 0,
+    "counts": {
+      "cpu_core_user": {
+        "instructions": 0,
+        "enabled_ns": 49672117,
+        "running_ns": 0,
+        "coverage": 0.0
+      },
+      "cpu_core_kernel": {
+        "instructions": 0,
+        "enabled_ns": 49672117,
+        "running_ns": 0,
+        "coverage": 0.0
+      },
+      "cpu_atom_user": {
+        "instructions": 120128483,
+        "enabled_ns": 50862921,
+        "running_ns": 50862921,
+        "coverage": 1.0
+      },
+      "cpu_atom_kernel": {
+        "instructions": 1207986,
+        "enabled_ns": 50862921,
+        "running_ns": 50862921,
+        "coverage": 1.0
+      }
+    },
+    "user_s": 0.050448,
+    "system_s": 0.0019779999999999997
+  }
+]

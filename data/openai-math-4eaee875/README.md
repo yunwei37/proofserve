@@ -206,10 +206,12 @@ snapshot is separate from the live finite collector and does not imply it stoppe
 ## Complete-census qualification
 
 [census-plan.md](census-plan.md) freezes the 22-core, no-M, -j8 protocol and
-the four-condition instruction-count gate. The full 163,097-module census
-has not started. Neither the gate nor the retained obsolete controller draft
-can be taken as a completed measurement. Counter coverage, artifact parity,
-memory reserve, and instrumentation overhead require actual results.
+the completed four-condition instruction-count gate. Its 240 foreground and
+240 counter-control compilations all succeeded, but the instruction spread
+was 1.3312% median / 3.1498% P95, exceeding the 1% / 3% limits. The full
+163,097-module census remains unstarted. Small tables and actual byte parity
+are in [measurement/census-gate/](measurement/census-gate/). This is a failed
+protocol qualification, not full-library cost or product performance.
 
 The earlier six-module E-only pilot is preserved as methodology evidence.
 Its summed-RSS preemption does not establish an actual-charge memory failure;

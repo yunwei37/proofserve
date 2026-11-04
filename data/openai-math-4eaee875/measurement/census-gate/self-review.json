@@ -1,0 +1,16 @@
+{
+  "native_rows": 1893,
+  "unique_foreground_units": 240,
+  "unique_overhead_units": 240,
+  "all_native_statuses_complete": true,
+  "threads_8_all_rows": true,
+  "no_M_all_rows": true,
+  "affinity_matches_pool_all_rows": true,
+  "inactive_PMU_counts_zero": true,
+  "independent_median_and_P95_recalculation": true,
+  "all_artifacts_direct_bytes_compared": true,
+  "final_gate_pass": false,
+  "full_census_started": false,
+  "mathlib_current_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "review": "self-review / \u81ea\u5ba1"
+}

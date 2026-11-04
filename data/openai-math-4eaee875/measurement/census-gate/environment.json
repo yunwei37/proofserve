@@ -1,0 +1,32 @@
+{
+  "observed_after_run_utc": "2026-11-04T05:17:13.112938+00:00",
+  "kernel": {
+    "system": "Linux",
+    "node": "coder-81668d0b-bcba-4058-a2e6-473350357c52-5ff9c6487-6qph8",
+    "release": "7.0.0-42-generic",
+    "version": "#42-Ubuntu SMP PREEMPT_DYNAMIC Thu Oct 15 08:06:44 UTC 2026",
+    "machine": "x86_64",
+    "processor": ""
+  },
+  "boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944",
+  "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "toolchain_path": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+  "toolchain_binary_sha256_provenance": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "toolchain_stat": {
+    "bytes": 9024,
+    "mtime_ns": 1793350026881482244
+  },
+  "selected_sources_still_match": true,
+  "all_compiler_return_codes": [
+    0
+  ],
+  "all_cgroup_event_counters_zero": true,
+  "full_census_started": false,
+  "controller_retired": true,
+  "cgroup_retired": true,
+  "pcore_lease_released": true,
+  "actual_byte_comparison": true,
+  "historical_all_three_available_and_equal": 17,
+  "historical_missing": 3,
+  "notes": "Post-run observations are not backdated preflight measurements; a continuous controller/ledger spans the gate."
+}

@@ -1,0 +1,11 @@
+{
+  "utc": "2026-11-04T05:15:28.110816+00:00",
+  "stop": null,
+  "foreground": 240,
+  "load": 1413,
+  "overhead": 240,
+  "minimum_mem_available": 30440554496,
+  "maximum_cgroup_charge": 24119734272,
+  "elapsed_s": 6969.004453369998,
+  "full_census_started": false
+}

@@ -1,0 +1,902 @@
+{
+  "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "toolchain": {
+    "lean": "4.34.1",
+    "binary": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean"
+  },
+  "measurement_commit": "2c901ec4f0bbf73b75b534bbc255fcc973aebe6f",
+  "lean_binary": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+  "lean_options": [
+    "-DautoImplicit=false"
+  ],
+  "env": {
+    "PATH": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "TMPDIR": "/workspaces/.agent-state/gpu-smt-workloads/native-tmp",
+    "LEAN_PATH": "/workspaces/.agent-state/gpu-smt-workloads/rellich4341-oleans:/workspaces/.agent-state/gpu-smt-workloads/openai4341-oleans:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Cli/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/batteries/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Qq/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/aesop/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/importGraph/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/plausible/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean"
+  },
+  "cwd": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+  "modules": {
+    "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion": {
+      "module": "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/MeasureTheory/Falconer/Estimates/NearPinDeletion.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 2072,
+      "deps": [
+        "OAI.MeasureTheory.Falconer.Estimates.CellwisePairDeletion"
+      ],
+      "external": [
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metric"
+      ],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "c16c20dd53acc74482cf076a438e01c09cbef7719e78c88b2c2d1ac27cafbc7d",
+      "historical": {
+        "module": "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion",
+        "stratum": "0-50;1-10;0",
+        "population_modules": "25553",
+        "sample_size": "2",
+        "inclusion_probability": "7.826869643486087e-05",
+        "expansion_weight": "12776.5",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "0.8734569999999999",
+        "system_cpu_s": "0.331068",
+        "cpu_s": "1.2045249999999998",
+        "wall_s": "1.1474801721051335",
+        "source_bytes": "2072",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/00-noM"
+      }
+    },
+    "OAI.Analysis.Cotype.FiniteRankWalsh": {
+      "module": "OAI.Analysis.Cotype.FiniteRankWalsh",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Cotype/FiniteRankWalsh.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 3788,
+      "deps": [
+        "OAI.Analysis.Cotype.VectorWalsh"
+      ],
+      "external": [
+        "Mathlib.Analysis.Normed.Module.FiniteDimension"
+      ],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "dd062ef9142357927e6c43ff10f0a98656f108c568faca492f3ac1d0a1fb583a",
+      "historical": {
+        "module": "OAI.Analysis.Cotype.FiniteRankWalsh",
+        "stratum": "0-50;1-10;0",
+        "population_modules": "25553",
+        "sample_size": "2",
+        "inclusion_probability": "7.826869643486087e-05",
+        "expansion_weight": "12776.5",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "3.477365",
+        "system_cpu_s": "0.957753",
+        "cpu_s": "4.435118",
+        "wall_s": "3.9802733520045877",
+        "source_bytes": "3788",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/01-noM"
+      }
+    },
+    "OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative": {
+      "module": "OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/PDE/Weak/Elliptic/InteriorH1Derivative.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 4053,
+      "deps": [
+        "OAI.Analysis.PDE.Weak.Elliptic.H1CutoffDerivative",
+        "OAI.Analysis.PDE.Weak.Elliptic.InteriorH2",
+        "OAI.Analysis.PDE.Weak.Elliptic.SmoothGradient"
+      ],
+      "external": [],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "786c630ab16be6380c1e5b2e397a56e459cc0a9402563c8f5e3917aa016984af",
+      "historical": {
+        "module": "OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative",
+        "stratum": "0-50;11-100;0",
+        "population_modules": "45251",
+        "sample_size": "2",
+        "inclusion_probability": "4.4197918278049104e-05",
+        "expansion_weight": "22625.5",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "7.503246",
+        "system_cpu_s": "0.932657",
+        "cpu_s": "8.435903",
+        "wall_s": "8.419583400711417",
+        "source_bytes": "4053",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/05-noM"
+      }
+    },
+    "OAI.GroupTheory.PolycyclicRecognition.Analysis.TranslationCovering": {
+      "module": "OAI.GroupTheory.PolycyclicRecognition.Analysis.TranslationCovering",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/GroupTheory/PolycyclicRecognition/Analysis/TranslationCovering.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 5418,
+      "deps": [
+        "OAI.GroupTheory.PolycyclicRecognition.Algebra.TranslationLocalHomeomorph"
+      ],
+      "external": [
+        "Mathlib.Topology.Covering.Basic",
+        "Mathlib.Topology.Homotopy.Lifting"
+      ],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "156032b434f24045f3dc06f7a89e34c58aabe505175a28b56616ffd7c073d4e2",
+      "historical": {
+        "module": "OAI.GroupTheory.PolycyclicRecognition.Analysis.TranslationCovering",
+        "stratum": "50-90;1-10;0",
+        "population_modules": "16606",
+        "sample_size": "2",
+        "inclusion_probability": "0.00012043839576056847",
+        "expansion_weight": "8303.0",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "1.199899",
+        "system_cpu_s": "0.320307",
+        "cpu_s": "1.520206",
+        "wall_s": "1.3133002556860447",
+        "source_bytes": "5418",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/07-noM"
+      }
+    },
+    "OAI.Geometry.CylinderCovering.Radial.Assembly": {
+      "module": "OAI.Geometry.CylinderCovering.Radial.Assembly",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Geometry/CylinderCovering/Radial/Assembly.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 9878,
+      "deps": [
+        "OAI.Geometry.CylinderCovering.Radial.AreaConvergence",
+        "OAI.Geometry.CylinderCovering.Radial.Freezing",
+        "OAI.Geometry.CylinderCovering.Radial.Integral",
+        "OAI.Geometry.CylinderCovering.Radial.Intercept",
+        "OAI.Geometry.CylinderCovering.Radial.Projection",
+        "OAI.Geometry.CylinderCovering.Radial.Riemann",
+        "OAI.Geometry.CylinderCovering.Radial.SweepDefinitions"
+      ],
+      "external": [],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "ef002bc505b8a569b9cea0c8d489395c7577636ee89b8c15609f8ce2e46d8b44",
+      "historical": {
+        "module": "OAI.Geometry.CylinderCovering.Radial.Assembly",
+        "stratum": "50-90;1-10;0",
+        "population_modules": "16606",
+        "sample_size": "2",
+        "inclusion_probability": "0.00012043839576056847",
+        "expansion_weight": "8303.0",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "4.177294",
+        "system_cpu_s": "0.9279529999999999",
+        "cpu_s": "5.105246999999999",
+        "wall_s": "4.242033022455871",
+        "source_bytes": "9878",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/08-noM"
+      }
+    },
+    "OAI.Analysis.Conductivity.Variational.VariationalDN": {
+      "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Conductivity/Variational/VariationalDN.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 15702,
+      "deps": [
+        "OAI.Analysis.Conductivity.Model"
+      ],
+      "external": [
+        "Mathlib"
+      ],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "3dc353fb07249b9da1cd02f0af4da984933e7ba674f2a0d5226084ce845ff814",
+      "historical": {
+        "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+        "stratum": "90-99;1-10;0",
+        "population_modules": "3670",
+        "sample_size": "2",
+        "inclusion_probability": "0.0005449591280653951",
+        "expansion_weight": "1835.0",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "7.848932",
+        "system_cpu_s": "0.9538139999999999",
+        "cpu_s": "8.802745999999999",
+        "wall_s": "6.718132611364126",
+        "source_bytes": "15702",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/14-noM"
+      }
+    },
+    "OAI.Computability.Logspace.EstimatorBounds": {
+      "module": "OAI.Computability.Logspace.EstimatorBounds",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Computability/Logspace/EstimatorBounds.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 106587,
+      "deps": [
+        "OAI.Computability.Logspace.AffineSampling",
+        "OAI.Computability.Logspace.CompressionBounds",
+        "OAI.Computability.Logspace.ProbabilityAtoms"
+      ],
+      "external": [],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "47e08888ebd529208ae8ac65a5b0c8687734eef5fe3762f2884af2d108716030",
+      "historical": {
+        "module": "OAI.Computability.Logspace.EstimatorBounds",
+        "stratum": "99-100;1-10;0",
+        "population_modules": "106",
+        "sample_size": "2",
+        "inclusion_probability": "0.018867924528301886",
+        "expansion_weight": "53.0",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "27.645537",
+        "system_cpu_s": "1.209304",
+        "cpu_s": "28.854841",
+        "wall_s": "11.530679570510983",
+        "source_bytes": "106587",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/21-noM"
+      }
+    },
+    "OAI.Probability.TraceReconstruction.Binomial": {
+      "module": "OAI.Probability.TraceReconstruction.Binomial",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Probability/TraceReconstruction/Binomial.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 99800,
+      "deps": [],
+      "external": [
+        "Mathlib"
+      ],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "f6da7b04c2cea59c7d95533795cc35a898bd433b3369bb429d644fe02020bedf",
+      "historical": {
+        "module": "OAI.Probability.TraceReconstruction.Binomial",
+        "stratum": "99-100;1-10;0",
+        "population_modules": "106",
+        "sample_size": "2",
+        "inclusion_probability": "0.018867924528301886",
+        "expansion_weight": "53.0",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "39.512629",
+        "system_cpu_s": "1.279023",
+        "cpu_s": "40.791652",
+        "wall_s": "14.051711135543883",
+        "source_bytes": "99800",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/22-noM"
+      }
+    },
+    "OAI.Combinatorics.Ramsey.CycleClique.Construction.CoverageK14": {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CoverageK14",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Combinatorics/Ramsey/CycleClique/Construction/CoverageK14.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 625596,
+      "deps": [
+        "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificateCoverage",
+        "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK14"
+      ],
+      "external": [],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "f06ca4367f037faa467a222fa742d7466098d2b8a196e108d8dbbc3163370bda",
+      "historical": {
+        "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CoverageK14",
+        "stratum": "99-100;11-100;0",
+        "population_modules": "98",
+        "sample_size": "2",
+        "inclusion_probability": "0.02040816326530612",
+        "expansion_weight": "49.0",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "37.492481",
+        "system_cpu_s": "0.8059449999999999",
+        "cpu_s": "38.298426",
+        "wall_s": "10.870525809004903",
+        "source_bytes": "625596",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/30-noM"
+      }
+    },
+    "OAI.RepresentationTheory.KazhdanLusztig.DihedralIntervals": {
+      "module": "OAI.RepresentationTheory.KazhdanLusztig.DihedralIntervals",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/RepresentationTheory/KazhdanLusztig/DihedralIntervals.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 94727,
+      "deps": [
+        "OAI.RepresentationTheory.KazhdanLusztig.ReflectionOrders"
+      ],
+      "external": [],
+      "decide_plus_kernel": 0,
+      "regime": "ordinary_mathematics",
+      "source_sha256": "f0cccb306e8d54baa2a1e0b9d421cf47c42545151e48f3e1fecaf087bc081a2a",
+      "historical": {
+        "module": "OAI.RepresentationTheory.KazhdanLusztig.DihedralIntervals",
+        "stratum": "99-100;11-100;0",
+        "population_modules": "98",
+        "sample_size": "2",
+        "inclusion_probability": "0.02040816326530612",
+        "expansion_weight": "49.0",
+        "regime_proxy": "ordinary_mathematics",
+        "status": "completed_cost",
+        "user_cpu_s": "19.032382",
+        "system_cpu_s": "1.121788",
+        "cpu_s": "20.154169999999997",
+        "wall_s": "8.78414277266711",
+        "source_bytes": "94727",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-Intrinsic77-KL1200-prepared-20261102/runs/83-noM"
+      }
+    },
+    "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17": {
+      "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 1438,
+      "deps": [
+        "OAI.Analysis.Laughlin.FourBody.RowCompute"
+      ],
+      "external": [],
+      "decide_plus_kernel": 7,
+      "regime": "computation_certificate",
+      "source_sha256": "e5529644a1ae32e3862437199cc1f2022350db6081345b8f722de3226358a0f2",
+      "historical": {
+        "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+        "stratum": "0-50;1-10;1",
+        "population_modules": "1040",
+        "sample_size": "2",
+        "inclusion_probability": "0.0019230769230769232",
+        "expansion_weight": "520.0",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "1.9646759999999999",
+        "system_cpu_s": "0.21117999999999998",
+        "cpu_s": "2.175856",
+        "wall_s": "2.129986684769392",
+        "source_bytes": "1438",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/02-noM"
+      }
+    },
+    "OAI.Analysis.Laughlin.FiniteFlux.Row0705207": {
+      "module": "OAI.Analysis.Laughlin.FiniteFlux.Row0705207",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Laughlin/FiniteFlux/Row0705207.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 362,
+      "deps": [
+        "OAI.Analysis.Laughlin.FiniteFlux.Row072",
+        "OAI.Analysis.Laughlin.FourBody.Symmetry"
+      ],
+      "external": [],
+      "decide_plus_kernel": 1,
+      "regime": "computation_certificate",
+      "source_sha256": "f25941ae66341bedec3a1d778961c77a5a643d93e53c8d0fef8a974ced789768",
+      "historical": {
+        "module": "OAI.Analysis.Laughlin.FiniteFlux.Row0705207",
+        "stratum": "0-50;1-10;1",
+        "population_modules": "1040",
+        "sample_size": "2",
+        "inclusion_probability": "0.0019230769230769232",
+        "expansion_weight": "520.0",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "0.750282",
+        "system_cpu_s": "0.319397",
+        "cpu_s": "1.069679",
+        "wall_s": "1.0764136584475636",
+        "source_bytes": "362",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/03-noM"
+      }
+    },
+    "OAI.Analysis.MutuallyUnbiased.MixedTargets.OriginalBlock81": {
+      "module": "OAI.Analysis.MutuallyUnbiased.MixedTargets.OriginalBlock81",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/MutuallyUnbiased/MixedTargets/OriginalBlock81.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 3355,
+      "deps": [
+        "OAI.Analysis.MutuallyUnbiased.MixedTargets.KeyTable"
+      ],
+      "external": [],
+      "decide_plus_kernel": 1,
+      "regime": "computation_certificate",
+      "source_sha256": "e805f70e286ef70d3f6647fb545b770cace99ec2074bca17619a8ddf325f7992",
+      "historical": {
+        "module": "OAI.Analysis.MutuallyUnbiased.MixedTargets.OriginalBlock81",
+        "stratum": "0-50;11-100;1",
+        "population_modules": "577",
+        "sample_size": "2",
+        "inclusion_probability": "0.0034662045060658577",
+        "expansion_weight": "288.5",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "2.691371",
+        "system_cpu_s": "0.9524849999999999",
+        "cpu_s": "3.643856",
+        "wall_s": "3.58646288048476",
+        "source_bytes": "3355",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-original-c-suffix48-prepared-20261101/runs/45-noM"
+      }
+    },
+    "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Zeros30": {
+      "module": "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Zeros30",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/MutuallyUnbiased/MixedSemantics/Zeros30.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 1873,
+      "deps": [
+        "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Nodes30",
+        "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Permutations",
+        "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Rules"
+      ],
+      "external": [],
+      "decide_plus_kernel": 12,
+      "regime": "computation_certificate",
+      "source_sha256": "05bad73efff4934d4c1184c57d43b9cb1c956790f107eb92627c4788bea92328",
+      "historical": {
+        "module": "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Zeros30",
+        "stratum": "0-50;11-100;1",
+        "population_modules": "577",
+        "sample_size": "2",
+        "inclusion_probability": "0.0034662045060658577",
+        "expansion_weight": "288.5",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "2.357684",
+        "system_cpu_s": "1.056547",
+        "cpu_s": "3.414231",
+        "wall_s": "3.3776373360306025",
+        "source_bytes": "1873",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/06-noM"
+      }
+    },
+    "OAI.Analysis.MutuallyUnbiased.TaoCertificate.Rows45": {
+      "module": "OAI.Analysis.MutuallyUnbiased.TaoCertificate.Rows45",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/MutuallyUnbiased/TaoCertificate/Rows45.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 11778,
+      "deps": [
+        "OAI.Analysis.MutuallyUnbiased.Tao.TaoSparse"
+      ],
+      "external": [],
+      "decide_plus_kernel": 24,
+      "regime": "computation_certificate",
+      "source_sha256": "acbeff1caec3c981eef6da5adfde1e517a8a65c63f27b102e3cd374f5ef83a47",
+      "historical": {
+        "module": "OAI.Analysis.MutuallyUnbiased.TaoCertificate.Rows45",
+        "stratum": "50-90;1-10;1",
+        "population_modules": "345",
+        "sample_size": "2",
+        "inclusion_probability": "0.005797101449275362",
+        "expansion_weight": "172.5",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "7.894706",
+        "system_cpu_s": "1.082645",
+        "cpu_s": "8.977351",
+        "wall_s": "8.108260300941765",
+        "source_bytes": "11778",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/10-noM"
+      }
+    },
+    "OAI.Analysis.MutuallyUnbiased.GramAssembly.Block0Data": {
+      "module": "OAI.Analysis.MutuallyUnbiased.GramAssembly.Block0Data",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/MutuallyUnbiased/GramAssembly/Block0Data.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 11594,
+      "deps": [
+        "OAI.Analysis.MutuallyUnbiased.Certificate.IntegerMerge",
+        "OAI.Analysis.MutuallyUnbiased.GramAssembly.Coordinates",
+        "OAI.Analysis.MutuallyUnbiased.GramData.Block0"
+      ],
+      "external": [],
+      "decide_plus_kernel": 5,
+      "regime": "computation_certificate",
+      "source_sha256": "9f52e9f5e36e08252da31b52f420a5c3a2287e085fb9de7636ac09bbc48c7457",
+      "historical": {
+        "module": "OAI.Analysis.MutuallyUnbiased.GramAssembly.Block0Data",
+        "stratum": "50-90;11-100;1",
+        "population_modules": "738",
+        "sample_size": "2",
+        "inclusion_probability": "0.0027100271002710027",
+        "expansion_weight": "369.0",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "3.770793",
+        "system_cpu_s": "0.9537289999999999",
+        "cpu_s": "4.7245219999999994",
+        "wall_s": "4.245262390002608",
+        "source_bytes": "11594",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/12-noM"
+      }
+    },
+    "OAI.Analysis.PlanarPacking.Certificate.WUCert48": {
+      "module": "OAI.Analysis.PlanarPacking.Certificate.WUCert48",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/PlanarPacking/Certificate/WUCert48.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 8739,
+      "deps": [
+        "OAI.Analysis.PlanarPacking.Certificate.UMoments48",
+        "OAI.Analysis.PlanarPacking.Certificate.WCertificates"
+      ],
+      "external": [],
+      "decide_plus_kernel": 14,
+      "regime": "computation_certificate",
+      "source_sha256": "5e96b3a94248f912fbff74991b25cfe4567e1b11e76175f6bb67374d2cd8440f",
+      "historical": {
+        "module": "OAI.Analysis.PlanarPacking.Certificate.WUCert48",
+        "stratum": "50-90;11-100;1",
+        "population_modules": "738",
+        "sample_size": "2",
+        "inclusion_probability": "0.0027100271002710027",
+        "expansion_weight": "369.0",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "2.157961",
+        "system_cpu_s": "0.504991",
+        "cpu_s": "2.6629519999999998",
+        "wall_s": "2.1597380256280303",
+        "source_bytes": "8739",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/13-noM"
+      }
+    },
+    "OAI.Analysis.MutuallyUnbiased.PairSemantics.Canonical240": {
+      "module": "OAI.Analysis.MutuallyUnbiased.PairSemantics.Canonical240",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/MutuallyUnbiased/PairSemantics/Canonical240.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 40391,
+      "deps": [
+        "OAI.Analysis.MutuallyUnbiased.PairSemantics.Nodes0",
+        "OAI.Analysis.MutuallyUnbiased.PairSemantics.Nodes1",
+        "OAI.Analysis.MutuallyUnbiased.PairSemantics.Nodes20",
+        "OAI.Analysis.MutuallyUnbiased.PairSemantics.Nodes3",
+        "OAI.Analysis.MutuallyUnbiased.PairSemantics.Permutations"
+      ],
+      "external": [],
+      "decide_plus_kernel": 114,
+      "regime": "computation_certificate",
+      "source_sha256": "eb280eae6ed37e27c1e33b2604943a92a6ad81128abc1f9f6bc8f6794eb73938",
+      "historical": {
+        "module": "OAI.Analysis.MutuallyUnbiased.PairSemantics.Canonical240",
+        "stratum": "90-99;1-10;1",
+        "population_modules": "464",
+        "sample_size": "2",
+        "inclusion_probability": "0.004310344827586207",
+        "expansion_weight": "232.0",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "10.4452",
+        "system_cpu_s": "1.3228900000000001",
+        "cpu_s": "11.76809",
+        "wall_s": "9.667249529622495",
+        "source_bytes": "40391",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/16-noM"
+      }
+    },
+    "OAI.Analysis.MutuallyUnbiased.MixedTargets.KeySound82": {
+      "module": "OAI.Analysis.MutuallyUnbiased.MixedTargets.KeySound82",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/MutuallyUnbiased/MixedTargets/KeySound82.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 55523,
+      "deps": [
+        "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical332",
+        "OAI.Analysis.MutuallyUnbiased.MixedTargets.Keys82"
+      ],
+      "external": [],
+      "decide_plus_kernel": 128,
+      "regime": "computation_certificate",
+      "source_sha256": "e253dd2f14b11cd43a63a034ee13bbfec726abfa77cca76b0c0e0b6711f853d4",
+      "historical": {
+        "module": "OAI.Analysis.MutuallyUnbiased.MixedTargets.KeySound82",
+        "stratum": "90-99;11-100;1",
+        "population_modules": "1295",
+        "sample_size": "2",
+        "inclusion_probability": "0.0015444015444015444",
+        "expansion_weight": "647.5",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "24.817927",
+        "system_cpu_s": "1.5011",
+        "cpu_s": "26.319027000000002",
+        "wall_s": "23.28553642053157",
+        "source_bytes": "55523",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-original-c-suffix48-prepared-20261101/runs/47-noM"
+      }
+    },
+    "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50": {
+      "module": "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50",
+      "source": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/MathematicalPhysics/Transonic/Certificates/Barrier50.lean",
+      "root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "bytes": 202735,
+      "deps": [
+        "OAI.MathematicalPhysics.Transonic.Certificates.BarrierData50"
+      ],
+      "external": [],
+      "decide_plus_kernel": 641,
+      "regime": "computation_certificate",
+      "source_sha256": "af7f98ed227c639ec41109111ccd88abefa3e4ce64768be313e43264d6404105",
+      "historical": {
+        "module": "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50",
+        "stratum": "99-100;11-100;1",
+        "population_modules": "1164",
+        "sample_size": "2",
+        "inclusion_probability": "0.001718213058419244",
+        "expansion_weight": "582.0",
+        "regime_proxy": "computation_certificate",
+        "status": "completed_cost",
+        "user_cpu_s": "13.411769",
+        "system_cpu_s": "8.595043",
+        "cpu_s": "22.006812",
+        "wall_s": "6.793834067881107",
+        "source_bytes": "202735",
+        "memory_option_MiB": "0",
+        "threads": "8",
+        "pcore_lock": "True",
+        "source_exact": "True",
+        "native_retired": "True",
+        "cgroup_retired": "True",
+        "source_reference": "openai4341-noM-standard-a-20261031/runs/25-noM"
+      }
+    }
+  },
+  "load_modules": [
+    "OAI.Computability.Logspace.EstimatorBounds",
+    "OAI.Probability.TraceReconstruction.Binomial",
+    "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50"
+  ],
+  "threads": 8,
+  "workers": {
+    "P": 8,
+    "E": 14
+  },
+  "pool": {
+    "P": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "E": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "repetitions": 3,
+  "minimum_available_gib": 8,
+  "thresholds": {
+    "median_deviation": 0.01,
+    "p95_deviation": 0.03,
+    "counter_overhead": 0.01,
+    "failures": 0,
+    "artifact_mismatches": 0
+  },
+  "scope": "qualification only; no full census authorized by passing this gate",
+  "historical_products": {
+    "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/00/NearPinDeletion.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/00/NearPinDeletion.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/00/NearPinDeletion.c"
+    },
+    "OAI.Analysis.Cotype.FiniteRankWalsh": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/01/FiniteRankWalsh.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/01/FiniteRankWalsh.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/01/FiniteRankWalsh.c"
+    },
+    "OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/05/InteriorH1Derivative.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/05/InteriorH1Derivative.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/05/InteriorH1Derivative.c"
+    },
+    "OAI.GroupTheory.PolycyclicRecognition.Analysis.TranslationCovering": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/07/TranslationCovering.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/07/TranslationCovering.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/07/TranslationCovering.c"
+    },
+    "OAI.Geometry.CylinderCovering.Radial.Assembly": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/08/Assembly.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/08/Assembly.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/08/Assembly.c"
+    },
+    "OAI.Analysis.Conductivity.Variational.VariationalDN": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/14/VariationalDN.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/14/VariationalDN.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/14/VariationalDN.c"
+    },
+    "OAI.Computability.Logspace.EstimatorBounds": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/21/EstimatorBounds.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/21/EstimatorBounds.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/21/EstimatorBounds.c"
+    },
+    "OAI.Probability.TraceReconstruction.Binomial": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/22/Binomial.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/22/Binomial.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/22/Binomial.c"
+    },
+    "OAI.Combinatorics.Ramsey.CycleClique.Construction.CoverageK14": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/30/CoverageK14.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/30/CoverageK14.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/30/CoverageK14.c"
+    },
+    "OAI.RepresentationTheory.KazhdanLusztig.DihedralIntervals": {
+      ".olean": null,
+      ".ilean": null,
+      ".c": null
+    },
+    "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/02/ComputeRow1115Batch17.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/02/ComputeRow1115Batch17.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/02/ComputeRow1115Batch17.c"
+    },
+    "OAI.Analysis.Laughlin.FiniteFlux.Row0705207": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/03/Row0705207.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/03/Row0705207.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/03/Row0705207.c"
+    },
+    "OAI.Analysis.MutuallyUnbiased.MixedTargets.OriginalBlock81": {
+      ".olean": null,
+      ".ilean": null,
+      ".c": null
+    },
+    "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Zeros30": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/06/Zeros30.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/06/Zeros30.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/06/Zeros30.c"
+    },
+    "OAI.Analysis.MutuallyUnbiased.TaoCertificate.Rows45": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/10/Rows45.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/10/Rows45.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/10/Rows45.c"
+    },
+    "OAI.Analysis.MutuallyUnbiased.GramAssembly.Block0Data": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/12/Block0Data.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/12/Block0Data.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/12/Block0Data.c"
+    },
+    "OAI.Analysis.PlanarPacking.Certificate.WUCert48": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/13/WUCert48.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/13/WUCert48.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/13/WUCert48.c"
+    },
+    "OAI.Analysis.MutuallyUnbiased.PairSemantics.Canonical240": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/16/Canonical240.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/16/Canonical240.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/16/Canonical240.c"
+    },
+    "OAI.Analysis.MutuallyUnbiased.MixedTargets.KeySound82": {
+      ".olean": null,
+      ".ilean": null,
+      ".c": null
+    },
+    "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50": {
+      ".olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/25/Barrier50.olean",
+      ".ilean": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/25/Barrier50.ilean",
+      ".c": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/25/Barrier50.c"
+    }
+  }
+}
