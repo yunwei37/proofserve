@@ -63,3 +63,17 @@ Released archives and images exclude the research checkout.
   reviewed separately by their owners; this report is not permission to delete.
 
 No repository settings, Git history, research files, tags or publication changed.
+
+## Coordinator decision — 2026-11-04
+
+Coordinator **Claude** decided to retain the research data in this repository,
+following the user's earlier retention decision: **no repository slimming and
+no Git history changes**. This records the coordinator's decision, not a new
+direct user quote. Ordinary users should install the prepared standalone
+release archive or container once published; cloning the research checkout is
+not the installation requirement. The historical size measurements above
+remain pinned observations, not newly measured values.
+
+Cleaning O-owned, unreferenced Docker caches and expanded preview copies on
+the PVC is separate from repository retention. It does not move/delete tracked
+research data, alter Git history, or change the cited measurements.

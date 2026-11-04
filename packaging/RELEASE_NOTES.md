@@ -3,6 +3,11 @@
 Scope: independent Lean project checking and audit. The existing Kimina
 service remains available; no service feature was added in this closeout.
 
+**Release freeze is pending checker review repair and requalification.** The
+qualification results below identify older source pins. They are retained
+history, not a claim that the current checker or a future archive has passed.
+See [current checker boundary](INTERFACES.md#current-checker-review-and-release-boundary).
+
 ## Added
 
 - Project check/audit CLI entrypoints that preserve backend receipts,
@@ -17,7 +22,7 @@ service remains available; no service feature was added in this closeout.
 The former candidate JSONL check command is now batch. proofserve check PROJECT
 means independent project checking. HTTP /check is unchanged.
 
-## Qualification
+## Historical qualification (not current freeze acceptance)
 
 Passed: real954665072-byte archive assembly, extraction into an independent
 installation prefix, project check/audit and three malformed-proof rejections.
@@ -117,3 +122,31 @@ within a 10,753-module native closure. Two bounded preview interruptions remain
 recorded; complete end-to-end AI cost is unknown. Final timing still requires
 fresh checkpoints, committed checker freeze and a quiet evaluation machine.
 The current archive records dirty preview inputs, not an immutable final release.
+
+## Checker review update — 2026-11-04
+
+The code-only e0c92d51 review led to reproduced defects and repairs, documented
+in [e0-review-repair](../checker/results/e0-review-repair/README.md).
+Expanded CI executed the 90-command runner. A fresh repaired retained frame
+accepted 14,721 SubexponentialSAT closure modules and 15 axioms; comparison
+covers 14,401 available module-local references, with 320 still unavailable.
+These are correctness/preview observations, not final release timing.
+
+The second [2628d727 review](checker-review-2628d727.md) remains open. Its unsafe
+duplicate and retained-theorem-body cases, IR policy, partial-receipt behavior
+and discovery/resume issues require M's actual reproduction/repair evidence.
+O has not tested those proposed cases in this cleanup step. The
+[interface disclosure and pending list](INTERFACES.md#current-checker-review-and-release-boundary)
+separate confirmed earlier behavior from code-only hypotheses.
+
+Users should expect conservative refusal of explicit reduceBool/reduceNat
+references, even when a statement merely mentions them; ordinary native_decide
+and bv_decide are not thereby excluded. Incomplete required module parts fail
+explicitly. Official default and --fresh are different checking procedures on
+some supplied artifacts; --official is not a guaranteed IR-refusal workaround.
+Acceptance assumes protected local checkpoint state and stable compiled inputs.
+
+After M's checker freeze: rebuild and relocate the archive, rebuild/test the
+container, rerun installed-form external-project and correctness acceptance,
+then collect final quiet-machine system numbers. Existing archive/image passes
+must not be relabelled with the new pin. No tag or public release has been made.

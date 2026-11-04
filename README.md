@@ -4,6 +4,10 @@
 proof terms with the original Lean kernel, using parallel workers and resumable
 local checkpoints. Audit what the project builds and what its receipt covers.
 
+**Pre-release: checker correctness review is still open.** Earlier bundle and
+container controls passed on older checker pins; they do not qualify the current
+checker. See [current review status and limitations](packaging/INTERFACES.md#current-checker-review-and-release-boundary).
+
 The prepared Linux bundle includes the matching Lean 4.34.1 SDK, checker and
 audit tool. No Rust compiler, repository clone or Workspace path is required.
 Use Python 3.11+ and an already-built Lake project declaring that Lean version:
@@ -89,8 +93,10 @@ docker run --rm -v "$PWD":/project proofserve:0.1.0 audit /project --json -
 
 These commands use a locally loaded prepared image; no public registry image
 is claimed before publication. Builders can use docker build -t proofserve:0.1.0 .
-Full image qualification passed onadf816ae: Mathlib service imports and
+Historical image qualification passed on adf816ae: Mathlib service imports and
 network-disabled installed-form project controls. [Evidence](packaging/qualification-container.json).
+That older image does not include or qualify the current checker repairs; the
+archive and container must be rebuilt and qualified after the checker is frozen.
 Earlier service-only image failures remain
 in [historical qualification](docs/releases/0.1.0.md).
 
@@ -153,10 +159,17 @@ line; the Rust launcher forwards the options and receipt unchanged:
     proofserve check /path/to/project --root-file roots.txt --closure-roots 500
 
 The closure-roots limit bounds requested roots per independent closure batch,
-not CPU, memory, declaration count or a proof-search budget. Each new batch checks
-its complete import closure; shared dependencies can be checked repeatedly.
-Receipts deduplicate accepted modules and axioms but CPU includes repeated work.
-Local input-validated batch certificates allow resume and remain trusted local
-state; they are not portable adversarial certificates. An unfinished batch or a
-changed input is not a complete verification. See checker/docs/receipt-schema.md
-for v1 types, context_strategy, batches and the distinct cumulative CPU field.
+not CPU, memory, declaration count or a proof-search budget. The current backend
+can reuse previously checked imports across batches using trusted local
+certificates and matching input identities; reused proof bodies are not replayed.
+--replay-shared-imports requests repeated closure checking. Acceptance and axioms
+are deduplicated; entry counts and cumulative CPU can include historical work
+and repeated imports. This is not a cryptographic or portable proof certificate.
+An unfinished batch or changed input is not complete verification.
+
+Explicit Lean.reduceBool / Lean.reduceNat references can currently be refused
+even without an actual evaluation. Incomplete module-system artifact parts are
+also refused; official default and --fresh can differ on such inputs. No blanket
+equivalence with both official modes is promised. See the
+[current review boundary](packaging/INTERFACES.md#current-checker-review-and-release-boundary)
+and [receipt schema](checker/docs/receipt-schema.md) before using receipts.
