@@ -242,7 +242,10 @@ the union of input bytes are checked again before final publication.
 
 Certificate reuse additionally trusts editable local metadata. A person who
 manually edits certificate contents can invent accepted modules or remove
-reported axioms. Ordinary noncryptographic hashes do not prevent this.
+reported axioms. Artifact identity uses Lean's deterministic 64-bit
+noncryptographic hash of file bytes. It detects ordinary file changes but
+cannot resist intentionally constructed hash collisions. These hashes also
+do not prevent manual certificate forgery.
 Certificates must be protected as local trusted state; they are not proof
 objects suitable for accepting from an untrusted sender. The receipt's
 trusted_import_basis states this limitation even on a resumed invocation.
@@ -261,5 +264,8 @@ make a build that changes concurrently supported.
 The 14,721-module result published with native source 2df1d9d7 predates these
 fixes. O's independent review found two false-acceptance cases in that reuse
 logic: an added valid module part with a bad proof, and an authentic certificate
-copied from a different project. That historical run has not been repeated on
-the fixed binary and is not final correctness or performance evidence.
+copied from a different project. That historical qualification remains
+superseded. A [fresh e0c92d51 replay](../results/certificate-reuse-fix/subexp-fresh-e0c92d51/README.md)
+has now accepted the retained 14,721-module frame from a new checkpoint
+directory. It is development qualification, not final performance evidence or
+an independent review of the repaired code.

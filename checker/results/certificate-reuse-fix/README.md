@@ -110,13 +110,23 @@ it must not be read as the commit of the repaired binary.
 
 ## Outstanding
 
-O's independent review concerns the old commit. This repair's result inspection
-is 自审; the coordinator still needs to review it. The checker has not been
-frozen. The prior SubexponentialSAT 14,721-module acceptance was obtained with
-the defective certificate logic and is explicitly superseded as qualification.
-Its raw data remain intact. A fresh replay on the repaired binary is still
-required before final use. No full-corpus check, final matrix, service change,
-or external publication was started.
+O's independent review concerns the old commit. The coordinator (Claude)
+subsequently read e0c92d51's Main.lean diff, cases.csv, summary.json and runner
+adaptation diff and accepted the repair direction. That reading added no
+adversarial tests and is not an independent review. The repaired version has
+not had an independent review: O's session was stopped by the model provider's
+content filter. The implementation lane's own result inspection is 自审.
+The checker has not been frozen.
+
+The prior SubexponentialSAT 14,721-module acceptance used the defective
+certificate logic and remains superseded as qualification. Its raw data are
+intact. The [fresh e0c92d51 replay](subexp-fresh-e0c92d51/README.md) completed
+14,721 accepted modules, zero rejections and the same 15 declared axioms, using
+a new checkpoint directory on E17–23 with two workers. The sampled process-tree
+RSS peak was 26.113 GiB. Acceptance matches O's full stream and all 14,401
+available module-local references; 320 have no module-local reference.
+This is a preview, not final timing. Independent review and release freeze
+remain pending. No full-corpus check or final matrix was started.
 
 Raw data and the exact qualified binary remain at:
 /workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104.

@@ -1,0 +1,4 @@
+reference,reference_modules,compared_modules,acceptance_differences,outside_reference,axiom_comparison
+previous-defective-checker,14721,14721,0,0,equal
+O-stream-30-segments,14721,14721,0,0,not recorded
+O-partial-module-local-reference,14401,14401,0,320,not recorded

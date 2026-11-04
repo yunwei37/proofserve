@@ -1,0 +1,29 @@
+{
+  "commit": "e0c92d51ab0faf24f1c7ac64323d5ea2f2e4575d",
+  "native_source_blobs": {
+    "checker/Main.lean": "af12e23452cebac32826ea34ab266d99b4d889a1",
+    "checker/c/runtime.c": "540b3d41597593dbdd63715a2d64cb5e10cd8ede",
+    "checker/lakefile.lean": "3337a6c21f34e0dd9b94cdb549f0f2a9ff4a0dfb",
+    "checker/lean-toolchain": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+    "checker/ProofServe/Core.lean": "0e8b84dbfa336448a592a32625273a23b7355f93",
+    "checker/ProofServe/ModulePlan.lean": "2f2fc53f850924ba1901b262e74dfefae1d84dd6",
+    "checker/ProofServe/Stream.lean": "49528566941216886ccedd1376de9f3417737d73"
+  },
+  "qualified_binary_origin": "/workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104/proofserve-check-fixed",
+  "fresh_checkpoint": true,
+  "release_frozen": false,
+  "roots": 3977,
+  "expected_frame": 14721,
+  "affinity": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "workers": 2,
+  "performance_eligible": false,
+  "started_at": "2026-11-04T11:47:36.442512+00:00"
+}

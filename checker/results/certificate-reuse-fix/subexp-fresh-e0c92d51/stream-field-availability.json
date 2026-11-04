@@ -1,0 +1,32 @@
+{
+  "stream_rows": 30,
+  "available_event_fields": [
+    "aliased_constant_entries",
+    "constants",
+    "context",
+    "event",
+    "fallback_reason",
+    "imports",
+    "mode",
+    "module",
+    "module_local_fallbacks",
+    "modules",
+    "retained_regions",
+    "skipped_unsafe_partial",
+    "snapshot",
+    "unique_shared_kernel_declarations"
+  ],
+  "axiom_fields_recorded": false,
+  "terminal_events": [
+    {
+      "constants": 913323,
+      "event": "complete",
+      "mode": "audit",
+      "module_local_fallbacks": 64,
+      "modules": 14721,
+      "retained_regions": 250,
+      "skipped_unsafe_partial": 5318,
+      "unique_shared_kernel_declarations": 905617
+    }
+  ]
+}

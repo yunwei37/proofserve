@@ -2,9 +2,10 @@
 
 > **Superseded correctness qualification:** O's review of 2df1d9d7 found false
 > acceptance in certificate reuse without modifying certificate contents.
-> The historical 14,721-module result used that logic and must be repeated on
-> the fixed binary before it is final evidence. Raw results and reported
-> memory observations remain preserved; they are not a qualified fixed-checker run.
+> The historical 14,721-module result used that logic. Its qualification is
+> superseded by the [fresh e0c92d51 replay](certificate-reuse-fix/subexp-fresh-e0c92d51/README.md).
+> Old raw results and memory observations remain preserved; they do not qualify
+> the repaired checker or establish final performance.
 
 
 This report separates static planning, completed development qualification, and
