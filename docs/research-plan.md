@@ -1,50 +1,56 @@
 # ProofServe closure plan
 
-The project now has two deliverables: a usable open-source Lean verification tool and a six-page empirical + system paper. This replaces the earlier instruction to keep four research directions open indefinitely.
+We are delivering a usable open-source Lean verification tool and a six-page empirical + system paper. The latest direct decision replaces sampling as the final answer to total-library cost with a complete build of the pinned corpus. The coordinator's 17 November target is not a user-imposed deadline; the venue remains undecided.
 
-The title stays unchanged. The latest review authorizes up to four revised questions: RQ1 compares proof-checking cost regimes; RQ2 estimates compiler cost and coverage; RQ3 evaluates original-kernel multi-core performance and additional trust; RQ4 evaluates coverage, repeated verdicts and axiom receipts. Cluster scaling is outside the evaluated scope. The coordinator proposes 17 November as a working target, not a user-imposed deadline. The venue is undecided.
+## Full-corpus measurement is now the priority
 
-## Deliverables and owners
+W is preparing and running the full **163,097-module** build at OpenAI math revision **4eaee875**, on **phobos-vt** in the existing **yunwei356/gpu-smt-dev** Workspace. The user authorized expanding the existing work volume and using as much available host capacity as possible for parallel compilation. The work PVC is now **384 GiB**. The quoted **1–2 days** is a rough estimate, not a completion result or deadline.
 
-| Owner | Paths | Remaining delivery |
+The deliverable is each module's observed compiler CPU and outcome, together with the actual build wall clock and execution configuration. Completed module work, operational failures, missing modules, reused artifacts and dependency preparation remain identifiable. The 42 original probability draws and the fixed independent precision panel are retained separately for calibration; they do not replace the census or silently acquire new weights.
+
+W owns the implementation and resource choices for this authorized run. Root records actual progress without starting a second collector, restarting work, or changing infrastructure. Source acquisition, readiness tests and a finite pilot are preparation, not completed full-corpus measurements.
+
+## What changes when complete data returns
+
+| Current manuscript evidence | Replacement or retained role |
+|---|---|
+| Section 3.2: original42 estimate and variance derivation | Observed full-corpus total and distribution; sampling becomes calibration and the section becomes shorter |
+| Marked-file compiler share | Observed compiler work in the source-marker class, still distinct from dynamic kernel phase work |
+| Default graph inside/outside coverage | Add measured compiler work for both sets to the existing source/module counts |
+| M's current scaling and ablation matrix | Preview only; excluded from final paper performance and Table 1 |
+| Installed external cases and package/container CI | Preserve functional evidence and dated cost observations; final performance claims follow the quiet-machine measurements |
+
+Final system timings run **after the census has finished, with the machine otherwise idle**. A committed executable alone does not qualify a concurrent preview as final performance evidence. Root keeps Table 1 pending and does not fill it when the current matrix returns. M may explore full-library original-kernel checking independently; feasibility is unknown and the paper makes no promise or result claim about that attempt.
+
+Until the census returns, the current paper's **279.12 CPU-hour** estimate and nominal **95.18–463.06** interval remain unchanged and explicitly traceable to the original sample. No census total, marked share, default-graph cost or speedup is prefilled.
+
+## Tool delivery and ownership
+
+| Owner | Paths | Delivery |
 |---|---|---|
-| M | checker/ | Native proofserve-check, receipt v1, committed release matrix and functional evidence |
-| W | tools/audit/, data/openai-math-4eaee875/ | Portable audit command and fixed public measurement package |
-| O | crates/, CLI, README, Docker, CI, release workflow, data/external-projects/ | Clean-start packaging and three unseen public projects, including one published AI project |
-| Root | docs/paper/, documentation and research/README.md | Six-page paper, evidence map, current status and integration |
+| M | checker/ | Original-kernel checker, receipt v1, parallel/resume implementation and correctly labeled preview/final results |
+| W | tools/audit/, data/openai-math-4eaee875/ | Audit tool, complete corpus build data, preserved calibration samples |
+| O | crates/, CLI, README, Docker, CI, release workflow, data/external-projects/ | Portable packaging and external-project acceptance |
+| Root | docs/paper/, docs records/status, research/README.md | Six-page manuscript and evidence integration |
 
-ProofServe has three commands: check a Lake project's compiled dependency closure; audit source/default-target coverage, kernel-computation sites, reported axioms and measured costs; and maintain the existing Kimina-compatible serve path. Serve receives defect fixes only.
+ProofServe checks compiled dependency closures, audits source/default-target coverage and reported evidence, and maintains the existing Kimina-compatible service without new serving features. Unsupported versions fail clearly or choose an explicit official path. The released-form evaluation separates CPU and wall time and records tool, input and protocol revisions.
 
-## Fixed evaluation; do not expand it
+The planned selected-closure evaluation retains Mathlib Nat.Basic, Grid and Barrier at 1/2/4/8 workers with three repeats; the Mathlib label denotes the selected closure. Persistence and split-fallback ablations, official default/fresh ledger comparisons and timed interruption/resumption retain their declared scopes. Final scheduling follows completion of the census, not completion of the preview. Root adds no new workload, repeat count or experiment.
 
-- M runs Mathlib, Grid and Barrier with the released checker at 1/2/4/8 workers, three repeats each. The existing matrix names Mathlib.Data.Nat.Basic; this is a selected closure, not all Mathlib. Keep that distinction explicit.
-- At eight workers, Grid and Mathlib each receive three repeats without persistence and three without split fallback. Record executable commit and keep CPU and wall separate.
-- Compare official leanchecker default and --fresh only at demonstrated common scope. Record ledger differences instead of manufacturing speedup ratios.
-- Verify acceptance sets, three bad-proof classes in CI, and one interrupted/resumed versus uninterrupted pair with restart overhead.
-- O records three previously unused public projects, immutable commits, AI provenance, module counts, both tools' CPU/wall, acceptance parity, audit findings and problems.
-- W's original sample and already fixed precision design stay separate. Preserve existing in-flight work and raw attempts; no extra draw or precision threshold is added.
-- The current separate whole-Mathlib run, if already underway, remains separately scoped; root starts no additional native collection.
+## Manuscript and evidence
 
-System evaluation numbers come only from checker/results/ and data/external-projects/, with commits. Measurement numbers come from data/openai-math-4eaee875/. Research prototypes may explain causes but cannot fill release results.
+The title and four current RQs remain in place for now; RQ3 has no cluster claim. Keep 10pt, two columns, six pages including references and at most four displays. Keep technical appendices, the conclusion-to-evidence map and the census handoff in [evidence.md](paper/evidence.md), rather than creating another long paper or adding an appendix to the six-page count.
 
-## Acceptance and publication boundary
+The earlier nealmcb report measures a complete cloud **wall time** of 13.8 hours on 32 vCPUs. Its roughly **330 compilation CPU-hours** are extrapolated from 26 modules, with estimated ±30% uncertainty; roughly 410 CPU-hours includes Comparator work. Preserve that distinction. The new measurement targets the complete per-module CPU ledger absent from that report; no unmeasured result or universal priority claim is inserted now.
 
-A stranger must run the package or container without Workspace paths. README's first 30 lines must explain purpose, invocation, demonstrated speed, trust and limitations. Unsupported toolchains must fail clearly or select an explicitly labeled official path. Axioms, exclusions, incomplete coverage and cached work remain visible.
+Measurement data comes from the public W package; final system performance comes from committed released-form tools after the quiet-machine run. Prototype interventions explain engineering causes only. The current sample is calibration evidence, not a census result. Existing raw, failed, partial and historical records stay intact.
 
-No tags, crates.io publication, upstream issue/PR or announcement is authorized. Prepare the deliverables and hand them to the coordinator for user confirmation. Ordinary validated repository commits and pushes remain authorized.
+## Operations and publication
 
-## Paper closure
+Use the same Workspace, volume and Cloudflare CLI connection. The all-core authorization applies to W's census; quiet system benchmarks retain their recorded timing conditions. Omit -M, preserve disk headroom and foreign work, and do not restart existing collectors. A later host outage still requires preserving the scene and waiting for the user, without recovery or scheduling changes.
 
-Use the existing 10pt two-column format, six pages including references, and at most four figures/tables. All 42 original costs are now complete; the independent precision panel remains separate. The current original estimate is 279.12 CPU-hours, with a nominal interval of 95.18–463.06. Established measurements are written now; designated release results occupy clearly pending positions until they return. Submission must contain no missing result macros; unsupported claims belong in limitations. The manuscript no longer embeds inline evidence-grade markers or a claim-to-evidence table. [Evidence map](paper/evidence.md) carries those details. No alternative long paper is maintained.
+No new agent, session, replacement queue, scheduler, prediction, certificate repair, GPU direction, service feature or deeper attribution. M's explicitly relayed full-library check exploration is not an authorization for root to launch a duplicate. No tag, registry publication, upstream issue/PR or announcement; validated main commits and pushes remain authorized.
 
-The empirical story must disclose our -M and persistence corrections, the broad sampling interval, and the prior art behind all mechanisms. Lean 4.35 already ships lake check; do not describe it only as a future roadmap item or claim an unmeasured advantage over it.
+Root now maintains the records and evidence map. Once W publishes complete census data, replace Section 3.2 and its derived shares; once final quiet-machine system measurements return, replace the preview placeholders. No per-edit step directories or outer-audit files are created.
 
-Scheduling, early failure prediction, certificate repair, cost prediction, GPU work, serving features and deeper attribution are stopped. Existing results remain intact. Do not restart a collector to match this plan.
-
-## Operations and next action
-
-Use the existing Workspace/PVC and Cloudflare CLI path. Timed work is one task at a time under the P-core lock; untimed work uses E cores. Omit -M, preserve headroom below 85%, and preserve foreign dirty work. A later host outage remains subject to the direct instruction to preserve the scene and wait for the user, without recovery or scheduling changes.
-
-Root integrates the existing owners' committed returns, checks scope and versions, compiles and visually reviews the six-page paper, then commits owned paths on main. No per-edit step directories or outer-audit files are created for this closure.
-
-Current return: three external installed check/audit cases, common-local-root official parity and package/container CI qualification are published. These do not establish equal-obligation speedups. The fixed M matrix and timed interruption overhead remain the next system-result dependency.
+[Latest direct words](user-instruction.md) · [Status](research-status.md) · [Evidence map](paper/evidence.md) · [Result index](../research/README.md)

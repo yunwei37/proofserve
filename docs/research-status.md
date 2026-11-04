@@ -1,22 +1,21 @@
 # ProofServe: current status
 
-We are closing two deliverables: an independent Lean project verification tool and a six-page empirical + system paper. The coordinator's working target is 17 November, not a user-imposed deadline. Publication still needs user confirmation.
+The two deliverables are the open-source Lean checking/audit tool and a six-page empirical + system paper. The latest decision prioritizes a full build of all **163,097 modules** at the pinned OpenAI revision; sampling will serve as calibration.
 
-## Established evidence
+## In progress
 
-- [Measurement package](../data/openai-math-4eaee875/README.md): **42/42 original costs**, all 21 strata complete. Estimated native compiler work is **279.12 CPU-hours**, with a fragile nominal 95% interval of **95.18–463.06**. The fixed independent precision panel remains separate.
-- [Six-page paper](paper/main.tex): a data figure shows module CPU pairs and matched target wall windows. Computational certificates retain 80.28–82.35% of source wall time in two selected cases; ordinary controls retain 0.46–6.54%. Different clocks and scopes stay explicit.
-- Default coverage omits **19.78% of source modules** and **33.30% of kernel-decision sites**. The latter is not a module percentage. Historical 2,524-target testing records 30,288 accepted checks without verdict differences.
-- [External installed checks](../data/external-projects/results.md): Newspeak, Solar and CrocSwap checked closures of 754, 2,368 and 3,166 modules; common local acceptance sets of 105, 12 and 64 match official replay. Proof obligations differ, so no speed ratio is claimed. Solar audit leaves 20/32 files outside the default graph; CrocSwap has disclosed AI assistance and a setup repair.
+W owns the full-corpus build on phobos-vt in the existing gpu-smt-dev Workspace. The work PVC is verified at **384 GiB**. Available host resources may be used for parallel compilation under the new direct instruction. The 1–2 day estimate is provisional. The latest source-acquisition terminal is complete; a full build result has not returned.
 
-## Remaining delivery
+M's current matrix is a **preview**, excluded from final paper performance and Table 1. Final system timings wait until the census ends and the machine is otherwise idle. A possible full-library original-kernel attempt has unknown feasibility and is not a paper result.
 
-The final [release matrix](../checker/results/README.md), matched official comparisons and timed interruption pair await M. External CPU/wall results and retained official resource failures now appear in the paper. Portable-package CI rejects three malformed-proof classes; the container passes installed-project and version checks with networking disabled. These finite qualifications do not complete the performance evaluation.
+## Evidence already available
 
-[Checker](../checker/README.md) and [audit](../tools/audit/README.md) implement the workflow. The paper now compares the earlier same-corpus report directly: its roughly 410 CPU-hours include about 330 compilation hours and 80 Comparator hours; its complete cloud build is a separate wall-time result. [Evidence map](paper/evidence.md) records pins and measurement boundaries.
+- [Sample package](../data/openai-math-4eaee875/README.md): 42/42 original costs, estimated compiler work **279.12 CPU-hours**, fragile nominal interval **95.18–463.06**. These existing numbers remain unchanged until complete census data replaces Section 3.2. The fixed precision panel stays separate.
+- [External installed checks](../data/external-projects/results.md): three cases, exact common-local-root acceptance, separate CPU/wall observations, and retained official resource failures. Package and network-disabled container CI passed finite functional controls. These establish functionality, not equal-obligation speedups.
+- [Current six-page paper](paper/main.tex): matched cost windows, lexical density, default coverage and stored-proof repeatability. The PDF remains at the 4e63272a revision; no census numbers have been inserted.
 
-## Boundaries
+The nealmcb comparison remains explicit: 13.8 hours on 32 vCPUs is measured cloud wall time; about 330 compilation CPU-hours is a 26-module extrapolation, and about 410 includes Comparator work.
 
-Root integrates paper/docs only. No new collection, replacement agent, scheduling, prediction, certificate repair, GPU, serving features or deeper attribution. Preserve existing collectors and results. No tag, package publication, upstream issue/PR or announcement.
+[Plan](research-plan.md) owns the new execution and manuscript transition. [Evidence map and protocol appendix](paper/evidence.md) distinguish completed evidence, previews and pending census results. Root maintains documentation without starting another collection or changing owner implementations.
 
-[Plan](research-plan.md) · [Evidence index](../research/README.md) · [Historical evidence](evaluation.md)
+No tag, registry publication, upstream issue/PR or announcement. Preserve existing data and active work; a later host outage still means preserve the scene and wait for the user.

@@ -463,3 +463,9 @@ Import-Module ./scripts/fleet.psm1; & (Get-Module fleet) { $script:SshOptions +=
 - 「去整理收口」
 - 「把它变成有价值的开源项目, 和一个测量轮」
 - 「篇幅 6 页. 是一个 empirical + system paper」
+
+## 2026-11-04 UTC — verbatim full-corpus measurement decision
+
+- 「"全库要花多少"这个问题它已经有实测 我们干嘛不能实际实测? 干嘛要抽样?」
+- 「你在什么机器上面? 上面的 workspace 是啥?」
+- 「扩容吧, 尽可能占据所有资源, 去并行跑」

@@ -1,6 +1,29 @@
 # Six-page paper: evidence and completion map
 
-The 3 November review authorizes revised RQ wording, a data figure, a direct comparison with the complete nealmcb report, and replacement of the 41/42 snapshot. This map is provenance, not a second paper or independent review. Root ran no new Lean measurement.
+This map records admitted measurements, versions and protocol boundaries. The latest full-corpus decision changes the next measurement objective; it supplies no new result. Historical reviews and raw qualifications remain linked below. Root runs no new native measurement.
+
+## Protocol appendix: census transition and evidence handoff
+
+This section records the latest census decision without adding an appendix to the six-page PDF. The current manuscript, numbers, plot inputs and PDF remain unchanged. No complete corpus CPU result or full-library checker outcome is claimed.
+
+| Question or paper location | Admitted evidence now | Census-era handoff |
+|---|---|---|
+| Section 3.2: total compiler work | Original42 estimate and nominal sampling interval at the pinned data revision below | Replace with observed total and distribution only after the full build returns; retain sample results as calibration |
+| Marked versus unmarked compiler work | Source-proxy sample weights; lexical membership is already defined | Sum the actually observed per-module compiler CPU over the same membership sets; do not call this dynamic kernel CPU |
+| Default graph inside/outside | 130,834 / 32,263 source-module membership and lexical-site coverage | Add observed compiler costs by membership; distinguish unavailable costs and operational failures |
+| Table 1: system performance | Pending | Current M matrix is preview-only, even when complete; final timing runs after the census on an otherwise idle machine |
+| External checking and package CI | Completed versioned functional observations and recorded costs | Retain provenance and failure records; final performance claims follow the quiet-machine timing decision |
+| Full-library original-kernel checking | Feasibility unknown | No result, speed, acceptance set or success claim enters the paper before an actual qualified return |
+
+The target is all **163,097** modules at **4eaee87548250b2682affda7d05d947c05554bae**, using the existing phobos-vt / gpu-smt-dev Workspace. The user authorized the 384 GiB work-volume expansion and use of available host resources for parallel compilation. No root collector or replacement agent is started. The 1–2 day duration is an estimate supplied with the decision, not observed runtime.
+
+On 4 November, root read the existing PVC's requested and Bound capacity as **384 GiB**. At 01:15:41 UTC, W's retained source-acquisition terminal reports all 163,097 sources seen, with 149,061 new files and 14,036 existing byte matches, and `native_started=false`. This is an owner acquisition receipt, not a root re-read of every source or a completed census. The earlier six-target pilot has a retained unsuccessful terminal and `full_census_started=false`; it supplies no full-corpus cost. These observations supersede an assumption that a full build had already completed, without changing W's autonomous continuation.
+
+Retained status is under `/workspaces/.agent-state/gpu-smt-captures/workloads/census-pilot-20261104/`, particularly `source-acquisition.json`, `pilot-terminal.json` and the frozen setup records. Later live state, process identities and terminal receipts must be read afresh; these timestamps are not an instruction to resume an old PID.
+
+The existing original42 and independent precision panel remain separately identified. A concurrently collected preview is not a final system benchmark, and a source-acquisition or prerequisite return is not an original module's measured compiler cost. The census records its actual concurrency, per-process threading, CPU placement, timing boundaries, completion and reuse policy; the previous P0–7 sample's timing protocol is not silently relabeled as the all-core census protocol.
+
+The nealmcb comparison remains unchanged: the pinned report measures **13.8 wall-hours on 32 vCPUs**, while its approximately **330 compilation CPU-hours** are extrapolated from **26 modules**, with estimated ±30% uncertainty. It does not provide the complete per-module CPU ledger sought here. This distinction supports the new measurement objective without inserting an unmeasured census total or a universal priority claim.
 
 ## Admitted measurement snapshot
 
@@ -45,7 +68,7 @@ K10 and Ramsey were qualified in root0275. SubexponentialSAT comes from [primary
 
 ## Direct comparison with the earlier same-corpus report
 
-The complete **804-line / 74,061-byte** [REPORT at c9570a82](https://github.com/nealmcb/openai-math-lean-tooling/blob/c9570a82f79b78a1a969a6316ac0fdd69aabef55/REPORT.md) was fetched and read in full this turn. The retained copy is outside Git on the existing PVC. Relevant exact distinctions:
+The complete **804-line / 74,061-byte** [REPORT at c9570a82](https://github.com/nealmcb/openai-math-lean-tooling/blob/c9570a82f79b78a1a969a6316ac0fdd69aabef55/REPORT.md) was fetched and read in full during the 3 November review. The retained copy is outside Git on the existing PVC. Relevant exact distinctions:
 
 - Sections 1b and 3g: build revision **fd4aeeb2**, **122,458 modules**, **32 vCPUs / 13.8 wall-hours**. Approximately **330 compile CPUh** is extrapolated from a quiet **26-module sample**, with estimated ±30% uncertainty. Approximately **410 CPUh** includes roughly **80 Comparator hours**. It is not 410 hours of compilation alone.
 - The report also measures a kernel-skipping ablation on 26 modules and profiles roughly 30,900 cloud-built modules. These are prior build-side phase measurements; our narrower increment is matched target replay/source windows with explicit boundaries.
@@ -65,7 +88,7 @@ The context-visibility counterexample in the design section is recorded in [root
 
 ## Installed external checking and package qualification (4 November integration)
 
-The paper now replaces the functional Pending table with three measured external cases. The scaling matrix remains Pending. Only O's published tool-form results are admitted here; M's ongoing matrix is separate.
+The paper now replaces the functional Pending table with three measured external cases. The scaling matrix remains Pending. Only O's published tool-form observations are admitted here; M's ongoing matrix is preview-only and excluded from final paper performance.
 
 [measurements.csv](../../data/external-projects/measurements.csv) and [acceptance.json](../../data/external-projects/acceptance.json) were published at **d0c41e24d1800b69427d692de5f6bcafdf94bb48**. [results.md](../../data/external-projects/results.md) incorporates the package/container closeout at **b3e28f4d8a1a726e51d68cc172c4b0e1a8a7a3b5**. Timed bundle **703055a11b749013d7251d93bb7127bd5222a447**, checker **c8e7c615413819bee0931dde09450b8222c6d62a**, Lean **4.34.1 / 5045d005**, four native workers.
 
@@ -89,7 +112,7 @@ Installed audit finds default scope 105/105, 12/32 and 64/64 source files. Solar
 
 [Container qualification](../../packaging/qualification-container.json): run **41740685837**, same adf816ae source, successful image build with an actual **network-disabled** self-test. Retained log confirms full-Mathlib service controls, a two-module installed project check/audit, and explicit unsupported-version rejection. These are CI correctness observations, not timed paper performance or the three-project external benchmark.
 
-Remaining integration dependency: M's final committed scaling/ablation/official matrix and real interrupted/resumed versus uninterrupted overhead pair. Do not pool its ba316991 executable with the external c8e7c615 timing rows. The original42 estimate stays unchanged; the separate precision panel has six of twelve costs and is not pooled. No new native run, publication or replacement collector was started.
+Remaining integration dependency: the complete corpus return, followed by final quiet-machine scaling/ablation/official measurements and the interrupted/resumed overhead pair. Completion of the current M preview does not fill this dependency. Do not pool its ba316991 executable with the external c8e7c615 timing rows. The original42 estimate stays unchanged; the separate precision panel has six of twelve costs and is not pooled. No new native run, publication or replacement collector was started.
 
 ## Manuscript checks
 
