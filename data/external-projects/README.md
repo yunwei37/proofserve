@@ -17,3 +17,8 @@ Run evaluate.py against an already-built project and extracted prefix under floc
 The installed703055a1 bundle returned successful static audits for all three pinned source snapshots, without a source checkout dependency in the tool. audit-before-build.csv records these functional results, not CPU measurements or native verification.
 
 CrocSwap covers64/64 local modules through declarative defaults; Newspeak covers105/105. Solar covers12/32 in the static default-import graph, leaving20 proof-input files outside that graph. This is not a claim those files are invalid or never checked: the custom EVM checker may consume them as explicit inputs. No executable invocation or CI-wide coverage is inferred from the static graph. Compiled receipt linkage and native timing are now recorded in results.md. The receipt itself does not cryptographically bind the current source text.
+
+The11-04 full-census directive makes the existing cost cells timing previews.
+They remain functional acceptance evidence; final system timing waits until
+census completion and a quiet machine. See timing-status.json. No timed rerun
+has started on the reserved E8–9 cores.

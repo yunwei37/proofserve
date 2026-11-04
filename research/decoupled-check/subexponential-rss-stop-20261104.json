@@ -1,0 +1,86 @@
+{
+  "review": "\u81ea\u5ba1",
+  "failure": {
+    "error": "RuntimeError(('oracle', -9, 'aggregate O RSS budget'))"
+  },
+  "observed_stop_utc": "2026-11-04T02:02:06.364396+00:00",
+  "controller_retired": true,
+  "native_alive": false,
+  "source_built": 14721,
+  "stream_accepted": 14721,
+  "legacy_pcore_references": 13208,
+  "remaining_after_legacy": 1513,
+  "old_progress": {
+    "windows": 111,
+    "phase": "oracle",
+    "oracle_qualified": 13208,
+    "expected": 14721,
+    "latest_log": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103/final-oracle-40404818098744.log",
+    "returncode": -9,
+    "observed_tree_peak_rss": 12896055296,
+    "failure": "aggregate O RSS budget",
+    "elapsed_wall_s": 4836.011800442997,
+    "elapsed_clock_scope": "this controller invocation; historical stop retained",
+    "resumed": true
+  },
+  "failed_native_stdout_bytes": 0,
+  "failed_native_cpu_s": null,
+  "failed_native_wall_s": null,
+  "classification": "sampled aggregate RSS budget stop, not kernel rejection or a false statement",
+  "cpu_directive": "All O work on8-9; no P-core lease during W census; final system timing deferred",
+  "correctness_only_probe": {
+    "review": "\u81ea\u5ba1",
+    "correctness_only": true,
+    "measured": false,
+    "affinity": [
+      8,
+      9
+    ],
+    "module": "OAI.Algorithms.SubexponentialSAT.SqrtLog.MomentsNativeCostAlgebra",
+    "valid": true,
+    "cell": {
+      "key": "isolated-original-kernel",
+      "requested_key": "isolated-original-kernel",
+      "args": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=5",
+        "1400",
+        "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/measurement-v1/audited-stream",
+        "one",
+        "none",
+        "OAI.Algorithms.SubexponentialSAT.SqrtLog.MomentsNativeCostAlgebra"
+      ],
+      "affinity": [
+        8,
+        9
+      ],
+      "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod17dda466_3f7a_4fed_9950_d3d49c55017f.slice/proofserve-o-project-172592-isolated-original-kernel.scope",
+      "memory_max_bytes": 12616466432,
+      "measured": false,
+      "limit_s": 1400,
+      "returncode": 0,
+      "cgroup_peak_bytes": 4684058624,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+    },
+    "events": [
+      {
+        "context": "module_local",
+        "event": "accept",
+        "module": "OAI.Algorithms.SubexponentialSAT.SqrtLog.MomentsNativeCostAlgebra"
+      }
+    ],
+    "parse_errors": [],
+    "resource_observation": {
+      "peak_tree_rss": 6321602560,
+      "rss_budget_stop": false,
+      "read_errors": []
+    },
+    "original_pcore_batch_failure_retained": true,
+    "original_qualification_state_modified": false,
+    "performance_eligible": false,
+    "scope": "One isolated original-kernel reference on reserved E8-9, no P lease and no CPU/wall benchmark. Not proof that every remaining module fits."
+  },
+  "old_capture_modified": false,
+  "source_stream_primary_times_unchanged": true
+}

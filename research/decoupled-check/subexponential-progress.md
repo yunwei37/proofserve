@@ -1,3 +1,16 @@
+## Allocation and correctness status,11-04
+
+The old timed reference controller retired at02:02:06UTC at13208/14721
+references after a sampled12GiB aggregate-RSS stop. Its logical raw phase
+oracle is not a live-process claim. The single E8–9 unmeasured probe accepted
+one further module; combined completed correctness IDs are13209,1512remain.
+The three malformed-proof pairs have not run. Source/stream coverage and
+earlier primary clocks are unchanged. No complete parity or final system
+performance result is asserted here.
+
+The continuation is correctness-only on8–9, one root per process, no P lease,
+no CPU/wall sampling; details: subexponential-cpu89-plan.md.
+
 # SubexponentialSAT complete-closure measurement: actual progress
 
 Review: 自审.
@@ -25,6 +38,6 @@ These are separate experiment costs. No global CPU estimate is formed by adding 
 - kernel_cpu_h: 0.9442508183333332
 - current_segment: 30
 - remaining_segments_min: 0
-- oracle_qualified: 12504
+- oracle_qualified: 13208
 - kernel_peak_rss_gib: 14.73128890991211
 - kernel_over_source_cpu: None

@@ -1,5 +1,10 @@
 # Three external projects: installed-form acceptance and cost
 
+**Timing status,11-04: pre-census previews, not final system-evaluation figures.**
+The new W census directive defers the final fixed system measurements until
+that run ends and the machine is quiet. Functional acceptance evidence and all
+original numbers/pins are retained; see timing-status.json.
+
 Review: 自审. One run per successful arm; no confidence interval or throughput claim.
 All project and executable commits are recorded in projects.json, acceptance.json
 and measurements.csv. These are released-form-tool measurements, not prototype results.
