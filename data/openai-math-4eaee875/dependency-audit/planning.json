@@ -1,0 +1,10 @@
+{
+  "scope": "planning only; excluded from paper cost tables",
+  "critical_path_module_count": 451,
+  "unit_costs_not_known_for_unsampled_modules": true,
+  "P8_ideal_CPU_capacity_hours": 34.8900097866,
+  "mixed22_equal_core_scenario_hours": 12.687276286036363,
+  "mixed22_E_half_P_scenario_hours": 18.60800521952,
+  "warning": "Historical P-only sampled CPU, heterogeneous-core service assumptions and no IO/admission/DAG tail overhead. Not a measured wall prediction or census conversion.",
+  "required_wall_lower_bound": "max(total modeled work/capacity, weighted dependency critical path); weighted path unknown before census"
+}

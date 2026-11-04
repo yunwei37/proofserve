@@ -1,0 +1,45 @@
+{
+  "functional_only": true,
+  "full_census": false,
+  "successful": [
+    "FDep",
+    "FGood",
+    "FIndependent"
+  ],
+  "failed": [
+    "FBad"
+  ],
+  "blocked": [
+    {
+      "status": "blocked",
+      "module": "FBlocked",
+      "failed_dependencies": [
+        "FBad"
+      ],
+      "missing_external": []
+    }
+  ],
+  "stop": null,
+  "total_source_units": 5,
+  "complete": false,
+  "only_CPUs": [
+    8,
+    9
+  ],
+  "pcore_lock_used": false,
+  "per_module_cost_recording": false,
+  "resume_appended_no_native_rows": true,
+  "failure_controls_preserved": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-functional-20261104",
+  "prior_fixed_defects": [
+    "flat module output directory already exists",
+    "unlogged orphan attempt directory on resume"
+  ],
+  "partial_tail_preserved_and_resume_qualified": true,
+  "final_resume_no_native_rows": true,
+  "final_source_sha256": {
+    "census_controller.py": "4b703cefee3587e2663a037ff04f3f8165c62ff3d7b4c1beeda108715bda82c1",
+    "census_gate.py": "571755c528cda609a60239f510dfaa1130aa91fb275ffa2fc506dc364f15e9e8"
+  },
+  "final_preparation_only_protocols_verified": true,
+  "later_nonfunctional_freeze_fields_static_checked": true
+}

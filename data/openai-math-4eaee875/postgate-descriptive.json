@@ -1,0 +1,18 @@
+{
+  "user": {
+    "median": 0.00017559362053398697,
+    "P95": 0.0014442374880634181,
+    "max": 0.004754753554554458
+  },
+  "kernel": {
+    "median": 0.08616205651519426,
+    "P95": 0.43535245394744887,
+    "max": 0.6881880151376485
+  },
+  "kernel_fraction": 0.08955688571529255,
+  "P_loaded_CPU_repeat_range_over_median_P95": 0.19664385053724748,
+  "E_loaded_CPU_repeat_range_over_median_P95": 0.07994368730994669,
+  "kernel_fraction_row_median": 0.14899052650498906,
+  "P_loaded_CPU_repeat_range_over_min_P95": 0.19727885951665525,
+  "E_loaded_CPU_repeat_range_over_min_P95": 0.08304136584646792
+}

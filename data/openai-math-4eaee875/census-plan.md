@@ -195,3 +195,47 @@ The untracked obsolete full-controller source was preserved byte-for-byte at
 /workspaces/.agent-state/gpu-smt-captures/workloads/census-gate-20261104/obsolete-full-controller-draft-never-executed.py
 and removed from executable repository entry points. No historical tracked
 source, raw result or other author file was deleted.
+
+## Post-gate descriptive reanalysis (not a gate or a replacement decision)
+
+Computed after the failed gate, from the published 240 foreground rows. No
+new native run, cost observation, threshold or gate decision was introduced.
+Per module, use max/min minus one across the four condition medians, and the
+same linearly interpolated P95 as above:
+
+| Mode | Median spread | P95 spread | Maximum spread |
+|---|---:|---:|---:|
+| User instructions | 0.01756% | 0.14442% | 0.47548% |
+| Kernel instructions | 8.61621% | 43.53525% | 68.81880% |
+
+The total kernel fraction is **8.95569%** when summing kernel instructions and
+dividing by summed total foreground instructions. The median of the 240
+individual kernel/total fractions is **14.89905%**. The proposed approximate
+14% must therefore not be labelled a share of the summed workload; the
+aggregation basis changes the answer.
+
+For repeat variability, compute max(CPU)/min(CPU)-1 over each module's three
+repetitions within a condition, then P95 across modules: **P loaded 19.72789%,
+E loaded 8.30414%**, confirming the suggested 19.73% / 8.30%. Dividing the
+range by the median instead gives 19.66439% / 7.99437%, a different statistic.
+Exact fractions/formulas are retained in postgate-descriptive.json.
+None of these descriptions changes the failed total-instruction gate.
+
+## Preparation after the failed gate: no full execution
+
+The dependency audit and new controller were prepared on CPU 8–9 only.
+See dependency-audit/README.md and controller-readiness.md. The 38 missing
+external artifacts / 7,754 affected source units are unchanged after full
+source acquisition; all 38 have pinned source or compatibility-patch evidence.
+Native buildability remains unverified. The declared one-root Lake context,
+two source roots and configuration-unit distinction are exported for M.
+No guessed actual Lake environment is promoted to a verified context.
+
+The replacement controller defaults to preparation only and has not run a
+full collection. Its functional fixture uses five tiny modules, no PMU
+counters or published native costs, no P-core lock. It exercised native
+rejection/retry, dependent blocking, independent progress, clean resume,
+orphan output directory recovery, and preserved malformed-tail handling.
+Resource/disk fault injection and an actual interrupted native job were not
+added this round; those paths are implementation, not newly qualified evidence.
+The gate failure and requirement for a separate user decision still hold.

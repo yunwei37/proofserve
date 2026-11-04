@@ -1,0 +1,125 @@
+{
+  "22": {
+    "prepared": true,
+    "execute": false,
+    "modules": 163097,
+    "protocol": {
+      "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+      "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+      "lean_binary": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "pools": {
+        "P": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "E": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      "threads": 8,
+      "options": [
+        "-DautoImplicit=false"
+      ],
+      "env": {
+        "PATH": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "TMPDIR": "/workspaces/.agent-state/gpu-smt-workloads/native-tmp",
+        "LEAN_PATH": "/workspaces/.agent-state/gpu-smt-workloads/rellich4341-oleans:/workspaces/.agent-state/gpu-smt-workloads/openai4341-oleans:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Cli/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/batteries/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Qq/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/aesop/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/importGraph/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/plausible/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean"
+      },
+      "lean_version": "4.34.1",
+      "toolchain_stat": [
+        9024,
+        1793350026881482244
+      ],
+      "functional_only": false,
+      "manifest_sha256": "109deab7925062ad318214e726d99adaaf704a935ee21f5eb4ea15846d1c6343",
+      "workers": {
+        "P": 8,
+        "E": 14
+      },
+      "measurement_commit": "development-prepared-only",
+      "controller_source_sha256": "4b703cefee3587e2663a037ff04f3f8165c62ff3d7b4c1beeda108715bda82c1",
+      "adapter_source_sha256": "571755c528cda609a60239f510dfaa1130aa91fb275ffa2fc506dc364f15e9e8",
+      "protocol_rules": {
+        "reserve_GiB": 8,
+        "response_slack_GiB": 1,
+        "sample_seconds": 1,
+        "disk_stop_fraction": 0.85,
+        "native_retries": 1,
+        "resource_retry": "drain_to_exclusive_then_record_current_headroom_failure"
+      }
+    }
+  },
+  "P8": {
+    "prepared": true,
+    "execute": false,
+    "modules": 163097,
+    "protocol": {
+      "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+      "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+      "lean_binary": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "pools": {
+        "P": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "E": []
+      },
+      "threads": 8,
+      "options": [
+        "-DautoImplicit=false"
+      ],
+      "env": {
+        "PATH": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "TMPDIR": "/workspaces/.agent-state/gpu-smt-workloads/native-tmp",
+        "LEAN_PATH": "/workspaces/.agent-state/gpu-smt-workloads/rellich4341-oleans:/workspaces/.agent-state/gpu-smt-workloads/openai4341-oleans:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Cli/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/batteries/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/Qq/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/aesop/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/importGraph/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/packages/plausible/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/mathlib4341/.lake/build/lib/lean:/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean"
+      },
+      "lean_version": "4.34.1",
+      "toolchain_stat": [
+        9024,
+        1793350026881482244
+      ],
+      "functional_only": false,
+      "manifest_sha256": "109deab7925062ad318214e726d99adaaf704a935ee21f5eb4ea15846d1c6343",
+      "workers": {
+        "P": 8,
+        "E": 0
+      },
+      "measurement_commit": "development-prepared-only",
+      "controller_source_sha256": "4b703cefee3587e2663a037ff04f3f8165c62ff3d7b4c1beeda108715bda82c1",
+      "adapter_source_sha256": "571755c528cda609a60239f510dfaa1130aa91fb275ffa2fc506dc364f15e9e8",
+      "protocol_rules": {
+        "reserve_GiB": 8,
+        "response_slack_GiB": 1,
+        "sample_seconds": 1,
+        "disk_stop_fraction": 0.85,
+        "native_retries": 1,
+        "resource_retry": "drain_to_exclusive_then_record_current_headroom_failure"
+      }
+    }
+  }
+}

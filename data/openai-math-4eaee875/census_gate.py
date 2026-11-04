@@ -33,6 +33,7 @@ class Gate:
         own=Path("/sys/fs/cgroup")/Path("/proc/self/cgroup").read_text().strip().split("::")[1].lstrip("/")
         self.cg=own.parent/("proofserve-W-census-gate-"+str(os.getpid())+".scope");self.cg.mkdir()
         total,avail=mem();(self.cg/"memory.max").write_text(str(max(GIB,avail-9*GIB)))
+        if self.c.get("maximum_charge_bytes"):(self.cg/"memory.max").write_text(str(self.c["maximum_charge_bytes"]))
         (self.cg/"cgroup.subtree_control").write_text("+memory")
         atomic(out/"launch.json",dict(utc=utc(),pid=os.getpid(),birth=Path("/proc/self/stat").read_text().rsplit(")",1)[1].split()[19],cgroup=str(self.cg),full_census_started=False))
     def launch(self,module,pool,condition,rep,role,perf=True):
@@ -40,7 +41,7 @@ class Gate:
         job=self.out/"attempts"/str(num).zfill(5);job.mkdir(parents=True)
         rel=Path(*module.split("."));obj=job/rel.with_suffix(".olean")
         il=job/rel.with_suffix(".ilean");c=job/rel.with_suffix(".c")
-        obj.parent.mkdir(parents=True)
+        obj.parent.mkdir(parents=True,exist_ok=True)
         cmd=[self.c["lean_binary"],"--root="+r["root"],"-j8",*self.c["lean_options"],"-o",str(obj),"-i",str(il),"-c",str(c),str(src)]
         env=dict(os.environ);env.update(self.c["env"]);env["LEAN_NUM_THREADS"]="8"
         cg=self.cg/str(num);cg.mkdir()
@@ -68,8 +69,9 @@ class Gate:
              sequence=num,pid=pid,birth=Path("/proc",str(pid),"stat").read_text().rsplit(")",1)[1].split()[19],
              source_revision=self.c["source_revision"],source_sha256=r["source_sha256"],
              measurement_commit=self.c["measurement_commit"],toolchain=self.c["toolchain"],
-             attempt=1,start_utc=wallstart,argv=cmd,affinity=P if pool=="P"else E,
+             attempt=self.c.get("attempts",{}).get(module,0)+1,start_utc=wallstart,argv=cmd,affinity=P if pool=="P"else E,
              lean_num_threads=8,log=str(job/"native.log"),cgroup=str(cg))
+        if "attempts"in self.c:self.c["attempts"][module]=meta["attempt"]
         append(self.out/"lifecycle.jsonl",dict(event="native_start",**meta))
         self.live[pid]=dict(meta=meta,start=before,fds=fds,cg=cg,job=job,products=[obj,il,c],killed=None,errorpipe=er)
         self.sel.register(os.pidfd_open(pid),selectors.EVENT_READ,pid)
@@ -80,6 +82,7 @@ class Gate:
         self.minimum=min(self.minimum,available);self.maximumcharge=max(self.maximumcharge,charge)
         # Keep one GiB of response slack above the requested eight GiB reserve.
         cap=max(GIB,min(total-9*GIB,charge+available-9*GIB))
+        if self.c.get("maximum_charge_bytes"):cap=min(cap,self.c["maximum_charge_bytes"])
         (self.cg/"memory.max").write_text(str(cap))
         charges={}
         for pid,j in self.live.items():
@@ -93,7 +96,8 @@ class Gate:
         append(self.out/"memory.jsonl",dict(utc=utc(),elapsed_s=now-self.start,available=available,charge=charge,limit=cap,charges=charges,busy=busy,active=len(self.live)))
         if available<8*GIB and self.live:
             victim=max(self.live,key=lambda p:charges[p]);self.live[victim]["killed"]="memory_reserve"
-            os.kill(victim,signal.SIGKILL);self.stop="memory_reserve"
+            os.kill(victim,signal.SIGKILL)
+            if not self.c.get("memory_preempt_requeue"):self.stop="memory_reserve"
         disk=os.statvfs(self.out);used=1-disk.f_bavail/disk.f_blocks
         if used>=.85:self.stop="disk_85_percent"
         self.lastsample=now
@@ -122,12 +126,14 @@ class Gate:
                 user_cpu_s=u.ru_utime,system_cpu_s=u.ru_stime,wall_s=elapsed,peak_rss_kib=u.ru_maxrss,
                 cgroup_peak=chargepeak,memory_events=events,interruption=j["killed"],exec_error=err,
                 counters=counts,artifacts=artifacts,driver_elapsed_s=time.monotonic()-self.start)
+            if self.c.get("functional_only"):
+                for field in ("user_cpu_s","system_cpu_s","wall_s","peak_rss_kib","cgroup_peak","driver_elapsed_s","counters"):row.pop(field,None)
             append(self.out/"records.jsonl",row);self.rows.append(row)
             self.sel.unregister(key.fd);os.close(key.fd)
             self.counter[j["meta"]["role"]]+=1
-            if not good:self.stop="native_or_resource_failure"
+            if not good and not self.c.get("continue_native_failures"):self.stop="native_or_resource_failure"
         for pid,j in self.live.items():
-            if time.monotonic()-j["start"]>180 and not j["killed"]:
+            if self.c.get("native_wall_s",180) is not None and time.monotonic()-j["start"]>self.c.get("native_wall_s",180) and not j["killed"]:
                 j["killed"]="wall_180s";os.kill(pid,signal.SIGKILL);self.stop="wall_180s"
         if self.stop:
             for pid,j in self.live.items():

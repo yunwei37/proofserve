@@ -1,0 +1,14 @@
+{
+  "source_units": 163097,
+  "source_files_present": 163097,
+  "external_imports": 3528,
+  "missing_external_artifact_imports": 38,
+  "affected_source_units": 7754,
+  "missing_import_source_evidence_qualified": 38,
+  "exact_native_buildability": "unknown without compilation; source availability is not build success",
+  "longest_internal_import_path_modules": 451,
+  "contexts": 1,
+  "configuration_units": 1,
+  "full_census_started": false,
+  "source_units_without_missing_external_artifacts": 155343
+}

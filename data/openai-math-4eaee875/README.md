@@ -222,3 +222,15 @@ superseded; completed and partial results remain.
 census.py and test_census.py retain the earlier pilot/recovery protocol.
 census_gate.py and perf_instructions.py implement the new qualification;
 raw outputs live outside the repository on the existing PVC.
+
+## Static preparation after the failed gate
+
+[Dependency/context audit](dependency-audit/README.md) exports all 163,097
+source-unit identities for M. The 38 missing external artifacts still affect
+7,754 units; all 38 have fixed-pin source/patch evidence, not successful-build
+evidence. Actual Lake environment export and native buildability remain
+unverified. [Controller preparation](controller-readiness.md) is default-off;
+only five tiny CPU 8–9 functional modules were exercised, with cost recording
+disabled. [Post-gate descriptions](postgate-descriptive.json) can be regenerated
+with postgate_descriptive.py and do not change the failed gate. No full census
+was started.
