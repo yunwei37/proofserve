@@ -26,6 +26,18 @@ Final output requires W's terminal to report complete cost measurement and
 matching successful/configuration coverage. This is publication input validation,
 not a new experimental threshold or a claim that the failed gate passed.
 
+For a committed cutoff ledger, use the same command with --partial. Its
+outcomes.json must retain the successful module identities, configuration units,
+total_source_units and cost_measurement flag; complete may remain false.
+The resulting paper macros say partial observed subset and report the frame,
+successful native count, configuration count and units without completed costs.
+CPU sums and quantiles describe successful observed modules only, separately
+for P/E; unsuccessful attempts remain in the exported observations. No missing
+cost is imputed and no subset is extrapolated to a whole-library total.
+This is a final partial report, distinct from --preview, which never enters
+the manuscript. If no successful costs exist, the generator refuses numerical
+publication; report that outcome in prose instead.
+
 For the actual five-module functional run (which deliberately has no costs):
 
     python3 docs/paper/generate_census.py --preview --preview-json data/openai-math-4eaee875/dependency-audit/controller-real-subset-fixed/attempts.json --out /path/to/preview
@@ -85,3 +97,7 @@ generated/system/system-ready.tex final artifacts. Preview-prefixed files
 are never inputs. Without final artifacts it prints explicit pending slots,
 not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
+
+The closure deadline is 6 November 2026, 20:00 UTC. Compilation ends by 04:00; a cutoff publication uses --partial if coverage is incomplete. Library checking reports its actually verified scope by the 14:00 hard stop, with no separate PlanarPacking comparison. Paper prose and scripts are due 5 November, 12:00; numerical integration is due 6 November, 16:00. All times are UTC.
+
+Cutoff-mode validation: the retained 20-row numerical input was combined with explicitly synthetic coverage metadata outside Git. Complete-only mode refused incomplete coverage; --partial produced the correctly labeled subset and three uncompleted units, matched independently summed P/E CPU, and compiled the distribution. Preview mode still produced no publication marker. These validation counts are not census results.
