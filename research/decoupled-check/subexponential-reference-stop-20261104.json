@@ -1,0 +1,24 @@
+{
+  "observed_utc": "2026-11-04T00:40:29.234213+00:00",
+  "controller_pid": 91790,
+  "controller_birth": "2459018",
+  "controller_retired": true,
+  "reason": {
+    "error": "RuntimeError('finite final-reference window exhausted')"
+  },
+  "progress": {
+    "windows": 66,
+    "phase": "oracle",
+    "oracle_qualified": 12504,
+    "expected": 14721,
+    "latest_log": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103/final-oracle-34887577698937.log",
+    "returncode": 0,
+    "observed_tree_peak_rss": 6639017984,
+    "failure": null,
+    "elapsed_wall_s": 10883.681980616002
+  },
+  "source_stream_never_rerun": true,
+  "native_inputs_unchanged": true,
+  "remaining_references": 2217,
+  "review": "\u81ea\u5ba1"
+}
