@@ -25,3 +25,19 @@ are not yet established. All raw/partial/failure records remain on the PVC.
 All existing external-system timings are pre-census previews. The final fixed
 system evaluation waits for the W census to end and the machine to be quiet,
 as directly requested, without adding another measurement set.
+
+## Final reduction boundary
+
+The final reducer now requires retirement, the E terminal and all six explicit
+negative events before writing a complete result. It revalidates the10744
+inherited dependency reference IDs against original successful native calls and
+Falconer terminals, plus exact hard-linked artifact identity; successful source
+compilation alone never supplies a reference verdict. The retired P state/ledger
+stay immutable. E results have no CPU/wall fields, and the full reference-cost
+fields remain unknown instead of summing incompatible clocks.
+
+Validation on the partial capture: completion was rejected with no result files
+written;162 original retained reference calls and16 Falconer terminals matched
+their raw accept events. E reference validation rejects injected timing fields,
+wrong affinity and a different accepted-module event. These are reduction checks,
+not additional native measurements or a new performance result.

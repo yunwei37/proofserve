@@ -1,87 +1,313 @@
 #!/usr/bin/env python3
-"""Actual complete-directory costs and exact acceptance sets."""
+"""Reduce the completed prototype without mixing P timing and E correctness.
+
+Requires native terminal evidence and exact module-set equality. Never changes
+the original state/ledger, fills unknown elapsed times, or runs Lean.
+"""
 from pathlib import Path
-import csv,json
-D=Path(__file__).resolve().parent
-A=Path("/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103")
+import csv
+import json
+import math
+import os
+
+D = Path(__file__).resolve().parent
+BASE = Path("/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031")
+A = BASE / "subexponential-20261103"
+E = A / "correctness-cpu89-20261104"
+F = BASE / "scale-study/falconer-project-20261101"
+
+
+def read(path):
+    return json.loads(path.read_text())
+
+
+def events(path):
+    return [json.loads(line) for line in path.read_text().splitlines()
+            if line.startswith("{")]
+
+
+def accepts(rows):
+    return [row["module"] for row in rows if row.get("event") == "accept"]
+
+
+def dump(path, value):
+    path.write_text(json.dumps(value, indent=2) + "\n")
+
+
+def validate_reference(item):
+    cell = item["cell"]
+    assert item["valid"] and item["correctness_only"]
+    assert item["performance_eligible"] is False
+    assert cell["returncode"] == 0 and cell["measured"] is False
+    assert cell["affinity"] == [8, 9]
+    assert not any(k in cell for k in ("user_s", "system_s", "wall_s"))
+    assert not item.get("parse_errors")
+    assert accepts(item["events"]) == [item["module"]]
+    assert not item["resource_observation"]["rss_budget_stop"]
+    return item["module"]
+
+
 def main():
- s=json.loads((A/"state.json").read_text());fr=json.loads((A/"frame.json").read_text())
- expected={v["module"]for v in fr};targets={v["module"]for v in fr if v["target"]}
- assert len(expected)==14721 and len(targets)==3977
- assert s["phase"]=="complete"and set(s["stream_ids"])==expected and set(s["oracle_ids"])==expected,"incomplete coverage; no full cost ratio"
- bad=json.loads((A/"negative-controls-terminal.json").read_text())
- assert bad["complete"]and bad["rejected"]==3 and bad["native_rejection_processes"]==6
- ledger=[json.loads(l)for l in(A/"ledger.jsonl").read_text().splitlines()]
- builds=[v for v in ledger if v["operation"]=="build"];checks=[v for v in ledger if v["operation"]=="stream"];refs=[v for v in ledger if v["operation"]=="oracle"]
- assert all(v["valid"]for v in checks+refs)
- cpu=lambda v:v["cell"]["user_s"]+v["cell"]["system_s"]
- reused=[v["reused"]for v in fr if"reused"in v]
- nc=sum(cpu(v)for v in builds);nw=sum(v["cell"]["wall_s"]for v in builds)
- rc=sum(v["source_cpu_s"]for v in reused);rw=sum(v["source_wall_s"]for v in reused)
- kc=sum(cpu(v)for v in checks);kw=sum(v["cell"]["wall_s"]for v in checks)
- out=dict(complete=True,source_pin="4eaee87548250b2682affda7d05d947c05554bae",source_targets=3977,dependencies=10744,closure=14721,
- accepted_set_equal=set(s["stream_ids"])==set(s["oracle_ids"])==expected,source_attempts=len(builds),source_failures=sum(not v["valid"]for v in builds),
- source_sorry_warnings=sum(v.get("sorry_warning",False)for v in builds),stream_segments=len(checks),
- source_target_cpu_s=nc,source_retained_dependency_cpu_s=rc,source_full_cpu_s=nc+rc,checker_cpu_s=kc,checker_cpu_h=kc/3600,
- source_target_wall_s=nw,source_retained_dependency_wall_s=rw,source_full_wall_s=nw+rw,checker_wall_s=kw,
- full_cpu_ratio=kc/(nc+rc),incremental_cpu_ratio=kc/nc,full_summed_child_wall_ratio=kw/(nw+rw),incremental_summed_child_wall_ratio=kw/nw,
- checker_peak_cgroup_gib=max(v["cell"]["cgroup_peak_bytes"]for v in checks)/1024**3,checker_peak_rss_gib=max(v["cell"]["peak_rss_kib"]for v in checks)/1024**2,separate_reference_cpu_s=sum(cpu(v)for v in refs),
- separate_reference_wall_s=sum(v["cell"]["wall_s"]for v in refs),negative_controls_rejected=3,negative_control_native_rejection_processes=bad["native_rejection_processes"])
- final_events=[json.loads(l)for l in(A/(checks[-1]["cell"]["key"]+".stdout")).read_text().splitlines()if l.startswith("{")]
- terminal=next(v for v in reversed(final_events)if v.get("event")=="complete")
- assert terminal["modules"]==14721
- out["native_complete_event"]=terminal
- successful=[v for v in builds if v["valid"]];durations=sorted(cpu(v)for v in successful)
- source_max_rss=max(v["cell"]["peak_rss_kib"]for v in builds)/1024**2
- event_counts={}
- for v in builds:
-  for line in v["cell"]["memory_events"].splitlines():
-   key,value=line.split();event_counts[key]=event_counts.get(key,0)+int(value)
- bad_source=[v for v in builds if not v["valid"]]
- old_provider_terms=["unknown declaration","missing native","executable code","unknown module prefix","object file"]
- provider_failures=[]
- for v in bad_source:
-  text=(A/(v["cell"]["key"]+".stdout")).read_text(errors="replace")+(A/(v["cell"]["key"]+".stderr")).read_text(errors="replace")
-  if any(x in text.lower()for x in old_provider_terms):provider_failures.append(v["cell"]["key"])
- risks=dict(source_successful_attempt_mean_cpu_s=sum(durations)/len(durations),pilot_mean_cpu_s=4.22759456,
-  source_attempt_p50_cpu_s=durations[(len(durations)-1)//2],source_attempt_p90_cpu_s=durations[int((len(durations)-1)*.9)],
-  source_attempt_p99_cpu_s=durations[int((len(durations)-1)*.99)],source_attempt_max_cpu_s=max(durations),source_max_rss_gib=source_max_rss,
-  source_returncode124_count=sum(v["cell"]["returncode"]==124 for v in builds),source_cgroup_events=event_counts,
-  failed_attempts_with_old_provider_error_text=provider_failures,source_cleanup_pending_count=sum("cleanup_pending"in v["cell"]for v in builds),
-  static_plain_by_decide_sites=26593,static_explicit_kernel_sites=0,
-  plain_decide_runtime_attribution="not measured per tactic; cannot attribute aggregate cost or absence of heavy calls to markers",
-  scope="Actual complete-directory outcomes; not a claim all9124old failures were rerun or all163097sources work.")
- out["post_run_risk_review"]=risks
- (D/"subexponential-risk-review.json").write_text(json.dumps(risks,indent=2)+"\n")
- review="# SubexponentialSAT: post-run review of9eea8be planning risks\n\nReview: 自审.\n\n"
- review+=f"- **Provider/runtime initialization:** {len(provider_failures)} failed attempts with text matching the earlier Meta/IR/provider failure family, out of{len(builds)}source attempts. Full native acceptance is directory scoped; historical9124environment failures remain unchanged and are not silently rerun.\n"
- review+=f"- **Cost transfer:** successful-source mean{risks['source_successful_attempt_mean_cpu_s']:.6f}CPU-s versus25-source pilot4.227595; P50/P90/P99/max = {risks['source_attempt_p50_cpu_s']:.3f}/{risks['source_attempt_p90_cpu_s']:.3f}/{risks['source_attempt_p99_cpu_s']:.3f}/{risks['source_attempt_max_cpu_s']:.3f}s. This is retrospective complete coverage, not a bounded predictor.\n"
- review+="- **Markers beyond+kernel:** zero explicit sites coexist with26593plain by-decide sites in1932files. Their tactic-specific CPU was not instrumented; the measured whole-stream fraction does not prove they were individually cheap or inactive. Large-source maximum147641bytes was a static risk indicator, not a cost bound.\n"
- review+=f"- **Operational limits:** source timeout-returncodes124={risks['source_returncode124_count']}; cgroupOOM-kill events={event_counts.get('oom_kill',0)}, max events={event_counts.get('max',0)}; maximum sourceRSS={source_max_rss:.3f}GiB. RSS and cgroup-charged memory are distinct observations. Pending native cgroup cleanup records={risks['source_cleanup_pending_count']}. Limits were not relaxed.\n"
- review+=f"- **Admissions/diagnostics:** {out['source_sorry_warnings']}source sorry-warning records. The six static sorry/admit matches were six English admit words in comments, zero sorry tokens; no dependency-axiom audit is claimed. Source failures(all causes)={out['source_failures']} remain charged and preserved.\n"
- review+="- **Checking correctness:** all14721stream IDs equal the complete source frame and original module-local reference set under the documented safe-declaration policy. Three in-memory malformed theorem bodies were actually rejected in both checkpoint-restored stream and original module-local replay (six native rejection processes). Rejections do not imply hardened parsing of hostile binary oleans.\n"
- review+="- **Input condition:** checking consumes completed source-produced typed artifacts, not raw AI tactic scripts. Removing completed dependency production from the incremental denominator does not remove their fresh checking from the numerator. Startup/checkpoint work is included; no source-only RL-service throughput gain is inferred.\n"
- (D/"subexponential-risk-review.md").write_text(review)
- (D/"subexponential-complete-metrics.json").write_text(json.dumps(out,indent=2)+"\n")
- parts=[dict(component="retained dependency source work",cpu_s=rc,child_wall_s=rw,executed_now=False),
- dict(component="new target source work(all attempts)",cpu_s=nc,child_wall_s=nw,executed_now=True),
- dict(component="fresh full-closure checkpointed checking",cpu_s=kc,child_wall_s=kw,executed_now=True),
- dict(component="separate module-local reference qualification",cpu_s=out["separate_reference_cpu_s"],child_wall_s=out["separate_reference_wall_s"],executed_now=True)]
- with(D/"subexponential-component-costs.csv").open("w",newline="")as f:
-  w=csv.DictWriter(f,fieldnames=parts[0],lineterminator="\n");w.writeheader();w.writerows(parts)
- text="# Complete SubexponentialSAT: production and original-kernel checking\n\nReview: 自审.\n\n"
- text+=f"**3977targets +10744dependencies =14721modules**, original4.34.1 kernel, exact accepted set equals measured-source frame and module-local reference set. Three malformed theorem bodies rejected by both checkpoint-restored stream and original module-local replay. Pins: source4eaee875, Mathlibd13f23b7. **{len(checks)}segments**,500new modules each. Startup/restore/export included in native clocks.\n\n"
- text+="| Accounting scope | Source CPU-s | Checker CPU-s | CPU ratio | Summed child-wall ratio |\n|---|---:|---:|---:|---:|\n"
- text+=f"| Full closure, retained dependencies included |{nc+rc:.3f}|{kc:.3f}|**{out['full_cpu_ratio']:.2%}**|{out['full_summed_child_wall_ratio']:.2%}|\n"
- text+=f"| New-target production only, retained dependencies excluded |{nc:.3f}|{kc:.3f}|**{out['incremental_cpu_ratio']:.2%}**|{out['incremental_summed_child_wall_ratio']:.2%}|\n\n"
- text+=f"Native final accounting: **{terminal.get('unique_shared_kernel_declarations','unknown')}** shared kernel declarations; **{terminal.get('module_local_fallbacks','unknown')}** original module-local fallbacks; **{terminal.get('skipped_unsafe_partial','unknown')}** unsafe/partial entries outside this safe-declaration replay policy. Fallback CPU is included. Accepted-module equality is under the identical documented stream/reference adapter policy, not a claim that every unsafe runtime definition was kernel-replayed or that all declarations used only one shared environment.\n\n"
- text+="Historical interruption: source continuation crossed the documented host reboot; later the collector stopped with disk_ceiling=0.85 after all14721 stream acceptances, at11448 module-local references. The final pass ran only missing references and three bad-proof controls. No accepted source or stream work was repeated. The earlier failure remains in raw state/terminal records; [reboot audit](subexponential-reboot-20261103.md).\n\n"
- text+="Both rows use the **same fresh full-closure checker**, including dependency rechecking. The second removes only already-completed dependency source costs, so it is not target-only checking or a pure kernel fraction. Retained source costs are actual matching-artifact compiler records, charged once, never rerun or estimated. Source emits olean/ilean/C, excluding C linking; it is not a fresh parallel Lake service. See [retained-record protocol audit](subexponential-retained-protocol-audit.md) for earlier180/300s versus new1400s deadlines and the128MiB versus256MiB parent reserves; these are not identical external caps.\n\n"
- text+=f"Checker**{kc/3600:.6f}CPUh**, peakRSS**{out['checker_peak_rss_gib']:.3f}GiB**. Separate reference qualification**{out['separate_reference_cpu_s']/3600:.6f}CPUh**. Source failures{out['source_failures']}, sorry warnings{out['source_sorry_warnings']}; all source attempts charged. Negative controls and parent dispatch/publication excluded from primary ratios, retained separately.\n\n"
- text+="The retained wait4 child high-water value exceeds12GiB in one stream record despite its charged cgroup peak below11.75GiB; those metrics are distinct and the historical RSS budget cannot be claimed satisfied by cgroup enforcement alone. Final references/controls also have a separate12GiB aggregate RSS monitor. Wall ratios sum native child intervals including startup, excluding FIFO waits, Git, interruptions and untimed setup. No continuous from-scratch episode wall run or global163097-module total is claimed. P0–7/flock/no-M/external11.75GiB native cgroup+256MiB parent reserve; one O native at a time.\n\n"
- text+="| Input | Check/source CPU | Protocol |\n|---|---:|---|\n| Falconer |6.31%|Complete13205-node segmented stream, full source costs|\n| Matched Mathlib |8.95%|Complete1330-node matched segmented stream|\n"
- text+=f"| SubexponentialSAT |{out['full_cpu_ratio']:.2%}|Complete14721-node stream, full source costs|\n"
- text+="| Ramsey20sample |35.91%|Module-local190-built-prefix sample, trusted imports; not a whole stream|\n| RamseyK10 |20.66%|Supplemental single module, not a closure|\n\n"
- text+="The25-source pilot is included once. Superseded total-cost12h interpretation is retained; user clarified future new work only. See subexponential-risk-review.md for post-run evaluation of the9eea8be static risks; absence of kernel markers is not a semantic cost label.\n"
- (D/"subexponential-complete-result.md").write_text(text);print(json.dumps(out,indent=2))
-if __name__=="__main__":main()
+    # Fail closed before writing any public conclusion for an active/partial run.
+    assert (E / "terminal.json").is_file(), "E correctness still incomplete"
+    terminal = read(E / "terminal.json")
+    assert terminal["complete"] and terminal["accepted_set_equal"]
+    assert terminal["correctness_only"] and not terminal["performance_eligible"]
+    assert not (E / "failure.json").exists(), "unresolved operational failure"
+    claim = read(E / "controller.json")
+    proc = Path("/proc", str(claim["pid"]), "stat")
+    assert not proc.exists() or (
+        proc.read_text().split(") ")[1].split()[19] != claim["birth"]
+    ), "wait for native controller retirement before reduction"
+
+    frame = read(A / "frame.json")
+    expected = {v["module"] for v in frame}
+    targets = {v["module"] for v in frame if v["target"]}
+    inherited = {v["module"] for v in frame if "reused" in v}
+    state = read(A / "state.json")
+    estate = read(E / "state.json")
+    assert len(frame) == len(expected) == 14721 and len(targets) == 3977
+    assert len(inherited) == 10744
+    assert expected == set(state["built"]) == set(state["stream_ids"])
+    assert estate["phase"] == "complete"
+
+    # Dependencies were qualified earlier on these exact hard-linked artifacts.
+    # Do not infer module-local replay merely from a successful source build.
+    supported = set()
+    inherited_calls = 0
+    for line in (BASE / "measured.jsonl").open():
+        row = json.loads(line)
+        if row.get("operation") not in ("oracle", "matched_oracle"):
+            continue
+        if row.get("returncode") != 0:
+            continue
+        ids = row.get("accepted_modules", [])
+        assert accepts(events(BASE / (row["key"] + ".stdout"))) == ids
+        supported.update(ids)
+        inherited_calls += 1
+    inherited_terminals = 0
+    for path in (F / "bounded-recheck-v1").glob("oracle-*-terminal.json"):
+        row = read(path)
+        assert row["complete"] and row["cell"]["returncode"] == 0
+        ids = row["accepted"]
+        raw = path.parent / (row["cell"]["key"] + ".stdout")
+        assert accepts(events(raw)) == ids
+        supported.update(ids)
+        inherited_terminals += 1
+    assert inherited <= supported, "missing retained native reference evidence"
+    for row in frame:
+        if "reused" in row:
+            local = A / "check-lib" / Path(*row["module"].split(".")).with_suffix(".olean")
+            assert os.path.samefile(row["reused"]["artifact"], local)
+
+    ledger = [json.loads(line) for line in (A / "ledger.jsonl").open()]
+    builds = [v for v in ledger if v["operation"] == "build"]
+    streams = [v for v in ledger if v["operation"] == "stream"]
+    refs = [v for v in ledger if v["operation"] == "oracle"]
+    assert all(v["valid"] and v["cell"]["returncode"] == 0 for v in streams + refs)
+    streamed = set()
+    for row in streams:
+        ids = accepts(events(A / (row["cell"]["key"] + ".stdout")))
+        assert ids == row["accepted"]
+        streamed.update(ids)
+    assert streamed == expected
+    legacy = set(inherited)
+    for row in refs:
+        ids = accepts(events(A / (row["cell"]["key"] + ".stdout")))
+        assert ids == row["accepted"]
+        legacy.update(ids)
+    assert legacy == set(state["oracle_ids"]) and len(legacy) == 13208
+    e_ids = {validate_reference(read(A / "qualification-cpu89-probe-20261104/terminal.json"))}
+    for path in (E / "items").glob("reference-*.json"):
+        item = read(path)
+        assert events(E / (item["cell"]["key"] + ".stdout")) == item["events"]
+        assert item["module"] not in e_ids
+        e_ids.add(validate_reference(item))
+    assert not legacy & e_ids
+    assert e_ids == set(estate["qualified"]) and len(e_ids) == 1513
+    assert legacy | e_ids == expected
+
+    controls = []
+    plan = read(E / "negative-control-plan.json")
+    for i, module in enumerate(plan["roots"]):
+        for mode in ("one", "audit"):
+            key = f"negative-{i}-{mode}"
+            item = read(E / "items" / (key + ".json"))
+            cell = item["cell"]
+            assert item["valid"] and item["module"] == module
+            assert cell["returncode"] == 1 and cell["measured"] is False
+            assert cell["affinity"] == [8, 9] and item["mutation"] == "bvar"
+            raw = events(E / (key + ".stdout"))
+            assert raw == item["events"] and module not in accepts(raw)
+            assert any(v.get("event") == "reject" and v.get("module") == module
+                       and "loose bound variables" in v.get("error", "") for v in raw)
+            controls.append(dict(module=module, mode=mode, native_rejected=True,
+                                 mutation="bvar", measured=False))
+    assert len(controls) == 6 and len(estate["controls"]) == 6
+
+    cpu = lambda v: v["cell"]["user_s"] + v["cell"]["system_s"]
+    reused = [v["reused"] for v in frame if "reused" in v]
+    nc, nw = sum(map(cpu, builds)), sum(v["cell"]["wall_s"] for v in builds)
+    rc = sum(v["source_cpu_s"] for v in reused)
+    rw = sum(v["source_wall_s"] for v in reused)
+    kc, kw = sum(map(cpu, streams)), sum(v["cell"]["wall_s"] for v in streams)
+    primary = read(D / "subexponential-primary-costs.json")
+    for value, key in ((nc, "source_new_cpu_s"), (rc, "source_retained_cpu_s"),
+                       (kc, "kernel_cpu_s"), (kw, "kernel_wall_s")):
+        assert math.isclose(value, primary[key], rel_tol=1e-12)
+    native_final = next(v for v in reversed(events(
+        A / (streams[-1]["cell"]["key"] + ".stdout"))) if v.get("event") == "complete")
+    assert native_final["modules"] == 14721
+    provenance = read(E / "launch.json")
+    result = dict(
+        review="自审", complete=True, source_pin="4eaee87548250b2682affda7d05d947c05554bae",
+        mathlib_pin="d13f23b723b8a846827a245b89c10fc7d3f11612",
+        lean_version="4.34.1", source_targets=3977, dependencies=10744, closure=14721,
+        stream_segments=len(streams), accepted_set_equal=True,
+        retained_exact_artifact_references=len(inherited),
+        retained_initial_raw_reference_calls=inherited_calls,
+        retained_falconer_reference_terminals=inherited_terminals,
+        new_legacy_pcore_references=len(legacy - inherited),
+        untimed_e89_references=len(e_ids), complete_reference_count=14721,
+        complete_reference_cpu_s=None, complete_reference_wall_s=None,
+        reference_clock_scope="Mixed P historical and untimed E correctness; no combined cost.",
+        source_target_cpu_s=nc, source_retained_dependency_cpu_s=rc,
+        source_full_cpu_s=nc + rc, checker_cpu_s=kc, checker_cpu_h=kc / 3600,
+        source_target_wall_s=nw, source_retained_dependency_wall_s=rw,
+        checker_wall_s=kw, full_cpu_ratio=kc / (nc + rc),
+        incremental_cpu_ratio=kc / nc, full_summed_child_wall_ratio=kw / (nw + rw),
+        incremental_summed_child_wall_ratio=kw / nw,
+        checker_peak_rss_gib=primary["kernel_wait4_peak_rss_gib"],
+        checker_peak_cgroup_gib=primary["kernel_charged_cgroup_peak_gib"],
+        native_final_event=native_final, malformed_theorem_bodies=3,
+        native_rejection_processes=6, mutation_classes=1, controls=controls,
+        source_attempts=len(builds), source_failures=sum(not v["valid"] for v in builds),
+        source_sorry_warnings=sum(v.get("sorry_warning", False) for v in builds),
+        e_controller_source=provenance.get("source_commit", provenance.get("commit")),
+        historical_failures_preserved=[
+            "host reboot: interrupted source attempt excluded, completed work retained",
+            "disk ceiling after all source/stream accepts and 11448 reference IDs",
+            "finite reference controller guard expired including queue waits",
+            "legacy 16-root reference batch killed at sampled 12GiB RSS ceiling"],
+        product_system_timing_eligible=False,
+        scope="Prototype causal result, not a release-tool system benchmark or global census.")
+
+    # All checks above must pass before any result file is emitted.
+    dump(D / "subexponential-complete-metrics.json", result)
+    dump(D / "subexponential-negative-controls.json",
+         dict(review="自审", complete=True, theorem_bodies=3, mutation_classes=1,
+              native_rejections=6, controls=controls, measured=False))
+    parts = [
+        dict(component="retained dependency source work", cpu_s=rc, child_wall_s=rw,
+             performance_scope="historical P-core original compiler"),
+        dict(component="new target source work", cpu_s=nc, child_wall_s=nw,
+             performance_scope="P-core original compiler"),
+        dict(component="full closure checkpointed checking", cpu_s=kc, child_wall_s=kw,
+             performance_scope="P-core prototype, startup/restore/export included"),
+        dict(component="full module-local reference qualification", cpu_s="",
+             child_wall_s="", performance_scope="correctness only; mixed P and untimed E"),
+    ]
+    with (D / "subexponential-component-costs.csv").open("w", newline="") as out:
+        writer = csv.DictWriter(out, fieldnames=parts[0], lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(parts)
+    text = f"""# SubexponentialSAT: complete source/stream costs and reference qualification
+
+Review: 自审. This is a **research prototype result**, not a published ProofServe
+system benchmark. Final product timing waits for the W census and a quiet machine.
+
+The pinned openai/math revision4eaee87548250b2682affda7d05d947c05554bae,
+Mathlibd13f23b723b8a846827a245b89c10fc7d3f11612, Lean4.34.1 frame contains
+**3977 source targets +10744 dependencies =14721 modules**.
+All were source-produced and accepted in **{len(streams)} segments**, at most500 new
+modules per segment. The exact accepted set equals the original module-local
+reference set:10744 inherited same-artifact references (raw native evidence
+revalidated),2464 subsequent P-core references,1513 unmeasured E-core references.
+No successful source, stream or reference input was repeated in the final continuation.
+
+| Denominator | Source CPU-s | Checker CPU-s | CPU ratio | Summed child-wall ratio |
+|---|---:|---:|---:|---:|
+| Full closure, retained dependency production included | {nc+rc:.3f} | {kc:.3f} | **{kc/(nc+rc):.4%}** | {kw/(nw+rw):.4%} |
+| Newly produced targets only; same full-closure checker | {nc:.3f} | {kc:.3f} | **{kc/nc:.4%}** | {kw/nw:.4%} |
+
+Checker cost is **{kc/3600:.6f} CPU hours**. Both rows use the same full-closure
+checking numerator. The incremental denominator excludes already-paid dependency
+production, not dependency rechecking. Retained production costs are real matching
+compiler records, not projections. Source emits olean/ilean/C, excluding C linking.
+Native startup, checkpoint restore/export and module-local fallback are included.
+Child-wall sums exclude lock waits, Git, host-reboot gaps and controller downtime;
+this is not continuous from-scratch Lake wall time. Negative controls and reference
+qualification are separate from the primary cost ratio. The E continuation
+collected no CPU/wall clock: **no total reference cost is available**.
+
+Three malformed theorem bodies were rejected in both original module-local replay
+and certified-predecessor-restored replay (**six explicit original-kernel reject
+events**, one loose-bound-variable mutation class, not three classes). Nonzero
+process exit alone was not counted. This is semantic rejection evidence, not
+hardened parsing of hostile olean files or independent trust in native compilation.
+
+The stream shares905617 kernel declarations;64 module-local fallbacks are charged.
+5318 unsafe/partial entries are outside the identical safe-declaration replay policy.
+Acceptance equality does not assert that unsafe runtime definitions were replayed
+or that the library is axiom-free. Local certified checkpoints are trusted state.
+
+| Input | Check/source CPU | Scope |
+|---|---:|---|
+| Falconer | 6.31% | Complete13205-node segmented mathematical closure |
+| Matched Mathlib | 8.95% | Complete1330-node matched segmented closure |
+| SubexponentialSAT | {kc/(nc+rc):.2%} | Complete14721-node closure, full source denominator |
+| Ramsey20sample | 35.91% | Biased built-prefix module-local sample, not a closure |
+| RamseyK10 | 20.66% | One supplemental module, not a closure |
+
+SubexponentialSAT's complete-directory ratio is close to the mathematical
+closures. Zero explicit+kernel markers coexist with26593 plain by-decide sites in
+1932files; aggregate checking costs cannot attribute individual tactic cost or
+establish that every decide call is cheap. The pilot's25 sources are charged once.
+
+The original disk-ceiling failure occurred after all stream acceptances.
+A host reboot interrupted an unfinished source attempt. A later controller guard
+expired while including queue waits, then a16-root reference window was stopped
+at12,896,055,296 sampled own-tree RSS bytes. All failures, partial output and
+completed records remain intact; none is a logical rejection. The final E-only
+continuation ran only remaining references and controls on8–9 with no P lease.
+Original A/state.json remains the retired P controller's logical oracle state;
+the separate E terminal and exact union are authoritative for final qualification.
+
+Historical stream wait4 peakRSS was **14.731289GiB**, charged-cgroup peak
+**10.229065GiB**. These are different counters; the historical12GiB RSS budget
+cannot be claimed satisfied from charged-memory enforcement. The final correctness
+continuation separately sampled aggregate RSS each second and stopped on excess;
+sampling may overshoot. Earlier retained180/300s calls and later1400s source calls
+also have different parent reserves; see the retained-protocol audit.
+No global163097-module total or extrapolation validation follows from this result.
+"""
+    (D / "subexponential-complete-result.md").write_text(text)
+    progress = f"""# SubexponentialSAT final status
+
+Review: 自审. Source **3977/3977 targets**, stream **3977 targets +10744dependencies**,
+original module-local reference union **14721/14721**, three malformed bodies
+rejected in both paths (**6rejections;1mutation class**). **Complete.**
+
+Prototype P-core source CPU **{nc+rc:.6f}s**, stream CPU **{kc:.6f}s**
+(**{kc/3600:.6f}h**); full/incremental-denominator CPU ratios
+**{kc/(nc+rc):.4%}/{kc/nc:.4%}**. E-core qualification has no CPU/wall metric.
+Final product timing remains deferred until W census completion and a quiet machine.
+
+The retired P controller raw state stays oracle at13208 references; it is not
+a running-process claim. Exact native evidence union adds1513 unmeasured E references.
+[Complete result](subexponential-complete-result.md) records the source/stream
+costs, safe-declaration policy, inherited evidence and all operational failures.
+
+Historical whole-library prototype remains **partial, stopped**:2488/163097source
+IDs,10744dependencies,0.694505kernelCPUh;9124old producer errors/151485blocked.
+It is a different point, never a denominator for this complete directory.
+Ramsey full, Transonic and the old whole-library route are not resumed.
+"""
+    (D / "subexponential-progress.md").write_text(progress)
+    print(json.dumps({k:result[k] for k in ("complete", "closure",
+          "accepted_set_equal", "checker_cpu_h", "full_cpu_ratio",
+          "incremental_cpu_ratio", "native_rejection_processes")}, indent=2))
+
+
+if __name__ == "__main__":
+    main()
