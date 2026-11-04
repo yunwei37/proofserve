@@ -50,10 +50,21 @@ Default preparation examples (do not add --execute while the gate is failed):
     python census_controller.py --manifest MANIFEST --out PVC_POINT --pool 22 --commit GIT_COMMIT
     python census_controller.py --manifest MANIFEST --out PVC_POINT --pool P8 --commit GIT_COMMIT
 
-controller-prepared-protocols.json captures preparation only; controller-
-functional.json captures expected statuses. None enters a cost table.
+controller-prepared-protocols.json records the earlier pre-export preparation;
+controller-functional.json captures the earlier fixture statuses. The current
+actual-context preflight is dependency-audit/controller-context-preflight.json.
+None enters a cost table.
 The functional raw point is retained at
 /workspaces/.agent-state/gpu-smt-captures/workloads/controller-functional-20261104.
 Planning estimates live separately in dependency-audit/planning.json and are
-not publication measurements. Actual Lake environment export and compiled
-artifact availability remain prerequisites for a defensible whole-corpus run.
+not publication measurements. The default preparation path now reads
+dependency-audit/lake-environment.json.
+It refuses a missing or unverified export, wrong corpus/compiler/toolchain, or
+a context belonging to another project rather than silently using the old
+captured search path. Before native execution it also rechecks the manifest
+identity and actual package commits, and refuses missing external artifacts.
+A verified environment alone is not readiness for all source modules:
+dependency-audit/summary.json distinguishes missing inputs, observed functional
+rejections, and the still-unbuilt remainder. The failed gate and separate user
+decision remain independent prerequisites. No --execute invocation was made
+during the actual root-context dependency preparation.

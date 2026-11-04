@@ -1,0 +1,18 @@
+[
+  {
+    "import_module": "RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich",
+    "package": "rellich-kondrachov",
+    "pin": "70f85d4c1bf99c6e7d61e8be4daa6f3664d08d23",
+    "root_mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "root_toolchain": "leanprover/lean4:v4.34.1",
+    "source_file": "RellichKondrachov/Analysis/FunctionalSpaces/Sobolev/Euclidean/Rellich.lean",
+    "source_bytes": 16159,
+    "source_available": true,
+    "build_context": "openai-math-4eaee875-root",
+    "native_build_status": "not_attempted_outside_original_38_target_closure",
+    "scope_note": "Discovered only after replacing the historical partial search path with the actual root export. No source/pin substitution or extra compile was made.",
+    "affected_source_units": 3768,
+    "next_target_example_not_executed": "+RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich:olean",
+    "whole_corpus_buildability": "unknown"
+  }
+]

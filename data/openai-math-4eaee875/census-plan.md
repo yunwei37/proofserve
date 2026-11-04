@@ -221,9 +221,10 @@ range by the median instead gives 19.66439% / 7.99437%, a different statistic.
 Exact fractions/formulas are retained in postgate-descriptive.json.
 None of these descriptions changes the failed total-instruction gate.
 
-## Preparation after the failed gate: no full execution
+## Earlier static preparation after the failed gate
 
-The dependency audit and new controller were prepared on CPU 8–9 only.
+At that earlier static step, the dependency audit and controller were prepared
+on CPU 8–9 only.
 See dependency-audit/README.md and controller-readiness.md. The 38 missing
 external artifacts / 7,754 affected source units are unchanged after full
 source acquisition; all 38 have pinned source or compatibility-patch evidence.
@@ -239,3 +240,34 @@ orphan output directory recovery, and preserved malformed-tail handling.
 Resource/disk fault injection and an actual interrupted native job were not
 added this round; those paths are implementation, not newly qualified evidence.
 The gate failure and requirement for a separate user decision still hold.
+
+## Actual root-context preparation after the failed gate
+
+Started on CPU 8–9, then moved existing threads/controllers to CPU 10–16
+without restarting them, as instructed. No pcore lease or --execute. The
+official root Lake environment
+has now been exported and its 42 package commits and 23 declared patches
+verified. The earlier 24-entry patch count included a README. The old captured
+12-path context is preserved separately from the 44-path actual export.
+This is dependency preparation and functional evidence, not a cost run.
+
+All 38 original requested artifacts were built successfully. All 38 functional
+checks returned: 9 successful compiler calls covering 7 distinct source modules,
+and 29 calls blocked by unbuilt internal OAI imports. No source rejection,
+timeout, resource failure or native panic was observed.
+
+The actual root context still lacks the external Rellich module identified in
+dependency-audit/remaining-import-provenance.json. Its fixed-pin source is
+available, but it is outside the original 38-target closure and was not built.
+It blocks 3,768 source units. There are 159,329 source units without a known
+external/source-rejection blocker, including the one configuration unit:
+159,328 ordinary source modules, of which 9,223 form the static initial DAG
+frontier and 150,105 await internal prerequisites. These are static/functional
+categories, not successful builds. The whole-corpus build success count remains
+unknown. No source pin was changed; no new cost data were collected.
+
+census_controller.py defaults to the actual verified export and checks
+context/compiler identity, package/manifest identity and external artifact
+availability before execution. Functional compilation budgets and the
+preparation thread setting are not substituted for the frozen census protocol.
+The failed gate is unchanged; no full census was started or authorized here.

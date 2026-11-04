@@ -1,71 +1,157 @@
-# Pinned dependency and build-context audit
+# Pinned dependency and actual Lake-context audit
 
-Static preparation only, CPU 8–9. No full census, P-core lock, pin changes or
-new cost measurement. The failed census gate remains failed.
+Preparation and functional checks only. Initially CPU 8–9, migrated without
+restarting existing tasks to CPU 10–16 after the latest user allocation. The whole W-lane budget was 12 GiB. No P-core lock, full-census execution, pin/source substitution, cost
+measurement or paper data were introduced. The census gate remains failed.
 
-All 163,097 source files are now present. Rechecking the same 3,528 external
-import names against the captured search paths still finds **38 missing
-compiled imports**, affecting **7,754 source units** through the corpus DAG.
-The remaining 155,343 units have no missing external artifact in that captured
-path; their internal dependencies still need building. This is not a count
-of successful or proven-buildable modules.
+## Actual environment
 
-Every one of the 38 imports has available fixed-pin source evidence:
-26 package source files (five require nondefault srcDir), and 12 files supplied
-by the corpus's pinned compatibility patches. Package ancestry was queried
-for the 26 source files; patch ancestry for the other 12 is recorded separately.
-No replacement pin/source was used. For example, ClassFieldTheory uses Lean4/
-as srcDir; BernoulliRegular is vendored in AINTLIB at
-projects/FltRegularBernoulli/. A root-path-only lookup falsely misses those.
-Standalone upstream toolchains/manifests do not override the corpus's
-Lean 4.34.1 root manifest: its own 24 compatibility patches are part of the
-declared root build context.
+The root project's official Lean 4.34.1 `lake env` was executed successfully.
+All 42 package checkout commits match the fixed root manifest. The ordered
+actual LEAN_PATH has 44 entries, compared with
+12 in the earlier captured partial path. The actual root path uses its own
+package build directories and corpus build output, rather than the old global
+Rellich/corpus artifact caches. See search-path-comparison.csv and
+lake-environment.json for the exact order; paths are observed Workspace
+locations for the shared checker inputs, not portable installation defaults.
 
-The complete upstream archive contains only the root lean-toolchain,
-lakefile.lean and lake-manifest.json as Lake configuration files. There is
-one declared Lake context, with two source roots from the root custom library
-facet. HodgeConjecture helper source-root identity is retained in the CSV.
-The universe also includes one lakefile.lean configuration source unit:
-163,096 ordinary Lean source modules plus one configuration unit. It must not
-be silently presented as an ordinary proof root in a checker receipt.
+The pinned corpus declares **23 actual .patch files**, plus one patches/README.md.
+The earlier “24 patches” counted that README and is corrected here.
+We acquired every dependency by the root manifest's exact commit, checked
+package origins/HEADs, and applied only those declared patches using the
+root's guarded git-apply/check/reverse-check procedure. The 11 pre-resolution
+patches are checked by root configuration elaboration. The other 12 declared
+post-update patches were applied by the same guarded commands before loading;
+we did not invoke an unrestricted lake update or move inherited inputRev
+branches. The manifest itself is unchanged. Private copies of the already
+available matching Mathlib cache were used; no shared cache was modified.
 
-## Files for M
+The temporary preparation SDK overlay serialized native compilers and used
+the same real compiler/libraries. The published environment was then exported
+again with the real SDK, without that overlay. LEAN_NUM_THREADS=2 was a
+preparation resource setting, not the frozen census's -j8 measurement protocol.
 
-- module-contexts.csv.gz: exactly 163,097 source-qualified rows. Join context_id
-  to build-context.json. It preserves source path, actual module name,
-  source-root, toolchain, manifest, import-blocker list and source-evidence
-  status. Each blocked unit lists the exact missing external imports inherited
-  through its internal dependencies. Do not join only on module strings.
-- missing-imports.csv: all 38 imports, owning package/pin, source or patch path,
-  ancestry commit, source availability and affected-unit counts (overlapping).
-- build-context.json: declared root identity, fixed manifest, patches and
-  original captured compilation search path. context_export_verified=false
-  is deliberate: an actual Lake environment export has not been executed.
-  Configuration elaboration bootstraps 11 packages, so we did not turn a
-  static audit into unbounded package acquisition/building.
-- summary.json: static coverage, not native acceptance or cost.
-- planning.json: planning only, excluded from paper measurement tables.
+## Preparation and functional outcomes
 
-A source-compatible reference is not a successful build: **the exact number
-of modules that compile under the pins remains unknown without compilation**.
-All 38 blockers are missing local artifacts, not demonstrated missing source.
-The 7,754 affected units can be prepared from the pinned packages/patches;
-their successful compilation, transitive external closure and actual Lake
-search-path order remain unverified. M must obtain the actual exported Lake
-context and produced artifacts before treating these rows as checker inputs.
-Do not describe the captured partial search path as a fresh Lake export.
+| Observation | Count |
+|---|---:|
+| Requested original missing imports | 38 |
+| Requested artifacts present after preparation | 38 |
+| Returned target build calls | 38 |
+| Successful target build calls | 38 |
+| Direct-importer functional checks returned | 38 |
+| Distinct source units compiled successfully in those checks | 7 |
+| External import artifacts still absent in the actual context | 1 |
+| Source units inheriting an absent external artifact | 3768 |
+| Source units inheriting an observed source rejection | 0 |
+| Source units with no currently known blocker, including configuration | 159329 |
+| Static initial fresh-census frontier (source modules) | 9223 |
 
-The internal source graph is acyclic, with longest path **451 modules /
-450 edges**. External-package build graphs are outside this count. Planning
-uses the old 279.12 P-core sampled CPU-hour estimate only: ideal eight-P capacity
-gives 34.89 hours; 22-core service scenarios give 12.69–18.61 hours if E cores
-provide 1 to 1/2 P-core service. These assumptions omit setup, IO, memory
-admission and DAG tails. They are neither measured wall times nor a conversion
-of mixed-core census results. Weighted critical-path wall cost is unknown;
-the static path length alone cannot determine it.
+Functional categories: {"dependency_not_ready": 29, "functional_compile_success": 9}.
 
-Evidence was collected from immutable upstream archives, the corpus's own
-root Lake configuration, dependency configs/srcDir, and GitHub pinned ancestry.
-Raw metadata/patches and acquisition scripts are retained on PVC under
-/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-audit-20261104.
-No new native costs enter sample-costs.csv or the paper.
+The build driver requested only the 38 named module targets with the
+`+Module.Name:olean` syntax. Lake selected their transitive dependencies.
+It did not run the default/root corpus build or expand the requested target set.
+Preparation and the functional continuation share the single original
+12-hour deadline; neither controller repair nor the CPU migration reset it. Deadline/resource interruptions are operational and retained, not
+source rejections. The original JSON-parser defect occurred after a successful
+Lake environment call; its raw logs and terminal remain on PVC.
+
+For every requested import we selected the smallest direct corpus importer
+by source bytes, breaking ties by module identity, and ran the original source
+once in the actual Lake environment. The functional outputs are separate
+from corpus build artifacts. These checks have a 600-second operational
+timeout each, also bounded by the original shared deadline;
+heartbeat/recursion/memory failures are also separate from
+source rejection. A missing internal parent is dependency_not_ready, not
+evidence that the pinned source is invalid. No native cost fields enter these
+results. A successful compiler exit with a sorry warning is retained explicitly
+and is not a claim of independent proof acceptance.
+
+**No-known-blocker is eligibility for a future compile attempt, not build success.**
+Most corpus internal prerequisites and sources were not compiled this round.
+The static initial frontier counts modules with no internal prerequisites and
+no known blocker; other eligible modules become ready only after their DAG
+prerequisites. It is not an additional native success count.
+The exact number accepted by a full pinned build remains unknown. Distinct
+functional source outcomes and all 38 import-target outcomes are exposed
+separately; an artifact can exist as a transitive product even if its own
+target call was never reached.
+
+## Source-qualified interface for M
+
+All **163,097 source units** are present: **163,096 ordinary source modules
+plus one root lakefile.lean configuration unit**. The archive declares one
+root Lake context and two source roots; HodgeConjecture helpers preserve
+their original module names under the second root. Do not join solely on a
+module name or treat lakefile.lean as a proof root.
+
+- module-contexts.csv.gz: one row per source-qualified unit, source/root,
+  toolchain/manifest identity, context_export_verified, actual environment
+  reference, every inherited missing external import, inherited functional
+  rejection, functional check status, and direct internal prerequisite count
+  for a fresh census. Unchecked rows remain unchecked.
+- internal-prerequisites.csv.gz: 370,865 source-qualified internal edges, one
+  edge per row. This avoids oversized cells for root aggregators and reads
+  with the standard-library CSV defaults.
+- lake-environment.json: fresh official export, compiler version, exact
+  package commits, manifest identity, patch application evidence and timestamp.
+- build-context.json: declared root identity and two source roots; the
+  earlier partial path is retained in historical_capture_search_path; the
+  legacy capture_search_path field now points to the actual exported path.
+- provider-builds.json: every original requested import, native return or
+  explicit unattempted/interrupted state, actual artifact presence and raw log.
+- functional-importers.json: direct-import source evidence, source identity,
+  command, outcome, diagnostics and sorry-warning flag for each check.
+- actual-missing-imports.csv: all current absent external imports and
+  propagated affected-unit counts, including newly visible gaps.
+- missing-imports.csv: the historical 38-import source/pin/ancestry audit;
+  its old missing-artifact observations are not silently rewritten.
+- summary.json: current static/functional eligibility categories and terminal
+  records, never a whole-corpus successful-build count.
+- planning.json: historical planning only, excluded from measurement tables.
+
+Static artifact presence does not prove artifact validity or runtime library
+completeness. Axioms/acceptance require the independent checker's receipt.
+The sole remaining external artifact is
+RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich. Its
+16,159-byte source is available in rellich-kondrachov at the unchanged
+70f85d4c1bf99c6e7d61e8be4daa6f3664d08d23 pin. It was supplied by the old global
+Rellich cache, but is absent in the real root package output. It is neither
+one of the historical 38 targets nor a transitive output of those targets.
+We did not expand the requested build set to compile it. Its missing artifact
+blocks 3,768 source units; this is not a demonstrated source/pin failure.
+See remaining-import-provenance.json. Its standalone older Mathlib requirement
+does not replace the root's fixed d13f23b7 shared dependency.
+
+Of the 159,328 source modules without a known external/source-rejection blocker,
+9,223 are in the static initial dependency frontier and 150,105 must wait for
+their internal prerequisites. The additional one configuration unit is counted
+separately. All 29 unsuccessful functional calls reported unknown OAI imports,
+not package-pin source rejection. There were 35 distinct functional source
+inputs, with 7 distinct successfully compiled; repeated import coverage does
+not create additional successful source modules. No functionally compiled
+source emitted a sorry warning, but imported axiom closures were not audited.
+
+The instruction-invariance gate remains failed. A separate user decision
+and resolution of the remaining input gap are needed before any full census.
+census_controller.py defaults to this actual export and rejects unprepared
+external artifacts before native execution.
+
+## Reproduction and retained evidence
+
+At the pinned corpus root, install the exact manifest commits and apply only
+its declared compatibility patches as above. Export with
+`lake env python3 export-env.py` (record LEAN_PATH/LEAN_SRC_PATH and compiler
+variables), then use `lake build +IMPORT:olean` for each historical missing
+import. Functional checks use `lake env lean --root=SOURCE_ROOT
+-DautoImplicit=false -o OUT.olean -i OUT.ilean -c OUT.c PINNED_SOURCE`.
+The precise actual argv, source hashes (provenance only), logs and statuses
+are in the corresponding small JSON files.
+
+Raw package acquisition, patch checks, exported environments, failed driver
+logs, dependency builds and functional diagnostics remain on the existing PVC:
+`/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-native-20261104`.
+The earlier source/history audit remains at the sibling dependency-audit-20261104.
+No raw logs, private caches or large package/build trees were copied into Git.
+Review: 自审.

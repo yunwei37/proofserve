@@ -6,7 +6,38 @@ import census_gate as native
 from census import append,utc,records
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def run(a):
-    m=json.loads(a.manifest.read_text());mods={r["module"]:r for r in m["modules"]}
+    m=json.loads(a.manifest.read_text())
+    environment_ready=False;environment_reason=None
+    if not a.functional:
+        path=a.environment_export or Path(__file__).parent/"dependency-audit/lake-environment.json"
+        if not path.is_file():environment_reason="actual Lake environment export missing"
+        else:
+            export=json.loads(path.read_text())
+            if not export.get("context_export_verified")or not export.get("package_versions_verified"):environment_reason="Lake environment not verified"
+            elif export.get("source_revision")!=m["source_revision"]or export.get("toolchain")!=m["lean"]:environment_reason="export pin/toolchain mismatch"
+            elif Path(export["project"]).resolve()!=Path(m["source_project_root"]).resolve():environment_reason="export belongs to another project"
+            elif Path(export["native_compiler"]).resolve()!=Path(m["lean_binary"]).resolve():environment_reason="export belongs to another compiler"
+            else:
+                m["env"]=dict(export["native_environment"]);environment_ready=True
+                m["context_id"]="openai-math-4eaee875-root"
+                if a.execute:
+                    for pkg in export["packages"]:
+                        checkout=Path(export["project"])/".lake/packages"/pkg["name"]
+                        head=subprocess.check_output(["git","-C",str(checkout),"rev-parse","HEAD"],text=True).strip()
+                        if head!=pkg["commit"]:raise ValueError("exported package pin changed: "+pkg["name"])
+                    actual_manifest=json.loads(Path(export["manifest"]).read_text())
+                    actual_pins={p["name"].strip("«»"):p["rev"]for p in actual_manifest["packages"]}
+                    exported_pins={p["name"]:p["commit"]for p in export["packages"]}
+                    if actual_pins!=exported_pins:raise ValueError("exported manifest package pins changed")
+        if a.execute and not environment_ready:raise ValueError(environment_reason)
+        if not environment_ready:m["env"]={}
+    mods={r["module"]:r for r in m["modules"]}
+    missing_external=[]
+    if environment_ready:
+        search=[Path(x)for x in m["env"]["LEAN_PATH"].split(":")if x]
+        for name in sorted({n for r in mods.values()for n in r.get("external",[])}):
+            if not any((base/Path(*name.split(".")).with_suffix(".olean")).is_file()for base in search):missing_external.append(name)
+        if a.execute and missing_external:raise ValueError("actual context has unprepared external imports: "+str(missing_external))
     if a.functional and len(mods)>10:raise ValueError("functional control is limited to ten source units")
     pools={"P":list(range(8)),"E":list(range(10,24))}if a.pool=="22"else{"P":list(range(8)),"E":[]}
     if a.functional:pools={"P":[8],"E":[9]}
@@ -16,7 +47,7 @@ def run(a):
         identity.update(measurement_commit=a.commit,controller_source_sha256=sha(__file__),
             adapter_source_sha256=sha(Path(native.__file__)),
             protocol_rules=dict(reserve_GiB=8,response_slack_GiB=1,sample_seconds=1,disk_stop_fraction=.85,native_retries=1,resource_retry="drain_to_exclusive_then_record_current_headroom_failure"))
-    if not a.execute:print(json.dumps(dict(prepared=True,execute=False,modules=len(mods),protocol=identity)));return
+    if not a.execute:print(json.dumps(dict(prepared=(a.functional or environment_ready),execute=False,modules=len(mods),dependency_inputs_ready=(environment_ready and not missing_external),environment_export_verified=environment_ready,environment_error=environment_reason,missing_external_artifacts=missing_external,protocol=identity)));return
     if not a.functional:
         version=subprocess.check_output([m["lean_binary"],"--version"],text=True).strip()
         if "version "+m["lean"]+","not in version:raise ValueError("toolchain version mismatch")
@@ -72,7 +103,7 @@ def run(a):
         if not base.is_dir():continue
         for src in base.rglob("*.olean*"):
             rel=src.relative_to(base)
-            if rel.parts[0]in {"OAI","ComparatorChallenges","HodgeConjecture"}:continue
+            if rel.parts[0].split(".")[0]in {"OAI","ComparatorChallenges","HodgeConjecture"}:continue
             dst=view/rel
             if not dst.exists():dst.parent.mkdir(parents=True,exist_ok=True);dst.symlink_to(src.resolve())
     def publish(n,row):
@@ -156,6 +187,6 @@ def run(a):
 def main():
     p=argparse.ArgumentParser();p.add_argument("--manifest",type=Path,required=True);p.add_argument("--out",type=Path,required=True)
     p.add_argument("--pool",choices=["22","P8"],default="22");p.add_argument("--execute",action="store_true")
-    p.add_argument("--functional",action="store_true");p.add_argument("--commit",required=True)
+    p.add_argument("--environment-export",type=Path);p.add_argument("--functional",action="store_true");p.add_argument("--commit",required=True)
     run(p.parse_args())
 if __name__=="__main__":main()
