@@ -14,6 +14,7 @@ M's current matrix is preview-only and cannot fill Table 1. Final system timing 
 
 - [Sample package](../data/openai-math-4eaee875/README.md): 42/42 original costs, estimated compiler work 279.12 CPU-hours, fragile nominal interval 95.18–463.06. The independent precision panel remains separate.
 - [External installed checks](../data/external-projects/results.md): three cases with common-local-root parity, separate costs and retained official resource failures. Package/container CI passed finite controls; proof obligations differ.
+- [AI-generated case](paper/evidence.md#ai-generated-external-case-functional-preview-4-november): installed preview accepted a 10,753-module closure; nine local roots match official default. Source authorship is upstream-declared; the archive is not yet a clean release freeze and resumed costs are incomplete.
 - [Current six-page paper](paper/main.tex): unchanged from 4e63272a, with no full-corpus measurement content inserted. Its numbers and PDF remain unchanged.
 
 The nealmcb report's 13.8-hour cloud wall measurement and 26-module CPU extrapolation remain distinct.
