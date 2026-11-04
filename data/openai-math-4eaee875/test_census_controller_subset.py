@@ -121,5 +121,54 @@ class ImportViewTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"cyclic import directory"):
             controller.inventory_imports([str(self.first)])
 
+class PreparedQueueExecutionTests(unittest.TestCase):
+    def test_queue_failure_blocking_durable_c_discard_and_resume(self):
+        import subprocess
+        import os
+        if os.geteuid()!=0:self.skipTest("requires existing development cgroups")
+        with tempfile.TemporaryDirectory(prefix="census-queue-control-",dir="/workspaces/.agent-state/gpu-smt-captures/workloads")as folder:
+            root=Path(folder);fake=root/"compiler";out=root/"output"
+            fake.write_text("""#!/usr/bin/python3
+import pathlib,sys
+if '--version' in sys.argv:
+ print('Lean (version 4.34.1, fixture)')
+ sys.exit(0)
+if 'FAIL' in pathlib.Path(sys.argv[-1]).read_text():sys.exit(1)
+for flag in ['-o','-i','-c']:
+ p=pathlib.Path(sys.argv[sys.argv.index(flag)+1]);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b'fixture')
+""")
+            fake.chmod(0o755)
+            modules=[]
+            for name,deps in [('A',[]),('B',['A']),('C',[]),('D',['C'])]:
+                source=root/(name+".lean");source.write_text("FAIL"if name=="C"else"fixture")
+                modules.append(dict(module=name,source=str(source),root=str(root),deps=deps,external=[]))
+            manifest=root/"manifest.json"
+            manifest.write_text(json.dumps(dict(source_revision="fixture",mathlib="fixture",lean="4.34.1",
+                lean_binary=str(fake),lean_options=["-DautoImplicit=false"],source_project_root=str(root),modules=modules)))
+            lake=root/"lake-manifest.json";lake.write_text('{"packages":[]}')
+            export=root/"export.json"
+            export.write_text(json.dumps(dict(context_export_verified=True,package_versions_verified=True,
+                source_revision="fixture",toolchain="4.34.1",project=str(root),native_compiler=str(fake),
+                native_environment=dict(LEAN_PATH=str(root/"empty")),packages=[],manifest=str(lake))))
+            command=[sys.executable,str(Path(__file__).parent/"census_controller.py"),"--manifest",str(manifest),
+                "--out",str(out),"--environment-export",str(export),"--validate-subset","--discard-c","--execute","--commit","fixture"]
+            for repetition in range(2):
+                result=subprocess.run(command,text=True,capture_output=True,timeout=60)
+                self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+                outcome=json.loads((out/"outcomes.json").read_text())
+                self.assertEqual(outcome["successful"],["A","B"])
+                self.assertEqual(outcome["failed"],["C"])
+                self.assertEqual([x["module"]for x in outcome["blocked"]],["D"])
+                self.assertFalse(outcome["full_census"])
+                rows=[json.loads(x)for x in(out/"records.jsonl").read_text().splitlines()]
+                self.assertEqual(len(rows),4)
+                self.assertEqual([r["module"]for r in rows],["A","B","C","C"])
+                for row in rows[:2]:
+                    self.assertFalse(row["artifacts"][".c"]["retained"])
+                    self.assertFalse(Path(row["artifacts"][".c"]["path"]).exists())
+                    self.assertTrue(Path(row["artifacts"][".olean"]["path"]).exists())
+                    self.assertTrue(Path(row["artifacts"][".ilean"]["path"]).exists())
+                    self.assertNotIn("user_cpu_s",row)
+
 if __name__=="__main__":
     unittest.main()

@@ -35,7 +35,7 @@ class Gate:
         total,avail=mem();(self.cg/"memory.max").write_text(str(max(GIB,avail-9*GIB)))
         if self.c.get("maximum_charge_bytes"):(self.cg/"memory.max").write_text(str(self.c["maximum_charge_bytes"]))
         (self.cg/"cgroup.subtree_control").write_text("+memory")
-        atomic(out/"launch.json",dict(utc=utc(),pid=os.getpid(),birth=Path("/proc/self/stat").read_text().rsplit(")",1)[1].split()[19],cgroup=str(self.cg),full_census_started=False))
+        atomic(out/"launch.json",dict(utc=utc(),pid=os.getpid(),birth=Path("/proc/self/stat").read_text().rsplit(")",1)[1].split()[19],cgroup=str(self.cg),full_census_started=self.c.get("full_census_run",False)))
     def launch(self,module,pool,condition,rep,role,perf=True):
         self.seq+=1;num=self.seq;r=self.c["modules"][module];src=Path(r["source"])
         job=self.out/"attempts"/str(num).zfill(5);job.mkdir(parents=True)
@@ -127,15 +127,23 @@ class Gate:
                 if not(j["cg"]/"cgroup.procs").read_text().strip():break
                 time.sleep(.01)
             j["cg"].rmdir()
+            if "oom_kill 0"not in events and "oom_kill "in events and rc!=0 and not j["killed"]:j["killed"]="cgroup_memory_oom"
             artifacts={p.suffix:dict(bytes=p.stat().st_size,sha256=digest(p),path=str(p))for p in j["products"]if p.is_file()}
             good=rc==0 and not err and not j["killed"]and len(artifacts)==3
+            if good and self.c.get("discard_c"):
+                artifacts[".c"].update(retained=False,disposal="unlink_after_durable_result")
+
             row=dict(record="result",**j["meta"],end_utc=end,returncode=rc,status="completed"if good else "failure",
                 user_cpu_s=u.ru_utime,system_cpu_s=u.ru_stime,wall_s=elapsed,peak_rss_kib=u.ru_maxrss,
                 cgroup_peak=chargepeak,memory_events=events,interruption=j["killed"],exec_error=err,
                 counters=counts,artifacts=artifacts,driver_elapsed_s=time.monotonic()-self.start)
             if self.c.get("functional_only"):
                 for field in ("user_cpu_s","system_cpu_s","wall_s","peak_rss_kib","cgroup_peak","driver_elapsed_s","counters"):row.pop(field,None)
-            append(self.out/"records.jsonl",row);self.rows.append(row)
+            append(self.out/"records.jsonl",row)
+            if good and self.c.get("discard_c"):
+                Path(artifacts[".c"]["path"]).unlink()
+                append(self.out/"storage.jsonl",dict(utc=utc(),module=row["module"],sequence=row["sequence"],path=artifacts[".c"]["path"],bytes=artifacts[".c"]["bytes"],sha256=artifacts[".c"]["sha256"],action="discard_generated_c_after_durable_result"))
+            self.rows.append(row)
             self.sel.unregister(key.fd);os.close(key.fd)
             self.counter[j["meta"]["role"]]+=1
             if not good and not self.c.get("continue_native_failures"):self.stop="native_or_resource_failure"

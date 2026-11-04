@@ -338,3 +338,81 @@ The original instruction-invariance gate remains failed and its thresholds
 unchanged. No costs were collected or added to census tables; no full census
 was started. See dependency-audit/controller-real-subset-fixed/README.md.
 All W validation processes have retired. Await the user's decision.
+
+## Authorized full census: fixed 22-core protocol — 2026-11-04
+
+门槛按总指令未通过（中位 1.33%、P95 3.15%），阈值没有改；决定运行是 Claude 按用户要求推进做的；跨模块比较用用户态指令（四条件中位 0.018%、P95 0.14%），这个判据是看到门槛结果之后才选的，论文要写明；内核态指令照常记录，但不用于比较；CPU 秒按 P 和 E 分开报告，不换算；墙钟是这台机器这个配置下的实测。
+
+This supersedes the earlier wait-for-decision/no-full-launch direction.
+The user requested autonomous continuation; Claude selected plan A. No failed
+gate was relabelled passed and no threshold changed. The post-result choice
+of user-only instructions is descriptive and must be disclosed in the paper.
+
+Freeze from first to last source module: Lean 4.34.1, corpus 4eaee875,
+Mathlib d13f23b7, the verified actual 44 search roots and complete folded view,
+-j8, LEAN_NUM_THREADS=8, -DautoImplicit=false, no -M. P workers use 0–7,
+E workers use 10–23, with capacities eight and fourteen; memory-dependent
+admission may reduce actual concurrency. The whole execution holds pcore.lock.
+Other project lanes use 8–9; no change is made to other Workspaces.
+
+The universe is 163,096 source modules plus one configuration unit. New
+native execution has an empty corpus-product view. Dependency-ready ordering
+is lexicographic via a heap, without rescanning the entire pending frame
+on each return. Compiler failures get one retry; dependent modules are
+reported blocked and unrelated ready work continues. Resource-preempted
+attempts are recorded separately, drained to exclusive retry and excluded
+from successful module costs. The sampler uses node available memory and
+actual cgroup charge, never summed RSS. The existing eight-GiB reserve and
+one-GiB response slack remain; other Workspaces are not limited. Sampling
+and unrelated allocations can transiently change headroom.
+
+### Storage determined before launch
+
+census-storage-plan.json retains actual filesystem headroom and artifact-size
+inputs. Grouping twenty gate targets by the lexical decide+kernel marker,
+and applying group artifact/source-byte ratios to this complete source frame,
+predicts about 79.0 GiB olean and 5.85 GiB ilean, plus about 9.85 GiB C.
+This is a sizing model, not a sampling estimate/CI. The five fresh closure
+products corroborate available product types and selected target bytes.
+A further 16 GiB allowance covers directories, logs, metadata and transient
+products. This sizing fits below the 85% line at the observed starting use.
+The different-commit nealmcb 116 GB / 122,458 modules reference extrapolates
+to about 154.5 GB olean alone and gives a substantially higher disk scenario;
+unobserved large products may still exhaust headroom. No fit guarantee is
+claimed and no other lane's files or PVC capacity are changed.
+
+From the first module, successful generated .c files have bytes/hash recorded
+in the fsynced result before unlinking. The compiler still writes -c with the
+same command, so compilation CPU/instructions include that work. .olean and
+all required companions remain for M's full checker; .ilean remains.
+Failed/partial native outputs and raw diagnostics remain. A crash between
+durable record and C deletion is cleaned on resume only within this owned
+output tree. Every deletion is appended to storage.jsonl. No Lake build or
+--setup is invoked, so no per-module Lake .setup.json is generated.
+Disk usage at 85% stops admission and preserves interruption records.
+
+### Counters, record audit and continuation
+
+The full --execute call supplies neither --functional nor --validate-subset.
+Gate.launch opens cpu_core and cpu_atom user/kernel PMUs before releasing
+the native exec pipe, with inherited task/thread counting. Every row retains
+all four counter results, time-enabled/running and coverage. Only the active
+pool's user/kernel coverage is interpreted; the inactive PMU may have zero
+enabled time and null coverage. CPU and instruction comparisons never
+convert E seconds into P seconds.
+
+After the first 100 successful returns, the controller writes first100-audit.json
+and stops on any missing required counter/provenance/cost field. A failed
+contract requires a corrected new run directory, with old data preserved.
+Gate launch identity correctly marks a full run. The standalone Workspace
+supervisor has no SSH-session lifetime dependency. Fsynced records and native
+start/exit identities support explicit same-protocol resume; interruptions
+are unknown-cost events, not completed modules. Host/container interruptions
+must remain distinct from continuous machine wall time.
+
+Eleven preparation regressions passed, including a tiny non-Lean executable
+flow that checks ready ordering, one failure retry, dependent blocking,
+durable-C pruning and no-new-native resume. These are not cost results.
+Final publication occurs only after execution ends, under census/. No
+progress commits are planned. First-100 verification, 10% and 50% milestones
+are runtime evidence/messages; the latter include resource headroom.

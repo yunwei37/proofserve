@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Prepare only by default. Native census requires --execute; never auto-launched."""
-import argparse,collections,fcntl,hashlib,json,os,signal,sys,time,subprocess
+import argparse,collections,fcntl,hashlib,heapq,json,os,signal,sys,time,subprocess
 from pathlib import Path
 import census_gate as native
 from census import append,utc,records
@@ -120,7 +120,7 @@ def run(a):
     if a.functional:pools={"P":[8],"E":[9]}
     if bounded:pools={"P":[],"E":list(range(10,17))}
     identity=dict(source_revision=m["source_revision"],mathlib=m["mathlib"],lean_binary=m["lean_binary"],pools=pools,
-        threads=8,options=m["lean_options"],env=m["env"],lean_version=m["lean"],toolchain_stat=[Path(m["lean_binary"]).stat().st_size,Path(m["lean_binary"]).stat().st_mtime_ns],functional_only=a.functional,manifest_sha256=sha(a.manifest),workers={p:len(c)for p,c in pools.items()})
+        discard_c=getattr(a,"discard_c",False),threads=8,options=m["lean_options"],env=m["env"],lean_version=m["lean"],toolchain_stat=[Path(m["lean_binary"]).stat().st_size,Path(m["lean_binary"]).stat().st_mtime_ns],functional_only=a.functional,manifest_sha256=sha(a.manifest),workers={p:len(c)for p,c in pools.items()})
     if bounded:
         identity.update(bounded_validation=True,cost_measurement=False,validation_limits=dict(maximum_modules=2000,maximum_seconds=21600,native_charge_GiB=11,controller_charge_GiB=1,workers=1))
     if not a.functional:
@@ -144,6 +144,7 @@ def run(a):
     pcore=None
     if not a.functional and not bounded:
         pcore=open("/workspaces/.agent-state/gpu-smt-captures/pcore.lock","a");fcntl.flock(pcore,fcntl.LOCK_EX)
+    append(out/"execution-phases.jsonl",dict(event="lease_acquired",utc=utc(),monotonic_s=time.monotonic(),pid=os.getpid(),boot_id=Path("/proc/sys/kernel/random/boot_id").read_text().strip(),kernel=os.uname().release,pools=pools,manifest_source_units=len(mods)))
     if not a.functional:os.sched_setaffinity(0,set(pools["E"]or pools["P"]))
     native.P=pools["P"];native.E=pools["E"]
     for ledger in (out/"records.jsonl",out/"lifecycle.jsonl"):
@@ -156,7 +157,14 @@ def run(a):
     last={r["module"]:r for r in previous}
     for n in done:
         r=last[n]
-        if sha(mods[n]["source"])!=r["source_sha256"]or not all(Path(v["path"]).is_file()for v in r["artifacts"].values()):raise ValueError("completed input/product changed: "+n)
+        if sha(mods[n]["source"])!=r["source_sha256"]or not all(Path(v["path"]).is_file()for v in r["artifacts"].values()if v.get("retained",True)):raise ValueError("completed input/product changed: "+n)
+    for n in done:
+        for product in last[n]["artifacts"].values():
+            file=Path(product["path"])
+            if not product.get("retained",True)and file.exists():
+                if file.suffix!=".c"or not file.resolve().is_relative_to(out):raise ValueError("unexpected discarded product path")
+                file.unlink()
+                append(out/"storage.jsonl",dict(utc=utc(),module=n,path=str(file),action="resume_discard_after_durable_result"))
     starts=out/"lifecycle.jsonl"
     returned={r["sequence"]for r in previous}
     if starts.exists():
@@ -200,7 +208,7 @@ def run(a):
     c=dict(m,modules=mods,cwd=m.get("source_project_root",str(Path(next(iter(mods.values()))["root"]))),
         measurement_commit=a.commit,toolchain=dict(lean=m["lean"],binary=m["lean_binary"]),
         attempts=dict(collections.Counter(r["module"]for r in previous)),continue_native_failures=True,memory_preempt_requeue=True,functional_only=(a.functional or bounded),
-        native_wall_s=30 if a.functional else None,maximum_charge_bytes=(11*2**30 if bounded else 8*2**30 if a.functional else None),validation_deadline=deadline)
+        native_wall_s=30 if a.functional else None,maximum_charge_bytes=(11*2**30 if bounded else 8*2**30 if a.functional else None),validation_deadline=deadline,discard_c=getattr(a,"discard_c",False),full_census_run=not(a.functional or bounded))
     engine=native.Gate(c,out);scopefile.write_text(str(engine.cg))
     engine.seq=max([r["sequence"]for r in previous]+[int(p.name)for p in (out/"attempts").glob("*")if p.name.isdigit()]+[0])
     configuration={n for n,r in mods.items()if Path(r["source"]).name=="lakefile.lean"}
@@ -208,32 +216,78 @@ def run(a):
     solo=set(resource_retries)
     if (out/"resource-failures.jsonl").exists():
         for line in (out/"resource-failures.jsonl").read_text().splitlines():failed.add(json.loads(line)["module"])
-    lookup=[view]
+    pending.difference_update(failed)
+    children=collections.defaultdict(set);remaining={};ready_heap=[];queued=set()
+    for n in pending:
+        remaining[n]=set(mods[n]["deps"])-done
+        for parent in remaining[n]:children[parent].add(n)
+    def make_ready(n):
+        if n in pending and n not in queued and not remaining[n]:
+            heapq.heappush(ready_heap,n);queued.add(n)
+    def fail_dependents(n):
+        todo=[n]
+        while todo:
+            parent=todo.pop()
+            for child in sorted(children.get(parent,())):
+                if child not in pending:continue
+                bad=sorted(set(mods[child]["deps"])&(failed|set(blocked)))
+                if bad:
+                    blocked[child]=dict(status="blocked",module=child,failed_dependencies=bad,missing_external=[])
+                    pending.discard(child);queued.discard(child);todo.append(child)
+    for n in list(pending):
+        missing=[name for name in mods[n].get("external",[])if not(view/Path(*name.split(".")).with_suffix(".olean")).is_file()]
+        if missing:
+            blocked[n]=dict(status="blocked",module=n,failed_dependencies=[],missing_external=missing);pending.discard(n)
+    for n in sorted(failed|set(blocked)):fail_dependents(n)
+    for n in sorted(pending):make_ready(n)
+    active_modules=set();progress_last=0
+    first100_done=(out/"first100-audit.json").exists()
+    def next_ready():
+        if solo:
+            return next((n for n in sorted(solo)if n in pending and n not in active_modules and not remaining[n]),None)
+        while ready_heap:
+            n=heapq.heappop(ready_heap);queued.discard(n)
+            if n in pending and n not in active_modules and not remaining[n]:return n
+        return None
+    def first100_audit():
+        checked=[r for r in previous+engine.rows if r["status"]=="completed"][:100]
+        missing=[]
+        fields=["pool","user_cpu_s","system_cpu_s","wall_s","peak_rss_kib","source_sha256","source_revision","measurement_commit","attempt","start_utc","end_utc"]
+        for row in checked:
+            for key in fields:
+                if key not in row or row[key]is None:missing.append([row["module"],key])
+            for pmu in ["cpu_core","cpu_atom"]:
+                for mode in ["user","kernel"]:
+                    event=row.get("counters",{}).get(pmu+"_"+mode,{})
+                    for key in ["instructions","enabled_ns","running_ns","coverage"]:
+                        if key not in event:missing.append([row["module"],pmu+"_"+mode+"."+key])
+            pmu="cpu_core"if row["pool"]=="P"else"cpu_atom"
+            for mode in ["user","kernel"]:
+                event=row.get("counters",{}).get(pmu+"_"+mode,{})
+                if event.get("coverage")is None or event.get("instructions",0)<=0:missing.append([row["module"],pmu+"_"+mode+" inactive"])
+        value=dict(utc=utc(),successful_checked=len(checked),passed=len(checked)==100 and not missing,missing=missing,
+            pools=dict(collections.Counter(r["pool"]for r in checked)),record_sequences=[r["sequence"]for r in checked],
+            active_coverage={p:{mode:sorted({r.get("counters",{}).get(("cpu_core"if p=="P"else"cpu_atom")+"_"+mode,{}).get("coverage")for r in checked if r["pool"]==p},key=lambda x:-1 if x is None else x)for mode in ["user","kernel"]}for p in ["P","E"]})
+        native.atomic(out/"first100-audit.json",value)
+        if not value["passed"]:engine.stop="first100_record_contract_failure"
     stop=None
     try:
         while pending or engine.live:
-            for n in sorted(pending):
-                ds=mods[n]["deps"]
-                bad=sorted(set(ds)&(failed|set(blocked)))
-                missing=[d for d in mods[n].get("external",[])if not any((p/Path(*d.split(".")).with_suffix(".olean")).exists()for p in lookup)]
-                if n in failed:pending.remove(n);continue
-                if bad or missing:
-                    blocked[n]=dict(status="blocked",module=n,failed_dependencies=bad,missing_external=missing);pending.remove(n);continue
             if bounded and time.monotonic()>=deadline:engine.stop="subset_validation_six_hour_limit"
             if engine.stop:stop=engine.stop;break
             stat=os.statvfs(out)
             if 1-stat.f_bavail/stat.f_blocks>=.85:stop="disk_85_percent";break
-            total,available=native.mem();charge=int((engine.cg/"memory.current").read_text())
+            total,available=native.mem()
             for pool in pools:
                 cap=(1 if bounded and pools[pool] else len(pools[pool]))if not a.functional else 1
                 while available>=9*2**30 and sum(j["meta"]["pool"]==pool for j in engine.live.values())<cap:
                     if solo and engine.live:break
-                    running={j["meta"]["module"]for j in engine.live.values()}
-                    ready=next((n for n in sorted(pending)if n not in running and (not solo or n in solo) and set(mods[n]["deps"])<=done),None)
+                    ready=next_ready()
                     if ready is None:break
                     exclusive=not engine.live
                     for previous_job in engine.live.values():previous_job["meta"]["exclusive_at_launch"]=False
                     pid=engine.launch(ready,pool,"subset_validation"if bounded else"functional"if a.functional else"census",0,"subset_validation"if bounded else"functional"if a.functional else"census",not(a.functional or bounded))
+                    active_modules.add(ready)
                     engine.live[pid]["meta"]["exclusive_at_launch"]=exclusive
                     if solo:break
                     _,available=native.mem()
@@ -241,25 +295,39 @@ def run(a):
                 if pending:stop="memory_admission"if available<9*2**30 else"dependency_cycle_or_unresolved_context"
                 break
             before=len(engine.rows);engine.collect()
-            for r in engine.rows[before:]:
-                n=r["module"]
-                if r["status"]=="completed":
-                    done.add(n);pending.discard(n);solo.discard(n);publish(n,r)
-                elif r.get("interruption")=="memory_reserve":
+            for row in engine.rows[before:]:
+                n=row["module"];active_modules.discard(n)
+                if row["status"]=="completed":
+                    done.add(n);pending.discard(n);solo.discard(n);queued.discard(n);publish(n,row)
+                    for child in children.get(n,()):
+                        if child in pending:remaining[child].discard(n);make_ready(child)
+                elif row.get("interruption")in {"memory_reserve","cgroup_memory_oom"}:
                     resource_retries[n]+=1
-                    if r.get("exclusive_at_launch"):
+                    if row.get("exclusive_at_launch"):
                         failed.add(n);pending.discard(n);solo.discard(n)
                         append(out/"resource-failures.jsonl",dict(module=n,status="resource_failure_at_current_headroom",utc=utc()))
+                        fail_dependents(n)
                     else:solo.add(n)
                 else:
                     fails[n]+=1
-                    if fails[n]>=2:failed.add(n);pending.discard(n)
+                    if fails[n]>=2:
+                        failed.add(n);pending.discard(n);solo.discard(n);fail_dependents(n)
+                    else:make_ready(n)
+            if not(a.functional or bounded)and len(done)>=100 and not first100_done:
+                first100_audit();first100_done=True
+            fraction=len(done)/max(1,len(mods)-len(configuration))
+            for milestone in [.1,.5]:
+                if progress_last<milestone<=fraction:
+                    append(out/"milestones.jsonl",dict(utc=utc(),fraction=milestone,successful=len(done),failed=len(failed),blocked=len(blocked),
+                        available_bytes=native.mem()[1],disk_used_fraction=1-os.statvfs(out).f_bavail/os.statvfs(out).f_blocks,protocol_changed=False))
+                    progress_last=milestone
         engine.drain()
         for n in pending:blocked[n]=dict(status="not_attempted",module=n,reason=stop)
         report=dict(functional_only=a.functional,full_census=not(a.functional or bounded),bounded_validation=bounded,cost_measurement=not(a.functional or bounded),
             successful=sorted(done),failed=sorted(failed),blocked=list(blocked.values()),stop=stop,
             configuration_units=sorted(configuration),total_source_units=len(mods),complete=len(done)+len(configuration)==len(mods))
         (out/"outcomes.json").write_text(json.dumps(report,indent=2))
+        append(out/"execution-phases.jsonl",dict(event="returned",utc=utc(),monotonic_s=time.monotonic(),stop=stop,complete=report["complete"]))
         print(json.dumps(report))
     finally:
         for pid,j in list(engine.live.items()):
@@ -268,9 +336,11 @@ def run(a):
             except ProcessLookupError:pass
         engine.drain()
         engine.cg.rmdir()
+
 def main():
     p=argparse.ArgumentParser();p.add_argument("--manifest",type=Path,required=True);p.add_argument("--out",type=Path,required=True)
     p.add_argument("--pool",choices=["22","P8"],default="22");p.add_argument("--execute",action="store_true")
+    p.add_argument("--discard-c",action="store_true",help="retain durable C hash/bytes, then unlink successful generated C; olean products stay");
     p.add_argument("--validate-subset",action="store_true",help="explicit non-measurement real-corpus closure: CPUs 10-16, one worker, <=2000 modules, <=6h; still requires --execute");
     p.add_argument("--environment-export",type=Path);p.add_argument("--functional",action="store_true");p.add_argument("--commit",required=True)
     run(p.parse_args())

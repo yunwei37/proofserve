@@ -1,0 +1,35 @@
+{
+  "observed_utc": "2026-11-04T19:50:53.204398+00:00",
+  "filesystem_bytes": 405509156864,
+  "used_bytes": 182369026048,
+  "disk_stop_fraction": 0.85,
+  "usable_until_stop_bytes": 162313757286.39996,
+  "source_units": 163097,
+  "source_bytes": 1785499363,
+  "stratified_source_ratio_estimates": [
+    {
+      "marked": false,
+      "population_modules": 157248,
+      "population_source_bytes": 1130381747,
+      "sample_modules": 10,
+      "estimated_olean_bytes": 43347998264.916435,
+      "estimated_ilean_bytes": 3357430783.357576,
+      "estimated_c_bytes": 128785489.93125822
+    },
+    {
+      "marked": true,
+      "population_modules": 5848,
+      "population_source_bytes": 655100740,
+      "sample_modules": 10,
+      "estimated_olean_bytes": 41449545005.952614,
+      "estimated_ilean_bytes": 2924558537.32939,
+      "estimated_c_bytes": 10446315045.951662
+    }
+  ],
+  "estimated_retained_bytes": 91079532591.55602,
+  "estimated_c_bytes": 10575100535.882921,
+  "additional_planning_allowance_bytes": 17179869184,
+  "c_discard_policy": true,
+  "reference_116GB_scaled_bytes": 154494896209.3126,
+  "caveat": "Sizing only, not a population estimate or confidence bound: twenty deliberately selected gate targets and five fresh functional outputs; no assurance that unobserved modules follow these ratios."
+}
