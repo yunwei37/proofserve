@@ -17,8 +17,12 @@ def main():
  refs={};cleanup=json.loads((root/'cleanup.json').read_text())if(root/'cleanup.json').exists()else[]
  def one(key,argv,dataset,workers,repeat,arm='native',state=None,interrupt=False,limit=1100):
   previous=next((r for r in rows if r['key']==key),None)
+  if previous and previous['returncode']!=0 and arm!='bad-control' and not previous.get('manual_interruption') and cfg.get('retry_failed',False):
+   archive=json.loads((root/'failed-cells.json').read_text())if(root/'failed-cells.json').exists()else[]
+   archive.append(previous);dump(root/'failed-cells.json',archive)
+   rows.remove(previous);previous=None
   if previous:
-   result=json.loads((root/'runs'/key/'result.json').read_text())
+   result=json.loads((root/'runs'/previous.get('run_key',key)/'result.json').read_text())
    assert result['native_retired']and result['cgroup_retired']
    receipt=None
    if arm in ['native','full-math']and result['returncode']==0:
@@ -30,6 +34,13 @@ def main():
     raise RuntimeError('old failed native cell requires explicit review')
    print('RETAIN_COMPLETED',key,flush=True)
    return result,receipt
+  attempt=1
+  run_key=key
+  while(root/'runs'/run_key).exists():
+   attempt+=1;run_key=key+'-attempt-'+str(attempt)
+  if run_key!=key and state and key!='math-resume':
+   new_state=root/run_key
+   argv=[new_state if str(x)==str(state)else x for x in argv];state=new_state
   fs=os.statvfs(root);used=1-fs.f_bavail/fs.f_blocks
   if used>=.85:raise RuntimeError('disk85% boundary; preserve and stop')
   e=guard.environment();e['PATH']=str(guard.SDK/'bin')+':'+e['PATH'];e['LEAN_PATH']=cfg.get('overlay','')if dataset in['grid','barrier']else''
@@ -61,20 +72,20 @@ def main():
       break
    t=threading.Thread(target=interrupter,daemon=True)if interrupt else None
    if t:t.start()
-   try:r=guard.run(key,argv,limit,True,e)
+   try:r=guard.run(run_key,argv,limit,True,e)
    finally:
     stopped.set()
     if t:t.join()
    os.sched_setaffinity(0,{8,9})
   receipt=None
   if arm in ['native','full-math']and r['returncode']==0:
-   receipt=json.loads((root/'runs'/key/'stdout').read_text())
+   receipt=json.loads((root/'runs'/run_key/'stdout').read_text())
    assert receipt['status']=='complete'and receipt['execution_path']=='proofserve-parallel'
    assert len(receipt['accepted'])==len(set(receipt['accepted']))
    if dataset in refs:assert receipt['accepted']==refs[dataset]
    else:refs[dataset]=receipt['accepted']
    dump(root/(key+'-receipt.json'),receipt)
-  row=dict(key=key,commit=cfg['commit'],dataset=dataset,workers=workers,repeat=repeat,arm=arm,
+  row=dict(key=key,run_key=run_key,attempt=attempt,state_directory=str(state)if state else None,commit=cfg['commit'],dataset=dataset,workers=workers,repeat=repeat,arm=arm,
    returncode=r['returncode'],wall_s=r.get('wall_s'),cpu_s=r.get('user_s',0)+r.get('system_s',0),
    peak_rss_kib=r.get('peak_rss_kib'),rss_sample_bytes=r['sampled_tree_peak_bytes'],modules=len(receipt['accepted'])if receipt else None,
    segments=len(receipt['segments'])if receipt else None,manual_interruption=bool(proof))
@@ -83,7 +94,7 @@ def main():
   elif r['returncode']!=0 and arm not in ['full-math','official','bad-control']:
    raise RuntimeError('native cell incomplete or failed; stop without imputing a result: '+key)
   if arm=='bad-control':
-   text=(root/'runs'/key/'stdout').read_text()+(root/'runs'/key/'stderr').read_text()
+   text=(root/'runs'/run_key/'stdout').read_text()+(root/'runs'/run_key/'stderr').read_text()
    assert r['returncode']!=0 and ('kernel_reject:'in text or ('while replaying declaration'in text and '(kernel)'in text)) and 'Mathlib.Data.Nat.Basic'in text
   assert r['native_retired']and r['cgroup_retired']
   print('RETURNED',json.dumps(row),flush=True)

@@ -46,3 +46,11 @@ Completed root batches retain their local certificates and input identities;
 only their regenerable environment snapshots are retired. Failed and partial
 attempts remain visible. Results are committed at complete boundaries, not
 once per matrix cell.
+
+The frozen workflow entry point is bench/release.py. It runs whole-source-frame
+checking before the fixed matrix and PlanarPacking, preserves failed attempts,
+and supports explicit --retry-failed after review. It freezes the executable,
+source commit and source tree once. On restart it uses that same binary and
+revalidates whole-check input certificates before consuming old success rows.
+Qualification mode uses a tiny fixture on CPUs 8-9 without the P-core lease;
+its phase names do not represent actual Grid or PlanarPacking measurements.

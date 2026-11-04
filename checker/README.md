@@ -52,9 +52,10 @@ restoring an enormous accumulated prefix can still exceed available memory.
 ## Large projects
 
 When a request has more than 500 roots, the CLI checks independent batches of
-at most 500 requested roots. Each batch starts from an empty kernel environment
-and checks its entire dependency closure. Later roots already covered by a
-completed batch are skipped. A pure metadata ledger, rather than every previous
+at most 500 requested roots. Each batch uses a fresh process and checks new
+modules in its actual dependency closure, with previously checked imports
+reconstructed from local receipts. Later roots already covered by a
+completed batch are skipped. Roots are ordered by dependencies before grouping. A metadata ledger, rather than every previous
 kernel environment, stays in the coordinator.
 
 ~~~sh
@@ -65,16 +66,19 @@ The root manifest avoids operating-system argument limits on large libraries.
 Lower --closure-roots to reduce the union of dependencies held by one batch.
 Use --closure-roots 0 to retain the original single-frontier procedure.
 
-Namespace umbrella roots are inspected from compiled artifacts. If the most
+All roots of a batched request are inspected from compiled artifacts, including
+leaf import-only modules such as Main. If the most
 private module data contain no own declarations, their imports are checked in
 separate closures. Before recording the empty umbrella, the original importer
 and empty replay still validate its combined declared context. Source text and
 file naming never establish emptiness. Contexts with conflicting imports are
 not accepted.
 
-Common dependencies can be checked more than once across independent batches.
-This trades extra work for a frontier bounded by the current batch, not the whole
-library. One dependency closure can still exceed memory; batching alone does not
+Completed shared dependencies are reused from local original-kernel receipts
+only after their artifact bytes match. The original importer loads the real
+combined context; new modules still reach the kernel. This avoids repeating
+shared proof checks while bounding the retained frontier by the current batch.
+--replay-shared-imports disables this reuse for comparison. One dependency closure can still exceed memory; batching alone does not
 solve that case. Full coverage of the 163,097-module corpus is not yet established.
 
 Complete batches save an atomic local certificate containing the native receipt
@@ -83,6 +87,9 @@ Interrupted batches retain ordinary segment checkpoints. On resume, certificates
 are reused only after their recorded input files are checked again. Keep the
 build artifacts unchanged during a run and protect the checkpoint directory.
 These are local trusted checkpoints, not portable proof objects or signatures.
+A changed shared dependency is rejected during later-batch validation or resume.
+Conflicting unions of valid import contexts use original module-local checking
+for new modules rather than treating the union as a valid environment.
 
 The --no-persistence and --no-split-fallback switches are evaluation ablations.
 Each timed evaluation needs a fresh checkpoint directory. Reusing a completed
@@ -129,10 +136,14 @@ Checkpoint files must be local trusted outputs, protected from modification by
 an adversary. Their Lean-serialized metadata uses unsafeCast. Hashes detect
 ordinary stale artifacts, not malicious collisions or tampering.
 
-Upstream unsafe and partial exclusions are preserved. Axioms retain their Lean
+Upstream unsafe and partial exclusions are preserved. Like Lean.Replay, an
+already available imported theorem with an identical interface does not require
+checking a duplicate proof body again. This is not a byte-for-byte audit of
+every redundant serialized proof. Axioms retain their Lean
 meaning and are reported for the accepted closure, including segregated modules.
 No proof term is repaired or rewritten. This is not a demonstrated solution for
 checking a 260 GiB environment inside 16 GiB.
 
-See docs/receipt-schema.md for the API, QUALIFICATION.md for development evidence,
+See docs/receipt-schema.md for the API, docs/release-evaluation.md for the frozen
+evaluation workflow, QUALIFICATION.md for development evidence,
 and results/ for release-form evaluation. No release has been published.

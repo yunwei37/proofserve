@@ -83,14 +83,16 @@ integer within this top-level receipt.
 
 accepted and axioms are deduplicated unions of the actual native child receipts.
 Every requested root must occur in accepted before status can be complete.
-A child checks its full import closure from an empty kernel environment. A
-requested root already covered by an earlier complete closure needs no new batch.
-No unchecked compiled import is substituted for a kernel check.
+A child checks new modules in their actual import closure. Already checked
+imports can be reconstructed by the original importer from input-validated
+local certificates. A requested root covered by an earlier complete closure
+needs no new batch. Merely compiling an import never certifies its proof bodies.
 
 cpu_ns counts this invocation, including all waited descendants and input
-validation. cumulative_segment_cpu_ns includes repeated shared-dependency work
-across batches and old successful work reused from local certificates. It is
-not the cost of checking each unique declaration once. Certificate validation
+validation. cumulative_segment_cpu_ns includes import reconstruction and old successful
+work reused from local certificates. Legacy --replay-shared-imports can also
+repeat shared proof checks across batches. This field is not the cost of
+checking each unique declaration once. Certificate validation
 hashes an unchanged file once per invocation, so artifacts must remain stable
 for the duration of that invocation.
 
@@ -106,3 +108,24 @@ have been checked, and the original importer plus empty replay has accepted the
 combined context. It does not mean an unbuilt source file was accepted by a text
 heuristic. Input-validated closure plans are trusted local checkpoint metadata.
 Incompatible import contexts are not complete verification results.
+
+
+## Reusing completed imports
+
+Independent batches add reuse_checked_imports, module_check_entries, and
+trusted_import_entries. The last two are module-entry counts, not declaration
+counts or heartbeat units. module_check_entries counts original-kernel module
+entries represented by batch receipts, including successful old work reused on
+resume. trusted_import_entries counts imports loaded from completed local
+certificates across batches; the same dependency can be loaded several times.
+Imported proof bodies are not rechecked in those entries.
+
+trusted_import_basis identifies this extra local trust. Child receipts include
+certificate_reused_modules. Files are bound by the local completed-module
+receipt and matching noncryptographic artifact hashes. This is not a portable,
+adversary-resistant proof certificate. The --trusted-module-cache argument is
+an internal coordinator interface to trusted local state, not an untrusted
+proof upload interface.
+
+The checkpoint metadata ABI changed. Old checkpoint configurations produce an
+explicit mismatch error; they are not decoded using a new unsafe layout.

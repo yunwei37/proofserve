@@ -19,6 +19,7 @@ unsafe def main (args : List String) : IO Unit := do
       if let .thmInfo info := ci then
         changed := true
         let value := if kind=="bvar" then Expr.bvar 0
+          else if kind=="sibling" then mkConst "Shared.externalProof".toName
           else if kind=="unknown" then mkConst "ProofServeMissingConstant".toName
           else mkSort (.succ .zero)
         ci := .thmInfo {info with value}

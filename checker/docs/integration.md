@@ -28,3 +28,9 @@ The top-level receipt can include batches and context_strategy. Wrappers should
 preserve these fields and accept additive version-1 fields. Do not equate
 cumulative_segment_cpu_ns with one check of each unique declaration: separate
 batches can repeat dependencies.
+
+The independent-batch default reuses exact-input completed imports. Additive
+receipt fields identify the reused local certificates and distinguish
+module_check_entries from trusted_import_entries. --replay-shared-imports
+selects the earlier repeated-replay behavior. Wrappers must preserve the trust
+metadata and must not call a certificate import a fresh kernel proof check.

@@ -96,3 +96,41 @@ builds succeeded. The portable contract now also checks default namespace-root
 expansion, stale empty-plan rejection, three actual malformed serialized theorem
 bodies below an empty parent, and incompatible combined import definitions.
 These are untimed CPU 8-9 controls. No new P-core run was started.
+
+## Completed-module reuse qualification
+
+CPU 8–9 controls in checker-full-feasibility-20261104 exercise the new
+byte-bound local module ledger, dependency-first grouping, empty leaf expansion,
+canonical root binding, and a cached base across successful segment boundaries.
+The portable native contract includes three malformed proof bodies before
+certificate creation, changed certified dependencies on resume and between live
+batches, a changed completed but subsequently unused artifact, and a malicious
+reference to an unimported checked sibling. Incompatible valid combined imports
+fall back to original module-local checking and retain their accepted sets.
+
+A real standard-library false rejection exposed missing certified imports after
+a segment checkpoint. The writer now includes that seed context, and restoration
+also recovers older successful local segments using separately input-validated
+cache metadata. The successful cross-segment regression is not a proof that all
+private ABI paths or the full corpus are qualified. Failed attempts are retained.
+
+The planning decision, largest retained closure result, remaining capacity
+limit, and one-command post-census handoff are in results/full-feasibility.md.
+None of the current CPU 8–9 values is a final paper performance result.
+
+The next 16-GiB attempt also stopped, at a sampled tree peak of 16.015 GiB,
+without an OOM. Completed batches covering 11,216 modules were preserved.
+Its peak sample contained about 1.84 GiB in the frontend and 14.07 GiB in a
+native worker. Subsequent code removes overlap with the metadata scan and
+redundant compacted-data loading during cached provenance construction.
+The portable native suite passed again, and the real 32,966-part identity
+comparison passed before any kernel continuation. The largest-closure outcome
+is reported separately rather than inferred from those controls.
+
+The fixed SDK source disproved a proposed extension-initialization attribution:
+importModules already defaults loadExts to false. Its temporary refactor was
+removed; source-build10 is the qualified retained source. No resource reduction
+or causal conclusion is claimed from that discarded hypothesis.
+The latest 16-GiB run stopped at 16.033 GiB; a separate one-new-module direct
+control completed, which is not a full-frame pass. The authorized 40-GiB,
+E17–23 continuation is a separate resource point and preserves earlier success.

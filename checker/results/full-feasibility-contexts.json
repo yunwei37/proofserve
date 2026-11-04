@@ -1,0 +1,18 @@
+[
+  {
+    "context": "source-context-0",
+    "source_compile_root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+    "requested_roots": 162840,
+    "static_closure_modules": 174537,
+    "request_file": "source-context-0-roots.txt",
+    "execution_environment": "shared manifest toolchain/options/search-path"
+  },
+  {
+    "context": "source-context-1",
+    "source_compile_root": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/ComparatorChallenges/HodgeConjectureCMAbelianVarieties",
+    "requested_roots": 257,
+    "static_closure_modules": 6143,
+    "request_file": "source-context-1-roots.txt",
+    "execution_environment": "shared manifest toolchain/options/search-path"
+  }
+]

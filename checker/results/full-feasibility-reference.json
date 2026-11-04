@@ -1,0 +1,31 @@
+{
+  "original_stream_raw_acceptance_equal": true,
+  "original_stream_modules": 14721,
+  "original_stream_segments": 30,
+  "source": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103",
+  "official_reference_phase": "references",
+  "new_reference_qualified": 1193,
+  "official_reference_failure": {
+    "error": "AssertionError(('native correctness/operational outcome', 'reference-14401'))",
+    "phase": "references",
+    "completed_e89": 1193,
+    "completed_legacy": 13208,
+    "performance_eligible": false,
+    "resource_observation": {
+      "peak_tree_rss": 12908376064,
+      "peak_scope": "current controller invocation, not per module",
+      "rss_budget_stop": true
+    }
+  },
+  "official_controller": {
+    "pid": 235183,
+    "birth": "4693501",
+    "affinity": [
+      8,
+      9
+    ],
+    "performance_eligible": false
+  },
+  "observed_at": "2026-11-04T07:48:40.327525+00:00",
+  "official_controller_retired": true
+}

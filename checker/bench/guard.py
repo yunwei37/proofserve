@@ -20,7 +20,7 @@ def environment():
  (ROOT/'tmp').mkdir(exist_ok=True)
  return e
 
-def run(key,argv,limit=600,measured=False,env=None):
+def run(key,argv,limit=600,measured=False,env=None,memory_gib=None):
  global ACTIVE
  assert not any(str(x).startswith('-M') for x in argv)
  if measured:
@@ -35,6 +35,7 @@ def run(key,argv,limit=600,measured=False,env=None):
  reserve=8*1024**3
  if meminfo['MemAvailable']<=reserve+256*1024**2:raise RuntimeError('host reserve unavailable before native launch')
  budget=meminfo['MemAvailable']-reserve-256*1024**2
+ if memory_gib is not None:budget=min(budget,int(memory_gib*1024**3))
  cg.mkdir();(cg/'memory.max').write_text(str(budget));(cg/'memory.oom.group').write_text('1')
  cmd=['timeout','--signal=TERM','--kill-after=5',str(limit)]+list(map(str,argv))
  record=dict(key=key,argv=cmd,affinity=sorted(os.sched_getaffinity(0)),measured=measured,

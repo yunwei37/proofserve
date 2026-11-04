@@ -29,6 +29,7 @@ structure AuditState where
   skipped : Nat := 0
   fallbacks : Nat := 0
   declaredAxioms : NameSet := {}
+  localOnly : Bool := false
 
 abbrev AuditM := StateRefT AuditState IO
 
@@ -92,6 +93,85 @@ unsafe def localReplay (mod : Name) (mutation : String) : IO Unit := do
   discard <| env.toKernelEnv.replay map
   env.freeRegions
 
+
+initialize certifiedNames : IO.Ref NameSet ← IO.mkRef {}
+initialize checkpointSeedImports : IO.Ref (Array Import) ← IO.mkRef #[]
+
+/-- Only the public coordinator can supply this local, input-validated cache.
+The importer loads the real combined context; it does not establish proofs. -/
+partial def cachedBoundary (roots : List Name) (allowed : NameSet)
+    (seen : NameSet := {}) (boundary : NameSet := {}) : IO (NameSet × NameSet) := do
+  match roots with
+  | [] => return (seen,boundary)
+  | mod :: rest =>
+    if seen.contains mod then return ← cachedBoundary rest allowed seen boundary
+    let seen := seen.insert mod
+    if allowed.contains mod then
+      return ← cachedBoundary rest allowed seen (boundary.insert mod)
+    let parts ← moduleParts mod
+    let some (first,_) := parts[0]? | throw <| IO.userError "empty module header"
+    cachedBoundary ((first.imports.map (·.module)).toList ++ rest) allowed seen boundary
+
+unsafe def certifiedBase (roots : List Name) (file : System.FilePath) : IO AuditState := do
+  let cache ← IO.ofExcept (Json.parse (← IO.FS.readFile file))
+  let names ← IO.ofExcept (cache.getObjValAs? (Array String) "modules")
+  let allowed := names.foldl (fun (s : NameSet) n => s.insert n.toName) {}
+  certifiedNames.set allowed
+  let (_,boundary) ← cachedBoundary roots allowed
+  if boundary.isEmpty then
+    let env ← mkEmptyEnvironment
+    return { checked := env.toKernelEnv }
+  try
+    let imports := boundary.toList.toArray.map (fun n => ({module:=n,importAll:=true} : Import))
+    let env ← importModules imports {} 0
+    let mut state : AuditState := { checked:=env.toKernelEnv,regions:=env.header.regions }
+    for imp in env.header.modules, data in env.header.moduleData do
+      if !imp.hasData then continue
+      let mod := imp.module
+      unless allowed.contains mod do
+        throw <| IO.userError s!"uncertified module in imported cache context: {mod}"
+      -- Identity qualification checked every part's import names against the
+      -- exported header. Reuse the importer's resident data instead of loading
+      -- a second compacted copy of every certified module.
+      let first := data
+      let mut visible : Nat := 0
+      for parent in first.imports do
+        let some index := state.moduleIndices[parent.module]? |
+          throw <| IO.userError s!"certified dependency not imported in order: {parent.module}"
+        visible := visible ||| (state.ancestorMasks[parent.module]?.getD 0) ||| (2^index)
+      let mut origins := state.origins
+      let mut axioms := state.declaredAxioms
+      for ci in data.constants do
+        unless ci.isUnsafe || ci.isPartial do
+          if let some loaded := state.checked.find? ci.name then
+            unless sameConstant loaded ci || sameTheoremInterface loaded ci do
+              throw <| IO.userError s!"certified import constant differs: {ci.name}"
+            origins := origins.insert ci.name ((origins[ci.name]?.getD {}).insert mod)
+          if let .axiomInfo _ := ci then axioms := axioms.insert ci.name
+      state := { state with
+        visited := state.visited.insert mod
+        imports := state.imports.insert mod (first.imports.map (·.module))
+        ancestorMasks := state.ancestorMasks.insert mod visible
+        moduleIndices := state.moduleIndices.insert mod state.modules
+        modules := state.modules+1
+        constants := state.constants+data.constants.size
+        skipped := state.skipped+(data.constants.filter (fun ci => ci.isUnsafe || ci.isPartial)).size
+        origins := origins
+        declaredAxioms := axioms }
+    for imp in env.header.modules do
+      if state.visited.contains imp.module then
+        event [("event",toJson "trusted_import"),("module",toJson imp.module.toString),
+          ("trust",toJson "input-validated local completed-module certificates")]
+    checkpointSeedImports.set imports
+    return state
+  catch e =>
+    -- Different independent contexts can conflict in their union. Check each
+    -- new module in its original context, while reusing only certified imports.
+    event [("event",toJson "certified_context_fallback"),("error",toJson e.toString)]
+    let env ← mkEmptyEnvironment
+    return {checked:=env.toKernelEnv,localOnly:=true}
+
+
 def memorySnapshot (_ : AuditState) (_ : Bool := false) : IO Unit := pure ()
 
 /-- Pure audit metadata. Kernel declarations are exported separately by Lean. -/
@@ -105,6 +185,7 @@ structure CheckpointMeta where
   skipped : Nat
   fallbacks : Nat
   declaredAxioms : NameSet
+  localOnly : Bool
   ancestorMasks : Std.HashMap Name Nat
   moduleIndices : Std.HashMap Name Nat
 
@@ -121,14 +202,14 @@ unsafe def saveCheckpoint (s : AuditState) (file : System.FilePath) (mod : Name)
   let oldNames ← checkpointNames.get
   let constants : Array ConstantInfo :=
     SMap.fold (fun acc name ci => if oldNames.contains name then acc else acc.push ci) #[] s.checked.constants
-  let imports := match ← IO.getEnv "DECOUPLED_CHECKPOINT_INPUT" with
-    | some name => #[({ module := name.toName } : Import)]
-    | none => #[]
+  let imports ← match ← IO.getEnv "DECOUPLED_CHECKPOINT_INPUT" with
+    | some name => pure #[({ module := name.toName } : Import)]
+    | none => checkpointSeedImports.get
   let auditMeta : CheckpointMeta := {
     visited := s.visited, imports := s.imports, origins := s.origins,
     segregated := s.segregated, modules := s.modules, constants := s.constants,
     skipped := s.skipped, fallbacks := s.fallbacks, declaredAxioms := s.declaredAxioms,
-    ancestorMasks := s.ancestorMasks, moduleIndices := s.moduleIndices }
+    ancestorMasks := s.ancestorMasks, moduleIndices := s.moduleIndices, localOnly := s.localOnly }
   let data : ModuleData := {
     isModule := false, imports, constNames := constants.map (·.name),
     constants, extraConstNames := #[],
@@ -144,13 +225,21 @@ unsafe def restoreCheckpoint (mod : Name) : IO AuditState := do
   unless entry.2.size == 1 do throw <| IO.userError "invalid checkpoint metadata"
   let some value := entry.2[0]? | throw <| IO.userError "missing checkpoint value"
   let auditMeta : CheckpointMeta := unsafeCast value
-  let env ← importModules #[{ module := mod }] {} 0
+  let mut imports : Array Import := #[{ module := mod }]
+  if !auditMeta.localOnly then
+    if let some cache ← IO.getEnv "PROOFSERVE_VALIDATED_MODULE_CACHE" then
+      -- Older successful segments did not serialize their imported certified
+      -- base. Recover it only from the coordinator's byte-validated cache.
+      let cache ← IO.ofExcept (Json.parse (← IO.FS.readFile cache))
+      let modules ← IO.ofExcept (cache.getObjValAs? (Array String) "modules")
+      imports := imports ++ modules.map (fun n => ({module:=n.toName,importAll:=true} : Import))
+  let env ← importModules imports {} 0
   return {
     checked := env.toKernelEnv, regions := env.header.regions,
     visited := auditMeta.visited, imports := auditMeta.imports, origins := auditMeta.origins,
     segregated := auditMeta.segregated, modules := auditMeta.modules,
     constants := auditMeta.constants, skipped := auditMeta.skipped, fallbacks := auditMeta.fallbacks, declaredAxioms := auditMeta.declaredAxioms,
-    ancestorMasks := auditMeta.ancestorMasks, moduleIndices := auditMeta.moduleIndices }
+    ancestorMasks := auditMeta.ancestorMasks, moduleIndices := auditMeta.moduleIndices, localOnly := auditMeta.localOnly }
 
 def maybeCheckpoint (s : AuditState) : IO Unit := do
   if let some file ← IO.getEnv "DECOUPLED_CHECKPOINT_OUTPUT" then
@@ -195,7 +284,7 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
   let mut reason : Option String := none
   let mut separate := false
   let mut insertMap : Std.HashMap Name ConstantInfo := {}
-  if mode == "audit" then
+  if mode == "audit" && !s.localOnly then
     for imported in s.segregated do
       if ((s.moduleIndices[imported]?).any (fun i => visible.testBit i)) then
         separate := true
@@ -224,7 +313,21 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
               separate := true
               reason := some s!"unimported_reference:{ci.name}:{n}"
   else insertMap := map
-  if let some why := reason then
+  if s.localOnly then
+    let cached := (← certifiedNames.get).contains mod
+    try
+      unless cached do
+        let _ ← unsafe localReplay mod chosen
+      event [("event",toJson (if cached then "trusted_import" else "accept")),
+        ("module",toJson mod.toString),("context",toJson "module_local_certified")]
+      let mut axioms := s.declaredAxioms
+      for ci in data.constants do
+        if let .axiomInfo _ := ci then axioms := axioms.insert ci.name
+      modify fun s => {s with declaredAxioms:=axioms, fallbacks:=s.fallbacks+(if cached then 0 else 1)}
+    catch e =>
+      event [("event",toJson "reject"),("module",toJson mod.toString),("error",toJson e.toString)]
+      throw e
+  else if let some why := reason then
     try
       let _ ← unsafe localReplay mod chosen
       event [("event", toJson "accept"), ("module", toJson mod.toString),
@@ -285,6 +388,10 @@ unsafe def runSegment (args : List String) : IO UInt32 := do
         if s.isEmpty then none else some s.toName)
     else roots := roots ++ [arg.toName]
   if roots.isEmpty then throw <| IO.userError "at least one root"
+  if let some file ← IO.getEnv "PROOFSERVE_VALIDATED_MODULE_CACHE" then
+    let cache ← IO.ofExcept (Json.parse (← IO.FS.readFile file))
+    let names ← IO.ofExcept (cache.getObjValAs? (Array String) "modules")
+    certifiedNames.set (names.foldl (fun (s : NameSet) n => s.insert n.toName) {})
   let mutateOnly := (← IO.getEnv "DECOUPLED_MUTATE_MODULE").map String.toName
   if mode == "one" then
     for mod in roots do
@@ -298,6 +405,8 @@ unsafe def runSegment (args : List String) : IO UInt32 := do
   else
     let initial ← if let some name ← IO.getEnv "DECOUPLED_CHECKPOINT_INPUT" then
         restoreCheckpoint name.toName
+      else if let some cache ← IO.getEnv "PROOFSERVE_VALIDATED_MODULE_CACHE" then
+        certifiedBase roots cache
       else do
         let empty ← mkEmptyEnvironment
         pure ({ checked := empty.toKernelEnv } : AuditState)

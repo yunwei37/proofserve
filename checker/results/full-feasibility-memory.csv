@@ -1,0 +1,11 @@
+run,outcome,source_scope,affinity,rss_tree_gib,wait4_single_peak_gib,charged_peak_gib,native_retired,performance_eligible
+O_original_stream,complete_stream_only,14721 modules,historical P point,,14.73128890991211,10.22906494140625,,False
+subexp-cache-1,resource_stop,see raw command,"8,9",16.042011260986328,,16.0,True,False
+subexp-cache-2,root_binding_tool_failure,see raw command,"8,9",1.4656333923339844,1.2241172790527344,1.2154922485351562,True,False
+subexp-cache-3,known_false_rejection,see raw command,"8,9",5.2844390869140625,3.3556289672851562,2.9849586486816406,True,False
+subexp-cache-4,resource_stop,see raw command,"8,9",16.01488494873047,,13.521881103515625,True,False
+subexp-cache-5,resource_stop,see raw command,"8,9",16.03304672241211,,10.315288543701172,True,False
+input-identity-parity-large-1,identity_equal,see raw command,"8,9",1.7895088195800781,1.8979682922363281,0.8199920654296875,True,False
+cache-stage-direct-1,one_module_diagnostic_complete,see raw command,"8,9",6.653495788574219,6.744194030761719,1.0289382934570312,True,False
+mathlib-import-context-1,import_only_complete,see raw command,"8,9",5.393798828125,5.954456329345703,0.3832550048828125,True,False
+subexp-import-context-1,import_only_complete,see raw command,"8,9",7.284423828125,7.282802581787109,0.7791252136230469,True,False

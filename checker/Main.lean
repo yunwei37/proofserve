@@ -15,10 +15,14 @@ structure CheckOptions where
   split : Bool := true
   official : Bool := false
   closureRoots : Nat := 500
+  reuseImports : Bool := true
+  moduleCache : Option System.FilePath := none
 
 partial def parseOptions (args : List String) (o : CheckOptions := {}) : Except String CheckOptions :=
   match args with
   | [] => .ok o
+  | "--replay-shared-imports"::xs => parseOptions xs {o with reuseImports:=false}
+  | "--trusted-module-cache"::f::xs => parseOptions xs {o with moduleCache:=some f}
   | "--closure-roots"::n::xs => do
     let some k := n.toNat? | throw "invalid closure batch size"
     parseOptions xs {o with closureRoots:=k}
@@ -85,6 +89,10 @@ partial def inputIdentity (mod : Name) (seen : NameSet := {}) :
   if seen.contains mod then return (seen,#[])
   let parts ← moduleParts mod
   let some (first,_) := parts[0]? | throw <| IO.userError "empty module"
+  let imports := first.imports.map (·.module)
+  for (data,_) in parts do
+    unless data.imports.map (·.module)==imports do
+      throw <| IO.userError s!"unsupported module-part import layout: {mod}"
   let mut seen := seen.insert mod
   let mut files := #[]
   let file ← findOLean mod
@@ -96,6 +104,29 @@ partial def inputIdentity (mod : Name) (seen : NameSet := {}) :
     seen := next
     files := files ++ more
   return (seen,files)
+
+/-- Isolate compacted-region lifetime: identity scanning finishes before any
+kernel replay process is started. The traversal and byte hashes are unchanged. -/
+def runInputIdentity (args : List String) : IO UInt32 := do
+  let [file] := args | throw <| IO.userError "input identity arguments"
+  initSearchPath (← findSysroot)
+  let some paths ← IO.getEnv "LEAN_PATH" | throw <| IO.userError "input identity search path"
+  searchPathRef.set ((paths.splitOn ":").map System.FilePath.mk)
+  let text ← IO.FS.readFile file
+  let roots := (text.splitOn "\n").filterMap (fun line =>
+    let line := line.trimAscii.toString
+    if line.isEmpty then none else some line)
+  let mut seen : NameSet := {}
+  let mut inputs : Array (String × UInt64) := #[]
+  for root in roots do
+    let (next,more) ← inputIdentity root.toName seen
+    seen := next
+    inputs := inputs ++ more
+  IO.println (Json.mkObj [
+    ("modules",toJson (seen.toList.map Name.toString)),
+    ("inputs",toJson inputs)]).compress
+  return 0
+
 
 def projectRevision (project : System.FilePath) : IO Json := do
   try
@@ -178,21 +209,52 @@ def retireBatchSnapshots (directory : System.FilePath) (identity receipt : Json)
     writeJson (directory/"retired-snapshots.json") (toJson removed)
 
 
+
+/-- Order requested proof roots after their recorded requested dependencies.
+External imports remain checked by each native child's actual closure walk. -/
+def dependencyRootOrder (graph : Std.HashMap String (Array String))
+    (wanted : Std.HashSet String) : IO (Array String) := do
+  let mut degrees : Std.HashMap String Nat := {}
+  let mut users : Std.HashMap String (Array String) := {}
+  let mut ready : Std.TreeSet String := {}
+  for (name,imports) in graph.toList do
+    let deps := imports.filter graph.contains
+    degrees := degrees.insert name deps.size
+    if deps.isEmpty then ready := ready.insert name
+    for dep in deps do users := users.insert dep ((users[dep]?.getD #[]).push name)
+  let mut visited := 0
+  let mut ordered : Array String := #[]
+  while let some name := ready.min? do
+    ready := ready.erase name
+    visited := visited+1
+    if wanted.contains name then ordered := ordered.push name
+    for user in users[name]?.getD #[] do
+      let degree := (degrees[user]?.getD 0)-1
+      degrees := degrees.insert user degree
+      if degree==0 then ready := ready.insert user
+  unless visited==graph.size && ordered.size==wanted.size do
+    throw <| IO.userError "cyclic or incomplete dependency root plan"
+  return ordered
+
 /-- Only compiled modules with no own constants can be replaced by their imports.
-Namespace names merely choose candidates; they never establish emptiness. -/
+Neither namespace naming nor lexical source text establishes emptiness. -/
 def prepareClosurePlan (_o : CheckOptions) (project dir exe : System.FilePath)
     (roots : Array String) (absolutePaths : List String) : IO Json := do
   let file := dir/"closure-plan.json"
   if ← file.pathExists then
     return ← IO.ofExcept (Json.parse (← IO.FS.readFile file))
   let mut todo : Array String := #[]
-  if roots.size==1 then todo := roots
+  if roots.size==1 || (_o.reuseImports && roots.size>_o.closureRoots) then
+    -- A leaf such as Main can be import-only too. Large requests must not
+    -- retain an enormous checked prefix merely because its name has no child.
+    todo := roots
   else
     for i in [:roots.size] do
       if i+1<roots.size && roots[i+1]!.startsWith (roots[i]!++".") then
         todo := todo.push roots[i]!
   let requested : Std.HashSet String := Std.HashSet.ofArray roots
   let mut inspected : Std.HashSet String := {}
+  let mut graph : Std.HashMap String (Array String) := {}
   let mut emptyNames : Std.HashSet String := {}
   let mut emptyRows : Array Json := #[]
   let mut extra : Std.HashSet String := {}
@@ -218,6 +280,8 @@ def prepareClosurePlan (_o : CheckOptions) (project dir exe : System.FilePath)
         let name := fieldString row "module"
         unless selected.contains name do throw <| IO.userError "unexpected module metadata"
         inspected := inspected.insert name
+        let imports ← IO.ofExcept (row.getObjValAs? (Array String) "imports")
+        graph := graph.insert name imports
         if (row.getObjValAs? Bool "empty").toOption.getD false then
           unless (row.getObjValAs? Nat "declarations").toOption==some 0 do
             throw <| IO.userError "nonempty module cannot use import-only expansion"
@@ -231,26 +295,65 @@ def prepareClosurePlan (_o : CheckOptions) (project dir exe : System.FilePath)
       part := part+1
   let proofRoots := (roots ++ extra.toArray).filter (fun name => !emptyNames.contains name)
   let unique : Std.HashSet String := Std.HashSet.ofArray proofRoots
+  let ordered ← if _o.reuseImports && roots.size>_o.closureRoots then
+      dependencyRootOrder graph unique
+    else pure (unique.toArray.qsort (· < ·))
   let plan := Json.mkObj [
-    ("roots",toJson (unique.toArray.qsort (· < ·))),
+    ("order",toJson (if _o.reuseImports && roots.size>_o.closureRoots then "dependencies-first" else "lexical")),
+    ("roots",toJson ordered),
     ("import_only",toJson emptyRows),
     ("meaning",toJson "actual compiled declaration count is zero; imports still require checking")]
   writeJson file plan
   return plan
 
-/-- Independent complete dependency closures bound the retained kernel frontier
-by one batch. Shared imports are rechecked, not trusted merely because they were
-built. Completed batches can resume from input-validated local certificates. -/
+
+/-- The module cache is local trusted checkpoint state, not a proof object.
+Hash comparison binds only modules in this invocation's actual closure. -/
+def prepareModuleCache (file directory : System.FilePath) (seen : NameSet)
+    (inputs : Array (String × UInt64)) (version : String) : IO System.FilePath := do
+  let cache ← IO.ofExcept (Json.parse (← IO.FS.readFile file))
+  unless (cache.getObjValAs? String "kind").toOption==some "proofserve-local-module-cache-v1" &&
+      (cache.getObjValAs? String "lean").toOption==some version do
+    throw <| IO.userError "local module cache kind or toolchain differs"
+  let names ← IO.ofExcept (cache.getObjValAs? (Array String) "modules")
+  let old ← IO.ofExcept (cache.getObjValAs? (Array (String × UInt64)) "inputs")
+  let expected : Std.HashMap String UInt64 := Std.HashMap.ofList old.toList
+  let actual : Std.HashMap String UInt64 := Std.HashMap.ofList inputs.toList
+  let mut selected : Array String := #[]
+  for name in names do
+    unless seen.contains name.toName do continue
+    let artifact ← findOLean name.toName
+    for level in [OLeanLevel.exported,OLeanLevel.server,OLeanLevel.private] do
+      let path := level.adjustFileName artifact
+      match expected[path.toString]? with
+      | some value =>
+        unless actual[path.toString]?==some value do
+          throw <| IO.userError s!"certified module input changed: {path}"
+      | none =>
+        if ← path.pathExists then
+          throw <| IO.userError s!"certified module input is missing: {path}"
+    selected := selected.push name
+  let validated := directory/"validated-module-cache.json"
+  writeJson validated (Json.mkObj [
+    ("kind",toJson "input-validated-local-module-cache"),
+    ("modules",toJson selected),("source",toJson file.toString)])
+  return validated
+
+
+/-- Independent dependency closures bound the retained kernel frontier by one
+batch. Shared imports require prior successful original-kernel receipts and
+matching input bytes; merely building an artifact never certifies it. -/
 def closureBatches (o : CheckOptions) (project dir : System.FilePath)
     (version : String) (roots : Array String) (absolutePaths : List String)
     (start : Nat) (cpuStart : UInt64) : IO UInt32 := do
   let manifest ← readManifest project
   let revision ← projectRevision project
   let identity := Json.mkObj [
-    ("checker_checkpoint_abi",toJson "independent-closures-v2"),
+    ("checker_checkpoint_abi",toJson "independent-closures-v4"),
     ("lean",toJson version),("project",toJson project.toString),
     ("roots",toJson roots),("search_path",toJson absolutePaths),
     ("manifest",manifest),("closure_roots",toJson o.closureRoots),
+    ("reuse_checked_imports",toJson o.reuseImports),
     ("persistence",toJson o.persist),("split_fallback",toJson o.split)]
   let identityFile := dir/"identity.json"
   if ← identityFile.pathExists then
@@ -272,6 +375,9 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
   let mut batches : Array Json := #[]
   let mut segments : Array Json := #[]
   let mut cumulativeCPU : UInt64 := 0
+  let mut cacheSources : Array String := #[]
+  let mut kernelModules := 0
+  let mut trustedEntries := 0
   let mut newSegments := 0
   let mut offset := 0
   let mut batchIndex := 0
@@ -306,12 +412,21 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
         if !o.persist then args := args.push "--no-persistence"
         if !o.split then args := args.push "--no-split-fallback"
         for root in selected do args := args ++ #["--root",root]
+        if o.reuseImports && !accepted.isEmpty then
+          let cacheFile := batchDir/"completed-module-cache.json"
+          writeJson cacheFile (Json.mkObj [
+            ("kind",toJson "proofserve-local-module-cache-v1"),("lean",toJson version),
+            ("modules",toJson accepted),("inputs",toJson inputsSeen.toList.toArray),
+            ("source_certificates",toJson cacheSources)])
+          args := args ++ #["--trusted-module-cache",cacheFile.toString]
         let result ← IO.Process.output {cmd:=exe.toString,args,cwd:=some project}
         let mut invocation := 0
         while ← (batchDir/s!"driver-{invocation}.stdout").pathExists do
           invocation := invocation+1
         IO.FS.writeFile (batchDir/s!"driver-{invocation}.stdout") result.stdout
         IO.FS.writeFile (batchDir/s!"driver-{invocation}.stderr") result.stderr
+        if result.exitCode != 0 && result.stdout.trimAscii.toString.isEmpty then
+          throw <| IO.userError s!"closure child failed before receipt: {result.stderr}"
         let receipt ← IO.ofExcept (Json.parse result.stdout)
         unless (result.exitCode==0) == (fieldString receipt "status"=="complete") do
           throw <| IO.userError "child exit code and closure receipt disagree"
@@ -319,7 +434,7 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
         pure (receipt,childIdentity)
     unless fieldString receipt "execution_path"=="proofserve-parallel" do
       throw <| IO.userError "closure batch did not use the native kernel checker"
-    unless (childIdentity.getObjValAs? (Array String) "roots").toOption == some selected do
+    unless (childIdentity.getObjValAs? (Array String) "roots").toOption == some (selected.qsort (· < ·)) do
       throw <| IO.userError "closure certificate roots differ"
     unless (childIdentity.getObjValAs? String "lean").toOption == some version do
       throw <| IO.userError "closure certificate toolchain differs"
@@ -327,6 +442,9 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
       throw <| IO.userError "closure certificate manifest differs"
     inputsSeen ← validateBatchInputs childIdentity inputsSeen
     let names ← IO.ofExcept (receipt.getObjValAs? (Array String) "accepted")
+    let reusedModules := (receipt.getObjValAs? (Array String) "certificate_reused_modules").toOption.getD #[]
+    trustedEntries := trustedEntries+reusedModules.size
+    kernelModules := kernelModules+names.size-reusedModules.size
     let batchComplete := fieldString receipt "status"=="complete"
     if batchComplete then
       for root in selected do
@@ -336,6 +454,7 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
         writeJson certificateFile (Json.mkObj [
           ("receipt",receipt),("input_identity",childIdentity)])
       retireBatchSnapshots batchDir childIdentity receipt
+      cacheSources := cacheSources.push certificateFile.toString
     else
       unless !reused do throw <| IO.userError "incomplete certificate cannot be reused"
       complete := false
@@ -373,6 +492,9 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
         let imports ← IO.ofExcept (row.getObjValAs? (Array String) "imports")
         if acceptedSet.contains name || imports.all acceptedSet.contains then
           unless acceptedSet.contains name do
+            -- Planning may have happened several batches ago. Re-read the
+            -- empty parent's own bytes before trusting its recorded imports.
+            let _ ← validateBatchInputs row {}
             -- Individually valid imports may still conflict when combined.
             -- Use the upstream module-local importer and empty replay, without
             -- replaying any imported proof body a second time.
@@ -397,10 +519,18 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
     for root in roots do
       unless acceptedSet.contains root do
         throw <| IO.userError s!"complete partitioned check omitted requested root: {root}"
+  if complete then
+    -- A completed but no longer needed module can change between batches too.
+    -- Final acceptance binds the current union, not only later used imports.
+    let _ ← validateBatchInputs (Json.mkObj [("inputs",toJson inputsSeen.toList.toArray)]) {}
   let receipt := Json.mkObj [
     ("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),
     ("parallel",toJson true),("context_strategy",toJson "independent-closures"),
     ("checkpoint_kind",toJson "input-validated-local-certificates"),
+    ("reuse_checked_imports",toJson o.reuseImports),
+    ("module_check_entries",toJson kernelModules),
+    ("trusted_import_entries",toJson trustedEntries),
+    ("trusted_import_basis",toJson "completed original-kernel receipts and matching local artifact hashes"),
     ("status",toJson (if complete then "complete" else if operational then "incomplete" else "rejected")),
     ("lean_version",toJson version),("project_revision",revision),
     ("mathlib_manifest",manifest),("roots",toJson roots),("accepted",toJson accepted),
@@ -461,15 +591,26 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   let rootsText := String.intercalate "\n" roots.toList
   -- Current receipt1 checkpoint is local trusted state; validate identity before reuse.
   searchPathRef.set (absolutePaths.map System.FilePath.mk)
-  let mut seen : NameSet := {}
-  let mut inputs : Array (String × UInt64) := #[]
-  for root in roots do
-    let (next,more) ← inputIdentity root.toName seen
-    seen := next
-    inputs := inputs ++ more
+  let metadataRoots := dir/"input-identity-roots.txt"
+  IO.FS.writeFile metadataRoots rootsText
+  let identityExe ← IO.appPath
+  let metadata ← IO.Process.output {cmd:=identityExe.toString,args:=#["--internal-input-identity",metadataRoots.toString],cwd:=some project,env:=#[("LEAN_PATH",some (String.intercalate ":" absolutePaths))]}
+  IO.FS.writeFile (dir/"input-identity.stdout") metadata.stdout
+  IO.FS.writeFile (dir/"input-identity.stderr") metadata.stderr
+  unless metadata.exitCode==0 do throw <| IO.userError s!"input identity scan failed: {metadata.stderr}"
+  let metadata ← IO.ofExcept (Json.parse metadata.stdout)
+  let names ← IO.ofExcept (metadata.getObjValAs? (Array String) "modules")
+  let seen := names.foldl (fun (s : NameSet) n => s.insert n.toName) {}
+  let inputs ← IO.ofExcept (metadata.getObjValAs? (Array (String × UInt64)) "inputs")
   let manifest ← readManifest project
   let revision ← projectRevision project
-  let identity := Json.mkObj [("checker_checkpoint_abi",toJson 1),("lean",toJson version.stdout),("roots",toJson roots),
+  let validatedCache ← match o.moduleCache with
+    | none => pure none
+    | some file => pure (some (← prepareModuleCache file dir seen inputs version.stdout))
+  let cacheIdentity ← match validatedCache with
+    | none => pure Json.null
+    | some file => IO.ofExcept (Json.parse (← IO.FS.readFile file))
+  let identity := Json.mkObj [("checker_checkpoint_abi",toJson 2),("module_cache",cacheIdentity),("lean",toJson version.stdout),("roots",toJson roots),
     ("inputs",toJson inputs),("manifest",manifest),("project",toJson project.toString),("search_path",toJson absolutePaths),
     ("persistence",toJson o.persist),("split_fallback",toJson o.split)]
   let identityFile := dir/"identity.json"
@@ -483,6 +624,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   let mut previous := ""
   let mut part := 0
   let mut accepted : Array String := #[]
+  let mut trustedModules : Array String := #[]
   let mut rejected : Array Json := #[]
   let mut axioms : Array String := #[]
   if o.workers==0 then pinPerformance
@@ -505,6 +647,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
           ("LEAN_NUM_THREADS",some (toString workers)),("PROOFSERVE_WORKERS",some (toString workers)),
           ("PROOFSERVE_PERSIST",some (if o.persist then "1" else "0")),
           ("PROOFSERVE_SPLIT",some (if o.split then "1" else "0")),
+          ("PROOFSERVE_VALIDATED_MODULE_CACHE",validatedCache.map System.FilePath.toString),
           ("DECOUPLED_CHECKPOINT_INPUT",if previous.isEmpty then none else some previous),
           ("DECOUPLED_CHECKPOINT_OUTPUT",some ((dir/(snapshot++".olean")).toString)),
           ("DECOUPLED_CHECKPOINT_MODULE",some snapshot),
@@ -521,6 +664,9 @@ unsafe def frontend (args : List String) : IO UInt32 := do
     for event in ev do
       match fieldString event "event" with
       | "accept" => accepted := accepted.push (fieldString event "module")
+      | "trusted_import" =>
+        accepted := accepted.push (fieldString event "module")
+        trustedModules := trustedModules.push (fieldString event "module")
       | "reject" => rejected := rejected.push event
       | "checkpoint" => previous := s!"ProofServeSegment{part}"
                         axioms := (event.getObjValAs? (Array String) "axioms").toOption.getD #[]
@@ -550,13 +696,17 @@ unsafe def frontend (args : List String) : IO UInt32 := do
     ("module_set_hash_algorithm",toJson "lean-hash64-toolchain-specific-noncryptographic"),
     ("axioms",toJson ((axioms.toList.foldl (fun (s : NameSet) n => s.insert n.toName) {}).toList.map Name.toString |>.toArray.qsort (· < ·))),("workers",toJson workers),
     ("cumulative_segment_cpu_ns",toJson cpu),("cpu_ns",toJson ((← totalCpuNs)-cpuStart)),("wall_ns",toJson ((← IO.monoNanosNow)-start)),
-    ("segments",toJson segments),("trusted_local_checkpoints",toJson true)]
+    ("segments",toJson segments),("trusted_local_checkpoints",toJson true),
+    ("certificate_reused_modules",toJson trustedModules),
+    ("trusted_import_basis",toJson "local completed-module certificates with input identities")]
   writeJson (dir/"receipt.json") receipt
   IO.println receipt.compress
   return if complete then 0 else if operational then 2 else 1
 
 unsafe def main (args : List String) : IO UInt32 := do
   try
+    if args.head? == some "--internal-input-identity" then
+      return ← runInputIdentity args.tail!
     if args.head? == some "--internal-module-meta" then
       return ← runModuleMetadata args.tail!
     if args.head? == some "--internal-empty-context" then
@@ -567,7 +717,7 @@ unsafe def main (args : List String) : IO UInt32 := do
       event [("event",toJson "segment_cpu"),("cpu_ns",toJson ((← processNs)-start))]
       return code
     if args==["--help"] then
-      IO.println "proofserve-check PROJECT [--workers N] [--checkpoint-dir D] [--root MODULE] [--root-file FILE] [--segment-modules N] [--max-segments N] [--closure-roots N] [--json] [--official] [--no-persistence] [--no-split-fallback]"
+      IO.println "proofserve-check PROJECT [--workers N] [--checkpoint-dir D] [--root MODULE] [--root-file FILE] [--segment-modules N] [--max-segments N] [--closure-roots N] [--replay-shared-imports] [--json] [--official] [--no-persistence] [--no-split-fallback]"
       return 0
     frontend args
   catch e =>

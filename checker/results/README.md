@@ -28,3 +28,10 @@ comparison wait until after that whole-library verification.
 
 All timing uses no Lean -M. Current non-W preparation uses CPUs 8-9 only and
 takes no P-core lease. Raw binaries and large artifacts remain outside Git.
+
+See full-feasibility.md for the whole-source import graph, grouping/replay model,
+local-certificate correctness controls, and the actual largest-closure capacity
+attempts. full-feasibility-plan.csv separates repeated loads from first kernel
+checks. The whole-corpus capacity decision remains open. The prepared frozen
+workflow first tests the actual largest empty import context; its small native
+workflow qualification exports separately to workflow-qualification/.

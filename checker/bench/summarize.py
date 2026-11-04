@@ -7,6 +7,24 @@ def emit(path,rows):
  with path.open('w',newline='')as f:
   w=csv.DictWriter(f,fieldnames=keys);w.writeheader();w.writerows(rows)
 
+def artifact_identity(state):
+ identity=json.loads((state/'identity.json').read_text())
+ if 'inputs'in identity:return dict(inputs=identity['inputs'],manifest=identity['manifest'],roots=identity['roots'])
+ inputs={}
+ for path in state.glob('batch-*/certified.json'):
+  child=json.loads(path.read_text())['input_identity']
+  for name,value in child['inputs']:
+   assert name not in inputs or inputs[name]==value
+   inputs[name]=value
+ plan=state/'closure-plan.json'
+ if plan.exists():
+  for row in json.loads(plan.read_text())['import_only']:
+   for name,value in row['inputs']:
+    assert name not in inputs or inputs[name]==value
+    inputs[name]=value
+ assert inputs,'complete partitioned input identity is missing'
+ return dict(inputs=sorted(inputs.items()),manifest=identity['manifest'],roots=identity['roots'])
+
 def preview(raw,out,cfg,rows):
  """Preview results are functional evidence,never final performance evidence."""
  identities={};accepted={};axioms={};hashes={};native=0
@@ -16,8 +34,7 @@ def preview(raw,out,cfg,rows):
   if r['arm']=='native' and not r['manual_interruption'] and r['key']!='math-resume':
    assert r['returncode']==0
    j=json.loads((raw/(r['key']+'-receipt.json')).read_text())
-   ident=json.loads((raw/r['key']/'identity.json').read_text())
-   sig={k:ident[k]for k in ['inputs','manifest','roots']}
+   sig=artifact_identity(Path(r.get('state_directory')or str(raw/r['key'])))
    d=r['dataset'];native+=1
    if d in accepted:
     assert accepted[d]==j['accepted']and axioms[d]==j['axioms']and hashes[d]==j['module_set_hash']
@@ -25,13 +42,13 @@ def preview(raw,out,cfg,rows):
    else:
     accepted[d]=j['accepted'];axioms[d]=j['axioms'];hashes[d]=j['module_set_hash'];identities[d]=sig
   if r['arm']=='official':
-   stderr=(raw/'runs'/r['key']/'stderr').read_text()
+   stderr=(raw/'runs'/r.get('run_key',r['key'])/'stderr').read_text()
    r['outcome_class']='complete_root_control'if r['returncode']==0 else(
     'path_lookup_failure_before_kernel'if 'Could not find any oleans for:'in stderr else'official_failure_unclassified')
  bad=[r for r in rows if r['arm']=='bad-control']
  assert len(bad)==3
  for r in bad:
-  text=(raw/'runs'/r['key']/'stdout').read_text()+(raw/'runs'/r['key']/'stderr').read_text()
+  text=(raw/'runs'/r.get('run_key',r['key'])/'stdout').read_text()+(raw/'runs'/r.get('run_key',r['key'])/'stderr').read_text()
   assert r['returncode']!=0 and ('kernel_reject:'in text or('while replaying declaration'in text and'(kernel)'in text))
   r['outcome_class']='original_kernel_rejection'
  kill=next(r for r in rows if r['key']=='math-interrupt')
@@ -78,7 +95,7 @@ def main():
  cfg=json.loads(Path(terminal.get('configuration',str(raw/'config.json'))).read_text());rows=json.loads((raw/'completed.json').read_text())
  for r in rows:
   assert r['commit']==cfg['commit']
-  n=json.loads((raw/'runs'/r['key']/'result.json').read_text())
+  n=json.loads((raw/'runs'/r.get('run_key',r['key'])/'result.json').read_text())
   assert n['native_retired']and n['cgroup_retired']
   r['wait4_cpu_s']=r['cpu_s']
   # Abruptly killed parents cannot reap descendant CPU. The closed native cgroup
@@ -93,12 +110,18 @@ def main():
  primary=[r for r in rows if re.fullmatch(r'(math|grid|barrier)-P[1248]-r[123]',r['key'])]
  assert len(primary)==36
  emit(out/'fixed-cells.csv',rows)
+ failures=json.loads((raw/'failed-cells.json').read_text())if(raw/'failed-cells.json').exists()else[]
+ for failure in failures:
+  result=json.loads((raw/'runs'/failure.get('run_key',failure['key'])/'result.json').read_text())
+  failure['cpu_s']=result['cgroup_usage_s']
+  failure['cpu_source']='closed native cgroup; excluded from successful-point median'
+ emit(out/'fixed-failed-attempts.csv',failures)
+
  identities={};accepts={};axioms={};module_hashes={}
  for r in primary+[r for r in rows if '-no-persistence-'in r['key']or'-no-split-fallback-'in r['key']]:
   assert r['returncode']==0
   receipt=json.loads((raw/(r['key']+'-receipt.json')).read_text())
-  identity=json.loads((raw/r['key']/'identity.json').read_text())
-  sig=dict(inputs=identity['inputs'],manifest=identity['manifest'],roots=identity['roots'])
+  sig=artifact_identity(Path(r.get('state_directory')or str(raw/r['key'])))
   if r['dataset']in identities:
    assert identities[r['dataset']]==sig,'input artifact identity changed'
    assert accepts[r['dataset']]==receipt['accepted']

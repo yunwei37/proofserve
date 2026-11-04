@@ -1,0 +1,13 @@
+{
+  "classification": "planning only, two importer-context observations, not a capacity guarantee",
+  "mathlib_context_modules": 10744,
+  "mathlib_importer_maxrss_gib": 5.954456329345703,
+  "subexp_main_context_modules": 13835,
+  "subexp_main_importer_maxrss_gib": 7.282802581787109,
+  "largest_static_empty_context_modules": 142124,
+  "affine_estimate_gib": 62.41454388863136,
+  "threshold_gib": 53,
+  "passes_planning_threshold": false,
+  "actual_OAI_context_available": false,
+  "required_next": "actual bounded importer capacity qualification after matching artifacts exist; do not start full proof checking if it fails"
+}

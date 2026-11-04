@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Release backend correctness contract; no machine-specific paths."""
-import json,os,subprocess,tempfile,shutil
+import json,os,subprocess,tempfile,shutil,threading,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 BINARY=Path(os.environ.get('PROOFSERVE_CHECK',str(ROOT/'.lake/build/bin/proofserve-check'))).resolve()
@@ -55,6 +55,15 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
  assert partitioned['accepted']==full['accepted'] and partitioned['axioms']==full['axioms']
  assert partitioned['module_set_hash']==full['module_set_hash'] and len(partitioned['batches'])==2
  assert len(list((d/'batches').glob('batch-*/certified.json')))==2
+ assert partitioned['reuse_checked_imports'] is True
+ assert partitioned['module_check_entries']==len(full['accepted'])
+ assert partitioned['trusted_import_entries']>=1
+ cached_events=json.loads((d/'batches/batch-1/segment-0.json').read_text())['events']
+ assert any(e.get('event')=='trusted_import' and e.get('module')=='Base'for e in cached_events)
+ assert not any(e.get('event')=='accept' and e.get('module')=='Base'for e in cached_events)
+ legacy=invoke([project,'--workers','1','--closure-roots','1','--replay-shared-imports','--checkpoint-dir',d/'legacy-replay'])
+ assert legacy['accepted']==full['accepted'] and legacy['module_check_entries']==3
+
  assert not list((d/'batches').glob('batch-*/*.olean'))
  again=invoke([project,'--workers','1','--closure-roots','1','--checkpoint-dir',d/'batches'])
  assert again['accepted']==full['accepted'] and all(b['reused'] for b in again['batches'])
@@ -87,8 +96,21 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
  all_plain=invoke([*all_roots,'--closure-roots','0','--checkpoint-dir',d/'all-plain'])
  all_batches=invoke([*all_roots,'--closure-roots','1','--checkpoint-dir',d/'all-batches'])
  assert all_batches['accepted']==all_plain['accepted']
- assert all_batches['axioms']==all_plain['axioms'] and len(all_batches['batches'])==1
+ assert all_batches['axioms']==all_plain['axioms'] and len(all_batches['batches'])==2
+ assert 'All'in all_batches['import_only_modules']
 
+
+ # A nonempty early root covers later roots; it is not an empty aggregator.
+ (project/'AFirst.lean').write_text('prelude\nimport Fixture\ntheorem earlyProof : TinyTruth := fixtureProof\n')
+ with(project/'lakefile.lean').open('a')as f:f.write('\nlean_lib AFirst\n')
+ subprocess.run(['lake','build','AFirst'],cwd=project,check=True,timeout=60)
+ first_roots=[project,'--workers','1','--root','AFirst','--root','Base','--root','Fixture']
+ first_plain=invoke([*first_roots,'--closure-roots','0','--checkpoint-dir',d/'first-plain'])
+ first_batched=invoke([*first_roots,'--closure-roots','1','--checkpoint-dir',d/'first-batched'])
+ assert first_batched['accepted']==first_plain['accepted'] and len(first_batched['batches'])==3
+ assert json.loads((d/'first-batched/closure-plan.json').read_text())['order']=='dependencies-first'
+ covered_legacy=invoke([*first_roots,'--closure-roots','1','--replay-shared-imports','--checkpoint-dir',d/'covered-legacy'])
+ assert covered_legacy['accepted']==first_plain['accepted'] and len(covered_legacy['batches'])==1
  # Conflicting declarations in unrelated modules must retain their own contexts.
  for target in ['ShadowLeft','ShadowRight']:
   subprocess.run(['lake','build',target],cwd=project,check=True,timeout=60)
@@ -141,7 +163,127 @@ with tempfile.TemporaryDirectory(prefix='proofserve-contract-')as td:
    if incompatible.stdout:
     assert json.loads(incompatible.stdout).get('status')!='complete'
  finally:pkg_artifact.write_bytes(original_pkg)
+
+ # A bad proof inside a dependency must not gain a first certificate. A
+ # previously certified dependency changed later must invalidate a resumed run.
+ (project/'ZAfter.lean').write_text('prelude\nimport Fixture\ntheorem finalProof : TinyTruth := fixtureProof\n')
+ with(project/'lakefile.lean').open('a')as f:f.write('\nlean_lib ZAfter\n')
+ subprocess.run(['lake','build','ZAfter'],cwd=project,check=True,timeout=60)
+ proof_file=project/'.lake/build/lib/lean/Fixture.olean'
+ original_proof=proof_file.read_bytes()
+ z_roots=[project,'--workers','1','--root','Fixture','--root','ZAfter','--closure-roots','1']
+ z_partial=invoke([*z_roots,'--max-segments','1','--checkpoint-dir',d/'z-resume'],2)
+ assert z_partial['batches'][0]['status']=='complete'
+ try:
+  bad_file=d/'cached-bad-dependency.olean'
+  subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(proof_file),'Fixture',str(bad_file),'bvar'],check=True,text=True,capture_output=True,timeout=30)
+  os.replace(bad_file,proof_file)
+  changed=subprocess.run([str(BINARY),*map(str,[*z_roots,'--checkpoint-dir',d/'z-resume'])],text=True,capture_output=True,timeout=60)
+  assert changed.returncode==2 and 'certified closure input changed'in changed.stderr
+  hidden=invoke([project,'--workers','1','--root','Base','--root','ZAfter','--closure-roots','1','--checkpoint-dir',d/'hidden-bad'],1)
+  assert any(e['module']=='Fixture'for e in hidden['rejected'])
+ finally:proof_file.write_bytes(original_proof)
+ z_done=invoke([*z_roots,'--checkpoint-dir',d/'z-resume'])
+ assert z_done['module_check_entries']==3 and z_done['trusted_import_entries']>=2
+ assert set(z_done['accepted'])=={'Base','Fixture','ZAfter'}
+ # Dependency order within a batch differs from the child's sorted argument
+ # order. Binding must compare the same root set rather than reject a permutation.
+ permuted=invoke([project,'--workers','1','--root','AFirst','--root','Base','--root','Fixture','--root','ZAfter','--closure-roots','3','--checkpoint-dir',d/'permuted-batch'])
+ assert set(permuted['accepted'])=={'Base','Fixture','AFirst','ZAfter'}
+ assert permuted['module_check_entries']==4
+
+
+
+ # A cached base must survive a successful segment boundary. Its declarations
+ # were deliberately omitted from the new checkpoint's constant delta.
+ for name,body in [
+  ('ZMid','prelude\nimport Fixture\ntheorem midProof : TinyTruth := fixtureProof\n'),
+  ('ZZLast','prelude\nimport ZMid\ntheorem lastProof : TinyTruth := midProof\n')]:
+  (project/(name+'.lean')).write_text(body)
+  with(project/'lakefile.lean').open('a')as f:f.write('\nlean_lib '+name+'\n')
+  subprocess.run(['lake','build',name],cwd=project,check=True,timeout=60)
+ chain_args=[project,'--workers','1','--root','Base','--root','Fixture','--root','ZMid','--root','ZZLast']
+ chain_plain=invoke([*chain_args,'--closure-roots','0','--checkpoint-dir',d/'chain-plain'])
+ chain_split=invoke([*chain_args,'--closure-roots','2','--segment-modules','1','--checkpoint-dir',d/'chain-split'])
+ assert chain_split['accepted']==chain_plain['accepted']
+ assert chain_split['module_check_entries']==4 and chain_split['trusted_import_entries']>=2
+ assert len(chain_split['segments'])>=4
+
+ # A completed dependency changed between live batches must be checked again
+ # against its recorded bytes, not merely trusted until a process restart.
+ bad_live=d/'bad-live.olean'
+ subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(proof_file),'Fixture',str(bad_live),'bvar'],check=True,text=True,capture_output=True,timeout=30)
+ changed_live=[]
+ def change_after_first_certificate():
+  deadline=time.monotonic()+60
+  while time.monotonic()<deadline:
+   if(d/'live-change/batch-0/certified.json').exists():
+    os.replace(bad_live,proof_file);changed_live.append(True);return
+   time.sleep(.001)
+ thread=threading.Thread(target=change_after_first_certificate);thread.start()
+ try:
+  live_change=subprocess.run([str(BINARY),*map(str,[*z_roots,'--checkpoint-dir',d/'live-change'])],text=True,capture_output=True,timeout=60)
+  thread.join(1)
+  assert changed_live and not thread.is_alive()
+  assert live_change.returncode!=0
+  assert not live_change.stdout or json.loads(live_change.stdout).get('status')!='complete'
+ finally:proof_file.write_bytes(original_proof)
+
+ # Valid contexts that conflict in their union must fall back to module-local
+ # checking, without replaying already certified import proof bodies.
+ for side in ['Left','Right']:
+  name='ZUse'+side
+  (project/(name+'.lean')).write_text('prelude\nimport Shadow'+side+'\ndef alias'+side+' : Shade := chosen\n')
+  with(project/'lakefile.lean').open('a')as f:f.write('\nlean_lib '+name+'\n')
+  subprocess.run(['lake','build',name],cwd=project,check=True,timeout=60)
+ incompatible_roots=[project,'--workers','1','--root','ShadowLeft','--root','ShadowRight','--root','ZUseLeft','--root','ZUseRight']
+ unrelated_plain=invoke([*incompatible_roots,'--closure-roots','0','--checkpoint-dir',d/'unrelated-plain'])
+ unrelated_cached=invoke([*incompatible_roots,'--closure-roots','2','--checkpoint-dir',d/'unrelated-cached'])
+ assert set(unrelated_cached['accepted'])==set(unrelated_plain['accepted'])
+ assert unrelated_cached['module_check_entries']==4
+ fallback_events=json.loads((d/'unrelated-cached/batch-1/segment-0.json').read_text())['events']
+ assert any(e.get('event')=='certified_context_fallback'for e in fallback_events)
+ # A completed input need not be imported by a later batch. The final union
+ # must still revalidate it, rather than silently reporting current acceptance.
+ changed_unused=[]
+ def change_unused_after_certificate():
+  deadline=time.monotonic()+60
+  while time.monotonic()<deadline:
+   if(d/'unused-change/batch-0/certified.json').exists():
+    artifact.write_bytes(old+b'changed after completed batch');changed_unused.append(True);return
+   time.sleep(.001)
+ thread=threading.Thread(target=change_unused_after_certificate);thread.start()
+ try:
+  unused=subprocess.run([str(BINARY),*map(str,[project,'--workers','1','--root','Base','--root','ZUseRight','--closure-roots','1','--checkpoint-dir',d/'unused-change'])],text=True,capture_output=True,timeout=60)
+  thread.join(1)
+  assert changed_unused and not thread.is_alive()
+  assert unused.returncode==2 and 'certified closure input changed'in unused.stderr
+ finally:artifact.write_bytes(old)
+
+
+ # A checked sibling brought into a combined cache is still invisible to a
+ # module that did not import it. Its ill-scoped proof must reach native reject.
+ scope_sources={
+  'Shared':'prelude\nimport Base\nnamespace Shared\ntheorem externalProof : TinyTruth := fixtureAssumption\nend Shared\n',
+  'ZAllowed':'prelude\nimport Shared\ntheorem allowedProof : TinyTruth := Shared.externalProof\n',
+  'ZBlocked':'prelude\nimport Base\ntheorem blockedProof : TinyTruth := fixtureAssumption\n'}
+ for name,text in scope_sources.items():
+  (project/(name+'.lean')).write_text(text)
+  with(project/'lakefile.lean').open('a')as f:f.write('\nlean_lib '+name+'\n')
+  subprocess.run(['lake','build',name],cwd=project,check=True,timeout=60)
+ blocked=project/'.lake/build/lib/lean/ZBlocked.olean';original_blocked=blocked.read_bytes()
+ try:
+  invalid=d/'bad-sibling.olean'
+  subprocess.run(['lean','--run',str(ROOT/'tests/Mutate.lean'),str(blocked),'ZBlocked',str(invalid),'sibling'],check=True,text=True,capture_output=True,timeout=30)
+  os.replace(invalid,blocked)
+  blocked_plain=invoke([project,'--workers','1','--root','ZBlocked','--closure-roots','0','--checkpoint-dir',d/'blocked-plain'],1)
+  blocked_roots=[project,'--workers','1','--root','Base','--root','Shared','--root','ZAllowed','--root','ZBlocked','--closure-roots','2','--checkpoint-dir',d/'blocked-cached']
+  blocked_cached=invoke(blocked_roots,1)
+  assert any(r.get('module')=='ZBlocked'for r in blocked_plain['rejected'])
+  assert any(r.get('module')=='ZBlocked'for r in blocked_cached['rejected'])
+  assert 'unimported_reference'in(d/'blocked-cached/batch-1/driver-0.stdout').read_text()
+ finally:blocked.write_bytes(original_blocked)
  (project/'lean-toolchain').write_text('leanprover/lean4:not-supported\\n')
  badversion=subprocess.run([str(BINARY),str(project)],text=True,capture_output=True,timeout=10)
  assert badversion.returncode==2 and 'unsupported'in badversion.stderr
- print(json.dumps(dict(correct=True,axioms=True,resume=True,bad_proofs=3,closure_batches=True,batch_resume=True,changed_input_rejected=True,root_file=True,covered_roots_skipped=True,empty_root_file_rejected=True,empty_umbrella=True,empty_umbrella_bad_proofs=3,default_empty_umbrella=True,stale_empty_plan_rejected=True,incompatible_empty_imports_not_accepted=True)))
+ print(json.dumps(dict(correct=True,axioms=True,resume=True,bad_proofs=3,closure_batches=True,batch_resume=True,changed_input_rejected=True,root_file=True,covered_roots_skipped=True,empty_root_file_rejected=True,empty_umbrella=True,empty_umbrella_bad_proofs=3,default_empty_umbrella=True,stale_empty_plan_rejected=True,incompatible_empty_imports_not_accepted=True,checked_import_reuse=True,hidden_bad_dependency_rejected=True,changed_completed_dependency_rejected=True,live_changed_dependency_rejected=True,incompatible_cached_contexts=True,unused_completed_input_change_rejected=True,leaf_empty_aggregator_detected=True,sibling_scope_rejected=True,dependency_root_order=True,permuted_batch_roots=True,cached_segment_base_restored=True)))
