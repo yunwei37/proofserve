@@ -241,7 +241,7 @@ Resource/disk fault injection and an actual interrupted native job were not
 added this round; those paths are implementation, not newly qualified evidence.
 The gate failure and requirement for a separate user decision still hold.
 
-## Actual root-context preparation after the failed gate
+## Earlier actual-root preparation snapshot — 24fea9be
 
 Started on CPU 8–9, then moved existing threads/controllers to CPU 10–16
 without restarting them, as instructed. No pcore lease or --execute. The
@@ -271,3 +271,35 @@ context/compiler identity, package/manifest identity and external artifact
 availability before execution. Functional compilation budgets and the
 preparation thread setting are not substituted for the frozen census protocol.
 The failed gate is unchanged; no full census was started or authorized here.
+
+## Final dependency completion and remaining technical evidence — 2026-11-04
+
+The final Rellich target and its prerequisites built at the unchanged pin.
+Its smallest direct importer stopped at an unbuilt internal OAI parent.
+All 3,528 enumerated external import artifacts are now present in the real
+root environment. The previous 3,768-unit external-input block is cleared:
+163,096 source modules have no known enumerated external/source-rejection
+blocker, plus one separate configuration unit. This is not native acceptance.
+
+The requested byte comparison considered the seven distinct successful
+functional sources and their 21 olean/ilean/C products. No usable historical
+counterpart was found in the retained locations searched; zero pairs were
+compared. Parity between the old twelve-path environment and the real
+forty-four-path environment is therefore unestablished, not passed. The seven
+sources are not among the original42. Preparation also used the two-thread
+environment setting rather than the frozen explicit -j8 cost command.
+
+User decisions are excluded from this technical-state list:
+(1) input availability is complete for the enumerated graph;
+(2) same-source retained-reference parity under the finalized full recipe is
+still missing;
+(3) the full driver builds a first-hit symlink import-view instead of passing
+the 44 paths through unchanged, and that real-corpus adapter path was not
+executed here;
+(4) earlier native-interruption/resource/disk-stop qualification limits remain
+as disclosed, not new gates. Internal prerequisites will be ordinary DAG build
+work, and untested corpus sources may still fail.
+
+See [dependency-audit/final-preparation.md](dependency-audit/final-preparation.md)
+and its small CSV/JSON records. No --execute, P-core lease, full-census launch,
+new cost observation, pin change or protocol adjustment occurred.

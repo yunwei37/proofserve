@@ -234,20 +234,20 @@ only five tiny CPU 8–9 functional modules were exercised, with cost recording
 disabled. [Post-gate descriptions](postgate-descriptive.json) can be regenerated
 with postgate_descriptive.py and do not change the failed gate. No full census
 was started.
-## Actual dependency/context preparation
 
-[Dependency audit](dependency-audit/README.md) now includes the fresh official
-Lake environment, fixed package commits, ordered paths and real native
-dependency/direct-importer outcomes, prepared initially on CPU 8–9 and then migrated to CPU 10–16 without
-restarting tasks or resetting the original 12-hour deadline. No cost recording. Current eligibility is 159329 source units
-with no known blocker, including one configuration unit; this is not a build
-success count. Use the current summary and source-qualified context CSV,
-not the historical 38/7,754 partial-path observation, for checker inputs.
-The instruction-invariance gate remains failed and full execution is unstarted.
+## Final dependency/context preparation
 
-The remaining external artifact is RellichKondrachov's Euclidean.Rellich;
-its fixed-pin source is available but it is outside the requested 38-target
-closure. It blocks 3,768 units in the real context. All 38 requested dependency
-targets built, while direct-importer checks compiled 7 distinct source modules;
-the 29 other calls stopped at unbuilt internal OAI imports. These are not
-whole-corpus success counts or new cost measurements.
+[Final preparation](dependency-audit/final-preparation.md) records completion
+of all 38 earlier dependency targets plus Euclidean.Rellich at the same fixed
+root pins. All 3,528 enumerated external artifacts are now available; the
+former 3,768-unit external-input block is cleared. This is static input
+readiness, not a successful native build of all 163,096 proof/source modules.
+One additional Lake configuration unit remains separately identified.
+
+There are 39 functional calls across 36 source modules: nine successful calls
+across seven sources, and 30 stopped at unbuilt internal OAI imports.
+The historical olean/ilean/C comparison found no usable matching old products
+for those seven sources, so zero pairs were compared and equality is unknown.
+The old gate's historical equalities do not validate the real 44-path context.
+No extra baseline, full run or cost measurement was added. The failed gate
+is unchanged; the driver remains default-off.

@@ -1328,5 +1328,39 @@
     "raw_status": "dependency_not_ready",
     "context_id": "openai-math-4eaee875-root",
     "source_unit": "lean/OAI/NumberTheory/Ostmann/Quadratic/QuadraticGaussSign.lean"
+  },
+  {
+    "import_module": "RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich",
+    "module": "OAI.NumberTheory.CubicMoment.Theta.CubicThetaSupportedTangent",
+    "source_unit": "lean/OAI/NumberTheory/CubicMoment/Theta/CubicThetaSupportedTangent.lean",
+    "source_sha256": "98916f74aafd8c12f7cd89197d38f00b3bc5015e1f3c11a60b8ce40fe0832047",
+    "context_id": "openai-math-4eaee875-root",
+    "source_bytes": 3968,
+    "argv": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lake",
+      "env",
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "--root=/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "-DautoImplicit=false",
+      "-o",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104/functional/candidate.olean",
+      "-i",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104/functional/candidate.ilean",
+      "-c",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104/functional/candidate.c",
+      "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/NumberTheory/CubicMoment/Theta/CubicThetaSupportedTangent.lean"
+    ],
+    "returncode": 1,
+    "status": "dependency_not_ready",
+    "diagnostics": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/NumberTheory/CubicMoment/Theta/CubicThetaSupportedTangent.lean:1:0: error: unknown module prefix 'OAI'",
+    "log": "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104/functional.log",
+    "sorry_warning": false,
+    "mode": "functional_not_measurement",
+    "source": "lean/OAI/NumberTheory/CubicMoment/Theta/CubicThetaSupportedTangent.lean",
+    "raw_status": "dependency_not_ready",
+    "context_export_verified": true,
+    "source_direct_import_evidence": [
+      "import RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich"
+    ]
   }
 ]

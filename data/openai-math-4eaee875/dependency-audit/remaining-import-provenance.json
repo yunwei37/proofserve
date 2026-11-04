@@ -9,10 +9,15 @@
     "source_bytes": 16159,
     "source_available": true,
     "build_context": "openai-math-4eaee875-root",
-    "native_build_status": "not_attempted_outside_original_38_target_closure",
-    "scope_note": "Discovered only after replacing the historical partial search path with the actual root export. No source/pin substitution or extra compile was made.",
-    "affected_source_units": 3768,
-    "next_target_example_not_executed": "+RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich:olean",
-    "whole_corpus_buildability": "unknown"
+    "native_build_status": "built",
+    "scope_note": "Explicitly included in this final preparation task; built at the same fixed root pin with declared compatibility patch, no source substitution.",
+    "affected_source_units": 0,
+    "whole_corpus_buildability": "unknown",
+    "previously_affected_source_units": 3768,
+    "returncode": 0,
+    "artifact": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/rellich-kondrachov/.lake/build/lib/lean/RellichKondrachov/Analysis/FunctionalSpaces/Sobolev/Euclidean/Rellich.olean",
+    "functional_check": "dependency_not_ready",
+    "raw_point": "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104",
+    "executed_target": "+RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich:olean"
   }
 ]

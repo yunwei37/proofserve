@@ -36,22 +36,23 @@ preparation resource setting, not the frozen census's -j8 measurement protocol.
 | Observation | Count |
 |---|---:|
 | Requested original missing imports | 38 |
-| Requested artifacts present after preparation | 38 |
-| Returned target build calls | 38 |
-| Successful target build calls | 38 |
-| Direct-importer functional checks returned | 38 |
+| Original 38 artifacts present after preparation | 38 |
+| Returned target build calls (38 earlier + final Rellich) | 39 |
+| Successful target build calls | 39 |
+| Direct-importer functional checks returned | 39 |
 | Distinct source units compiled successfully in those checks | 7 |
-| External import artifacts still absent in the actual context | 1 |
-| Source units inheriting an absent external artifact | 3768 |
+| External import artifacts still absent in the actual context | 0 |
+| Source units inheriting an absent external artifact | 0 |
 | Source units inheriting an observed source rejection | 0 |
-| Source units with no currently known blocker, including configuration | 159329 |
+| Source units with no currently known blocker, including configuration | 163097 |
 | Static initial fresh-census frontier (source modules) | 9223 |
 
-Functional categories: {"dependency_not_ready": 29, "functional_compile_success": 9}.
+Functional categories: {"dependency_not_ready": 30, "functional_compile_success": 9}.
 
-The build driver requested only the 38 named module targets with the
-`+Module.Name:olean` syntax. Lake selected their transitive dependencies.
-It did not run the default/root corpus build or expand the requested target set.
+The first segment requested the 38 named module targets; the final segment
+requested the explicitly included Rellich target, all with
+`+Module.Name:olean`. Lake selected only their transitive dependencies.
+Neither segment ran the default/full corpus build.
 Preparation and the functional continuation share the single original
 12-hour deadline; neither controller repair nor the CPU migration reset it. Deadline/resource interruptions are operational and retained, not
 source rejections. The original JSON-parser defect occurred after a successful
@@ -99,7 +100,7 @@ module name or treat lakefile.lean as a proof root.
 - build-context.json: declared root identity and two source roots; the
   earlier partial path is retained in historical_capture_search_path; the
   legacy capture_search_path field now points to the actual exported path.
-- provider-builds.json: every original requested import, native return or
+- provider-builds.json: all 38 original imports and the final Rellich target, native return or
   explicit unattempted/interrupted state, actual artifact presence and raw log.
 - functional-importers.json: direct-import source evidence, source identity,
   command, outcome, diagnostics and sorry-warning flag for each check.
@@ -107,34 +108,33 @@ module name or treat lakefile.lean as a proof root.
   propagated affected-unit counts, including newly visible gaps.
 - missing-imports.csv: the historical 38-import source/pin/ancestry audit;
   its old missing-artifact observations are not silently rewritten.
+- rellich-completion.json: fixed-pin last-target build and minimal importer record.
+- artifact-byte-comparison.csv/json: requested products and unavailable historical pairs.
+- final-preparation.md: current technical readiness and unresolved comparison scope.
 - summary.json: current static/functional eligibility categories and terminal
   records, never a whole-corpus successful-build count.
 - planning.json: historical planning only, excluded from measurement tables.
 
 Static artifact presence does not prove artifact validity or runtime library
 completeness. Axioms/acceptance require the independent checker's receipt.
-The sole remaining external artifact is
-RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich. Its
-16,159-byte source is available in rellich-kondrachov at the unchanged
-70f85d4c1bf99c6e7d61e8be4daa6f3664d08d23 pin. It was supplied by the old global
-Rellich cache, but is absent in the real root package output. It is neither
-one of the historical 38 targets nor a transitive output of those targets.
-We did not expand the requested build set to compile it. Its missing artifact
-blocks 3,768 source units; this is not a demonstrated source/pin failure.
-See remaining-import-provenance.json. Its standalone older Mathlib requirement
-does not replace the root's fixed d13f23b7 shared dependency.
+The previously absent Euclidean.Rellich artifact has now been built at its
+unchanged pin. Its former 3,768-unit external-input block is cleared.
+The minimal direct-importer check still needs an unbuilt internal OAI parent;
+that is not a source/pin failure. All 163,096 ordinary source modules now have
+no known enumerated external-input/source-rejection blocker, but only 9,223
+are in the initial fresh DAG frontier; 153,873 await internal prerequisites.
+The additional configuration unit is separate. Native corpus success is unknown.
 
-Of the 159,328 source modules without a known external/source-rejection blocker,
-9,223 are in the static initial dependency frontier and 150,105 must wait for
-their internal prerequisites. The additional one configuration unit is counted
-separately. All 29 unsuccessful functional calls reported unknown OAI imports,
-not package-pin source rejection. There were 35 distinct functional source
-inputs, with 7 distinct successfully compiled; repeated import coverage does
-not create additional successful source modules. No functionally compiled
-source emitted a sorry warning, but imported axiom closures were not audited.
+The requested historical comparison remains unresolved: none of the seven
+successful functional sources has a usable historical product in the locations
+searched. All 21 requested product rows are retained; zero pairs were compared.
+This must not be described as byte equality or no mismatches. See
+[final-preparation.md](final-preparation.md) for the search scope, the j2/j8
+distinction, the existing import-view adapter, and remaining technical
+qualification limits. No discrepancy was silently adjusted.
 
-The instruction-invariance gate remains failed. A separate user decision
-and resolution of the remaining input gap are needed before any full census.
+The instruction-invariance gate remains failed. Input readiness does not
+resolve the missing byte-parity evidence or qualify the full driver.
 census_controller.py defaults to this actual export and rejects unprepared
 external artifacts before native execution.
 

@@ -1,0 +1,37 @@
+{
+  "scope": "Seven distinct successful real-44-path functional modules; historical twelve-path artifacts only",
+  "modules_considered": 7,
+  "current_artifact_files": 21,
+  "artifact_pairs_compared": 0,
+  "modules_with_compared_pairs": 0,
+  "mismatched_pairs": null,
+  "conclusion": "unresolved_historical_artifacts_unavailable",
+  "historical_metadata_files_searched": 47641,
+  "historical_c_headers_searched": 4076,
+  "historical_metadata_matches_role": "two corpus input manifests, not completed native outputs",
+  "historical_search_scope": "Retained historical W captures plus separate canonical historical cache lookup; discovery is not artifact equivalence.",
+  "canonical_cache": "/workspaces/.agent-state/gpu-smt-workloads/openai4341-oleans",
+  "original42_module_overlap": [],
+  "original42_threads": [
+    "8"
+  ],
+  "original42_memory_option_MiB": [
+    "0"
+  ],
+  "functional_preparation_LEAN_NUM_THREADS": 2,
+  "functional_preparation_explicit_j8": false,
+  "planned_full_explicit_j8": true,
+  "planned_full_LEAN_NUM_THREADS": 8,
+  "planned_full_other_lean_options": [
+    "-DautoImplicit=false"
+  ],
+  "recipe_definition_scope": "Static match of source revision, Lean/Mathlib pin, no-M and planned j8 only; not a demonstrated equal resolved import environment.",
+  "old_gate_historical_byte_checks_scope": "Existing gate used captured twelve-path environment; its historical equalities do not validate real forty-four-path compilation.",
+  "cost_measurement": false,
+  "full_census_started": false,
+  "historical_compressed_metadata_files_searched": 14,
+  "compressed_matches_role": "Static import-set inventories and all-module regime labels; not completed native artifact records.",
+  "C_header_parser_positive_control": "Recognized the current ClassFieldKernel module header before accepting the historical-header search result.",
+  "historical_missing_does_not_establish_equality": true,
+  "runtime_import_view_note": "The prepared census driver constructs a first-hit symlink import-view and sets runtime LEAN_PATH to that view; it does not pass through all forty-four entries unchanged. No real-corpus execution of that path was run this round."
+}

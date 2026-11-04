@@ -2,12 +2,10 @@
   "prepared": true,
   "execute": false,
   "modules": 163097,
-  "dependency_inputs_ready": false,
+  "dependency_inputs_ready": true,
   "environment_export_verified": true,
   "environment_error": null,
-  "missing_external_artifacts": [
-    "RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich"
-  ],
+  "missing_external_artifacts": [],
   "protocol": {
     "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
@@ -79,5 +77,5 @@
     }
   },
   "observation_kind": "preparation_only_no_native_cost",
-  "observed_at_utc": "2026-11-04T11:32:02.400878+00:00"
+  "observed_at_utc": "2026-11-04T12:16:16.898893+00:00"
 }

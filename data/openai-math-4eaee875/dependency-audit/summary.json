@@ -7,34 +7,32 @@
   "actual_patch_files": 23,
   "actual_search_path_entries": 44,
   "historical_search_path_entries": 12,
-  "missing_external_artifact_imports": 1,
-  "missing_external_imports": [
-    "RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich"
-  ],
+  "missing_external_artifact_imports": 0,
+  "missing_external_imports": [],
   "original_38_artifacts_present": 38,
-  "successful_provider_build_calls": 38,
-  "provider_calls_returned": 38,
-  "functional_cases_returned": 38,
+  "successful_provider_build_calls": 39,
+  "provider_calls_returned": 39,
+  "functional_cases_returned": 39,
   "functional_statuses": {
-    "dependency_not_ready": 29,
+    "dependency_not_ready": 30,
     "functional_compile_success": 9
   },
   "unique_functionally_compiled_source_units": 7,
-  "source_units_with_unprepared_external_dependencies": 3768,
+  "source_units_with_unprepared_external_dependencies": 0,
   "observed_source_rejections": [],
   "source_units_blocked_by_observed_rejections": 0,
-  "source_units_without_known_blockers": 159329,
+  "source_units_without_known_blockers": 163097,
   "native_build_success_count_for_whole_corpus": "unknown; full corpus not attempted",
   "full_census_started": false,
   "preparation_terminal": {
-    "status": "preparation_returned",
-    "imports": 38,
-    "successful": 38,
+    "status": "two_completed_segments",
+    "imports": 39,
+    "successful": 39,
     "full_census_started": false
   },
   "functional_terminal": {
-    "status": "functional_returned",
-    "returned": 38,
+    "status": "two_completed_segments",
+    "returned": 39,
     "unattempted": 0,
     "full_census_started": false
   },
@@ -115,11 +113,11 @@
   "observed_source_rejection_units": [],
   "fresh_census_static_initial_frontier_source_modules": 9223,
   "internal_prerequisite_note": "Fresh census does not reuse old corpus products; direct source-qualified prerequisites are listed per unit. This is a static DAG frontier, not native success.",
-  "source_units_with_any_known_blocker": 3768,
+  "source_units_with_any_known_blocker": 0,
   "source_units_with_both_external_and_observed_source_blockers": 0,
   "blocker_count_note": "External and source-rejection categories may overlap; use any_known_blocker and without_known_blockers for the partition.",
-  "source_modules_without_known_blockers_excluding_configuration": 159328,
-  "unique_functionally_attempted_source_units": 35,
+  "source_modules_without_known_blockers_excluding_configuration": 163096,
+  "unique_functionally_attempted_source_units": 36,
   "original_38_provider_outcomes": {
     "built": 38
   },
@@ -127,17 +125,91 @@
   "context_export_observed_at_utc": "2026-11-04T11:20:48.753943+00:00",
   "source_files_present": 163097,
   "external_imports": 3528,
-  "affected_source_units": 3768,
-  "missing_import_source_evidence_qualified": 1,
+  "affected_source_units": 0,
+  "missing_import_source_evidence_qualified": 0,
   "longest_internal_import_path_modules": 451,
   "contexts": 1,
   "configuration_units": 1,
-  "source_units_without_missing_external_artifacts": 159329,
+  "source_units_without_missing_external_artifacts": 163097,
   "exact_native_buildability": "Whole corpus unknown; static input readiness and functional compiler outcomes are separate.",
   "historical_captured_path_missing_imports": 38,
   "historical_captured_path_affected_source_units": 7754,
   "remaining_import_source_evidence": "remaining-import-provenance.json",
   "internal_dependency_edges": 370865,
   "internal_dependency_edges_file": "internal-prerequisites.csv.gz",
-  "original_38_source_evidence_qualified": 38
+  "original_38_source_evidence_qualified": 38,
+  "original_38_preparation_terminal": {
+    "status": "preparation_returned",
+    "imports": 38,
+    "successful": 38,
+    "full_census_started": false
+  },
+  "original_38_functional_terminal": {
+    "status": "functional_returned",
+    "returned": 38,
+    "unattempted": 0,
+    "full_census_started": false
+  },
+  "original_38_provider_build_calls": 38,
+  "additional_provider_build_calls": 1,
+  "last_dependency_completion": {
+    "provider": {
+      "import_module": "RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich",
+      "returncode": 0,
+      "status": "built",
+      "stop": null,
+      "log": "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104/build.log",
+      "pin": "70f85d4c1bf99c6e7d61e8be4daa6f3664d08d23",
+      "cost_measurement": false,
+      "target": "+RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich:olean",
+      "artifact_present": true,
+      "artifact": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/rellich-kondrachov/.lake/build/lib/lean/RellichKondrachov/Analysis/FunctionalSpaces/Sobolev/Euclidean/Rellich.olean",
+      "scope": "last dependency completion after original 38"
+    },
+    "functional": {
+      "import_module": "RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich",
+      "module": "OAI.NumberTheory.CubicMoment.Theta.CubicThetaSupportedTangent",
+      "source_unit": "lean/OAI/NumberTheory/CubicMoment/Theta/CubicThetaSupportedTangent.lean",
+      "source_sha256": "98916f74aafd8c12f7cd89197d38f00b3bc5015e1f3c11a60b8ce40fe0832047",
+      "context_id": "openai-math-4eaee875-root",
+      "source_bytes": 3968,
+      "argv": [
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lake",
+        "env",
+        "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+        "--root=/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+        "-DautoImplicit=false",
+        "-o",
+        "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104/functional/candidate.olean",
+        "-i",
+        "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104/functional/candidate.ilean",
+        "-c",
+        "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104/functional/candidate.c",
+        "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/NumberTheory/CubicMoment/Theta/CubicThetaSupportedTangent.lean"
+      ],
+      "returncode": 1,
+      "status": "dependency_not_ready",
+      "diagnostics": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/NumberTheory/CubicMoment/Theta/CubicThetaSupportedTangent.lean:1:0: error: unknown module prefix 'OAI'",
+      "log": "/workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104/functional.log",
+      "sorry_warning": false,
+      "mode": "functional_not_measurement",
+      "source": "lean/OAI/NumberTheory/CubicMoment/Theta/CubicThetaSupportedTangent.lean",
+      "raw_status": "dependency_not_ready",
+      "context_export_verified": true,
+      "source_direct_import_evidence": [
+        "import RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich"
+      ]
+    },
+    "terminal": {
+      "status": "returned",
+      "cost_measurement": false,
+      "full_census_started": false
+    }
+  },
+  "artifact_availability_refreshed_at_utc": "2026-11-04T11:58:14.689135+00:00",
+  "artifact_byte_comparison": {
+    "file": "artifact-byte-comparison.json",
+    "pairs_compared": 0,
+    "conclusion": "unresolved_historical_artifacts_unavailable"
+  }
 }
