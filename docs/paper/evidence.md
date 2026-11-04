@@ -63,12 +63,38 @@ Persistence correction: [root0279](../tmp/build-and-evaluate/step-0279-20261103T
 
 The context-visibility counterexample in the design section is recorded in [root0237](../tmp/build-and-evaluate/step-0237-20261101T060743+0000/step-report.md). It is an earlier prototype defect, not acceptance of a false proposition or a Lean kernel vulnerability.
 
-The paper retains two Pending release tables. M's final matrix/ablations, official ledger comparisons, three bad-proof CI classes and real interruption/resume pair must return under [checker/results](../../checker/results/README.md). O's three external native timings/parity and clean-start package acceptance must return under [external-projects](../../data/external-projects/README.md). No prototype or superseded one-point executable fills these cells.
+## Installed external checking and package qualification (4 November integration)
 
-Current submission gap: release performance and full functional/external acceptance. Static audit success is admitted at its actual scope. No extra measurement, competitor experiment, publication or replacement collector was started.
+The paper now replaces the functional Pending table with three measured external cases. The scaling matrix remains Pending. Only O's published tool-form results are admitted here; M's ongoing matrix is separate.
+
+[measurements.csv](../../data/external-projects/measurements.csv) and [acceptance.json](../../data/external-projects/acceptance.json) were published at **d0c41e24d1800b69427d692de5f6bcafdf94bb48**. [results.md](../../data/external-projects/results.md) incorporates the package/container closeout at **b3e28f4d8a1a726e51d68cc172c4b0e1a8a7a3b5**. Timed bundle **703055a11b749013d7251d93bb7127bd5222a447**, checker **c8e7c615413819bee0931dde09450b8222c6d62a**, Lean **4.34.1 / 5045d005**, four native workers.
+
+| Project source pin | Native closure / common local roots | ProofServe CPU / wall seconds | Completed official CPU / wall seconds |
+|---|---:|---:|---:|
+| Newspeak e2232d8f | 754 / 105 | 70.555511 / 35.713940 | 63.663383 / 32.914940 |
+| Solar f4f5c9a1 | 2368 / 12 | 135.214714 / 76.077903 | 10.965787 / 7.115533 |
+| CrocSwap 7c49fe32 | 3166 / 64 | 211.260760 / 114.782636 | 103.858315 / 105.221068, one runtime worker |
+
+Root read the retained result JSON, native stdout, complete receipts, audit JSON and official stdout; all **10 public measurement rows** match their raw clocks and complete/unknown accounting fields. The three native accepted arrays have exactly 754/2368/3166 unique IDs, no rejected modules, and contain every requested local root. Official verbose replay sets equal the respective 105/12/64 local-root sets. This does **not** assert official verification of every imported dependency: default official checks trust imports, while ProofServe checks the compiled closure. No speed ratios are computed.
+
+The frozen evaluator records P0–7 placement, shared lock, four workers, fresh checkpoints, 1740-second outer command limit, no -M, 11.75 GiB charged cap and a one-second 12 GiB process-tree RSS response. Clock starts before Popen and stops immediately after wait4, before sampler join and cgroup deletion; input compilation and queue wait are excluded. Sampled RSS, charged peak and wait4 HWM remain separate. The evaluator's roughly 12 GiB resource policy exceeds the listed O 4 GiB share; this integration records the actual setting and does not retroactively certify that share as respected. These result records do not supply a complete historical child PID/birth ledger, so root does not manufacture one.
+
+CrocSwap's original official batch stopped at **75.043040 wall seconds**, sampled tree RSS **13,782,695,936 bytes**. The separate default-prefix MultitapeToolkit diagnostic stopped at **9.014836 seconds**, **13,882,531,840 bytes**. Neither is proof rejection. Timeout-parent CPU of 0.001787/0.001578 seconds omits killed descendants; total failed CPU stays unknown. The completed stock official fallback uses **one process, one runtime pool worker, all 64 roots**; its successful cost is additional to both failures. Raw per-attempt JSON is used for prefix controls; the current prefix-controls.csv encodes literal newline separators and is not used as a parsed CSV input to this integration. No foreign file was edited.
+
+CrocSwap's [setup repair](../../data/external-projects/croc-setup-patch.json) changes one upstream Lake manifest Name field. The source/dependency revisions remain the declared input; this is a disclosed repair, not unmodified-input acceptance. Root read the retained pinned subproject README, which explicitly discloses substantial OpenAI Codex assistance. That supports **AI-assisted**, rather than wholly AI-generated, provenance.
+
+Installed audit finds default scope 105/105, 12/32 and 64/64 source files. Solar's 20 omitted files are explicit inputs of a custom EVM flow; this experiment did not execute it. Newspeak's receipt includes a project native_decide axiom; all three list closure-declared axioms including sorryAx/Lean.trustCompiler. These are **declared inventories**, not minimal per-theorem dependency sets or proof that a particular target uses every listed axiom. Current-source binding remains unavailable.
+
+[Portable CI qualification](../../packaging/qualification-ci.json): latest run **41740681358**, source **adf816ae0661ded8a2fc4d528ca78618e04e8209**, actual relocated install, project check/audit, official default/fresh controls, and three malformed-proof rejections. Root read retained ZIP log output and the qualifier source. Retained local raw controls separately show original-kernel rejection for loose bound variables, an unknown constant, and a wrong sort; CLI usage errors are excluded.
+
+[Container qualification](../../packaging/qualification-container.json): run **41740685837**, same adf816ae source, successful image build with an actual **network-disabled** self-test. Retained log confirms full-Mathlib service controls, a two-module installed project check/audit, and explicit unsupported-version rejection. These are CI correctness observations, not timed paper performance or the three-project external benchmark.
+
+Remaining integration dependency: M's final committed scaling/ablation/official matrix and real interrupted/resumed versus uninterrupted overhead pair. Do not pool its ba316991 executable with the external c8e7c615 timing rows. The original42 estimate stays unchanged; the separate precision panel has six of twelve costs and is not pooled. No new native run, publication or replacement collector was started.
 
 ## Manuscript checks
 
 Six pages including references, existing 10pt two-column format, at most four displays, no missing/evidence-grade macros. The title is unchanged; RQs now match answered scopes and omit cluster scaling under the latest explicit authorization. The old long paper stays in Git history. Only paper/docs/index paths are changed, with one forward commit; visual review is self-review, not independent or venue acceptance.
 
-Final 3 November check: **6 pages / 101,497 bytes**, four displays, 14 resolved references, no overfull boxes or result-grade macros. All six final pages were visually inspected; compilation succeeded in 2.599 seconds on E22–23. This is self-review. Earlier layout versions and logs remain outside Git on the existing PVC; no native result was rerun or modified.
+Previous 3 November revision check: **6 pages / 101,497 bytes**, four displays, 14 resolved references, no overfull boxes or result-grade macros. All six final pages were visually inspected; compilation succeeded in 2.599 seconds on E22–23. This is self-review. Earlier layout versions and logs remain outside Git on the existing PVC; no native result was rerun or modified.
+
+4 November integration check: **6 pages / 103,788 bytes**, four displays and 14 resolved references; no overfull boxes or evidence-grade macros. All six final pages visually reviewed; compile rc0 in 2.554 seconds on E22–23. This is self-review. The new external table comes only from committed installed-tool measurements; original42 and historical Figure 1 are unchanged. Root ran no new native measurement, changed no owner implementation, and started no replacement collector.

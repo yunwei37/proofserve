@@ -46,3 +46,5 @@ Scheduling, early failure prediction, certificate repair, cost prediction, GPU w
 Use the existing Workspace/PVC and Cloudflare CLI path. Timed work is one task at a time under the P-core lock; untimed work uses E cores. Omit -M, preserve headroom below 85%, and preserve foreign dirty work. A later host outage remains subject to the direct instruction to preserve the scene and wait for the user, without recovery or scheduling changes.
 
 Root integrates the existing owners' committed returns, checks scope and versions, compiles and visually reviews the six-page paper, then commits owned paths on main. No per-edit step directories or outer-audit files are created for this closure.
+
+Current return: three external installed check/audit cases, common-local-root official parity and package/container CI qualification are published. These do not establish equal-obligation speedups. The fixed M matrix and timed interruption overhead remain the next system-result dependency.

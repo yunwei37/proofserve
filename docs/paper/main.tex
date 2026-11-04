@@ -22,8 +22,8 @@ wide. The default import graph omits 19.78\% of source modules and 33.30\%
 of lexical kernel-decision sites. ProofServe combines dependency-aware
 parallel replay, restartable segments and receipts recording scope, axioms
 and costs. Its contribution is a usable integration of established
-mechanisms and an explicit evaluation contract; release scaling and
-external checking results remain pending.
+mechanisms and scoped evaluation. Three external projects have matching
+local-root acceptance with the official checker; release scaling remains pending.
 \end{abstract}
 
 \section{Introduction}
@@ -268,7 +268,9 @@ evaluated roots are supplied.
 Supplied roots retain their supplied status.
 The receipt contributes its checked compiled closure and reported axioms;
 a partial receipt reports the last successful prefix.
-Per-module costs require explicit source-bound observations.
+These lists enumerate axiom declarations in accepted modules, rather than
+minimal per-theorem dependency sets. Per-module costs require explicit
+source-bound observations.
 
 The tool trusts Lean's kernel plus its artifact reader, context metadata,
 checked-token FFI, quiescent marking and locally generated checkpoints.
@@ -276,12 +278,11 @@ Internal symbols and serialized metadata require a matching SDK.
 Unknown toolchains fail clearly or explicitly select the matching official
 checker, identifying that path and its scope.
 The current receipt lacks a binding to the current source digest;
-audit exposes this gap. Thus acceptance, source coverage and axiom
-dependencies remain separate answers.
+audit exposes this gap. Thus acceptance, source coverage and reported axiom declarations remain separate answers.
 
 \section{Evaluation: performance and verification coverage}\label{sec:evaluation}
-The fixed evaluation separates established coverage findings from
-release-tool performance that is still awaiting return.
+Installed-tool external checks now establish common-root parity on three
+projects, while the fixed scaling matrix is still awaiting return.
 Every admitted system result must name its executable and project commits,
 toolchain, actual module set and complete timing boundary.
 Historical prototypes explain causes but cannot populate the release tables.
@@ -357,53 +358,73 @@ modules at 1, 2, 4 and 8 workers, three repeats each: 30,288 accepted checks
 and 22,716 one-worker/higher-worker comparisons.
 Verdicts, diagnostics and allocation counts agree in every observed pair,
 while elapsed time varies.
-This supports reproducibility for the tested terms and contexts;
-release bad-proof CI and interruption parity have their own obligations
-(Table~\ref{tab:acceptance}).
+These fixed-panel observations complement the installed-package
+rejection controls below.
 
 \begin{table}[t]
 \centering
 \small
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.48\columnwidth}>{\raggedright\arraybackslash}p{0.39\columnwidth}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrr}
 \toprule
-Release acceptance evidence & Current disposition\\
+& Closure & \multicolumn{2}{c}{ProofServe} & \multicolumn{2}{c}{Official}\\
+Project & modules & CPU & Wall & CPU & Wall\\
 \midrule
-Three bad-proof classes in CI & CI closure pending\\
-Interrupted vs.\ uninterrupted & Timed pair pending\\
-Three external projects: native parity & Timing/parity pending\\
-Installed external static audits & 3 completed\\
-Package/container clean start & Acceptance pending\\
+Newspeak & 754 & 70.56 & 35.71 & 63.66 & 32.91\\
+Solar & 2,368 & 135.21 & 76.08 & 10.97 & 7.12\\
+CrocSwap & 3,166 & 211.26 & 114.78 & 103.86 & 105.22\\
 \bottomrule
 \end{tabular}
-\caption{Functional and external acceptance, with static audit separated
-from native checking. Design implication: report each completed obligation
-at its own scope; coverage discovery and proof acceptance are distinct.}
+\caption{Installed-tool external observations in seconds, one run per
+successful arm, four ProofServe workers. Official default checks local roots
+while trusting imports; CrocSwap uses its completed one-worker pool fallback.
+Bundle \texttt{703055a1}, checker \texttt{c8e7c615}.
+Design implication: compare acceptance at a common scope and retain complete
+costs; different proof obligations do not support a speedup ratio.}
 \label{tab:acceptance}
 \end{table}
 
-Installed-tool static audits already reveal actionable external scope.
-At pinned revisions, Integer Mult Bounds has 64/64 files in its default
-graph, Newspeak 105/105, and Solar 12/32.
-Solar's 20 omitted files are outside the declared Lake import closure;
-some can instead be inputs to its custom EVM checker.
-These audits use installed bundle \texttt{703055a1}, with project identities
-and findings in \path{data/external-projects/}.
-Integer Mult Bounds discloses AI assistance; this disclosure alone
-does not identify a wholly AI-generated acceptance workload.
-Native check/official parity, timing and clean-start results remain pending.
+Three previously unused public projects complete the installed
+check/audit workflow (Table~\ref{tab:acceptance}).
+At source commits \texttt{e2232d8f}, \texttt{f4f5c9a1} and
+\texttt{7c49fe32}, Newspeak, Solar and CrocSwap respectively have
+105, 12 and 64 accepted local roots, exactly matching official verbose replay
+sets. ProofServe additionally checks their compiled dependency closures
+of 754, 2,368 and 3,166 modules. These are common-root parity results;
+the official default trusts imports.
+Each observation includes startup and checkpoint work on CPUs 0--7,
+excluding input compilation and lock waits.
+The extracted bundle runs independently of the tool's source checkout;
+the project and its compiled dependencies remain required inputs.
 
-Release validation compares accepted sets and reported axioms at a common
-scope, requires loose-bound-variable, unknown-constant and wrong-sort
-inputs to be rejected, and compares a real interrupted/resumed run with
-an uninterrupted one. External acceptance requires three previously unused
-public projects, including published AI-generated source.
-Receipts make this distinction actionable for an automation consumer.
-A successful process can be paired with its exact accepted module set;
-a partial run exposes its certified prefix rather than an undifferentiated
-failure bit. A caller can separately ask whether all intended source modules
-have compiled evidence and whether a reported axiom is within policy.
-These questions remain meaningful even when every observed kernel verdict
-is reproducible.
+Operational problems remain part of the result.
+CrocSwap required one disclosed Lake manifest-name repair, preserving proof
+sources and dependency revisions. Its official default batch hit the RSS
+stop after 75.04 seconds; a prefix diagnostic stopped after 9.01 seconds.
+Their total CPU accounting is incomplete. The completed fallback retains
+the official binary and all 64 roots with a one-worker runtime pool;
+its cost in the table is additional to the failed attempts.
+A public subproject README discloses substantial Codex assistance for
+CrocSwap. Authorship of Newspeak and Solar is unestablished.
+
+Audit gives actionable coverage and axiom findings.
+Newspeak covers 105/105 local files, CrocSwap 64/64, and Solar 12/32 in the
+default import graph. Solar's 20 omitted files are inputs to a separate
+EVM checking flow, which this evaluation did not execute.
+Newspeak's receipt lists a project \texttt{native\_decide} axiom alongside
+declared closure axioms; a declaration inventory alone cannot assign
+those axioms to a particular theorem.
+Project pins, source-repair details and all failed outcomes are retained in
+\path{data/external-projects/}.
+
+Portable-package CI on commit \texttt{adf816ae} installs a relocated archive,
+checks and audits a fixture, compares official default/fresh controls,
+and rejects loose-bound-variable, unknown-constant and wrong-sort mutations
+through the original kernel. The full container passes installed-project
+and explicit unsupported-version controls with networking disabled.
+These are finite functional qualifications, separate from timed external
+observations. The real interrupted/resumed versus uninterrupted cost pair
+still awaits the fixed matrix.
 The existing \texttt{serve} interface remains Kimina-compatible;
 service features are outside this evaluation.
 
@@ -435,8 +456,10 @@ on axioms, unsafe/partial exclusions remain visible, and semantic statement
 faithfulness requires separate review.
 Current source binding, malicious checkpoint integrity, executable Lake
 configuration and uncompiled/generated sources require explicit additional
-evidence. Release scaling, rejection CI, resumption costs and full external
-acceptance remain incomplete.
+evidence. Release scaling and resumption costs remain incomplete.
+External checking has one successful observation per arm, with common-root
+rather than full-dependency official parity; the AI disclosure establishes
+assistance rather than wholly generated provenance.
 
 Parallel proof checking and asynchronous tasks have precedents in Isabelle,
 Coq and Lean \cite{wenzelParallel2009,coqAsync2015,leanParallelRelease2025}.
@@ -455,8 +478,9 @@ certificate recomputation; a completed probability sample still leaves
 large uncertainty about total compilation work.
 Default coverage and repeatable verdicts answer different verification
 questions. ProofServe makes these boundaries explicit through check,
-audit and scoped receipts. Its pending release evaluation must establish
-the practical performance and acceptance of that integration.
+audit and scoped receipts. Three installed external cases establish common-root parity and useful
+audit findings; the pending scaling and resumption results must establish
+its performance under comparable workloads.
 
 \bibliographystyle{plain}
 \bibliography{references}
