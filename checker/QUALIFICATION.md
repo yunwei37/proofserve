@@ -12,6 +12,13 @@
 > The new qualification is tracked in [e0 review repair](results/e0-review-repair/README.md).
 > No repaired-source independent execution review or release freeze is claimed.
 
+> **Second code-only review:** repair of 2628d727 is tracked in
+> [second-review repair](results/review-2628-repair/README.md). Child ABI 5 and
+> independent-closures v7 invalidate the earlier local state. The historical
+> 14,721-module ABI 4 run does not qualify this source; a new large replay and
+> final timing remain deferred until W's full build retires. The small
+> correctness evidence below is not an independent execution review.
+
 Self-review, 2026-11-03. Raw development attempts remain on the existing PVC in
 checker-package-20261103. They are not formal P-core performance measurements.
 

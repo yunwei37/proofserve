@@ -28,8 +28,7 @@ def runModuleMetadata (args : List String) : IO UInt32 := do
     let mut inputs : Array (String × UInt64) := #[]
     if empty then
       let file ← findOLean mod
-      for level in [OLeanLevel.exported,OLeanLevel.server,OLeanLevel.private] do
-        let part := level.adjustFileName file
+      for part in artifactCandidates file do
         if ← part.pathExists then
           inputs := inputs.push (part.toString,hash (← IO.FS.readBinFile part))
     rows := rows.push (Json.mkObj [
@@ -49,7 +48,11 @@ unsafe def runEmptyContext (args : List String) : IO UInt32 := do
   let some (data,_) := parts[parts.size-1]? | throw <| IO.userError "missing module"
   unless data.constants.isEmpty && data.constNames.isEmpty do
     throw <| IO.userError "empty module classification changed"
-  localReplay root.toName "none"
+  try
+    localReplay root.toName "none"
+  catch e =>
+    IO.eprintln e.toString
+    return 1
   IO.println (Json.mkObj [
     ("empty_context_checked",toJson true),("module",toJson root)]).compress
   return 0

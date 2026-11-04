@@ -1,0 +1,155 @@
+phase,case,exit,status,raw
+baseline-fixtures,build-private-unsafe,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictA-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictA-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictA-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictA2-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictA2-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictA2-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictB-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictB-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictB-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictB2-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictB2-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictB2-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictC-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictC-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-PrivateConflictC-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-unsafe-batched,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,build-private-partial,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictA-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictA-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictA-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictA2-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictA2-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictA2-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictB-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictB-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictB-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictB2-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictB2-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictB2-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictC-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictC-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-PrivateConflictC-native,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,1-partial-batched,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,build-body-context,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,2-body-A-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,2-body-A-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,2-body-M-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,2-body-M-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,2-body-D-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,2-body-D-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,2-body-native,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,build-mention,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-mention-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-mention-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-mention-native,2,incomplete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,build-name-taint,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-taint-Aaa-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-taint-Aaa-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-taint-Bbb-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-taint-Bbb-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-taint-native,2,incomplete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,build-evaluation,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-evaluation-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-evaluation-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-evaluation-native,2,incomplete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,3-evaluation-official-path,2,official_failure,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-fixtures,build-ir-input,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-fixtures/results.json
+baseline-remainder-fixtures,build-private-unsafe-safe,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder-fixtures/results.json
+baseline-remainder-fixtures,1-unsafe-then-safe-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder-fixtures/results.json
+baseline-remainder-fixtures,1-unsafe-then-safe-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder-fixtures/results.json
+baseline-remainder-fixtures,1-unsafe-then-safe-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder-fixtures/results.json
+baseline-remainder-fixtures,build-ir-input,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder-fixtures/results.json
+baseline-remainder3-fixtures,build-ir-input,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,4-ir-missing-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,4-ir-missing-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,4-ir-missing-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,4-ir-corrupt-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,4-ir-corrupt-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,4-ir-corrupt-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,build-context,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,5-context-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,5-context-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,5-context-native-0,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,5-context-native-1,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,build-dirty,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,7-init,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,7-add,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,7--c,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,7-default-state,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,7-real-edit,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,build-escaped,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,9-escaped-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,9-escaped-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,9-escaped-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,9-default-discovery,2,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,build-segments,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,10-segment-first,2,incomplete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,10-segment-second,2,incomplete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-remainder3-fixtures,10-segment-third,2,incomplete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-remainder3-fixtures/results.json
+baseline-context-fixtures,build-context,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-context-fixtures/results.json
+baseline-context-fixtures,5-context-mutate,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-context-fixtures/results.json
+baseline-context-fixtures,5-context-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-context-fixtures/results.json
+baseline-context-fixtures,5-context-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-context-fixtures/results.json
+baseline-context-fixtures,5-context-native-0,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-context-fixtures/results.json
+baseline-context-fixtures,5-context-native-1,2,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-context-fixtures/results.json
+baseline-compact5-fixtures,build-body-context,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-body-A-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-body-A-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-body-M-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-body-M-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-body-D-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-body-D-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-body-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-crafted-body-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-crafted-body-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,2-crafted-body-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,build-body-same-module,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,6-body-same-module-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,6-body-same-module-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact5-fixtures,6-body-same-module-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact5-fixtures/results.json
+baseline-compact6-fixtures,build-body-context,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-body-A-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-body-A-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-body-M-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-body-M-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-body-D-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-body-D-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-body-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-crafted-body-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-crafted-body-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,2-crafted-body-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,build-body-same-module,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,6-body-same-module-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,6-body-same-module-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+baseline-compact6-fixtures,6-body-same-module-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/baseline-compact6-fixtures/results.json
+quot-before2-fixtures,build-project,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/quot-before2-fixtures/results.json
+quot-before2-fixtures,8-quot-metadata,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/quot-before2-fixtures/results.json
+quot-before2-fixtures,8-quot-official-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/quot-before2-fixtures/results.json
+quot-before2-fixtures,8-quot-official-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/quot-before2-fixtures/results.json
+quot-before2-fixtures,8-quot-plain,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/quot-before2-fixtures/results.json
+quot-before2-fixtures,8-quot-after-segment,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/quot-before2-fixtures/results.json
+cached-body-before-fixtures,build-body-context,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/cached-body-before-fixtures/results.json
+cached-body-before-fixtures,2-cache-compile,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/cached-body-before-fixtures/results.json
+cached-body-before-fixtures,2-cache-body-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/cached-body-before-fixtures/results.json
+cached-body-before-fixtures,2-cache-body-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/cached-body-before-fixtures/results.json
+cached-body-before-fixtures,2-cache-body-native,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/cached-body-before-fixtures/results.json
+old-context-focused6-fixtures,build-body-context,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-body-D-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-body-D-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-body-native,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-cache-compile,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-cache-body-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-cache-body-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-cache-body-native,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-crafted-body-default,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-crafted-body-fresh,1,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,2-crafted-body-native,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,build-body-same-module,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,6-body-same-module-default,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,6-body-same-module-fresh,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-context-focused6-fixtures,6-body-same-module-native,1,rejected,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-context-focused6-fixtures/results.json
+old-leaf-focused6-fixtures,build-empty-leaf,0,no native JSON,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-leaf-focused6-fixtures/results.json
+old-leaf-focused6-fixtures,10-empty-leaf,0,complete,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/old-leaf-focused6-fixtures/results.json

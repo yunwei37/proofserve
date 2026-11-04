@@ -40,8 +40,10 @@ corresponding per-module ledger or axiom report.
 
 Official --fresh checks a final imported environment per root. It has a distinct
 duplicate-proof policy and must not be presented as identical to the native
-per-module procedure. A failed official invocation is official_failure and exits
-2; its diagnostic is retained without inventing a kernel-rejection classification.
+per-module procedure. A failed official invocation is official_failure. Stock exit 1 is propagated
+as exit 1; other nonzero tool statuses return operational exit 2. Its actual
+per-root diagnostic is retained without claiming that every tool error means
+a false proposition.
 
 ## JSON types
 
@@ -102,7 +104,7 @@ identity. Generated environment snapshots may then be retired; interrupted
 batches keep their partial segment state. This retains the existing assumption
 that local checkpoints are trusted and input hashes detect ordinary changes,
 not adversarial tampering. Extra fields are additive within schema version 1.
-Native receipts now include checker_checkpoint_abi: 4. The JSON schema version
+Native receipts now include checker_checkpoint_abi: 5. The JSON schema version
 and the internal checkpoint ABI are different contracts. Receipt Lean version
 and child ABI must match before a completed batch can be reused.
 
@@ -131,7 +133,7 @@ adversary-resistant proof certificate. The --trusted-module-cache argument is
 an internal coordinator interface to trusted local state, not an untrusted
 proof upload interface.
 
-The checkpoint metadata ABI is child ABI 4 / independent-closures-v6. Old checkpoint configurations produce an
+The checkpoint metadata ABI is child ABI 5 / independent-closures-v7. Old checkpoint configurations produce an
 explicit mismatch error; they are not decoded using a new unsafe layout.
 
 
@@ -183,14 +185,43 @@ events. Raw stdout remains diagnostic output. Receipt-related text and JSON
 writes use checked durable publication. Old complete files must still be paired
 with the current process's exit status.
 
-The native adapter refuses safe declarations depending on project IR evaluation
-through Lean.reduceBool or Lean.reduceNat (including transitive wrappers).
-The open primitive axioms themselves are supported. Unsupported native
-evaluation is an operational refusal, not a false theorem. Explicit --official
-can execute project code and is appropriate only when that code is trusted;
-there is no silent fallback from this refusal.
+The native adapter allows direct open-parameter mentions of Lean.reduceBool
+and Lean.reduceNat, including ordinary open bridge proofs. It conservatively
+refuses closed or higher-order evaluation dependencies through them or their
+declared-context wrappers. Some passive higher-order uses remain unsupported;
+this syntactic check does not decide arbitrary evaluation. Refusal is
+operational exit 2, not a false theorem. Explicit --official runs stock --fresh
+only with trusted project code; it may itself lack the required IR. There is
+no silent fallback from native refusal.
 
 operational_errors preserves failed worker exit codes and stderr, with batch or
 segment identity. An unsupported native-evaluation refusal therefore remains
 visible in the primary receipt. An incomplete receipt does not certify a final
 axiom union for its unfinished requested closure.
+
+
+## Second-review repair semantics
+
+The native child ABI is 5 and the independent-closure identity is v7.
+Old state is not reused: the executable identity and these ABI values must match.
+Input inventories bind existing exported/server/private parts and IR files,
+including the absence of optional parts. If .ir.sig is present, the same
+original reader also reads .ir. Missing/corrupt inputs produce operational
+failure; they cannot produce complete. Stock CLI exit 1 for an artifact-load
+error need not mean the mathematical proposition is false.
+
+An original import-context rejection returns verification exit 1, including
+the import-only context path. An official checker exit 1 is propagated as 1 with
+execution_path: official-leanchecker and its actual per-root result; its limited
+coverage is unchanged. Other nonzero tool statuses remain operational exit 2. A receipt never lists the same module in accepted and
+rejected, and successful per-module evidence excludes rejected names.
+
+project_dirty includes tracked changes and untracked files outside the active
+checkpoint directory. Only the checker's own untracked output there is excluded;
+it does not write a .gitignore into the target project.
+
+Native primitive handling is conservative and scoped to declared imports.
+Direct open-parameter mentions are supported; closed and higher-order native
+dependencies may be refused with 2. The stock --fresh fallback can itself lack
+the IR available to stock default mode. Its selection is not a promise that a
+refused native-evaluation proof will pass.

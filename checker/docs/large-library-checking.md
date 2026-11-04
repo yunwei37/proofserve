@@ -236,7 +236,7 @@ with the matching toolchain, child checkpoint ABI, Lake manifest, resolved
 search path, roots and checker options. A resumed completed batch performs a
 new resolution of its actual import closure in the current Lake environment.
 The complete set of resolved files must match, including the presence or
-absence of exported, server and private parts. Matching only the files named
+absence of exported, server and private parts, plus IR signatures and IR files. Matching only the files named
 by the old certificate is insufficient. Current accepted module paths and
 the union of input bytes are checked again before final publication.
 
@@ -287,8 +287,8 @@ from an unrelated earlier module. These fixes change adapter behavior, not
 the original kernel.
 
 Certificate identity also includes the actual checker executable's 64-bit
-noncryptographic hash. The current internal identities are child ABI 4 and
-independent-closures-v6. Older state requires a fresh directory. All local
+noncryptographic hash. The current internal identities are child ABI 5 and
+independent-closures-v7. Older state requires a fresh directory. All local
 certificate JSON and environment snapshots remain trusted, editable state:
 someone who edits certificates can forge acceptance or axiom lists. Neither
 the 64-bit input hash nor the executable hash resists deliberately constructed
@@ -311,24 +311,26 @@ It matches the full O stream and 14,401 available module-local references;
 320 module-local references remain unavailable. This is E-core correctness
 qualification, not final timing or independent review.
 
-The supplied low-severity prelude-only Quot control did not reproduce a
-difference: both official modes and the checkpoint path accepted it. No
-private quotInit layout adaptation was added on that evidence. A duplicate
-theorem with an imported matching interface still receives original module-local
-proof validation before new declarations enter the shared frontier. General
-malformed-artifact equivalence beyond the documented controls is not proved.
+### Historical limits superseded by the second repair
 
-Two finer context differences from the supplied review remain bounded
-limitations, not confirmed new counterexamples. A shared matching theorem interface can keep
-the earlier body after original module-local replay. Upstream Replay.lean,
-lines 84–97 in the qualified SDK, can itself reuse an imported matching
-interface without checking the redundant body. The adapter does not prove
-arbitrary malformed-artifact body equivalence.
-The malformed non-Prop theorem control is rejected by the original kernel and
-therefore does not establish that proposed counterexample. Restored importer
-contexts initialize quotient support; the tested prelude-only Quot artifact
-still agrees with both official modes. No additional private ABI write was
-introduced for that unconfirmed difference.
+The e0 review controls used genuine primitive Quot declarations and did not
+reproduce a quotient difference. They did not test the second review's
+axiom-tagged records. The latter control subsequently reproduced acceptance
+after a checkpoint despite rejection by both official modes; the current
+reader's reserved-name/tag check addresses that demonstrated case.
+
+The earlier adapter could retain a first theorem body after validating a
+matching interface in another context. A genuine WellFounded/Acc computation
+now reproduces a false shared-frontier rejection, so that behavior is no longer
+treated as an unconfirmed limitation. The current path isolates different
+theorem payloads and confirms shared failures against the original module
+context. Cached combined contexts also require the imported theorem payloads
+to match; otherwise new modules use their own declared contexts.
+
+Upstream Replay.lean can itself skip a redundant imported theorem body with
+an equal interface. The new controls do not establish byte-for-byte checking
+of every redundant serialized proof or equivalence for arbitrary malformed
+metadata. No additional private quotient-initialization ABI write was added.
 
 Ordinary segment resume trusts the checkpoint directory as a whole, including
 identity.json, segment logs and generated Lean snapshots. Do not delete its
@@ -336,3 +338,40 @@ identity file or assemble a new directory from unrelated segment records.
 Those internal records are not individually authenticated portable certificates.
 The completed-batch validation described above does not convert arbitrary
 partial checkpoint assembly into a supported or tamper-resistant operation.
+
+
+## Follow-up to the second code-only review
+
+The latest adapter keeps skipped unsafe/partial names in conflict detection,
+even though upstream proof replay excludes their bodies. Distinct theorem
+payloads are isolated in their declared module contexts. A combined-frontier
+failure is confirmed by original module-local replay, and failed frontier
+extension cannot revoke a module whose local replay already succeeded.
+
+All requested roots of a partitioned plan, including empty non-prefix leaves,
+are inspected. An import-only context enters import_only_modules only after
+its actual original context check. Rejection there returns 1, with the module
+in rejected rather than accepted; an operational error remains 2. Accepted
+and rejected sets in partial receipts are disjoint.
+
+The complete file inventory also binds IR presence and bytes. When .ir.sig
+exists the original artifact reader requires .ir. This validation does not
+execute project IR or assert that arbitrary code is safe. Primitive dependency
+labels follow actual import contexts rather than unrelated same-named roots.
+The native refusal remains a conservative syntax-based boundary: an open
+direct mention need not be evaluated, while a closed/higher-order use can be
+unsupported even if a particular invocation would not evaluate it. Official
+--fresh is an exact different procedure, not a guaranteed native-IR fallback.
+
+The second review was code-only at 2628d727. This repair's execution and result
+inspection are 自审, not independent execution review. The earlier 14,721-module
+run belongs to source 3fe83c5a and ABI 4. It does not qualify ABI 5; that replay
+and full-library checking remain deferred until W's full build retires.
+
+The second review's axiom-tagged quotient counterexample was reproduced:
+stock default/fresh rejected, old native rejected without a checkpoint but
+completed after restore. The reader now requires primitive tags and matching
+names for the four reserved quotient declarations. It refuses unsupported
+ordinary declarations there before replay or certificate reuse. This leaves
+ordinary prelude-only checkpoints usable and adds no private quotInit write.
+It is not a general proof of equivalence for every malformed serialized field.

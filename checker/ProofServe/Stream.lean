@@ -30,6 +30,7 @@ structure AuditState where
   fallbacks : Nat := 0
   declaredAxioms : NameSet := {}
   localOnly : Bool := false
+  skippedNames : NameSet := {}
 
 abbrev AuditM := StateRefT AuditState IO
 
@@ -42,26 +43,42 @@ def event (fields : List (String × Json)) : IO Unit := do
     handle.flush
   else IO.println text
 
-initialize nativeSensitive : IO.Ref NameSet ← IO.mkRef (
-  NameSet.empty.insert "Lean.reduceBool".toName |>.insert "Lean.reduceNat".toName)
+initialize nativeSensitive : IO.Ref (Std.HashMap Name NameSet) ← IO.mkRef {}
+def nativePrimitive (n : Name) : Bool :=
+  ["Lean.reduceBool","Lean.reduceNat","Lean.ofReduceBool","Lean.ofReduceNat"].any (·.toName == n)
 
-/-- No untrusted project IR runs inside a native verification worker. Ordinary
-open primitive axioms can be checked without invoking the native evaluator. -/
-partial def onlyOpenNativeCalls (e : Expr) : Bool :=
+/-- Open primitive applications are mentions, not executable closed reductions.
+Closed calls remain a conservative unsupported case; arbitrary evaluation is
+not decided by this syntactic check. -/
+partial def onlyOpenNativeCalls (e : Expr) (sensitive : NameSet) (asFn := false) (asArg := false) : Bool :=
   match e with
   | .app f a =>
-    let direct := match f.consumeMData with
-      | .const n _ => n=="Lean.reduceBool".toName || n=="Lean.reduceNat".toName
-      | _ => false
-    (!direct || (a.consumeMData matches .bvar _)) && onlyOpenNativeCalls f && onlyOpenNativeCalls a
-  | .forallE _ t b _ => onlyOpenNativeCalls t && onlyOpenNativeCalls b
-  | .lam .. | .letE .. => false
-  | .mdata _ b | .proj _ _ b => onlyOpenNativeCalls b
+    let callOK := match e.getAppFn with
+      | .const n _ =>
+        if sensitive.contains n then
+          if nativePrimitive n then (e.getAppArgs[0]?).all (fun x => x.consumeMData matches .bvar _)
+          else e.getAppArgs.all (fun x => x.consumeMData matches .bvar _)
+        else true
+      | .lam .. => false
+      | _ => true
+    callOK && onlyOpenNativeCalls f sensitive true asArg && onlyOpenNativeCalls a sensitive false true
+  | .forallE _ t b _ =>
+    onlyOpenNativeCalls t sensitive && onlyOpenNativeCalls b sensitive
+  | .lam _ t b _ =>
+    !asArg && onlyOpenNativeCalls t sensitive && onlyOpenNativeCalls b sensitive
+  | .letE .. => false
+  | .const n _ => asFn || !sensitive.contains n
+  | .mdata _ b | .proj _ _ b => onlyOpenNativeCalls b sensitive asFn asArg
   | _ => true
 
-def checkNativeEvaluation (data : ModuleData) : IO Unit := do
-  let old ← nativeSensitive.get
-  let mut tainted := old
+def checkNativeEvaluation (mod : Name) (data : ModuleData) : IO Unit := do
+  let all ← nativeSensitive.get
+  let mut tainted : NameSet := {}
+  for name in ["Lean.reduceBool","Lean.reduceNat"] do tainted := tainted.insert name.toName
+  for parent in data.imports do
+    for name in (all[parent.module]?.getD {}).toList do tainted := tainted.insert name
+  for ci in data.constants do
+    unless nativePrimitive ci.name do tainted := tainted.erase ci.name
   let mut more := true
   while more do
     more := false
@@ -69,29 +86,46 @@ def checkNativeEvaluation (data : ModuleData) : IO Unit := do
       if !tainted.contains ci.name && ci.getUsedConstantsAsSet.toList.any tainted.contains then
         tainted := tainted.insert ci.name
         more := true
-  nativeSensitive.set tainted
+  nativeSensitive.set (all.insert mod tainted)
   for ci in data.constants do
     if ci.isUnsafe || ci.isPartial then continue
-    let uses := ci.getUsedConstantsAsSet.toList
-    if uses.any tainted.contains then
-      let primitiveAxiom := (ci matches .axiomInfo _) &&
-        uses.all (fun n => !tainted.contains n ||
-          n=="Lean.reduceBool".toName || n=="Lean.reduceNat".toName) &&
-        onlyOpenNativeCalls ci.type
-      unless primitiveAxiom do
-        throw <| IO.userError s!"unsupported native IR evaluation dependency: {ci.name}; use --official only with trusted project code"
+    if ci.getUsedConstantsAsSet.toList.any tainted.contains then
+      unless onlyOpenNativeCalls ci.type tainted &&
+          (ci.value? (allowOpaque := true)).all (fun value => onlyOpenNativeCalls value tainted) do
+        throw <| IO.userError s!"unsupported native IR evaluation dependency (closed call): {ci.name}; official --fresh may also lack the required IR; use the project toolchain explicitly"
+
+def artifactCandidates (file : System.FilePath) : Array System.FilePath :=
+  #[file, OLeanLevel.server.adjustFileName file, OLeanLevel.private.adjustFileName file,
+    file.withExtension "ir.sig", file.withExtension "ir"]
+
+/-- The importer may enable quotient reduction for any nonempty import list.
+A user-defined axiom carrying a reserved primitive name is not that primitive. -/
+def validateQuotientMetadata (parts : Array (ModuleData × CompactedRegion)) : IO Unit := do
+  let primitive := fun n => ["Quot","Quot.mk","Quot.lift","Quot.ind"].any (·.toName == n)
+  let some (data,_) := parts[parts.size-1]? | throw <| IO.userError "empty module"
+  for name in data.constNames, ci in data.constants do
+    if primitive name || primitive ci.name then
+      unless (ci matches .quotInfo _) && name==ci.name do
+        throw <| IO.userError s!"unsupported nonprimitive quotient metadata: {name}"
 
 def moduleParts (mod : Name) : IO (Array (ModuleData × CompactedRegion)) := do
   let file ← findOLean mod
   unless ← file.pathExists do throw <| IO.userError s!"missing module {mod}"
+  let sig := file.withExtension "ir.sig"
+  if ← sig.pathExists then
+    let _ ← readModuleDataParts #[sig,file.withExtension "ir"]
   let exported ← readModuleDataParts #[file]
   let some (header,_) := exported[0]? | throw <| IO.userError "empty module"
-  if !header.isModule then return exported
+  if !header.isModule then
+    validateQuotientMetadata exported
+    return exported
   let server := OLeanLevel.server.adjustFileName file
   let priv := OLeanLevel.private.adjustFileName file
   unless (← server.pathExists) && (← priv.pathExists) do
     throw <| IO.userError s!"module-system artifact requires server and private parts: {mod}"
-  readModuleDataParts #[file,server,priv]
+  let parts ← readModuleDataParts #[file,server,priv]
+  validateQuotientMetadata parts
+  return parts
 
 /-- Interface comparison; proof bodies needing validation use module-local replay. -/
 def sameTheoremInterface (a b : ConstantInfo) : Bool :=
@@ -179,7 +213,7 @@ unsafe def certifiedBase (roots : List Name) (file : System.FilePath) : IO Audit
       -- Identity qualification checked every part's import names against the
       -- exported header. Reuse the importer's resident data instead of loading
       -- a second compacted copy of every certified module.
-      checkNativeEvaluation data
+      checkNativeEvaluation mod data
       let first := data
       let mut visible : Nat := 0
       for parent in first.imports do
@@ -191,7 +225,7 @@ unsafe def certifiedBase (roots : List Name) (file : System.FilePath) : IO Audit
       for ci in data.constants do
         unless ci.isUnsafe || ci.isPartial do
           if let some loaded := state.checked.find? ci.name then
-            unless sameConstant loaded ci || sameTheoremInterface loaded ci do
+            unless sameConstant loaded ci do
               throw <| IO.userError s!"certified import constant differs: {ci.name}"
             origins := origins.insert ci.name ((origins[ci.name]?.getD {}).insert mod)
           if let .axiomInfo _ := ci then axioms := axioms.insert ci.name
@@ -204,6 +238,8 @@ unsafe def certifiedBase (roots : List Name) (file : System.FilePath) : IO Audit
         constants := state.constants+data.constants.size
         skipped := state.skipped+(data.constants.filter (fun ci => ci.isUnsafe || ci.isPartial)).size
         origins := origins
+        skippedNames := data.constants.foldl (fun names ci =>
+          if ci.isUnsafe || ci.isPartial then names.insert ci.name else names) state.skippedNames
         declaredAxioms := axioms }
     for imp in env.header.modules do
       if state.visited.contains imp.module then
@@ -233,7 +269,8 @@ structure CheckpointMeta where
   fallbacks : Nat
   declaredAxioms : NameSet
   localOnly : Bool
-  nativeSensitive : NameSet
+  nativeSensitive : Std.HashMap Name NameSet
+  skippedNames : NameSet
   ancestorMasks : Std.HashMap Name Nat
   moduleIndices : Std.HashMap Name Nat
 
@@ -257,7 +294,7 @@ unsafe def saveCheckpoint (s : AuditState) (file : System.FilePath) (mod : Name)
     visited := s.visited, imports := s.imports, origins := s.origins,
     segregated := s.segregated, modules := s.modules, constants := s.constants,
     skipped := s.skipped, fallbacks := s.fallbacks, declaredAxioms := s.declaredAxioms,
-    ancestorMasks := s.ancestorMasks, moduleIndices := s.moduleIndices, localOnly := s.localOnly, nativeSensitive := ← nativeSensitive.get }
+    ancestorMasks := s.ancestorMasks, moduleIndices := s.moduleIndices, localOnly := s.localOnly, skippedNames := s.skippedNames, nativeSensitive := ← nativeSensitive.get }
   let data : ModuleData := {
     isModule := false, imports, constNames := constants.map (·.name),
     constants, extraConstNames := #[],
@@ -298,7 +335,7 @@ unsafe def restoreCheckpoint (mod : Name) : IO AuditState := do
     visited := auditMeta.visited, imports := auditMeta.imports, origins := auditMeta.origins,
     segregated := auditMeta.segregated, modules := auditMeta.modules,
     constants := auditMeta.constants, skipped := auditMeta.skipped, fallbacks := auditMeta.fallbacks, declaredAxioms := auditMeta.declaredAxioms,
-    ancestorMasks := auditMeta.ancestorMasks, moduleIndices := auditMeta.moduleIndices, localOnly := auditMeta.localOnly }
+    ancestorMasks := auditMeta.ancestorMasks, moduleIndices := auditMeta.moduleIndices, localOnly := auditMeta.localOnly, skippedNames := auditMeta.skippedNames }
 
 def maybeCheckpoint (s : AuditState) : IO Unit := do
   if let some file ← IO.getEnv "DECOUPLED_CHECKPOINT_OUTPUT" then
@@ -323,7 +360,7 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
     imports := s.imports.insert mod (first.imports.map (·.module)) }
   for imp in first.imports do visit mode mutation mutateOnly imp.module
   let chosen := if mutateOnly == some mod then mutation else "none"
-  checkNativeEvaluation data
+  checkNativeEvaluation mod data
   let (map, skipped) := constantsOf data chosen
   let aliases := Id.run do
     let mut n := 0
@@ -355,6 +392,10 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
         separate := true
         reason := some "segregated_dependency"
     for (_, ci) in map do
+      if s.skippedNames.contains ci.name ||
+          ((ci.isUnsafe || ci.isPartial) && (s.checked.find? ci.name).isSome) then
+        separate := true
+        reason := some s!"skipped_constant_conflict:{ci.name}"
       unless ci.isUnsafe || ci.isPartial do
         if let some old := s.checked.find? ci.name then
           let origins := s.origins[ci.name]?.getD {}
@@ -365,7 +406,10 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
             -- A repeated theorem is validated in its declared context, even
             -- when the earlier matching interface came from another root.
             -- This does not waive duplicate definition/axiom import checks.
-            if !sameConstant old ci || !imported then
+            if !sameConstant old ci then
+              separate := true
+              reason := some s!"different_theorem_body:{ci.name}"
+            else if !imported then
               reason := some s!"duplicate_proof_requires_native:{ci.name}"
           else
             separate := true
@@ -398,19 +442,24 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
   else if let some why := reason then
     try
       let _ ← unsafe localReplay mod chosen
-      event [("event", toJson "accept"), ("module", toJson mod.toString),
-        ("context", toJson "module_local"), ("fallback_reason", toJson why)]
       if separate then
         modify fun s => { s with segregated := s.segregated.insert mod, fallbacks := s.fallbacks + 1 }
       else
         -- A locally checked duplicate theorem interface does not quarantine
         -- unrelated new declarations or all future dependent modules.
-        let checked ← parallelReplay data insertMap s.checked ((← IO.getEnv "PROOFSERVE_WORKERS").getD "4" |>.toNat?.getD 4)
-        let mut origins := s.origins
-        for (name, ci) in map do
-          unless ci.isUnsafe || ci.isPartial do
-            origins := origins.insert name ((origins[name]?.getD {}).insert mod)
-        modify fun s => { s with checked, origins, fallbacks := s.fallbacks + 1 }
+        try
+          let checked ← parallelReplay data insertMap s.checked ((← IO.getEnv "PROOFSERVE_WORKERS").getD "4" |>.toNat?.getD 4)
+          let mut origins := s.origins
+          for (name, ci) in map do
+            unless ci.isUnsafe || ci.isPartial do
+              origins := origins.insert name ((origins[name]?.getD {}).insert mod)
+          modify fun s => { s with checked, origins, fallbacks := s.fallbacks + 1 }
+        catch _ =>
+          -- Local replay already succeeded. A combined-frontier failure is
+          -- not evidence that the module's declared context is invalid.
+          modify fun s => { s with segregated := s.segregated.insert mod, fallbacks := s.fallbacks + 1 }
+      event [("event", toJson "accept"), ("module", toJson mod.toString),
+        ("context", toJson "module_local"), ("fallback_reason", toJson why)]
     catch e =>
       event [("event", toJson "reject"), ("module", toJson mod.toString),
         ("context", toJson "module_local"), ("error", toJson e.toString),
@@ -428,14 +477,23 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
         ("context", toJson "shared"), ("constants", toJson data.constants.size),
         ("frontier_insert_candidates",toJson insertMap.size),
         ("imports", toJson (first.imports.map (·.module.toString)))]
-    catch e =>
-      event [("event", toJson "reject"), ("module", toJson mod.toString),
-        ("context", toJson "shared"), ("error", toJson e.toString)]
-      throw e
+    catch sharedError =>
+      try
+        let _ ← unsafe localReplay mod chosen
+        modify fun s => { s with segregated := s.segregated.insert mod, fallbacks := s.fallbacks + 1 }
+        event [("event", toJson "accept"), ("module", toJson mod.toString),
+          ("context", toJson "module_local"), ("fallback_reason",toJson "shared_kernel_context_failure"),
+          ("shared_error",toJson sharedError.toString)]
+      catch e =>
+        event [("event", toJson "reject"), ("module", toJson mod.toString),
+          ("context", toJson "module_local"), ("error", toJson e.toString)]
+        throw e
   let declared := data.constants.foldl (fun names ci =>
     if ci matches .axiomInfo _ then names.insert ci.name else names) (← get).declaredAxioms
   modify fun s => { s with
     declaredAxioms := declared,
+    skippedNames := data.constants.foldl (fun names ci =>
+      if ci.isUnsafe || ci.isPartial then names.insert ci.name else names) s.skippedNames,
     ancestorMasks := s.ancestorMasks.insert mod visible,
     moduleIndices := s.moduleIndices.insert mod s.modules,
     pending := s.pending.erase mod, visited := s.visited.insert mod,

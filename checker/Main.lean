@@ -78,9 +78,18 @@ def executableHash : IO UInt64 := do
   binaryIdentity.set (some value)
   return value
 
-def projectDirty (project : System.FilePath) : IO Json := do
-  let r ← IO.Process.output {cmd:="git",args:=#["status","--porcelain","--untracked-files=normal"],cwd:=some project}
-  return if r.exitCode==0 then toJson (!r.stdout.isEmpty) else Json.null
+def projectDirty (project directory : System.FilePath) : IO Json := do
+  let r ← IO.Process.output {cmd:="git",args:=#["-c","status.relativePaths=true",
+    "status","--porcelain","-z","--untracked-files=all"],cwd:=some project}
+  if r.exitCode != 0 then return Json.null
+  let state ← IO.FS.realPath directory
+  let statePrefix := state.toString++"/"
+  let dirty := (r.stdout.splitOn (String.singleton (Char.ofNat 0))).any fun entry =>
+    if entry.isEmpty then false
+    else if entry.startsWith "?? " && state != project then
+      !((project/(entry.drop 3).toString).toString.startsWith statePrefix)
+    else true
+  return toJson dirty
 
 partial def discover (root : System.FilePath) (path : System.FilePath) : IO (Array String) := do
   let mut out := #[]
@@ -89,7 +98,8 @@ partial def discover (root : System.FilePath) (path : System.FilePath) : IO (Arr
     else if d.path.extension == some "olean" then
       let rel := (d.path.toString.drop (root.toString.length+1)).toString
       if !rel.endsWith ".server.olean" && !rel.endsWith ".private.olean" then
-        out := out.push ((rel.dropEnd 6).toString.replace "/" ".")
+        let name := ((rel.dropEnd 6).toString.splitOn "/").foldl Name.str .anonymous
+        out := out.push name.toString
   return out
 
 def objectEvents (text : String) : Array Json :=
@@ -110,8 +120,7 @@ partial def inputIdentity (mod : Name) (seen : NameSet := {}) :
   let mut seen := seen.insert mod
   let mut files := #[]
   let file ← findOLean mod
-  for level in [OLeanLevel.exported,OLeanLevel.server,OLeanLevel.private] do
-    let f := level.adjustFileName file
+  for f in artifactCandidates file do
     if ← f.pathExists then files := files.push (f.toString,hash (← IO.FS.readBinFile f))
   for imp in first.imports do
     let (next,more) ← inputIdentity imp.module seen
@@ -164,9 +173,9 @@ def validateCertificateContext (identity receipt : Json) (project : System.FileP
   unless (identity.getObjValAs? UInt64 "checker_binary_hash").toOption==some binary &&
       (receipt.getObjValAs? UInt64 "checker_binary_hash").toOption==some binary do
     throw <| IO.userError "closure certificate checker executable differs"
-  unless (identity.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 4 do
+  unless (identity.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 5 do
     throw <| IO.userError "closure certificate child ABI differs"
-  unless (receipt.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 4 &&
+  unless (receipt.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 5 &&
       (receipt.getObjValAs? Nat "schema_version").toOption==some 1 &&
       (receipt.getObjValAs? String "lean_version").toOption==some version do
     throw <| IO.userError "closure certificate receipt ABI or toolchain differs"
@@ -204,6 +213,7 @@ def officialFallback (o : CheckOptions) (project dir : System.FilePath)
   let mut accepted := #[]
   let mut rejected := #[]
   let mut failed := false
+  let mut operational := false
   for root in roots.qsort (· < ·) do
     let r ← IO.Process.output {cmd:="lake",args:=#["env","leanchecker","--fresh",root],cwd:=some project}
     let row := Json.mkObj [("root",toJson root),("exit_code",toJson r.exitCode.toNat),
@@ -212,9 +222,10 @@ def officialFallback (o : CheckOptions) (project dir : System.FilePath)
     if r.exitCode==0 then accepted := accepted.push root
     else
       failed := true
+      if r.exitCode != 1 then operational := true
       rejected := rejected.push row
   let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "official-leanchecker"),
-    ("parallel",toJson false),("project_revision",← projectRevision project),("project_dirty",← projectDirty project),("project_revision_binds_artifacts",toJson false),("mathlib_manifest",← readManifest project),("lean_version",toJson version),("roots",toJson roots),
+    ("parallel",toJson false),("project_revision",← projectRevision project),("project_dirty",← projectDirty project dir),("project_revision_binds_artifacts",toJson false),("mathlib_manifest",← readManifest project),("lean_version",toJson version),("roots",toJson roots),
     ("coverage",toJson "official --fresh final imported environment for each root; no per-module ledger"),
     ("status",toJson (if failed then "official_failure" else "complete")),
     ("accepted_roots",toJson accepted),("rejected_roots",toJson rejected),
@@ -223,7 +234,7 @@ def officialFallback (o : CheckOptions) (project dir : System.FilePath)
     ("wall_ns",toJson ((← IO.monoNanosNow)-start)),("official_results",toJson rows)]
   writeJson (dir/"receipt.json") receipt
   IO.println receipt.compress
-  return if failed then 2 else 0
+  return if operational then 2 else if failed then 1 else 0
 
 
 /-- Recheck each recorded artifact once per invocation. A certificate is local
@@ -236,8 +247,7 @@ def validateBatchInputs (identity : Json) (seen : Std.HashMap String UInt64) :
   -- a newly added private part to inherit an exported-only certificate.
   for (path, _) in inputs do
     if path.endsWith ".olean" then
-      for level in [OLeanLevel.exported,OLeanLevel.server,OLeanLevel.private] do
-        let part := level.adjustFileName (System.FilePath.mk path)
+      for part in artifactCandidates (System.FilePath.mk path) do
         unless (← part.pathExists)==expectedInputs.contains part.toString do
           throw <| IO.userError s!"certified closure input part inventory changed: {part}"
   let mut seen := seen
@@ -305,15 +315,7 @@ def prepareClosurePlan (_o : CheckOptions) (project dir exe : System.FilePath)
   let file := dir/"closure-plan.json"
   if ← file.pathExists then
     return ← IO.ofExcept (Json.parse (← IO.FS.readFile file))
-  let mut todo : Array String := #[]
-  if roots.size==1 || (_o.reuseImports && roots.size>_o.closureRoots) then
-    -- A leaf such as Main can be import-only too. Large requests must not
-    -- retain an enormous checked prefix merely because its name has no child.
-    todo := roots
-  else
-    for i in [:roots.size] do
-      if i+1<roots.size && roots[i+1]!.startsWith (roots[i]!++".") then
-        todo := todo.push roots[i]!
+  let mut todo := roots
   let requested : Std.HashSet String := Std.HashSet.ofArray roots
   let mut inspected : Std.HashSet String := {}
   let mut graph : Std.HashMap String (Array String) := {}
@@ -385,8 +387,7 @@ def prepareModuleCache (file directory : System.FilePath) (seen : NameSet)
   for name in names do
     unless seen.contains name.toName do continue
     let artifact ← findOLean name.toName
-    for level in [OLeanLevel.exported,OLeanLevel.server,OLeanLevel.private] do
-      let path := level.adjustFileName artifact
+    for path in artifactCandidates artifact do
       match expected[path.toString]? with
       | some value =>
         unless actual[path.toString]?==some value do
@@ -411,10 +412,10 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
   searchPathRef.set (absolutePaths.map System.FilePath.mk)
   let manifest ← readManifest project
   let revision ← projectRevision project
-  let dirty ← projectDirty project
+  let dirty ← projectDirty project dir
   let binary ← executableHash
   let identity := Json.mkObj [
-    ("checker_checkpoint_abi",toJson "independent-closures-v6"),("checker_binary_hash",toJson binary),
+    ("checker_checkpoint_abi",toJson "independent-closures-v7"),("checker_binary_hash",toJson binary),
     ("lean",toJson version),("project",toJson project.toString),
     ("roots",toJson roots),("search_path",toJson absolutePaths),
     ("manifest",manifest),("closure_roots",toJson o.closureRoots),
@@ -589,6 +590,16 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
             let contextIndex := emptyAccepted.size
             writeAtomicFile (dir/s!"empty-context-{contextIndex}.stdout") contextResult.stdout
             writeAtomicFile (dir/s!"empty-context-{contextIndex}.stderr") contextResult.stderr
+            if contextResult.exitCode==1 then
+              rejected := rejected.push (Json.mkObj [("module",toJson name),
+                ("context",toJson "import_only"),("error",toJson contextResult.stderr)])
+              accepted := accepted.filter (· != name)
+              acceptedSet := acceptedSet.erase name
+              verifications := verifications.erase name
+              complete := false
+              operational := false
+              progress := true
+              break
             unless contextResult.exitCode==0 do
               throw <| IO.userError s!"import-only context validation failed for {name}: {contextResult.stderr}"
             let checked ← IO.ofExcept (Json.parse contextResult.stdout)
@@ -605,12 +616,14 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
               ("safe_input_constants",toJson 0),("kernel_call_count",Json.null)])
           progress := true
         else next := next.push row
+      if !complete then break
       unless progress do
         throw <| IO.userError "import-only modules have unchecked or cyclic dependencies"
       remaining := next
-    for root in roots do
-      unless acceptedSet.contains root do
-        throw <| IO.userError s!"complete partitioned check omitted requested root: {root}"
+    if complete then
+      for root in roots do
+        unless acceptedSet.contains root do
+          throw <| IO.userError s!"complete partitioned check omitted requested root: {root}"
   if complete then
     -- A completed but no longer needed module can change between batches too.
     -- Final acceptance binds the current union, not only later used imports.
@@ -623,8 +636,11 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
         let part := level.adjustFileName file
         unless (← part.pathExists)==inputsSeen.contains part.toString do
           throw <| IO.userError s!"current module resolution differs from certified inputs: {name}"
+  let failedNames := rejected.map (fun row => fieldString row "module")
+  accepted := accepted.filter (fun name => !failedNames.contains name)
+  verifications := verifications.filter (fun name _ => !failedNames.contains name)
   let receipt := Json.mkObj [
-    ("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("checker_checkpoint_abi",toJson 4),("checker_binary_hash",toJson binary),
+    ("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("checker_checkpoint_abi",toJson 5),("checker_binary_hash",toJson binary),
     ("parallel",toJson true),("context_strategy",toJson "independent-closures"),
     ("checkpoint_kind",toJson "input-validated-local-certificates"),
     ("reuse_checked_imports",toJson o.reuseImports),
@@ -703,7 +719,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   let inputs ← IO.ofExcept (metadata.getObjValAs? (Array (String × UInt64)) "inputs")
   let manifest ← readManifest project
   let revision ← projectRevision project
-  let dirty ← projectDirty project
+  let dirty ← projectDirty project dir
   let binary ← executableHash
   let validatedCache ← match o.moduleCache with
     | none => pure none
@@ -711,7 +727,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   let cacheIdentity ← match validatedCache with
     | none => pure Json.null
     | some file => IO.ofExcept (Json.parse (← IO.FS.readFile file))
-  let identity := Json.mkObj [("checker_checkpoint_abi",toJson 4),("checker_binary_hash",toJson binary),("snapshot_prefix",toJson snapshotPrefix),("module_cache",cacheIdentity),("lean",toJson version.stdout),("roots",toJson roots),
+  let identity := Json.mkObj [("checker_checkpoint_abi",toJson 5),("checker_binary_hash",toJson binary),("snapshot_prefix",toJson snapshotPrefix),("module_cache",cacheIdentity),("lean",toJson version.stdout),("roots",toJson roots),
     ("inputs",toJson inputs),("manifest",manifest),("project",toJson project.toString),("search_path",toJson absolutePaths),
     ("persistence",toJson o.persist),("split_fallback",toJson o.split)]
   let identityFile := dir/"identity.json"
@@ -724,6 +740,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   let exe ← IO.appPath
   let mut previous := ""
   let mut part := 0
+  let mut newParts := 0
   let mut accepted : Array String := #[]
   let mut trustedModules : Array String := #[]
   let mut verificationRows : Array Json := #[]
@@ -770,6 +787,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
         -- A failed/incomplete segment is never reused as a certified prefix.
         if result.exitCode==0 then writeJson logFile r
         pure r
+    if saved.isNone then newParts := newParts+1
     let ev ← IO.ofExcept (record.getObjValAs? (Array Json) "events")
     let exitCode := (record.getObjValAs? Nat "exit").toOption.getD 2
     let terminalCount := ev.filter (fun e => ["complete","checkpoint"].contains (fieldString e "event")) |>.size
@@ -821,14 +839,18 @@ unsafe def frontend (args : List String) : IO UInt32 := do
       operational := true
       break
     part := part+1
-    if o.maxSegments>0 && part>=o.maxSegments then
+    if o.maxSegments>0 && newParts>=o.maxSegments then
       operational := true
       break
   if complete then
     unless rejected.isEmpty && roots.all accepted.contains && names.all accepted.contains do
       complete := false
       operational := rejected.isEmpty
-  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("checker_checkpoint_abi",toJson 4),("checker_binary_hash",toJson binary),("parallel",toJson true),("lean_version",toJson version.stdout),
+  let failedNames := rejected.map (fun row => fieldString row "module")
+  accepted := accepted.filter (fun name => !failedNames.contains name)
+  trustedModules := trustedModules.filter (fun name => !failedNames.contains name)
+  verificationRows := verificationRows.filter (fun row => !failedNames.contains (fieldString row "module"))
+  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("checker_checkpoint_abi",toJson 5),("checker_binary_hash",toJson binary),("parallel",toJson true),("lean_version",toJson version.stdout),
     ("status",toJson (if complete then "complete" else if operational then "incomplete" else "rejected")),
     ("project_revision",revision),("project_dirty",dirty),("project_revision_binds_artifacts",toJson false),("mathlib_manifest",manifest),("roots",toJson roots),("accepted",toJson accepted),("rejected",toJson rejected),
     ("module_set_hash",toJson (hash (accepted.qsort (· < ·)))),

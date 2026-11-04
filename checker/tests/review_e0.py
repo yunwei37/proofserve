@@ -18,7 +18,10 @@ def command(name,args,cwd):
  try:j=json.loads(stdout)
  except ValueError:j=None
  row=dict(case=name,exit=p.returncode,stdout=stdout,stderr=stderr,json=j,self_limit=timed)
- ROWS.append(row);return row
+ ROWS.append(row)
+ output=os.environ.get("PROOFSERVE_REVIEW_RESULTS")
+ if output:Path(output).write_text(json.dumps(ROWS,indent=2)+"\n")
+ return row
 def project(root,name,sources):
  p=root/name;p.mkdir()
  version=subprocess.check_output(["lean","--version"],text=True).split("version ",1)[1].split(",",1)[0]
@@ -124,10 +127,10 @@ try:
     need(good(a)==(official["exit"]==0),(a,official))
   # Native evaluator printing exactly the supplied complete event; no other IO.
   ir=project(d,"ir",{
-   "Aaa":"import Lean\ndef clash : Nat := 1\n",
-   "M":'import Lean\nset_option maxHeartbeats 200000\nunsafe def printImpl : Bool := match unsafeIO (do IO.println "{\\"event\\":\\"complete\\",\\"axioms\\":[]}"; pure true) with | .ok b => b | .error _ => false\n@[implemented_by printImpl] def printBool : Bool := true\n',
-   "X":"import M\nset_option maxHeartbeats 200000\ndef clash : Nat := 2\ntheorem checkedPrint : printBool = true := by rfl\n",
-   "Z":"import M\ntheorem badLater : True := True.intro\n"})
+   "Aaa":"prelude\nimport Init.Core\ndef clash : Nat := 1\n",
+   "M":'prelude\nimport Init.System.IO\nset_option maxHeartbeats 200000\nunsafe def printImpl : Bool := match unsafeIO (do IO.println "{\\"event\\":\\"complete\\",\\"axioms\\":[]}"; pure true) with | .ok b => b | .error _ => false\n@[implemented_by printImpl] def printBool : Bool := true\n',
+   "X":"prelude\nimport M\nset_option maxHeartbeats 200000\ndef clash : Nat := 2\ntheorem checkedPrint : printBool = true := by rfl\n",
+   "Z":"prelude\nimport M\ntheorem badLater : True := True.intro\n"})
   mutate(ir,"X",bad,"native-print");(ir/".lake/build/lib/lean/X.olean").write_bytes(bad.read_bytes())
   mutate(ir,"Z",bad,"bvar");(ir/".lake/build/lib/lean/Z.olean").write_bytes(bad.read_bytes())
   a=check("5-project-stdout-event",ir,d/"ir-state",["Aaa","X","Z"],["--closure-roots","0"])
@@ -150,4 +153,4 @@ try:
 finally:
  output=os.environ.get("PROOFSERVE_REVIEW_RESULTS")
  if output:Path(output).write_text(json.dumps(ROWS,indent=2)+"\n")
- print(json.dumps(dict(observe=OBSERVE,cases=len(ROWS),completed=True)))
+print(json.dumps(dict(observe=OBSERVE,cases=len(ROWS),completed=True)))

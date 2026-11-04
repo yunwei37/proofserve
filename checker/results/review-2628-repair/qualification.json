@@ -1,0 +1,53 @@
+{
+  "observed_at_utc": "2026-11-04T23:32:52.457939+00:00",
+  "review_commit": "2628d727",
+  "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)\n",
+  "checker_checkpoint_abi": 5,
+  "independent_closure_abi": "v7",
+  "frozen_binary": "/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/proofserve-check-build4",
+  "checker_binary_hash": "2362620472631547896",
+  "native_source_matches_build4_snapshot": true,
+  "source_git_blobs": {
+    "checker/Main.lean": "f1f21e22c978a32c53f3d7d603efc94846f736a7",
+    "checker/ProofServe/Stream.lean": "f9dd38a1e3f9b0070fd7b82596c853cd98e700d3",
+    "checker/ProofServe/ModulePlan.lean": "d735723e40881d7b6bbd34167f98d9f4fa43cc86",
+    "checker/tests/contract.py": "4df447722dc8cf55c1d0a2f45297880caf103f9d",
+    "checker/tests/review_e0.py": "f48ab86e15ba88f5c63ffee3d48d21dbea5708f3",
+    "checker/tests/review_2628.py": "a3567a200c492f1c94dc1b88234bf3bb8a67cd21",
+    "checker/tests/ReviewQuot.lean": "36b28bad2b0f112aa114666efbebbb9007e48368"
+  },
+  "qualification": {
+    "kind": "local split after fixture dependency repair; exact combined CI entry runs after push",
+    "core_and_legacy": {
+      "run": "final-contract5",
+      "whole_process_exit": 1,
+      "whole_process_pass": false,
+      "core_contract_assertions_completed": true,
+      "legacy_command_records": 90,
+      "legacy_assertions_passed": true,
+      "failure": "next review fixture failed to build without Init.WFComputable; not a semantic rejection"
+    },
+    "second_review": {
+      "run": "final-review6",
+      "exit": 0,
+      "command_records": 108,
+      "assertions_passed": true
+    },
+    "old_context_confirmation": {
+      "run": "old-context-focused6",
+      "exit": 0,
+      "observe": true,
+      "command_records": 15
+    },
+    "old_leaf_confirmation": {
+      "run": "old-leaf-focused6",
+      "exit": 0,
+      "observe": true,
+      "command_records": 2
+    }
+  },
+  "automatic_ci": "pending at commit; final entry is python3 checker/tests/contract.py",
+  "large_replay": "not run on ABI 5; old 14721 result is ABI 4, source 3fe83c5a",
+  "independence": "implementation self-review only; the supplied independent review was code-only",
+  "raw_root": "/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104"
+}

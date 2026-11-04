@@ -161,7 +161,7 @@ with(contextlib.nullcontext(owned)if owned else tempfile.TemporaryDirectory(pref
   os.replace(bad_context,pkg_artifact)
   for limit in ['0','1']:
    incompatible=subprocess.run([str(BINARY),str(project),'--workers','1','--root','Pkg','--closure-roots',limit,'--checkpoint-dir',str(d/('bad-context-'+limit))],text=True,capture_output=True,timeout=60)
-   assert incompatible.returncode!=0,(limit,incompatible.stdout,incompatible.stderr)
+   assert incompatible.returncode==1,(limit,incompatible.stdout,incompatible.stderr)
    if incompatible.stdout:
     assert json.loads(incompatible.stdout).get('status')!='complete'
  finally:pkg_artifact.write_bytes(original_pkg)
@@ -350,3 +350,6 @@ with(contextlib.nullcontext(owned)if owned else tempfile.TemporaryDirectory(pref
 
 # All code-review regressions are part of this existing CI entry point.
 subprocess.run([sys.executable,str(ROOT/'tests/review_e0.py')],check=True,timeout=1800)
+
+# Second supplied review: context, IR, exit, receipt and discovery regressions.
+subprocess.run([sys.executable,str(ROOT/"tests/review_2628.py")],check=True,timeout=1800)

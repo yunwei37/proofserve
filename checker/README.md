@@ -31,8 +31,9 @@ proofserve-check /path/to/project --workers 4 --checkpoint-dir /path/to/state --
 ~~~
 
 Repeat the command to resume successful segments. The default segment contains
-at most 500 new modules. A nonzero --max-segments value stops a batch after that
-many segments and returns an incomplete receipt. A live process holds a lock on
+at most 500 new modules. A nonzero --max-segments value stops after that many newly executed
+segments in this invocation and returns an incomplete receipt. Saved segments
+do not consume the next invocation's allowance. A live process holds a lock on
 its checkpoint directory. Inputs, the checker executable, Lean identity, the Lake manifest, and checkpoint configuration
 must match before earlier successes can be reused.
 
@@ -84,7 +85,9 @@ solve that case. Full coverage of the 163,097-module corpus is not yet establish
 Complete batches save an atomic local certificate containing the native receipt
 and input identities, then remove their own regenerable prefix snapshots.
 Interrupted batches retain ordinary segment checkpoints. On resume, certificates
-are reused only after their recorded input files are checked again. Keep the
+are reused only after their recorded input files and complete part inventory
+are checked again. The inventory includes .ir.sig and .ir: when a signature
+exists, its IR file must also be readable by the original artifact reader. Keep the
 build artifacts unchanged during a run and protect the checkpoint directory.
 These are local trusted checkpoints, not portable proof objects or signatures.
 Manually editing a certificate can forge acceptance or omit axioms; see
@@ -108,7 +111,7 @@ receipt is not a fresh verification run.
 | 4.32.2 and 4.33.1 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
 | 4.36.0-rc2 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
 
-The current e0 review repair is being qualified only on 4.34.1. The other
+The current second-review repair has local small-fixture qualification only on 4.34.1. The other
 native contract entries above predate that repair and do not qualify the new
 source. The independent-closure path has so far been exercised on 4.34.1. Other rows
 include earlier matched-build qualification, not a new-path whole-library test.
@@ -135,23 +138,34 @@ lean_environment_add symbol require a matched SDK build. Persistent marking
 happens after all prior workers have joined and before new workers begin.
 
 Project setup through Lake and the selected toolchain are trusted local code.
-This tool does not sandbox project configuration. The native adapter refuses
-proof terms that require project IR through Lean.reduceBool or Lean.reduceNat.
-It does not silently execute those terms through an official fallback. Use
---official only when trusting the project code it can execute. Unsupported
-inputs return nonzero and are not mathematical rejections.
+This tool does not sandbox project configuration. The native adapter allows direct open-parameter mentions of Lean.reduceBool
+and Lean.reduceNat. It conservatively refuses closed or higher-order calls
+through those deprecated primitives and their declared-context wrappers.
+This syntactic boundary is not a decision procedure for whether an arbitrary
+expression will execute IR, so some passive higher-order uses remain unsupported.
+Unrelated modules do not share name-based dependency labels.
+
+The native path does not silently execute refused terms through an official
+fallback. --official selects the actual stock --fresh procedure, which may also
+lack the IR needed by a proof that passes the stock default procedure. It is not
+a guaranteed escape from native-evaluation refusal. Inspect such a development
+with its own trusted toolchain. Unsupported inputs return 2 and are not
+mathematical rejections.
 
 Checkpoint files must be local trusted outputs, protected from modification by
 an adversary. Their Lean-serialized metadata uses unsafeCast. Hashes detect
 ordinary stale artifacts, not malicious collisions or tampering.
 
-Upstream unsafe and partial exclusions are preserved. A changed theorem body
-or different provenance routes through original module-local replay. Upstream
-Replay can itself reuse an imported theorem with the same interface instead of
-checking its redundant stored body. A matching theorem interface can remain in
-the shared frontier; the documented limits do not claim arbitrary malformed-
-artifact body equivalence. This is not a byte-for-byte audit of every redundant
-serialized proof. Axioms retain their Lean
+Upstream unsafe and partial proof exclusions are preserved, while their
+declaration names still participate in import-conflict detection. Distinct
+theorem payloads use original module-local replay and stay outside the combined
+frontier; dependent modules keep their original contexts. A shared-frontier
+kernel failure is confirmed through original module-local replay before it can
+be reported as a verification rejection. Only a successful final path emits
+acceptance, and receipts do not list one module as both accepted and rejected.
+Upstream Replay can itself skip a redundant imported theorem body with an equal
+interface. This is not a byte-for-byte audit of every redundant serialized
+proof or a proof of equivalence for arbitrary malformed metadata. Axioms retain their Lean
 meaning and are reported for the accepted closure, including segregated modules.
 No proof term is repaired or rewritten. This is not a demonstrated solution for
 checking a 260 GiB environment inside 16 GiB.
@@ -167,3 +181,32 @@ identity, and explicit refusal of proof terms that require project native IR.
 A Git revision is provenance, not a binding from source commit to built artifacts.
 See the [receipt schema](docs/receipt-schema.md#input-identity-and-per-module-evidence)
 for per-module evidence and the limits of module-entry counts.
+
+The checker excludes only its own untracked checkpoint output from
+project_dirty. Tracked modifications and untracked files elsewhere remain
+visible; project_revision still does not bind source to built artifacts.
+
+The native reader requires primitive quotient tags and matching names for
+Quot, Quot.mk, Quot.lift and Quot.ind. Ordinary axioms or definitions under
+those reserved names are unsupported, including inputs that would not use
+quotient reduction. No private quotInit field is rewritten. This check does
+not establish equivalence for every possible forged metadata payload.
+
+## Known differences from stock checking
+
+The [second-review oracle table](results/review-2628-repair/official-comparison.csv)
+lists exact fixtures and scopes. Exit 2 below means an operational or unsupported
+input, never acceptance or a claim that a proposition is false.
+
+| Input | Stock default | Stock --fresh | Native ProofServe |
+|---|---:|---:|---:|
+| Closed primitive evaluation using imported IR | 0 | 1 | 2, unsupported |
+| Higher-order use of the same primitive | 0 | 1 | 2, unsupported |
+| Missing or corrupt required dependency IR | 1 | 1 | 2, artifact-load error |
+| Ordinary axiom tags under reserved Quot names | 1 | 1 | 2, unsupported metadata |
+
+On the repaired controls, unsafe conflicts, honest and swapped WellFounded
+proof bodies, and incompatible empty import contexts match stock acceptance.
+That is fixture qualification, not a proof of identical behavior on arbitrary
+malformed artifacts. Official fallback reports roots from the stock final
+imported environment; native checking reports a per-module ledger.

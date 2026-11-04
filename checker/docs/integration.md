@@ -7,7 +7,9 @@ format are documented in README.md and docs/receipt-schema.md.
 Invoke the executable directly. It discovers the project search path through
 lake env. The wrapper must preserve native exit codes 0, 1, and 2, JSON stdout,
 and stderr warnings. Custom layouts can repeat --root MODULE.
---max-segments N stops a finite batch; repeating the command resumes it.
+--max-segments N permits N new kernel segments in one invocation; successful
+saved segments do not consume that allowance. Repeating the same command
+therefore continues the interrupted batch.
 
 After building, run python3 tests/contract.py. This creates a temporary portable
 Lake project and checks correctness, worker parity, official acceptance parity,
