@@ -1,4 +1,12 @@
-/- Checkpoint algorithm copied from O; original-kernel parallel checking integrated. -/
+/-
+Module-local replay is adapted from Lean 4's LeanChecker.lean.
+Copyright (c) 2023 Kim Morrison. All rights reserved.
+Released under the Apache 2.0 license in the repository LICENSE.
+Upstream authors: Kim Morrison, Sebastian Ullrich.
+
+The checkpoint algorithm is the project-owned streaming reader, integrated with
+original-kernel parallel checking.
+-/
 import ProofServe.Core
 open ProofServe
 

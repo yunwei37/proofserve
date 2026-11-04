@@ -1,4 +1,4 @@
-import ProofServe.Stream
+import ProofServe.ModulePlan
 open Lean ProofServe
 
 @[extern "ps_checkpoint_lock"] opaque checkpointLock (path : @& String) : IO Unit
@@ -10,13 +10,18 @@ structure CheckOptions where
   quota : Nat := 500
   maxSegments : Nat := 0
   roots : Array String := #[]
+  rootFile : Option System.FilePath := none
   persist : Bool := true
   split : Bool := true
   official : Bool := false
+  closureRoots : Nat := 500
 
 partial def parseOptions (args : List String) (o : CheckOptions := {}) : Except String CheckOptions :=
   match args with
   | [] => .ok o
+  | "--closure-roots"::n::xs => do
+    let some k := n.toNat? | throw "invalid closure batch size"
+    parseOptions xs {o with closureRoots:=k}
   | "--workers"::n::xs => do
     let some k := n.toNat? | throw "invalid workers"
     if k==0 then throw "workers must be positive"
@@ -30,6 +35,7 @@ partial def parseOptions (args : List String) (o : CheckOptions := {}) : Except 
     if k==0 then throw "segment size must be positive"
     parseOptions xs {o with quota:=k}
   | "--root"::m::xs => parseOptions xs {o with roots:=o.roots.push m}
+  | "--root-file"::f::xs => parseOptions xs {o with rootFile:=some f}
   | "--no-persistence"::xs => parseOptions xs {o with persist:=false}
   | "--no-split-fallback"::xs => parseOptions xs {o with split:=false}
   | "--official"::xs => parseOptions xs {o with official:=true}
@@ -37,6 +43,21 @@ partial def parseOptions (args : List String) (o : CheckOptions := {}) : Except 
   | x::xs =>
     if x.startsWith "-" then .error s!"unknown option {x}"
     else parseOptions xs {o with project:=x}
+
+
+/-- A root manifest avoids OS argument limits for large compiled libraries. -/
+def requestedRoots (o : CheckOptions) : IO (Array String) := do
+  let fromFile ← match o.rootFile with
+    | none => pure #[]
+    | some file => do
+      let text ← IO.FS.readFile file
+      let names := (text.splitOn "\n").filterMap (fun line =>
+        let name := line.trimAscii.toString
+        if name.isEmpty then none else some name) |>.toArray
+      unless !names.isEmpty do
+        throw <| IO.userError "root-file contains no module names"
+      pure names
+  return o.roots ++ fromFile
 
 def writeJson (file : System.FilePath) (value : Json) : IO Unit := do
   let pending := System.FilePath.mk (file.toString++".pending")
@@ -93,7 +114,8 @@ def officialFallback (o : CheckOptions) (project dir : System.FilePath)
     (version : String) (start : Nat) (cpuStart : UInt64) : IO UInt32 := do
   IO.eprintln "ProofServe: using the project's official leanchecker --fresh; parallel checking and checkpoint resume are unavailable on this path."
   let lib := project/".lake/build/lib/lean"
-  let roots ← if o.roots.isEmpty then discover lib lib else pure o.roots
+  let requested ← requestedRoots o
+  let roots ← if requested.isEmpty then discover lib lib else pure requested
   unless !roots.isEmpty do throw <| IO.userError "no compiled roots for official checker"
   let mut rows := #[]
   let mut accepted := #[]
@@ -120,6 +142,282 @@ def officialFallback (o : CheckOptions) (project dir : System.FilePath)
   IO.println receipt.compress
   return if failed then 2 else 0
 
+
+/-- Recheck each recorded artifact once per invocation. A certificate is local
+trusted state, exactly as a restored environment checkpoint is local trusted state. -/
+def validateBatchInputs (identity : Json) (seen : Std.HashMap String UInt64) :
+    IO (Std.HashMap String UInt64) := do
+  let inputs ← IO.ofExcept (identity.getObjValAs? (Array (String × UInt64)) "inputs")
+  let mut seen := seen
+  for (path, expected) in inputs do
+    match seen[path]? with
+    | some actual =>
+      unless actual == expected do
+        throw <| IO.userError s!"conflicting input identities across closure batches: {path}"
+    | none =>
+      unless hash (← IO.FS.readBinFile path) == expected do
+        throw <| IO.userError s!"certified closure input changed: {path}"
+      seen := seen.insert path expected
+  return seen
+
+/-- Discard only generated snapshots after an atomic complete-batch certificate.
+Partial batches keep their snapshots. Original input artifacts are never removed. -/
+def retireBatchSnapshots (directory : System.FilePath) (identity receipt : Json) : IO Unit := do
+  let inputs ← IO.ofExcept (identity.getObjValAs? (Array (String × UInt64)) "inputs")
+  let segments ← IO.ofExcept (receipt.getObjValAs? (Array Json) "segments")
+  let mut removed : Array String := #[]
+  for segment in segments do
+    let index ← IO.ofExcept (segment.getObjValAs? Nat "segment")
+    let file := directory/s!"ProofServeSegment{index}.olean"
+    if ← file.pathExists then
+      unless !(inputs.any (fun x => x.1 == file.toString)) do
+        throw <| IO.userError "refusing to remove an input artifact"
+      IO.FS.removeFile file
+      removed := removed.push file.toString
+  if !removed.isEmpty then
+    writeJson (directory/"retired-snapshots.json") (toJson removed)
+
+
+/-- Only compiled modules with no own constants can be replaced by their imports.
+Namespace names merely choose candidates; they never establish emptiness. -/
+def prepareClosurePlan (_o : CheckOptions) (project dir exe : System.FilePath)
+    (roots : Array String) (absolutePaths : List String) : IO Json := do
+  let file := dir/"closure-plan.json"
+  if ← file.pathExists then
+    return ← IO.ofExcept (Json.parse (← IO.FS.readFile file))
+  let mut todo : Array String := #[]
+  if roots.size==1 then todo := roots
+  else
+    for i in [:roots.size] do
+      if i+1<roots.size && roots[i+1]!.startsWith (roots[i]!++".") then
+        todo := todo.push roots[i]!
+  let requested : Std.HashSet String := Std.HashSet.ofArray roots
+  let mut inspected : Std.HashSet String := {}
+  let mut emptyNames : Std.HashSet String := {}
+  let mut emptyRows : Array Json := #[]
+  let mut extra : Std.HashSet String := {}
+  let mut part := 0
+  while !todo.isEmpty do
+    let pending := ((Std.HashSet.ofArray todo).toArray.filter (fun name => !inspected.contains name)).qsort (· < ·)
+    todo := #[]
+    let mut offset := 0
+    while offset<pending.size do
+      let stop := min pending.size (offset+100)
+      let selected := pending.extract offset stop
+      let rootFile := dir/s!"module-plan-{part}.txt"
+      IO.FS.writeFile rootFile (String.intercalate "\n" selected.toList)
+      let result ← IO.Process.output {cmd:=exe.toString,args:=#["--internal-module-meta","@"++rootFile.toString],cwd:=some project,env:=#[("LEAN_PATH",some (String.intercalate ":" absolutePaths))]}
+      IO.FS.writeFile (dir/s!"module-plan-{part}.stdout") result.stdout
+      IO.FS.writeFile (dir/s!"module-plan-{part}.stderr") result.stderr
+      unless result.exitCode==0 do
+        throw <| IO.userError s!"module metadata inspection failed: {result.stderr}"
+      let output ← IO.ofExcept (Json.parse result.stdout)
+      let rows ← IO.ofExcept (output.getObjValAs? (Array Json) "module_metadata")
+      unless rows.size==selected.size do throw <| IO.userError "module plan coverage differs"
+      for row in rows do
+        let name := fieldString row "module"
+        unless selected.contains name do throw <| IO.userError "unexpected module metadata"
+        inspected := inspected.insert name
+        if (row.getObjValAs? Bool "empty").toOption.getD false then
+          unless (row.getObjValAs? Nat "declarations").toOption==some 0 do
+            throw <| IO.userError "nonempty module cannot use import-only expansion"
+          emptyNames := emptyNames.insert name
+          emptyRows := emptyRows.push row
+          for imp in (row.getObjValAs? (Array String) "imports").toOption.getD #[] do
+            unless requested.contains imp do
+              extra := extra.insert imp
+              unless inspected.contains imp do todo := todo.push imp
+      offset := stop
+      part := part+1
+  let proofRoots := (roots ++ extra.toArray).filter (fun name => !emptyNames.contains name)
+  let unique : Std.HashSet String := Std.HashSet.ofArray proofRoots
+  let plan := Json.mkObj [
+    ("roots",toJson (unique.toArray.qsort (· < ·))),
+    ("import_only",toJson emptyRows),
+    ("meaning",toJson "actual compiled declaration count is zero; imports still require checking")]
+  writeJson file plan
+  return plan
+
+/-- Independent complete dependency closures bound the retained kernel frontier
+by one batch. Shared imports are rechecked, not trusted merely because they were
+built. Completed batches can resume from input-validated local certificates. -/
+def closureBatches (o : CheckOptions) (project dir : System.FilePath)
+    (version : String) (roots : Array String) (absolutePaths : List String)
+    (start : Nat) (cpuStart : UInt64) : IO UInt32 := do
+  let manifest ← readManifest project
+  let revision ← projectRevision project
+  let identity := Json.mkObj [
+    ("checker_checkpoint_abi",toJson "independent-closures-v2"),
+    ("lean",toJson version),("project",toJson project.toString),
+    ("roots",toJson roots),("search_path",toJson absolutePaths),
+    ("manifest",manifest),("closure_roots",toJson o.closureRoots),
+    ("persistence",toJson o.persist),("split_fallback",toJson o.split)]
+  let identityFile := dir/"identity.json"
+  if ← identityFile.pathExists then
+    unless (← IO.FS.readFile identityFile) == identity.pretty++"\n" do
+      throw <| IO.userError "closure-batch checkpoint configuration changed; use a new directory"
+  else writeJson identityFile identity
+  let workers ← if o.workers==0 then pure (← defaultWorkers).toNat else pure o.workers
+  if o.workers==0 then pinPerformance
+  let exe ← IO.appPath
+  let plan ← prepareClosurePlan o project dir exe roots absolutePaths
+  let proofRoots ← IO.ofExcept (plan.getObjValAs? (Array String) "roots")
+  let emptyRows ← IO.ofExcept (plan.getObjValAs? (Array Json) "import_only")
+  let mut accepted : Array String := #[]
+  let mut acceptedSet : Std.HashSet String := {}
+  let mut axioms : NameSet := {}
+  let mut inputsSeen : Std.HashMap String UInt64 := {}
+  for row in emptyRows do inputsSeen ← validateBatchInputs row inputsSeen
+  let mut rejected : Array Json := #[]
+  let mut batches : Array Json := #[]
+  let mut segments : Array Json := #[]
+  let mut cumulativeCPU : UInt64 := 0
+  let mut newSegments := 0
+  let mut offset := 0
+  let mut batchIndex := 0
+  let mut complete := true
+  let mut operational := false
+  while offset < proofRoots.size do
+    -- A previous complete dependency closure may already cover later roots.
+    while offset < proofRoots.size && acceptedSet.contains proofRoots[offset]! do
+      offset := offset+1
+    if offset==proofRoots.size then break
+    if o.maxSegments>0 && newSegments>=o.maxSegments then
+      complete := false
+      operational := true
+      break
+    let stop := min proofRoots.size (offset+o.closureRoots)
+    let selected := (proofRoots.extract offset stop).filter (fun root => !acceptedSet.contains root)
+    let batchDir := dir/s!"batch-{batchIndex}"
+    IO.FS.createDirAll batchDir
+    let certificateFile := batchDir/"certified.json"
+    let reused ← certificateFile.pathExists
+    let (receipt, childIdentity) ← if reused then do
+        let certificate ← IO.ofExcept (Json.parse (← IO.FS.readFile certificateFile))
+        let receipt ← IO.ofExcept (certificate.getObjVal? "receipt")
+        let childIdentity ← IO.ofExcept (certificate.getObjVal? "input_identity")
+        pure (receipt,childIdentity)
+      else do
+        let mut args := #[project.toString,"--workers",toString workers,
+          "--checkpoint-dir",batchDir.toString,"--closure-roots","0",
+          "--segment-modules",toString o.quota,"--json"]
+        if o.maxSegments>0 then
+          args := args ++ #["--max-segments",toString (o.maxSegments-newSegments)]
+        if !o.persist then args := args.push "--no-persistence"
+        if !o.split then args := args.push "--no-split-fallback"
+        for root in selected do args := args ++ #["--root",root]
+        let result ← IO.Process.output {cmd:=exe.toString,args,cwd:=some project}
+        let mut invocation := 0
+        while ← (batchDir/s!"driver-{invocation}.stdout").pathExists do
+          invocation := invocation+1
+        IO.FS.writeFile (batchDir/s!"driver-{invocation}.stdout") result.stdout
+        IO.FS.writeFile (batchDir/s!"driver-{invocation}.stderr") result.stderr
+        let receipt ← IO.ofExcept (Json.parse result.stdout)
+        unless (result.exitCode==0) == (fieldString receipt "status"=="complete") do
+          throw <| IO.userError "child exit code and closure receipt disagree"
+        let childIdentity ← IO.ofExcept (Json.parse (← IO.FS.readFile (batchDir/"identity.json")))
+        pure (receipt,childIdentity)
+    unless fieldString receipt "execution_path"=="proofserve-parallel" do
+      throw <| IO.userError "closure batch did not use the native kernel checker"
+    unless (childIdentity.getObjValAs? (Array String) "roots").toOption == some selected do
+      throw <| IO.userError "closure certificate roots differ"
+    unless (childIdentity.getObjValAs? String "lean").toOption == some version do
+      throw <| IO.userError "closure certificate toolchain differs"
+    unless (childIdentity.getObjVal? "manifest").toOption == some manifest do
+      throw <| IO.userError "closure certificate manifest differs"
+    inputsSeen ← validateBatchInputs childIdentity inputsSeen
+    let names ← IO.ofExcept (receipt.getObjValAs? (Array String) "accepted")
+    let batchComplete := fieldString receipt "status"=="complete"
+    if batchComplete then
+      for root in selected do
+        unless names.contains root do
+          throw <| IO.userError s!"complete closure omitted requested root: {root}"
+      if !reused then
+        writeJson certificateFile (Json.mkObj [
+          ("receipt",receipt),("input_identity",childIdentity)])
+      retireBatchSnapshots batchDir childIdentity receipt
+    else
+      unless !reused do throw <| IO.userError "incomplete certificate cannot be reused"
+      complete := false
+      operational := fieldString receipt "status"!="rejected"
+    for name in names do
+      unless acceptedSet.contains name do
+        acceptedSet := acceptedSet.insert name
+        accepted := accepted.push name
+    for name in (receipt.getObjValAs? (Array String) "axioms").toOption.getD #[] do
+      axioms := axioms.insert name.toName
+    rejected := rejected ++ (receipt.getObjValAs? (Array Json) "rejected").toOption.getD #[]
+    cumulativeCPU := cumulativeCPU +
+      (receipt.getObjValAs? UInt64 "cumulative_segment_cpu_ns").toOption.getD 0
+    for segment in (receipt.getObjValAs? (Array Json) "segments").toOption.getD #[] do
+      let old := reused || (segment.getObjValAs? Bool "reused").toOption.getD false
+      if !old then newSegments := newSegments+1
+      segments := segments.push (Json.mkObj [
+        ("segment",toJson segments.size),("batch",toJson batchIndex),("reused",toJson old)])
+    batches := batches.push (Json.mkObj [
+      ("batch",toJson batchIndex),("roots",toJson selected),
+      ("modules",toJson names.size),("reused",toJson reused),
+      ("status",toJson (fieldString receipt "status")),
+      ("certificate",toJson certificateFile.toString)])
+    if !batchComplete then break
+    offset := stop
+    batchIndex := batchIndex+1
+  let mut emptyAccepted : Array String := #[]
+  if complete then
+    let mut remaining := emptyRows
+    while !remaining.isEmpty do
+      let mut next : Array Json := #[]
+      let mut progress := false
+      for row in remaining do
+        let name := fieldString row "module"
+        let imports ← IO.ofExcept (row.getObjValAs? (Array String) "imports")
+        if acceptedSet.contains name || imports.all acceptedSet.contains then
+          unless acceptedSet.contains name do
+            -- Individually valid imports may still conflict when combined.
+            -- Use the upstream module-local importer and empty replay, without
+            -- replaying any imported proof body a second time.
+            let contextResult ← IO.Process.output {cmd:=exe.toString,args:=#["--internal-empty-context",name],cwd:=some project,env:=#[("LEAN_PATH",some (String.intercalate ":" absolutePaths))]}
+            let contextIndex := emptyAccepted.size
+            IO.FS.writeFile (dir/s!"empty-context-{contextIndex}.stdout") contextResult.stdout
+            IO.FS.writeFile (dir/s!"empty-context-{contextIndex}.stderr") contextResult.stderr
+            unless contextResult.exitCode==0 do
+              throw <| IO.userError s!"import-only context validation failed for {name}: {contextResult.stderr}"
+            let checked ← IO.ofExcept (Json.parse contextResult.stdout)
+            unless (checked.getObjValAs? Bool "empty_context_checked").toOption==some true &&
+                fieldString checked "module"==name do
+              throw <| IO.userError "empty-context result differs"
+            acceptedSet := acceptedSet.insert name
+            accepted := accepted.push name
+          emptyAccepted := emptyAccepted.push name
+          progress := true
+        else next := next.push row
+      unless progress do
+        throw <| IO.userError "import-only modules have unchecked or cyclic dependencies"
+      remaining := next
+    for root in roots do
+      unless acceptedSet.contains root do
+        throw <| IO.userError s!"complete partitioned check omitted requested root: {root}"
+  let receipt := Json.mkObj [
+    ("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),
+    ("parallel",toJson true),("context_strategy",toJson "independent-closures"),
+    ("checkpoint_kind",toJson "input-validated-local-certificates"),
+    ("status",toJson (if complete then "complete" else if operational then "incomplete" else "rejected")),
+    ("lean_version",toJson version),("project_revision",revision),
+    ("mathlib_manifest",manifest),("roots",toJson roots),("accepted",toJson accepted),
+    ("rejected",toJson rejected),("axioms",toJson (axioms.toList.map Name.toString |>.toArray.qsort (· < ·))),
+    ("module_set_hash",toJson (hash (accepted.qsort (· < ·)))),
+    ("module_set_hash_algorithm",toJson "lean-hash64-toolchain-specific-noncryptographic"),
+    ("workers",toJson workers),("closure_roots",toJson o.closureRoots),
+    ("batches",toJson batches),("segments",toJson segments),
+    ("import_only_modules",toJson emptyAccepted),
+    ("cumulative_segment_cpu_ns",toJson cumulativeCPU),
+    ("cpu_ns",toJson ((← totalCpuNs)-cpuStart)),
+    ("wall_ns",toJson ((← IO.monoNanosNow)-start)),
+    ("trusted_local_checkpoints",toJson true)]
+  writeJson (dir/"receipt.json") receipt
+  IO.println receipt.compress
+  return if complete then 0 else if operational then 2 else 1
+
 unsafe def frontend (args : List String) : IO UInt32 := do
   let start ← IO.monoNanosNow
   let cpuStart ← totalCpuNs
@@ -145,9 +443,20 @@ unsafe def frontend (args : List String) : IO UInt32 := do
     let f := System.FilePath.mk p
     if f.isAbsolute then f.toString else (project/f).toString
   let lib := project/".lake/build/lib/lean"
-  let roots ← if o.roots.isEmpty then discover lib lib else pure o.roots
+  let requested ← requestedRoots o
+  let roots ← if requested.isEmpty then discover lib lib else pure requested
   unless !roots.isEmpty do throw <| IO.userError "no compiled project roots; run lake build or pass --root MODULE"
   let roots := roots.qsort (· < ·)
+  let mut namespaceRoot := false
+  for i in [:roots.size] do
+    if i+1<roots.size && roots[i+1]!.startsWith (roots[i]!++".") then
+      namespaceRoot := true
+  if roots.size==1 && o.closureRoots>0 then
+    for base in absolutePaths do
+      if ← (System.FilePath.mk base / (roots[0]!.replace "." "/")).isDir then
+        namespaceRoot := true
+  if o.closureRoots>0 && (roots.size>o.closureRoots || o.closureRoots==1 || namespaceRoot) then
+    return ← closureBatches o project dir version.stdout roots absolutePaths start cpuStart
   let rootFile := dir/"roots.txt"
   let rootsText := String.intercalate "\n" roots.toList
   -- Current receipt1 checkpoint is local trusted state; validate identity before reuse.
@@ -248,13 +557,17 @@ unsafe def frontend (args : List String) : IO UInt32 := do
 
 unsafe def main (args : List String) : IO UInt32 := do
   try
+    if args.head? == some "--internal-module-meta" then
+      return ← runModuleMetadata args.tail!
+    if args.head? == some "--internal-empty-context" then
+      return ← runEmptyContext args.tail!
     if args.head? == some "--internal-segment" then
       let start ← processNs
       let code ← runSegment args.tail!
       event [("event",toJson "segment_cpu"),("cpu_ns",toJson ((← processNs)-start))]
       return code
     if args==["--help"] then
-      IO.println "proofserve-check PROJECT [--workers N] [--checkpoint-dir D] [--root MODULE] [--segment-modules N] [--json] [--official] [--no-persistence] [--no-split-fallback]"
+      IO.println "proofserve-check PROJECT [--workers N] [--checkpoint-dir D] [--root MODULE] [--root-file FILE] [--segment-modules N] [--max-segments N] [--closure-roots N] [--json] [--official] [--no-persistence] [--no-split-fallback]"
       return 0
     frontend args
   catch e =>

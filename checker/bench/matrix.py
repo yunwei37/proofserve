@@ -33,7 +33,18 @@ def main():
   fs=os.statvfs(root);used=1-fs.f_bavail/fs.f_blocks
   if used>=.85:raise RuntimeError('disk85% boundary; preserve and stop')
   e=guard.environment();e['PATH']=str(guard.SDK/'bin')+':'+e['PATH'];e['LEAN_PATH']=cfg.get('overlay','')if dataset in['grid','barrier']else''
+
+  if arm=='official'and dataset in ['grid','barrier']:
+   rel=Path(str(argv[-1]).replace('.','/')+'.olean')
+   real=(Path(cfg['overlay'])/rel).resolve(strict=True)
+   canonical=real
+   for _ in rel.parts:canonical=canonical.parent
+   assert canonical/rel==real,'canonical module layout requires explicit qualification'
+   # The original overlay stays first for lookup; this extra root lets the stock
+   # CLI name the real file after moduleNameOfFileName resolves its symlink.
+   e['LEAN_PATH']+=os.pathsep+str(canonical)
   e['LEAN_NUM_THREADS']=str(workers or 4)
+  e['PROOFSERVE_BENCH_CLASSIFICATION']=cfg.get('evaluation_status','unclassified')
   os.chdir(project)
   print('WAIT',key,flush=True)
   with lease.open('a+')as lock:
@@ -54,7 +65,7 @@ def main():
    finally:
     stopped.set()
     if t:t.join()
-   os.sched_setaffinity(0,set(range(8,16)))
+   os.sched_setaffinity(0,{8,9})
   receipt=None
   if arm in ['native','full-math']and r['returncode']==0:
    receipt=json.loads((root/'runs'/key/'stdout').read_text())
@@ -113,20 +124,8 @@ def main():
  state=root/'math-interrupted-state'
  one('math-interrupt',[binary,project,'--root',roots['math'],'--workers','4','--checkpoint-dir',state,'--json'],'math',4,1,state=state,interrupt=True)
  one('math-resume',[binary,project,'--root',roots['math'],'--workers','4','--checkpoint-dir',state,'--json'],'math',4,1,state=state)
- # All source modules at the fixed version,not the Nat.Basic closure.
- modules=cfg['full_math_modules']
- assert 'Mathlib'in modules,'full-scale inputs must include the umbrella Mathlib module'
- for quota in[500,100]:
-  state=root/('full-math-quota'+str(quota))
-  args=[binary,project,'--checkpoint-dir',state,'--segment-modules',str(quota),'--json']
-  for mod in modules:args+=['--root',mod]
-  r,j=one('full-math-quota'+str(quota),args,'full-math',0,1,'full-math',state=state,limit=1700)
-  if r['returncode']==0:
-   assert j and set(modules)<=set(j['accepted'])
-   break
-  events={k:int(v)for k,v in(line.split()for line in r['memory_events'].splitlines())}
-  memory=events.get('oom_kill',0)>0 or 'sampled_own_RSS_budget'in r['stop_reasons']
-  if not memory:break
+ # The once-only full-Mathlib scale preview is retained separately.
+ # Whole-corpus checking precedes this final matrix and has its own receipt.
  dump(root/'terminal.json',dict(complete=True,cells=len(rows),configuration=str(Path(sys.argv[1]).resolve()),meaning='all finite requested attempts returned; individual failures remain explicit'))
  print('MATRIX_TERMINAL',flush=True)
 if __name__=='__main__':main()

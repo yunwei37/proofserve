@@ -2,7 +2,9 @@
 import os,json,signal,time,subprocess,threading
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
-SDK=Path(os.environ['PROOFSERVE_BENCH_SDK'])
+sdk_path=os.environ.get('PROOFSERVE_BENCH_SDK')
+if not sdk_path:raise RuntimeError('Set PROOFSERVE_BENCH_SDK to the frozen Lean SDK before starting the benchmark')
+SDK=Path(sdk_path)
 ACTIVE=None
 def abort(signum,frame):
  if ACTIVE:
@@ -29,10 +31,14 @@ def run(key,argv,limit=600,measured=False,env=None):
  current=Path('/sys/fs/cgroup')/Path('/proc/self/cgroup').read_text().strip().split('::',1)[1].lstrip('/')
  assert current.name.startswith('cri-containerd-') and 'pod' in current.parent.name
  cg=current.parent/('proofserve-m-decl-'+str(os.getpid())+'-'+key+'.scope')
- cg.mkdir();(cg/'memory.max').write_text(str(16*1024**3));(cg/'memory.oom.group').write_text('1')
+ meminfo={k:int(v.split()[0])*1024 for k,v in (line.split(':',1)for line in Path('/proc/meminfo').read_text().splitlines())}
+ reserve=8*1024**3
+ if meminfo['MemAvailable']<=reserve+256*1024**2:raise RuntimeError('host reserve unavailable before native launch')
+ budget=meminfo['MemAvailable']-reserve-256*1024**2
+ cg.mkdir();(cg/'memory.max').write_text(str(budget));(cg/'memory.oom.group').write_text('1')
  cmd=['timeout','--signal=TERM','--kill-after=5',str(limit)]+list(map(str,argv))
  record=dict(key=key,argv=cmd,affinity=sorted(os.sched_getaffinity(0)),measured=measured,
-  wall_limit_s=limit,own_rss_sample_stop_gib=15.75,cgroup=str(cg),cgroup_charged_memory_max_gib=16)
+  wall_limit_s=limit,own_rss_sample_stop_gib=budget/1024**3,cgroup=str(cg),cgroup_charged_memory_max_gib=budget/1024**3,host_available_stop_gib=8,evaluation_status=(env or {}).get('PROOFSERVE_BENCH_CLASSIFICATION','unclassified'))
  (out/'command.json').write_text(json.dumps(record,indent=2)+'\n')
  done=threading.Event();stops=[];peak=[0];p=None;reaped=False
  def enter():(cg/'cgroup.procs').write_text('0')
@@ -55,7 +61,13 @@ def run(key,argv,limit=600,measured=False,env=None):
      try:(cg/'cgroup.kill').write_text('1')
      except OSError:pass
      break
-    if total>int(15.75*1024**3):
+    available=int(next(l.split()[1]for l in Path('/proc/meminfo').read_text().splitlines()if l.startswith('MemAvailable:')))*1024
+    if available<reserve:
+     stops.append('host_available_below_8GiB')
+     try:(cg/'cgroup.kill').write_text('1')
+     except OSError:pass
+     break
+    if total>budget:
      stops.append('sampled_own_RSS_budget')
      try:(cg/'cgroup.kill').write_text('1')
      except OSError:pass

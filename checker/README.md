@@ -15,7 +15,8 @@ lake build
 Build the target project with Lake first. The command prints a JSON receipt and
 saves it in the project's .proofserve directory. The receipt identifies the
 actual checked modules, Lean version, Lake lock, axioms, CPU time, and wall time.
-Release performance evaluation is in progress; no release speedup is claimed yet.
+Performance results and their scope are documented in results/. A complete
+release performance comparison is not yet available.
 
 The original kernel decides whether mathematical declarations are valid.
 ProofServe additionally trusts its artifact reader, checked-frontier FFI adapter,
@@ -36,7 +37,8 @@ its checkpoint directory. Inputs, the Lake manifest, and checkpoint configuratio
 must match before earlier successes can be reused.
 
 By default, roots are the compiled project modules under .lake/build/lib/lean.
-Repeat --root MODULE to select explicit roots or a custom Lake layout. Every
+Repeat --root MODULE, or pass --root-file FILE with one module name per line,
+to select explicit roots or a custom Lake layout. Every
 requested root's transitive imports are checked; missing artifacts are errors.
 Uncompiled source files are not silently counted as verified.
 
@@ -44,8 +46,43 @@ The default worker count is the smaller of four and the available performance
 core count, reflecting measured saturation in the prototype. On Linux hybrid
 CPUs, default runs select available CPUs with core_type 2. Explicit worker counts
 are available for evaluation. No Lean -M option is used. Memory limits belong to
-the caller. Segments release newly persistent process allocations, but restoring
-an enormous accumulated prefix can still exceed available memory.
+the caller. Segments release newly persistent process allocations. Inside one batch,
+restoring an enormous accumulated prefix can still exceed available memory.
+
+## Large projects
+
+When a request has more than 500 roots, the CLI checks independent batches of
+at most 500 requested roots. Each batch starts from an empty kernel environment
+and checks its entire dependency closure. Later roots already covered by a
+completed batch are skipped. A pure metadata ledger, rather than every previous
+kernel environment, stays in the coordinator.
+
+~~~sh
+proofserve-check /path/to/project --root-file modules.txt --closure-roots 100 --json
+~~~
+
+The root manifest avoids operating-system argument limits on large libraries.
+Lower --closure-roots to reduce the union of dependencies held by one batch.
+Use --closure-roots 0 to retain the original single-frontier procedure.
+
+Namespace umbrella roots are inspected from compiled artifacts. If the most
+private module data contain no own declarations, their imports are checked in
+separate closures. Before recording the empty umbrella, the original importer
+and empty replay still validate its combined declared context. Source text and
+file naming never establish emptiness. Contexts with conflicting imports are
+not accepted.
+
+Common dependencies can be checked more than once across independent batches.
+This trades extra work for a frontier bounded by the current batch, not the whole
+library. One dependency closure can still exceed memory; batching alone does not
+solve that case. Full coverage of the 163,097-module corpus is not yet established.
+
+Complete batches save an atomic local certificate containing the native receipt
+and input identities, then remove their own regenerable prefix snapshots.
+Interrupted batches retain ordinary segment checkpoints. On resume, certificates
+are reused only after their recorded input files are checked again. Keep the
+build artifacts unchanged during a run and protect the checkpoint directory.
+These are local trusted checkpoints, not portable proof objects or signatures.
 
 The --no-persistence and --no-split-fallback switches are evaluation ablations.
 Each timed evaluation needs a fresh checkpoint directory. Reusing a completed
@@ -57,9 +94,12 @@ receipt is not a fresh verification run.
 |---|---|---|
 | 4.34.0 | Matched-toolchain build and small native contract passed | Available with a matching Lake environment |
 | 4.34.1 | Matched-toolchain build and small native contract passed | Tested on the native contract |
-| 4.35.0, current stable | Matched-toolchain build and small native contract passed | Uses the project's matching official toolchain |
+| 4.35.0 | Matched-toolchain build and small native contract passed | Uses the project's matching official toolchain |
 | 4.32.2 and 4.33.1 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
-| 4.36.0-rc2, current prerelease | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
+| 4.36.0-rc2 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
+
+The independent-closure path has so far been exercised on 4.34.1. Other rows
+include earlier matched-build qualification, not a new-path whole-library test.
 
 Source review is not ABI or native execution qualification. Rebuild with the
 target SDK (for example, elan run leanprover/lean4:v4.35.0 lake build);

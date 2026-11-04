@@ -18,3 +18,13 @@ Each timing cell requires a fresh checkpoint directory. A cached complete
 receipt is not a fresh verification. Record the exact executable commit.
 Official fallback is identified in the receipt and is excluded from native
 parallel performance results.
+
+Large root manifests use --root-file FILE. --closure-roots N bounds the number
+of requested roots in each independent complete closure; its default is 500.
+Zero selects the original single frontier. These flags also work with explicit
+--root arguments; --root-file is honored by the official fallback.
+
+The top-level receipt can include batches and context_strategy. Wrappers should
+preserve these fields and accept additive version-1 fields. Do not equate
+cumulative_segment_cpu_ns with one check of each unique declaration: separate
+batches can repeat dependencies.

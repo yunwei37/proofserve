@@ -1,0 +1,38 @@
+{
+  "evaluation_status": "nonfinal_preview_not_paper",
+  "executable_commit": "ba316991653155daedc9769c3058c166e83d79ce",
+  "completed_cells": 56,
+  "complete_native_preview_cells": 44,
+  "within_dataset_artifacts_acceptance_axioms_and_hashes_equal": true,
+  "scope_counts": {
+    "math": 1330,
+    "grid": 3793,
+    "barrier": 4449
+  },
+  "original_kernel_bad_proofs_rejected": 3,
+  "actual_interrupt_resume": {
+    "acceptance_equal": true,
+    "axioms_equal": true,
+    "module_hash_equal": true,
+    "reused_segments": 1,
+    "combined_wall_s": 43.71952283000428,
+    "combined_cpu_s": 85.767335,
+    "paper_eligible": false
+  },
+  "official_successful_root_controls": 2,
+  "official_precheck_path_failures": 4,
+  "full_mathlib": {
+    "requested_source_modules": 8530,
+    "directory_source_modules": 8529,
+    "umbrella_module": true,
+    "accepted_closure_modules": 10744,
+    "segments": 22,
+    "workers": 4,
+    "wall_s": 1113.0941464209973,
+    "cpu_s": 1860.420947,
+    "sampled_tree_rss_peak_bytes": 8133361664,
+    "cgroup_charged_peak_bytes": 7450898432,
+    "paper_eligible": false
+  },
+  "final_matrix": "not run; wait for census completion and quiet host"
+}

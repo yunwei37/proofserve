@@ -1,5 +1,8 @@
 # Initial release evaluation: superseded one-point record
 
+All timings here are nonfinal previews. The final paper matrix waits for the
+full census and a quiet machine; this historical point is not paper evidence.
+
 This is a self-reviewed observation of executable commit 51769793. The public
 CLI completed the Mathlib.Data.Nat.Basic closure: 1,330 modules in three native
 segments. Native and cgroup processes retired without resource stops.

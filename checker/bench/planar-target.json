@@ -1,0 +1,24 @@
+{
+  "source_commit": "4eaee87548250b2682affda7d05d947c05554bae",
+  "lean_version": "4.34.1",
+  "proof_root": "OAI.Analysis.PlanarPacking.Main",
+  "proof_theorem": "OAI.sharp_fourier_certificate",
+  "proof_source": "lean/OAI/Analysis/PlanarPacking/Main.lean",
+  "specification_only_module": "ComparatorChallenges.PlanarPacking",
+  "specification_has_sorry": true,
+  "do_not_benchmark_specification_as_proof": true,
+  "family_source_modules": 562,
+  "family_lexical_decide_kernel_sites": 255199,
+  "family_files_with_lexical_sites": 444,
+  "lexical_occurrences_are_not_measured_executions": true,
+  "actual_checked_import_closure": "record from the future native receipt; not yet established",
+  "runs_after_census_and_whole_library_check": [
+    "proofserve-check default workers",
+    "proofserve-check 8 workers",
+    "official default and fresh with procedure scopes explicit"
+  ],
+  "repeats": 1,
+  "public_10_9h_context": "user-provided reference; upstream report commit and exact scope not yet normalized",
+  "status": "source selection prepared; no timed PlanarPacking run",
+  "comparison_scope_note": "ComparatorChallenges.PlanarPacking is a specification with sorry; use the real proof root OAI.Analysis.PlanarPacking.Main. Record its actual import closure and do not normalize the user-provided 10.9h without matching report commit and protocol."
+}

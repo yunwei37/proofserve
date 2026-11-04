@@ -1,43 +1,48 @@
-# Frozen release evaluation
+# Final release evaluation plan
 
-The release executable is built once from the commit containing this plan.
-The prior observation from commit 51769793 is preserved separately and will not
-fill any cell in this matrix.
+No final timing is scheduled during the workload gate or census. CPUs 0-7 and
+10-23 belong to W during that period; M preparation uses CPUs 8-9 only.
+The completed ba316991 observations remain nonfinal previews.
 
-The native matrix contains three repeats at 1, 2, 4, and 8 workers for each of:
-Mathlib.Data.Nat.Basic, OAI.Analysis.PlanarPacking.Grid, and
-OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41. At 8 workers,
-Mathlib.Data.Nat.Basic and Grid also receive three repeats without persistence
-and three without split fallback. Arm order reverses in the second repeat.
+After the census, first verify the whole 163,097-module corpus using the pinned
+module manifest and the release checker. Then freeze the final executable and
+run the performance matrix on a quiet machine. Record the exact source commit,
+input identities, runtime placement, and complete receipts.
 
-Official default and --fresh CLI controls receive three repeats per root using
-the same toolchain and artifact search path. Default leaf checks trust imports;
-fresh mode replays a final imported map. Neither is silently called an identical
-per-module proof ledger. Their costs and selected scopes are reported separately.
+The matrix is Mathlib.Data.Nat.Basic, OAI.Analysis.PlanarPacking.Grid, and
+OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41. Each dependency
+closure receives three fresh-checkpoint runs at 1, 2, 4, and 8 workers.
+At 8 workers, Nat.Basic and Grid also receive three repeats without persistence
+and three without split fallback. The second repeat reverses worker order.
 
-Three bad terms are checked after a real Mathlib prefix. One Mathlib run is
-actually interrupted after its first certified segment and then resumed.
-Its total CPU and wall costs are compared with the uninterrupted 4-worker runs.
+Official default and fresh controls receive three repeats per root. Append a
+canonical artifact root after the original overlay when a symlink's real path
+would otherwise be outside every enumerated search root. This preserves lookup
+precedence and artifact bytes. Default leaf checking trusts imports; fresh
+checking replays a final imported map. They are not an identical per-module
+proof ledger, so do not invent a scope-normalized speedup.
 
-A separate run requests every one of the 8,529 Mathlib source modules at commit
-d13f23b723b8a846827a245b89c10fc7d3f11612. All matching input artifacts exist.
-It uses default workers and the normal 500-module segment size. If memory fails,
-one retry uses 100-module segments. Failure remains an operational result.
+Three bad proof terms after a real Mathlib prefix must still reject. One real
+interruption and resume is compared with an uninterrupted 4-worker run.
+The once-only complete Mathlib scale preview is already finished; it is not
+queued again by this final matrix.
 
-Every native cell acquires the existing P-core lock, runs on CPUs 0–7 without -M,
-and retires before the next. The sampled process-tree RSS stop is 15.75 GiB,
-reserving 256 MiB for the small controller inside the 16 GiB M-lane allowance.
-A 16 GiB charged-memory cgroup provides an additional, distinct safeguard.
-Ordinary native cells have an 1,100-second limit and full-Mathlib attempts have a
-1,700-second limit. These finite limits remain explicit in failed results.
+Finally, run the real PlanarPacking proof root from bench/planar-target.json
+once at default workers and once at 8 workers, with the official procedures
+scoped explicitly. The Comparator challenge file is a specification containing
+sorry, not the submitted proof. No speed claim may be made by checking only it.
 
-Large reproducible output snapshots are retired only after a complete receipt,
-acceptance vector, command, and native result are retained. Input artifacts,
-interrupted prefixes, logs, and failures are kept. Cleanup paths are recorded.
-No per-cell commits or new profiling experiments are performed.
+No Lean -M is used. Timed native requests use the shared P-core lease and CPUs
+0-7 only after W has finished. The external memory guard reserves 8 GiB of host
+available memory and samples its owned tree every second; sampling can react
+after a transient crossing and is not a kernel hard RSS quota. The temporary
+cgroup's charged-memory limit is distinct from aggregate process RSS.
+The caller records finite native limits and all operational failures.
 
-The full-library input manifest includes the top-level Mathlib umbrella module,
-in addition to the 8,529 modules under the Mathlib source directory. This avoids
-silently presenting a directory-only manifest as every Mathlib module. Its
-collector is continued only at a completed native-cell boundary; the executable
-and completed performance measurements remain unchanged.
+The complete fixed performance matrix has 71 planned attempts: 48 native cells,
+18 official controls, 3 bad terms, and 2 interruption/resume legs. Whole-corpus
+verification and the later PlanarPacking comparison have separate receipts.
+Completed root batches retain their local certificates and input identities;
+only their regenerable environment snapshots are retired. Failed and partial
+attempts remain visible. Results are committed at complete boundaries, not
+once per matrix cell.

@@ -71,3 +71,38 @@ its error text before classifying the cause. It does not mean the theorem's
 statement is false. Configuration errors can instead produce only an error JSON
 object on stderr and no new receipt. A caller must respect the process exit code
 and must not treat an older receipt file as the output of that failed invocation.
+
+## Independent closure batches
+
+Large native requests can add context_strategy: independent-closures and
+checkpoint_kind: input-validated-local-certificates. closure_roots is the
+positive integer root-batch limit. batches lists the selected roots, covered
+module count, status, local certificate path, and whether each batch was reused.
+segments then has an additional integer batch field; segment remains a unique
+integer within this top-level receipt.
+
+accepted and axioms are deduplicated unions of the actual native child receipts.
+Every requested root must occur in accepted before status can be complete.
+A child checks its full import closure from an empty kernel environment. A
+requested root already covered by an earlier complete closure needs no new batch.
+No unchecked compiled import is substituted for a kernel check.
+
+cpu_ns counts this invocation, including all waited descendants and input
+validation. cumulative_segment_cpu_ns includes repeated shared-dependency work
+across batches and old successful work reused from local certificates. It is
+not the cost of checking each unique declaration once. Certificate validation
+hashes an unchanged file once per invocation, so artifacts must remain stable
+for the duration of that invocation.
+
+A complete batch certificate preserves both its native receipt and input
+identity. Generated environment snapshots may then be retired; interrupted
+batches keep their partial segment state. This retains the existing assumption
+that local checkpoints are trusted and input hashes detect ordinary changes,
+not adversarial tampering. Extra fields are additive within schema version 1.
+
+import_only_modules is an optional array of module names. Each member has zero
+own declarations in the inspected compiled private data, all actual imports
+have been checked, and the original importer plus empty replay has accepted the
+combined context. It does not mean an unbuilt source file was accepted by a text
+heuristic. Input-validated closure plans are trusted local checkpoint metadata.
+Incompatible import contexts are not complete verification results.
