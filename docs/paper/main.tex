@@ -54,8 +54,8 @@ establish about verification coverage?
 \end{description}
 
 \section{Method and workload}\label{sec:method}
-A fixed probability sample and matched checking windows separate population
-cost from selected-case behavior.
+A per-module census and matched checking windows separate library work
+from selected-case checking behavior.
 Our primary corpus is the published OpenAI mathematics repository
 \cite{openaiMathSource}, pinned at \texttt{4eaee875}: 163,097 source modules,
 Lean 4.34.1 and Mathlib \texttt{d13f23b7}.
@@ -240,17 +240,42 @@ Nonordinary declarations and their ordinary prerequisites use the original
 replay path before the remaining graph runs. Unsupported local structure
 retains conservative fallback.
 
-Module context is a correctness requirement as well as a performance choice.
-In an earlier prototype, a declaration from a previously visited sibling
-module satisfied a reference that the incoming module had never imported.
-The merged context accepted that input while module-local original-kernel
-replay rejected its unknown constant. The two declared propositions were
-true; the error was unintended visibility.
-This finite counterexample motivates explicit dependency context and
-checked-token identity checks in the integrated tool.
-A common accepted module-name set is therefore only the first parity check:
-the comparison must also identify which declaration environment each path
-actually checked.
+\paragraph{Two review rounds exposed false acceptance.}
+Calling the original kernel was insufficient when the coordinator selected
+different artifacts or reused the wrong evidence.
+The first independent execution review of \texttt{2df1d9d7} found complete,
+exit-zero results after adding a bad-proof module part to certified inputs,
+and after copying an authentic certificate from another project.
+The no-certificate and official paths rejected the same bad inputs.
+Repairs bind the current project, resolved artifact family, search path,
+toolchain, ABI and executable identity, and publish receipts through checked
+writes and durable atomic replacement.
+
+A subsequent independent code-only review of \texttt{e0c92d51} identified
+further input-resolution and context risks; its proposed tests had not run.
+M then reproduced a good checkpoint-directory artifact hiding the bad
+project artifact, sibling-constant borrowing and identical-definition
+import conflicts. A segregated-module fixture also omitted a declared
+axiom from a complete receipt.
+The \texttt{3fe83c5a} repair resolves snapshots explicitly, replays conflicting
+interfaces in their original context and collects axioms on every successful
+route. Worker events use a separate validated channel; a nonzero child
+exit prevents completion.
+Event/exit precedence was tested with a saved-result control.
+The proposed project-IR printing attack and Quot counterexample were not
+reproduced and are not counted as false-acceptance evidence.
+
+These are defects in our coordination, not in Lean's kernel.
+The current native path explicitly refuses terms requiring project IR,
+an operational boundary that differs from official execution.
+Official default and fresh also differ on the supplied stale/incomplete-part
+artifact. General malformed-artifact equivalence, complete retained-case
+module-local reference coverage and independent execution review of the
+latest repair remain open.
+The review reports and regression outcomes are retained in
+\path{packaging/checker-review-*.md} and
+\path{checker/results/e0-review-repair/}; local certificate metadata remains
+trusted, rather than a tamper-resistant proof.
 
 Two prototype interventions explain these choices.
 Correcting our missing persistent marking reduced eight-worker CPU by
@@ -289,7 +314,9 @@ minimal per-theorem dependency sets. Per-module costs require explicit
 source-bound observations.
 
 The tool trusts Lean's kernel plus its artifact reader, context metadata,
-checked-token FFI, quiescent marking and locally generated checkpoints.
+checked-token FFI, quiescent marking and editable local checkpoints.
+Recorded file identities are noncryptographic; receipt reuse is not remote
+attestation or a proof of checkpoint integrity.
 Internal symbols and serialized metadata require a matching SDK.
 Unknown toolchains fail clearly or explicitly select the matching official
 checker, identifying that path and its scope.
@@ -436,13 +463,13 @@ those axioms to a particular theorem.
 Project pins, source-repair details and all failed outcomes are retained in
 \path{data/external-projects/}.
 
-Portable-package CI on commit \texttt{adf816ae} installs a relocated archive,
+Historical portable-package CI on commit \texttt{adf816ae} installs a relocated archive,
 checks and audits a fixture, compares official default/fresh controls,
 and rejects loose-bound-variable, unknown-constant and wrong-sort mutations
 through the original kernel. The full container passes installed-project
 and explicit unsupported-version controls with networking disabled.
-These are finite functional qualifications, separate from timed external
-observations. The real interrupted/resumed versus uninterrupted cost pair
+These are finite historical functional qualifications; they do not certify
+the current repaired binary or final timing. The real interrupted/resumed versus uninterrupted cost pair
 still awaits the fixed matrix.
 The existing \texttt{serve} interface remains Kimina-compatible;
 service features are outside this evaluation.
@@ -481,8 +508,8 @@ faithfulness requires separate review.
 Current source binding, malicious checkpoint integrity, executable Lake
 configuration and uncompiled/generated sources require explicit additional
 evidence. Release scaling and resumption costs remain incomplete.
-External checking has one successful observation per arm, with common-root
-rather than full-dependency official parity; the AI disclosure is a collection-level attribution, not an independent
+Historical external observations have one successful arm each and common-root
+rather than full-dependency official parity; final evaluation is pending; the AI disclosure is a collection-level attribution, not an independent
 authorship audit.
 
 Parallel proof checking and asynchronous tasks have precedents in Isabelle,
@@ -502,8 +529,9 @@ certificate recomputation. The prepared per-module census will replace
 population extrapolation while retaining its failed-gate and pool boundaries.
 Default coverage and repeatable verdicts answer different verification
 questions. ProofServe makes these boundaries explicit through check,
-audit and scoped receipts. The pending final scaling, external and resumption results must establish
-its performance under comparable workloads.
+audit and scoped receipts. Review-driven repairs strengthen the tested input and receipt boundaries;
+independent review and the pending final evaluation must establish the
+release's remaining correctness and performance claims.
 
 \bibliographystyle{plain}
 \bibliography{references}

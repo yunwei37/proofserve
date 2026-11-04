@@ -164,3 +164,30 @@ the paper still has two figures and two tables. Both system tables are pending
 final frozen data, and the old external timing numbers are no longer in the
 current paper. This layout compiled with rc0 on CPUs 8–9, six pages / 98,443 bytes,
 14 citations and no overfull boxes; all pages were visually self-reviewed.
+
+
+## Review facts now in the six-page system section
+
+The manuscript distinguishes O's original execution review of 2df1d9d7,
+the independent code-only review of e0c92d51, and M's later baseline
+reproductions/3fe83c5a repair. It names authentic-certificate reuse, optional
+module parts, artifact shadowing, sibling/import-context errors and omitted
+axiom declarations, with their input-resolution, publication and event/exit
+repairs. Saved-result controls are not described as demonstrated project-IR
+injection; IR/Quot proposals that were not reproduced remain unconfirmed.
+Explicit native-IR refusal, default/fresh differences on supplied incomplete
+parts, editable checkpoint trust and incomplete independent reference coverage
+remain visible. No repaired-checker large-case acceptance or preview clock is
+used as final evaluation evidence.
+
+Final PDF verification: six pages / 100,848 bytes, two figures and two tables,
+14 resolved citations, zero missing/evidence-grade macros, no overfull boxes.
+Tectonic returned 0 in 2.413 seconds on CPUs 8–9. All six latest pages were
+visually self-reviewed; pages 2–5 were byte-identical renderings after the final
+wording adjustment, and pages 1/6 were inspected again. This is self-review.
+Build/render/logs remain under six-page-review-facts-20261104/build-final on
+the existing paper-recovery PVC directory. No extra native measurement ran.
+
+The original W controller was observed live at PID 528400/birth10465017,
+using its frozen census-22core-9389daff-20261104 source and run directory.
+This establishes actual launch, not completion or a numerical corpus result.

@@ -35,7 +35,7 @@ The selected-closure performance design retains Mathlib Nat.Basic, Grid and Barr
 
 ## Paper and evidence
 
-Keep the title, current four RQs, 10pt double-column format, six pages including references and at most four displays. Keep the technical protocol and conclusion-to-evidence map in [evidence.md](paper/evidence.md); do not create a second long paper. The committed census and system generators in docs/paper/ read W/M/O data, keep previews separate, and populate the final slots in one command per generator. Continue with review-derived correctness facts rather than waiting for numerical results.
+Keep the title, current four RQs, 10pt double-column format, six pages including references and at most four displays. Keep the technical protocol and conclusion-to-evidence map in [evidence.md](paper/evidence.md); do not create a second long paper. The committed census and system generators in docs/paper/ read W/M/O data, keep previews separate, and populate the final slots in one command per generator. The two review rounds and current input/receipt limitations are now written into the system section; further final numerical integration follows actual returned data.
 
 Preserve the nealmcb distinction: 13.8 hours on 32 vCPUs is measured cloud wall time; approximately 330 compilation CPU-hours is extrapolated from 26 modules with estimated ±30% uncertainty, and approximately 410 includes Comparator work. No unmeasured full-run result or universal priority claim is added now.
 
