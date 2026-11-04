@@ -43,6 +43,9 @@ AI-assisted CrocSwap case. Common local acceptance IDs match official leanchecke
 imported-proof obligations differ. CrocSwap needed a disclosed manifest-name
 repair and a one-worker official runtime fallback after retained RSS stops.
 See [external results](../data/external-projects/results.md). Backend malformed-proof CI also passed.
+Those external defaults retain their C8 executable pin; its superseded no-split
+ablation cells do not enter the replacement formal matrix. No old timing is
+silently relabelled with the latest release commit.
 
 Latest portable archive qualification41740681358 passed onadf816ae, including
 actual relocation and three original-kernel rejection controls. The current

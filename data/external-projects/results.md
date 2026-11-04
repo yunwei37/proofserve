@@ -30,6 +30,15 @@ checker c8e7c615413819bee0931dde09450b8222c6d62a and original SDK commit
 later release qualification does not relabel this executable. No research
 prototype checker supplies the native cost cells.
 
+The C8 matrix is explicitly superseded in checker/results/superseded-c8e7c615.json
+because its no-split ablation also serialized ordinary-only modules. These
+external points use the normal default split path, not that ablation. Source
+review confirms that the frontend explicitly sends PROOFSERVE_SPLIT=1 for
+these commands, and the C8-to-adf default replay path is unchanged; the repair
+changes the disabled-split branch. This explains the version distinction, not
+a claim that executable timings transfer bit-for-bit. The external points stay
+labelled C8 and do not fill any cell in M's newly frozen formal matrix.
+
 CrocSwap's pinned subproject README explicitly discloses substantial OpenAI
 Codex assistance. It is AI-assisted, not asserted wholly AI-generated:
 [upstream disclosure](https://github.com/CrocSwap/integer-mult-bounds/blob/7c49fe32c55de02c2c873655c804b16e4c3fef0a/multitape-origin-return/README.md).
