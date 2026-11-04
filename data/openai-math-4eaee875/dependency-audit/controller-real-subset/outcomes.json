@@ -1,0 +1,34 @@
+{
+  "functional_only": false,
+  "full_census": false,
+  "bounded_validation": true,
+  "cost_measurement": false,
+  "successful": [],
+  "failed": [
+    "OAI.Analysis.Conductivity.Model",
+    "OAI.Analysis.Laughlin.FourBody.RowCompute",
+    "OAI.Probability.TraceReconstruction.Binomial"
+  ],
+  "blocked": [
+    {
+      "status": "blocked",
+      "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+      "failed_dependencies": [
+        "OAI.Analysis.Conductivity.Model"
+      ],
+      "missing_external": []
+    },
+    {
+      "status": "blocked",
+      "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+      "failed_dependencies": [
+        "OAI.Analysis.Laughlin.FourBody.RowCompute"
+      ],
+      "missing_external": []
+    }
+  ],
+  "stop": null,
+  "configuration_units": [],
+  "total_source_units": 5,
+  "complete": false
+}

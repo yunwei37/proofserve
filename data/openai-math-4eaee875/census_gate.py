@@ -103,6 +103,13 @@ class Gate:
         self.lastsample=now
     def collect(self,wait=.2):
         now=time.monotonic()
+        if self.c.get("validation_deadline") is not None and now>=self.c["validation_deadline"]:
+            self.stop="subset_validation_six_hour_limit"
+            for pid,j in self.live.items():
+                if not j["killed"]:
+                    j["killed"]=self.stop
+                    try:os.kill(pid,signal.SIGKILL)
+                    except ProcessLookupError:pass
         if now-self.lastsample>=1:self.sample()
         for key,_ in self.sel.select(wait):
             pid=key.data;j=self.live.pop(pid)

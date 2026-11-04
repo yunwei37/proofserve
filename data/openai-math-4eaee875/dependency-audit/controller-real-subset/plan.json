@@ -1,0 +1,226 @@
+{
+  "functional_only": true,
+  "cost_measurement": false,
+  "full_census": false,
+  "source_commit": "661a7c5c9ac09482d78b0f5780237b48a7ba244c",
+  "selection_rule": "17 complete historical sets, sort by internal closure size then module name; first three",
+  "candidates": [
+    {
+      "module": "OAI.MeasureTheory.Falconer.Estimates.NearPinDeletion",
+      "historical_complete": true,
+      "closure_modules": 2,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Analysis.Cotype.FiniteRankWalsh",
+      "historical_complete": true,
+      "closure_modules": 9,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Analysis.PDE.Weak.Elliptic.InteriorH1Derivative",
+      "historical_complete": true,
+      "closure_modules": 206,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.GroupTheory.PolycyclicRecognition.Analysis.TranslationCovering",
+      "historical_complete": true,
+      "closure_modules": 2,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Geometry.CylinderCovering.Radial.Assembly",
+      "historical_complete": true,
+      "closure_modules": 20,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+      "historical_complete": true,
+      "closure_modules": 2,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Computability.Logspace.EstimatorBounds",
+      "historical_complete": true,
+      "closure_modules": 5,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Probability.TraceReconstruction.Binomial",
+      "historical_complete": true,
+      "closure_modules": 1,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CoverageK14",
+      "historical_complete": true,
+      "closure_modules": 67,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.RepresentationTheory.KazhdanLusztig.DihedralIntervals",
+      "historical_complete": false,
+      "closure_modules": 28,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+      "historical_complete": true,
+      "closure_modules": 2,
+      "regime": "computation_certificate"
+    },
+    {
+      "module": "OAI.Analysis.Laughlin.FiniteFlux.Row0705207",
+      "historical_complete": true,
+      "closure_modules": 6,
+      "regime": "computation_certificate"
+    },
+    {
+      "module": "OAI.Analysis.MutuallyUnbiased.MixedTargets.OriginalBlock81",
+      "historical_complete": false,
+      "closure_modules": 307,
+      "regime": "computation_certificate"
+    },
+    {
+      "module": "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Zeros30",
+      "historical_complete": true,
+      "closure_modules": 44,
+      "regime": "computation_certificate"
+    },
+    {
+      "module": "OAI.Analysis.MutuallyUnbiased.TaoCertificate.Rows45",
+      "historical_complete": true,
+      "closure_modules": 14,
+      "regime": "computation_certificate"
+    },
+    {
+      "module": "OAI.Analysis.MutuallyUnbiased.GramAssembly.Block0Data",
+      "historical_complete": true,
+      "closure_modules": 43,
+      "regime": "computation_certificate"
+    },
+    {
+      "module": "OAI.Analysis.PlanarPacking.Certificate.WUCert48",
+      "historical_complete": true,
+      "closure_modules": 30,
+      "regime": "computation_certificate"
+    },
+    {
+      "module": "OAI.Analysis.MutuallyUnbiased.PairSemantics.Canonical240",
+      "historical_complete": true,
+      "closure_modules": 17,
+      "regime": "computation_certificate"
+    },
+    {
+      "module": "OAI.Analysis.MutuallyUnbiased.MixedTargets.KeySound82",
+      "historical_complete": false,
+      "closure_modules": 218,
+      "regime": "computation_certificate"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.Transonic.Certificates.Barrier50",
+      "historical_complete": true,
+      "closure_modules": 21,
+      "regime": "computation_certificate"
+    }
+  ],
+  "selected": [
+    {
+      "module": "OAI.Probability.TraceReconstruction.Binomial",
+      "historical_complete": true,
+      "closure_modules": 1,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+      "historical_complete": true,
+      "closure_modules": 2,
+      "regime": "ordinary_mathematics"
+    },
+    {
+      "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+      "historical_complete": true,
+      "closure_modules": 2,
+      "regime": "computation_certificate"
+    }
+  ],
+  "manifest_modules": [
+    "OAI.Analysis.Conductivity.Model",
+    "OAI.Analysis.Conductivity.Variational.VariationalDN",
+    "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+    "OAI.Analysis.Laughlin.FourBody.RowCompute",
+    "OAI.Probability.TraceReconstruction.Binomial"
+  ],
+  "historical": {
+    "OAI.Probability.TraceReconstruction.Binomial": {
+      ".olean": {
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/22/Binomial.olean",
+        "bytes": 6994408,
+        "sha256": "6b27ac215796cdb57e40fbe01f005ee145f63d68e880a2a8a06eeea602d59475"
+      },
+      ".ilean": {
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/22/Binomial.ilean",
+        "bytes": 302415,
+        "sha256": "216a144778d86cfa7bf2380bb215dc71c3c4da9f73bf5f47d5097a0eb1c83f75"
+      },
+      ".c": {
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/22/Binomial.c",
+        "bytes": 6454,
+        "sha256": "49942c6f94cbd98fe88548032b83510b25bd5b5b5846b8838bfbe201eb1ec158"
+      }
+    },
+    "OAI.Analysis.Conductivity.Variational.VariationalDN": {
+      ".olean": {
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/14/VariationalDN.olean",
+        "bytes": 1712448,
+        "sha256": "f4f300f4699b29acbec9b649a130363e05241f9de3d260c93afd93b1f45d4baf"
+      },
+      ".ilean": {
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/14/VariationalDN.ilean",
+        "bytes": 42604,
+        "sha256": "3cdecba04b5a5dd88d655718d44984015a2d043b527043024c450fef1612c533"
+      },
+      ".c": {
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/14/VariationalDN.c",
+        "bytes": 4406,
+        "sha256": "63871dba6719850e6a0529d91a6df1878dc9820cc994f3b10260ee77f4395a83"
+      }
+    },
+    "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17": {
+      ".olean": {
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/02/ComputeRow1115Batch17.olean",
+        "bytes": 20776,
+        "sha256": "5156dc7bcba7c46318bdc5b1d4fa5967755ec3f89d6bae159ea14ae38c250389"
+      },
+      ".ilean": {
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/02/ComputeRow1115Batch17.ilean",
+        "bytes": 4170,
+        "sha256": "f511d5f8cc7dff1a27a2a1ce51beeb87aff451111cfe7d66be4a16048a3f3ad9"
+      },
+      ".c": {
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/02/ComputeRow1115Batch17.c",
+        "bytes": 1474,
+        "sha256": "6edc446f92295b7638e6a36d3287e9d1adfd37a8161d8b7374eba925daf16277"
+      }
+    }
+  },
+  "affinity": [
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "maximum_modules": 2000,
+  "maximum_seconds": 21600,
+  "native_cgroup_GiB": 11,
+  "controller_cgroup_GiB": 1,
+  "threads": 8,
+  "native_concurrency": 1,
+  "no_M": true,
+  "pcore_lock": false
+}

@@ -68,3 +68,9 @@ dependency-audit/summary.json distinguishes missing inputs, observed functional
 rejections, and the still-unbuilt remainder. The failed gate and separate user
 decision remain independent prerequisites. No --execute invocation was made
 during the actual root-context dependency preparation.
+
+## Real-corpus subset qualification — 2026-11-04
+
+The bounded five-module real-controller closure failed during imports; byte
+parity is still unestablished. Full census remains unstarted. See the
+[functional evidence and unresolved IR-sidecar defect](dependency-audit/controller-real-subset/README.md).

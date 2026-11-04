@@ -1,0 +1,92 @@
+[
+  {
+    "module": "Batteries.Lean.AttributeExtra",
+    "suffix": ".olean",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Lean/AttributeExtra.olean",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Batteries/Lean/AttributeExtra.olean",
+    "view_exists": true,
+    "view_symlink": true
+  },
+  {
+    "module": "Batteries.Lean.AttributeExtra",
+    "suffix": ".olean.private",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Lean/AttributeExtra.olean.private",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Batteries/Lean/AttributeExtra.olean.private",
+    "view_exists": true,
+    "view_symlink": true
+  },
+  {
+    "module": "Batteries.Lean.AttributeExtra",
+    "suffix": ".olean.server",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Lean/AttributeExtra.olean.server",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Batteries/Lean/AttributeExtra.olean.server",
+    "view_exists": true,
+    "view_symlink": true
+  },
+  {
+    "module": "Batteries.Lean.AttributeExtra",
+    "suffix": ".ir",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Lean/AttributeExtra.ir",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Batteries/Lean/AttributeExtra.ir",
+    "view_exists": false,
+    "view_symlink": false
+  },
+  {
+    "module": "Batteries.Lean.AttributeExtra",
+    "suffix": ".ir.sig",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Lean/AttributeExtra.ir.sig",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Batteries/Lean/AttributeExtra.ir.sig",
+    "view_exists": false,
+    "view_symlink": false
+  },
+  {
+    "module": "Lean.Meta.Tactic.Simp.SimpTheorems",
+    "suffix": ".olean",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean/Lean/Meta/Tactic/Simp/SimpTheorems.olean",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Lean/Meta/Tactic/Simp/SimpTheorems.olean",
+    "view_exists": true,
+    "view_symlink": true
+  },
+  {
+    "module": "Lean.Meta.Tactic.Simp.SimpTheorems",
+    "suffix": ".olean.private",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean/Lean/Meta/Tactic/Simp/SimpTheorems.olean.private",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Lean/Meta/Tactic/Simp/SimpTheorems.olean.private",
+    "view_exists": true,
+    "view_symlink": true
+  },
+  {
+    "module": "Lean.Meta.Tactic.Simp.SimpTheorems",
+    "suffix": ".olean.server",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean/Lean/Meta/Tactic/Simp/SimpTheorems.olean.server",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Lean/Meta/Tactic/Simp/SimpTheorems.olean.server",
+    "view_exists": true,
+    "view_symlink": true
+  },
+  {
+    "module": "Lean.Meta.Tactic.Simp.SimpTheorems",
+    "suffix": ".ir",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean/Lean/Meta/Tactic/Simp/SimpTheorems.ir",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Lean/Meta/Tactic/Simp/SimpTheorems.ir",
+    "view_exists": false,
+    "view_symlink": false
+  },
+  {
+    "module": "Lean.Meta.Tactic.Simp.SimpTheorems",
+    "suffix": ".ir.sig",
+    "original": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/lib/lean/Lean/Meta/Tactic/Simp/SimpTheorems.ir.sig",
+    "original_exists": true,
+    "view": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-20261104/run/import-view/Lean/Meta/Tactic/Simp/SimpTheorems.ir.sig",
+    "view_exists": false,
+    "view_symlink": false
+  }
+]

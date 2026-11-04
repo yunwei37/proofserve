@@ -1,0 +1,32 @@
+[
+  {
+    "sequence": 1,
+    "module": "OAI.Analysis.Conductivity.Model",
+    "native_log": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Conductivity/Model.lean:1:0: error: Could not find native implementation of external declaration 'Lean.registerTagAttributeExtra' (symbols 'lp_batteries_Lean_registerTagAttributeExtra___boxed' or 'lp_batteries_Lean_registerTagAttributeExtra').\nFor declarations from `Init`, `Std`, or `Lean`, you need to set `supportInterpreter := true` in the relevant `lean_exe` statement in your `lakefile.lean`.\n"
+  },
+  {
+    "sequence": 2,
+    "module": "OAI.Analysis.Conductivity.Model",
+    "native_log": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Conductivity/Model.lean:1:0: error: Could not find native implementation of external declaration 'Lean.registerTagAttributeExtra' (symbols 'lp_batteries_Lean_registerTagAttributeExtra___boxed' or 'lp_batteries_Lean_registerTagAttributeExtra').\nFor declarations from `Init`, `Std`, or `Lean`, you need to set `supportInterpreter := true` in the relevant `lean_exe` statement in your `lakefile.lean`.\n"
+  },
+  {
+    "sequence": 3,
+    "module": "OAI.Analysis.Laughlin.FourBody.RowCompute",
+    "native_log": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Laughlin/FourBody/RowCompute.lean:1:0: error: (interpreter) unknown declaration 'Lean.Option.register._at_._private.Lean.Meta.Tactic.Simp.SimpTheorems.0.Lean.Meta.initFn._@.Lean.Meta.Tactic.Simp.SimpTheorems.838478111._hygCtx._hyg.4.spec_0'\n"
+  },
+  {
+    "sequence": 4,
+    "module": "OAI.Analysis.Laughlin.FourBody.RowCompute",
+    "native_log": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Laughlin/FourBody/RowCompute.lean:1:0: error: (interpreter) unknown declaration 'Lean.Option.register._at_._private.Lean.Meta.Tactic.Simp.SimpTheorems.0.Lean.Meta.initFn._@.Lean.Meta.Tactic.Simp.SimpTheorems.838478111._hygCtx._hyg.4.spec_0'\n"
+  },
+  {
+    "sequence": 5,
+    "module": "OAI.Probability.TraceReconstruction.Binomial",
+    "native_log": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Probability/TraceReconstruction/Binomial.lean:1:0: error: Could not find native implementation of external declaration 'Lean.registerTagAttributeExtra' (symbols 'lp_batteries_Lean_registerTagAttributeExtra___boxed' or 'lp_batteries_Lean_registerTagAttributeExtra').\nFor declarations from `Init`, `Std`, or `Lean`, you need to set `supportInterpreter := true` in the relevant `lean_exe` statement in your `lakefile.lean`.\n"
+  },
+  {
+    "sequence": 6,
+    "module": "OAI.Probability.TraceReconstruction.Binomial",
+    "native_log": "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Probability/TraceReconstruction/Binomial.lean:1:0: error: Could not find native implementation of external declaration 'Lean.registerTagAttributeExtra' (symbols 'lp_batteries_Lean_registerTagAttributeExtra___boxed' or 'lp_batteries_Lean_registerTagAttributeExtra').\nFor declarations from `Init`, `Std`, or `Lean`, you need to set `supportInterpreter := true` in the relevant `lean_exe` statement in your `lakefile.lean`.\n"
+  }
+]

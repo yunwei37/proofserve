@@ -303,3 +303,20 @@ work, and untested corpus sources may still fail.
 See [dependency-audit/final-preparation.md](dependency-audit/final-preparation.md)
 and its small CSV/JSON records. No --execute, P-core lease, full-census launch,
 new cost observation, pin change or protocol adjustment occurred.
+
+## Real-corpus subset qualification — 2026-11-04
+
+The explicitly authorized bounded controller attempt has returned. Three gate
+targets with retained references had a five-module internal closure. Using the
+unchanged 44-path export/folded-view recipe, three dependency-ready modules
+failed at import time (six calls including retries), and two were blocked.
+No current target products were produced: nine references are available but
+zero artifact pairs could be compared. Equality remains unknown.
+
+The folded view omits .ir/.ir.sig siblings that are present beside the original
+Batteries and SDK olean files; pinned Lean source resolves IR beside its selected
+olean. This is a confirmed view coverage defect consistent with the diagnostics,
+without a changed-recipe repair comparison. No recipe or threshold was changed.
+See [the bounded native report](dependency-audit/controller-real-subset/README.md).
+This is functional evidence only, not costs or a passed census gate.
+Full census was not launched; all W-owned validation processes have retired.

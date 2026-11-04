@@ -251,3 +251,9 @@ for those seven sources, so zero pairs were compared and equality is unknown.
 The old gate's historical equalities do not validate the real 44-path context.
 No extra baseline, full run or cost measurement was added. The failed gate
 is unchanged; the driver remains default-off.
+
+## Real-corpus subset qualification — 2026-11-04
+
+The bounded five-module real-controller closure failed during imports; byte
+parity is still unestablished. Full census remains unstarted. See the
+[functional evidence and unresolved IR-sidecar defect](dependency-audit/controller-real-subset/README.md).

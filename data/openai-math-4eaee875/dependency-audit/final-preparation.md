@@ -112,3 +112,13 @@ historical discovery remain on PVC at
 /workspaces/.agent-state/gpu-smt-captures/workloads/dependency-rellich-20261104.
 rellich-completion.json preserves the small native records. No CPU or wall
 numbers enter sample-costs.csv or a paper table. Review: 自审.
+
+## Subsequent bounded real-controller attempt
+
+The description above is the earlier 661a7c5c preparation snapshot.
+The newly authorized five-module real-controller closure returned import-time
+adapter failures. See [the complete subsequent report](controller-real-subset/README.md).
+Historical counterparts are available for its three chosen gate targets, but
+no current successful products exist, so byte parity remains unestablished.
+The folded view now has a confirmed IR sidecar coverage defect. It was not
+repaired or rerun, and the original failed gate remains unchanged.

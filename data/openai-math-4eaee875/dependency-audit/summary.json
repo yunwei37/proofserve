@@ -211,5 +211,20 @@
     "file": "artifact-byte-comparison.json",
     "pairs_compared": 0,
     "conclusion": "unresolved_historical_artifacts_unavailable"
+  },
+  "real_controller_subset_qualification": {
+    "report": "controller-real-subset/summary.json",
+    "status": "failed_import_adapter",
+    "selected_targets": 3,
+    "closure_modules": 5,
+    "successful_modules": 0,
+    "failed_modules": 3,
+    "dependency_blocked_modules": 2,
+    "native_attempts": 6,
+    "artifact_pairs_compared": 0,
+    "artifact_parity": "unestablished_current_outputs_unavailable",
+    "cost_measurement": false,
+    "full_census_started": false,
+    "gate_status": "failed_unchanged"
   }
 }

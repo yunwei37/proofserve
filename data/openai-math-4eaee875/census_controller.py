@@ -31,7 +31,13 @@ def run(a):
                     if actual_pins!=exported_pins:raise ValueError("exported manifest package pins changed")
         if a.execute and not environment_ready:raise ValueError(environment_reason)
         if not environment_ready:m["env"]={}
+    bounded=getattr(a,"validate_subset",False)
+    if bounded and a.functional:raise ValueError("choose real-corpus subset or fixture, not both")
+    deadline=time.monotonic()+21600 if bounded else None
     mods={r["module"]:r for r in m["modules"]}
+    if bounded and not 1<=len(mods)<=2000:raise ValueError("subset validation requires 1..2000 source modules")
+    if bounded and any(Path(r["source"]).name=="lakefile.lean"for r in mods.values()):raise ValueError("subset must contain source modules only")
+    if bounded and any(set(r["deps"])-mods.keys()for r in mods.values()):raise ValueError("subset must contain its internal dependency closure")
     missing_external=[]
     if environment_ready:
         search=[Path(x)for x in m["env"]["LEAN_PATH"].split(":")if x]
@@ -41,8 +47,11 @@ def run(a):
     if a.functional and len(mods)>10:raise ValueError("functional control is limited to ten source units")
     pools={"P":list(range(8)),"E":list(range(10,24))}if a.pool=="22"else{"P":list(range(8)),"E":[]}
     if a.functional:pools={"P":[8],"E":[9]}
+    if bounded:pools={"P":[],"E":list(range(10,17))}
     identity=dict(source_revision=m["source_revision"],mathlib=m["mathlib"],lean_binary=m["lean_binary"],pools=pools,
         threads=8,options=m["lean_options"],env=m["env"],lean_version=m["lean"],toolchain_stat=[Path(m["lean_binary"]).stat().st_size,Path(m["lean_binary"]).stat().st_mtime_ns],functional_only=a.functional,manifest_sha256=sha(a.manifest),workers={p:len(c)for p,c in pools.items()})
+    if bounded:
+        identity.update(bounded_validation=True,cost_measurement=False,validation_limits=dict(maximum_modules=2000,maximum_seconds=21600,native_charge_GiB=11,controller_charge_GiB=1,workers=1))
     if not a.functional:
         identity.update(measurement_commit=a.commit,controller_source_sha256=sha(__file__),
             adapter_source_sha256=sha(Path(native.__file__)),
@@ -62,7 +71,7 @@ def run(a):
     if config.exists()and json.loads(config.read_text())!=identity:raise ValueError("protocol changed; separate run required")
     config.write_text(json.dumps(identity,indent=2))
     pcore=None
-    if not a.functional:
+    if not a.functional and not bounded:
         pcore=open("/workspaces/.agent-state/gpu-smt-captures/pcore.lock","a");fcntl.flock(pcore,fcntl.LOCK_EX)
     if not a.functional:os.sched_setaffinity(0,set(pools["E"]or pools["P"]))
     native.P=pools["P"];native.E=pools["E"]
@@ -102,6 +111,7 @@ def run(a):
         base=Path(path)
         if not base.is_dir():continue
         for src in base.rglob("*.olean*"):
+            if bounded and time.monotonic()>=deadline:raise TimeoutError("subset validation six-hour limit during view preparation")
             rel=src.relative_to(base)
             if rel.parts[0].split(".")[0]in {"OAI","ComparatorChallenges","HodgeConjecture"}:continue
             dst=view/rel
@@ -116,8 +126,8 @@ def run(a):
     m["env"]=dict(m["env"],LEAN_PATH=str(view))
     c=dict(m,modules=mods,cwd=m.get("source_project_root",str(Path(next(iter(mods.values()))["root"]))),
         measurement_commit=a.commit,toolchain=dict(lean=m["lean"],binary=m["lean_binary"]),
-        attempts=dict(collections.Counter(r["module"]for r in previous)),continue_native_failures=True,memory_preempt_requeue=True,functional_only=a.functional,
-        native_wall_s=30 if a.functional else None,maximum_charge_bytes=8*2**30 if a.functional else None)
+        attempts=dict(collections.Counter(r["module"]for r in previous)),continue_native_failures=True,memory_preempt_requeue=True,functional_only=(a.functional or bounded),
+        native_wall_s=30 if a.functional else None,maximum_charge_bytes=(11*2**30 if bounded else 8*2**30 if a.functional else None),validation_deadline=deadline)
     engine=native.Gate(c,out);scopefile.write_text(str(engine.cg))
     engine.seq=max([r["sequence"]for r in previous]+[int(p.name)for p in (out/"attempts").glob("*")if p.name.isdigit()]+[0])
     configuration={n for n,r in mods.items()if Path(r["source"]).name=="lakefile.lean"}
@@ -136,12 +146,13 @@ def run(a):
                 if n in failed:pending.remove(n);continue
                 if bad or missing:
                     blocked[n]=dict(status="blocked",module=n,failed_dependencies=bad,missing_external=missing);pending.remove(n);continue
+            if bounded and time.monotonic()>=deadline:engine.stop="subset_validation_six_hour_limit"
             if engine.stop:stop=engine.stop;break
             stat=os.statvfs(out)
             if 1-stat.f_bavail/stat.f_blocks>=.85:stop="disk_85_percent";break
             total,available=native.mem();charge=int((engine.cg/"memory.current").read_text())
             for pool in pools:
-                cap=len(pools[pool])if not a.functional else 1
+                cap=(1 if bounded and pools[pool] else len(pools[pool]))if not a.functional else 1
                 while available>=9*2**30 and sum(j["meta"]["pool"]==pool for j in engine.live.values())<cap:
                     if solo and engine.live:break
                     running={j["meta"]["module"]for j in engine.live.values()}
@@ -149,7 +160,7 @@ def run(a):
                     if ready is None:break
                     exclusive=not engine.live
                     for previous_job in engine.live.values():previous_job["meta"]["exclusive_at_launch"]=False
-                    pid=engine.launch(ready,pool,"functional"if a.functional else"census",0,"functional"if a.functional else"census",not a.functional)
+                    pid=engine.launch(ready,pool,"subset_validation"if bounded else"functional"if a.functional else"census",0,"subset_validation"if bounded else"functional"if a.functional else"census",not(a.functional or bounded))
                     engine.live[pid]["meta"]["exclusive_at_launch"]=exclusive
                     if solo:break
                     _,available=native.mem()
@@ -172,7 +183,7 @@ def run(a):
                     if fails[n]>=2:failed.add(n);pending.discard(n)
         engine.drain()
         for n in pending:blocked[n]=dict(status="not_attempted",module=n,reason=stop)
-        report=dict(functional_only=a.functional,full_census=False if a.functional else True,
+        report=dict(functional_only=a.functional,full_census=not(a.functional or bounded),bounded_validation=bounded,cost_measurement=not(a.functional or bounded),
             successful=sorted(done),failed=sorted(failed),blocked=list(blocked.values()),stop=stop,
             configuration_units=sorted(configuration),total_source_units=len(mods),complete=len(done)+len(configuration)==len(mods))
         (out/"outcomes.json").write_text(json.dumps(report,indent=2))
@@ -187,6 +198,7 @@ def run(a):
 def main():
     p=argparse.ArgumentParser();p.add_argument("--manifest",type=Path,required=True);p.add_argument("--out",type=Path,required=True)
     p.add_argument("--pool",choices=["22","P8"],default="22");p.add_argument("--execute",action="store_true")
+    p.add_argument("--validate-subset",action="store_true",help="explicit non-measurement real-corpus closure: CPUs 10-16, one worker, <=2000 modules, <=6h; still requires --execute");
     p.add_argument("--environment-export",type=Path);p.add_argument("--functional",action="store_true");p.add_argument("--commit",required=True)
     run(p.parse_args())
 if __name__=="__main__":main()
