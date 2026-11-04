@@ -1,0 +1,10 @@
+phase,attempt,commit,mode,outcome,returncode,wall_s,cpu_s,sampled_tree_peak_bytes,charged_peak_bytes,receipt
+freeze-build,1,2df1d9d70259d2630edda2aa1a4a8663753e5f9d,qualification,complete,0,9.990093022002839,14.760509,2633863168,594640896,
+capacity-import-0,1,2df1d9d70259d2630edda2aa1a4a8663753e5f9d,qualification,failed,126,0.015776286003529094,0.001724,0,786432,
+capacity-import-0,2,2df1d9d70259d2630edda2aa1a4a8663753e5f9d,qualification,complete,0,0.11228003600263037,0.10454,1937408,26365952,
+whole-library,1,2df1d9d70259d2630edda2aa1a4a8663753e5f9d,qualification,complete,0,3.6561693090043264,3.659677,1004675072,144453632,/workspaces/.agent-state/gpu-smt-captures/checker-full-feasibility-20261104/workflow-qualification/whole-library-receipt.json
+matrix-native,1,2df1d9d70259d2630edda2aa1a4a8663753e5f9d,qualification,complete,0,1.2471936069923686,1.239516,77692928,129609728,/workspaces/.agent-state/gpu-smt-captures/checker-full-feasibility-20261104/workflow-qualification/matrix-native-receipt.json
+matrix-official-default,1,2df1d9d70259d2630edda2aa1a4a8663753e5f9d,qualification,complete,0,0.8751888789993245,0.81532,1941504,126115840,
+matrix-official-fresh,1,2df1d9d70259d2630edda2aa1a4a8663753e5f9d,qualification,complete,0,0.8463343439943856,0.8156,1708032,126074880,
+planar-default,1,2df1d9d70259d2630edda2aa1a4a8663753e5f9d,qualification,complete,0,1.2272938880050788,1.220499,77279232,129945600,/workspaces/.agent-state/gpu-smt-captures/checker-full-feasibility-20261104/workflow-qualification/planar-default-receipt.json
+planar-2,1,2df1d9d70259d2630edda2aa1a4a8663753e5f9d,qualification,complete,0,1.2266608119971352,1.218688,77168640,129961984,/workspaces/.agent-state/gpu-smt-captures/checker-full-feasibility-20261104/workflow-qualification/planar-2-receipt.json

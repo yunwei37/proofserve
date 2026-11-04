@@ -35,3 +35,10 @@ attempts. full-feasibility-plan.csv separates repeated loads from first kernel
 checks. The whole-corpus capacity decision remains open. The prepared frozen
 workflow first tests the actual largest empty import context; its small native
 workflow qualification exports separately to workflow-qualification/.
+
+The completed development result is now in full-feasibility.md,
+full-feasibility-memory.csv and full-feasibility-acceptance.csv: 14,721 modules,
+26.062 GiB sampled tree peak, and no differences on 14,401 available module-local
+references. This E-core resumed qualification is ineligible for final paper
+performance claims. workflow-qualification/ contains the real three-module
+workflow test, including a preserved failed launch and successful retry.

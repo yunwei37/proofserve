@@ -134,3 +134,21 @@ or causal conclusion is claimed from that discarded hypothesis.
 The latest 16-GiB run stopped at 16.033 GiB; a separate one-new-module direct
 control completed, which is not a full-frame pass. The authorized 40-GiB,
 E17–23 continuation is a separate resource point and preserves earlier success.
+
+## Completed retained-frame and workflow qualification
+
+The E17–23 / 40-GiB continuation completed all 14,721 retained frame modules
+with nine batch certificates. Its sampled tree peak was 26.062 GiB and its
+maximum single-process wait4 RSS was 25.864 GiB. No guard fired. The native
+source snapshot exactly matches commit 2df1d9d7. Acceptance equals the full
+retained O stream, and all 14,401 available O module-local reference judgments;
+320 module-local references remain unavailable. This is not full official CLI
+coverage. The larger observed memory peak is not presented as a memory saving.
+All prior failures remain preserved.
+
+The actual tiny workflow completed from clean source commit 2df1d9d7: binary
+freeze, preserved launch failure 126, explicit successful retry, native checking,
+stock default/fresh calls, and result export. It uses a three-module fixture;
+its matrix/Planar labels do not represent those real datasets. Controllers and
+all guarded native children retired. No new full-corpus or final-matrix run
+was started. O's independent review and final performance evidence remain open.

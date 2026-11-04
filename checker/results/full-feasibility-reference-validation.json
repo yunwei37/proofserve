@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-11-04T10:00:43.211537+00:00",
+  "legacy": 13208,
+  "later": 1193,
+  "reference_union": 14401,
+  "frame": 14721,
+  "unreferenced": 320,
+  "legacy_target_reference_calls": 154,
+  "retained_dependency_reference_calls": 178,
+  "retained_raw_reference_outputs_validated": true,
+  "main_artifacts_hardlinks_equal": true,
+  "reference_complete": false,
+  "scope": "Original module-local one-mode replay references; partial, no clock aggregation"
+}

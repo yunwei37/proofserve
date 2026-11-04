@@ -1,0 +1,16 @@
+{
+  "commit": "2df1d9d70259d2630edda2aa1a4a8663753e5f9d",
+  "source_revision": "portable-workflow-fixture",
+  "mathlib_pin": null,
+  "project": "/workspaces/.agent-state/gpu-smt-captures/checker-full-feasibility-20261104/workflow-project",
+  "source_project_root": null,
+  "source_units": 3,
+  "accepted_closure": 3,
+  "source_compile_roots": {
+    "/workspaces/.agent-state/gpu-smt-captures/checker-full-feasibility-20261104/workflow-project": 3
+  },
+  "execution_contexts": 1,
+  "all_requested_sources_accepted": true,
+  "axiom_free": false,
+  "mode": "qualification"
+}

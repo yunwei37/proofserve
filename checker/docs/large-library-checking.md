@@ -172,7 +172,7 @@ This scope is conditional on actual artifacts. First use the existing
 --internal-module-meta interface to establish that both private constants and
 constant names are empty. Source text alone is insufficient. Also inspect the
 actual import graph for consumers of OAI. The current static graph has no
-incoming edge to OAI, so it is a sink request rather than a dependency of the
+incoming edge to OAI, so it is a top-level request rather than a dependency of the
 other 163,096 source units. This static fact must be confirmed from produced
 artifacts. If a proof-bearing module requires that oversized context too, it
 also remains incomplete; it cannot be counted as checked.

@@ -1,19 +1,26 @@
-# Outer checkpoint audit
+# Outer audit of this development step
 
-Review: 自审; this is not an independent audit or acceptance verdict.
+Review: 自审, not an independent review or a release/paper acceptance verdict.
 
-The source graph, native controls, input parity and preserved resource failures
-are real evidence. Stubbed workflow/matrix tests establish only control paths.
-The large-frame continuation is live and incomplete, its resource point differs
-from the preceding 16-GiB attempts, and no full corpus has been checked.
-The 62.4-GiB OAI figure remains a two-point extrapolation. Partial source coverage
-must not be relabeled as full module acceptance; the unverified empty context
-must stay pending. The prepared driver stops rather than silently doing that.
+The actual evidence supports the static known-graph plan, tested local
+certificate path, 14,721-module retained acceptance, 26.062-GiB sampled peak,
+14,401 partial module-local reference comparisons, and real tiny workflow
+failure/retry/export. The native source matches published checkpoint 2df1d9d7.
+The final result and controller identities were checked, and all current
+native guards/cgroups and controllers are retired.
 
-All source edits are under checker/. Preparation uses the latest assigned
-E-core affinity. No P-core lease, final performance matrix, kernel modification,
-tag, release, issue, PR, schedule change or other Workspace change was made.
+It does not support whole-corpus capacity, completed official CLI coverage of
+the missing 320 modules, an axiom-free claim, a memory-saving ratio, a continuous
+fresh-run duration across interruptions, or final system speedups. The fixture
+workflow does not validate Grid/PlanarPacking measurements. The OAI 62.4-GiB
+number is a planning extrapolation. The conditional sidecar is not a native
+full-success receipt.
 
-Outcome: checkpoint passes provenance/scope review for publication as development
-work; it does not pass full-corpus capacity, end-to-end workflow, release or
-paper acceptance. O review and the finite results remain outstanding.
+All original failed and partial records remain on the PVC. Other lanes' dirty
+work was preserved. Source edits are under checker/. Current qualification uses
+E17–23 and the user-authorized resource point, without the P-core lease.
+No service, schedule, Workspace placement, security setting or external
+publication was changed.
+
+Outcome: scoped development results recorded. Full-corpus and final evaluation
+requirements remain unproven; O independent review remains outstanding.

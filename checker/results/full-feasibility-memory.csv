@@ -9,3 +9,4 @@ input-identity-parity-large-1,identity_equal,see raw command,"8,9",1.78950881958
 cache-stage-direct-1,one_module_diagnostic_complete,see raw command,"8,9",6.653495788574219,6.744194030761719,1.0289382934570312,True,False
 mathlib-import-context-1,import_only_complete,see raw command,"8,9",5.393798828125,5.954456329345703,0.3832550048828125,True,False
 subexp-import-context-1,import_only_complete,see raw command,"8,9",7.284423828125,7.282802581787109,0.7791252136230469,True,False
+subexp-cache-6,complete_retained_frame,14721 modules; resumed invocation,"17,18,19,20,21,22,23",26.061870574951172,25.864303588867188,21.414989471435547,True,False

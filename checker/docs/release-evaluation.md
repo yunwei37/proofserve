@@ -102,12 +102,17 @@ project dependency paths; it does not rely on the source manifest alone to
 reconstruct those paths. Its successful output must identify the configured
 compiled-empty module.
 
-Current checkpoint status: the real portable end-to-end workflow control is
-pending. Its prepared configuration now uses E cores 17–23 and a maximum
-40 GiB budget under the latest allocation. The source inherits preparation
-affinity from taskset and restores it after any future measured cell. Earlier
-CPU 8–9 / 16 GiB records retain their original resource identity. If W is
-approved to start the full census, obey the new CPU allocation before launching
-any preparation. The capacity-first driver stops on a failed umbrella preflight;
-it does not yet automate the conditional coverage sidecar in
-large-library-checking.md.
+Current development qualification: the real portable end-to-end workflow
+completed on a three-module fixture. Its frozen native and bench source is the
+clean commit 2df1d9d7. One actual launch failure returned 126; its row remains
+beside the successful explicit retry. Native checking, stock default/fresh calls,
+and the fixture's final worker-route comparison returned. The nine rows and
+terminal are in results/workflow-qualification/. No fixture value is a real
+Grid, PlanarPacking or final system measurement.
+
+The current preparation allocation is E17–23, with a maximum 40 GiB budget and
+an 8 GiB node reserve. The driver inherits the taskset affinity and restores it
+after future measured cells. Earlier CPU 8–9 / 16 GiB results retain their own
+identity. If W is approved to start the full census, obey the updated allocation
+before launching preparation. The capacity-first driver stops on failure; it
+does not silently generate the conditional sidecar in large-library-checking.md.
