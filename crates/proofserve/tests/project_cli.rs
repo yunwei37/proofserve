@@ -24,13 +24,17 @@ fn check_forwards_project_and_options_without_starting_a_service() {
             "2",
             "--checkpoint-dir",
             "state with spaces",
+            "--root-file",
+            "roots with spaces.txt",
+            "--closure-roots",
+            "1",
         ])
         .output()
         .unwrap();
     assert!(out.status.success(), "{:?}", out.stderr);
     assert_eq!(
         String::from_utf8(out.stdout).unwrap(),
-        "<project with spaces>\n<--workers>\n<2>\n<--checkpoint-dir>\n<state with spaces>\n"
+        "<project with spaces>\n<--workers>\n<2>\n<--checkpoint-dir>\n<state with spaces>\n<--root-file>\n<roots with spaces.txt>\n<--closure-roots>\n<1>\n"
     );
     std::fs::remove_dir_all(p).unwrap();
 }

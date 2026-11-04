@@ -70,7 +70,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let command = args.next().unwrap_or_else(|| "--help".into());
     if command == "--help" || command == "help" {
         println!(
-            "proofserve check PROJECT [--workers N] [--checkpoint-dir DIR] [--root MODULE ...]\nproofserve audit PROJECT [--json FILE|-] [--receipt FILE]\nproofserve serve (--repl PATH | --lean PATH) --project DIR --environment ID [OPTIONS]\n\nAdvanced candidate interfaces: batch, measure, compare.\nProject commands require the full release bundle: proofserve-check and proofserve-audit beside this executable or on PATH."
+            "proofserve check PROJECT [--workers N] [--checkpoint-dir DIR] [--root MODULE ... | --root-file FILE] [--closure-roots N]\nproofserve audit PROJECT [--json FILE|-] [--receipt FILE]\nproofserve serve (--repl PATH | --lean PATH) --project DIR --environment ID [OPTIONS]\n\nAdvanced candidate interfaces: batch, measure, compare.\nProject commands require the full release bundle: proofserve-check and proofserve-audit beside this executable or on PATH."
         );
         return Ok(());
     }

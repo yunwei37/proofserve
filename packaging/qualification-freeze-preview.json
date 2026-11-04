@@ -1,0 +1,302 @@
+{
+  "review": "自审",
+  "complete": true,
+  "timing_stage": "CPU8-9 functional preview",
+  "final_system_timing_eligible": false,
+  "source_baseline": "83f4143fb607fc9e75c9dcc7850bc3f31d1a5187",
+  "checker_commit": "3a56405f3c3e0c916fbae52aa89185a6cf300754",
+  "bundle": {
+    "version": "0.1.0",
+    "source_commit": "6618e73455df4f57cf1989b305ae677ba1335454",
+    "platform": "linux-x86_64",
+    "lean_toolchain": "leanprover/lean4:v4.34.1",
+    "checker_commit": "3a56405f3c3e0c916fbae52aa89185a6cf300754",
+    "source_worktree_dirty": true,
+    "python_requirement": "3.11+",
+    "build_libc": [
+      "glibc",
+      "2.41"
+    ],
+    "input": "compiled Lake project; no source checkout or build-host paths required"
+  },
+  "image": {
+    "local_tag": "proofserve:freeze-393236",
+    "id": "sha256:b7b68c4535021fd8463bd0bde86c90aee0f6a0a682a3764d9aabcbb3047aba19",
+    "uncompressed_size_bytes": 10825008255
+  },
+  "controls": [
+    {
+      "log": "container-build-retry-1.log",
+      "qualification": "passed",
+      "observations": [
+        {
+          "phase": "first_mathlib",
+          "request_budget_seconds": 180,
+          "wall_seconds": 68.81002061600157,
+          "result": {
+            "results": [
+              {
+                "error": null,
+                "id": "cold",
+                "response": {
+                  "env": 0
+                },
+                "time": 68.802603145
+              }
+            ]
+          }
+        },
+        {
+          "phase": "repeat_mathlib_different_source",
+          "request_budget_seconds": 180,
+          "wall_seconds": 9.043447541000205,
+          "result": {
+            "results": [
+              {
+                "error": null,
+                "id": "repeat",
+                "response": {
+                  "env": 0
+                },
+                "time": 9.042082757
+              }
+            ]
+          }
+        },
+        {
+          "phase": "small_native_batch",
+          "request_budget_seconds": 30,
+          "wall_seconds": 1.9789350889986963,
+          "result": {
+            "results": [
+              {
+                "error": null,
+                "id": "accepted",
+                "response": {
+                  "env": 0
+                },
+                "time": 0.790240984
+              },
+              {
+                "error": null,
+                "id": "rejected",
+                "response": {
+                  "env": 0,
+                  "messages": [
+                    {
+                      "data": "Tactic `decide` proved that the proposition\n  False\nis false",
+                      "endPos": {
+                        "column": 28,
+                        "line": 1
+                      },
+                      "pos": {
+                        "column": 22,
+                        "line": 1
+                      },
+                      "severity": "error"
+                    }
+                  ]
+                },
+                "time": 1.37392607
+              },
+              {
+                "error": null,
+                "id": "incomplete",
+                "response": {
+                  "env": 0,
+                  "messages": [
+                    {
+                      "data": "declaration uses `sorry`",
+                      "endPos": {
+                        "column": 7,
+                        "line": 1
+                      },
+                      "pos": {
+                        "column": 0,
+                        "line": 1
+                      },
+                      "severity": "warning"
+                    }
+                  ],
+                  "sorries": [
+                    {
+                      "endPos": {
+                        "column": 27,
+                        "line": 1
+                      },
+                      "goal": "⊢ False",
+                      "pos": {
+                        "column": 22,
+                        "line": 1
+                      },
+                      "proofState": 0
+                    }
+                  ]
+                },
+                "time": 1.977676023
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "log": "container-build-retry-1.log",
+      "installed_project_check": "passed",
+      "accepted_modules": 2,
+      "audit_source_modules": 1,
+      "unsupported_version_rejected": true
+    },
+    {
+      "log": "stranger-container.log",
+      "qualification": "passed",
+      "observations": [
+        {
+          "phase": "first_mathlib",
+          "request_budget_seconds": 180,
+          "wall_seconds": 6.181209565002064,
+          "result": {
+            "results": [
+              {
+                "error": null,
+                "id": "cold",
+                "response": {
+                  "env": 0
+                },
+                "time": 6.179725794
+              }
+            ]
+          }
+        },
+        {
+          "phase": "repeat_mathlib_different_source",
+          "request_budget_seconds": 180,
+          "wall_seconds": 6.399801796003885,
+          "result": {
+            "results": [
+              {
+                "error": null,
+                "id": "repeat",
+                "response": {
+                  "env": 0
+                },
+                "time": 6.398655887
+              }
+            ]
+          }
+        },
+        {
+          "phase": "small_native_batch",
+          "request_budget_seconds": 30,
+          "wall_seconds": 1.0458858460042393,
+          "result": {
+            "results": [
+              {
+                "error": null,
+                "id": "accepted",
+                "response": {
+                  "env": 0
+                },
+                "time": 0.332940886
+              },
+              {
+                "error": null,
+                "id": "rejected",
+                "response": {
+                  "env": 0,
+                  "messages": [
+                    {
+                      "data": "Tactic `decide` proved that the proposition\n  False\nis false",
+                      "endPos": {
+                        "column": 28,
+                        "line": 1
+                      },
+                      "pos": {
+                        "column": 22,
+                        "line": 1
+                      },
+                      "severity": "error"
+                    }
+                  ]
+                },
+                "time": 0.663011993
+              },
+              {
+                "error": null,
+                "id": "incomplete",
+                "response": {
+                  "env": 0,
+                  "messages": [
+                    {
+                      "data": "declaration uses `sorry`",
+                      "endPos": {
+                        "column": 7,
+                        "line": 1
+                      },
+                      "pos": {
+                        "column": 0,
+                        "line": 1
+                      },
+                      "severity": "warning"
+                    }
+                  ],
+                  "sorries": [
+                    {
+                      "endPos": {
+                        "column": 27,
+                        "line": 1
+                      },
+                      "goal": "⊢ False",
+                      "pos": {
+                        "column": 22,
+                        "line": 1
+                      },
+                      "proofState": 0
+                    }
+                  ]
+                },
+                "time": 1.044620117
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "log": "stranger-container.log",
+      "installed_project_check": "passed",
+      "accepted_modules": 2,
+      "audit_source_modules": 1,
+      "unsupported_version_rejected": true
+    }
+  ],
+  "builder_cleanup_exit": 0,
+  "own_capture_peak_rss_bytes": 8463831040,
+  "sampling_is_not_hard_rss_quota": true,
+  "retained_failure": {
+    "log": "container-build.log",
+    "cause": "fixed test-only5GiB aggregate RSS budget preempted unchanged Mathlib imports; observed5761572864bytes",
+    "kernel_rejection": false,
+    "timeout": false
+  },
+  "correction": "test-only service budget8GiB inside10GiB builder/11GiB runtime; O capture ceiling12GiB and production defaults unchanged",
+  "utility_timeout_control": {
+    "complete": true,
+    "outer_command_exit": 124,
+    "descendant_state": "retired",
+    "affinity": [
+      8,
+      9
+    ],
+    "scope": "short utility cleanup control; not native timing"
+  },
+  "published": false,
+  "raw_directory": "/workspaces/.agent-state/proofserve-o-line/freeze-preparation-20261104/freeze-preview-v3",
+  "temporary_daemon_retired": true,
+  "temporary_runtime_processes_remaining": [],
+  "local_rust_passed": 100,
+  "local_rust_ignored": 6,
+  "local_cargo_dry_run_crates": 4,
+  "local_checker_bad_proof_categories": 3,
+  "local_audit_tests": 20
+}

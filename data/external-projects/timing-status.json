@@ -1,14 +1,17 @@
 {
-  "review": "\u81ea\u5ba1",
-  "observed_utc": "2026-11-04T03:44:28.281164+00:00",
+  "review": "自审",
+  "observed_utc": "2026-11-04T07:30:39.504547+00:00",
   "stage": "pre-census preview",
   "final_system_timing_eligible": false,
   "functional_acceptance_evidence_retained": true,
   "reason": "11-04 user directive reserves P0-7 and E10-23 for W gate/full census; final system figures are rerun once after census and machine quiet.",
   "existing_measurements_unchanged": true,
-  "no_new_timed_run": true,
   "new_o_cpu_affinity": [
     8,
     9
-  ]
+  ],
+  "no_new_final_timed_run": true,
+  "functional_previews_run": true,
+  "new_ai_project": "samuelburbulla/proofs",
+  "installed_checker_commit": "3a56405f3c3e0c916fbae52aa89185a6cf300754"
 }

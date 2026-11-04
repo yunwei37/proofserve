@@ -4,9 +4,9 @@
 proof terms with the original Lean kernel, using parallel workers and resumable
 local checkpoints. Audit what the project builds and what its receipt covers.
 
-The prepared Linux bundle includes the matching Lean4.34.1 SDK, checker and
+The prepared Linux bundle includes the matching Lean 4.34.1 SDK, checker and
 audit tool. No Rust compiler, repository clone or Workspace path is required.
-Use Python3.11+ and an already-built Lake project declaring that Lean version:
+Use Python 3.11+ and an already-built Lake project declaring that Lean version:
 
 ~~~sh
 bin/proofserve check /path/to/lake-project
@@ -17,11 +17,11 @@ Trust: the original Lean kernel, artifact/frontier adapter, declared axioms and
 trusted local checkpoints. Acceptance does not prove an axiom-free development,
 the intended specification, or a safe parser for hostile binary artifacts.
 
-**Speed versus official leanchecker:** [three external projects](data/external-projects/results.md)
+**Speed versus official leanchecker:** [three external projects](data/external-projects/freeze-preview-results.md)
 passed installed-tool checks; official default trusts imports, so its times are
 not an equal-obligation speed comparison. No general speedup is promised.
 
-Version0.1.0 bundles and containers are prepared and tested, **not yet published**.
+Version 0.1.0 bundles and containers are prepared and tested, **not yet published**.
 Other declared toolchains use their matching official checker when available,
 or fail explicitly. The bundled compiler never silently migrates a project.
 
@@ -61,7 +61,7 @@ module-set identity, CPU and wall time. The source project must be built first.
 Use a fresh checkpoint directory after changing input artifacts until the
 backend's input-invalidation contract is qualified.
 
-The supported bundled checker version is Lean4.34.1. A different declared version uses its matching official checker when available,
+The supported bundled checker version is Lean 4.34.1. A different declared version uses its matching official checker when available,
 otherwise returns an explicit error; the receipt identifies the execution path.
 The checker's receipt format and correctness tests live in [checker/](checker/).
 
@@ -144,3 +144,19 @@ for retained captures. [CLI component contract](packaging/INTERFACES.md).
 
 [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md) · [Apache-2.0](LICENSE) ·
 [Research status](docs/research-status.md) · [Paper](docs/paper/main.tex).
+
+## Independent closure batches
+
+For a large already-built project, pass a UTF-8 file with one module name per
+line; the Rust launcher forwards the options and receipt unchanged:
+
+    proofserve check /path/to/project --root-file roots.txt --closure-roots 500
+
+The closure-roots limit bounds requested roots per independent closure batch,
+not CPU, memory, declaration count or a proof-search budget. Each new batch checks
+its complete import closure; shared dependencies can be checked repeatedly.
+Receipts deduplicate accepted modules and axioms but CPU includes repeated work.
+Local input-validated batch certificates allow resume and remain trusted local
+state; they are not portable adversarial certificates. An unfinished batch or a
+changed input is not a complete verification. See checker/docs/receipt-schema.md
+for v1 types, context_strategy, batches and the distinct cumulative CPU field.

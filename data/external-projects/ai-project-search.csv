@@ -1,0 +1,42 @@
+repository,observed_toolchain,disposition
+enuminous/Aristotle-Ramtastic-Audit,leanprover/lean4:v4.30.0-rc1,not selected; native4.34.1 match absent or root declaration missing
+enuminous/Aristotle-Agreement-and-Surprise-Global-Equalibrium-from-Local-Repair,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+enuminous/Aristotle-102-Monolithic-Lean,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+enuminous/Einsteinian-156-Aristotle,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+enuminous/Aristotle_EFMW_Lean,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+Dragonfly323/Y323LeanProject,not at root,not selected; native4.34.1 match absent or root declaration missing
+mlinegar/FormalProbability,leanprover/lean4:v4.27.0-rc1,not selected; native4.34.1 match absent or root declaration missing
+nightshift-labs007/nightshift-formal,leanprover/lean4:v4.28.0,selected version-boundary control; explicit Aristotle-produced proof claim
+hwakoong13/aristotle_putnam25,leanprover/lean4:v4.24.0,not selected; native4.34.1 match absent or root declaration missing
+Woett/ChatGPT-s-note-on-Erdos18,not at root,not selected; native4.34.1 match absent or root declaration missing
+sriharinanniyur/lean-multiplication,leanprover/lean4:v4.33.1,not selected; native4.34.1 match absent or root declaration missing
+grahambarrgraham/bloxorz-aristotle,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+Woett/ChatGPT-s-note-on-Erdos785,not at root,not selected; native4.34.1 match absent or root declaration missing
+vecst/ShadowLean,leanprover/lean4:v4.33.0-rc2,not selected; native4.34.1 match absent or root declaration missing
+yotam-gafni/InformationSharingTrainingInference,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+yotam-gafni/centralization_stability_formal_constitutions,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+vbeffara/SAW,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+Parcly-Taxel/Grasswil,leanprover/lean4:v4.33.0,not selected; native4.34.1 match absent or root declaration missing
+primaryhosting/LargeSieveLib,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+pitmonticone/Kourovka,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+two-skeletons/Starry-Graphs-Lean,not at root,not selected; native4.34.1 match absent or root declaration missing
+pitmonticone/SumsThreeSquares,leanprover/lean4:v4.32.0-rc1,not selected; native4.34.1 match absent or root declaration missing
+JoseBrox/cycle-double-cover-formalization,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+eth-act/zisk-fv-lean-inputs,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+kavanaghpatrick/aristotle-math-problems,leanprover/lean4:v4.24.0,not selected; native4.34.1 match absent or root declaration missing
+Woett/ChatGPT-s-note-on-Erdos451,not at root,not selected; native4.34.1 match absent or root declaration missing
+Woett/ChatGPT-s-note-on-gaps-in-multiplicative-Sidon-sets,not at root,not selected; native4.34.1 match absent or root declaration missing
+Deicyde/lean-boundary-smooth-manifold,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+Sfgangloff/aristotle_tests,leanprover/lean4:v4.24.0,not selected; native4.34.1 match absent or root declaration missing
+wabnigt-byte/LEAN,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+athanor-ai/formal-avs-supplementary,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+jano-wol/aristotle,leanprover/lean4:v4.28.0,not selected; native4.34.1 match absent or root declaration missing
+kdwong/Lean-for-Abstract-Algebra,leanprover/lean4:v4.27.0-rc1,not selected; native4.34.1 match absent or root declaration missing
+Tomodovodoo/firstproof,leanprover/lean4:v4.22.0,not selected; native4.34.1 match absent or root declaration missing
+ranjitjhala/aristotle-debug,leanprover/lean4:v4.24.0,not selected; native4.34.1 match absent or root declaration missing
+nasqret/ZsigmondyChebyshev,leanprover/lean4:v4.24.0,not selected; native4.34.1 match absent or root declaration missing
+konradburnik/aristotle-formalisation,not at root,not selected; native4.34.1 match absent or root declaration missing
+Wafik20/lean-playground,leanprover/lean4:v4.27.0-rc1,not selected; native4.34.1 match absent or root declaration missing
+afhverjuekki/claude-code-aristotle-plugin,not at root,not selected; native4.34.1 match absent or root declaration missing
+nktkt/aristotle-putnam-proj1,leanprover/lean4:v4.24.0,not selected; native4.34.1 match absent or root declaration missing
+samuelburbulla/proofs,leanprover/lean4:v4.34.1,selected native case; upstream About explicitly calls collection AI-generated

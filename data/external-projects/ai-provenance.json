@@ -1,0 +1,91 @@
+{
+  "selected": {
+    "repository": "samuelburbulla/proofs",
+    "commit": "3042904c5f7e96732c1ff4ac01745a8be9ae91ff",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "upstream_quote": "AI generated proofs of open math problems",
+    "upstream_url": "https://github.com/samuelburbulla/proofs",
+    "upstream_field": "GitHub repository About / REST description",
+    "api_url": "https://api.github.com/repos/samuelburbulla/proofs",
+    "provenance_scope": "Repository-level AI-generated-proof collection claim; model, per-proof attribution and human-editing fraction are not disclosed. Not an independent authorship audit or a claim of full autonomy.",
+    "source_modules": 9,
+    "all_source_modules_compiled": true,
+    "prior_development_search": {
+      "command": "git grep -I -l -i samuelburbulla/proofs HEAD -- research data docs checker crates",
+      "result": "no match",
+      "scope": "retained tracked project evidence, not absence outside records"
+    },
+    "metadata_snapshot_written_utc": "2026-11-04T05:32:20.649285+00:00",
+    "source_changes": "none; matching dependency aliases only in the new test input .lake",
+    "installed_tool_qualification": {
+      "project": "samuelburbulla-proofs",
+      "upstream_commit": "3042904c5f7e96732c1ff4ac01745a8be9ae91ff",
+      "ai_generated": true,
+      "checker_commit": "3a56405f3c3e0c916fbae52aa89185a6cf300754",
+      "bundle_commit": "6618e73455df4f57cf1989b305ae677ba1335454",
+      "bundle_dirty_preview": true,
+      "source_modules": 9,
+      "local_roots": 9,
+      "native_closure_modules": 10753,
+      "official_default_modules": 9,
+      "common_local_root_acceptance_equal": true,
+      "timing_scope_equal": false,
+      "final_system_timing_eligible": false,
+      "resumed_preview": true,
+      "complete_native_cost_available": false,
+      "declared_closure_axioms": [
+        "Classical.choice",
+        "Lean.ofReduceBool",
+        "Lean.ofReduceNat",
+        "Lean.trustCompiler",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "source_binding": "not established: receipt v1 covers compiled artifacts; source digest is not included",
+      "static_covered": 9,
+      "static_omitted": 0,
+      "roots": [
+        "A001481",
+        "A054390",
+        "A104896",
+        "A216971",
+        "A326250",
+        "A337945",
+        "A348840",
+        "A361032",
+        "WOWII19"
+      ],
+      "scope_note": "ProofServe checks the transitive closure; official default replays named local roots and trusts imports. CPU/wall are user-facing costs, not a speedup over equal proof obligations. Fresh final-environment checks are a distinct protocol, evaluated by the checker matrix."
+    }
+  },
+  "version_control": {
+    "repository": "nightshift-labs007/nightshift-formal",
+    "commit": "f0e901131d6ce88e9dd3c246325ae417deb5b203",
+    "toolchain": "leanprover/lean4:v4.28.0",
+    "upstream_quote": "Proofs were produced with Harmonic's Aristotle",
+    "upstream_url": "https://github.com/nightshift-labs007/nightshift-formal/blob/f0e901131d6ce88e9dd3c246325ae417deb5b203/README.md",
+    "generation_scope": "Upstream attributes the advertised safety-property proofs to Aristotle; human specification/review fraction not independently measured.",
+    "version_result": {
+      "repository": "nightshift-labs007/nightshift-formal",
+      "commit": "f0e901131d6ce88e9dd3c246325ae417deb5b203",
+      "declared_toolchain": "leanprover/lean4:v4.28.0",
+      "bundle_toolchain": "leanprover/lean4:v4.34.1",
+      "check_exit": 2,
+      "audit_exit": 0,
+      "check_stdout": "",
+      "check_stderr": "ProofServe: unsupported native bundle version; requesting the project's matching official checker. No toolchain is installed or migrated.\n{\"error\":\"unsupported or mismatched project toolchain: leanprover/lean4:v4.28.0;  could not execute external process 'lake'\\n\",\"schema_version\":1,\"status\":\"error\"}\n",
+      "compiled_source": false,
+      "proof_acceptance_established": false,
+      "official_comparison_available": false,
+      "affinity": [
+        8,
+        9
+      ],
+      "scope": "Actual public-project version boundary; no migration or toolchain installation"
+    }
+  },
+  "selection_reason": "Croc explicitly says assisted; it remains retained but is not used to satisfy the AI-generated criterion. New fixed final set is Newspeak/Solar/selected AI collection.",
+  "timing_status": "All current E8-9 observations are previews, never final system timing.",
+  "no_publication": true
+}

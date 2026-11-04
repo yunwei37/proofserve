@@ -1,0 +1,29 @@
+{
+  "projects": [
+    {
+      "name": "newspeak",
+      "project": "/path/to/prebuilt/newspeak",
+      "source_audit": "/path/to/input-audits/newspeak.json",
+      "upstream_commit": "e2232d8fdb9a6061d00419fa83134e4e60caf172",
+      "workers": 1,
+      "ai_generated": null
+    },
+    {
+      "name": "solar",
+      "project": "/path/to/prebuilt/solar",
+      "source_audit": "/path/to/input-audits/solar.json",
+      "upstream_commit": "f4f5c9a1d7443a0265a85eff8ee24824d9ab92a7",
+      "workers": 1,
+      "ai_generated": null
+    },
+    {
+      "name": "samuelburbulla-proofs",
+      "project": "/path/to/prebuilt/samuelburbulla-proofs",
+      "source_audit": "/path/to/input-audits/samuelburbulla-proofs.json",
+      "upstream_commit": "3042904c5f7e96732c1ff4ac01745a8be9ae91ff",
+      "workers": 1,
+      "ai_generated": true
+    }
+  ],
+  "selection": "Replace AI-assisted Croc in the fixed three-project set with upstream explicitly AI-generated collection; historical Croc records remain."
+}

@@ -17,6 +17,9 @@ def main():
     p.add_argument("--checker-bin", type=Path, required=True)
     p.add_argument("--lean-sysroot", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p.add_argument("--source-commit", help="Frozen runtime source baseline; concurrent Git HEAD is recorded separately")
+    p.add_argument("--checker-commit", help="Commit of the separately frozen checker build")
+    p.add_argument("--checker-source", type=Path, default=ROOT / "checker")
     a = p.parse_args()
     if (platform.system(), platform.machine()) != ("Linux", "x86_64"):
         p.error("this release recipe supports Linux x86_64 only")
@@ -42,17 +45,19 @@ def main():
         (ROOT / "packaging/proofserve-check", tree / "bin/proofserve-check"),
         (ROOT / "packaging/proofserve-audit", tree / "bin/proofserve-audit"),
         (ROOT / "tools/audit/audit.py", tree / "libexec/proofserve-audit.py"),
-        (ROOT / "checker/lean-toolchain", share / "lean-toolchain"),
+        (a.checker_source / "lean-toolchain", share / "lean-toolchain"),
         (ROOT / "LICENSE", share / "LICENSE"),
         (ROOT / "packaging/install.py", share / "install.py"),
         (ROOT / "packaging/README.md", share / "README.md"),
-        (ROOT / "checker/docs/receipt-schema.md", share / "receipt-schema.md"),
+        (a.checker_source / "docs/receipt-schema.md", share / "receipt-schema.md"),
     ]:
         shutil.copy2(source, target)
     for target in [tree / "bin/proofserve", tree / "bin/proofserve-check", tree / "bin/proofserve-audit", tree / "libexec/proofserve-check"]:
         target.chmod(0o755)
-    metadata = dict(version=version, source_commit=commit, platform="linux-x86_64",
+    metadata = dict(version=version, source_commit=a.source_commit or commit, build_observed_head=commit, platform="linux-x86_64",
         lean_toolchain=(share / "lean-toolchain").read_text().strip(),
+        checker_commit=a.checker_commit or commit,
+        source_worktree_dirty=bool(subprocess.check_output(["git","status","--porcelain","--","crates","packaging","tools/audit"],cwd=ROOT,text=True).strip()),
         python_requirement="3.11+", build_libc=platform.libc_ver(),
         input="compiled Lake project; no source checkout or build-host paths required")
     (share / "bundle.json").write_text(json.dumps(metadata, indent=2) + "\n")

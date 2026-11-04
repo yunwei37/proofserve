@@ -8,9 +8,11 @@
   diagnostics, exit codes and Unix signal delivery.
 - Move the former candidate JSONL check command to batch. HTTP /check and
   serve behavior remain unchanged.
-- Prepare a relocatable bundle with the matching Lean4.34.1 SDK and explicit
-  declared-version rejection. Installer, container and external-project
-  qualification remain pending; nothing has been published.
+- Prepare a relocatable bundle with the matching Lean 4.34.1 SDK and explicit
+  matching-official-checker fallback or error for other declared versions.
+  Installed archive qualification and three external-project functional previews,
+  including an upstream AI-generated-proof collection, pass; final timing and
+  publication remain pending.
 - Retain all research data/history. The older service-only qualification
   entries below describe their original version points; current readiness is
   tracked in [prepared release notes](packaging/RELEASE_NOTES.md).
@@ -18,9 +20,15 @@
 
 ### Added
 
+- Root-file forwarding, independent closure batches and receipt-v1 installed
+  qualification, including resumed batches and three original-kernel bad-proof
+  controls.
+- One-command unpublished freeze preparation with separate functional-preview
+  and final-timing paths, retained operational failures and small external CSVs.
+
 - A minimal Python batch client with no runtime dependencies.
 - A pinned Lean/Mathlib/REPL Docker recipe and real endpoint smoke test;
-  full image qualification is pending.
+  qualification evidence is linked from the prepared release notes.
 - Source package metadata, docs.rs settings, and a tag-triggered publishing
   workflow with tests and dry-run verification.
 - A Linux binary build artifact in CI. This is not a published release binary.
@@ -45,12 +53,14 @@
 
 ### Qualification status
 
-- Complete Rust, packaging dry-run and native differential CI pass.
-- Two bounded full-image attempts fail during full Mathlib preparation; raising
+- Complete Rust, four-crate packaging dry-run and native differential CI pass.\n- The CPU 8–9 freeze preview passes archive, three external projects and full\n  network-disabled container qualification. Retain the prior 5 GiB smoke-budget\n  failure; the corrected 8 GiB test budget does not change production defaults.
+- Historical optional-adapter evidence: two bounded full-image attempts failed
+  during full Mathlib preparation; raising
   the test budget to 180 seconds does not resolve it. The network-disabled small
   native batch passes acceptance, native rejection and sorry checks.
-- Restore the existing fresh-REPL default in the Docker entrypoint. A complete
-  image recheck of that correction remains pending; the prepared adapter stays opt-in.
+- Restore the existing fresh-REPL default in the Docker entrypoint. Matching-SDK,
+  full-Mathlib image qualification passed in the recorded release-form CI; the
+  optional prepared adapter is not included or claimed repaired.
 
 No release, tag, package or image is published by this change. Tactic failure
 replay remains off by default and requires backend qualification. Resource and

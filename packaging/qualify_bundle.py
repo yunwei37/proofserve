@@ -26,6 +26,19 @@ def main():
  receipt=json.loads(check.stdout)
  assert receipt['status']=='complete' and {'Base','Fixture'}<=set(receipt['accepted'])
  receipt_file=project/'.proofserve/receipt.json';assert receipt_file.is_file()
+ roots=a.out/'roots with spaces.txt';roots.write_text('Fixture\nBase\n')
+ batched=run('closure-batches',[cli,'check',project,'--root-file',roots,'--closure-roots','1','--workers','1','--checkpoint-dir',a.out/'batch-checkpoint','--json'])
+ br=json.loads(batched.stdout)
+ assert br['status']=='complete' and br['context_strategy']=='independent-closures' and br['closure_roots']==1
+ assert {'Base','Fixture'}<=set(br['accepted']) and set(br['roots'])=={'Base','Fixture'}
+ for key in ['cpu_ns','cumulative_segment_cpu_ns','module_set_hash']:
+  assert isinstance(br[key],str) and br[key].isdigit(),(key,br[key])
+ assert isinstance(br['wall_ns'],int) and br['schema_version']==1
+ resume=run('closure-batch-resume',[cli,'check',project,'--root-file',roots,'--closure-roots','1','--workers','1','--checkpoint-dir',a.out/'batch-checkpoint','--json'])
+ rr=json.loads(resume.stdout)
+ assert rr['accepted']==br['accepted'] and rr['status']=='complete' and any(v['reused']for v in rr['batches'])
+ component_help=run('checker-help',[cli,'check','--help'])
+ assert '--root-file' in component_help.stdout and '--closure-roots' in component_help.stdout
  audit=run('project-audit',[cli,'audit',project,'--json','-','--receipt',receipt_file])
  report=json.loads(audit.stdout)
  assert report['schema']=='proofserve-audit/v1'
@@ -46,7 +59,7 @@ def main():
  unsupported=run('unsupported',[cli,'check',project],expected=2)
  assert 'unsupported'in(unsupported.stderr+unsupported.stdout).lower()or 'toolchain'in(unsupported.stderr+unsupported.stdout).lower()
  (project/'lean-toolchain').write_text(toolchain)
- result=dict(complete=True,bundle=json.loads((root/'share/proofserve/bundle.json').read_text()),installed_root=str(root),receipt=receipt,audit=report,commands=results,malformed_proofs_rejected=3,scope='relocated archive correctness; not performance or external-project evaluation')
+ result=dict(complete=True,bundle=json.loads((root/'share/proofserve/bundle.json').read_text()),installed_root=str(root),receipt=receipt,audit=report,commands=results,malformed_proofs_rejected=3,closure_batches_qualified=True,root_file_forwarded=True,scope='relocated archive correctness; not performance or external-project evaluation')
  (a.out/'qualification.json').write_text(json.dumps(result,indent=2)+'\n')
  print(json.dumps(dict(complete=True,malformed_proofs_rejected=3,source_commit=result['bundle']['source_commit'])))
 if __name__=='__main__':main()

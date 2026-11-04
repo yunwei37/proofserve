@@ -12,9 +12,11 @@ from proofserve import Client
 if "--self-test" in sys.argv:
     env = os.environ.copy()
     env["RUST_LOG"] = "proofserve_engine::resources=info,proofserve_lean::prepared=info"
+    # This bounded image test reserves 8 GiB inside a 10/11 GiB container;
+    # the retained 5 GiB attempt preempted Mathlib at about 5.37 GiB RSS.
     server = subprocess.Popen(
         ["/bin/sh", "/usr/local/bin/start-proofserve", "serve",
-         "--listen", "127.0.0.1:3000", "--memory-gib", "5"],
+         "--listen", "127.0.0.1:3000", "--memory-gib", "8"],
         env=env,
     )
 
