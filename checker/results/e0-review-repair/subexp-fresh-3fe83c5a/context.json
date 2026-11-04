@@ -1,0 +1,9 @@
+{
+  "project": "/workspaces/.agent-state/gpu-smt-captures/checker-full-feasibility-20261104/subexp-project",
+  "project_type": "retained-frame Lake wrapper, not the full original repository",
+  "LEAN_PATH": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103/check-lib",
+  "LEAN_SYSROOT": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux",
+  "LEAN_NUM_THREADS": "2",
+  "roots": "roots.txt",
+  "scope": "3977 retained roots; 14721 expected modules including dependencies; untimed E10-23 qualification"
+}

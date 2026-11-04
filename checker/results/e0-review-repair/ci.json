@@ -1,0 +1,12 @@
+{
+  "run_id": 41860036796,
+  "head_sha": "cdf86d68403de4e75654526676abbad9781a97d9",
+  "status": "completed",
+  "conclusion": "success",
+  "job_id": 126679000036,
+  "job_conclusion": "success",
+  "job_url": "https://github.com/yunwei37/proofserve/actions/runs/41860036796/job/126679000036",
+  "review_runner_87_records_seen": true,
+  "source_repair_commit": "3fe83c5a80ea29f9ea5911d144806ffe70836d18",
+  "interpretation": "mechanical CI execution; not independent review or research result"
+}

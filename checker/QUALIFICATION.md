@@ -164,3 +164,23 @@ stock default/fresh calls, and result export. It uses a three-module fixture;
 its matrix/Planar labels do not represent those real datasets. Controllers and
 all guarded native children retired. No new full-corpus or final-matrix run
 was started. O's independent review and final performance evidence remain open.
+
+
+## 2026-11-04: e0 review repair qualification
+
+Source 3fe83c5a passed the complete local contract and the existing CI
+checker-contract at cdf86d68 (87 review-runner command records, not 87 defect
+classes). The fresh 3,977-root SubexponentialSAT frame then completed 14,721
+accepted modules, no rejections and the same 15 reported axioms, with a new
+checkpoint directory and no resource stop. The sampled process-tree peak was
+29.810 GiB on E cores 10–23 with two workers. Its 36,209 resolved input parts
+match the old frame. Acceptance matches O's full stream and the 14,401 available
+module-local references; 320 module-local references remain unavailable.
+The focused optional-part presence regression also passed after retirement.
+See results/e0-review-repair/ for exact controls, limitations and raw locations.
+
+These are 自审 and mechanical CI evidence. The supplied independent review
+concerned old e0 source only; this repaired source has not had independent
+execution review. No release freeze, full-library capacity or final performance
+claim follows. Matching theorem-body/Quot proposals not reproduced remain
+bounded limitations; unsupported native-IR evaluation is explicitly refused.

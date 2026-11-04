@@ -1,0 +1,9 @@
+{
+  "interpretation": "self-review of returned original O observations, not independent review",
+  "base_boolean_invariants_checked": true,
+  "clash_reuse_and_replay_sets_equal": true,
+  "actual_full_and_readonly_native_failures_checked": true,
+  "partial_publication_resume_checked": true,
+  "original_extended_precondition_changed": true,
+  "unchanged_42_required_rows_claimed": false
+}

@@ -36,7 +36,7 @@ Its 60 fallbacks all have duplicate_proof_requires_native reasons. O's stream
 has 64 such fallbacks and none of the requested three categories. The prior_2df
 scan includes multiple retained development attempts and is not one clean run.
 These observations do not establish that the historical 15-name axiom list
-was incomplete. A fresh run of the qualified repair is still required.
+was incomplete. The fresh repair run below still reports exactly those 15 names.
 
 ## Qualification status
 
@@ -53,9 +53,25 @@ The contract's sampled process-tree peak was 3.063 GiB, without a resource stop.
 Its raw stdout and guard result are included. The regression runner is invoked
 by checker/tests/contract.py, the existing CI entry point.
 
-The original O replay and the old e0 explicit-native-IR confirmation are still
-in progress. No repaired full-closure result or independent review is claimed
-by this checkpoint. See the final result files when present. Original e0 and earlier qualification are retained
+The original O base and edge modes completed. The original extended mode
+stopped at its assumption that an isModule input without required server/private
+parts can obtain a good certificate. Native now explicitly refuses that
+incomplete input, as official --fresh does. Official default accepts its
+exported-only input; default and fresh are not interchangeable oracles here.
+The transparent adapter records that precondition change and then executes the
+unchanged filesystem and private-axiom controls. O-cases.csv includes every
+observation, including the original stopped mode. It is not an assertion that
+the previous 42 required rows passed unchanged.
+
+The explicit old-e0 native-reduction fixture also refused: its original
+interpreter reports unknown declaration printBool. It did not print a fake
+worker event. This remains an unconfirmed route, unlike the reproduced
+complete/nonzero dominance bug. The new native refusal is an explicit boundary
+on project IR evaluation, not proof that an old IR false acceptance occurred.
+
+No repaired full-closure result or independent review is claimed at this
+checkpoint. The fresh repair replay is active; final result files will identify
+its actual terminal outcome. Original e0 and earlier qualification are retained
 as historical evidence; they cannot establish the repaired binary's behavior.
 
 ## Development failures retained
@@ -78,3 +94,49 @@ cleanup. Their stdout, stderr and guard records remain, but those generated
 fixture directories do not. From contract3 onward explicit PVC work directories
 preserve the fixtures too. No formal corpus or final timing data were generated
 in these attempts. This qualification and result inspection are 自审.
+
+## Original O replay interpretation
+
+Thirty base observations, four edge observations, the original extended mode's
+stopped precondition, and seven transparent-adapter observations are retained.
+Some names repeat and two deliberate local-certificate edits remain observations
+outside the guarantee; they must not be counted as independent passing tests.
+In particular, forged-missing-axioms still demonstrates trusted editable state.
+
+Actual ENOSPC and read-only private mount-namespace controls each have native
+exit 2, no complete stdout and a parseable prior receipt. Their outer namespace
+control exits 0; that outer code is not the native verification verdict.
+The private-axiom replay and reuse sets match each other and the original
+axiom oracle. Wrong Lean identity, receipt version, child ABI, authentic foreign
+state, changed dependencies and partial publication are still refused.
+
+The four original added-part observations after the incomplete seed could not
+execute unchanged, because no certificate is issued for that seed now. The CI
+contract instead starts from complete good module parts, changes the private
+proof, and checks refusal and original-kernel rejection. A focused added-part
+presence-inventory regression now passes as well: a valid ordinary seed gains
+an optional bad private part without changing its exported artifact or certificate.
+Resume returns 2, emits no complete stdout, reports the changed inventory, and
+leaves the certificate unchanged. It ran only after the full replay retired.
+The three new command records join the existing CI entry point; the previously
+completed 87-command CI did not yet contain this additional control.
+
+CI run 41860036796 at cdf86d68 includes unchanged checker source from 3fe83c5a.
+Its checker-contract job actually completed successfully and its log contains
+the 87-command review runner. Rust and native-repl jobs also succeeded. This is
+mechanical execution evidence, not independent review or a scientific result.
+
+## Completed retained-frame replay
+
+The new fresh point is
+/workspaces/.agent-state/gpu-smt-captures/checker-subexp-review-repair-3fe83c5a-20261104.
+It uses unchanged build10 / source 3fe83c5a, two workers, E cores 10–23,
+a fresh checkpoint directory and the same 3,977-root / 14,721-module input
+frame. launch.json records exact controller PID/birth; verify live identity,
+not an old running flag. The guard retains the 40 GiB maximum and node reserve.
+It completed at 2026-11-04T19:03:16Z: 14,721 accepted, zero rejected,
+15 unchanged axioms, sampled tree peak 29.810 GiB, no resource stop.
+The 36,209 input-path/hash pairs match the old frame. Acceptance agrees with
+O\'s full stream and all 14,401 available module-local references; 320 remain
+unavailable. See the linked fresh result for exact reference scopes and preview
+CPU/wall values. No final timing, whole-corpus completion or freeze is implied.

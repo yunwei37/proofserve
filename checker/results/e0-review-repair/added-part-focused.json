@@ -1,0 +1,112 @@
+[
+  {
+    "case": "4-added-part-seed",
+    "exit": 0,
+    "stdout": "{\"accepted\":[\"A\",\"Foo\"],\"axioms\":[\"P\",\"witness\"],\"batches\":[{\"batch\":0,\"certificate\":\"/workspaces/.agent-state/gpu-smt-captures/checker-review-e0-fix-20261104/added-part-focused/added-part-state/batch-0/certified.json\",\"modules\":2,\"reused\":false,\"roots\":[\"Foo\"],\"status\":\"complete\"}],\"checker_binary_hash\":\"18433795296349856358\",\"checker_checkpoint_abi\":4,\"checkpoint_kind\":\"input-validated-local-certificates\",\"closure_roots\":1,\"context_strategy\":\"independent-closures\",\"cpu_ns\":\"707851000\",\"cumulative_segment_cpu_ns\":\"2114347\",\"entry_count_meaning\":\"module replay entries, not declaration checks or kernel calls\",\"execution_path\":\"proofserve-parallel\",\"import_only_modules\":[],\"lean_version\":\"Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)\\n\",\"mathlib_manifest\":{\"fixedToolchain\":false,\"lakeDir\":\".lake\",\"name\":\"reviewE0\",\"packages\":[],\"packagesDir\":\".lake/packages\",\"version\":\"1.2.0\"},\"module_check_entries\":2,\"module_set_hash\":\"8168623679821253472\",\"module_set_hash_algorithm\":\"lean-hash64-toolchain-specific-noncryptographic\",\"module_verifications\":[{\"action\":\"kernel_replay\",\"context\":\"shared\",\"frontier_insert_candidates\":2,\"kernel_call_count\":null,\"module\":\"A\",\"safe_input_constants\":2},{\"action\":\"kernel_replay\",\"context\":\"shared\",\"frontier_insert_candidates\":1,\"kernel_call_count\":null,\"module\":\"Foo\",\"safe_input_constants\":1}],\"new_module_check_entries\":2,\"operational_errors\":[],\"parallel\":true,\"project_dirty\":null,\"project_revision\":null,\"project_revision_binds_artifacts\":false,\"rejected\":[],\"reuse_checked_imports\":true,\"roots\":[\"Foo\"],\"schema_version\":1,\"segments\":[{\"batch\":0,\"reused\":false,\"segment\":0}],\"status\":\"complete\",\"trusted_import_basis\":\"trusted editable local certificates bound to this project, toolchain, resolved input paths and complete part inventory; manual certificate edits can forge acceptance or axioms\",\"trusted_import_entries\":0,\"trusted_local_checkpoints\":true,\"wall_ns\":775829158,\"workers\":1}\n",
+    "stderr": "",
+    "json": {
+      "accepted": [
+        "A",
+        "Foo"
+      ],
+      "axioms": [
+        "P",
+        "witness"
+      ],
+      "batches": [
+        {
+          "batch": 0,
+          "certificate": "/workspaces/.agent-state/gpu-smt-captures/checker-review-e0-fix-20261104/added-part-focused/added-part-state/batch-0/certified.json",
+          "modules": 2,
+          "reused": false,
+          "roots": [
+            "Foo"
+          ],
+          "status": "complete"
+        }
+      ],
+      "checker_binary_hash": "18433795296349856358",
+      "checker_checkpoint_abi": 4,
+      "checkpoint_kind": "input-validated-local-certificates",
+      "closure_roots": 1,
+      "context_strategy": "independent-closures",
+      "cpu_ns": "707851000",
+      "cumulative_segment_cpu_ns": "2114347",
+      "entry_count_meaning": "module replay entries, not declaration checks or kernel calls",
+      "execution_path": "proofserve-parallel",
+      "import_only_modules": [],
+      "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)\n",
+      "mathlib_manifest": {
+        "fixedToolchain": false,
+        "lakeDir": ".lake",
+        "name": "reviewE0",
+        "packages": [],
+        "packagesDir": ".lake/packages",
+        "version": "1.2.0"
+      },
+      "module_check_entries": 2,
+      "module_set_hash": "8168623679821253472",
+      "module_set_hash_algorithm": "lean-hash64-toolchain-specific-noncryptographic",
+      "module_verifications": [
+        {
+          "action": "kernel_replay",
+          "context": "shared",
+          "frontier_insert_candidates": 2,
+          "kernel_call_count": null,
+          "module": "A",
+          "safe_input_constants": 2
+        },
+        {
+          "action": "kernel_replay",
+          "context": "shared",
+          "frontier_insert_candidates": 1,
+          "kernel_call_count": null,
+          "module": "Foo",
+          "safe_input_constants": 1
+        }
+      ],
+      "new_module_check_entries": 2,
+      "operational_errors": [],
+      "parallel": true,
+      "project_dirty": null,
+      "project_revision": null,
+      "project_revision_binds_artifacts": false,
+      "rejected": [],
+      "reuse_checked_imports": true,
+      "roots": [
+        "Foo"
+      ],
+      "schema_version": 1,
+      "segments": [
+        {
+          "batch": 0,
+          "reused": false,
+          "segment": 0
+        }
+      ],
+      "status": "complete",
+      "trusted_import_basis": "trusted editable local certificates bound to this project, toolchain, resolved input paths and complete part inventory; manual certificate edits can forge acceptance or axioms",
+      "trusted_import_entries": 0,
+      "trusted_local_checkpoints": true,
+      "wall_ns": 775829158,
+      "workers": 1
+    },
+    "self_limit": false
+  },
+  {
+    "case": "mutate-bvar",
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "json": null,
+    "self_limit": false
+  },
+  {
+    "case": "4-added-part-resume",
+    "exit": 2,
+    "stdout": "",
+    "stderr": "{\"error\":\"certified closure input part inventory changed: /workspaces/.agent-state/gpu-smt-captures/checker-review-e0-fix-20261104/contract5-review-fixtures/shadow/.lake/build/lib/lean/Foo.olean.private\",\"schema_version\":1,\"status\":\"error\"}\n",
+    "json": null,
+    "self_limit": false
+  }
+]

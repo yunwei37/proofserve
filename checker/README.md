@@ -145,12 +145,13 @@ Checkpoint files must be local trusted outputs, protected from modification by
 an adversary. Their Lean-serialized metadata uses unsafeCast. Hashes detect
 ordinary stale artifacts, not malicious collisions or tampering.
 
-Upstream unsafe and partial exclusions are preserved. An imported theorem
-with an identical stored body can reuse its earlier kernel judgment. A changed
-body or different provenance requires original module-local replay. A matching
-theorem interface can still remain in the shared frontier; the documented
-limits do not claim arbitrary malformed-artifact body equivalence. This is not
-a byte-for-byte audit of every redundant serialized proof. Axioms retain their Lean
+Upstream unsafe and partial exclusions are preserved. A changed theorem body
+or different provenance routes through original module-local replay. Upstream
+Replay can itself reuse an imported theorem with the same interface instead of
+checking its redundant stored body. A matching theorem interface can remain in
+the shared frontier; the documented limits do not claim arbitrary malformed-
+artifact body equivalence. This is not a byte-for-byte audit of every redundant
+serialized proof. Axioms retain their Lean
 meaning and are reported for the accepted closure, including segregated modules.
 No proof term is repaired or rewritten. This is not a demonstrated solution for
 checking a 260 GiB environment inside 16 GiB.

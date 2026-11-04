@@ -1,5 +1,11 @@
 # Certificate reuse repair after O's independent review
 
+> Subsequent status, 2026-11-04: a later independent code-only review of
+> e0c92d51 found additional adapter defects. This earlier report and its fresh
+> retained-frame result remain historical. Current repair qualification is
+> tracked in [e0 review repair](../e0-review-repair/README.md); no repaired
+> independent execution review or release freeze is claimed.
+
 This is a correctness repair and an untimed development qualification. It is
 not a release freeze or a new performance result. All work ran on E cores
 17–23 with Lean 4.34.1, without Lean -M or the P-core lease.
@@ -130,3 +136,8 @@ remain pending. No full-corpus check or final matrix was started.
 
 Raw data and the exact qualified binary remain at:
 /workspaces/.agent-state/gpu-smt-captures/checker-review-fix-20261104.
+
+The subsequent [3fe83c5a replay](../e0-review-repair/subexp-fresh-3fe83c5a/README.md)
+now completes the retained frame after the additional e0 review repairs:
+14,721 accepted, zero rejected, and the same 15 axioms. It supersedes the
+adapter qualification above; no independent execution review is claimed.

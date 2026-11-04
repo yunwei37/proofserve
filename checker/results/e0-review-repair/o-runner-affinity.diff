@@ -1,0 +1,11 @@
+--- prior validated runner
++++ current E10-23 runner
+@@ -88,7 +88,7 @@
+     q.add_argument("--private-only",action="store_true")
+     q.add_argument("--edges",action="store_true")
+     q.add_argument("--parts-only",action="store_true")
+-    a=q.parse_args();assert sorted(os.sched_getaffinity(0))==list(range(17,24))
++    a=q.parse_args();assert sorted(os.sched_getaffinity(0))==list(range(10,24))
+     a.checker=a.checker.resolve(strict=True);a.sdk=a.sdk.resolve(strict=True)
+     t=Review(a)
+     try:

@@ -37,6 +37,21 @@ def mutate(p,module,out,kind):
 def good(row):return row["exit"]==0 and isinstance(row["json"],dict)and row["json"].get("status")=="complete"
 def need(ok,why):
  if not OBSERVE:assert ok,why
+def added_part_inventory(d,p):
+ state=d/"added-part-state"
+ seed=check("4-added-part-seed",p,state,["Foo"],["--closure-roots","1"])
+ need(good(seed),seed)
+ cert=state/"batch-0/certified.json";before=cert.read_bytes()
+ target=p/".lake/build/lib/lean/Foo.olean.private"
+ assert not target.exists()
+ staged=d/"added-private-Foo.olean";mutate(p,"Foo",staged,"bvar")
+ shutil.copy2(staged,target)
+ try:
+  row=check("4-added-part-resume",p,state,["Foo"],["--closure-roots","1"])
+  need(row["exit"]==2 and not row["self_limit"] and not good(row) and "part inventory"in row["stderr"],row)
+  need(cert.read_bytes()==before,row)
+ finally:target.unlink()
+
 try:
  owned=os.environ.get("PROOFSERVE_REVIEW_WORK")
  if owned:Path(owned).mkdir(parents=True,exist_ok=False)
@@ -54,6 +69,7 @@ try:
   snap=q/".lake/build/lib/lean/ProofServeSegment0.olean";old=snap.read_bytes()
   mutate(q,"ProofServeSegment0",bad,"bvar");snap.write_bytes(bad.read_bytes())
   a=check("2-snapshot-name",q,d/"snapshot-name",["A","ProofServeSegment0"],["--closure-roots","0","--segment-modules","1"]);need(not good(a) and not a["self_limit"] and a["exit"] in (1,2),a);snap.write_bytes(old)
+  added_part_inventory(d,q)
   p=project(d,"duplicate",{"Aaa":"prelude\naxiom P : Prop\n","Bbb":"prelude\naxiom P : Prop\n","Ccc":"prelude\nimport Aaa\n"})
   mutate(p,"Ccc",bad,"duplicate-imports");(p/".lake/build/lib/lean/Ccc.olean").write_bytes(bad.read_bytes())
   for root in ["Aaa","Bbb","Ccc"]:

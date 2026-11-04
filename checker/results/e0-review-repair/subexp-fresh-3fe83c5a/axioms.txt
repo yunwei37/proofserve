@@ -1,0 +1,15 @@
+Classical.choice
+Lean.ofReduceBool
+Lean.ofReduceNat
+Lean.trustCompiler
+Quot.lcInv
+Quot.sound
+isScalarObj
+lcAny
+lcCast
+lcErased
+lcProof
+lcUnreachable
+lcVoid
+propext
+sorryAx

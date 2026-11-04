@@ -1,0 +1,14 @@
+--- unchanged semantic O runner
++++ explicit incomplete-artifact precondition adapter
+@@ -240,7 +240,10 @@
+     original.write_bytes(staged.read_bytes())
+     state=t.root/"part-certificate"
+     r,v=t.check("base-only",p,state,["Token"]);t.note("base-only-certificate","good base actually checked",r,v)
+-    assert r["exit"]==0
++    if r["exit"]!=0:
++        assert r["exit"]==2 and not isinstance(v,dict), (r,v)
++        t.note("base-only-incomplete-artifact-refused","module-system input without required parts is unsupported, matching fresh input requirements",r,v)
++        return
+     before=original.read_bytes();cert_before=(state/"batch-0/certified.json").read_bytes()
+     for suffix in [".server",".private"]:
+         shutil.copy2(Path(str(staged)+suffix),Path(str(original)+suffix))

@@ -305,7 +305,11 @@ and receipt publication remain part of the adapter's additional trust.
 The code-only independent review concerned e0c92d51. The implementation lane's
 new controls and result inspection are self-review (自审); they are not an
 independent execution review of the repaired binary. Earlier 14,721-module
-qualification remains historical until the new binary completes its fresh run.
+qualification remains historical. The [fresh repair replay](../results/e0-review-repair/subexp-fresh-3fe83c5a/README.md)
+now accepts the same 14,721 retained modules and reports the same 15 axioms.
+It matches the full O stream and 14,401 available module-local references;
+320 module-local references remain unavailable. This is E-core correctness
+qualification, not final timing or independent review.
 
 The supplied low-severity prelude-only Quot control did not reproduce a
 difference: both official modes and the checkpoint path accepted it. No
@@ -315,11 +319,20 @@ proof validation before new declarations enter the shared frontier. General
 malformed-artifact equivalence beyond the documented controls is not proved.
 
 Two finer context differences from the supplied review remain bounded
-limitations, not confirmed new counterexamples. A shared imported theorem keeps
-the already accepted body after its current body passes original module-local
-replay; the adapter does not prove arbitrary malformed-artifact body-equivalence.
+limitations, not confirmed new counterexamples. A shared matching theorem interface can keep
+the earlier body after original module-local replay. Upstream Replay.lean,
+lines 84–97 in the qualified SDK, can itself reuse an imported matching
+interface without checking the redundant body. The adapter does not prove
+arbitrary malformed-artifact body equivalence.
 The malformed non-Prop theorem control is rejected by the original kernel and
 therefore does not establish that proposed counterexample. Restored importer
 contexts initialize quotient support; the tested prelude-only Quot artifact
 still agrees with both official modes. No additional private ABI write was
 introduced for that unconfirmed difference.
+
+Ordinary segment resume trusts the checkpoint directory as a whole, including
+identity.json, segment logs and generated Lean snapshots. Do not delete its
+identity file or assemble a new directory from unrelated segment records.
+Those internal records are not individually authenticated portable certificates.
+The completed-batch validation described above does not convert arbitrary
+partial checkpoint assembly into a supported or tamper-resistant operation.

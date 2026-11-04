@@ -1,0 +1,4 @@
+case,exit,complete,self_limit,observation
+4-added-part-seed,0,True,False,good seed
+mutate-bvar,0,False,False,fixture mutation
+4-added-part-resume,2,False,False,new part refused before reuse; certificate unchanged

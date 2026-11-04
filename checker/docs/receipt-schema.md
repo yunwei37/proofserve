@@ -2,7 +2,8 @@
 
 The executable prints one JSON object and saves the same object as receipt.json
 in the checkpoint directory. Native exit codes are 0 for complete checking,
-1 for a kernel rejection, and 2 for an unsupported configuration or an operational
+1 for a native verification rejection (inspect its kernel or importer diagnostic),
+and 2 for an unsupported configuration or an operational
 failure. An interrupted process may leave successful segment records without a
 final receipt; these are not a complete verification.
 
