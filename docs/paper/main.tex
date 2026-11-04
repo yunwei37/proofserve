@@ -16,9 +16,9 @@ audit tool. Matched target windows retain 80.28--82.35\% of source-compilation
 wall time for two computational certificates, versus 0.46--6.54\% for two
 ordinary controls. Across 31 module-process pairs, the median checker/compiler
 CPU ratio is 0.451, with overlapping source-proxy classes.
-A prepared per-module census accounts for P-core and E-core CPU separately;
-full-corpus totals await completion, with the original probability sample
-retained for calibration. The default import graph omits 19.78\% of source modules and 33.30\%
+A per-module campaign accounts for P-core and E-core CPU separately;
+its report will distinguish measured coverage from a complete library total,
+with the original probability sample retained for calibration. The default import graph omits 19.78\% of source modules and 33.30\%
 of lexical kernel-decision sites. ProofServe combines dependency-aware
 parallel replay, restartable segments and receipts recording scope, axioms
 and costs. Its contribution is a usable integration of established
@@ -152,8 +152,8 @@ pending. This denominator change illustrates why a single ratio cannot
 stand for every boundary.
 
 \subsection{Full-corpus work and its distribution}
-A per-module census replaces population extrapolation with separately
-accounted native compilation work.
+A per-module campaign reports the native compilation work actually observed;
+a complete library total requires complete coverage.
 The frozen frame has 163,097 source units; executable modules and the
 configuration unit retain distinct statuses.
 Every successful record identifies its source and measurement commits,
@@ -165,16 +165,15 @@ choosing user-mode instructions afterwards does not turn it into a pass.
 
 \IfFileExists{generated/census/census-ready.tex}{%
 \input{generated/census/census-ready.tex}
-The complete ledger covers \CensusSourceUnits{} source units:
-\CensusNativeModules{} native modules and
-\CensusConfigurationUnits{} configuration units.
-Observed compiler work is \CensusPCPUHours{} P-core CPU-hours and
+\CensusScopeSummary{}
+Successful observed modules consume \CensusPCPUHours{} P-core CPU-hours and
 \CensusECPUHours{} E-core CPU-hours, without conversion or pooling.
 }{%
-The campaign is in progress. Its final summary will give native completion
-and failure coverage, separate P/E CPU totals, and the module-level
-distribution in Figure~\ref{fig:census}. No full-corpus numerical result is
-reported here before the completed ledger returns.
+The campaign is in progress; its cutoff ledger has not returned.
+The report will give successful native modules against the frozen frame,
+configuration units and the remaining failed, blocked or unattempted scope.
+If coverage is incomplete, Figure~\ref{fig:census} and P/E CPU sums describe
+only the successfully observed subset, rather than a library total.
 }
 
 The original 42 probability-sample observations remain a calibration panel,
@@ -194,15 +193,16 @@ support cost-by-coverage analysis when those labels are supplied.
 }{%
 \fbox{\begin{minipage}[c][3.1cm][c]{0.89\columnwidth}
 \centering
-Full-corpus distribution awaits completed records.\\[5pt]
+Observed-module distribution awaits returned records.\\[5pt]
 User-mode instruction quantiles across modules\\
 and separate P/E native CPU distributions.
 \end{minipage}}
 }
-\caption{The census distribution uses user-mode instructions, chosen after
+\caption{The observed-module distribution uses user-mode instructions, chosen after
 the failed total-instruction gate, and separate P/E CPU curves.
-The generator never fills missing observations with zero or converts
-E-core seconds to P-core seconds. Design implication: expose a heavy tail
+Completion coverage accompanies each curve; a cutoff subset is not extrapolated.
+Missing costs stay unobserved and P/E seconds are not converted.
+Design implication: expose a heavy tail
 and its execution conditions before summarizing a library by one cost.}
 \label{fig:census}
 \end{figure}
@@ -374,7 +374,7 @@ unmatched work is identified before considering speedup ratios.
 
 An independent kernel offers another performance/trust tradeoff.
 The earlier report completes 416 Comparator configurations in 80.1 active
-hours, with its longest PlanarPacking check taking about 10.9 hours
+hours
 \cite{openaiMathTooling2026}.
 A paired sweep finds median nanoda/Lean time 0.21, using four nanoda threads
 against one Lean thread, excluding export.
@@ -386,6 +386,18 @@ Nanoda is a separately implemented kernel \cite{nanoda2026};
 ProofServe instead uses Lean's original kernel plus coordination.
 The report's result motivates this alternative, without establishing
 which route is faster under our evaluation conditions.
+
+\paragraph{Library-checking coverage.}
+A stopped library check reports how much was verified.
+\IfFileExists{generated/system/library-check-summary.tex}{%
+\input{generated/system/library-check-summary.tex}
+}{%
+The bounded attempt has not returned a final scope count.
+}
+The report records unique accepts against the input frame, attempted roots,
+proof rejections, operational stops and unattempted scope, with tool/input
+commits and available official references. A verified prefix establishes
+that scope; unfinished work has no verdict or whole-library parity claim.
 
 \subsection{RQ4: default targets miss a third of decision sites}
 The default import graph misses 19.78\% of source modules and 33.30\% of
@@ -448,8 +460,6 @@ The latter describes itself as AI-generated proofs; the model and human
 editing fraction are undisclosed.
 The final run must use an extracted frozen installation, fresh checkpoints
 and the original compiled inputs, with a common-root official comparison.
-Historical previews, resumed-request clocks and the older AI-assisted
-CrocSwap case remain in the artifact and do not populate this table.
 Failed or resource-interrupted calls are operational outcomes rather than
 kernel rejection; incomplete whole-request CPU stays unknown.
 
@@ -476,29 +486,25 @@ service features are outside this evaluation.
 
 \paragraph{Artifact and reproduction.}
 The artifact is at \url{https://github.com/yunwei37/proofserve}.
-The project-facing workflow is \texttt{proofserve check /path/to/project},
-then \texttt{proofserve audit /path/to/project}.
-The native entry point builds with \texttt{cd checker; lake build};
-portable audit runs through \path{tools/audit/audit.py}.
-The data-only \path{data/openai-math-4eaee875/summarize.py}
-recomputes sample summaries. The evidence map records source revisions,
-plot inputs and the pending release obligations.
+Run \texttt{proofserve check /path/to/project}, then
+\texttt{proofserve audit /path/to/project}; build the native entry point with
+\texttt{cd checker; lake build}.
+The evidence map retains revisions, raw outcomes and clock definitions.
 \path{docs/paper/generate_census.py} and
-\path{docs/paper/generate_system.py} generate final tables and figures
-from W/M/O CSVs. Preview mode uses separate filenames and cannot
-create the files included by this paper.
+\path{docs/paper/generate_system.py} generate the figures and tables from
+committed CSVs, with explicit partial-coverage reporting.
+Preview output cannot populate the manuscript.
 
 \section{Limitations and related work}
-The measurements establish selected cost differences and broad population
-uncertainty, rather than a universal two-class cost law.
-The retained calibration sample has two draws per stratum and fragile
-heavy-tail uncertainty;
-static markers are proxies and lexical density is not runtime frequency.
+Selected cost differences do not define a universal two-class law.
+The calibration panel has two draws per stratum and fragile heavy-tail
+uncertainty; lexical markers are proxies, not runtime frequencies.
 Selected closures overlap, module-local replay trusts imports, and target
 windows exclude shared preparation. Cross-protocol ratios, cache/order
 effects, hardware differences and provisional SubexponentialSAT controls
-limit generalization. Whole-library checking cost and dynamic phase
-weights remain unmeasured.
+limit generalization. Partial campaign distributions describe observed modules and may be biased
+by completion order; whole-library totals require full coverage.
+Dynamic phase weights remain unmeasured.
 
 Finite verdict agreement does not prove arbitrary-extension safety,
 future budget sufficiency or soundness of the coordinator.
@@ -525,8 +531,8 @@ parallelism, receipt or serving mechanisms.
 
 \section{Conclusion}
 Matched measurements show both cheap proof checking and substantial
-certificate recomputation. The prepared per-module census will replace
-population extrapolation while retaining its failed-gate and pool boundaries.
+certificate recomputation. The per-module campaign will report its observed coverage and costs,
+retaining failed-gate and pool boundaries even if it stops short.
 Default coverage and repeatable verdicts answer different verification
 questions. ProofServe makes these boundaries explicit through check,
 audit and scoped receipts. Review-driven repairs strengthen the tested input and receipt boundaries;

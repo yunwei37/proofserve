@@ -22,7 +22,7 @@ Incomplete compilation is reported as observed-module coverage and subset costs;
 - [External installed checks](../data/external-projects/results.md): three cases with common-local-root parity, separate costs and retained official resource failures. Package/container CI passed finite controls; proof obligations differ.
 - [AI-generated case](paper/evidence.md#ai-generated-external-case-functional-preview-4-november): installed preview accepted a 10,753-module closure; nine local roots match official default. Source authorship is upstream-declared; the archive is not yet a clean release freeze and resumed costs are incomplete.
 - [Checker reviews](paper/evidence.md#retained-closure-checker-qualification-4-november): the old 2df1d9d7 result remains superseded. M's 3fe83c5a repair regressions and retained-case replay returned; 320 module-local references remain unavailable. Independent repaired-source review and final evaluation remain open; the checker is unfrozen.
-- [Six-page paper](paper/main.tex): census summary/distribution and final system tables are wired to the committed generators; final slots remain pending without preview values. Original42 is calibration evidence. The gate failure, post-hoc criterion and both review rounds are explicit.
+- [Six-page paper](paper/main.tex): prose and scripts are prepared for complete or cutoff-partial compilation/checking scope, with no PlanarPacking comparison. The census generator has an explicit partial mode. Six pages including references, zero missing macros and all-page visual self-review are verified; final numbers remain pending without preview values.
 
 The nealmcb report's 13.8-hour cloud wall measurement and 26-module CPU extrapolation remain distinct.
 

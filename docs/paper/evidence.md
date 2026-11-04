@@ -191,3 +191,35 @@ the existing paper-recovery PVC directory. No extra native measurement ran.
 The original W controller was observed live at PID 528400/birth10465017,
 using its frozen census-22core-9389daff-20261104 source and run directory.
 This establishes actual launch, not completion or a numerical corpus result.
+
+
+## Two-day closure and cutoff reporting (4 November)
+
+The user's exact instruction, “确保 2 天内收尾这个项目.”, is recorded in
+[user-instruction.md](../user-instruction.md). The project deadline is
+6 November 2026, 20:00 UTC; the complete schedule is in
+[research-plan.md](../research-plan.md). Root finishes prose/scripts by
+5 November, 12:00 and numerical integration by 6 November, 16:00.
+The compilation cutoff is 6 November, 04:00; final matrix and external
+timing then have six-hour and two-hour budgets in sequence, followed by
+library checking with a hard stop at 14:00. No separate PlanarPacking
+comparison is retained in the manuscript or planned evaluation.
+
+Section 3.2 and Figure 2 admit either a complete ledger or an explicitly
+partial cutoff ledger. generate_census.py --partial reports completed native
+coverage, configuration units and units without completed native costs;
+summed CPU and curves refer only to successful observed modules, split by P/E.
+It never imputes missing costs, extrapolates a cutoff subset, or reclassifies
+the failed gate. Partial-mode reduction and plot compilation were verified
+with the retained numerical validation input and explicitly synthetic coverage
+metadata outside Git; those counts are not corpus results. Preview mode still
+cannot create publication markers.
+
+The system evaluation reserves library-check-summary.tex for the actual
+returned count and scope. The text distinguishes unique accepted modules,
+attempted roots, proof rejection, operational interruption, remaining scope
+and available official-reference coverage. A stopped run is reported as the
+scope reached, without whole-library completion or parity. No current count
+has been invented or copied from the retained-case preview.
+
+The cutoff-ready manuscript compiled successfully on CPUs 8–9 in 2.339 seconds: six pages including references, 101,657 bytes, two figures, two tables and 14 citation keys. All six rendered pages were visually self-reviewed; no overfull boxes, undefined references or missing/measured/partialev/unproven macros remain. The initial seven-page build is retained outside Git; prose was shortened, without reducing the 10pt type size or changing existing measurement numbers. This is layout/self-review, not independent acceptance or a completed final evaluation.
