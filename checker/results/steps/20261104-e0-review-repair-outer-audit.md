@@ -28,3 +28,8 @@ review. No freeze or performance acceptance is warranted. The whole corpus,
 final matrix, final version coverage and independent repaired-code review
 remain outside this completed correctness boundary. All result inspection
 here is 自审.
+
+Final CI at 1f80c14a completed successfully: engine 41894137393,
+benchmark-smoke 41894137395, and all 90 review-runner command records.
+Native core source remains 3fe83c5a. This is mechanical execution, not
+independent review or release freeze.

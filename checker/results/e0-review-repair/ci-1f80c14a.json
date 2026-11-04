@@ -1,0 +1,38 @@
+{
+  "commit": "1f80c14a4156cb9f00bd55bd715b07625e09d345",
+  "checked_at": "2026-11-04T19:16:17.720351+00:00",
+  "engine": {
+    "id": 41894137393,
+    "conclusion": "success",
+    "url": "https://github.com/yunwei37/proofserve/actions/runs/41894137393"
+  },
+  "smoke": {
+    "id": 41894137395,
+    "conclusion": "success",
+    "url": "https://github.com/yunwei37/proofserve/actions/runs/41894137395"
+  },
+  "jobs": [
+    {
+      "id": 126798990722,
+      "name": "checker-contract",
+      "conclusion": "success"
+    },
+    {
+      "id": 126798991168,
+      "name": "rust",
+      "conclusion": "success"
+    },
+    {
+      "id": 126798991266,
+      "name": "native-repl-contract",
+      "conclusion": "success"
+    },
+    {
+      "id": 126798993524,
+      "name": "container-package",
+      "conclusion": "skipped"
+    }
+  ],
+  "review_command_records": 90,
+  "meaning": "mechanical execution, not independent review; no checker core change since 3fe83c5a"
+}

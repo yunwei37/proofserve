@@ -2,7 +2,7 @@
 
 Source: 3fe83c5a80ea29f9ea5911d144806ffe70836d18, unchanged build10.
 Lean 4.34.1; two workers; E cores 10–23; a new empty checkpoint directory;
-3,977 retained roots. This is an untimed correctness preview, not the final
+3,977 retained roots. This is a correctness preview, not the final
 system evaluation, a whole-corpus run, or an independent execution review.
 
 The actual native process returned 0 and produced complete, with all 14,721

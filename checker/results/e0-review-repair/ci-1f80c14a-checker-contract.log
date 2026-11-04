@@ -1,0 +1,201 @@
+﻿2026-11-04T19:09:08.9646613Z Current runner version: '2.338.2'
+2026-11-04T19:09:08.9668057Z ##[group]Runner Image Provisioner
+2026-11-04T19:09:08.9668760Z Hosted Compute Agent
+2026-11-04T19:09:08.9669206Z Version: 20261021.618
+2026-11-04T19:09:08.9669613Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-04T19:09:08.9670068Z Build Date: 2026-10-21T00:45:21Z
+2026-11-04T19:09:08.9670579Z Worker ID: {b548c28b-7685-4f6e-9595-32a81db44eb2}
+2026-11-04T19:09:08.9671067Z Region: centralus
+2026-11-04T19:09:08.9671470Z Cloud: Azure
+2026-11-04T19:09:08.9671847Z ##[endgroup]
+2026-11-04T19:09:08.9672722Z ##[group]Operating System
+2026-11-04T19:09:08.9673170Z Ubuntu
+2026-11-04T19:09:08.9673588Z 24.04.5
+2026-11-04T19:09:08.9673947Z LTS
+2026-11-04T19:09:08.9674299Z ##[endgroup]
+2026-11-04T19:09:08.9674903Z ##[group]Runner Image
+2026-11-04T19:09:08.9675418Z Image: ubuntu-24.04
+2026-11-04T19:09:08.9675816Z Version: 20261025.353.1
+2026-11-04T19:09:08.9676736Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-04T19:09:08.9677657Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-11-04T19:09:08.9678319Z ##[endgroup]
+2026-11-04T19:09:08.9679117Z ##[group]GITHUB_TOKEN Permissions
+2026-11-04T19:09:08.9680633Z Contents: read
+2026-11-04T19:09:08.9681012Z Metadata: read
+2026-11-04T19:09:08.9681797Z Packages: read
+2026-11-04T19:09:08.9682206Z ##[endgroup]
+2026-11-04T19:09:08.9684071Z Secret source: Actions
+2026-11-04T19:09:08.9685167Z Cache mode: write
+2026-11-04T19:09:08.9685674Z Prepare workflow directory
+2026-11-04T19:09:08.9967398Z Prepare all required actions
+2026-11-04T19:09:09.0002871Z Getting action download info
+2026-11-04T19:09:09.2177647Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-04T19:09:09.3922386Z Complete job name: checker-contract
+2026-11-04T19:09:09.4576441Z ##[group]Run actions/checkout@v4
+2026-11-04T19:09:09.4577046Z with:
+2026-11-04T19:09:09.4577304Z   sparse-checkout: checker
+tools/audit
+
+2026-11-04T19:09:09.4577644Z   repository: yunwei37/proofserve
+2026-11-04T19:09:09.4579649Z   token: ***
+2026-11-04T19:09:09.4579881Z   ssh-strict: true
+2026-11-04T19:09:09.4580116Z   ssh-user: git
+2026-11-04T19:09:09.4580361Z   persist-credentials: true
+2026-11-04T19:09:09.4580620Z   clean: true
+2026-11-04T19:09:09.4580861Z   sparse-checkout-cone-mode: true
+2026-11-04T19:09:09.4581140Z   fetch-depth: 1
+2026-11-04T19:09:09.4581374Z   fetch-tags: false
+2026-11-04T19:09:09.4581613Z   show-progress: true
+2026-11-04T19:09:09.4581856Z   lfs: false
+2026-11-04T19:09:09.4582078Z   submodules: false
+2026-11-04T19:09:09.4582327Z   set-safe-directory: true
+2026-11-04T19:09:09.4582603Z   allow-unsafe-pr-checkout: false
+2026-11-04T19:09:09.4582955Z ##[endgroup]
+2026-11-04T19:09:09.6423726Z Syncing repository: yunwei37/proofserve
+2026-11-04T19:09:09.6426014Z ##[group]Getting Git version info
+2026-11-04T19:09:09.6426718Z Working directory is '/home/runner/work/proofserve/proofserve'
+2026-11-04T19:09:09.6427753Z [command]/usr/bin/git version
+2026-11-04T19:09:09.6484566Z git version 2.56.0
+2026-11-04T19:09:09.6501076Z ##[endgroup]
+2026-11-04T19:09:09.6514860Z Temporarily overriding HOME='/home/runner/work/_temp/f8d3044c-a9b3-4685-b95f-9e3bd7515f43' before making global git config changes
+2026-11-04T19:09:09.6516414Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T19:09:09.6519305Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/proofserve/proofserve
+2026-11-04T19:09:09.6574062Z Deleting the contents of '/home/runner/work/proofserve/proofserve'
+2026-11-04T19:09:09.6579744Z ##[group]Initializing the repository
+2026-11-04T19:09:09.6583598Z [command]/usr/bin/git init /home/runner/work/proofserve/proofserve
+2026-11-04T19:09:09.6670558Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-04T19:09:09.6671294Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-04T19:09:09.6672213Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-04T19:09:09.6673047Z hint: call:
+2026-11-04T19:09:09.6673330Z hint:
+2026-11-04T19:09:09.6673732Z hint: 	git config --global init.defaultBranch <name>
+2026-11-04T19:09:09.6674094Z hint:
+2026-11-04T19:09:09.6674443Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-04T19:09:09.6675433Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-04T19:09:09.6675913Z hint:
+2026-11-04T19:09:09.6676159Z hint: 	git branch -m <name>
+2026-11-04T19:09:09.6676426Z hint:
+2026-11-04T19:09:09.6676912Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-04T19:09:09.6682206Z Initialized empty Git repository in /home/runner/work/proofserve/proofserve/.git/
+2026-11-04T19:09:09.6694559Z [command]/usr/bin/git remote add origin https://github.com/yunwei37/proofserve
+2026-11-04T19:09:09.6750637Z ##[endgroup]
+2026-11-04T19:09:09.6751377Z ##[group]Disabling automatic garbage collection
+2026-11-04T19:09:09.6755364Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-04T19:09:09.6793647Z ##[endgroup]
+2026-11-04T19:09:09.6794120Z ##[group]Setting up auth
+2026-11-04T19:09:09.6801080Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T19:09:09.6842382Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-04T19:09:09.7169143Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T19:09:09.7215274Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-04T19:09:09.7430935Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T19:09:09.7476858Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-04T19:09:09.7692886Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-04T19:09:09.7742992Z ##[endgroup]
+2026-11-04T19:09:09.7743604Z ##[group]Fetching the repository
+2026-11-04T19:09:09.7752215Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +1f80c14a4156cb9f00bd55bd715b07625e09d345:refs/remotes/origin/main
+2026-11-04T19:09:10.3665364Z From https://github.com/yunwei37/proofserve
+2026-11-04T19:09:10.3666403Z  * [new ref]         1f80c14a4156cb9f00bd55bd715b07625e09d345 -> origin/main
+2026-11-04T19:09:10.3668997Z ##[endgroup]
+2026-11-04T19:09:10.3669965Z ##[group]Determining the checkout info
+2026-11-04T19:09:10.3671609Z ##[endgroup]
+2026-11-04T19:09:10.3677555Z ##[group]Setting up sparse checkout
+2026-11-04T19:09:10.3678663Z [command]/usr/bin/git sparse-checkout set checker tools/audit
+2026-11-04T19:09:10.3737856Z ##[endgroup]
+2026-11-04T19:09:10.3738680Z ##[group]Checking out the ref
+2026-11-04T19:09:10.3739374Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-04T19:09:11.0998878Z Switched to a new branch 'main'
+2026-11-04T19:09:11.1004086Z branch 'main' set up to track 'origin/main'.
+2026-11-04T19:09:11.1015242Z ##[endgroup]
+2026-11-04T19:09:11.1077276Z [command]/usr/bin/git log -1 --format=%H
+2026-11-04T19:09:11.1114999Z 1f80c14a4156cb9f00bd55bd715b07625e09d345
+2026-11-04T19:09:11.1338539Z ##[group]Run version="$(sed -n 's#leanprover/lean4:v##p' checker/lean-toolchain)"
+2026-11-04T19:09:11.1340030Z [36;1mversion="$(sed -n 's#leanprover/lean4:v##p' checker/lean-toolchain)"[0m
+2026-11-04T19:09:11.1341959Z [36;1mcurl -fL "https://github.com/leanprover/lean4/releases/download/v$version/lean-$version-linux.tar.zst" -o "$RUNNER_TEMP/lean.tar.zst"[0m
+2026-11-04T19:09:11.1344022Z [36;1mtar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"[0m
+2026-11-04T19:09:11.1345319Z [36;1mecho "$RUNNER_TEMP/lean-$version-linux/bin" >> "$GITHUB_PATH"[0m
+2026-11-04T19:09:11.1367242Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-04T19:09:11.1368171Z ##[endgroup]
+2026-11-04T19:09:11.1506237Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-11-04T19:09:11.1508001Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-11-04T19:09:11.1508769Z 
+2026-11-04T19:09:11.4370336Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-11-04T19:09:11.4371820Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-11-04T19:09:11.9235095Z 
+2026-11-04T19:09:12.8189278Z  30  553M   30  168M    0     0   218M      0  0:00:02 --:--:--  0:00:02  218M
+2026-11-04T19:09:12.8189973Z 100  553M  100  553M    0     0   331M      0  0:00:01  0:00:01 --:--:--  430M
+2026-11-04T19:09:22.2946817Z ##[group]Run lake -d checker build
+2026-11-04T19:09:22.2947214Z [36;1mlake -d checker build[0m
+2026-11-04T19:09:22.2947477Z [36;1mpython3 checker/tests/contract.py[0m
+2026-11-04T19:09:22.2947744Z [36;1mpython3 tools/audit/test_audit.py[0m
+2026-11-04T19:09:22.2968710Z shell: /usr/bin/bash -e {0}
+2026-11-04T19:09:22.2968880Z ##[endgroup]
+2026-11-04T19:09:22.9153735Z info: proofserveChecker: no previous manifest, creating one from scratch
+2026-11-04T19:09:22.9154101Z info: toolchain not updated; already up-to-date
+2026-11-04T19:09:23.3150335Z ✔ [2/12] Built proofserveChecker/libproofserve.static (299ms)
+2026-11-04T19:09:24.0162000Z ✔ [4/12] Built ProofServe.Core (1.1s)
+2026-11-04T19:09:24.5164957Z ✔ [5/12] Built ProofServe.Core:c.o (492ms)
+2026-11-04T19:09:26.1177475Z ✔ [6/12] Built ProofServe.Stream (2.1s)
+2026-11-04T19:09:27.1227240Z ✔ [7/12] Built ProofServe.ModulePlan (982ms)
+2026-11-04T19:09:27.3226095Z ✔ [8/12] Built ProofServe.ModulePlan:c.o (231ms)
+2026-11-04T19:09:27.6223160Z ✔ [9/12] Built ProofServe.Stream:c.o (1.5s)
+2026-11-04T19:09:29.8246118Z ✔ [10/12] Built Main (2.7s)
+2026-11-04T19:09:34.4297316Z ✔ [11/12] Built Main:c.o (4.6s)
+2026-11-04T19:09:35.0316789Z ✔ [12/12] Built «proofserve-check»:exe (647ms)
+2026-11-04T19:09:35.0397235Z Build completed successfully (12 jobs).
+2026-11-04T19:09:35.6835902Z info: proofserveFixture: no previous manifest, creating one from scratch
+2026-11-04T19:09:35.6846519Z info: toolchain not updated; already up-to-date
+2026-11-04T19:09:35.7833710Z ✔ [2/4] Built Base (53ms)
+2026-11-04T19:09:35.8835231Z ✔ [3/4] Built Fixture (51ms)
+2026-11-04T19:09:35.8895807Z Build completed successfully (4 jobs).
+2026-11-04T19:10:02.9555966Z ✔ [4/5] Built All (49ms)
+2026-11-04T19:10:02.9567660Z Build completed successfully (5 jobs).
+2026-11-04T19:10:07.5853891Z ✔ [4/5] Built AFirst (46ms)
+2026-11-04T19:10:07.5919065Z Build completed successfully (5 jobs).
+2026-11-04T19:10:16.5308671Z ✔ [2/3] Built ShadowLeft (54ms)
+2026-11-04T19:10:16.5325554Z Build completed successfully (3 jobs).
+2026-11-04T19:10:17.0405384Z ✔ [2/3] Built ShadowRight (53ms)
+2026-11-04T19:10:17.0418656Z Build completed successfully (3 jobs).
+2026-11-04T19:10:21.5417795Z ✔ [3/5] Built Pkg.Child (51ms)
+2026-11-04T19:10:21.5418142Z ✔ [4/5] Built Pkg (47ms)
+2026-11-04T19:10:21.5432014Z Build completed successfully (5 jobs).
+2026-11-04T19:10:44.7494235Z ✔ [4/5] Built ZAfter (50ms)
+2026-11-04T19:10:44.7588195Z Build completed successfully (5 jobs).
+2026-11-04T19:10:57.0928850Z ✔ [4/5] Built ZMid (49ms)
+2026-11-04T19:10:57.1025876Z Build completed successfully (5 jobs).
+2026-11-04T19:10:57.8953894Z ✔ [5/6] Built ZZLast (52ms)
+2026-11-04T19:10:57.9071886Z Build completed successfully (6 jobs).
+2026-11-04T19:11:06.7724972Z ✔ [3/4] Built ZUseLeft (50ms)
+2026-11-04T19:11:06.7840695Z Build completed successfully (4 jobs).
+2026-11-04T19:11:07.5688644Z ✔ [3/4] Built ZUseRight (53ms)
+2026-11-04T19:11:07.5791676Z Build completed successfully (4 jobs).
+2026-11-04T19:11:14.9928987Z ✔ [3/4] Built Shared (53ms)
+2026-11-04T19:11:15.0036392Z Build completed successfully (4 jobs).
+2026-11-04T19:11:15.7933383Z ✔ [4/5] Built ZAllowed (49ms)
+2026-11-04T19:11:15.8030237Z Build completed successfully (5 jobs).
+2026-11-04T19:11:16.6140631Z ✔ [3/4] Built ZBlocked (52ms)
+2026-11-04T19:11:16.6229181Z Build completed successfully (4 jobs).
+2026-11-04T19:11:21.5966469Z ✔ [2/3] Built Parts (48ms)
+2026-11-04T19:11:21.5977648Z Build completed successfully (3 jobs).
+2026-11-04T19:14:28.5079272Z {"observe": false, "cases": 90, "completed": true}
+2026-11-04T19:14:28.5575290Z {"correct": true, "axioms": true, "resume": true, "bad_proofs": 3, "closure_batches": true, "batch_resume": true, "changed_input_rejected": true, "root_file": true, "covered_roots_skipped": true, "empty_root_file_rejected": true, "empty_umbrella": true, "empty_umbrella_bad_proofs": 3, "default_empty_umbrella": true, "stale_empty_plan_rejected": true, "incompatible_empty_imports_not_accepted": true, "checked_import_reuse": true, "hidden_bad_dependency_rejected": true, "changed_completed_dependency_rejected": true, "live_changed_dependency_rejected": true, "incompatible_cached_contexts": true, "unused_completed_input_change_rejected": true, "leaf_empty_aggregator_detected": true, "sibling_scope_rejected": true, "dependency_root_order": true, "permuted_batch_roots": true, "cached_segment_base_restored": true, "authentic_cross_project_certificate_refused": true, "optional_part_inventory_refused": true, "receipt_lean_refused": true, "child_abi_refused": true, "disk_full_fails_closed": true}
+2026-11-04T19:14:28.6285723Z ....................
+2026-11-04T19:14:28.6286448Z ----------------------------------------------------------------------
+2026-11-04T19:14:28.6286790Z Ran 20 tests in 0.015s
+2026-11-04T19:14:28.6286908Z 
+2026-11-04T19:14:28.6286979Z OK
+2026-11-04T19:14:28.6484585Z Post job cleanup.
+2026-11-04T19:14:28.7114498Z [command]/usr/bin/git version
+2026-11-04T19:14:28.7153894Z git version 2.56.0
+2026-11-04T19:14:28.7184725Z Temporarily overriding HOME='/home/runner/work/_temp/3b5edcff-6cef-4aac-8139-531a29f2f30d' before making global git config changes
+2026-11-04T19:14:28.7185593Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T19:14:28.7189241Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/proofserve/proofserve
+2026-11-04T19:14:28.7236193Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T19:14:28.7278996Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-04T19:14:28.7579899Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T19:14:28.7619342Z http.https://github.com/.extraheader
+2026-11-04T19:14:28.7628997Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-04T19:14:28.7679682Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-04T19:14:28.7948425Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T19:14:28.7997553Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-04T19:14:28.8412658Z Cleaning up orphan processes
+2026-11-04T19:14:28.8683913Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

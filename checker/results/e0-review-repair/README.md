@@ -118,8 +118,9 @@ presence-inventory regression now passes as well: a valid ordinary seed gains
 an optional bad private part without changing its exported artifact or certificate.
 Resume returns 2, emits no complete stdout, reports the changed inventory, and
 leaves the certificate unchanged. It ran only after the full replay retired.
-The three new command records join the existing CI entry point; the previously
-completed 87-command CI did not yet contain this additional control.
+The three new command records join the existing CI entry point. CI at
+1f80c14a completed the expanded 90-command runner; the earlier 87-command
+CI did not yet contain this control.
 
 CI run 41860036796 at cdf86d68 includes unchanged checker source from 3fe83c5a.
 Its checker-contract job actually completed successfully and its log contains
@@ -140,3 +141,12 @@ The 36,209 input-path/hash pairs match the old frame. Acceptance agrees with
 O\'s full stream and all 14,401 available module-local references; 320 remain
 unavailable. See the linked fresh result for exact reference scopes and preview
 CPU/wall values. No final timing, whole-corpus completion or freeze is implied.
+
+## Final CI execution
+
+Engine run 41894137393 and benchmark-smoke 41894137395 at 1f80c14a
+both completed successfully. The checker-contract log confirms 90 review-runner
+command records; Rust and native-repl also passed, and container-package was
+skipped by its existing workflow condition. ci-1f80c14a.json and the retained
+checker job log identify the exact source and execution. This does not supply
+independent execution review or qualify a release freeze.

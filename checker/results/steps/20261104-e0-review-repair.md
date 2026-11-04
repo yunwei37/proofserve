@@ -78,3 +78,8 @@ declared importer context, a nonzero child exit, publication success and root
 coverage must all agree before accepting. The now-complete real replay
 confirms this retained input frame; it does not prove every malformed-artifact
 edge or make editable local certificates untrusted proofs.
+
+Final CI at 1f80c14a completed successfully: engine 41894137393,
+benchmark-smoke 41894137395, and all 90 review-runner command records.
+Native core source remains 3fe83c5a. This is mechanical execution, not
+independent review or release freeze.
