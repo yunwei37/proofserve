@@ -1,0 +1,22 @@
+{
+  "observed_utc": "2026-11-04T00:00:53.352949+00:00",
+  "target": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/installed-v1",
+  "kind": "rebuildable extracted SDK/binaries; no source, logs, receipts or scientific records",
+  "file_count": 17761,
+  "logical_file_bytes": 3418984038,
+  "unique_allocated_bytes_eligible_for_release": 3462156288,
+  "raw_archive_retained": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/bundle-v1/proofserve-0.1.0-linux-x86_64.tar.gz",
+  "archive_bytes": 954665072,
+  "qualification": "bundle-qualification-v3 plus all3 external native/audit checks and official common-root comparisons completed",
+  "source_commit": "703055a11b749013d7251d93bb7127bd5222a447",
+  "checker_commit": "c8e7c615413819bee0931dde09450b8222c6d62a",
+  "process_readers": [],
+  "before_disk_used": 111933382656,
+  "before_disk_total": 134951424000,
+  "review": "\u81ea\u5ba1",
+  "complete": true,
+  "after_disk_used": 108468416512,
+  "observed_filesystem_free_increase_bytes": 3464966144,
+  "after_used_fraction": 0.8037589622766782,
+  "attribution": "Filesystem interval is concurrent; unique-inode allocation is also reported. All failed/successful raw qualification and evaluation records remain outside the removed installation."
+}
