@@ -1,3 +1,18 @@
+## E-core correctness stop,2026-11-04
+
+Review: 自审. The continuation retired after the12GiB sampled own-tree RSS
+watchdog fired on **OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.QueryNodeLoopSpace**.
+Sampled peak12,908,376,064bytes (12.022GiB), rc-9; no accept/reject event,
+no cgroupOOM. The1-second sampler can overshoot. Charged-cgroup peak
+6,192,500,736bytes is a different counter and does not negate the RSS stop.
+
+Accepted module-local reference union is **14401/14721** (13208legacy,
+1193untimed E). **320 remain:1resource-stopped,319unreached**.
+No full reference parity is claimed. No cap increase or failed-root retry is
+planned. The fixed three malformed-proof pairs will be run independently on8–9;
+they cannot fill the missing reference verdicts. Source/stream coverage and
+all earlier primary CPU/wall costs remain unchanged and are prototype-only.
+
 ## Allocation and correctness status,11-04
 
 The old timed reference controller retired at02:02:06UTC at13208/14721

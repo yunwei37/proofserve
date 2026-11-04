@@ -1,0 +1,56 @@
+{
+  "review": "\u81ea\u5ba1",
+  "reference_complete": false,
+  "legacy_accepted": 13208,
+  "e89_accepted": 1193,
+  "combined_accepted": 14401,
+  "expected": 14721,
+  "remaining": 320,
+  "operational_resource_failures": 1,
+  "unreached": 319,
+  "failed_module": "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.QueryNodeLoopSpace",
+  "failed_cell": {
+    "key": "reference-14401",
+    "requested_key": "reference-14401",
+    "args": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=5",
+      "1400",
+      "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/scale-study/measurement-v1/audited-stream",
+      "one",
+      "none",
+      "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.QueryNodeLoopSpace"
+    ],
+    "affinity": [
+      8,
+      9
+    ],
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod17dda466_3f7a_4fed_9950_d3d49c55017f.slice/proofserve-o-project-235183-reference-14401.scope",
+    "memory_max_bytes": 12616466432,
+    "measured": false,
+    "limit_s": 1400,
+    "returncode": -9,
+    "cgroup_peak_bytes": 6192500736,
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n"
+  },
+  "failure": {
+    "error": "AssertionError(('native correctness/operational outcome', 'reference-14401'))",
+    "phase": "references",
+    "completed_e89": 1193,
+    "completed_legacy": 13208,
+    "performance_eligible": false,
+    "resource_observation": {
+      "peak_tree_rss": 12908376064,
+      "peak_scope": "current controller invocation, not per module",
+      "rss_budget_stop": true
+    }
+  },
+  "failed_events": [],
+  "cpu_wall_cost": null,
+  "source_stream_primary_costs_unchanged": true,
+  "full_reference_parity": false,
+  "controls_pending": true,
+  "original_controller_retired": true,
+  "scope": "One isolated original-kernel root exceeded12GiB sampled own-tree RSS; not proof rejection. No retry or cap increase."
+}
