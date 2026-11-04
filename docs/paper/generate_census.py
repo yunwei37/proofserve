@@ -224,13 +224,17 @@ def main():
                     machine_wall_s=outcome.get("machine_wall_s"))
     (args.out / (prefix + "census-provenance.json")).write_text(json.dumps(manifest, indent=2) + "\n")
     if not args.preview:
-        macros = [r"\def\CensusNativeModules{" + f"{len(values):,}" + "}"]
+        macros = [r"\def\CensusNativeModules{" + f"{len(values):,}" + "}",
+                  r"\def\CensusSourceUnits{" + f'{outcome["total_source_units"]:,}' + "}",
+                  r"\def\CensusConfigurationUnits{" + str(len(outcome.get("configuration_units", []))) + "}"]
         for row in summaries:
             macros.append(r"\def\Census" + row["pool"] + "CPUHours{" + tex_number(row["cpu_hours"]) + "}")
-        (args.out / "census-ready.tex").write_text("\n".join(macros) + "\n")
+
     if args.tectonic:
         executable = shutil.which(args.tectonic) or args.tectonic
         subprocess.run([executable, figure_path.name], cwd=args.out, check=True)
+        if not args.preview:
+            (args.out / "census-ready.tex").write_text("\n".join(macros) + "\n")
     print(json.dumps(manifest))
 
 

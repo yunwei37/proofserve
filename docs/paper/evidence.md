@@ -85,7 +85,7 @@ The context-visibility counterexample in the design section is recorded in [root
 
 ## Installed external checking and package qualification (4 November integration)
 
-The paper now replaces the functional Pending table with three measured external cases. The scaling matrix remains Pending. Only O's published tool-form observations are admitted here; M's ongoing matrix is preview-only and excluded from final paper performance.
+Historical 4 November integration placed three external observations in the paper. Under the latest preparation instruction those preview costs are removed from the current manuscript and retained here only as historical evidence. The scaling matrix remains Pending. Only O's published tool-form observations are admitted here; M's ongoing matrix is preview-only and excluded from final paper performance.
 
 [measurements.csv](../../data/external-projects/measurements.csv) and [acceptance.json](../../data/external-projects/acceptance.json) were published at **d0c41e24d1800b69427d692de5f6bcafdf94bb48**. [results.md](../../data/external-projects/results.md) incorporates the package/container closeout at **b3e28f4d8a1a726e51d68cc172c4b0e1a8a7a3b5**. Timed bundle **703055a11b749013d7251d93bb7127bd5222a447**, checker **c8e7c615413819bee0931dde09450b8222c6d62a**, Lean **4.34.1 / 5045d005**, four native workers.
 
@@ -146,3 +146,21 @@ Previous 3 November revision check: **6 pages / 101,497 bytes**, four displays, 
 4 November integration check: **6 pages / 103,788 bytes**, four displays and 14 resolved references; no overfull boxes or evidence-grade macros. All six final pages visually reviewed; compile rc0 in 2.554 seconds on E22–23. This is self-review. The new external table comes only from committed installed-tool measurements; original42 and historical Figure 1 are unchanged. Root ran no new native measurement, changed no owner implementation, and started no replacement collector.
 
 Latest option-A disclosure check (4 November): six pages / 104,284 bytes, two figures and two tables, 14 resolved references, no overfull boxes. Compilation returned 0 in 2.288 seconds on CPUs 8–9; all six pages were visually self-reviewed. The only manuscript edit is the census-protocol disclosure and timing-scope clarification. Original42 numerical results, figure inputs, title and RQs are unchanged. Build/log/render outputs remain under /workspaces/.agent-state/gpu-smt-paper-recovery-20261030/six-page-census-A-20261104/. This is self-review, not independent acceptance or a full-census result.
+
+
+## Prepared result integration (4 November)
+
+The committed generate_census.py and generate_system.py read the published W/M/O
+schemas and output final TeX/CSV/provenance artifacts. Real five-module records
+validate census structure and absent-cost handling; real unreplicated gate rows
+validate separate P/E numerical aggregation. M loaded previews and O freeze
+previews validate grouping, interrupted accounting and TeX output. None of these
+preview values is included by main.tex: preview filenames differ and no ready
+marker is produced. README.md gives the one-command handoffs.
+
+Section 3.2 now reserves observed census totals and distributions, retaining
+original42 only for calibration. Figure 2 replaces the generic workflow diagram;
+the paper still has two figures and two tables. Both system tables are pending
+final frozen data, and the old external timing numbers are no longer in the
+current paper. This layout compiled with rc0 on CPUs 8–9, six pages / 98,443 bytes,
+14 citations and no overfull boxes; all pages were visually self-reviewed.

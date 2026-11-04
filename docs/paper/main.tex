@@ -16,14 +16,13 @@ audit tool. Matched target windows retain 80.28--82.35\% of source-compilation
 wall time for two computational certificates, versus 0.46--6.54\% for two
 ordinary controls. Across 31 module-process pairs, the median checker/compiler
 CPU ratio is 0.451, with overlapping source-proxy classes.
-A completed 42-module probability sample estimates 279.12 CPU-hours of
-library compilation; its nominal 95\% interval, 95.18--463.06 hours, remains
-wide. The default import graph omits 19.78\% of source modules and 33.30\%
+A prepared per-module census accounts for P-core and E-core CPU separately;
+full-corpus totals await completion, with the original probability sample
+retained for calibration. The default import graph omits 19.78\% of source modules and 33.30\%
 of lexical kernel-decision sites. ProofServe combines dependency-aware
 parallel replay, restartable segments and receipts recording scope, axioms
 and costs. Its contribution is a usable integration of established
-mechanisms and scoped evaluation. Three external projects have matching
-local-root acceptance with the official checker; release scaling remains pending.
+mechanisms and scoped evaluation. Final release scaling and external-project measurements remain pending.
 \end{abstract}
 
 \section{Introduction}
@@ -40,15 +39,14 @@ agenda \cite{leanFroY4,lean435Check}. A public report on the same OpenAI
 library performs a complete cloud build and extensive independent checking
 \cite{openaiMathTooling2026}. It proposes kernel computation as an explanation
 for expensive checks from three source examples. Our empirical increment
-is a matched module-level measurement of that explanation, a probability
-sample with explicit uncertainty, and a coverage analysis at a different
-corpus revision. Our systems contribution is ProofServe's original-kernel
+is a matched module-level measurement of that explanation, a per-module census with explicit condition-dependent accounting,
+and a coverage analysis at a different corpus revision. Our systems contribution is ProofServe's original-kernel
 workflow and auditable receipts, evaluated through its release-form interface.
 The four questions follow these boundaries:
 \begin{description}
 \item[RQ1] How do checking costs differ between stored mathematical proofs
 and computational certificates?
-\item[RQ2] What compilation cost and coverage can a fixed library sample establish?
+\item[RQ2] How is compilation work distributed across the pinned library?
 \item[RQ3] How does parallel original-kernel checking trade wall time,
 CPU work and additional trusted code?
 \item[RQ4] What do default builds, repeated verdicts and axiom receipts
@@ -153,71 +151,81 @@ whole-closure checker numerator. Its independent reference controls remain
 pending. This denominator change illustrates why a single ratio cannot
 stand for every boundary.
 
-\subsection{A complete sample still gives a wide interval}
-Completing all 42 original draws yields a full-frame estimate of
-279.12 compiler CPU-hours, with a nominal 95\% interval of
-95.18--463.06 hours.
-The stratified estimator sums each stratum's module count times its sample
-mean; its finite-population variance sums
-$N_h^2(1-n_h/N_h)s_h^2/n_h$.
-A Student-$t$ approximation with Satterthwaite degrees of freedom 2.61
-produces the interval. The marked strata contribute 57.55 CPU-hours,
-20.62\% of estimated compiler work, despite covering only 5,848 files.
-This is a source-proxy compiler share; dynamic kernel phase weights require
-their own measurements. The independent precision panel remains separate.
+\subsection{Full-corpus work and its distribution}
+A per-module census replaces population extrapolation with separately
+accounted native compilation work.
+The frozen frame has 163,097 source units; executable modules and the
+configuration unit retain distinct statuses.
+Every successful record identifies its source and measurement commits,
+P/E pool, native user/system CPU, wall time and user-mode instructions.
+Failed attempts, interruptions, blocked dependents and unattempted inputs
+remain separate; none is assigned zero cost.
+The total-instruction gate failed as described in Section~\ref{sec:method};
+choosing user-mode instructions afterwards does not turn it into a pass.
 
-Lexical density makes the workload difference visible even before timing.
-After masking comments and strings, the AI corpus contains 1,354,379
-kernel-decision sites in 5,848 files; the pinned Mathlib subtree has
-seven sites in four of 8,529 files. Normalizing by decimal source megabytes
-gives a 10,668-fold density ratio.
-An audit should expose these labels alongside measured costs and uncertainty,
-rather than convert a site count into CPU work.
+\IfFileExists{generated/census/census-ready.tex}{%
+\input{generated/census/census-ready.tex}
+The complete ledger covers \CensusSourceUnits{} source units:
+\CensusNativeModules{} native modules and
+\CensusConfigurationUnits{} configuration units.
+Observed compiler work is \CensusPCPUHours{} P-core CPU-hours and
+\CensusECPUHours{} E-core CPU-hours, without conversion or pooling.
+}{%
+The campaign is in progress. Its final summary will give native completion
+and failure coverage, separate P/E CPU totals, and the module-level
+distribution in Figure~\ref{fig:census}. No full-corpus numerical result is
+reported here before the completed ledger returns.
+}
+
+The original 42 probability-sample observations remain a calibration panel,
+with their original weights and broad nominal uncertainty.
+They are not pooled into the census or used to impute absent module costs.
+Calibration must retain each new observation's CPU pool; an E-core/P-core
+ratio is not a conversion factor.
+Machine elapsed wall time is reported only from the actual continuous run,
+separately from summed module-process wall intervals.
+Module-level joins with lexical markers and default-graph membership
+support cost-by-coverage analysis when those labels are supplied.
+
+\begin{figure}[t]
+\centering
+\IfFileExists{generated/census/census-ready.tex}{%
+\includegraphics[width=\columnwidth]{generated/census/census-distribution.pdf}
+}{%
+\fbox{\begin{minipage}[c][3.1cm][c]{0.89\columnwidth}
+\centering
+Full-corpus distribution awaits completed records.\\[5pt]
+User-mode instruction quantiles across modules\\
+and separate P/E native CPU distributions.
+\end{minipage}}
+}
+\caption{The census distribution uses user-mode instructions, chosen after
+the failed total-instruction gate, and separate P/E CPU curves.
+The generator never fills missing observations with zero or converts
+E-core seconds to P-core seconds. Design implication: expose a heavy tail
+and its execution conditions before summarizing a library by one cost.}
+\label{fig:census}
+\end{figure}
 
 \paragraph{External cost comparison.}
 The earlier tooling report builds 122,458 modules at \texttt{fd4aeeb2} on
 32 cloud vCPUs in 13.8 wall-hours \cite{openaiMathTooling2026}.
 Its approximate 410 CPU-hours comprise roughly 330 hours of compilation
-and 80 hours of Comparator checking. The compilation CPU total
-is itself extrapolated from a quiet 26-module laptop sample, with an
-estimated $\pm30\%$ uncertainty. Our 279.12 hours therefore compares most
-directly with its roughly 330-hour compilation estimate.
-Both 330 and the broader 410-hour total lie inside our wide interval;
-different commits, module populations and hardware prevent a calibrated
-agreement claim. The complete cloud run establishes build coverage, whereas
-our fixed probability sample supplies uniform per-module cost boundaries
-and an explicit uncertainty estimate at the new pin.
-The report also measures a 26-module kernel-skipping ablation and profiles
-roughly 30,900 cloud modules. Those build-side phase measurements complement
-our target replay-window comparison.
+and 80 hours of Comparator checking. Compilation CPU is extrapolated
+from a quiet 26-module laptop sample, with estimated $\pm30\%$ uncertainty.
+That estimate is an external comparison, not an observed per-module CPU
+ledger on our revision. The report's 26-module kernel-skipping ablation
+and roughly 30,900 cloud profiles remain build-side phase precedents.
+Our census retains its different revision, module population, hardware
+and post-hoc instruction criterion; no calibrated agreement is presumed.
 
 \section{ProofServe design}\label{sec:design}
 ProofServe turns the cost and coverage findings into separate
-\texttt{check}, \texttt{audit} and compatibility-only \texttt{serve} interfaces
-(Figure~\ref{fig:flow}).
+\texttt{check}, \texttt{audit} and compatibility-only \texttt{serve} interfaces.
 Its original-kernel route preserves mathematical checking rules while adding
 explicit coordination and artifact trust.
 
-\begin{figure}[t]
-\centering
-\fbox{\begin{minipage}{0.91\columnwidth}
-\centering
-Lake project, toolchain and compiled imports\\[3pt]
-$\downarrow$\\
-\texttt{check}: inventory $\to$ dependency order\\
-$\to$ checked prefix + parallel declaration waves\\
-$\to$ resumable segments\\[3pt]
-$\downarrow$\\
-Receipt: scope, verdicts, axioms, CPU and wall\\[3pt]
-$\downarrow$\\
-\texttt{audit}: source/default graph + receipt\\
-$\to$ omissions, lexical sites, supplied costs
-\end{minipage}}
-\caption{Proof acceptance and its coverage explanation have distinct
-interfaces. Design implication: a receipt must identify the accepted
-compiled closure before audit relates it to the source project.}
-\label{fig:flow}
-\end{figure}
+
 
 \subsection{Check and resume a dependency closure}
 A checked prefix amortizes preparation while preserving each module's
@@ -289,8 +297,8 @@ The current receipt lacks a binding to the current source digest;
 audit exposes this gap. Thus acceptance, source coverage and reported axiom declarations remain separate answers.
 
 \section{Evaluation: performance and verification coverage}\label{sec:evaluation}
-Installed-tool external checks now establish common-root parity on three
-projects, while the fixed scaling matrix is still awaiting return.
+The prepared evaluation separates final performance, common-scope acceptance
+and audit findings; final frozen-tool results are still awaiting return.
 Every admitted system result must name its executable and project commits,
 toolchain, actual module set and complete timing boundary.
 Historical prototypes explain causes but cannot populate the release tables.
@@ -308,6 +316,9 @@ acceptance parity and memory observations (Table~\ref{tab:release}).
 \begin{table}[t]
 \centering
 \small
+\IfFileExists{generated/system/system-ready.tex}{%
+\input{generated/system/system-table.tex}
+}{%
 \begin{tabular}{lccc}
 \toprule
 Closure & Workers & CPU / wall & Set\\
@@ -317,6 +328,7 @@ Grid & Pending & Pending & Pending\\
 Barrier & Pending & Pending & Pending\\
 \bottomrule
 \end{tabular}
+}
 \caption{Release-tool scaling, awaiting the complete committed matrix.
 Three repeats per worker count support separate CPU and wall summaries.
 Design implication: assess latency savings together with work inflation;
@@ -360,6 +372,14 @@ The revisions and root-count conventions differ, but both demonstrate
 that a successful default build covers a subset of the source tree.
 The 33.30\% figure describes decision sites, not module count.
 
+Lexical density makes the workload difference visible even before timing.
+After masking comments and strings, the AI corpus contains 1,354,379
+kernel-decision sites in 5,848 files; the pinned Mathlib subtree has
+seven sites in four of 8,529 files. Normalizing by decimal source megabytes
+gives a 10,668-fold density ratio.
+An audit should expose these labels alongside measured costs and uncertainty,
+rather than convert a site count into CPU work.
+
 Repeated verdicts provide a second, separate kind of evidence.
 A historical panel checks 2,524 eligible stored-proof targets from three
 modules at 1, 2, 4 and 8 workers, three repeats each: 30,288 accepted checks
@@ -373,51 +393,42 @@ rejection controls below.
 \centering
 \small
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{lrrrrr}
+\IfFileExists{generated/system/system-ready.tex}{%
+\input{generated/system/external-table.tex}
+}{%
+\begin{tabular}{lcc}
 \toprule
-& Closure & \multicolumn{2}{c}{ProofServe} & \multicolumn{2}{c}{Official}\\
-Project & modules & CPU & Wall & CPU & Wall\\
+Project & Final checking costs & Parity\\
 \midrule
-Newspeak & 754 & 70.56 & 35.71 & 63.66 & 32.91\\
-Solar & 2,368 & 135.21 & 76.08 & 10.97 & 7.12\\
-CrocSwap & 3,166 & 211.26 & 114.78 & 103.86 & 105.22\\
+Newspeak & Pending & Pending\\
+Solar & Pending & Pending\\
+AI proofs & Pending & Pending\\
 \bottomrule
 \end{tabular}
-\caption{Installed-tool external observations in seconds, one run per
-successful arm, four ProofServe workers. Official default checks local roots
-while trusting imports; CrocSwap uses its completed one-worker pool fallback.
-Bundle \texttt{703055a1}, checker \texttt{c8e7c615}.
-Design implication: compare acceptance at a common scope and retain complete
-costs; different proof obligations do not support a speedup ratio.}
+}
+\caption{Final installed-tool external evaluation slots. CPU and wall
+seconds are separate; the artifact retains repeat counts and full ranges.
+Official default trusts imported proofs, so common local-root parity
+does not establish equal full-closure obligations or a speedup ratio.
+Design implication: retain scope, failures and input/tool commits.}
 \label{tab:acceptance}
 \end{table}
 
-Three previously unused public projects complete the installed
-check/audit workflow (Table~\ref{tab:acceptance}).
-At source commits \texttt{e2232d8f}, \texttt{f4f5c9a1} and
-\texttt{7c49fe32}, Newspeak, Solar and CrocSwap respectively have
-105, 12 and 64 accepted local roots, exactly matching official verbose replay
-sets. ProofServe additionally checks their compiled dependency closures
-of 754, 2,368 and 3,166 modules. These are common-root parity results;
-the official default trusts imports.
-Each observation includes startup and checkpoint work on CPUs 0--7,
-excluding input compilation and lock waits.
-The extracted bundle runs independently of the tool's source checkout;
-the project and its compiled dependencies remain required inputs.
-
-Operational problems remain part of the result.
-CrocSwap required one disclosed Lake manifest-name repair, preserving proof
-sources and dependency revisions. Its official default batch hit the RSS
-stop after 75.04 seconds; a prefix diagnostic stopped after 9.01 seconds.
-Their total CPU accounting is incomplete. The completed fallback retains
-the official binary and all 64 roots with a one-worker runtime pool;
-its cost in the table is additional to the failed attempts.
-A public subproject README discloses substantial Codex assistance for
-CrocSwap. Authorship of Newspeak and Solar is unestablished.
+The prepared external set pins Newspeak at \texttt{e2232d8f},
+Solar at \texttt{f4f5c9a1}, and the public
+\texttt{samuelburbulla/proofs} collection at \texttt{3042904c}.
+The latter describes itself as AI-generated proofs; the model and human
+editing fraction are undisclosed.
+The final run must use an extracted frozen installation, fresh checkpoints
+and the original compiled inputs, with a common-root official comparison.
+Historical previews, resumed-request clocks and the older AI-assisted
+CrocSwap case remain in the artifact and do not populate this table.
+Failed or resource-interrupted calls are operational outcomes rather than
+kernel rejection; incomplete whole-request CPU stays unknown.
 
 Audit gives actionable coverage and axiom findings.
-Newspeak covers 105/105 local files, CrocSwap 64/64, and Solar 12/32 in the
-default import graph. Solar's 20 omitted files are inputs to a separate
+Static audit covers Newspeak's 105 local files and Solar's 12 of 32 files
+in the default import graph. Solar's 20 omitted files are inputs to a separate
 EVM checking flow, which this evaluation did not execute.
 Newspeak's receipt lists a project \texttt{native\_decide} axiom alongside
 declared closure axioms; a declaration inventory alone cannot assign
@@ -445,11 +456,16 @@ portable audit runs through \path{tools/audit/audit.py}.
 The data-only \path{data/openai-math-4eaee875/summarize.py}
 recomputes sample summaries. The evidence map records source revisions,
 plot inputs and the pending release obligations.
+\path{docs/paper/generate_census.py} and
+\path{docs/paper/generate_system.py} generate final tables and figures
+from W/M/O CSVs. Preview mode uses separate filenames and cannot
+create the files included by this paper.
 
 \section{Limitations and related work}
 The measurements establish selected cost differences and broad population
 uncertainty, rather than a universal two-class cost law.
-Two draws per stratum and heavy tails make the nominal interval fragile;
+The retained calibration sample has two draws per stratum and fragile
+heavy-tail uncertainty;
 static markers are proxies and lexical density is not runtime frequency.
 Selected closures overlap, module-local replay trusts imports, and target
 windows exclude shared preparation. Cross-protocol ratios, cache/order
@@ -466,8 +482,8 @@ Current source binding, malicious checkpoint integrity, executable Lake
 configuration and uncompiled/generated sources require explicit additional
 evidence. Release scaling and resumption costs remain incomplete.
 External checking has one successful observation per arm, with common-root
-rather than full-dependency official parity; the AI disclosure establishes
-assistance rather than wholly generated provenance.
+rather than full-dependency official parity; the AI disclosure is a collection-level attribution, not an independent
+authorship audit.
 
 Parallel proof checking and asynchronous tasks have precedents in Isabelle,
 Coq and Lean \cite{wenzelParallel2009,coqAsync2015,leanParallelRelease2025}.
@@ -482,12 +498,11 @@ parallelism, receipt or serving mechanisms.
 
 \section{Conclusion}
 Matched measurements show both cheap proof checking and substantial
-certificate recomputation; a completed probability sample still leaves
-large uncertainty about total compilation work.
+certificate recomputation. The prepared per-module census will replace
+population extrapolation while retaining its failed-gate and pool boundaries.
 Default coverage and repeatable verdicts answer different verification
 questions. ProofServe makes these boundaries explicit through check,
-audit and scoped receipts. Three installed external cases establish common-root parity and useful
-audit findings; the pending scaling and resumption results must establish
+audit and scoped receipts. The pending final scaling, external and resumption results must establish
 its performance under comparable workloads.
 
 \bibliographystyle{plain}

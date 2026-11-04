@@ -12,9 +12,9 @@ The earlier 1–2 day estimate is a planning estimate, not a running campaign du
 
 ## Current manuscript and data handoff
 
-**Do not add full-corpus numerical results before they return.** The existing original42 estimate remains 279.12 compiler CPU-hours with nominal interval 95.18–463.06, at its recorded sample revision. The manuscript now discloses the census measurement decision without inventing its outcome.
+**Do not add full-corpus numerical results before they return.** The original42 estimate and uncertainty remain in the data package and evidence map for calibration. Section 3.2 is now reserved for directly observed census totals and distributions, with honest pending slots until final records arrive.
 
-Section 3.2 keeps the existing sample estimate until complete usable census records return. Report that the total-instruction gate failed without changing its thresholds. Cross-module comparisons use user-mode instructions, explicitly identified as a criterion selected after observing the gate results. Report P-core and E-core CPU seconds separately, without conversion, and wall time as an observation of this machine and configuration. This is not a passing replacement gate or hardware-independent cost scale.
+Section 3.2 uses the prepared census-result structure; it does not present the sample extrapolation as the forthcoming census total. Report that the total-instruction gate failed without changing its thresholds. Cross-module comparisons use user-mode instructions, explicitly identified as a criterion selected after observing the gate results. Report P-core and E-core CPU seconds separately, without conversion, and wall time as an observation of this machine and configuration. This is not a passing replacement gate or hardware-independent cost scale.
 
 M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's possible full-library original-kernel attempt has unknown feasibility and is not mentioned as a paper result.
 
@@ -35,7 +35,7 @@ The selected-closure performance design retains Mathlib Nat.Basic, Grid and Barr
 
 ## Paper and evidence
 
-Keep the title, current four RQs, 10pt double-column format, six pages including references and at most four displays. Keep the technical protocol and conclusion-to-evidence map in [evidence.md](paper/evidence.md); do not create a second long paper.
+Keep the title, current four RQs, 10pt double-column format, six pages including references and at most four displays. Keep the technical protocol and conclusion-to-evidence map in [evidence.md](paper/evidence.md); do not create a second long paper. The committed census and system generators in docs/paper/ read W/M/O data, keep previews separate, and populate the final slots in one command per generator. Continue with review-derived correctness facts rather than waiting for numerical results.
 
 Preserve the nealmcb distinction: 13.8 hours on 32 vCPUs is measured cloud wall time; approximately 330 compilation CPU-hours is extrapolated from 26 modules with estimated ±30% uncertainty, and approximately 410 includes Comparator work. No unmeasured full-run result or universal priority claim is added now.
 

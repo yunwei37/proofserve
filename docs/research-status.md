@@ -16,7 +16,7 @@ M's current matrix is preview-only and cannot fill Table 1. Final system timing 
 - [External installed checks](../data/external-projects/results.md): three cases with common-local-root parity, separate costs and retained official resource failures. Package/container CI passed finite controls; proof obligations differ.
 - [AI-generated case](paper/evidence.md#ai-generated-external-case-functional-preview-4-november): installed preview accepted a 10,753-module closure; nine local roots match official default. Source authorship is upstream-declared; the archive is not yet a clean release freeze and resumed costs are incomplete.
 - [Retained-closure record](paper/evidence.md#retained-closure-checker-qualification-4-november): the old 2df1d9d7 result remains superseded. A fresh repaired e0c92d51 run returned 14,721 accepts; 320 module-local references remain unavailable. Open review findings now include M's baseline reproductions of input shadowing and axiom omission; repair regressions and final evaluation remain pending. The checker is unfrozen.
-- [Six-page paper](paper/main.tex): existing 42-sample numbers retained; methods disclose the failed gate and post-hoc criterion. No full-corpus numerical result is inserted.
+- [Six-page paper](paper/main.tex): census summary/distribution and final system tables are wired to the committed generators; final slots remain pending without preview values. Original42 is calibration evidence. The gate failure and post-hoc criterion are explicit.
 
 The nealmcb report's 13.8-hour cloud wall measurement and 26-module CPU extrapolation remain distinct.
 

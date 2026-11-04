@@ -20,7 +20,7 @@ unique; failures/interruption rows remain in the exported observations.
 Summed native wall is labelled separately from machine elapsed wall.
 
 Outputs include per-pool summary CSV, a booktabs table, a PGFPlots figure,
-1,001 empirical quantiles per curve, provenance, and census-ready.tex.
+1,001 empirical quantiles per curve, provenance, and, after successful figure compilation, census-ready.tex.
 Tectonic is optional for data/TeX generation; --tectonic compiles the figure.
 Final output requires W's terminal to report complete cost measurement and
 matching successful/configuration coverage. This is publication input validation,
@@ -76,3 +76,12 @@ An independently recomputed Nat.Basic median agrees. The interrupted AI request
 retains unknown full CPU. Both table fragments compile, and final mode rejects
 the previews. These checks do not establish a quiet host or independent checker
 review; those remain conditions of the owners' actual final evaluation.
+
+## Manuscript wiring
+
+Run both final generators, then compile docs/paper/main.tex with Tectonic.
+The manuscript includes only generated/census/census-ready.tex and
+generated/system/system-ready.tex final artifacts. Preview-prefixed files
+are never inputs. Without final artifacts it prints explicit pending slots,
+not invented figures or missing-value macros. The census figure replaces
+the generic workflow diagram, keeping two figures and two tables.
