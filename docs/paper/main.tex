@@ -70,8 +70,8 @@ Source cost includes a module's imports, tactics, kernel checking and artifact
 emission. Separate prerequisite preparation, C compilation and build-driver
 work are outside this clock. CPU means user plus system time.
 Whole-process replay and incremental target windows are distinct measurements;
-Figure~\ref{fig:costs} labels both. Timed work runs one task at a time on
-CPUs 0--7 of an i9-14900K, retaining file caches.
+Figure~\ref{fig:costs} labels both. Reported sample and release timings use
+CPUs 0--7 of an i9-14900K, one task at a time, retaining file caches.
 Lean runs omit \texttt{-M}, including \texttt{-M0}; external memory protection
 is recorded separately. Earlier in-process memory checks and missing
 prototype persistence marking were our own method defects.
@@ -81,6 +81,14 @@ raw-cost provenance, clocks and estimates. This paper pins its original-sample
 summary to \texttt{1cc14067}. Historical replay measurements explain cost
 boundaries; system performance must come from committed release-tool results
 in \path{checker/results/} and \path{data/external-projects/}.
+
+The authorized census uses a frozen eight-P-core/fourteen-E-core protocol.
+Its total-instruction invariance gate failed: median spread 1.33\% and
+P95 3.15\% exceeded the unchanged 1\% and 3\% criteria.
+Cross-module comparisons use user-mode instructions, a criterion chosen
+after observing those results. P-core and E-core CPU seconds are reported
+separately without conversion; wall time describes this machine and
+configuration. Full-corpus numerical results are not yet available.
 
 \section{Two costs and their population weight}\label{sec:costs}
 \subsection{Computational certificates retain work}

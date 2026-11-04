@@ -1,16 +1,16 @@
 # Six-page paper: evidence and completion map
 
-This map records admitted measurements, versions and protocol boundaries. The completed usability gate failed, so no full run was started and no corpus total is supplied. Historical reviews and raw qualifications remain linked below. Root runs no new native measurement.
+This map records admitted measurements, versions and protocol boundaries. The total-instruction gate failed. The latest instruction authorizes W to proceed with the frozen 22-core census; no corpus total is available yet. Historical reviews and raw qualifications remain linked below. Root runs no new native measurement.
 
 ## Protocol appendix: census transition and evidence handoff
 
-**The gate completed and failed; the full run was not started.** The user's instruction is to stop if qualification fails. W's [published result](../../data/openai-math-4eaee875/measurement/census-gate/README.md) is committed as f97e6fbdc4d8ef167d43a32944cbabb7cad1db19; the measurement source is 2c901ec4f0bbf73b75b534bbc255fcc973aebe6f. The terminal record is dated 2026-11-04 05:15:28 UTC.
+**The gate completed and failed. The latest instruction supersedes stop-and-wait: proceed with option A, W's frozen 22-core census.** W's [published result](../../data/openai-math-4eaee875/measurement/census-gate/README.md) is committed as f97e6fbdc4d8ef167d43a32944cbabb7cad1db19; the measurement source is 2c901ec4f0bbf73b75b534bbc255fcc973aebe6f. The terminal record is dated 2026-11-04 05:15:28 UTC.
 
-This is an internal protocol record, not census methods or results added to the paper. The manuscript, numerical values, figure inputs and PDF remain unchanged. The [plan](../research-plan.md) records that no full run or alternative qualification is launched.
+This internal protocol record supports the manuscript's disclosure of the current measurement decision. The existing sample numbers and figure inputs remain unchanged. The manuscript now discloses the protocol decision; full-corpus numbers await actual completed records. The [plan](../research-plan.md) records the authorized execution.
 
 **Every root operation inside the Workspace uses CPUs 8–9, including reads, analysis, Git and PDF compilation.** Remote entry uses `taskset -c 8,9`; child affinity has been checked as 8–9. The former 22–23 setting must not be reused. Historical build checks below retain the CPUs actually used in those past runs.
 
-The conditional target remains the 163,097-source-module OpenAI corpus at revision 4eaee875, in the existing phobos-vt / gpu-smt-dev Workspace. The earlier all-resource permission and 384 GiB expansion do not bypass the usability gate. W chooses the technical validation approach; root does not introduce a numeric threshold or another approval round, start a second collector, or infer that an old unsuccessful pilot is the final decision on the new gate.
+The target remains the 163,097-source-module OpenAI corpus at revision 4eaee875 in the existing phobos-vt / gpu-smt-dev Workspace. The latest decision authorizes the unchanged eight-P-core plus fourteen-E-core protocol despite the failed gate. Cross-module comparisons use user-mode instructions; this criterion was selected after seeing the gate results and is not a pre-registered passing gate. P/E CPU seconds remain separate without conversion. Wall time is an observation of this machine and configuration. Root adds no threshold or approval round and starts no duplicate collector.
 
 The retained preparation records under `/workspaces/.agent-state/gpu-smt-captures/workloads/census-pilot-20261104/` include a completed source-acquisition receipt at 01:15:41 UTC and an earlier unsuccessful six-target pilot with `full_census_started=false`. These establish preparation only, not a passing gate, full-run start or whole-corpus CPU cost. Later status must be read afresh rather than resuming a PID from these observations.
 
@@ -20,7 +20,7 @@ Root independently parsed the retained raw records and recomputed the instructio
 
 The original42 and independent precision panel stay separate and preserved. Current M timing runs are previews, excluded from Table 1 and final system performance even if complete. Final system timing follows the resolved gate/full-run path on an otherwise idle machine. Existing external installed checks and CI remain versioned functional observations; no same-obligation speedup is inferred.
 
-The nealmcb distinction is unchanged: 13.8 hours on 32 vCPUs is measured cloud wall time, while approximately 330 compilation CPU-hours is extrapolated from 26 modules with estimated ±30% uncertainty. No new full-corpus measurement content is added to the manuscript.
+The nealmcb distinction is unchanged: 13.8 hours on 32 vCPUs is measured cloud wall time, while approximately 330 compilation CPU-hours is extrapolated from 26 modules with estimated ±30% uncertainty. Only the protocol disclosure is added to the manuscript; no full-corpus numerical result is added.
 
 ## Admitted measurement snapshot
 
@@ -109,7 +109,7 @@ Installed audit finds default scope 105/105, 12/32 and 64/64 source files. Solar
 
 [Container qualification](../../packaging/qualification-container.json): run **41740685837**, same adf816ae source, successful image build with an actual **network-disabled** self-test. Retained log confirms full-Mathlib service controls, a two-module installed project check/audit, and explicit unsupported-version rejection. These are CI correctness observations, not timed paper performance or the three-project external benchmark.
 
-Current decision: W's usability gate failed, and the full run was not started. Await the user's decision; no replacement protocol or qualification is launched. Final quiet-machine scaling/ablation/official measurements and interruption overhead remain separate dependencies. M's preview does not fill them. Do not pool its ba316991 executable with the external c8e7c615 timing rows. The original42 estimate stays unchanged; W's superseded precision panel retains seven of twelve costs separately.
+Current decision: W proceeds with the frozen 22-core option A under the latest instruction, retaining the failed total-instruction gate. No further user decision is awaited. Final quiet-machine scaling/ablation/official measurements and interruption overhead remain separate dependencies. M's preview does not fill them. Do not pool its ba316991 executable with the external c8e7c615 timing rows. The original42 estimate stays unchanged; W's superseded precision panel retains seven of twelve costs separately.
 
 ## AI-generated external case: functional preview (4 November)
 
@@ -135,7 +135,7 @@ This fresh retained-case result is development evidence, not an independent revi
 
 A subsequent independent **code-only** review of e0c92d51 is now recorded in the Workspace at packaging/checker-review-e0c92d51.md. A fresh reviewer read the implementation without M's or the coordinator's conclusions, but built and ran nothing. Its status is **open**, not passed. Findings include omitted axiom names for segregated modules, checkpoint-directory search precedence that can differ from the hashed input resolution, and child completion events overriding a nonzero child exit; other findings concern importer parity and receipt coverage. The coordinator spot-checked the cited code for the first, second and stdout/exit findings. That code-only report supplied no native reproductions. M subsequently ran baseline fixtures against the immutable e0 executable. Root read baseline-final-probes.json under /workspaces/.agent-state/gpu-smt-captures/checker-review-e0-fix-20261104/: 2-state-shadow reports exit 0 and complete, whereas 2-state-shadow-official returns exit 1 with a loose-bound-variable kernel rejection; 1-segregated-axioms reports complete with an empty axiom list. M's fixture report identifies the omitted declared axiom. These are implementation-lane reproductions, not independent execution review. M also distinguishes a saved-complete/nonzero-exit coordinator control from the proposed project-IR route, which was rejected rather than reproduced; the proposed Quot counterexample was not confirmed. Repair and regression work is still in progress, so no repaired-release pass or freeze is inferred. The earlier 15-name axiom-list equality is equality between tool outputs, not an independently established complete axiom inventory.
 
-Whole-corpus import capacity, the full official reference ledger and quiet-machine final evaluation remain incomplete. The W census gate is still failed and awaits the user's decision. No result from this development qualification changes the paper, launches the full corpus or fills its final performance table.
+Whole-corpus import capacity, the full official reference ledger and quiet-machine final evaluation remain incomplete. The W total-instruction gate remains failed; the latest instruction authorizes option A without another user decision. No result from this development qualification changes the paper, launches the full corpus or fills its final performance table.
 
 ## Manuscript checks
 
@@ -144,3 +144,5 @@ Six pages including references, existing 10pt two-column format, at most four di
 Previous 3 November revision check: **6 pages / 101,497 bytes**, four displays, 14 resolved references, no overfull boxes or result-grade macros. All six final pages were visually inspected; compilation succeeded in 2.599 seconds on E22–23. This is self-review. Earlier layout versions and logs remain outside Git on the existing PVC; no native result was rerun or modified.
 
 4 November integration check: **6 pages / 103,788 bytes**, four displays and 14 resolved references; no overfull boxes or evidence-grade macros. All six final pages visually reviewed; compile rc0 in 2.554 seconds on E22–23. This is self-review. The new external table comes only from committed installed-tool measurements; original42 and historical Figure 1 are unchanged. Root ran no new native measurement, changed no owner implementation, and started no replacement collector.
+
+Latest option-A disclosure check (4 November): six pages / 104,284 bytes, two figures and two tables, 14 resolved references, no overfull boxes. Compilation returned 0 in 2.288 seconds on CPUs 8–9; all six pages were visually self-reviewed. The only manuscript edit is the census-protocol disclosure and timing-scope clarification. Original42 numerical results, figure inputs, title and RQs are unchanged. Build/log/render outputs remain under /workspaces/.agent-state/gpu-smt-paper-recovery-20261030/six-page-census-A-20261104/. This is self-review, not independent acceptance or a full-census result.

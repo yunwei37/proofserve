@@ -1,20 +1,20 @@
 # ProofServe closure plan
 
-The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **W's usability gate completed and failed; the full run was not started.** The user's instruction applies: a failed gate means do not run. **Await the user's decision before any full-run restart, alternative protocol or new qualification.**
+The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **Proceed with option A: W launches the frozen 22-core census protocol. Do not wait for another user decision.** This latest instruction supersedes the earlier stop-and-wait disposition; the failed gate remains part of the evidence.
 
 ## Full-run usability gate
 
 W's [qualification report](../data/openai-math-4eaee875/measurement/census-gate/README.md) is committed as f97e6fbd, with measurement source 2c901ec4. The complete 20-module, four-condition, three-repeat matrix gives a cross-condition instruction spread of 1.3312% median and 3.1498% P95, exceeding the frozen 1%/3% criteria. All 480 foreground/control and 1,413 background attempts returned successfully; aggregate counter-overhead medians passed. Root independently recomputed these statistics from the raw records. This does not establish that every possible census protocol would fail.
 
-The proposed target was all 163,097 modules at OpenAI math revision 4eaee875 in the existing phobos-vt / yunwei356/gpu-smt-dev Workspace. No full workload, alternative protocol, threshold change or retry is launched after this failure. Source availability and the 384 GiB expansion do not qualify the measurement. Preserve the completed gate, preparation and failure records; W owns its technical report.
+The target is all 163,097 modules at OpenAI math revision 4eaee875 in the existing phobos-vt / yunwei356/gpu-smt-dev Workspace. W owns launch and execution of the frozen eight-P-core plus fourteen-E-core protocol. Root verifies the actual launch and subsequent terminal rather than treating this authorization as completed measurement, and starts no duplicate collector. Preserve the failed gate, preparation and all native outcomes.
 
 The earlier 1–2 day estimate is a planning estimate, not a running campaign duration or a start commitment. The original42 and independent precision samples remain separate and preserved. W has superseded the independent precision continuation with 7/12 returned; root does not resume it. Preparation and pilots are not complete corpus measurements.
 
-## Current manuscript and conditional handoff
+## Current manuscript and data handoff
 
-**Do not add full-corpus measurement content to the paper now.** Keep its numbers, source and PDF unchanged. The existing original42 estimate remains 279.12 compiler CPU-hours with nominal interval 95.18–463.06, at its recorded sample revision.
+**Do not add full-corpus numerical results before they return.** The existing original42 estimate remains 279.12 compiler CPU-hours with nominal interval 95.18–463.06, at its recorded sample revision. The manuscript now discloses the census measurement decision without inventing its outcome.
 
-Section 3.2 keeps the existing sample estimate. The failed gate supplies no full-corpus total, marked-file cost or default-graph cost to substitute into the paper. A different census protocol would need a later explicit decision; this plan starts none.
+Section 3.2 keeps the existing sample estimate until complete usable census records return. Report that the total-instruction gate failed without changing its thresholds. Cross-module comparisons use user-mode instructions, explicitly identified as a criterion selected after observing the gate results. Report P-core and E-core CPU seconds separately, without conversion, and wall time as an observation of this machine and configuration. This is not a passing replacement gate or hardware-independent cost scale.
 
 M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's possible full-library original-kernel attempt has unknown feasibility and is not mentioned as a paper result.
 
@@ -25,7 +25,7 @@ Existing installed external check/audit cases and package/container CI remain ve
 | Owner | Paths | Delivery |
 |---|---|---|
 | M | checker/ | Original-kernel checker, receipt v1, parallel/resume implementation, labeled preview/final evidence |
-| W | tools/audit/, data/openai-math-4eaee875/ | Audit tool, usability-gate validation, conditional full-run data and preserved samples |
+| W | tools/audit/, data/openai-math-4eaee875/ | Audit tool, frozen census execution, gate history and preserved samples |
 | O | crates/, CLI, README, Docker, CI, release workflow, data/external-projects/ | Portable package and external-project acceptance |
 | Root | docs/paper/, docs records/status, research/README.md | Six-page paper and evidence integration |
 
