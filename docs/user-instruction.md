@@ -469,3 +469,10 @@ Import-Module ./scripts/fleet.psm1; & (Get-Module fleet) { $script:SshOptions +=
 - 「"全库要花多少"这个问题它已经有实测 我们干嘛不能实际实测? 干嘛要抽样?」
 - 「你在什么机器上面? 上面的 workspace 是啥?」
 - 「扩容吧, 尽可能占据所有资源, 去并行跑」
+
+## 2026-11-04 UTC — verbatim full-run gate and root CPU decision
+
+- 「必须保证全量的数字是直接可用的」
+- 「不行的话就停掉」
+
+本轮执行指令：全量尚未开始；W 先验证全量数字能直接使用，通过后才跑，不通过就不跑。主线程在 Workspace 内的所有工作仅使用 CPU 8–9，包括 PDF 编译；此前 CPU 22–23 的执行设置停止沿用。论文现在不加入全量实测内容。

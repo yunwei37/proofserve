@@ -1,29 +1,22 @@
 # Six-page paper: evidence and completion map
 
-This map records admitted measurements, versions and protocol boundaries. The latest full-corpus decision changes the next measurement objective; it supplies no new result. Historical reviews and raw qualifications remain linked below. Root runs no new native measurement.
+This map records admitted measurements, versions and protocol boundaries. The latest decision makes a possible full run conditional on a usability gate; it has not started and supplies no new result. Historical reviews and raw qualifications remain linked below. Root runs no new native measurement.
 
 ## Protocol appendix: census transition and evidence handoff
 
-This section records the latest census decision without adding an appendix to the six-page PDF. The current manuscript, numbers, plot inputs and PDF remain unchanged. No complete corpus CPU result or full-library checker outcome is claimed.
+**The full run has not started.** W first validates that its full-corpus numbers will be directly usable. A passing validation permits the run; a failed validation means do not run. The earlier description of W already building the full corpus is superseded.
 
-| Question or paper location | Admitted evidence now | Census-era handoff |
-|---|---|---|
-| Section 3.2: total compiler work | Original42 estimate and nominal sampling interval at the pinned data revision below | Replace with observed total and distribution only after the full build returns; retain sample results as calibration |
-| Marked versus unmarked compiler work | Source-proxy sample weights; lexical membership is already defined | Sum the actually observed per-module compiler CPU over the same membership sets; do not call this dynamic kernel CPU |
-| Default graph inside/outside | 130,834 / 32,263 source-module membership and lexical-site coverage | Add observed compiler costs by membership; distinguish unavailable costs and operational failures |
-| Table 1: system performance | Pending | Current M matrix is preview-only, even when complete; final timing runs after the census on an otherwise idle machine |
-| External checking and package CI | Completed versioned functional observations and recorded costs | Retain provenance and failure records; final performance claims follow the quiet-machine timing decision |
-| Full-library original-kernel checking | Feasibility unknown | No result, speed, acceptance set or success claim enters the paper before an actual qualified return |
+This is an internal readiness record, not census methods or results added to the paper. The manuscript, numerical values, figure inputs and PDF remain unchanged. Any possible later handoff is conditional on W passing its gate and subsequently returning usable completed data; the [plan](../research-plan.md) owns that decision.
 
-The target is all **163,097** modules at **4eaee87548250b2682affda7d05d947c05554bae**, using the existing phobos-vt / gpu-smt-dev Workspace. The user authorized the 384 GiB work-volume expansion and use of available host resources for parallel compilation. No root collector or replacement agent is started. The 1–2 day duration is an estimate supplied with the decision, not observed runtime.
+**Every root operation inside the Workspace uses CPUs 8–9, including reads, analysis, Git and PDF compilation.** Remote entry uses `taskset -c 8,9`; child affinity has been checked as 8–9. The former 22–23 setting must not be reused. Historical build checks below retain the CPUs actually used in those past runs.
 
-On 4 November, root read the existing PVC's requested and Bound capacity as **384 GiB**. At 01:15:41 UTC, W's retained source-acquisition terminal reports all 163,097 sources seen, with 149,061 new files and 14,036 existing byte matches, and `native_started=false`. This is an owner acquisition receipt, not a root re-read of every source or a completed census. The earlier six-target pilot has a retained unsuccessful terminal and `full_census_started=false`; it supplies no full-corpus cost. These observations supersede an assumption that a full build had already completed, without changing W's autonomous continuation.
+The conditional target remains the 163,097-source-module OpenAI corpus at revision 4eaee875, in the existing phobos-vt / gpu-smt-dev Workspace. The earlier all-resource permission and 384 GiB expansion do not bypass the usability gate. W chooses the technical validation approach; root does not introduce a numeric threshold or another approval round, start a second collector, or infer that an old unsuccessful pilot is the final decision on the new gate.
 
-Retained status is under `/workspaces/.agent-state/gpu-smt-captures/workloads/census-pilot-20261104/`, particularly `source-acquisition.json`, `pilot-terminal.json` and the frozen setup records. Later live state, process identities and terminal receipts must be read afresh; these timestamps are not an instruction to resume an old PID.
+The retained preparation records under `/workspaces/.agent-state/gpu-smt-captures/workloads/census-pilot-20261104/` include a completed source-acquisition receipt at 01:15:41 UTC and an earlier unsuccessful six-target pilot with `full_census_started=false`. These establish preparation only, not a passing gate, full-run start or whole-corpus CPU cost. Later status must be read afresh rather than resuming a PID from these observations.
 
-The existing original42 and independent precision panel remain separately identified. A concurrently collected preview is not a final system benchmark, and a source-acquisition or prerequisite return is not an original module's measured compiler cost. The census records its actual concurrency, per-process threading, CPU placement, timing boundaries, completion and reuse policy; the previous P0–7 sample's timing protocol is not silently relabeled as the all-core census protocol.
+The original42 and independent precision panel stay separate and preserved. Current M timing runs are previews, excluded from Table 1 and final system performance even if complete. Final system timing follows the resolved gate/full-run path on an otherwise idle machine. Existing external installed checks and CI remain versioned functional observations; no same-obligation speedup is inferred.
 
-The nealmcb comparison remains unchanged: the pinned report measures **13.8 wall-hours on 32 vCPUs**, while its approximately **330 compilation CPU-hours** are extrapolated from **26 modules**, with estimated ±30% uncertainty. It does not provide the complete per-module CPU ledger sought here. This distinction supports the new measurement objective without inserting an unmeasured census total or a universal priority claim.
+The nealmcb distinction is unchanged: 13.8 hours on 32 vCPUs is measured cloud wall time, while approximately 330 compilation CPU-hours is extrapolated from 26 modules with estimated ±30% uncertainty. No new full-corpus measurement content is added to the manuscript.
 
 ## Admitted measurement snapshot
 
@@ -112,7 +105,7 @@ Installed audit finds default scope 105/105, 12/32 and 64/64 source files. Solar
 
 [Container qualification](../../packaging/qualification-container.json): run **41740685837**, same adf816ae source, successful image build with an actual **network-disabled** self-test. Retained log confirms full-Mathlib service controls, a two-module installed project check/audit, and explicit unsupported-version rejection. These are CI correctness observations, not timed paper performance or the three-project external benchmark.
 
-Remaining integration dependency: the complete corpus return, followed by final quiet-machine scaling/ablation/official measurements and the interrupted/resumed overhead pair. Completion of the current M preview does not fill this dependency. Do not pool its ba316991 executable with the external c8e7c615 timing rows. The original42 estimate stays unchanged; the separate precision panel has six of twelve costs and is not pooled. No new native run, publication or replacement collector was started.
+Remaining decision: W's full-run usability gate. The full run is not started; only a pass permits it, and a failed gate means do not run. Final quiet-machine scaling/ablation/official measurements and interruption overhead remain separate dependencies. Completion of the current M preview does not fill this dependency. Do not pool its ba316991 executable with the external c8e7c615 timing rows. The original42 estimate stays unchanged; the separate precision panel has six of twelve costs and is not pooled. No new native run, publication or replacement collector was started.
 
 ## Manuscript checks
 

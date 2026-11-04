@@ -1,56 +1,50 @@
 # ProofServe closure plan
 
-We are delivering a usable open-source Lean verification tool and a six-page empirical + system paper. The latest direct decision replaces sampling as the final answer to total-library cost with a complete build of the pinned corpus. The coordinator's 17 November target is not a user-imposed deadline; the venue remains undecided.
+The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. The latest direct decision is conditional: **the full run has not started. W validates the gate first; a pass permits the full run, and a failed gate means do not run.** The earlier statement that W had started the full build is superseded.
 
-## Full-corpus measurement is now the priority
+## Full-run usability gate
 
-W is preparing and running the full **163,097-module** build at OpenAI math revision **4eaee875**, on **phobos-vt** in the existing **yunwei356/gpu-smt-dev** Workspace. The user authorized expanding the existing work volume and using as much available host capacity as possible for parallel compilation. The work PVC is now **384 GiB**. The quoted **1–2 days** is a rough estimate, not a completion result or deadline.
+W first validates the requirement: the full-corpus numbers must be directly usable. W owns the technical approach and validation. Root adds no numerical threshold, deadline or approval round, and starts no collector. Source acquisition, the earlier pilot and the 384 GiB volume expansion do not establish that this gate passed.
 
-The deliverable is each module's observed compiler CPU and outcome, together with the actual build wall clock and execution configuration. Completed module work, operational failures, missing modules, reused artifacts and dependency preparation remain identifiable. The 42 original probability draws and the fixed independent precision panel are retained separately for calibration; they do not replace the census or silently acquire new weights.
+The conditional target remains all 163,097 modules at OpenAI math revision 4eaee875, in the existing phobos-vt / yunwei356/gpu-smt-dev Workspace. The earlier permission to use available host resources applies only after the gate passes. If the validation fails, do not start the full workload. Preserve raw preparation and failure records.
 
-W owns the implementation and resource choices for this authorized run. Root records actual progress without starting a second collector, restarting work, or changing infrastructure. Source acquisition, readiness tests and a finite pilot are preparation, not completed full-corpus measurements.
+The earlier 1–2 day estimate is a planning estimate, not a running campaign duration or a start commitment. The original42 and independent precision samples remain separate and unchanged. Preparation and pilots are not complete corpus measurements.
 
-## What changes when complete data returns
+## Current manuscript and conditional handoff
 
-| Current manuscript evidence | Replacement or retained role |
-|---|---|
-| Section 3.2: original42 estimate and variance derivation | Observed full-corpus total and distribution; sampling becomes calibration and the section becomes shorter |
-| Marked-file compiler share | Observed compiler work in the source-marker class, still distinct from dynamic kernel phase work |
-| Default graph inside/outside coverage | Add measured compiler work for both sets to the existing source/module counts |
-| M's current scaling and ablation matrix | Preview only; excluded from final paper performance and Table 1 |
-| Installed external cases and package/container CI | Preserve functional evidence and dated cost observations; final performance claims follow the quiet-machine measurements |
+**Do not add full-corpus measurement content to the paper now.** Keep its numbers, source and PDF unchanged. The existing original42 estimate remains 279.12 compiler CPU-hours with nominal interval 95.18–463.06, at its recorded sample revision.
 
-Final system timings run **after the census has finished, with the machine otherwise idle**. A committed executable alone does not qualify a concurrent preview as final performance evidence. Root keeps Table 1 pending and does not fill it when the current matrix returns. M may explore full-library original-kernel checking independently; feasibility is unknown and the paper makes no promise or result claim about that attempt.
+Only if W passes the gate and a full run later returns usable complete data should Section 3.2 be reconsidered for observed totals and distributions, with sampling retained for calibration. Marked-file and default-graph compiler costs would then use observed module costs. None of those future values is prefilled or promised now.
 
-Until the census returns, the current paper's **279.12 CPU-hour** estimate and nominal **95.18–463.06** interval remain unchanged and explicitly traceable to the original sample. No census total, marked share, default-graph cost or speedup is prefilled.
+M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's possible full-library original-kernel attempt has unknown feasibility and is not mentioned as a paper result.
 
-## Tool delivery and ownership
+Existing installed external check/audit cases and package/container CI remain versioned functional evidence and dated cost observations. Different proof obligations do not support a speedup ratio. Final system results must identify committed tool and input revisions and keep CPU/wall clocks separate.
+
+## Owners and tool delivery
 
 | Owner | Paths | Delivery |
 |---|---|---|
-| M | checker/ | Original-kernel checker, receipt v1, parallel/resume implementation and correctly labeled preview/final results |
-| W | tools/audit/, data/openai-math-4eaee875/ | Audit tool, complete corpus build data, preserved calibration samples |
-| O | crates/, CLI, README, Docker, CI, release workflow, data/external-projects/ | Portable packaging and external-project acceptance |
-| Root | docs/paper/, docs records/status, research/README.md | Six-page manuscript and evidence integration |
+| M | checker/ | Original-kernel checker, receipt v1, parallel/resume implementation, labeled preview/final evidence |
+| W | tools/audit/, data/openai-math-4eaee875/ | Audit tool, usability-gate validation, conditional full-run data and preserved samples |
+| O | crates/, CLI, README, Docker, CI, release workflow, data/external-projects/ | Portable package and external-project acceptance |
+| Root | docs/paper/, docs records/status, research/README.md | Six-page paper and evidence integration |
 
-ProofServe checks compiled dependency closures, audits source/default-target coverage and reported evidence, and maintains the existing Kimina-compatible service without new serving features. Unsupported versions fail clearly or choose an explicit official path. The released-form evaluation separates CPU and wall time and records tool, input and protocol revisions.
+ProofServe checks compiled dependency closures, audits source/default-target coverage and reported evidence, and maintains the existing Kimina-compatible service. Unsupported versions fail clearly or select an explicit official path. No new service feature is added.
 
-The planned selected-closure evaluation retains Mathlib Nat.Basic, Grid and Barrier at 1/2/4/8 workers with three repeats; the Mathlib label denotes the selected closure. Persistence and split-fallback ablations, official default/fresh ledger comparisons and timed interruption/resumption retain their declared scopes. Final scheduling follows completion of the census, not completion of the preview. Root adds no new workload, repeat count or experiment.
+The selected-closure performance design retains Mathlib Nat.Basic, Grid and Barrier at 1/2/4/8 workers, three repeats; its Mathlib label is the selected closure. Persistence/split-fallback ablations, official default/fresh comparisons and interruption/resumption retain their scopes. Scheduling final runs follows the gate/full-run outcome and quiet-machine condition, not preview completion.
 
-## Manuscript and evidence
+## Paper and evidence
 
-The title and four current RQs remain in place for now; RQ3 has no cluster claim. Keep 10pt, two columns, six pages including references and at most four displays. Keep technical appendices, the conclusion-to-evidence map and the census handoff in [evidence.md](paper/evidence.md), rather than creating another long paper or adding an appendix to the six-page count.
+Keep the title, current four RQs, 10pt double-column format, six pages including references and at most four displays. Keep the technical protocol and conclusion-to-evidence map in [evidence.md](paper/evidence.md); do not create a second long paper.
 
-The earlier nealmcb report measures a complete cloud **wall time** of 13.8 hours on 32 vCPUs. Its roughly **330 compilation CPU-hours** are extrapolated from 26 modules, with estimated ±30% uncertainty; roughly 410 CPU-hours includes Comparator work. Preserve that distinction. The new measurement targets the complete per-module CPU ledger absent from that report; no unmeasured result or universal priority claim is inserted now.
+Preserve the nealmcb distinction: 13.8 hours on 32 vCPUs is measured cloud wall time; approximately 330 compilation CPU-hours is extrapolated from 26 modules with estimated ±30% uncertainty, and approximately 410 includes Comparator work. No unmeasured full-run result or universal priority claim is added now.
 
-Measurement data comes from the public W package; final system performance comes from committed released-form tools after the quiet-machine run. Prototype interventions explain engineering causes only. The current sample is calibration evidence, not a census result. Existing raw, failed, partial and historical records stay intact.
+## Root execution, operations and publication
 
-## Operations and publication
+**Every root operation inside the Workspace uses CPUs 8–9, including reading, analysis, Git and PDF compilation.** Prefix remote work with `taskset -c 8,9` and preserve that affinity in child processes. Do not reuse the former CPU 22–23 setting. Historical records of earlier compilations retain the CPUs actually used.
 
-Use the same Workspace, volume and Cloudflare CLI connection. The all-core authorization applies to W's census; quiet system benchmarks retain their recorded timing conditions. Omit -M, preserve disk headroom and foreign work, and do not restart existing collectors. A later host outage still requires preserving the scene and waiting for the user, without recovery or scheduling changes.
+Use the same Workspace, volume and Cloudflare CLI path. Omit -M, preserve disk headroom and foreign work, and do not restart active collectors. A later host outage still means preserve the scene and wait for the user, without recovery or scheduling changes.
 
-No new agent, session, replacement queue, scheduler, prediction, certificate repair, GPU direction, service feature or deeper attribution. M's explicitly relayed full-library check exploration is not an authorization for root to launch a duplicate. No tag, registry publication, upstream issue/PR or announcement; validated main commits and pushes remain authorized.
-
-Root now maintains the records and evidence map. Once W publishes complete census data, replace Section 3.2 and its derived shares; once final quiet-machine system measurements return, replace the preview placeholders. No per-edit step directories or outer-audit files are created.
+No new root agent, session, replacement queue, scheduler, prediction, certificate repair, GPU direction, service feature or deeper attribution. No tag, registry upload, upstream issue/PR or announcement. Validated owned-path commits and pushes on main remain authorized. The coordinator's 17 November target is not a user-imposed deadline; the venue is undecided.
 
 [Latest direct words](user-instruction.md) · [Status](research-status.md) · [Evidence map](paper/evidence.md) · [Result index](../research/README.md)
