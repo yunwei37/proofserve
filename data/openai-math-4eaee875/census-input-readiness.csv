@@ -1,0 +1,15 @@
+item,value,scope
+utc,2026-11-04,2026-11-04 static preflight; not a native verdict
+source_revision,4eaee87548250b2682affda7d05d947c05554bae,2026-11-04 static preflight; not a native verdict
+population_modules,163097,2026-11-04 static preflight; not a native verdict
+source_files_present,14036,2026-11-04 static preflight; not a native verdict
+source_files_missing,149061,2026-11-04 static preflight; not a native verdict
+external_import_names,3528,2026-11-04 static preflight; not a native verdict
+external_imports_missing,38,2026-11-04 static preflight; not a native verdict
+union_modules_affected_by_missing_external,7754,2026-11-04 static preflight; not a native verdict
+default_root_closure,130834,2026-11-04 static preflight; not a native verdict
+outside_default_root,32263,2026-11-04 static preflight; not a native verdict
+outside_default_fraction,0.19781479732919674,2026-11-04 static preflight; not a native verdict
+max_map_count,1048576,2026-11-04 static preflight; not a native verdict
+full_census_started,False,2026-11-04 static preflight; not a native verdict
+namespace_note,Pinned Lake only reroots HodgeConjecture.*; three other nested files retain ComparatorChallenges names,2026-11-04 static preflight; not a native verdict

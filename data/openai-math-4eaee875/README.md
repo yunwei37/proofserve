@@ -202,3 +202,21 @@ is complete, so the conditional working-model rows still equal original42;
 there is no claimed precision improvement yet. See measurement/precision-five-review.md
 for the actual protocol/retirement and table-parity checks. This timestamped
 snapshot is separate from the live finite collector and does not imply it stopped.
+
+## Complete-census qualification
+
+[census-plan.md](census-plan.md) freezes the 22-core, no-M, -j8 protocol and
+the four-condition instruction-count gate. The full 163,097-module census
+has not started. Neither the gate nor the retained obsolete controller draft
+can be taken as a completed measurement. Counter coverage, artifact parity,
+memory reserve, and instrumentation overhead require actual results.
+
+The earlier six-module E-only pilot is preserved as methodology evidence.
+Its summed-RSS preemption does not establish an actual-charge memory failure;
+the new gate uses cgroup charge and global available memory. Its E/P factors
+are not used to convert a full census. Precision sampling is permanently
+superseded; completed and partial results remain.
+
+census.py and test_census.py retain the earlier pilot/recovery protocol.
+census_gate.py and perf_instructions.py implement the new qualification;
+raw outputs live outside the repository on the existing PVC.

@@ -1,0 +1,45 @@
+{
+  "utc": "2026-11-04T01:17:29.743959+00:00",
+  "reason": "User authorized full163097 census; incomplete fixed12 precision collection superseded permanently",
+  "completed_returns": 7,
+  "planned": 12,
+  "active": {
+    "point": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-Canonical187-targetP-precision-final12-closeout-20261103",
+    "utc": "2026-11-04T01:11:55.844454+00:00",
+    "pid": 145057,
+    "birth_ticks": "3743540",
+    "args": [
+      "/usr/bin/python3",
+      "-u",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-Canonical187-targetP-precision-final12-closeout-20261103/controller.py",
+      "--point",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-final-Canonical187-targetP-precision-final12-closeout-20261103"
+    ],
+    "source_target": "OAI.Analysis.MutuallyUnbiased.MixedSemantics.Canonical187",
+    "operation": "source_P_measurement"
+  },
+  "observed_live_native": false,
+  "signals": [
+    {
+      "pid": 94991,
+      "birth_ticks": "2515152",
+      "signal": "TERM"
+    },
+    {
+      "pid": 99465,
+      "birth_ticks": "2637206",
+      "signal": "TERM"
+    },
+    {
+      "pid": 145058,
+      "birth_ticks": "3743546",
+      "signal": "TERM"
+    },
+    {
+      "pid": 145057,
+      "birth_ticks": "3743540",
+      "signal": "TERM"
+    }
+  ],
+  "remaining_non_zombie": []
+}
