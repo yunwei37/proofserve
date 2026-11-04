@@ -42,3 +42,37 @@ exercise both pools and match separate CPU and exact integer instruction sums.
 Both generated PGFPlots figures compile. The same preview input is refused in
 final mode, and no census-ready.tex is written. Preview artifacts/logs stay on
 the research PVC outside Git and are not included in the manuscript.
+
+## System evaluation artifacts
+
+After M and O publish the approved final results:
+
+    python3 docs/paper/generate_system.py --matrix checker/results/fixed-cells.csv --external data/external-projects/measurements.csv --out docs/paper/generated/system
+
+The native matrix is M's actual completed-cell schema: key, commit, dataset,
+workers, repeat, arm, returncode, cpu_s and wall_s. Its fixed-acceptance.json
+and fixed-resume.json retain correctness/resumption scope. Native and ablation
+points require three completed repeats in final mode. Groups never mix commits.
+Official default/fresh points keep their distinct ledgers; no official speedup
+or product of ratios is computed.
+
+O's CSV retains project, upstream_commit, bundle_commit, checker_commit, arm,
+returncode, CPU/wall, local-root parity and accounting validity. Final mode
+requires O's explicit final timing designation, in rows or timing-status.json.
+Interrupted requests with unknown CPU remain blank. Default official costs
+are not treated as equal-obligation closure comparisons.
+
+Use --preview with loaded-preview-cells.csv and freeze-preview-measurements.csv
+to exercise the adapters now. All outputs then use preview- prefixes and no
+system-ready.tex is created. Neither old release-cells.csv nor explicitly
+nonfinal rows can populate the final matrix. The script generates compact
+native/external TeX tables, full median/min/max CSVs, retained nonzero attempts,
+commits, correctness evidence and any provided resumption result.
+
+Validation on 4 November: existing M loaded previews and O freeze previews
+produce 22 matrix groups and nine external groups. Native/ablation rows are
+separated even where M's arm column says native; the key carries the ablation.
+An independently recomputed Nat.Basic median agrees. The interrupted AI request
+retains unknown full CPU. Both table fragments compile, and final mode rejects
+the previews. These checks do not establish a quiet host or independent checker
+review; those remain conditions of the owners' actual final evaluation.
