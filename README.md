@@ -21,7 +21,7 @@ the intended specification, or a safe parser for hostile binary artifacts.
 passed installed-tool checks; official default trusts imports, so its times are
 not an equal-obligation speed comparison. No general speedup is promised.
 
-Version0.1.0 bundles and containers are being qualified, **not yet published**.
+Version0.1.0 bundles and containers are prepared and tested, **not yet published**.
 Other declared toolchains use their matching official checker when available,
 or fail explicitly. The bundled compiler never silently migrates a project.
 
@@ -89,8 +89,9 @@ docker run --rm -v "$PWD":/project proofserve:0.1.0 audit /project --json -
 
 These commands use a locally loaded prepared image; no public registry image
 is claimed before publication. Builders can use docker build -t proofserve:0.1.0 .
-The full image test must pass its Mathlib service imports and installed-form
-project controls before release. Earlier service-only image failures remain
+Full image qualification passed onadf816ae: Mathlib service imports and
+network-disabled installed-form project controls. [Evidence](packaging/qualification-container.json).
+Earlier service-only image failures remain
 in [historical qualification](docs/releases/0.1.0.md).
 
 ## Existing Kimina-compatible service

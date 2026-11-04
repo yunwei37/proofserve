@@ -98,7 +98,11 @@ this experiment's inputs, not every future caller's source/artifact relation.
 Per-module kernel CPU and per-theorem axiom dependencies remain unavailable.
 
 Reproduce reductions with analyze.py --raw-root PATH_TO_RETAINED_CAPTURE.
-Source trees, compiled dependencies, all raw stdout/stderr, lifecycle/resource
-records and failed attempts remain on the PVC outside Git. The small public
+Source trees, all raw stdout/stderr, lifecycle/resource records and failed
+attempts remain on the PVC outside Git. After all controls retired, the
+extractable SDK installation and CrocSwap selective Mathlib build cache were
+removed as generated intermediates, with explicit cleanup records. The original
+archive, project64 compiled outputs, pinned dependency sources and exact
+selective-cache command remain; reconstruct dependencies before rerunning. The small public
 CSV/JSON retains pins, scopes, costs, common acceptance IDs, resource failures,
 declared axioms and source-coverage findings.

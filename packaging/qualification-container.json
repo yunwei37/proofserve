@@ -241,5 +241,142 @@
   ],
   "raw_logs": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/ci/41724086160-logs.zip",
   "published": false,
-  "scope": "Complete image build and network-disabled native service plus installed project controls; timings are qualification observations on the CI runner, not paper evaluation"
+  "scope": "Complete image build and network-disabled native service plus installed project controls; timings are qualification observations on the CI runner, not paper evaluation",
+  "additional_qualified_runs": [
+    {
+      "run_id": 41740685837,
+      "commit": "adf816ae0661ded8a2fc4d528ca78618e04e8209",
+      "conclusion": "success",
+      "url": "https://github.com/yunwei37/proofserve/actions/runs/41740685837",
+      "build_memory_gib": 6,
+      "service_rss_budget_gib": 5,
+      "lean_toolchain": "leanprover/lean4:v4.34.1",
+      "network_disabled_self_test": true,
+      "controls": {
+        "service": {
+          "qualification": "passed",
+          "observations": [
+            {
+              "phase": "first_mathlib",
+              "request_budget_seconds": 180,
+              "wall_seconds": 99.764335018,
+              "result": {
+                "results": [
+                  {
+                    "error": null,
+                    "id": "cold",
+                    "response": {
+                      "env": 0
+                    },
+                    "time": 99.754502328
+                  }
+                ]
+              }
+            },
+            {
+              "phase": "repeat_mathlib_different_source",
+              "request_budget_seconds": 180,
+              "wall_seconds": 65.25902564400008,
+              "result": {
+                "results": [
+                  {
+                    "error": null,
+                    "id": "repeat",
+                    "response": {
+                      "env": 0
+                    },
+                    "time": 65.245307079
+                  }
+                ]
+              }
+            },
+            {
+              "phase": "small_native_batch",
+              "request_budget_seconds": 30,
+              "wall_seconds": 1.2957811670000865,
+              "result": {
+                "results": [
+                  {
+                    "error": null,
+                    "id": "accepted",
+                    "response": {
+                      "env": 0
+                    },
+                    "time": 0.746192471
+                  },
+                  {
+                    "error": null,
+                    "id": "rejected",
+                    "response": {
+                      "env": 0,
+                      "messages": [
+                        {
+                          "data": "Tactic `decide` proved that the proposition\n  False\nis false",
+                          "endPos": {
+                            "column": 28,
+                            "line": 1
+                          },
+                          "pos": {
+                            "column": 22,
+                            "line": 1
+                          },
+                          "severity": "error"
+                        }
+                      ]
+                    },
+                    "time": 1.019458497
+                  },
+                  {
+                    "error": null,
+                    "id": "incomplete",
+                    "response": {
+                      "env": 0,
+                      "messages": [
+                        {
+                          "data": "declaration uses `sorry`",
+                          "endPos": {
+                            "column": 7,
+                            "line": 1
+                          },
+                          "pos": {
+                            "column": 0,
+                            "line": 1
+                          },
+                          "severity": "warning"
+                        }
+                      ],
+                      "sorries": [
+                        {
+                          "endPos": {
+                            "column": 27,
+                            "line": 1
+                          },
+                          "goal": "\u22a2 False",
+                          "pos": {
+                            "column": 22,
+                            "line": 1
+                          },
+                          "proofState": 0
+                        }
+                      ]
+                    },
+                    "time": 1.2906730739999999
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "project": {
+          "installed_project_check": "passed",
+          "accepted_modules": 2,
+          "audit_source_modules": 1,
+          "unsupported_version_rejected": true
+        }
+      },
+      "raw_logs": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/ci/41740685837-logs.zip",
+      "published": false,
+      "scope": "Full image correctness qualification. First/repeat import observations are CI controls, not a performance benchmark; no optional prepared adapter is qualified."
+    }
+  ]
 }

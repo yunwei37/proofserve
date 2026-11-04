@@ -46,7 +46,10 @@ See [external results](../data/external-projects/results.md). Backend malformed-
 
 Latest portable archive qualification41740681358 passed onadf816ae, including
 actual relocation and three original-kernel rejection controls. The current
-Docker qualification is still in progress; the earlier11835a92 image passed.
+Docker qualification41740685837 also passed on the sameadf816ae source: full
+Mathlib imports, accepted/rejected/sorry responses, installed project check/audit
+and explicit version-mismatch rejection, with networking disabled for the final
+test. Raw controls are retained alongside the earlier11835a92 image result.
 
 Pending: same-proof-obligation performance conclusions from checker/results/.
 No performance improvement over official leanchecker is advertised before
