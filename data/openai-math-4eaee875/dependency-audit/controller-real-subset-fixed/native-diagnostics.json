@@ -1,0 +1,27 @@
+[
+  {
+    "sequence": 1,
+    "module": "OAI.Analysis.Conductivity.Model",
+    "native_log": ""
+  },
+  {
+    "sequence": 2,
+    "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+    "native_log": ""
+  },
+  {
+    "sequence": 3,
+    "module": "OAI.Analysis.Laughlin.FourBody.RowCompute",
+    "native_log": ""
+  },
+  {
+    "sequence": 4,
+    "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+    "native_log": ""
+  },
+  {
+    "sequence": 5,
+    "module": "OAI.Probability.TraceReconstruction.Binomial",
+    "native_log": ""
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "checked_files": 139944,
+  "missing": [],
+  "extra": [],
+  "different": [],
+  "passed": true,
+  "native_started": false,
+  "original_files": 139944,
+  "resolved_external_files": 139944,
+  "resumed_internal_files": 0,
+  "inventory": "import-view-files.csv.gz"
+}

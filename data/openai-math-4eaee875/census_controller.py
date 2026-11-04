@@ -5,6 +5,77 @@ from pathlib import Path
 import census_gate as native
 from census import append,utc,records
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def corpus_artifact(rel):
+    return rel.parts[0].split(".")[0] in {"OAI","ComparatorChallenges","HodgeConjecture"}
+
+def inventory_imports(paths,deadline=None):
+    """First-file-hit inventory; later module companions must not fill earlier holes."""
+    expected={};owners={};visited_files=0
+    for value in paths:
+        base=Path(value)
+        if not base.is_dir():continue
+        # Follow directory aliases just as filesystem lookup does; reject cycles.
+        def visit(directory,ancestors):
+            stat=directory.stat();key=(stat.st_dev,stat.st_ino)
+            if key in ancestors:raise ValueError("cyclic import directory: "+str(directory))
+            for src in sorted(directory.iterdir()):
+                if deadline is not None and time.monotonic()>=deadline:raise TimeoutError("subset validation six-hour limit during import inventory")
+                rel=src.relative_to(base)
+                if corpus_artifact(rel):continue
+                if src.is_dir():yield from visit(src,ancestors|{key})
+                elif src.is_file():yield rel,src
+                elif src.is_symlink():raise ValueError("unresolved import symlink: "+str(src))
+        for rel,src in visit(base,set()):
+            visited_files+=1
+            if rel not in expected:
+                expected[rel]=src.resolve();owners[rel]=base
+    # Lean finds IR/private/server data beside the selected olean, not through
+    # a new independent search. Refuse partial shadowing rather than mix owners.
+    anchors={rel.with_suffix(""):owners[rel] for rel in expected if rel.suffix==".olean"}
+    for rel,src in expected.items():
+        parts=rel.name.split(".");candidates=[rel.with_name(".".join(parts[:i]))for i in range(1,len(parts))]
+        anchor=next((name for name in reversed(candidates)if name in anchors),None)
+        if anchor is not None:
+            original=anchors[anchor]/rel
+            if not original.is_file()or original.resolve()!=src:
+                raise ValueError("partial module-family shadowing: "+str(rel))
+    return expected,visited_files
+
+def materialize_import_view(view,expected,internal=None,deadline=None):
+    internal=internal or {}
+    for rel,src in expected.items():
+        if deadline is not None and time.monotonic()>=deadline:raise TimeoutError("subset validation six-hour limit during view preparation")
+        dst=view/rel
+        if not dst.exists()and not dst.is_symlink():
+            dst.parent.mkdir(parents=True,exist_ok=True);dst.symlink_to(src)
+    return check_import_view(view,expected,internal)
+
+def check_import_view(view,expected,internal=None):
+    """Require the whole file manifest, not a suffix allowlist, before native launch."""
+    required=dict(expected);required.update(internal or {})
+    observed={}
+    for root,dirs,files in os.walk(view,followlinks=False):
+        root=Path(root)
+        if any((root/name).is_symlink()for name in dirs):raise ValueError("unexpected directory alias in import view")
+        for name in files:
+            dst=root/name;observed[dst.relative_to(view)]=dst
+    missing=sorted(str(x)for x in required.keys()-observed.keys())
+    extra=sorted(str(x)for x in observed.keys()-required.keys())
+    different=sorted(str(rel)for rel in required.keys()&observed.keys()
+        if not observed[rel].is_file()or observed[rel].resolve()!=required[rel].resolve())
+    return dict(checked_files=len(required),missing=missing,extra=extra,different=different,
+        passed=not(missing or extra or different),native_started=False)
+
+def module_products(obj):
+    """All same-module siblings, including future artifact extensions."""
+    return [p for p in sorted(obj.parent.iterdir())if p.is_file()and p.name.startswith(obj.stem+".")]
+
+def write_view_inventory(path,expected):
+    import csv,gzip
+    with gzip.open(path,"wt",newline="")as f:
+        writer=csv.writer(f);writer.writerow(["relative_path","resolved_original_path"])
+        for rel,src in sorted(expected.items()):writer.writerow([str(rel),str(src)])
+
 def run(a):
     m=json.loads(a.manifest.read_text())
     environment_ready=False;environment_reason=None
@@ -107,21 +178,23 @@ def run(a):
                     child.rmdir()
             old.rmdir()
     view=out/"import-view";view.mkdir(exist_ok=True)
-    for path in m["env"]["LEAN_PATH"].split(":"):
-        base=Path(path)
-        if not base.is_dir():continue
-        for src in base.rglob("*.olean*"):
-            if bounded and time.monotonic()>=deadline:raise TimeoutError("subset validation six-hour limit during view preparation")
-            rel=src.relative_to(base)
-            if rel.parts[0].split(".")[0]in {"OAI","ComparatorChallenges","HodgeConjecture"}:continue
-            dst=view/rel
-            if not dst.exists():dst.parent.mkdir(parents=True,exist_ok=True);dst.symlink_to(src.resolve())
+    expected,original_files=inventory_imports(m["env"]["LEAN_PATH"].split(":"),deadline)
+    materialize_import_view(view,expected,deadline=deadline)
+    internal_products={}
     def publish(n,row):
         obj=Path(row["artifacts"][".olean"]["path"]);rel=Path(*n.split(".")).with_suffix(".olean")
-        for src in obj.parent.glob(obj.name+"*"):
-            dest=view/rel.parent/src.name;dest.parent.mkdir(parents=True,exist_ok=True)
-            if not dest.exists():dest.symlink_to(src.resolve())
+        for src in module_products(obj):
+            relative=rel.parent/src.name;dest=view/relative;target=src.resolve()
+            if not dest.exists()and not dest.is_symlink():
+                dest.parent.mkdir(parents=True,exist_ok=True);dest.symlink_to(target)
+            if not dest.is_file()or dest.resolve()!=target:raise ValueError("published module product collision: "+str(relative))
+            internal_products[relative]=target
     for n in done:publish(n,last[n])
+    preflight=check_import_view(view,expected,internal_products)
+    preflight.update(original_files=original_files,resolved_external_files=len(expected),resumed_internal_files=len(internal_products),inventory="import-view-files.csv.gz")
+    write_view_inventory(out/"import-view-files.csv.gz",expected)
+    (out/"import-view-preflight.json").write_text(json.dumps(preflight,indent=2))
+    if not preflight["passed"]:raise ValueError("import view differs from original path inventory; native launch refused")
     for n,r in mods.items():r["source_sha256"]=sha(r["source"])
     m["env"]=dict(m["env"],LEAN_PATH=str(view))
     c=dict(m,modules=mods,cwd=m.get("source_project_root",str(Path(next(iter(mods.values()))["root"]))),

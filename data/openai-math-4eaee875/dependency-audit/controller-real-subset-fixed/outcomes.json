@@ -1,0 +1,19 @@
+{
+  "functional_only": false,
+  "full_census": false,
+  "bounded_validation": true,
+  "cost_measurement": false,
+  "successful": [
+    "OAI.Analysis.Conductivity.Model",
+    "OAI.Analysis.Conductivity.Variational.VariationalDN",
+    "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+    "OAI.Analysis.Laughlin.FourBody.RowCompute",
+    "OAI.Probability.TraceReconstruction.Binomial"
+  ],
+  "failed": [],
+  "blocked": [],
+  "stop": null,
+  "configuration_units": [],
+  "total_source_units": 5,
+  "complete": true
+}

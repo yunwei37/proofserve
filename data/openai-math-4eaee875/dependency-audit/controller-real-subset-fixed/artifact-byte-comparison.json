@@ -1,0 +1,110 @@
+[
+  {
+    "module": "OAI.Probability.TraceReconstruction.Binomial",
+    "suffix": ".olean",
+    "historical_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/22/Binomial.olean",
+    "current_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/OAI/Probability/TraceReconstruction/Binomial.olean",
+    "historical_bytes": 6994408,
+    "current_bytes": 6994408,
+    "byte_equal": true,
+    "first_difference_offset": null,
+    "historical_sha256": "6b27ac215796cdb57e40fbe01f005ee145f63d68e880a2a8a06eeea602d59475",
+    "current_sha256": "6b27ac215796cdb57e40fbe01f005ee145f63d68e880a2a8a06eeea602d59475"
+  },
+  {
+    "module": "OAI.Probability.TraceReconstruction.Binomial",
+    "suffix": ".ilean",
+    "historical_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/22/Binomial.ilean",
+    "current_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/OAI/Probability/TraceReconstruction/Binomial.ilean",
+    "historical_bytes": 302415,
+    "current_bytes": 302415,
+    "byte_equal": true,
+    "first_difference_offset": null,
+    "historical_sha256": "216a144778d86cfa7bf2380bb215dc71c3c4da9f73bf5f47d5097a0eb1c83f75",
+    "current_sha256": "216a144778d86cfa7bf2380bb215dc71c3c4da9f73bf5f47d5097a0eb1c83f75"
+  },
+  {
+    "module": "OAI.Probability.TraceReconstruction.Binomial",
+    "suffix": ".c",
+    "historical_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/22/Binomial.c",
+    "current_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/OAI/Probability/TraceReconstruction/Binomial.c",
+    "historical_bytes": 6454,
+    "current_bytes": 6454,
+    "byte_equal": true,
+    "first_difference_offset": null,
+    "historical_sha256": "49942c6f94cbd98fe88548032b83510b25bd5b5b5846b8838bfbe201eb1ec158",
+    "current_sha256": "49942c6f94cbd98fe88548032b83510b25bd5b5b5846b8838bfbe201eb1ec158"
+  },
+  {
+    "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+    "suffix": ".olean",
+    "historical_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/14/VariationalDN.olean",
+    "current_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/OAI/Analysis/Conductivity/Variational/VariationalDN.olean",
+    "historical_bytes": 1712448,
+    "current_bytes": 1712448,
+    "byte_equal": true,
+    "first_difference_offset": null,
+    "historical_sha256": "f4f300f4699b29acbec9b649a130363e05241f9de3d260c93afd93b1f45d4baf",
+    "current_sha256": "f4f300f4699b29acbec9b649a130363e05241f9de3d260c93afd93b1f45d4baf"
+  },
+  {
+    "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+    "suffix": ".ilean",
+    "historical_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/14/VariationalDN.ilean",
+    "current_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/OAI/Analysis/Conductivity/Variational/VariationalDN.ilean",
+    "historical_bytes": 42604,
+    "current_bytes": 42604,
+    "byte_equal": true,
+    "first_difference_offset": null,
+    "historical_sha256": "3cdecba04b5a5dd88d655718d44984015a2d043b527043024c450fef1612c533",
+    "current_sha256": "3cdecba04b5a5dd88d655718d44984015a2d043b527043024c450fef1612c533"
+  },
+  {
+    "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+    "suffix": ".c",
+    "historical_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/14/VariationalDN.c",
+    "current_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/OAI/Analysis/Conductivity/Variational/VariationalDN.c",
+    "historical_bytes": 4406,
+    "current_bytes": 4406,
+    "byte_equal": true,
+    "first_difference_offset": null,
+    "historical_sha256": "63871dba6719850e6a0529d91a6df1878dc9820cc994f3b10260ee77f4395a83",
+    "current_sha256": "63871dba6719850e6a0529d91a6df1878dc9820cc994f3b10260ee77f4395a83"
+  },
+  {
+    "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+    "suffix": ".olean",
+    "historical_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/02/ComputeRow1115Batch17.olean",
+    "current_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.olean",
+    "historical_bytes": 20776,
+    "current_bytes": 20776,
+    "byte_equal": true,
+    "first_difference_offset": null,
+    "historical_sha256": "5156dc7bcba7c46318bdc5b1d4fa5967755ec3f89d6bae159ea14ae38c250389",
+    "current_sha256": "5156dc7bcba7c46318bdc5b1d4fa5967755ec3f89d6bae159ea14ae38c250389"
+  },
+  {
+    "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+    "suffix": ".ilean",
+    "historical_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/02/ComputeRow1115Batch17.ilean",
+    "current_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.ilean",
+    "historical_bytes": 4170,
+    "current_bytes": 4170,
+    "byte_equal": true,
+    "first_difference_offset": null,
+    "historical_sha256": "f511d5f8cc7dff1a27a2a1ce51beeb87aff451111cfe7d66be4a16048a3f3ad9",
+    "current_sha256": "f511d5f8cc7dff1a27a2a1ce51beeb87aff451111cfe7d66be4a16048a3f3ad9"
+  },
+  {
+    "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+    "suffix": ".c",
+    "historical_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/openai4341-noM-standard-a-20261031/working/02/ComputeRow1115Batch17.c",
+    "current_path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.c",
+    "historical_bytes": 1474,
+    "current_bytes": 1474,
+    "byte_equal": true,
+    "first_difference_offset": null,
+    "historical_sha256": "6edc446f92295b7638e6a36d3287e9d1adfd37a8161d8b7374eba925daf16277",
+    "current_sha256": "6edc446f92295b7638e6a36d3287e9d1adfd37a8161d8b7374eba925daf16277"
+  }
+]

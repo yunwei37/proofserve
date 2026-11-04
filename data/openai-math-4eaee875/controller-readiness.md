@@ -74,3 +74,10 @@ during the actual root-context dependency preparation.
 The bounded five-module real-controller closure failed during imports; byte
 parity is still unestablished. Full census remains unstarted. See the
 [functional evidence and unresolved IR-sidecar defect](dependency-audit/controller-real-subset/README.md).
+
+## Corrected real-corpus view — 2026-11-04
+
+The explicit five-module rerun completed, and all nine selected historical
+olean/ilean/C pairs are byte-identical. The complete external-file preflight
+passed for 139,944 files. See the [bounded qualification report](dependency-audit/controller-real-subset-fixed/README.md).
+This adds no costs, full-corpus acceptance or passed instruction gate.

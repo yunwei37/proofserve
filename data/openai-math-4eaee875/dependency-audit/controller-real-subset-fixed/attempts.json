@@ -1,0 +1,352 @@
+[
+  {
+    "record": "result",
+    "module": "OAI.Analysis.Conductivity.Model",
+    "pool": "E",
+    "condition": "subset_validation",
+    "rep": 0,
+    "role": "subset_validation",
+    "perf": false,
+    "sequence": 1,
+    "pid": 486101,
+    "birth": "7923550",
+    "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+    "source_sha256": "03e35de029dfd281ced631dc088ed80181d00e73567dde674a5cf68ee05e9fce",
+    "measurement_commit": "94875d6b56c3565cc8743d352206697f75666cbc",
+    "toolchain": {
+      "lean": "4.34.1",
+      "binary": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean"
+    },
+    "attempt": 1,
+    "start_utc": "2026-11-04T12:48:35.936451+00:00",
+    "argv": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "--root=/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "-j8",
+      "-DautoImplicit=false",
+      "-o",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00001/OAI/Analysis/Conductivity/Model.olean",
+      "-i",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00001/OAI/Analysis/Conductivity/Model.ilean",
+      "-c",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00001/OAI/Analysis/Conductivity/Model.c",
+      "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Conductivity/Model.lean"
+    ],
+    "affinity": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "lean_num_threads": 8,
+    "log": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00001/native.log",
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod17dda466_3f7a_4fed_9950_d3d49c55017f.slice/proofserve-W-census-gate-486023.scope/1",
+    "exclusive_at_launch": true,
+    "end_utc": "2026-11-04T12:48:56.760601+00:00",
+    "returncode": 0,
+    "status": "completed",
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "interruption": null,
+    "exec_error": "",
+    "artifacts": {
+      ".olean": {
+        "bytes": 122496,
+        "sha256": "ac86d9aee9ee75aee99afcc1d97536c0e4c73ce26b412110a730e9d2bd94d8f4",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00001/OAI/Analysis/Conductivity/Model.olean"
+      },
+      ".ilean": {
+        "bytes": 15923,
+        "sha256": "d48a7896bf0e72fb3658c5a6f930382f36f6d2a96793f301d107e1036cf57646",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00001/OAI/Analysis/Conductivity/Model.ilean"
+      },
+      ".c": {
+        "bytes": 1342,
+        "sha256": "01abbac8e92d9d09f46eff48a1307a93d3222e7d7cda35d4523c391c7df0f013",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00001/OAI/Analysis/Conductivity/Model.c"
+      }
+    }
+  },
+  {
+    "record": "result",
+    "module": "OAI.Analysis.Conductivity.Variational.VariationalDN",
+    "pool": "E",
+    "condition": "subset_validation",
+    "rep": 0,
+    "role": "subset_validation",
+    "perf": false,
+    "sequence": 2,
+    "pid": 486121,
+    "birth": "7925633",
+    "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+    "source_sha256": "3dc353fb07249b9da1cd02f0af4da984933e7ba674f2a0d5226084ce845ff814",
+    "measurement_commit": "94875d6b56c3565cc8743d352206697f75666cbc",
+    "toolchain": {
+      "lean": "4.34.1",
+      "binary": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean"
+    },
+    "attempt": 1,
+    "start_utc": "2026-11-04T12:48:56.769745+00:00",
+    "argv": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "--root=/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "-j8",
+      "-DautoImplicit=false",
+      "-o",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/OAI/Analysis/Conductivity/Variational/VariationalDN.olean",
+      "-i",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/OAI/Analysis/Conductivity/Variational/VariationalDN.ilean",
+      "-c",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/OAI/Analysis/Conductivity/Variational/VariationalDN.c",
+      "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Conductivity/Variational/VariationalDN.lean"
+    ],
+    "affinity": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "lean_num_threads": 8,
+    "log": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/native.log",
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod17dda466_3f7a_4fed_9950_d3d49c55017f.slice/proofserve-W-census-gate-486023.scope/2",
+    "exclusive_at_launch": true,
+    "end_utc": "2026-11-04T12:49:08.879256+00:00",
+    "returncode": 0,
+    "status": "completed",
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "interruption": null,
+    "exec_error": "",
+    "artifacts": {
+      ".olean": {
+        "bytes": 1712448,
+        "sha256": "f4f300f4699b29acbec9b649a130363e05241f9de3d260c93afd93b1f45d4baf",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/OAI/Analysis/Conductivity/Variational/VariationalDN.olean"
+      },
+      ".ilean": {
+        "bytes": 42604,
+        "sha256": "3cdecba04b5a5dd88d655718d44984015a2d043b527043024c450fef1612c533",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/OAI/Analysis/Conductivity/Variational/VariationalDN.ilean"
+      },
+      ".c": {
+        "bytes": 4406,
+        "sha256": "63871dba6719850e6a0529d91a6df1878dc9820cc994f3b10260ee77f4395a83",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00002/OAI/Analysis/Conductivity/Variational/VariationalDN.c"
+      }
+    }
+  },
+  {
+    "record": "result",
+    "module": "OAI.Analysis.Laughlin.FourBody.RowCompute",
+    "pool": "E",
+    "condition": "subset_validation",
+    "rep": 0,
+    "role": "subset_validation",
+    "perf": false,
+    "sequence": 3,
+    "pid": 486134,
+    "birth": "7926846",
+    "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+    "source_sha256": "3e69482c984b59c22eae05c3d78527b469cf985c029cbcf2818419e83072e36e",
+    "measurement_commit": "94875d6b56c3565cc8743d352206697f75666cbc",
+    "toolchain": {
+      "lean": "4.34.1",
+      "binary": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean"
+    },
+    "attempt": 1,
+    "start_utc": "2026-11-04T12:49:08.896348+00:00",
+    "argv": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "--root=/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "-j8",
+      "-DautoImplicit=false",
+      "-o",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00003/OAI/Analysis/Laughlin/FourBody/RowCompute.olean",
+      "-i",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00003/OAI/Analysis/Laughlin/FourBody/RowCompute.ilean",
+      "-c",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00003/OAI/Analysis/Laughlin/FourBody/RowCompute.c",
+      "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Laughlin/FourBody/RowCompute.lean"
+    ],
+    "affinity": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "lean_num_threads": 8,
+    "log": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00003/native.log",
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod17dda466_3f7a_4fed_9950_d3d49c55017f.slice/proofserve-W-census-gate-486023.scope/3",
+    "exclusive_at_launch": true,
+    "end_utc": "2026-11-04T12:49:10.298463+00:00",
+    "returncode": 0,
+    "status": "completed",
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "interruption": null,
+    "exec_error": "",
+    "artifacts": {
+      ".olean": {
+        "bytes": 911392,
+        "sha256": "2ead73e189b3627982ddb90824e907f239420fc6308b58edb5d35914d9b3d62b",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00003/OAI/Analysis/Laughlin/FourBody/RowCompute.olean"
+      },
+      ".ilean": {
+        "bytes": 6848,
+        "sha256": "98f2c1ab8fd8dc663d19c6cc4f337cd30345798d5cf5054851f8f1ae430c5051",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00003/OAI/Analysis/Laughlin/FourBody/RowCompute.ilean"
+      },
+      ".c": {
+        "bytes": 471240,
+        "sha256": "da4f6e2543dfab6073da7a55bdbc98ea0a5b41fc277df34176a0591a80e198a6",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00003/OAI/Analysis/Laughlin/FourBody/RowCompute.c"
+      }
+    }
+  },
+  {
+    "record": "result",
+    "module": "OAI.Analysis.Laughlin.FiniteFlux.ComputeRow1115Batch17",
+    "pool": "E",
+    "condition": "subset_validation",
+    "rep": 0,
+    "role": "subset_validation",
+    "perf": false,
+    "sequence": 4,
+    "pid": 486145,
+    "birth": "7926988",
+    "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+    "source_sha256": "e5529644a1ae32e3862437199cc1f2022350db6081345b8f722de3226358a0f2",
+    "measurement_commit": "94875d6b56c3565cc8743d352206697f75666cbc",
+    "toolchain": {
+      "lean": "4.34.1",
+      "binary": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean"
+    },
+    "attempt": 1,
+    "start_utc": "2026-11-04T12:49:10.315428+00:00",
+    "argv": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "--root=/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "-j8",
+      "-DautoImplicit=false",
+      "-o",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.olean",
+      "-i",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.ilean",
+      "-c",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.c",
+      "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.lean"
+    ],
+    "affinity": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "lean_num_threads": 8,
+    "log": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/native.log",
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod17dda466_3f7a_4fed_9950_d3d49c55017f.slice/proofserve-W-census-gate-486023.scope/4",
+    "exclusive_at_launch": true,
+    "end_utc": "2026-11-04T12:49:13.650975+00:00",
+    "returncode": 0,
+    "status": "completed",
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "interruption": null,
+    "exec_error": "",
+    "artifacts": {
+      ".olean": {
+        "bytes": 20776,
+        "sha256": "5156dc7bcba7c46318bdc5b1d4fa5967755ec3f89d6bae159ea14ae38c250389",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.olean"
+      },
+      ".ilean": {
+        "bytes": 4170,
+        "sha256": "f511d5f8cc7dff1a27a2a1ce51beeb87aff451111cfe7d66be4a16048a3f3ad9",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.ilean"
+      },
+      ".c": {
+        "bytes": 1474,
+        "sha256": "6edc446f92295b7638e6a36d3287e9d1adfd37a8161d8b7374eba925daf16277",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00004/OAI/Analysis/Laughlin/FiniteFlux/ComputeRow1115Batch17.c"
+      }
+    }
+  },
+  {
+    "record": "result",
+    "module": "OAI.Probability.TraceReconstruction.Binomial",
+    "pool": "E",
+    "condition": "subset_validation",
+    "rep": 0,
+    "role": "subset_validation",
+    "perf": false,
+    "sequence": 5,
+    "pid": 486162,
+    "birth": "7927323",
+    "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+    "source_sha256": "f6da7b04c2cea59c7d95533795cc35a898bd433b3369bb429d644fe02020bedf",
+    "measurement_commit": "94875d6b56c3565cc8743d352206697f75666cbc",
+    "toolchain": {
+      "lean": "4.34.1",
+      "binary": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean"
+    },
+    "attempt": 1,
+    "start_utc": "2026-11-04T12:49:13.666752+00:00",
+    "argv": [
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+      "--root=/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean",
+      "-j8",
+      "-DautoImplicit=false",
+      "-o",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/OAI/Probability/TraceReconstruction/Binomial.olean",
+      "-i",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/OAI/Probability/TraceReconstruction/Binomial.ilean",
+      "-c",
+      "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/OAI/Probability/TraceReconstruction/Binomial.c",
+      "/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/OAI/Probability/TraceReconstruction/Binomial.lean"
+    ],
+    "affinity": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "lean_num_threads": 8,
+    "log": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/native.log",
+    "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod17dda466_3f7a_4fed_9950_d3d49c55017f.slice/proofserve-W-census-gate-486023.scope/5",
+    "exclusive_at_launch": true,
+    "end_utc": "2026-11-04T12:49:40.985616+00:00",
+    "returncode": 0,
+    "status": "completed",
+    "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+    "interruption": null,
+    "exec_error": "",
+    "artifacts": {
+      ".olean": {
+        "bytes": 6994408,
+        "sha256": "6b27ac215796cdb57e40fbe01f005ee145f63d68e880a2a8a06eeea602d59475",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/OAI/Probability/TraceReconstruction/Binomial.olean"
+      },
+      ".ilean": {
+        "bytes": 302415,
+        "sha256": "216a144778d86cfa7bf2380bb215dc71c3c4da9f73bf5f47d5097a0eb1c83f75",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/OAI/Probability/TraceReconstruction/Binomial.ilean"
+      },
+      ".c": {
+        "bytes": 6454,
+        "sha256": "49942c6f94cbd98fe88548032b83510b25bd5b5b5846b8838bfbe201eb1ec158",
+        "path": "/workspaces/.agent-state/gpu-smt-captures/workloads/controller-real-subset-fixed-20261104/run/attempts/00005/OAI/Probability/TraceReconstruction/Binomial.c"
+      }
+    }
+  }
+]

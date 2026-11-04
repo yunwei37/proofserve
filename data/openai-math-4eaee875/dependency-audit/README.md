@@ -172,3 +172,11 @@ without a changed-recipe repair comparison. No recipe or threshold was changed.
 See [the bounded native report](controller-real-subset/README.md).
 This is functional evidence only, not costs or a passed census gate.
 Full census was not launched; all W-owned validation processes have retired.
+
+## Corrected real-corpus view — 2026-11-04
+
+The [corrected bounded run](controller-real-subset-fixed/README.md) now
+establishes five successful closure modules and nine byte-identical selected
+historical product pairs. Complete first-hit file inventory comparison passed
+before native launch. The original failed attempt remains unchanged, and
+the instruction gate remains failed; full census is unstarted.

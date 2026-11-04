@@ -226,5 +226,25 @@
     "cost_measurement": false,
     "full_census_started": false,
     "gate_status": "failed_unchanged"
+  },
+  "real_controller_subset_qualification_after_view_fix": {
+    "report": "controller-real-subset-fixed/summary.json",
+    "status": "passed_selected_five_module_closure_only",
+    "selected_targets": 3,
+    "closure_modules": 5,
+    "successful_modules": 5,
+    "failed_modules": 0,
+    "blocked_modules": 0,
+    "native_attempts": 5,
+    "artifact_pairs_compared": 9,
+    "artifact_pairs_byte_identical": 9,
+    "artifact_pairs_different": 0,
+    "external_view_files_compared": 139944,
+    "view_missing": 0,
+    "view_extra": 0,
+    "view_different": 0,
+    "cost_measurement": false,
+    "full_census_started": false,
+    "gate_status": "failed_unchanged"
   }
 }

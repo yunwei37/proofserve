@@ -1,0 +1,12 @@
+{
+  "supervisor_pid": 486022,
+  "supervisor_birth": "7909491",
+  "supervisor_retired": true,
+  "supervisor_memory_events": "low 0\nhigh 0\nmax 424\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+  "supervisor_scope_removed": true,
+  "controller_pid": 486023,
+  "controller_birth": "7909495",
+  "controller_retired": true,
+  "native_retired": true,
+  "native_scope_removed": true
+}

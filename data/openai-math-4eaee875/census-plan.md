@@ -320,3 +320,21 @@ without a changed-recipe repair comparison. No recipe or threshold was changed.
 See [the bounded native report](dependency-audit/controller-real-subset/README.md).
 This is functional evidence only, not costs or a passed census gate.
 Full census was not launched; all W-owned validation processes have retired.
+
+## Corrected adapter and selected-product parity — 2026-11-04
+
+The previously unresolved folded-view defect is repaired by preserving the
+complete first-hit file manifest, including IR and arbitrary companion
+products. --execute now refuses a differing view before native launch.
+The explicit E-core-only five-module closure rerun completed all five modules.
+The initial complete file comparison passed for 139,944 external files; after
+publication it passed for those files plus 15 new internal products. Nine
+actual historical/current olean/ilean/C pairs were compared, all byte-identical.
+
+The compilation command, -j8, LEAN_NUM_THREADS=8, options and pins were
+unchanged. This selected functionality/parity prerequisite is established,
+not full-corpus buildability, P8/22-core concurrency or a performance result.
+The original instruction-invariance gate remains failed and its thresholds
+unchanged. No costs were collected or added to census tables; no full census
+was started. See dependency-audit/controller-real-subset-fixed/README.md.
+All W validation processes have retired. Await the user's decision.
