@@ -1,0 +1,23 @@
+{
+  "status": "panels_incomplete",
+  "original_completed": 42,
+  "planned_new_draws": 12,
+  "completed_new_draws": 7,
+  "expanded_cells": [
+    "0-50;11-100;0"
+  ],
+  "goal_nominal_ratio_below_three": false,
+  "recorded_target_attempt_CPU_h_lower_bound": 0.014499675277777777,
+  "target_attempts_missing_CPU": 0,
+  "projected_additional_draws": 4,
+  "projected_additional_leaf_CPU_h": 0.059123731944444445,
+  "dependency_preparation_CPU_h": "unmeasured; excluded, not zero",
+  "limitations": [
+    "Original42 HT stays unchanged; expanded cells use weight-one known members plus SRS remainder.",
+    "Whole-frame hybrid interval is nominal: adaptive cell choice and repeated looks lack global coverage guarantee.",
+    "All six fresh responses are required before a cell replaces its original HT component.",
+    "Sparse cells/heavy tails can invalidate t approximation; missingness is not imputed.",
+    "Future sample count/CPU is a plug-in forecast, excluding dependency preparation and calibration uncertainty.",
+    "Neither whole-library census nor actual whole-library checker measurement."
+  ]
+}
