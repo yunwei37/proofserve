@@ -38,8 +38,17 @@ observations are in qualification-container.json. The old prepared-parent timeou
 is retained as a historical failure; this image uses the stock fresh REPL and
 does not claim to repair or qualify that optional prepared adapter.
 
-Pending: three previously unused external projects including an AI-assisted project;
-official leanchecker accepted-set comparison; backend malformed-proof CI.
+Passed: all three installed-tool external check/audit cases, including the publicly
+AI-assisted CrocSwap case. Common local acceptance IDs match official leanchecker;
+imported-proof obligations differ. CrocSwap needed a disclosed manifest-name
+repair and a one-worker official runtime fallback after retained RSS stops.
+See [external results](../data/external-projects/results.md). Backend malformed-proof CI also passed.
+
+Latest portable archive qualification41740681358 passed onadf816ae, including
+actual relocation and three original-kernel rejection controls. The current
+Docker qualification is still in progress; the earlier11835a92 image passed.
+
+Pending: same-proof-obligation performance conclusions from checker/results/.
 No performance improvement over official leanchecker is advertised before
 those published-form measurements are complete.
 

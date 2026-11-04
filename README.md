@@ -17,9 +17,9 @@ Trust: the original Lean kernel, artifact/frontier adapter, declared axioms and
 trusted local checkpoints. Acceptance does not prove an axiom-free development,
 the intended specification, or a safe parser for hostile binary artifacts.
 
-**Speed versus official leanchecker:** release-tool external evaluation is
-being prepared; no numerical speed claim is made yet. Research prototypes
-are not substitutes for that comparison.
+**Speed versus official leanchecker:** [three external projects](data/external-projects/results.md)
+passed installed-tool checks; official default trusts imports, so its times are
+not an equal-obligation speed comparison. No general speedup is promised.
 
 Version0.1.0 bundles and containers are being qualified, **not yet published**.
 Other declared toolchains use their matching official checker when available,

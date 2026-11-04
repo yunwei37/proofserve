@@ -64,5 +64,20 @@
     "2026-11-03T21:56:13.5217786Z {\"complete\": true, \"malformed_proofs_rejected\": 3, \"source_commit\": \"5de3751778da0712e3a30680befaa38a636e03e1\"}"
   ],
   "raw_logs": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/ci/41725630396-logs.zip",
-  "published": false
+  "published": false,
+  "additional_qualified_runs": [
+    {
+      "run_id": 41740681358,
+      "source_commit": "adf816ae0661ded8a2fc4d528ca78618e04e8209",
+      "conclusion": "success",
+      "platform": "Ubuntu22.04 / glibc2.35",
+      "archive_bytes": 875703942,
+      "actual_relocation": true,
+      "native_malformed_proofs_rejected": 3,
+      "original_default_and_fresh_controls_passed": true,
+      "crate_dry_run_passed": true,
+      "published": false,
+      "raw_logs": "/workspaces/.agent-state/proofserve-o-line/closeout-20261103/ci/41740681358-logs.zip"
+    }
+  ]
 }

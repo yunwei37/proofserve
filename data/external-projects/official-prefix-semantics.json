@@ -1,0 +1,10 @@
+{
+  "original_lean_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "source": "https://github.com/leanprover/lean4/blob/5045d0056413266e57c625dcd7c365b10e377c52/src/LeanChecker.lean",
+  "default_selection": "!fresh && target.isPrefixOf m || target == m",
+  "execution": "IO.asTask (replayFromImports m) for every selected module",
+  "isolated_failure": "MultitapeToolkit prefix expanded to its descendants; not an exact one-module invocation.",
+  "next_control": "same explicit64 roots and unchanged official binary, LEAN_NUM_THREADS=1, same external12GiB budget; imported proofs remain trusted by default.",
+  "failed_batch_cpu": "unknown total; killing timeout and descendants together prevents complete wait4 child CPU accounting; raw values retained.",
+  "review": "\u81ea\u5ba1"
+}

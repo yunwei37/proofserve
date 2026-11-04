@@ -48,7 +48,7 @@
       "source_tree_artifact": "/workspaces/.agent-state/proofserve-o-line/external-projects/solar-source-tree.json"
     }
   ],
-  "measurement_status": "source snapshots prepared; no external timing result yet",
+  "measurement_status": "all3 installed checks/audits complete; common local acceptance matches official; Croc official runtime-default resource failures retained, stock serial-pool fallback completed; no equal-scope speedup claim",
   "candidate_changes_before_measurement": [
     {
       "removed": "lambdaclass/stabileo",
