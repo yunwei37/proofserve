@@ -1,18 +1,22 @@
 # Six-page paper: evidence and completion map
 
-This map records admitted measurements, versions and protocol boundaries. The latest decision makes a possible full run conditional on a usability gate; it has not started and supplies no new result. Historical reviews and raw qualifications remain linked below. Root runs no new native measurement.
+This map records admitted measurements, versions and protocol boundaries. The completed usability gate failed, so no full run was started and no corpus total is supplied. Historical reviews and raw qualifications remain linked below. Root runs no new native measurement.
 
 ## Protocol appendix: census transition and evidence handoff
 
-**The full run has not started.** W first validates that its full-corpus numbers will be directly usable. A passing validation permits the run; a failed validation means do not run. The earlier description of W already building the full corpus is superseded.
+**The gate completed and failed; the full run was not started.** The user's instruction is to stop if qualification fails. W's [published result](../../data/openai-math-4eaee875/measurement/census-gate/README.md) is committed as f97e6fbdc4d8ef167d43a32944cbabb7cad1db19; the measurement source is 2c901ec4f0bbf73b75b534bbc255fcc973aebe6f. The terminal record is dated 2026-11-04 05:15:28 UTC.
 
-This is an internal readiness record, not census methods or results added to the paper. The manuscript, numerical values, figure inputs and PDF remain unchanged. Any possible later handoff is conditional on W passing its gate and subsequently returning usable completed data; the [plan](../research-plan.md) owns that decision.
+This is an internal protocol record, not census methods or results added to the paper. The manuscript, numerical values, figure inputs and PDF remain unchanged. The [plan](../research-plan.md) records that no full run or alternative qualification is launched.
 
 **Every root operation inside the Workspace uses CPUs 8–9, including reads, analysis, Git and PDF compilation.** Remote entry uses `taskset -c 8,9`; child affinity has been checked as 8–9. The former 22–23 setting must not be reused. Historical build checks below retain the CPUs actually used in those past runs.
 
 The conditional target remains the 163,097-source-module OpenAI corpus at revision 4eaee875, in the existing phobos-vt / gpu-smt-dev Workspace. The earlier all-resource permission and 384 GiB expansion do not bypass the usability gate. W chooses the technical validation approach; root does not introduce a numeric threshold or another approval round, start a second collector, or infer that an old unsuccessful pilot is the final decision on the new gate.
 
 The retained preparation records under `/workspaces/.agent-state/gpu-smt-captures/workloads/census-pilot-20261104/` include a completed source-acquisition receipt at 01:15:41 UTC and an earlier unsuccessful six-target pilot with `full_census_started=false`. These establish preparation only, not a passing gate, full-run start or whole-corpus CPU cost. Later status must be read afresh rather than resuming a PID from these observations.
+
+The complete gate contains 240 foreground, 240 enabled/disabled-counter controls and 1,413 background compiler attempts. All returned successfully. For each of 20 modules, take the median total retired instructions in each of four conditions, then compute max/min minus one. Across modules the median is **1.331198%** and the linearly interpolated P95 is **3.149811%**, exceeding the frozen **1%/3%** criteria. The alternative pooled deviations relative to P-quiet are a different statistic and do not replace this failed comparison.
+
+Root independently parsed the retained raw records and recomputed the instruction spreads and counter overhead. CPU-overhead medians are **0.527371% P / 0.280388% E**; wall-overhead medians are **0.127603% P / 0.249686% E**. These pass the aggregate overhead criterion, without establishing a uniform per-module bound. Recorded active PMU coverage is complete. Root checked recorded product-digest parity; W additionally publishes direct byte-comparison results. Root checked all 1,893 recorded native PID/birth identities retired and their cgroups absent, with no recorded OOM events. This is a bounded protocol failure, not a proof rejection or a claim that all ways of measuring a census are impossible. Raw records remain at /workspaces/.agent-state/gpu-smt-captures/workloads/census-gate-20261104/run-1/.
 
 The original42 and independent precision panel stay separate and preserved. Current M timing runs are previews, excluded from Table 1 and final system performance even if complete. Final system timing follows the resolved gate/full-run path on an otherwise idle machine. Existing external installed checks and CI remain versioned functional observations; no same-obligation speedup is inferred.
 

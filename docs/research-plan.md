@@ -1,20 +1,20 @@
 # ProofServe closure plan
 
-The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. The latest direct decision is conditional: **the full run has not started. W validates the gate first; a pass permits the full run, and a failed gate means do not run.** The earlier statement that W had started the full build is superseded.
+The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **W's usability gate completed and failed; the full run was not started.** The user's instruction applies: a failed gate means do not run.
 
 ## Full-run usability gate
 
-W first validates the requirement: the full-corpus numbers must be directly usable. W owns the technical approach and validation. Root adds no numerical threshold, deadline or approval round, and starts no collector. Source acquisition, the earlier pilot and the 384 GiB volume expansion do not establish that this gate passed.
+W's [qualification report](../data/openai-math-4eaee875/measurement/census-gate/README.md) is committed as f97e6fbd, with measurement source 2c901ec4. The complete 20-module, four-condition, three-repeat matrix gives a cross-condition instruction spread of 1.3312% median and 3.1498% P95, exceeding the frozen 1%/3% criteria. All 480 foreground/control and 1,413 background attempts returned successfully; aggregate counter-overhead medians passed. Root independently recomputed these statistics from the raw records. This does not establish that every possible census protocol would fail.
 
-The conditional target remains all 163,097 modules at OpenAI math revision 4eaee875, in the existing phobos-vt / yunwei356/gpu-smt-dev Workspace. The earlier permission to use available host resources applies only after the gate passes. If the validation fails, do not start the full workload. Preserve raw preparation and failure records.
+The proposed target was all 163,097 modules at OpenAI math revision 4eaee875 in the existing phobos-vt / yunwei356/gpu-smt-dev Workspace. No full workload, alternative protocol, threshold change or retry is launched after this failure. Source availability and the 384 GiB expansion do not qualify the measurement. Preserve the completed gate, preparation and failure records; W owns its technical report.
 
-The earlier 1–2 day estimate is a planning estimate, not a running campaign duration or a start commitment. The original42 and independent precision samples remain separate and unchanged. Preparation and pilots are not complete corpus measurements.
+The earlier 1–2 day estimate is a planning estimate, not a running campaign duration or a start commitment. The original42 and independent precision samples remain separate and preserved. W has superseded the independent precision continuation with 7/12 returned; root does not resume it. Preparation and pilots are not complete corpus measurements.
 
 ## Current manuscript and conditional handoff
 
 **Do not add full-corpus measurement content to the paper now.** Keep its numbers, source and PDF unchanged. The existing original42 estimate remains 279.12 compiler CPU-hours with nominal interval 95.18–463.06, at its recorded sample revision.
 
-Only if W passes the gate and a full run later returns usable complete data should Section 3.2 be reconsidered for observed totals and distributions, with sampling retained for calibration. Marked-file and default-graph compiler costs would then use observed module costs. None of those future values is prefilled or promised now.
+Section 3.2 keeps the existing sample estimate. The failed gate supplies no full-corpus total, marked-file cost or default-graph cost to substitute into the paper. A different census protocol would need a later explicit decision; this plan starts none.
 
 M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's possible full-library original-kernel attempt has unknown feasibility and is not mentioned as a paper result.
 

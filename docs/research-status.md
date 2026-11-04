@@ -4,7 +4,7 @@ We are delivering the open-source tool and a six-page empirical + system paper.
 
 ## Current decision
 
-**The full run has not started.** W first validates that its full-corpus numbers will be directly usable. A pass permits the full run; if validation fails, do not run. The earlier statement that W had begun the full build is superseded. Source acquisition, the pilot and the 384 GiB expansion are preparation, not a passing gate.
+**The usability gate failed; the full run was not started.** W's [completed qualification](../data/openai-math-4eaee875/measurement/census-gate/README.md), committed as f97e6fbd, reports instruction spreads of 1.3312% median and 3.1498% P95, above the frozen 1% and 3% thresholds. All 480 foreground/control and 1,413 background calls completed successfully. Under the user's instruction, no census is launched. This is a failure of the proposed measurement protocol's invariance check, not a proof rejection.
 
 All root work inside the Workspace now uses **CPUs 8–9**, including PDF compilation. The former CPU 22–23 setting is retired for future work; historical records remain unchanged.
 
