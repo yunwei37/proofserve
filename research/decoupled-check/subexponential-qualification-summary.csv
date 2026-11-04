@@ -1,0 +1,5 @@
+phase,accepted,operationally_interrupted,not_reached,complete,performance_scope
+source production,14721,0,0,True,retained and new P compiler costs
+segmented stream,14721,0,0,True,P prototype only; includes startup restore export
+original module-local reference,14401,1,319,False,mixed P and untimed E; no aggregate CPU/wall
+malformed theorem bodies,3,0,0,True,6 native rejections;1mutation class;untimed E

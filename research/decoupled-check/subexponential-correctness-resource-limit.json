@@ -50,7 +50,8 @@
   "cpu_wall_cost": null,
   "source_stream_primary_costs_unchanged": true,
   "full_reference_parity": false,
-  "controls_pending": true,
+  "controls_pending": false,
   "original_controller_retired": true,
-  "scope": "One isolated original-kernel root exceeded12GiB sampled own-tree RSS; not proof rejection. No retry or cap increase."
+  "scope": "One isolated original-kernel root exceeded12GiB sampled own-tree RSS; not proof rejection. No retry or cap increase.",
+  "native_control_rejections": 6
 }

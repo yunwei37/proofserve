@@ -1,3 +1,5 @@
+> Closeout update: source/stream primary costs below are unchanged. Reference parity stopped at14401/14721 after an isolated-root12GiB RSS failure; three malformed bodies produced six explicit rejections. See [current closeout](subexponential-closeout.md). This earlier primary-cost snapshot is retained, not a fully qualified system result.
+
 # SubexponentialSAT primary costs after the disk stop
 
 Review: 自审. This is a closed source/stream cost calculation, **not final qualification**. The original collector failed at disk_ceiling=0.85 after completing all source production and native stream acceptance. The original failure remains preserved. Only missing module-local references and the three bad-proof controls are being completed; no accepted source or stream work is repeated.
