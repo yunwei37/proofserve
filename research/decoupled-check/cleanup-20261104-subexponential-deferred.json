@@ -1,0 +1,45 @@
+{
+  "review": "\u81ea\u5ba1",
+  "observed_utc": "2026-11-04T05:22:46.443319+00:00",
+  "action": "deferred; no deletion",
+  "released_bytes": 0,
+  "path": "/workspaces/.agent-state/gpu-smt-captures/decoupled-check-20261031/subexponential-20261103/check-lib",
+  "namespace_allocated_bytes": 12916846592,
+  "unique_allocated_bytes": 846778368,
+  "files": 65651,
+  "reason": "Another line is actively using these existing inputs; preserve current and queued readers.",
+  "readers": [
+    {
+      "pid": 365777,
+      "birth": "5222894",
+      "affinity": [
+        8,
+        9
+      ],
+      "role": "existing timeout wrapper"
+    },
+    {
+      "pid": 365779,
+      "birth": "5222895",
+      "affinity": [
+        8,
+        9
+      ],
+      "role": "existing proofserve-check-cache-build3 coordinator"
+    },
+    {
+      "pid": 365799,
+      "birth": "5222918",
+      "affinity": [
+        8,
+        9
+      ],
+      "role": "existing native worker, matching maps and LEAN_PATH"
+    }
+  ],
+  "reader_project": "/workspaces/.agent-state/gpu-smt-captures/checker-full-feasibility-20261104/subexp-project",
+  "safety": "No signals, source changes, affinity changes or stop/restart issued to these readers.",
+  "retention": "All raw logs, input sources, failed references and control events remain unchanged.",
+  "prerequisite_for_later_cleanup": "Owning line no longer needs the provider path; recheck actual readers and future configuration.",
+  "disk_note": "PVC already expanded to384GiB by operator; no immediate85% pressure. Shared hard links mean12.917GB namespace is not12.917GB physical reclaim."
+}

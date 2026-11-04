@@ -92,3 +92,16 @@ O's bundle/container and three-project functional qualifications remain retained
 All external timing figures remain pre-census previews. The final fixed system
 evaluation and final release readiness require W's census to finish and the
 machine to be quiet. No tag, registry publication or announcement was made.
+
+## Retained artifacts and cleanup boundary
+
+No SubexponentialSAT provider directory was deleted. A read-only cleanup audit
+found another line's live proofserve-check-cache-build3 coordinator and worker
+using check-lib in LEAN_PATH and mmap. Its current and queued inputs are preserved;
+O did not signal, move, restart or stop those processes. Physical reclamation is
+deferred until that owner no longer needs the path, followed by another audit.
+The expanded384GiB PVC is not an85% pressure point.
+
+The public control JSON contains only six verdict summaries; full unedited native
+event streams remain at the PVC capture path. An initial overly large public
+event-list copy was corrected forward; the earlier commit was not rewritten.
