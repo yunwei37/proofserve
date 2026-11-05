@@ -1,115 +1,138 @@
 # ProofServe closure plan
 
-The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **Continue the full census with two documented admission phases on the same 22-core pools. Do not wait for another user decision.** This latest instruction supersedes the earlier stop-and-wait disposition; the failed gate remains part of the evidence.
+Deliver the open-source ProofServe tool and a readable six-page empirical +
+system paper by **6 November 2026, 20:00 UTC**. The latest user stop replaces
+the earlier requirement to finish the compilation census and the proposed
+second admission phase. **Do not resume compilation. Phase 2 never ran.**
 
-## Later execution observation: phase 2 not launched
+## Measured source scope and scientific interpretation
 
-The two-phase decision below describes the authorized plan, not two executed
-segments. At 20:36 UTC root read the old controller's retirement at
-20:29:39.647004 UTC and W's later user-stop/derived records, which explicitly
-say segment2_launched=false. M's c8f2a0c5 records the later relayed operator
-stop and admits final evaluation only after actual retirement and lease
-release. The stopped first segment is not a complete census; do not invent
-a second-segment wall, CPU cost or admission-policy benefit. Preserve the
-unfinished scope and await the owner's actual published ledger for reporting.
-Root does not resume W or launch the matrix. Earlier no-cutoff and two-phase
-entries are the instruction history, not proof of full execution.
+The coordinator reports 128,331 successful executable modules out of 163,096
+(78.7%), plus a separate configuration unit, and no final failed modules.
+The 34,765 unfinished executable modules remain explicitly unattempted or
+interrupted, not successful, zero-cost or genuine dependency-failure outcomes.
+W publishes the formal module, attempt, scope and clock ledgers.
 
-## Closure schedule (all times UTC, 2026)
+This is a dependency-ordered observed subset, not a probability sample.
+Later dependencies include the memory-intensive families that prompted the
+abandoned admission change. Their missing costs may be higher. Do not infer
+a full-library total, multiply by inverse coverage, or fill missing work with
+the original 42 samples, a model or stratum weights. Successfully observed
+P-core and E-core work supplies separate hardware-specific lower bounds on
+the campaign's full-source work, not a converted hardware-independent total.
 
-The two-day closure instruction supersedes the former November target. Deliver the usable tool and readable six-page paper by **6 November, 20:00**, with the full census allowed to run to completion. The other milestones remain unchanged; none authorizes truncating the census.
+All CPU distributions, lexical marked/unmarked cost comparisons and
+inside/outside-default-graph cost shares apply only to the measured subset.
+Distinguish these from the full-frame lexical/source coverage inventory,
+which retains its original known denominator. Show observed and unmeasured
+coverage when joining these labels; neither subset representativeness nor
+whole-corpus cost shares follow from the static frame.
 
-| Deadline or budget | Owner and handoff |
+Keep CPU=user+system separately for P and E. Report the measured first-phase
+machine interval from the real launch to retirement, naming its boundary;
+it includes draining/retries, while unsuccessful-attempt CPU is excluded
+from successful-module costs and remains in the attempt ledger.
+Summed module wall is not campaign wall. There is no second-phase cost,
+combined two-phase wall or admission-policy performance result.
+
+## Closure handoffs (all UTC, 2026)
+
+| Milestone or budget | Owner and handoff |
 |---|---|
-| 5 November, 06:00 | M's native freeze is e000ed62, replacing e1557c77; retain its shared-checked/strict policy and review limits. |
-| 5 November, 12:00 | Root finishes all paper prose and figure/table scripts; only returned numbers remain to integrate. |
-| 5 November, 14:00 | O finishes functional acceptance of the frozen installation. |
-| No census cutoff | W runs the full-corpus compilation campaign to its natural terminal; enumerate successful, genuinely failed, blocked and configuration units. |
-| After compilation, at most 6 hours | M runs the final matrix on the quiet machine. |
-| Next, at most 2 hours | O runs final external-project timing. |
-| If time remains, stop by 6 November, 17:00 | M's optional full-library checking attempt reports the verified scope actually reached; it may be partial or not started. |
-| 6 November, 18:00 | Root integrates returned numbers into a readable six-page paper with zero missing macros. |
-| 6 November, 20:00 | Close out the project with tool, paper and explicit remaining limitations. |
+| 5 November, 06:00 | M froze native e000ed62; retain shared-checked/strict semantics and review limits. |
+| 5 November, 12:00 | Root prose and figure/table scripts prepared; update for the actual stopped scope and returned numbers. |
+| 5 November, 14:00 | O frozen-native installation functional qualification; test-time preview provenance remains explicit. |
+| 5 November stop | W retires the original campaign and publishes the actual observed subset; no second phase or build restart. |
+| Next, at most 6 hours | M executes the final matrix after retirement, lease release and a quiet machine. |
+| Then, at most 2 hours | O executes final external-project timing. |
+| Last, stop by 6 November, 17:00 | M checks only actually built artifacts, reporting the reached scope; partial or not-started remains possible. |
+| 6 November, 18:00 | Root integrates actual numbers, six pages, zero missing macros. |
+| 6 November, 20:00 | Close with tool, paper and explicit limitations. |
 
-The user has cancelled the compilation cutoff: do not stop at 08:00 or close the census with a deadline-selected subset. The other stated milestones, including the overall 20:00 deadline, remain unchanged; they are not authority to truncate the census. Final timing runs sequentially: matrix (at most six hours), external timing (at most two hours), then optional library checking if time remains. No separate PlanarPacking comparison is scheduled or claimed. Preserve all successful, failed, interrupted and unattempted outcomes; the deadline does not turn partial coverage into a complete result. Root documents these handoffs and reads the existing owners' actual returns, without creating a competing collector or changing their implementation.
+M's c8f2a0c5 explicitly admits the stopped handoff. Root reads actual owner
+launch/terminal/receipt/PID-birth evidence and starts no replacement run.
+The final matrix retains Nat.Basic/Grid at workers 1/2/4/8 and Barrier 1/8,
+three repeats. Nat.Basic/Grid retain 8-worker no-persistence/no-split and
+strict points. Barrier 2/4 is deliberately unmeasured. Official controls,
+bad-proof checks and interruption/resumption keep their actual scope.
+The 71-attempt design and planning models are not final performance.
 
-The census must run to completion; no cutoff-subset publication is planned. Enumerate every genuinely failed module and blocked dependent with its actual reason, keeping successful costs distinct from failure/blocked outcomes. A terminal campaign with genuine failures is not an all-successful build, and absent costs are never zero-filled. Do not hide failures or extrapolate successful costs into an all-success total.
+The last checking phase is limited to available built artifacts, not all
+163,096 source modules. Report unique accepted/input frame, attempted roots,
+proof rejects, operational stops and unattempted inputs with tool/input
+commits and available official references. A verified prefix is not complete
+official parity. If no time remains, report not attempted without zero costs
+or invented counts; this supplementary result is not required for the paper.
+No separate PlanarPacking comparison is scheduled.
 
-Full-library checking remains supplementary. If it stops short, report unique accepted modules, actual attempted scope and rejection/operational-stop status with tool/input commits; a prefix is not whole-library parity. If no time remains to start it, report “not attempted within the evaluation window”, without fabricated acceptance counts or zero costs. It is not a required paper result or a prerequisite for project closure. Final matrix, external timing and optional checking still follow the completed census in that order, followed by numerical integration; do not move them ahead of the running census.
+## Gate, tool policy and data handoff
 
-## Full-run usability gate
+The original total-instruction invariance gate remains failed: median
+1.3312% and P95 3.1498% exceed unchanged 1%/3% criteria. Its 20-module,
+four-condition, three-repeat foreground/control matrix and 1,413 background
+attempts returned; aggregate counter-overhead medians passed. Root previously
+recomputed the raw statistics. Cross-module workload comparison uses user-mode
+instructions, explicitly selected after those results. This is not a passing
+replacement gate or a guarantee of arbitrary-load invariance.
 
-W's [qualification report](../data/openai-math-4eaee875/measurement/census-gate/README.md) is committed as f97e6fbd, with measurement source 2c901ec4. The complete 20-module, four-condition, three-repeat matrix gives a cross-condition instruction spread of 1.3312% median and 3.1498% P95, exceeding the frozen 1%/3% criteria. All 480 foreground/control and 1,413 background attempts returned successfully; aggregate counter-overhead medians passed. Root independently recomputed these statistics from the raw records. This does not establish that every possible census protocol would fail.
+Lean 4.34.1, OpenAI math 4eaee875 and Mathlib d13f23b7 remain the input pins;
+the original campaign used P0–7 and E10–23, -j8 and no -M (including -M0).
+Its actual elapsed interval and resource interruptions describe that machine
+and admission policy. The proposed memory-admission second phase is history,
+not an executed measurement.
 
-The target is all 163,097 modules at OpenAI math revision 4eaee875 in the existing phobos-vt / yunwei356/gpu-smt-dev Workspace. W owns execution on the fixed eight-P-core plus fourteen-E-core pools; admission changes between the two documented phases. Root verifies the actual launch and subsequent terminal rather than treating this authorization as completed measurement, and starts no duplicate collector. Preserve the failed gate, preparation and all native outcomes.
+The frozen checker is e000ed62. Shared-checked default can accept a crafted
+artifact through another module's checked same-interface theorem body while
+official original-context replay rejects it. The proposition remains derivable
+in the checked shared closure with its reported axioms; artifact-context parity
+is a different guarantee. --strict-theorem-bodies selects the body-context
+agreement route, retaining other IR/artifact/operational differences.
+Strict cost comes only from matching final matrix rows, never old e155
+isolation previews. Two read-only reviews have regression repairs; repaired
+source has no independent runtime review.
 
-The earlier 1–2 day estimate is a planning estimate, not a running campaign duration or a start commitment. The original42 and independent precision samples remain separate and preserved. W has superseded the independent precision continuation with 7/12 returned; root does not resume it. Preparation and pilots are not complete corpus measurements.
+Paper census artifacts must label the user-stopped observed subset and its
+unmeasured identities. The generator may publish an explicitly stopped
+observation, never call it complete census coverage. W's final CSVs feed
+distributions and P/E totals; no earlier sample/model supplies missing costs.
+Final system data comes only from checker/results/ and data/external-projects/
+with tool/input commits, policy and scope. Preview/fixture values cannot fill
+final tables. Official default trusts imports and is not equal full-closure
+work; no speedup or product of ratios is inferred from different obligations.
 
-## Two-phase census protocol (5 November decision)
+Keep original42 and superseded precision7/12 separately as historical evidence.
+They are not pooled, resumed or used to complete stopped work.
+The nealmcb report's 13.8h/32vCPU is measured wall; approximately 330 compiler
+CPUh is extrapolated from 26 modules, and approximately 410 includes Comparator.
+Those observations do not fill this campaign's missing work.
 
-Phase 1 uses fixed 22-slot admission, subject to the recorded memory reserve,
-drains and exclusive retries; this does not mean 22 native processes always
-run simultaneously. From 5 November, 16:00 UTC, the coordinator reports
-repeated memory interruptions in PadicHodge and related families, following
-the earlier Ramsey behavior. Phase 2 replaces that admission policy with
-memory-based admission and concurrency caps for previously interrupted
-families. W determines and records the actual switch time and parameters;
-the decision notice alone is not evidence that the switch has executed.
+## Owners, paper and operations
 
-Compilation commands, -j8, Lean settings and P/E pools stay fixed.
-Preserve successful phase-1 records. Label every successful cost by phase
-and pool, keep failed/interrupted attempts separate, and report P/E CPU
-seconds and measured machine wall for each phase. Total campaign wall is
-the sum of the two measured phase intervals; any handoff gap is separately
-identified, never silently called compilation time. Summed per-module
-native wall is not campaign wall. Do not combine the two admission regimes
-into a single fixed-concurrency timing claim.
+M owns checker/; W tools/audit/ and data/openai-math-4eaee875/; O crates/,
+CLI/README/Docker/CI/release, packaging/ and data/external-projects/.
+Root owns docs/paper/, documentation/status and research/README.md.
+No competing collector, agent, session, queue, journal injection or native run
+is started by root. Owners choose implementation; do not add research
+thresholds, approval loops or investigation limits. Freeze changes only for
+real bugs, with affected evidence rerun by its owner.
 
-Cross-module workload comparison continues to use user-mode instructions,
-with the failed total-instruction gate and post-result choice retained.
-Changing admission is not a new invariance experiment or a passing gate.
-Retain every genuine failure and blocked dependency; no cutoff or partial
-source-census closeout is introduced.
+Keep six pages including references, 10pt two columns, current scoped RQs and
+at most four displays; no second long paper or step/audit directory.
+Evidence and historical dispositions stay in docs/paper/evidence.md.
+The tool delivers check/audit and the existing Kimina-compatible service;
+serve receives defect fixes only. Unknown toolchains fail clearly or use an
+explicit official path. Lean 4.35 lake check is already shipped.
 
-## Current manuscript and data handoff
+**All root Workspace reads, analysis, Git and PDF compilation enter through
+taskset -c 8,9 and inherit CPUs 8–9.** Never reuse CPU22–23 or rebind owners.
+Preserve the same Workspace/PVC, raw/failed/interrupted/foreign work and disk
+headroom below 85%. No restoration of deleted caches or repeated cleanup claims.
+A real host outage still means preserve the scene and await its dedicated
+operator handling; no recovery, replacement or scheduling change.
+No UI/new login/network/Tailscale/credential/permission/infra change;
+all CronJobs remain untouched.
 
-**Do not add full-corpus numerical results before they return.** The original42 estimate and uncertainty remain in the data package and evidence map for calibration. Section 3.2 is reserved for directly observed completed-campaign costs, distributions and enumerated real failures/blockers, with honest pending slots until records arrive.
-
-Section 3.2 uses the prepared census-result structure; it does not present the sample extrapolation as the forthcoming census total. Report that the total-instruction gate failed without changing its thresholds. Cross-module comparisons use user-mode instructions, explicitly identified as a criterion selected after observing the gate results. Report P-core and E-core CPU seconds separately, without conversion, and wall time as an observation of this machine and configuration. This is not a passing replacement gate or hardware-independent cost scale.
-
-M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's full-library original-kernel attempt is optional and has unknown completion coverage. The paper must admit partial scope or an explicit not-attempted disposition, with the 17:00 hard stop above; its absence does not block the paper.
-
-The frozen checker is e000ed62. Default shared-checked reuse may accept a crafted proof through another module's kernel-checked same-interface theorem body when official original-context replay rejects it. The proposition remains derivable in the checked shared closure with its reported axioms; original artifact-context parity is a different guarantee. Use --strict-theorem-bodies for the theorem-body-context agreement route, retaining other documented official/IR differences. Measure any strict cost only in the final matrix and keep policy-specific rows separate; old e155 isolation previews are not new-strict costs. Two read-only reviews have regression repairs, but the repaired source has no independent runtime review.
-
-The coordinator's updated completion estimate is around 6 November, 03:00 UTC, replacing the earlier 5 November estimate. It is not a cutoff or returned result. Root's 12:00 prose/script milestone is prepared; final numerical integration follows actual completion and the sequential measurements.
-
-Existing installed external check/audit cases and package/container CI remain versioned functional evidence and dated cost observations. Different proof obligations do not support a speedup ratio. Final system results must identify committed tool and input revisions and keep CPU/wall clocks separate.
-
-## Owners and tool delivery
-
-| Owner | Paths | Delivery |
-|---|---|---|
-| M | checker/ | Original-kernel checker, receipt v1, parallel/resume implementation, labeled preview/final evidence |
-| W | tools/audit/, data/openai-math-4eaee875/ | Audit tool, frozen census execution, gate history and preserved samples |
-| O | crates/, CLI, README, Docker, CI, release workflow, data/external-projects/ | Portable package and external-project acceptance |
-| Root | docs/paper/, docs records/status, research/README.md | Six-page paper and evidence integration |
-
-ProofServe checks compiled dependency closures, audits source/default-target coverage and reported evidence, and maintains the existing Kimina-compatible service. Unsupported versions fail clearly or select an explicit official path. No new service feature is added.
-
-The prepared six-hour performance design retains Mathlib Nat.Basic and Grid at 1/2/4/8 workers, and Barrier at 1/8 workers, three repeats. Barrier 2/4-worker points are deliberately omitted; its unmeasured configurations are not zero-cost observations. Mathlib means the selected Nat.Basic closure. Nat.Basic/Grid keep the two 8-worker ablations and three 8-worker strict runs; official default/fresh comparisons, bad proofs and interruption/resumption retain their scopes. The 71-attempt planning ledger is a budget estimate, not final timing data. Scheduling final runs follows the gate/full-run outcome and quiet-machine condition, not preview completion.
-
-## Paper and evidence
-
-Keep the title, current four RQs, 10pt double-column format, six pages including references and at most four displays. Keep the technical protocol and conclusion-to-evidence map in [evidence.md](paper/evidence.md); do not create a second long paper. The committed census and system generators in docs/paper/ read W/M/O data, keep previews separate, and populate the final slots in one command per generator. The two review rounds and current input/receipt limitations are now written into the system section; further final numerical integration follows actual returned data.
-
-Preserve the nealmcb distinction: 13.8 hours on 32 vCPUs is measured cloud wall time; approximately 330 compilation CPU-hours is extrapolated from 26 modules with estimated ±30% uncertainty, and approximately 410 includes Comparator work. No unmeasured full-run result or universal priority claim is added now.
-
-## Root execution, operations and publication
-
-**Every root operation inside the Workspace uses CPUs 8–9, including reading, analysis, Git and PDF compilation.** Prefix remote work with `taskset -c 8,9` and preserve that affinity in child processes. Do not reuse the former CPU 22–23 setting. Historical records of earlier compilations retain the CPUs actually used.
-
-Use the same Workspace, volume and Cloudflare CLI path. Omit -M, preserve disk headroom and foreign work, and do not restart active collectors. A later host outage still means preserve the scene and wait for the user, without recovery or scheduling changes.
-
-No new root agent, session, replacement queue, scheduler, prediction, certificate repair, GPU direction, service feature or deeper attribution. No tag, registry upload, upstream issue/PR or announcement. Validated owned-path commits and pushes on main remain authorized. The user requires closure within two days: the project deadline is **6 November 2026, 20:00 UTC**. The venue is undecided.
-
-[Latest direct words](user-instruction.md) · [Status](research-status.md) · [Evidence map](paper/evidence.md) · [Result index](../research/README.md)
+Main only, commit --only owned paths. Try pull --rebase before push; on
+foreign dirty refusal do not stash/reset/revert/amend/force. Fetch, verify
+origin ancestry and push normally. Validated ordinary pushes are authorized;
+tags, registries, upstream issues/PRs and announcements remain unapproved.

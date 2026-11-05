@@ -1,82 +1,68 @@
 # ProofServe: current status
 
-We are delivering the open-source tool and a six-page empirical + system paper by **6 November 2026, 20:00 UTC**, under the user's two-day closure instruction.
+Deliverables: open-source ProofServe and a readable six-page empirical + system
+paper by **6 November 2026, 20:00 UTC**.
 
 ## Current decision
 
-**W's original controller has retired; no second admission phase was launched
-in the latest owner record.** The [total-instruction gate](../data/openai-math-4eaee875/measurement/census-gate/README.md) remains failed at 1.3312% median / 3.1498% P95 versus unchanged 1% / 3% thresholds. Cross-module comparisons use user-mode instructions, a criterion selected after seeing those results. P/E CPU seconds remain separate and unconverted; wall time describes this machine and configuration. Launch authorization is not a completed census result.
+**Compilation stopped at the user's request; it will not resume. Phase 2
+never ran.** Latest exact words are in [user-instruction.md](user-instruction.md).
+This supersedes both “let it finish” and the later two-phase proposal.
 
-All root work inside the Workspace now uses **CPUs 8–9**, including PDF compilation. The former CPU 22–23 setting is retired for future work; historical records remain unchanged.
+The coordinator reports 128,331/163,096 executable modules measured (78.7%),
+no final failed modules, and 34,765 unfinished modules. Reported successful
+work is 134.7 P-core CPUh and 256.7 E-core CPUh, without conversion.
+W's formal publication remains pending at root's current observation; exact
+numbers, attempts and elapsed-wall boundaries will be taken from that ledger.
 
-M's current matrix is preview-only and cannot fill Table 1. Final system timing requires an otherwise idle machine and follows the resolved gate/full-run path. Full-library checking reports the scope actually reached and stops by 6 November, 17:00 UTC; it may remain partial or not start, and is not a required paper result.
+The measured set is dependency-ordered, not random. Later dependencies include
+memory-intensive families and may cost more. Observed costs are separate
+P/E lower bounds, not a full-library cost answer. No sample/model fill,
+inverse-coverage extrapolation or missing-cost zero is allowed.
+Distribution, marked/unmarked and default-graph cost conclusions apply only
+to measured modules. Full-frame static lexical coverage is a different scope.
 
-## Closure handoffs (UTC)
+## Evaluation handoff
 
-M froze native source at e000ed62, replacing e1557c77; root finishes paper prose and scripts by 12:00; O completes frozen-installation functional acceptance by 14:00. The full compilation campaign has no cutoff and must run to completion; it is not stopped at 08:00. Run the final matrix (at most 6 hours), then external timing (at most 2 hours), and finally optional library checking if time remains. Root fills returned numbers by 6 November, 18:00, retaining six pages and zero missing macros. No separate PlanarPacking comparison remains.
+M's native source remains frozen at e000ed62. M runs the final matrix after
+the actual stopped handoff; O then runs external timing; M finally checks only
+already-built artifacts, reporting its actual reached scope. The optional
+checking stop remains 6 November, 17:00 UTC. Numerical integration is due
+18:00; overall closure 20:00. No PlanarPacking comparison or new build queue.
 
-The completed compilation campaign lists genuine failed and blocked modules individually; no deadline-selected subset closes the census. Successful costs do not assign costs or success to failures/blockers. Incomplete library checking is reported only as the verified scope reached. If checking cannot start, report it as not attempted; do not assign it a zero cost or use it as a prerequisite for the paper. The overall 20:00 closure deadline is unchanged.
+Root has read the retired original controller and user-stop record; it starts
+no measurement. M's c8f2a0c5 admits the stopped handoff without treating partial
+source coverage as complete. Actual final launch/terminal results must replace
+preparation and previews; no final timing is inferred from this plan.
 
-## Evidence retained
+## Evidence boundaries
 
-- [Sample package](../data/openai-math-4eaee875/README.md): 42/42 original costs, estimated compiler work 279.12 CPU-hours, fragile nominal interval 95.18–463.06. The independent precision panel remains separate.
-- [Historical installed checks](../data/external-projects/results.md): three cases with common-local-root parity, separate costs and retained official resource failures. Package/container CI passed finite controls; proof obligations differ.
-- [e000 portable functional preview](paper/evidence.md#e000-preview-package-and-container-completion-5-november): relocated archive, check/audit on three projects and a network-disabled container returned successfully. Local-root parity is 105/12/9; native closures are 754/2,368/10,753. O published the source/results in 420dc9d6; test-time CLI/packaging inputs were dirty, and the AI case resumed after two timeouts with whole CPU unknown. Clean release acceptance and final timing remain pending.
-- [Checker policy and reviews](../checker/results/theorem-body-policy/README.md): e000ed62 is frozen with shared-checked default and --strict-theorem-bodies. Default can differ from official on crafted body-dependent artifacts while preserving checked-closure derivability. Two read-only reviews have regression repairs; no independent runtime review of the repair is claimed. Strict costs and final performance await the final matrix.
-- [Six-page paper](paper/main.tex): prose and scripts require the completed census with enumerated real failures/blockers; optional library checking may be partial or not attempted. No PlanarPacking comparison remains. Six pages including references, zero missing macros and all-page visual self-review are verified; final numbers remain pending without preview values.
+- The total-instruction gate remains failed (1.3312% median / 3.1498% P95 versus
+  unchanged 1% / 3%). User-mode instruction comparison was selected afterwards.
+  P/E CPU remains separate and wall is specific to the actual machine/policy.
+- The phase-2 paper/generator preparation is retained as history; it supplies
+  no second-phase observation or admission-policy benefit.
+- Shared-checked default has the documented crafted theorem-body-context
+  difference from official; --strict-theorem-bodies retains the stricter route.
+  Two read-only reviews have regressions, with no independent repaired-source
+  runtime review. New strict cost awaits matching final matrix rows.
+- The e000 archive/container/three-project functional preview is real and
+  committed in 420dc9d6, with dirty test-time packaging provenance. AI whole
+  CPU remains unknown after two interrupted windows and continuation.
+  This is not final timing or immutable published release acceptance.
+- The original42 and superseded precision7/12 are separate historical evidence,
+  neither filling nor extending the observed set. Prototype ratios do not fill
+  release tables. Source binding, editable checkpoints, noncrypto identities
+  and axiom-inventory limits remain explicit.
 
-The nealmcb report's 13.8-hour cloud wall measurement and 26-module CPU extrapolation remain distinct.
+Root is adapting the six-page prose and data generator to the confirmed stop.
+The prior 7566b449 PDF was six pages / 101,594 bytes, two figures / two tables /
+14 references and zero evidence-placeholder macros; its build record remains
+in [evidence.md](paper/evidence.md). Formal stopped data and final timing are
+not replaced by coordinator progress or validation fixtures.
 
-[Plan](research-plan.md) · [Evidence and protocol](paper/evidence.md) · [Result index](../research/README.md)
+All root Workspace operations use **CPU8–9**. Main-only owned-path commits
+preserve foreign work. No public release, replacement agent/native queue,
+infrastructure change or host recovery is authorized here.
 
-Root maintains documentation without another collector or owner implementation changes. No external publication is authorized; a later host outage still means preserve the scene and wait for the user.
-
-
-The e000 functional-preview manuscript update remains six pages (101,636 bytes),
-two figures / two tables / 14 references and zero evidence-placeholder macros.
-CPU 8–9 compilation succeeded; changed page 5 was visually checked and the
-other pages match the prior checked render. Final timing and full-census
-numbers remain pending; no preview costs were inserted.
-
-## Two-phase admission decision (5 November)
-
-The coordinator reports memory interruptions, draining and exclusive retries
-in PadicHodge and related families from 16:00 UTC, and directs phase 2 to use
-memory-based admission with caps for families that had memory interruptions.
-Phase 1's 22-slot policy, successful records and separate unsuccessful attempts
-remain retained. Compiler commands, -j8 and P/E pools stay fixed.
-W's actual phase ledger will establish the switch timestamp and parameters;
-root has not yet observed the executed switch. CPU and machine wall will be
-reported by phase, with separate P/E CPU and a sum of measured phase walls.
-The new finish estimate is around 6 November, 03:00 UTC, not a cutoff.
-No full-census numbers or new admission-policy benefit is claimed now.
-
-The census generator is prepared for two-phase/P-E costs, separate phase wall
-and failed/interrupted-attempt exports. Adapter validation used retained
-numerical records plus explicitly synthetic phase metadata, not census
-results. The current two-phase manuscript is six pages / 101,369 bytes,
-two figures / two tables / 14 references with no evidence-placeholder macros.
-
-## Later observed stop supersedes the running snapshot
-
-At 20:36 UTC root read W's supervisor terminal: return -2 at
-20:29:39.647004 UTC, with the original controller absent on the same boot.
-W's user-stop.json records a subsequent relayed user stop, and
-derived-outcomes.json says segment_count=1 and segment2_launched=false.
-That derived ledger records 128,331 successes, one configuration unit and
-34,765 unfinished units; entries under its blocked container are explicitly
-not_attempted, not genuine dependency-failure outcomes. These are owner
-derived progress/stop records, not a root-certified final census publication.
-
-M's c8f2a0c5 explicitly documents the later operator stop and prepares final
-evaluation after retirement and lease release. It does not make the source
-census complete. Root starts no run. The two-phase paper/generator work above
-is prepared capability; phase 2 must not be reported as executed or given
-fabricated costs. Final scope and clocks must follow the owner's actual
-published stopped-run ledger, with raw attempts and unattempted inputs intact.
-
-
-The latest stopped-state correction is six pages / 101,594 bytes, with all six
-pages visually reviewed, two figures / two tables / 14 references and zero
-evidence-placeholder macros. It reports the phase-2 plan as unexecuted and
-keeps stopped-run numerical publication pending.
+[Plan](research-plan.md) · [Evidence](paper/evidence.md) · [Index](../research/README.md)

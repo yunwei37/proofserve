@@ -607,3 +607,32 @@ two executed phases or completed full-corpus coverage. No observed progress
 count or newly derived partial cost was inserted. The two-phase adapter
 fragments also compile without overfull boxes when placed in separate
 paragraphs in their validation wrapper.
+
+
+## Direct stop decision and observed-subset scope (5 November)
+
+The latest direct notice supplies the exact words “现在还要跑多久?” and
+“别跑了, 现在的数据够吗”, now appended once in user-instruction.md.
+It confirms no continuation and no phase 2, superseding the previous
+finish-whole-frame and two-phase plans. Historical evidence above is retained
+as history, not current authority.
+
+The coordinator reports 128,331 of 163,096 executable modules (78.7%), no final
+failed modules, 34,765 unfinished modules, and successful P/E CPU of about
+134.7/256.7 hours. W's formal artifacts are pending at this observation.
+Those rounded reported figures are not a substitute for root's future exact
+CSV reduction or a claim that every remaining module failed.
+
+The observed set finishes in dependency order and is not random; the missing
+tail includes families with repeated memory interruptions. No inverse-coverage,
+stratum, original42 or model extrapolation is admissible. Observed successful
+P/E costs are hardware-specific lower bounds on source work, not a complete
+full-library cost answer. Instruction/CPU distributions and cost shares by
+lexical marker or default graph describe only observed modules. Full-frame
+static source/site counts retain their separate scope. Failed/interrupted
+attempts and unfinished identities remain explicit with no zero-filled costs.
+
+The current plan/status were consolidated to remove contradictory live
+finish-whole-frame/two-phase instructions. The final sequence is M matrix,
+O external timing, then M checking of actually built artifacts only, each
+with actual commits/scope/terminal evidence. Root runs no new native work.
