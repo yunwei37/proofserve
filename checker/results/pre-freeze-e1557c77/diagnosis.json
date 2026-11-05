@@ -1,0 +1,20 @@
+{
+  "status": "self-review; bounded diagnosis, not an independent review",
+  "candidate": "Init.Data.List.TakeDrop / List.drop.eq_def",
+  "observed": {
+    "beta_zeta_equal": false,
+    "body_equal": false,
+    "first_difference": "lam-body/lam-body/lam-body/arg/let-body/arg/arg/arg/fn/fn/fn/fn/fn/fn/fn/fn/fn/old=_private.Init.Data.Array.GetLit.0.List.take.match_1.splitter.{u, 0}; new=_private.Init.Data.List.TakeDrop.0.List.take.match_1.splitter.{u, 0}",
+    "kernel_annotation_erased_equal": false,
+    "metadata_erased_equal": false,
+    "new_matches_imported_module": true,
+    "old_matches_import_context": true,
+    "same_interface": true
+  },
+  "interpretation": "The difference reaches private constant names, not only metadata or let nondependency annotations. Same theorem interface is insufficient to reuse a body in computation. No weakening of quarantine is shipped.",
+  "retained_failed_diagnostic": "runs/inspect-drop-normal (Lean token-spacing parse error); corrected copy is inspect-drop-normal2",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/checker-freeze-e1557c77-20261105",
+  "native_source_commit": "e1557c770fcc585e722399e56a3c3be77b2f0e7f",
+  "primary_source": "https://github.com/leanprover/lean4/blob/v4.34.1/src/Lean/Environment.lean",
+  "upstream_context_observation": "finalizeImport/subsumesInfo can replace an earlier theorem body with the later imported one; an imported-ancestor check alone does not make different bodies interchangeable."
+}

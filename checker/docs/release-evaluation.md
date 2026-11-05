@@ -1,11 +1,34 @@
 # Frozen post-census evaluation
 
-Run this workflow only after W has completed its gate and full build census,
+> **2026-11-05 schedule supersedes the historical driver below.** The deadline is
+> 2026-11-06 20:00 UTC. Do not launch the capacity-first all-in-one command below
+> as the current final workflow. It predates the agreed order and partial-census
+> closeout. The final order is the quiet-machine M matrix (at most six hours),
+> O's external-project timings (at most two hours), and then resumable corpus
+> checking. Corpus checking must stop by 2026-11-06 14:00 UTC and report exact
+> completed and unfinished modules. There is no separate PlanarPacking comparison.
+> W alone owns the P-core lease until its census retires. W stops admitting new
+> modules at 2026-11-06 04:00 UTC if necessary; an incomplete census is not a
+> complete corpus. Its completed subset and missing artifacts must remain
+> explicit. The previous driver's complete-census and all-artifacts requirements
+> cannot be silently bypassed to claim whole-corpus coverage.
+>
+> The next final-run handoff must bind the actual retired W run and the frozen
+> checker binary, use fresh performance states, and preserve failed attempts.
+> The old workflow remains below as a historical, qualified preparation route,
+> not evidence that the new deadline-aware final sequence has executed.
+
+## Historical preparation driver (superseded for closeout)
+
+The following paragraphs describe the earlier qualified workflow. They are
+retained for interpreting its records, not as the current launch instruction.
+
+Run this historical workflow only after W has completed its gate and full build census,
 released the P-core lease, and the machine is quiet. It is not a background
 collector and never starts automatically. While a census is active, only qualification
 mode is allowed, on its inherited E-core affinity without the P-core lease.
 
-The prepared workspace configuration is:
+The workspace configuration at that preparation boundary was:
 
     /workspaces/.agent-state/gpu-smt-captures/checker-full-feasibility-20261104/final-release.json
 

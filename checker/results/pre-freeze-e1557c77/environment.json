@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-11-05T01:32:06.099274+00:00",
+  "boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944",
+  "uptime_seconds": 125045.66,
+  "affinity": [
+    8,
+    9
+  ],
+  "workers": 2,
+  "native_rss_budget_gib": 12,
+  "node_available_reserve_gib": 8,
+  "timing_eligible": false,
+  "pcore_lock_used": false,
+  "caveat": "Environment observed at reduction time; old P-core ba316991 is not a matched E-core timing reference."
+}

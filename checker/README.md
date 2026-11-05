@@ -24,6 +24,18 @@ and locally generated checkpoints. Acceptance does not mean axiom-free, free of
 sorryAx, or that every source file was built. Use the audit tool to inspect source
 coverage. ProofServe does not validate tactic plugins or executable code.
 
+## Current correctness and performance boundary
+
+The second-review repair has been replayed on the real Nat.Basic dependency
+closure (1,330 modules) and Grid closure (3,793 modules), with the original
+accepted sets preserved. Its conservative handling of distinct theorem bodies
+causes extensive original module-local replay. The requested fallback-growth
+threshold is not met; this source has no qualified release speedup claim.
+See [the pre-freeze regression](results/pre-freeze-e1557c77/) for the actual
+counts, input comparison, memory and preview CPU. The final quiet-machine
+evaluation remains separate. Correctness checks take precedence over reusing
+a different proof body merely because its theorem interface matches.
+
 ## Running and resuming
 
 ~~~sh
@@ -111,7 +123,7 @@ receipt is not a fresh verification run.
 | 4.32.2 and 4.33.1 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
 | 4.36.0-rc2 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
 
-The current second-review repair has local small-fixture qualification only on 4.34.1. The other
+The current second-review repair has small-fixture and the two real-closure qualifications above on 4.34.1. The other
 native contract entries above predate that repair and do not qualify the new
 source. The independent-closure path has so far been exercised on 4.34.1. Other rows
 include earlier matched-build qualification, not a new-path whole-library test.

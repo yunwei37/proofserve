@@ -1,0 +1,70 @@
+[
+  {
+    "job": "z3-smoke",
+    "id": 126953048525,
+    "log": "/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/ci-logs/126953048525.log",
+    "contract_records": []
+  },
+  {
+    "job": "checker-contract",
+    "id": 126953049204,
+    "log": "/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/ci-logs/126953049204.log",
+    "contract_records": [
+      {
+        "observe": false,
+        "cases": 90,
+        "completed": true
+      },
+      {
+        "observe": false,
+        "cases": 109,
+        "completed": true
+      },
+      {
+        "correct": true,
+        "axioms": true,
+        "resume": true,
+        "bad_proofs": 3,
+        "closure_batches": true,
+        "batch_resume": true,
+        "changed_input_rejected": true,
+        "root_file": true,
+        "covered_roots_skipped": true,
+        "empty_root_file_rejected": true,
+        "empty_umbrella": true,
+        "empty_umbrella_bad_proofs": 3,
+        "default_empty_umbrella": true,
+        "stale_empty_plan_rejected": true,
+        "incompatible_empty_imports_not_accepted": true,
+        "checked_import_reuse": true,
+        "hidden_bad_dependency_rejected": true,
+        "changed_completed_dependency_rejected": true,
+        "live_changed_dependency_rejected": true,
+        "incompatible_cached_contexts": true,
+        "unused_completed_input_change_rejected": true,
+        "leaf_empty_aggregator_detected": true,
+        "sibling_scope_rejected": true,
+        "dependency_root_order": true,
+        "permuted_batch_roots": true,
+        "cached_segment_base_restored": true,
+        "authentic_cross_project_certificate_refused": true,
+        "optional_part_inventory_refused": true,
+        "receipt_lean_refused": true,
+        "child_abi_refused": true,
+        "disk_full_fails_closed": true
+      }
+    ]
+  },
+  {
+    "job": "rust",
+    "id": 126953049683,
+    "log": "/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/ci-logs/126953049683.log",
+    "contract_records": []
+  },
+  {
+    "job": "native-repl-contract",
+    "id": 126953049710,
+    "log": "/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/ci-logs/126953049710.log",
+    "contract_records": []
+  }
+]

@@ -1,5 +1,14 @@
 # Checker evaluation
 
+## Current native freeze
+
+Native source e1557c77 is frozen under the correctness-first exception.
+[Real-closure qualification](pre-freeze-e1557c77/README.md) completed both the
+1,330-module Nat.Basic and 3,793-module Grid closures with unchanged acceptance
+and the same 15 reported axioms as the corrected 3fe reference. Extensive
+module-local replay means the performance-growth threshold failed. The release
+speed comparison remains unqualified; the results are background-load previews.
+
 > **Superseded correctness qualification:** O's review of 2df1d9d7 found false
 > acceptance in certificate reuse without modifying certificate contents.
 > The historical 14,721-module result used that logic. Its qualification is
@@ -31,8 +40,12 @@ distinct from the 1,330-module Nat.Basic closure.
 The next capacity target is every module in the 163,097-source workload, after
 the build gate and census. Independent closure batches bound retained kernel
 state by one batch. Whole-corpus acceptance and capacity remain unverified.
-The final performance matrix, official controls, and the single PlanarPacking
-comparison wait until after that whole-library verification.
+The final performance matrix and official controls wait for W's census to
+retire and the machine to become quiet. The latest closeout order is M's matrix
+(at most six hours), O's external timings (at most two hours), then resumable
+corpus checking, ending by 2026-11-06 14:00 UTC. The separate PlanarPacking
+comparison is cancelled. Report an unfinished census or checking run as partial;
+a completed subset is not the full 163,097-module source frame.
 
 All timing uses no Lean -M. Current non-W preparation uses CPUs 8-9 only and
 takes no P-core lease. Raw binaries and large artifacts remain outside Git.

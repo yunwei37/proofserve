@@ -1,5 +1,39 @@
 # Development qualification
 
+## Native source frozen, 2026-11-05
+
+The frozen native source is e1557c770fcc585e722399e56a3c3be77b2f0e7f.
+The exact seven source/build inputs and qualified binary identity are in
+[freeze.json](results/pre-freeze-e1557c77/freeze.json). Subsequent text records
+historical development boundaries; it does not unfreeze this source.
+
+Both actual E-core, two-worker qualification runs completed: the 1,330-module
+Nat.Basic closure and 3,793-module Grid closure. Their accepted sets and 15
+declared axioms match fresh same-root 3fe83c5a controls. Old ba316991 inputs and
+accepted sets also match, but its seven-name axiom report predates the reporting
+repair. Peak own-tree RSS was 1.464 and 3.080 GiB respectively, below 12 GiB.
+
+**The performance gate failed.** Whole-module serial replay increased from
+49 to 1,016 for Nat.Basic and 157 to 3,465 for Grid against the same-root 3fe
+controls; CPU also increased. The explicit correctness-first exception permits
+freezing with this known cost. No proof-body equality check was weakened.
+The [full report](results/pre-freeze-e1557c77/README.md) gives recorded reasons,
+old previews, exact set comparisons, split Grid clocks and the unarchived
+partial-event limitation. These loaded E-core previews are not paper timings.
+
+The source CI completed successfully: engine 41938525300 and benchmark-smoke
+41938525076. The checker contract includes the core controls, 90 earlier and
+109 second-review command records. The container-package job was skipped.
+Two independent code-only reviews preceded the repairs; these executions and
+result interpretation are self-review (自审), not independent execution review.
+The repaired source has no independent runtime review.
+
+Only real defects justify native changes after freeze; affected results must be
+rerun. No tag or release is created. The quiet-machine matrix, external-project
+acceptance, ABI 5 large replay and bounded corpus check remain pending.
+
+## Historical development record
+
 > **Superseded correctness qualification:** O's review of 2df1d9d7 found false
 > acceptance in certificate reuse without modifying certificate contents.
 > The historical 14,721-module result used that logic. Its qualification is

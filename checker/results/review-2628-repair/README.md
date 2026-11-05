@@ -1,5 +1,10 @@
 # Repair of the second code-only review (2628d727)
 
+The native source was subsequently frozen at e1557c77 with an explicitly
+reported real-closure performance regression. See
+[the freeze record](../pre-freeze-e1557c77/README.md). This page retains the
+earlier repair and small-control evidence, not a performance pass.
+
 The supplied [review](../../../packaging/checker-review-2628d727.md) is preserved
 unchanged. It read code only. The executions and source inspection here are
 implementation self-review (自审), not independent execution review.

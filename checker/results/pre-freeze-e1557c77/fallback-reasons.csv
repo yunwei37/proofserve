@@ -1,0 +1,13 @@
+dataset,source,reason,whole_module_serial_replays
+nat,ba316991,duplicate_proof_requires_native,4
+nat,3fe83c5a,duplicate_proof_requires_native,49
+nat,e1557c77,different_theorem_body,1
+nat,e1557c77,duplicate_proof_requires_native,16
+nat,e1557c77,segregated_dependency,127
+nat,e1557c77,unimported_reference,872
+grid,ba316991,duplicate_proof_requires_native,7
+grid,3fe83c5a,duplicate_proof_requires_native,157
+grid,e1557c77,different_theorem_body,1
+grid,e1557c77,duplicate_proof_requires_native,18
+grid,e1557c77,segregated_dependency,206
+grid,e1557c77,unimported_reference,3240

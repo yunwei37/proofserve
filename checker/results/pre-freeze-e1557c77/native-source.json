@@ -1,0 +1,13 @@
+{
+  "commit": "e1557c770fcc585e722399e56a3c3be77b2f0e7f",
+  "unchanged_current_sources": true,
+  "native_source_blobs": {
+    "checker/Main.lean": "f1f21e22c978a32c53f3d7d603efc94846f736a7",
+    "checker/ProofServe/Core.lean": "0e8b84dbfa336448a592a32625273a23b7355f93",
+    "checker/ProofServe/Stream.lean": "e7b5999416ba5bf60ab95c8c54126ee48a1855fc",
+    "checker/ProofServe/ModulePlan.lean": "d735723e40881d7b6bbd34167f98d9f4fa43cc86",
+    "checker/c/runtime.c": "540b3d41597593dbdd63715a2d64cb5e10cd8ede",
+    "checker/lakefile.lean": "3337a6c21f34e0dd9b94cdb549f0f2a9ff4a0dfb",
+    "checker/lean-toolchain": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5"
+  }
+}
