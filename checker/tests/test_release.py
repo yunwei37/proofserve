@@ -8,6 +8,20 @@ spec=importlib.util.spec_from_file_location("release",ROOT/"bench/release.py")
 release=importlib.util.module_from_spec(spec);spec.loader.exec_module(release)
 
 class Release(unittest.TestCase):
+ def test_explicit_user_stop_allows_only_retired_partial_handoff(self):
+  with tempfile.TemporaryDirectory()as td:
+   d=Path(td)
+   (d/"stop").write_text(json.dumps(dict(user_stop_words="stop the census",segment2_launched=False)))
+   (d/"supervisor").write_text(json.dumps(dict(returncode=-2)))
+   (d/"launch").write_text(json.dumps(dict(pid=999999999,birth="12",cgroup=str(d/"absent"))))
+   cfg=dict(census_stop_record=str(d/"stop"),census_supervisor_terminal=str(d/"supervisor"),census_launch=str(d/"launch"))
+   result=release.require_retired_census(cfg)
+   self.assertTrue(result["operator_stopped"]);self.assertFalse(result["complete"])
+   with patch.object(release,"birth",lambda pid:"12"),self.assertRaises(RuntimeError):
+    release.require_retired_census(cfg)
+   (d/"stop").write_text(json.dumps(dict(user_stop_words="stop",segment2_launched=True)))
+   with self.assertRaises(RuntimeError):release.require_retired_census(cfg)
+
  def test_complete_traversal_with_real_build_failure_is_not_partial_census(self):
   with tempfile.TemporaryDirectory()as td:
    d=Path(td);terminal=d/"outcomes.json";launch=d/"launch.json"

@@ -18,6 +18,17 @@
 > results/theorem-body-policy/freeze.json; its historical preview timings
 > cannot be reused as the new tool's final evaluation.
 
+## 2026-11-05 operator stop
+
+The user stopped W at 20:33 UTC: "别跑了, 现在的数据够吗".
+The next final matrix may run after actual controller/cgroup retirement and
+P-core lease release. The prepared configuration now names W's user-stop.json
+and supervisor terminal. That explicit handoff permits a partial source frame;
+it does not turn the stopped build into a complete census. Matrix roots still
+use their actually available source-qualified artifacts. No missing corpus
+cost is extrapolated, and there is no automatic build restart or corpus check.
+The earlier complete-census requirement below is superseded by this decision.
+
 ## Current launch procedure
 
 The native executable remains frozen at e000ed62. The driver checks the seven

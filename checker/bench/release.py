@@ -18,17 +18,27 @@ def birth(pid):
     try:return Path("/proc",str(pid),"stat").read_text().rsplit(")",1)[1].split()[19]
     except (FileNotFoundError,ProcessLookupError):return None
 def require_retired_census(cfg):
-    terminal=json.loads(Path(cfg["census_terminal"]).read_text())
-    if terminal.get("stop") is not None or not terminal.get("full_census",False):
-        raise RuntimeError("W has not finished its complete census traversal")
-    if not terminal.get("complete"):
-        accounted=set(terminal.get("successful",[]))|set(terminal.get("failed",[]))|set(terminal.get("configuration_units",[]))
-        blocked=terminal.get("blocked",[])
-        if any(r.get("status")=="not_attempted"for r in blocked):
-            raise RuntimeError("W still has unattempted modules; do not truncate the census")
-        accounted|={r["module"]for r in blocked}
-        if len(accounted)!=terminal.get("total_source_units"):
-            raise RuntimeError("W census outcome frame is incomplete")
+    stop_file=cfg.get("census_stop_record")
+    if stop_file:
+        stopped=json.loads(Path(stop_file).read_text())
+        supervisor=json.loads(Path(cfg["census_supervisor_terminal"]).read_text())
+        if not stopped.get("user_stop_words")or stopped.get("segment2_launched")is not False:
+            raise RuntimeError("operator-stop handoff is missing or another census segment was launched")
+        terminal=dict(complete=False,full_census=True,operator_stopped=True,
+                      stop="explicit user stop; partial measured frame only",
+                      user_stop_record=str(stop_file),supervisor_returncode=supervisor["returncode"])
+    else:
+        terminal=json.loads(Path(cfg["census_terminal"]).read_text())
+        if terminal.get("stop") is not None or not terminal.get("full_census",False):
+            raise RuntimeError("W has not finished its complete census traversal")
+        if not terminal.get("complete"):
+            accounted=set(terminal.get("successful",[]))|set(terminal.get("failed",[]))|set(terminal.get("configuration_units",[]))
+            blocked=terminal.get("blocked",[])
+            if any(r.get("status")=="not_attempted"for r in blocked):
+                raise RuntimeError("W still has unattempted modules; do not truncate the census")
+            accounted|={r["module"]for r in blocked}
+            if len(accounted)!=terminal.get("total_source_units"):
+                raise RuntimeError("W census outcome frame is incomplete")
     launch=json.loads(Path(cfg["census_launch"]).read_text())
     expected=launch.get("birth_ticks",launch.get("birth"))
     if expected is None or birth(launch["pid"])==str(expected):
@@ -138,8 +148,8 @@ def main():
     saved=raw/"workflow-config.json"
     if saved.exists()and json.loads(saved.read_text())!=cfg:raise ValueError("configuration changed; use a fresh directory")
     write(saved,cfg)
-    if census is not None:write(raw/"census-retirement.json",dict(controller_retired=True,complete_traversal=True,
-                                       all_sources_compiled=census.get("complete"),source_units=census.get("total_source_units")))
+    if census is not None:write(raw/"census-retirement.json",dict(controller_retired=True,complete_traversal=not census.get("operator_stopped",False),
+                                       operator_stopped=census.get("operator_stopped",False),all_sources_compiled=census.get("complete"),source_units=census.get("total_source_units")))
     binary,source=frozen_binary(repo,raw,cfg)
     sdk=Path(cfg["sdk"])
     version=subprocess.check_output([sdk/"bin/lean","--version"],text=True)
