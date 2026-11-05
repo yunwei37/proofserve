@@ -4,85 +4,53 @@ All analysis and compilation in the shared research Workspace run on CPUs 8–9.
 The scripts also run with standard Python outside that Workspace; input data are
 explicit arguments, with no development-machine paths embedded.
 
-## Census artifacts
+## User-stopped observed compilation artifacts
 
-After W publishes its final per-module CSV and complete outcomes.json:
+The user stopped compilation at 128,331/163,096 executable modules; the
+second phase did not execute native compilations. The earlier requirements
+to finish the frame or publish a two-phase total are superseded.
+Read W's formal stopped export:
 
-    python3 docs/paper/generate_census.py --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
+    python3 docs/paper/generate_census.py --stopped --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
 
-The script reads module-costs.csv[.gz] or modules.csv[.gz]; use --csv for another
-published filename. Required fields are module, status, pool (or cpu_class),
-user_cpu_s, system_cpu_s, wall_s, source_revision and measurement_commit.
-User-mode instructions may be user_instructions / instructions_user or the
-active cpu_core_user/cpu_atom_user event inside counters. The active pool is
-explicit; P and E CPU are never summed or converted. Successful modules are
-unique; failures/interruption rows remain in the exported observations.
-Summed native wall is labelled separately from machine elapsed wall.
+The actual input is modules.csv[.gz] (or module-costs.csv[.gz]), summary.json,
+segment-totals.csv and failed-attempts.csv[.gz]. --csv and --failed-attempts
+select explicit alternatives. The CSV retains all source-unit identities,
+including configuration and unfinished modules; observed successful modules
+are unique. summary.json identifies the user stop, one executed segment and
+no native second phase, scope counts and real final failures. The adapter
+checks those counts against the inventory instead of calling a partial frame
+complete. Long unfinished-dependency CSV fields are read without truncation.
 
-Outputs include per-phase/per-pool summary CSV, a booktabs table, a PGFPlots figure,
-1,001 empirical quantiles per curve, provenance, and, after successful figure compilation, census-ready.tex.
-Tectonic is optional for data/TeX generation; --tectonic compiles the figure.
-Final output requires W's exhausted full-campaign cost-measurement terminal and
-matching successful/configuration/failed/blocked coverage. This is publication input validation,
-not a new experimental threshold or a claim that the failed gate passed.
+Successful records require explicit P/E pool, user_cpu_s, system_cpu_s,
+wall_s, source_revision, measurement_commit and user instructions
+(instructions_user/user_instructions, or active PMU counters). No P/E
+conversion or pooled CPU total is computed. segment-totals.csv supplies the
+actual launch-to-retirement wall boundary, including drain/retry time.
+Unsuccessful-attempt CPU remains separate from successful-module costs.
+A resource-interrupted attempt is not a final failed module.
 
-The two admission phases are separate reporting conditions. Supply the
-published phase ledger with --phases /path/to/phases.json (default:
-census/phases.json, or phases inside outcomes.json). Each phase entry names
-phase (1 or 2), measured machine_wall_s, admission_policy, and optional
-start_utc/end_utc and measurement_commits. A monotonic interval can instead
-supply start_monotonic_s/end_monotonic_s. These are adapter field names:
-if W publishes a different layout, normalize the actual published ledger
-without inventing times, policy parameters or phase assignments.
+Outputs include observed P/E summaries, user-instruction/P-E CPU quantiles
+and their two-panel figure, scope/provenance, the unmeasured inventory and
+original unfinished reasons. Coverage by marker/default graph reports the
+full label frame and observed/unmeasured counts separately; cost shares
+use observed modules only. No inverse-coverage, sample, stratum or model
+extrapolation fills missing costs. Separate observed P/E work is a lower
+bound, not a full-library cost estimate or a random-sample confidence bound.
+Only successful figure compilation produces census-ready.tex.
 
-Successful module rows use phase/census_phase/segment, or are assigned only
-by an unambiguous published start/end interval or phase-specific measurement
-commit. Legacy unphased previews remain unassigned. Final generation needs
-both measured phase intervals and a phase for every successful cost;
-overlapping intervals cannot be added as independent machine wall.
-
-census-summary.csv groups phase and P/E pool. census-phases.csv retains phase
-policy, clocks and attempt counts; total machine wall sums phase intervals,
-including their drains/retries, while any handoff gap remains separate.
-Native-module wall sums are a different clock. CPU curves separate all four
-phase/pool combinations; cross-module instructions use one empirical curve
-under the disclosed post-result user-mode criterion. Phase assignment does
-not establish a new invariance result or remove the failed gate.
-
-The actual separate failed-attempts.csv[.gz] ledger is read automatically,
-or selected with --failed-attempts. census-failed-attempts.csv retains its
-identities, interruption fields and recorded observations, but these never
-enter successful-module CPU or distribution sums. Configuration/blocked
-rows need no invented pool or cost. Current W field aliases marked and
-default_graph retain source-proxy/coverage joins by phase and pool.
-
-The campaign has no time cutoff. Final generation waits for its natural terminal:
-full_census and cost_measurement must be true, stop must be null, and disjoint
-successful/configuration/failed/blocked identities must account for the entire
-source frame. W's complete field means all-native-success, not merely process
-termination; genuine failed/blocked modules do not become successful.
-The generator exports census-outcomes.csv with every module and its actual
-classification and supplied reasons. It retains unsuccessful attempts separately.
-CPU totals and distributions cover successfully costed modules; failure/blocked
-costs are not invented, and no all-success total is claimed when they exist.
-There is no partial-publication option. Preview mode remains validation-only.
-
-For the actual five-module functional run (which deliberately has no costs):
+For preview validation:
 
     python3 docs/paper/generate_census.py --preview --preview-json data/openai-math-4eaee875/dependency-audit/controller-real-subset-fixed/attempts.json --out /path/to/preview
 
-Preview outputs have a preview- filename prefix, produce no census-ready.tex,
-and cannot replace final paper artifacts. Missing CPU/instructions stay blank;
-the functional five-module data cannot validate numerical performance claims.
-Existing gate data can additionally exercise numerical reduction, with --preview
-and one unreplicated module/condition selection. It is never a corpus total.
-
-Validation on 4 November: the actual five-module records yield five completed
-modules and blank cost/instruction totals. Twenty unreplicated real gate rows
-exercise both pools and match separate CPU and exact integer instruction sums.
-Both generated PGFPlots figures compile. The same preview input is refused in
-final mode, and no census-ready.tex is written. Preview artifacts/logs stay on
-the research PVC outside Git and are not included in the manuscript.
+Preview outputs use preview- prefixes and never produce a ready marker.
+The five functional modules lack costs and remain blank. Twenty retained
+unreplicated gate rows plus explicitly synthetic stopped-scope metadata
+validate separate P/E sums, unfinished identities, attempt/final-failure
+separation and preview isolation; none supplies census numbers. Actual
+128,331-row reduction was separately checked against W's retained stopped
+export, including exact user-instruction integer sums. See evidence.md for
+the source/provenance and formal-publication status.
 
 ## System evaluation artifacts
 
@@ -146,9 +114,12 @@ are never inputs. Without final artifacts it prints explicit pending slots,
 not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
 
-The closure deadline is 6 November 2026, 20:00 UTC. Compilation has no cutoff and must run to completion; no deadline-selected subset is published. Library checking reports its actually verified scope by the 17:00 hard stop, with no separate PlanarPacking comparison. Paper prose and scripts are due 5 November, 12:00; numerical integration is due 6 November, 18:00. Library checking is supplementary: if no time remains after the matrix and external timing, report it as not attempted, with no invented cost or acceptance count. All times are UTC.
-
-Completion-mode validation: the retained numerical records plus explicitly synthetic terminal categories outside Git produced an exhaustive success/configuration/failure/blocked inventory and unchanged P/E CPU sums. A stopped campaign and unattempted category were refused, the removed CLI option was refused, and preview still produced no publication marker. These validation identities and counts are not census results.
+The closure deadline is 6 November 2026, 20:00 UTC. Compilation is stopped
+and will not resume under this decision. M runs the final matrix, then O
+external timing, then M checks only actually built artifacts. The checking
+phase may be partial or unstarted and stops by 17:00; it is not a necessary
+paper result. Root integrates actual numbers by 18:00. No PlanarPacking
+comparison or missing-work estimate is added.
 
 Policy-adapter validation: real preview rows plus explicitly synthetic strict labels exercised separate default/strict repeat groups, same-configuration CPU/wall ratios, no pairing across commits, isolated external policy rows, preview-only markers and refusal in final mode. Both table fragments compiled. These copied costs test grouping only; they are not strict-mode measurements and are not included in the paper.
 

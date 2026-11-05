@@ -636,3 +636,49 @@ The current plan/status were consolidated to remove contradictory live
 finish-whole-frame/two-phase instructions. The final sequence is M matrix,
 O external timing, then M checking of actually built artifacts only, each
 with actual commits/scope/terminal evidence. Root runs no new native work.
+
+
+### Stopped export and independent per-module reduction
+
+Root read W's retained final-user-stopped export under the existing
+census-22core-9389daff-20261104 point. The 163,097-row inventory has
+128,331 completed executable modules, 34,765 not_attempted entries and one
+configuration unit; no final native failure or failed-dependency block.
+W's raw validation reports no damaged/duplicate-success/out-of-frame record
+or missing required field; active PMU coverage is recorded as 1 for every
+successful row. Root does not claim independent product-byte verification.
+
+Root independently reduced every published module row: P has 64,040
+successful modules, 484,744.233632 CPU seconds and 2,162,733,842,068,527 user
+instructions; E has 64,291 modules, 924,004.278325 CPU seconds and
+2,171,776,317,402,252 user instructions. Separate exact integer sums and
+floating CPU sums agree with W's summary (within float summation rounding).
+Thus observed work is 134.651176 P CPUh and 256.667855 E CPUh, not a combined
+P-equivalent or a full-source estimate.
+
+The wall ledger uses the supervisor boundary 4 November 19:52:10.608396 to
+5 November 20:29:39.647004 UTC, monotonic elapsed 88,649.038619 seconds
+(24.624733 hours), including startup/draining/retry. The lease interval begins
+about five seconds later and is a different boundary; active_phase_wall_s=0
+in W's old event-pair field is not substituted for the stopped supervisor
+interval. User stop was relayed at 20:33 UTC; it is not an invented longer
+native interval.
+
+The attempt ledger has 66 unsuccessful attempts: 15 memory-reserve, 50
+cgroup-memory-OOM and one controller-interrupted transition. W records
+16,808.736376 unsuccessful CPU seconds separately; none enters the successful
+cost numerator. Zero final failed modules does not erase these attempts.
+
+The stopped generator retains all unfinished identities/reasons, uses
+observed-only quantiles and cost shares, and separately reports label
+coverage. Marked sources: 5,646 observed / 202 unmeasured; unmarked:
+122,685 / 34,563. The executable default-graph split is 102,503 observed
+inside and 25,828 outside, with 28,331/6,434 unmeasured. The full static
+source-unit graph count elsewhere includes the configuration unit; do not
+silently change that denominator.
+
+This export was read on the PVC before W's formal data commit. Root changes
+no W paths and does not call it a newly committed full-corpus result.
+The stopped adapter initially exposed Python csv's 128-KiB field limit on a
+real large unfinished dependency list; reading the actual field without
+truncation corrected the adapter. No native run was retried.
