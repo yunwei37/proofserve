@@ -1,0 +1,4 @@
+phase,total_reads,unowned_reads,unowned_before,unowned_after,retained_reads,retained_before,retained_after,raw
+discarded-read-before,16,16,0,2,,,,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/runs/ir-lifetime-before/stdout
+released-read-after,16,16,0,0,,,,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/runs/ir-lifetime-after/stdout
+separate-live-owner,32,16,0,0,16,2,2,/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/runs/ir-lifetime-retained/stdout

@@ -108,12 +108,23 @@ def validateQuotientMetadata (parts : Array (ModuleData × CompactedRegion)) : I
       unless (ci matches .quotInfo _) && name==ci.name do
         throw <| IO.userError s!"unsupported nonprimitive quotient metadata: {name}"
 
+/-- Drop all ModuleData references before returning ownership of validation-only
+regions. The noinline boundary keeps their lifetime separate from unmapping. -/
+@[noinline] private def readValidationRegions (files : Array System.FilePath) :
+    IO (Array CompactedRegion) := do
+  return (← readModuleDataParts files).map (·.2)
+
+/-- Validate IR without retaining its unused mapped data in the checking process. -/
+def validateIRArtifacts (files : Array System.FilePath) : IO Unit := do
+  let regions ← readValidationRegions files
+  unsafe regions.reverse.forM CompactedRegion.free
+
 def moduleParts (mod : Name) : IO (Array (ModuleData × CompactedRegion)) := do
   let file ← findOLean mod
   unless ← file.pathExists do throw <| IO.userError s!"missing module {mod}"
   let sig := file.withExtension "ir.sig"
   if ← sig.pathExists then
-    let _ ← readModuleDataParts #[sig,file.withExtension "ir"]
+    validateIRArtifacts #[sig,file.withExtension "ir"]
   let exported ← readModuleDataParts #[file]
   let some (header,_) := exported[0]? | throw <| IO.userError "empty module"
   if !header.isModule then

@@ -375,3 +375,17 @@ names for the four reserved quotient declarations. It refuses unsupported
 ordinary declarations there before replay or certificate reuse. This leaves
 ordinary prelude-only checkpoints usable and adds no private quotInit write.
 It is not a general proof of equivalence for every malformed serialized field.
+
+### IR validation region ownership
+
+IR format validation uses the original ModuleData reader. Its temporary
+compacted regions are released after a non-inlined helper has dropped the
+payload references; dependent regions are released before their dependencies.
+This follows the public CompactedRegion ownership API and does not change
+kernel checking or the receipt schema. Regions retained for actual imports
+and proof checking keep their normal checking lifetime. The small regression
+checks both temporary release and survival of a different live owner.
+
+The early repair's discarded validation regions were a defect in the added
+adapter path. Correcting that lifetime does not by itself establish whole-corpus
+capacity. Full-scale memory and performance still require the planned actual run.

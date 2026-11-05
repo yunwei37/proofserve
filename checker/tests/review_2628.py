@@ -123,6 +123,8 @@ def run(d):
  # Original importer reads IR for dependencies when a signature is present.
  p=project(d,"ir-input",{"IRBase":"module\nprelude\npublic import Init.Core\npublic def a : Nat := 1\n","IRUse":"module\nprelude\npublic import IRBase\npublic theorem ok : a = a := rfl\n"})
  ir=p/".lake/build/lib/lean/IRBase.ir";sig=ir.with_suffix(".ir.sig");assert sig.exists()and ir.exists()
+ row=command("4-ir-region-lifetime",["lake","env","lean","--run",HERE/"IRLifetime.lean",sig,ir],HERE.parent)
+ need(row["exit"]==0 and (row["json"]or{}).get("ir_region_lifetime")is True,row)
  saved=ir.read_bytes()
  for kind in ["missing","corrupt"]:
   if kind=="missing":ir.unlink()

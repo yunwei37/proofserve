@@ -9,6 +9,44 @@ reserve. They used no Lean -M and no P-core lock. W's full build was untouched.
 These are correctness controls under background load, not paper performance
 measurements. No 14,721-module replay, full-library check or final matrix was run.
 
+## IR validation lifetime follow-up
+
+Post-push self-inspection found a resource defect in our newly added IR
+validation path: dropping the return value from readModuleDataParts does not
+free its compacted regions. A short control left two file mappings after
+16 discarded reads. The repair uses the public CompactedRegion.free operation
+in reverse dependency order. A non-inlined reader first drops all ModuleData
+references and returns only owned region handles.
+
+The short regression now covers both ownership states: validation alone returns
+from zero file mappings to zero after each read; a different owner's live data
+retains its two mappings and remains readable while validation allocates and
+releases separate regions. It does not alter kernel checking, receipt shape or
+artifact acceptance policy. Its evidence concerns region lifetime, not a
+measured whole-library memory saving or speedup.
+
+The first combined wiring of this new regression chose a non-module Base
+fixture, which has no IR signature, and failed during setup. The regression
+now runs on the existing module-system IRBase fixture that actually emits both
+parts. That setup failure remains retained as final-contract7.
+
+The initial 981d544d commit's automatic engine and benchmark-smoke CI both
+completed successfully, including the combined 90/108-command contract.
+That success did not exercise this new lifetime property. The follow-up's
+[qualification record](ir-lifetime-followup.json) binds its fixed build5 binary
+to the source blobs. The complete final-contract8 entry returned 0: the core
+contract, all earlier 90 command records and all new 109 command records passed.
+All 198 common command outcomes retain equal exits, status, accepted/rejected
+module sets and declared axiom sets. The added record is the ownership control.
+See [final-records.csv](final-records.csv) and [ir-lifetime.csv](ir-lifetime.csv).
+The counts are commands, not distinct bugs or proofs. The measured mapping
+prefix includes both .ir.sig and .ir.
+
+The complete local entry sampled about 2.40 GiB peak own-tree RSS, had no
+resource stop and retired its processes and cgroup. It ran under the same
+12 GiB / CPU 8–9 correctness constraints. Follow-up automatic CI is pending
+at this commit. Earlier build4 evidence below remains historical.
+
 ## What was confirmed and changed
 
 | Finding | Actual confirmation | Repair and result |
@@ -34,7 +72,7 @@ complete false acceptance. The swapped-body control is the confirmed false
 acceptance for finding 2. The current cached-body assertion additionally requires
 honest D to be accepted and the bad ZBroken root to be rejected.
 
-## Qualification and retained failures
+## Initial build4 qualification and retained failures
 
 The native binary is a fixed build4 copy. Its three modified Lean sources match
 the saved build source byte for byte. [qualification.json](qualification.json)
@@ -56,8 +94,10 @@ Local qualification is composed from the following actual executions:
 
 Command records include builds, artifact mutations and official invocations;
 90 and 108 are not counts of independent bugs or distinct mathematical proofs.
-The final CI entry is python3 checker/tests/contract.py. Its automatic run is
-pending at this commit; the local qualification is explicitly partitioned above.
+The CI entry is python3 checker/tests/contract.py. The initial local
+qualification was explicitly partitioned above. The terminal 981d544d CI
+snapshot is [ci-981d544d.json](ci-981d544d.json); it subsequently passed the
+combined entry. The current lifetime follow-up has its own complete local run.
 
 The initial combined attempt reached the earlier IR control's 600-second
 self-limit while replaying an unnecessary implicit import of the whole Lean

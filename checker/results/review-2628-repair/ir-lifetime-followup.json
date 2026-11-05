@@ -1,0 +1,62 @@
+{
+  "observed_at_utc": "2026-11-05T00:02:24.449810+00:00",
+  "initial_repair_commit": "981d544d1f276931d7c52feec354ad13fcd5bad2",
+  "frozen_binary": "/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/proofserve-check-build5",
+  "checker_binary_hash": "9915995750215405878",
+  "source_git_blobs": {
+    "checker/Main.lean": "f1f21e22c978a32c53f3d7d603efc94846f736a7",
+    "checker/ProofServe/Stream.lean": "e7b5999416ba5bf60ab95c8c54126ee48a1855fc",
+    "checker/ProofServe/ModulePlan.lean": "d735723e40881d7b6bbd34167f98d9f4fa43cc86",
+    "checker/tests/contract.py": "4df447722dc8cf55c1d0a2f45297880caf103f9d",
+    "checker/tests/review_e0.py": "f48ab86e15ba88f5c63ffee3d48d21dbea5708f3",
+    "checker/tests/review_2628.py": "640fc62d118e67eabf3f618b68bb8d38b081141c",
+    "checker/tests/ReviewQuot.lean": "36b28bad2b0f112aa114666efbebbb9007e48368",
+    "checker/tests/IRLifetime.lean": "cfc140ce344299272efb09b47bffa79786327c45"
+  },
+  "native_source_matches_frozen_snapshot": true,
+  "checker_checkpoint_abi": 5,
+  "independent_closure_abi": "v7",
+  "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)\n",
+  "combined_contract": {
+    "run": "final-contract8",
+    "exit": 0,
+    "core_contract_passed": true,
+    "legacy_command_records": 90,
+    "review_command_records": 109,
+    "common_record_comparison_count": 198,
+    "comparison_fields": [
+      "exit",
+      "status",
+      "accepted set",
+      "rejected module set",
+      "declared axiom set"
+    ],
+    "comparisons_equal": true,
+    "raw": "/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104/runs/final-contract8",
+    "sampled_tree_peak_bytes": 2573111296,
+    "native_retired": true,
+    "cgroup_retired": true,
+    "stop_reasons": [],
+    "per_command_self_limits": 0
+  },
+  "ir_lifetime": {
+    "metric": "file mappings matching the .ir filename prefix, including .ir.sig",
+    "discarded_reads": 16,
+    "discarded_before": 0,
+    "discarded_after": 2,
+    "fixed_unowned_reads": 16,
+    "fixed_unowned_before": 0,
+    "fixed_unowned_after": 0,
+    "separate_owner_reads": 16,
+    "separate_owner_before": 2,
+    "separate_owner_after": 2,
+    "separate_owner_data_access_completed": true
+  },
+  "initial_repair_ci": {
+    "engine": 41935144828,
+    "benchmark_smoke": 41935144829,
+    "conclusion": "success"
+  },
+  "automatic_followup_ci": "pending at commit; combined entry includes the new lifetime control",
+  "known_scope": "self-review; Linux Lean 4.34.1 small fixtures only; no large replay or paper timing"
+}

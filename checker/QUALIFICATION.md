@@ -19,6 +19,11 @@
 > final timing remain deferred until W's full build retires. The small
 > correctness evidence below is not an independent execution review.
 
+> **IR ownership follow-up:** the same result directory records a discarded
+> validation-region defect introduced in the second repair. Its public-API
+> ownership fix passed the complete local contract with 90 earlier and 109 new
+> command records; follow-up CI is recorded separately from 981d544d's success.
+
 Self-review, 2026-11-03. Raw development attempts remain on the existing PVC in
 checker-package-20261103. They are not formal P-core performance measurements.
 
