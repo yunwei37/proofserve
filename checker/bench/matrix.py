@@ -158,6 +158,9 @@ def main():
   else:
    os.environ.pop('DECOUPLED_MUTATE_MODULE',None)
    state=root/('math-interrupted-state'if key in ['math-interrupt','math-resume']else key)
+   if key=='math-resume':
+    interrupted=next(r for r in rows if r['key']=='math-interrupt')
+    state=Path(interrupted['state_directory'])
    argv=[binary,project,'--root',roots[dataset],'--workers',str(n),'--checkpoint-dir',state,'--json',*cell['flags']]
    if key in ['math-interrupt','math-resume'] and qualification:argv+=['--segment-modules','1','--closure-roots','0']
   one(key,argv,dataset,n,rep,arm,state,interrupt,limit=cfg.get('cell_limit_s',1800))

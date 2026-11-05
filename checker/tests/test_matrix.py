@@ -21,13 +21,13 @@ class MatrixRetry(unittest.TestCase):
 
  def test_failed_native_attempt_is_preserved_and_retry_is_fresh(self):
   original_cwd=Path.cwd();original_argv=list(sys.argv)
-  with tempfile.TemporaryDirectory(prefix="matrix-harness-",dir="/workspaces/.agent-state/gpu-smt-captures")as td:
+  with tempfile.TemporaryDirectory(prefix="matrix-harness-",dir=os.environ.get("TMPDIR"))as td:
    d=Path(td);project=d/"project";project.mkdir();overlay=d/"overlay"
    roots={"math":"Mathlib.Data.Nat.Basic","grid":"OAI.Analysis.PlanarPacking.Grid","barrier":"OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41"}
    for n in roots.values():
     f=overlay/Path(*n.split(".")).with_suffix(".olean");f.parent.mkdir(parents=True,exist_ok=True);f.write_bytes(b"fixture")
    fake=types.ModuleType("guard");fake.ROOT=d;fake.SDK=d/"sdk";fake.ACTIVE=None;fake.environment=lambda:dict(os.environ)
-   fail_once=[True]
+   fail_once=[True];interrupted_states=[]
    def run(key,argv,limit,measured,env,memory_gib=None):
     out=d/"runs"/key;out.mkdir(parents=True)
     name=next((n for n in roots if key.startswith(n)),"math")
@@ -35,9 +35,12 @@ class MatrixRetry(unittest.TestCase):
     code=0
     if key=="grid-P2-r1"and fail_once[0]:code=124;fail_once[0]=False
     if key.startswith("bad-real-prefix"):code=1
-    if key=="math-interrupt":
+    if key=="math-interrupt":code=124
+    elif key.startswith("math-interrupt-attempt-"):
      state.mkdir(parents=True,exist_ok=True);(state/"segment-0.json").write_text("{}")
      cg=d/"fake-cgroup";cg.mkdir();fake.ACTIVE=(cg,0);time.sleep(.08);fake.ACTIVE=None;code=137
+     interrupted_states.append(state)
+    if key=="math-resume":self.assertEqual(state,interrupted_states[-1])
     if state:
      state.mkdir(parents=True,exist_ok=True)
      (state/"identity.json").write_text(json.dumps(dict(inputs=[[str(overlay/(roots[name]+".olean")),"1"]],manifest=None,roots=[roots[name]])))
@@ -56,8 +59,10 @@ class MatrixRetry(unittest.TestCase):
      with patch.object(matrix.os,"sched_setaffinity",lambda *args:None),patch.object(matrix.fcntl,"flock",lambda *args:None),contextlib.redirect_stdout(io.StringIO()):
       sys.argv=["matrix.py",str(config)]
       with self.assertRaises(RuntimeError):matrix.main()
-      cfg["retry_failed"]=True;config.write_text(json.dumps(cfg));matrix.main()
-     failures=json.loads((d/"failed-cells.json").read_text());self.assertEqual(len(failures),1)
+      cfg["retry_failed"]=True;config.write_text(json.dumps(cfg))
+      with self.assertRaises(AssertionError):matrix.main()
+      matrix.main()
+     failures=json.loads((d/"failed-cells.json").read_text());self.assertEqual(len(failures),2)
      self.assertEqual(failures[0]["returncode"],124)
      rows=json.loads((d/"completed.json").read_text());self.assertEqual(len(rows),77)
      retried=next(r for r in rows if r["key"]=="grid-P2-r1")

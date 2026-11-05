@@ -69,3 +69,14 @@ in each phase's frozen/bench directory. Native provenance is e000ed62.
 Final execution refuses uncommitted driver sources and records its separate
 driver commit. This is implementation-lane self-review, not independent
 runtime qualification of the release.
+
+## Retry-directory follow-up
+
+A focused harness control first failed because an interrupted-leg retry wrote
+a fresh state directory but the resume leg still selected its original path.
+The driver now reads the actual interrupted row's state_directory. The
+red/green control retains both failed attempts and checks the resume target.
+Both portable driver-control suites run from the existing native CI contract.
+This changes no native checker input or proof verdict. The normal-flow native
+qualification above is retained; the follow-up is a harness regression,
+not a repeated timing or new native measurement.
