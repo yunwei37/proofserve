@@ -158,6 +158,7 @@ def main():
     parser.add_argument("--acceptance", type=Path, help="M fixed-acceptance.json; default beside matrix")
     parser.add_argument("--external-status", type=Path, help="default timing-status.json beside external CSV")
     parser.add_argument("--resume", type=Path, help="M fixed-resume.json; default beside matrix")
+    parser.add_argument("--failed-attempts", type=Path, help="default fixed-failed-attempts.csv beside matrix")
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--preview", action="store_true")
     args = parser.parse_args()
@@ -168,6 +169,8 @@ def main():
     external_status = json.loads(external_status_path.read_text()) if external_status_path.exists() else {}
     native_summary, external_summary = matrix_groups(matrix), external_groups(external)
     if not args.preview:
+        if not truth(acceptance.get("paper_eligible")):
+            raise ValueError("M acceptance sidecar does not designate final paper-eligible measurements")
         if args.matrix.name != "fixed-cells.csv":
             raise ValueError("use M's final fixed-cells.csv; preview/release single points are not final matrix data")
         if any(str(row.get("paper_eligible", "true")).lower() == "false" or
@@ -203,6 +206,10 @@ def main():
     emit(args.out / (prefix + "external-summary.csv"), external_summary)
     failed = [dict(row, origin="matrix") for row in matrix if row.get("returncode") != "0"]
     failed += [dict(row, origin="external") for row in external if row.get("returncode") != "0"]
+    failed_path = args.failed_attempts or args.matrix.parent / "fixed-failed-attempts.csv"
+    archived_failures = read(failed_path) if failed_path.exists() else []
+    failed += [dict(row, origin="archived-matrix-attempt") for row in archived_failures
+               if row.get("returncode") != "0"]
     emit(args.out / (prefix + "retained-nonzero-attempts.csv"), failed,
          None if failed else ["origin", "key", "project", "returncode", "cpu_s", "wall_s"])
     labels = {"math": "Nat.Basic", "grid": "Grid", "barrier": "Barrier"}
@@ -249,6 +256,8 @@ def main():
     provenance = dict(preview=args.preview, matrix=str(args.matrix), external=str(args.external),
                       acceptance=str(acceptance_path), external_status=str(external_status_path),
                       matrix_commits=sorted({row["commit"] for row in native_summary}),
+                      matrix_driver_commit=acceptance.get("driver_commit"),
+                      archived_failed_attempts=str(failed_path) if failed_path.exists() else None,
                       full_ranges="system-summary.csv and external-summary.csv",
                       official_speedup="not computed: proof obligations differ",
                       failed_costs="retained individually, excluded from successful-point medians",

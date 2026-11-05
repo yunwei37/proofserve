@@ -413,3 +413,33 @@ ready before its 12:00 milestone; actual census and final performance figures
 remain pending.
 
 The completed policy update compiles to six pages / 101,629 bytes in 2.595 seconds on CPUs 8–9, with two figures/two tables/14 citation keys, zero missing/measured/partialev/unproven macros and no overfull/undefined-reference warning. Pages 1–2 are unchanged renderings; pages 3–6 were visually self-reviewed, including the final removal of an orphaned artifact line. The default/strict table adapters compiled without overfull boxes; explicit receipt metadata takes precedence over command-key aliases, and repeated generation clears stale strict-cost files when no such points are supplied. All adapter validation numbers remain outside the manuscript. No new native experiment, independent runtime review or final performance result is claimed.
+
+
+## Final driver schema and finite matrix preparation (5 November)
+
+M's 5367aea9 prepares the post-census phases; 456f340f repairs selection of the
+actual interrupted retry directory. Neither changes the e000ed62 native inputs.
+The current six-hour plan retains Nat.Basic/Grid workers 1/2/4/8, three repeats,
+8-worker ablations and strict points, but only Barrier workers 1/8. Its two
+middle worker counts are deliberately unmeasured. The 71 planned attempts
+and budget projections in [post-census-preparation](../../checker/results/post-census-preparation/README.md)
+are not final performance. In particular, planning-only P/E conversions and
+kernel-fraction assumptions do not enter the paper's measured costs.
+
+Root read the actual new fixture exports in
+checker/results/post-census-qualification/matrix/. Dataset labels select
+Base/Fixture/All workflow routes, not real Nat.Basic/Grid/Barrier workloads.
+The acceptance sidecar explicitly sets paper_eligible=false; the row CSV has
+no corresponding column. The generator now checks that actual sidecar
+designation, so fixture results cannot qualify merely by having the expected
+filename or number of repeats. Its archived fixed-failed-attempts.csv is
+preserved separately from the current successful-point table and never enters
+successful medians. Native and driver commits remain separate provenance.
+
+No matrix or corpus phase is launched by root; W remains running and retains
+the P-core lease. The prepared driver only runs those phases after the actual
+full-census terminal and retirement; corpus checking remains optional after
+external timing. The retry fix is a harness regression, not another native
+checking result, independent review or final timing.
+
+Root preview-adapted the actual new fixture schema: 18 matrix groups, two strict-policy groups, the archived 126 failure retained outside one-observation medians, and explicit refusal of paper_eligible=false in final mode. These are fixture adapter counts, not performance results. The aligned manuscript remains six pages / 101,625 bytes, with two figures/two tables/14 references/zero evidence macros; CPU8–9 compile rc0 in 2.121 seconds, no overfull/undefined warnings. Page 4 was visually reviewed; the other five page renderings are byte-identical to the previously reviewed policy manuscript. No new native run was started and no fixture/model number enters the paper.

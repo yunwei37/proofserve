@@ -62,7 +62,11 @@ After M and O publish the approved final results:
 
 The native matrix is M's actual completed-cell schema: key, commit, dataset,
 workers, repeat, arm, returncode, cpu_s and wall_s. Its fixed-acceptance.json
-and fixed-resume.json retain correctness/resumption scope. Native and ablation
+and fixed-resume.json retain correctness/resumption scope. Final mode requires
+paper_eligible=true in the acceptance sidecar; a fixture export cannot become
+paper data merely by having the fixed-cells.csv filename. Archived
+fixed-failed-attempts.csv rows are retained separately from current-point rows
+and excluded from medians; --failed-attempts selects an explicit ledger. Native and ablation
 points require three completed repeats in final mode. Groups never mix commits.
 Official default/fresh points keep their distinct ledgers; no official speedup
 or product of ratios is computed.
@@ -117,3 +121,5 @@ The closure deadline is 6 November 2026, 20:00 UTC. Compilation has no cutoff an
 Completion-mode validation: the retained numerical records plus explicitly synthetic terminal categories outside Git produced an exhaustive success/configuration/failure/blocked inventory and unchanged P/E CPU sums. A stopped campaign and unattempted category were refused, the removed CLI option was refused, and preview still produced no publication marker. These validation identities and counts are not census results.
 
 Policy-adapter validation: real preview rows plus explicitly synthetic strict labels exercised separate default/strict repeat groups, same-configuration CPU/wall ratios, no pairing across commits, isolated external policy rows, preview-only markers and refusal in final mode. Both table fragments compiled. These copied costs test grouping only; they are not strict-mode measurements and are not included in the paper.
+
+The current post-census fixture export was also adapted in preview mode: both strict-key groups are recognized and the archived launch-126 row remains separate from one-observation point summaries. Final mode refuses its paper_eligible=false acceptance sidecar before considering timing medians. No fixture value is used as a real workload result.

@@ -332,12 +332,13 @@ Historical prototypes explain causes but cannot populate the release tables.
 \subsection{RQ3: original-kernel scaling and alternatives}
 Dependency-aware parallel replay targets elapsed time while preserving an
 explicit account of total CPU and additional trusted code.
-The release matrix checks Mathlib Nat.Basic, Grid and Barrier at
-1, 2, 4 and 8 workers, with three fresh-checkpoint processes per point.
-Mathlib here denotes the Nat.Basic closure.
-At eight workers, Mathlib and Grid each receive three no-persistence
-and three no-split-fallback runs. Wall/CPU medians and ranges accompany
-scoped acceptance and memory observations (Table~\ref{tab:release}).
+The release matrix uses 1, 2, 4 and 8 workers for Nat.Basic and Grid,
+and 1 and 8 for Barrier, with three fresh-checkpoint processes per point.
+Mathlib denotes the Nat.Basic closure.
+At eight workers, Nat.Basic and Grid each receive three no-persistence,
+no-split-fallback and strict-policy runs.
+Wall/CPU medians and ranges accompany scoped acceptance and memory
+observations (Table~\ref{tab:release}).
 The final table separates shared-checked default and any measured strict
 points; their CPU/wall cost comparison is reported within the same tool,
 input and worker configuration.

@@ -57,7 +57,7 @@ Existing installed external check/audit cases and package/container CI remain ve
 
 ProofServe checks compiled dependency closures, audits source/default-target coverage and reported evidence, and maintains the existing Kimina-compatible service. Unsupported versions fail clearly or select an explicit official path. No new service feature is added.
 
-The selected-closure performance design retains Mathlib Nat.Basic, Grid and Barrier at 1/2/4/8 workers, three repeats; its Mathlib label is the selected closure. Persistence/split-fallback ablations, official default/fresh comparisons and interruption/resumption retain their scopes. Scheduling final runs follows the gate/full-run outcome and quiet-machine condition, not preview completion.
+The prepared six-hour performance design retains Mathlib Nat.Basic and Grid at 1/2/4/8 workers, and Barrier at 1/8 workers, three repeats. Barrier 2/4-worker points are deliberately omitted; its unmeasured configurations are not zero-cost observations. Mathlib means the selected Nat.Basic closure. Nat.Basic/Grid keep the two 8-worker ablations and three 8-worker strict runs; official default/fresh comparisons, bad proofs and interruption/resumption retain their scopes. The 71-attempt planning ledger is a budget estimate, not final timing data. Scheduling final runs follows the gate/full-run outcome and quiet-machine condition, not preview completion.
 
 ## Paper and evidence
 
