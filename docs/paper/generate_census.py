@@ -100,13 +100,9 @@ def main():
     parser.add_argument("--preview-json", type=Path, help="W's functional attempts.json; requires --preview")
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--preview", action="store_true")
-    parser.add_argument("--partial", action="store_true",
-                        help="publish an explicitly incomplete cutoff ledger, never a whole-library total")
     parser.add_argument("--tectonic", default=os.environ.get("TECTONIC"),
                         help="optional Tectonic executable; compiles the generated scientific figure")
     args = parser.parse_args()
-    if args.partial and args.preview:
-        parser.error("--partial is a reported cutoff result; --preview is validation-only")
     if args.preview_json and not args.preview:
         parser.error("functional JSON is preview evidence, not census data")
     source = args.csv or args.preview_json
@@ -127,28 +123,43 @@ def main():
                 raise ValueError("duplicate successful module; select a single census rather than pool repeats")
             completed[row["module"]] = row
     values = list(completed.values())
-    if not values:
-        raise ValueError("no successful native modules")
     outcome_file = args.data / "outcomes.json"
     outcome = json.loads(outcome_file.read_text()) if outcome_file.exists() else {}
+    failed_rows = [dict(module=item, status="failed") if isinstance(item, str) else item
+                   for item in outcome.get("failed", [])]
+    blocked_rows = [dict(module=item, status="blocked") if isinstance(item, str) else item
+                    for item in outcome.get("blocked", [])]
+    configuration = outcome.get("configuration_units", [])
+    classifications = ([dict(module=name, status="completed") for name in completed] +
+                       [dict(module=name, status="configuration") for name in configuration] +
+                       failed_rows + blocked_rows)
     if not args.preview:
-        if not outcome.get("cost_measurement") or (not args.partial and not outcome.get("complete")):
-            raise ValueError("publication needs cost-measurement outcomes.json; use --partial for a cutoff ledger or --preview for validation")
+        if not outcome.get("full_census") or not outcome.get("cost_measurement"):
+            raise ValueError("publication needs W's full-census cost-measurement terminal; use --preview for validation")
+        if outcome.get("stop") is not None:
+            raise ValueError("the campaign stopped before natural completion; wait for its final terminal")
         if set(outcome["successful"]) != set(completed):
             raise ValueError("CSV successes differ from W's terminal")
-        covered = len(completed) + len(outcome.get("configuration_units", []))
-        total = int(outcome["total_source_units"])
-        if covered > total or (not args.partial and covered != total):
-            raise ValueError("native/configuration coverage does not match the reported universe")
+        names = [item["module"] for item in classifications]
+        if len(names) != len(set(names)):
+            raise ValueError("terminal outcome categories overlap or contain duplicate modules")
+        if len(names) != int(outcome["total_source_units"]):
+            raise ValueError("terminal categories do not account for the full source frame")
+        if any(item.get("status") not in {"completed", "configuration", "failed", "blocked"}
+               for item in classifications):
+            raise ValueError("unattempted/unresolved inputs are not a completed campaign")
+        if bool(outcome.get("complete")) != (len(completed) + len(configuration) == len(names)):
+            raise ValueError("all-success flag disagrees with the terminal classifications")
         if any(row["cpu_s"] is None or row["wall_s"] is None or
                row["user_instructions"] is None for row in values):
-            raise ValueError("final rows contain unobserved costs/instructions; never fill them with zero")
+            raise ValueError("successful final rows contain unobserved costs/instructions; never fill them with zero")
     total_units = outcome.get("total_source_units")
-    configuration_units = len(outcome.get("configuration_units", []))
-    remaining_units = None if total_units is None else int(total_units) - len(values) - configuration_units
+    configuration_units = len(configuration)
     args.out.mkdir(parents=True, exist_ok=True)
     prefix = "preview-" if args.preview else ""
     emit(args.out / (prefix + "census-modules.csv"), observations)
+    if classifications:
+        emit(args.out / (prefix + "census-outcomes.csv"), classifications)
     summaries = []
     for pool in ("P", "E"):
         group = [row for row in values if row["pool"] == pool]
@@ -222,9 +233,10 @@ def main():
     figure_path.write_text(figure)
     manifest = dict(preview=args.preview, input=str(source), outcomes=str(outcome_file),
                     completed_modules=len(values), terminal_complete=outcome.get("complete"),
-                    result_scope="partial observed subset" if args.partial else ("preview" if args.preview else "complete native/configuration ledger"),
+                    result_scope="preview" if args.preview else "completed campaign; success and genuine failure/blocked outcomes separated",
                     total_source_units=total_units, configuration_units=configuration_units,
-                    units_without_completed_native_cost=remaining_units,
+                    failed_modules=len(failed_rows), blocked_modules=len(blocked_rows),
+                    all_native_successful=outcome.get("complete"),
                     cpu_totals_scope="successful observed native modules only; unsuccessful attempts retained separately",
                     snapshot_utc=outcome.get("snapshot_utc", outcome.get("finished_utc")),
                     source_revisions=sorted({row["source_revision"] for row in values}),
@@ -241,14 +253,12 @@ def main():
         macros = [r"\def\CensusNativeModules{" + f"{len(values):,}" + "}",
                   r"\def\CensusSourceUnits{" + f'{outcome["total_source_units"]:,}' + "}",
                   r"\def\CensusConfigurationUnits{" + str(configuration_units) + "}",
-                  r"\def\CensusUncompletedUnits{" + f"{remaining_units:,}" + "}",
-                  r"\def\CensusResultScope{" + ("partial observed subset" if args.partial else "complete native/configuration ledger") + "}",
-                  r"\def\CensusScopeSummary{" + (
-                      "At the cutoff, the partial ledger records " if args.partial else "The complete ledger records ") +
-                  r"\CensusNativeModules{} successfully costed native modules and "
-                  r"\CensusConfigurationUnits{} configuration units in a "
-                  r"\CensusSourceUnits{}-unit frame. " +
-                  (r"\CensusUncompletedUnits{} units lack completed native costs; the observations are a subset, not a library total." if args.partial else "") + "}"]
+                  r"\def\CensusFailedModules{" + str(len(failed_rows)) + "}",
+                  r"\def\CensusBlockedModules{" + str(len(blocked_rows)) + "}",
+                  r"\def\CensusScopeSummary{The completed campaign accounts for "
+                  r"\CensusSourceUnits{} source units: \CensusNativeModules{} successfully costed native modules, "
+                  r"\CensusConfigurationUnits{} configuration units, \CensusFailedModules{} genuinely failed modules "
+                  r"and \CensusBlockedModules{} blocked modules.}"]
         for row in summaries:
             macros.append(r"\def\Census" + row["pool"] + "CPUHours{" + tex_number(row["cpu_hours"]) + "}")
 

@@ -22,21 +22,20 @@ Summed native wall is labelled separately from machine elapsed wall.
 Outputs include per-pool summary CSV, a booktabs table, a PGFPlots figure,
 1,001 empirical quantiles per curve, provenance, and, after successful figure compilation, census-ready.tex.
 Tectonic is optional for data/TeX generation; --tectonic compiles the figure.
-Final output requires W's terminal to report complete cost measurement and
-matching successful/configuration coverage. This is publication input validation,
+Final output requires W's exhausted full-campaign cost-measurement terminal and
+matching successful/configuration/failed/blocked coverage. This is publication input validation,
 not a new experimental threshold or a claim that the failed gate passed.
 
-For a committed cutoff ledger, use the same command with --partial. Its
-outcomes.json must retain the successful module identities, configuration units,
-total_source_units and cost_measurement flag; complete may remain false.
-The resulting paper macros say partial observed subset and report the frame,
-successful native count, configuration count and units without completed costs.
-CPU sums and quantiles describe successful observed modules only, separately
-for P/E; unsuccessful attempts remain in the exported observations. No missing
-cost is imputed and no subset is extrapolated to a whole-library total.
-This is a final partial report, distinct from --preview, which never enters
-the manuscript. If no successful costs exist, the generator refuses numerical
-publication; report that outcome in prose instead.
+The campaign has no time cutoff. Final generation waits for its natural terminal:
+full_census and cost_measurement must be true, stop must be null, and disjoint
+successful/configuration/failed/blocked identities must account for the entire
+source frame. W's complete field means all-native-success, not merely process
+termination; genuine failed/blocked modules do not become successful.
+The generator exports census-outcomes.csv with every module and its actual
+classification and supplied reasons. It retains unsuccessful attempts separately.
+CPU totals and distributions cover successfully costed modules; failure/blocked
+costs are not invented, and no all-success total is claimed when they exist.
+There is no partial-publication option. Preview mode remains validation-only.
 
 For the actual five-module functional run (which deliberately has no costs):
 
@@ -98,6 +97,6 @@ are never inputs. Without final artifacts it prints explicit pending slots,
 not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
 
-The closure deadline is 6 November 2026, 20:00 UTC. Compilation ends by 08:00; a cutoff publication uses --partial if coverage is incomplete. Library checking reports its actually verified scope by the 17:00 hard stop, with no separate PlanarPacking comparison. Paper prose and scripts are due 5 November, 12:00; numerical integration is due 6 November, 18:00. Library checking is supplementary: if no time remains after the matrix and external timing, report it as not attempted, with no invented cost or acceptance count. All times are UTC.
+The closure deadline is 6 November 2026, 20:00 UTC. Compilation has no cutoff and must run to completion; no deadline-selected subset is published. Library checking reports its actually verified scope by the 17:00 hard stop, with no separate PlanarPacking comparison. Paper prose and scripts are due 5 November, 12:00; numerical integration is due 6 November, 18:00. Library checking is supplementary: if no time remains after the matrix and external timing, report it as not attempted, with no invented cost or acceptance count. All times are UTC.
 
-Cutoff-mode validation: the retained 20-row numerical input was combined with explicitly synthetic coverage metadata outside Git. Complete-only mode refused incomplete coverage; --partial produced the correctly labeled subset and three uncompleted units, matched independently summed P/E CPU, and compiled the distribution. Preview mode still produced no publication marker. These validation counts are not census results.
+Completion-mode validation: the retained numerical records plus explicitly synthetic terminal categories outside Git produced an exhaustive success/configuration/failure/blocked inventory and unchanged P/E CPU sums. A stopped campaign and unattempted category were refused, the removed CLI option was refused, and preview still produced no publication marker. These validation identities and counts are not census results.

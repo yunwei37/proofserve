@@ -4,23 +4,25 @@ The deliverables remain an open-source Lean checking/audit tool and a six-page e
 
 ## Closure schedule (all times UTC, 2026)
 
-The two-day closure instruction supersedes the former November target. Deliver the usable tool and readable six-page paper by **6 November, 20:00**, using the results actually available.
+The two-day closure instruction supersedes the former November target. Deliver the usable tool and readable six-page paper by **6 November, 20:00**, with the full census allowed to run to completion. The other milestones remain unchanged; none authorizes truncating the census.
 
 | Deadline or budget | Owner and handoff |
 |---|---|
 | 5 November, 06:00 | M freezes the checker; retain known limitations and review status. |
 | 5 November, 12:00 | Root finishes all paper prose and figure/table scripts; only returned numbers remain to integrate. |
 | 5 November, 14:00 | O finishes functional acceptance of the frozen installation. |
-| 6 November, 08:00 | W's full-corpus compilation campaign ends, complete or partial; publish actual coverage and outcomes. |
+| No census cutoff | W runs the full-corpus compilation campaign to its natural terminal; enumerate successful, genuinely failed, blocked and configuration units. |
 | After compilation, at most 6 hours | M runs the final matrix on the quiet machine. |
 | Next, at most 2 hours | O runs final external-project timing. |
 | If time remains, stop by 6 November, 17:00 | M's optional full-library checking attempt reports the verified scope actually reached; it may be partial or not started. |
 | 6 November, 18:00 | Root integrates returned numbers into a readable six-page paper with zero missing macros. |
 | 6 November, 20:00 | Close out the project with tool, paper and explicit remaining limitations. |
 
-The compilation cutoff is extended because progress slowed in the computation-heavy region; the overall 20:00 closure deadline is unchanged. Final timing runs sequentially: matrix (at most six hours), external timing (at most two hours), then optional library checking if time remains. No separate PlanarPacking comparison is scheduled or claimed. Preserve all successful, failed, interrupted and unattempted outcomes; the deadline does not turn partial coverage into a complete result. Root documents these handoffs and reads the existing owners' actual returns, without creating a competing collector or changing their implementation.
+The user has cancelled the compilation cutoff: do not stop at 08:00 or close the census with a deadline-selected subset. The other stated milestones, including the overall 20:00 deadline, remain unchanged; they are not authority to truncate the census. Final timing runs sequentially: matrix (at most six hours), external timing (at most two hours), then optional library checking if time remains. No separate PlanarPacking comparison is scheduled or claimed. Preserve all successful, failed, interrupted and unattempted outcomes; the deadline does not turn partial coverage into a complete result. Root documents these handoffs and reads the existing owners' actual returns, without creating a competing collector or changing their implementation.
 
-If compilation stops short, report successfully costed native modules against the frozen frame, separately identify configuration units and the remaining failed/blocked/unattempted scope, and label distributions and P/E CPU sums as observed-subset results. Do not extrapolate these sums to the library. If checking stops short, report unique accepted modules, actual attempted scope and rejection/operational-stop status with tool/input commits; acceptance of a prefix is not whole-library parity. If library checking cannot start before its cutoff, report “not attempted within the evaluation window”, with no fabricated acceptance count, zero cost or completion claim. Library checking is supplementary and is not a required paper result or a prerequisite for project closure; the selected-closure matrix and external-project measurements retain their own scopes. These are admitted closure outcomes, not reasons to wait past the deadline.
+The census must run to completion; no cutoff-subset publication is planned. Enumerate every genuinely failed module and blocked dependent with its actual reason, keeping successful costs distinct from failure/blocked outcomes. A terminal campaign with genuine failures is not an all-successful build, and absent costs are never zero-filled. Do not hide failures or extrapolate successful costs into an all-success total.
+
+Full-library checking remains supplementary. If it stops short, report unique accepted modules, actual attempted scope and rejection/operational-stop status with tool/input commits; a prefix is not whole-library parity. If no time remains to start it, report “not attempted within the evaluation window”, without fabricated acceptance counts or zero costs. It is not a required paper result or a prerequisite for project closure. Final matrix, external timing and optional checking still follow the completed census in that order, followed by numerical integration; do not move them ahead of the running census.
 
 ## Full-run usability gate
 
@@ -32,7 +34,7 @@ The earlier 1–2 day estimate is a planning estimate, not a running campaign du
 
 ## Current manuscript and data handoff
 
-**Do not add full-corpus numerical results before they return.** The original42 estimate and uncertainty remain in the data package and evidence map for calibration. Section 3.2 is reserved for directly observed complete-campaign or cutoff-subset totals and distributions, with honest pending slots until records arrive.
+**Do not add full-corpus numerical results before they return.** The original42 estimate and uncertainty remain in the data package and evidence map for calibration. Section 3.2 is reserved for directly observed completed-campaign costs, distributions and enumerated real failures/blockers, with honest pending slots until records arrive.
 
 Section 3.2 uses the prepared census-result structure; it does not present the sample extrapolation as the forthcoming census total. Report that the total-instruction gate failed without changing its thresholds. Cross-module comparisons use user-mode instructions, explicitly identified as a criterion selected after observing the gate results. Report P-core and E-core CPU seconds separately, without conversion, and wall time as an observation of this machine and configuration. This is not a passing replacement gate or hardware-independent cost scale.
 

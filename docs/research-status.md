@@ -12,9 +12,9 @@ M's current matrix is preview-only and cannot fill Table 1. Final system timing 
 
 ## Closure handoffs (UTC)
 
-M freezes the checker by 5 November, 06:00; root finishes paper prose and scripts by 12:00; O completes frozen-installation functional acceptance by 14:00. Compilation ends by 6 November, 08:00. Run the final matrix (at most 6 hours), then external timing (at most 2 hours), and finally optional library checking if time remains. Root fills returned numbers by 6 November, 18:00, retaining six pages and zero missing macros. No separate PlanarPacking comparison remains.
+M freezes the checker by 5 November, 06:00; root finishes paper prose and scripts by 12:00; O completes frozen-installation functional acceptance by 14:00. The full compilation campaign has no cutoff and must run to completion; it is not stopped at 08:00. Run the final matrix (at most 6 hours), then external timing (at most 2 hours), and finally optional library checking if time remains. Root fills returned numbers by 6 November, 18:00, retaining six pages and zero missing macros. No separate PlanarPacking comparison remains.
 
-Incomplete compilation is reported as observed-module coverage and subset costs; incomplete checking is reported as the verified scope reached. Neither becomes a complete-library result. If checking cannot start, report it as not attempted; do not assign it a zero cost or use it as a prerequisite for the paper. The overall 20:00 closure deadline is unchanged.
+The completed compilation campaign lists genuine failed and blocked modules individually; no deadline-selected subset closes the census. Successful costs do not assign costs or success to failures/blockers. Incomplete library checking is reported only as the verified scope reached. If checking cannot start, report it as not attempted; do not assign it a zero cost or use it as a prerequisite for the paper. The overall 20:00 closure deadline is unchanged.
 
 ## Evidence retained
 
@@ -22,7 +22,7 @@ Incomplete compilation is reported as observed-module coverage and subset costs;
 - [External installed checks](../data/external-projects/results.md): three cases with common-local-root parity, separate costs and retained official resource failures. Package/container CI passed finite controls; proof obligations differ.
 - [AI-generated case](paper/evidence.md#ai-generated-external-case-functional-preview-4-november): installed preview accepted a 10,753-module closure; nine local roots match official default. Source authorship is upstream-declared; the archive is not yet a clean release freeze and resumed costs are incomplete.
 - [Checker reviews](paper/evidence.md#retained-closure-checker-qualification-4-november): the old 2df1d9d7 result remains superseded. M's 981d544d context/quotient repair and e1557c77 IR-lifetime follow-up have small-fixture execution evidence. ABI 5 invalidates the old retained-case qualification; no ABI-5 large replay or final performance is available. Independent repaired-binary execution review remains open; the checker is unfrozen.
-- [Six-page paper](paper/main.tex): prose and scripts are prepared for complete or cutoff-partial compilation/checking scope, with no PlanarPacking comparison. The census generator has an explicit partial mode. Six pages including references, zero missing macros and all-page visual self-review are verified; final numbers remain pending without preview values.
+- [Six-page paper](paper/main.tex): prose and scripts require the completed census with enumerated real failures/blockers; optional library checking may be partial or not attempted. No PlanarPacking comparison remains. Six pages including references, zero missing macros and all-page visual self-review are verified; final numbers remain pending without preview values.
 
 The nealmcb report's 13.8-hour cloud wall measurement and 26-module CPU extrapolation remain distinct.
 

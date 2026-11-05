@@ -16,9 +16,9 @@ audit tool. Matched target windows retain 80.28--82.35\% of source-compilation
 wall time for two computational certificates, versus 0.46--6.54\% for two
 ordinary controls. Across 31 module-process pairs, the median checker/compiler
 CPU ratio is 0.451, with overlapping source-proxy classes.
-A per-module campaign accounts for P-core and E-core CPU separately;
-its report will distinguish measured coverage from a complete library total,
-with the original probability sample retained for calibration. The default import graph omits 19.78\% of source modules and 33.30\%
+A full-corpus campaign accounts for P-core and E-core CPU separately,
+with genuine failure and blocked outcomes retained and the original
+probability sample used for calibration. The default import graph omits 19.78\% of source modules and 33.30\%
 of lexical kernel-decision sites. ProofServe combines dependency-aware
 parallel replay, restartable segments and receipts recording scope, axioms
 and costs. Its contribution is a usable integration of established
@@ -152,8 +152,8 @@ pending. This denominator change illustrates why a single ratio cannot
 stand for every boundary.
 
 \subsection{Full-corpus work and its distribution}
-A per-module campaign reports the native compilation work actually observed;
-a complete library total requires complete coverage.
+The full-corpus campaign runs to completion and accounts for every source
+unit as successful, genuinely failed, blocked or configuration-only.
 The frozen frame has 163,097 source units; executable modules and the
 configuration unit retain distinct statuses.
 Every successful record identifies its source and measurement commits,
@@ -169,11 +169,11 @@ choosing user-mode instructions afterwards does not turn it into a pass.
 Successful observed modules consume \CensusPCPUHours{} P-core CPU-hours and
 \CensusECPUHours{} E-core CPU-hours, without conversion or pooling.
 }{%
-The campaign is in progress; its cutoff ledger has not returned.
-The report will give successful native modules against the frozen frame,
-configuration units and the remaining failed, blocked or unattempted scope.
-If coverage is incomplete, Figure~\ref{fig:census} and P/E CPU sums describe
-only the successfully observed subset, rather than a library total.
+The campaign is running to completion; its terminal ledger has not returned.
+The report will enumerate genuine failed modules and blocked dependents
+separately from successful native modules and configuration units.
+Figure~\ref{fig:census} and P/E CPU sums describe successful compilations;
+unavailable costs are never assigned to failed or blocked modules.
 }
 
 The original 42 probability-sample observations remain a calibration panel,
@@ -193,14 +193,14 @@ support cost-by-coverage analysis when those labels are supplied.
 }{%
 \fbox{\begin{minipage}[c][3.1cm][c]{0.89\columnwidth}
 \centering
-Observed-module distribution awaits returned records.\\[5pt]
+Full-campaign distribution awaits terminal records.\\[5pt]
 User-mode instruction quantiles across modules\\
 and separate P/E native CPU distributions.
 \end{minipage}}
 }
-\caption{The observed-module distribution uses user-mode instructions, chosen after
+\caption{The completed campaign uses user-mode instructions, chosen after
 the failed total-instruction gate, and separate P/E CPU curves.
-Completion coverage accompanies each curve; a cutoff subset is not extrapolated.
+Successful compilations supply the curves; named failures and blockers remain separate.
 Missing costs stay unobserved and P/E seconds are not converted.
 Design implication: expose a heavy tail
 and its execution conditions before summarizing a library by one cost.}
@@ -490,7 +490,7 @@ Run \texttt{proofserve check /path/to/project}, then
 The evidence map retains revisions, raw outcomes and clock definitions.
 \path{docs/paper/generate_census.py} and
 \path{docs/paper/generate_system.py} generate the figures and tables from
-committed CSVs, with explicit partial-coverage reporting.
+committed CSVs after full-campaign completion, retaining failed/blocked outcomes.
 Preview output cannot populate the manuscript.
 
 \section{Limitations and related work}
@@ -500,8 +500,8 @@ uncertainty; lexical markers are proxies, not runtime frequencies.
 Selected closures overlap, module-local replay trusts imports, and target
 windows exclude shared preparation. Cross-protocol ratios, cache/order
 effects, hardware differences and provisional SubexponentialSAT controls
-limit generalization. Partial campaign distributions describe observed modules and may be biased
-by completion order; whole-library totals require full coverage.
+limit generalization. Failed and blocked modules have no successful cost; their exclusion from
+cost distributions is explicit.
 Dynamic phase weights remain unmeasured.
 
 Finite verdict agreement does not prove arbitrary-extension safety,
@@ -529,8 +529,8 @@ parallelism, receipt or serving mechanisms.
 
 \section{Conclusion}
 Matched measurements show both cheap proof checking and substantial
-certificate recomputation. The per-module campaign will report its observed coverage and costs,
-retaining failed-gate and pool boundaries even if it stops short.
+certificate recomputation. The full-corpus campaign will account for all source units,
+retaining real failures, blocked dependents and pool boundaries.
 Default coverage and repeatable verdicts answer different verification
 questions. ProofServe makes these boundaries explicit through check,
 audit and scoped receipts. Review-driven repairs strengthen the tested input and receipt boundaries;

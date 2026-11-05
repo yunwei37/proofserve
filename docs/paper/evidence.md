@@ -279,3 +279,34 @@ repair commit. Root retained the reduced API snapshot beside its ABI-5 paper
 build on PVC. This is mechanical execution status, not a new independent
 execution review, large-closure replay, freeze or final performance result.
 The manuscript's scientific scope and numbers are unchanged by this observation.
+
+
+## Census completion instruction supersedes cutoff publication (5 November)
+
+The latest exact user words are recorded in [user-instruction.md](../user-instruction.md).
+The first half quotes the coordinator's discarded cutoff proposal; the user's
+decision is “不要这样. 让它跑完”. The census now has no time cutoff and will
+not close with a deadline-selected subset. Earlier cutoff-mode validation and
+deadline entries above are historical, superseded dispositions; their original
+data and receipts remain preserved.
+
+The manuscript and generate_census.py now wait for the full campaign's natural
+terminal. The partial-publication option is removed. W's actual controller
+schema distinguishes all-native-success (complete) from an exhausted campaign
+with genuine failures: full_census/cost_measurement, successful, failed,
+blocked, configuration_units, total_source_units and stop are retained.
+Publication accounts for disjoint outcome identities across the entire frame;
+stop or not_attempted outcomes cannot qualify an early subset as complete.
+All failed/blocked modules are exported individually in census-outcomes.csv,
+alongside configuration/success identities and supplied dependency reasons.
+Successful costs remain separate from absent costs of failures/blockers.
+
+Root read the frozen controller: its six-hour deadline applies only when
+validate_subset is set, not the actual full-census invocation. Root changed
+neither W's running collector nor its implementation. Other stated delivery
+deadlines are unchanged and do not authorize truncating the census. Matrix,
+external timing, optional full-library checking and numerical integration
+follow full-campaign completion. Library checking alone retains partial or
+not-attempted reporting and is not required for the paper.
+
+Completion-mode generator validation used retained numerical rows with explicitly synthetic exhaustive terminal categories outside Git. Successful CPU sums remained equal by P/E; every failed/blocked identity was exported. Early-stop and not-attempted input and the removed option were refused; preview still produced no ready marker. The figure compiled. None of these validation numbers entered the manuscript. Updated manuscript compilation returned 0 in 3.225 seconds on CPUs 8–9: six pages, 101,503 bytes, two figures/two tables/14 references/zero evidence macros, no overfull/undefined warnings, all six pages visually self-reviewed. Root directly reconfirmed W controller528400/birth10465017 in full --execute mode without validate_subset or functional flags; no collector was stopped or replaced.
