@@ -577,3 +577,33 @@ unassigned phases, overlap and early-stop cases were refused. Preview created
 no publication marker, and the five-module functional trial kept absent
 costs blank. These are adapter checks, not new native experiments or census
 measurements, and none of their numbers enters the manuscript.
+
+
+### Later runtime observation: second phase did not launch
+
+At 20:36 UTC root found original PID 528400 absent on the unchanged boot
+and read supervisor-terminal.json: return -2, end at
+2026-11-05T20:29:39.647004+00:00. The original phase ledger still contains
+only its lease event. W's user-stop.json records the relayed later words
+“别跑了, 现在的数据够吗” and segment2_launched=false; its derived outcomes
+also state segment_count=1. This is an owner-recorded later stop, not
+evidence that the proposed admission policy ran or improved throughput.
+
+The derived container named blocked has 34,765 entries whose actual status is
+not_attempted. Those must not be relabelled genuine dependency failures.
+Its 128,331 successful records and one configuration unit are still not a
+root-certified final census publication. Root did not recompute those counts
+or convert them into a completed full-corpus result. M's subsequent c8f2a0c5
+documents the explicit stopped handoff for final evaluation after retirement
+and lease release, without restarting builds. No second phase or final
+evaluation was launched by root. The prepared phase-aware generator continues
+to refuse an early stop as a complete two-phase campaign.
+
+The stopped-state manuscript correction compiles on CPUs 8–9 in 2.575 seconds,
+exit 0, six pages / 101,594 bytes, two figures / two tables / 14 references,
+no overfull/undefined warning or evidence-placeholder macro. Root visually
+reviewed all six pages. The abstract, method and conclusion no longer imply
+two executed phases or completed full-corpus coverage. No observed progress
+count or newly derived partial cost was inserted. The two-phase adapter
+fragments also compile without overfull boxes when placed in separate
+paragraphs in their validation wrapper.

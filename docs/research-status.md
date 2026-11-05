@@ -4,7 +4,8 @@ We are delivering the open-source tool and a six-page empirical + system paper b
 
 ## Current decision
 
-**The census continues on the same 22-core pools with two admission phases; no further user decision is awaited.** The [total-instruction gate](../data/openai-math-4eaee875/measurement/census-gate/README.md) remains failed at 1.3312% median / 3.1498% P95 versus unchanged 1% / 3% thresholds. Cross-module comparisons use user-mode instructions, a criterion selected after seeing those results. P/E CPU seconds remain separate and unconverted; wall time describes this machine and configuration. Launch authorization is not a completed census result.
+**W's original controller has retired; no second admission phase was launched
+in the latest owner record.** The [total-instruction gate](../data/openai-math-4eaee875/measurement/census-gate/README.md) remains failed at 1.3312% median / 3.1498% P95 versus unchanged 1% / 3% thresholds. Cross-module comparisons use user-mode instructions, a criterion selected after seeing those results. P/E CPU seconds remain separate and unconverted; wall time describes this machine and configuration. Launch authorization is not a completed census result.
 
 All root work inside the Workspace now uses **CPUs 8–9**, including PDF compilation. The former CPU 22–23 setting is retired for future work; historical records remain unchanged.
 
@@ -55,3 +56,27 @@ and failed/interrupted-attempt exports. Adapter validation used retained
 numerical records plus explicitly synthetic phase metadata, not census
 results. The current two-phase manuscript is six pages / 101,369 bytes,
 two figures / two tables / 14 references with no evidence-placeholder macros.
+
+## Later observed stop supersedes the running snapshot
+
+At 20:36 UTC root read W's supervisor terminal: return -2 at
+20:29:39.647004 UTC, with the original controller absent on the same boot.
+W's user-stop.json records a subsequent relayed user stop, and
+derived-outcomes.json says segment_count=1 and segment2_launched=false.
+That derived ledger records 128,331 successes, one configuration unit and
+34,765 unfinished units; entries under its blocked container are explicitly
+not_attempted, not genuine dependency-failure outcomes. These are owner
+derived progress/stop records, not a root-certified final census publication.
+
+M's c8f2a0c5 explicitly documents the later operator stop and prepares final
+evaluation after retirement and lease release. It does not make the source
+census complete. Root starts no run. The two-phase paper/generator work above
+is prepared capability; phase 2 must not be reported as executed or given
+fabricated costs. Final scope and clocks must follow the owner's actual
+published stopped-run ledger, with raw attempts and unattempted inputs intact.
+
+
+The latest stopped-state correction is six pages / 101,594 bytes, with all six
+pages visually reviewed, two figures / two tables / 14 references and zero
+evidence-placeholder macros. It reports the phase-2 plan as unexecuted and
+keeps stopped-run numerical publication pending.

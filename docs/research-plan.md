@@ -2,6 +2,19 @@
 
 The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **Continue the full census with two documented admission phases on the same 22-core pools. Do not wait for another user decision.** This latest instruction supersedes the earlier stop-and-wait disposition; the failed gate remains part of the evidence.
 
+## Later execution observation: phase 2 not launched
+
+The two-phase decision below describes the authorized plan, not two executed
+segments. At 20:36 UTC root read the old controller's retirement at
+20:29:39.647004 UTC and W's later user-stop/derived records, which explicitly
+say segment2_launched=false. M's c8f2a0c5 records the later relayed operator
+stop and admits final evaluation only after actual retirement and lease
+release. The stopped first segment is not a complete census; do not invent
+a second-segment wall, CPU cost or admission-policy benefit. Preserve the
+unfinished scope and await the owner's actual published ledger for reporting.
+Root does not resume W or launch the matrix. Earlier no-cutoff and two-phase
+entries are the instruction history, not proof of full execution.
+
 ## Closure schedule (all times UTC, 2026)
 
 The two-day closure instruction supersedes the former November target. Deliver the usable tool and readable six-page paper by **6 November, 20:00**, with the full census allowed to run to completion. The other milestones remain unchanged; none authorizes truncating the census.
