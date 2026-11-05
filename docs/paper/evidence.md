@@ -269,7 +269,7 @@ independent execution review, release freeze or paper performance.
 Root directly checked final-contract8 PID 997606/birth11906385 and its recorded cgroup are absent. Updated paper: six pages / 101,584 bytes, 2.398-second rc0 compilation on CPUs 8–9, no overfull or undefined-reference warning, two figures/two tables/14 citation keys/zero evidence macros. Changed pages 3–4 were visually reviewed; pages 1–2 and 5–6 are byte-identical renderings to the previously reviewed cutoff manuscript. The first seven-page layout attempt is retained on PVC. This root integration adds no native experiment or final system number.
 
 
-### Follow-up CI terminal observed (5 November, 01:06 UTC)
+### Follow-up CI terminal observed (5 November, 01:05:14 UTC)
 
 GitHub's live API now reports the e1557c77 [engine run](https://github.com/yunwei37/proofserve/actions/runs/41938525300)
 and [benchmark-smoke run](https://github.com/yunwei37/proofserve/actions/runs/41938525076)
