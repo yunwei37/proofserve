@@ -4,7 +4,7 @@ We are delivering the open-source tool and a six-page empirical + system paper b
 
 ## Current decision
 
-**W's option-A frozen 22-core census is running; no further user decision is awaited.** The [total-instruction gate](../data/openai-math-4eaee875/measurement/census-gate/README.md) remains failed at 1.3312% median / 3.1498% P95 versus unchanged 1% / 3% thresholds. Cross-module comparisons use user-mode instructions, a criterion selected after seeing those results. P/E CPU seconds remain separate and unconverted; wall time describes this machine and configuration. Launch authorization is not a completed census result.
+**The census continues on the same 22-core pools with two admission phases; no further user decision is awaited.** The [total-instruction gate](../data/openai-math-4eaee875/measurement/census-gate/README.md) remains failed at 1.3312% median / 3.1498% P95 versus unchanged 1% / 3% thresholds. Cross-module comparisons use user-mode instructions, a criterion selected after seeing those results. P/E CPU seconds remain separate and unconverted; wall time describes this machine and configuration. Launch authorization is not a completed census result.
 
 All root work inside the Workspace now uses **CPUs 8–9**, including PDF compilation. The former CPU 22–23 setting is retired for future work; historical records remain unchanged.
 
@@ -36,3 +36,16 @@ two figures / two tables / 14 references and zero evidence-placeholder macros.
 CPU 8–9 compilation succeeded; changed page 5 was visually checked and the
 other pages match the prior checked render. Final timing and full-census
 numbers remain pending; no preview costs were inserted.
+
+## Two-phase admission decision (5 November)
+
+The coordinator reports memory interruptions, draining and exclusive retries
+in PadicHodge and related families from 16:00 UTC, and directs phase 2 to use
+memory-based admission with caps for families that had memory interruptions.
+Phase 1's 22-slot policy, successful records and separate unsuccessful attempts
+remain retained. Compiler commands, -j8 and P/E pools stay fixed.
+W's actual phase ledger will establish the switch timestamp and parameters;
+root has not yet observed the executed switch. CPU and machine wall will be
+reported by phase, with separate P/E CPU and a sum of measured phase walls.
+The new finish estimate is around 6 November, 03:00 UTC, not a cutoff.
+No full-census numbers or new admission-policy benefit is claimed now.

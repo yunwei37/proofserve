@@ -517,3 +517,36 @@ previous visually checked version. This is root layout self-review, not an
 independent paper review or completion of the pending final measurements.
 The initial expanded wording produced seven pages and was shortened before
 publication without changing the qualification boundaries or measured values.
+
+
+## Two-phase census admission decision (5 November)
+
+The coordinator authorizes phase 2 after reporting repeated concurrent-memory
+interruptions in PadicHodge and related families from 16:00 UTC, following
+the earlier Ramsey behavior. The notice reports 128,329 of 163,096 executable
+modules completed and 65 unsuccessful attempts at 20:25 UTC. These are
+coordinator-supplied progress observations, not root's recomputed final ledger,
+and are not inserted into the manuscript as census results.
+
+Phase 1 retains its fixed 22-slot admission with memory-reserve drains and
+exclusive retry. Phase 2 uses memory admission and family concurrency caps;
+compiler argv, -j8 and P/E pools remain fixed. At root's initial read the old
+controller was still active and its execution-phases.jsonl contained only the
+original lease event. The actual switch time and new implementation are not
+invented from this notice. Final reporting must bind each successful module
+to its phase, retain unsuccessful attempts separately, and report measured
+phase wall and phase/P-E CPU. Total campaign wall sums the measured phase
+intervals, with any gap separate; module wall sums are not makespan.
+
+The failed total-instruction gate and post-result user-mode-instruction choice
+remain disclosed; the admission change is not a new invariance result.
+The laptop sleep interval is a coordinator-reported monitoring outage, not
+evidence of a remote census interruption. No native run, controller mutation,
+owner affinity change or replacement queue was started by root.
+
+The two-phase prose compiles on CPUs 8–9: exit 0 in 2.061 seconds,
+six pages / 101,369 bytes, two figures / two tables / 14 references, no
+overfull or undefined warnings and no missing/measured/partialev/unproven
+macros. Root visually reviewed all six rendered pages. No census progress,
+new CPU/wall result or admission-policy benefit was inserted. The actual
+switch timestamp remains pending W's execution ledger.

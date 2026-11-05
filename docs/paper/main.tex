@@ -80,13 +80,12 @@ summary to \texttt{1cc14067}. Historical replay measurements explain cost
 boundaries; system performance must come from committed release-tool results
 in \path{checker/results/} and \path{data/external-projects/}.
 
-The authorized census uses a frozen eight-P-core/fourteen-E-core protocol.
-Its total-instruction invariance gate failed: median spread 1.33\% and
-P95 3.15\% exceeded the unchanged 1\% and 3\% criteria.
-Cross-module comparisons use user-mode instructions, a criterion chosen
-after observing those results. P-core and E-core CPU seconds are reported
-separately without conversion; wall time describes this machine and
-configuration. Full-corpus numerical results are not yet available.
+The two-phase census keeps eight P and fourteen E cores.
+The total-instruction gate failed: median spread 1.33\% and P95 3.15\%
+exceeded unchanged 1\%/3\% criteria. Cross-module comparison uses
+user-mode instructions, chosen after those results. CPU is reported by
+phase and P/E pool without conversion; wall describes this machine and
+admission policy. Full-corpus results have not returned.
 
 \section{Two costs and their population weight}\label{sec:costs}
 \subsection{Computational certificates retain work}
@@ -152,39 +151,34 @@ pending. This denominator change illustrates why a single ratio cannot
 stand for every boundary.
 
 \subsection{Full-corpus work and its distribution}
-The full-corpus campaign runs to completion and accounts for every source
-unit as successful, genuinely failed, blocked or configuration-only.
-The frozen frame has 163,097 source units; executable modules and the
-configuration unit retain distinct statuses.
-Every successful record identifies its source and measurement commits,
-P/E pool, native user/system CPU, wall time and user-mode instructions.
-Failed attempts, interruptions, blocked dependents and unattempted inputs
-remain separate; none is assigned zero cost.
-The total-instruction gate failed as described in Section~\ref{sec:method};
-choosing user-mode instructions afterwards does not turn it into a pass.
+The campaign accounts for all 163,097 source units as successfully costed,
+genuinely failed, blocked or configuration-only. Records bind source and
+measurement commits, phase, P/E pool, user/system CPU, wall and user-mode
+instructions. Unsuccessful attempts remain separate; absent costs are not zero.
+The failed total-instruction gate and post-result instruction choice remain
+as described in Section~\ref{sec:method}.
+
+Phase 1 uses 22-slot admission with reserve-driven drains and exclusive
+retry. Concurrent memory interruptions in PadicHodge and related families
+from 5 November, 16:00 UTC motivate phase 2: memory admission and caps for
+previously interrupted families. The execution ledger supplies the actual
+switch time. Commands, \texttt{-j8} and core pools stay fixed.
 
 \IfFileExists{generated/census/census-ready.tex}{%
 \input{generated/census/census-ready.tex}
 \CensusScopeSummary{}
-Successful observed modules consume \CensusPCPUHours{} P-core CPU-hours and
-\CensusECPUHours{} E-core CPU-hours, without conversion or pooling.
+\CensusPhaseSummary{}
 }{%
-The campaign is running to completion; its terminal ledger has not returned.
-The report will enumerate genuine failed modules and blocked dependents
-separately from successful native modules and configuration units.
-Figure~\ref{fig:census} and P/E CPU sums describe successful compilations;
-unavailable costs are never assigned to failed or blocked modules.
+The terminal ledger has not returned. The final account will enumerate
+failures and blockers, report successful P/E CPU and machine wall by phase,
+and sum the two measured phase walls. Any handoff gap is separate;
+summed module wall is not campaign wall.
 }
 
-The original 42 probability-sample observations remain a calibration panel,
-with their original weights and broad nominal uncertainty.
-They are not pooled into the census or used to impute absent module costs.
-Calibration must retain each new observation's CPU pool; an E-core/P-core
-ratio is not a conversion factor.
-Machine elapsed wall time is reported only from the actual continuous run,
-separately from summed module-process wall intervals.
-Module-level joins with lexical markers and default-graph membership
-support cost-by-coverage analysis when those labels are supplied.
+The original 42 samples remain calibration, with their weights and broad
+uncertainty; they neither enter the census nor impute absent costs.
+P/E seconds are not converted. Lexical-marker and default-graph joins retain
+each successful module's phase and pool.
 
 \begin{figure}[t]
 \centering
@@ -199,7 +193,7 @@ and separate P/E native CPU distributions.
 \end{minipage}}
 }
 \caption{The completed campaign uses user-mode instructions, chosen after
-the failed total-instruction gate, and separate P/E CPU curves.
+the failed total-instruction gate, and phase-specific P/E CPU curves.
 Successful compilations supply the curves; named failures and blockers remain separate.
 Missing costs stay unobserved and P/E seconds are not converted.
 Design implication: expose a heavy tail

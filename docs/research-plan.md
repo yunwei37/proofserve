@@ -1,6 +1,6 @@
 # ProofServe closure plan
 
-The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **Proceed with option A: W launches the frozen 22-core census protocol. Do not wait for another user decision.** This latest instruction supersedes the earlier stop-and-wait disposition; the failed gate remains part of the evidence.
+The deliverables remain an open-source Lean checking/audit tool and a six-page empirical + system paper. **Continue the full census with two documented admission phases on the same 22-core pools. Do not wait for another user decision.** This latest instruction supersedes the earlier stop-and-wait disposition; the failed gate remains part of the evidence.
 
 ## Closure schedule (all times UTC, 2026)
 
@@ -28,9 +28,35 @@ Full-library checking remains supplementary. If it stops short, report unique ac
 
 W's [qualification report](../data/openai-math-4eaee875/measurement/census-gate/README.md) is committed as f97e6fbd, with measurement source 2c901ec4. The complete 20-module, four-condition, three-repeat matrix gives a cross-condition instruction spread of 1.3312% median and 3.1498% P95, exceeding the frozen 1%/3% criteria. All 480 foreground/control and 1,413 background attempts returned successfully; aggregate counter-overhead medians passed. Root independently recomputed these statistics from the raw records. This does not establish that every possible census protocol would fail.
 
-The target is all 163,097 modules at OpenAI math revision 4eaee875 in the existing phobos-vt / yunwei356/gpu-smt-dev Workspace. W owns launch and execution of the frozen eight-P-core plus fourteen-E-core protocol. Root verifies the actual launch and subsequent terminal rather than treating this authorization as completed measurement, and starts no duplicate collector. Preserve the failed gate, preparation and all native outcomes.
+The target is all 163,097 modules at OpenAI math revision 4eaee875 in the existing phobos-vt / yunwei356/gpu-smt-dev Workspace. W owns execution on the fixed eight-P-core plus fourteen-E-core pools; admission changes between the two documented phases. Root verifies the actual launch and subsequent terminal rather than treating this authorization as completed measurement, and starts no duplicate collector. Preserve the failed gate, preparation and all native outcomes.
 
 The earlier 1–2 day estimate is a planning estimate, not a running campaign duration or a start commitment. The original42 and independent precision samples remain separate and preserved. W has superseded the independent precision continuation with 7/12 returned; root does not resume it. Preparation and pilots are not complete corpus measurements.
+
+## Two-phase census protocol (5 November decision)
+
+Phase 1 uses fixed 22-slot admission, subject to the recorded memory reserve,
+drains and exclusive retries; this does not mean 22 native processes always
+run simultaneously. From 5 November, 16:00 UTC, the coordinator reports
+repeated memory interruptions in PadicHodge and related families, following
+the earlier Ramsey behavior. Phase 2 replaces that admission policy with
+memory-based admission and concurrency caps for previously interrupted
+families. W determines and records the actual switch time and parameters;
+the decision notice alone is not evidence that the switch has executed.
+
+Compilation commands, -j8, Lean settings and P/E pools stay fixed.
+Preserve successful phase-1 records. Label every successful cost by phase
+and pool, keep failed/interrupted attempts separate, and report P/E CPU
+seconds and measured machine wall for each phase. Total campaign wall is
+the sum of the two measured phase intervals; any handoff gap is separately
+identified, never silently called compilation time. Summed per-module
+native wall is not campaign wall. Do not combine the two admission regimes
+into a single fixed-concurrency timing claim.
+
+Cross-module workload comparison continues to use user-mode instructions,
+with the failed total-instruction gate and post-result choice retained.
+Changing admission is not a new invariance experiment or a passing gate.
+Retain every genuine failure and blocked dependency; no cutoff or partial
+source-census closeout is introduced.
 
 ## Current manuscript and data handoff
 
@@ -42,7 +68,7 @@ M's current scaling matrix is preview-only, even if it completes. It cannot fill
 
 The frozen checker is e000ed62. Default shared-checked reuse may accept a crafted proof through another module's kernel-checked same-interface theorem body when official original-context replay rejects it. The proposition remains derivable in the checked shared closure with its reported axioms; original artifact-context parity is a different guarantee. Use --strict-theorem-bodies for the theorem-body-context agreement route, retaining other documented official/IR differences. Measure any strict cost only in the final matrix and keep policy-specific rows separate; old e155 isolation previews are not new-strict costs. Two read-only reviews have regression repairs, but the repaired source has no independent runtime review.
 
-W's completion estimate is 5 November, 17:00–18:00 UTC, a planning estimate rather than a cutoff or returned result. Root's 12:00 prose/script milestone is prepared; final numerical integration follows actual completion and the sequential measurements.
+The coordinator's updated completion estimate is around 6 November, 03:00 UTC, replacing the earlier 5 November estimate. It is not a cutoff or returned result. Root's 12:00 prose/script milestone is prepared; final numerical integration follows actual completion and the sequential measurements.
 
 Existing installed external check/audit cases and package/container CI remain versioned functional evidence and dated cost observations. Different proof obligations do not support a speedup ratio. Final system results must identify committed tool and input revisions and keep CPU/wall clocks separate.
 
