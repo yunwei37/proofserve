@@ -17,8 +17,12 @@ Segment 2 controller2583627/birth19485807 and real native returns were
 observed; future status still needs a fresh identity/terminal check.
 
 Segment 1 uses 22 slots with reserve drains/exclusive retry. Segment 2 uses
-memory/headroom admission and the recorded deferred high-memory families/
-dependents, with the same compiler argv, -j8 and pools. The final set is
+memory/headroom admission. Unfinished Ramsey.CycleClique.Construction,
+all PadicHodge, BigCrystalline and other resource-interrupted families plus
+their dependents are deferred_by_user, separately from failure and
+failed-dependency blocking. Prior successes in those families stay measured.
+Compiler argv, -j8 and pools are unchanged. Explicit deferral skews the
+selected set toward lower-memory modules, further preventing extrapolation. The final set is
 dependency ordered and selectively deferred. All distributions and cost shares
 apply only to completed-by-cutoff modules; P/E work is a lower bound,
 without extrapolation, inverse coverage or sample/model filling.
@@ -59,9 +63,11 @@ two admission rules, actual segment/P-E costs and non-extrapolating scope.
 Its current 128,331 figure/shares are explicitly first-segment references,
 not final N. The future final-data branch was layout-checked only with
 synthetic validation metadata; no such values enter the delivered paper.
-Latest PDF: six pages / 302,122 bytes, two figures / two tables / 14 references,
-zero evidence-placeholder macros, no overfull/undefined warnings and all six
-pages visually reviewed. Final cutoff and system evaluation numbers remain pending.
+Latest PDF: six pages / 302,765 bytes, two figures / two tables / 14 references,
+zero evidence-placeholder macros and no overfull/undefined warnings.
+Changed pages were visually reviewed; page 6 matches its previously reviewed
+render byte-for-byte. Deferred-by-user now has a separate inventory/count and
+preserves family/trigger/dependency/reason metadata. Final cutoff and system evaluation numbers remain pending.
 
 All root Workspace operations use **CPU8–9**. Main-only owned-path commits
 preserve foreign work. No public release, replacement agent/native queue,

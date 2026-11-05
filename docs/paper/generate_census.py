@@ -228,8 +228,15 @@ def main():
     emit(args.out / (prefix + "census-modules.csv"), observations)
     emit(args.out / (prefix + "census-outcomes.csv"),
          [{key: row.get(key) for key in ("module", "status", "segment", "family",
-                                        "blocked_reason", "failed_dependencies", "uncompleted_dependencies",
+                                        "reason", "blocked_reason", "deferred_reason", "family_prefix",
+                                        "trigger_module", "deferred_dependency", "utc", "deferred_utc",
+                                        "failed_dependencies", "uncompleted_dependencies",
                                         "interruption")} for row in observations])
+    deferred = [row for row in unfinished if row["status"] == "deferred_by_user"]
+    emit(args.out / (prefix + "census-deferred-by-user.csv"), deferred)
+    emit(args.out / (prefix + "census-outcome-summary.csv"),
+         [dict(status=status, modules=sum(row["status"] == status for row in observations))
+          for status in sorted({row["status"] for row in observations})])
     emit(args.out / (prefix + "census-unmeasured.csv"), unfinished)
     emit(args.out / (prefix + "census-failed-attempts.csv"), unsuccessful)
     emit(args.out / (prefix + "census-segments.csv"), segment_reporting)
@@ -335,6 +342,9 @@ def main():
         completed_modules=len(values), source_modules=source_modules,
         unfinished_source_modules=len(unfinished), configuration_units=len(configuration),
         final_failed_modules=len(failures), genuinely_blocked_modules=len(blocked),
+        deferred_by_user_modules=len(deferred),
+        deferral_scope="unfinished memory-intensive families and transitive dependents; earlier completed modules retained",
+        selection_bias="dependency order plus explicit memory-family deferral favors less-memory-intensive remaining work",
         completed_fraction=None if not source_modules else len(values) / source_modules,
         unsuccessful_attempts=len(unsuccessful), unsuccessful_attempt_source=str(failed_source),
         source_revisions=sorted({row["source_revision"] for row in values}),
@@ -361,6 +371,7 @@ def main():
             r"\def\CensusNativeModules{" + f"{len(values):,}" + "}",
             r"\def\CensusExecutableModules{" + f"{source_modules:,}" + "}",
             r"\def\CensusUnmeasuredModules{" + f"{len(unfinished):,}" + "}",
+            r"\def\CensusDeferredModules{" + f"{len(deferred):,}" + "}",
             r"\def\CensusObservedPercent{" + tex_number(fraction, 1) + "}",
             r"\def\CensusPCPUHours{" + tex_number(by_pool["P"]["cpu_hours"], 1) + "}",
             r"\def\CensusECPUHours{" + tex_number(by_pool["E"]["cpu_hours"], 1) + "}",
@@ -378,6 +389,9 @@ def main():
                          tex_number(costs["E"]["cpu_hours"], 1) + " E CPUh, " +
                          tex_number(item["reporting_wall_s"] / 3600) + " wallh.")
         macros.append(r"\def\CensusSegmentSummary{" + " ".join(parts) + "}")
+        macros.append(r"\def\CensusDeferredSummary{\CensusDeferredModules{} modules are deferred by user, "
+                      r"separately from native failure and failed-dependency blocking.}")
+
         label_groups = {(row["field"], row["label"], row["pool"]): row for row in groups}
         marker = next((row for row in coverage if row["field"] == "kernel_marked" and row["label"] == "1"), None)
         outside = next((row for row in coverage if row["field"] == "default_covered" and row["label"] == "0"), None)

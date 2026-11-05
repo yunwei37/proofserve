@@ -823,3 +823,61 @@ The 03:00 hard reporting boundary remains the direct instruction. The owner's
 03:30 drain configuration is separately recorded; root did not extend the
 paper cutoff, mutate that controller or presume M can time before actual
 quiet retirement. The overall 20:00 project target remains unchanged.
+
+
+## Direct memory-family deferral instruction (5 November)
+
+The exact user words “几族吃内存的模块（PadicHodge 等）先不做” are recorded
+once in user-instruction.md. Segment 2 defers the unfinished portions of
+resource-interrupted families (including Ramsey.CycleClique.Construction,
+all PadicHodge and BigCrystalline) and their transitive dependents.
+These are deferred_by_user, not native rejections, failed modules or
+failed-dependency blocks. Segment-1 successful records are retained, so
+the measured set is not falsely described as containing no module at all
+from those namespaces.
+
+Root read the actual 05c owner protocol and deferred-summary.json.
+The summary timestamp is 21:02:45.946945 UTC and contains 926 deferred
+modules and 33,839 then-eligible unfinished units after 128,331 inherited
+successes. That is a runtime snapshot, not final cutoff scope and not an
+additional measured result in the paper. Actual deferred entries retain
+prefix/time/reason/dependency/trigger. Root adds no deferral, native job or
+family cap and changes no owner process.
+
+The manuscript must state that this selection favors less memory-intensive
+remaining modules. Its conditional distributions and cost shares are not
+full-library estimates. The 03:00 cutoff, separate segment/P-E work,
+failed gate and post-result user-instruction choice remain unchanged.
+
+
+### Explicit deferral classification and six-page update
+
+The census adapter now emits a separate deferred-by-user inventory and
+per-status count table. The outcome export retains supplied reason, family
+prefix, trigger module, deferred dependency and timestamp rather than
+dropping that metadata. The final manuscript macro reports deferred count
+separately from failure and failed-dependency blocking. No original status
+is overwritten from namespace membership.
+
+A focused schema regression used the retained numerical validation fixture
+with explicitly synthetic status/metadata cases: deferred, final native
+failure and failure-blocked each stayed distinct; supplied reasons survived;
+an earlier successful row inside the deferred-family namespace remained
+successful; late cutoff rows stayed separate and P/E success sums matched.
+These are adapter tests on PVC, not new native or scientific outcomes.
+
+The manuscript names PadicHodge, Ramsey.CycleClique.Construction and
+BigCrystalline, limits deferral to unfinished modules/dependents, retains
+earlier successes and states the stronger lower-memory selection bias.
+It makes no change to the failed gate, post-hoc instruction criterion,
+03:00 cutoff or lower-bound-only interpretation.
+
+Final current compilation returned 0 in 2.533 seconds on CPUs 8–9:
+six pages / 302,765 bytes, two figures / two tables / 14 references,
+no overfull/undefined warnings or evidence-placeholder macros.
+Root visually reviewed pages 1–5, then rechecked the final page-2/3 paragraph
+layout; page 6 is byte-identical to its already reviewed version.
+The synthetic final-data macro branch also compiled to six pages without
+overfull/undefined warnings; its data/PDF is not the delivered manuscript.
+No new owner implementation, family selection, native run or resource
+affinity was changed by root.

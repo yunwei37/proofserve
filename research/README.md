@@ -4,6 +4,10 @@ Active deliverables: open-source ProofServe and the six-page empirical +
 system paper. **W continues segment 2; final N counts native completions by
 6 November 2026, 03:00 UTC.** This supersedes the previous stop instruction.
 Two admission regimes, P/E CPU and segment reporting wall stay distinct.
+Unfinished memory-interrupted families and their dependents are explicitly
+deferred_by_user, separately from failure and failed-dependency blocking.
+Prior successful records remain measured; this selective omission further
+biases remaining observations toward lower-memory work.
 The total-instruction gate remains failed and user-mode comparison post hoc.
 
 The retained first-segment snapshot measured 128,331/163,096 executable

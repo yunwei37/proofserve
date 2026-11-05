@@ -17,8 +17,15 @@ Segment 1 uses fixed 22-slot admission with reserve drains/exclusive retry.
 Segment 2 uses memory/headroom admission and limits exposure to interrupted
 families. The actual 05c implementation defers specified high-memory families
 and dependents instead of applying positive family concurrency caps.
-Record the real reasons, without inventing cap values. Compiler argv, -j8,
-Lean settings and P/E pools stay fixed.
+The explicit user deferral covers unfinished modules in resource-interrupted
+families, including Ramsey.CycleClique.Construction, the entire PadicHodge
+tree and BigCrystalline, plus their transitive dependents. Record
+deferred_by_user separately from native failure, failed-dependency blocking
+and ordinary unattempted work, retaining family, trigger, dependency and
+reason. Already completed segment-1 records in those families stay measured.
+The omitted high-memory tail biases the final set toward lower-memory work;
+neither coverage nor its cost distribution can be extrapolated to the corpus.
+Compiler argv, -j8, Lean settings and P/E pools stay fixed.
 
 Report successful costs by segment and P/E, measured segment wall and its
 sum, with transition gaps and unsuccessful work separate. Later completions

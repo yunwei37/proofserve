@@ -36,9 +36,19 @@ clock. Current W argv stops admission at 03:00 but drains until 03:30; this
 must not silently extend the paper's 03:00 reporting boundary or imply quiet
 machine availability for M at 03:00.
 
+User deferrals are a distinct outcome. census-deferred-by-user.csv keeps
+the raw deferred rows and census-outcome-summary.csv counts each actual
+status separately. The outcome inventory retains reason, family prefix,
+trigger, dependency and timestamp when supplied by W; missing metadata is
+left absent rather than invented. Final macros report deferred module count
+separately from failure and failed-dependency blocking. Deferral concerns
+the unfinished portions of risk families plus their dependents; earlier
+completed modules in those namespaces remain observed.
+
 All distributions and marker/default-graph cost shares concern cutoff-success
 modules only. Full-frame label coverage is separate. This dependency-ordered,
-selectively deferred subset is not random; P/E observed-work sums are lower
+selectively deferred subset is not random and favors less-memory-intensive
+remaining modules; P/E observed-work sums are lower
 bounds, never extrapolated from coverage, original42, strata or a model.
 
 Until final cutoff returns, the historical first segment remains explicit:
