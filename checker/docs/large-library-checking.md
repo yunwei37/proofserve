@@ -225,10 +225,13 @@ too. The umbrella never enters accepted until its original combined context
 check succeeds. An incomplete whole-frame sidecar is not a full-project
 verification receipt.
 
-At present this describes the maximum planned coverage, not completed corpus
-verification: W's full artifacts are not available. The frozen evaluation
-driver currently stops on its failed capacity preflight; it does not silently
-generate this conditional sidecar or continue with a reduced denominator.
+At present this is planned coverage, not completed corpus verification.
+The post-census corpus phase implements this conditional sidecar. A failed
+bounded empty-context preflight leaves the umbrella pending and checks other
+available roots. The full original denominator and all other missing sources
+remain visible. See release-evaluation.md for separate matrix/corpus commands.
+Provisional checkpoint progress after an interruption is distinguished from
+the current invocation's validated native receipt.
 
 
 ## Certificate trust and validation

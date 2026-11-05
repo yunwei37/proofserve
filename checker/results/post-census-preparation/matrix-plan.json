@@ -1,0 +1,14 @@
+{
+  "planning_only": true,
+  "estimated_matrix_s": 17225.273965479824,
+  "with_20_percent_reserve_s": 20670.32875857579,
+  "matrix_limit_s": 21600,
+  "omitted_barrier_workers": [
+    2,
+    4
+  ],
+  "native_commit": "e000ed62",
+  "strict_is_new_release_measurement_not_historical_reuse": true,
+  "source_frame": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/manifest.json",
+  "corpus_cost_file": "corpus-cost-plan.json"
+}

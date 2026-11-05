@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "phase": "corpus",
+  "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "coverage": {
+    "status": "complete",
+    "expected_source_units": 3,
+    "verified_source_units": 3,
+    "checkpoint_accepted_source_units": 3,
+    "accepted_closure_modules": 3,
+    "missing_source_units": [],
+    "pending_contexts": [],
+    "axioms": [
+      "fixtureAssumption"
+    ],
+    "evidence": "trusted local native receipt/certified batches; checkpoint counts are provisional until current invocation validates inputs",
+    "inputs_revalidated_this_invocation": true,
+    "native_subset_receipt": "/workspaces/.agent-state/gpu-smt-captures/checker-post-census-preparation-20261105/qualification4/corpus/whole-state/receipt.json"
+  },
+  "paper_eligible": false
+}

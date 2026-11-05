@@ -5,6 +5,29 @@ No commits or publication from this program.
 import os,sys,json,time,fcntl,threading,signal,csv
 from pathlib import Path
 import guard
+
+ROOTS={'math':'Mathlib.Data.Nat.Basic','grid':'OAI.Analysis.PlanarPacking.Grid','barrier':'OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41'}
+def cells(cfg):
+ """The immutable planned cells are also consumed by the reducer and estimator."""
+ roots=cfg.get('roots',ROOTS);repeats=cfg.get('repeats',[1,2,3])
+ for dataset in roots:
+  for rep in repeats:
+   ns=cfg.get('worker_points',{}).get(dataset,[1,2,4,8])
+   for n in (list(reversed(ns))if rep==2 else ns):
+    yield dict(key=f'{dataset}-P{n}-r{rep}',dataset=dataset,workers=n,repeat=rep,arm='native',flags=[])
+  if dataset in ['math','grid']:
+   for flag in ['--no-persistence','--no-split-fallback','--strict-theorem-bodies']:
+    for rep in repeats:
+     n=cfg.get('ablation_workers',8)
+     yield dict(key=f'{dataset}-P{n}-{flag[2:]}-r{rep}',dataset=dataset,workers=n,repeat=rep,arm='native',flags=[flag])
+ for dataset in roots:
+  for mode in ['default','fresh']:
+   for rep in repeats:
+    yield dict(key=f'{dataset}-official-{mode}-r{rep}',dataset=dataset,workers=cfg.get('official_workers',8),repeat=rep,arm='official',flags=['--fresh']if mode=='fresh'else[])
+ for mutation in ['bvar','unknown','sort']:
+  yield dict(key='bad-real-prefix-'+mutation,dataset='math',workers=cfg.get('resume_workers',4),repeat=1,arm='bad-control',mutation=mutation)
+ for suffix in ['interrupt','resume']:
+  yield dict(key='math-'+suffix,dataset='math',workers=cfg.get('resume_workers',4),repeat=1,arm='native',flags=[],interrupt=suffix=='interrupt')
 def dump(p,value):
  q=p.with_suffix(p.suffix+'.pending')
  with q.open('w')as f:json.dump(value,f,indent=2);f.flush();os.fsync(f.fileno())
@@ -13,7 +36,13 @@ def main():
  cfg=json.loads(Path(sys.argv[1]).read_text());root=Path(cfg['raw']).resolve()
  root.mkdir(parents=True,exist_ok=True);guard.ROOT=root
  binary=Path(cfg['binary']);project=Path(cfg['project']);lease=Path(cfg['lease'])
+ qualification=cfg.get('mode')=='qualification'
+ initial_affinity=set(os.sched_getaffinity(0))
+ start=time.monotonic()
  rows=json.loads((root/'completed.json').read_text())if(root/'completed.json').exists()else[]
+ failures=json.loads((root/'failed-cells.json').read_text())if(root/'failed-cells.json').exists()else[]
+ budget=cfg.get('matrix_limit_s',21600)-sum(r.get('wall_s',0)for r in rows+failures)
+ dump(root/'planned-cells.json',list(cells(cfg)))
  refs={};cleanup=json.loads((root/'cleanup.json').read_text())if(root/'cleanup.json').exists()else[]
  def one(key,argv,dataset,workers,repeat,arm='native',state=None,interrupt=False,limit=1100):
   previous=next((r for r in rows if r['key']==key),None)
@@ -43,9 +72,11 @@ def main():
    argv=[new_state if str(x)==str(state)else x for x in argv];state=new_state
   fs=os.statvfs(root);used=1-fs.f_bavail/fs.f_blocks
   if used>=.85:raise RuntimeError('disk85% boundary; preserve and stop')
-  e=guard.environment();e['PATH']=str(guard.SDK/'bin')+':'+e['PATH'];e['LEAN_PATH']=cfg.get('overlay','')if dataset in['grid','barrier']else''
+  e=guard.environment();e['PATH']=str(guard.SDK/'bin')+':'+e['PATH']
+  e['LEAN_PATH']=cfg.get('lean_path',cfg.get('overlay','')if dataset in ['grid','barrier']else'')
+  e['LEAN_SYSROOT']=str(guard.SDK)
 
-  if arm=='official'and dataset in ['grid','barrier']:
+  if arm=='official'and dataset in ['grid','barrier'] and not qualification:
    rel=Path(str(argv[-1]).replace('.','/')+'.olean')
    real=(Path(cfg['overlay'])/rel).resolve(strict=True)
    canonical=real
@@ -58,12 +89,16 @@ def main():
   e['PROOFSERVE_BENCH_CLASSIFICATION']=cfg.get('evaluation_status','unclassified')
   os.chdir(project)
   print('WAIT',key,flush=True)
-  with lease.open('a+')as lock:
-   fcntl.flock(lock,fcntl.LOCK_EX);os.sched_setaffinity(0,set(range(8)))
+  import contextlib
+  with (contextlib.nullcontext()if qualification else lease.open('a+'))as lock:
+   if lock is not None:fcntl.flock(lock,fcntl.LOCK_EX);os.sched_setaffinity(0,set(range(8)))
+   remaining=budget-(time.monotonic()-start)
+   if remaining<=0:raise RuntimeError('matrix six-hour budget exhausted; no new cell launched')
+   limit=min(limit,remaining)
    print('ACQUIRED',key,flush=True)
    stopped=threading.Event();proof=[]
    def interrupter():
-    while not stopped.wait(.01):
+    while not stopped.wait(.0005):
      if state and (state/'segment-0.json').exists()and guard.ACTIVE:
       cg,pid=guard.ACTIVE
       proof.append(dict(pid=pid,checkpoint=str(state/'segment-0.json'),reason='actual process interruption after first certified segment'))
@@ -72,11 +107,11 @@ def main():
       break
    t=threading.Thread(target=interrupter,daemon=True)if interrupt else None
    if t:t.start()
-   try:r=guard.run(run_key,argv,limit,True,e)
+   try:r=guard.run(run_key,argv,limit,not qualification,e,memory_gib=cfg.get('qualification_memory_gib',12)if qualification else None)
    finally:
     stopped.set()
     if t:t.join()
-   os.sched_setaffinity(0,{8,9})
+   os.sched_setaffinity(0,initial_affinity)
   receipt=None
   if arm in ['native','full-math']and r['returncode']==0:
    receipt=json.loads((root/'runs'/run_key/'stdout').read_text())
@@ -90,12 +125,15 @@ def main():
    peak_rss_kib=r.get('peak_rss_kib'),rss_sample_bytes=r['sampled_tree_peak_bytes'],modules=len(receipt['accepted'])if receipt else None,
    segments=len(receipt['segments'])if receipt else None,manual_interruption=bool(proof))
   rows.append(row);dump(root/'completed.json',rows)
+  if receipt:
+   expected_policy='strict'if '-strict-theorem-bodies-'in key else'shared-checked'
+   assert receipt['theorem_body_policy']==expected_policy
   if interrupt:assert proof and r['returncode']!=0
   elif r['returncode']!=0 and arm not in ['full-math','official','bad-control']:
    raise RuntimeError('native cell incomplete or failed; stop without imputing a result: '+key)
   if arm=='bad-control':
    text=(root/'runs'/run_key/'stdout').read_text()+(root/'runs'/run_key/'stderr').read_text()
-   assert r['returncode']!=0 and ('kernel_reject:'in text or ('while replaying declaration'in text and '(kernel)'in text)) and 'Mathlib.Data.Nat.Basic'in text
+   assert r['returncode']!=0 and ('kernel_reject:'in text or ('while replaying declaration'in text and '(kernel)'in text)) and cfg.get('roots',ROOTS)['math']in text
   assert r['native_retired']and r['cgroup_retired']
   print('RETURNED',json.dumps(row),flush=True)
   # Remove only reproducible successful output snapshots after preserving acceptance,
@@ -108,35 +146,21 @@ def main():
     p.unlink()
    dump(root/'cleanup.json',cleanup)
   return r,receipt
- roots={'math':'Mathlib.Data.Nat.Basic','grid':'OAI.Analysis.PlanarPacking.Grid','barrier':'OAI.MathematicalPhysics.Transonic.Certificates.BarrierData41'}
- for dataset in ['math','grid','barrier']:
-  for rep in [1,2,3]:
-   ns=[1,2,4,8]if rep!=2 else[8,4,2,1]
-   for n in ns:
-    key=dataset+'-P'+str(n)+'-r'+str(rep);state=root/key
-    one(key,[binary,project,'--root',roots[dataset],'--workers',str(n),'--checkpoint-dir',state,'--json'],dataset,n,rep,state=state)
-  if dataset in ['math','grid']:
-   for flag in ['--no-persistence','--no-split-fallback']:
-    for rep in[1,2,3]:
-     key=dataset+'-P8-'+flag[2:]+'-r'+str(rep);state=root/key
-     one(key,[binary,project,'--root',roots[dataset],'--workers','8','--checkpoint-dir',state,'--json',flag],dataset,8,rep,state=state)
- # Official CLI controls have different proof ledgers. Preserve separate rows,no imputed speedup.
- for dataset in roots:
-  for mode in ['default','fresh']:
-   for rep in[1,2,3]:
-    flags=['--fresh']if mode=='fresh'else[]
-    one(dataset+'-official-'+mode+'-r'+str(rep),[guard.SDK/'bin/lake','env','leanchecker','-v',*flags,roots[dataset]],dataset,8,rep,'official')
- # Original-kernel bad proof after a real Mathlib prefix.
- for mutation in ['bvar','unknown','sort']:
-  os.environ['DECOUPLED_MUTATE_MODULE']=roots['math']
-  one('bad-real-prefix-'+mutation,[guard.SDK/'bin/lake','env',binary,'--internal-segment','audit',mutation,roots['math']],'math',4,1,'bad-control')
- os.environ.pop('DECOUPLED_MUTATE_MODULE',None)
- # Actual abrupt kill,then resume the same successful-prefix directory.
- state=root/'math-interrupted-state'
- one('math-interrupt',[binary,project,'--root',roots['math'],'--workers','4','--checkpoint-dir',state,'--json'],'math',4,1,state=state,interrupt=True)
- one('math-resume',[binary,project,'--root',roots['math'],'--workers','4','--checkpoint-dir',state,'--json'],'math',4,1,state=state)
- # The once-only full-Mathlib scale preview is retained separately.
- # Whole-corpus checking precedes this final matrix and has its own receipt.
- dump(root/'terminal.json',dict(complete=True,cells=len(rows),configuration=str(Path(sys.argv[1]).resolve()),meaning='all finite requested attempts returned; individual failures remain explicit'))
+ roots=cfg.get('roots',ROOTS)
+ for cell in cells(cfg):
+  key=cell['key'];dataset=cell['dataset'];n=cell['workers'];rep=cell['repeat'];arm=cell['arm']
+  state=None;interrupt=cell.get('interrupt',False)
+  if arm=='official':
+   argv=[guard.SDK/'bin/lake','env','leanchecker','-v',*cell['flags'],roots[dataset]]
+  elif arm=='bad-control':
+   os.environ['DECOUPLED_MUTATE_MODULE']=roots['math']
+   argv=[guard.SDK/'bin/lake','env',binary,'--internal-segment','audit',cell['mutation'],roots['math']]
+  else:
+   os.environ.pop('DECOUPLED_MUTATE_MODULE',None)
+   state=root/('math-interrupted-state'if key in ['math-interrupt','math-resume']else key)
+   argv=[binary,project,'--root',roots[dataset],'--workers',str(n),'--checkpoint-dir',state,'--json',*cell['flags']]
+   if key in ['math-interrupt','math-resume'] and qualification:argv+=['--segment-modules','1','--closure-roots','0']
+  one(key,argv,dataset,n,rep,arm,state,interrupt,limit=cfg.get('cell_limit_s',1800))
+ dump(root/'terminal.json',dict(complete=True,cells=len(rows),configuration=str(Path(sys.argv[1]).resolve()),meaning='all finite requested attempts returned; individual failures remain explicit',paper_eligible=not qualification))
  print('MATRIX_TERMINAL',flush=True)
 if __name__=='__main__':main()

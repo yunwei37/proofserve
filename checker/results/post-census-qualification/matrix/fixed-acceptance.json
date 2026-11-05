@@ -1,0 +1,18 @@
+{
+  "complete_native_points": 12,
+  "paper_eligible": false,
+  "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "driver_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "within_dataset_module_sets_equal": true,
+  "within_dataset_axiom_sets_equal": true,
+  "within_dataset_module_set_hashes_equal": true,
+  "within_dataset_artifact_identities_equal": true,
+  "bad_original_kernel_rejections": 3,
+  "actual_interruption_resume_equal": true,
+  "official_whole_ledger_equivalence": "not established",
+  "scope_counts": {
+    "math": 2,
+    "grid": 2,
+    "barrier": 2
+  }
+}

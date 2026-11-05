@@ -1,0 +1,49 @@
+{
+  "observed_at_utc": "2026-11-05T05:32:12.870562+00:00",
+  "source_modules": 163097,
+  "completed_sources": 59335,
+  "source_strata": {
+    "other": 157249,
+    "calculation": 5848
+  },
+  "observed_cost_strata": {
+    "other_P": {
+      "modules": 27828,
+      "compiler_user_cpu_s": 132962.89988799955,
+      "compiler_system_cpu_s": 22419.623243000056
+    },
+    "other_E": {
+      "modules": 27397,
+      "compiler_user_cpu_s": 276384.3137520017,
+      "compiler_system_cpu_s": 40462.57114100017
+    },
+    "calculation_E": {
+      "modules": 2005,
+      "compiler_user_cpu_s": 109512.87130800005,
+      "compiler_system_cpu_s": 13996.627751999999
+    },
+    "calculation_P": {
+      "modules": 2105,
+      "compiler_user_cpu_s": 59690.19796199997,
+      "compiler_system_cpu_s": 7826.361848999995
+    }
+  },
+  "compiler_all_attempt_cpu_s": 666670.599217992,
+  "observed_calculation_user_cpu_s": 169203.06927,
+  "projected_calculation_user_cpu_s": 240754.14819731386,
+  "calculation_kernel_proxy_cpu_s_range": [
+    180565.6111479854,
+    226308.899305475
+  ],
+  "proof_plus_repeated_loading_cpu_s_range": [
+    431505.21714798536,
+    1161261.302305475
+  ],
+  "caveats": [
+    "compiler CPU is not checker CPU; selected-module profile fractions are modeling assumptions",
+    "completed strata are unfinished and order-biased; refresh after W finishes",
+    "mixed P/E CPU seconds are retained separately above; no all-core wall speedup inferred",
+    "the loading envelope uses the static 4,047,413-entry dependency-first model and old closure CPU/module rates; it may double-count proof work",
+    "large-context memory and input hashing remain unmeasured; this range is not a capacity guarantee"
+  ]
+}

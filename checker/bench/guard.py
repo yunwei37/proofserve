@@ -90,7 +90,10 @@ def run(key,argv,limit=600,measured=False,env=None,memory_gib=None):
   if p is not None and not reaped:
    try:(cg/'cgroup.kill').write_text('1')
    except OSError:pass
-   try:os.wait4(p.pid,0)
+   try:
+    _,status,ru=os.wait4(p.pid,0);reaped=True;p.returncode=os.waitstatus_to_exitcode(status)
+    record.update(returncode=p.returncode,wall_s=time.monotonic()-begin,user_s=ru.ru_utime,
+     system_s=ru.ru_stime,peak_rss_kib=ru.ru_maxrss,native_retired=not Path(f'/proc/{p.pid}').exists())
    except ChildProcessError:pass
   done.set()
   if thread:thread.join(2)

@@ -3,6 +3,7 @@
 import contextlib,sys,json,os,subprocess,tempfile,shutil,threading,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+subprocess.run([sys.executable,str(ROOT/'tests/test_release.py')],check=True)
 BINARY=Path(os.environ.get('PROOFSERVE_CHECK',str(ROOT/'.lake/build/bin/proofserve-check'))).resolve()
 def invoke(args,expected=0,env=None):
  r=subprocess.run([str(BINARY),*map(str,args)],text=True,capture_output=True,timeout=60,env=env)

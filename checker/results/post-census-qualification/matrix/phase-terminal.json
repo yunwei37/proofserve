@@ -1,0 +1,7 @@
+{
+  "complete": true,
+  "phase": "matrix",
+  "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "paper_eligible": false,
+  "next": "O external timings; corpus is a separate invocation, never automatic"
+}

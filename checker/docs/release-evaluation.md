@@ -18,7 +18,101 @@
 > results/theorem-body-policy/freeze.json; its historical preview timings
 > cannot be reused as the new tool's final evaluation.
 
-## Historical preparation driver (superseded for closeout)
+## Current launch procedure
+
+The native executable remains frozen at e000ed62. The driver checks the seven
+native/build blobs in results/theorem-body-policy/freeze.json and copies the
+already-qualified executable. It does not rebuild at the current HEAD.
+Results record native and driver commits separately; each phase also freezes
+its driver source on the PVC.
+
+The prepared configuration is:
+
+    /workspaces/.agent-state/gpu-smt-captures/checker-post-census-preparation-20261105/final.json
+
+It selects W's actual 22-core census manifest, run/import-view, original Lake
+project and run-config environment. The complete source traversal and retired
+controller/cgroup are required. Explicit build failures and blocked dependents
+are accounted for; unattempted work and a stopped census are refused. Missing
+artifacts remain named in corpus coverage.
+
+After W retires and the coordinator confirms the machine is quiet:
+
+~~~sh
+taskset -c 8-9 python3 checker/bench/release.py /workspaces/.agent-state/gpu-smt-captures/checker-post-census-preparation-20261105/final.json --phase matrix
+~~~
+
+The matrix takes the blocking P-core lease per native cell, binds it to CPUs
+0–7, and returns at the end. O's external-project timings run next.
+There is no automatic corpus queue. After O returns and releases its lease:
+
+~~~sh
+taskset -c 8-9 python3 checker/bench/release.py /workspaces/.agent-state/gpu-smt-captures/checker-post-census-preparation-20261105/final.json --phase corpus
+~~~
+
+Corpus checking takes the same lease and enables all 24 cores. It preserves
+8 GiB of node-available memory and uses no Lean -M. It binds actual file
+selection to W's source-qualified import view. It first checks capacity of
+the compiled-empty OAI context. A nonempty umbrella cannot be excluded.
+If the original empty-context check does not complete, OAI remains pending
+while other source-backed roots run. Every other missing or rejected source
+remains in the original denominator; subset success is not whole-frame success.
+
+## Finite matrix and estimate
+
+Nat.Basic and Grid keep 1, 2, 4 and 8 workers, three repetitions, both
+8-worker ablations, and three 8-worker strict-policy runs. Barrier keeps
+1 and 8 workers, three repetitions; only its 2- and 4-worker points are
+omitted. All roots keep official default/fresh controls, followed by three
+original-kernel bad proofs and real interruption/resume. The 71 planned
+attempts have an accumulated six-hour budget, including archived failed
+attempts. Failed attempts never enter successful-point medians.
+
+The planning model in results/post-census-preparation/matrix-plan.csv predicts
+17,225 seconds (4.78 hours), or 20,670 seconds (5.74 hours) with 20% reserve.
+Keeping Barrier's middle points would give about 6.38 hours with that reserve.
+These are planning values, not release measurements. Strict costs convert
+historical E-core attempts using the observed default P2/E2 wall ratio, with
+no further 8-worker gain assumed. Grid and Barrier official fresh costs use
+native 1-worker proxies. All final points will use the frozen executable.
+
+Nat.Basic is a 1,330-module dependency closure, not all of Mathlib. Grid has
+3,793 retained modules and Barrier has 4,449. Acceptance, axioms, module hashes
+and input identities are compared within each scope. Official default checks
+a leaf with trusted imports; fresh replays a final imported map. The reducer
+does not invent a whole-ledger speedup across these different scopes.
+
+## Stop, retry and exports
+
+Raw data and checkpoints remain on the configured PVC. Small exports go to
+checker/results/release-e000ed62bbf4/matrix/ and corpus/. The driver never
+commits, publishes or tags.
+
+After inspecting a failure, use the same phase command with --retry-failed.
+Matrix retries use fresh state and retain failed rows. Its intentional
+interruption leg keeps the real certified prefix. Corpus retry preserves
+batch certificates and native segment checkpoints and recovers the durable
+result of a signal-interrupted attempt.
+
+SIGTERM stops only the owned native cgroup. The corpus finally path writes
+coverage even on interruption. checkpoint_accepted_source_units records
+provisional trusted local progress; verified_source_units stays null until
+this invocation revalidates the native result. A stale complete receipt
+cannot make a failed invocation complete. Editable checkpoint metadata
+remains trusted local state. Resume revalidates current artifact bytes.
+
+The planning-only corpus estimate uses W's observed computational-stratum
+CPU as well as ordinary-module and repeated-import costs. Its unfinished,
+order-biased snapshot and assumptions are explicit in
+results/post-census-preparation/corpus-cost-plan.json. Compiler CPU is not
+checker CPU; refresh the estimate after W finishes.
+
+Qualification uses CPUs 8–9, at most 12 GiB, no lease, and a three-module
+portable fixture. It exercises both phase commands, strict/default routes,
+official calls, failed-launch retry, bad proofs and actual signal/resume.
+Its data are ineligible for final performance tables.
+
+## Historical preparation driver (removed interface, retained provenance)
 
 The following paragraphs describe the earlier qualified workflow. They are
 retained for interpreting its records, not as the current launch instruction.

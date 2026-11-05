@@ -107,8 +107,9 @@ def main():
  if is_preview:
   preview(raw,out,cfg,rows)
   return
+ planned=json.loads((raw/'planned-cells.json').read_text())if(raw/'planned-cells.json').exists()else None
  primary=[r for r in rows if re.fullmatch(r'(math|grid|barrier)-P[1248]-r[123]',r['key'])]
- assert len(primary)==36
+ assert len(primary)==(sum(c['arm']=='native'and re.fullmatch(r'(math|grid|barrier)-P[1248]-r[123]',c['key'])is not None for c in planned)if planned else 36)
  emit(out/'fixed-cells.csv',rows)
  failures=json.loads((raw/'failed-cells.json').read_text())if(raw/'failed-cells.json').exists()else[]
  for failure in failures:
@@ -118,7 +119,7 @@ def main():
  emit(out/'fixed-failed-attempts.csv',failures)
 
  identities={};accepts={};axioms={};module_hashes={}
- for r in primary+[r for r in rows if '-no-persistence-'in r['key']or'-no-split-fallback-'in r['key']]:
+ for r in primary+[r for r in rows if '-no-persistence-'in r['key']or'-no-split-fallback-'in r['key']or'-strict-theorem-bodies-'in r['key']]:
   assert r['returncode']==0
   receipt=json.loads((raw/(r['key']+'-receipt.json')).read_text())
   sig=artifact_identity(Path(r.get('state_directory')or str(raw/r['key'])))
@@ -132,14 +133,15 @@ def main():
    axioms[r['dataset']]=receipt['axioms'];module_hashes[r['dataset']]=receipt['module_set_hash']
  summary=[]
  for dataset in ['math','grid','barrier']:
-  for arm in ['native','no-persistence','no-split-fallback']:
+  for arm in ['native','no-persistence','no-split-fallback','strict-theorem-bodies']:
    if arm!='native'and dataset=='barrier':continue
-   ns=[1,2,4,8]if arm=='native'else[8]
+   ns=cfg.get('worker_points',{}).get(dataset,[1,2,4,8])if arm=='native'else[cfg.get('ablation_workers',8)]
    for n in ns:
     prefix=dataset+'-P'+str(n)+('-'+arm if arm!='native'else'')+'-r'
     g=[r for r in rows if r['key'].startswith(prefix)]
-    assert len(g)==3 and all(r['returncode']==0 for r in g)
-    s=dict(dataset=dataset,arm=arm,workers=n,repeats=3,modules=g[0]['modules'],commit=cfg['commit'])
+    repeats=cfg.get('repeats',[1,2,3])
+    assert len(g)==len(repeats)and all(r['returncode']==0 for r in g)
+    s=dict(dataset=dataset,arm=arm,workers=n,repeats=len(repeats),modules=g[0]['modules'],commit=cfg['commit'])
     for metric in ['wall_s','cpu_s','peak_rss_kib','rss_sample_bytes','cgroup_charged_peak_bytes']:
      z=[r[metric]for r in g];s.update({metric+'_median':statistics.median(z),metric+'_min':min(z),metric+'_max':max(z)})
     summary.append(s)
@@ -151,8 +153,8 @@ def main():
  for dataset in ['math','grid','barrier']:
   for mode in ['default','fresh']:
    g=[r for r in rows if r['key'].startswith(dataset+'-official-'+mode+'-')]
-   assert len(g)==3
-   s=dict(dataset=dataset,mode=mode,complete_runs=sum(r['returncode']==0 for r in g),planned_runs=3,
+   assert len(g)==len(cfg.get('repeats',[1,2,3]))
+   s=dict(dataset=dataset,mode=mode,complete_runs=sum(r['returncode']==0 for r in g),planned_runs=len(cfg.get('repeats',[1,2,3])),
      scope='leaf with trusted imports'if mode=='default'else'final imported map,not per-input proof ledger',
      native_speedup='not computed: different proof ledger')
    if len(g)==s['complete_runs']:
@@ -166,7 +168,7 @@ def main():
  j=json.loads((raw/'math-resume-receipt.json').read_text());assert j['accepted']==accepts['math']
  assert j['axioms']==axioms['math']and j['module_set_hash']==module_hashes['math']
  assert any(s['reused']for s in j['segments']),'interruption must reuse a certified segment'
- base=next(s for s in summary if s['dataset']=='math'and s['workers']==4 and s['arm']=='native')
+ base=next(s for s in summary if s['dataset']=='math'and s['workers']==cfg.get('resume_workers',4)and s['arm']=='native')
  interruption=dict(accepted_equal=True,axioms_equal=True,module_set_hash_equal=True,
   reused_segments=sum(s['reused']for s in j['segments']),wall_s=kill['wall_s']+resume['wall_s'],cpu_s=kill['cpu_s']+resume['cpu_s'],
   uninterrupted_wall_median_s=base['wall_s_median'],uninterrupted_cpu_median_s=base['cpu_s_median'])
@@ -187,7 +189,8 @@ def main():
    r['resolved_workers']=j['workers']
   else:r['resolved_workers']=None
  emit(out/'fixed-full-mathlib.csv',full)
- (out/'fixed-acceptance.json').write_text(json.dumps(dict(complete_native_points=48,
+ (out/'fixed-acceptance.json').write_text(json.dumps(dict(complete_native_points=sum(r['arm']=='native'and not r['manual_interruption']and r['key']!='math-resume'for r in rows),
+  paper_eligible=cfg.get('mode')!='qualification',native_commit=cfg['commit'],driver_commit=cfg.get('driver_commit'),
   within_dataset_module_sets_equal=True,within_dataset_axiom_sets_equal=True,
   within_dataset_module_set_hashes_equal=True,within_dataset_artifact_identities_equal=True,
   bad_original_kernel_rejections=3,actual_interruption_resume_equal=True,

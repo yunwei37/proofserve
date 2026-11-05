@@ -9,6 +9,16 @@ ROOT=Path(__file__).resolve().parents[1]
 def load(name,path):
  spec=importlib.util.spec_from_file_location(name,path);obj=importlib.util.module_from_spec(spec);spec.loader.exec_module(obj);return obj
 class MatrixRetry(unittest.TestCase):
+ def test_closeout_plan_cuts_only_barrier_middle_points(self):
+  fake=types.ModuleType("guard")
+  with patch.dict(sys.modules,{"guard":fake}):
+   matrix=load("matrix_plan_unit",ROOT/"bench/matrix.py")
+  full=list(matrix.cells({}));cut=list(matrix.cells(dict(worker_points={"barrier":[1,8]})))
+  self.assertEqual(len(full),77);self.assertEqual(len(cut),71)
+  self.assertEqual(sum("--strict-theorem-bodies"in c.get("flags",[])for c in cut),6)
+  self.assertEqual({c["key"]for c in full}-{c["key"]for c in cut},
+                   {f"barrier-P{n}-r{r}"for n in [2,4]for r in [1,2,3]})
+
  def test_failed_native_attempt_is_preserved_and_retry_is_fresh(self):
   original_cwd=Path.cwd();original_argv=list(sys.argv)
   with tempfile.TemporaryDirectory(prefix="matrix-harness-",dir="/workspaces/.agent-state/gpu-smt-captures")as td:
@@ -18,7 +28,7 @@ class MatrixRetry(unittest.TestCase):
     f=overlay/Path(*n.split(".")).with_suffix(".olean");f.parent.mkdir(parents=True,exist_ok=True);f.write_bytes(b"fixture")
    fake=types.ModuleType("guard");fake.ROOT=d;fake.SDK=d/"sdk";fake.ACTIVE=None;fake.environment=lambda:dict(os.environ)
    fail_once=[True]
-   def run(key,argv,limit,measured,env):
+   def run(key,argv,limit,measured,env,memory_gib=None):
     out=d/"runs"/key;out.mkdir(parents=True)
     name=next((n for n in roots if key.startswith(n)),"math")
     state=Path(argv[argv.index("--checkpoint-dir")+1])if"--checkpoint-dir"in argv else None
@@ -31,7 +41,7 @@ class MatrixRetry(unittest.TestCase):
     if state:
      state.mkdir(parents=True,exist_ok=True)
      (state/"identity.json").write_text(json.dumps(dict(inputs=[[str(overlay/(roots[name]+".olean")),"1"]],manifest=None,roots=[roots[name]])))
-    receipt=dict(status="complete",execution_path="proofserve-parallel",accepted=[roots[name]],axioms=["fixtureAxiom"],module_set_hash="1",workers=1,segments=[dict(segment=0,reused=key=="math-resume")])
+    receipt=dict(status="complete",execution_path="proofserve-parallel",accepted=[roots[name]],axioms=["fixtureAxiom"],module_set_hash="1",theorem_body_policy='strict'if '--strict-theorem-bodies'in argv else'shared-checked',workers=1,segments=[dict(segment=0,reused=key=="math-resume")])
     stdout=json.dumps(receipt)if state and code==0 else""
     if key.startswith("bad-real-prefix"):stdout="kernel_reject: Mathlib.Data.Nat.Basic"
     (out/"stdout").write_text(stdout);(out/"stderr").write_text("")
@@ -49,7 +59,7 @@ class MatrixRetry(unittest.TestCase):
       cfg["retry_failed"]=True;config.write_text(json.dumps(cfg));matrix.main()
      failures=json.loads((d/"failed-cells.json").read_text());self.assertEqual(len(failures),1)
      self.assertEqual(failures[0]["returncode"],124)
-     rows=json.loads((d/"completed.json").read_text());self.assertEqual(len(rows),71)
+     rows=json.loads((d/"completed.json").read_text());self.assertEqual(len(rows),77)
      retried=next(r for r in rows if r["key"]=="grid-P2-r1")
      self.assertEqual(retried["run_key"],"grid-P2-r1-attempt-2")
      self.assertEqual(Path(retried["state_directory"]).name,retried["run_key"])

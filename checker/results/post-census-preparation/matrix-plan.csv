@@ -1,0 +1,24 @@
+dataset,arm,workers,repeats,estimated_wall_s,basis
+math,native,1,3,250.73793845100226,retained P-core loaded preview
+math,native,2,3,168.78875773800246,retained P-core loaded preview
+math,native,4,3,129.25623786900178,retained P-core loaded preview
+math,native,8,3,116.80324911299249,retained P-core loaded preview
+math,no-persistence,8,3,122.33789499900013,retained P-core loaded preview
+math,no-split-fallback,8,3,156.4557713580034,retained P-core loaded preview
+math,strict-theorem-bodies,8,3,451.8381692218797,historical E2 strict attempts times observed P2/E2 default-wall ratio; no 8-worker boost assumed
+math,official-default,8,3,7.101825693003775,actual retained Nat official control
+math,official-fresh,8,3,221.64544821299933,actual retained Nat official control
+grid,native,1,3,1871.3630012190006,retained P-core loaded preview
+grid,native,2,3,1135.216685757001,retained P-core loaded preview
+grid,native,4,3,771.2633317110012,retained P-core loaded preview
+grid,native,8,3,633.0283966079915,retained P-core loaded preview
+grid,no-persistence,8,3,705.3186773400012,retained P-core loaded preview
+grid,no-split-fallback,8,3,790.8418036230141,retained P-core loaded preview
+grid,strict-theorem-bodies,8,3,3593.575304336925,historical E2 strict attempts times observed P2/E2 default-wall ratio; no 8-worker boost assumed
+grid,official-default,8,3,15,planning proxy: 5s leaf or native-1worker closure
+grid,official-fresh,8,3,1871.3630012190006,planning proxy: 5s leaf or native-1worker closure
+barrier,native,1,3,1671.014140003499,retained P-core loaded preview
+barrier,native,8,3,740.1393657570043,retained P-core loaded preview
+barrier,official-default,8,3,15,planning proxy: 5s leaf or native-1worker closure
+barrier,official-fresh,8,3,1671.014140003499,planning proxy: 5s leaf or native-1worker closure
+math,controls-and-interruption,4,1,116.17082524600119,two full native P4 attempts plus 30s controls allowance

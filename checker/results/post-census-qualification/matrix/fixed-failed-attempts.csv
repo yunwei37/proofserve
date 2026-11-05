@@ -1,0 +1,2 @@
+key,run_key,attempt,state_directory,commit,dataset,workers,repeat,arm,returncode,wall_s,cpu_s,peak_rss_kib,rss_sample_bytes,modules,segments,manual_interruption,cpu_source
+math-P1-r1,math-P1-r1,1,/workspaces/.agent-state/gpu-smt-captures/checker-post-census-preparation-20261105/qualification1/matrix/math-P1-r1,e000ed62bbf4b9c420bd99d0273a5d21829b4edc,math,1,1,native,126,0.019724816986126825,0.002095,10296,0,,,False,closed native cgroup; excluded from successful-point median

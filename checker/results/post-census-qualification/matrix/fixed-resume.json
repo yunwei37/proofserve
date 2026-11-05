@@ -1,0 +1,11 @@
+{
+  "accepted_equal": true,
+  "axioms_equal": true,
+  "module_set_hash_equal": true,
+  "reused_segments": 1,
+  "wall_s": 2.9794091289804783,
+  "cpu_s": 2.632707,
+  "uninterrupted_wall_median_s": 1.3681123809947167,
+  "uninterrupted_cpu_median_s": 1.301307,
+  "wall_overhead_fraction": 1.1777517478602397
+}
