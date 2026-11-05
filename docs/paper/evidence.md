@@ -722,3 +722,30 @@ continuation preparation; they are not used to relabel the retained first
 segment. The b781 preparation's own superseded record says native_started=false.
 Any later actual execution must be reported from its own records, not
 silently merged into this 128,331-module snapshot.
+
+
+### Later live continuation is outside the retained prefix
+
+Root's 21:54–21:55 UTC read directly found controller
+2583627/birth19485807 running the separate segment-02-05c91979 source, and
+read completed segment=2 native rows. The earlier b781 preparation was
+superseded before native launch, but the later 05c segment actually executed.
+Its supervisor begins at 20:55:38.516905 UTC; it is not part of the stopped
+first-segment wall or the 128,331-module inventory. W's registry attributes
+this continuation to later six-hour/deferred-family directions. Root's
+currently received stop instruction and the later owner runtime are
+therefore recorded separately, without inventing coordinator delivery or
+interfering with owner processes.
+
+The paper now explicitly freezes the first segment and excludes later
+continuation rather than asserting that no second segment exists at present.
+No later cost, module or timing has been merged into its prefix results.
+Plan/status/index record the actual live discrepancy; M's final matrix is
+not presumed started or quiet while this controller runs.
+
+The final boundary clarification compiles to six pages / 301,241 bytes,
+exit 0 in 2.563 seconds on CPU8–9, with two figures/two tables/14 references,
+zero evidence macros and no overfull/undefined warnings. Page 2 was visually
+rechecked; the other five renderings are byte-identical to the reviewed
+observed-prefix manuscript. This is a bounded data snapshot and paper update,
+not an assertion that all project evaluation is complete.

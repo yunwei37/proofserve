@@ -5,6 +5,7 @@ paper. Under the latest direct stop decision, the retained first segment
 measured **128,331/163,096 executable modules (78.7%)**. It is a dependency-ordered
 observed subset, not a random sample or completed full-corpus measurement.
 The original total-instruction gate failed; user-mode comparison is post hoc.
+Later actual W continuation is outside this retained first-segment snapshot.
 
 | Evidence | Location | Current use |
 |---|---|---|

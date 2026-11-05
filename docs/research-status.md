@@ -3,10 +3,26 @@
 Deliverables: open-source ProofServe and a readable six-page empirical + system
 paper by **6 November 2026, 20:00 UTC**.
 
+## Later runtime differs from the stop notification
+
+At 21:54–21:55 UTC root directly observed W's continuation controller
+2583627/birth19485807 under segment-02-05c91979 and completed native
+segment=2 records. The preceding b781 preparation was cancelled before native
+launch; the subsequent 05c continuation is a different actual execution.
+Its owner records cite a later request to attempt most remaining work in six
+hours and defer memory-intensive families. That is later than the stop snapshot
+addressed by this root instruction. Root neither launched nor interrupted it.
+
+The paper/data committed here deliberately freeze the 128,331-module first
+segment, with no later work silently merged. Do not report the whole machine
+as quiet, the entire campaign as stopped, or M's final matrix as started
+without actual evidence. Next reconciliation must use the latest direct
+coordinator instruction and owner terminal; the stopped first-segment ledger
+is not an updated whole-campaign result.
+
 ## Current decision
 
-**Compilation stopped at the user's request; it will not resume. Phase 2
-never ran.** Latest exact words are in [user-instruction.md](user-instruction.md).
+**This report retains the first-segment stop at 128,331 modules. Later W execution is separate and not included.** Latest exact words are in [user-instruction.md](user-instruction.md).
 This supersedes both “let it finish” and the later two-phase proposal.
 
 The coordinator reports 128,331/163,096 executable modules measured (78.7%),
@@ -60,7 +76,7 @@ preparation and previews; no final timing is inferred from this plan.
 The six-page paper now includes the actual observed-prefix distribution,
 128,331/163,096 scope, separate lower-bound costs and observed-only marker/
 default-graph cost shares. Its small derived data and provenance are in
-docs/paper/generated/census/. The latest PDF is six pages / 301,210 bytes,
+docs/paper/generated/census/. The latest PDF is six pages / 301,241 bytes,
 two figures / two tables / 14 references / zero evidence-placeholder macros;
 all pages were visually reviewed. Final system numbers are still pending.
 

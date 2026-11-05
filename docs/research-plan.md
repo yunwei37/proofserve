@@ -5,6 +5,23 @@ system paper by **6 November 2026, 20:00 UTC**. The latest user stop replaces
 the earlier requirement to finish the compilation census and the proposed
 second admission phase. **Do not resume compilation. Phase 2 never ran.**
 
+## Later runtime differs from the stop notification
+
+At 21:54–21:55 UTC root directly observed W's continuation controller
+2583627/birth19485807 under segment-02-05c91979 and completed native
+segment=2 records. The preceding b781 preparation was cancelled before native
+launch; the subsequent 05c continuation is a different actual execution.
+Its owner records cite a later request to attempt most remaining work in six
+hours and defer memory-intensive families. That is later than the stop snapshot
+addressed by this root instruction. Root neither launched nor interrupted it.
+
+The paper/data committed here deliberately freeze the 128,331-module first
+segment, with no later work silently merged. Do not report the whole machine
+as quiet, the entire campaign as stopped, or M's final matrix as started
+without actual evidence. Next reconciliation must use the latest direct
+coordinator instruction and owner terminal; the stopped first-segment ledger
+is not an updated whole-campaign result.
+
 ## Measured source scope and scientific interpretation
 
 The coordinator reports 128,331 successful executable modules out of 163,096

@@ -6,9 +6,9 @@ explicit arguments, with no development-machine paths embedded.
 
 ## User-stopped observed compilation artifacts
 
-The user stopped compilation at 128,331/163,096 executable modules; the
-second phase did not execute native compilations. The earlier requirements
-to finish the frame or publish a two-phase total are superseded.
+This export freezes the first segment at its stop: 128,331/163,096 executable
+modules. Later continuation is excluded, so its records cannot silently change
+this observed-prefix snapshot or become an unreported two-phase total.
 Read W's formal stopped export:
 
     python3 docs/paper/generate_census.py --stopped --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
