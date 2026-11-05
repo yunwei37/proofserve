@@ -607,7 +607,12 @@ async fn source_exit_retires_background_pipe_holders_before_returning() {
         tokio::time::timeout(Duration::from_secs(2), async {
             loop {
                 match std::fs::read_to_string(format!("/proc/{pid}/stat")) {
-                    Err(error) if error.kind() == std::io::ErrorKind::NotFound => break,
+                    Err(error)
+                        if error.kind() == std::io::ErrorKind::NotFound
+                            || error.raw_os_error() == Some(libc::ESRCH) =>
+                    {
+                        break;
+                    }
                     Ok(stat)
                         if stat.rsplit_once(')').unwrap().1.split_whitespace().next()
                             == Some("Z") =>

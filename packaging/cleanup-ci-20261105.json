@@ -1,0 +1,248 @@
+{
+  "observed_utc": "2026-11-05T08:34:23.596087+00:00",
+  "cleanup": {
+    "observed_utc": "2026-11-05T08:31:06.796661+00:00",
+    "o_before_bytes": 45838376960,
+    "filesystem_before": {
+      "total": 405509156864,
+      "used": 255717150720,
+      "free": 149775228928
+    },
+    "paths": [
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/docker-data",
+        "allocated_bytes_before": 11623706624,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/docker-tools",
+        "allocated_bytes_before": 220987392,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/docker-config",
+        "allocated_bytes_before": 68292608,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/docker.tgz",
+        "allocated_bytes_before": 81477632,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/docker-buildx",
+        "allocated_bytes_before": 68255744,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/installed",
+        "allocated_bytes_before": 3465490432,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/prepared/proofserve-0.1.0-linux-x86_64",
+        "allocated_bytes_before": 3465506816,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment0.olean",
+        "allocated_bytes_before": 220663808,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment1.olean",
+        "allocated_bytes_before": 186933248,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment10.olean",
+        "allocated_bytes_before": 268910592,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment11.olean",
+        "allocated_bytes_before": 301481984,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment12.olean",
+        "allocated_bytes_before": 283758592,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment13.olean",
+        "allocated_bytes_before": 411504640,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment14.olean",
+        "allocated_bytes_before": 278085632,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment15.olean",
+        "allocated_bytes_before": 285507584,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment16.olean",
+        "allocated_bytes_before": 269398016,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment17.olean",
+        "allocated_bytes_before": 247250944,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment18.olean",
+        "allocated_bytes_before": 282374144,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment19.olean",
+        "allocated_bytes_before": 290631680,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment2.olean",
+        "allocated_bytes_before": 101834752,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment20.olean",
+        "allocated_bytes_before": 271306752,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment3.olean",
+        "allocated_bytes_before": 101568512,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment4.olean",
+        "allocated_bytes_before": 108822528,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment5.olean",
+        "allocated_bytes_before": 205570048,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment6.olean",
+        "allocated_bytes_before": 252555264,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment7.olean",
+        "allocated_bytes_before": 281047040,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment8.olean",
+        "allocated_bytes_before": 305934336,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/external-2/checkpoint/ProofServeSegment9.olean",
+        "allocated_bytes_before": 321748992,
+        "removed": true
+      },
+      {
+        "path": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/cargo-target/debug/incremental",
+        "allocated_bytes_before": 995811328,
+        "removed": true,
+        "basis": "cold Rust incremental state, not release artifacts or final manifest inputs; no tracked reference/live open file"
+      }
+    ],
+    "active_references": [],
+    "reference_evidence": [
+      "reference-check.json",
+      "filename-reference-check.log",
+      "live-reference-check.json"
+    ],
+    "scope": "own rebuildable Docker/cold preview installation and completed preview checkpoint snapshots; all logs, result JSON/CSV/certificates, final package/checker/source/projects retained",
+    "o_after_first_cleanup_bytes": 21567778816,
+    "filesystem_after_first_cleanup": {
+      "total": 405509156864,
+      "used": 234791182336,
+      "free": 170701197312
+    },
+    "o_after_bytes": 20578009088,
+    "o_reclaimed_allocated_bytes": 25260367872,
+    "filesystem_after": {
+      "total": 405509156864,
+      "used": 233975140352,
+      "free": 171517239296
+    },
+    "finished_utc": "2026-11-05T08:32:38.842362+00:00"
+  },
+  "validation": {
+    "commands": [
+      {
+        "label": "fmt",
+        "exit": 0
+      },
+      {
+        "label": "test",
+        "exit": 0
+      },
+      {
+        "label": "clippy",
+        "exit": 0
+      }
+    ],
+    "peak_rss_bytes": 415809536,
+    "cpus": [
+      8,
+      9
+    ],
+    "timing_eligible": false
+  },
+  "rust_passed": 102,
+  "rust_ignored": 6,
+  "regression_before_fix_exit": 101,
+  "regression_before_fix_errno": 3,
+  "failed_ci_run": 41975695729,
+  "failed_ci_job": 127073893598,
+  "failed_ci_commit": "456f340f",
+  "final_readiness": {
+    "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+    "frozen_source_files_equal": 169,
+    "prepared_complete": true,
+    "manifest_projects_equal": true,
+    "required_paths": [
+      "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/checker-source/checker/.lake/build/bin/proofserve-check",
+      "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview/prepared/proofserve-0.1.0-linux-x86_64.tar.gz",
+      "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/cargo-target/release/proofserve",
+      "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean"
+    ],
+    "projects": [
+      {
+        "name": "newspeak",
+        "build_olean_count": 105,
+        "project": "/workspaces/.agent-state/proofserve-o-line/external-projects/newspeak",
+        "source_audit": "/workspaces/.agent-state/proofserve-o-line/external-projects/newspeak-audit-before-build.json"
+      },
+      {
+        "name": "solar",
+        "build_olean_count": 12,
+        "project": "/workspaces/.agent-state/proofserve-o-line/external-projects/solar",
+        "source_audit": "/workspaces/.agent-state/proofserve-o-line/external-projects/solar-audit-before-build.json"
+      },
+      {
+        "name": "samuelburbulla-proofs",
+        "build_olean_count": 9,
+        "project": "/workspaces/.agent-state/proofserve-o-line/freeze-preparation-20261104/ai-proofs",
+        "source_audit": "/workspaces/.agent-state/proofserve-o-line/freeze-preparation-20261104/ai-preparation/source-audit.json"
+      }
+    ],
+    "final_output_absent": true,
+    "final_command_executed": false,
+    "lock_acquired": false,
+    "remaining_plan": "same documented final command; wait for W and M timing before execution"
+  },
+  "scope": "CPU 8-9 only; no pcore.lock, native measurement, adversarial cases, checker edits or publication; self-review",
+  "ci_after_push": "Terminal job/step evidence will be retained on the PVC at cleanup-ci-20261105/post-push-ci.json after this one commit is pushed."
+}

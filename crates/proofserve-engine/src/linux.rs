@@ -14,9 +14,20 @@ struct Stat {
 }
 
 fn stat(pid: u32) -> Result<Option<Stat>, String> {
-    let raw = match fs::read_to_string(format!("/proc/{pid}/stat")) {
+    parse_stat(pid, fs::read_to_string(format!("/proc/{pid}/stat")))
+}
+
+fn parse_stat(pid: u32, read: std::io::Result<String>) -> Result<Option<Stat>, String> {
+    let raw = match read {
         Ok(s) => s,
-        Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Ok(None),
+        // /proc can disappear before open (ENOENT) or during read (ESRCH).
+        // Neither means a retired owned process still has memory to account.
+        Err(e)
+            if e.kind() == std::io::ErrorKind::NotFound
+                || e.raw_os_error() == Some(libc::ESRCH) =>
+        {
+            return Ok(None);
+        }
         Err(e) => return Err(e.to_string()),
     };
     let tail = raw.rsplit_once(')').ok_or("invalid proc stat")?.1;
@@ -195,6 +206,26 @@ mod tests {
             .unwrap();
         assert_eq!(ready.trim(), "ready");
         child
+    }
+
+    #[test]
+    fn stat_read_classifies_kernel_exit_races_as_absent() {
+        for errno in [libc::ENOENT, libc::ESRCH] {
+            let read = Err(std::io::Error::from_raw_os_error(errno));
+            assert!(
+                matches!(parse_stat(1, read), Ok(None)),
+                "a process retired during /proc read must be absent (errno {errno})"
+            );
+        }
+    }
+
+    #[test]
+    fn stat_read_keeps_access_and_io_errors_fatal() {
+        for errno in [libc::EACCES, libc::EPERM, libc::EIO] {
+            let error = std::io::Error::from_raw_os_error(errno);
+            let expected = error.to_string();
+            assert_eq!(parse_stat(1, Err(error)).err(), Some(expected));
+        }
     }
 
     #[test]
