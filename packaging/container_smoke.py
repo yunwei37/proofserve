@@ -105,6 +105,35 @@ if "--self-test" in sys.argv:
             ["/opt/proofserve/bin/proofserve", "check", str(project), "--workers", "1"],
             text=True, timeout=240))
         assert receipt["status"] == "complete" and "Qualification" in receipt["accepted"], receipt
+        assert receipt["theorem_body_policy"] == "shared-checked" and receipt["checker_checkpoint_abi"] == 6
+        help_text = subprocess.check_output(
+            ["/opt/proofserve/bin/proofserve", "check", "--help"], text=True, timeout=30)
+        assert "--strict-theorem-bodies" in help_text
+        strict = json.loads(subprocess.check_output(
+            ["/opt/proofserve/bin/proofserve", "check", str(project), "--workers", "1",
+             "--strict-theorem-bodies", "--checkpoint-dir", str(project / "strict-state")],
+            text=True, timeout=240))
+        assert strict["status"] == "complete" and strict["theorem_body_policy"] == "strict"
+        assert strict["accepted"] == receipt["accepted"] and strict["axioms"] == receipt["axioms"]
+        # Reuse the archive qualifier's existing three kernel mutation cases.
+        lean_path = subprocess.check_output(
+            ["lake", "env", "printenv", "LEAN_PATH"], cwd=project, text=True, timeout=30).strip()
+        for mutation in ["bvar", "unknown", "sort"]:
+            case_env = dict(os.environ, LEAN_PATH=lean_path,
+                            DECOUPLED_MUTATE_MODULE="Qualification", PROOFSERVE_WORKERS="1")
+            rejected = subprocess.run(
+                ["/opt/proofserve/libexec/proofserve-check", "--internal-segment",
+                 "audit", mutation, "Qualification"],
+                cwd=project, env=case_env, text=True, capture_output=True, timeout=120)
+            assert rejected.returncode != 0, (mutation, rejected.stdout)
+            diagnostic = rejected.stdout + rejected.stderr
+            assert "kernel_reject:" in diagnostic or (
+                "while replaying declaration" in diagnostic and "(kernel)" in diagnostic), diagnostic
+            events = [json.loads(line) for line in rejected.stdout.splitlines() if line.startswith("{")]
+            assert any(e.get("event") == "reject" and e.get("module") == "Qualification" for e in events)
+            assert not any(e.get("event") == "accept" and e.get("module") == "Qualification" for e in events)
+
+
         audit = json.loads(subprocess.check_output(
             ["/opt/proofserve/bin/proofserve", "audit", str(project), "--json", "-",
              "--receipt", str(project / ".proofserve/receipt.json")],
@@ -117,4 +146,7 @@ if "--self-test" in sys.argv:
         assert unsupported.returncode == 2 and "unsupported" in unsupported.stderr, unsupported
         (project / "lean-toolchain").write_text(declared)
         print(json.dumps({"installed_project_check": "passed", "accepted_modules": len(receipt["accepted"]),
-                          "audit_source_modules": audit["source_modules"], "unsupported_version_rejected": True}), flush=True)
+                          "audit_source_modules": audit["source_modules"], "unsupported_version_rejected": True, "strict_theorem_bodies_forwarded": True,
+                          "theorem_body_policy": receipt["theorem_body_policy"], "strict_policy": strict["theorem_body_policy"],
+                          "checker_checkpoint_abi": receipt["checker_checkpoint_abi"],
+                          "kernel_bad_proofs_rejected": 3}), flush=True)

@@ -25,6 +25,8 @@ def main():
  check=run('project-check',[cli,'check',project,'--workers','1','--json'])
  receipt=json.loads(check.stdout)
  assert receipt['status']=='complete' and {'Base','Fixture'}<=set(receipt['accepted'])
+ assert receipt['theorem_body_policy']=='shared-checked' and receipt['checker_checkpoint_abi']==6
+ assert 'module_verifications' in receipt and 'operational_errors' in receipt
  receipt_file=project/'.proofserve/receipt.json';assert receipt_file.is_file()
  roots=a.out/'roots with spaces.txt';roots.write_text('Fixture\nBase\n')
  batched=run('closure-batches',[cli,'check',project,'--root-file',roots,'--closure-roots','1','--workers','1','--checkpoint-dir',a.out/'batch-checkpoint','--json'])
@@ -39,6 +41,15 @@ def main():
  assert rr['accepted']==br['accepted'] and rr['status']=='complete' and any(v['reused']for v in rr['batches'])
  component_help=run('checker-help',[cli,'check','--help'])
  assert '--root-file' in component_help.stdout and '--closure-roots' in component_help.stdout
+ assert '--strict-theorem-bodies' in component_help.stdout
+ public_help=run('launcher-help',[cli,'--help'])
+ assert '--strict-theorem-bodies' in public_help.stdout
+ strict=run('strict-project-check',[cli,'check',project,'--strict-theorem-bodies','--workers','1','--checkpoint-dir',a.out/'strict-checkpoint','--json'])
+ sr=json.loads(strict.stdout)
+ assert sr['status']=='complete' and sr['theorem_body_policy']=='strict'
+ assert sr['accepted']==receipt['accepted'] and sr['axioms']==receipt['axioms']
+ assert sr['checker_checkpoint_abi']==6
+
  audit=run('project-audit',[cli,'audit',project,'--json','-','--receipt',receipt_file])
  report=json.loads(audit.stdout)
  assert report['schema']=='proofserve-audit/v1'
@@ -59,7 +70,7 @@ def main():
  unsupported=run('unsupported',[cli,'check',project],expected=2)
  assert 'unsupported'in(unsupported.stderr+unsupported.stdout).lower()or 'toolchain'in(unsupported.stderr+unsupported.stdout).lower()
  (project/'lean-toolchain').write_text(toolchain)
- result=dict(complete=True,bundle=json.loads((root/'share/proofserve/bundle.json').read_text()),installed_root=str(root),receipt=receipt,audit=report,commands=results,malformed_proofs_rejected=3,closure_batches_qualified=True,root_file_forwarded=True,scope='relocated archive correctness; not performance or external-project evaluation')
+ result=dict(complete=True,bundle=json.loads((root/'share/proofserve/bundle.json').read_text()),installed_root=str(root),receipt=receipt,audit=report,commands=results,malformed_proofs_rejected=3,closure_batches_qualified=True,root_file_forwarded=True,strict_theorem_bodies_forwarded=True,receipt_policy_fields_qualified=True,scope='relocated archive correctness; not performance or external-project evaluation')
  (a.out/'qualification.json').write_text(json.dumps(result,indent=2)+'\n')
  print(json.dumps(dict(complete=True,malformed_proofs_rejected=3,source_commit=result['bundle']['source_commit'])))
 if __name__=='__main__':main()

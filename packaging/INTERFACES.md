@@ -46,81 +46,81 @@ are deduplicated; entry counts and cumulative CPU can include historical work
 and repeated imports. This is not a cryptographic or portable proof certificate.
 An unfinished batch or changed input is not complete verification.
 
-Explicit Lean.reduceBool / Lean.reduceNat references can currently be refused
-even without an actual evaluation. Incomplete module-system artifact parts are
-also refused; official default and --fresh can differ on such inputs. No blanket
-equivalence with both official modes is promised. See the
-[current review boundary](#current-checker-review-and-release-boundary)
-and [receipt schema](../checker/docs/receipt-schema.md) before using receipts.
+Use --strict-theorem-bodies to select strict artifact-context policy. The
+launcher passes it unchanged; help and receipt theorem_body_policy identify
+the choice. ABI 6 / independent-closures-v8 state cannot be reused across
+policies or changed executables.
 
-## Current checker review and release boundary
+## Frozen checker boundary
 
-Status recorded on 2026-11-04, against checker source in 2628d727. This is a
-release-readiness disclosure, not a new execution review. The original
-[e0c92d51 review](checker-review-e0c92d51.md) and
-[2628d727 review](checker-review-2628d727.md) are code-only reviews. Their proposed
-counterexamples must be distinguished from actual native observations.
+The checker is frozen at e000ed62bbf4b9c420bd99d0273a5d21829b4edc (Lean 4.34.1),
+superseding e1557c77. The earlier code-only reviews at
+[e0c92d51](checker-review-e0c92d51.md) and [2628d727](checker-review-2628d727.md)
+now have [recorded repair qualification](../checker/results/e0-review-repair/)
+and [replacement-policy evidence](../checker/results/theorem-body-policy/).
+They are no longer an unassigned "waiting on M" list. Repairs and interpretation
+are M's self-review; O's package execution below does not become an independent
+soundness proof.
 
-The [e0 repair qualification](../checker/results/e0-review-repair/README.md)
-and [finding ledger](../checker/results/e0-review-repair/finding-status.csv)
-record reproduced e0 defects and repairs: segregated axiom reporting, artifact
-shadowing, duplicate/context handling, event/exit dominance, empty-context
-coverage, unsafe sibling borrowing, publication/coverage and receipt provenance.
-The expanded CI runner actually executed 90 command records; these are not
-90 independent defect classes. The supplied native-printing event attack and
-Quot difference were not reproduced. Green CI does not close the second review.
+Default shared-checked retains an already kernel-checked theorem body for the
+same interface. Later distinct bodies are checked in their declared contexts,
+including an explicit fresh-name kernel check for imported duplicates that
+stock replay skips. A crafted downstream artifact can nevertheless pass in
+the shared checked environment while stock original-context replay rejects it.
+The accepted proposition still follows by the original kernel from checked
+proofs and the reported axioms. This is closure derivability, not a guarantee
+that every serialized proof replays in its original module context.
 
-Known behavior and limits that users must account for:
+--strict-theorem-bodies isolates differing bodies and dependent contexts. It
+matches the supplied artifact-context controls, but is not universal parity
+for malformed metadata and does not override unsupported native evaluation.
+In the retained 3,793-module Grid preview, the historical e155 isolation
+strategy used 3,465 module-local replays versus 157 with replacement default
+(22.07×), and 3,508.94 attempt CPU seconds versus 1,507.06 (2.33×).
+The old isolation run includes an interruption and its clocks are separate.
+The new strict implementation also checks skipped duplicate bodies explicitly;
+it has not been rerun on Grid. These are historical, background-load previews,
+not a measured current strict-mode multiplier or official speed comparison.
 
-- Native safe declarations referencing Lean.reduceBool or Lean.reduceNat,
-  including wrappers, can be refused conservatively. This can include a
-  mention-only statement, not just execution. The second review also flags
-  name-based taint across unrelated modules; its proposed cases await native
-  confirmation. This boundary does not mean native_decide or bv_decide are
-  generally unsupported: their native-computation axioms remain visible.
-- --official selects the matching official checker with --fresh, not default
-  leanchecker. It is an explicit trusted-code path, not a guaranteed workaround
-  for native IR refusal; the second review questions whether project IR can be
-  reconstructed there. No silent fallback or mode equivalence is claimed.
-- A module-system artifact requiring exported/server/private parts is refused
-  when required parts are incomplete. The original O prefix-only certificate
-  seed therefore no longer qualifies. For supplied incomplete/stale-part
-  artifacts, official default and --fresh have different behavior. The repaired
-  native selection follows the module flag; this is not an arbitrary binary
-  layout validator or a promise to match both official procedures.
-- Local checkpoints and their serialized metadata remain trusted. Input hashes
-  detect ordinary stale files and part-inventory changes, not malicious
-  collisions or deliberately forged acceptance/axiom metadata. Do not accept
-  another party's checkpoint directory as a proof.
-- The fresh repaired SubexponentialSAT frame accepted 14,721 modules with 15
-  axioms. It agrees with all 14,401 available module-local official references;
-  the other 320 have no completed module-local reference. This is separate from
-  O's historical partial comparison, and does not establish whole-library or
-  adversarial-input equivalence.
-- A receipt's Git revision does not bind compiled artifacts to that source
-  revision. Module-entry counts are not exact kernel-call counts. Non-complete
-  receipts do not certify the requested closure or its final axiom union.
+Additional limits remain:
 
-### Waiting on M before release freeze
+- Direct open-parameter reduceBool/reduceNat mentions work. Closed/higher-order
+  evaluation dependencies and some passive higher-order uses are refused with
+  operational exit 2. Checks are scoped to declared dependencies; no silent
+  native-to-official fallback executes project code. native_decide/bv_decide
+  native-computation axioms remain visible.
+- --official uses matching stock --fresh. Its imported final-environment
+  procedure differs from stock default and native per-module checking, and
+  may itself lack required project IR. It is not a guaranteed workaround.
+- Required exported/server/private parts and IR inputs are bound by identity.
+  Incomplete module-system inputs are refused. Supplied stale/incomplete parts
+  can yield different stock default/fresh results.
+- Local certificates and Lean-serialized checkpoints are trusted editable
+  state. Noncryptographic hashes detect ordinary stale artifacts, not deliberate
+  collisions or forged acceptance/axiom metadata. Artifacts must stay stable
+  throughout a call; foreign checkpoint directories are not portable proofs.
+- Git revision/dirty metadata does not attest source-to-artifact correspondence.
+  Module-entry counts are not kernel-call counts. Incomplete or operational
+  results do not certify the requested closure or its final axiom union.
+- The older repaired SubexponentialSAT frame accepted 14,721 modules against
+  14,401 available module-local references; 320 references remain absent.
+  That historical ABI does not qualify the frozen ABI 6 checker or whole corpus.
 
-The second code-only review is open. O has not executed new adversarial cases
-in this documentation/cleanup step and has not verified M's ongoing repairs.
-Track the following against a new immutable checker pin and actual evidence:
+## Release qualification and remaining gates
 
-1. Unsafe/partial duplicate declarations bypassing shared-frontier conflict
-   detection (potential wrong acceptance).
-2. Earlier same-interface theorem bodies retained in the frontier, including
-   the proposed false-rejection and crafted wrong-acceptance directions.
-3. Conservative primitive refusal, name-taint ordering, and the real scope of
-   --official for project IR; missing/corrupt IR artifact comparisons.
-4. Import-only rejection exit classification, accept/reject overlap on partial
-   receipts, and default-checkpoint project_dirty attribution.
-5. The unconfirmed crafted Quot case, escaped-name discovery, empty-root
-   context disclosure and --max-segments resume wording.
+The frozen native source and supplied regression outcomes are documented in
+[theorem-body-policy](../checker/results/theorem-body-policy/).
+[This completed package preview](FREEZE_E000ED62.md) rebuilt that immutable
+snapshot, relocated the archive, and passed the existing valid/invalid/version
+controls and all three external projects on CPU 8–9. The fresh image passed
+build-time and standalone network-disabled controls without host mounts.
+Both archive and image verified strict-mode forwarding and the three existing
+bad-proof categories. All costs remain previews during W's ongoing census.
+Historical archive/image passes stay pinned to their original versions.
 
-No item above is marked repaired solely because code changed. Once M records
-the actual outcomes and fixes, rebuild the archive and container from the
-frozen pin, rerun installed-form correctness/CI and external-project acceptance,
-and collect the agreed final system measurements when the census is finished
-and the machine is quiet. Old qualification JSON remains historical evidence.
-No release, tag or registry upload is authorized by these preparations.
+After the preview completes, final external timing uses a freshly installed
+archive of the committed launcher/audit and the same qualified frozen checker.
+Only external cells acquire the existing P-core lock, after M's final matrix.
+Container/correctness work is already qualified before that two-hour window.
+No publication follows automatically: tags, registry uploads and announcements
+still require the user's release decision.

@@ -20,8 +20,9 @@ def main():
  p.add_argument('--workers',type=int,default=4)
  p.add_argument('--preview',action='store_true',help='E8-9 functional preview; not eligible as final system timing')
  p.add_argument('--closure-roots',type=int,default=0)
+ p.add_argument('--timeout-seconds',type=int,default=1740,help='Per-command bound; final external window may request a longer uninterrupted native call')
  p.add_argument('--resume',action='store_true',help='Resume an interrupted preview on unchanged product checkpoints')
- a=p.parse_args();a.project=a.project.resolve(strict=True);a.out=a.out.resolve()
+ a=p.parse_args();assert a.timeout_seconds>0;a.project=a.project.resolve(strict=True);a.out=a.out.resolve()
  assert sorted(os.sched_getaffinity(0))==([8,9]if a.preview else list(range(8))),'preview uses8-9; final uses outer P-core lock and0-7'
  source_audit=json.loads(a.source_audit.read_text())
  expected=set(source_audit['coverage']['covered_modules'])
@@ -54,7 +55,7 @@ def main():
   def enter():(cg/'cgroup.procs').write_text('0')
   with(a.out/(label+'.stdout')).open('w')as fo,(a.out/(label+'.stderr')).open('w')as fe:
    start=time.monotonic()
-   q=subprocess.Popen(['timeout','--signal=TERM','--kill-after=5','1740']+list(map(str,args)),cwd=a.project,env=env,stdout=fo,stderr=fe,preexec_fn=enter,start_new_session=True)
+   q=subprocess.Popen(['timeout','--signal=TERM','--kill-after=5',str(a.timeout_seconds)]+list(map(str,args)),cwd=a.project,env=env,stdout=fo,stderr=fe,preexec_fn=enter,start_new_session=True)
    ACTIVE=cg
    stop=threading.Event();sample=dict(peak_tree_rss=0,resource_failure=False,disk_failure=False)
    def watch():
@@ -76,7 +77,7 @@ def main():
    thread=threading.Thread(target=watch);thread.start()
    _,status,usage=os.wait4(q.pid,0);q.returncode=os.waitstatus_to_exitcode(status)
    wall=time.monotonic()-start;stop.set();thread.join();ACTIVE=None
-  row=dict(timing_stage='pre-census-preview'if a.preview else 'final-system',final_system_timing_eligible=not a.preview,project=a.name,upstream_commit=a.upstream_commit,bundle_commit=metadata['source_commit'],checker_commit=a.checker_commit,arm=label,repeat=1,returncode=q.returncode,cpu_s=(usage.ru_utime+usage.ru_stime)if q.returncode==0 else None,cpu_accounting_valid=q.returncode==0,wall_s=wall,wait4_peak_rss_kib=usage.ru_maxrss,cgroup_peak_bytes=int((cg/'memory.peak').read_text()),memory_events=(cg/'memory.events').read_text(),**sample)
+  row=dict(timing_stage='preview-cpu8-9'if a.preview else 'final-system',final_system_timing_eligible=not a.preview,project=a.name,upstream_commit=a.upstream_commit,bundle_commit=metadata['source_commit'],checker_commit=a.checker_commit,arm=label,repeat=1,returncode=q.returncode,cpu_s=(usage.ru_utime+usage.ru_stime)if q.returncode==0 else None,cpu_accounting_valid=q.returncode==0,wall_s=wall,wait4_peak_rss_kib=usage.ru_maxrss,cgroup_peak_bytes=int((cg/'memory.peak').read_text()),memory_events=(cg/'memory.events').read_text(),**sample)
   rows.append(row);(a.out/(label+'.result.json')).write_text(json.dumps(row,indent=2)+'\n')
   try:cg.rmdir()
   except OSError:pass
@@ -112,7 +113,7 @@ def main():
  audit_file=a.out/'audit.json'
  code=run('audit',[cli,'audit',a.project,'--json',audit_file,'--receipt',a.out/'checkpoint/receipt.json'])
  audit=json.loads(audit_file.read_text())if audit_file.exists()else None
- result=dict(resumed_preview=a.resume or attempt>0,native_invocations=attempt+1,complete_native_cost_available=attempt==0,timing_stage='pre-census-preview'if a.preview else 'final-system',final_system_timing_eligible=not a.preview,complete=code==0 and root_equal,project=a.name,upstream_commit=a.upstream_commit,bundle=metadata,checker_commit=a.checker_commit,roots=roots,local_root_acceptance_equal=root_equal,native_closure_modules=len(accepted),official_default_modules=len(observed),timing_scope_equal=False,scope_note='ProofServe checks the transitive closure; official default replays named local roots and trusts imports. CPU/wall are user-facing costs, not a speedup over equal proof obligations. Fresh final-environment checks are a distinct protocol, evaluated by the checker matrix.',audit=audit,measurements=rows)
+ result=dict(resumed_preview=a.resume or attempt>0,native_invocations=attempt+1,complete_native_cost_available=attempt==0,timing_stage='preview-cpu8-9'if a.preview else 'final-system',final_system_timing_eligible=not a.preview,complete=code==0 and root_equal,project=a.name,upstream_commit=a.upstream_commit,bundle=metadata,checker_commit=a.checker_commit,roots=roots,local_root_acceptance_equal=root_equal,native_closure_modules=len(accepted),official_default_modules=len(observed),timing_scope_equal=False,scope_note='ProofServe checks the transitive closure; official default replays named local roots and trusts imports. CPU/wall are user-facing costs, not a speedup over equal proof obligations. Fresh final-environment checks are a distinct protocol, evaluated by the checker matrix.',audit=audit,measurements=rows)
  (a.out/'result.json').write_text(json.dumps(result,indent=2)+'\n')
  with(a.out/'measurements.csv').open('w',newline='')as f:
   w=csv.DictWriter(f,fieldnames=list(dict.fromkeys(k for row in rows for k in row)),lineterminator='\n');w.writeheader();w.writerows(rows)

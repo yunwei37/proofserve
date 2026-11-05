@@ -3,10 +3,9 @@
 Scope: independent Lean project checking and audit. The existing Kimina
 service remains available; no service feature was added in this closeout.
 
-**Release freeze is pending checker review repair and requalification.** The
-qualification results below identify older source pins. They are retained
-history, not a claim that the current checker or a future archive has passed.
-See [current checker boundary](INTERFACES.md#current-checker-review-and-release-boundary).
+**Checker source is frozen at e000ed62; the new package/container functional
+preview passed.** Final quiet-machine external timing is still pending.
+Older results below remain historical and cannot be relabelled as current. [Current policy and trust boundary](INTERFACES.md#frozen-checker-boundary).
 
 ## Added
 
@@ -99,7 +98,7 @@ in REPOSITORY_SIZE.md. A shallow clone still occupies6.55GiB including its Git
 object store; the standalone bundle avoids cloning retained research data.
 Nothing was moved or removed to obtain that measurement.
 
-Current CPU 8–9 freeze preview completed, including a full fresh image build,
+The earlier 3a56405f CPU 8–9 freeze preview completed, including a full fresh image build,
 network-disabled image-build controls, image export/load, and the same controls
 in a standalone container with no host directory mounts. Both full-Mathlib
 requests, native accepted/rejected/sorry responses, installed project check/audit
@@ -123,30 +122,76 @@ recorded; complete end-to-end AI cost is unknown. Final timing still requires
 fresh checkpoints, committed checker freeze and a quiet evaluation machine.
 The current archive records dirty preview inputs, not an immutable final release.
 
-## Checker review update — 2026-11-04
+## Frozen checker update — 2026-11-05
 
-The code-only e0c92d51 review led to reproduced defects and repairs, documented
-in [e0-review-repair](../checker/results/e0-review-repair/README.md).
-Expanded CI executed the 90-command runner. A fresh repaired retained frame
-accepted 14,721 SubexponentialSAT closure modules and 15 axioms; comparison
-covers 14,401 available module-local references, with 320 still unavailable.
-These are correctness/preview observations, not final release timing.
+The earlier review defects have recorded repairs; the replacement native freeze
+is e000ed62bbf4b9c420bd99d0273a5d21829b4edc, child ABI 6 and independent closures
+v8. Old checkpoint state requires a fresh directory. Native receipts add
+theorem_body_policy: shared-checked by default, strict with
+--strict-theorem-bodies; official fallback reports official-fresh.
+The CLI forwards the strict flag unchanged.
 
-The second [2628d727 review](checker-review-2628d727.md) remains open. Its unsafe
-duplicate and retained-theorem-body cases, IR policy, partial-receipt behavior
-and discovery/resume issues require M's actual reproduction/repair evidence.
-O has not tested those proposed cases in this cleanup step. The
-[interface disclosure and pending list](INTERFACES.md#current-checker-review-and-release-boundary)
-separate confirmed earlier behavior from code-only hypotheses.
+Default mode proves statements in a shared kernel-checked environment. A crafted
+artifact depending on another module's theorem body can be accepted even when
+official original-context proof replay rejects it. The statement still follows
+from checked proofs relative to reported axioms. Strict mode preserves the
+supplied artifact-context controls, with the unsupported-input limits disclosed
+in [INTERFACES](INTERFACES.md#frozen-checker-boundary).
 
-Users should expect conservative refusal of explicit reduceBool/reduceNat
-references, even when a statement merely mentions them; ordinary native_decide
-and bv_decide are not thereby excluded. Incomplete required module parts fail
-explicitly. Official default and --fresh are different checking procedures on
-some supplied artifacts; --official is not a guaranteed IR-refusal workaround.
-Acceptance assumes protected local checkpoint state and stable compiled inputs.
+Historical Grid isolation used 22.1× as many module-local replays and 2.33×
+attempt CPU versus the replacement default preview. The historical run was
+interrupted, and the current strict implementation has not been remeasured;
+neither number is a current strict-mode or official speedup result.
 
-After M's checker freeze: rebuild and relocate the archive, rebuild/test the
-container, rerun installed-form external-project and correctness acceptance,
-then collect final quiet-machine system numbers. Existing archive/image passes
-must not be relabelled with the new pin. No tag or public release has been made.
+Direct open-parameter native primitive mentions now work. Closed/higher-order
+native evaluation can still fail explicitly; --official is not a guaranteed
+IR workaround. Incomplete required artifact parts are refused and stock default
+and --fresh may differ. All local checkpoints remain trusted state.
+
+The new installed-bundle/container and external-project controls are previews,
+not final quiet-machine system timing. Final external measurement follows M's
+matrix and uses fresh checkpoints; the full build census is allowed to finish.
+Nothing here tags, publishes to crates.io or pushes an image.
+
+## Completed e000ed62 functional acceptance
+
+The CPU8–9 preview finished on 2026-11-05, without the P-core lock.
+[Acceptance report](FREEZE_E000ED62.md) and
+[small qualification record](qualification-e000ed62-preview.json) identify the
+frozen checker, dirty packaging inputs, controls, image metadata and raw path.
+
+Passed: new archive installation/relocation; check/audit; the three existing
+kernel-rejection classes; explicit version refusal; default and strict
+theorem_body_policy, ABI6 and per-module/operational fields; a cold full image
+build and a standalone network-disabled run without host mounts. Both container
+phases exercised the same existing three bad-proof categories and strict flag.
+
+Local Rust tests: 100 passed, 6 legacy native-REPL tests ignored; clippy, fmt,
+release build and all four crate dry-runs passed. The frozen checker executed
+the existing 90- and 142-command suites and core contracts; audit ran20 tests.
+The frozen-source CI jobs separately executed native/checker contracts; its
+container job was skipped and is not counted as this image qualification.
+
+Newspeak, Solar and the upstream explicitly AI-generated samuelburbulla/proofs
+all completed installed-tool check/audit and official common-root comparisons.
+Native closures contain754 /2368 /10753 modules; official common roots
+contain105 /12 /9. The equal common-root acceptance sets are not equal-obligation
+full-closure performance comparisons. Solar reports20 omitted source modules.
+AI required two bounded preview interruptions: its full CPU cost is unknown,
+and the tail invocation is never substituted for whole-case cost.
+
+All measured costs are previews; source/checker pins and scope accompany the
+small CSV/JSON in data/external-projects/e000ed62-preview/. O's sampled owned
+capture peak was7.524GiB within12GiB. Temporary builder/daemon retirement was
+verified and no owned native runtime remained.
+
+This Debian13 development archive records its actual libc in metadata; it is
+not advertised as the Ubuntu22.04/GNU libc2.35 public build. The existing
+release workflow builds that target. Nothing has been tagged or published.
+
+The prepared --final command uses fresh checkpoints and a new archive install,
+with one global two-hour bound and no extra shorter per-project cutoff.
+Planning reserve is95–115minutes based on92.9minutes of accumulated E8–9
+preview command intervals plus preparation/contingency, not a measured P-core
+speed claim. Cold container/full-contract preparation is outside that window.
+The final run follows the completed census and M's final matrix.

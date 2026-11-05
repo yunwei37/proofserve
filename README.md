@@ -1,33 +1,35 @@
 # ProofServe
 
 **Independent checking and coverage audit for Lean projects.** Check compiled
-proof terms with the original Lean kernel, using parallel workers and resumable
-local checkpoints. Audit what the project builds and what its receipt covers.
+proofs with the original Lean kernel; audit what the project actually covers.
 
-**Pre-release: checker correctness review is still open.** Earlier bundle and
-container controls passed on older checker pins; they do not qualify the current
-checker. See [current review status and limitations](packaging/INTERFACES.md#current-checker-review-and-release-boundary).
-
-The prepared Linux bundle includes the matching Lean 4.34.1 SDK, checker and
-audit tool. No Rust compiler, repository clone or Workspace path is required.
-Use Python 3.11+ and an already-built Lake project declaring that Lean version:
+The unpublished Linux bundle includes Lean 4.34.1, checker and audit tools.
+With the prepared archive, installer and Python 3.11+, run without cloning:
 
 ~~~sh
-bin/proofserve check /path/to/lake-project
-bin/proofserve audit /path/to/lake-project --json -
+python3 install.py --archive proofserve-0.1.0-linux-x86_64.tar.gz
+~/.local/bin/proofserve check /path/to/built-lake-project
+~/.local/bin/proofserve audit /path/to/built-lake-project --json -
 ~~~
 
-Trust: the original Lean kernel, artifact/frontier adapter, declared axioms and
-trusted local checkpoints. Acceptance does not prove an axiom-free development,
-the intended specification, or a safe parser for hostile binary artifacts.
+**Trust:** original kernel, adapter, toolchain, declared axioms and protected
+local checkpoints. This does not prove the specification, eliminate axioms,
+sandbox project code, or safely parse arbitrary hostile binaries.
 
-**Speed versus official leanchecker:** [three external projects](data/external-projects/freeze-preview-results.md)
-passed installed-tool checks; official default trusts imports, so its times are
-not an equal-obligation speed comparison. No general speedup is promised.
+**Known default-mode difference:** a crafted artifact may be accepted while
+official replay rejects its proof because it depends on another module's
+theorem body. The statement still follows from kernel-checked proofs in the
+checked closure. Use --strict-theorem-bodies for the tested artifact-context
+agreement; unsupported native-evaluation inputs can still be refused.
 
-Version 0.1.0 bundles and containers are prepared and tested, **not yet published**.
-Other declared toolchains use their matching official checker when available,
-or fail explicitly. The bundled compiler never silently migrates a project.
+**Cost:** retained Grid previews used 22.1× as many module-local replays and 2.33×
+the CPU under the older strict-context strategy. This is historical evidence;
+the new strict implementation has not been remeasured on Grid. [Policy data](checker/results/theorem-body-policy/).
+**Speed versus official:** final same-obligation results are pending; preview
+figures are not a release speed claim. [Trust and modes](packaging/INTERFACES.md).
+
+Version 0.1.0 is prepared, not published. Other toolchains use a matching
+official checker when available or fail explicitly; no silent migration occurs.
 
 ## Install without cloning
 
@@ -62,8 +64,8 @@ The checker discovers compiled roots and checks their dependency closure.
 The backend chooses its default from the visible CPU allocation. Checkpointed runs can resume
 on the same input; backend receipts record acceptance, rejection, axioms,
 module-set identity, CPU and wall time. The source project must be built first.
-Use a fresh checkpoint directory after changing input artifacts until the
-backend's input-invalidation contract is qualified.
+Use fresh state after an artifact, executable or policy change when the
+checker reports an identity mismatch.
 
 The supported bundled checker version is Lean 4.34.1. A different declared version uses its matching official checker when available,
 otherwise returns an explicit error; the receipt identifies the execution path.
@@ -93,12 +95,13 @@ docker run --rm -v "$PWD":/project proofserve:0.1.0 audit /project --json -
 
 These commands use a locally loaded prepared image; no public registry image
 is claimed before publication. Builders can use docker build -t proofserve:0.1.0 .
-Historical image qualification passed on adf816ae: Mathlib service imports and
-network-disabled installed-form project controls. [Evidence](packaging/qualification-container.json).
-That older image does not include or qualify the current checker repairs; the
-archive and container must be rebuilt and qualified after the checker is frozen.
-Earlier service-only image failures remain
-in [historical qualification](docs/releases/0.1.0.md).
+The frozen e000ed62 preview passed a fresh image build and network-disabled
+installed-form controls, including two Mathlib service imports, three existing
+kernel-rejection cases, strict mode and version errors.
+[Current qualification](packaging/qualification-e000ed62-preview.json).
+These are functional previews with recorded dirty packaging inputs, not final
+performance or an already published image. Older image results and failures
+remain in [historical qualification](docs/releases/0.1.0.md).
 
 ## Existing Kimina-compatible service
 
@@ -167,9 +170,9 @@ are deduplicated; entry counts and cumulative CPU can include historical work
 and repeated imports. This is not a cryptographic or portable proof certificate.
 An unfinished batch or changed input is not complete verification.
 
-Explicit Lean.reduceBool / Lean.reduceNat references can currently be refused
-even without an actual evaluation. Incomplete module-system artifact parts are
-also refused; official default and --fresh can differ on such inputs. No blanket
-equivalence with both official modes is promised. See the
-[current review boundary](packaging/INTERFACES.md#current-checker-review-and-release-boundary)
-and [receipt schema](checker/docs/receipt-schema.md) before using receipts.
+Direct open-parameter reduceBool/reduceNat mentions are supported. Closed or
+higher-order native-evaluation dependencies can be refused conservatively;
+native_decide/bv_decide axioms are reported. Incomplete required module-system
+parts fail explicitly, and official default/fresh can disagree on supplied
+artifacts. [Policy and limits](packaging/INTERFACES.md#frozen-checker-boundary)
+and [receipt schema](checker/docs/receipt-schema.md) describe these boundaries.

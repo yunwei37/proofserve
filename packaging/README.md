@@ -71,50 +71,85 @@ The current tree and full-history size census is repository-size.json. These
 are logical uncompressed blob sizes and live Git disk storage respectively,
 not promised download sizes. Research inputs/history are retained unchanged.
 
-## One-command freeze
+## Frozen-checker functional preview
 
-After the census disposition is resolved and the checker is committed/frozen,
-use one fresh output directory and a JSON manifest of already-built pinned
-projects (name, project, source_audit, upstream_commit, optional workers and\nAI-generated attribution); see data/external-projects/final-manifest.example.json:
+The checker pin is e000ed62bbf4b9c420bd99d0273a5d21829b4edc. Run before the
+final timing window, on CPU 8–9 without the P-core lock:
 
-    python3 packaging/freeze.py --final --lock /path/to/shared-pcore.lock \
-      --lean-sysroot "$(lean --print-prefix)" --manifest /path/to/projects.json \
-      --out /path/to/new-freeze
+    python3 packaging/freeze.py --preview --checker-commit e000ed62 \
+      --lean-sysroot /path/to/lean-4.34.1 --manifest /path/to/projects.json \
+      --out /path/to/new-preview
 
-This rebuilds Rust, dry-runs all crates, builds the committed checker snapshot,
-assembles and installs the archive, runs the relocated-bundle kernel contracts,
-rechecks the external projects, builds the pinned container and runs it without
-network. No tag, release or registry upload is performed. Docker/buildx, the
-matching Lean SDK and Rust are build prerequisites. Runtime users need none of
-the source checkout or build paths. Archive ABI depends on the builder; use the
-Ubuntu22.04 release workflow for the advertised GNU libc2.35 baseline.
+This rebuilds Rust, dry-runs packages, builds the frozen checker snapshot,
+runs the existing contracts, assembles/relocates the archive, checks all three
+external projects, builds the container and runs it without network. Preview
+costs are ineligible for final system timing. No tag or registry upload occurs.
+Uncommitted O inputs are explicitly recorded; checker source comes only from
+the immutable Git snapshot, not M's live build.
 
-Before that boundary, use the same command with --preview instead of --final
-and omit --lock. Preparation and preview commands use CPU 8–9; preview external
-numbers are explicitly ineligible for final system timing. Pending O edits are
-recorded as dirty preview inputs, with cargo's --allow-dirty used only for
-dry-run packaging, never publication. Final freeze requires committed runtime
-inputs; unrelated research documentation/data can remain dirty.
+Python 3.11+, Docker/buildx, Rust, the matching SDK and cgroup-v2 delegation
+are maintainer build/evaluation prerequisites. Installed users need neither
+the research checkout nor its paths. The archive ABI is the builder's ABI;
+the Ubuntu22.04 workflow supplies the advertised GNU libc2.35 baseline.
 
-A resumed preview uses --preview --resume with its original output directory\nand unchanged compiled inputs. It only continues a timed-out native invocation\nwhen another original-kernel segment completed; resource failures or a window\nwithout progress stop. Failed raw output stays intact. Final timing never resumes\nan interrupted preview. Its fresh command requires a new output directory.\n\nEach command has a retained log and exit status in freeze.json. A failed step
-leaves complete and partial outputs intact and the overall result false.
-Independent closure certificates are trusted local state, not portable proof
-certificates. Short temporary socket aliases point to the output filesystem
-and are removed on exit; captured results stay under --out.
+## One-command final external timing
 
-On success the command also writes freeze-preview/final-acceptance.json and
-freeze-preview/final-measurements.csv under data/external-projects; use
---results-dir to select another small-result destination. Each CSV row records
-its project pin, checker/bundle commits, AI attribution, module scope and cost
-arm. A successful final invocation is required before final timing eligibility.
-Interrupted preview CPU remains unknown rather than zero.
+Only after W's complete census has retired and M has finished the quiet-machine
+matrix, from committed O runtime inputs:
 
-This freeze driver is for the declared evaluation host: preparation/preview
-uses CPU 8–9 and final external cells use the supplied P0–7 lock. It needs writable
-cgroup-v2 delegation for bounded evaluation, plus Docker/buildx. Those are
-maintainer-evaluation prerequisites, not requirements for installed ProofServe
-users. The image smoke test uses an 8 GiB service budget inside the10 GiB builder
-and11 GiB runtime test container; its older 5 GiB resource failure is retained.
-The product's automatic resource defaults are unchanged. Builder retirement is
-checked before the workflow reports complete; cache removal may take longer
-than a small image build command.
+~~~sh
+PATH=/usr/local/cargo/bin:$PATH RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo CARGO_BUILD_JOBS=1 \
+CARGO_TARGET_DIR=/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/cargo-target \
+taskset -c 8,9 python3 packaging/freeze.py --final --checker-commit e000ed62 \
+  --prepared-from /workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/preview \
+  --lean-sysroot /workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux \
+  --manifest /workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/final-manifest.json \
+  --out /workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/final \
+  --lock /workspaces/.agent-state/gpu-smt-captures/pcore.lock \
+  --results-dir data/external-projects/e000ed62-final
+~~~
+
+These are maintainer host paths, not end-user dependencies. The command requires
+a completed preview for the identical checker and unchanged project manifest.
+It reuses only the already qualified frozen checker build, validates its source
+snapshot, rebuilds the committed Rust launcher, creates a new archive and
+relocates it into a fresh installation. Existing bundle controls rerun.
+Native external checks then use fresh checkpoints; interrupted previews and
+their costs are never reused as final samples. Container/contract cold builds
+are excluded from this **two-hour** window because they were qualified earlier.
+No Docker daemon is needed for this final prepared path.
+
+Preparation stays on E8–9. Each external cell acquires the supplied existing
+P0–7 lock; the complete window is bounded to 7,200 seconds, including lock wait
+and preparation. The remaining global budget is passed to the external cell,
+allowing the AI closure an uninterrupted call rather than the preview's
+1,740-second windows. There is no additional shorter final per-project cutoff.
+Overall deadline failure retains partial output with complete false.
+The three projects and their roots are not reduced to meet the bound.
+
+Planning estimate from the completed frozen CPU8–9 preview: **95–115 minutes**
+for the prepared final command. The three external cases used about 92.9 minutes
+of accumulated command wall time, including the AI case's two interrupted
+1,740-second windows. Fresh archive/install qualification and contingency take
+the estimate above that observed sum. Full AI CPU remains unknown; this is
+neither a continuous end-to-end sample nor a measured P-core speed prediction.
+A quiet P-core run may be faster, but no such ratio is assumed.
+
+No project or root set is trimmed. The cold container build and complete
+source/contract qualification were moved out of the final window; this is the
+necessary reduction in work, rather than weakening native closure coverage.
+The global 7,200-second bound retains any failure honestly. If scheduling
+evidence later puts the estimate above two hours, prepare the newly committed
+archive/install qualification before the allocation; do not silently reuse an
+interrupted preview checkpoint or call partial AI acceptance complete.
+
+Both modes export small acceptance JSON and measurement CSV to --results-dir.
+Official default replays common local roots and trusts imports, so those costs
+are not an equal-obligation speed comparison with native full-closure checking.
+No unrequested project/arm is added to the final evaluation.
+
+A failed command retains its log and complete false in freeze.json. A preview
+may resume only the same frozen runtime inputs; a final run never resumes a
+partial preview. Local checkpoint certificates remain trusted state. Source
+and checker commits, dirty preview status, policies and execution scopes must
+remain explicit in any published result.

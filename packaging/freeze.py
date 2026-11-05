@@ -11,6 +11,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import tarfile
+import time
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -25,11 +26,15 @@ def export_external_results(out, manifest, destination, preview):
         assert value["complete"] and value["local_root_acceptance_equal"]
         assert value["final_system_timing_eligible"] == (not preview)
         audit = value["audit"]
+        native_receipt = json.loads((out / f"external-{index}" / "checkpoint/receipt.json").read_text())
+        policy = native_receipt.get("theorem_body_policy")
+        checkpoint_abi = native_receipt.get("checker_checkpoint_abi")
         coverage = audit["coverage"]
         cases.append(dict(
             project=value["project"], upstream_commit=value["upstream_commit"],
             ai_generated=item.get("ai_generated"),
             checker_commit=value["checker_commit"],
+            theorem_body_policy=policy, checker_checkpoint_abi=checkpoint_abi,
             bundle_commit=value["bundle"]["source_commit"],
             bundle_dirty_preview=value["bundle"].get("source_worktree_dirty", False),
             source_modules=audit["source_modules"], local_roots=len(value["roots"]),
@@ -46,7 +51,9 @@ def export_external_results(out, manifest, destination, preview):
             roots=value["roots"], scope_note=value["scope_note"]))
         for row in value["measurements"]:
             cell = {k: v for k, v in row.items() if k != "memory_events"}
-            cell.update(source_modules=audit["source_modules"],
+            cell.update(native_theorem_body_policy=policy,
+                        native_checker_checkpoint_abi=checkpoint_abi,
+                        source_modules=audit["source_modules"],
                         ai_generated=item.get("ai_generated"),
                         native_closure_modules=value["native_closure_modules"],
                         official_default_modules=value["official_default_modules"],
@@ -81,8 +88,15 @@ def main():
     mode.add_argument("--preview", action="store_true")
     mode.add_argument("--final", action="store_true")
     parser.add_argument("--resume", action="store_true", help="Continue this same interrupted preview; never final timing")
+    parser.add_argument("--prepared-from", type=Path,
+                        help="Final external run: use this completed preview's frozen checker/SDK; rebuild and install a fresh archive, skip already-qualified container/contract work")
+
     parser.add_argument("--lock", type=Path, help="Shared P-core lock; required for final timing")
     args = parser.parse_args()
+    started = time.monotonic()
+    if args.prepared_from and not args.final:
+        parser.error("--prepared-from is only for the final external timing window")
+
     if args.final and args.lock is None:
         parser.error("--final requires the existing shared --lock; run only after census")
     os.sched_setaffinity(0, {8, 9})
@@ -99,6 +113,14 @@ def main():
     if args.final and dirty:
         raise SystemExit("Final freeze needs committed runtime inputs; unrelated docs/data may stay dirty")
     manifest = json.loads(args.manifest.read_text())
+    prepared = None
+    if args.prepared_from:
+        prepared = json.loads((args.prepared_from / "freeze.json").read_text())
+        if not prepared.get("complete") or not prepared.get("preview") or prepared["checker_commit"] != checker:
+            raise SystemExit("Need a completed preview at the identical frozen checker commit")
+        if prepared.get("projects") != manifest["projects"]:
+            raise SystemExit("Final manifest must preserve the qualified project inputs and options")
+
     if previous:
         assert previous["checker_commit"] == checker
         # Shared writers may advance documentation/data commits during a preview.
@@ -113,10 +135,16 @@ def main():
     records = list(previous["commands"]) if previous else []
     result = dict(complete=False, preview=args.preview, final_system_timing_eligible=args.final,
                   source_commit=source, checker_commit=checker, dirty_runtime_paths=dirty, resumed_preview=args.resume,
-                  commands=records, publishes=False, preparation_affinity=[8, 9])
+                  commands=records, publishes=False, preparation_affinity=[8, 9], projects=manifest["projects"],
+                  prepared_from=str(args.prepared_from.resolve()) if args.prepared_from else None)
     def save():
         (out / "freeze.json").write_text(json.dumps(result, indent=2) + "\n")
     def run(label, command, cwd=ROOT, env=None, limit=3600, reuse=True):
+        if args.prepared_from:
+            remaining = 7200 - int(time.monotonic() - started)
+            if remaining <= 0:
+                raise RuntimeError("Final external two-hour window exhausted")
+            limit = min(limit, remaining)
         prior = [v for v in records if v["label"] == label]
         if reuse and args.resume and prior and prior[-1]["returncode"] == 0:
             return
@@ -168,23 +196,36 @@ def main():
     save()
     builder = None
     try:
-        run("rust-format", ["cargo", "fmt", "--all", "--", "--check"], env=env)
-        run("rust-contracts", ["cargo", "test", "--workspace", "--all-targets", "--locked"], env=env)
-        run("rust-clippy", ["cargo", "clippy", "--workspace", "--all-targets", "--locked", "--", "-D", "warnings"], env=env)
-        publish = ["cargo", "publish", "--workspace", "--dry-run", "--locked"]
-        if args.preview:
-            publish.append("--allow-dirty")
-        run("cargo-dry-run", publish, env=env)
-        run("rust-release", ["cargo", "build", "--release", "--locked", "-p", "proofserve"], env=env)
-        checker_src = out / "checker-source"
-        checker_src.mkdir(exist_ok=args.resume)
-        data = subprocess.check_output(["git", "archive", checker, "checker"], cwd=ROOT)
-        if not args.resume:
-            with tarfile.open(fileobj=io.BytesIO(data)) as archive:
-                archive.extractall(checker_src, filter="data")
-        run("checker-build", ["lake", "build"], cwd=checker_src / "checker", env=env)
-        run("checker-contract", ["python3", "tests/contract.py"], cwd=checker_src / "checker", env=env)
-        run("audit-contract", ["python3", ROOT / "tools/audit/test_audit.py"], env=env)
+        if args.prepared_from:
+            checker_src = args.prepared_from.resolve() / "checker-source"
+            frozen = subprocess.check_output(["git", "archive", checker, "checker"], cwd=ROOT)
+            with tarfile.open(fileobj=io.BytesIO(frozen)) as archived:
+                for member in archived:
+                    if member.isfile():
+                        expected = archived.extractfile(member).read()
+                        if (checker_src / member.name).read_bytes() != expected:
+                            raise RuntimeError("Prepared frozen checker source changed: " + member.name)
+            if not (checker_src / "checker/.lake/build/bin/proofserve-check").is_file():
+                raise RuntimeError("Prepared checker executable is missing")
+            run("rust-release", ["cargo", "build", "--release", "--locked", "-p", "proofserve"], env=env)
+        else:
+            run("rust-format", ["cargo", "fmt", "--all", "--", "--check"], env=env)
+            run("rust-contracts", ["cargo", "test", "--workspace", "--all-targets", "--locked"], env=env)
+            run("rust-clippy", ["cargo", "clippy", "--workspace", "--all-targets", "--locked", "--", "-D", "warnings"], env=env)
+            publish = ["cargo", "publish", "--workspace", "--dry-run", "--locked"]
+            if args.preview:
+                publish.append("--allow-dirty")
+            run("cargo-dry-run", publish, env=env)
+            run("rust-release", ["cargo", "build", "--release", "--locked", "-p", "proofserve"], env=env)
+            checker_src = out / "checker-source"
+            checker_src.mkdir(exist_ok=args.resume)
+            data = subprocess.check_output(["git", "archive", checker, "checker"], cwd=ROOT)
+            if not args.resume:
+                with tarfile.open(fileobj=io.BytesIO(data)) as archive:
+                    archive.extractall(checker_src, filter="data")
+            run("checker-build", ["lake", "build"], cwd=checker_src / "checker", env=env)
+            run("checker-contract", ["python3", "tests/contract.py"], cwd=checker_src / "checker", env=env)
+            run("audit-contract", ["python3", ROOT / "tools/audit/test_audit.py"], env=env)
         target = Path(env.get("CARGO_TARGET_DIR", ROOT / "target"))
         run("assemble", ["python3", ROOT / "packaging/bundle.py", "--rust-bin",
              target / "release/proofserve", "--checker-bin",
@@ -202,6 +243,8 @@ def main():
                    "--source-audit", item["source_audit"], "--upstream-commit",
                    item["upstream_commit"], "--checker-commit", checker, "--prefix",
                    out / "installed", "--out", out / f"external-{index}", "--workers", str(item.get("workers", 1))]
+            if args.final:
+                cmd += ["--timeout-seconds", str(max(1, 7200 - int(time.monotonic() - started)))]
             if args.preview:
                 cmd.append("--preview")
                 if args.resume and (out / f"external-{index}").exists():
@@ -211,42 +254,53 @@ def main():
             if args.final:
                 # Lock only timed cells; preparations remain on E cores.
                 with args.lock.open("a") as lock:
-                    fcntl.flock(lock, fcntl.LOCK_EX)
-                    run(f"external-{index}", ["taskset", "-c", "0-7"] + cmd, env=env, limit=7200)
+                    while True:
+                        if time.monotonic() - started >= 7200:
+                            raise RuntimeError("Final external window exhausted waiting for the P-core lock")
+                        try:
+                            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                            break
+                        except BlockingIOError:
+                            time.sleep(1)
+                    remaining = 7200 - int(time.monotonic() - started)
+                    if remaining <= 0:
+                        raise RuntimeError("Final external two-hour window exhausted; retained partial result is not complete")
+                    run(f"external-{index}", ["taskset", "-c", "0-7"] + cmd, env=env, limit=remaining)
             else:
                 run(f"external-{index}", cmd, env=env, limit=7200)
-        context = out / "image-source"
-        context.mkdir(exist_ok=args.resume)
-        members = ["Dockerfile", ".dockerignore", "Cargo.toml", "Cargo.lock", "crates",
-                   "checker", "clients", "packaging", "tools/audit", "LICENSE", "README.md"]
-        data = subprocess.check_output(["git", "archive", source, *members], cwd=ROOT)
-        with tarfile.open(fileobj=io.BytesIO(data)) as archive:
-            archive.extractall(context, filter="data")
-        if args.preview:
-            # O's pending changes only; never copy M's live checker source/build.
-            for name in ["crates", "packaging"]:
-                shutil.copytree(ROOT / name, context / name, dirs_exist_ok=True,
-                                ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-            shutil.copy2(ROOT / "Dockerfile", context / "Dockerfile")
-        shutil.copytree(checker_src / "checker", context / "checker", dirs_exist_ok=True,
-                        ignore=shutil.ignore_patterns(".lake"))
-        builder = "proofserve-freeze-" + str(os.getpid())
-        run("container-builder", ["docker", "buildx", "create", "--name", builder,
-             "--driver", "docker-container", "--driver-opt", "network=host",
-             "--driver-opt", "memory=10g", "--driver-opt", "cpuset-cpus=8-9"], env=env, reuse=False)
-        prior_builds = [v for v in records if v["label"] == "container-build"]
-        old_command = prior_builds[-1]["command"] if prior_builds else []
-        tag = (previous or {}).get("image_tag") or (
-            old_command[old_command.index("--tag") + 1] if "--tag" in old_command
-            else "proofserve:freeze-" + str(os.getpid()))
-        result["image_tag"] = tag
-        save()
-        run("container-build", ["docker", "buildx", "build", "--builder", builder,
-             "--network", "host", "--load", "--metadata-file", out / "image-metadata.json",
-             "--tag", tag, context], env=env, limit=7200)
-        run("stranger-container", ["docker", "run", "--rm", "--network", "none",
-             "--cpuset-cpus", "8-9", "--memory", "11g", "--entrypoint", "python3",
-             tag, "/opt/container_smoke.py", "--self-test"], env=env, limit=1200)
+        if not args.prepared_from:
+            context = out / "image-source"
+            context.mkdir(exist_ok=args.resume)
+            members = ["Dockerfile", ".dockerignore", "Cargo.toml", "Cargo.lock", "crates",
+                       "checker", "clients", "packaging", "tools/audit", "LICENSE", "README.md"]
+            data = subprocess.check_output(["git", "archive", source, *members], cwd=ROOT)
+            with tarfile.open(fileobj=io.BytesIO(data)) as archive:
+                archive.extractall(context, filter="data")
+            if args.preview:
+                # O's pending changes only; never copy M's live checker source/build.
+                for name in ["crates", "packaging"]:
+                    shutil.copytree(ROOT / name, context / name, dirs_exist_ok=True,
+                                    ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+                shutil.copy2(ROOT / "Dockerfile", context / "Dockerfile")
+            shutil.copytree(checker_src / "checker", context / "checker", dirs_exist_ok=True,
+                            ignore=shutil.ignore_patterns(".lake"))
+            builder = "proofserve-freeze-" + str(os.getpid())
+            run("container-builder", ["docker", "buildx", "create", "--name", builder,
+                 "--driver", "docker-container", "--driver-opt", "network=host",
+                 "--driver-opt", "memory=10g", "--driver-opt", "cpuset-cpus=8-9"], env=env, reuse=False)
+            prior_builds = [v for v in records if v["label"] == "container-build"]
+            old_command = prior_builds[-1]["command"] if prior_builds else []
+            tag = (previous or {}).get("image_tag") or (
+                old_command[old_command.index("--tag") + 1] if "--tag" in old_command
+                else "proofserve:freeze-" + str(os.getpid()))
+            result["image_tag"] = tag
+            save()
+            run("container-build", ["docker", "buildx", "build", "--builder", builder,
+                 "--network", "host", "--load", "--metadata-file", out / "image-metadata.json",
+                 "--tag", tag, context], env=env, limit=7200)
+            run("stranger-container", ["docker", "run", "--rm", "--network", "none",
+                 "--cpuset-cpus", "8-9", "--memory", "11g", "--entrypoint", "python3",
+                 tag, "/opt/container_smoke.py", "--self-test"], env=env, limit=1200)
         result.update(archive=str(bundle_archive), external_exports=export_external_results(
             out, manifest, args.results_dir, args.preview))
         save()
