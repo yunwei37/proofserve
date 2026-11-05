@@ -240,40 +240,41 @@ Nonordinary declarations and their ordinary prerequisites use the original
 replay path before the remaining graph runs. Unsupported local structure
 retains conservative fallback.
 
-\paragraph{Reviews exposed coordinator false acceptance.}
-Artifact and context selection can invalidate original-kernel checking.
-O's independent execution review of \texttt{2df1d9d7} found complete,
-exit-zero results after adding a bad-proof part to certified inputs or
-copying an authentic certificate from another project.
-Both reference paths rejected them. Repairs bind project, artifacts, search
-path, toolchain and executable identity, with durable receipt publication.
+\paragraph{Review-driven repairs and theorem-body policy.}
+Two read-only reviews of \texttt{e0c92d51} and \texttt{2628d727} traced
+coordinator defects; implementation-line regressions reproduced shadowed
+inputs, omitted axioms, unsafe duplicates, proof-body context substitution
+and malformed Quot restoration. Earlier O execution controls also exposed
+cross-project certificate reuse and added bad-proof parts.
+Repairs bind inputs, validate original contexts and quotient tags, separate
+worker events and preserve nonzero-exit dominance.
+The proposed project-IR stdout-forgery route remains unconfirmed.
+The issues have regression repairs; the repaired binary has no independent
+runtime review.
 
-Independent code-only reviews of \texttt{e0c92d51} and \texttt{2628d727}
-then guided implementation-line executions.
-These reproduced checkpoint-directory shadowing, omitted segregated axioms,
-unsafe duplicate-name acceptance and theorem-body context substitution.
-The latter both rejected an honest WellFounded/Acc computation and accepted
-swapped proof bodies that both official modes rejected.
-A later axiom-tagged Quot fixture also passed after checkpoint restoration
-while both official modes rejected it; the earlier genuine-Quot control
-had not exercised that case.
-The proposed project-IR stdout-forgery route remains unconfirmed;
-complete/nonzero-exit precedence was reproduced with a saved-result control.
+The frozen checker is \texttt{e000ed62}, replacing \texttt{e1557c77}.
+Its default \emph{shared-checked} policy retains a kernel-checked theorem
+body when a later theorem has the same interface.
+A crafted serialized proof that passes only by depending on another
+module's theorem body can therefore be accepted while official checking
+rejects it in its declared import context.
+The accepted proposition is still derived from kernel-checked proofs in
+the shared checked closure and its reported axioms; this is a different
+artifact-context guarantee, not original-proof replay parity.
 
-The \texttt{981d544d} repair isolates differing theorem contexts, tracks
-skipped unsafe names, validates quotient declaration tags and reads the
-required IR artifacts. Direct open primitive mentions are supported;
-closed and some higher-order native evaluations remain unsupported.
-Official default and fresh differ on actual IR evaluation and supplied
-stale artifacts. Operational refusal can use exit 2 where official uses 1.
-The \texttt{e1557c77} follow-up releases validation-only IR regions;
-its ownership control establishes lifetime behavior.
+For matching theorem-body context behavior, use
+\texttt{--strict-theorem-bodies}, which isolates distinct bodies.
+Both modes explicitly check duplicate bodies skipped by upstream replay;
+temporary checking names enter neither the shared frontier nor the axiom set.
+Receipts and checkpoint identities bind the policy; ABI 6 invalidates old
+state. Strict-mode CPU and wall costs must come from the final matrix,
+not historical e155 isolation runs.
 
-These Lean 4.34.1 controls are implementation self-review, not independent
-execution review. ABI 5 invalidates earlier checkpoints and retained-closure
-qualification; editable state and arbitrary malformed metadata remain trust limits.
-Reports and controls are retained in \path{packaging/checker-review-*.md}
-and \path{checker/results/review-2628-repair/}.
+Closed and some higher-order native evaluations remain unsupported;
+official default/fresh and operational exit conventions also differ.
+Editable state and arbitrary malformed metadata remain trust limits.
+Reports and controls are in \path{packaging/checker-review-*.md} and
+\path{checker/results/theorem-body-policy/}.
 
 Two prototype interventions explain these choices.
 Correcting our missing persistent marking reduced eight-worker CPU by
@@ -336,7 +337,10 @@ The release matrix checks Mathlib Nat.Basic, Grid and Barrier at
 Mathlib here denotes the Nat.Basic closure.
 At eight workers, Mathlib and Grid each receive three no-persistence
 and three no-split-fallback runs. Wall/CPU medians and ranges accompany
-acceptance parity and memory observations (Table~\ref{tab:release}).
+scoped acceptance and memory observations (Table~\ref{tab:release}).
+The final table separates shared-checked default and any measured strict
+points; their CPU/wall cost comparison is reported within the same tool,
+input and worker configuration.
 
 \begin{table}[t]
 \centering
@@ -356,6 +360,7 @@ Barrier & Pending & Pending & Pending\\
 }
 \caption{Release-tool scaling, awaiting the complete committed matrix.
 Three repeats per worker count support separate CPU and wall summaries.
+D labels the shared-checked default and S strict theorem-body isolation.
 Design implication: assess latency savings together with work inflation;
 prototype measurements cannot establish release performance.}
 \label{tab:release}
@@ -367,7 +372,7 @@ loaded imports and replays local declarations, whereas \texttt{--fresh}
 replays the imported final constant map sequentially
 \cite{lean434CheckerSource2026}.
 ProofServe's dependency-ordered per-module ledger is a third boundary.
-The evaluation reports complete command costs and common-scope acceptance;
+The evaluation reports complete command costs and policy-qualified common-scope acceptance;
 unmatched work is identified before considering speedup ratios.
 
 An independent kernel offers another performance/trust tradeoff.
@@ -487,11 +492,11 @@ The artifact is at \url{https://github.com/yunwei37/proofserve}.
 Run \texttt{proofserve check /path/to/project}, then
 \texttt{proofserve audit /path/to/project}; build the native entry point with
 \texttt{cd checker; lake build}.
-The evidence map retains revisions, raw outcomes and clock definitions.
+The evidence map retains revisions, outcomes and clocks.
 \path{docs/paper/generate_census.py} and
-\path{docs/paper/generate_system.py} generate the figures and tables from
-committed CSVs after full-campaign completion, retaining failed/blocked outcomes.
-Preview output cannot populate the manuscript.
+\path{docs/paper/generate_system.py} generate figures and tables from
+committed CSVs. Census generation waits for completion, retaining failures
+and blockers.
 
 \section{Limitations and related work}
 Selected cost differences do not define a universal two-class law.

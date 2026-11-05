@@ -8,7 +8,7 @@ The two-day closure instruction supersedes the former November target. Deliver t
 
 | Deadline or budget | Owner and handoff |
 |---|---|
-| 5 November, 06:00 | M freezes the checker; retain known limitations and review status. |
+| 5 November, 06:00 | M's native freeze is e000ed62, replacing e1557c77; retain its shared-checked/strict policy and review limits. |
 | 5 November, 12:00 | Root finishes all paper prose and figure/table scripts; only returned numbers remain to integrate. |
 | 5 November, 14:00 | O finishes functional acceptance of the frozen installation. |
 | No census cutoff | W runs the full-corpus compilation campaign to its natural terminal; enumerate successful, genuinely failed, blocked and configuration units. |
@@ -39,6 +39,10 @@ The earlier 1–2 day estimate is a planning estimate, not a running campaign du
 Section 3.2 uses the prepared census-result structure; it does not present the sample extrapolation as the forthcoming census total. Report that the total-instruction gate failed without changing its thresholds. Cross-module comparisons use user-mode instructions, explicitly identified as a criterion selected after observing the gate results. Report P-core and E-core CPU seconds separately, without conversion, and wall time as an observation of this machine and configuration. This is not a passing replacement gate or hardware-independent cost scale.
 
 M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's full-library original-kernel attempt is optional and has unknown completion coverage. The paper must admit partial scope or an explicit not-attempted disposition, with the 17:00 hard stop above; its absence does not block the paper.
+
+The frozen checker is e000ed62. Default shared-checked reuse may accept a crafted proof through another module's kernel-checked same-interface theorem body when official original-context replay rejects it. The proposition remains derivable in the checked shared closure with its reported axioms; original artifact-context parity is a different guarantee. Use --strict-theorem-bodies for the theorem-body-context agreement route, retaining other documented official/IR differences. Measure any strict cost only in the final matrix and keep policy-specific rows separate; old e155 isolation previews are not new-strict costs. Two read-only reviews have regression repairs, but the repaired source has no independent runtime review.
+
+W's completion estimate is 5 November, 17:00–18:00 UTC, a planning estimate rather than a cutoff or returned result. Root's 12:00 prose/script milestone is prepared; final numerical integration follows actual completion and the sequential measurements.
 
 Existing installed external check/audit cases and package/container CI remain versioned functional evidence and dated cost observations. Different proof obligations do not support a speedup ratio. Final system results must identify committed tool and input revisions and keep CPU/wall clocks separate.
 

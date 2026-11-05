@@ -353,3 +353,63 @@ must identify the actual policy/source, its review and returned controls.
 No final freeze, release acceptance or new performance number is inferred
 from the historical e155 freeze declaration. Root changed no foreign source,
 started no native run and left the manuscript's performance slots untouched.
+
+
+## Frozen shared-checked policy: e000ed62 (5 November)
+
+The coordinator confirms e000ed62 as the native freeze, replacing e1557c77.
+Root read [theorem-body-policy](../../checker/results/theorem-body-policy/README.md),
+its freeze/qualification/oracle records and the committed 26-row official
+comparison table. Git's introducing commit resolves to e000ed62; all seven
+native/build Git blobs match its freeze record. No independent runtime review
+is inferred from this source binding or the implementation-line controls.
+
+Default shared-checked retains a kernel-checked same-interface theorem body.
+A crafted artifact whose proof succeeds only by depending on another module's
+body can be accepted while official replay rejects it in its own import
+context. The proposition remains derived from kernel-checked proofs relative
+to the checked shared closure and its reported axioms, under the documented
+kernel/reader/coordinator/checkpoint trust assumptions. This is checked-closure
+derivability, not original serialized-proof/context equivalence.
+--strict-theorem-bodies selects isolation for matching theorem-body-context
+behavior; other documented IR/artifact/operational differences remain.
+
+Root directly read contract3-2628/results.json in
+/workspaces/.agent-state/gpu-smt-captures/checker-body-policy-20261105:
+the supplied swapped-body native row is complete/0 under shared-checked,
+strict rejects/1 and both official modes return 1. This is the declared policy
+difference, not a claim that the fixture's serialized proof now passes official.
+The 26-row table has exactly that supplied new default-accept/official-reject
+case; it is a finite fixture scope, not universal parity. Two read-only reviews
+have regression repairs; the repair has no independent runtime review.
+Original old-certificate execution findings remain historical facts.
+
+The frozen tool explicitly checks duplicate bodies that upstream replay may
+skip, without putting temporary checking names into the frontier or adding an
+axiom. Receipts and state identities bind the selected policy; ABI 6 /
+independent-closures v8 invalidates older state. Root read the two real new
+receipts: shared-checked, ABI 6, 1,330/3,793 unique accepts and no rejection.
+Their timing values remain background-load previews, not final paper numbers.
+
+The rejected e155 isolation policy raised Grid module-local classifications
+from 157 to 3,465. The coordinator's approximate 2.27 CPU factor corresponds
+to its complete-segment accounting (3370.427492 / 1485.572441); whole-attempt
+accounting includes interruption and repeated work. Neither is a measured
+cost of the new strict executable, which also adds explicit duplicate-body
+checks. Strict CPU/wall cost in the paper must come from returned final matrix
+rows of the same tool/input/worker configuration.
+
+generate_system.py now keeps theorem-body policies separate in native and
+external summaries, labels default/strict table rows D/S, and exports matched
+strict/default CPU and wall ratios of medians when actual paired groups exist.
+Missing strict points produce no invented costs. Existing preview rows plus
+explicitly synthetic policy labels tested separation, no cross-commit pairing,
+preview isolation and TeX compilation; they are adapter tests, not strict
+measurements, and their numbers do not enter the manuscript.
+
+W's 5 November 17:00–18:00 UTC finish is the coordinator's estimate, not an
+observed terminal, a cutoff, or an added time limit. Root's prose/scripts are
+ready before its 12:00 milestone; actual census and final performance figures
+remain pending.
+
+The completed policy update compiles to six pages / 101,629 bytes in 2.595 seconds on CPUs 8–9, with two figures/two tables/14 citation keys, zero missing/measured/partialev/unproven macros and no overfull/undefined-reference warning. Pages 1–2 are unchanged renderings; pages 3–6 were visually self-reviewed, including the final removal of an orphaned artifact line. The default/strict table adapters compiled without overfull boxes; explicit receipt metadata takes precedence over command-key aliases, and repeated generation clears stale strict-cost files when no such points are supplied. All adapter validation numbers remain outside the manuscript. No new native experiment, independent runtime review or final performance result is claimed.
