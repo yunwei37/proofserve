@@ -490,3 +490,30 @@ remain scoped previews, AI whole CPU stays blank and no system-ready marker
 is produced. Raw data, both timeouts and earlier archived cases remain retained.
 Clean packaging-source provenance, final portable acceptance and the post-census
 timing run remain pending.
+
+
+### O result publication and manuscript update
+
+O committed the preview source changes and small results as 420dc9d6.
+The earlier statement that they were uncommitted describes root's initial
+observation; the test-time dirty-input provenance remains true and is not
+rewritten as a clean immutable release. The package report explicitly says
+no new adversarial case was constructed. Its existing valid-fixture strict
+checks are functional forwarding controls, not a new independent soundness
+review.
+
+The manuscript now describes this e000-native portable archive/container
+functional qualification instead of only the earlier adf816ae CI.
+It includes no preview timing or new performance-table value; fresh-state
+quiet-machine evaluation remains pending. The AI preview's whole CPU stays
+unknown despite the successful final continuation.
+
+The updated manuscript was compiled on root CPUs 8–9 with Tectonic:
+exit 0, 2.313 seconds, six pages / 101,636 bytes, two figures / two tables /
+14 references, with no overfull boxes, undefined citations/references or
+missing/measured/partialev/unproven macros. Root visually inspected the
+changed page 5. The other five rendered pages are byte-identical to the
+previous visually checked version. This is root layout self-review, not an
+independent paper review or completion of the pending final measurements.
+The initial expanded wording produced seven pages and was shortened before
+publication without changing the qualification boundaries or measured values.

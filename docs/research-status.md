@@ -20,7 +20,7 @@ The completed compilation campaign lists genuine failed and blocked modules indi
 
 - [Sample package](../data/openai-math-4eaee875/README.md): 42/42 original costs, estimated compiler work 279.12 CPU-hours, fragile nominal interval 95.18–463.06. The independent precision panel remains separate.
 - [Historical installed checks](../data/external-projects/results.md): three cases with common-local-root parity, separate costs and retained official resource failures. Package/container CI passed finite controls; proof obligations differ.
-- [e000 portable functional preview](paper/evidence.md#e000-preview-package-and-container-completion-5-november): relocated archive, check/audit on three projects and a network-disabled container returned successfully. Local-root parity is 105/12/9; native closures are 754/2,368/10,753. CLI/packaging source was dirty and the AI case resumed after two timeouts with whole CPU unknown. Clean release acceptance and final timing remain pending.
+- [e000 portable functional preview](paper/evidence.md#e000-preview-package-and-container-completion-5-november): relocated archive, check/audit on three projects and a network-disabled container returned successfully. Local-root parity is 105/12/9; native closures are 754/2,368/10,753. O published the source/results in 420dc9d6; test-time CLI/packaging inputs were dirty, and the AI case resumed after two timeouts with whole CPU unknown. Clean release acceptance and final timing remain pending.
 - [Checker policy and reviews](../checker/results/theorem-body-policy/README.md): e000ed62 is frozen with shared-checked default and --strict-theorem-bodies. Default can differ from official on crafted body-dependent artifacts while preserving checked-closure derivability. Two read-only reviews have regression repairs; no independent runtime review of the repair is claimed. Strict costs and final performance await the final matrix.
 - [Six-page paper](paper/main.tex): prose and scripts require the completed census with enumerated real failures/blockers; optional library checking may be partial or not attempted. No PlanarPacking comparison remains. Six pages including references, zero missing macros and all-page visual self-review are verified; final numbers remain pending without preview values.
 
@@ -29,3 +29,10 @@ The nealmcb report's 13.8-hour cloud wall measurement and 26-module CPU extrapol
 [Plan](research-plan.md) · [Evidence and protocol](paper/evidence.md) · [Result index](../research/README.md)
 
 Root maintains documentation without another collector or owner implementation changes. No external publication is authorized; a later host outage still means preserve the scene and wait for the user.
+
+
+The e000 functional-preview manuscript update remains six pages (101,636 bytes),
+two figures / two tables / 14 references and zero evidence-placeholder macros.
+CPU 8–9 compilation succeeded; changed page 5 was visually checked and the
+other pages match the prior checked render. Final timing and full-census
+numbers remain pending; no preview costs were inserted.
