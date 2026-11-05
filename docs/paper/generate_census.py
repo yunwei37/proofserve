@@ -3,6 +3,7 @@
 import argparse
 import ast
 import csv
+from datetime import datetime
 import gzip
 import json
 import math
@@ -54,14 +55,88 @@ def counter(row, pool):
     return count, number(coverage)
 
 
+
+def phase_id(value):
+    if value in (None, ""):
+        return None
+    text = str(value).lower().replace("phase", "").replace("segment", "").strip(" -_")
+    if text not in {"1", "2"}:
+        raise ValueError("unknown census admission phase: " + str(value))
+    return text
+
+
+def instant(value):
+    if not value:
+        return None
+    result = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if result.tzinfo is None:
+        raise ValueError("phase timestamps need an explicit timezone")
+    return result
+
+
+def load_phases(path, outcome, preview):
+    raw = json.loads(path.read_text()) if path and path.exists() else outcome.get("phases", [])
+    if isinstance(raw, dict):
+        raw = raw.get("phases", [])
+    phases = []
+    for item in raw:
+        phase = phase_id(first(item, "phase", "id", "segment"))
+        wall = number(first(item, "machine_wall_s", "wall_s", "elapsed_s"))
+        if wall is None and item.get("end_monotonic_s") is not None:
+            wall = number(float(item["end_monotonic_s"]) - float(item["start_monotonic_s"]))
+        phases.append(dict(phase=phase, machine_wall_s=wall,
+                           start_utc=item.get("start_utc"), end_utc=item.get("end_utc"),
+                           admission_policy=item.get("admission_policy"),
+                           measurement_commits=item.get("measurement_commits", [])))
+    ids = [item["phase"] for item in phases]
+    if len(ids) != len(set(ids)) or None in ids:
+        raise ValueError("duplicate or unnamed admission phases")
+    if not preview and (set(ids) != {"1", "2"} or
+                        any(item["machine_wall_s"] is None for item in phases)):
+        raise ValueError("final two-phase reporting needs both measured phase-wall intervals")
+    phases.sort(key=lambda item: item["phase"])
+    for item in phases:
+        start, end = instant(item["start_utc"]), instant(item["end_utc"])
+        if (start is None) != (end is None) or (start and end < start):
+            raise ValueError("incomplete or reversed phase timestamp interval")
+    if len(phases) == 2 and phases[0]["end_utc"] and phases[1]["start_utc"]:
+        if instant(phases[0]["end_utc"]) > instant(phases[1]["start_utc"]):
+            raise ValueError("phase-wall intervals overlap; do not double count campaign wall")
+    return phases
+
+
+def assign_phase(row, phases, preview):
+    if row["phase"] is None:
+        start, end = instant(row["start_utc"]), instant(row["end_utc"])
+        candidates = [item["phase"] for item in phases
+                      if start and end and item["start_utc"] and item["end_utc"]
+                      and instant(item["start_utc"]) <= start <= end <= instant(item["end_utc"])]
+        if not candidates:
+            candidates = [item["phase"] for item in phases
+                          if row["measurement_commit"] and
+                          row["measurement_commit"] in item["measurement_commits"]]
+        if len(candidates) == 1:
+            row["phase"] = candidates[0]
+    if row["phase"] is not None and phases and row["phase"] not in {x["phase"] for x in phases}:
+        raise ValueError("observation refers to an absent phase")
+    if row["status"] == "completed" and row["phase"] is None and not preview:
+        raise ValueError("successful module lacks an unambiguous admission phase")
+    # Unphased old previews stay explicitly unassigned, never relabelled phase 1.
+    row["phase"] = row["phase"] or "unassigned"
+
+
 def normalize(row):
     pool = first(row, "pool", "cpu_class")
-    if pool not in {"P", "E"}:
+    if pool not in {"P", "E"} and row["status"] == "completed":
         raise ValueError("explicit P/E pool required for " + row.get("module", "?"))
     user = number(first(row, "user_cpu_s", "user_s"))
     system = number(first(row, "system_cpu_s", "system_s"))
-    instructions, coverage = counter(row, pool)
+    instructions, coverage = counter(row, pool) if pool in {"P", "E"} else (None, None)
     return dict(module=row["module"], pool=pool, status=row["status"],
+                phase=phase_id(first(row, "phase", "census_phase", "segment")),
+                start_utc=row.get("start_utc"), end_utc=row.get("end_utc"),
+                sequence=row.get("sequence"), interruption=row.get("interruption"),
+                log=row.get("log"), source_sha256=row.get("source_sha256"),
                 returncode=first(row, "returncode", "exit"),
                 attempt=first(row, "attempt", "sequence"),
                 cpu_s=None if user is None or system is None else user + system,
@@ -70,8 +145,8 @@ def normalize(row):
                 user_instructions=instructions, instruction_coverage=coverage,
                 source_revision=row.get("source_revision", ""),
                 measurement_commit=row.get("measurement_commit", ""),
-                kernel_marked=first(row, "kernel_marked", "marker"),
-                default_covered=row.get("default_covered"))
+                kernel_marked=first(row, "kernel_marked", "marker", "marked"),
+                default_covered=first(row, "default_covered", "default_graph"))
 
 
 def quantile(values, p, presorted=False):
@@ -82,7 +157,7 @@ def quantile(values, p, presorted=False):
 
 
 def emit(path, records):
-    keys = list(dict.fromkeys(key for row in records for key in row))
+    keys = list(dict.fromkeys(key for row in records for key in row)) or ["module", "phase", "pool", "status"]
     with path.open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=keys, lineterminator="\n")
         writer.writeheader()
@@ -100,6 +175,8 @@ def main():
     parser.add_argument("--preview-json", type=Path, help="W's functional attempts.json; requires --preview")
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--preview", action="store_true")
+    parser.add_argument("--phases", type=Path, help="published phase wall/provenance JSON; defaults to phases.json or outcomes phases")
+    parser.add_argument("--failed-attempts", type=Path, help="separate published unsuccessful-attempt ledger")
     parser.add_argument("--tectonic", default=os.environ.get("TECTONIC"),
                         help="optional Tectonic executable; compiles the generated scientific figure")
     args = parser.parse_args()
@@ -125,12 +202,28 @@ def main():
     values = list(completed.values())
     outcome_file = args.data / "outcomes.json"
     outcome = json.loads(outcome_file.read_text()) if outcome_file.exists() else {}
+    if args.phases and not args.phases.is_file():
+        raise ValueError("explicit phase ledger does not exist")
+    phase_file = args.phases or args.data / "phases.json"
+    phases = load_phases(phase_file, outcome, args.preview)
+    for row in observations:
+        assign_phase(row, phases, args.preview)
+    failed_source = args.failed_attempts
+    if failed_source is None:
+        failed_source = next((args.data / name for name in ("failed-attempts.csv.gz", "failed-attempts.csv")
+                              if (args.data / name).exists()), None)
+    unsuccessful = ([normalize(row) for row in rows(failed_source)] if failed_source else
+                    [row for row in observations if row["status"] not in {"completed", "configuration", "blocked", "not_attempted"}])
+    for row in unsuccessful:
+        if row["status"] == "completed":
+            raise ValueError("unsuccessful-attempt ledger contains a successful module")
+        assign_phase(row, phases, args.preview)
     failed_rows = [dict(module=item, status="failed") if isinstance(item, str) else item
                    for item in outcome.get("failed", [])]
     blocked_rows = [dict(module=item, status="blocked") if isinstance(item, str) else item
                     for item in outcome.get("blocked", [])]
     configuration = outcome.get("configuration_units", [])
-    classifications = ([dict(module=name, status="completed") for name in completed] +
+    classifications = ([dict(module=name, status="completed", phase=completed[name]["phase"]) for name in completed] +
                        [dict(module=name, status="configuration") for name in configuration] +
                        failed_rows + blocked_rows)
     if not args.preview:
@@ -158,55 +251,65 @@ def main():
     args.out.mkdir(parents=True, exist_ok=True)
     prefix = "preview-" if args.preview else ""
     emit(args.out / (prefix + "census-modules.csv"), observations)
+    emit(args.out / (prefix + "census-failed-attempts.csv"), unsuccessful)
     if classifications:
         emit(args.out / (prefix + "census-outcomes.csv"), classifications)
     summaries = []
-    for pool in ("P", "E"):
-        group = [row for row in values if row["pool"] == pool]
-        cpu = [row["cpu_s"] for row in group if row["cpu_s"] is not None]
-        wall = [row["wall_s"] for row in group if row["wall_s"] is not None]
-        inst = [row["user_instructions"] for row in group if row["user_instructions"] is not None]
-        summaries.append(dict(pool=pool, completed_modules=len(group),
-            cpu_observed_modules=len(cpu), cpu_s=math.fsum(cpu) if cpu else None,
-            cpu_hours=math.fsum(cpu) / 3600 if cpu else None,
-            native_wall_observed_modules=len(wall), summed_native_wall_s=math.fsum(wall) if wall else None,
-            user_instruction_observed_modules=len(inst),
-            user_instructions=sum(inst) if inst else None,
-            user_instructions_median=statistics.median(inst) if inst else None,
-            user_instructions_p95=quantile(inst, .95) if inst else None,
-            failed_or_interrupted_attempts=sum(row["pool"] == pool and row["status"] != "completed"
-                                              for row in observations)))
+    phase_ids = sorted({row["phase"] for row in values} | {item["phase"] for item in phases})
+    for phase in phase_ids:
+        for pool in ("P", "E"):
+            group = [row for row in values if row["phase"] == phase and row["pool"] == pool]
+            cpu = [row["cpu_s"] for row in group if row["cpu_s"] is not None]
+            wall = [row["wall_s"] for row in group if row["wall_s"] is not None]
+            inst = [row["user_instructions"] for row in group if row["user_instructions"] is not None]
+            summaries.append(dict(phase=phase, pool=pool, completed_modules=len(group),
+                cpu_observed_modules=len(cpu), cpu_s=math.fsum(cpu) if cpu else None,
+                cpu_hours=math.fsum(cpu) / 3600 if cpu else None,
+                native_wall_observed_modules=len(wall), summed_native_wall_s=math.fsum(wall) if wall else None,
+                user_instruction_observed_modules=len(inst),
+                user_instructions=sum(inst) if inst else None,
+                user_instructions_median=statistics.median(inst) if inst else None,
+                user_instructions_p95=quantile(inst, .95) if inst else None,
+                failed_or_interrupted_attempts=sum(row["pool"] == pool and row["phase"] == phase
+                                                  for row in unsuccessful)))
     emit(args.out / (prefix + "census-summary.csv"), summaries)
+    phase_summaries = [dict(**item,
+        completed_modules=sum(row["phase"] == item["phase"] for row in values),
+        failed_or_interrupted_attempts=sum(row["phase"] == item["phase"] for row in unsuccessful))
+        for item in phases]
+    emit(args.out / (prefix + "census-phases.csv"), phase_summaries)
+    machine_wall_s = (math.fsum(item["machine_wall_s"] for item in phases)
+                      if phases and all(item["machine_wall_s"] is not None for item in phases) else None)
     groups = []
     for field in ("kernel_marked", "default_covered"):
         for label in sorted({str(row[field]) for row in values if row[field] is not None}):
-            for pool in ("P", "E"):
-                selected = [row for row in values if str(row[field]) == label and row["pool"] == pool]
+            for phase, pool in [(phase, pool) for phase in phase_ids for pool in ("P", "E")]:
+                selected = [row for row in values if str(row[field]) == label and row["pool"] == pool and row["phase"] == phase]
                 known = [row["cpu_s"] for row in selected if row["cpu_s"] is not None]
-                groups.append(dict(field=field, label=label, pool=pool, modules=len(selected),
+                groups.append(dict(field=field, label=label, phase=phase, pool=pool, modules=len(selected),
                                    cpu_observed_modules=len(known),
                                    cpu_hours=math.fsum(known) / 3600 if known else None))
     if groups:
         emit(args.out / (prefix + "census-groups.csv"), groups)
     curves = []
-    for metric, label in (("user_instructions", "All-user-instructions"), ("cpu_s", "P"), ("cpu_s", "E")):
+    cpu_labels = [f"{phase}-{pool}" for phase in phase_ids for pool in ("P", "E")]
+    for metric, label in [("user_instructions", "All-user-instructions")] + [("cpu_s", label) for label in cpu_labels]:
         xs = [row[metric] for row in values if row[metric] is not None and row[metric] > 0
-              and (label == "All-user-instructions" or row["pool"] == label)]
+              and (label == "All-user-instructions" or label == row["phase"] + "-" + row["pool"])]
         if xs:
             xs.sort()
             for i in range(1001):
                 curves.append(dict(metric=metric, pool=label, quantile=i / 1000,
                                    value=quantile(xs, i / 1000, presorted=True)))
     emit(args.out / (prefix + "census-quantiles.csv"), curves)
-    # Separate PGFPlots input files keep the figure dependency-free at generation time.
-    for label in ("All-user-instructions", "P", "E"):
+    for label in ["All-user-instructions", *cpu_labels]:
         emit(args.out / (prefix + "curve-" + label + ".csv"),
              [row for row in curves if row["pool"] == label] or
              [dict(metric="", pool=label, quantile="", value="")])
-    table = [r"\begin{tabular}{lrrr}", r"\toprule",
-             r"Pool & Native modules & Observed CPUh & CPU observations\\", r"\midrule"]
+    table = [r"\begin{tabular}{llrr}", r"\toprule",
+             r"Phase / pool & Native modules & CPUh & CPU observations\\", r"\midrule"]
     for row in summaries:
-        table.append(f'{row["pool"]} & {row["completed_modules"]:,} & '
+        table.append(f'{row["phase"]}/{row["pool"]} & {row["completed_modules"]:,} & '
                      f'{tex_number(row["cpu_hours"])} & {row["cpu_observed_modules"]:,}'+r"\\")
     table += [r"\bottomrule", r"\end{tabular}"]
     (args.out / (prefix + "census-table.tex")).write_text("\n".join(table) + "\n")
@@ -214,7 +317,7 @@ def main():
     for metric, title in (("user_instructions", "User-mode instructions"),
                           ("cpu_s", "Native CPU seconds")):
         plots = []
-        labels = ["All-user-instructions"] if metric == "user_instructions" else ["P", "E"]
+        labels = ["All-user-instructions"] if metric == "user_instructions" else cpu_labels
         for label in labels:
             if any(row["pool"] == label for row in curves):
                 plots += [r"\addplot table[x=value,y=quantile,col sep=comma] {" +
@@ -247,7 +350,11 @@ def main():
                     missing_values="blank, never zero-filled",
                     instruction_coverage_values={pool: sorted({row["instruction_coverage"] for row in values if row["pool"] == pool and row["instruction_coverage"] is not None}) for pool in ("P", "E")},
                     plot="1001 interpolated empirical quantiles per curve",
-                    machine_wall_s=outcome.get("machine_wall_s"))
+                    machine_wall_s=machine_wall_s,
+                    phase_wall_scope="sum of measured phase intervals, including drains/retries; no summed native-wall substitution",
+                    phases=phase_summaries, phase_source=str(phase_file),
+                    unsuccessful_attempt_source=str(failed_source) if failed_source else str(source),
+                    outcome_machine_wall_s=outcome.get("machine_wall_s"))
     (args.out / (prefix + "census-provenance.json")).write_text(json.dumps(manifest, indent=2) + "\n")
     if not args.preview:
         macros = [r"\def\CensusNativeModules{" + f"{len(values):,}" + "}",
@@ -259,8 +366,17 @@ def main():
                   r"\CensusSourceUnits{} source units: \CensusNativeModules{} successfully costed native modules, "
                   r"\CensusConfigurationUnits{} configuration units, \CensusFailedModules{} genuinely failed modules "
                   r"and \CensusBlockedModules{} blocked modules.}"]
-        for row in summaries:
-            macros.append(r"\def\Census" + row["pool"] + "CPUHours{" + tex_number(row["cpu_hours"]) + "}")
+        phase_text = []
+        for item in phase_summaries:
+            group = {row["pool"]: row for row in summaries if row["phase"] == item["phase"]}
+            phase_text.append("Phase " + item["phase"] + ": " +
+                f'{item["completed_modules"]:,}' + " successful modules, " +
+                tex_number(group["P"]["cpu_hours"]) + " P-core CPUh and " +
+                tex_number(group["E"]["cpu_hours"]) + " E-core CPUh, " +
+                tex_number(item["machine_wall_s"] / 3600) + " machine wall-hours.")
+        phase_text.append("Total measured phase wall: " + tex_number(machine_wall_s / 3600) +
+                          " hours; retry/drain time is included, handoff gaps are separate.")
+        macros.append(r"\def\CensusPhaseSummary{" + " ".join(phase_text) + "}")
 
     if args.tectonic:
         executable = shutil.which(args.tectonic) or args.tectonic

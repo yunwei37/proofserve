@@ -550,3 +550,30 @@ overfull or undefined warnings and no missing/measured/partialev/unproven
 macros. Root visually reviewed all six rendered pages. No census progress,
 new CPU/wall result or admission-policy benefit was inserted. The actual
 switch timestamp remains pending W's execution ledger.
+
+
+### Phase-aware result generator
+
+The census adapter now labels successful costs and coverage/marker joins by
+admission phase and P/E pool, generates four CPU-distribution curves and a
+phase-wall ledger, and sums only recorded phase machine intervals. It reads
+a separately published unsuccessful-attempt ledger, retaining interruption
+identity without adding those observations to successful-module costs.
+Configuration/blocked rows need no made-up pool or zero cost.
+
+The documented normalized phases input is an adapter interface, not a claim
+that W has already published its final schema or executed the switch.
+Explicit phase IDs, unambiguous recorded UTC windows or phase-specific
+measurement commits can bind successful rows. Missing phase identities,
+overlapping wall intervals and early-stop outcomes cannot produce final
+two-phase reporting. The full-campaign completion requirement is retained.
+
+Validation at paper-result-generators-20261104/two-phase-adapter-validation
+under the existing paper recovery PVC directory uses twenty real retained
+unreplicated gate rows plus explicitly synthetic phase labels, wall intervals,
+outcomes and interrupted rows. Root independently recomputed each phase/P-E
+CPU sum; unsuccessful rows do not enter them. The four-curve figure compiled;
+unassigned phases, overlap and early-stop cases were refused. Preview created
+no publication marker, and the five-module functional trial kept absent
+costs blank. These are adapter checks, not new native experiments or census
+measurements, and none of their numbers enters the manuscript.

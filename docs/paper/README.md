@@ -19,12 +19,42 @@ explicit; P and E CPU are never summed or converted. Successful modules are
 unique; failures/interruption rows remain in the exported observations.
 Summed native wall is labelled separately from machine elapsed wall.
 
-Outputs include per-pool summary CSV, a booktabs table, a PGFPlots figure,
+Outputs include per-phase/per-pool summary CSV, a booktabs table, a PGFPlots figure,
 1,001 empirical quantiles per curve, provenance, and, after successful figure compilation, census-ready.tex.
 Tectonic is optional for data/TeX generation; --tectonic compiles the figure.
 Final output requires W's exhausted full-campaign cost-measurement terminal and
 matching successful/configuration/failed/blocked coverage. This is publication input validation,
 not a new experimental threshold or a claim that the failed gate passed.
+
+The two admission phases are separate reporting conditions. Supply the
+published phase ledger with --phases /path/to/phases.json (default:
+census/phases.json, or phases inside outcomes.json). Each phase entry names
+phase (1 or 2), measured machine_wall_s, admission_policy, and optional
+start_utc/end_utc and measurement_commits. A monotonic interval can instead
+supply start_monotonic_s/end_monotonic_s. These are adapter field names:
+if W publishes a different layout, normalize the actual published ledger
+without inventing times, policy parameters or phase assignments.
+
+Successful module rows use phase/census_phase/segment, or are assigned only
+by an unambiguous published start/end interval or phase-specific measurement
+commit. Legacy unphased previews remain unassigned. Final generation needs
+both measured phase intervals and a phase for every successful cost;
+overlapping intervals cannot be added as independent machine wall.
+
+census-summary.csv groups phase and P/E pool. census-phases.csv retains phase
+policy, clocks and attempt counts; total machine wall sums phase intervals,
+including their drains/retries, while any handoff gap remains separate.
+Native-module wall sums are a different clock. CPU curves separate all four
+phase/pool combinations; cross-module instructions use one empirical curve
+under the disclosed post-result user-mode criterion. Phase assignment does
+not establish a new invariance result or remove the failed gate.
+
+The actual separate failed-attempts.csv[.gz] ledger is read automatically,
+or selected with --failed-attempts. census-failed-attempts.csv retains its
+identities, interruption fields and recorded observations, but these never
+enter successful-module CPU or distribution sums. Configuration/blocked
+rows need no invented pool or cost. Current W field aliases marked and
+default_graph retain source-proxy/coverage joins by phase and pool.
 
 The campaign has no time cutoff. Final generation waits for its natural terminal:
 full_census and cost_measurement must be true, stop must be null, and disjoint
@@ -123,3 +153,12 @@ Completion-mode validation: the retained numerical records plus explicitly synth
 Policy-adapter validation: real preview rows plus explicitly synthetic strict labels exercised separate default/strict repeat groups, same-configuration CPU/wall ratios, no pairing across commits, isolated external policy rows, preview-only markers and refusal in final mode. Both table fragments compiled. These copied costs test grouping only; they are not strict-mode measurements and are not included in the paper.
 
 The current post-census fixture export was also adapted in preview mode: both strict-key groups are recognized and the archived launch-126 row remains separate from one-observation point summaries. Final mode refuses its paper_eligible=false acceptance sidecar before considering timing medians. No fixture value is used as a real workload result.
+
+Two-phase adapter validation uses twenty retained unreplicated gate records
+with explicitly synthetic phase labels, clocks and terminal/failure metadata.
+Independent per-phase/P-E CPU sums agree; two synthetic interrupted attempts
+are retained but excluded from successful costs. The four-curve figure
+compiles. Unassigned successful phases, overlapping wall intervals and early
+stops are refused; old five-module functional inputs retain blank costs and
+preview creates no ready marker. All adapter outputs stay outside Git and
+none of these clocks or phase labels is a census result.

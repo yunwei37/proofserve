@@ -49,3 +49,9 @@ root has not yet observed the executed switch. CPU and machine wall will be
 reported by phase, with separate P/E CPU and a sum of measured phase walls.
 The new finish estimate is around 6 November, 03:00 UTC, not a cutoff.
 No full-census numbers or new admission-policy benefit is claimed now.
+
+The census generator is prepared for two-phase/P-E costs, separate phase wall
+and failed/interrupted-attempt exports. Adapter validation used retained
+numerical records plus explicitly synthetic phase metadata, not census
+results. The current two-phase manuscript is six pages / 101,369 bytes,
+two figures / two tables / 14 references with no evidence-placeholder macros.
