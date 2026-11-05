@@ -5,6 +5,8 @@
 \title{Checking or Recomputing? Two Cost Regimes in\\Verifying AI-Generated Formal Artifacts}
 \author{Anonymous}
 \date{}
+\providecommand{\CensusAtCutoff}{0}
+\IfFileExists{generated/census/census-ready.tex}{\input{generated/census/census-ready.tex}}{}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -16,9 +18,14 @@ audit tool. Matched target windows retain 80.28--82.35\% of source-compilation
 wall time for two computational certificates, versus 0.46--6.54\% for two
 ordinary controls. Across 31 module-process pairs, the median checker/compiler
 CPU ratio is 0.451, with overlapping source-proxy classes.
-A dependency-ordered measured prefix covers 128,331 of 163,096 modules
-(78.7\%): 134.7 P-core and 256.7 E-core CPU-hours are separate observed-work
-lower bounds, not a full-library estimate. The missing tail is not imputed. The full-frame import graph omits 19.78\% of source files and 33.30\%
+\ifnum\CensusAtCutoff=1
+\CensusScopeSummary{} Observed P/E work supplies separate lower bounds,
+not a full-library estimate.
+\else
+A two-admission-segment campaign will report modules completed by
+6 November, 03:00 UTC; final coverage is pending.
+\fi
+The missing tail is not imputed. The full-frame import graph omits 19.78\% of source files and 33.30\%
 of lexical kernel-decision sites. ProofServe combines dependency-aware
 parallel replay, restartable segments and receipts recording scope, axioms
 and costs. Its contribution is a usable integration of established
@@ -80,12 +87,14 @@ summary to \texttt{1cc14067}. Historical replay measurements explain cost
 boundaries; system performance must come from committed release-tool results
 in \path{checker/results/} and \path{data/external-projects/}.
 
-Compilation used eight P and fourteen E cores with 22-slot admission,
-memory-reserve drains and exclusive retries. This account freezes the first segment at retirement;
-later continuation is outside this snapshot.
+Compilation uses eight P and fourteen E cores and unchanged
+\texttt{-j8} commands. Segment 1 has fixed 22-slot admission with reserve
+drains/exclusive retry. Segment 2 uses memory/headroom admission and defers
+high-memory families/dependents. Only completions by 6 November, 03:00 UTC
+enter the final report; later drain is separate.
 The total-instruction gate failed: median 1.33\% and P95 3.15\% exceeded
-unchanged 1\%/3\% criteria. Cross-module comparison uses user-mode
-instructions, chosen after those results. P/E CPU is unconverted.
+unchanged 1\%/3\% criteria. User-mode comparison was chosen afterwards;
+P/E CPU is unconverted.
 
 \section{Two costs and observed library work}\label{sec:costs}
 \subsection{Computational certificates retain work}
@@ -150,32 +159,36 @@ whole-closure checker numerator. Its independent reference controls remain
 pending. This denominator change illustrates why a single ratio cannot
 stand for every boundary.
 
-\subsection{Observed compilation work and its limits}
-\IfFileExists{generated/census/census-ready.tex}{%
-\input{generated/census/census-ready.tex}
-\CensusScopeSummary{}
-\CensusObservedSummary{}
-}{%
-The stopped ledger covers 128,331 of 163,096 executable modules (78.7\%);
-34,765 remain unmeasured. Exact artifact integration is pending.
-}
+\subsection{Cutoff-completed work and its limits}
+\ifnum\CensusAtCutoff=1
+\CensusScopeSummary{} \CensusObservedSummary{}
+\CensusSegmentSummary{}
+\else
+Final $N$ counts modules completed by 6 November, 03:00 UTC across both
+admission segments; that terminal ledger has not returned.
+For reference, the retained first-segment snapshot covers 128,331 of
+163,096 modules (78.7\%), 134.7 P / 256.7 E CPU-hours and 24.62 wall-hours.
+These are not final cutoff figures.
+\fi
 
-The successful set finishes in dependency order, not by random sampling.
-Unmeasured modules occur later in dependencies and include memory-intensive
-families; their mean cost may be higher. The observed work is a lower bound,
-not a full-library cost answer. Neither the original 42 samples nor a model
-fills missing costs. Every record retains source/measurement commits,
-pool, native CPU/wall and instructions. The one configuration unit has no
-native cost. There are no final failed modules, but 65 resource-interrupted
-attempts and one transition interruption remain separate from successful costs.
-The wall boundary is 4 November 19:52:10 to 5 November 20:29:39 UTC;
-summed module wall is a different clock.
+The completed set is dependency-ordered and selectively excludes
+high-memory families and dependents, not a random sample. Missing modules
+may be more expensive; neither the original 42 samples nor a model fills
+their costs. Work by segment and P/E is a lower bound, not a full-library
+answer. Transition gaps, post-cutoff drain and summed module wall remain
+separate from the sum of segment reporting intervals.
+Deferred-by-user, failed, blocked, unattempted and late completions retain
+their actual identities; unsuccessful attempts do not enter successful costs.
 
-All distributions and cost shares below describe only observed modules.
-Among them, 5,646 marked modules contribute 20.49\% of observed P CPU and
-20.95\% of E CPU; 202 marked sources are unmeasured. The 25,828 observed
-modules outside the default graph contribute 20.16\%/19.59\% of P/E work.
-These source proxies do not identify kernel CPU phases or whole-frame shares.
+\ifnum\CensusAtCutoff=1
+\CensusGroupSummary{}
+\else
+First-segment marked modules contribute 20.49\%/20.95\% of observed P/E CPU;
+observed modules outside the default graph contribute 20.16\%/19.59\%.
+These shares and Figure~\ref{fig:census} are first-segment references only.
+\fi
+Every distribution and cost share is conditional on its observed set;
+source proxies do not identify kernel CPU phases or whole-frame cost shares.
 
 \begin{figure}[t]
 \centering
@@ -183,16 +196,17 @@ These source proxies do not identify kernel CPU phases or whole-frame shares.
 \includegraphics[width=\columnwidth]{generated/census/census-distribution.pdf}
 }{%
 \fbox{\begin{minipage}[c][3.1cm][c]{0.89\columnwidth}
-\centering
-Observed-subset distribution awaits artifact integration.\\[5pt]
-User-mode instruction quantiles and separate P/E CPU.
+\centering Observed distribution awaits returned artifacts.
 \end{minipage}}
 }
-\caption{Empirical distributions for the 128,331 measured modules only:
-user-mode instructions, selected after the failed total-instruction gate,
-and separate P/E CPU. Dependency order and the unmeasured tail prevent
-population extrapolation. Interrupted attempts supply no successful cost;
-unmeasured modules are not zero-filled.}
+\caption{\ifnum\CensusAtCutoff=1
+Distributions for modules completed by the 03:00 UTC cutoff.
+\else
+First-segment reference: 128,331 modules; final cutoff distribution pending.
+\fi
+User-mode instructions were selected after the failed gate; CPU curves
+separate P/E. Dependency order and deferral prevent extrapolation.
+Late/unsuccessful outcomes stay outside the reported successful costs.}
 \label{fig:census}
 \end{figure}
 
@@ -524,8 +538,8 @@ parallelism, receipt or serving mechanisms.
 
 \section{Conclusion}
 Matched measurements show both cheap proof checking and substantial
-certificate recomputation. The 128,331-module observed prefix yields cost lower bounds,
-not a full-library answer; unfinished work and P/E boundaries stay explicit.
+certificate recomputation. Cutoff-completed work yields lower bounds, not a full-library answer;
+unfinished work, admission segments and P/E boundaries remain explicit.
 Default coverage and repeatable verdicts answer different verification
 questions. ProofServe makes these boundaries explicit through check,
 audit and scoped receipts. Review-driven repairs strengthen the tested input and receipt boundaries;

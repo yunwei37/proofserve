@@ -800,3 +800,26 @@ pages without overfull or undefined warnings. The latter is only a future
 macro/layout check on PVC, never the delivered PDF. Final actual numbers
 will replace the first-segment reference only after the returned cutoff
 ledger is reduced and its scope rechecked.
+
+
+### Cutoff manuscript and handoff integration
+
+The manuscript now uses final N only for completed-by-cutoff modules and
+describes both admission regimes. Its existing first-segment curve and
+134.7 P / 256.7 E CPUh remain explicitly baseline references, not the final
+cutoff answer. Aggregate P/E lower bounds, segment/P-E breakdown and actual
+reporting wall populate from the returned cutoff ledger; deferrals, late
+records and unsuccessful attempts stay out of successful-cost distributions.
+
+Current PDF compilation on CPUs 8–9 returned 0 in 2.500 seconds: six pages /
+302,122 bytes, two figures / two tables / 14 references, zero evidence macros
+and no overfull/undefined warnings. Root visually reviewed all six pages.
+A separate synthetic cutoff-ready input exercised the final macro branch:
+six pages / rc0 / no overfull or undefined warnings; that validation PDF and
+its numbers are not the delivered manuscript. No final cutoff count,
+new strict cost or final system timing was fabricated.
+
+The 03:00 hard reporting boundary remains the direct instruction. The owner's
+03:30 drain configuration is separately recorded; root did not extend the
+paper cutoff, mutate that controller or presume M can time before actual
+quiet retirement. The overall 20:00 project target remains unchanged.

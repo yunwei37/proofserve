@@ -54,12 +54,14 @@ controller nor treats clock arrival as proof of quiet or a final-matrix start.
   release tables. Source binding, editable checkpoints, noncrypto identities
   and axiom-inventory limits remain explicit.
 
-The retained six-page paper includes the actual first-segment distribution,
-128,331/163,096 scope, separate lower-bound costs and observed-only marker/
-default-graph cost shares. Its small derived data and provenance are in
-docs/paper/generated/census/. The latest PDF is six pages / 301,241 bytes,
-two figures / two tables / 14 references / zero evidence-placeholder macros;
-all pages were visually reviewed. Final system numbers are still pending.
+The updated six-page manuscript now says “N completed by cutoff”, with
+two admission rules, actual segment/P-E costs and non-extrapolating scope.
+Its current 128,331 figure/shares are explicitly first-segment references,
+not final N. The future final-data branch was layout-checked only with
+synthetic validation metadata; no such values enter the delivered paper.
+Latest PDF: six pages / 302,122 bytes, two figures / two tables / 14 references,
+zero evidence-placeholder macros, no overfull/undefined warnings and all six
+pages visually reviewed. Final cutoff and system evaluation numbers remain pending.
 
 All root Workspace operations use **CPU8–9**. Main-only owned-path commits
 preserve foreign work. No public release, replacement agent/native queue,
