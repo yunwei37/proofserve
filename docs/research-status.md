@@ -12,8 +12,10 @@ This supersedes both “let it finish” and the later two-phase proposal.
 The coordinator reports 128,331/163,096 executable modules measured (78.7%),
 no final failed modules, and 34,765 unfinished modules. Reported successful
 work is 134.7 P-core CPUh and 256.7 E-core CPUh, without conversion.
-W's formal publication remains pending at root's current observation; exact
-numbers, attempts and elapsed-wall boundaries will be taken from that ledger.
+Root has independently reduced W's retained stopped-export module rows:
+134.651176 P CPUh / 256.667855 E CPUh, with an 88,649.038619-second
+supervisor interval (24.624733h). The 66 unsuccessful attempts remain
+separate from zero final failures. W's formal data commit is still pending.
 
 The measured set is dependency-ordered, not random. Later dependencies include
 memory-intensive families and may cost more. Observed costs are separate
@@ -55,11 +57,12 @@ preparation and previews; no final timing is inferred from this plan.
   release tables. Source binding, editable checkpoints, noncrypto identities
   and axiom-inventory limits remain explicit.
 
-Root is adapting the six-page prose and data generator to the confirmed stop.
-The prior 7566b449 PDF was six pages / 101,594 bytes, two figures / two tables /
-14 references and zero evidence-placeholder macros; its build record remains
-in [evidence.md](paper/evidence.md). Formal stopped data and final timing are
-not replaced by coordinator progress or validation fixtures.
+The six-page paper now includes the actual observed-prefix distribution,
+128,331/163,096 scope, separate lower-bound costs and observed-only marker/
+default-graph cost shares. Its small derived data and provenance are in
+docs/paper/generated/census/. The latest PDF is six pages / 301,210 bytes,
+two figures / two tables / 14 references / zero evidence-placeholder macros;
+all pages were visually reviewed. Final system numbers are still pending.
 
 All root Workspace operations use **CPU8–9**. Main-only owned-path commits
 preserve foreign work. No public release, replacement agent/native queue,

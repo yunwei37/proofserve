@@ -16,9 +16,9 @@ audit tool. Matched target windows retain 80.28--82.35\% of source-compilation
 wall time for two computational certificates, versus 0.46--6.54\% for two
 ordinary controls. Across 31 module-process pairs, the median checker/compiler
 CPU ratio is 0.451, with overlapping source-proxy classes.
-A library-scale campaign records P-core and E-core CPU separately,
-retaining unfinished scope and real unsuccessful outcomes; the original
-probability sample is used for calibration. The default import graph omits 19.78\% of source modules and 33.30\%
+A dependency-ordered measured prefix covers 128,331 of 163,096 modules
+(78.7\%): 134.7 P-core and 256.7 E-core CPU-hours are separate observed-work
+lower bounds, not a full-library estimate. The missing tail is not imputed. The full-frame import graph omits 19.78\% of source files and 33.30\%
 of lexical kernel-decision sites. ProofServe combines dependency-aware
 parallel replay, restartable segments and receipts recording scope, axioms
 and costs. Its contribution is a usable integration of established
@@ -39,14 +39,14 @@ agenda \cite{leanFroY4,lean435Check}. A public report on the same OpenAI
 library performs a complete cloud build and extensive independent checking
 \cite{openaiMathTooling2026}. It proposes kernel computation as an explanation
 for expensive checks from three source examples. Our empirical increment
-is a matched module-level measurement of that explanation, a per-module census with explicit condition-dependent accounting,
+is a matched module-level measurement of that explanation, an observed dependency prefix with explicit condition-dependent lower bounds,
 and a coverage analysis at a different corpus revision. Our systems contribution is ProofServe's original-kernel
 workflow and auditable receipts, evaluated through its release-form interface.
 The four questions follow these boundaries:
 \begin{description}
 \item[RQ1] How do checking costs differ between stored mathematical proofs
 and computational certificates?
-\item[RQ2] How is compilation work distributed across the pinned library?
+\item[RQ2] What work is observed in the measured dependency prefix?
 \item[RQ3] How does parallel original-kernel checking trade wall time,
 CPU work and additional trusted code?
 \item[RQ4] What do default builds, repeated verdicts and axiom receipts
@@ -54,10 +54,10 @@ establish about verification coverage?
 \end{description}
 
 \section{Method and workload}\label{sec:method}
-A per-module census and matched checking windows separate library work
-from selected-case checking behavior.
+A per-module observed ledger and matched checking windows separate
+measured library work from selected-case checking behavior.
 Our primary corpus is the published OpenAI mathematics repository
-\cite{openaiMathSource}, pinned at \texttt{4eaee875}: 163,097 source modules,
+\cite{openaiMathSource}, pinned at \texttt{4eaee875}: 163,096 executable modules plus one configuration unit,
 Lean 4.34.1 and Mathlib \texttt{d13f23b7}.
 Two original draws in each of 21 strata combine source-size percentile,
 import depth and an explicit kernel-decision marker. All 42 now have
@@ -80,15 +80,14 @@ summary to \texttt{1cc14067}. Historical replay measurements explain cost
 boundaries; system performance must come from committed release-tool results
 in \path{checker/results/} and \path{data/external-projects/}.
 
-The census keeps eight P and fourteen E cores; a proposed second
-admission phase was not launched at the latest observed stop.
-The total-instruction gate failed: median spread 1.33\% and P95 3.15\%
-exceeded unchanged 1\%/3\% criteria. Cross-module comparison uses
-user-mode instructions, chosen after those results. CPU is reported by
-phase and P/E pool without conversion; wall describes this machine and
-admission policy. Full-corpus results have not returned.
+Compilation used eight P and fourteen E cores with 22-slot admission,
+memory-reserve drains and exclusive retries. The user stopped after the
+first segment; the proposed second admission policy did not run.
+The total-instruction gate failed: median 1.33\% and P95 3.15\% exceeded
+unchanged 1\%/3\% criteria. Cross-module comparison uses user-mode
+instructions, chosen after those results. P/E CPU is unconverted.
 
-\section{Two costs and their population weight}\label{sec:costs}
+\section{Two costs and observed library work}\label{sec:costs}
 \subsection{Computational certificates retain work}
 Matched target windows show expensive replay for computational certificates
 and cheap replay for ordinary controls.
@@ -151,36 +150,32 @@ whole-closure checker numerator. Its independent reference controls remain
 pending. This denominator change illustrates why a single ratio cannot
 stand for every boundary.
 
-\subsection{Full-corpus work and its distribution}
-The frame contains 163,097 source units; observed successes, real failures,
-blocked dependencies, configuration and unattempted scope stay distinct. Records bind source and
-measurement commits, phase, P/E pool, user/system CPU, wall and user-mode
-instructions. Unsuccessful attempts remain separate; absent costs are not zero.
-The failed total-instruction gate and post-result instruction choice remain
-as described in Section~\ref{sec:method}.
-
-Phase 1 uses 22-slot admission with reserve-driven drains and exclusive
-retry. Concurrent memory interruptions in PadicHodge and related families
-from 5 November, 16:00 UTC motivated a second-phase proposal: memory
-admission and family caps, retaining commands, \texttt{-j8} and core pools.
-Owner records show the first controller retired at 20:29:39 UTC and
-the second phase did not launch. No second-phase cost is claimed.
-
+\subsection{Observed compilation work and its limits}
 \IfFileExists{generated/census/census-ready.tex}{%
 \input{generated/census/census-ready.tex}
 \CensusScopeSummary{}
-\CensusPhaseSummary{}
+\CensusObservedSummary{}
 }{%
-Publication awaits the stopped-run ledger. It must distinguish observed
-successful work, real failures and unattempted scope. The planned two-phase
-account would report P/E CPU and machine wall by phase and sum only
-actually measured phase intervals. Summed module wall is not campaign wall.
+The stopped ledger covers 128,331 of 163,096 executable modules (78.7\%);
+34,765 remain unmeasured. Exact artifact integration is pending.
 }
 
-The original 42 samples remain calibration, with their weights and broad
-uncertainty; they neither enter the census nor impute absent costs.
-P/E seconds are not converted. Lexical-marker and default-graph joins retain
-each successful module's phase and pool.
+The successful set finishes in dependency order, not by random sampling.
+Unmeasured modules occur later in dependencies and include memory-intensive
+families; their mean cost may be higher. The observed work is a lower bound,
+not a full-library cost answer. Neither the original 42 samples nor a model
+fills missing costs. Every record retains source/measurement commits,
+pool, native CPU/wall and instructions. The one configuration unit has no
+native cost. There are no final failed modules, but 65 resource-interrupted
+attempts and one transition interruption remain separate from successful costs.
+The wall boundary is 4 November 19:52:10 to 5 November 20:29:39 UTC;
+summed module wall is a different clock.
+
+All distributions and cost shares below describe only observed modules.
+Among them, 5,646 marked modules contribute 20.49\% of observed P CPU and
+20.95\% of E CPU; 202 marked sources are unmeasured. The 25,828 observed
+modules outside the default graph contribute 20.16\%/19.59\% of P/E work.
+These source proxies do not identify kernel CPU phases or whole-frame shares.
 
 \begin{figure}[t]
 \centering
@@ -189,17 +184,15 @@ each successful module's phase and pool.
 }{%
 \fbox{\begin{minipage}[c][3.1cm][c]{0.89\columnwidth}
 \centering
-Full-campaign distribution awaits terminal records.\\[5pt]
-User-mode instruction quantiles across modules\\
-and separate P/E native CPU distributions.
+Observed-subset distribution awaits artifact integration.\\[5pt]
+User-mode instruction quantiles and separate P/E CPU.
 \end{minipage}}
 }
-\caption{The completed campaign uses user-mode instructions, chosen after
-the failed total-instruction gate, and phase-specific P/E CPU curves.
-Successful compilations supply the curves; named failures and blockers remain separate.
-Missing costs stay unobserved and P/E seconds are not converted.
-Design implication: expose a heavy tail
-and its execution conditions before summarizing a library by one cost.}
+\caption{Empirical distributions for the 128,331 measured modules only:
+user-mode instructions, selected after the failed total-instruction gate,
+and separate P/E CPU. Dependency order and the unmeasured tail prevent
+population extrapolation. Interrupted attempts supply no successful cost;
+unmeasured modules are not zero-filled.}
 \label{fig:census}
 \end{figure}
 
@@ -212,8 +205,8 @@ from a quiet 26-module laptop sample, with estimated $\pm30\%$ uncertainty.
 That estimate is an external comparison, not an observed per-module CPU
 ledger on our revision. The report's 26-module kernel-skipping ablation
 and roughly 30,900 cloud profiles remain build-side phase precedents.
-Our census retains its different revision, module population, hardware
-and post-hoc instruction criterion; no calibrated agreement is presumed.
+Our observed prefix retains its different revision, incomplete scope,
+hardware and post-hoc criterion; no calibrated agreement is presumed.
 
 \section{ProofServe design}\label{sec:design}
 ProofServe turns the cost and coverage findings into separate
@@ -400,9 +393,9 @@ commits and available official references. A verified prefix establishes
 that scope; unfinished work has no verdict or whole-library parity claim.
 
 \subsection{RQ4: default targets miss a third of decision sites}
-The default import graph misses 19.78\% of source modules and 33.30\% of
+The full-frame import graph misses 19.78\% of source files and 33.30\% of
 lexical kernel-decision sites at our corpus pin.
-It covers 130,834 of 163,097 source modules, leaving 32,263 outside;
+It covers 130,834 of 163,097 source units (including configuration), leaving 32,263 outside;
 the omitted files contain 451,008 of 1,354,379 sites.
 The earlier report finds 30,697 files outside its default graph,
 about 25\% of its 122,459-node source inventory including the root
@@ -491,12 +484,14 @@ Use \texttt{proofserve check /path/to/project} and
 build with \texttt{cd checker; lake build}.
 \path{docs/paper/generate_census.py} and
 \path{docs/paper/generate_system.py} consume committed CSVs.
-Census generation waits for completion and retains failures and blockers.
+Stopped-subset generation retains unmeasured identities and unsuccessful attempts.
 
 \section{Limitations and related work}
 Selected cost differences do not define a universal two-class law.
-The calibration panel has two draws per stratum and fragile heavy-tail
-uncertainty; lexical markers are proxies, not runtime frequencies.
+The dependency-ordered compilation prefix does not establish representativeness;
+its missing tail includes memory-intensive families. The original two-draw
+strata and fragile heavy-tail uncertainty cannot fill that gap.
+Lexical markers are proxies, not runtime frequencies.
 Selected closures overlap, module-local replay trusts imports, and target
 windows exclude shared preparation. Cross-protocol ratios, cache/order
 effects, hardware differences and provisional SubexponentialSAT controls
@@ -529,8 +524,8 @@ parallelism, receipt or serving mechanisms.
 
 \section{Conclusion}
 Matched measurements show both cheap proof checking and substantial
-certificate recomputation. The campaign ledger retains observed work, unfinished scope,
-real failures, blocked dependents and pool boundaries.
+certificate recomputation. The 128,331-module observed prefix yields cost lower bounds,
+not a full-library answer; unfinished work and P/E boundaries stay explicit.
 Default coverage and repeatable verdicts answer different verification
 questions. ProofServe makes these boundaries explicit through check,
 audit and scoped receipts. Review-driven repairs strengthen the tested input and receipt boundaries;

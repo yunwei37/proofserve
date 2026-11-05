@@ -1,0 +1,40 @@
+{
+  "preview": false,
+  "explicitly_stopped_subset": true,
+  "input": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/final-user-stopped/modules.csv.gz",
+  "published_summary": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/final-user-stopped/summary.json",
+  "segment_ledger": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/final-user-stopped/segment-totals.csv",
+  "completed_modules": 128331,
+  "source_modules": 163096,
+  "unfinished_source_modules": 34765,
+  "configuration_units": 1,
+  "final_failed_modules": 0,
+  "genuinely_blocked_modules": 0,
+  "completed_fraction": 0.7868433315348016,
+  "unsuccessful_attempts": 66,
+  "unsuccessful_attempt_source": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/final-user-stopped/failed-attempts.csv.gz",
+  "source_revisions": [
+    "4eaee87548250b2682affda7d05d947c05554bae"
+  ],
+  "measurement_commits": [
+    "9389daff86aae31b5a14b5804cb7dfb7c6f005dd"
+  ],
+  "machine_wall_s": 88649.038619193,
+  "segment2_launched": false,
+  "source_scope": "dependency-ordered observed subset; not random",
+  "inference": "separate P/E observed-work lower bounds only; no full-library cost, original42 or model completion",
+  "cost_groups": "observed modules only; frame-label coverage retained separately",
+  "pool_cpu_combination": "none; no P/E conversion or pooled CPU total",
+  "summed_native_wall_is_makespan": false,
+  "wall_scope": "actual executed interval includes draining/retries; unsuccessful CPU excluded from successful costs",
+  "instruction_criterion": "user-mode instructions selected after the failed total-instruction gate",
+  "missing_values": "blank, never zero-filled",
+  "active_instruction_coverage": {
+    "P": [
+      1.0
+    ],
+    "E": [
+      1.0
+    ]
+  }
+}

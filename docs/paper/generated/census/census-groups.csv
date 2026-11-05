@@ -1,0 +1,9 @@
+field,label,pool,observed_modules,cpu_observed_modules,cpu_hours,share_of_observed_pool_cpu,user_instructions,scope
+kernel_marked,0,P,61136,61136,107.06645856916667,0.7951394242713392,1713000899971952,dependency-ordered observed subset; no extrapolation
+kernel_marked,0,E,61549,61549,202.88469019722223,0.7904561719497816,1715827080758101,dependency-ordered observed subset; no extrapolation
+kernel_marked,1,P,2904,2904,27.584717439722223,0.20486057572866084,449732942096575,dependency-ordered observed subset; no extrapolation
+kernel_marked,1,E,2742,2742,53.783164893055556,0.20954382805021848,455949236644151,dependency-ordered observed subset; no extrapolation
+default_covered,0,P,12741,12741,27.141434696388888,0.2015684935020335,405313946564850,dependency-ordered observed subset; no extrapolation
+default_covered,0,E,13087,13087,50.271263366388894,0.1958611581832364,393326690745764,dependency-ordered observed subset; no extrapolation
+default_covered,1,P,51299,51299,107.50974131250001,0.7984315064979666,1757419895503677,dependency-ordered observed subset; no extrapolation
+default_covered,1,E,51204,51204,206.3965917238889,0.8041388418167636,1778449626656488,dependency-ordered observed subset; no extrapolation

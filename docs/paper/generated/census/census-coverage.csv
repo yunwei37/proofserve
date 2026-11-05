@@ -1,0 +1,5 @@
+field,label,frame_modules,observed_modules,unmeasured_modules,scope
+kernel_marked,0,157248,122685,34563,source-label coverage; costs apply only to observed modules
+kernel_marked,1,5848,5646,202,source-label coverage; costs apply only to observed modules
+default_covered,0,32262,25828,6434,source-label coverage; costs apply only to observed modules
+default_covered,1,130834,102503,28331,source-label coverage; costs apply only to observed modules

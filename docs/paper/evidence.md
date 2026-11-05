@@ -682,3 +682,43 @@ no W paths and does not call it a newly committed full-corpus result.
 The stopped adapter initially exposed Python csv's 128-KiB field limit on a
 real large unfinished dependency list; reading the actual field without
 truncation corrected the adapter. No native run was retried.
+
+
+### Six-page observed-prefix integration
+
+The retained stopped export has now supplied the manuscript's first actual
+compilation-distribution figure and observed scope/cost text. Small derived
+summaries, label-coverage counts, quantiles, plot sources/PDF and provenance
+are under docs/paper/generated/census/. The full per-module/attempt/unfinished
+inventories remain on the PVC under W's export and root's generated reduction;
+they are not duplicated as large root-owned Git files. W's formal source-data
+commit is still pending and must be linked on return.
+
+The manuscript reports 128,331/163,096 executable modules (78.7%), separate
+134.7 P and 256.7 E CPUh and a 24.62h supervisor interval. It explicitly
+rejects random-sample interpretation, full-library estimation and original42/
+model filling. The static full-frame coverage inventory, including configuration,
+is separate from executable-only cost coverage. No second-phase compilation
+or cost is inferred from a controller preparation directory.
+
+Only observed costs enter the marked/default-graph CPU shares and empirical
+curves. The new figure is two horizontal panels to fit the six-page layout;
+all original matched measurements and review/trust boundaries remain.
+Final matrix/external tables still await actual final returns.
+
+Final compilation on CPUs 8–9 returned 0 in 2.547 seconds: six pages /
+301,210 bytes, two figures / two tables / 14 references, no overfull or
+undefined warning and no missing/measured/partialev/unproven macros.
+Root visually reviewed all six pages, then rechecked the final changed
+pages 3 and 6; the other four renders are byte-identical to the reviewed build.
+This is layout self-review and numerical source reduction, not independent
+runtime checker review or completion of final system evaluation.
+
+During this integration the CLI management path once reported no ready API;
+a read-only retry through the same existing Cloudflare path succeeded with
+the unchanged boot. No recovery, network/configuration or owner process
+mutation was performed. Concurrent W commits b7810f3b/05c91979 describe later
+continuation preparation; they are not used to relabel the retained first
+segment. The b781 preparation's own superseded record says native_started=false.
+Any later actual execution must be reported from its own records, not
+silently merged into this 128,331-module snapshot.
