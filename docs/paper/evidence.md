@@ -310,3 +310,46 @@ follow full-campaign completion. Library checking alone retains partial or
 not-attempted reporting and is not required for the paper.
 
 Completion-mode generator validation used retained numerical rows with explicitly synthetic exhaustive terminal categories outside Git. Successful CPU sums remained equal by P/E; every failed/blocked identity was exported. Early-stop and not-attempted input and the removed option were refused; preview still produced no ready marker. The figure compiled. None of these validation numbers entered the manuscript. Updated manuscript compilation returned 0 in 3.225 seconds on CPUs 8–9: six pages, 101,503 bytes, two figures/two tables/14 references/zero evidence macros, no overfull/undefined warnings, all six pages visually self-reviewed. Root directly reconfirmed W controller528400/birth10465017 in full --execute mode without validate_subset or functional flags; no collector was stopped or replaced.
+
+
+## e155 real-closure regression and superseding preparation (5 November)
+
+M's committed [06d8e81d pre-freeze record](../../checker/results/pre-freeze-e1557c77/README.md)
+records an e1557c77 / ABI-5 native freeze under a correctness-first exception:
+the performance-growth criterion failed, and paper_eligible/performance_qualified
+are false. This is not an independent execution review or final timing.
+
+Root read the raw e155 and same-root 3fe receipt pairs under
+/workspaces/.agent-state/gpu-smt-captures/checker-freeze-e1557c77-20261105.
+Nat.Basic has 1,330 unique accepts and Grid 3,793, each with no rejection and
+15 declared axiom names, equal to the corresponding 3fe accepted/axiom sets.
+This establishes that retained comparison, not official full-ledger parity.
+The seven-name earlier ba316991 lists omitted eight names already present in
+the unchanged inputs, according to M's input/axiom reduction; these are not
+newly introduced target assumptions.
+
+Root independently counted module_verifications classified module_local:
+Nat.Basic 49 on 3fe versus 1,016 on e155; Grid 157 versus 3,465.
+The Grid e155 receipt includes 2,673 checkpoint_reuse/module_local and 792
+kernel_replay/module_local records. These counts classify unique committed
+module records, not fresh kernel calls in the resumed invocation.
+The old 3fe binary has known correctness defects and is a diagnostic reference,
+not a release competitor. These background E8–9 controls and different P/E
+historical rows do not establish final speedup or an isolated causal effect.
+
+Root read all five guarded terminal records and directly verified their
+recorded PIDs and cgroups absent: Nat e155 and both 3fe controls returned 0;
+the first Grid e155 window returned 124, then its same-state continuation
+returned 0. No memory/reserve stop or OOM is reported. The two Grid clocks
+are separate operational attempts, not one fresh uninterrupted measurement.
+M discloses that the initial uncommitted partial Grid event file was not
+archived before resume; complete checkpoint/receipt outputs survive.
+Root does not claim every partial event was preserved.
+
+At root observation, M's dirty worktree explicitly supersedes this freeze
+with preparation of a shared-checked default and strict mode; that replacement
+was not yet committed or qualified by root. The authoritative final handoff
+must identify the actual policy/source, its review and returned controls.
+No final freeze, release acceptance or new performance number is inferred
+from the historical e155 freeze declaration. Root changed no foreign source,
+started no native run and left the manuscript's performance slots untouched.
