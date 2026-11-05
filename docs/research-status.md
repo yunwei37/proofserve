@@ -8,13 +8,13 @@ We are delivering the open-source tool and a six-page empirical + system paper b
 
 All root work inside the Workspace now uses **CPUs 8–9**, including PDF compilation. The former CPU 22–23 setting is retired for future work; historical records remain unchanged.
 
-M's current matrix is preview-only and cannot fill Table 1. Final system timing requires an otherwise idle machine and follows the resolved gate/full-run path. Full-library checking reports the scope actually reached and stops by 6 November, 14:00 UTC; it may remain partial.
+M's current matrix is preview-only and cannot fill Table 1. Final system timing requires an otherwise idle machine and follows the resolved gate/full-run path. Full-library checking reports the scope actually reached and stops by 6 November, 17:00 UTC; it may remain partial or not start, and is not a required paper result.
 
 ## Closure handoffs (UTC)
 
-M freezes the checker by 5 November, 06:00; root finishes paper prose and scripts by 12:00; O completes frozen-installation functional acceptance by 14:00. Compilation ends by 6 November, 04:00. Then run the final matrix (at most 6 hours), external timing (at most 2 hours), and library checking in sequence. Root fills returned numbers by 6 November, 16:00, retaining six pages and zero missing macros. No separate PlanarPacking comparison remains.
+M freezes the checker by 5 November, 06:00; root finishes paper prose and scripts by 12:00; O completes frozen-installation functional acceptance by 14:00. Compilation ends by 6 November, 08:00. Run the final matrix (at most 6 hours), then external timing (at most 2 hours), and finally optional library checking if time remains. Root fills returned numbers by 6 November, 18:00, retaining six pages and zero missing macros. No separate PlanarPacking comparison remains.
 
-Incomplete compilation is reported as observed-module coverage and subset costs; incomplete checking is reported as the verified scope reached. Neither becomes a complete-library result.
+Incomplete compilation is reported as observed-module coverage and subset costs; incomplete checking is reported as the verified scope reached. Neither becomes a complete-library result. If checking cannot start, report it as not attempted; do not assign it a zero cost or use it as a prerequisite for the paper. The overall 20:00 closure deadline is unchanged.
 
 ## Evidence retained
 

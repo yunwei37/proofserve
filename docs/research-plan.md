@@ -11,16 +11,16 @@ The two-day closure instruction supersedes the former November target. Deliver t
 | 5 November, 06:00 | M freezes the checker; retain known limitations and review status. |
 | 5 November, 12:00 | Root finishes all paper prose and figure/table scripts; only returned numbers remain to integrate. |
 | 5 November, 14:00 | O finishes functional acceptance of the frozen installation. |
-| 6 November, 04:00 | W's full-corpus compilation campaign ends, complete or partial; publish actual coverage and outcomes. |
+| 6 November, 08:00 | W's full-corpus compilation campaign ends, complete or partial; publish actual coverage and outcomes. |
 | After compilation, at most 6 hours | M runs the final matrix on the quiet machine. |
 | Next, at most 2 hours | O runs final external-project timing. |
-| Next, stop by 6 November, 14:00 | M's full-library checking attempt reports the verified scope actually reached. |
-| 6 November, 16:00 | Root integrates returned numbers into a readable six-page paper with zero missing macros. |
+| If time remains, stop by 6 November, 17:00 | M's optional full-library checking attempt reports the verified scope actually reached; it may be partial or not started. |
+| 6 November, 18:00 | Root integrates returned numbers into a readable six-page paper with zero missing macros. |
 | 6 November, 20:00 | Close out the project with tool, paper and explicit remaining limitations. |
 
-Final timing runs sequentially: matrix, external timing, then library checking. No separate PlanarPacking comparison is scheduled or claimed. Preserve all successful, failed, interrupted and unattempted outcomes; the deadline does not turn partial coverage into a complete result. Root documents these handoffs and reads the existing owners' actual returns, without creating a competing collector or changing their implementation.
+The compilation cutoff is extended because progress slowed in the computation-heavy region; the overall 20:00 closure deadline is unchanged. Final timing runs sequentially: matrix (at most six hours), external timing (at most two hours), then optional library checking if time remains. No separate PlanarPacking comparison is scheduled or claimed. Preserve all successful, failed, interrupted and unattempted outcomes; the deadline does not turn partial coverage into a complete result. Root documents these handoffs and reads the existing owners' actual returns, without creating a competing collector or changing their implementation.
 
-If compilation stops short, report successfully costed native modules against the frozen frame, separately identify configuration units and the remaining failed/blocked/unattempted scope, and label distributions and P/E CPU sums as observed-subset results. Do not extrapolate these sums to the library. If checking stops short, report unique accepted modules, actual attempted scope and rejection/operational-stop status with tool/input commits; acceptance of a prefix is not whole-library parity. These are admitted closure outcomes, not reasons to wait past the deadline.
+If compilation stops short, report successfully costed native modules against the frozen frame, separately identify configuration units and the remaining failed/blocked/unattempted scope, and label distributions and P/E CPU sums as observed-subset results. Do not extrapolate these sums to the library. If checking stops short, report unique accepted modules, actual attempted scope and rejection/operational-stop status with tool/input commits; acceptance of a prefix is not whole-library parity. If library checking cannot start before its cutoff, report “not attempted within the evaluation window”, with no fabricated acceptance count, zero cost or completion claim. Library checking is supplementary and is not a required paper result or a prerequisite for project closure; the selected-closure matrix and external-project measurements retain their own scopes. These are admitted closure outcomes, not reasons to wait past the deadline.
 
 ## Full-run usability gate
 
@@ -36,7 +36,7 @@ The earlier 1–2 day estimate is a planning estimate, not a running campaign du
 
 Section 3.2 uses the prepared census-result structure; it does not present the sample extrapolation as the forthcoming census total. Report that the total-instruction gate failed without changing its thresholds. Cross-module comparisons use user-mode instructions, explicitly identified as a criterion selected after observing the gate results. Report P-core and E-core CPU seconds separately, without conversion, and wall time as an observation of this machine and configuration. This is not a passing replacement gate or hardware-independent cost scale.
 
-M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's full-library original-kernel attempt has unknown completion coverage; the paper reserves a scoped report of how much was checked, with the hard stop above.
+M's current scaling matrix is preview-only, even if it completes. It cannot fill Table 1 or serve as final paper performance. Final timing requires an otherwise idle machine and follows the resolved gate/full-run path; it must not overlap an admitted census. M's full-library original-kernel attempt is optional and has unknown completion coverage. The paper must admit partial scope or an explicit not-attempted disposition, with the 17:00 hard stop above; its absence does not block the paper.
 
 Existing installed external check/audit cases and package/container CI remain versioned functional evidence and dated cost observations. Different proof obligations do not support a speedup ratio. Final system results must identify committed tool and input revisions and keep CPU/wall clocks separate.
 

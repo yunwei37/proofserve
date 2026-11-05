@@ -98,6 +98,6 @@ are never inputs. Without final artifacts it prints explicit pending slots,
 not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
 
-The closure deadline is 6 November 2026, 20:00 UTC. Compilation ends by 04:00; a cutoff publication uses --partial if coverage is incomplete. Library checking reports its actually verified scope by the 14:00 hard stop, with no separate PlanarPacking comparison. Paper prose and scripts are due 5 November, 12:00; numerical integration is due 6 November, 16:00. All times are UTC.
+The closure deadline is 6 November 2026, 20:00 UTC. Compilation ends by 08:00; a cutoff publication uses --partial if coverage is incomplete. Library checking reports its actually verified scope by the 17:00 hard stop, with no separate PlanarPacking comparison. Paper prose and scripts are due 5 November, 12:00; numerical integration is due 6 November, 18:00. Library checking is supplementary: if no time remains after the matrix and external timing, report it as not attempted, with no invented cost or acceptance count. All times are UTC.
 
 Cutoff-mode validation: the retained 20-row numerical input was combined with explicitly synthetic coverage metadata outside Git. Complete-only mode refused incomplete coverage; --partial produced the correctly labeled subset and three uncompleted units, matched independently summed P/E CPU, and compiled the distribution. Preview mode still produced no publication marker. These validation counts are not census results.
