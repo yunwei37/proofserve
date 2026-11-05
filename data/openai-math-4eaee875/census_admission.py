@@ -34,11 +34,11 @@ class Policy:
         if ancestor_headroom is not None:free=min(free,max(0,ancestor_headroom-4*GIB))
         g=root_family(n);active=sum(root_family(x)==g for x,c in live)
         root_peak=max(GIB,math.ceil(self.root_peaks.get(g,GIB)*1.25))
-        cap=max(1,int(max(0,own+available-12*GIB)//root_peak))
+
         need=estimate(n)
         standalone=not live and available>=16*GIB
-        return dict(allowed=(reserve+need<=free or standalone)and(g not in self.risky or active<cap),standalone_prediction_exceeds_budget=standalone and need>free,
-            family=family(n),risk_root=g,risky_root=g in self.risky,risk_root_active=active,risk_root_cap=cap,
+        return dict(allowed=(reserve+need<=free or standalone),standalone_prediction_exceeds_budget=standalone and need>free,
+            family=family(n),risk_root=g,risky_root=g in self.risky,risk_root_active=active,
             predicted_peak_bytes=need,risk_root_peak_bytes=root_peak,reserved_future_bytes=reserve,
             available_bytes=available,ancestor_headroom_bytes=ancestor_headroom,soft_reserve_bytes=12*GIB,active_at_launch=len(live))
 class Ready:
@@ -51,3 +51,14 @@ class Ready:
             state=admit(n)
             if state["allowed"]:heapq.heappop(self.queues[key]);return n,state
         return None,None
+
+
+def deferred_closure(prefix,pending,active,children):
+    todo=[(n,None)for n in sorted(pending)if n not in active and(n==prefix or n.startswith(prefix+"."))]
+    result={}
+    while todo:
+        n,parent=todo.pop()
+        if n not in pending or n in active or n in result:continue
+        result[n]=parent
+        todo.extend((child,n)for child in sorted(children.get(n,())))
+    return result

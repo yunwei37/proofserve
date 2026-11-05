@@ -3,7 +3,7 @@
 import argparse,collections,fcntl,hashlib,heapq,json,os,signal,sys,time,subprocess
 from pathlib import Path
 import census_gate as native
-from census_admission import Policy,Ready,RESOURCE
+from census_admission import Policy,Ready,RESOURCE,deferred_closure
 from census import append,utc,records
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def corpus_artifact(rel):
@@ -133,7 +133,7 @@ def run(a):
             adapter_source_sha256=sha(Path(native.__file__)),
             protocol_rules=dict(reserve_GiB=8,response_slack_GiB=1,sample_seconds=1,disk_stop_fraction=.85,native_retries=1,resource_retry="drain_to_exclusive_then_record_current_headroom_failure"))
     if segment==2:
-        identity.update(segment=2,resume_from=str(Path(a.resume_from).resolve()),admission_deadline_utc=a.admission_deadline,drain_deadline_utc=a.drain_deadline,admission="actual_cgroup_future_peak_reserve12GiB_risky_root_caps",resource_retry="first_normal_second_exclusive_third_exclusive_failure_terminal")
+        identity.update(segment=2,resume_from=str(Path(a.resume_from).resolve()),admission_deadline_utc=a.admission_deadline,drain_deadline_utc=a.drain_deadline,admission="actual_cgroup_future_peak_reserve12GiB_user_deferred_families",resource_retry="resource_family_deferred_by_user_with_dependent_closure",deferral="observed_memory_families_plus_PadicHodge_and_descendants")
     if not a.execute:print(json.dumps(dict(prepared=(a.functional or environment_ready),execute=False,modules=len(mods),dependency_inputs_ready=(environment_ready and not missing_external),environment_export_verified=environment_ready,environment_error=environment_reason,missing_external_artifacts=missing_external,protocol=identity)));return
     if not a.functional:
         version=subprocess.check_output([m["lean_binary"],"--version"],text=True).strip()
@@ -229,13 +229,22 @@ def run(a):
     if (out/"resource-failures.jsonl").exists():
         for line in (out/"resource-failures.jsonl").read_text().splitlines():failed.add(json.loads(line)["module"])
     pending.difference_update(failed)
-    children=collections.defaultdict(set);remaining={};ready_heap=[];queued=set()
+    children=collections.defaultdict(set);remaining={};ready_heap=[];queued=set();active_modules=set();deferred={}
     for n in pending:
         remaining[n]=set(mods[n]["deps"])-done
         for parent in remaining[n]:children[parent].add(n)
     def make_ready(n):
         if n in pending and n not in queued and not remaining[n]:
             (ready_by_family.push(n)if segment==2 else heapq.heappush(ready_heap,n));queued.add(n)
+    def defer_family(prefix,reason,trigger=None):
+        stamp=utc()
+        added=0
+        for n,parent in deferred_closure(prefix,pending,active_modules,children).items():
+            value=dict(module=n,status="deferred_by_user",utc=stamp,reason=reason,family_prefix=prefix,trigger_module=trigger,deferred_dependency=parent)
+            deferred[n]=value;pending.discard(n);queued.discard(n);added+=1
+            append(out/"deferred-modules.jsonl",value)
+        append(out/"deferral-events.jsonl",dict(utc=stamp,prefix=prefix,reason=reason,trigger_module=trigger,newly_deferred=added,already_running_preserved=sorted(n for n in active_modules if n==prefix or n.startswith(prefix+"."))))
+        return added
     def fail_dependents(n):
         todo=[n]
         while todo:
@@ -251,8 +260,13 @@ def run(a):
         if missing:
             blocked[n]=dict(status="blocked",module=n,failed_dependencies=[],missing_external=missing);pending.discard(n)
     for n in sorted(failed|set(blocked)):fail_dependents(n)
+    if segment==2:
+        prefixes={"OAI.NumberTheory.PadicHodge","OAI.Combinatorics.Ramsey.CycleClique.Construction","OAI.AlgebraicGeometry.Crystalline.Cohomology.BigCrystalline"}
+        prefixes.update(r["module"].rsplit(".",1)[0]for r in previous if r.get("interruption")in RESOURCE)
+        for prefix in sorted(prefixes):defer_family(prefix,"user_requested_postponement_of_observed_memory_family")
+        (out/"deferred-summary.json").write_text(json.dumps(dict(utc=utc(),prefixes=sorted(prefixes),deferred_modules=len(deferred),inherited_completed=len(done),remaining_eligible=len(pending)),indent=2))
     for n in sorted(pending):make_ready(n)
-    active_modules=set();progress_last=0
+    active_modules=set();progress_last=(len(done)/max(1,len(mods)-len(configuration)))if segment==2 else 0
     first100_done=(out/"first100-audit.json").exists()
     segment_done=sum(r["status"]=="completed"and r.get("segment",1)==segment for r in previous)
     def next_ready():
@@ -330,6 +344,9 @@ def run(a):
                     for child in children.get(n,()):
                         if child in pending:remaining[child].discard(n);make_ready(child)
                 elif row.get("interruption")in {"memory_reserve","cgroup_memory_oom"}:
+                    if segment==2:
+                        defer_family(n.rsplit(".",1)[0],"new_memory_interruption_family_deferred",trigger=n)
+                        continue
                     resource_retries[n]+=1
                     if row.get("exclusive_at_launch")and(segment==1 or resource_retries[n]>=3):
                         failed.add(n);pending.discard(n);solo.discard(n)
@@ -354,7 +371,7 @@ def run(a):
         for n in pending:blocked[n]=dict(status="not_attempted",module=n,reason=stop)
         report=dict(functional_only=a.functional,full_census=not(a.functional or bounded),bounded_validation=bounded,cost_measurement=not(a.functional or bounded),
             successful=sorted(done),failed=sorted(failed),blocked=list(blocked.values()),stop=stop,
-            configuration_units=sorted(configuration),segment=segment,total_source_units=len(mods),complete=len(done)+len(configuration)==len(mods))
+            configuration_units=sorted(configuration),deferred=list(deferred.values()),eligible_complete=not pending,segment=segment,total_source_units=len(mods),complete=len(done)+len(configuration)==len(mods))
         (out/"outcomes.json").write_text(json.dumps(report,indent=2))
         append(out/"execution-phases.jsonl",dict(event="returned",utc=utc(),monotonic_s=time.monotonic(),stop=stop,complete=report["complete"]))
         print(json.dumps(report))
