@@ -66,7 +66,7 @@ class Gate:
         except BaseException:
             os.kill(pid,signal.SIGKILL);os.close(wr);os.waitpid(pid,0);cg.rmdir();raise
         meta=dict(module=module,pool=pool,condition=condition,rep=rep,role=role,perf=perf,
-             sequence=num,pid=pid,birth=Path("/proc",str(pid),"stat").read_text().rsplit(")",1)[1].split()[19],
+             segment=self.c.get("segment",1),active_at_launch=len(self.live),admission=dict(self.c.get("launch_admission",{})),sequence=num,pid=pid,birth=Path("/proc",str(pid),"stat").read_text().rsplit(")",1)[1].split()[19],
              source_revision=self.c["source_revision"],source_sha256=r["source_sha256"],
              measurement_commit=self.c["measurement_commit"],toolchain=self.c["toolchain"],
              attempt=self.c.get("attempts",{}).get(module,0)+1,start_utc=wallstart,argv=cmd,affinity=P if pool=="P"else E,
@@ -94,7 +94,7 @@ class Gate:
             busy[n]=1-di/dt if dt else None
         self.lastcpu=cp;self.lastcpu_t=now
         append(self.out/"memory.jsonl",dict(utc=utc(),elapsed_s=now-self.start,available=available,charge=charge,limit=cap,charges=charges,busy=busy,active=len(self.live)))
-        if available<8*GIB and self.live:
+        if available<self.c.get("reserve_kill_GiB",8)*GIB and self.live:
             victim=max(self.live,key=lambda p:charges[p]);self.live[victim]["killed"]="memory_reserve"
             os.kill(victim,signal.SIGKILL)
             if not self.c.get("memory_preempt_requeue"):self.stop="memory_reserve"
@@ -104,7 +104,7 @@ class Gate:
     def collect(self,wait=.2):
         now=time.monotonic()
         if self.c.get("validation_deadline") is not None and now>=self.c["validation_deadline"]:
-            self.stop="subset_validation_six_hour_limit"
+            self.stop=self.c.get("validation_deadline_reason","subset_validation_six_hour_limit")
             for pid,j in self.live.items():
                 if not j["killed"]:
                     j["killed"]=self.stop

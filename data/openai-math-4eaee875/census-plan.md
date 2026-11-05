@@ -416,3 +416,60 @@ durable-C pruning and no-new-native resume. These are not cost results.
 Final publication occurs only after execution ends, under census/. No
 progress commits are planned. First-100 verification, 10% and 50% milestones
 are runtime evidence/messages; the latter include resource headroom.
+
+
+## 2026-11-05 operational continuation: segment 2, bounded by UTC
+
+The first segment retired at 20:29:39.647 UTC with **128,331 completed
+source modules**, 34,765 incomplete source modules and one configuration unit.
+Two sources completed after the earlier 128,329 observation. There were 65
+resource-interrupted attempts and one transition-interrupted attempt. They
+are retained separately. The 20:33 cancellation was superseded by the direct
+request to attempt most of the remaining work within six hours.
+
+This is an explicitly different admission segment, not the original frozen
+concurrency protocol. The original total-instruction gate remains failed.
+Lean command, -j8, LEAN_NUM_THREADS=8, no-M, pool membership P0-7/E10-23,
+source pins, actual 44-entry environment and canonical import view stay
+unchanged. Completed source modules are never rerun. Every new lifecycle and
+result record includes segment=2, active_at_launch and admission state.
+Segment 1 is assigned segment=1 only in the exported table, without editing
+its raw records.
+
+Admission uses actual native cgroup charge and node MemAvailable, also
+respecting finite ancestor cgroup headroom. It reserves max(1 GiB, 1.25 times
+observed parent-namespace peak) per candidate, deducts each running job's
+remaining predicted growth, and retains a 12 GiB soft node-available margin.
+Risk roots are the first three module namespace components with an observed
+resource interruption. Their concurrent cap uses the measured root peak
+times 1.25 and the available actual native budget. A censored failed peak
+increases the parent-family estimate by 1.5. If only an over-predicted source
+remains, an otherwise idle machine with at least 16 GiB available may make a
+guarded standalone attempt, explicitly recorded in admission metadata.
+
+Ready queues retain lexical dependency-ready ordering; only candidates
+ineligible for memory admission are deferred. There is no cheapness or
+source-cost sorting. First resource interruptions requeue normally, without
+draining the machine; a second resource failure requests an exclusive retry.
+A failure of that exclusive retry is recorded as a terminal resource outcome.
+Ordinary native compilation failures retain their existing retry policy.
+
+The existing parent-controller guard is retained; its proactive kill
+threshold is 10 GiB available in segment 2. Sampling is nominally once per
+second and can be delayed by artifact handling; this is not an independent
+hard-memory guarantee. The original owned-cgroup ceiling and 85% disk stop
+remain. No Workspace quota or other Workspace is changed.
+
+**2026-11-06 03:00 UTC** stops admission of new modules. In-flight jobs may
+finish until **03:30 UTC**, when remaining attempts are forcibly interrupted
+and separately recorded. The controller then releases pcore.lock. Both
+segments' CPU and wall are reported separately, along with their observed
+sum and the transition gap. All cost summaries describe completed modules
+only; this dependency-ordered subset is not a random sample. Unfinished costs
+are blank and are not extrapolated from the original 42 samples. Whole-corpus
+cost is reported only as an observed lower bound. All olean companions stay
+available for M's checking of the built subset.
+
+Reference correction: nealmcb's 116 GB describes the whole finished build,
+including packages; its Lean lib artifacts are about 68 GB. The earlier
+olean-only description above was incorrect. This changes no native recipe.

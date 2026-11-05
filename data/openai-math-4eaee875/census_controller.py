@@ -3,6 +3,7 @@
 import argparse,collections,fcntl,hashlib,heapq,json,os,signal,sys,time,subprocess
 from pathlib import Path
 import census_gate as native
+from census_admission import Policy,Ready,RESOURCE
 from census import append,utc,records
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def corpus_artifact(rel):
@@ -78,6 +79,10 @@ def write_view_inventory(path,expected):
 
 def run(a):
     m=json.loads(a.manifest.read_text())
+    segment=getattr(a,"segment",1)
+    if segment==2 and not(a.resume_from and a.admission_deadline and a.drain_deadline):raise ValueError("segment 2 requires explicit prior run and both UTC deadlines")
+    admission_deadline=__import__("datetime").datetime.fromisoformat(a.admission_deadline).timestamp() if getattr(a,"admission_deadline",None) else None
+    drain_deadline=__import__("datetime").datetime.fromisoformat(a.drain_deadline).timestamp() if getattr(a,"drain_deadline",None) else None
     environment_ready=False;environment_reason=None
     if not a.functional:
         path=a.environment_export or Path(__file__).parent/"dependency-audit/lake-environment.json"
@@ -127,6 +132,8 @@ def run(a):
         identity.update(measurement_commit=a.commit,controller_source_sha256=sha(__file__),
             adapter_source_sha256=sha(Path(native.__file__)),
             protocol_rules=dict(reserve_GiB=8,response_slack_GiB=1,sample_seconds=1,disk_stop_fraction=.85,native_retries=1,resource_retry="drain_to_exclusive_then_record_current_headroom_failure"))
+    if segment==2:
+        identity.update(segment=2,resume_from=str(Path(a.resume_from).resolve()),admission_deadline_utc=a.admission_deadline,drain_deadline_utc=a.drain_deadline,admission="actual_cgroup_future_peak_reserve12GiB_risky_root_caps",resource_retry="first_normal_second_exclusive_third_exclusive_failure_terminal")
     if not a.execute:print(json.dumps(dict(prepared=(a.functional or environment_ready),execute=False,modules=len(mods),dependency_inputs_ready=(environment_ready and not missing_external),environment_export_verified=environment_ready,environment_error=environment_reason,missing_external_artifacts=missing_external,protocol=identity)));return
     if not a.functional:
         version=subprocess.check_output([m["lean_binary"],"--version"],text=True).strip()
@@ -152,7 +159,7 @@ def run(a):
             with ledger.open("rb")as f:f.seek(-1,2);broken=f.read(1)!=b"\n"
             if broken:
                 with ledger.open("ab")as f:f.write(b"\n");f.flush();os.fsync(f.fileno())
-    previous=records(out/"records.jsonl");done={r["module"]for r in previous if r["status"]=="completed"}
+    previous=(records(Path(a.resume_from)/"records.jsonl") if getattr(a,"resume_from",None) else [])+records(out/"records.jsonl");done={r["module"]for r in previous if r["status"]=="completed"}
     fails=collections.Counter(r["module"]for r in previous if r["status"]=="failure"and not r.get("interruption"))
     last={r["module"]:r for r in previous}
     for n in done:
@@ -162,7 +169,7 @@ def run(a):
         for product in last[n]["artifacts"].values():
             file=Path(product["path"])
             if not product.get("retained",True)and file.exists():
-                if file.suffix!=".c"or not file.resolve().is_relative_to(out):raise ValueError("unexpected discarded product path")
+                if file.suffix!=".c"or not any(file.resolve().is_relative_to(v)for v in [out]+([Path(a.resume_from).resolve()]if getattr(a,"resume_from",None) else [])):raise ValueError("unexpected discarded product path")
                 file.unlink()
                 append(out/"storage.jsonl",dict(utc=utc(),module=n,path=str(file),action="resume_discard_after_durable_result"))
     starts=out/"lifecycle.jsonl"
@@ -185,7 +192,7 @@ def run(a):
                     if(child/"cgroup.procs").read_text().strip():raise ValueError("old scope populated")
                     child.rmdir()
             old.rmdir()
-    view=out/"import-view";view.mkdir(exist_ok=True)
+    view=(Path(a.resume_from)/"import-view")if getattr(a,"resume_from",None) else out/"import-view";view.mkdir(exist_ok=True)
     expected,original_files=inventory_imports(m["env"]["LEAN_PATH"].split(":"),deadline)
     materialize_import_view(view,expected,deadline=deadline)
     internal_products={}
@@ -206,14 +213,19 @@ def run(a):
     for n,r in mods.items():r["source_sha256"]=sha(r["source"])
     m["env"]=dict(m["env"],LEAN_PATH=str(view))
     c=dict(m,modules=mods,cwd=m.get("source_project_root",str(Path(next(iter(mods.values()))["root"]))),
-        measurement_commit=a.commit,toolchain=dict(lean=m["lean"],binary=m["lean_binary"]),
+        measurement_commit=a.commit,segment=segment,toolchain=dict(lean=m["lean"],binary=m["lean_binary"]),
         attempts=dict(collections.Counter(r["module"]for r in previous)),continue_native_failures=True,memory_preempt_requeue=True,functional_only=(a.functional or bounded),
         native_wall_s=30 if a.functional else None,maximum_charge_bytes=(11*2**30 if bounded else 8*2**30 if a.functional else None),validation_deadline=deadline,discard_c=getattr(a,"discard_c",False),full_census_run=not(a.functional or bounded))
+    if segment==2:
+        c.update(validation_deadline=time.monotonic()+max(0,drain_deadline-time.time()),validation_deadline_reason="segment2_drain_deadline",reserve_kill_GiB=10)
     engine=native.Gate(c,out);scopefile.write_text(str(engine.cg))
+    policy=Policy(previous)if segment==2 else None
+    ready_by_family=Ready()if segment==2 else None
+    last_admission={}
     engine.seq=max([r["sequence"]for r in previous]+[int(p.name)for p in (out/"attempts").glob("*")if p.name.isdigit()]+[0])
     configuration={n for n,r in mods.items()if Path(r["source"]).name=="lakefile.lean"}
-    pending=set(mods)-done-configuration;failed={n for n,k in fails.items()if k>=2};blocked={};resource_retries=collections.Counter(r["module"]for r in previous if r.get("interruption")=="memory_reserve")
-    solo=set(resource_retries)
+    pending=set(mods)-done-configuration;failed={n for n,k in fails.items()if k>=2};blocked={};resource_retries=collections.Counter(r["module"]for r in previous if r.get("interruption")in RESOURCE)
+    solo={n for n,v in resource_retries.items()if n not in done and(v>=2 or segment==1)}
     if (out/"resource-failures.jsonl").exists():
         for line in (out/"resource-failures.jsonl").read_text().splitlines():failed.add(json.loads(line)["module"])
     pending.difference_update(failed)
@@ -223,7 +235,7 @@ def run(a):
         for parent in remaining[n]:children[parent].add(n)
     def make_ready(n):
         if n in pending and n not in queued and not remaining[n]:
-            heapq.heappush(ready_heap,n);queued.add(n)
+            (ready_by_family.push(n)if segment==2 else heapq.heappush(ready_heap,n));queued.add(n)
     def fail_dependents(n):
         todo=[n]
         while todo:
@@ -242,17 +254,26 @@ def run(a):
     for n in sorted(pending):make_ready(n)
     active_modules=set();progress_last=0
     first100_done=(out/"first100-audit.json").exists()
+    segment_done=sum(r["status"]=="completed"and r.get("segment",1)==segment for r in previous)
     def next_ready():
+        nonlocal last_admission
         if solo:
-            return next((n for n in sorted(solo)if n in pending and n not in active_modules and not remaining[n]),None)
+            n=next((n for n in sorted(solo)if n in pending and n not in active_modules and not remaining[n]),None)
+            if n is not None:last_admission=dict(exclusive_after_second_resource_failure=True,active_at_launch=len(engine.live))
+            return n
+        if segment==2:
+            n,state=ready_by_family.take(lambda n:n in pending and n not in active_modules and not remaining[n],lambda n:policy.decide(n,engine,native.mem()[1]))
+            if n is not None:queued.discard(n);last_admission=state
+            return n
         while ready_heap:
             n=heapq.heappop(ready_heap);queued.discard(n)
             if n in pending and n not in active_modules and not remaining[n]:return n
         return None
     def first100_audit():
-        checked=[r for r in previous+engine.rows if r["status"]=="completed"][:100]
+        checked=[r for r in previous+engine.rows if r["status"]=="completed"and r.get("segment",1)==segment][:100]
         missing=[]
         fields=["pool","user_cpu_s","system_cpu_s","wall_s","peak_rss_kib","source_sha256","source_revision","measurement_commit","attempt","start_utc","end_utc"]
+        if segment==2:fields+=["segment","active_at_launch","admission"]
         for row in checked:
             for key in fields:
                 if key not in row or row[key]is None:missing.append([row["module"],key])
@@ -274,6 +295,7 @@ def run(a):
     try:
         while pending or engine.live:
             if bounded and time.monotonic()>=deadline:engine.stop="subset_validation_six_hour_limit"
+            if admission_deadline is not None and time.time()>=admission_deadline:stop="admission_deadline_2026-11-06T03:00UTC";break
             if engine.stop:stop=engine.stop;break
             stat=os.statvfs(out)
             if 1-stat.f_bavail/stat.f_blocks>=.85:stop="disk_85_percent";break
@@ -281,51 +303,58 @@ def run(a):
             for pool in pools:
                 cap=(1 if bounded and pools[pool] else len(pools[pool]))if not a.functional else 1
                 while available>=9*2**30 and sum(j["meta"]["pool"]==pool for j in engine.live.values())<cap:
+                    if admission_deadline is not None and time.time()>=admission_deadline:break
                     if solo and engine.live:break
                     ready=next_ready()
                     if ready is None:break
                     exclusive=not engine.live
                     for previous_job in engine.live.values():previous_job["meta"]["exclusive_at_launch"]=False
+                    c["launch_admission"]=dict(last_admission)
                     pid=engine.launch(ready,pool,"subset_validation"if bounded else"functional"if a.functional else"census",0,"subset_validation"if bounded else"functional"if a.functional else"census",not(a.functional or bounded))
                     active_modules.add(ready)
                     engine.live[pid]["meta"]["exclusive_at_launch"]=exclusive
                     if solo:break
                     _,available=native.mem()
             if not engine.live:
+                if pending and segment==2:
+                    engine.collect(wait=1);continue
                 if pending:stop="memory_admission"if available<9*2**30 else"dependency_cycle_or_unresolved_context"
                 break
             before=len(engine.rows);engine.collect()
             for row in engine.rows[before:]:
                 n=row["module"];active_modules.discard(n)
+                if policy:policy.observe(row)
                 if row["status"]=="completed":
+                    segment_done+=1
                     done.add(n);pending.discard(n);solo.discard(n);queued.discard(n);publish(n,row)
                     for child in children.get(n,()):
                         if child in pending:remaining[child].discard(n);make_ready(child)
                 elif row.get("interruption")in {"memory_reserve","cgroup_memory_oom"}:
                     resource_retries[n]+=1
-                    if row.get("exclusive_at_launch"):
+                    if row.get("exclusive_at_launch")and(segment==1 or resource_retries[n]>=3):
                         failed.add(n);pending.discard(n);solo.discard(n)
                         append(out/"resource-failures.jsonl",dict(module=n,status="resource_failure_at_current_headroom",utc=utc()))
                         fail_dependents(n)
-                    else:solo.add(n)
+                    elif segment==1 or resource_retries[n]>=2:solo.add(n)
+                    else:make_ready(n)
                 else:
                     fails[n]+=1
                     if fails[n]>=2:
                         failed.add(n);pending.discard(n);solo.discard(n);fail_dependents(n)
                     else:make_ready(n)
-            if not(a.functional or bounded)and len(done)>=100 and not first100_done:
+            if not(a.functional or bounded)and (segment_done if segment==2 else len(done))>=100 and not first100_done:
                 first100_audit();first100_done=True
             fraction=len(done)/max(1,len(mods)-len(configuration))
             for milestone in [.1,.5]:
                 if progress_last<milestone<=fraction:
                     append(out/"milestones.jsonl",dict(utc=utc(),fraction=milestone,successful=len(done),failed=len(failed),blocked=len(blocked),
-                        available_bytes=native.mem()[1],disk_used_fraction=1-os.statvfs(out).f_bavail/os.statvfs(out).f_blocks,protocol_changed=False))
+                        available_bytes=native.mem()[1],disk_used_fraction=1-os.statvfs(out).f_bavail/os.statvfs(out).f_blocks,protocol_changed=(segment==2),segment=segment))
                     progress_last=milestone
         engine.drain()
         for n in pending:blocked[n]=dict(status="not_attempted",module=n,reason=stop)
         report=dict(functional_only=a.functional,full_census=not(a.functional or bounded),bounded_validation=bounded,cost_measurement=not(a.functional or bounded),
             successful=sorted(done),failed=sorted(failed),blocked=list(blocked.values()),stop=stop,
-            configuration_units=sorted(configuration),total_source_units=len(mods),complete=len(done)+len(configuration)==len(mods))
+            configuration_units=sorted(configuration),segment=segment,total_source_units=len(mods),complete=len(done)+len(configuration)==len(mods))
         (out/"outcomes.json").write_text(json.dumps(report,indent=2))
         append(out/"execution-phases.jsonl",dict(event="returned",utc=utc(),monotonic_s=time.monotonic(),stop=stop,complete=report["complete"]))
         print(json.dumps(report))
@@ -339,6 +368,7 @@ def run(a):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--manifest",type=Path,required=True);p.add_argument("--out",type=Path,required=True)
+    p.add_argument("--segment",type=int,choices=[1,2],default=1);p.add_argument("--resume-from",type=Path);p.add_argument("--admission-deadline");p.add_argument("--drain-deadline")
     p.add_argument("--pool",choices=["22","P8"],default="22");p.add_argument("--execute",action="store_true")
     p.add_argument("--discard-c",action="store_true",help="retain durable C hash/bytes, then unlink successful generated C; olean products stay");
     p.add_argument("--validate-subset",action="store_true",help="explicit non-measurement real-corpus closure: CPUs 10-16, one worker, <=2000 modules, <=6h; still requires --execute");
