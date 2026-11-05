@@ -24,17 +24,46 @@ and locally generated checkpoints. Acceptance does not mean axiom-free, free of
 sorryAx, or that every source file was built. Use the audit tool to inspect source
 coverage. ProofServe does not validate tactic plugins or executable code.
 
-## Current correctness and performance boundary
+Default checking shares already checked theorem bodies with identical interfaces.
+For declared proof-body context fidelity, select --strict-theorem-bodies.
+The policy distinction and crafted-artifact caveat are explained immediately
+below and recorded in every receipt.
 
-The second-review repair has been replayed on the real Nat.Basic dependency
-closure (1,330 modules) and Grid closure (3,793 modules), with the original
-accepted sets preserved. Its conservative handling of distinct theorem bodies
-causes extensive original module-local replay. The requested fallback-growth
-threshold is not met; this source has no qualified release speedup claim.
-See [the pre-freeze regression](results/pre-freeze-e1557c77/) for the actual
-counts, input comparison, memory and preview CPU. The final quiet-machine
-evaluation remains separate. Correctness checks take precedence over reusing
-a different proof body merely because its theorem interface matches.
+## Theorem-body policy and artifact-context differences
+
+The default policy, shared-checked, retains the first checked theorem when a
+later module has the same name, universe parameters, type and theorem group.
+The later body is checked in its module's original import context. A duplicate
+that upstream replay would skip is explicitly sent to the original kernel
+under a fresh temporary name. The shared path still checks new declarations
+with the original kernel. A shared-path failure is confirmed in the module's
+original import context before it can become a rejection.
+
+Default acceptance establishes derivability in the checked shared closure,
+relative to its reported axioms. It does not guarantee that a crafted compiled
+artifact's serialized proof replays in its original module context. In the
+supplied swapped well-founded-body fixture, default checking can accept while
+both official modes reject: a previously checked body makes the downstream
+computation check. This changes artifact-context parity, not the kernel or
+the logical validity of the resulting statement in that checked environment.
+
+Use --strict-theorem-bodies to preserve distinct theorem-body contexts.
+It isolates such modules and propagates the original-context requirement to
+dependents. The supplied official comparison covers this distinction; strict
+mode is not a proof of universal equivalence on arbitrary malformed metadata.
+Existing native-IR unsupported cases still apply. Receipts identify the policy
+as shared-checked or strict; the official route reports official-fresh.
+Changing policy invalidates checkpoint and certificate reuse.
+
+The historical e1557c77 context-isolation strategy cost about 2.27 times the
+complete-segment CPU of the 3fe reference in both real-closure previews.
+Attempt intervals total about 2.78 times the Nat.Basic reference and 3.38 times
+the Grid reference. Grid includes an interruption/retry; its intervals are not
+one continuous timing.
+These old measurements describe that strict context strategy, not a new
+measurement of the current strict executable, which also explicitly validates
+duplicate bodies. Strict mode is not rerun for the new performance comparison.
+See results/pre-freeze-e1557c77/ and results/theorem-body-policy/.
 
 ## Running and resuming
 
@@ -46,7 +75,7 @@ Repeat the command to resume successful segments. The default segment contains
 at most 500 new modules. A nonzero --max-segments value stops after that many newly executed
 segments in this invocation and returns an incomplete receipt. Saved segments
 do not consume the next invocation's allowance. A live process holds a lock on
-its checkpoint directory. Inputs, the checker executable, Lean identity, the Lake manifest, and checkpoint configuration
+its checkpoint directory. Inputs, theorem-body policy, the checker executable, Lean identity, the Lake manifest, and checkpoint configuration
 must match before earlier successes can be reused.
 
 By default, roots are the compiled project modules under .lake/build/lib/lean.
@@ -123,7 +152,7 @@ receipt is not a fresh verification run.
 | 4.32.2 and 4.33.1 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
 | 4.36.0-rc2 | Relevant exported symbol reviewed; native build not qualified | Uses the project's matching official toolchain |
 
-The current second-review repair has small-fixture and the two real-closure qualifications above on 4.34.1. The other
+The current policy source has small-fixture and real Nat.Basic / Grid closure qualification on 4.34.1. The other
 native contract entries above predate that repair and do not qualify the new
 source. The independent-closure path has so far been exercised on 4.34.1. Other rows
 include earlier matched-build qualification, not a new-path whole-library test.
@@ -170,14 +199,17 @@ ordinary stale artifacts, not malicious collisions or tampering.
 
 Upstream unsafe and partial proof exclusions are preserved, while their
 declaration names still participate in import-conflict detection. Distinct
-theorem payloads use original module-local replay and stay outside the combined
-frontier; dependent modules keep their original contexts. A shared-frontier
+theorem payloads receive original module-local replay. Strict mode keeps those
+modules outside the combined frontier; default mode can keep unrelated checked
+declarations in the shared frontier. Cached combined import contexts retain
+their exact proof-body consistency check in both modes. A shared-frontier
 kernel failure is confirmed through original module-local replay before it can
 be reported as a verification rejection. Only a successful final path emits
 acceptance, and receipts do not list one module as both accepted and rejected.
 Upstream Replay can itself skip a redundant imported theorem body with an equal
-interface. This is not a byte-for-byte audit of every redundant serialized
-proof or a proof of equivalence for arbitrary malformed metadata. Axioms retain their Lean
+interface; module-local replay now checks those skipped bodies under fresh
+temporary names. This is not a proof of equivalence for arbitrary malformed
+metadata or a byte-for-byte audit of every serialized field. Axioms retain their Lean
 meaning and are reported for the accepted closure, including segregated modules.
 No proof term is repaired or rewritten. This is not a demonstrated solution for
 checking a 260 GiB environment inside 16 GiB.

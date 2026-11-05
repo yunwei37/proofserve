@@ -1,0 +1,20 @@
+{
+  "compared_old_command_records": 109,
+  "new_command_records": 142,
+  "common_command_records": 109,
+  "exit_changes": [
+    {
+      "case": "2-crafted-body-native",
+      "old": 1,
+      "new": 0
+    }
+  ],
+  "other_status_acceptance_axiom_changes": [],
+  "strict_rows": 33,
+  "official_table_rows": 26,
+  "new_default_accept_official_reject": [
+    "swapped WellFounded proof bodies"
+  ],
+  "independent_runtime_review": false,
+  "scope": "provided second-review fixtures only; not universal artifact equivalence"
+}

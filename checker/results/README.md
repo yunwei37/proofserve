@@ -2,12 +2,15 @@
 
 ## Current native freeze
 
-Native source e1557c77 is frozen under the correctness-first exception.
-[Real-closure qualification](pre-freeze-e1557c77/README.md) completed both the
-1,330-module Nat.Basic and 3,793-module Grid closures with unchanged acceptance
-and the same 15 reported axioms as the corrected 3fe reference. Extensive
-module-local replay means the performance-growth threshold failed. The release
-speed comparison remains unqualified; the results are background-load previews.
+The introducing commit of
+[the replacement policy freeze](theorem-body-policy/freeze.json) supersedes
+e1557c77. Default shared-checked and the explicit strict option have distinct
+artifact-context semantics, recorded in receipts and certificate identity.
+[The report](theorem-body-policy/README.md) documents the reasoning,
+26-row official comparison and real default-mode closures: 1,330 / 3,793
+accepted modules, 15 axioms each, and exactly 49 / 157 module-local replays.
+The gate is restored; final quiet-machine performance remains unqualified.
+Earlier e155 metrics remain historical strict-context strategy data.
 
 > **Superseded correctness qualification:** O's review of 2df1d9d7 found false
 > acceptance in certificate reuse without modifying certificate contents.
@@ -43,9 +46,10 @@ state by one batch. Whole-corpus acceptance and capacity remain unverified.
 The final performance matrix and official controls wait for W's census to
 retire and the machine to become quiet. The latest closeout order is M's matrix
 (at most six hours), O's external timings (at most two hours), then resumable
-corpus checking, ending by 2026-11-06 14:00 UTC. The separate PlanarPacking
-comparison is cancelled. Report an unfinished census or checking run as partial;
-a completed subset is not the full 163,097-module source frame.
+corpus checking. The separate PlanarPacking comparison is cancelled. W must
+finish every census module without an admission deadline; only subsequent
+corpus checking may report partial coverage to meet the 2026-11-06 20:00 UTC
+overall target. A checked subset is not the full 163,097-module source frame.
 
 All timing uses no Lean -M. Current non-W preparation uses CPUs 8-9 only and
 takes no P-core lease. Raw binaries and large artifacts remain outside Git.

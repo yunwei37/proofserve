@@ -38,7 +38,17 @@ def project(d,name,sources,libs=None):
 def check(name,p,d,roots=(),flags=()):
  args=[BIN,p,"--workers","1","--checkpoint-dir",d,"--json"]
  for root in roots:args+=["--root",root]
- return command(name,args+list(flags),p)
+ row=command(name,args+list(flags),p)
+ strict_args=list(args)
+ strict_args[strict_args.index("--checkpoint-dir")+1]=Path(str(d)+"-strict")
+ strict=command(name+"-strict",strict_args+list(flags)+["--strict-theorem-bodies"],p)
+ if row["json"]:need(row["json"].get("theorem_body_policy")=="shared-checked",row)
+ if strict["json"]:need(strict["json"].get("theorem_body_policy")=="strict",strict)
+ if name=="2-crafted-body-native":
+  need(row["exit"]==0 and strict["exit"]==1,[row,strict])
+ else:
+  need(row["exit"]==strict["exit"],[row,strict])
+ return row
 def official(name,p,root):
  return [command(name+"-"+mode,["lake","env","leanchecker",*flags,root],p)for mode,flags in [("default",[]),("fresh",["--fresh"])]]
 def parity(name,p,d,root,expected=0):
@@ -96,7 +106,7 @@ def run(d):
   af.write_bytes(mm);mf.write_bytes(aa)
   refs=official("2-crafted-body",p,"D")
   n=check("2-crafted-body-native",p,d/"body-swapped",["A","D"],["--closure-roots","0"])
-  need(all(x["exit"]==refs[0]["exit"] for x in refs)and (n["exit"]==0)==(refs[0]["exit"]==0),refs+[n])
+  need(all(x["exit"]==1 for x in refs) and good(n),refs+[n])
  finally:af.write_bytes(aa);mf.write_bytes(mm)
  # The same body-dependent declaration inside M exercises frontier insertion.
  local_child="def computation"+child.split("def computation",1)[1]

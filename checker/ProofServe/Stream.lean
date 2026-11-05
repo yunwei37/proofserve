@@ -173,6 +173,27 @@ def constantsOf (data : ModuleData) (mutation : String) :
       map := map.insert name ci
     return (map, skipped)
 
+/-- Drop checked environments before freeing the original import regions. -/
+@[noinline] private def replayLocalBodies (base : Kernel.Environment)
+    (map : Std.HashMap Name ConstantInfo) (mod : Name) : IO Unit := do
+  let checked ← base.replay map
+  -- Upstream replay skips same-interface imported theorems. Check their actual
+  -- bodies too, under a fresh name, using only the original import context plus
+  -- this module's replayed declarations. No cloned name enters the shared map.
+  let mut nonce := 0
+  for (_, ci) in map do
+    unless ci.isUnsafe || ci.isPartial do
+      if let some prior := base.find? ci.name then
+        if sameTheoremInterface prior ci then
+          let mut fresh := mod.str "_proofserve_duplicate" |>.num nonce
+          while (checked.find? fresh).isSome do
+            nonce := nonce+1
+            fresh := mod.str "_proofserve_duplicate" |>.num nonce
+          validateDuplicate checked ci fresh
+          event [("event",toJson "duplicate_theorem_body_checked"),
+            ("module",toJson mod.toString),("declaration",toJson ci.name.toString)]
+          nonce := nonce+1
+
 /-- Module-local baseline is source-equivalent to the stock leanchecker path. -/
 unsafe def localReplay (mod : Name) (mutation : String) : IO Unit := do
   let parts ← moduleParts mod
@@ -181,9 +202,8 @@ unsafe def localReplay (mod : Name) (mutation : String) : IO Unit := do
   let (_, imports) ← importModulesCore first.imports |>.run
   let env ← finalizeImport imports first.imports {} 0 false false (isModule := true)
   let (map, _) := constantsOf data mutation
-  discard <| env.toKernelEnv.replay map
+  replayLocalBodies env.toKernelEnv map mod
   env.freeRegions
-
 
 initialize certifiedNames : IO.Ref NameSet ← IO.mkRef {}
 initialize checkpointSeedImports : IO.Ref (Array Import) ← IO.mkRef #[]
@@ -418,8 +438,11 @@ partial def visit (mode mutation : String) (mutateOnly : Option Name) (mod : Nam
             -- when the earlier matching interface came from another root.
             -- This does not waive duplicate definition/axiom import checks.
             if !sameConstant old ci then
-              separate := true
-              reason := some s!"different_theorem_body:{ci.name}"
+              if (← IO.getEnv "PROOFSERVE_STRICT_THEOREM_BODIES") == some "1" then
+                separate := true
+                reason := some s!"different_theorem_body:{ci.name}"
+              else
+                reason := some s!"duplicate_proof_requires_native:{ci.name}"
             else if !imported then
               reason := some s!"duplicate_proof_requires_native:{ci.name}"
           else

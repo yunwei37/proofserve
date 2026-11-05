@@ -94,6 +94,10 @@ def row(d,src):
     return f"| {d} | {src} | {r['affinity']} | {r['accepted']} | {r['declared_axioms']} | {r['whole_module_serial_replays']} | {r['segments']} | {r['sampled_peak_rss_gib']:.3f} | {r['actual_attempt_cpu_s']:.2f} | {r['complete_segment_cpu_s']:.2f} |"
 md="""# Real-closure regression and native-source freeze
 
+> Superseded freeze decision: the coordinator replaced this default on
+> 2026-11-05 with shared-checked plus an explicit strict mode. The measurements
+> below remain unchanged historical e1557c77 data. See ../theorem-body-policy/.
+
 Native source is frozen at e1557c770fcc585e722399e56a3c3be77b2f0e7f.
 The freeze uses the coordinator's explicit correctness-first exception:
 **the fallback-growth performance threshold did not pass**. This is not a

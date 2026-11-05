@@ -60,10 +60,12 @@ and module hash as the single-frontier procedure. Completed snapshots are
 retired, and a later resume validates the real certificate without new kernel
 segments. This is functional evidence, not whole-corpus scaling evidence.
 
-After W's gate and full build finish, first run the entire pinned manifest and
-record actual coverage, CPU, wall time, peak memory, batch count, and any
-operational failures. Only then run the final performance matrix and
-PlanarPacking. Current preparation takes no P-core lock.
+After W finishes every census module and retires, run the quiet-machine M
+matrix (at most six hours), then O's external-project timings (at most two hours),
+then resumable corpus checking. There is no separate PlanarPacking comparison.
+Only corpus checking may end with partial coverage to meet the overall
+2026-11-06 20:00 UTC closeout target; W's build census must run to completion.
+Current preparation uses only CPU 8–9 and no P-core lock.
 
 ## Corpus coverage identities
 
@@ -287,8 +289,8 @@ from an unrelated earlier module. These fixes change adapter behavior, not
 the original kernel.
 
 Certificate identity also includes the actual checker executable's 64-bit
-noncryptographic hash. The current internal identities are child ABI 5 and
-independent-closures-v7. Older state requires a fresh directory. All local
+noncryptographic hash. The current internal identities are child ABI 6 and
+independent-closures-v8. Older state requires a fresh directory. All local
 certificate JSON and environment snapshots remain trusted, editable state:
 someone who edits certificates can forge acceptance or axiom lists. Neither
 the 64-bit input hash nor the executable hash resists deliberately constructed
@@ -322,10 +324,12 @@ reader's reserved-name/tag check addresses that demonstrated case.
 The earlier adapter could retain a first theorem body after validating a
 matching interface in another context. A genuine WellFounded/Acc computation
 now reproduces a false shared-frontier rejection, so that behavior is no longer
-treated as an unconfirmed limitation. The current path isolates different
-theorem payloads and confirms shared failures against the original module
-context. Cached combined contexts also require the imported theorem payloads
-to match; otherwise new modules use their own declared contexts.
+treated as an unconfirmed limitation. The earlier e1557c77 path isolated different theorem payloads. The replacement
+default validates the later bodies locally and retains the first checked body
+in the shared frontier; --strict-theorem-bodies retains isolation. Shared
+failures are confirmed against the original module context in both modes.
+Cached combined contexts still require imported theorem payloads to match;
+otherwise new modules use their own declared contexts.
 
 Upstream Replay.lean can itself skip a redundant imported theorem body with
 an equal interface. The new controls do not establish byte-for-byte checking
@@ -344,7 +348,8 @@ partial checkpoint assembly into a supported or tamper-resistant operation.
 
 The latest adapter keeps skipped unsafe/partial names in conflict detection,
 even though upstream proof replay excludes their bodies. Distinct theorem
-payloads are isolated in their declared module contexts. A combined-frontier
+payloads are isolated only under --strict-theorem-bodies; default replay checks
+them locally without automatically quarantining unrelated declarations. A combined-frontier
 failure is confirmed by original module-local replay, and failed frontier
 extension cannot revoke a module whose local replay already succeeded.
 
@@ -365,7 +370,7 @@ unsupported even if a particular invocation would not evaluate it. Official
 
 The second review was code-only at 2628d727. This repair's execution and result
 inspection are 自审, not independent execution review. The earlier 14,721-module
-run belongs to source 3fe83c5a and ABI 4. It does not qualify ABI 5; that replay
+run belongs to source 3fe83c5a and ABI 4. It does not qualify ABI 6; that replay
 and full-library checking remain deferred until W's full build retires.
 
 The second review's axiom-tagged quotient counterexample was reproduced:
@@ -389,3 +394,23 @@ checks both temporary release and survival of a different live owner.
 The early repair's discarded validation regions were a defect in the added
 adapter path. Correcting that lifetime does not by itself establish whole-corpus
 capacity. Full-scale memory and performance still require the planned actual run.
+
+## Replacement default and certificate policy
+
+The native theorem_body_policy field binds both receipts and checkpoint or
+completed-certificate identities. It is shared-checked by default and strict
+with --strict-theorem-bodies. Switching policy refuses reuse. Both modes retain
+the exact combined-cache consistency check and original-context confirmation
+of a failed shared replay; the earlier certificate and input repairs are not
+rolled back.
+
+Default sharing can accept the supplied crafted, body-dependent artifact that
+both official modes reject. The accepted statement is derivable in the checked
+shared closure and its declared axiom set, but the serialized proof need not
+replay in its original module context. This is an explicit artifact-context
+difference, not an assertion that the original kernel accepted an invalid term.
+Strict mode preserves those contexts. Imported duplicate theorem bodies skipped
+by upstream replay now receive an explicit temporary-name kernel check during
+local replay. It adds no axiom or private kernel ABI operation. Historical strict
+timings remain labelled as e1557c77 measurements rather than exact timings of
+the new executable.

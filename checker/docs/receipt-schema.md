@@ -13,7 +13,7 @@ The execution_path field is proofserve-parallel and parallel is true. The fields
 are schema_version, lean_version, mathlib_manifest (the unaltered Lake lock),
 roots, accepted (ordered module names), rejected (kernel diagnostics), status,
 module_set_hash, module_set_hash_algorithm, axioms, workers, cpu_ns, wall_ns,
-cumulative_segment_cpu_ns, segments, and trusted_local_checkpoints.
+cumulative_segment_cpu_ns, segments, theorem_body_policy, and trusted_local_checkpoints.
 
 The module hash is Lean's deterministic 64-bit hash of sorted accepted names.
 It is not cryptographic. The axiom list contains declarations in the accepted
@@ -56,6 +56,7 @@ are JSON integers. Consumers should parse decimal strings losslessly.
 |---|---|---|
 | execution_path | proofserve-parallel | official-leanchecker |
 | parallel | true | false |
+| theorem_body_policy | shared-checked or strict | official-fresh |
 | project_revision | string or null | string or null |
 | mathlib_manifest | object or null | object or null |
 | roots | array of strings | array of strings |
@@ -104,7 +105,7 @@ identity. Generated environment snapshots may then be retired; interrupted
 batches keep their partial segment state. This retains the existing assumption
 that local checkpoints are trusted and input hashes detect ordinary changes,
 not adversarial tampering. Extra fields are additive within schema version 1.
-Native receipts now include checker_checkpoint_abi: 5. The JSON schema version
+Native receipts now include checker_checkpoint_abi: 6. The JSON schema version
 and the internal checkpoint ABI are different contracts. Receipt Lean version
 and child ABI must match before a completed batch can be reused.
 
@@ -133,7 +134,7 @@ adversary-resistant proof certificate. The --trusted-module-cache argument is
 an internal coordinator interface to trusted local state, not an untrusted
 proof upload interface.
 
-The checkpoint metadata ABI is child ABI 5 / independent-closures-v7. Old checkpoint configurations produce an
+The checkpoint metadata ABI is child ABI 6 / independent-closures-v8. Old checkpoint configurations produce an
 explicit mismatch error; they are not decoded using a new unsafe layout.
 
 
@@ -225,3 +226,32 @@ Direct open-parameter mentions are supported; closed and higher-order native
 dependencies may be refused with 2. The stock --fresh fallback can itself lack
 the IR available to stock default mode. Its selection is not a promise that a
 refused native-evaluation proof will pass.
+
+## Theorem-body policy
+
+Native receipts always record theorem_body_policy: shared-checked (default) or
+strict (--strict-theorem-bodies). Official fallback records official-fresh,
+because it delegates to the stock final-imported-environment procedure.
+
+The native policy is part of single-frontier identity, independent-closure
+identity, each completed certificate's identity/receipt consistency check, and
+the internal completed-import cache. The same executable cannot reuse state
+created under another policy. The executable identity additionally invalidates
+old state after an implementation change.
+
+Default mode retains a previously kernel-checked theorem body for an identical
+interface. Different later bodies are checked in their original module context;
+imported duplicates that upstream replay skips receive an explicit fresh-name
+kernel check. The shared environment can therefore accept a crafted artifact
+whose original-context proof is rejected by the official checker. Its accepted
+statement is still derived by the original kernel in the checked closure,
+relative to the reported axiom set. It is not a claim about that serialized
+proof's original-context replay. No axioms are inserted for the temporary checks.
+
+Strict mode isolates differing bodies and their dependent contexts, preserving
+the supplied artifact-context oracle controls at a substantial measured
+historical cost. It does not establish universal parity on every malformed
+metadata field or override the documented unsupported-native-IR boundary.
+A shared-frontier rejection is confirmed through original-context replay in
+both modes. Unrelated unsafe/partial conflicts and input/certificate checks
+are unchanged.

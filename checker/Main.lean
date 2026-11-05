@@ -13,10 +13,14 @@ structure CheckOptions where
   rootFile : Option System.FilePath := none
   persist : Bool := true
   split : Bool := true
+  strictTheoremBodies : Bool := false
   official : Bool := false
   closureRoots : Nat := 500
   reuseImports : Bool := true
   moduleCache : Option System.FilePath := none
+
+def theoremBodyPolicy (o : CheckOptions) : String :=
+  if o.strictTheoremBodies then "strict" else "shared-checked"
 
 partial def parseOptions (args : List String) (o : CheckOptions := {}) : Except String CheckOptions :=
   match args with
@@ -42,6 +46,7 @@ partial def parseOptions (args : List String) (o : CheckOptions := {}) : Except 
   | "--root-file"::f::xs => parseOptions xs {o with rootFile:=some f}
   | "--no-persistence"::xs => parseOptions xs {o with persist:=false}
   | "--no-split-fallback"::xs => parseOptions xs {o with split:=false}
+  | "--strict-theorem-bodies"::xs => parseOptions xs {o with strictTheoremBodies:=true}
   | "--official"::xs => parseOptions xs {o with official:=true}
   | "--json"::xs => parseOptions xs o
   | x::xs =>
@@ -173,9 +178,9 @@ def validateCertificateContext (identity receipt : Json) (project : System.FileP
   unless (identity.getObjValAs? UInt64 "checker_binary_hash").toOption==some binary &&
       (receipt.getObjValAs? UInt64 "checker_binary_hash").toOption==some binary do
     throw <| IO.userError "closure certificate checker executable differs"
-  unless (identity.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 5 do
+  unless (identity.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 6 do
     throw <| IO.userError "closure certificate child ABI differs"
-  unless (receipt.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 5 &&
+  unless (receipt.getObjValAs? Nat "checker_checkpoint_abi").toOption==some 6 &&
       (receipt.getObjValAs? Nat "schema_version").toOption==some 1 &&
       (receipt.getObjValAs? String "lean_version").toOption==some version do
     throw <| IO.userError "closure certificate receipt ABI or toolchain differs"
@@ -184,6 +189,8 @@ def validateCertificateContext (identity receipt : Json) (project : System.FileP
     throw <| IO.userError "closure certificate project or resolved search path differs"
   unless (identity.getObjValAs? Bool "persistence").toOption==some o.persist &&
       (identity.getObjValAs? Bool "split_fallback").toOption==some o.split &&
+      (identity.getObjValAs? String "theorem_body_policy").toOption==some (theoremBodyPolicy o) &&
+      (receipt.getObjValAs? String "theorem_body_policy").toOption==some (theoremBodyPolicy o) &&
       (identity.getObjValAs? (Array String) "roots").toOption==some (roots.qsort (· < ·)) &&
       (identity.getObjValAs? String "lean").toOption==some version &&
       (identity.getObjVal? "manifest").toOption==some manifest do
@@ -224,7 +231,7 @@ def officialFallback (o : CheckOptions) (project dir : System.FilePath)
       failed := true
       if r.exitCode != 1 then operational := true
       rejected := rejected.push row
-  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "official-leanchecker"),
+  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "official-leanchecker"),("theorem_body_policy",toJson "official-fresh"),
     ("parallel",toJson false),("project_revision",← projectRevision project),("project_dirty",← projectDirty project dir),("project_revision_binds_artifacts",toJson false),("mathlib_manifest",← readManifest project),("lean_version",toJson version),("roots",toJson roots),
     ("coverage",toJson "official --fresh final imported environment for each root; no per-module ledger"),
     ("status",toJson (if failed then "official_failure" else "complete")),
@@ -374,11 +381,12 @@ def prepareClosurePlan (_o : CheckOptions) (project dir exe : System.FilePath)
 /-- The module cache is local trusted checkpoint state, not a proof object.
 Hash comparison binds only modules in this invocation's actual closure. -/
 def prepareModuleCache (file directory : System.FilePath) (seen : NameSet)
-    (inputs : Array (String × UInt64)) (version : String) : IO System.FilePath := do
+    (inputs : Array (String × UInt64)) (version policy : String) : IO System.FilePath := do
   let cache ← IO.ofExcept (Json.parse (← IO.FS.readFile file))
   unless (cache.getObjValAs? String "kind").toOption==some "proofserve-local-module-cache-v1" &&
-      (cache.getObjValAs? String "lean").toOption==some version do
-    throw <| IO.userError "local module cache kind or toolchain differs"
+      (cache.getObjValAs? String "lean").toOption==some version &&
+      (cache.getObjValAs? String "theorem_body_policy").toOption==some policy do
+    throw <| IO.userError "local module cache kind, toolchain or theorem-body policy differs"
   let names ← IO.ofExcept (cache.getObjValAs? (Array String) "modules")
   let old ← IO.ofExcept (cache.getObjValAs? (Array (String × UInt64)) "inputs")
   let expected : Std.HashMap String UInt64 := Std.HashMap.ofList old.toList
@@ -415,12 +423,13 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
   let dirty ← projectDirty project dir
   let binary ← executableHash
   let identity := Json.mkObj [
-    ("checker_checkpoint_abi",toJson "independent-closures-v7"),("checker_binary_hash",toJson binary),
+    ("checker_checkpoint_abi",toJson "independent-closures-v8"),("checker_binary_hash",toJson binary),
     ("lean",toJson version),("project",toJson project.toString),
     ("roots",toJson roots),("search_path",toJson absolutePaths),
     ("manifest",manifest),("closure_roots",toJson o.closureRoots),
     ("reuse_checked_imports",toJson o.reuseImports),
-    ("persistence",toJson o.persist),("split_fallback",toJson o.split)]
+    ("persistence",toJson o.persist),("split_fallback",toJson o.split),
+    ("theorem_body_policy",toJson (theoremBodyPolicy o))]
   let identityFile := dir/"identity.json"
   if ← identityFile.pathExists then
     unless (← IO.FS.readFile identityFile) == identity.pretty++"\n" do
@@ -479,11 +488,13 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
           args := args ++ #["--max-segments",toString (o.maxSegments-newSegments)]
         if !o.persist then args := args.push "--no-persistence"
         if !o.split then args := args.push "--no-split-fallback"
+        if o.strictTheoremBodies then args := args.push "--strict-theorem-bodies"
         for root in selected do args := args ++ #["--root",root]
         if o.reuseImports && !accepted.isEmpty then
           let cacheFile := batchDir/"completed-module-cache.json"
           writeJson cacheFile (Json.mkObj [
             ("kind",toJson "proofserve-local-module-cache-v1"),("lean",toJson version),
+            ("theorem_body_policy",toJson (theoremBodyPolicy o)),
             ("modules",toJson accepted),("inputs",toJson inputsSeen.toList.toArray),
             ("source_certificates",toJson cacheSources)])
           args := args ++ #["--trusted-module-cache",cacheFile.toString]
@@ -640,7 +651,7 @@ def closureBatches (o : CheckOptions) (project dir : System.FilePath)
   accepted := accepted.filter (fun name => !failedNames.contains name)
   verifications := verifications.filter (fun name _ => !failedNames.contains name)
   let receipt := Json.mkObj [
-    ("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("checker_checkpoint_abi",toJson 5),("checker_binary_hash",toJson binary),
+    ("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("theorem_body_policy",toJson (theoremBodyPolicy o)),("checker_checkpoint_abi",toJson 6),("checker_binary_hash",toJson binary),
     ("parallel",toJson true),("context_strategy",toJson "independent-closures"),
     ("checkpoint_kind",toJson "input-validated-local-certificates"),
     ("reuse_checked_imports",toJson o.reuseImports),
@@ -723,13 +734,14 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   let binary ← executableHash
   let validatedCache ← match o.moduleCache with
     | none => pure none
-    | some file => pure (some (← prepareModuleCache file dir seen inputs version.stdout))
+    | some file => pure (some (← prepareModuleCache file dir seen inputs version.stdout (theoremBodyPolicy o)))
   let cacheIdentity ← match validatedCache with
     | none => pure Json.null
     | some file => IO.ofExcept (Json.parse (← IO.FS.readFile file))
-  let identity := Json.mkObj [("checker_checkpoint_abi",toJson 5),("checker_binary_hash",toJson binary),("snapshot_prefix",toJson snapshotPrefix),("module_cache",cacheIdentity),("lean",toJson version.stdout),("roots",toJson roots),
+  let identity := Json.mkObj [("checker_checkpoint_abi",toJson 6),("checker_binary_hash",toJson binary),("snapshot_prefix",toJson snapshotPrefix),("module_cache",cacheIdentity),("lean",toJson version.stdout),("roots",toJson roots),
     ("inputs",toJson inputs),("manifest",manifest),("project",toJson project.toString),("search_path",toJson absolutePaths),
-    ("persistence",toJson o.persist),("split_fallback",toJson o.split)]
+    ("persistence",toJson o.persist),("split_fallback",toJson o.split),
+    ("theorem_body_policy",toJson (theoremBodyPolicy o))]
   let identityFile := dir/"identity.json"
   if ← identityFile.pathExists then
     unless (← IO.FS.readFile identityFile) == identity.pretty++"\n" do
@@ -771,6 +783,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
           ("LEAN_NUM_THREADS",some (toString workers)),("PROOFSERVE_WORKERS",some (toString workers)),
           ("PROOFSERVE_PERSIST",some (if o.persist then "1" else "0")),
           ("PROOFSERVE_SPLIT",some (if o.split then "1" else "0")),
+          ("PROOFSERVE_STRICT_THEOREM_BODIES",some (if o.strictTheoremBodies then "1" else "0")),
           ("PROOFSERVE_VALIDATED_MODULE_CACHE",validatedCache.map System.FilePath.toString),
           ("PROOFSERVE_CHECKPOINT_DIR",some dir.toString),("PROOFSERVE_SNAPSHOT_PREFIX",some snapshotPrefix),
           ("DECOUPLED_CHECKPOINT_INPUT",if previous.isEmpty then none else some previous),
@@ -850,7 +863,7 @@ unsafe def frontend (args : List String) : IO UInt32 := do
   accepted := accepted.filter (fun name => !failedNames.contains name)
   trustedModules := trustedModules.filter (fun name => !failedNames.contains name)
   verificationRows := verificationRows.filter (fun row => !failedNames.contains (fieldString row "module"))
-  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("checker_checkpoint_abi",toJson 5),("checker_binary_hash",toJson binary),("parallel",toJson true),("lean_version",toJson version.stdout),
+  let receipt := Json.mkObj [("schema_version",toJson 1),("execution_path",toJson "proofserve-parallel"),("theorem_body_policy",toJson (theoremBodyPolicy o)),("checker_checkpoint_abi",toJson 6),("checker_binary_hash",toJson binary),("parallel",toJson true),("lean_version",toJson version.stdout),
     ("status",toJson (if complete then "complete" else if operational then "incomplete" else "rejected")),
     ("project_revision",revision),("project_dirty",dirty),("project_revision_binds_artifacts",toJson false),("mathlib_manifest",manifest),("roots",toJson roots),("accepted",toJson accepted),("rejected",toJson rejected),
     ("module_set_hash",toJson (hash (accepted.qsort (· < ·)))),
@@ -883,7 +896,7 @@ unsafe def main (args : List String) : IO UInt32 := do
       event [("event",toJson "segment_cpu"),("cpu_ns",toJson ((← processNs)-start))]
       return code
     if args==["--help"] then
-      IO.println "proofserve-check PROJECT [--workers N] [--checkpoint-dir D] [--root MODULE] [--root-file FILE] [--segment-modules N] [--max-segments N] [--closure-roots N] [--replay-shared-imports] [--json] [--official] [--no-persistence] [--no-split-fallback]"
+      IO.println "proofserve-check PROJECT [--workers N] [--checkpoint-dir D] [--root MODULE] [--root-file FILE] [--segment-modules N] [--max-segments N] [--closure-roots N] [--replay-shared-imports] [--json] [--official] [--no-persistence] [--no-split-fallback] [--strict-theorem-bodies]"
       return 0
     frontend args
   catch e =>

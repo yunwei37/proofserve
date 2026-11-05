@@ -20,6 +20,13 @@ with(contextlib.nullcontext(owned)if owned else tempfile.TemporaryDirectory(pref
  subprocess.run(['lake','build'],cwd=project,check=True,timeout=60)
  full=invoke([project,'--workers','1','--checkpoint-dir',d/'full'])
  assert full['status']=='complete'and set(full['accepted'])=={'Base','Fixture'}
+ assert full['theorem_body_policy']=='shared-checked'
+ strict_full=invoke([project,'--workers','1','--checkpoint-dir',d/'strict-full','--strict-theorem-bodies'])
+ assert strict_full['theorem_body_policy']=='strict'
+ assert strict_full['accepted']==full['accepted'] and strict_full['axioms']==full['axioms']
+ for state,flags in [(d/'full',['--strict-theorem-bodies']),(d/'strict-full',[])]:
+  changed=subprocess.run([str(BINARY),str(project),'--workers','1','--checkpoint-dir',str(state),*flags],text=True,capture_output=True,timeout=60)
+  assert changed.returncode==2 and 'checkpoint configuration changed' in changed.stderr
  assert 'fixtureAssumption'in full['axioms']
  fallback=invoke([project,'--official','--checkpoint-dir',d/'official'])
  assert fallback['execution_path']=='official-leanchecker' and fallback['parallel']is False
@@ -42,6 +49,21 @@ with(contextlib.nullcontext(owned)if owned else tempfile.TemporaryDirectory(pref
  # Independent closure batches retain certificates, not all historical environments.
  partitioned=invoke([project,'--workers','1','--closure-roots','1','--checkpoint-dir',d/'batches'])
  assert partitioned['context_strategy']=='independent-closures'
+ strict_batches=invoke([project,'--workers','1','--closure-roots','1','--checkpoint-dir',d/'strict-batches','--strict-theorem-bodies'])
+ assert strict_batches['theorem_body_policy']=='strict' and strict_batches['accepted']==full['accepted']
+ for state,flags in [(d/'batches',['--strict-theorem-bodies']),(d/'strict-batches',[])]:
+  changed=subprocess.run([str(BINARY),str(project),'--workers','1','--closure-roots','1','--checkpoint-dir',str(state),*flags],text=True,capture_output=True,timeout=60)
+  assert changed.returncode==2 and 'checkpoint configuration changed' in changed.stderr
+
+ # A genuine certificate from the other policy is invalid even if the
+ # receiving directory's own policy identity was never edited.
+ certificate=d/'batches/batch-0/certified.json'
+ original_certificate=certificate.read_bytes()
+ try:
+  certificate.write_bytes((d/'strict-batches/batch-0/certified.json').read_bytes())
+  transplanted=subprocess.run([str(BINARY),str(project),'--workers','1','--closure-roots','1','--checkpoint-dir',str(d/'batches')],text=True,capture_output=True,timeout=60)
+  assert transplanted.returncode==2 and 'closure certificate configuration differs' in transplanted.stderr
+ finally:certificate.write_bytes(original_certificate)
  (d/'requested-roots.txt').write_text('Base\nFixture\n')
  from_file=invoke([project,'--workers','1','--closure-roots','1','--root-file',d/'requested-roots.txt','--checkpoint-dir',d/'root-file'])
  assert from_file['accepted']==full['accepted'] and from_file['roots']==full['roots']
@@ -84,12 +106,13 @@ with(contextlib.nullcontext(owned)if owned else tempfile.TemporaryDirectory(pref
  finally:artifact.write_bytes(old)
  paths=subprocess.check_output(['lake','env','printenv','LEAN_PATH'],cwd=project,text=True).strip()
  paths=':'.join(str((project/p).resolve())for p in paths.split(':'))
- for mutation in ['bvar','unknown','sort']:
-  e=dict(os.environ,LEAN_PATH=paths,DECOUPLED_MUTATE_MODULE='Fixture',PROOFSERVE_WORKERS='2')
-  rr=subprocess.run([str(BINARY),'--internal-segment','audit',mutation,'Fixture'],env=e,text=True,capture_output=True,timeout=60)
-  assert rr.returncode!=0,(mutation,rr.stdout,rr.stderr)
-  assert 'reject'in rr.stdout and 'Fixture'in rr.stdout,(mutation,rr.stderr)
-  assert ('kernel_reject:'in(rr.stdout+rr.stderr) or ('while replaying declaration'in(rr.stdout+rr.stderr) and '(kernel)'in(rr.stdout+rr.stderr))),(mutation,rr.stdout,rr.stderr)
+ for strict in ['0','1']:
+  for mutation in ['bvar','unknown','sort']:
+   e=dict(os.environ,LEAN_PATH=paths,DECOUPLED_MUTATE_MODULE='Fixture',PROOFSERVE_WORKERS='2',PROOFSERVE_STRICT_THEOREM_BODIES=strict)
+   rr=subprocess.run([str(BINARY),'--internal-segment','audit',mutation,'Fixture'],env=e,text=True,capture_output=True,timeout=60)
+   assert rr.returncode!=0,(mutation,rr.stdout,rr.stderr)
+   assert 'reject'in rr.stdout and 'Fixture'in rr.stdout,(mutation,rr.stderr)
+   assert ('kernel_reject:'in(rr.stdout+rr.stderr) or ('while replaying declaration'in(rr.stdout+rr.stderr) and '(kernel)'in(rr.stdout+rr.stderr))),(mutation,rr.stdout,rr.stderr)
 
 
  # Later roots already covered by an earlier closure must not be checked again.
@@ -347,6 +370,9 @@ with(contextlib.nullcontext(owned)if owned else tempfile.TemporaryDirectory(pref
  badversion=subprocess.run([str(BINARY),str(project)],text=True,capture_output=True,timeout=10)
  assert badversion.returncode==2 and 'unsupported'in badversion.stderr
  print(json.dumps(dict(correct=True,axioms=True,resume=True,bad_proofs=3,closure_batches=True,batch_resume=True,changed_input_rejected=True,root_file=True,covered_roots_skipped=True,empty_root_file_rejected=True,empty_umbrella=True,empty_umbrella_bad_proofs=3,default_empty_umbrella=True,stale_empty_plan_rejected=True,incompatible_empty_imports_not_accepted=True,checked_import_reuse=True,hidden_bad_dependency_rejected=True,changed_completed_dependency_rejected=True,live_changed_dependency_rejected=True,incompatible_cached_contexts=True,unused_completed_input_change_rejected=True,leaf_empty_aggregator_detected=True,sibling_scope_rejected=True,dependency_root_order=True,permuted_batch_roots=True,cached_segment_base_restored=True,authentic_cross_project_certificate_refused=True,optional_part_inventory_refused=True,receipt_lean_refused=True,child_abi_refused=True,disk_full_fails_closed=True)))
+
+# Explicitly validate the proof-body check that upstream duplicate replay skips.
+subprocess.run(['lake','env','lean','--run',str(ROOT/'tests/DuplicateBodyCheck.lean')],cwd=ROOT,check=True,timeout=60)
 
 # All code-review regressions are part of this existing CI entry point.
 subprocess.run([sys.executable,str(ROOT/'tests/review_e0.py')],check=True,timeout=1800)

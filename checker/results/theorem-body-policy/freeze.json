@@ -1,0 +1,40 @@
+{
+  "freeze_status": "frozen",
+  "frozen_at_utc": "2026-11-05T04:54:45.186461+00:00",
+  "deadline_utc": "2026-11-05T09:00:00Z",
+  "freeze_commit_lookup": "git log --diff-filter=A -1 --format=%H -- checker/results/theorem-body-policy/freeze.json",
+  "commit_identity_note": "The introducing Git commit is authoritative; this avoids a self-referential hash inside its own content. Native file blobs and tested executable are bound below.",
+  "replaces_native_commit": "e1557c770fcc585e722399e56a3c3be77b2f0e7f",
+  "source_base_commit": "06d8e81dc15955c7f094abb96e61916eb01c1ed7",
+  "native_source_blobs": {
+    "checker/Main.lean": "af948685026de5f2e7750b41af59a879099b52a8",
+    "checker/ProofServe/Stream.lean": "333afd303a5cb618dab3fb82819ffa46a6c6e7fc",
+    "checker/ProofServe/Core.lean": "0e8b84dbfa336448a592a32625273a23b7355f93",
+    "checker/ProofServe/ModulePlan.lean": "d735723e40881d7b6bbd34167f98d9f4fa43cc86",
+    "checker/c/runtime.c": "540b3d41597593dbdd63715a2d64cb5e10cd8ede",
+    "checker/lakefile.lean": "3337a6c21f34e0dd9b94cdb549f0f2a9ff4a0dfb",
+    "checker/lean-toolchain": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5"
+  },
+  "binary": "/workspaces/.agent-state/gpu-smt-captures/checker-body-policy-20261105/proofserve-check-build3",
+  "checker_binary_hash": "14707787067517532260",
+  "lean_version": "4.34.1",
+  "checkpoint_abi": 6,
+  "independent_closure_format": "v8",
+  "receipt_schema_version": 1,
+  "default_policy": "shared-checked",
+  "strict_flag": "--strict-theorem-bodies",
+  "strict_policy": "strict",
+  "real_closure_gate_passed": true,
+  "accepted_and_declared_axiom_sets_unchanged": true,
+  "whole_module_replay_restored": {
+    "Nat.Basic": 49,
+    "Grid": 157
+  },
+  "strict_performance_remeasured": false,
+  "paper_performance_qualified": false,
+  "independent_runtime_review": false,
+  "decision": "Restore same-interface sharing with original-context proof-body validation; confirm shared failures in original contexts. Strict isolates distinct proof bodies. Preserve all other e155 repairs.",
+  "known_policy_difference": "Only the supplied swapped-body row changes in the 26-row oracle table: default accepts, strict/default-stock/fresh-stock reject. This is checked-closure derivability, not original artifact-context replay parity.",
+  "post_freeze_policy": "Only real defects justify native changes; rerun affected qualification and evaluation. No tag or release.",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/checker-body-policy-20261105"
+}

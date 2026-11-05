@@ -1,22 +1,22 @@
 # Frozen post-census evaluation
 
-> **2026-11-05 schedule supersedes the historical driver below.** The deadline is
-> 2026-11-06 20:00 UTC. Do not launch the capacity-first all-in-one command below
-> as the current final workflow. It predates the agreed order and partial-census
-> closeout. The final order is the quiet-machine M matrix (at most six hours),
-> O's external-project timings (at most two hours), and then resumable corpus
-> checking. Corpus checking must stop by 2026-11-06 14:00 UTC and report exact
-> completed and unfinished modules. There is no separate PlanarPacking comparison.
-> W alone owns the P-core lease until its census retires. W stops admitting new
-> modules at 2026-11-06 04:00 UTC if necessary; an incomplete census is not a
-> complete corpus. Its completed subset and missing artifacts must remain
-> explicit. The previous driver's complete-census and all-artifacts requirements
-> cannot be silently bypassed to claim whole-corpus coverage.
+> **The 2026-11-05 complete-census decision supersedes the historical driver
+> below.** W must finish all requested build modules, with no admission deadline
+> or partial-build closeout. Its configuration is unchanged. Keep W's P-core
+> lease and CPU allocation until its actual controller and native jobs retire.
+> M and other preparation use CPU 8–9 during that run.
 >
-> The next final-run handoff must bind the actual retired W run and the frozen
-> checker binary, use fresh performance states, and preserve failed attempts.
-> The old workflow remains below as a historical, qualified preparation route,
-> not evidence that the new deadline-aware final sequence has executed.
+> The next quiet-machine order is M's final matrix (at most six hours), O's
+> external-project timings (at most two hours), then resumable corpus checking.
+> To meet the 2026-11-06 20:00 UTC overall target, corpus checking alone may
+> report partial coverage. Do not truncate W's census to meet that target.
+> There is no separate PlanarPacking comparison.
+>
+> The old capacity-first all-in-one command is not the current launch procedure.
+> Bind the completed W artifacts and the replacement frozen checker binary
+> before final measurements. The e1557c77 freeze is superseded by the replacement freeze in
+> results/theorem-body-policy/freeze.json; its historical preview timings
+> cannot be reused as the new tool's final evaluation.
 
 ## Historical preparation driver (superseded for closeout)
 

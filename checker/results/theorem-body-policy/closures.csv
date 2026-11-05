@@ -1,0 +1,7 @@
+dataset,source,policy,modules,axioms,module_local,segments,attempt_wall_s,actual_cpu_s,complete_segment_cpu_s,peak_tree_gib,direct_duplicate_body_checks,paper_eligible
+nat,3fe-reference,historical reference,1330,15,49,3,[149.42237793699314],183.557586,178.481770064,1.6990852355957031,not recorded,False
+nat,e155-strict-context,historical strict context strategy,1330,15,1016,3,[416.1221131330094],411.40615,405.104768321,1.4644927978515625,not recorded,False
+nat,replacement-shared-checked,shared-checked,1330,15,49,3,[155.44666061300086],186.999453,181.059210221,1.7253494262695312,33,False
+grid,3fe-reference,historical reference,3793,15,157,8,[1062.7965780550003],1496.226871,1485.572440938,3.440826416015625,not recorded,False
+grid,e155-strict-context,historical strict context strategy,3793,15,3465,8,"[1800.023310827004, 1792.554398680004]",3508.940669,3370.427491642,3.0799560546875,not recorded,False
+grid,replacement-shared-checked,shared-checked,3793,15,157,8,[1134.9015438159986],1507.059829,1492.986007333,3.5930519104003906,34,False

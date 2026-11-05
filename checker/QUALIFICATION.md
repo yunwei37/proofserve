@@ -1,6 +1,49 @@
 # Development qualification
 
-## Native source frozen, 2026-11-05
+## Replacement native freeze, 2026-11-05
+
+The new freeze is the introducing commit of
+[freeze.json](results/theorem-body-policy/freeze.json), superseding e1557c77.
+Resolve the exact commit with:
+
+    git log --diff-filter=A -1 --format=%H -- checker/results/theorem-body-policy/freeze.json
+
+The record binds all seven native/build inputs to the tested executable.
+Default policy is shared-checked; --strict-theorem-bodies preserves distinct
+body contexts. Policy is bound into receipts, checkpoints, completed-import
+caches and certificate identity. Child ABI 6 and independent-closures v8
+invalidate earlier local state.
+
+Both actual default-mode runs completed on CPU 8–9 with two workers and no
+P-core lease: Nat.Basic 1,330 modules / 15 axioms and Grid 3,793 modules / 15
+axioms. Acceptance and declared axioms equal the retained 3fe and e155 sets.
+Whole-module replay is exactly 49 and 157. CPU was 187.00 s and 1,507.06 s;
+wall was 155.45 s and 1,134.90 s. These are background-load qualification points,
+not final paper timings. Peak tree RSS was 1.725 and 3.593 GiB, below 12 GiB.
+
+The default establishes checked-closure derivability relative to its reported
+axioms and the existing kernel/adapter/checkpoint trust assumptions. It does
+not promise original artifact-context replay parity. The supplied swapped-body
+fixture is accepted by default but rejected by strict and both official modes.
+All other supplied oracle outcomes retain their earlier behavior. Shared-path
+failures are confirmed in original contexts. Imported duplicate bodies skipped
+by upstream replay now receive explicit fresh-name original-kernel checks.
+
+Local qualification includes the core contract and 90 / 142 review command
+records, plus a focused duplicate-body kernel unit and authentic cross-policy
+certificate control. The pushed CI entry runs all these controls together.
+See [the report](results/theorem-body-policy/README.md) for exact boundaries,
+retained setup failures and historical strict timing limits. These executions
+are self-review (自审), not independent runtime review.
+
+Only real defects justify native changes after freeze; rerun affected results.
+No tag or release is created. W must finish its full build census. The quiet
+matrix, external-project acceptance and large ABI 6 / corpus rechecks remain
+outstanding.
+
+## Historical e155 freeze (superseded)
+
+### Previous native source freeze, 2026-11-05
 
 The frozen native source is e1557c770fcc585e722399e56a3c3be77b2f0e7f.
 The exact seven source/build inputs and qualified binary identity are in

@@ -1,0 +1,27 @@
+case,official_default,official_fresh,proofserve,old_proofserve,scope,difference_reason,raw_case,e155_proofserve,strict_proofserve
+unsafe PrivateConflictA,0,0,0,0,same root in each mode,,1-unsafe-PrivateConflictA-native,0,0
+unsafe PrivateConflictA2,0,0,0,0,same root in each mode,,1-unsafe-PrivateConflictA2-native,0,0
+unsafe PrivateConflictB,0,0,0,0,same root in each mode,,1-unsafe-PrivateConflictB-native,0,0
+unsafe PrivateConflictB2,0,0,0,0,same root in each mode,,1-unsafe-PrivateConflictB2-native,0,0
+unsafe PrivateConflictC,1,1,1,0,same root in each mode,,1-unsafe-PrivateConflictC-native,1,1
+partial PrivateConflictA,0,0,0,0,same root in each mode,,1-partial-PrivateConflictA-native,0,0
+partial PrivateConflictA2,0,0,0,0,same root in each mode,,1-partial-PrivateConflictA2-native,0,0
+partial PrivateConflictB,0,0,0,0,same root in each mode,,1-partial-PrivateConflictB-native,0,0
+partial PrivateConflictB2,0,0,0,0,same root in each mode,,1-partial-PrivateConflictB2-native,0,0
+partial PrivateConflictC,1,1,1,1,same root in each mode,,1-partial-PrivateConflictC-native,1,1
+unsafe imported before safe same name,1,1,1,not in this baseline,same root in each mode,,1-unsafe-then-safe-native,1,1
+honest WellFounded computation,0,0,0,1,same root in each mode,,2-body-native,0,0
+cached distinct proof bodies; reject ZBroken,1,1,1,1,"official ZBroken; native roots A M D ZBroken, closure-roots 2",,2-cache-body-native,1,1
+swapped WellFounded proof bodies,1,1,0,0,same root in each mode,Expected default policy difference: prior kernel-checked same-interface body permits the shared computation; strict and both official modes preserve original body context and reject. Derivability is relative to the checked closure and its reported axioms.,2-crafted-body-native,1,1
+body-sensitive declaration in M,0,0,0,1,same root in each mode,,6-body-same-module-native,0,0
+open primitive bridge mention,0,0,0,2,same root in each mode,,3-mention-native,0,0
+unrelated Aaa/Bbb helper names,0,0,0,2,each stock Aaa and Bbb independently passes; native checks both roots,,3-taint-native,0,0
+closed primitive evaluation,0,1,2,2,same root in each mode,Stock default has imported IR; stock fresh lacks it; native deliberately refuses closed evaluation with operational exit 2.,3-evaluation-native,2,2
+higher-order primitive evaluation,0,1,2,not in this baseline,same root in each mode,Stock default has imported IR; stock fresh lacks it; native conservatively refuses higher-order evaluation with operational exit 2.,3-higher-native,2,2
+dependency IR missing,1,1,2,0,same root in each mode,"Both stock modes fail artifact loading with 1; the adapter reports the load failure as operational exit 2, never complete.",4-ir-missing-native,2,2
+dependency IR corrupt,1,1,2,0,same root in each mode,"Both stock modes fail artifact loading with 1; the adapter reports the load failure as operational exit 2, never complete.",4-ir-corrupt-native,2,2
+"incompatible empty context, closure-roots 0",1,1,1,1,same root in each mode,,5-context-native-0,1,1
+"incompatible empty context, closure-roots 1",1,1,1,2,same root in each mode,,5-context-native-1,1,1
+escaped explicit root,0,0,0,0,same root in each mode,,9-escaped-native,0,0
+axiom-tagged quotient records plain,1,1,2,1,same ZFake root; segmented native also checks ASeed,Reserved primitive names with ordinary declaration tags are explicitly unsupported (2); stock rejects (1). Genuine quotient control still passes.,8-quot-plain,2,2
+axiom-tagged quotient records segmented,1,1,2,0,same ZFake root; segmented native also checks ASeed,Reserved primitive names with ordinary declaration tags are explicitly unsupported (2); stock rejects (1). Genuine quotient control still passes.,8-quot-segmented,2,2
