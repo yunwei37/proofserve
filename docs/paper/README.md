@@ -88,6 +88,21 @@ retains unknown full CPU. Both table fragments compile, and final mode rejects
 the previews. These checks do not establish a quiet host or independent checker
 review; those remain conditions of the owners' actual final evaluation.
 
+The frozen native checker is e000ed62: shared-checked is the default and
+--strict-theorem-bodies selects strict original-body isolation.
+The generator reads theorem_body_policy/policy, a strict_theorem_bodies flag,
+or strict command-key/arm labels. Matrix points keep policy and executable
+commit separate. D/S in the compact table identify default/strict; default
+means that recorded executable's default, so old previews are not renamed
+as the new policy. Returned strict and default points with identical
+dataset/arm/workers/commit produce strict-costs.csv with separate CPU and
+wall ratios of medians. Missing strict points produce no invented cost.
+Historical e155 isolation numbers are never substituted for new strict costs.
+The compact matrix puts worker counts in columns and CPU/wall clocks on
+separate rows, leaving unmeasured configurations as dashes rather than
+inventing strict points. External summaries also separate policies; the compact external table uses
+default ProofServe observations.
+
 ## Manuscript wiring
 
 Run both final generators, then compile docs/paper/main.tex with Tectonic.
@@ -100,3 +115,5 @@ the generic workflow diagram, keeping two figures and two tables.
 The closure deadline is 6 November 2026, 20:00 UTC. Compilation has no cutoff and must run to completion; no deadline-selected subset is published. Library checking reports its actually verified scope by the 17:00 hard stop, with no separate PlanarPacking comparison. Paper prose and scripts are due 5 November, 12:00; numerical integration is due 6 November, 18:00. Library checking is supplementary: if no time remains after the matrix and external timing, report it as not attempted, with no invented cost or acceptance count. All times are UTC.
 
 Completion-mode validation: the retained numerical records plus explicitly synthetic terminal categories outside Git produced an exhaustive success/configuration/failure/blocked inventory and unchanged P/E CPU sums. A stopped campaign and unattempted category were refused, the removed CLI option was refused, and preview still produced no publication marker. These validation identities and counts are not census results.
+
+Policy-adapter validation: real preview rows plus explicitly synthetic strict labels exercised separate default/strict repeat groups, same-configuration CPU/wall ratios, no pairing across commits, isolated external policy rows, preview-only markers and refusal in final mode. Both table fragments compiled. These copied costs test grouping only; they are not strict-mode measurements and are not included in the paper.
