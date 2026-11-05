@@ -749,3 +749,21 @@ zero evidence macros and no overfull/undefined warnings. Page 2 was visually
 rechecked; the other five renderings are byte-identical to the reviewed
 observed-prefix manuscript. This is a bounded data snapshot and paper update,
 not an assertion that all project evaluation is complete.
+
+
+## Direct six-hour continuation supersedes stop (5 November)
+
+The exact words “剩下能不能 6 个小时内跑完大多数?” are appended once.
+The coordinator now directly confirms continuation. Final reporting includes
+only modules completed by 6 November 03:00 UTC. M timing moves after 03:00
+and actual quiet retirement. The first segment is history, not final N.
+
+Actual 05c memory admission defers high-memory families/dependents and has no
+positive risky-family concurrency caps. Root reports this implementation,
+without inventing cap values or relabelling it the original 22-slot policy.
+Compiler argv, -j8 and pools stay fixed; cancelled b781 is not a measured segment.
+
+Current argv has 03:00 admission and 03:30 drain deadlines, whereas this direct
+instruction gives a 03:00 hard cutoff. The paper must filter late completions
+and retain later drain wall separately. Root does not mutate owner controllers
+or presume M started merely from clock time. No new native work is launched.
