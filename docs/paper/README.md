@@ -4,53 +4,60 @@ All analysis and compilation in the shared research Workspace run on CPUs 8–9.
 The scripts also run with standard Python outside that Workspace; input data are
 explicit arguments, with no development-machine paths embedded.
 
-## User-stopped observed compilation artifacts
+## Cutoff-completed compilation artifacts
 
-This export freezes the first segment at its stop: 128,331/163,096 executable
-modules. Later continuation is excluded, so its records cannot silently change
-this observed-prefix snapshot or become an unreported two-phase total.
-Read W's formal stopped export:
+The latest continuation supersedes the stop decision. W runs two admission
+segments; paper statistics include only native completions by
+**6 November 2026, 03:00 UTC**. Final N is not the old 128,331-module snapshot.
 
-    python3 docs/paper/generate_census.py --stopped --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
+    python3 docs/paper/generate_census.py --cutoff 2026-11-06T03:00:00Z --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
 
-The actual input is modules.csv[.gz] (or module-costs.csv[.gz]), summary.json,
-segment-totals.csv and failed-attempts.csv[.gz]. --csv and --failed-attempts
-select explicit alternatives. The CSV retains all source-unit identities,
-including configuration and unfinished modules; observed successful modules
-are unique. summary.json identifies the user stop, one executed segment and
-no native second phase, scope counts and real final failures. The adapter
-checks those counts against the inventory instead of calling a partial frame
-complete. Long unfinished-dependency CSV fields are read without truncation.
+The input is W's retired modules.csv[.gz], summary.json, segment-totals.csv
+and failed-attempts.csv[.gz]. Module segment IDs, end_utc, source/measurement
+commits, native costs and instructions remain bound. The full source inventory
+includes successful, configuration, failed, blocked, deferred_by_user and
+unattempted identities. A running snapshot or missing segment is not final N.
+If W's final published schema differs, adapt its actual fields without
+inventing terminal times or counts.
 
-Successful records require explicit P/E pool, user_cpu_s, system_cpu_s,
-wall_s, source_revision, measurement_commit and user instructions
-(instructions_user/user_instructions, or active PMU counters). No P/E
-conversion or pooled CPU total is computed. segment-totals.csv supplies the
-actual launch-to-retirement wall boundary, including drain/retry time.
-Unsuccessful-attempt CPU remains separate from successful-module costs.
-A resource-interrupted attempt is not a final failed module.
+The generator retains completions/outcomes after the cutoff separately,
+without adding their CPU, instructions or identities to the cutoff-success
+set. Exactly-at-cutoff completion is included. Original native status and
+costs survive in census-after-cutoff.csv; deferred reasons and unfinished
+dependencies remain in the outcome inventory. No missing cost becomes zero.
 
-Outputs include observed P/E summaries, user-instruction/P-E CPU quantiles
-and their two-panel figure, scope/provenance, the unmeasured inventory and
-original unfinished reasons. Coverage by marker/default graph reports the
-full label frame and observed/unmeasured counts separately; cost shares
-use observed modules only. No inverse-coverage, sample, stratum or model
-extrapolation fills missing costs. Separate observed P/E work is a lower
-bound, not a full-library cost estimate or a random-sample confidence bound.
-Only successful figure compilation produces census-ready.tex.
+CPU summaries keep P/E separate, while census-segment-costs.csv splits each
+segment and pool. census-segments.csv retains retired operational wall,
+reporting wall and post-cutoff drain. A segment ending before cutoff keeps
+its recorded wall; a straddling interval uses recorded UTC start to cutoff,
+with the remainder separate. The reported total sums segment reporting
+intervals and excludes transition gaps. Native-module wall sums are another
+clock. Current W argv stops admission at 03:00 but drains until 03:30; this
+must not silently extend the paper's 03:00 reporting boundary or imply quiet
+machine availability for M at 03:00.
 
-For preview validation:
+All distributions and marker/default-graph cost shares concern cutoff-success
+modules only. Full-frame label coverage is separate. This dependency-ordered,
+selectively deferred subset is not random; P/E observed-work sums are lower
+bounds, never extrapolated from coverage, original42, strata or a model.
 
-    python3 docs/paper/generate_census.py --preview --preview-json data/openai-math-4eaee875/dependency-audit/controller-real-subset-fixed/attempts.json --out /path/to/preview
+Until final cutoff returns, the historical first segment remains explicit:
 
-Preview outputs use preview- prefixes and never produce a ready marker.
-The five functional modules lack costs and remain blank. Twenty retained
-unreplicated gate rows plus explicitly synthetic stopped-scope metadata
-validate separate P/E sums, unfinished identities, attempt/final-failure
-separation and preview isolation; none supplies census numbers. Actual
-128,331-row reduction was separately checked against W's retained stopped
-export, including exact user-instruction integer sums. See evidence.md for
-the source/provenance and formal-publication status.
+    python3 docs/paper/generate_census.py --stopped --data /path/to/final-user-stopped --out /path/to/segment1 --tectonic tectonic
+
+Its ready file sets CensusAtCutoff=0; final --cutoff sets it to 1 only for a
+returned two-segment ledger. This keeps the manuscript's first-segment figure
+and costs from masquerading as final cutoff N. --preview never creates a
+ready marker, and the real five-module functional trial retains blank costs.
+
+Validation: twenty real retained gate values plus synthetic segment times,
+retirement metadata and deferred/missing identities exercised separate P/E
+and segment sums, exactly-at-boundary inclusion, timezone equivalence, late
+outcome retention, excluded transition/drain wall, missing-segment refusal
+and preview isolation. The figure compiles. Synthetic values are not paper
+results. The actual first-segment CSV was independently reduced against W's
+retained export; exact totals and the pending formal-data provenance are in
+evidence.md.
 
 ## System evaluation artifacts
 
@@ -114,9 +121,9 @@ are never inputs. Without final artifacts it prints explicit pending slots,
 not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
 
-The closure deadline is 6 November 2026, 20:00 UTC. Compilation is stopped
-and will not resume under this decision. M runs the final matrix, then O
-external timing, then M checks only actually built artifacts. The checking
+The closure deadline is 6 November 2026, 20:00 UTC. W continues segment 2
+with a 03:00 reporting cutoff. M runs the final matrix after 03:00 and actual
+retirement/quiet, then O external timing, then M checks built artifacts. The checking
 phase may be partial or unstarted and stops by 17:00; it is not a necessary
 paper result. Root integrates actual numbers by 18:00. No PlanarPacking
 comparison or missing-work estimate is added.

@@ -3,6 +3,7 @@
 import argparse
 import ast
 import csv
+from datetime import datetime
 import gzip
 import json
 import math
@@ -89,6 +90,15 @@ def tex_number(value, digits=2):
     return "--" if value is None else f"{value:,.{digits}f}"
 
 
+
+def utc_time(value):
+    result = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    if result.tzinfo is None:
+        raise ValueError("cutoff and record times need an explicit timezone")
+    return result
+
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=Path("data/openai-math-4eaee875/census"))
@@ -97,13 +107,17 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--preview", action="store_true")
     parser.add_argument("--stopped", action="store_true", help="explicit user-stopped observed-subset publication")
+    parser.add_argument("--cutoff", help="publish only native completions by this UTC boundary, retaining later outcomes")
     parser.add_argument("--failed-attempts", type=Path)
     parser.add_argument("--tectonic", default=os.environ.get("TECTONIC"))
     args = parser.parse_args()
     if args.preview_json and not args.preview:
         parser.error("functional JSON cannot populate the paper")
-    if not args.preview and not args.stopped:
-        parser.error("the actual campaign was user-stopped; final generation requires --stopped")
+    if args.stopped and args.cutoff:
+        parser.error("select either a historical stopped snapshot or the final cutoff report")
+    if not args.preview and not (args.stopped or args.cutoff):
+        parser.error("select --stopped for segment 1 or --cutoff for the bounded two-segment report")
+    cutoff = utc_time(args.cutoff) if args.cutoff else None
     source = args.csv or args.preview_json
     if source is None:
         present = [args.data / name for name in
@@ -130,30 +144,72 @@ def main():
     failures = [row for row in unfinished if row["status"] in {"failed", "failure"}]
     blocked = [row for row in unfinished if row["status"] == "blocked"]
     source_modules = published.get("source_modules")
-    wall_s = number(segments[0].get("wall_s")) if len(segments) == 1 else None
     if not args.preview:
-        if published.get("stop_reason") != "user_requested_stop":
-            raise ValueError("needs W's explicit user-stop terminal, not a running snapshot")
-        if published.get("segment_count") != 1 or published.get("segment2_launched") is not False:
-            raise ValueError("actual publication must distinguish the one executed segment from the unlaunched proposal")
-        if len(segments) != 1 or str(segments[0].get("segment")) != "1" or wall_s is None:
-            raise ValueError("needs the actual first-segment measured wall interval")
+        expected_segments = 2 if cutoff else 1
+        if not cutoff and published.get("stop_reason") != "user_requested_stop":
+            raise ValueError("historical stopped publication needs its explicit user-stop terminal")
+        if published.get("segment_count") != expected_segments or len(segments) != expected_segments:
+            raise ValueError("published segment count differs from executed wall ledger")
+        if bool(published.get("segment2_launched")) != bool(cutoff):
+            raise ValueError("do not relabel a one-segment snapshot as the final two-segment report")
+        if {str(item.get("segment")) for item in segments} != {str(i) for i in range(1, expected_segments + 1)}:
+            raise ValueError("executed segment identities are missing or duplicated")
+        if any(number(item.get("wall_s")) is None or not item.get("start_utc") or not item.get("end_utc")
+               for item in segments):
+            raise ValueError("each segment needs an actual retired wall interval")
         if len(observations) != int(published["source_units"]):
-            raise ValueError("the inventory must retain every source unit, including unmeasured modules")
+            raise ValueError("inventory must retain all source identities, including deferred and unmeasured")
         if source_modules != len(observations) - len(configuration):
-            raise ValueError("source-module denominator differs from the inventory/configuration split")
+            raise ValueError("source denominator differs from the inventory/configuration split")
         if published.get("completed_source_modules") != len(values) or published.get("unfinished_source_modules") != len(unfinished):
-            raise ValueError("published scope counts differ from the per-module ledger")
+            raise ValueError("published retirement counts differ from the module ledger")
         if published.get("known_final_native_failures") != len(failures):
-            raise ValueError("unsuccessful attempts must not become final failed modules")
-        if any(row["status"] not in {"completed", "configuration", "failure", "failed", "blocked", "not_attempted"}
-               for row in observations):
-            raise ValueError("unresolved module classification in the published inventory")
-        if any(row["cpu_s"] is None or row["wall_s"] is None or row["user_instructions"] is None
-               for row in values):
+            raise ValueError("failed attempts must not become final failed modules")
+        known = {"completed", "configuration", "failure", "failed", "blocked", "not_attempted", "deferred_by_user"}
+        if any(row["status"] not in known for row in observations):
+            raise ValueError("unresolved module status in the published inventory")
+        if any(row["cpu_s"] is None or row["wall_s"] is None or row["user_instructions"] is None for row in values):
             raise ValueError("observed successful cost is absent; never zero-fill it")
-        if any(str(row.get("segment")) != "1" for row in observations):
-            raise ValueError("do not relabel records as an unexecuted second segment")
+        ids = {str(item["segment"]) for item in segments}
+        if any(str(row.get("segment")) not in ids for row in values):
+            raise ValueError("successful record belongs to an unreported segment")
+        if cutoff and any(not row.get("end_utc") for row in values):
+            raise ValueError("cutoff reporting needs native completion times")
+
+    late = []
+    if cutoff:
+        for row in observations:
+            if row.get("end_utc") and utc_time(row["end_utc"]) > cutoff and row["status"] in {"completed", "failure", "failed"}:
+                row["native_status"] = row["status"]
+                row["status"] = row["status"] + "_after_cutoff"
+                late.append(row)
+        values = [row for row in observations if row["status"] == "completed"]
+        unfinished = [row for row in observations if row["status"] not in {"completed", "configuration"}]
+        failures = [row for row in unfinished if row["status"] in {"failed", "failure"}]
+        blocked = [row for row in unfinished if row["status"] == "blocked"]
+
+    segment_reporting = []
+    segments.sort(key=lambda row: int(row["segment"]))
+    for item in segments:
+        original = number(item.get("wall_s"))
+        start = utc_time(item["start_utc"]) if item.get("start_utc") else None
+        end = utc_time(item["end_utc"]) if item.get("end_utc") else None
+        if start and end and end < start:
+            raise ValueError("reversed segment wall interval")
+        reporting = original
+        if cutoff and start and end and end > cutoff:
+            reporting = max(0.0, (cutoff - start).total_seconds())
+        segment_reporting.append(dict(item, operational_wall_s=original, reporting_wall_s=reporting,
+            later_drain_wall_s=None if original is None or reporting is None else max(0.0, original - reporting),
+            wall_scope="recorded retired interval; clipped with recorded UTC start at cutoff if it straddles the reporting boundary"))
+    wall_s = (math.fsum(row["reporting_wall_s"] for row in segment_reporting)
+              if segment_reporting and all(row["reporting_wall_s"] is not None for row in segment_reporting) else None)
+    transition_gap_s = 0.0
+    for earlier, later in zip(segment_reporting, segment_reporting[1:]):
+        gap = (utc_time(later["start_utc"]) - utc_time(earlier["end_utc"])).total_seconds()
+        if gap < 0:
+            raise ValueError("overlapping segment wall intervals")
+        transition_gap_s += gap
 
     failed_source = args.failed_attempts or next(
         (args.data / name for name in ("failed-attempts.csv.gz", "failed-attempts.csv")
@@ -161,8 +217,13 @@ def main():
     unsuccessful = rows(failed_source) if failed_source else []
     if any(row["status"] == "completed" for row in unsuccessful):
         raise ValueError("unsuccessful-attempt ledger contains a successful record")
+    if cutoff:
+        for row in unsuccessful:
+            row["attempt_returned_by_cutoff"] = (utc_time(row["end_utc"]) <= cutoff) if row.get("end_utc") else None
     args.out.mkdir(parents=True, exist_ok=True)
     prefix = "preview-" if args.preview else ""
+    if not args.preview:
+        (args.out / "census-ready.tex").unlink(missing_ok=True)
     # Retain original unfinished reasons/identities and unsuccessful observations.
     emit(args.out / (prefix + "census-modules.csv"), observations)
     emit(args.out / (prefix + "census-outcomes.csv"),
@@ -171,7 +232,8 @@ def main():
                                         "interruption")} for row in observations])
     emit(args.out / (prefix + "census-unmeasured.csv"), unfinished)
     emit(args.out / (prefix + "census-failed-attempts.csv"), unsuccessful)
-    emit(args.out / (prefix + "census-segments.csv"), segments)
+    emit(args.out / (prefix + "census-segments.csv"), segment_reporting)
+    emit(args.out / (prefix + "census-after-cutoff.csv"), late)
 
     summaries = []
     for pool in ("P", "E"):
@@ -189,6 +251,16 @@ def main():
             failed_or_interrupted_attempts=sum(row.get("pool") == pool for row in unsuccessful),
             scope="observed successful modules only; lower bound, not full-library estimate"))
     emit(args.out / (prefix + "census-summary.csv"), summaries)
+
+    segment_costs = []
+    for item in segment_reporting:
+        for pool in ("P", "E"):
+            group = [row for row in values if str(row.get("segment")) == str(item["segment"]) and row["pool"] == pool]
+            cpu = [row["cpu_s"] for row in group if row["cpu_s"] is not None]
+            segment_costs.append(dict(segment=item["segment"], pool=pool, completed_modules=len(group),
+                                      cpu_observed_modules=len(cpu), cpu_hours=math.fsum(cpu) / 3600 if cpu else None,
+                                      scope="successful completions within reporting boundary only"))
+    emit(args.out / (prefix + "census-segment-costs.csv"), segment_costs)
 
     coverage, groups = [], []
     for field in ("kernel_marked", "default_covered"):
@@ -254,6 +326,11 @@ def main():
     figure_path.write_text(figure)
 
     manifest = dict(preview=args.preview, explicitly_stopped_subset=args.stopped,
+        reporting_cutoff_utc=args.cutoff, cutoff_final=bool(cutoff) and not args.preview,
+        native_completed_at_retirement=published.get("completed_source_modules"),
+        native_unfinished_at_retirement=published.get("unfinished_source_modules"),
+        after_cutoff_outcomes=len(late), segment_reporting=segment_reporting,
+        transition_gap_s=transition_gap_s,
         input=str(source), published_summary=str(summary_path), segment_ledger=str(segment_path),
         completed_modules=len(values), source_modules=source_modules,
         unfinished_source_modules=len(unfinished), configuration_units=len(configuration),
@@ -263,12 +340,12 @@ def main():
         source_revisions=sorted({row["source_revision"] for row in values}),
         measurement_commits=sorted({row["measurement_commit"] for row in values}),
         machine_wall_s=wall_s, segment2_launched=published.get("segment2_launched"),
-        source_scope="dependency-ordered observed subset; not random",
+        source_scope="dependency-ordered and selectively deferred observed subset; not random",
         inference="separate P/E observed-work lower bounds only; no full-library cost, original42 or model completion",
         cost_groups="observed modules only; frame-label coverage retained separately",
         pool_cpu_combination="none; no P/E conversion or pooled CPU total",
         summed_native_wall_is_makespan=False,
-        wall_scope="actual executed interval includes draining/retries; unsuccessful CPU excluded from successful costs",
+        wall_scope="sum of segment reporting intervals; transition gap and post-cutoff drain separate; unsuccessful CPU excluded",
         instruction_criterion="user-mode instructions selected after the failed total-instruction gate",
         missing_values="blank, never zero-filled",
         active_instruction_coverage={pool: sorted({row["instruction_coverage"] for row in values
@@ -279,6 +356,8 @@ def main():
         fraction = 100 * len(values) / source_modules
         by_pool = {row["pool"]: row for row in summaries}
         macros = [
+            r"\def\CensusAtCutoff{" + ("1" if cutoff else "0") + "}",
+            r"\def\CensusScopeLabel{" + (("Completed by " + cutoff.strftime("%d %B %H:%M") + " UTC") if cutoff else "First-segment snapshot") + "}",
             r"\def\CensusNativeModules{" + f"{len(values):,}" + "}",
             r"\def\CensusExecutableModules{" + f"{source_modules:,}" + "}",
             r"\def\CensusUnmeasuredModules{" + f"{len(unfinished):,}" + "}",
@@ -286,11 +365,35 @@ def main():
             r"\def\CensusPCPUHours{" + tex_number(by_pool["P"]["cpu_hours"], 1) + "}",
             r"\def\CensusECPUHours{" + tex_number(by_pool["E"]["cpu_hours"], 1) + "}",
             r"\def\CensusWallHours{" + tex_number(wall_s / 3600) + "}",
-            r"\def\CensusScopeSummary{We measured \CensusNativeModules{} of \CensusExecutableModules{} executable modules "
+            r"\def\CensusScopeSummary{\CensusScopeLabel{}: \CensusNativeModules{} of \CensusExecutableModules{} executable modules "
             r"(\CensusObservedPercent{}\%); \CensusUnmeasuredModules{} remain unmeasured.}",
             r"\def\CensusObservedSummary{Observed successful work is \CensusPCPUHours{} P-core CPU-hours and "
             r"\CensusECPUHours{} E-core CPU-hours, separate lower bounds rather than a full-library cost estimate. "
-            r"The executed interval is \CensusWallHours{} wall-hours, including drains and retries.}"]
+            r"Segment reporting intervals total \CensusWallHours{} wall-hours; transition gaps and later drain are separate.}"]
+        parts = []
+        for item in segment_reporting:
+            costs = {row["pool"]: row for row in segment_costs if row["segment"] == item["segment"]}
+            parts.append("Segment " + str(item["segment"]) + ": " +
+                         tex_number(costs["P"]["cpu_hours"], 1) + " P / " +
+                         tex_number(costs["E"]["cpu_hours"], 1) + " E CPUh, " +
+                         tex_number(item["reporting_wall_s"] / 3600) + " wallh.")
+        macros.append(r"\def\CensusSegmentSummary{" + " ".join(parts) + "}")
+        label_groups = {(row["field"], row["label"], row["pool"]): row for row in groups}
+        marker = next((row for row in coverage if row["field"] == "kernel_marked" and row["label"] == "1"), None)
+        outside = next((row for row in coverage if row["field"] == "default_covered" and row["label"] == "0"), None)
+        group_text = []
+        for field, label, description, inventory in [
+                ("kernel_marked", "1", "Marked modules", marker),
+                ("default_covered", "0", "Modules outside the default graph", outside)]:
+            pair = [label_groups.get((field, label, pool)) for pool in ("P", "E")]
+            if inventory and all(row and row["share_of_observed_pool_cpu"] is not None for row in pair):
+                group_text.append(description + " (" + f'{inventory["observed_modules"]:,}' +
+                    " observed; " + f'{inventory["unmeasured_modules"]:,}' +
+                    " not completed within scope) contribute " +
+                    "/".join(tex_number(row["share_of_observed_pool_cpu"] * 100) for row in pair) +
+                    r"\% of observed P/E CPU.")
+        macros.append(r"\def\CensusGroupSummary{" + " ".join(group_text) + "}")
+
     if args.tectonic:
         subprocess.run([shutil.which(args.tectonic) or args.tectonic, figure_path.name], cwd=args.out, check=True)
         if not args.preview:

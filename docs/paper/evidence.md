@@ -767,3 +767,36 @@ Current argv has 03:00 admission and 03:30 drain deadlines, whereas this direct
 instruction gives a 03:00 hard cutoff. The paper must filter late completions
 and retain later drain wall separately. Root does not mutate owner controllers
 or presume M started merely from clock time. No new native work is launched.
+
+
+### Cutoff-aware two-segment publication adapter
+
+The generator now distinguishes the historical --stopped first-segment
+snapshot from --cutoff publication. A final cutoff input needs actual retired
+segment intervals and the matching full source inventory. Successful records
+are selected by native end_utc (inclusive at the boundary), with timezone
+offsets resolved. Late native outcomes retain their original status/cost in
+a separate ledger and do not enter N, quantiles or successful CPU sums.
+
+P/E totals stay separate, with an additional segment/P-E cost ledger and
+dynamic manuscript macros. Segment reporting wall sums recorded intervals
+ending before cutoff and UTC-start-to-cutoff for a straddling interval.
+Retired operational wall, later drain and transition gap remain separate;
+no post-cutoff draining silently becomes the reporting interval. The owner
+03:00-admission/03:30-drain discrepancy remains explicit, not root approval
+for a later reporting boundary.
+
+Twenty retained gate values with explicitly synthetic segment timestamps,
+deferred identities and terminal metadata exercised exact-boundary inclusion,
+equivalent timezones, two late completions, four segment/P-E cost groups,
+separate pool sums, late-outcome retention and excluded gap/drain wall.
+Missing segments were refused; preview wrote no ready marker; historical
+snapshot mode stayed CensusAtCutoff=0. Both generated scientific figures
+compiled. This is adapter validation only, not new module measurements,
+and none of the synthetic times/counts/costs enters the paper.
+
+The current and synthetic final-data layout branches both compiled to six
+pages without overfull or undefined warnings. The latter is only a future
+macro/layout check on PVC, never the delivered PDF. Final actual numbers
+will replace the first-segment reference only after the returned cutoff
+ledger is reduced and its scope rechecked.
