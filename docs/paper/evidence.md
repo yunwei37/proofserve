@@ -443,3 +443,50 @@ external timing. The retry fix is a harness regression, not another native
 checking result, independent review or final timing.
 
 Root preview-adapted the actual new fixture schema: 18 matrix groups, two strict-policy groups, the archived 126 failure retained outside one-observation medians, and explicit refusal of paper_eligible=false in final mode. These are fixture adapter counts, not performance results. The aligned manuscript remains six pages / 101,625 bytes, with two figures/two tables/14 references/zero evidence macros; CPU8–9 compile rc0 in 2.121 seconds, no overfull/undefined warnings. Page 4 was visually reviewed; the other five page renderings are byte-identical to the previously reviewed policy manuscript. No new native run was started and no fixture/model number enters the paper.
+
+
+## e000 preview package and container completion (5 November)
+
+Root read the real completed controller/freeze manifests under
+/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105.
+Both identify preview=true and final_system_timing_eligible=false; native
+source is e000ed62 / ABI 6, but CLI/packaging runtime paths were dirty.
+This is a completed functional preview, not a clean release freeze, final
+quiet-machine timing or an independent adversarial runtime review.
+
+The relocated archive qualification reports all three malformed-proof classes
+rejected, closure batching/resumption, root-file forwarding, strict flag
+forwarding and receipt policy fields. Root read the actual --network none
+container command and its successful self-test log: installed-project check,
+audit, unsupported-version refusal, shared-checked/strict policy forwarding
+and the three kernel mutation controls passed. The invocation has no Workspace
+bind mount. Controller/freeze/temporary-Docker exits are all 0, and their
+recorded identities 1586361/birth13860331, 1586463/birth13861254 and
+1586400/birth13861018 were directly observed absent. This does not claim a
+birth audit of every descendant or hard RSS enforcement.
+
+For Newspeak, Solar and samuelburbulla-proofs, root parsed the actual final
+native stdout receipts and official verbose output. There are respectively
+754 / 2,368 / 10,753 unique accepts, no rejected modules, shared-checked policy
+and ABI 6. The requested local-root sets are exactly the official replayed sets:
+105 / 12 / 9 names, all included in the native accepted closure.
+Audit calls returned 0. These are common local-root observations; official
+default trusts imports, so they do not establish full-closure official parity
+or equal-obligation speedups.
+
+Newspeak and Solar each used one invocation. The AI collection used two
+1740-second caller windows returning 124, then a third continuation returning
+0. Its complete_native_cost_available flag is false. The final continuation
+cost cannot stand for a fresh whole request; full CPU remains unknown.
+Its upstream AI attribution is collection-level, with model/human contribution
+undisclosed. Axiom lists remain declaration inventories rather than minimal
+theorem dependencies; receipt-to-current-source binding remains unestablished.
+
+The small e000 preview exports were still O-owned uncommitted files when read;
+root did not stage them. No preview cost or acceptance table was inserted into
+the manuscript. The existing system generator preview-adapted the actual new
+external CSV with the nonfinal M fixture input: all nine external groups
+remain scoped previews, AI whole CPU stays blank and no system-ready marker
+is produced. Raw data, both timeouts and earlier archived cases remain retained.
+Clean packaging-source provenance, final portable acceptance and the post-census
+timing run remain pending.
