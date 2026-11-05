@@ -240,42 +240,40 @@ Nonordinary declarations and their ordinary prerequisites use the original
 replay path before the remaining graph runs. Unsupported local structure
 retains conservative fallback.
 
-\paragraph{Two review rounds exposed false acceptance.}
-Calling the original kernel was insufficient when the coordinator selected
-different artifacts or reused the wrong evidence.
-The first independent execution review of \texttt{2df1d9d7} found complete,
-exit-zero results after adding a bad-proof module part to certified inputs,
-and after copying an authentic certificate from another project.
-The no-certificate and official paths rejected the same bad inputs.
-Repairs bind the current project, resolved artifact family, search path,
-toolchain, ABI and executable identity, and publish receipts through checked
-writes and durable atomic replacement.
+\paragraph{Reviews exposed coordinator false acceptance.}
+Artifact and context selection can invalidate original-kernel checking.
+O's independent execution review of \texttt{2df1d9d7} found complete,
+exit-zero results after adding a bad-proof part to certified inputs or
+copying an authentic certificate from another project.
+Both reference paths rejected them. Repairs bind project, artifacts, search
+path, toolchain and executable identity, with durable receipt publication.
 
-A subsequent independent code-only review of \texttt{e0c92d51} identified
-further input-resolution and context risks; its proposed tests had not run.
-M then reproduced a good checkpoint-directory artifact hiding the bad
-project artifact, sibling-constant borrowing and identical-definition
-import conflicts. A segregated-module fixture also omitted a declared
-axiom from a complete receipt.
-The \texttt{3fe83c5a} repair resolves snapshots explicitly, replays conflicting
-interfaces in their original context and collects axioms on every successful
-route. Worker events use a separate validated channel; a nonzero child
-exit prevents completion.
-Event/exit precedence was tested with a saved-result control.
-The proposed project-IR printing attack and Quot counterexample were not
-reproduced and are not counted as false-acceptance evidence.
+Independent code-only reviews of \texttt{e0c92d51} and \texttt{2628d727}
+then guided implementation-line executions.
+These reproduced checkpoint-directory shadowing, omitted segregated axioms,
+unsafe duplicate-name acceptance and theorem-body context substitution.
+The latter both rejected an honest WellFounded/Acc computation and accepted
+swapped proof bodies that both official modes rejected.
+A later axiom-tagged Quot fixture also passed after checkpoint restoration
+while both official modes rejected it; the earlier genuine-Quot control
+had not exercised that case.
+The proposed project-IR stdout-forgery route remains unconfirmed;
+complete/nonzero-exit precedence was reproduced with a saved-result control.
 
-These are defects in our coordination, not in Lean's kernel.
-The current native path explicitly refuses terms requiring project IR,
-an operational boundary that differs from official execution.
-Official default and fresh also differ on the supplied stale/incomplete-part
-artifact. General malformed-artifact equivalence, complete retained-case
-module-local reference coverage and independent execution review of the
-latest repair remain open.
-The review reports and regression outcomes are retained in
-\path{packaging/checker-review-*.md} and
-\path{checker/results/e0-review-repair/}; local certificate metadata remains
-trusted, rather than a tamper-resistant proof.
+The \texttt{981d544d} repair isolates differing theorem contexts, tracks
+skipped unsafe names, validates quotient declaration tags and reads the
+required IR artifacts. Direct open primitive mentions are supported;
+closed and some higher-order native evaluations remain unsupported.
+Official default and fresh differ on actual IR evaluation and supplied
+stale artifacts. Operational refusal can use exit 2 where official uses 1.
+The \texttt{e1557c77} follow-up releases validation-only IR regions;
+its ownership control establishes lifetime behavior.
+
+These Lean 4.34.1 controls are implementation self-review, not independent
+execution review. ABI 5 invalidates earlier checkpoints and retained-closure
+qualification; editable state and arbitrary malformed metadata remain trust limits.
+Reports and controls are retained in \path{packaging/checker-review-*.md}
+and \path{checker/results/review-2628-repair/}.
 
 Two prototype interventions explain these choices.
 Correcting our missing persistent marking reduced eight-worker CPU by

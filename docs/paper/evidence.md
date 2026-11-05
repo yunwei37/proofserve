@@ -223,3 +223,47 @@ scope reached, without whole-library completion or parity. No current count
 has been invented or copied from the retained-case preview.
 
 The cutoff-ready manuscript compiled successfully on CPUs 8–9 in 2.339 seconds: six pages including references, 101,657 bytes, two figures, two tables and 14 citation keys. All six rendered pages were visually self-reviewed; no overfull boxes, undefined references or missing/measured/partialev/unproven macros remain. The initial seven-page build is retained outside Git; prose was shortened, without reducing the 10pt type size or changing existing measurement numbers. This is layout/self-review, not independent acceptance or a completed final evaluation.
+
+
+## Later review: context and quotient failures reproduced (5 November)
+
+Committed review [checker-review-2628d727.md](../../packaging/checker-review-2628d727.md)
+is independent code-only inspection, not execution. M's implementation-line
+controls and repairs are committed in 981d544d; the validation-region ownership
+follow-up is e1557c77. See [review-2628-repair](../../checker/results/review-2628-repair/README.md).
+Root read both the committed report and raw fixture records, including
+quot-before2-fixtures/results.json, old-context-focused6-fixtures/results.json
+and final-review6-fixtures/results.json under
+/workspaces/.agent-state/gpu-smt-captures/checker-review-2628-fix-20261104.
+
+The old checkpoint-restored axiom-tagged Quot fixture returned complete/0 with
+ASeed and ZFake accepted, while both official modes returned 1. Plain old native
+also rejected it; the restored context is material. This later actual fixture
+supersedes any current blanket description of Quot as unconfirmed. Earlier
+genuine-Quot controls remain historical non-reproductions of their own inputs.
+Swapped WellFounded/Acc bodies similarly yielded old native 0 versus both
+official modes 1; repaired native returned 1. The honest body-sensitive case
+was an old false rejection. Unsafe duplicate names, missing/corrupt IR and
+accepted/rejected overlap are separately retained outcomes. The project-IR
+stdout-forgery proposal remains unconfirmed and is not merged with these
+demonstrated failures.
+
+The repaired quotient paths refuse malformed declarations operationally (2),
+where official rejects (1). Direct open primitive mentions are now supported,
+while closed/higher-order evaluation remains conservatively unsupported.
+ABI 5 / independent-closures v7 invalidates old state; the old 14,721-module
+ABI-4 acceptance output does not qualify the repaired source. No new large
+replay, full-library result or final timing was run for these controls.
+
+Root also read the final-contract8 raw result/stdout and the committed
+ir-lifetime-followup.json: native rc0, complete wait4 usage, no stop/OOM,
+90 legacy plus 109 new command records and a successful core contract.
+These are command counts, not independent bugs or proofs. The report compares
+198 common command outcomes, and the separate ownership controls distinguish
+discarded validation data from another owner's live regions. That comparison
+and mapping interpretation are M's analysis; root did not rerun native tests.
+Initial 981d544d automatic CI passed; e1557c77 follow-up CI was pending in the
+committed record. All are self-review/mechanical evidence, not repaired-source
+independent execution review, release freeze or paper performance.
+
+Root directly checked final-contract8 PID 997606/birth11906385 and its recorded cgroup are absent. Updated paper: six pages / 101,584 bytes, 2.398-second rc0 compilation on CPUs 8–9, no overfull or undefined-reference warning, two figures/two tables/14 citation keys/zero evidence macros. Changed pages 3–4 were visually reviewed; pages 1–2 and 5–6 are byte-identical renderings to the previously reviewed cutoff manuscript. The first seven-page layout attempt is retained on PVC. This root integration adds no native experiment or final system number.
