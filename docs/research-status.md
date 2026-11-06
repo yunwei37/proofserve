@@ -45,10 +45,15 @@ remain included. Only separate protocol-specific P/E work lower bounds are
 reported. The total-instruction gate still failed; user-mode comparison was
 selected post hoc, not a replacement passing gate.
 
-Root now observed the actual matrix at
-checker-final-e000ed62-20261106T050828/matrix: controller2998979,
-birth22442843, running during the 05:52 UTC heartbeat, native e000ed62 and clean
-driver snapshot cc5bcc18. Final matrix/external values remain out of the paper.
+The current matrix is continuing remaining original cells at
+checker-final-e000ed62-20261106T050828/matrix under
+controller3019309/birth23727126, observed live in the 08:56 UTC heartbeat.
+The primary controller2998979 has retired. The original overall deadline
+is retained. Grid's first 8-worker strict point hit its 1,800-second
+per-cell timeout (exit 124); repeats 2/3 were not run. This is operational
+incompletion, not kernel rejection or a completed strict cost/median.
+Nat.Basic strict receipts exist, but no final eligible matrix export or
+system performance values have been inserted into the paper.
 M's protected-background-condition.json records retained zettai-dev work
 using about one CPU core; its preflight was not a fully idle host.
 These actual conditions must accompany returned times/ranges; do not label

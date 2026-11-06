@@ -1052,3 +1052,33 @@ designation when results return. No new rejection criterion, substitute run,
 native measurement or final performance value was added here. The prepared
 checker-built-subset-cc5bcc18 directory contains selection/roots/runner files,
 not evidence that corpus checking has started.
+
+### 6 November 2026: strict Grid timeout and remaining-cell continuation
+
+During the 08:56 UTC heartbeat root read the actual matrix phase terminal,
+continuation-controller.json, primary driver stderr, the raw strict attempt
+result, and owner runtime README. The primary controller2998979 is absent.
+The existing owner continuation is controller3019309/birth23727126, observed
+live. Its metadata at 08:42:31.732009 UTC says
+continuing_remaining_original_cells/complete=false and retains the original
+overall deadline_boottime_s=246318.02 and native e000ed62. Root did not launch this continuation or change the native checker.
+
+runs/grid-P8-strict-theorem-bodies-r1/result.json records the real command's
+1,800-second timeout, exit124, wall1800.010274197004s and native_retired=true.
+Its result reports wait4_usage_complete=true, cgroup_retired=true, no guard
+stop reasons and zero recorded OOM counters. These are recorded guard
+observations, not a root replay or independent whole-tree audit.
+The returned attempt CPU/clock values describe incomplete work, not a fresh
+completed strict-mode check or full-check speed ratio. The original driver
+raised “native cell incomplete or failed” and stopped without imputing that
+point. Owner continuation explicitly retains r1 as a per-cell timeout and
+does not run strict Grid r2/r3 after that cap; it continues the other original
+cells. Do not turn the two unattempted repetitions into failures, successful
+zero-cost points or a three-repeat median.
+
+The legacy raw evaluation_status string says “quiet final release evaluation”;
+the separately recorded protected background condition still prevents a
+full-host-idle claim. No final eligible fixed-acceptance/CSV or complete
+matrix was observed. The main paper PDF and system cost slots are unchanged
+pending the final returned scoped ledger. Root changed no foreign source,
+native input, deadline, affinity, process or background workload.
