@@ -1,0 +1,45 @@
+{
+  "math": {
+    "wall_speedup": 1.6966092018614265,
+    "cpu_increase": 0.0291018275883288
+  },
+  "grid": {
+    "wall_speedup": 2.1398982143571685,
+    "cpu_increase": 0.11262452101431797
+  },
+  "barrier": {
+    "wall_speedup": 1.7271200406611422,
+    "cpu_increase": 0.04600557372474512
+  },
+  "strict_math": {
+    "wall_ratio": 4.226664750102625,
+    "cpu_ratio": 2.5012814460475132
+  },
+  "resume": {
+    "wall_overhead": 0.16943563478396162,
+    "cpu_overhead": 0.10683001528935199
+  },
+  "publication_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+  "scope": "independent arithmetic on published points; not native re-execution or independent correctness review",
+  "physical_rows": 61,
+  "nonzero_outcomes": 6,
+  "unattempted": [
+    "grid-P8-strict-theorem-bodies-r2",
+    "grid-P8-strict-theorem-bodies-r3",
+    "grid-official-default-r2",
+    "grid-official-default-r3",
+    "grid-official-fresh-r2",
+    "grid-official-fresh-r3",
+    "barrier-official-default-r2",
+    "barrier-official-default-r3",
+    "barrier-official-fresh-r2",
+    "barrier-official-fresh-r3"
+  ],
+  "official_successes": 9,
+  "complete_native_groups_compared": 15,
+  "all_native_medians_and_ranges_equal": true,
+  "under_repeated_official_medians_blank": true,
+  "strict_grid_median_blank": true,
+  "fixture_final_refused": true,
+  "fixture_preview_has_no_ready_marker": true
+}

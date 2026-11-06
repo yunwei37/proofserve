@@ -29,10 +29,15 @@ W records lease release 04:59:12 UTC after retirement 04:57:20 UTC.
 
 ## Paper and remaining evaluation
 
-The PDF is six pages / 304,611 bytes, two figures / two tables / 14 references;
-CPU8–9 compile returned 0 in 2.243 s, with no overfull/undefined warnings or
-evidence-placeholder macros. All six pages were visually reviewed.
-
+The compilation section is complete. The current paper also integrates the
+scoped M matrix, with Table 1 medians, default/strict costs, the censored Grid
+point, all ten unrun cells, controls and actual interruption overhead.
+Table 2 remains pending O's returned external timing.
+The current PDF is six pages / 306,731 bytes, with two figures, two tables
+and 14 references. CPU8–9 compilation returned 0 in 2.250 s, with no
+overfull/undefined warnings or evidence-placeholder macros. Changed pages
+1–2 and 4–6 were visually checked; page 3 renders identically to the
+previously reviewed compilation-final version. This is root self-review.
 The six-page paper now uses the returned distributions, interval/P-E costs,
 user-mode instruction total/median/P95 and marked/unmarked/default-graph
 partitions for the 162,170 measured modules. No earlier snapshot is presented
@@ -45,20 +50,25 @@ remain included. Only separate protocol-specific P/E work lower bounds are
 reported. The total-instruction gate still failed; user-mode comparison was
 selected post hoc, not a replacement passing gate.
 
-The current matrix is continuing remaining original cells at
-checker-final-e000ed62-20261106T050828/matrix under
-controller3019309/birth23727126, observed live in the 08:56 UTC heartbeat.
-The primary controller2998979 has retired. The original overall deadline
-is retained. Grid's first 8-worker strict point hit its 1,800-second
-per-cell timeout (exit 124); repeats 2/3 were not run. This is operational
-incompletion, not kernel rejection or a completed strict cost/median.
-Nat.Basic strict receipts exist, but no final eligible matrix export or
-system performance values have been inserted into the paper.
-M's protected-background-condition.json records retained zettai-dev work
-using about one CPU core; its preflight was not a fully idle host.
-These actual conditions must accompany returned times/ranges; do not label
-this run fully idle or infer that source-census retirement removed all load.
-No background task was stopped or rebound by root.
+M published 818f7422 after the 11:13 UTC six-hour boundary. All 30 scaling,
+12 ablation and three Nat.Basic strict runs completed; the original 71-cell
+plan had 61 returned attempts and ten unrun cells. Grid strict r1 timed out;
+r2/r3 were unrun. Nat.Basic official fresh r3 was attempted but cut off by
+the overall window, not counted among the ten unrun items.
+
+At eight versus one worker, wall speedups are 1.70/2.14/1.73 for
+Nat.Basic/Grid/Barrier; CPU increases 2.9/11.3/4.6%. Nat.Basic strict costs
+4.23 wall / 2.50 CPU times default-eight. Strict Grid is only a censored
+at-least-5.1 wall ratio, not a strict median. One real interruption costs
+16.94% additional wall and 10.68% CPU with identical resumed scope.
+All three original-kernel bad controls reject; nine complete official
+samples accept their roots, with different ledgers and no whole speed ratio.
+Root independently recomputed the point medians, ranges and ratios; M's
+identity/acceptance assertions remain its scoped implementation-line evidence.
+Protected zettai-dev work (~one P core observed before launch) is explicit:
+this is not exclusively idle-host timing. The collection's raw failed/partial
+terminal remains preserved alongside verified retired handoff. Root observed
+the last collector PID absent and has not launched corpus checking.
 O timing follows,
 then M may check actually built artifacts until 17:00. Partial/not-attempted
 checking remains supplementary. Root targets integration by 18:00 and closure

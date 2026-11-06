@@ -54,69 +54,65 @@ The actual first-segment reduction and historical tests remain in evidence.md.
 
 ## System evaluation artifacts
 
-After M and O publish the approved final results:
+The scoped retired matrix is publication 818f7422, native e000ed62, driver
+cc5bcc18. It contains 61 returned attempts out of 71 planned, not a complete
+original plan. Generate it independently while O timing is pending:
 
-    python3 docs/paper/generate_system.py --matrix checker/results/fixed-cells.csv --external data/external-projects/measurements.csv --out docs/paper/generated/system
+    python3 docs/paper/generate_system.py --matrix checker/results/release-e000ed62bbf4/matrix/fixed-cells.csv --matrix-only --out docs/paper/generated/system
 
-The native matrix is M's actual completed-cell schema: key, commit, dataset,
-workers, repeat, arm, returncode, cpu_s and wall_s. Its fixed-acceptance.json
-and fixed-resume.json retain correctness/resumption scope. Final mode requires
-paper_eligible=true in the acceptance sidecar; a fixture export cannot become
-paper data merely by having the fixed-cells.csv filename. Archived
-fixed-failed-attempts.csv rows are retained separately from current-point rows
-and excluded from medians; --failed-attempts selects an explicit ledger. Native and ablation
-points require three completed repeats in final mode. Groups never mix commits.
-Official default/fresh points keep their distinct ledgers; no official speedup
-or product of ratios is computed.
+Final matrix designation is either an explicit paper_eligible=true sidecar,
+or this publication's verified retired collection-terminal handoff plus its
+scoped acceptance assertions and exhaustive planned-status inventory.
+An explicit paper_eligible=false fixture is refused. Incomplete original-plan
+status remains false; no fictitious field is added to M's source.
 
-O's CSV retains project, upstream_commit, bundle_commit, checker_commit, arm,
-returncode, CPU/wall, local-root parity and accounting validity. Final mode
-requires O's explicit final timing designation, in rows or timing-status.json.
-Interrupted requests with unknown CPU remain blank. Default official costs
-are not treated as equal-obligation closure comparisons.
+Only three complete successful repetitions yield a final matrix median.
+Successful under-repeated official samples retain their observed ranges and
+counts but no three-repeat median. Strict Grid retains one censored timeout
+and two unattempted repeats; strict-bounds.csv describes the observed timeout
+relative to the matched default median, not a strict median or completed cost.
+The returned final groups never mix executable, input context, workers or
+policy. Archived failure rows already in the point table are not double-counted.
+Expected kernel rejections and deliberate interruption retain their distinct
+outcomes in retained-nonzero-attempts.csv; unattempted-cells.csv lists all ten
+unrun identities.
 
-Use --preview with loaded-preview-cells.csv and freeze-preview-measurements.csv
-to exercise the adapters now. All outputs then use preview- prefixes and no
-system-ready.tex is created. Neither old release-cells.csv nor explicitly
-nonfinal rows can populate the final matrix. The script generates compact
-native/external TeX tables, full median/min/max CSVs, retained nonzero attempts,
-commits, correctness evidence and any provided resumption result.
+system-table.tex shows complete native medians, with CPU and wall separate.
+system-summary.csv retains counts and full ranges; scaling.csv, ablations.csv,
+strict-costs.csv and strict-bounds.csv retain their exact within-tool ratios.
+system-validation.json records independent arithmetic on all published points,
+not independent native/correctness execution. system-provenance.json binds
+publication, native/driver/input versions, acceptance, retired scope, actual
+background condition and interruption data. CPU is closed native cgroup
+whole-tree CPU, including the killed interruption leg.
 
-Validation on 4 November: existing M loaded previews and O freeze previews
-produce 22 matrix groups and nine external groups. Native/ablation rows are
-separated even where M's arm column says native; the key carries the ablation.
-An independently recomputed Nat.Basic median agrees. The interrupted AI request
-retains unknown full CPU. Both table fragments compile, and final mode rejects
-the previews. These checks do not establish a quiet host or independent checker
-review; those remain conditions of the owners' actual final evaluation.
+The matrix writes matrix-ready.tex and system-metrics.tex. Table 2 is separate:
+it requires external-ready.tex and remains pending until O returns final data.
+After O publishes, use the same matrix and its actual measurements.csv:
 
-The frozen native checker is e000ed62: shared-checked is the default and
---strict-theorem-bodies selects strict original-body isolation.
-The generator reads theorem_body_policy/policy, a strict_theorem_bodies flag,
-or strict command-key/arm labels. Matrix points keep policy and executable
-commit separate. D/S in the compact table identify default/strict; default
-means that recorded executable's default, so old previews are not renamed
-as the new policy. Returned strict and default points with identical
-dataset/arm/workers/commit produce strict-costs.csv with separate CPU and
-wall ratios of medians. Missing strict points produce no invented cost.
-Historical e155 isolation numbers are never substituted for new strict costs.
-The compact matrix puts worker counts in columns and CPU/wall clocks on
-separate rows, leaving unmeasured configurations as dashes rather than
-inventing strict points. External summaries also separate policies; the compact external table uses
-default ProofServe observations.
+    python3 docs/paper/generate_system.py --matrix checker/results/release-e000ed62bbf4/matrix/fixed-cells.csv --external /path/to/returned/measurements.csv --out docs/paper/generated/system
+
+O must designate final timing in rows or timing-status.json. Unknown full CPU
+remains blank. Its common local-root parity does not equal full-closure proof
+obligations, and no official whole-ledger speed ratio is computed.
+Native strict/default ratios require matching tool, input and worker settings;
+old e155 previews never substitute. --preview uses preview- output names,
+does not write ready markers, and cannot populate either final paper table.
+The old fixture remains usable only for adapter validation.
 
 ## Manuscript wiring
 
 Run both final generators, then compile docs/paper/main.tex with Tectonic.
 The manuscript includes only generated/census/census-ready.tex and
-generated/system/system-ready.tex final artifacts. Preview-prefixed files
+generated/system/matrix-ready.tex and generated/system/external-ready.tex
+for their separate final tables. Preview-prefixed files
 are never inputs. Without final artifacts it prints explicit pending slots,
 not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
 
 The closure target is 6 November 2026, 20:00 UTC. W has retired all runnable,
-non-deferred work without an early-stop cutoff. M runs the final matrix after actual
-retirement/quiet, then O external timing, then M checks built artifacts. The checking
+non-deferred work without an early-stop cutoff. M has returned the scoped six-hour matrix; O external timing follows, then
+M checks built artifacts. The checking
 phase may be partial or unstarted and stops by 17:00; it is not a necessary
 paper result. Root integrates actual numbers by 18:00. No PlanarPacking
 comparison or missing-work estimate is added.
@@ -144,5 +140,5 @@ The current small summaries/figure and census-validation.json were independently
 reduced from cc5bcc18 on CPUs 8–9. Duplicate large generated inventories remain
 on PVC, not in Git. Deferred-family/trigger aliases match the published schema.
 Interval 3 has no E-core successful jobs: its zero E cost is an empty observed
-group, not imputation for an unmeasured module. System tables still await
-M/O's final approved results.
+group, not imputation for an unmeasured module. The scoped M matrix is
+integrated; only O external timing remains pending.

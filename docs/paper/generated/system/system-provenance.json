@@ -1,0 +1,552 @@
+{
+  "publication_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+  "matrix_context": {
+    "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+    "binary_hash": "14707787067517532260",
+    "driver_commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+    "stock_source_git_blob": "e6491d6e0a7fc9130b3b9ace89218e2f277100bf",
+    "lean": "4.34.1",
+    "workload_source": "4eaee87548250b2682affda7d05d947c05554bae",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "hardware": "phobos-vt Intel Core i9-14900K; 8 P cores, 16 E cores",
+    "measured_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "preparation_cpus": [
+      8,
+      9
+    ],
+    "no_Lean_M": true,
+    "lease": "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+    "lease_returned": true,
+    "physical_retirement_verified_at": "2026-11-06T11:13:59.390831+00:00",
+    "matrix_start_birth_ticks": "22471802",
+    "original_six_hour_deadline_boottime_s": 246318.02,
+    "terminal_utc": "2026-11-06T11:13:18.575542+00:00",
+    "original_planned_cells": 71,
+    "returned_cells": 61,
+    "unattempted_cells": 10,
+    "native_complete_fixed_points": 45,
+    "official_successful_samples": 9,
+    "bad_original_kernel_rejections": 3,
+    "deliberate_interruptions": 1,
+    "per_cell_timeouts": 1,
+    "total_window_stops": 1,
+    "all_requested_cells_complete": false,
+    "finite_driver_changes": [
+      "Retained strict Grid timeout; did not repeat its two remaining planned attempts.",
+      "After stock default cost 407s, the current native cell completed before collector replacement at a verified empty-native boundary; prioritized controls and one sample per official mode before remaining repeats.",
+      "Same native binary, retained completed cells and original six-hour deadline."
+    ],
+    "protected_background": "zettai-dev remained running and unmodified. About one host P-core was observed before launch. No heavy compilation in the study Workspace; not an exclusively idle host.",
+    "legacy_metadata_notes": [
+      "Raw quiet final release evaluation label is qualified by the observed protected background.",
+      "Launch references original operator-stop record; last eligible census segment actually exhausted work at 2026-11-06T04:57:20Z.",
+      "Raw controller terminals retain their exit/error events. The separate verified handoff records retirement readiness while original-matrix completion stays false."
+    ],
+    "census": {
+      "commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+      "source_modules": 163096,
+      "built": 162170,
+      "deferred": 926,
+      "configuration_units": 1,
+      "scope": "Built subset only; no total-cost extrapolation"
+    },
+    "old_cancelled_capture": {
+      "path": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62/matrix",
+      "status": "Coordinator interrupted 2026-11-05T20:37Z; no returned native cells, no mixing"
+    },
+    "official_canonical_paths": {
+      "grid": {
+        "actual_olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/run/attempts/39785/OAI/Analysis/PlanarPacking/Grid.olean",
+        "additional_canonical_search_root": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/run/attempts/39785",
+        "reason": "Required by stock CLI symlink-resolving module-name discovery in the qualified frozen driver"
+      },
+      "barrier": {
+        "actual_olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/run/attempts/101744/OAI/MathematicalPhysics/Transonic/Certificates/BarrierData41.olean",
+        "additional_canonical_search_root": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/run/attempts/101744",
+        "reason": "Required by stock CLI symlink-resolving module-name discovery in the qualified frozen driver"
+      }
+    },
+    "raw": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix",
+    "disk_used_percent_at_export": 71.27799859595724,
+    "corpus_status": "prepared-not-launched; wait for coordinator handoff after O external timings",
+    "release_preflight_launch_utc": "2026-11-06T05:08:28Z",
+    "first_native_command_record_utc": "2026-11-06T05:13:18.502790+00:00",
+    "whole_campaign_vs_native_window": "Artifact-binding preflight preceded the native six-hour matrix window. Neither preflight nor final export is included in individual native cell costs."
+  },
+  "preview": false,
+  "matrix": "checker/results/release-e000ed62bbf4/matrix/fixed-cells.csv",
+  "external": null,
+  "acceptance": "checker/results/release-e000ed62bbf4/matrix/fixed-acceptance.json",
+  "external_status": null,
+  "matrix_commits": [
+    "e000ed62bbf4b9c420bd99d0273a5d21829b4edc"
+  ],
+  "matrix_driver_commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+  "archived_failed_attempts": "checker/results/release-e000ed62bbf4/matrix/fixed-failed-attempts.csv",
+  "full_ranges": "system-summary.csv and external-summary.csv",
+  "official_speedup": "not computed: proof obligations differ",
+  "failed_costs": "retained individually, excluded from successful-point medians",
+  "resumption_source": "checker/results/release-e000ed62bbf4/matrix/fixed-resume.json",
+  "resumption": {
+    "accepted_equal": true,
+    "axioms_equal": true,
+    "module_set_hash_equal": true,
+    "artifact_identity_equal": true,
+    "reused_segments": 1,
+    "interrupted_returncode": -9,
+    "resumed_returncode": 0,
+    "wall_s": 81.50116523000179,
+    "cpu_s": 124.10559,
+    "uninterrupted_wall_median_s": 69.692732807016,
+    "uninterrupted_cpu_median_s": 112.127055,
+    "wall_overhead_fraction": 0.16943563478396162,
+    "cpu_overhead_fraction": 0.10683001528935199
+  },
+  "acceptance_evidence": {
+    "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+    "driver_commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+    "checker_binary_hash": "14707787067517532260",
+    "original_planned_cells": 71,
+    "returned_cells": 61,
+    "all_original_cells_complete": false,
+    "complete_native_fixed_points": 45,
+    "within_dataset_artifact_identities_acceptance_axioms_and_module_hashes_equal": true,
+    "within_dataset_module_sets_equal": true,
+    "within_dataset_axiom_sets_equal": true,
+    "within_dataset_module_set_hashes_equal": true,
+    "within_dataset_artifact_identities_equal": true,
+    "actual_interruption_resume_equal": true,
+    "complete_native_points": 45,
+    "axiom_inventory_scope": "Declared axioms observed in the checked closures, including sorryAx and compiler axioms; not a minimal used-axiom closure or sorry-free certification",
+    "scope_counts": {
+      "math": 1330,
+      "grid": 3793,
+      "barrier": 4449
+    },
+    "axioms": {
+      "math": [
+        "Classical.choice",
+        "Lean.ofReduceBool",
+        "Lean.ofReduceNat",
+        "Lean.trustCompiler",
+        "Quot.lcInv",
+        "Quot.sound",
+        "isScalarObj",
+        "lcAny",
+        "lcCast",
+        "lcErased",
+        "lcProof",
+        "lcUnreachable",
+        "lcVoid",
+        "propext",
+        "sorryAx"
+      ],
+      "grid": [
+        "Classical.choice",
+        "Lean.ofReduceBool",
+        "Lean.ofReduceNat",
+        "Lean.trustCompiler",
+        "Quot.lcInv",
+        "Quot.sound",
+        "isScalarObj",
+        "lcAny",
+        "lcCast",
+        "lcErased",
+        "lcProof",
+        "lcUnreachable",
+        "lcVoid",
+        "propext",
+        "sorryAx"
+      ],
+      "barrier": [
+        "Classical.choice",
+        "Lean.ofReduceBool",
+        "Lean.ofReduceNat",
+        "Lean.trustCompiler",
+        "Quot.lcInv",
+        "Quot.sound",
+        "isScalarObj",
+        "lcAny",
+        "lcCast",
+        "lcErased",
+        "lcProof",
+        "lcUnreachable",
+        "lcVoid",
+        "propext",
+        "sorryAx"
+      ]
+    },
+    "bad_original_kernel_rejections": 3,
+    "official_whole_ledger_equivalence": "not established",
+    "strict_grid": "one 1800s timeout, two unattempted; no strict Grid median",
+    "raw": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix",
+    "background": "Protected zettai-dev retained; approximately one P-core of host background observed before launch; no study Workspace compilation.",
+    "measurement_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "lean_M_used": false
+  },
+  "collection_terminal": {
+    "complete": false,
+    "phase": "matrix",
+    "status": "collection_finished_with_incomplete_cells",
+    "original_planned_cells": 71,
+    "returned_cells": 61,
+    "failures": [
+      {
+        "key": "grid-P8-strict-theorem-bodies-r1",
+        "run_key": "grid-P8-strict-theorem-bodies-r1",
+        "attempt": 1,
+        "state_directory": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix/grid-P8-strict-theorem-bodies-r1",
+        "commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+        "dataset": "grid",
+        "workers": 8,
+        "repeat": 1,
+        "arm": "native",
+        "returncode": 124,
+        "wall_s": 1800.010274197004,
+        "cpu_s": 1803.564404,
+        "peak_rss_kib": 3328508,
+        "rss_sample_bytes": 3509567488,
+        "modules": null,
+        "segments": null,
+        "manual_interruption": false,
+        "wait4_cpu_s": 1659.175541,
+        "cpu_source": "closed native cgroup",
+        "outcome": "per_cell_wall_timeout_not_kernel_rejection"
+      },
+      {
+        "key": "math-official-fresh-r3",
+        "run_key": "math-official-fresh-r3",
+        "attempt": 1,
+        "state_directory": null,
+        "commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+        "dataset": "math",
+        "workers": 8,
+        "repeat": 3,
+        "arm": "official",
+        "returncode": 124,
+        "wall_s": 77.70390536999912,
+        "cpu_s": 77.718828,
+        "peak_rss_kib": 1761996,
+        "rss_sample_bytes": 2083840000,
+        "modules": null,
+        "segments": null,
+        "manual_interruption": false,
+        "wait4_cpu_s": 4.595609,
+        "cpu_source": "closed native cgroup",
+        "outcome": "six_hour_budget_stop_not_kernel_rejection"
+      }
+    ],
+    "unattempted": [
+      {
+        "key": "grid-P8-strict-theorem-bodies-r2",
+        "dataset": "grid",
+        "workers": 8,
+        "repeat": 2,
+        "arm": "native",
+        "flags": [
+          "--strict-theorem-bodies"
+        ],
+        "reason": "not run after first strict point exceeded fixed per-cell cap"
+      },
+      {
+        "key": "grid-P8-strict-theorem-bodies-r3",
+        "dataset": "grid",
+        "workers": 8,
+        "repeat": 3,
+        "arm": "native",
+        "flags": [
+          "--strict-theorem-bodies"
+        ],
+        "reason": "not run after first strict point exceeded fixed per-cell cap"
+      },
+      {
+        "key": "grid-official-default-r2",
+        "dataset": "grid",
+        "workers": 8,
+        "repeat": 2,
+        "arm": "official",
+        "flags": [],
+        "reason": "not reached before continuation stopped"
+      },
+      {
+        "key": "grid-official-default-r3",
+        "dataset": "grid",
+        "workers": 8,
+        "repeat": 3,
+        "arm": "official",
+        "flags": [],
+        "reason": "not reached before continuation stopped"
+      },
+      {
+        "key": "grid-official-fresh-r2",
+        "dataset": "grid",
+        "workers": 8,
+        "repeat": 2,
+        "arm": "official",
+        "flags": [
+          "--fresh"
+        ],
+        "reason": "not reached before continuation stopped"
+      },
+      {
+        "key": "grid-official-fresh-r3",
+        "dataset": "grid",
+        "workers": 8,
+        "repeat": 3,
+        "arm": "official",
+        "flags": [
+          "--fresh"
+        ],
+        "reason": "not reached before continuation stopped"
+      },
+      {
+        "key": "barrier-official-default-r2",
+        "dataset": "barrier",
+        "workers": 8,
+        "repeat": 2,
+        "arm": "official",
+        "flags": [],
+        "reason": "not reached before continuation stopped"
+      },
+      {
+        "key": "barrier-official-default-r3",
+        "dataset": "barrier",
+        "workers": 8,
+        "repeat": 3,
+        "arm": "official",
+        "flags": [],
+        "reason": "not reached before continuation stopped"
+      },
+      {
+        "key": "barrier-official-fresh-r2",
+        "dataset": "barrier",
+        "workers": 8,
+        "repeat": 2,
+        "arm": "official",
+        "flags": [
+          "--fresh"
+        ],
+        "reason": "not reached before continuation stopped"
+      },
+      {
+        "key": "barrier-official-fresh-r3",
+        "dataset": "barrier",
+        "workers": 8,
+        "repeat": 3,
+        "arm": "official",
+        "flags": [
+          "--fresh"
+        ],
+        "reason": "not reached before continuation stopped"
+      }
+    ],
+    "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+    "error": "RuntimeError('matrix six-hour budget exhausted; no new cell launched')",
+    "utc": "2026-11-06T11:13:18.575542+00:00",
+    "handoff_ready": true,
+    "overall_original_matrix_complete": false,
+    "controller_status": "collection_failed",
+    "all_returned_native_and_cgroups_retired": true,
+    "pcore_lock_free_observed": true,
+    "verified_at_utc": "2026-11-06T11:13:59.390831+00:00",
+    "disposition": "Six-hour window exhausted, not a complete original matrix; O external timing is next. No corpus launched.",
+    "original_controller_terminal": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix/collection-terminal.json"
+  },
+  "unattempted_cells": [
+    {
+      "key": "grid-P8-strict-theorem-bodies-r2",
+      "dataset": "grid",
+      "workers": "8",
+      "repeat": "2",
+      "arm": "native",
+      "flags": "--strict-theorem-bodies",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not run after first strict point exceeded fixed per-cell cap",
+      "mutation": "",
+      "interrupt": ""
+    },
+    {
+      "key": "grid-P8-strict-theorem-bodies-r3",
+      "dataset": "grid",
+      "workers": "8",
+      "repeat": "3",
+      "arm": "native",
+      "flags": "--strict-theorem-bodies",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not run after first strict point exceeded fixed per-cell cap",
+      "mutation": "",
+      "interrupt": ""
+    },
+    {
+      "key": "grid-official-default-r2",
+      "dataset": "grid",
+      "workers": "8",
+      "repeat": "2",
+      "arm": "official",
+      "flags": "",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not reached before continuation stopped",
+      "mutation": "",
+      "interrupt": ""
+    },
+    {
+      "key": "grid-official-default-r3",
+      "dataset": "grid",
+      "workers": "8",
+      "repeat": "3",
+      "arm": "official",
+      "flags": "",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not reached before continuation stopped",
+      "mutation": "",
+      "interrupt": ""
+    },
+    {
+      "key": "grid-official-fresh-r2",
+      "dataset": "grid",
+      "workers": "8",
+      "repeat": "2",
+      "arm": "official",
+      "flags": "--fresh",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not reached before continuation stopped",
+      "mutation": "",
+      "interrupt": ""
+    },
+    {
+      "key": "grid-official-fresh-r3",
+      "dataset": "grid",
+      "workers": "8",
+      "repeat": "3",
+      "arm": "official",
+      "flags": "--fresh",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not reached before continuation stopped",
+      "mutation": "",
+      "interrupt": ""
+    },
+    {
+      "key": "barrier-official-default-r2",
+      "dataset": "barrier",
+      "workers": "8",
+      "repeat": "2",
+      "arm": "official",
+      "flags": "",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not reached before continuation stopped",
+      "mutation": "",
+      "interrupt": ""
+    },
+    {
+      "key": "barrier-official-default-r3",
+      "dataset": "barrier",
+      "workers": "8",
+      "repeat": "3",
+      "arm": "official",
+      "flags": "",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not reached before continuation stopped",
+      "mutation": "",
+      "interrupt": ""
+    },
+    {
+      "key": "barrier-official-fresh-r2",
+      "dataset": "barrier",
+      "workers": "8",
+      "repeat": "2",
+      "arm": "official",
+      "flags": "--fresh",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not reached before continuation stopped",
+      "mutation": "",
+      "interrupt": ""
+    },
+    {
+      "key": "barrier-official-fresh-r3",
+      "dataset": "barrier",
+      "workers": "8",
+      "repeat": "3",
+      "arm": "official",
+      "flags": "--fresh",
+      "status": "not_run",
+      "returncode": "",
+      "wall_s": "",
+      "cpu_s": "",
+      "reason": "not reached before continuation stopped",
+      "mutation": "",
+      "interrupt": ""
+    }
+  ],
+  "original_plan_complete": false,
+  "strict_cost_pairs": [
+    {
+      "dataset": "grid",
+      "arm": "native",
+      "workers": "8",
+      "commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+      "comparison": "strict/default ratio of successful-point medians",
+      "strict_successful": 0,
+      "default_successful": 3,
+      "cpu_s_ratio": null,
+      "wall_s_ratio": null
+    },
+    {
+      "dataset": "math",
+      "arm": "native",
+      "workers": "8",
+      "commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+      "comparison": "strict/default ratio of successful-point medians",
+      "strict_successful": 3,
+      "default_successful": 3,
+      "cpu_s_ratio": 2.5012814460475132,
+      "wall_s_ratio": 4.226664750102625
+    }
+  ],
+  "policy_labels": "default refers to the recorded tool default; strict is separate",
+  "policy_cost_source": "returned matrix only; old e155 isolation is not new strict timing"
+}

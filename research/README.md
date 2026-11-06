@@ -12,7 +12,7 @@ The total-instruction gate remains failed and user-mode comparison post hoc.
 |---|---|---|
 | Final observed compilation | [W publication](../data/openai-math-4eaee875/census/README.md), [derived artifacts](../docs/paper/generated/census/) | 162,170 completed; 926 deferred; P/E lower bounds, no extrapolation |
 | Original sample | [Public package](../data/openai-math-4eaee875/README.md) | Historical 42/42 data, never filling the missing tail |
-| Final checker matrix | [checker/results](../checker/results/README.md) | Starts after actual quiet retirement; await real final rows, not fixtures/previews |
+| Final checker matrix | [818f7422 results](../checker/results/release-e000ed62bbf4/matrix/README.md), [derived summaries](../docs/paper/generated/system/) | 1.70/2.14/1.73 wall scaling; strict Grid censored, ten cells unrun, background condition explicit |
 | External projects | [Results](../data/external-projects/README.md) | Versioned check/audit and package/container functionality; final timing follows M |
 | Built-subset checking | [Plan](../docs/research-plan.md) | M checks available artifacts only; partial or unstarted scope is explicit |
 
@@ -24,8 +24,8 @@ source files**. P/E work is not converted; module wall is not machine wall.
 
 Native e000
 shared-checked/strict policy, two read-only review limits and no repaired-source
-independent runtime review remain explicit. No final system timing is inferred
-from preview costs or prototype ratios.
+independent runtime review remain explicit. The matrix now uses returned frozen-tool costs; external timing remains pending.
+No preview cost or prototype ratio fills missing results.
 
 All root Workspace work uses **CPU8–9**. Root starts no native collection,
 replacement agent/session or infrastructure change, and publishes no release.

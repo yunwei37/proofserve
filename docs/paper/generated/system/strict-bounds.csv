@@ -1,0 +1,2 @@
+key,observed_timeout_wall_s,default_wall_median_s,observed_censor_ratio,interpretation
+grid-P8-strict-theorem-bodies-r1,1800.010274197004,352.3493768059998,5.10859502722513,single censored strict attempt / default successful median; no strict median or completed cost

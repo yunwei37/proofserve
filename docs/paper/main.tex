@@ -7,6 +7,7 @@
 \date{}
 \providecommand{\CensusFinal}{0}
 \IfFileExists{generated/census/census-ready.tex}{\input{generated/census/census-ready.tex}}{}
+\IfFileExists{generated/system/matrix-ready.tex}{\input{generated/system/system-metrics.tex}}{}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -26,7 +27,7 @@ The missing tail is not imputed. The full-frame import graph omits 19.78\% of so
 of lexical kernel-decision sites. ProofServe combines dependency-aware
 parallel replay, restartable segments and receipts recording scope, axioms
 and costs. Its contribution is a usable integration of established
-mechanisms and scoped evaluation. Final release scaling and external-project measurements remain pending.
+mechanisms and scoped evaluation. From one to eight workers, Nat.Basic/Grid/Barrier wall speedups are 1.70/2.14/1.73$\times$, with higher CPU; external timing remains pending.
 \end{abstract}
 
 \section{Introduction}
@@ -141,8 +142,8 @@ reproducible proxy for computation, while ordinary \texttt{decide} can also
 encode substantial evaluation \cite{lean4,leanDecide434}.
 For example, the unmarked Ramsey K10 certificate uses 356.44 checker
 CPU-seconds against 1,725.13 source CPU-seconds (20.66\%).
-A 20-module sample of the retained 190-module Ramsey prefix uses 35.91\%
-in aggregate. The ordered prefix covers 190/444 targets.
+The dependency-ordered Ramsey prefix covers 190 of 444 targets;
+20 sampled modules have a 35.91\% aggregate ratio.
 
 Whole closures dilute expensive targets with cheaper dependencies.
 Checkpointed Falconer checking costs 2,038.44/32,292.60 CPU-seconds (6.31\%);
@@ -257,16 +258,9 @@ Editable state and arbitrary malformed metadata remain trust limits.
 Reports and controls are in \path{packaging/checker-review-*.md} and
 \path{checker/results/theorem-body-policy/}.
 
-Two prototype interventions explain these choices.
-Correcting our missing persistent marking reduced eight-worker CPU by
-14.13\% and wall time by 5.13\% in a same-executable comparison.
-Replacing whole-module fallback with a dependency-closed nonordinary prefix
-reduced a paired wall median from 257.66 to 196.67 seconds (23.67\%),
-with CPU increasing 0.106\%.
-These results identify engineering causes in the prototype; the release
-ablations test their integrated effect separately.
-Persistent marking occurs between joined waves.
-The tool exposes both disabling flags for that evaluation.
+\AblationSummary{} These are eight-worker comparisons of the frozen tool,
+not historical prototype ratios. Persistent marking occurs between joined
+waves; both disabling flags remain available.
 
 Completed segments serialize their successful prefix for reuse.
 Toolchain, artifacts, Lake lock and checkpoint configuration must match;
@@ -304,26 +298,23 @@ The current receipt lacks a binding to the current source digest;
 audit exposes this gap. Thus acceptance, source coverage and reported axiom declarations remain separate answers.
 
 \section{Evaluation: performance and verification coverage}\label{sec:evaluation}
-Final frozen-tool results are pending. Admitted results name executable/project
-commits, toolchain, module set and complete timing boundary; historical
-prototypes cannot fill release tables.
+The frozen checker is \texttt{e000ed62}; the original driver is \texttt{cc5bcc18},
+and publication \texttt{818f7422} records the six-hour collection.
+Native cell costs include the closed cgroup's whole process tree.
+Protected \texttt{zettai-dev} work remained running; about one host P-core
+was observed before launch. This is not exclusively idle-host performance.
 
 \subsection{RQ3: original-kernel scaling and alternatives}
-The release matrix uses 1, 2, 4 and 8 workers for Nat.Basic and Grid,
-and 1 and 8 for Barrier, with three fresh-checkpoint processes per point.
-Mathlib denotes the Nat.Basic closure.
-At eight workers, Nat.Basic and Grid each receive three no-persistence,
-no-split-fallback and strict-policy runs.
-Wall/CPU medians and ranges accompany scoped acceptance and memory
-observations (Table~\ref{tab:release}).
-The final table separates shared-checked default and any measured strict
-points; their CPU/wall cost comparison is reported within the same tool,
-input and worker configuration.
+Nat.Basic/Grid/Barrier check 1,330/3,793/4,449 closure modules; the overlapping
+counts are not distinct coverage. Table~\ref{tab:release} uses three fresh-state
+repeats per completed point. Barrier 2/4 workers were not planned.
+\ScalingSummary{} \StrictSummary{} \StrictGridSummary{}
 
 \begin{table}[t]
 \centering
 \small
-\IfFileExists{generated/system/system-ready.tex}{%
+\setlength{\tabcolsep}{3pt}
+\IfFileExists{generated/system/matrix-ready.tex}{%
 \input{generated/system/system-table.tex}
 }{%
 \begin{tabular}{lccc}
@@ -336,49 +327,44 @@ Barrier & Pending & Pending & Pending\\
 \bottomrule
 \end{tabular}
 }
-\caption{Release-tool scaling, awaiting the complete committed matrix.
-Three repeats per worker count support separate CPU and wall summaries.
-D labels the shared-checked default and S strict theorem-body isolation.
-Design implication: assess latency savings together with work inflation;
-prototype measurements cannot establish release performance.}
+\caption{Medians (s), workers in columns, three complete repeats.
+D: shared-checked; S: strict. Full ranges are in the artifact;
+Grid strict is censored, reported only in the text.}
 \label{tab:release}
 \end{table}
 
-Official default and \texttt{--fresh} comparisons require matching ledgers.
-Lean 4.34.1 already launches module-local tasks; its default path trusts
-loaded imports and replays local declarations, whereas \texttt{--fresh}
-replays the imported final constant map sequentially
-\cite{lean434CheckerSource2026}.
-ProofServe's dependency-ordered per-module ledger is a third boundary.
-The evaluation reports complete command costs and policy-qualified common-scope acceptance;
-unmatched work is identified before considering speedup ratios.
+\MatrixScopeSummary{} Unrun cells are Grid strict r2--3 and Grid/Barrier
+official default/fresh r2--3 (eight). Nat.Basic official fresh r3 was attempted
+but stopped at 77.70 s by the total window, not its per-cell cap.
+No partial observation fills a completed-run median.
 
-An independent kernel offers another performance/trust tradeoff.
-The earlier report completes 416 Comparator configurations in 80.1 active
-hours
-\cite{openaiMathTooling2026}.
-A paired sweep finds median nanoda/Lean time 0.21, using four nanoda threads
-against one Lean thread, excluding export.
-The pinned nanoda setup, including an enlarged checker stack,
-accepts 401 of 416 configurations; 15 encounter operational
-failures such as stack exhaustion or capacity limits, with later revisions
-recovering most failing cases.
-Nanoda is a separately implemented kernel \cite{nanoda2026};
-ProofServe instead uses Lean's original kernel plus coordination.
-The report's result motivates this alternative, without establishing
-which route is faster under our evaluation conditions.
+All nine complete official samples accept their requested roots:
+Nat.Basic default/fresh 3/2, Grid and Barrier 1/1 each.
+Only Nat.Basic default has a three-repeat median (407.82 s wall).
+Stock default trusts imports and checks local declarations; fresh replays
+the final imported constant map \cite{lean434CheckerSource2026}.
+Its search-path discovery and checking ledger differ from ProofServe's
+per-module work; these are not whole-ledger speedup comparisons.
+Prior nanoda/Lean timing (median 0.21, four threads versus one,
+export excluded, 401/416 completed) is not our speed baseline
+\cite{openaiMathTooling2026,nanoda2026}.
 
-\paragraph{Library-checking coverage.}
-A stopped library check reports how much was verified.
+The existing bvar, unknown and sort controls all produce original-kernel
+rejection messages. \ResumeSummary{}
+Within each dataset, all 45 complete fixed native points and the resumed
+point have identical input identities, accepted sets, declared axiom lists
+and module hashes. The 15 declared axioms include \texttt{sorryAx} and
+compiler/runtime axioms: an inventory, not a sorry-free or minimal-use certificate.
+
+\paragraph{Supplementary library checking.}
 \IfFileExists{generated/system/library-check-summary.tex}{%
 \input{generated/system/library-check-summary.tex}
 }{%
-The bounded attempt has not returned a final scope count.
+Built-subset checking has not yet returned a scope.
 }
-The report records unique accepts against the input frame, attempted roots,
-proof rejections, operational stops and unattempted scope, with tool/input
-commits and available official references. A verified prefix establishes
-that scope; unfinished work has no verdict or whole-library parity claim.
+Any prefix must report accepts/input frame, attempted roots, proof rejects,
+operational stops, unattempted scope, tool/input commits and available official
+references. Unfinished scope has no verdict or whole-source parity claim.
 
 \subsection{RQ4: default targets miss a third of decision sites}
 The full-frame import graph misses 19.78\% of source files and 33.30\% of
@@ -413,7 +399,7 @@ rejection controls below.
 \centering
 \small
 \setlength{\tabcolsep}{3pt}
-\IfFileExists{generated/system/system-ready.tex}{%
+\IfFileExists{generated/system/external-ready.tex}{%
 \input{generated/system/external-table.tex}
 }{%
 \begin{tabular}{lcc}
@@ -494,7 +480,8 @@ on axioms, unsafe/partial exclusions remain visible, and semantic statement
 faithfulness requires separate review.
 Current source binding, malicious checkpoint integrity, executable Lake
 configuration and uncompiled/generated sources require explicit additional
-evidence. Release scaling and resumption costs remain incomplete.
+evidence. Performance remains bounded to these closures and background conditions;
+strict Grid and official repeats are incomplete.
 Historical external observations have one successful arm each and common-root
 rather than full-dependency official parity; final evaluation is pending; the AI disclosure is a collection-level attribution, not an independent
 authorship audit.
@@ -511,14 +498,13 @@ and its integration into a usable original-kernel tool, rather than new
 parallelism, receipt or serving mechanisms.
 
 \section{Conclusion}
-Matched measurements show both cheap proof checking and substantial
-certificate recomputation. Completed observed work yields lower bounds, not a full-library answer;
-unfinished work, admission segments and P/E boundaries remain explicit.
-Default coverage and repeatable verdicts answer different verification
-questions. ProofServe makes these boundaries explicit through check,
-audit and scoped receipts. Review-driven repairs strengthen the tested input and receipt boundaries;
-independent review and the pending final evaluation must establish the
-release's remaining correctness and performance claims.
+Matched measurements distinguish cheap proof checking from certificate
+recomputation. Observed compilation yields biased-subset P/E lower bounds,
+not a full-library estimate. ProofServe exposes scope through check, audit
+and receipts; parallelism saves wall time at higher CPU cost.
+Default coverage and repeatability establish different facts.
+The repaired coordinator still needs independent runtime review;
+external performance remains pending.
 
 \bibliographystyle{plain}
 \bibliography{references}

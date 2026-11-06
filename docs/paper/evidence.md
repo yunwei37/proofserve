@@ -1082,3 +1082,82 @@ full-host-idle claim. No final eligible fixed-acceptance/CSV or complete
 matrix was observed. The main paper PDF and system cost slots are unchanged
 pending the final returned scoped ledger. Root changed no foreign source,
 native input, deadline, affinity, process or background workload.
+
+### 6 November 2026: returned scoped final matrix 818f7422
+
+Root read the published per-point CSV, all 71 planned-status rows, native and
+official summaries, acceptance/resume/bad-control records, context and actual
+collection terminal under checker/results/release-e000ed62bbf4/matrix/.
+Publication is 818f74229434b888702a2d72b370cb2e07c79b36; native remains
+e000ed62 / binary14707787067517532260, original driver cc5bcc18.
+The terminal preserves collection_finished_with_incomplete_cells and
+all_original_cells_complete=false. Its verified handoff records all returned
+native/cgroups retired, the P-core lock observed free and handoff_ready=true.
+Root observed the last collector PID absent. This is a retired scoped
+collection, not completion of the original 71-cell plan.
+
+There are 61 returned attempts: 45 complete fixed native points, nine complete
+official samples, one complete resumed point, three original-kernel rejection
+controls, one deliberate interruption, one strict Grid timeout and one
+official overall-window cutoff. Ten planned cells were unattempted:
+Grid strict r2/r3, and Grid/Barrier official default/fresh r2/r3 (eight).
+Nat.Basic official fresh r3 was attempted and cut off at 77.703905 s by the
+overall window; it is not among those ten unrun cells. The strict Grid r1
+timeout is 1800.010274 s, not a proof rejection or completed strict cost.
+
+Root independently grouped the actual points and recomputed all fifteen
+complete native groups' CPU/wall min, median and max; they match M's summaries
+to float precision. Eight-versus-one wall speedups are 1.6966092019 /
+2.1398982144 / 1.7271200407 for Nat.Basic / Grid / Barrier; CPU increases are
+2.9101828% / 11.2624521% / 4.6005574%. Nat.Basic strict/default-eight ratios
+are 4.2266647501 wall and 2.5012814460 CPU. Strict Grid has one censored
+at-least-5.1 wall ratio against the default-eight median, no strict median,
+and no invented r2/r3 costs. Under-repeated official groups retain counts
+and ranges but no three-repeat median; only Nat.Basic official default has
+three complete repetitions (407.82 s median wall). All nine complete official
+samples accept their requested roots. Their ledger/obligations differ from
+ProofServe, so no official whole-ledger speed ratio is computed.
+
+At eight workers, disabling persistence changes Nat.Basic/Grid wall by
++3.3/+5.2% and CPU by +12.1/+16.9%; disabling split fallback changes wall by
++20.0/+12.4% and CPU by -1.4/-1.4%. These replace historical prototype
+numbers in the system explanation. One deliberate interrupted/resumed
+Nat.Basic check retains the same 1330-module result: combined wall
+81.50116523 s / CPU124.10559 s, 16.9435635% / 10.6830015% above uninterrupted
+four-worker medians. CPU includes the killed leg's closed native cgroup,
+not merely the parent's small wait4 usage. This is one restart control,
+not a multi-repeat overhead estimate.
+
+Actual bvar/unknown/sort control records contain original-kernel rejection
+messages. M reports matching input identities, accepted sets, declared axioms
+and module hashes within each dataset across all 45 complete fixed native
+points and the resumed point. The fifteen declared axioms include sorryAx
+and compiler/runtime axioms; their inventory is not a minimal used-axiom
+or sorry-free certificate. Root's new verification is independent arithmetic,
+not native execution or independent repaired-source runtime review.
+The protected zettai-dev background (~one host P-core observed before launch)
+remains explicit; these results are not exclusively idle-host timing.
+
+generate_system.py now reads the actual retired scoped handoff when no
+paper_eligible field exists; an explicit false fixture is still refused.
+It preserves original-plan incompleteness rather than inventing an owner
+field. --matrix-only emits matrix-ready.tex separately from O's external
+ready marker, so returned M data cannot qualify old external previews.
+Actual repeated-group statistics, scaling, ablations, strict paired costs,
+censored bounds, ten unrun identities and six distinct nonzero outcomes
+are retained under generated/system/. Duplicate failure archive entries are
+not counted twice. The source context, publication/native/driver/input
+versions, background and terminal/acceptance scope remain in provenance.
+Validation also confirms nonfinal fixture refusal and preview/no-ready
+separation; fixture values do not enter the paper.
+
+The abstract, Table 1, system mechanism, performance/coverage discussion and
+limitations now use these returned values without selecting a favorable
+subset or restoring old e155/prototype costs. Table 2 remains pending O's
+actual final timing; built-subset checking has not returned a scope.
+Compilation costs/distributions and their lower-bound interpretation remain
+unchanged. Final CPU8–9 Tectonic returned 0 in 2.250 s: six pages / 306731
+bytes, two figures / two tables / fourteen references, zero evidence macros,
+no overfull or undefined warnings. Final changed pages 1–2 and 4–6 were
+visually reviewed; page 3 is byte-identical to its previously reviewed render.
+No foreign source, native process, deadline, affinity or workload was changed.

@@ -34,9 +34,11 @@ P/E work lower bounds are reported.
 
 The last interval retired at 04:57:20.104259 UTC; W records lease release at
 04:59:12.385526 UTC. Root observed the supervisor/controller absent.
-The coordinator reports M now running the final matrix. O timing follows,
-then optional checking of actually built artifacts. No returned final system
-values have yet been used in the paper.
+M published scoped matrix 818f7422: all 45 complete repeated native points,
+61/71 attempted cells, ten unrun and two operational cutoffs. The paper
+now uses its actual modest scaling, strict-policy costs and interruption
+results with the protected background condition. O external timing follows,
+then optional checking of actually built artifacts. No O timing is filled.
 
 ## Measured source scope and scientific interpretation
 
@@ -74,7 +76,7 @@ No admission-policy speedup follows from the nonrandom segment split.
 | 5 November, 12:00 | Root prose and figure/table scripts prepared; update for the actual stopped scope and returned numbers. |
 | 5 November, 14:00 | O frozen-native installation functional qualification; test-time preview provenance remains explicit. |
 | Completed 6 November, 04:57 | W retired all runnable work; cc5bcc18 publishes 162,170 completed and 926 deferred modules. |
-| After W actually retires, at most 6 hours | M executes the final matrix after actual retirement, lease release and a quiet machine. |
+| Completed 6 November, 11:13 | M six-hour matrix returned with explicit incomplete cells and preserved background load; publication 818f7422. |
 | Then, at most 2 hours | O executes final external-project timing. |
 | Last, stop by 6 November, 17:00 | M checks only actually built artifacts, reporting the reached scope; partial or not-started remains possible. |
 | 6 November, 18:00 | Root integrates actual numbers, six pages, zero missing macros. |

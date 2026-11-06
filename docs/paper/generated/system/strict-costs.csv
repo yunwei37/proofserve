@@ -1,0 +1,3 @@
+dataset,arm,workers,commit,comparison,strict_successful,default_successful,cpu_s_ratio,wall_s_ratio
+grid,native,8,e000ed62bbf4b9c420bd99d0273a5d21829b4edc,strict/default ratio of successful-point medians,0,3,,
+math,native,8,e000ed62bbf4b9c420bd99d0273a5d21829b4edc,strict/default ratio of successful-point medians,3,3,2.5012814460475132,4.226664750102625
