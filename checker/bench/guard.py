@@ -20,7 +20,7 @@ def environment():
  (ROOT/'tmp').mkdir(exist_ok=True)
  return e
 
-def run(key,argv,limit=600,measured=False,env=None,memory_gib=None):
+def run(key,argv,limit=600,measured=False,env=None,memory_gib=None,admission_deadline=None,drain_seconds=900,coordinator_argv=None):
  global ACTIVE
  assert not any(str(x).startswith('-M') for x in argv)
  if measured:
@@ -42,6 +42,11 @@ def run(key,argv,limit=600,measured=False,env=None,memory_gib=None):
   wall_limit_s=limit,own_rss_sample_stop_gib=budget/1024**3,cgroup=str(cg),cgroup_charged_memory_max_gib=budget/1024**3,host_available_stop_gib=8,evaluation_status=(env or {}).get('PROOFSERVE_BENCH_CLASSIFICATION','unclassified'))
  (out/'command.json').write_text(json.dumps(record,indent=2)+'\n')
  done=threading.Event();stops=[];peak=[0];p=None;reaped=False
+ drain=None
+ if admission_deadline is not None:
+  from corpus import AdmissionDrain
+  drain=AdmissionDrain(admission_deadline,drain_seconds)
+  record.update(admission_deadline_epoch=admission_deadline,drain_seconds=drain_seconds,admission_events=[])
  def enter():(cg/'cgroup.procs').write_text('0')
  def sample():
   with (out/'memory.jsonl').open('w') as f:
@@ -73,7 +78,35 @@ def run(key,argv,limit=600,measured=False,env=None,memory_gib=None):
      try:(cg/'cgroup.kill').write_text('1')
      except OSError:pass
      break
-    done.wait(1)
+    if drain is not None:
+     now=time.time();coordinators=[]
+     if now>=drain.deadline and drain.frozen is None:
+      expected=coordinator_argv or []
+      for member in members:
+       try:
+        args=Path('/proc',str(member['pid']),'cmdline').read_bytes().split(b'\0')
+        args=[x.decode(errors='replace')for x in args if x]
+        if len(expected)>=6 and args and args[0]==expected[0]and len(args)>1 and args[1]==expected[1]:
+         if all(args[args.index(flag)+1]==value for flag,value in [(expected[2],expected[3]),(expected[4],expected[5])]):
+          coordinators.append(member['pid'])
+       except (OSError,ValueError,IndexError):pass
+     for action,value in drain.step(now,[m['pid']for m in members],coordinators,p.pid):
+      if action=='freeze':
+       member=next(m for m in members if m['pid']==value)
+       try:
+        current=Path('/proc',str(value),'stat').read_text().rsplit(')',1)[1].split()[19]
+        if current!=member['birth']:raise ProcessLookupError('owned coordinator identity changed')
+        os.kill(value,signal.SIGSTOP)
+        record['admission_events'].append(dict(event='coordinator_stopped',pid=value,birth=current,epoch=time.time()))
+       except (FileNotFoundError,ProcessLookupError):
+        stops.append('admission_deadline_coordinator_retired_during_fence')
+        (cg/'cgroup.kill').write_text('1')
+       (out/'admission-stop.json').write_text(json.dumps(record['admission_events'],indent=2)+'\n')
+      else:
+       stops.append(value);record['admission_events'].append(dict(event=value,epoch=time.time()))
+       (cg/'cgroup.kill').write_text('1')
+    delay=1 if drain is None else min(1,max(.01,drain.deadline-time.time())) if drain.frozen is None else .2
+    done.wait(delay)
  thread=None
  try:
   with (out/'stdout').open('w') as fo,(out/'stderr').open('w') as fe:

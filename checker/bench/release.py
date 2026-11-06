@@ -200,77 +200,9 @@ def main():
         terminal=dict(complete=True,phase="matrix",native_commit=source["native_commit"],paper_eligible=not qualification,
                       next="O external timings; corpus is a separate invocation, never automatic")
     else:
-        env["LEAN_NUM_THREADS"]=str(cfg.get("corpus_workers",24)if not qualification else 2)
-        if not qualification:
-            matrix_terminal=json.loads((raw.parent/"matrix/phase-terminal.json").read_text())
-            if not matrix_terminal["complete"]:raise RuntimeError("finish the final matrix before corpus checking")
-        affinity=set(os.sched_getaffinity(0))
-        rows=json.loads((raw/"workflow-results.json").read_text())if(raw/"workflow-results.json").exists()else[]
-        # A signal may have retired the guarded child before stage() could append
-        # its row. Recover the durable native result, preserving the old attempt.
-        for file in sorted((raw/"runs").glob("*-attempt-*/result.json")):
-            name,number=file.parent.name.rsplit("-attempt-",1)
-            if any(r["phase"]==name and r["attempt"]==int(number)for r in rows):continue
-            result=json.loads(file.read_text())
-            if not result.get("native_retired")or not result.get("cgroup_retired"):
-                raise RuntimeError("previous native attempt is not retired")
-            rows.append(dict(phase=name,attempt=int(number),returncode=result["returncode"],wall_s=result.get("wall_s"),
-                             cpu_s=result.get("cgroup_usage_s"),sampled_tree_peak_bytes=result["sampled_tree_peak_bytes"],
-                             charged_peak_bytes=result["charged_peak_bytes"],native_commit=source["native_commit"]))
-        rows.sort(key=lambda r:(r["phase"],r["attempt"]))
-        write(raw/"workflow-results.json",rows)
-        def stage(name,argv,limit):
-            old=[r for r in rows if r["phase"]==name]
-            if old and old[-1]["returncode"]!=0 and not a.retry_failed:
-                raise RuntimeError(name+": retained failure; inspect it and use --retry-failed")
-            attempt=max((r["attempt"]for r in old),default=0)+1;key=name+"-attempt-"+str(attempt)
-            lease=contextlib.nullcontext()if qualification else Path(cfg["lease"]).open("a+")
-            try:
-                with lease as handle:
-                    if handle is not None:
-                        fcntl.flock(handle,fcntl.LOCK_EX);os.sched_setaffinity(0,set(range(os.cpu_count())))
-                    before=Path.cwd();os.chdir(project)
-                    try:r=guard.run(key,argv,limit,False,env,memory_gib=12 if qualification else None)
-                    finally:os.chdir(before)
-            finally:os.sched_setaffinity(0,affinity)
-            row=dict(phase=name,attempt=attempt,returncode=r["returncode"],wall_s=r.get("wall_s"),
-                     cpu_s=r.get("cgroup_usage_s"),sampled_tree_peak_bytes=r["sampled_tree_peak_bytes"],
-                     charged_peak_bytes=r["charged_peak_bytes"],native_commit=source["native_commit"])
-            rows.append(row);write(raw/"workflow-results.json",rows);return r
-        pending=[dict(module=n,reason="W produced no source-qualified artifact",status="build_unavailable")for n in missing]
-        exclusions=set(missing)
-        revalidated=False
-        try:
-            for name in cfg.get("capacity_import_roots",["OAI"]):
-                if name in exclusions:continue
-                meta=stage("capacity-metadata-"+name,[binary,"--internal-module-meta",name],cfg.get("capacity_import_limit_s",1800))
-                if meta["returncode"]!=0:raise RuntimeError("cannot establish umbrella metadata")
-                out=raw/"runs"/("capacity-metadata-"+name+"-attempt-"+str(sum(r["phase"]=="capacity-metadata-"+name for r in rows)))/"stdout"
-                info=json.loads(out.read_text())["module_metadata"][0]
-                if not info["empty"]:raise RuntimeError("capacity exclusion is only valid for a compiled-empty module")
-                context=stage("capacity-import-"+name,[binary,"--internal-empty-context",name],cfg.get("capacity_import_limit_s",1800))
-                if context["returncode"]!=0:
-                    exclusions.add(name);pending.append(dict(module=name,compiled_own_declarations=0,
-                        context_status="not_completed",returncode=context["returncode"],
-                        input_identity=info["inputs"],reason="bounded original combined-context check did not complete"))
-            selected=[n for n in names if n not in exclusions]
-            if not selected:raise RuntimeError("no artifact-backed roots remain")
-            roots=raw/"whole-roots.txt";roots.write_text("\n".join(sorted(selected))+"\n")
-            command=[binary,project,"--workers",str(cfg.get("corpus_workers",24)if not qualification else 2),
-                     "--root-file",roots,"--closure-roots",str(cfg.get("closure_roots",500)),
-                     "--checkpoint-dir",raw/"whole-state","--json"]
-            result=stage("whole-library",command,cfg.get("whole_limit_s",259200))
-            revalidated=result["returncode"]==0
-        finally:
-            coverage=corpus_coverage(raw,names,pending,rows,revalidated)
-            write(raw/"phase-terminal.json",dict(complete=False,phase="corpus",status="stopped_or_returned",coverage=coverage))
-            write(export/"whole-coverage.json",coverage)
-            if rows:
-                fields=list(rows[0])
-                with (export/"workflow-cells.csv").open("w",newline="")as f:
-                    w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
-        terminal=dict(complete=coverage["status"]=="complete",phase="corpus",native_commit=source["native_commit"],
-                      coverage=coverage,paper_eligible=not qualification)
+        import corpus
+        terminal=corpus.run(raw,export,cfg,binary,source,env,names,missing,guard,write,
+                            qualification=qualification,retry_failed=a.retry_failed)
     write(raw/"phase-terminal.json",terminal);write(export/"phase-terminal.json",terminal)
     print(json.dumps(terminal),flush=True)
     if not terminal["complete"]:raise SystemExit(2)
