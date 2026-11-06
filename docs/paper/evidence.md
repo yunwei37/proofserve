@@ -1297,3 +1297,77 @@ undefined warnings. Changed pages5–6 were visually reviewed; pages1–4 are
 byte-identical to the reviewed external-final render. Completed W/M/O
 numerical results are unchanged. This is root self-review, not independent
 paper or native review.
+
+### 6 November 2026: coordinator reading corrections and citation verification
+
+The five requested edits are applied together, without waiting for the
+supplementary corpus result or adding new measurements.
+The SubexponentialSAT paragraph no longer says independent references are
+pending: O's completed module-local union covers14401/14721 with zero
+acceptance differences;320 remain unavailable. Root read the actual
+certificate-reuse-fix/subexp-fresh-e0c92d51 and
+e0-review-repair/subexp-fresh-3fe83c5a READMEs, comparison.csv, source/summary
+and official-partial-reference-validation.json. Both repaired-source fresh
+replays accept14721 and agree with the available14401 references.
+The 3fe validation retains13208 legacy+1193 later references,320 unknown,
+not axiom-set parity. Those are historical implementation-line correctness
+previews, not ABI6 final performance or independent repaired-native execution
+review. Original source/stream costs and their denominators are unchanged.
+The limitation now states the actual historical reference coverage.
+
+Barrier2/4-worker cells were cut from the initial design to fit the six-hour
+limit; “not planned” was inaccurate. The paper/plan now say cut for that
+window, preserving the actual71-cell retained plan and61 returned attempts.
+The abstract now discloses the crafted artifact-context difference caused
+by sharing already kernel-checked theorem bodies, and Nat.Basic strict
+isolation's4.23-times wall cost versus default at eight workers.
+The opaque sentence about our earlier memory/persistence method defects
+was deleted. It was not useful reader-facing methodology; its historical
+records and current no-M/frozen-tool measurement conditions are retained.
+
+All14 unique main.tex citation keys have exactly one references.bib entry.
+Root checked the primary passages supporting their actual manuscript uses:
+
+| Citation key | Primary source checked | Supported scope / disposition |
+|---|---|---|
+| lean435Check | [Lean4.35.0 release notes](https://lean-lang.org/doc/reference/latest/releases/v4.35.0/), Highlights/checking section | Release2026-10-12 explicitly adds lake check and lake comparator. lake check builds default targets, exports and rechecks, restricting axioms. Version/command confirmed; title/author metadata clarified. |
+| leanFroY4 | [FRO Year4 Part1 roadmap](https://lean-lang.org/fro/roadmap/y4-1/), Trust | External checking is the stated roadmap agenda; not evidence for a release by itself. |
+| leanCheckerDocs | [official lean4checker README](https://github.com/leanprover/lean4checker) | Built-in leanchecker from4.28; original kernel replay/default versus fresh, not a second independently implemented kernel. |
+| lean434CheckerSource2026 | [pinned4.34.1 LeanChecker.lean](https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/LeanChecker.lean) | replayFromImports checks local constants over imported context; fresh replays the final imported constant map. |
+| leanDecide434 | [pinned4.34.1 Decide.lean](https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/Lean/Elab/Tactic/Decide.lean), evalDecideCore | Both ordinary decision reduction and the +kernel path can require evaluation; source marker is not runtime phase attribution. |
+| lean4 | [authors' Lean4 system paper](https://lean-lang.org/papers/lean4.pdf) | Terms, reduction/definitional equality, tactics constructing proof terms, small trusted kernel. No timing transferred. |
+| wenzelParallel2009 | [author paper](https://files.sketis.net/papers/parallel-isabelle.pdf), retained original PDF | Prior Isabelle/Isar parallel proof checking. Live PDF endpoints failed; root read the183722-byte retained primary PDF with Poppler, not a secondary paraphrase. |
+| coqAsync2015 | [primary arXiv1506.05605](https://arxiv.org/abs/1506.05605) | Independent proof-document tasks and asynchronous/parallel processing. |
+| leanParallelRelease2025 | [Lean4.19.0 release notes](https://lean-lang.org/doc/reference/latest/releases/v4.19.0/), Parallel Elaboration | Theorem bodies elaborate concurrently with other elaboration tasks; no copied benchmark. |
+| kiminaPaper | [primary arXiv2504.21230](https://arxiv.org/abs/2504.21230) | RL verification service using Lean REPL processes/import caching; authors/title/2025 workshop match. |
+| axle | [primary arXiv2606.26442v1](https://arxiv.org/abs/2606.26442v1) | Cloud Lean proof verification/manipulation service; six authors and2026 workshop match. |
+| nanoda2026 | [official nanoda_lib README](https://github.com/ammkrn/nanoda_lib) | External Lean type checker; historical timing0.21 belongs to the pinned earlier report, not its current head or our equal-obligation baseline. |
+| openaiMathSource | [pinned publisher README](https://raw.githubusercontent.com/openai/math/4eaee87548250b2682affda7d05d947c05554bae/README.md) | Publisher-level model-produced manuscript/proof corpus. Our163097-row count/pins come from our actual ledger, not an alleged README count. |
+| openaiMathTooling2026 | [pinned reportc9570a82](https://github.com/nealmcb/openai-math-lean-tooling/blob/c9570a82f79b78a1a969a6316ac0fdd69aabef55/REPORT.md) | Primary report refetched onCPU8–9,74061bytes/804lines, matching retained copy. Cloud122458/32vCPU/13.8wallh;330compileCPUh is26-module extrapolation±30%,410 includes80Comparator; nanoda conditions/default reachability remain explicit. |
+
+A citation overstatement was also corrected: the pinned report's final
+“Not done yet” section proposes comparable per-configuration outcome/kernel/
+time/export-hash records and pinned versions; it does not propose axiom
+receipts. The manuscript now says outcome/timing/export-hash records.
+No unsupported “axiom receipt” attribution remains. Its three certificate
+examples support only the report's stated computation hypothesis, not our
+new measured module distribution. Primary web URLs and retained originals
+were used; no secondary technical claim was substituted for an inaccessible
+primary document. Live web failures do not turn old source text into a new
+version or performance measurement.
+
+The supplementary corpus paragraph remains awaiting the real17:00 admission /
+17:15 maximum-drain disposition. OAI is still explicitly missing its deferred
+artifact, not a proof rejection or resource failure. No progress event has
+been promoted to final certified coverage or whole-source checking.
+
+Final CPU8–9 Tectonic returned0 in2.256s: six pages /306929bytes,
+two figures/tables and fourteen references, no overfull/undefined warnings
+and zero evidence-placeholder macros. All six rendered pages were visually
+reviewed; final pages5–6 were rechecked after shortening an installation
+sentence to remove a word split across columns. Source-driven corrections
+and bibliography metadata changed no measured W/M/O value, checker source
+or running supplementary job. The primary14-key existence/uniqueness check
+and removal of all four obsolete requested phrases passed.
+This is root source/arithmetic/writing/visual self-review, not independent
+paper review or repaired-native runtime review.

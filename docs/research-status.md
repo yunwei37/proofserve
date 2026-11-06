@@ -32,6 +32,13 @@ W records lease release 04:59:12 UTC after retirement 04:57:20 UTC.
 The compilation section is complete. The current paper also integrates the
 scoped M matrix, with Table 1 medians, default/strict costs, the censored Grid
 point, all ten unrun cells, controls and actual interruption overhead.
+Coordinator-reading corrections are applied: historical SubexponentialSAT
+reference coverage14401/14721 with zero differences and320 unreferenced;
+Barrier2/4 cut for the six-hour limit; abstract body-context difference and
+Nat.Basic strict4.23 wall ratio; the opaque method-defect sentence removed.
+All14 cited keys and their primary supporting passages were checked.
+Lean4.35.0/lake check is confirmed by release notes; the earlier report's
+outcome/timing/export-hash proposal is no longer mislabeled axiom receipts.
 O publication 0516279d is now integrated into Table 2: Newspeak/Solar/AI
 native CPU 109.055/167.209/2481.041 s and wall 110.639/169.321/2579.748 s;
 official-default CPU 38.637/5.512/37.377 s and wall 38.736/5.539/40.993 s.
@@ -39,11 +46,11 @@ Each arm has one complete observation, one worker. All 126 common local roots
 pass; native transitive closure and official local roots are unequal checking
 obligations, so there is no equal-obligation speedup comparison. AI attribution
 is an upstream collection-level declaration, proportions undisclosed.
-The current PDF is six pages / 306,655 bytes, two figures, two tables and
-14 references. CPU8–9 final compilation returned 0 in 2.289 s, with no
+The current PDF is six pages / 306,929 bytes, two figures, two tables and
+14 references. CPU8–9 final compilation returned 0 in 2.256 s, with no
 overfull/undefined warnings or evidence-placeholder macros. Changed pages
-5–6 were visually checked; pages 1–4 render identically to the previously
-reviewed external-final version. This is root self-review, not independent
+1–6 were visually checked, including the final abstract, reference-scope
+paragraph, Barrier trim and shortened external-installation paragraph. This is root self-review, not independent
 paper or repaired-native review. No interrupted-preview CPU enters Table 2.
 The six-page paper now uses the returned distributions, interval/P-E costs,
 user-mode instruction total/median/P95 and marked/unmarked/default-graph

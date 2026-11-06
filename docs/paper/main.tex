@@ -13,21 +13,19 @@
 \begin{abstract}
 Checking a stored proof can avoid its original search, while checking a
 computational certificate can repeat the calculation that justifies it.
-We measure these costs in a pinned, published AI-generated Lean library
-and use the findings to design ProofServe, an original-kernel check and
-audit tool. Matched target windows retain 80.28--82.35\% of source-compilation
+We measure a pinned AI-generated Lean library and build ProofServe,
+an original-kernel check/audit tool. Matched target windows retain 80.28--82.35\% of source-compilation
 wall time for two computational certificates, versus 0.46--6.54\% for two
 ordinary controls. Across 31 module-process pairs, the median checker/compiler
 CPU ratio is 0.451, with overlapping source-proxy classes.
 \CensusNativeModules{} of \CensusExecutableModules{} modules
 (\CensusObservedPercent{}\%) completed, using \CensusPCPUHours{} P /
 \CensusECPUHours{} E CPU-hours; \CensusDeferredModules{} were deferred.
-These are separate observed-work lower bounds, not a full-library estimate.
-The missing tail is not imputed. The full-frame import graph omits 19.78\% of source files and 33.30\%
-of lexical kernel-decision sites. ProofServe combines dependency-aware
-parallel replay, restartable segments and receipts recording scope, axioms
-and costs. Its contribution is a usable integration of established
-mechanisms and scoped evaluation. From one to eight workers, Nat.Basic/Grid/Barrier wall speedups are 1.70/2.14/1.73$\times$, with higher CPU; external root sets agree.
+These are separate observed-work lower bounds; the missing tail is not imputed. The full-frame import graph omits 19.78\% of source files and 33.30\%
+of lexical kernel-decision sites. ProofServe integrates dependency-aware parallel replay,
+restartable segments and scoped receipts. From one to eight workers, Nat.Basic/Grid/Barrier wall speedups are 1.70/2.14/1.73$\times$, with higher CPU. By sharing kernel-checked theorem bodies, default mode
+can accept crafted artifacts that official checking rejects in their original
+import context. Strict isolation costs 4.23$\times$ wall on Nat.Basic at eight workers.
 \end{abstract}
 
 \section{Introduction}
@@ -39,8 +37,8 @@ Users therefore need both a cost model and a precise account of what a
 successful project check covers.
 
 Existing work already establishes the value of independent checking.
-Lean 4.35 ships \texttt{lake check}, following the FRO's external-checking
-agenda \cite{leanFroY4,lean435Check}. A public report on the same OpenAI
+Lean 4.35.0 adds \texttt{lake check} to export and recheck default targets,
+following the FRO's external-checking agenda \cite{leanFroY4,lean435Check}. A public report on the same OpenAI
 library performs a complete cloud build and extensive independent checking
 \cite{openaiMathTooling2026}. It proposes kernel computation as an explanation
 for expensive checks from three source examples. Our empirical increment
@@ -74,8 +72,7 @@ Whole-process replay and incremental target windows are distinct measurements;
 Figure~\ref{fig:costs} labels both. Reported sample and release timings use
 CPUs 0--7 of an i9-14900K, one task at a time, retaining file caches.
 Lean runs omit \texttt{-M}, including \texttt{-M0}; external memory protection
-is recorded separately. Earlier in-process memory checks and missing
-prototype persistence marking were our own method defects.
+is recorded separately.
 
 The public package \path{data/openai-math-4eaee875/} records sample identities,
 raw-cost provenance, clocks and estimates. This paper pins its original-sample
@@ -152,9 +149,11 @@ Their separate wall ratios are 9.26\% and 14.67\%.
 SubexponentialSAT primary accounting reports 3,399.30 checker CPU-seconds
 for all 14,721 accepted modules, or 7.25\% of complete source work.
 Using only the 3,977 new targets' source cost gives 15.79\% for the same
-whole-closure checker numerator. Its independent reference controls remain
-pending. This denominator change illustrates why a single ratio cannot
-stand for every boundary.
+whole-closure checker numerator. This denominator change illustrates why a
+single ratio cannot stand for every boundary.
+Module-local references agree on 14,401/14,721 modules; historical repaired
+\texttt{e0c92d51}/\texttt{3fe83c5a} replays agree, too.
+The other 320 lack module-local references.
 
 \subsection{Completed work and its limits}
 \CensusScopeSummary{} \CensusObservedSummary{} \CensusClockSummary{}
@@ -307,7 +306,7 @@ was observed before launch. This is not exclusively idle-host performance.
 \subsection{RQ3: original-kernel scaling and alternatives}
 Nat.Basic/Grid/Barrier check 1,330/3,793/4,449 closure modules; the overlapping
 counts are not distinct coverage. Table~\ref{tab:release} uses three fresh-state
-repeats per completed point. Barrier 2/4 workers were not planned.
+repeats per completed point. Barrier 2/4-worker cells were cut to fit the six-hour limit.
 \ScalingSummary{} \StrictSummary{} \StrictGridSummary{}
 
 \begin{table}[t]
@@ -420,9 +419,8 @@ obligations provide no equal-obligation speedup comparison.}
 \label{tab:acceptance}
 \end{table}
 
-Table~\ref{tab:acceptance} uses a relocated installation of tool
-\texttt{818f7422}, native \texttt{e000ed62}, Lean 4.34.1
-(data publication \texttt{0516279d}).
+Table~\ref{tab:acceptance} uses relocated tool \texttt{818f7422},
+native \texttt{e000ed62} and Lean 4.34.1 (data \texttt{0516279d}).
 Newspeak/Solar/AI inputs are \texttt{e2232d8f}/\texttt{f4f5c9a1}/\texttt{3042904c}.
 The AI set is \texttt{samuelburbulla/proofs}: an upstream collection-level
 AI declaration, with model, AI fraction and human-editing fraction undisclosed.
@@ -466,9 +464,8 @@ its missing tail includes memory-intensive families. The original two-draw
 strata and fragile heavy-tail uncertainty cannot fill that gap.
 Lexical markers are proxies, not runtime frequencies.
 Selected closures overlap, module-local replay trusts imports, and target
-windows exclude shared preparation. Cross-protocol ratios, cache/order
-effects, hardware differences and provisional SubexponentialSAT controls
-limit generalization. Failed and blocked modules have no successful cost; their exclusion from
+windows exclude shared preparation. Cross-protocol ratios, cache/order and hardware effects limit generalization;
+historical SubexponentialSAT module-local reference coverage is 14,401/14,721. Failed and blocked modules have no successful cost; their exclusion from
 cost distributions is explicit.
 Dynamic phase weights remain unmeasured.
 
@@ -489,7 +486,7 @@ Parallel proof checking and asynchronous tasks have precedents in Isabelle,
 Coq and Lean \cite{wenzelParallel2009,coqAsync2015,leanParallelRelease2025}.
 Independent checkers and Lake's shipped workflow already address
 rechecking \cite{leanCheckerDocs,lean435Check}; the same-corpus tooling report
-also proposes standardized timing, axiom and hash receipts
+also proposes comparable outcome, timing and export-hash records
 \cite{openaiMathTooling2026}.
 Kimina and AXLE supply verification services \cite{kiminaPaper,axle}.
 Our contribution is the measured boundary between checking and recomputation

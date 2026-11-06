@@ -90,7 +90,7 @@ M's earlier c8f2a0c5 stopped-handoff preparation is not proof of a new launch. T
 launch/terminal/receipt/PID-birth evidence and starts no replacement run.
 The final matrix retains Nat.Basic/Grid at workers 1/2/4/8 and Barrier 1/8,
 three repeats. Nat.Basic/Grid retain 8-worker no-persistence/no-split and
-strict points. Barrier 2/4 is deliberately unmeasured. Official controls,
+strict points. Barrier 2/4-worker cells were cut from the initial design for the six-hour limit. Official controls,
 bad-proof checks and interruption/resumption keep their actual scope.
 The 71-attempt design and planning models are not final performance.
 
