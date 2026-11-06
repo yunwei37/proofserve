@@ -1,9 +1,9 @@
 # ProofServe closure plan
 
 Deliver ProofServe and the six-page empirical + system paper by
-**6 November 2026, 20:00 UTC**. **The latest six-hour continuation supersedes
-the preceding stop. W continues segment 2 with a hard 03:00 UTC reporting
-cutoff; final N means modules completed by that cutoff.**
+**6 November 2026, 20:00 UTC**. **The latest coordinator decision ends segment 2 early at the
+6 November 01:30 UTC reporting boundary. Final N comes from W's terminal
+ledger, not the notification's approximate progress count.**
 
 ## Current execution and cutoff
 
@@ -29,15 +29,17 @@ Compiler argv, -j8, Lean settings and P/E pools stay fixed.
 
 Report successful costs by segment and P/E, measured segment wall and its
 sum, with transition gaps and unsuccessful work separate. Later completions
-stay retained but do not enter the 03:00 cutoff count/costs. This is
+stay retained but do not enter the 01:30 cutoff count/costs. This is
 dependency-ordered, selectively deferred coverage, not random sampling or
 a full-library cost estimate.
 
-W's current invocation stops admission at 03:00 and drains until 03:30,
-which differs from the latest hard cutoff. Root does not modify foreign
-controllers. Keep the discrepancy visible, restrict paper reporting to
-03:00 and retain later drain time separately. Do not declare the machine
-quiet or M running merely because the clock passed the cutoff.
+The coordinator has now requested early retirement instead of waiting for the
+old 03:00 admission / 03:30 drain parameters. Root observed the original
+controller still present at 01:36 UTC; a stop decision is not an observed
+terminal or proof that the final matrix has started. Use W's actual terminal,
+lease release and quiet-machine handoff before reporting M as running.
+The notification's approximately 161,187 completed / 926 deferred / 980
+unattempted values are provisional and do not establish an exhaustive ledger.
 
 ## Measured source scope and scientific interpretation
 
@@ -75,14 +77,14 @@ No admission-policy speedup follows from the nonrandom segment split.
 | 5 November, 06:00 | M froze native e000ed62; retain shared-checked/strict semantics and review limits. |
 | 5 November, 12:00 | Root prose and figure/table scripts prepared; update for the actual stopped scope and returned numbers. |
 | 5 November, 14:00 | O frozen-native installation functional qualification; test-time preview provenance remains explicit. |
-| 6 November, 03:00 | W cutoff; publish N completed-by-cutoff modules over both segments, retaining all other outcomes. |
-| After 03:00, at most 6 hours | M executes the final matrix after actual retirement, lease release and a quiet machine. |
+| 6 November, 01:30 | Early-stop reporting cutoff; W publishes terminal N and separate deferred/unattempted/failure outcomes over both segments. |
+| After W actually retires, at most 6 hours | M executes the final matrix after actual retirement, lease release and a quiet machine. |
 | Then, at most 2 hours | O executes final external-project timing. |
 | Last, stop by 6 November, 17:00 | M checks only actually built artifacts, reporting the reached scope; partial or not-started remains possible. |
 | 6 November, 18:00 | Root integrates actual numbers, six pages, zero missing macros. |
 | 6 November, 20:00 | Close with tool, paper and explicit limitations. |
 
-M's earlier c8f2a0c5 stopped-handoff preparation is superseded by this continuation boundary. Root reads actual owner
+M's earlier c8f2a0c5 stopped-handoff preparation is not proof of a new launch. The latest early-stop decision replaces the former 03:00 wait. Root reads actual owner
 launch/terminal/receipt/PID-birth evidence and starts no replacement run.
 The final matrix retains Nat.Basic/Grid at workers 1/2/4/8 and Barrier 1/8,
 three repeats. Nat.Basic/Grid retain 8-worker no-persistence/no-split and

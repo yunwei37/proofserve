@@ -1,8 +1,8 @@
 # ProofServe evidence index
 
 Active deliverables: open-source ProofServe and the six-page empirical +
-system paper. **W continues segment 2; final N counts native completions by
-6 November 2026, 03:00 UTC.** This supersedes the previous stop instruction.
+system paper. **Segment 2 is requested to stop early; final N counts native completions by
+6 November 2026, 01:30 UTC.** This supersedes the previous 03:00 boundary; final N awaits W's terminal ledger.
 Two admission regimes, P/E CPU and segment reporting wall stay distinct.
 Unfinished memory-interrupted families and their dependents are explicitly
 deferred_by_user, separately from failure and failed-dependency blocking.
@@ -19,7 +19,7 @@ extrapolation, inverse coverage, original42 or model filling.
 |---|---|---|
 | First-segment reference; final cutoff pending | [Scope and reduction](../docs/paper/evidence.md#stopped-export-and-independent-per-module-reduction), [derived artifacts](../docs/paper/generated/census/) | Separate 134.7 P / 256.7 E CPUh lower bounds; 34,765 modules unmeasured, no extrapolation or sample/model completion |
 | Original sample | [Public package](../data/openai-math-4eaee875/README.md) | Historical 42/42 data, never filling the missing tail |
-| Final checker matrix | [checker/results](../checker/results/README.md) | Starts after 03:00 and actual quiet retirement; await real final rows, not fixtures/previews |
+| Final checker matrix | [checker/results](../checker/results/README.md) | Starts after actual quiet retirement; await real final rows, not fixtures/previews |
 | External projects | [Results](../data/external-projects/README.md) | Versioned check/audit and package/container functionality; final timing follows M |
 | Built-subset checking | [Plan](../docs/research-plan.md) | M checks available artifacts only; partial or unstarted scope is explicit |
 

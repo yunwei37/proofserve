@@ -5,10 +5,11 @@ paper by **6 November 2026, 20:00 UTC**.
 
 ## Current decision
 
-**Continue segment 2 under memory admission; final reporting cutoff is
-6 November 03:00 UTC.** The latest exact user words are in
-[user-instruction.md](user-instruction.md). This supersedes the stop and
-resolves the later-runtime discrepancy.
+**The coordinator has requested early stop with a 6 November 01:30 UTC
+reporting cutoff, replacing the former 03:00 boundary.** The decision is
+recorded in [user-instruction.md](user-instruction.md). The approximately
+161,187 completed / 926 deferred / 980 unattempted notification is provisional;
+final N and all outcome categories require W's terminal ledger.
 
 Final N means modules completed by the cutoff across both segments.
 128,331 is segment 1 only: 134.651176 P / 256.667855 E CPUh,
@@ -29,15 +30,18 @@ without extrapolation, inverse coverage or sample/model filling.
 
 ## Evaluation handoff and timing boundary
 
-M final matrix moves after 03:00 and actual retirement/lease release/quiet;
+M final matrix follows actual W retirement/lease release/quiet immediately;
+there is no remaining wait for the old 03:00 boundary.
 O external timing follows, then M checks available built artifacts.
 Checking still stops by 17:00, numerical integration is due 18:00 and closure
 20:00. No PlanarPacking comparison or root replacement queue.
 
-W currently stops admission at 03:00 but is configured to drain until 03:30.
-The latest direct instruction says hard cutoff 03:00. The paper will not
-count native completions after 03:00. Root neither changes the owner
-controller nor treats clock arrival as proof of quiet or a final-matrix start.
+At 01:36 UTC root still observed controller2583627/birth19485807 and
+supervisor2583626/birth19485804 present, with no returned terminal/export.
+The latest decision supersedes their old 03:00/03:30 parameters. Root starts
+no replacement and does not treat the requested stop as an observed exit.
+Only completions by 01:30 enter the paper; any later completions or drain
+remain separate. M's actual launch and final results still require evidence.
 
 ## Evidence boundaries
 
@@ -63,10 +67,10 @@ two admission rules, actual segment/P-E costs and non-extrapolating scope.
 Its current 128,331 figure/shares are explicitly first-segment references,
 not final N. The future final-data branch was layout-checked only with
 synthetic validation metadata; no such values enter the delivered paper.
-Latest PDF: six pages / 302,765 bytes, two figures / two tables / 14 references,
+Latest PDF: six pages / 302,735 bytes, two figures / two tables / 14 references,
 zero evidence-placeholder macros and no overfull/undefined warnings.
-Changed pages were visually reviewed; page 6 matches its previously reviewed
-render byte-for-byte. Deferred-by-user now has a separate inventory/count and
+Changed pages 1–2 were visually reviewed; pages 3–6 match their previously
+reviewed renders byte-for-byte. Deferred-by-user now has a separate inventory/count and
 preserves family/trigger/dependency/reason metadata. Final cutoff and system evaluation numbers remain pending.
 
 All root Workspace operations use **CPU8–9**. Main-only owned-path commits

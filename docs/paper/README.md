@@ -6,11 +6,11 @@ explicit arguments, with no development-machine paths embedded.
 
 ## Cutoff-completed compilation artifacts
 
-The latest continuation supersedes the stop decision. W runs two admission
-segments; paper statistics include only native completions by
-**6 November 2026, 03:00 UTC**. Final N is not the old 128,331-module snapshot.
+The latest coordinator decision stops segment 2 early. The campaign has two
+admission segments; paper statistics include only native completions by
+**6 November 2026, 01:30 UTC**. Final N is not the old 128,331-module snapshot.
 
-    python3 docs/paper/generate_census.py --cutoff 2026-11-06T03:00:00Z --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
+    python3 docs/paper/generate_census.py --cutoff 2026-11-06T01:30:00Z --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
 
 The input is W's retired modules.csv[.gz], summary.json, segment-totals.csv
 and failed-attempts.csv[.gz]. Module segment IDs, end_utc, source/measurement
@@ -32,9 +32,9 @@ reporting wall and post-cutoff drain. A segment ending before cutoff keeps
 its recorded wall; a straddling interval uses recorded UTC start to cutoff,
 with the remainder separate. The reported total sums segment reporting
 intervals and excludes transition gaps. Native-module wall sums are another
-clock. Current W argv stops admission at 03:00 but drains until 03:30; this
-must not silently extend the paper's 03:00 reporting boundary or imply quiet
-machine availability for M at 03:00.
+clock. The early-stop decision supersedes the former 03:00 admission /
+03:30 drain schedule. Neither its notification nor approximate progress
+counts replace actual terminal and quiet-machine evidence for M.
 
 User deferrals are a distinct outcome. census-deferred-by-user.csv keeps
 the raw deferred rows and census-outcome-summary.csv counts each actual
@@ -132,7 +132,7 @@ not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
 
 The closure deadline is 6 November 2026, 20:00 UTC. W continues segment 2
-with a 03:00 reporting cutoff. M runs the final matrix after 03:00 and actual
+with a 01:30 reporting cutoff. M runs the final matrix after actual
 retirement/quiet, then O external timing, then M checks built artifacts. The checking
 phase may be partial or unstarted and stops by 17:00; it is not a necessary
 paper result. Root integrates actual numbers by 18:00. No PlanarPacking

@@ -881,3 +881,28 @@ The synthetic final-data macro branch also compiled to six pages without
 overfull/undefined warnings; its data/PDF is not the delivered manuscript.
 No new owner implementation, family selection, native run or resource
 affinity was changed by root.
+
+### 6 November 2026: early-stop decision and unconfirmed terminal
+
+The latest coordinator notice advances the reporting boundary to 01:30 UTC,
+requests segment-2 retirement and releases the intended handoff to M's final
+matrix, then O timing and built-subset checking. This replaces the former
+03:00 admission / 03:30 drain arrangement. The notice's approximately 161,187
+completed, 926 deferred and 980 unattempted modules are provisional, not an
+exhaustive terminal ledger or final paper numbers. Deferred-by-user,
+unattempted, native failure and failed-dependency blocking stay separate.
+
+At 01:36 UTC root read canonical documents and the live owner state on
+CPUs 8–9: controller2583627/birth19485807 and supervisor2583626/birth19485804
+were still present; no phase-2 terminal or formal census export was visible.
+Thus neither retirement nor a final-matrix launch is claimed from the notice.
+The generic cutoff adapter needs no new collector or metric: its documented
+final invocation now uses 2026-11-06T01:30:00Z, retaining any later completions
+and drain separately. Final N and actual clocks await W's retired ledger.
+
+The updated paper compiled on CPUs 8–9 with return code 0 in 2.452 seconds:
+six pages / 302,735 bytes, two figures / two tables / 14 references,
+no overfull/undefined warnings or evidence-placeholder macros. Pages 1–2
+were visually reviewed; pages 3–6 match the previously reviewed PNGs
+byte-for-byte. Existing measured values are unchanged; no approximate
+notification count or preview cost was inserted as a final result.
