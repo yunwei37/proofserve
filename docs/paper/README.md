@@ -173,3 +173,26 @@ Compile main.tex with Tectonic --keep-logs. Check compiler stdout/stderr as
 well as main.log for warnings (including missing glyphs), pdfinfo for six
 pages, and render every page before delivery. The previous overfull/undefined
 check alone did not establish a completely warning-free build.
+
+
+## Implementation versions and review provenance
+
+The manuscript uses the frozen native checker e000ed62. Its original collection
+driver is cc5bcc18 and the published matrix is818f7422. The local receipt format
+is v1; child ABI6 and independent-closure state v8 invalidate incompatible prior
+state. Historical e1557c77 isolation measurements describe a pre-freeze
+implementation and do not substitute for the final strict-mode costs.
+
+The two read-only code reviews concern e0c92d51 and2628d727, respectively;
+their source reports remain in packaging/checker-review-*.md. Implementer-run
+regressions and qualification boundaries are in
+checker/results/theorem-body-policy/README.md and qualification.json.
+They are not independent execution review of the repaired binary.
+The historical SubexponentialSAT repaired replays are e0c92d51 and3fe83c5a;
+they agree on acceptances and are not new frozen-tool performance data.
+
+Compilation has two admission phases and three chronological execution
+intervals: interval1 uses the fixed-slot phase; intervals2 and3 use the
+memory-admission phase. Execution pauses remain separate in the published
+wall-clock accounting. Checker checkpoint segments are internal replay units,
+distinct from these compilation phases and execution intervals.

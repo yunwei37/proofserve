@@ -47,7 +47,9 @@ pass; native transitive closure and official local roots are unequal checking
 obligations, so there is no equal-obligation speedup comparison. AI attribution
 is an upstream collection-level declaration, proportions undisclosed.
 The final manuscript includes W compilation, the M matrix, O external timings
-and the bounded supplementary checking publication 5f491682. Final PDF: six pages /276380bytes; CPU8–9 compilation rc0 /2.034s, zero warnings\nand zero missing macros. All six final pages were visually reviewed; details\nare recorded in paper/evidence.md.
+and the bounded supplementary checking publication 5f491682. Final PDF: six pages /276206bytes; CPU8–9 compilation rc0 /2.029s, zero warnings
+and zero missing macros. All six final pages were visually reviewed; details
+are recorded in paper/evidence.md.
 This remains root self-review, not independent paper or repaired-native review.
 No interrupted-preview CPU enters Table 2.
 The six-page paper now uses the returned distributions, interval/P-E costs,
@@ -82,9 +84,8 @@ this is not exclusively idle-host timing. The collection's raw failed/partial
 terminal remains preserved alongside verified retired handoff. Root observed
 the last collector PID absent and has not launched corpus checking.
 O retired at 12:20:12 UTC; its controller and child were observed absent.
-M's subsequent built-artifact result remains pending. The clarified original
-brief stops new batches at 17:00 and allows the running batch at most
-15 minutes to drain, with final forced retirement by 17:15.
+The clarified original brief stopped new batches at17:00 and allowed at most
+15 minutes to drain, with final retirement by17:15.
 M's supplementary campaign retired at the authorized 17:15 deadline
 after stopping new batches at 17:00. Publication 5f491682 certifies 15 complete
 batches: 12,756 distinct closure modules, including 968/162,170 requested
@@ -100,7 +101,11 @@ The 926 user-deferred modules and one configuration unit remain separate.
 OAI has no compiled artifact; capacity was unmeasurable.
 Root independently checked the source ledger and unioned all 15 certificates;
 this does not establish editable-certificate integrity or replay their proofs.
-No native execution is resumed. The final PDF is ready for coordinator reading.
+No native execution is resumed. The coordinator confirmed the825fd6df numbers
+and scope; the requested final readability revision is complete. Internal work-line
+names are absent from the manuscript, admission phases and chronological runs
+are defined, and implementation version details are retained in the artifact.
+The updated final PDF is ready for reading.
 
 Native e000ed62 shared-checked/strict policy and the crafted body-context
 difference remain explicit. Two read-only reviews have regression repairs,

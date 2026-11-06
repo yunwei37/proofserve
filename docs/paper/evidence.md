@@ -1431,3 +1431,48 @@ Repository artifact:docs/paper/main.pdf. Review copy:
 C:/Users/10678/AppData/Local/Temp/ProofServe-final-5f491682-20261106/main.pdf.
 The manuscript is ready for coordinator reading; no tag, registry release,
 upstream PR or announcement was made.
+
+
+## Final reader-facing terminology revision after825fd6df (6 November2026)
+
+The coordinator approved the825fd6df numerical results and scope, requesting
+only a final readability pass. Root kept all returned measurements,
+deferrals, batch certification versus uncertified events, incomplete checking,
+external unequal obligations and strict-mode costs unchanged.
+
+The manuscript now defines two compilation admission phases and three
+chronological runs: interval1 uses fixed22-slot admission with completion of
+running jobs before exclusive retry; intervals2–3 use memory-headroom admission
+with the same user-requested family deferrals. Checker replay segments are
+explicitly restart units, distinct from compilation phases and runs.
+The first read-only review is described by input shadowing, axiom-report and
+worker-status defects; the second by duplicate declarations, proof-body context
+and quotient-state restoration. Implementer-run regression reproduction and
+post-repair reruns are distinguished from the absent independent runtime review.
+The source review reports and theorem-body-policy qualification were read;
+this is clarification of their existing evidence, not a new runtime review.
+
+Internal work-line names were removed from body text. The unrelated resident
+background workload is described by its location and observed roughly-one-core
+load, without its internal Workspace name. Receipt v1, ABI6, the original
+cc5bcc18 driver and superseded e1557c77 implementation details are documented
+in the artifact README instead of requiring body readers to decode them.
+Historical repaired replay revisions remain there as well. Necessary frozen-tool,
+input and publication pins remain in the manuscript. A full source/generated
+TeX and rendered-text search found no lane/Workspace/zettai/agentsight labels;
+the remaining -M option and N/O table heading are genuine command/measurement
+notation, with N/O defined as native/official, not team identifiers.
+
+The entire generated/ and figures/ trees and references.bib are byte-identical
+to825fd6df; the scoped supplementary paragraph is unchanged. No data generator,
+native command, owner job, foreign implementation or runtime configuration ran
+or changed. Citation keys remain14 unique with exactly one bibliography entry
+each; figures/tables remain2/2 and evidence-placeholder macros0.
+Final CPU8–9 Tectonic returned0 in2.029s, producing6 pages /276206bytes.
+Captured compiler stdout/stderr and TeX log contain no warnings, including
+underfull/overfull boxes, missing glyphs and unresolved citations/references.
+All six latest rendered pages were visually inspected; plots/tables/references
+remain legible and the interval cost block stays together. This remains root
+writing/visual self-review, not independent paper or repaired-native review.
+Review copy:
+C:/Users/10678/AppData/Local/Temp/ProofServe-readability-final-20261106/main.pdf.

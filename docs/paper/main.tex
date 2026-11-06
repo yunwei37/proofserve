@@ -85,13 +85,17 @@ summary to \texttt{1cc14067}. Historical replay measurements explain cost
 boundaries; system performance must come from committed release-tool results
 in \path{checker/results/} and \path{data/external-projects/}.
 
-Compilation uses eight P and fourteen E cores and unchanged
-\texttt{-j8} commands. Segment 1 has fixed 22-slot admission with reserve
-drains/exclusive retry. Segment 2 uses memory/headroom admission and defers unfinished
+Compilation uses eight P and fourteen E cores with unchanged
+\texttt{-j8} commands. Phase 1 permits 22 concurrent module jobs;
+when memory is insufficient, it waits for running jobs to finish, then retries
+one job at a time.
+Phase 2 admits jobs according to available memory and, at the user's request,
+defers unfinished modules in families that encountered memory interruptions:
 \texttt{PadicHodge}, \path{Ramsey.CycleClique.Construction},
-\texttt{BigCrystalline} and other interrupted families plus dependents.
+\texttt{BigCrystalline} and others, plus their dependents.
 These are \emph{deferred by user}, not failed or failure-blocked;
-earlier completed records are retained. The second rule continues across a retired boundary; intervals and gaps stay distinct.
+earlier completed records are retained. Intervals 1--3 denote three separate
+chronological runs: interval 1 uses phase 1; intervals 2--3 use phase 2.
 The total-instruction gate failed: median 1.33\% and P95 3.15\% exceeded
 unchanged 1\%/3\% criteria. User-mode comparison was chosen afterwards;
 P/E CPU is unconverted.
@@ -156,16 +160,16 @@ for all 14,721 accepted modules, or 7.25\% of complete source work.
 Using only the 3,977 new targets' source cost gives 15.79\% for the same
 whole-closure checker numerator. This denominator change illustrates why a
 single ratio cannot stand for every boundary.
-Module-local references agree on 14,401/14,721 modules; historical repaired
-\texttt{e0c92d51}/\texttt{3fe83c5a} replays agree, too.
-The other 320 lack module-local references.
+Module-local references agree on 14,401/14,721 modules; two historical
+replays after repairs also agree. The other 320 lack module-local references.
 
 \subsection{Completed work and its limits}
 \CensusScopeSummary{} \CensusObservedSummary{} \CensusClockSummary{}
 
 \begin{samepage}
-\CensusSegmentSummary{} Intervals 2--3 share the memory-admission rule;
-cohort changes prevent a causal throughput comparison.\par
+\CensusSegmentSummary{} Intervals 2--3 are separate runs of phase 2,
+not additional admission policies. Cohort changes prevent a causal
+throughput comparison.\par
 \end{samepage}
 
 \CensusInstructionSummary{} Figure~\ref{fig:census} shows their distribution;
@@ -227,18 +231,18 @@ replay path before the remaining graph runs. Unsupported local structure
 retains conservative fallback.
 
 \paragraph{Review-driven repairs and theorem-body policy.}
-Two read-only reviews of \texttt{e0c92d51} and \texttt{2628d727} traced
-coordinator defects; implementation-line regressions reproduced shadowed
-inputs, omitted axioms, unsafe duplicates, proof-body context substitution
-and malformed Quot restoration. Earlier O execution controls also exposed
-cross-project certificate reuse and added bad-proof parts.
-Repairs bind inputs, validate original contexts and quotient tags, separate
-worker events and preserve nonzero-exit dominance.
-The proposed project-IR stdout-forgery route remains unconfirmed.
-The issues have regression repairs; the repaired binary has no independent
-runtime review.
+The first read-only code review found input-file shadowing, omitted axiom
+reports and incorrect worker-status handling; the second found unsafe
+duplicate declarations, theorem-body context substitution and malformed
+quotient-state restoration. The implementer's regression tests reproduced
+confirmed defects and reran the affected cases after repair.
+Earlier execution tests also exposed cross-project certificate reuse and
+unchecked added module parts. Repairs bind inputs, validate original contexts
+and quotient tags, separate worker events and preserve nonzero-exit dominance.
+The proposed project-code output-forgery route remains unconfirmed.
+The repaired binary has no independent runtime review.
 
-The frozen checker is \texttt{e000ed62}, replacing \texttt{e1557c77}.
+The frozen checker is \texttt{e000ed62}.
 Its default \emph{shared-checked} policy retains a kernel-checked theorem
 body when a later theorem has the same interface.
 A crafted serialized proof that passes only by depending on another
@@ -252,9 +256,9 @@ For matching theorem-body context behavior, use
 \texttt{--strict-theorem-bodies}, which isolates distinct bodies.
 Both modes explicitly check duplicate bodies skipped by upstream replay;
 temporary checking names enter neither the shared frontier nor the axiom set.
-Receipts and checkpoint identities bind the policy; ABI 6 invalidates old
-state. Strict-mode CPU and wall costs must come from the final matrix,
-not historical e155 isolation runs.
+Receipts and checkpoint identities bind the policy and reject incompatible
+prior state. The strict-mode costs below measure the frozen tool, not the
+pre-freeze isolation implementation.
 
 Closed and some higher-order native evaluations remain unsupported;
 official default/fresh and operational exit conventions also differ.
@@ -266,10 +270,11 @@ Reports and controls are in \path{packaging/checker-review-*.md} and
 not historical prototype ratios. Persistent marking occurs between joined
 waves; both disabling flags remain available.
 
-Completed segments serialize their successful prefix for reuse.
+For restart, the checker divides replay into segments, saving each completed
+prefix for reuse.
 Toolchain, artifacts, Lake lock and checkpoint configuration must match;
 a directory lock protects a live invocation.
-An interrupted segment remains incomplete. Receipt v1 distinguishes the
+An interrupted segment remains incomplete. Each receipt separates the
 accepted prefix, current-invocation CPU and previously completed segment
 CPU, so a cache hit is identifiable.
 It records Lean and dependency versions, module-set hash, accepted and
@@ -302,11 +307,10 @@ The current receipt lacks a binding to the current source digest;
 audit exposes this gap. Thus acceptance, source coverage and reported axiom declarations remain separate answers.
 
 \section{Evaluation: performance and verification coverage}\label{sec:evaluation}
-The frozen checker is \texttt{e000ed62}; the original driver is \texttt{cc5bcc18},
-and publication \texttt{818f7422} records the six-hour collection.
-Native cell costs include the closed cgroup's whole process tree.
-Protected \texttt{zettai-dev} work remained running; about one host P-core
-was observed before launch. This is not exclusively idle-host performance.
+The six-hour collection (\texttt{818f7422}) uses frozen checker
+\texttt{e000ed62}. Native cell costs include the closed cgroup's whole
+process tree. An unrelated resident workload on the same machine remained
+running, using about one core before launch. These are not idle-host timings.
 
 \subsection{RQ3: original-kernel scaling and alternatives}
 Nat.Basic/Grid/Barrier check 1,330/3,793/4,449 closure modules; the overlapping
