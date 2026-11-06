@@ -1,17 +1,20 @@
 # ProofServe closure plan
 
 Deliver ProofServe and the six-page empirical + system paper by
-**6 November 2026, 20:00 UTC**. **The latest coordinator decision ends segment 2 early at the
-6 November 01:30 UTC reporting boundary. Final N comes from W's terminal
-ledger, not the notification's approximate progress count.**
+**6 November 2026, 20:00 UTC**. **The latest user decision withdraws the 01:30 early stop.
+The memory-admission phase continues until every runnable, non-deferred module is exhausted.
+There is no 01:30/03:00 publication cutoff; final N comes from W's terminal
+ledger. The deferred high-memory families and their dependents stay deferred.**
 
-## Current execution and cutoff
+## Current execution and completion scope
 
 Segment 1 is retained unchanged: 128,331 completed executable modules,
 134.651176 P CPUh / 256.667855 E CPUh and 24.624733 supervisor wall-hours.
-This is a baseline snapshot, not final N. Segment 2 actually executes under
-05c91979; the earlier b781 preparation had no native launches and is not a
-third measured segment.
+This is a baseline snapshot, not final N. The initial memory-admission interval
+used 05c91979. It retired at 03:06:21 UTC under its superseded finite deadline;
+b5035842 now continues the remaining eligible work in a third recorded interval.
+This retains the second admission rule, not a third policy. The earlier b781
+preparation had no native launches and contributes no measured interval.
 
 Segment 1 uses fixed 22-slot admission with reserve drains/exclusive retry.
 Segment 2 uses memory/headroom admission and limits exposure to interrupted
@@ -28,24 +31,25 @@ neither coverage nor its cost distribution can be extrapolated to the corpus.
 Compiler argv, -j8, Lean settings and P/E pools stay fixed.
 
 Report successful costs by segment and P/E, measured segment wall and its
-sum, with transition gaps and unsuccessful work separate. Later completions
-stay retained but do not enter the 01:30 cutoff count/costs. This is
-dependency-ordered, selectively deferred coverage, not random sampling or
-a full-library cost estimate.
+sum, with transition gaps and unsuccessful work separate. All successful completions in the retired campaign enter the report.
+This is dependency-ordered, selectively deferred coverage, not random
+sampling or a full-library cost estimate.
 
-The coordinator has now requested early retirement instead of waiting for the
-old 03:00 admission / 03:30 drain parameters. Root observed the original
-controller still present at 01:36 UTC; a stop decision is not an observed
-terminal or proof that the final matrix has started. Use W's actual terminal,
-lease release and quiet-machine handoff before reporting M as running.
-The notification's approximately 161,187 completed / 926 deferred / 980
-unattempted values are provisional and do not establish an exhaustive ledger.
+W's retained decision records that no early-stop signal was sent and that
+pending eligible work would resume if the old finite controller retired.
+The old interval ended at 03:06:21.491450 UTC with no hard drain signal.
+The continuation supervisor2997137/controller2997159 was launched at
+04:13:47.597395 UTC under b5035842 with no deadline flags. Future identity,
+native returns and terminal still need direct checks. The physical interval
+IDs 1/2/3 must remain in costs and clocks; report both transition gaps and
+keep the two admission rules explicit. Earlier approximate counts are not
+final N. M waits for actual P-core/lease release and a quiet machine.
 
 ## Measured source scope and scientific interpretation
 
 At final publication W reports N completed executable modules out of 163,096
 plus the distinct configuration unit, retaining failed, deferred, blocked,
-unattempted and post-cutoff outcomes. The first-segment 128,331 observations
+unattempted and actual terminal outcomes. The first-segment 128,331 observations
 and 34,765 then-unfinished modules are historical, not final campaign scope.
 No missing unit receives a successful status or zero cost.
 
@@ -64,8 +68,8 @@ which retains its original known denominator. Show observed and unmeasured
 coverage when joining these labels; neither subset representativeness nor
 whole-corpus cost shares follow from the static frame.
 
-Keep CPU=user+system by segment and P/E pool. Segment reporting wall is
-bounded by the cutoff; actual later drain/supervisor wall is separate.
+Keep CPU=user+system by segment and P/E pool. Segment wall uses each complete retired supervisor interval, including its
+actual drain; record any distinct operational clocks separately.
 Transition gaps and summed native-module wall are distinct clocks.
 Unsuccessful-attempt CPU is excluded from successful module costs.
 No admission-policy speedup follows from the nonrandom segment split.
@@ -77,14 +81,14 @@ No admission-policy speedup follows from the nonrandom segment split.
 | 5 November, 06:00 | M froze native e000ed62; retain shared-checked/strict semantics and review limits. |
 | 5 November, 12:00 | Root prose and figure/table scripts prepared; update for the actual stopped scope and returned numbers. |
 | 5 November, 14:00 | O frozen-native installation functional qualification; test-time preview provenance remains explicit. |
-| 6 November, 01:30 | Early-stop reporting cutoff; W publishes terminal N and separate deferred/unattempted/failure outcomes over both segments. |
+| After all runnable non-deferred work is exhausted | W publishes terminal N and the complete separate deferred/failure/blocked inventory over all executed intervals. |
 | After W actually retires, at most 6 hours | M executes the final matrix after actual retirement, lease release and a quiet machine. |
 | Then, at most 2 hours | O executes final external-project timing. |
 | Last, stop by 6 November, 17:00 | M checks only actually built artifacts, reporting the reached scope; partial or not-started remains possible. |
 | 6 November, 18:00 | Root integrates actual numbers, six pages, zero missing macros. |
 | 6 November, 20:00 | Close with tool, paper and explicit limitations. |
 
-M's earlier c8f2a0c5 stopped-handoff preparation is not proof of a new launch. The latest early-stop decision replaces the former 03:00 wait. Root reads actual owner
+M's earlier c8f2a0c5 stopped-handoff preparation is not proof of a new launch. The latest continuation withdraws the early-stop handoff and every fixed census cutoff. Root reads actual owner
 launch/terminal/receipt/PID-birth evidence and starts no replacement run.
 The final matrix retains Nat.Basic/Grid at workers 1/2/4/8 and Barrier 1/8,
 three repeats. Nat.Basic/Grid retain 8-worker no-persistence/no-split and
@@ -125,9 +129,9 @@ Strict cost comes only from matching final matrix rows, never old e155
 isolation previews. Two read-only reviews have regression repairs; repaired
 source has no independent runtime review.
 
-Artifacts label the cutoff-completed observed subset and all deferred,
+Artifacts label the terminal completed observed subset and all deferred,
 unmeasured and late identities. The first segment stays a separate snapshot
-until actual cutoff artifacts return. No running snapshot becomes final N
+until actual retired artifacts return. No running snapshot becomes final N
 or complete census coverage. W's final CSVs feed
 distributions and P/E totals; no earlier sample/model supplies missing costs.
 Final system data comes only from checker/results/ and data/external-projects/

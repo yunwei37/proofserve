@@ -1,9 +1,12 @@
 # ProofServe evidence index
 
 Active deliverables: open-source ProofServe and the six-page empirical +
-system paper. **Segment 2 is requested to stop early; final N counts native completions by
-6 November 2026, 01:30 UTC.** This supersedes the previous 03:00 boundary; final N awaits W's terminal ledger.
-Two admission regimes, P/E CPU and segment reporting wall stay distinct.
+system paper. **The user withdrew early stop: W continues segment 2 until
+all runnable non-deferred modules are exhausted. Final N comes from its
+terminal ledger; no 01:30/03:00 reporting cutoff applies.**
+Two admission regimes, every physical interval, P/E CPU and wall stay distinct.
+The memory phase now has a b5035842 continuation after the old finite interval
+retired; its new terminal remains pending.
 Unfinished memory-interrupted families and their dependents are explicitly
 deferred_by_user, separately from failure and failed-dependency blocking.
 Prior successful records remain measured; this selective omission further
@@ -17,15 +20,15 @@ extrapolation, inverse coverage, original42 or model filling.
 
 | Evidence | Location | Current use |
 |---|---|---|
-| First-segment reference; final cutoff pending | [Scope and reduction](../docs/paper/evidence.md#stopped-export-and-independent-per-module-reduction), [derived artifacts](../docs/paper/generated/census/) | Separate 134.7 P / 256.7 E CPUh lower bounds; 34,765 modules unmeasured, no extrapolation or sample/model completion |
+| First-segment reference; final retired scope pending | [Scope and reduction](../docs/paper/evidence.md#stopped-export-and-independent-per-module-reduction), [derived artifacts](../docs/paper/generated/census/) | Separate 134.7 P / 256.7 E CPUh lower bounds; 34,765 modules unmeasured, no extrapolation or sample/model completion |
 | Original sample | [Public package](../data/openai-math-4eaee875/README.md) | Historical 42/42 data, never filling the missing tail |
 | Final checker matrix | [checker/results](../checker/results/README.md) | Starts after actual quiet retirement; await real final rows, not fixtures/previews |
 | External projects | [Results](../data/external-projects/README.md) | Versioned check/audit and package/container functionality; final timing follows M |
 | Built-subset checking | [Plan](../docs/research-plan.md) | M checks available artifacts only; partial or unstarted scope is explicit |
 
 The [paper](../docs/paper/main.tex) labels its current distribution/shares
-as first-segment references. Final cutoff N, segment/P-E costs and conditional
-shares are generated only from returned cutoff ledgers. Full-frame
+as first-segment references. Final retired N, segment/P-E costs and conditional
+shares are generated only from returned terminal ledgers. Full-frame
 lexical coverage is separate: **33.30% omitted sites versus 19.78% source files**.
 P/E CPU is not converted or pooled; module-wall sums are not machine elapsed wall.
 

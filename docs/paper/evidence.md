@@ -906,3 +906,49 @@ no overfull/undefined warnings or evidence-placeholder macros. Pages 1–2
 were visually reviewed; pages 3–6 match the previously reviewed PNGs
 byte-for-byte. Existing measured values are unchanged; no approximate
 notification count or preview cost was inserted as a final result.
+
+### 6 November 2026: withdrawal of early stop and actual continuation
+
+The user words “干嘛停掉? 继续跑着.”, “最终矩阵是啥” and “干嘛要跑”
+were recorded once. The decision withdraws the 01:30 early stop without
+restoring 03:00/03:30 limits: run all non-deferred runnable work, retain the
+high-memory deferrals, then hand P cores to the final matrix. Final N is the
+retired observed set; neither approximate progress nor a model fills it.
+
+W's continue-eligible-user-decision.json at 01:41:45 UTC records that no
+early-stop signal had been sent and that eligible pending work would resume
+if the finite controller reached its obsolete boundary. Root later read the
+03:06:21.491450 terminal: returncode=0, hard_drain_signal=false. This is
+retirement of one interval, not exhaustion of the requested campaign.
+The 04:13:11 b5035842 commit generalizes the existing memory rule to its
+continuation and allows old deadline-not-attempted work to resume.
+Root read segment-03-b5035842/supervisor.json and argv: launch at
+04:13:47.597395 UTC, supervisor2997137/controller2997159, --segment 3,
+no deadline flags. The registry retains actual intervals 1/2/3; there are
+two admission rules, with a later continuation of the second. No root
+controller, retry, foreign implementation or affinity was changed.
+
+The paper generator replaces cutoff publication with --retired, counts all
+successful records, and uses complete retired wall intervals including drain,
+keeping transition gaps separate. The interval count follows the actual
+published ledger. The old first-segment snapshot stays historical, and
+preview never creates ready markers. A focused adapter fixture reused twenty
+retained gate costs with explicitly synthetic times/statuses: all twenty
+successes were retained (the former cutoff selected eighteen), P/E sums
+matched, full wall was retained, ordinary unattempted work was refused as
+natural exhaustion, and the removed cutoff flag was refused. The fixture
+and its numerical outputs are not new measurements or paper results.
+
+The synthetic adapter also exercised three distinct executed interval IDs
+within the two admission rules, preserving all successful costs and both
+transition gaps. Its final-data macro branch compiled to six pages without
+overfull/undefined warnings; that synthetic PDF is not the delivered paper.
+The delivered manuscript compiled on CPUs 8–9 with return code 0 in
+2.206 seconds: six pages / 302,681 bytes, two figures / two tables /
+14 references, zero evidence-placeholder macros, no overfull/undefined
+warnings. Changed pages 1–3 and 6 were visually reviewed, including the final
+page-2/3 wrap correction; pages 4–5 match the previously reviewed renders.
+No new campaign N, strict cost or final system timing was inserted.
+At 04:20 UTC the continuation supervisor2997137/birth22114711 and
+controller2997159/birth22114715 were present; a retired final ledger and
+completed native return from that continuation were not yet observed.

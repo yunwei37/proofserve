@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate observed-subset census artifacts; never extrapolate stopped work."""
+"""Generate observed-subset census artifacts; never extrapolate missing work."""
 import argparse
 import ast
 import csv
@@ -94,7 +94,7 @@ def tex_number(value, digits=2):
 def utc_time(value):
     result = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
     if result.tzinfo is None:
-        raise ValueError("cutoff and record times need an explicit timezone")
+        raise ValueError("segment and record times need an explicit timezone")
     return result
 
 
@@ -107,17 +107,16 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--preview", action="store_true")
     parser.add_argument("--stopped", action="store_true", help="explicit user-stopped observed-subset publication")
-    parser.add_argument("--cutoff", help="publish only native completions by this UTC boundary, retaining later outcomes")
+    parser.add_argument("--retired", action="store_true", help="publish the retired campaign after runnable non-deferred work is exhausted")
     parser.add_argument("--failed-attempts", type=Path)
     parser.add_argument("--tectonic", default=os.environ.get("TECTONIC"))
     args = parser.parse_args()
     if args.preview_json and not args.preview:
         parser.error("functional JSON cannot populate the paper")
-    if args.stopped and args.cutoff:
-        parser.error("select either a historical stopped snapshot or the final cutoff report")
-    if not args.preview and not (args.stopped or args.cutoff):
-        parser.error("select --stopped for segment 1 or --cutoff for the bounded two-segment report")
-    cutoff = utc_time(args.cutoff) if args.cutoff else None
+    if args.stopped and args.retired:
+        parser.error("select either a historical stopped snapshot or the retired campaign")
+    if not args.preview and not (args.stopped or args.retired):
+        parser.error("select --stopped for segment 1 or --retired for the completed campaign")
     source = args.csv or args.preview_json
     if source is None:
         present = [args.data / name for name in
@@ -145,13 +144,15 @@ def main():
     blocked = [row for row in unfinished if row["status"] == "blocked"]
     source_modules = published.get("source_modules")
     if not args.preview:
-        expected_segments = 2 if cutoff else 1
-        if not cutoff and published.get("stop_reason") != "user_requested_stop":
+        expected_segments = published.get("segment_count") if args.retired else 1
+        if not isinstance(expected_segments, int) or expected_segments < (2 if args.retired else 1):
+            raise ValueError("retired campaign needs its complete executed-interval ledger")
+        if args.stopped and published.get("stop_reason") != "user_requested_stop":
             raise ValueError("historical stopped publication needs its explicit user-stop terminal")
         if published.get("segment_count") != expected_segments or len(segments) != expected_segments:
             raise ValueError("published segment count differs from executed wall ledger")
-        if bool(published.get("segment2_launched")) != bool(cutoff):
-            raise ValueError("do not relabel a one-segment snapshot as the final two-segment report")
+        if bool(published.get("segment2_launched")) != args.retired:
+            raise ValueError("do not relabel a one-segment snapshot as the final continued campaign")
         if {str(item.get("segment")) for item in segments} != {str(i) for i in range(1, expected_segments + 1)}:
             raise ValueError("executed segment identities are missing or duplicated")
         if any(number(item.get("wall_s")) is None or not item.get("start_utc") or not item.get("end_utc")
@@ -173,20 +174,8 @@ def main():
         ids = {str(item["segment"]) for item in segments}
         if any(str(row.get("segment")) not in ids for row in values):
             raise ValueError("successful record belongs to an unreported segment")
-        if cutoff and any(not row.get("end_utc") for row in values):
-            raise ValueError("cutoff reporting needs native completion times")
-
-    late = []
-    if cutoff:
-        for row in observations:
-            if row.get("end_utc") and utc_time(row["end_utc"]) > cutoff and row["status"] in {"completed", "failure", "failed"}:
-                row["native_status"] = row["status"]
-                row["status"] = row["status"] + "_after_cutoff"
-                late.append(row)
-        values = [row for row in observations if row["status"] == "completed"]
-        unfinished = [row for row in observations if row["status"] not in {"completed", "configuration"}]
-        failures = [row for row in unfinished if row["status"] in {"failed", "failure"}]
-        blocked = [row for row in unfinished if row["status"] == "blocked"]
+        if args.retired and any(row["status"] == "not_attempted" for row in observations):
+            raise ValueError("runnable work remains unattempted; this is not an exhausted campaign")
 
     segment_reporting = []
     segments.sort(key=lambda row: int(row["segment"]))
@@ -197,11 +186,9 @@ def main():
         if start and end and end < start:
             raise ValueError("reversed segment wall interval")
         reporting = original
-        if cutoff and start and end and end > cutoff:
-            reporting = max(0.0, (cutoff - start).total_seconds())
         segment_reporting.append(dict(item, operational_wall_s=original, reporting_wall_s=reporting,
             later_drain_wall_s=None if original is None or reporting is None else max(0.0, original - reporting),
-            wall_scope="recorded retired interval; clipped with recorded UTC start at cutoff if it straddles the reporting boundary"))
+            wall_scope="complete retired segment interval including actual drain"))
     wall_s = (math.fsum(row["reporting_wall_s"] for row in segment_reporting)
               if segment_reporting and all(row["reporting_wall_s"] is not None for row in segment_reporting) else None)
     transition_gap_s = 0.0
@@ -217,9 +204,6 @@ def main():
     unsuccessful = rows(failed_source) if failed_source else []
     if any(row["status"] == "completed" for row in unsuccessful):
         raise ValueError("unsuccessful-attempt ledger contains a successful record")
-    if cutoff:
-        for row in unsuccessful:
-            row["attempt_returned_by_cutoff"] = (utc_time(row["end_utc"]) <= cutoff) if row.get("end_utc") else None
     args.out.mkdir(parents=True, exist_ok=True)
     prefix = "preview-" if args.preview else ""
     if not args.preview:
@@ -240,7 +224,6 @@ def main():
     emit(args.out / (prefix + "census-unmeasured.csv"), unfinished)
     emit(args.out / (prefix + "census-failed-attempts.csv"), unsuccessful)
     emit(args.out / (prefix + "census-segments.csv"), segment_reporting)
-    emit(args.out / (prefix + "census-after-cutoff.csv"), late)
 
     summaries = []
     for pool in ("P", "E"):
@@ -266,7 +249,7 @@ def main():
             cpu = [row["cpu_s"] for row in group if row["cpu_s"] is not None]
             segment_costs.append(dict(segment=item["segment"], pool=pool, completed_modules=len(group),
                                       cpu_observed_modules=len(cpu), cpu_hours=math.fsum(cpu) / 3600 if cpu else None,
-                                      scope="successful completions within reporting boundary only"))
+                                      scope="all observed successful completions in this retired segment"))
     emit(args.out / (prefix + "census-segment-costs.csv"), segment_costs)
 
     coverage, groups = [], []
@@ -333,10 +316,10 @@ def main():
     figure_path.write_text(figure)
 
     manifest = dict(preview=args.preview, explicitly_stopped_subset=args.stopped,
-        reporting_cutoff_utc=args.cutoff, cutoff_final=bool(cutoff) and not args.preview,
+        retired_final=args.retired and not args.preview,
         native_completed_at_retirement=published.get("completed_source_modules"),
         native_unfinished_at_retirement=published.get("unfinished_source_modules"),
-        after_cutoff_outcomes=len(late), segment_reporting=segment_reporting,
+        segment_reporting=segment_reporting,
         transition_gap_s=transition_gap_s,
         input=str(source), published_summary=str(summary_path), segment_ledger=str(segment_path),
         completed_modules=len(values), source_modules=source_modules,
@@ -355,7 +338,7 @@ def main():
         cost_groups="observed modules only; frame-label coverage retained separately",
         pool_cpu_combination="none; no P/E conversion or pooled CPU total",
         summed_native_wall_is_makespan=False,
-        wall_scope="sum of segment reporting intervals; transition gap and post-cutoff drain separate; unsuccessful CPU excluded",
+        wall_scope="sum of segment reporting intervals; complete operational intervals including drain; transition gap and unsuccessful CPU separate",
         instruction_criterion="user-mode instructions selected after the failed total-instruction gate",
         missing_values="blank, never zero-filled",
         active_instruction_coverage={pool: sorted({row["instruction_coverage"] for row in values
@@ -366,8 +349,8 @@ def main():
         fraction = 100 * len(values) / source_modules
         by_pool = {row["pool"]: row for row in summaries}
         macros = [
-            r"\def\CensusAtCutoff{" + ("1" if cutoff else "0") + "}",
-            r"\def\CensusScopeLabel{" + (("Completed by " + cutoff.strftime("%d %B %H:%M") + " UTC") if cutoff else "First-segment snapshot") + "}",
+            r"\def\CensusFinal{" + ("1" if args.retired else "0") + "}",
+            r"\def\CensusScopeLabel{" + ("Retired campaign" if args.retired else "First-segment snapshot") + "}",
             r"\def\CensusNativeModules{" + f"{len(values):,}" + "}",
             r"\def\CensusExecutableModules{" + f"{source_modules:,}" + "}",
             r"\def\CensusUnmeasuredModules{" + f"{len(unfinished):,}" + "}",
@@ -380,7 +363,7 @@ def main():
             r"(\CensusObservedPercent{}\%); \CensusUnmeasuredModules{} remain unmeasured.}",
             r"\def\CensusObservedSummary{Observed successful work is \CensusPCPUHours{} P-core CPU-hours and "
             r"\CensusECPUHours{} E-core CPU-hours, separate lower bounds rather than a full-library cost estimate. "
-            r"Segment reporting intervals total \CensusWallHours{} wall-hours; transition gaps and later drain are separate.}"]
+            r"Retired segment intervals total \CensusWallHours{} wall-hours including drain; transition gaps are separate.}"]
         parts = []
         for item in segment_reporting:
             costs = {row["pool"]: row for row in segment_costs if row["segment"] == item["segment"]}

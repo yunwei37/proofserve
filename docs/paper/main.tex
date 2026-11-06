@@ -5,7 +5,7 @@
 \title{Checking or Recomputing? Two Cost Regimes in\\Verifying AI-Generated Formal Artifacts}
 \author{Anonymous}
 \date{}
-\providecommand{\CensusAtCutoff}{0}
+\providecommand{\CensusFinal}{0}
 \IfFileExists{generated/census/census-ready.tex}{\input{generated/census/census-ready.tex}}{}
 \begin{document}
 \maketitle
@@ -18,12 +18,12 @@ audit tool. Matched target windows retain 80.28--82.35\% of source-compilation
 wall time for two computational certificates, versus 0.46--6.54\% for two
 ordinary controls. Across 31 module-process pairs, the median checker/compiler
 CPU ratio is 0.451, with overlapping source-proxy classes.
-\ifnum\CensusAtCutoff=1
+\ifnum\CensusFinal=1
 \CensusScopeSummary{} Observed P/E work supplies separate lower bounds,
 not a full-library estimate.
 \else
-A two-admission-segment campaign will report modules completed by
-6 November, 01:30 UTC; final coverage is pending.
+A campaign with two admission rules will report all completed modules;
+final coverage awaits its terminal ledger.
 \fi
 The missing tail is not imputed. The full-frame import graph omits 19.78\% of source files and 33.30\%
 of lexical kernel-decision sites. ProofServe combines dependency-aware
@@ -91,8 +91,8 @@ drains/exclusive retry. Segment 2 uses memory/headroom admission and defers unfi
 \texttt{PadicHodge}, \path{Ramsey.CycleClique.Construction},
 \texttt{BigCrystalline} and other interrupted families plus dependents.
 These are \emph{deferred by user}, not failed or failure-blocked;
-earlier completed records are retained. Only completions by 6 November, 01:30 UTC
-enter the final report; later drain is separate.
+earlier completed records are retained. A continuation keeps this rule after the obsolete deadline. All intervals
+and gaps are recorded until runnable, non-deferred work is exhausted.
 The total-instruction gate failed: median 1.33\% and P95 3.15\% exceeded
 unchanged 1\%/3\% criteria. User-mode comparison was chosen afterwards;
 P/E CPU is unconverted.
@@ -146,7 +146,7 @@ encode substantial evaluation \cite{lean4,leanDecide434}.
 For example, the unmarked Ramsey K10 certificate uses 356.44 checker
 CPU-seconds against 1,725.13 source CPU-seconds (20.66\%).
 A 20-module sample of the retained 190-module Ramsey prefix uses 35.91\%
-in aggregate. The dependency-ordered prefix covers 190 of 444 targets.
+in aggregate. The ordered prefix covers 190/444 targets.
 
 Whole closures dilute expensive targets with cheaper dependencies.
 Checkpointed Falconer checking costs 2,038.44/32,292.60 CPU-seconds (6.31\%);
@@ -159,16 +159,16 @@ whole-closure checker numerator. Its independent reference controls remain
 pending. This denominator change illustrates why a single ratio cannot
 stand for every boundary.
 
-\subsection{Cutoff-completed work and its limits}
-\ifnum\CensusAtCutoff=1
+\subsection{Completed work and its limits}
+\ifnum\CensusFinal=1
 \CensusScopeSummary{} \CensusObservedSummary{}
 \CensusSegmentSummary{} \CensusDeferredSummary{}
 \else
-Final $N$ counts modules completed by 6 November, 01:30 UTC across both
-admission segments; that terminal ledger has not returned.
+Final $N$ counts all completed modules across the executed intervals;
+the retired ledger has not returned.
 For reference, the retained first-segment snapshot covers 128,331 of
 163,096 modules (78.7\%), 134.7 P / 256.7 E CPU-hours and 24.62 wall-hours.
-These are not final cutoff figures.
+These are not final campaign figures.
 \fi
 
 The completed set is dependency-ordered and skips unfinished high-memory
@@ -176,12 +176,12 @@ families/dependents, favoring less-memory-intensive remaining work.
 It is not random. Missing modules
 may be more expensive; neither the original 42 samples nor a model fills
 their costs. Work by segment and P/E is a lower bound, not a full-library
-answer. Transition gaps, post-cutoff drain and summed module wall remain
-separate from the sum of segment reporting intervals.
-Deferred-by-user, failed, blocked, unattempted and late completions retain
+answer. Transition gaps and summed module wall remain separate from the sum of
+complete retired segment intervals, which include actual drain.
+Deferred-by-user, failed, blocked and other unfinished modules retain
 their actual identities; unsuccessful attempts do not enter successful costs.
 
-\ifnum\CensusAtCutoff=1
+\ifnum\CensusFinal=1
 \CensusGroupSummary{}
 \else
 First-segment marked modules contribute 20.49\%/20.95\% of observed P/E CPU;
@@ -200,14 +200,14 @@ source proxies do not identify kernel CPU phases or whole-frame cost shares.
 \centering Observed distribution awaits returned artifacts.
 \end{minipage}}
 }
-\caption{\ifnum\CensusAtCutoff=1
-Distributions for modules completed by the 01:30 UTC cutoff.
+\caption{\ifnum\CensusFinal=1
+Distributions for completed modules in the retired campaign.
 \else
-First-segment reference: 128,331 modules; final cutoff distribution pending.
+First-segment reference: 128,331 modules; final campaign distribution pending.
 \fi
 User-mode instructions were selected after the failed gate; CPU curves
 separate P/E. Dependency order and deferral prevent extrapolation.
-Late/unsuccessful outcomes stay outside the reported successful costs.}
+Unsuccessful attempts stay outside the reported successful costs.}
 \label{fig:census}
 \end{figure}
 
@@ -539,7 +539,7 @@ parallelism, receipt or serving mechanisms.
 
 \section{Conclusion}
 Matched measurements show both cheap proof checking and substantial
-certificate recomputation. Cutoff-completed work yields lower bounds, not a full-library answer;
+certificate recomputation. Completed observed work yields lower bounds, not a full-library answer;
 unfinished work, admission segments and P/E boundaries remain explicit.
 Default coverage and repeatable verdicts answer different verification
 questions. ProofServe makes these boundaries explicit through check,

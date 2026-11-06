@@ -4,70 +4,53 @@ All analysis and compilation in the shared research Workspace run on CPUs 8–9.
 The scripts also run with standard Python outside that Workspace; input data are
 explicit arguments, with no development-machine paths embedded.
 
-## Cutoff-completed compilation artifacts
+## Retired compilation artifacts
 
-The latest coordinator decision stops segment 2 early. The campaign has two
-admission segments; paper statistics include only native completions by
-**6 November 2026, 01:30 UTC**. Final N is not the old 128,331-module snapshot.
+The latest user decision withdraws early stop. W runs segment 2 until all
+runnable, non-deferred modules are exhausted; the high-memory families and
+dependents already deferred by the user remain deferred. Final N comes from
+the terminal campaign, not an earlier count or UTC cutoff.
 
-    python3 docs/paper/generate_census.py --cutoff 2026-11-06T01:30:00Z --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
+    python3 docs/paper/generate_census.py --retired --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
 
-The input is W's retired modules.csv[.gz], summary.json, segment-totals.csv
-and failed-attempts.csv[.gz]. Module segment IDs, end_utc, source/measurement
-commits, native costs and instructions remain bound. The full source inventory
-includes successful, configuration, failed, blocked, deferred_by_user and
-unattempted identities. A running snapshot or missing segment is not final N.
-If W's final published schema differs, adapt its actual fields without
-inventing terminal times or counts.
+Input is W's retired modules.csv[.gz], summary.json, segment-totals.csv and
+failed-attempts.csv[.gz]. Every executed interval ID, actual start/end and wall,
+source/measurement commits, native costs and instructions remain bound.
+All source identities remain in the inventory: successful, configuration,
+native failure, failed-dependency blocked and deferred_by_user. An ordinary
+not_attempted row cannot be published as exhausted runnable work. If the
+actual final schema differs, adapt its real fields without inventing counts,
+terminal clocks or scientific qualification criteria.
 
-The generator retains completions/outcomes after the cutoff separately,
-without adding their CPU, instructions or identities to the cutoff-success
-set. Exactly-at-cutoff completion is included. Original native status and
-costs survive in census-after-cutoff.csv; deferred reasons and unfinished
-dependencies remain in the outcome inventory. No missing cost becomes zero.
+Every successful completion is counted, including records after the
+withdrawn 01:30 and 03:00 boundaries. There is no final cutoff flag or time
+clipping. CPU summaries separate P/E; census-segment-costs.csv also splits
+segments. census-segments.csv retains complete retired operational intervals
+including actual drain. Their sum excludes the separately recorded
+transition gap; summed native-module wall is another clock. Unsuccessful
+attempt CPU remains separate from successful module costs.
 
-CPU summaries keep P/E separate, while census-segment-costs.csv splits each
-segment and pool. census-segments.csv retains retired operational wall,
-reporting wall and post-cutoff drain. A segment ending before cutoff keeps
-its recorded wall; a straddling interval uses recorded UTC start to cutoff,
-with the remainder separate. The reported total sums segment reporting
-intervals and excludes transition gaps. Native-module wall sums are another
-clock. The early-stop decision supersedes the former 03:00 admission /
-03:30 drain schedule. Neither its notification nor approximate progress
-counts replace actual terminal and quiet-machine evidence for M.
+census-deferred-by-user.csv preserves the deferred rows;
+census-outcome-summary.csv counts actual statuses separately. Keep supplied
+reason, family prefix, trigger, dependency and timestamp, without inferring
+status from namespace. Deferral concerns unfinished risk-family modules
+and dependents; earlier successes in those namespaces remain measured.
 
-User deferrals are a distinct outcome. census-deferred-by-user.csv keeps
-the raw deferred rows and census-outcome-summary.csv counts each actual
-status separately. The outcome inventory retains reason, family prefix,
-trigger, dependency and timestamp when supplied by W; missing metadata is
-left absent rather than invented. Final macros report deferred module count
-separately from failure and failed-dependency blocking. Deferral concerns
-the unfinished portions of risk families plus their dependents; earlier
-completed modules in those namespaces remain observed.
+Distributions and marker/default-graph cost shares concern successful
+observed modules only, with full-frame label coverage separate. Dependency
+order and memory deferral bias the subset toward less-memory-intensive
+remaining work. P/E observed work supplies separate lower bounds; never
+extrapolate from coverage, original42, strata or a model.
 
-All distributions and marker/default-graph cost shares concern cutoff-success
-modules only. Full-frame label coverage is separate. This dependency-ordered,
-selectively deferred subset is not random and favors less-memory-intensive
-remaining modules; P/E observed-work sums are lower
-bounds, never extrapolated from coverage, original42, strata or a model.
-
-Until final cutoff returns, the historical first segment remains explicit:
+The old first-segment reference can still be reproduced independently:
 
     python3 docs/paper/generate_census.py --stopped --data /path/to/final-user-stopped --out /path/to/segment1 --tectonic tectonic
 
-Its ready file sets CensusAtCutoff=0; final --cutoff sets it to 1 only for a
-returned two-segment ledger. This keeps the manuscript's first-segment figure
-and costs from masquerading as final cutoff N. --preview never creates a
-ready marker, and the real five-module functional trial retains blank costs.
-
-Validation: twenty real retained gate values plus synthetic segment times,
-retirement metadata and deferred/missing identities exercised separate P/E
-and segment sums, exactly-at-boundary inclusion, timezone equivalence, late
-outcome retention, excluded transition/drain wall, missing-segment refusal
-and preview isolation. The figure compiles. Synthetic values are not paper
-results. The actual first-segment CSV was independently reduced against W's
-retained export; exact totals and the pending formal-data provenance are in
-evidence.md.
+Only a retired campaign report emits CensusFinal=1. The historical
+snapshot emits 0; --preview creates no ready marker and the real five-module
+functional trial retains blank costs. Synthetic adapter fixtures exercise
+scope and sum handling only; their outputs are not paper measurements.
+The actual first-segment reduction and historical tests remain in evidence.md.
 
 ## System evaluation artifacts
 
@@ -131,8 +114,8 @@ are never inputs. Without final artifacts it prints explicit pending slots,
 not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
 
-The closure deadline is 6 November 2026, 20:00 UTC. W continues segment 2
-with a 01:30 reporting cutoff. M runs the final matrix after actual
+The closure target is 6 November 2026, 20:00 UTC. W completes all runnable,
+non-deferred work without an early-stop cutoff. M runs the final matrix after actual
 retirement/quiet, then O external timing, then M checks built artifacts. The checking
 phase may be partial or unstarted and stops by 17:00; it is not a necessary
 paper result. Root integrates actual numbers by 18:00. No PlanarPacking
@@ -150,3 +133,9 @@ compiles. Unassigned successful phases, overlapping wall intervals and early
 stops are refused; old five-module functional inputs retain blank costs and
 preview creates no ready marker. All adapter outputs stay outside Git and
 none of these clocks or phase labels is a census result.
+
+The latest physical execution registry has three interval IDs: fixed admission,
+initial memory admission, and its deadline-free continuation after the old
+finite boundary. There are still two admission rules. Final mode reads the
+actual published interval count instead of assuming two; every cost row must
+belong to its reported interval, and all transition gaps remain visible.
