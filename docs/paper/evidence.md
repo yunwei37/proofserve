@@ -1246,7 +1246,7 @@ no overfull/undefined warnings. Final pages 1/5/6 were visually reviewed;
 root self-review. No new native run, foreign implementation, CPU binding,
 resource policy, lock/schedule, runtime or infrastructure change was made.
 
-### 6 November 2026, 12:56 UTC: live supplementary checking and stop mismatch
+### 6 November 2026, 12:56 UTC: live supplementary checking; interpretation corrected
 
 Root read the current corpus phase-terminal/controller under
 /workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/.
@@ -1256,14 +1256,44 @@ with driver_dirty=false. This is actual supplementary execution, not a
 completed corpus result; the selection-only directory is not its terminal.
 
 The actual final.json configuration says corpus_admission_deadline_utc
-2026-11-06T17:00:00Z and corpus_drain_seconds900. Root read checker/bench/corpus.py:
-AdmissionDrain stops admission at its deadline and kills after the grace
-expires or children drain; stage() computes remaining time as deadline+grace
-for the whole-library drain stage and passes that admission deadline/grace
-to the guard. Thus the current behavior may continue until17:15, whereas the
-user instruction and canonical plan require checking to stop by17:00.
-This is a concrete configured-boundary mismatch, not evidence that a future
-overrun has already happened. Root reported the mismatch and does not approve
-the extra window, modify foreign source/configuration, stop/rebind any process
-or launch a substitute. The main paper and all completed numerical results
-remain unchanged pending the actual scoped ledger.
+2026-11-06T17:00:00Z and corpus_drain_seconds900. AdmissionDrain stops new
+batches at its deadline and retires the existing stage after children drain
+or the 900-second grace expires. This implements the coordinator's original
+brief, as clarified in the subsequent direct notification: 17:00 is admission
+closure, and an already running batch may finish within15 minutes, otherwise
+it is forced to stop by17:15. Root's a9bd5860 claim of a configured mismatch
+was a mistaken interpretation of the abbreviated17:00 wording, not an
+implementation fault or unauthorized extension. This forward correction
+does not rewrite the commit or change any owner runtime.
+
+### 6 November 2026, 13:27 UTC: clarified drain and missing OAI artifact
+
+The coordinator supplied the exact original brief, now recorded in
+user-instruction.md and reflected in plan/status/paper README: no new batch
+after17:00, at most15 minutes for a running batch, forced retirement by17:15.
+Root observed controller3031196/birth25134889 still live with phase running;
+no final checking scope has returned. The coordinator reports that most
+elapsed time has one busy process and approximately83% idle host capacity.
+That is an attributed in-progress observation, not an independent utilization
+measurement, final coverage number or parallel-scaling experiment.
+
+Root read actual corpus/capacity-precheck.json: moduleOAI, statusnot_completed,
+reason "deferred root has no compiled artifact; capacity not measurable",
+resource_failure=false. OAI capacity is therefore unavailable because its
+deferred input artifact is absent. It is not a kernel rejection, completed
+capacity measurement or resource failure. The supplementary paper scope will
+report only the actual verified prefix and available official references;
+unattempted inputs and missing artifacts receive no invented verdict/cost.
+No foreign source, configuration, process, policy, deadline or binding was
+changed. The a9bd5860 mismatch wording is corrected in a forward commit.
+
+Root also checked W cc5bcc18 deferred-modules.csv.gz: OAI is explicitly
+deferred_by_user, with a postponed-family dependency and blank native costs/
+artifact paths. The paper now states the missing-artifact capacity precheck
+and reports only the eventual verified prefix, without a whole-source claim.
+CPU8–9 final compilation returned0 in2.289s: six pages /306655bytes,
+two figures/tables, fourteen references, zero evidence macros and no overfull/
+undefined warnings. Changed pages5–6 were visually reviewed; pages1–4 are
+byte-identical to the reviewed external-final render. Completed W/M/O
+numerical results are unchanged. This is root self-review, not independent
+paper or native review.

@@ -41,7 +41,8 @@ results with the protected background condition. O published final external
 timing 0516279d: three projects, one complete observation per arm, one worker,
 126 common local roots accepted by both, unequal checking obligations.
 The paper now includes these costs. Optional built-artifact checking remains
-pending its returned scope and stops by 17:00 UTC.
+pending its returned scope: stop new batches at 17:00 UTC, drain the running
+batch for at most 15 minutes, and force-stop any remainder by 17:15.
 
 ## Measured source scope and scientific interpretation
 
@@ -81,7 +82,7 @@ No admission-policy speedup follows from the nonrandom segment split.
 | Completed 6 November, 04:57 | W retired all runnable work; cc5bcc18 publishes 162,170 completed and 926 deferred modules. |
 | Completed 6 November, 11:13 | M six-hour matrix returned with explicit incomplete cells and preserved background load; publication 818f7422. |
 | Completed 6 November, 12:20 | O final installed-tool external timing returned, publication 0516279d; all nine check/official/audit commands complete. |
-| Last, stop by 6 November, 17:00 | M checks only actually built artifacts, reporting the reached scope; partial or not-started remains possible. |
+| Last, 6 November, 17:00 admission / 17:15 final stop | M stops new batches at 17:00; a running batch may drain for at most 15 minutes before forced retirement. Report only the reached built-artifact scope. |
 | 6 November, 18:00 | Root integrates actual numbers, six pages, zero missing macros. |
 | 6 November, 20:00 | Close with tool, paper and explicit limitations. |
 
@@ -97,7 +98,10 @@ The last checking phase is limited to available built artifacts, not all
 163,096 source modules. Report unique accepted/input frame, attempted roots,
 proof rejects, operational stops and unattempted inputs with tool/input
 commits and available official references. A verified prefix is not complete
-official parity. If no time remains, report not attempted without zero costs
+official parity. OAI is deferred without a compiled artifact: its capacity
+precheck is unavailable for missing artifacts, not a proof rejection or
+resource failure. The current single-busy-process / ~83% idle report is an
+ongoing coordinator observation, not final coverage or a scaling result. If no time remains, report not attempted without zero costs
 or invented counts; this supplementary result is not required for the paper.
 No separate PlanarPacking comparison is scheduled.
 

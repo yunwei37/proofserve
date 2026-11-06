@@ -360,11 +360,12 @@ compiler/runtime axioms: an inventory, not a sorry-free or minimal-use certifica
 \IfFileExists{generated/system/library-check-summary.tex}{%
 \input{generated/system/library-check-summary.tex}
 }{%
-Built-subset checking has not yet returned a scope.
+Built-subset checking has not yet returned a scope. Deferred OAI has no
+compiled artifact, so its capacity precheck is unavailable, not a proof rejection.
 }
-Any prefix must report accepts/input frame, attempted roots, proof rejects,
-operational stops, unattempted scope, tool/input commits and available official
-references. Unfinished scope has no verdict or whole-source parity claim.
+Report only the verified prefix, with accepts/input frame, attempted roots,
+rejects, operational stops, unattempted scope, pins and official references.
+No partial prefix establishes whole-source checking or parity.
 
 \subsection{RQ4: default targets miss a third of decision sites}
 The full-frame import graph misses 19.78\% of source files and 33.30\% of

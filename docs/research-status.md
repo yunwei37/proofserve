@@ -39,11 +39,11 @@ Each arm has one complete observation, one worker. All 126 common local roots
 pass; native transitive closure and official local roots are unequal checking
 obligations, so there is no equal-obligation speedup comparison. AI attribution
 is an upstream collection-level declaration, proportions undisclosed.
-The current PDF is six pages / 306,561 bytes, two figures, two tables and
-14 references. CPU8–9 final compilation returned 0 in 2.234 s, with no
+The current PDF is six pages / 306,655 bytes, two figures, two tables and
+14 references. CPU8–9 final compilation returned 0 in 2.289 s, with no
 overfull/undefined warnings or evidence-placeholder macros. Changed pages
-1/5/6 were visually checked; pages 2–4 render identically to the previously
-reviewed matrix-final version. This is root self-review, not independent
+5–6 were visually checked; pages 1–4 render identically to the previously
+reviewed external-final version. This is root self-review, not independent
 paper or repaired-native review. No interrupted-preview CPU enters Table 2.
 The six-page paper now uses the returned distributions, interval/P-E costs,
 user-mode instruction total/median/P95 and marked/unmarked/default-graph
@@ -77,14 +77,18 @@ this is not exclusively idle-host timing. The collection's raw failed/partial
 terminal remains preserved alongside verified retired handoff. Root observed
 the last collector PID absent and has not launched corpus checking.
 O retired at 12:20:12 UTC; its controller and child were observed absent.
-M's subsequent built-artifact result remains pending and must stop by 17:00.
-At 12:56 UTC root read the actual corpus controller3031196/birth25134889
-and verified it live, native e000ed62, driver616adf85, phase running.
-Its actual configuration says admission deadline17:00 with900 seconds drain;
-corpus.py permits the stage/guard to run until deadline+drain (17:15).
-That differs from the user's required17:00 stop. Root has reported the
-mismatch, has not changed foreign execution, and does not approve an extension.
-No completed supplementary scope or new scientific result is inferred.
+M's subsequent built-artifact result remains pending. The clarified original
+brief stops new batches at 17:00 and allows the running batch at most
+15 minutes to drain, with final forced retirement by 17:15.
+At 13:27 UTC root verified controller3031196/birth25134889 still live,
+native e000ed62, driver616adf85, phase running. Its admission17:00 plus
+900-second drain implements the brief. The mismatch interpretation in
+a9bd5860 was root's mistaken reading and is corrected; no foreign execution
+change was needed. OAI capacity-precheck explicitly reports a deferred root
+without a compiled artifact, resource_failure=false: missing artifact /
+unmeasurable capacity, not a proof or resource failure.
+Only the actual reached scope will be reported; the coordinator's ongoing
+one-busy-process / ~83% idle observation does not establish final coverage.
 Partial/not-attempted
 checking remains supplementary. Root targets integration by 18:00 and closure
 by 20:00. No PlanarPacking comparison or root replacement measurement queue.

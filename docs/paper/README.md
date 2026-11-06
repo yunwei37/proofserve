@@ -120,8 +120,11 @@ the generic workflow diagram, keeping two figures and two tables.
 
 The closure target is 6 November 2026, 20:00 UTC. W has retired all runnable,
 non-deferred work without an early-stop cutoff. M returned the scoped six-hour matrix and O returned the six primary external costs;\nM's supplementary built-artifact scope is still pending. The checking
-phase may be partial or unstarted and stops by 17:00; it is not a necessary
-paper result. Root integrates actual numbers by 18:00. No PlanarPacking
+phase may be partial or unstarted. New batches stop at 17:00; the running
+batch may drain until at most 17:15, then is forced to retire. It is not a necessary
+paper result. Report only reached scope. Deferred OAI has no compiled
+artifact; its capacity precheck is unavailable, not a proof/resource failure.
+Root integrates actual numbers by 18:00. No PlanarPacking
 comparison or missing-work estimate is added.
 
 Policy-adapter validation: real preview rows plus explicitly synthetic strict labels exercised separate default/strict repeat groups, same-configuration CPU/wall ratios, no pairing across commits, isolated external policy rows, preview-only markers and refusal in final mode. Both table fragments compiled. These copied costs test grouping only; they are not strict-mode measurements and are not included in the paper.
