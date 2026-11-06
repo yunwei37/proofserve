@@ -2,6 +2,15 @@
 
 Review: 自审. This directory contains small evaluation manifests and results; source trees, compiled dependencies and raw output stay on the existing research PVC outside the repository.
 
+**Final installed-tool timings (2026-11-06):** Newspeak, Solar and the upstream
+AI-generated collection completed after the census disposition and M's matrix.
+Use [final results](e000ed62-final/README.md),
+[primary costs](e000ed62-final/final-measurements.csv) and
+[acceptance](e000ed62-final/final-acceptance.json). All 126 common local roots
+passed; native closure and official default obligations differ, so no
+equal-obligation speedup is claimed. Older files below remain historical
+functional/preview evidence, not replacement final samples.
+
 The historical three-project set in projects.json was selected after the release interface was frozen. Retained repository searches found no previous development measurements of these repositories; this is a scope statement about retained records. CrocSwap multitape-origin-return explicitly discloses substantial Codex assistance in its own README; it is labelled AI-assisted, not wholly AI-generated. Authorship of the other two projects is unknown.
 
 All declare Lean 4.34.1. Use the extracted installed bundle, record its commit and the separately frozen checker commit. Builds are input preparation on E cores; timed check and official checker commands require the shared P0–7 lock. A fresh checkpoint is required for every fresh cell. Official default and --fresh are distinct protocols: --fresh takes one root, checks its final imported environment, and does not supply a full per-module ledger. Do not invent module-set equality for that scope. Record root-level equality and, where official verbose output exposes it, the exact module scope separately.
@@ -20,8 +29,7 @@ CrocSwap covers64/64 local modules through declarative defaults; Newspeak covers
 
 The11-04 full-census directive makes the existing cost cells timing previews.
 They remain functional acceptance evidence; final system timing waits until
-census completion and a quiet machine. See timing-status.json. No timed rerun
-has started on the reserved E8–9 cores.
+census completion and a quiet machine. See timing-status.json. Final P0–7 timing subsequently completed on 2026-11-06; see the final directory above.
 
 ## AI-generated-project acceptance and the final freeze set
 
@@ -31,7 +39,9 @@ commit3042904c5f7e96732c1ff4ac01745a8be9ae91ff, Lean 4.34.1. Its upstream
 “AI generated proofs of open math problems”. This is a repository-level claim:
 the model, per-proof fraction and human editing are not disclosed. It is not
 an independent authorship audit. The nine unmodified source modules compiled;
-installed-tool closure checking and official common-root parity completed. See\n[freeze preview results](freeze-preview-results.md); this remains separate from\nthe build step and from final performance evaluation.
+installed-tool closure checking and official common-root parity completed. See
+[freeze preview results](freeze-preview-results.md); this remains separate from
+the build step and from final performance evaluation.
 The selection replaces the AI-assisted criterion, rather than selecting on cost
 or acceptance. Historical CrocSwap results remain unchanged.
 

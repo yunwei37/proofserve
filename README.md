@@ -22,11 +22,11 @@ theorem body. The statement still follows from kernel-checked proofs in the
 checked closure. Use --strict-theorem-bodies for the tested artifact-context
 agreement; unsupported native-evaluation inputs can still be refused.
 
-**Cost:** retained Grid previews used 22.1× as many module-local replays and 2.33×
-the CPU under the older strict-context strategy. This is historical evidence;
-the new strict implementation has not been remeasured on Grid. [Policy data](checker/results/theorem-body-policy/).
-**Speed versus official:** final same-obligation results are pending; preview
-figures are not a release speed claim. [Trust and modes](packaging/INTERFACES.md).
+**Strict cost:** final Nat.Basic controls cost 4.23× wall and 2.50× CPU versus
+default at 8 workers; strict Grid timed out at 1,800 s. [Policy costs](checker/results/release-e000ed62bbf4/matrix/README.md).
+**Speed versus official:** no equal-obligation external speedup is established.
+Full-closure and official local-root costs are [reported separately](data/external-projects/e000ed62-final/README.md).
+[Trust and modes](packaging/INTERFACES.md).
 
 Version 0.1.0 is prepared, not published. Other toolchains use a matching
 official checker when available or fail explicitly; no silent migration occurs.

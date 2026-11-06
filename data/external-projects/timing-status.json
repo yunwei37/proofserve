@@ -1,17 +1,33 @@
 {
   "review": "自审",
-  "observed_utc": "2026-11-04T07:30:39.504547+00:00",
-  "stage": "pre-census preview",
-  "final_system_timing_eligible": false,
-  "functional_acceptance_evidence_retained": true,
-  "reason": "11-04 user directive reserves P0-7 and E10-23 for W gate/full census; final system figures are rerun once after census and machine quiet.",
-  "existing_measurements_unchanged": true,
-  "new_o_cpu_affinity": [
-    8,
-    9
-  ],
-  "no_new_final_timed_run": true,
-  "functional_previews_run": true,
-  "new_ai_project": "samuelburbulla/proofs",
-  "installed_checker_commit": "3a56405f3c3e0c916fbae52aa89185a6cf300754"
+  "observed_utc": "2026-11-06T12:21:01.003106+00:00",
+  "stage": "final external timings complete after scoped census and M matrix",
+  "final_system_timing_eligible": true,
+  "results": "e000ed62-final/README.md",
+  "measurements": "e000ed62-final/final-measurements.csv",
+  "acceptance": "e000ed62-final/final-acceptance.json",
+  "tool_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+  "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "complete_projects": 3,
+  "complete_commands": 9,
+  "incomplete_points": [],
+  "timing_scope_equal": false,
+  "background": "zettai-dev and agentsight-dev continued unchanged; not exclusively idle host",
+  "prior_preview_status_preserved": {
+    "review": "自审",
+    "observed_utc": "2026-11-04T07:30:39.504547+00:00",
+    "stage": "pre-census preview",
+    "final_system_timing_eligible": false,
+    "functional_acceptance_evidence_retained": true,
+    "reason": "11-04 user directive reserves P0-7 and E10-23 for W gate/full census; final system figures are rerun once after census and machine quiet.",
+    "existing_measurements_unchanged": true,
+    "new_o_cpu_affinity": [
+      8,
+      9
+    ],
+    "no_new_final_timed_run": true,
+    "functional_previews_run": true,
+    "new_ai_project": "samuelburbulla/proofs",
+    "installed_checker_commit": "3a56405f3c3e0c916fbae52aa89185a6cf300754"
+  }
 }

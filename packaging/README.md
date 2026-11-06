@@ -94,8 +94,8 @@ the Ubuntu22.04 workflow supplies the advertised GNU libc2.35 baseline.
 
 ## One-command final external timing
 
-Only after W's complete census has retired and M has finished the quiet-machine
-matrix, from committed O runtime inputs:
+Only after W's census campaign has retired (including its explicitly deferred
+tail) and M's final matrix has returned, from committed O runtime inputs:
 
 ~~~sh
 PATH=/usr/local/cargo/bin:$PATH RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo CARGO_BUILD_JOBS=1 \
@@ -142,6 +142,14 @@ The global 7,200-second bound retains any failure honestly. If scheduling
 evidence later puts the estimate above two hours, prepare the newly committed
 archive/install qualification before the allocation; do not silently reuse an
 interrupted preview checkpoint or call partial AI acceptance complete.
+
+The fixed final invocation above completed on 2026-11-06 in **52.42 minutes**,
+including preparation. All three projects and nine command arms completed,
+with the required zettai-dev background retained. See the
+[final measured results](../data/external-projects/e000ed62-final/README.md).
+The 95–115-minute figure above remains the historical planning estimate.
+This output directory is now occupied by its completed retained capture;
+a replication requires fresh output/checkpoints rather than resuming this run.
 
 Both modes export small acceptance JSON and measurement CSV to --results-dir.
 Official default replays common local roots and trusts imports, so those costs
