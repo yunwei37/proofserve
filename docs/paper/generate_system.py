@@ -124,29 +124,46 @@ def matrix_groups(rows, minimum=3):
     return output
 
 
-def external_groups(rows):
+def external_groups(rows, acceptance=None):
+    projects = (acceptance or {}).get("projects", [])
+    if isinstance(projects, dict):
+        projects = list(projects.values())
+    scope = {p["project"]: p for p in projects}
     groups = {}
-    for row in rows:
-        # An interrupted preview resumed in another call is not a fresh full cost.
+    for original in rows:
+        row = dict(original)
         if row["arm"] not in {"proofserve", "proofserve-strict", "official-default", "official-fresh", "audit"}:
             continue
+        row["bundle_commit"] = row.get("bundle_commit") or row.get("tool_commit", "")
         arm = "proofserve" if row["arm"] == "proofserve-strict" else row["arm"]
+        metadata = scope.get(row["project"], {})
+        row["theorem_body_policy"] = (row.get("theorem_body_policy") or
+                                      row.get("native_theorem_body_policy") or
+                                      metadata.get("theorem_body_policy", ""))
+        workers = row.get("workers", "1")
         key = (*tuple(row.get(field, "") for field in
                       ("project", "upstream_commit", "bundle_commit", "checker_commit")),
-               arm, policy(row, arm))
-        copied = dict(row)
+               workers, arm, policy(row, arm))
         if not truth(row.get("cpu_accounting_valid", row.get("cpu_accounting_complete", "true"))):
-            copied["cpu_s"] = ""
-        groups.setdefault(key, []).append(copied)
+            row["cpu_s"] = ""
+        groups.setdefault(key, []).append(row)
     output = []
-    for (project, source, bundle, checker, arm, mode), group in sorted(groups.items()):
+    for (project, source, bundle, checker, workers, arm, mode), group in sorted(groups.items()):
+        if len({row["repeat"] for row in group}) != len(group):
+            raise ValueError("duplicate repeat in external point")
+        metadata = scope.get(project, {})
+        closure = group[0].get("native_closure_modules") or metadata.get("native_closure_modules")
+        roots = (group[0].get("official_default_modules") or group[0].get("local_roots") or
+                 metadata.get("official_default_modules"))
+        if arm == "proofserve" and group[0].get("scope") == "transitive_artifact_closure":
+            closure = group[0]["checked_module_count"]
+        if arm == "official-default" and group[0].get("scope") == "local_roots_with_trusted_imports":
+            roots = group[0]["checked_module_count"]
         parity = [row.get("common_local_root_acceptance_equal",
                           row.get("local_root_acceptance_equal", "")) for row in group]
         output.append(dict(project=project, upstream_commit=source, bundle_commit=bundle,
-                           checker_commit=checker, arm=arm, policy=mode,
-                           native_closure_modules=group[0].get("native_closure_modules"),
-                           local_roots=group[0].get("official_default_modules",
-                                                   group[0].get("local_roots")),
+                           checker_commit=checker, workers=workers, arm=arm, policy=mode,
+                           native_closure_modules=closure, local_roots=roots,
                            common_root_parity="true" if all(truth(x) for x in parity) else "unestablished",
                            equal_proof_obligations=False,
                            **stats(group)))
@@ -170,7 +187,7 @@ def main():
     external_status_path = args.external_status or args.external.parent / "timing-status.json"
     acceptance = json.loads(acceptance_path.read_text()) if acceptance_path.exists() else {}
     external_status = json.loads(external_status_path.read_text()) if external_status_path.exists() else {}
-    native_summary, external_summary = matrix_groups(matrix, minimum=1 if args.preview else 3), external_groups(external)
+    native_summary, external_summary = matrix_groups(matrix, minimum=1 if args.preview else 3), external_groups(external, external_status)
     terminal_path = args.matrix.parent / "collection-terminal.json"
     terminal = json.loads(terminal_path.read_text()) if terminal_path.exists() else {}
     plan_path = args.matrix.parent / "planned-status.csv"
@@ -255,9 +272,10 @@ def main():
     (args.out / (prefix + "system-table.tex")).write_text("\n".join(table) + "\n")
     if not args.matrix_only:
         table = [r"\begin{tabular}{lrrrrr}", r"\toprule",
-                 r"& Closure & \multicolumn{2}{c}{ProofServe} & \multicolumn{2}{c}{Official}\\",
+                 r"& N/O & \multicolumn{2}{c}{ProofServe} & \multicolumn{2}{c}{Official}\\",
                  r"Project & modules & CPU & Wall & CPU & Wall\\", r"\midrule"]
-        projects = sorted({row["project"] for row in external_summary if row["arm"] == "proofserve"})
+        projects = sorted({row["project"] for row in external_summary if row["arm"] == "proofserve"},
+                          key=lambda name: {"newspeak": 0, "solar": 1, "samuelburbulla-proofs": 2}.get(name, 9))
         for project in projects:
             native = [row for row in external_summary if row["project"] == project and row["arm"] == "proofserve" and row["policy"] == "default"]
             official = [row for row in external_summary if row["project"] == project and row["arm"] == "official-default"]
@@ -268,7 +286,7 @@ def main():
                     "Newspeak" if "newspeak" in project.lower() else
                     "Solar" if "solar" in project.lower() else
                     "CrocSwap" if "croc" in project.lower() else project)
-            table.append(tex(name) + " & " + tex(n["native_closure_modules"]) + " & " +
+            table.append(tex(name) + " & " + tex(str(n["native_closure_modules"]) + "/" + str(o["local_roots"])) + " & " +
                          " & ".join(fmt(row[key]) for row, key in
                                     ((n, "cpu_s_median"), (n, "wall_s_median"),
                                      (o, "cpu_s_median"), (o, "wall_s_median"))) + r"\\")
@@ -353,7 +371,16 @@ def main():
         publication = subprocess.run(["git","log","-1","--format=%H","--",str(args.matrix)],capture_output=True,text=True).stdout.strip() or None
     except OSError:
         publication = None
-    provenance = dict(publication_commit=publication, matrix_context=context, preview=args.preview, matrix=str(args.matrix), external=None if args.matrix_only else str(args.external),
+    external_publication = None
+    if not args.matrix_only:
+        try:
+            external_publication = subprocess.run(
+                ["git", "log", "-1", "--format=%H", "--", str(args.external)],
+                capture_output=True, text=True).stdout.strip() or None
+        except OSError:
+            pass
+    provenance = dict(publication_commit=publication, external_publication_commit=external_publication,
+                      external_acceptance_evidence=None if args.matrix_only else external_status, matrix_context=context, preview=args.preview, matrix=str(args.matrix), external=None if args.matrix_only else str(args.external),
                       acceptance=str(acceptance_path), external_status=None if args.matrix_only else str(external_status_path),
                       matrix_commits=sorted({row["commit"] for row in native_summary}),
                       matrix_driver_commit=acceptance.get("driver_commit"),

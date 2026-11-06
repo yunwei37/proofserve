@@ -1,0 +1,93 @@
+{
+  "publication_commit": "0516279d0e648278e6f6819476beb6578ddad591",
+  "source_rows": 6,
+  "successful_commands": 6,
+  "common_local_roots": 126,
+  "points": [
+    {
+      "project": "newspeak",
+      "arm": "proofserve",
+      "cpu_s": "109.055416",
+      "wall_s": "110.63863405500888",
+      "scope": "transitive_artifact_closure",
+      "checked_module_count": "754",
+      "workers": "1",
+      "upstream_commit": "e2232d8fdb9a6061d00419fa83134e4e60caf172",
+      "tool_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+      "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc"
+    },
+    {
+      "project": "newspeak",
+      "arm": "official-default",
+      "cpu_s": "38.636725",
+      "wall_s": "38.73633606301155",
+      "scope": "local_roots_with_trusted_imports",
+      "checked_module_count": "105",
+      "workers": "1",
+      "upstream_commit": "e2232d8fdb9a6061d00419fa83134e4e60caf172",
+      "tool_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+      "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc"
+    },
+    {
+      "project": "solar",
+      "arm": "proofserve",
+      "cpu_s": "167.208761",
+      "wall_s": "169.3207920709974",
+      "scope": "transitive_artifact_closure",
+      "checked_module_count": "2368",
+      "workers": "1",
+      "upstream_commit": "f4f5c9a1d7443a0265a85eff8ee24824d9ab92a7",
+      "tool_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+      "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc"
+    },
+    {
+      "project": "solar",
+      "arm": "official-default",
+      "cpu_s": "5.512023",
+      "wall_s": "5.539283596997848",
+      "scope": "local_roots_with_trusted_imports",
+      "checked_module_count": "12",
+      "workers": "1",
+      "upstream_commit": "f4f5c9a1d7443a0265a85eff8ee24824d9ab92a7",
+      "tool_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+      "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc"
+    },
+    {
+      "project": "samuelburbulla-proofs",
+      "arm": "proofserve",
+      "cpu_s": "2481.041024",
+      "wall_s": "2579.7478260759963",
+      "scope": "transitive_artifact_closure",
+      "checked_module_count": "10753",
+      "workers": "1",
+      "upstream_commit": "3042904c5f7e96732c1ff4ac01745a8be9ae91ff",
+      "tool_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+      "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc"
+    },
+    {
+      "project": "samuelburbulla-proofs",
+      "arm": "official-default",
+      "cpu_s": "37.377269999999996",
+      "wall_s": "40.99312128999736",
+      "scope": "local_roots_with_trusted_imports",
+      "checked_module_count": "9",
+      "workers": "1",
+      "upstream_commit": "3042904c5f7e96732c1ff4ac01745a8be9ae91ff",
+      "tool_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+      "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc"
+    }
+  ],
+  "qualification": "Independent arithmetic and published ledger checks; not native re-execution",
+  "matrix_results_byte_unchanged": [
+    "system-summary.csv",
+    "system-table.tex",
+    "system-metrics.tex",
+    "strict-costs.csv",
+    "strict-bounds.csv",
+    "ablations.csv",
+    "scaling.csv",
+    "unattempted-cells.csv",
+    "retained-nonzero-attempts.csv",
+    "matrix-ready.tex"
+  ]
+}

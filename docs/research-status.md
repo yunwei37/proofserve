@@ -32,12 +32,19 @@ W records lease release 04:59:12 UTC after retirement 04:57:20 UTC.
 The compilation section is complete. The current paper also integrates the
 scoped M matrix, with Table 1 medians, default/strict costs, the censored Grid
 point, all ten unrun cells, controls and actual interruption overhead.
-Table 2 remains pending O's returned external timing.
-The current PDF is six pages / 306,731 bytes, with two figures, two tables
-and 14 references. CPU8–9 compilation returned 0 in 2.250 s, with no
+O publication 0516279d is now integrated into Table 2: Newspeak/Solar/AI
+native CPU 109.055/167.209/2481.041 s and wall 110.639/169.321/2579.748 s;
+official-default CPU 38.637/5.512/37.377 s and wall 38.736/5.539/40.993 s.
+Each arm has one complete observation, one worker. All 126 common local roots
+pass; native transitive closure and official local roots are unequal checking
+obligations, so there is no equal-obligation speedup comparison. AI attribution
+is an upstream collection-level declaration, proportions undisclosed.
+The current PDF is six pages / 306,561 bytes, two figures, two tables and
+14 references. CPU8–9 final compilation returned 0 in 2.234 s, with no
 overfull/undefined warnings or evidence-placeholder macros. Changed pages
-1–2 and 4–6 were visually checked; page 3 renders identically to the
-previously reviewed compilation-final version. This is root self-review.
+1/5/6 were visually checked; pages 2–4 render identically to the previously
+reviewed matrix-final version. This is root self-review, not independent
+paper or repaired-native review. No interrupted-preview CPU enters Table 2.
 The six-page paper now uses the returned distributions, interval/P-E costs,
 user-mode instruction total/median/P95 and marked/unmarked/default-graph
 partitions for the 162,170 measured modules. No earlier snapshot is presented
@@ -69,15 +76,19 @@ Protected zettai-dev work (~one P core observed before launch) is explicit:
 this is not exclusively idle-host timing. The collection's raw failed/partial
 terminal remains preserved alongside verified retired handoff. Root observed
 the last collector PID absent and has not launched corpus checking.
-O timing follows,
-then M may check actually built artifacts until 17:00. Partial/not-attempted
+O retired at 12:20:12 UTC; its controller and child were observed absent.
+M's subsequent built-artifact result remains pending and must stop by 17:00.
+Partial/not-attempted
 checking remains supplementary. Root targets integration by 18:00 and closure
 by 20:00. No PlanarPacking comparison or root replacement measurement queue.
 
 Native e000ed62 shared-checked/strict policy and the crafted body-context
 difference remain explicit. Two read-only reviews have regression repairs,
-with no independent repaired-source runtime review. Existing O functionality
-is not immutable release acceptance or final timing. Prototype/fixture and
+with no independent repaired-source runtime review. Historical O dirty-packaging functionality remains separate from these
+new uninterrupted final costs and is not independent runtime review.
+The final local bundle uses glibc 2.41; its AI command is memory-bounded
+(888 memory.max events, no OOM kill/resource stop).
+Prototype/fixture and
 old-version costs do not populate final system tables.
 
 All root Workspace reads/analysis/Git/PDF and children use **CPU8–9**.

@@ -56,7 +56,7 @@ The actual first-segment reduction and historical tests remain in evidence.md.
 
 The scoped retired matrix is publication 818f7422, native e000ed62, driver
 cc5bcc18. It contains 61 returned attempts out of 71 planned, not a complete
-original plan. Generate it independently while O timing is pending:
+original plan. The matrix can be regenerated independently:
 
     python3 docs/paper/generate_system.py --matrix checker/results/release-e000ed62bbf4/matrix/fixed-cells.csv --matrix-only --out docs/paper/generated/system
 
@@ -86,11 +86,19 @@ publication, native/driver/input versions, acceptance, retired scope, actual
 background condition and interruption data. CPU is closed native cgroup
 whole-tree CPU, including the killed interruption leg.
 
-The matrix writes matrix-ready.tex and system-metrics.tex. Table 2 is separate:
-it requires external-ready.tex and remains pending until O returns final data.
-After O publishes, use the same matrix and its actual measurements.csv:
+The matrix writes matrix-ready.tex and system-metrics.tex. Table 2 separately
+requires external-ready.tex. Final O publication 0516279d supplies six complete
+native/official command costs (one observation per arm, one worker):
 
-    python3 docs/paper/generate_system.py --matrix checker/results/release-e000ed62bbf4/matrix/fixed-cells.csv --external /path/to/returned/measurements.csv --out docs/paper/generated/system
+    python3 docs/paper/generate_system.py --matrix checker/results/release-e000ed62bbf4/matrix/fixed-cells.csv --external data/external-projects/e000ed62-final/final-measurements.csv --external-status data/external-projects/e000ed62-final/final-acceptance.json --out docs/paper/generated/system
+
+The curated tool_commit alias binds the installed bundle, and checked counts
+retain each arm's actual scope. The sidecar supplies closure/local-root counts,
+policy, conditions, retirement and exact common-root evidence. External grouping
+also separates workers and refuses duplicate repeats. external-validation.json
+independently checks all six costs, scope/pins, n=1 and 126 common local roots;
+M's existing numerical/table outputs remain byte-identical.
+No source/native/checking experiment is rerun by generation.
 
 O must designate final timing in rows or timing-status.json. Unknown full CPU
 remains blank. Its common local-root parity does not equal full-closure proof
@@ -111,8 +119,7 @@ not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
 
 The closure target is 6 November 2026, 20:00 UTC. W has retired all runnable,
-non-deferred work without an early-stop cutoff. M has returned the scoped six-hour matrix; O external timing follows, then
-M checks built artifacts. The checking
+non-deferred work without an early-stop cutoff. M returned the scoped six-hour matrix and O returned the six primary external costs;\nM's supplementary built-artifact scope is still pending. The checking
 phase may be partial or unstarted and stops by 17:00; it is not a necessary
 paper result. Root integrates actual numbers by 18:00. No PlanarPacking
 comparison or missing-work estimate is added.
@@ -141,4 +148,4 @@ reduced from cc5bcc18 on CPUs 8–9. Duplicate large generated inventories remai
 on PVC, not in Git. Deferred-family/trigger aliases match the published schema.
 Interval 3 has no E-core successful jobs: its zero E cost is an empty observed
 group, not imputation for an unmeasured module. The scoped M matrix is
-integrated; only O external timing remains pending.
+integrated, as are O final one-worker costs. Supplementary built-subset\nchecking remains pending.

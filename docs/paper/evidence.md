@@ -1161,3 +1161,87 @@ bytes, two figures / two tables / fourteen references, zero evidence macros,
 no overfull or undefined warnings. Final changed pages 1–2 and 4–6 were
 visually reviewed; page 3 is byte-identical to its previously reviewed render.
 No foreign source, native process, deadline, affinity or workload was changed.
+
+### 6 November 2026: final installed-tool external costs 0516279d
+
+Root read O's complete final README, curated six-row final-measurements.csv,
+original nine-command helper export, final acceptance/provenance, exact common
+root inventories and actual terminal. Publication 0516279d is final-system,
+not the historical interrupted functional preview. The installed tool source
+is 818f7422; frozen native remains e000ed62 / ABI6 / shared-checked; Lean is
+4.34.1. Inputs remain Newspeak e2232d8f, Solar f4f5c9a1 and
+samuelburbulla/proofs 3042904c. All three native commands used one worker
+and one uninterrupted invocation with a fresh checkpoint directory.
+There are six complete primary check-cost observations, plus three complete
+audit commands, with no incomplete point or reused preview CPU.
+
+Seconds, ProofServe CPU/wall then official-default CPU/wall:
+Newspeak 109.055416 / 110.638634055, 38.636725 / 38.736336063;
+Solar 167.208761 / 169.320792071, 5.512023 / 5.539283597;
+AI 2481.041024 / 2579.747826076, 37.377270 / 40.993121290.
+Native transitive closures contain 754 / 2368 / 10753 modules, while official
+default local-root counts are 105 / 12 / 9. Root checked the exact published
+common-root lists' unique counts, acceptance, pins and arm-specific scope.
+All 126 common local roots pass both; whole-closure acceptance and axiom-set
+parity remain unestablished. No equal-obligation speedup comparison is made.
+
+Root independently compared all six derived costs/min/median/max with the
+single source observation per arm and verified n=1/workers=1, successful
+return codes, input/tool/native pins, fresh invocation, empty reject/error
+lists, actual retirement and 126 common roots. This is independent arithmetic
+and ledger checking, not native re-execution or an independent runtime review.
+The prior M numerical summaries, table, macros, strict/bounds, ablations,
+scaling, unattempted and nonzero outcome files are byte-identical.
+external-validation.json retains this scoped verification.
+
+The generator now consumes the actual curated tool_commit and checked-count
+fields, its supplied final-acceptance.json, and separates worker settings.
+The table labels native-closure / official-local-root module counts and
+separate CPU/wall clocks. Publication/native/installed-source/input versions,
+actual O acceptance, conditions and retirement are retained in provenance.
+Explicit final row designations qualify the real returned data; no owner
+field or measurement is invented. Preview/fixture output remains separate.
+The README contains the exact command using final-measurements.csv and
+--external-status final-acceptance.json.
+
+Costs are single observations in a fixed project and native/official/audit
+order, with no cache-flush, randomized-order or confidence-interval claim.
+CPU is completed-command wait4 user+system including reaped descendants;
+wall is evaluator monotonic elapsed time. Package preparation is outside
+individual cells. The bounded orchestration took 3145.408064 s, from
+11:27:47.442461 to 12:20:12.850525 UTC.
+Protected zettai-dev (~1.003 cores) and agentsight-dev (~0.002) remain;
+this is not an exclusively idle host.
+The existing cgroup bound was 11.75 GiB and own-tree sampled-RSS stop threshold
+12 GiB. AI recorded 888 memory.max events, zero oom/oom_kill and no resource
+stop: this is resource-bounded cost, not unconstrained memory performance.
+Memory.peak is a cgroup charge, not RSS or a hard sampled-RSS proof.
+The final local installation records glibc 2.41, not a new qualification of
+the prepared Ubuntu portability workflow.
+
+The upstream AI description is a collection-level declaration; model,
+per-proof attribution, AI fraction and human editing are undisclosed.
+No independent authorship audit or all-lines-AI assertion is made.
+Audit covers local files Newspeak105/105, Solar12/32, AI9/9; Solar's 20
+omitted files belong to a separate unexecuted EVM flow. Axiom declaration
+inventories, including sorryAx/compiler/runtime and Newspeak native_decide,
+are not minimal per-theorem dependencies or sorry-free certificates.
+Source/artifact binding and the shared-body-context semantic boundary remain.
+
+Root observed O controller3027439 and child3027440 absent after the actual
+terminal returned 0. O retirement records the P-core lock free at 12:21:01,
+with no live O native cgroup. This does not itself establish M built-subset
+checking completion. The supplementary scope remains pending and must stop
+by 17:00; no partial prefix or unstarted point is presented as whole-source
+checking, zero cost or zero acceptance.
+
+Table 2 and its interpretation are now filled, and external-pending wording
+is removed from abstract, limitations, conclusion and current docs. The
+compilation and M numerical results remain unchanged. The first expanded
+draft was seven pages; repeated explanation was shortened without removing
+costs or their scope. Final CPU8–9 Tectonic returned 0 in 2.234 s: six pages,
+306561 bytes, two figures/tables, fourteen references, zero evidence macros,
+no overfull/undefined warnings. Final pages 1/5/6 were visually reviewed;
+2–4 render byte-identically to the reviewed matrix-final version. This is
+root self-review. No new native run, foreign implementation, CPU binding,
+resource policy, lock/schedule, runtime or infrastructure change was made.

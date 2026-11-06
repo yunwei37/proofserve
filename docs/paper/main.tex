@@ -27,7 +27,7 @@ The missing tail is not imputed. The full-frame import graph omits 19.78\% of so
 of lexical kernel-decision sites. ProofServe combines dependency-aware
 parallel replay, restartable segments and receipts recording scope, axioms
 and costs. Its contribution is a usable integration of established
-mechanisms and scoped evaluation. From one to eight workers, Nat.Basic/Grid/Barrier wall speedups are 1.70/2.14/1.73$\times$, with higher CPU; external timing remains pending.
+mechanisms and scoped evaluation. From one to eight workers, Nat.Basic/Grid/Barrier wall speedups are 1.70/2.14/1.73$\times$, with higher CPU; external root sets agree.
 \end{abstract}
 
 \section{Introduction}
@@ -412,44 +412,42 @@ AI proofs & Pending & Pending\\
 \bottomrule
 \end{tabular}
 }
-\caption{Final installed-tool external evaluation slots. CPU and wall
-seconds are separate; the artifact retains repeat counts and full ranges.
-Official default trusts imported proofs, so common local-root parity
-does not establish equal full-closure obligations or a speedup ratio.
-Design implication: retain scope, failures and input/tool commits.}
+\caption{Final installed-tool costs in seconds: one fresh run per arm,
+one worker. N/O modules are native full closure / official local roots.
+CPU and wall are separate. All 126 common roots pass both; unequal checking
+obligations provide no equal-obligation speedup comparison.}
 \label{tab:acceptance}
 \end{table}
 
-The prepared external set pins Newspeak at \texttt{e2232d8f},
-Solar at \texttt{f4f5c9a1}, and the public
-\texttt{samuelburbulla/proofs} collection at \texttt{3042904c}.
-The latter describes itself as AI-generated proofs; the model and human
-editing fraction are undisclosed.
-The final run must use an extracted frozen installation, fresh checkpoints
-and the original compiled inputs, with a common-root official comparison.
-Failed or resource-interrupted calls are operational outcomes rather than
-kernel rejection; incomplete whole-request CPU stays unknown.
+Table~\ref{tab:acceptance} uses a relocated installation of tool
+\texttt{818f7422}, native \texttt{e000ed62}, Lean 4.34.1
+(data publication \texttt{0516279d}).
+Newspeak/Solar/AI inputs are \texttt{e2232d8f}/\texttt{f4f5c9a1}/\texttt{3042904c}.
+The AI set is \texttt{samuelburbulla/proofs}: an upstream collection-level
+AI declaration, with model, AI fraction and human-editing fraction undisclosed.
+All nine native/official/audit commands complete uninterrupted;
+native checks use fresh checkpoints.
+Official default trusts imports; common-root agreement establishes neither
+whole-closure nor axiom-set parity.
 
-Audit gives actionable coverage and axiom findings.
-Static audit covers Newspeak's 105 local files and Solar's 12 of 32 files
-in the default import graph. Solar's 20 omitted files are inputs to a separate
-EVM checking flow, which this evaluation did not execute.
-Newspeak's receipt lists a project \texttt{native\_decide} axiom alongside
-declared closure axioms; a declaration inventory alone cannot assign
-those axioms to a particular theorem.
-Project pins, source-repair details and all failed outcomes are retained in
-\path{data/external-projects/}.
+Each arm has one observation, in fixed project and native/official/audit
+order, without cache flushes or confidence intervals. Cell costs exclude
+packaging. CPU is completed-command wait4 user+system including reaped
+descendants; wall is monotonic time. Background workloads remain running.
+The AI cgroup records 888 memory.max events, no OOM kill or resource stop:
+these are resource-bounded, not unconstrained-memory costs.
 
-The \texttt{e000ed62} portable preview passes relocation, installed
-check/audit, default/strict forwarding, unsupported-version refusal and
-three original-kernel bad-proof controls. Three external workflows complete;
-their local-root sets match official default. The AI case completes after
-two timeouts and continuation, with whole-request CPU unknown.
-An offline container passes project and service controls without host mounts.
-Test-time packaging inputs were dirty: these are implementation-lane
-functional controls, not immutable release acceptance or independent runtime
-review. Final timings use fresh state. \texttt{serve} remains Kimina-compatible;
-service features are outside this evaluation.
+Audit covers Newspeak 105/105, Solar 12/32 and AI 9/9 local files.
+Solar's 20 omitted files feed a separate, unexecuted EVM checking flow.
+Newspeak reports a project \texttt{native\_decide} axiom;
+declared inventories assign no per-theorem axiom use or sorry-freedom.
+Exact roots, inventories and records remain in
+\path{data/external-projects/e000ed62-final/}.
+
+Historical dirty-packaging preview controls, including offline-container
+and rejection tests, remain separate from final timing and independent
+runtime review. The final local installation records glibc 2.41;
+no new portability test or service evaluation is claimed.
 
 \paragraph{Artifact and reproduction.}
 The artifact is at \url{https://github.com/yunwei37/proofserve}.
@@ -482,9 +480,9 @@ Current source binding, malicious checkpoint integrity, executable Lake
 configuration and uncompiled/generated sources require explicit additional
 evidence. Performance remains bounded to these closures and background conditions;
 strict Grid and official repeats are incomplete.
-Historical external observations have one successful arm each and common-root
-rather than full-dependency official parity; final evaluation is pending; the AI disclosure is a collection-level attribution, not an independent
-authorship audit.
+Final external timings have one observation per arm and fixed order,
+with common-root rather than full-closure official parity; the AI disclosure
+is an upstream collection-level attribution, not an independent authorship audit.
 
 Parallel proof checking and asynchronous tasks have precedents in Isabelle,
 Coq and Lean \cite{wenzelParallel2009,coqAsync2015,leanParallelRelease2025}.
@@ -504,7 +502,7 @@ not a full-library estimate. ProofServe exposes scope through check, audit
 and receipts; parallelism saves wall time at higher CPU cost.
 Default coverage and repeatability establish different facts.
 The repaired coordinator still needs independent runtime review;
-external performance remains pending.
+external costs retain their unequal checking scopes.
 
 \bibliographystyle{plain}
 \bibliography{references}
