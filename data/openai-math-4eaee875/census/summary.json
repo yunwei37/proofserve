@@ -1,0 +1,223 @@
+{
+  "source_units": 163097,
+  "source_modules": 163096,
+  "configuration_units": 1,
+  "outcome_counts": {
+    "completed": 162170,
+    "deferred_by_user": 926,
+    "configuration": 1
+  },
+  "record_returns": 162236,
+  "failed_attempts": 66,
+  "damaged_record_lines": 0,
+  "full_compile_success": false,
+  "all_source_units_accounted_for": true,
+  "all_source_modules_have_native_or_dependency_outcome": false,
+  "stop": null,
+  "active_phase_wall_s": 113488.060907173,
+  "phase_count": 3,
+  "boot_ids": [
+    "585778d2-4fc1-48f5-aa9d-01cb7301e944"
+  ],
+  "supervisor_wall_s": 113504.52314921799,
+  "successful_pool_totals": {
+    "P": {
+      "successful_modules": 82201,
+      "cpu_s": 608241.3562969845,
+      "user_cpu_s": 523549.19725000183,
+      "system_cpu_s": 84692.1590469998,
+      "instructions_user": 2766375998577099,
+      "instructions_kernel": 260960988520633
+    },
+    "E": {
+      "successful_modules": 79969,
+      "cpu_s": 1088637.2796360136,
+      "user_cpu_s": 938718.061094999,
+      "system_cpu_s": 149919.21854099838,
+      "instructions_user": 2509744534809750,
+      "instructions_kernel": 256466336813277
+    }
+  },
+  "user_instruction_total": 5276120533386849,
+  "kernel_instruction_total_recorded_not_comparison": 517427325333910,
+  "frame_default_graph_units": 130834,
+  "frame_outside_default_units": 32263,
+  "frame_marked_source_modules": 5848,
+  "frame_stratum_count_differences": [
+    {
+      "stratum": "0-50;1-10;0",
+      "current": 25552,
+      "original": 25553
+    },
+    {
+      "stratum": "0-50;11-100;0",
+      "current": 45252,
+      "original": 45251
+    }
+  ],
+  "historical_original42_estimate_P_CPU_hours": 279.12,
+  "historical_original42_nominal_interval_P_CPU_hours": [
+    95.18,
+    463.06
+  ],
+  "nealmcb_reference_CPU_hours": 330,
+  "nealmcb_reference_module_count": 122458,
+  "comparison_scope": "P and E CPU seconds are not converted; old 42 is quiet P and different environment path; nealmcb is another commit/module set and extrapolated CPU, not measured aggregate.",
+  "primary_instruction_choice": "User-only instructions selected after failed total-instruction gate; thresholds unchanged and failed gate preserved.",
+  "measurement_commit": "9389daff86aae31b5a14b5804cb7dfb7c6f005dd",
+  "measured_hardware": {
+    "observed_at_utc": "2026-11-05T23:03:34.035898+00:00",
+    "cpu_models": [
+      "Intel(R) Core(TM) i9-14900K"
+    ],
+    "mem_total_bytes": 65746526208,
+    "online_cpus": "0-23",
+    "cpu_core_pmu_cpus": "0-7",
+    "cpu_atom_pmu_cpus": "8-23",
+    "kernel": "7.0.0-42-generic",
+    "boot_id": "585778d2-4fc1-48f5-aa9d-01cb7301e944"
+  },
+  "resource_observations": {
+    "samples": 102718,
+    "minimum_available_bytes": 7461736448,
+    "samples_below_8_GiB": 15,
+    "max_observed_sample_gap_s": 7.447841,
+    "by_segment": [
+      {
+        "segment": 1,
+        "samples": 81463,
+        "minimum_available_bytes": 7461736448,
+        "samples_below_8_GiB": 15,
+        "max_observed_sample_gap_s": 7.447841
+      },
+      {
+        "segment": 2,
+        "samples": 19260,
+        "minimum_available_bytes": 19486359552,
+        "samples_below_8_GiB": 0,
+        "max_observed_sample_gap_s": 4.845062
+      },
+      {
+        "segment": 3,
+        "samples": 1995,
+        "minimum_available_bytes": 44498354176,
+        "samples_below_8_GiB": 0,
+        "max_observed_sample_gap_s": 1.186233
+      }
+    ],
+    "failed_attempt_reasons": {
+      "memory_reserve": 15,
+      "cgroup_memory_oom": 50,
+      "controller_interrupted": 1
+    },
+    "recovered_failed_modules": 64,
+    "excluded_failed_CPU_seconds": 16808.736376
+  },
+  "owned_job_oom_accounting_by_segment": {
+    "1": {
+      "attempts_with_oom_kill": 51,
+      "oom_kill_counter_sum": 51,
+      "missing_memory_events": 0
+    },
+    "2": {
+      "attempts_with_oom_kill": 0,
+      "oom_kill_counter_sum": 0,
+      "missing_memory_events": 0
+    },
+    "3": {
+      "attempts_with_oom_kill": 0,
+      "oom_kill_counter_sum": 0,
+      "missing_memory_events": 0
+    }
+  },
+  "scope": "Completed dependency-ordered subset with explicit user-deferred memory families; no extrapolation",
+  "whole_corpus_point_estimate": null,
+  "extrapolation_used": false,
+  "stop_reason": "eligible_work_exhausted",
+  "segment_count": 3,
+  "segment2_launched": true,
+  "segment_times": [
+    {
+      "segment": 1,
+      "start_utc": "2026-11-04T19:52:10.608396+00:00",
+      "end_utc": "2026-11-05T20:29:39.647004+00:00",
+      "wall_s": 88649.038619193,
+      "returncode": -2,
+      "capture": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104",
+      "completed_modules": 128331,
+      "failed_attempts": 66,
+      "P_cpu_h": 134.65117600888888,
+      "E_cpu_h": 256.6678550902778,
+      "instructions_user": 4334510159470779
+    },
+    {
+      "segment": 2,
+      "start_utc": "2026-11-05T20:55:38.516905+00:00",
+      "end_utc": "2026-11-06T03:06:21.491450+00:00",
+      "wall_s": 22242.975161198992,
+      "returncode": 0,
+      "capture": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/segment-02-05c91979",
+      "completed_modules": 33788,
+      "failed_attempts": 0,
+      "P_cpu_h": 32.71774867722222,
+      "E_cpu_h": 45.73138925305555,
+      "instructions_user": 882307562345782
+    },
+    {
+      "segment": 3,
+      "start_utc": "2026-11-06T04:13:47.597395+00:00",
+      "end_utc": "2026-11-06T04:57:20.104259+00:00",
+      "wall_s": 2612.509368825995,
+      "returncode": 0,
+      "capture": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/segment-03-b5035842",
+      "completed_modules": 51,
+      "failed_attempts": 0,
+      "P_cpu_h": 1.587007618611111,
+      "E_cpu_h": 0.0,
+      "instructions_user": 59302811570288
+    }
+  ],
+  "completed_source_modules": 162170,
+  "unfinished_source_modules": 926,
+  "deferred_source_modules": 926,
+  "completed_fraction_of_source_modules": 0.9943223622896944,
+  "measured_segment_wall_hours": 31.52903420811611,
+  "overall_calendar_hours": 33.08597107305555,
+  "transition_gap_s": 5604.9727137820155,
+  "successful_CPU_hours_by_pool": {
+    "P": 168.95593230471792,
+    "E": 302.3992443433371
+  },
+  "raw_OS_CPU_hours_sum_not_P_equivalent": 471.35517664805553,
+  "completed_default_graph_modules": 129909,
+  "completed_outside_default_graph_modules": 32261,
+  "completed_marked_modules": 5848,
+  "completed_unmarked_modules": 156322,
+  "whole_corpus_lower_bound_scope": "Observed completed-module CPU vector only; unmeasured cost unknown, no P/E conversion or whole-corpus extrapolation",
+  "original42_completed_matches": 42,
+  "original42_completed_matches_by_pool": {
+    "P": 18,
+    "E": 24
+  },
+  "sampled_279h_estimate_not_used_for_extrapolation": true,
+  "pending_composition_warning": "Nonrandom dependency prefix, then user exclusion of remaining high-memory families and descendants. Segment-1 completed modules in these families remain included.",
+  "metadata_errata": [
+    {
+      "segment": 2,
+      "field": "run-config.json.protocol_rules.resource_retry",
+      "issue": "Inherited segment-1 generic value; segment-specific top-level resource_retry and frozen source implement user deferral, not drain/exclusive retries"
+    },
+    {
+      "segment": 3,
+      "field": "run-config.json.protocol_rules.resource_retry",
+      "issue": "Inherited segment-1 generic value; segment-specific top-level resource_retry and frozen source implement user deferral, not drain/exclusive retries"
+    }
+  ],
+  "known_final_native_failures": 0,
+  "known_failed_dependency_blocks": 0,
+  "measurement_commits_by_segment": {
+    "1": "9389daff86aae31b5a14b5804cb7dfb7c6f005dd",
+    "2": "05c9197900e526236470d49634a4a1066b3f7454",
+    "3": "b50358422bd1d6a22faf2d7d786a967ac25dfb2a"
+  }
+}

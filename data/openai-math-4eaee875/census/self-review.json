@@ -1,0 +1,14 @@
+{
+  "utc": "2026-11-06T05:03:47.274589+00:00",
+  "self_review": "自审",
+  "unit_fates": {
+    "completed": 162170,
+    "deferred_by_user": 926,
+    "configuration": 1
+  },
+  "unique_units": 163097,
+  "csv_sums_match_json": true,
+  "unmeasured_costs_blank": true,
+  "artifact_existence_sizes_and_dependency_closure_passed": true,
+  "whole_corpus_extrapolation": false
+}

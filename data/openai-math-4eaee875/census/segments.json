@@ -1,0 +1,53 @@
+{
+  "source_units": 163097,
+  "source_modules": 163096,
+  "segments": [
+    {
+      "segment": 1,
+      "point": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104",
+      "measurement_commit": "9389daff86aae31b5a14b5804cb7dfb7c6f005dd",
+      "completed": 128331,
+      "retired": true
+    },
+    {
+      "segment": 2,
+      "point": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/segment-02-05c91979",
+      "measurement_commit": "05c9197900e526236470d49634a4a1066b3f7454",
+      "resume_from": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/run",
+      "admission_deadline_utc": "2026-11-06T03:00:00Z",
+      "drain_deadline_utc": "2026-11-06T03:30:00Z",
+      "user_words": "几族吃内存的模块（PadicHodge 等）先不做",
+      "retired": true,
+      "completed": 33788,
+      "actual_stop": "old finite admission deadline reached; no hard drain signal"
+    },
+    {
+      "segment": 3,
+      "point": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/segment-03-b5035842",
+      "measurement_commit": "b50358422bd1d6a22faf2d7d786a967ac25dfb2a",
+      "resume_from": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/segment-03-b5035842/resume",
+      "user_words": "干嘛停掉? 继续跑着.",
+      "reason": "Continue 51 eligible modules after superseded finite boundary; no additional deadlines; native recipe unchanged",
+      "retired": true,
+      "completed": 51,
+      "actual_stop": "eligible_work_exhausted",
+      "end_utc": "2026-11-06T04:57:20.104259+00:00"
+    }
+  ],
+  "superseded_preparations": [
+    {
+      "point": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/segment-02-b7810f3b",
+      "native_compilations": 0,
+      "reason": "defer-family rule added before first native launch"
+    }
+  ],
+  "terminal": {
+    "completed_source_modules": 162170,
+    "deferred_source_modules": 926,
+    "failed": 0,
+    "blocked": 0,
+    "eligible_complete": true,
+    "whole_corpus_complete": false,
+    "full_cost_extrapolation": false
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "raw_record_count": 162236,
+  "damaged_record_lines": 0,
+  "duplicate_successful_modules": 0,
+  "modules_outside_frozen_manifest": [],
+  "issue_counts": {},
+  "examples": [],
+  "active_coverage": {
+    "P_user": {
+      "count": 82201,
+      "minimum": 1.0,
+      "maximum": 1.0,
+      "below_one": 0
+    },
+    "P_kernel": {
+      "count": 82201,
+      "minimum": 1.0,
+      "maximum": 1.0,
+      "below_one": 0
+    },
+    "E_user": {
+      "count": 79969,
+      "minimum": 1.0,
+      "maximum": 1.0,
+      "below_one": 0
+    },
+    "E_kernel": {
+      "count": 79969,
+      "minimum": 1.0,
+      "maximum": 1.0,
+      "below_one": 0
+    }
+  },
+  "other_pool_instructions": {
+    "user": 0,
+    "kernel": 0
+  },
+  "duplicate_attempt_sequences": 0,
+  "source_revision_mismatches": 0,
+  "segment_commit_mismatches": 0,
+  "thread_count_mismatches": 0,
+  "malformed_source_hashes": 0,
+  "compiler_arguments_with_M": [],
+  "second_segment_missing_admission": []
+}

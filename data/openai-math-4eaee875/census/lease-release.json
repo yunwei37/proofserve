@@ -1,0 +1,9 @@
+{
+  "utc": "2026-11-06T04:59:12.385526+00:00",
+  "controller_retired": true,
+  "pcore_inode": 1443914,
+  "matching_locks": [],
+  "eligible_complete": true,
+  "completed": 162170,
+  "deferred": 926
+}

@@ -481,3 +481,80 @@ Retain all olean companions for M's checking of the built subset.
 Reference correction: nealmcb's 116 GB describes the whole finished build,
 including packages; its Lean lib artifacts are about 68 GB. The earlier
 olean-only description above was incorrect. This changes no native recipe.
+
+
+## Final observed outcome and superseded stopping boundaries (2026-11-06)
+
+The later user direction, “干嘛停掉? 继续跑着.”, superseded both the
+proposed 01:30 early stop and the 03:00 admission / 03:30 drain boundary.
+No early-stop signal was sent. While the client laptop was asleep,
+the old finite segment-2 controller nevertheless stopped admitting at 03:00.
+It drained normally and retired at 03:06:21.491 UTC: 33,788 new successful
+modules, zero unsuccessful returns, and 51 still-eligible modules.
+
+The remaining 51 were resumed without repeating completed modules, in a
+separately identified third measurement segment, b5035842. It kept the same
+native command, -j8, LEAN_NUM_THREADS=8, no-M, canonical import view, P/E pools
+and memory-admission / user-deferral rules, with no UTC admission or drain
+deadline. Its source implementation extends the continuation policy to an
+explicit segment 3; 23 preparation regressions passed. Before native launch
+the actual import-view check covered 464,198 files with no missing, extra or
+different resolutions. Both earlier segments and their raw metadata remain
+unchanged. The independent supervisor and merged prior ledger survived the
+client connection; its prior-ledger/environment/view validation is included
+in segment wall, outside successful per-module native CPU.
+
+Segment 3 exhausted eligible work and retired normally at
+2026-11-06 04:57:20.104 UTC, completing all 51 with no unsuccessful return.
+The final scope is 162,170 / 163,096 source modules (99.4322%), 926
+user-deferred modules, one uncharged configuration unit, zero final native
+failures and zero failed-dependency blocks. All 926 remaining units are
+postponements, not timeout, native rejection, unattempted-at-deadline or
+imputed zero cost. The user-deferred families and their descendants were
+not resumed. No further compilation is planned.
+
+| Segment | Completed | P CPU h | E CPU h | Observed segment wall h |
+|---|---:|---:|---:|---:|
+| 1 | 128,331 | 134.651176 | 256.667855 | 24.624733 |
+| 2 | 33,788 | 32.717749 | 45.731389 | 6.178604 |
+| 3 | 51 | 1.587008 | 0 | 0.725697 |
+
+Successful P CPU is 168.955932 h and E CPU 302.399244 h, with no conversion.
+Their raw charged OS CPU sum is 471.355177 h, not a quiet-P equivalent.
+The primary user-mode instruction total is 5,276,120,533,386,849.
+Measured segment walls sum to 31.529034 h; the 33.085971 h calendar span
+also includes 5,604.973 s of explicitly separated transition gaps.
+This is a nonrandom, memory-selected observed subset: whole-corpus cost has
+an observed lower bound only. No 42-sample model, missing-cost imputation,
+whole-corpus estimate or inferred whole-corpus confidence interval is used.
+
+All 66 unsuccessful attempts belong to segment 1: 15 memory-reserve labels,
+50 cgroup-memory-OOM labels and one transition interruption. They are
+retained separately and excluded from completed-module costs; 64 affected
+modules subsequently completed. The raw owned-job OOM-kill counters total
+51 (one return also has the explicit transition-interruption label); labels
+and kernel counters are not interchangeable. Segments 2/3 have zero owned-job
+OOM-kill counters. The sampling guard did undershoot its target in segment 1:
+15 samples below 8 GiB and minimum 6.950 GiB; it is not a hard availability
+guarantee or evidence of absence of all system OOM events.
+
+Data and 自审: [census/](census/) contains all 163,097 unit fates,
+all failed attempts, every deferred unit, per-family/stratum/marker/default
+graph/pool aggregates, both top-20 rankings and 42/42 original sample pairs
+(18 P, 24 E; no E-to-P ratios). CSV sums agree with JSON totals. No damaged
+result lines, duplicate successful modules or attempt sequences, manifest
+outsiders, source/implementation/thread mismatches, missing continuation
+admission fields or -M arguments were found. Active PMU coverage is 1.0 on
+all completed-module rows; inactive-pool instruction totals are zero.
+Existence and recorded byte sizes of 324,340 retained olean/ilean products,
+completed internal dependency closure and canonical view targets were checked;
+no new checksum acceptance gate was added. All products remain on the PVC
+for M's independent checker. Compilation success is not independent checking.
+
+W's controller retired and /proc/locks was checked by the pcore.lock inode
+at 04:59 UTC with no matching lease; the precise observation is in
+census/lease-release.json. Subsequent data preparation uses only CPU 8-9.
+The prepared postprocessing helper initially had a quoting SyntaxError;
+the failed log is retained privately, it was corrected before execution,
+and final data/retained-artifact accounting passed. This did not change
+native runs or their costs.
