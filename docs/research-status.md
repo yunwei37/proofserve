@@ -46,12 +46,10 @@ Each arm has one complete observation, one worker. All 126 common local roots
 pass; native transitive closure and official local roots are unequal checking
 obligations, so there is no equal-obligation speedup comparison. AI attribution
 is an upstream collection-level declaration, proportions undisclosed.
-The current PDF is six pages / 306,929 bytes, two figures, two tables and
-14 references. CPU8–9 final compilation returned 0 in 2.256 s, with no
-overfull/undefined warnings or evidence-placeholder macros. Changed pages
-1–6 were visually checked, including the final abstract, reference-scope
-paragraph, Barrier trim and shortened external-installation paragraph. This is root self-review, not independent
-paper or repaired-native review. No interrupted-preview CPU enters Table 2.
+The final manuscript includes W compilation, the M matrix, O external timings
+and the bounded supplementary checking publication 5f491682. Final PDF: six pages /276380bytes; CPU8–9 compilation rc0 /2.034s, zero warnings\nand zero missing macros. All six final pages were visually reviewed; details\nare recorded in paper/evidence.md.
+This remains root self-review, not independent paper or repaired-native review.
+No interrupted-preview CPU enters Table 2.
 The six-page paper now uses the returned distributions, interval/P-E costs,
 user-mode instruction total/median/P95 and marked/unmarked/default-graph
 partitions for the 162,170 measured modules. No earlier snapshot is presented
@@ -87,18 +85,22 @@ O retired at 12:20:12 UTC; its controller and child were observed absent.
 M's subsequent built-artifact result remains pending. The clarified original
 brief stops new batches at 17:00 and allows the running batch at most
 15 minutes to drain, with final forced retirement by 17:15.
-At 13:27 UTC root verified controller3031196/birth25134889 still live,
-native e000ed62, driver616adf85, phase running. Its admission17:00 plus
-900-second drain implements the brief. The mismatch interpretation in
-a9bd5860 was root's mistaken reading and is corrected; no foreign execution
-change was needed. OAI capacity-precheck explicitly reports a deferred root
-without a compiled artifact, resource_failure=false: missing artifact /
-unmeasurable capacity, not a proof or resource failure.
-Only the actual reached scope will be reported; the coordinator's ongoing
-one-busy-process / ~83% idle observation does not establish final coverage.
-Partial/not-attempted
-checking remains supplementary. Root targets integration by 18:00 and closure
-by 20:00. No PlanarPacking comparison or root replacement measurement queue.
+M's supplementary campaign retired at the authorized 17:15 deadline
+after stopping new batches at 17:00. Publication 5f491682 certifies 15 complete
+batches: 12,756 distinct closure modules, including 968/162,170 requested
+source modules. The remaining 161,202 requested modules lack complete batch
+certification; 488 uncertified acceptance events (271 complete-segment /
+217 in-flight) are separate, as are one attempted-without-verdict and
+160,713 without observed verdict. There were no reported kernel rejections
+or OOMs; exit124 denotes the operational deadline. Whole-library checking
+is incomplete, with no official-reference comparison on this prefix.
+The mixed-core native cost is 16,530.349 s wall / 16,194.749 s CPU,
+including interrupted work, and peak sampled process-tree RSS8.878 GiB.
+The 926 user-deferred modules and one configuration unit remain separate.
+OAI has no compiled artifact; capacity was unmeasurable.
+Root independently checked the source ledger and unioned all 15 certificates;
+this does not establish editable-certificate integrity or replay their proofs.
+No native execution is resumed. The final PDF is ready for coordinator reading.
 
 Native e000ed62 shared-checked/strict policy and the crafted body-context
 difference remain explicit. Two read-only reviews have regression repairs,

@@ -40,9 +40,13 @@ now uses its actual modest scaling, strict-policy costs and interruption
 results with the protected background condition. O published final external
 timing 0516279d: three projects, one complete observation per arm, one worker,
 126 common local roots accepted by both, unequal checking obligations.
-The paper now includes these costs. Optional built-artifact checking remains
-pending its returned scope: stop new batches at 17:00 UTC, drain the running
-batch for at most 15 minutes, and force-stop any remainder by 17:15.
+The paper now includes these costs. Bounded built-artifact checking returned 5f491682 at the authorized
+17:15 deadline after 17:00 admission stop. Fifteen complete batch certificates
+cover 12,756 distinct closure modules, including 968/162,170 requested sources.
+The 161,202 uncertified requested sources include 488 uncertified acceptance
+events; these are not additional certified coverage. Whole-library checking
+remains incomplete, without an official-reference comparison or extrapolation.
+The final six-page manuscript is ready for coordinator reading.
 
 ## Measured source scope and scientific interpretation
 
@@ -82,7 +86,7 @@ No admission-policy speedup follows from the nonrandom segment split.
 | Completed 6 November, 04:57 | W retired all runnable work; cc5bcc18 publishes 162,170 completed and 926 deferred modules. |
 | Completed 6 November, 11:13 | M six-hour matrix returned with explicit incomplete cells and preserved background load; publication 818f7422. |
 | Completed 6 November, 12:20 | O final installed-tool external timing returned, publication 0516279d; all nine check/official/audit commands complete. |
-| Last, 6 November, 17:00 admission / 17:15 final stop | M stops new batches at 17:00; a running batch may drain for at most 15 minutes before forced retirement. Report only the reached built-artifact scope. |
+| Completed 6 November, 17:00 admission / 17:15 final stop | M stopped admission at 17:00 and retired at 17:15; 15 complete batch certificates cover 968 requested sources, with uncertified events separate. |
 | 6 November, 18:00 | Root integrates actual numbers, six pages, zero missing macros. |
 | 6 November, 20:00 | Close with tool, paper and explicit limitations. |
 

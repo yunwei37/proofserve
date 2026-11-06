@@ -14,7 +14,7 @@ The total-instruction gate remains failed and user-mode comparison post hoc.
 | Original sample | [Public package](../data/openai-math-4eaee875/README.md) | Historical 42/42 data, never filling the missing tail |
 | Final checker matrix | [818f7422 results](../checker/results/release-e000ed62bbf4/matrix/README.md), [derived summaries](../docs/paper/generated/system/) | 1.70/2.14/1.73 wall scaling; strict Grid censored, ten cells unrun, background condition explicit |
 | External projects | [Final 0516279d results](../data/external-projects/e000ed62-final/README.md), [derived table](../docs/paper/generated/system/external-table.tex) | Three one-worker projects, one observation per arm, 126 common roots pass; unequal checking obligations, no speedup ratio |
-| Built-subset checking | [Plan](../docs/research-plan.md) | M checks available artifacts only; partial or unstarted scope is explicit |
+| Built-subset checking | [5f491682 report](../checker/results/release-e000ed62bbf4/corpus/README.md), [root arithmetic](../docs/paper/generated/system/library-check-validation.json) | 15 batch certificates; 12,756 closure / 968 requested source modules certified; 488 uncertified events separate; whole-library checking incomplete |
 
 The [paper](../docs/paper/main.tex) now uses returned observed distributions,
 interval/P-E costs and conditional groups. Root independently reduced the
@@ -24,7 +24,7 @@ source files**. P/E work is not converted; module wall is not machine wall.
 
 Native e000
 shared-checked/strict policy, two read-only review limits and no repaired-source
-independent runtime review remain explicit. The matrix and external table now use returned frozen-tool costs; supplementary built-subset checking remains pending.
+independent runtime review remain explicit. The matrix and external table now use returned frozen-tool costs; supplementary checking is now reported at its final bounded scope. The final PDF awaits coordinator reading.
 No preview cost or prototype ratio fills missing results.
 
 All root Workspace work uses **CPU8–9**. Root starts no native collection,

@@ -1,6 +1,8 @@
 \documentclass[10pt,twocolumn]{article}
 \usepackage[letterpaper,margin=0.75in,columnsep=0.25in]{geometry}
-\usepackage{booktabs,amsmath,graphicx,microtype,hyperref,array,flushend}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs,amsmath,graphicx,microtype,hyperref,array,flushend,times}
+\usepackage[justification=raggedright,singlelinecheck=false]{caption}
 \hypersetup{colorlinks=true,allcolors=blue}
 \title{Checking or Recomputing? Two Cost Regimes in\\Verifying AI-Generated Formal Artifacts}
 \author{Anonymous}
@@ -9,6 +11,9 @@
 \IfFileExists{generated/census/census-ready.tex}{\input{generated/census/census-ready.tex}}{}
 \IfFileExists{generated/system/matrix-ready.tex}{\input{generated/system/system-metrics.tex}}{}
 \begin{document}
+\raggedright
+\setlength{\parindent}{1em}
+\raggedbottom
 \maketitle
 \begin{abstract}
 Checking a stored proof can avoid its original search, while checking a
@@ -160,7 +165,7 @@ The other 320 lack module-local references.
 
 \begin{samepage}
 \CensusSegmentSummary{} Intervals 2--3 share the memory-admission rule;
-cohort changes prevent a causal throughput comparison.
+cohort changes prevent a causal throughput comparison.\par
 \end{samepage}
 
 \CensusInstructionSummary{} Figure~\ref{fig:census} shows their distribution;
@@ -356,15 +361,7 @@ and module hashes. The 15 declared axioms include \texttt{sorryAx} and
 compiler/runtime axioms: an inventory, not a sorry-free or minimal-use certificate.
 
 \paragraph{Supplementary library checking.}
-\IfFileExists{generated/system/library-check-summary.tex}{%
 \input{generated/system/library-check-summary.tex}
-}{%
-Built-subset checking has not yet returned a scope. Deferred OAI has no
-compiled artifact, so its capacity precheck is unavailable, not a proof rejection.
-}
-Report only the verified prefix, with accepts/input frame, attempted roots,
-rejects, operational stops, unattempted scope, pins and official references.
-No partial prefix establishes whole-source checking or parity.
 
 \subsection{RQ4: default targets miss a third of decision sites}
 The full-frame import graph misses 19.78\% of source files and 33.30\% of
@@ -503,5 +500,5 @@ The repaired coordinator still needs independent runtime review;
 external costs retain their unequal checking scopes.
 
 \bibliographystyle{plain}
-\bibliography{references}
+{\raggedright\bibliography{references}}
 \end{document}

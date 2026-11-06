@@ -151,4 +151,25 @@ reduced from cc5bcc18 on CPUs 8–9. Duplicate large generated inventories remai
 on PVC, not in Git. Deferred-family/trigger aliases match the published schema.
 Interval 3 has no E-core successful jobs: its zero E cost is an empty observed
 group, not imputation for an unmeasured module. The scoped M matrix is
-integrated, as are O final one-worker costs. Supplementary built-subset\nchecking remains pending.
+integrated, as are O final one-worker costs. Supplementary checking is reported at the final bounded scope below.
+
+
+## Final supplementary library checking
+
+The committed library-check-summary.tex is the scoped prose reduction of
+checker/results/release-e000ed62bbf4/corpus/ at publication5f491682.
+library-check-validation.json records root's independent source-ledger
+partition and the deduplicated union of the 15 complete batch certificates.
+It does not rerun native checking or establish editable-checkpoint integrity.
+968 requested sources are certified; 488 other acceptance events are
+uncertified and remain inside the 161,202 not fully certified requested sources.
+Whole-library checking is incomplete. The source report and CSVs are the
+authority; no unmeasured cost is filled and no official prefix parity is claimed.
+
+The final manuscript uses 10pt Times text, two columns, ragged-right paragraphs
+and captions and ragged-bottom pages. These are actual line-layout changes to
+resolve underfull spacing; no badness/warning thresholds are raised.
+Compile main.tex with Tectonic --keep-logs. Check compiler stdout/stderr as
+well as main.log for warnings (including missing glyphs), pdfinfo for six
+pages, and render every page before delivery. The previous overfull/undefined
+check alone did not establish a completely warning-free build.

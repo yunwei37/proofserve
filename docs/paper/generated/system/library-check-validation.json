@@ -1,0 +1,37 @@
+{
+  "source_publication": "5f491682c301dfe2a909c6d40ac54aed6842ac6b",
+  "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "driver_commit": "616adf8590909d8f5186617b0e4cc225f262b6fc",
+  "root_validation": "independent ledger arithmetic and certificate-set union; no native replay or checkpoint-integrity proof",
+  "source_inventory_rows": 163097,
+  "unique_source_identities": 163097,
+  "source_status_counts": {
+    "accepted_certified": 968,
+    "complete_segment_accept_pending_batch": 271,
+    "inflight_segment_accept_uncommitted": 217,
+    "attempted_without_final_verdict": 1,
+    "no_observed_module_verdict": 160713,
+    "user_deferred_unbuilt": 926,
+    "configuration_excluded": 1
+  },
+  "certified_batches": 15,
+  "unique_certified_closure_modules": 12756,
+  "certified_requested_sources": 968,
+  "not_certified_requested_sources": 161202,
+  "uncertified_accept_events": 488,
+  "cost": {
+    "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+    "driver_commit": "616adf8590909d8f5186617b0e4cc225f262b6fc",
+    "workers": "22",
+    "cpu_set": "0-7,10-23",
+    "wall_s": "16530.349473379",
+    "cpu_s": "16194.74918",
+    "user_s": "10359.608145",
+    "system_s": "5835.141034",
+    "sampled_own_tree_rss_peak_bytes": "9532841984",
+    "cgroup_charged_peak_bytes": "48867676160",
+    "returncode": "124",
+    "stop_reasons": ""
+  },
+  "whole_source_corpus_complete": false
+}

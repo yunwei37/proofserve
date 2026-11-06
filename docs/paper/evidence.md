@@ -1,6 +1,6 @@
 # Six-page paper: evidence and completion map
 
-This map records admitted measurements, versions and protocol boundaries. The total-instruction gate failed. The latest instruction authorizes W to proceed with the frozen 22-core census; no corpus total is available yet. Historical reviews and raw qualifications remain linked below. Root runs no new native measurement.
+This map records admitted measurements, versions and protocol boundaries. The total-instruction gate failed. The latest instruction authorizes W to proceed with the frozen 22-core census; the retired observed compilation scope is now available below. Historical reviews and raw qualifications remain linked below. Root runs no new native measurement.
 
 ## Protocol appendix: census transition and evidence handoff
 
@@ -1371,3 +1371,63 @@ or running supplementary job. The primary14-key existence/uniqueness check
 and removal of all four obsolete requested phrases passed.
 This is root source/arithmetic/writing/visual self-review, not independent
 paper review or repaired-native runtime review.
+
+
+## Final bounded library checking: 5f491682 (6 November 2026)
+
+M's committed corpus/README.md, coverage.json, source-status-counts.csv,
+accepted-requested-sources.csv, batches.csv, native-cost.csv, native-result.json,
+provenance.json and retirement-observation.json were read from publication
+5f491682. Native remains e000ed62, binary14707787067517532260, driver616adf85.
+The final controller/native identities were absent; the owner records
+lease availability and native-cgroup retirement at17:15:23 UTC. No runner,
+native input, runtime rule, foreign file or process was changed by root.
+
+Root streamed the actual163097-row module-status-detailed.csv.gz and checked
+unique identities and all status partitions, compared all968 certified requested
+identities with the published CSV, and independently unioned the accepted
+sets of all15 complete batch certificates:12756 unique closure modules.
+Overlapping per-batch counts were not summed. The root reduction is in
+generated/system/library-check-validation.json. Editable local certificates
+remain trusted; set arithmetic is not a native replay, artifact-byte audit,
+independent runtime review or certificate-integrity proof.
+
+Requested162170 =968 certified +271 completed-segment acceptances awaiting a
+complete batch +217 in-flight uncommitted acceptances +1 attempted without final
+verdict +160713 without observed verdict. Thus161202 lack complete certification;
+the488 acceptance events are separate from certified coverage. The926 deferred
+unbuilt sources and1 configuration unit are outside the requested-built frame.
+OAI's missing deferred artifact makes capacity unmeasurable, not a rejection.
+No reported kernel rejection or OOM occurred. Return124 is the authorized
+17:00 admission stop /17:15 deadline, not a mathematical failure. There was no
+official-reference comparison on this prefix; whole-library checking is incomplete.
+
+The closed native-cgroup cost is16530.349473379s wall /16194.74918s CPU,
+including interrupted work, not the narrower parent wait4 accounting or a
+successful-prefix-only cost. Peak own-tree RSS is a9532841984-byte sample
+(8.878GiB), not a hard RSS bound; cgroup charged memory is a distinct quantity.
+No P/E conversion, throughput extrapolation or full-library verdict is inferred.
+The new paragraph reports rounded16530/16195s and8.88GiB.
+
+
+Final delivered build (CPU8–9): Tectonic rc0 /2.034s, six letter-size pages,
+276380bytes,10pt Times/two columns, two figures/two tables/fourteen references.
+Every cited key exists exactly once; evidence-placeholder macro count0.
+Both captured compiler stdout/stderr and TeX log were checked: zero warnings,
+including overfull/underfull boxes, undefined references, font substitution
+and missing glyphs. Prior builds' weaker overfull/undefined-only check did
+not establish zero total warnings: actual prior output contained underfull
+diagnostics. This final layout uses ragged-right paragraphs/captions and
+ragged-bottom pages, with no raised diagnostic thresholds. T1 Times required
+the faithful LaTeX spelling Bak\v{s}ys in the bibliography; author identity
+and citation meaning are unchanged.
+
+All six final rendered pages were visually reviewed after the last layout
+change. Interval costs remain together on page3; the bounded checking paragraph
+is entirely on page5; tables, plots, references, accents and page edges are
+readable without overlap or clipping. This is root visual/arithmetic self-review,
+not an independent review. No measured W/M/O value was altered.
+Repository artifact:docs/paper/main.pdf. Review copy:
+C:/Users/10678/AppData/Local/Temp/ProofServe-final-5f491682-20261106/main.pdf.
+The manuscript is ready for coordinator reading; no tag, registry release,
+upstream PR or announcement was made.
