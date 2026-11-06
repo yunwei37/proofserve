@@ -1245,3 +1245,25 @@ no overfull/undefined warnings. Final pages 1/5/6 were visually reviewed;
 2–4 render byte-identically to the reviewed matrix-final version. This is
 root self-review. No new native run, foreign implementation, CPU binding,
 resource policy, lock/schedule, runtime or infrastructure change was made.
+
+### 6 November 2026, 12:56 UTC: live supplementary checking and stop mismatch
+
+Root read the current corpus phase-terminal/controller under
+/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/.
+Phase is running/complete=false. Controller3031196/birth25134889 was
+observed live, native e000ed62 / binary14707787067517532260, driver616adf85
+with driver_dirty=false. This is actual supplementary execution, not a
+completed corpus result; the selection-only directory is not its terminal.
+
+The actual final.json configuration says corpus_admission_deadline_utc
+2026-11-06T17:00:00Z and corpus_drain_seconds900. Root read checker/bench/corpus.py:
+AdmissionDrain stops admission at its deadline and kills after the grace
+expires or children drain; stage() computes remaining time as deadline+grace
+for the whole-library drain stage and passes that admission deadline/grace
+to the guard. Thus the current behavior may continue until17:15, whereas the
+user instruction and canonical plan require checking to stop by17:00.
+This is a concrete configured-boundary mismatch, not evidence that a future
+overrun has already happened. Root reported the mismatch and does not approve
+the extra window, modify foreign source/configuration, stop/rebind any process
+or launch a substitute. The main paper and all completed numerical results
+remain unchanged pending the actual scoped ledger.

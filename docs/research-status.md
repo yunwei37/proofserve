@@ -78,6 +78,13 @@ terminal remains preserved alongside verified retired handoff. Root observed
 the last collector PID absent and has not launched corpus checking.
 O retired at 12:20:12 UTC; its controller and child were observed absent.
 M's subsequent built-artifact result remains pending and must stop by 17:00.
+At 12:56 UTC root read the actual corpus controller3031196/birth25134889
+and verified it live, native e000ed62, driver616adf85, phase running.
+Its actual configuration says admission deadline17:00 with900 seconds drain;
+corpus.py permits the stage/guard to run until deadline+drain (17:15).
+That differs from the user's required17:00 stop. Root has reported the
+mismatch, has not changed foreign execution, and does not approve an extension.
+No completed supplementary scope or new scientific result is inferred.
 Partial/not-attempted
 checking remains supplementary. Root targets integration by 18:00 and closure
 by 20:00. No PlanarPacking comparison or root replacement measurement queue.
