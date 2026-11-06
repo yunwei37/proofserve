@@ -81,6 +81,7 @@ def run(a):
     m=json.loads(a.manifest.read_text())
     segment=getattr(a,"segment",1)
     if segment==2 and not(a.resume_from and a.admission_deadline and a.drain_deadline):raise ValueError("segment 2 requires explicit prior run and both UTC deadlines")
+    if segment>=3 and(not a.resume_from or a.admission_deadline or a.drain_deadline):raise ValueError("eligible-work continuation requires prior records and no UTC deadlines")
     admission_deadline=__import__("datetime").datetime.fromisoformat(a.admission_deadline).timestamp() if getattr(a,"admission_deadline",None) else None
     drain_deadline=__import__("datetime").datetime.fromisoformat(a.drain_deadline).timestamp() if getattr(a,"drain_deadline",None) else None
     environment_ready=False;environment_reason=None
@@ -132,8 +133,8 @@ def run(a):
         identity.update(measurement_commit=a.commit,controller_source_sha256=sha(__file__),
             adapter_source_sha256=sha(Path(native.__file__)),
             protocol_rules=dict(reserve_GiB=8,response_slack_GiB=1,sample_seconds=1,disk_stop_fraction=.85,native_retries=1,resource_retry="drain_to_exclusive_then_record_current_headroom_failure"))
-    if segment==2:
-        identity.update(segment=2,resume_from=str(Path(a.resume_from).resolve()),admission_deadline_utc=a.admission_deadline,drain_deadline_utc=a.drain_deadline,admission="actual_cgroup_future_peak_reserve12GiB_user_deferred_families",resource_retry="resource_family_deferred_by_user_with_dependent_closure",deferral="observed_memory_families_plus_PadicHodge_and_descendants")
+    if segment>=2:
+        identity.update(segment=segment,resume_from=str(Path(a.resume_from).resolve()),admission_deadline_utc=a.admission_deadline,drain_deadline_utc=a.drain_deadline,admission="actual_cgroup_future_peak_reserve12GiB_user_deferred_families",resource_retry="resource_family_deferred_by_user_with_dependent_closure",deferral="observed_memory_families_plus_PadicHodge_and_descendants")
     if not a.execute:print(json.dumps(dict(prepared=(a.functional or environment_ready),execute=False,modules=len(mods),dependency_inputs_ready=(environment_ready and not missing_external),environment_export_verified=environment_ready,environment_error=environment_reason,missing_external_artifacts=missing_external,protocol=identity)));return
     if not a.functional:
         version=subprocess.check_output([m["lean_binary"],"--version"],text=True).strip()
@@ -216,11 +217,11 @@ def run(a):
         measurement_commit=a.commit,segment=segment,toolchain=dict(lean=m["lean"],binary=m["lean_binary"]),
         attempts=dict(collections.Counter(r["module"]for r in previous)),continue_native_failures=True,memory_preempt_requeue=True,functional_only=(a.functional or bounded),
         native_wall_s=30 if a.functional else None,maximum_charge_bytes=(11*2**30 if bounded else 8*2**30 if a.functional else None),validation_deadline=deadline,discard_c=getattr(a,"discard_c",False),full_census_run=not(a.functional or bounded))
-    if segment==2:
-        c.update(validation_deadline=time.monotonic()+max(0,drain_deadline-time.time()),validation_deadline_reason="segment2_drain_deadline",reserve_kill_GiB=10)
+    if segment>=2:
+        c.update(validation_deadline=(time.monotonic()+max(0,drain_deadline-time.time()) if drain_deadline is not None else None),validation_deadline_reason="segment2_drain_deadline",reserve_kill_GiB=10)
     engine=native.Gate(c,out);scopefile.write_text(str(engine.cg))
-    policy=Policy(previous)if segment==2 else None
-    ready_by_family=Ready()if segment==2 else None
+    policy=Policy(previous)if segment>=2 else None
+    ready_by_family=Ready()if segment>=2 else None
     last_admission={}
     engine.seq=max([r["sequence"]for r in previous]+[int(p.name)for p in (out/"attempts").glob("*")if p.name.isdigit()]+[0])
     configuration={n for n,r in mods.items()if Path(r["source"]).name=="lakefile.lean"}
@@ -235,7 +236,7 @@ def run(a):
         for parent in remaining[n]:children[parent].add(n)
     def make_ready(n):
         if n in pending and n not in queued and not remaining[n]:
-            (ready_by_family.push(n)if segment==2 else heapq.heappush(ready_heap,n));queued.add(n)
+            (ready_by_family.push(n)if segment>=2 else heapq.heappush(ready_heap,n));queued.add(n)
     def defer_family(prefix,reason,trigger=None):
         stamp=utc()
         added=0
@@ -260,13 +261,13 @@ def run(a):
         if missing:
             blocked[n]=dict(status="blocked",module=n,failed_dependencies=[],missing_external=missing);pending.discard(n)
     for n in sorted(failed|set(blocked)):fail_dependents(n)
-    if segment==2:
+    if segment>=2:
         prefixes={"OAI.NumberTheory.PadicHodge","OAI.Combinatorics.Ramsey.CycleClique.Construction","OAI.AlgebraicGeometry.Crystalline.Cohomology.BigCrystalline"}
         prefixes.update(r["module"].rsplit(".",1)[0]for r in previous if r.get("interruption")in RESOURCE)
         for prefix in sorted(prefixes):defer_family(prefix,"user_requested_postponement_of_observed_memory_family")
         (out/"deferred-summary.json").write_text(json.dumps(dict(utc=utc(),prefixes=sorted(prefixes),deferred_modules=len(deferred),inherited_completed=len(done),remaining_eligible=len(pending)),indent=2))
     for n in sorted(pending):make_ready(n)
-    active_modules=set();progress_last=(len(done)/max(1,len(mods)-len(configuration)))if segment==2 else 0
+    active_modules=set();progress_last=(len(done)/max(1,len(mods)-len(configuration)))if segment>=2 else 0
     first100_done=(out/"first100-audit.json").exists()
     segment_done=sum(r["status"]=="completed"and r.get("segment",1)==segment for r in previous)
     def next_ready():
@@ -275,7 +276,7 @@ def run(a):
             n=next((n for n in sorted(solo)if n in pending and n not in active_modules and not remaining[n]),None)
             if n is not None:last_admission=dict(exclusive_after_second_resource_failure=True,active_at_launch=len(engine.live))
             return n
-        if segment==2:
+        if segment>=2:
             n,state=ready_by_family.take(lambda n:n in pending and n not in active_modules and not remaining[n],lambda n:policy.decide(n,engine,native.mem()[1]))
             if n is not None:queued.discard(n);last_admission=state
             return n
@@ -287,7 +288,7 @@ def run(a):
         checked=[r for r in previous+engine.rows if r["status"]=="completed"and r.get("segment",1)==segment][:100]
         missing=[]
         fields=["pool","user_cpu_s","system_cpu_s","wall_s","peak_rss_kib","source_sha256","source_revision","measurement_commit","attempt","start_utc","end_utc"]
-        if segment==2:fields+=["segment","active_at_launch","admission"]
+        if segment>=2:fields+=["segment","active_at_launch","admission"]
         for row in checked:
             for key in fields:
                 if key not in row or row[key]is None:missing.append([row["module"],key])
@@ -330,7 +331,7 @@ def run(a):
                     if solo:break
                     _,available=native.mem()
             if not engine.live:
-                if pending and segment==2:
+                if pending and segment>=2:
                     engine.collect(wait=1);continue
                 if pending:stop="memory_admission"if available<9*2**30 else"dependency_cycle_or_unresolved_context"
                 break
@@ -344,7 +345,7 @@ def run(a):
                     for child in children.get(n,()):
                         if child in pending:remaining[child].discard(n);make_ready(child)
                 elif row.get("interruption")in {"memory_reserve","cgroup_memory_oom"}:
-                    if segment==2:
+                    if segment>=2:
                         defer_family(n.rsplit(".",1)[0],"new_memory_interruption_family_deferred",trigger=n)
                         continue
                     resource_retries[n]+=1
@@ -359,13 +360,13 @@ def run(a):
                     if fails[n]>=2:
                         failed.add(n);pending.discard(n);solo.discard(n);fail_dependents(n)
                     else:make_ready(n)
-            if not(a.functional or bounded)and (segment_done if segment==2 else len(done))>=100 and not first100_done:
+            if not(a.functional or bounded)and (segment_done if segment>=2 else len(done))>=100 and not first100_done:
                 first100_audit();first100_done=True
             fraction=len(done)/max(1,len(mods)-len(configuration))
             for milestone in [.1,.5]:
                 if progress_last<milestone<=fraction:
                     append(out/"milestones.jsonl",dict(utc=utc(),fraction=milestone,successful=len(done),failed=len(failed),blocked=len(blocked),
-                        available_bytes=native.mem()[1],disk_used_fraction=1-os.statvfs(out).f_bavail/os.statvfs(out).f_blocks,protocol_changed=(segment==2),segment=segment))
+                        available_bytes=native.mem()[1],disk_used_fraction=1-os.statvfs(out).f_bavail/os.statvfs(out).f_blocks,protocol_changed=(segment>=2),segment=segment))
                     progress_last=milestone
         engine.drain()
         for n in pending:blocked[n]=dict(status="not_attempted",module=n,reason=stop)
@@ -385,7 +386,7 @@ def run(a):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--manifest",type=Path,required=True);p.add_argument("--out",type=Path,required=True)
-    p.add_argument("--segment",type=int,choices=[1,2],default=1);p.add_argument("--resume-from",type=Path);p.add_argument("--admission-deadline");p.add_argument("--drain-deadline")
+    p.add_argument("--segment",type=int,choices=[1,2,3],default=1);p.add_argument("--resume-from",type=Path);p.add_argument("--admission-deadline");p.add_argument("--drain-deadline")
     p.add_argument("--pool",choices=["22","P8"],default="22");p.add_argument("--execute",action="store_true")
     p.add_argument("--discard-c",action="store_true",help="retain durable C hash/bytes, then unlink successful generated C; olean products stay");
     p.add_argument("--validate-subset",action="store_true",help="explicit non-measurement real-corpus closure: CPUs 10-16, one worker, <=2000 modules, <=6h; still requires --execute");
