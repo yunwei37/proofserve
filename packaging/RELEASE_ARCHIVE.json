@@ -1,0 +1,33 @@
+{
+  "observed_utc": "2026-11-06T18:28:53.517479+00:00",
+  "archive": "/workspaces/.agent-state/proofserve-o-line/freeze-e000ed62-20261105/final/prepared/proofserve-0.1.0-linux-x86_64.tar.gz",
+  "filename": "proofserve-0.1.0-linux-x86_64.tar.gz",
+  "size_bytes": 954865527,
+  "sha256": "5c49603e3f8e34b72b89e7959b00a74fbcc910c534da90dcb342dae01381da61",
+  "sha256_role": "Requested release provenance only; no new installation or acceptance gate",
+  "embedded_metadata": {
+    "version": "0.1.0",
+    "source_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+    "build_observed_head": "818f74229434b888702a2d72b370cb2e07c79b36",
+    "platform": "linux-x86_64",
+    "lean_toolchain": "leanprover/lean4:v4.34.1",
+    "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+    "source_worktree_dirty": false,
+    "python_requirement": "3.11+",
+    "build_libc": [
+      "glibc",
+      "2.41"
+    ],
+    "input": "compiled Lake project; no source checkout or build-host paths required"
+  },
+  "embedded_checker_binary": {
+    "path": "proofserve-0.1.0-linux-x86_64/libexec/proofserve-check",
+    "size": 123186968,
+    "matches_qualified_frozen_binary": true
+  },
+  "qualified_source_files_equal_to_git_archive": 169,
+  "frozen_checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "prepared_tool_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+  "platform_scope": "Locally qualified Debian13 GNU libc2.41 Linux x86_64 archive, not an Ubuntu22.04/glibc2.35 binary promise",
+  "published": false
+}

@@ -31,6 +31,29 @@ Full-closure and official local-root costs are [reported separately](data/extern
 Version 0.1.0 is prepared, not published. Other toolchains use a matching
 official checker when available or fail explicitly; no silent migration occurs.
 
+## Final measurements and coverage
+
+With the same native ledger, 1→8 workers reduced median wall time by **1.697×**
+for Nat.Basic (1,330-module closure), **2.140×** for Grid and **1.727×** for
+Barrier, three repeats each. These are within-tool speedups; Nat.Basic is not
+all Mathlib. [Final matrix and incomplete cells](checker/results/release-e000ed62bbf4/matrix/README.md).
+
+Three external projects, including an upstream-described AI-generated collection,
+accepted all **126 common local roots**. Native checks full closures while
+official default trusts imports, so **no equal-obligation official speedup is
+established**. [Final costs](data/external-projects/e000ed62-final/README.md).
+
+The supplementary library run certified only **968/162,170 requested source
+modules**, in 15 complete batches (12,756 closure modules including dependencies).
+The other 161,202 requests are uncertified; provisional events are not completed
+verification. There is no whole-library verdict or cost extrapolation.
+[Certified and unfinished scope](checker/results/release-e000ed62bbf4/corpus/README.md).
+
+The exact prepared archive is locally qualified on Debian13/glibc2.41;
+the Ubuntu release workflow creates a different artifact.
+[Archive identity](packaging/RELEASE_ARCHIVE.json) ·
+[Operator release checklist](packaging/RELEASE_CHECKLIST.md).
+
 ## Install without cloning
 
 Use the prepared release archive and its installer:

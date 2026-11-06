@@ -74,13 +74,12 @@ that every serialized proof replays in its original module context.
 --strict-theorem-bodies isolates differing bodies and dependent contexts. It
 matches the supplied artifact-context controls, but is not universal parity
 for malformed metadata and does not override unsupported native evaluation.
-In the retained 3,793-module Grid preview, the historical e155 isolation
-strategy used 3,465 module-local replays versus 157 with replacement default
-(22.07×), and 3,508.94 attempt CPU seconds versus 1,507.06 (2.33×).
-The old isolation run includes an interruption and its clocks are separate.
-The new strict implementation also checks skipped duplicate bodies explicitly;
-it has not been rerun on Grid. These are historical, background-load previews,
-not a measured current strict-mode multiplier or official speed comparison.
+The final three-repeat Nat.Basic strict point at eight workers costs 4.227×
+wall and 2.501× CPU versus default eight workers (276.053 / 283.782 s).
+Strict Grid timed out at 1,800.010 wall seconds; no strict repeat completed,
+so no Grid strict multiplier is available. The older 22.1× replay/2.33×
+attempt-CPU preview concerns superseded isolation, not the current multiplier.
+[Final policy costs](../checker/results/release-e000ed62bbf4/matrix/README.md).
 
 Additional limits remain:
 
@@ -106,21 +105,45 @@ Additional limits remain:
   14,401 available module-local references; 320 references remain absent.
   That historical ABI does not qualify the frozen ABI 6 checker or whole corpus.
 
-## Release qualification and remaining gates
+## Final qualification, measured scope and publication decisions
 
-The frozen native source and supplied regression outcomes are documented in
-[theorem-body-policy](../checker/results/theorem-body-policy/).
-[This completed package preview](FREEZE_E000ED62.md) rebuilt that immutable
+The [frozen package preview](FREEZE_E000ED62.md) rebuilt the immutable e000ed62
 snapshot, relocated the archive, and passed the existing valid/invalid/version
-controls and all three external projects on CPU 8–9. The fresh image passed
-build-time and standalone network-disabled controls without host mounts.
-Both archive and image verified strict-mode forwarding and the three existing
-bad-proof categories. All costs remain previews during W's ongoing census.
-Historical archive/image passes stay pinned to their original versions.
+controls and three external projects. The fresh image passed build-time and
+standalone network-disabled controls without host mounts. Functional preview
+costs remain ineligible as final timing; image caches were later reclaimed.
 
-After the preview completes, final external timing uses a freshly installed
-archive of the committed launcher/audit and the same qualified frozen checker.
-Only external cells acquire the existing P-core lock, after M's final matrix.
-Container/correctness work is already qualified before that two-hour window.
-No publication follows automatically: tags, registry uploads and announcements
-still require the user's release decision.
+Final native 1→8-worker wall speedups are 1.697× for Nat.Basic (a 1,330-module
+closure, not all Mathlib), 2.140× for Grid and 1.727× for Barrier, three repeats
+per point. They compare the same input ledger within the tool. Official
+default/fresh have different obligations. The finite matrix has unattempted
+and incomplete cells; [the report](../checker/results/release-e000ed62bbf4/matrix/README.md)
+defines its actual scope. No equal-obligation official speedup is inferred.
+
+The [final external run](../data/external-projects/e000ed62-final/README.md)
+completed all three projects in a freshly installed archive from runtime
+818f7422, with the e000ed62 binary and new checkpoints. All 126 common local
+roots agreed with official default. Native closures are 754/2368/10753 modules
+versus official 105/12/9 roots. This does not establish an equal-obligation
+speedup or whole-closure equivalence. Background workloads remained active;
+the machine was not exclusively idle.
+
+The built-subset campaign certified only **968/162,170 requested source
+modules** in 15 complete batches (12,756 closure modules including dependencies).
+Provisional segment events do not certify an unfinished batch; 161,202 requests
+remain uncertified. Exit 124 was operational cutoff, not kernel rejection.
+The 926 deferred unbuilt sources were outside the request. Neither whole-corpus
+acceptance parity nor whole-corpus cost is established.
+[Certified and provisional scope](../checker/results/release-e000ed62bbf4/corpus/README.md).
+
+Receipts report axiom declaration inventories, not minimal used-axiom closures
+or sorry-free guarantees. Source digests/Git metadata provide provenance, not
+source-to-artifact correspondence. Document synchronization adds no checker
+change or new measurement.
+
+The [retained archive](RELEASE_ARCHIVE.json) is Debian13/glibc2.41-qualified.
+The Ubuntu22.04 workflow build is a separate artifact, not the same bytes.
+The [release checklist](RELEASE_CHECKLIST.md) lists pending public actions.
+Pushing a v* tag triggers portable preparation and automatic crates publication:
+a tag-only approval does not authorize the latter. No public release, crate
+upload, image push or announcement has been executed.

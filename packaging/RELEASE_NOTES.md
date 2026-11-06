@@ -1,197 +1,141 @@
-# ProofServe 0.1.0 — prepared, not published
+# ProofServe 0.1.0 — final materials, not published
 
-Scope: independent Lean project checking and audit. The existing Kimina
-service remains available; no service feature was added in this closeout.
+Review: 自审. Frozen native checker **e000ed62bbf4b9c420bd99d0273a5d21829b4edc**,
+Lean **4.34.1**, ABI6 / independent-closures-v8. Measured archive runtime:
+**818f74229434b888702a2d72b370cb2e07c79b36**. Later documentation commits are not
+substituted as its build provenance. All finite campaigns ended; not every
+planned point or requested module completed. No public release action occurred.
 
-**Checker source is frozen at e000ed62; the new package/container functional
-preview passed.** Final quiet-machine external timing is still pending.
-Older results below remain historical and cannot be relabelled as current. [Current policy and trust boundary](INTERFACES.md#frozen-checker-boundary).
+## Product and CLI migration
 
-## Added
+check PROJECT checks requested compiled-root dependency closures with the
+original kernel, parallel workers, local checkpoints and receipt v1. Source
+must already be built; default roots do not cover every source file.
+audit PROJECT reports static coverage, explicit computation syntax, optional
+supplied costs and compiled evidence; unavailable information stays explicit.
+serve keeps the Kimina-compatible behavior. The former candidate JSONL check
+command is now batch; no service feature was added.
 
-- Project check/audit CLI entrypoints that preserve backend receipts,
-  diagnostics, Unix signals and exit codes.
-- A relocatable Linux x86_64 bundle recipe with the original matching
-  Lean 4.34.1 SDK, checker, audit and a one-command installer.
-- Explicit official-toolchain fallback for a different declared project version;
-  an unavailable matching toolchain is an error, never an automatic migration.
+Bundle: original matching SDK/checker/audit, Linux x86_64, Python 3.11+.
+cargo install provides the Rust launcher/service, not the complete SDK.
+Different declared Lean versions use their matching official toolchain when
+available or fail explicitly. No silent migration or download occurs.
 
-## CLI migration
+## Final native matrix
 
-The former candidate JSONL check command is now batch. proofserve check PROJECT
-means independent project checking. HTTP /check is unchanged.
+Median seconds, three completed repeats per point. Same native input ledger;
+**within-tool speedups, not speedups over official leanchecker**.
+Nat.Basic is a 1,330-module closure, **not all Mathlib**.
 
-## Historical qualification (not current freeze acceptance)
+| Closure | 1-worker wall | 8-worker wall | 1→8 wall speedup | CPU, 1 / 8 |
+| --- | ---: | ---: | ---: | ---: |
+| Nat.Basic (1,330) | 110.809 | 65.312 | 1.697× | 110.246 / 113.455 |
+| Grid (3,793) | 753.992 | 352.349 | 2.140× | 751.162 / 835.761 |
+| Barrier (4,449) | 735.591 | 425.906 | 1.727× | 732.639 / 766.344 |
 
-Passed: real954665072-byte archive assembly, extraction into an independent
-installation prefix, project check/audit and three malformed-proof rejections.
-The actual test uses a compiled two-module project, not a performance workload.
-Tool sources and retained failure corrections are in qualification-local.json.
+Nat.Basic/Grid also completed 2/4-worker points; Barrier 2/4 were not planned.
+Of 71 planned cells, 61 attempts returned:10 unattempted and two incomplete.
+No partial sample fills a median. [Final matrix](../checker/results/release-e000ed62bbf4/matrix/README.md), commit 818f7422.
 
-The Ubuntu22.04 portable-release workflow41725630396 also passed on commit5de37517:
-source tests, source-package dry-run, native checker contracts, standalone
-archive installation, project check/audit, official default/fresh controls and
-three actual malformed-proof rejections. See qualification-ci.json. It uploaded
-Actions build artifacts only; it did not create a public release or registry upload.
+Strict Nat.Basic at 8 workers costs **276.053 wall /283.782 CPU s**:
+**4.227× wall /2.501× CPU** versus default 8. Strict Grid timed out124 after
+**1,800.010 wall s**, with 1,803.564 cgroup CPU s. No strict Grid repeat completed;
+the other two were not run. No completed-run Grid strict multiplier exists.
 
-Passed: complete Docker image build and network-disabled self-test on11835a92
-(run41724086160), with the same 4.34.1 SDK, Mathlib and rebuilt REPL. Both
-full-Mathlib service imports, accepted/rejected/sorry responses, installed project
-check/audit and mismatched-version error passed. Exact controls and CI-runner
-observations are in qualification-container.json. The old prepared-parent timeout
-is retained as a historical failure; this image uses the stock fresh REPL and
-does not claim to repair or qualify that optional prepared adapter.
+Stock default trusts imports; --fresh replays a final constant environment,
+not the complete module-local proof ledger. Discovery also differs.
+Their observations do not establish an equal-obligation official speedup.
 
-Passed: all three installed-tool external check/audit cases, including the publicly
-AI-assisted CrocSwap case. Common local acceptance IDs match official leanchecker;
-imported-proof obligations differ. CrocSwap needed a disclosed manifest-name
-repair and a one-worker official runtime fallback after retained RSS stops.
-See [external results](../data/external-projects/results.md). Backend malformed-proof CI also passed.
-Those external defaults retain their C8 executable pin; its superseded no-split
-ablation cells do not enter the replacement formal matrix. No old timing is
-silently relabelled with the latest release commit.
+## Final installed-package external evaluation
 
-Latest portable archive qualification41740681358 passed onadf816ae, including
-actual relocation and three original-kernel rejection controls. The current
-Docker qualification41740685837 also passed on the sameadf816ae source: full
-Mathlib imports, accepted/rejected/sorry responses, installed project check/audit
-and explicit version-mismatch rejection, with networking disabled for the final
-test. Raw controls are retained alongside the earlier11835a92 image result.
+All 3 projects and 9 native/official/audit arms completed in **52.42 minutes**,
+with fresh checkpoints, one worker and n=1 per arm. No interrupted preview
+cost was reused.
 
-Pending: same-proof-obligation performance conclusions from checker/results/.
-No performance improvement over official leanchecker is advertised before
-those published-form measurements are complete.
+| Project | Native closure / official roots | Native CPU / wall s | Official CPU / wall s |
+| --- | ---: | ---: | ---: |
+| Newspeak | 754 /105 | 109.055 /110.639 | 38.637 /38.736 |
+| Solar | 2,368 /12 | 167.209 /169.321 | 5.512 /5.539 |
+| samuelburbulla/proofs | 10,753 /9 | 2,481.041 /2,579.748 | 37.377 /40.993 |
 
-The launcher change passed11local CLI contracts (8existing lifecycle/resource
-contracts,3project-dispatch contracts). They are not native proof correctness
-or a performance result. Raw logs remain on the research PVC.
+All **126 common local roots** agree. **No same-obligation external speedup or
+full-closure official equivalence is established**: native checks the closure;
+official default trusts imported proofs.
+[Final data/pins](../data/external-projects/e000ed62-final/README.md), commit 0516279d.
 
-Research data and complete Git history are retained. See repository-size.json
-for pinned HEAD logical size, full reachable-history logical size and live
-.git allocation; these are distinct measurements, not interchangeable
-download sizes. No history rewrite, release, tag or registry upload occurred.
+AI upstream says “AI generated proofs of open math problems”: a repository-wide
+claim, with per-proof/model/human-editing fractions undisclosed, not an independent
+authorship audit. Audit coverage: Newspeak 105/105, Solar 12/32 (20 outside the
+static default graph), AI 9/9. Lexical proxies are not executions/cost estimates.
+Source binding/minimal used-axiom closure are not established.
 
-Rust full-workspace tests, doctests, clippy and release build passed locally. All four crates passed cargo publish --workspace --dry-run --locked. Engine CI41723961875 passed, including real original-kernel checker/resume/bad-proof and legacy service contracts. No package was uploaded.
+Timings used P0–7/shared lease; preparation E8–9, no Lean -M.
+zettai-dev/agentsight-dev kept running; not an exclusively idle host.
+The 12 GiB external policy remained; AI recorded 888 memory.max events, no OOM/kill.
 
-## Freeze preparation update
+## Supplementary corpus check: incomplete certified prefix
 
-The CLI forwards --root-file and --closure-roots to the original checker.
-Installed-archive qualification now exercises independent closure batches,
-resume, receipt-v1 integer/string types and unchanged diagnostics. A maintainer
-can run packaging/freeze.py for one-command archive/container/external-project
-qualification; --preview remains distinct from final system evaluation.
+Certified **968/162,170 requested built source modules** in **15 complete
+batches**, with **12,756 closure modules** including dependencies.
+**161,202 requests are uncertified**. Another 271 complete-segment accepts and 217
+in-flight accepts are provisional; one header has no verdict. No kernel rejection
+was reported. Operational deadline exit124 keeps collection completion false.
 
-CI execution audit is ci-execution-audit.json. A green ordinary push does not
-mean its manual-only container job ran. All publication remains pending.
+Native cgroup cost: **16,194.749 CPU /16,530.349 wall s**, including unfinished
+work; neither completed-corpus cost nor extrapolation. Requests excluded 926
+user-deferred unbuilt sources and one lakefile configuration unit. The prefix
+is dependency-order-dependent, not representative.
+[Exact coverage](../checker/results/release-e000ed62bbf4/corpus/README.md),
+commit 5f491682. A successful segment is not a completed batch receipt.
 
-The3a56405f installed-bundle preview actually passed the root-file path with
-spaces, independent closure batches, resumed batches, and receipt-v1 decimal
-UInt64/integer fields. Its three malformed-proof controls all reached original
-kernel diagnostics and were rejected. The local workspace Rust tests, clippy,
-source-package dry-run for all four crates, frozen Lean contract and20 audit
-tests passed. See ci-execution-audit.json for separately verified CI execution;
-six local legacy native-REPL tests remain ignored and are covered by that CI
-job, not counted as local native runs.
+## Trust and known differences
 
-The source-size snapshot and an actual public depth-one clone are documented
-in REPOSITORY_SIZE.md. A shallow clone still occupies6.55GiB including its Git
-object store; the standalone bundle avoids cloning retained research data.
-Nothing was moved or removed to obtain that measurement.
+Trust includes original kernel, adapter/toolchain, reported axioms and protected
+local checkpoints. Default shared-checked can accept a crafted proof depending
+on another module's theorem body that official original-context replay rejects;
+the proposition follows from checked dependencies and reported axioms.
+Strict matches the supplied controls, not universal hostile-artifact parity.
 
-The earlier 3a56405f CPU 8–9 freeze preview completed, including a full fresh image build,
-network-disabled image-build controls, image export/load, and the same controls
-in a standalone container with no host directory mounts. Both full-Mathlib
-requests, native accepted/rejected/sorry responses, installed project check/audit
-and mismatched-version error passed. Temporary builder cleanup returned 0 and
-the private test daemon and its runtime processes retired. See
-qualification-freeze-preview.json for source/checker pins, controls and image ID.
-The image is local preparation only; nothing was pushed to a registry.
+Local certificates/serialized environments are editable trusted state, not
+portable cryptographic proofs. Noncryptographic identities detect ordinary
+staleness, not forged metadata/collisions. Inputs must stay stable.
+Incomplete/operational results do not certify the request; Git/source digests
+do not bind source to artifacts. No sandbox for arbitrary hostile binaries.
 
-The retained first attempt hit the smoke script's5GiB RSS override at about
-5.37GiB, rather than the 180-second request timeout. The corrected **test-only**
-8GiB service budget passed inside the10 GiB builder and11 GiB runtime container;
-the O capture tree stayed below its12 GiB ceiling. No production default was
-changed. The first corrected build-time Mathlib request took about 69 seconds;
-this is a functional-preview observation, not a system-performance figure.
+Open-parameter reduceBool/reduceNat mentions work; closed/higher-order native
+evaluation may be refused. --official is not a guaranteed IR workaround.
+Incomplete required module parts are refused. Axiom fields are declaration
+inventories, including sorryAx/compiler/runtime names, not minimal used-axiom
+closures or sorry-free guarantees. [Boundary](INTERFACES.md#frozen-checker-boundary).
 
-The replacement external set is Newspeak, Solar and upstream explicitly
-AI-generated samuelburbulla/proofs. All installed checks/audits and official
-common-local-root comparisons completed. Its nine project roots are accepted
-within a 10,753-module native closure. Two bounded preview interruptions remain
-recorded; complete end-to-end AI cost is unknown. Final timing still requires
-fresh checkpoints, committed checker freeze and a quiet evaluation machine.
-The current archive records dirty preview inputs, not an immutable final release.
+## Exact qualified archive
 
-## Frozen checker update — 2026-11-05
+- File: **proofserve-0.1.0-linux-x86_64.tar.gz**
+- Size: **954,865,527 bytes**
+- SHA-256: **5c49603e3f8e34b72b89e7959b00a74fbcc910c534da90dcb342dae01381da61**
+- Embedded Lean 4.34.1 / checker e000ed62 / runtime818f7422; dirty=false.
+- Native executable equals the qualified frozen binary; 169 qualified source
+  files match Git's e000ed62 snapshot.
+- **Debian13/glibc2.41-qualified only**. Older-glibc compatibility is unverified.
+  Ubuntu22.04 workflow output is a distinct artifact with separate provenance.
 
-The earlier review defects have recorded repairs; the replacement native freeze
-is e000ed62bbf4b9c420bd99d0273a5d21829b4edc, child ABI 6 and independent closures
-v8. Old checkpoint state requires a fresh directory. Native receipts add
-theorem_body_policy: shared-checked by default, strict with
---strict-theorem-bodies; official fallback reports official-fresh.
-The CLI forwards the strict flag unchanged.
+[Archive path/provenance](RELEASE_ARCHIVE.json). SHA-256 is requested publication
+provenance, not a new install/acceptance gate. Embedded documentation stays
+at 818f7422; these notes are its updated sidecar, not a mutated measured tarball.
 
-Default mode proves statements in a shared kernel-checked environment. A crafted
-artifact depending on another module's theorem body can be accepted even when
-official original-context proof replay rejects it. The statement still follows
-from checked proofs relative to reported axioms. Strict mode preserves the
-supplied artifact-context controls, with the unsupported-input limits disclosed
-in [INTERFACES](INTERFACES.md#frozen-checker-boundary).
+## Functional qualification and pending public decisions
 
-Historical Grid isolation used 22.1× as many module-local replays and 2.33×
-attempt CPU versus the replacement default preview. The historical run was
-interrupted, and the current strict implementation has not been remeasured;
-neither number is a current strict-mode or official speedup result.
+Frozen archive/container preview passed relocation, check/audit, strict/default
+forwarding, version refusal and all 3 existing kernel-rejection classes.
+Cold image and standalone network-disabled tests included two Mathlib imports
+and accepted/rejected/sorry responses. [Evidence](FREEZE_E000ED62.md).
+Image caches were reclaimed; retained evidence is not an available image.
 
-Direct open-parameter native primitive mentions now work. Closed/higher-order
-native evaluation can still fail explicitly; --official is not a guaranteed
-IR workaround. Incomplete required artifact parts are refused and stock default
-and --fresh may differ. All local checkpoints remain trusted state.
+Procfs ESRCH race fixed at 7a931ad9: 102 local Rust tests, fmt/clippy, four crate
+dry-runs; CI separately ran 6 native tests. Ordinary push CI skips its manual-only
+container job; a green push alone does not qualify an image. Historical
+passes/failures retain their pins in qualification JSONs.
 
-The new installed-bundle/container and external-project controls are previews,
-not final quiet-machine system timing. Final external measurement follows M's
-matrix and uses fresh checkpoints; the full build census is allowed to finish.
-Nothing here tags, publishes to crates.io or pushes an image.
-
-## Completed e000ed62 functional acceptance
-
-The CPU8–9 preview finished on 2026-11-05, without the P-core lock.
-[Acceptance report](FREEZE_E000ED62.md) and
-[small qualification record](qualification-e000ed62-preview.json) identify the
-frozen checker, dirty packaging inputs, controls, image metadata and raw path.
-
-Passed: new archive installation/relocation; check/audit; the three existing
-kernel-rejection classes; explicit version refusal; default and strict
-theorem_body_policy, ABI6 and per-module/operational fields; a cold full image
-build and a standalone network-disabled run without host mounts. Both container
-phases exercised the same existing three bad-proof categories and strict flag.
-
-Local Rust tests: 100 passed, 6 legacy native-REPL tests ignored; clippy, fmt,
-release build and all four crate dry-runs passed. The frozen checker executed
-the existing 90- and 142-command suites and core contracts; audit ran20 tests.
-The frozen-source CI jobs separately executed native/checker contracts; its
-container job was skipped and is not counted as this image qualification.
-
-Newspeak, Solar and the upstream explicitly AI-generated samuelburbulla/proofs
-all completed installed-tool check/audit and official common-root comparisons.
-Native closures contain754 /2368 /10753 modules; official common roots
-contain105 /12 /9. The equal common-root acceptance sets are not equal-obligation
-full-closure performance comparisons. Solar reports20 omitted source modules.
-AI required two bounded preview interruptions: its full CPU cost is unknown,
-and the tail invocation is never substituted for whole-case cost.
-
-All measured costs are previews; source/checker pins and scope accompany the
-small CSV/JSON in data/external-projects/e000ed62-preview/. O's sampled owned
-capture peak was7.524GiB within12GiB. Temporary builder/daemon retirement was
-verified and no owned native runtime remained.
-
-This Debian13 development archive records its actual libc in metadata; it is
-not advertised as the Ubuntu22.04/GNU libc2.35 public build. The existing
-release workflow builds that target. Nothing has been tagged or published.
-
-The prepared --final command uses fresh checkpoints and a new archive install,
-with one global two-hour bound and no extra shorter per-project cutoff.
-Planning reserve is95–115minutes based on92.9minutes of accumulated E8–9
-preview command intervals plus preparation/contingency, not a measured P-core
-speed claim. Cold container/full-contract preparation is outside that window.
-The final run follows the completed census and M's final matrix.
+Readiness: **conditional on the user's public release decisions**, including ABI
+scope and coupled tag/crates effects. [Release checklist](RELEASE_CHECKLIST.md).
+Research data/history stay in Git. Nothing has been tagged or published.
