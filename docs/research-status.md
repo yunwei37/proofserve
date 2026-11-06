@@ -45,8 +45,16 @@ remain included. Only separate protocol-specific P/E work lower bounds are
 reported. The total-instruction gate still failed; user-mode comparison was
 selected post hoc, not a replacement passing gate.
 
-The coordinator reports M running the final matrix; final matrix and external
-timing values have not yet been used in the system tables. O timing follows,
+Root now observed the actual matrix at
+checker-final-e000ed62-20261106T050828/matrix: controller2998979,
+birth22442843, running during the 05:52 UTC heartbeat, native e000ed62 and clean
+driver snapshot cc5bcc18. Final matrix/external values remain out of the paper.
+M's protected-background-condition.json records retained zettai-dev work
+using about one CPU core; its preflight was not a fully idle host.
+These actual conditions must accompany returned times/ranges; do not label
+this run fully idle or infer that source-census retirement removed all load.
+No background task was stopped or rebound by root.
+O timing follows,
 then M may check actually built artifacts until 17:00. Partial/not-attempted
 checking remains supplementary. Root targets integration by 18:00 and closure
 by 20:00. No PlanarPacking comparison or root replacement measurement queue.

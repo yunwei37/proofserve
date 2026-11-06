@@ -1024,3 +1024,31 @@ two figures / two tables / 14 references, zero evidence-placeholder macros,
 no overfull or undefined warnings. All six pages were visually reviewed,
 then final pages 2–6 were rechecked after keeping interval costs together.
 This is root visual/self verification, not independent paper review.
+
+### 6 November 2026: actual final-matrix launch and preserved background
+
+During the 05:52 UTC heartbeat root read M's current raw matrix metadata at
+/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828.
+matrix/phase-terminal.json says running/complete=false; controller.json records
+controller2998979/birth22442843, native e000ed62, the existing ABI6 binary,
+driver snapshot cc5bcc18 and driver_dirty=false/qualification=false.
+Root verified that exact live PID/birth. Returned Nat.Basic directories and
+receipts exist; Grid's first directory is present, but no completed final
+matrix or eligible final CSV was observed. These observations establish a
+real run, not completed performance results.
+
+M's preflight-background.json at 05:10:18 records CPU3 busy=1.0 and no native
+point started at that preflight instant. Its protected-background-condition.json
+at 05:11:21 records zero Workspace compilers, a preserved zettai-dev background
+workload, and observed_background_cpu_cores=1.002797033. M explicitly labels the
+host not fully idle and directs raw time/range reporting with that condition.
+The protected designation is M's record; root has not independently traced
+the foreign workload or its authorization history. Root does not stop,
+rebind, cap or alter that work, the matrix or any scheduling.
+
+Source-census retirement therefore must not be presented as full-host quiet
+qualification. Preserve the actual background condition and final owner
+designation when results return. No new rejection criterion, substitute run,
+native measurement or final performance value was added here. The prepared
+checker-built-subset-cc5bcc18 directory contains selection/roots/runner files,
+not evidence that corpus checking has started.
