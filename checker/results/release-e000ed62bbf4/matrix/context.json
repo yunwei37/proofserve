@@ -1,0 +1,82 @@
+{
+  "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "binary_hash": "14707787067517532260",
+  "driver_commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+  "stock_source_git_blob": "e6491d6e0a7fc9130b3b9ace89218e2f277100bf",
+  "lean": "4.34.1",
+  "workload_source": "4eaee87548250b2682affda7d05d947c05554bae",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "hardware": "phobos-vt Intel Core i9-14900K; 8 P cores, 16 E cores",
+  "measured_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "preparation_cpus": [
+    8,
+    9
+  ],
+  "no_Lean_M": true,
+  "lease": "/workspaces/.agent-state/gpu-smt-captures/pcore.lock",
+  "lease_returned": true,
+  "physical_retirement_verified_at": "2026-11-06T11:13:59.390831+00:00",
+  "matrix_start_birth_ticks": "22471802",
+  "original_six_hour_deadline_boottime_s": 246318.02,
+  "terminal_utc": "2026-11-06T11:13:18.575542+00:00",
+  "original_planned_cells": 71,
+  "returned_cells": 61,
+  "unattempted_cells": 10,
+  "native_complete_fixed_points": 45,
+  "official_successful_samples": 9,
+  "bad_original_kernel_rejections": 3,
+  "deliberate_interruptions": 1,
+  "per_cell_timeouts": 1,
+  "total_window_stops": 1,
+  "all_requested_cells_complete": false,
+  "finite_driver_changes": [
+    "Retained strict Grid timeout; did not repeat its two remaining planned attempts.",
+    "After stock default cost 407s, the current native cell completed before collector replacement at a verified empty-native boundary; prioritized controls and one sample per official mode before remaining repeats.",
+    "Same native binary, retained completed cells and original six-hour deadline."
+  ],
+  "protected_background": "zettai-dev remained running and unmodified. About one host P-core was observed before launch. No heavy compilation in the study Workspace; not an exclusively idle host.",
+  "legacy_metadata_notes": [
+    "Raw quiet final release evaluation label is qualified by the observed protected background.",
+    "Launch references original operator-stop record; last eligible census segment actually exhausted work at 2026-11-06T04:57:20Z.",
+    "Raw controller terminals retain their exit/error events. The separate verified handoff records retirement readiness while original-matrix completion stays false."
+  ],
+  "census": {
+    "commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+    "source_modules": 163096,
+    "built": 162170,
+    "deferred": 926,
+    "configuration_units": 1,
+    "scope": "Built subset only; no total-cost extrapolation"
+  },
+  "old_cancelled_capture": {
+    "path": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62/matrix",
+    "status": "Coordinator interrupted 2026-11-05T20:37Z; no returned native cells, no mixing"
+  },
+  "official_canonical_paths": {
+    "grid": {
+      "actual_olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/run/attempts/39785/OAI/Analysis/PlanarPacking/Grid.olean",
+      "additional_canonical_search_root": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/run/attempts/39785",
+      "reason": "Required by stock CLI symlink-resolving module-name discovery in the qualified frozen driver"
+    },
+    "barrier": {
+      "actual_olean": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/run/attempts/101744/OAI/MathematicalPhysics/Transonic/Certificates/BarrierData41.olean",
+      "additional_canonical_search_root": "/workspaces/.agent-state/gpu-smt-captures/workloads/census-22core-9389daff-20261104/run/attempts/101744",
+      "reason": "Required by stock CLI symlink-resolving module-name discovery in the qualified frozen driver"
+    }
+  },
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix",
+  "disk_used_percent_at_export": 71.27799859595724,
+  "corpus_status": "prepared-not-launched; wait for coordinator handoff after O external timings",
+  "release_preflight_launch_utc": "2026-11-06T05:08:28Z",
+  "first_native_command_record_utc": "2026-11-06T05:13:18.502790+00:00",
+  "whole_campaign_vs_native_window": "Artifact-binding preflight preceded the native six-hour matrix window. Neither preflight nor final export is included in individual native cell costs."
+}

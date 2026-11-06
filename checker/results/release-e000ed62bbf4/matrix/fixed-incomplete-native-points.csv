@@ -1,0 +1,2 @@
+dataset,arm,workers,planned_repeats,complete_repeats,status,repeats,modules,commit,native_commit,timeout_attempts,unattempted,wall_timeout_s,median
+grid,strict-theorem-bodies,8,3,0,incomplete,0,3793,e000ed62bbf4b9c420bd99d0273a5d21829b4edc,e000ed62bbf4b9c420bd99d0273a5d21829b4edc,1,2,1800.010274197004,not estimable: no completed strict Grid repeat

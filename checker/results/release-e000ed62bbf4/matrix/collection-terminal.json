@@ -1,0 +1,168 @@
+{
+  "complete": false,
+  "phase": "matrix",
+  "status": "collection_finished_with_incomplete_cells",
+  "original_planned_cells": 71,
+  "returned_cells": 61,
+  "failures": [
+    {
+      "key": "grid-P8-strict-theorem-bodies-r1",
+      "run_key": "grid-P8-strict-theorem-bodies-r1",
+      "attempt": 1,
+      "state_directory": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix/grid-P8-strict-theorem-bodies-r1",
+      "commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+      "dataset": "grid",
+      "workers": 8,
+      "repeat": 1,
+      "arm": "native",
+      "returncode": 124,
+      "wall_s": 1800.010274197004,
+      "cpu_s": 1803.564404,
+      "peak_rss_kib": 3328508,
+      "rss_sample_bytes": 3509567488,
+      "modules": null,
+      "segments": null,
+      "manual_interruption": false,
+      "wait4_cpu_s": 1659.175541,
+      "cpu_source": "closed native cgroup",
+      "outcome": "per_cell_wall_timeout_not_kernel_rejection"
+    },
+    {
+      "key": "math-official-fresh-r3",
+      "run_key": "math-official-fresh-r3",
+      "attempt": 1,
+      "state_directory": null,
+      "commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+      "dataset": "math",
+      "workers": 8,
+      "repeat": 3,
+      "arm": "official",
+      "returncode": 124,
+      "wall_s": 77.70390536999912,
+      "cpu_s": 77.718828,
+      "peak_rss_kib": 1761996,
+      "rss_sample_bytes": 2083840000,
+      "modules": null,
+      "segments": null,
+      "manual_interruption": false,
+      "wait4_cpu_s": 4.595609,
+      "cpu_source": "closed native cgroup",
+      "outcome": "six_hour_budget_stop_not_kernel_rejection"
+    }
+  ],
+  "unattempted": [
+    {
+      "key": "grid-P8-strict-theorem-bodies-r2",
+      "dataset": "grid",
+      "workers": 8,
+      "repeat": 2,
+      "arm": "native",
+      "flags": [
+        "--strict-theorem-bodies"
+      ],
+      "reason": "not run after first strict point exceeded fixed per-cell cap"
+    },
+    {
+      "key": "grid-P8-strict-theorem-bodies-r3",
+      "dataset": "grid",
+      "workers": 8,
+      "repeat": 3,
+      "arm": "native",
+      "flags": [
+        "--strict-theorem-bodies"
+      ],
+      "reason": "not run after first strict point exceeded fixed per-cell cap"
+    },
+    {
+      "key": "grid-official-default-r2",
+      "dataset": "grid",
+      "workers": 8,
+      "repeat": 2,
+      "arm": "official",
+      "flags": [],
+      "reason": "not reached before continuation stopped"
+    },
+    {
+      "key": "grid-official-default-r3",
+      "dataset": "grid",
+      "workers": 8,
+      "repeat": 3,
+      "arm": "official",
+      "flags": [],
+      "reason": "not reached before continuation stopped"
+    },
+    {
+      "key": "grid-official-fresh-r2",
+      "dataset": "grid",
+      "workers": 8,
+      "repeat": 2,
+      "arm": "official",
+      "flags": [
+        "--fresh"
+      ],
+      "reason": "not reached before continuation stopped"
+    },
+    {
+      "key": "grid-official-fresh-r3",
+      "dataset": "grid",
+      "workers": 8,
+      "repeat": 3,
+      "arm": "official",
+      "flags": [
+        "--fresh"
+      ],
+      "reason": "not reached before continuation stopped"
+    },
+    {
+      "key": "barrier-official-default-r2",
+      "dataset": "barrier",
+      "workers": 8,
+      "repeat": 2,
+      "arm": "official",
+      "flags": [],
+      "reason": "not reached before continuation stopped"
+    },
+    {
+      "key": "barrier-official-default-r3",
+      "dataset": "barrier",
+      "workers": 8,
+      "repeat": 3,
+      "arm": "official",
+      "flags": [],
+      "reason": "not reached before continuation stopped"
+    },
+    {
+      "key": "barrier-official-fresh-r2",
+      "dataset": "barrier",
+      "workers": 8,
+      "repeat": 2,
+      "arm": "official",
+      "flags": [
+        "--fresh"
+      ],
+      "reason": "not reached before continuation stopped"
+    },
+    {
+      "key": "barrier-official-fresh-r3",
+      "dataset": "barrier",
+      "workers": 8,
+      "repeat": 3,
+      "arm": "official",
+      "flags": [
+        "--fresh"
+      ],
+      "reason": "not reached before continuation stopped"
+    }
+  ],
+  "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "error": "RuntimeError('matrix six-hour budget exhausted; no new cell launched')",
+  "utc": "2026-11-06T11:13:18.575542+00:00",
+  "handoff_ready": true,
+  "overall_original_matrix_complete": false,
+  "controller_status": "collection_failed",
+  "all_returned_native_and_cgroups_retired": true,
+  "pcore_lock_free_observed": true,
+  "verified_at_utc": "2026-11-06T11:13:59.390831+00:00",
+  "disposition": "Six-hour window exhausted, not a complete original matrix; O external timing is next. No corpus launched.",
+  "original_controller_terminal": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix/collection-terminal.json"
+}

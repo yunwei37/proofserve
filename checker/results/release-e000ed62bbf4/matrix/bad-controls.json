@@ -1,0 +1,50 @@
+[
+  {
+    "key": "bad-real-prefix-bvar",
+    "returncode": 2,
+    "wall_s": 54.819845471007284,
+    "cpu_s": 97.598208,
+    "outcome": "original_kernel_rejection",
+    "kernel_message_excerpt": [
+      "{\"aliased_constant_entries\":0,\"constants\":30,\"event\":\"module_header\",\"imports\":[\"Init\",\"Init\",\"Mathlib.Basic.Logic.Basic\",\"Mathlib.Basic.Nontrivial.Defs\",\"Mathlib.Data.Nat.Init\",\"Mathlib.Order.Defs.LinearOrder\",\"Mathlib.Tactic.GCongr\"],\"module\":\"Mathlib.Data.Nat.Basic\",\"safe_constants\":30}",
+      "{\"context\":\"module_local\",\"error\":\"while replaying declaration 'Nat.set_induction':\\n(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it\",\"event\":\"reject\",\"module\":\"Mathlib.Data.Nat.Basic\"}",
+      "warning: PrimeNumberTheoremAnd: repository '/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/PrimeNumberTheoremAnd' has local changes",
+      "warning: belyi: repository '/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/belyi' has local changes",
+      "warning: fixed-point-theorems: repository '/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/fixed-point-theorems' has local changes",
+      "{\"error\":\"while replaying declaration 'Nat.set_induction':\\n(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it\",\"schema_version\":1,\"status\":\"error\"}"
+    ],
+    "raw_run": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix/runs/bad-real-prefix-bvar"
+  },
+  {
+    "key": "bad-real-prefix-unknown",
+    "returncode": 2,
+    "wall_s": 54.68948832800379,
+    "cpu_s": 97.585946,
+    "outcome": "original_kernel_rejection",
+    "kernel_message_excerpt": [
+      "{\"aliased_constant_entries\":0,\"constants\":30,\"event\":\"module_header\",\"imports\":[\"Init\",\"Init\",\"Mathlib.Basic.Logic.Basic\",\"Mathlib.Basic.Nontrivial.Defs\",\"Mathlib.Data.Nat.Init\",\"Mathlib.Order.Defs.LinearOrder\",\"Mathlib.Tactic.GCongr\"],\"module\":\"Mathlib.Data.Nat.Basic\",\"safe_constants\":30}",
+      "{\"context\":\"module_local\",\"error\":\"while replaying declaration 'Nat.set_induction':\\n(kernel) unknown constant 'ProofServeMissingConstant'\",\"event\":\"reject\",\"fallback_reason\":\"unimported_reference:Nat.set_induction:ProofServeMissingConstant\",\"module\":\"Mathlib.Data.Nat.Basic\"}",
+      "warning: PrimeNumberTheoremAnd: repository '/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/PrimeNumberTheoremAnd' has local changes",
+      "warning: belyi: repository '/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/belyi' has local changes",
+      "warning: fixed-point-theorems: repository '/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/fixed-point-theorems' has local changes",
+      "{\"error\":\"while replaying declaration 'Nat.set_induction':\\n(kernel) unknown constant 'ProofServeMissingConstant'\",\"schema_version\":1,\"status\":\"error\"}"
+    ],
+    "raw_run": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix/runs/bad-real-prefix-unknown"
+  },
+  {
+    "key": "bad-real-prefix-sort",
+    "returncode": 2,
+    "wall_s": 54.81521764397621,
+    "cpu_s": 97.671543,
+    "outcome": "original_kernel_rejection",
+    "kernel_message_excerpt": [
+      "{\"aliased_constant_entries\":0,\"constants\":30,\"event\":\"module_header\",\"imports\":[\"Init\",\"Init\",\"Mathlib.Basic.Logic.Basic\",\"Mathlib.Basic.Nontrivial.Defs\",\"Mathlib.Data.Nat.Init\",\"Mathlib.Order.Defs.LinearOrder\",\"Mathlib.Tactic.GCongr\"],\"module\":\"Mathlib.Data.Nat.Basic\",\"safe_constants\":30}",
+      "{\"context\":\"module_local\",\"error\":\"while replaying declaration 'Nat.set_induction':\\n(kernel) declaration type mismatch, 'Nat.set_induction' has type\\n  Type 1\\nbut it is expected to have type\\n  \u2200 {S : Set Nat},\\n    Set.instMembership.mem S 0 \u2192\\n      (\u2200 (k : Nat), Set.instMembership.mem S k \u2192 Set.instMembership.mem S (instHAdd.hAdd k 1)) \u2192\\n        \u2200 (n : Nat), Set.instMembership.mem S n\",\"event\":\"reject\",\"module\":\"Mathlib.Data.Nat.Basic\"}",
+      "warning: PrimeNumberTheoremAnd: repository '/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/PrimeNumberTheoremAnd' has local changes",
+      "warning: belyi: repository '/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/belyi' has local changes",
+      "warning: fixed-point-theorems: repository '/workspaces/.agent-state/gpu-smt-workloads/openai-math-4eaee875/lean/.lake/packages/fixed-point-theorems' has local changes",
+      "{\"error\":\"while replaying declaration 'Nat.set_induction':\\n(kernel) declaration type mismatch, 'Nat.set_induction' has type\\n  Type 1\\nbut it is expected to have type\\n  \u2200 {S : Set Nat},\\n    Set.instMembership.mem S 0 \u2192\\n      (\u2200 (k : Nat), Set.instMembership.mem S k \u2192 Set.instMembership.mem S (instHAdd.hAdd k 1)) \u2192\\n        \u2200 (n : Nat), Set.instMembership.mem S n\",\"schema_version\":1,\"status\":\"error\"}"
+    ],
+    "raw_run": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/matrix/runs/bad-real-prefix-sort"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "accepted_equal": true,
+  "axioms_equal": true,
+  "module_set_hash_equal": true,
+  "artifact_identity_equal": true,
+  "reused_segments": 1,
+  "interrupted_returncode": -9,
+  "resumed_returncode": 0,
+  "wall_s": 81.50116523000179,
+  "cpu_s": 124.10559,
+  "uninterrupted_wall_median_s": 69.692732807016,
+  "uninterrupted_cpu_median_s": 112.127055,
+  "wall_overhead_fraction": 0.16943563478396162,
+  "cpu_overhead_fraction": 0.10683001528935199
+}
