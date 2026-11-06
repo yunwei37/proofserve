@@ -1,3 +1,3 @@
 pool,completed_modules,cpu_observed_modules,cpu_s,cpu_hours,native_wall_observed_modules,summed_native_wall_s,user_instruction_observed_modules,user_instructions,user_instructions_median,user_instructions_p95,failed_or_interrupted_attempts,scope
-P,64040,64040,484744.233632,134.65117600888888,64040,542398.0035239281,64040,2162733842068527,12730752058.0,89064615955.54999,36,"observed successful modules only; lower bound, not full-library estimate"
-E,64291,64291,924004.278325,256.6678550902778,64291,957515.6508611063,64291,2171776317402252,12311106050,78800986715.0,30,"observed successful modules only; lower bound, not full-library estimate"
+P,82201,82201,608241.356297,168.9559323047222,82201,677517.781110147,82201,2766375998577099,12817823190,84687649306.0,36,"observed successful modules only; lower bound, not full-library estimate"
+E,79969,79969,1088637.279636,302.39924434333335,79969,1122520.253061087,79969,2509744534809750,12358095224,72421298253.39964,30,"observed successful modules only; lower bound, not full-library estimate"

@@ -1,0 +1,118 @@
+{
+  "scope": "independent streaming reduction of published per-module CSV, not a rerun of native or all product-byte validation",
+  "rows": 163097,
+  "outcomes": {
+    "completed": 162170,
+    "deferred_by_user": 926,
+    "configuration": 1
+  },
+  "segments": {
+    "1": 128331,
+    "2": 33788,
+    "3": 51
+  },
+  "unsuccessful_attempts": 66,
+  "coverage": {
+    "('P', '1.0')": 82201,
+    "('E', '1.0')": 79969
+  },
+  "user_instructions": {
+    "total": 5276120533386849,
+    "median": 12583053924.5,
+    "p95": 78511474154.54988,
+    "maximum": 54494110363917
+  },
+  "costs": {
+    "('pool', 'P')": {
+      "n": 82201,
+      "cpu_s": 608241.356297,
+      "cpu_h": 168.9559323047222,
+      "user_instructions": 2766375998577099
+    },
+    "('segment', '1', 'P')": {
+      "n": 64040,
+      "cpu_s": 484744.233632,
+      "cpu_h": 134.65117600888888,
+      "user_instructions": 2162733842068527
+    },
+    "('marker', '0', 'P')": {
+      "n": 79141,
+      "cpu_s": 499428.618969,
+      "cpu_h": 138.73017193583334,
+      "user_instructions": 2268551824751123
+    },
+    "('default_graph', '0', 'P')": {
+      "n": 16242,
+      "cpu_s": 111174.534757,
+      "cpu_h": 30.88181521027778,
+      "user_instructions": 449808316464142
+    },
+    "('pool', 'E')": {
+      "n": 79969,
+      "cpu_s": 1088637.279636,
+      "cpu_h": 302.39924434333335,
+      "user_instructions": 2509744534809750
+    },
+    "('segment', '1', 'E')": {
+      "n": 64291,
+      "cpu_s": 924004.278325,
+      "cpu_h": 256.6678550902778,
+      "user_instructions": 2171776317402252
+    },
+    "('marker', '0', 'E')": {
+      "n": 77181,
+      "cpu_s": 888923.5451549999,
+      "cpu_h": 246.92320698749998,
+      "user_instructions": 2037741478286957
+    },
+    "('default_graph', '0', 'E')": {
+      "n": 16019,
+      "cpu_s": 202454.164994,
+      "cpu_h": 56.23726805388889,
+      "user_instructions": 429802934302106
+    },
+    "('default_graph', '1', 'E')": {
+      "n": 63950,
+      "cpu_s": 886183.114642,
+      "cpu_h": 246.16197628944442,
+      "user_instructions": 2079941600507644
+    },
+    "('default_graph', '1', 'P')": {
+      "n": 65959,
+      "cpu_s": 497066.82154,
+      "cpu_h": 138.07411709444443,
+      "user_instructions": 2316567682112957
+    },
+    "('marker', '1', 'P')": {
+      "n": 3060,
+      "cpu_s": 108812.737328,
+      "cpu_h": 30.22576036888889,
+      "user_instructions": 497824173825976
+    },
+    "('marker', '1', 'E')": {
+      "n": 2788,
+      "cpu_s": 199713.734481,
+      "cpu_h": 55.476037355833334,
+      "user_instructions": 472003056522793
+    },
+    "('segment', '2', 'P')": {
+      "n": 18110,
+      "cpu_s": 117783.895238,
+      "cpu_h": 32.71774867722222,
+      "user_instructions": 544339344938284
+    },
+    "('segment', '2', 'E')": {
+      "n": 15678,
+      "cpu_s": 164633.001311,
+      "cpu_h": 45.73138925305555,
+      "user_instructions": 337968217407498
+    },
+    "('segment', '3', 'P')": {
+      "n": 51,
+      "cpu_s": 5713.227427,
+      "cpu_h": 1.587007618611111,
+      "user_instructions": 59302811570288
+    }
+  },
+  "input_data_commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d"
+}

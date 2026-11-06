@@ -67,6 +67,8 @@ def normalize(row):
                   user_instructions=instructions, instruction_coverage=coverage,
                   kernel_marked=first(row, "kernel_marked", "marker", "marked"),
                   default_covered=first(row, "default_covered", "default_graph"),
+                  family_prefix=first(row, "family_prefix", "deferred_family_prefix"),
+                  trigger_module=first(row, "trigger_module", "deferred_trigger_module"),
                   source_revision=row.get("source_revision", ""),
                   measurement_commit=row.get("measurement_commit", ""))
     return result
@@ -248,7 +250,7 @@ def main():
             group = [row for row in values if str(row.get("segment")) == str(item["segment"]) and row["pool"] == pool]
             cpu = [row["cpu_s"] for row in group if row["cpu_s"] is not None]
             segment_costs.append(dict(segment=item["segment"], pool=pool, completed_modules=len(group),
-                                      cpu_observed_modules=len(cpu), cpu_hours=math.fsum(cpu) / 3600 if cpu else None,
+                                      cpu_observed_modules=len(cpu), cpu_hours=math.fsum(cpu) / 3600 if len(cpu) == len(group) else None,
                                       scope="all observed successful completions in this retired segment"))
     emit(args.out / (prefix + "census-segment-costs.csv"), segment_costs)
 
@@ -315,7 +317,14 @@ def main():
     figure_path = args.out / (prefix + "census-distribution.tex")
     figure_path.write_text(figure)
 
-    manifest = dict(preview=args.preview, explicitly_stopped_subset=args.stopped,
+    try:
+        revision = subprocess.run(["git", "log", "-1", "--format=%H", "--", str(source)],
+                                  capture_output=True, text=True, check=False)
+        publication_commit = revision.stdout.strip() or None
+    except OSError:
+        publication_commit = None
+    manifest = dict(published_data_commit=publication_commit,
+        preview=args.preview, explicitly_stopped_subset=args.stopped,
         retired_final=args.retired and not args.preview,
         native_completed_at_retirement=published.get("completed_source_modules"),
         native_unfinished_at_retirement=published.get("unfinished_source_modules"),
@@ -355,40 +364,56 @@ def main():
             r"\def\CensusExecutableModules{" + f"{source_modules:,}" + "}",
             r"\def\CensusUnmeasuredModules{" + f"{len(unfinished):,}" + "}",
             r"\def\CensusDeferredModules{" + f"{len(deferred):,}" + "}",
-            r"\def\CensusObservedPercent{" + tex_number(fraction, 1) + "}",
-            r"\def\CensusPCPUHours{" + tex_number(by_pool["P"]["cpu_hours"], 1) + "}",
-            r"\def\CensusECPUHours{" + tex_number(by_pool["E"]["cpu_hours"], 1) + "}",
-            r"\def\CensusWallHours{" + tex_number(wall_s / 3600) + "}",
-            r"\def\CensusScopeSummary{\CensusScopeLabel{}: \CensusNativeModules{} of \CensusExecutableModules{} executable modules "
-            r"(\CensusObservedPercent{}\%); \CensusUnmeasuredModules{} remain unmeasured.}",
-            r"\def\CensusObservedSummary{Observed successful work is \CensusPCPUHours{} P-core CPU-hours and "
-            r"\CensusECPUHours{} E-core CPU-hours, separate lower bounds rather than a full-library cost estimate. "
-            r"Retired segment intervals total \CensusWallHours{} wall-hours including drain; transition gaps are separate.}"]
+            r"\def\CensusObservedPercent{" + tex_number(fraction, 2) + "}",
+            r"\def\CensusPCPUHours{" + tex_number(by_pool["P"]["cpu_hours"], 3) + "}",
+            r"\def\CensusECPUHours{" + tex_number(by_pool["E"]["cpu_hours"], 3) + "}",
+            r"\def\CensusWallHours{" + tex_number(wall_s / 3600, 3) + "}",
+            r"\def\CensusScopeSummary{\CensusNativeModules{} of \CensusExecutableModules{} modules completed "
+            r"(\CensusObservedPercent{}\%); \CensusDeferredModules{} were deferred.}",
+            r"\def\CensusObservedSummary{Successful work is \CensusPCPUHours{} P / "
+            r"\CensusECPUHours{} E CPU-hours. "
+            r"Retired intervals total \CensusWallHours{} wall-hours, including drain.}"]
         parts = []
         for item in segment_reporting:
             costs = {row["pool"]: row for row in segment_costs if row["segment"] == item["segment"]}
-            parts.append("Segment " + str(item["segment"]) + ": " +
-                         tex_number(costs["P"]["cpu_hours"], 1) + " P / " +
-                         tex_number(costs["E"]["cpu_hours"], 1) + " E CPUh, " +
-                         tex_number(item["reporting_wall_s"] / 3600) + " wallh.")
+            parts.append("Interval " + str(item["segment"]) + " (" + f'{int(item["completed_modules"]):,}' + " modules): " +
+                         tex_number(costs["P"]["cpu_hours"], 3) + " P / " +
+                         tex_number(costs["E"]["cpu_hours"], 3) + " E CPUh, " +
+                         tex_number(item["reporting_wall_s"] / 3600, 3) + " wallh.")
         macros.append(r"\def\CensusSegmentSummary{" + " ".join(parts) + "}")
         macros.append(r"\def\CensusDeferredSummary{\CensusDeferredModules{} modules are deferred by user, "
                       r"separately from native failure and failed-dependency blocking.}")
 
+
+        all_instructions = sorted(row["user_instructions"] for row in values)
+        def scientific(value):
+            exponent = math.floor(math.log10(value))
+            return "$" + f"{value / 10**exponent:.3f}" + r"\times10^{" + str(exponent) + "}$"
+        instruction_total = sum(all_instructions)
+        macros.append(r"\def\CensusInstructionSummary{User-mode instructions total " +
+                      scientific(instruction_total) + "; the per-module median and 95th percentile are " +
+                      scientific(statistics.median(all_instructions)) + " and " +
+                      scientific(quantile(all_instructions, .95)) + ", respectively.}")
+        calendar_s = (utc_time(segment_reporting[-1]["end_utc"]) -
+                      utc_time(segment_reporting[0]["start_utc"])).total_seconds()
+        macros.append(r"\def\CensusClockSummary{The calendar span is " + tex_number(calendar_s / 3600, 3) +
+                      " hours, including " + tex_number(transition_gap_s / 3600, 3) +
+                      " hours of gaps. Final native failures / dependency blocks: " +
+                      str(len(failures)) + "/" + str(len(blocked)) + "; " + str(len(unsuccessful)) +
+                      " unsuccessful attempts are excluded from successful CPU.}")
         label_groups = {(row["field"], row["label"], row["pool"]): row for row in groups}
-        marker = next((row for row in coverage if row["field"] == "kernel_marked" and row["label"] == "1"), None)
-        outside = next((row for row in coverage if row["field"] == "default_covered" and row["label"] == "0"), None)
         group_text = []
-        for field, label, description, inventory in [
-                ("kernel_marked", "1", "Marked modules", marker),
-                ("default_covered", "0", "Modules outside the default graph", outside)]:
-            pair = [label_groups.get((field, label, pool)) for pool in ("P", "E")]
-            if inventory and all(row and row["share_of_observed_pool_cpu"] is not None for row in pair):
-                group_text.append(description + " (" + f'{inventory["observed_modules"]:,}' +
-                    " observed; " + f'{inventory["unmeasured_modules"]:,}' +
-                    " not completed within scope) contribute " +
-                    "/".join(tex_number(row["share_of_observed_pool_cpu"] * 100) for row in pair) +
-                    r"\% of observed P/E CPU.")
+        for field, labels, description in [
+                ("kernel_marked", ("1", "0"), "Marked/unmarked"),
+                ("default_covered", ("0", "1"), "Outside/inside the default graph")]:
+            inventories = [next((r for r in coverage if r["field"] == field and r["label"] == label), None)
+                           for label in labels]
+            if all(inventories):
+                text = description + ": " + "/".join(f'{r["observed_modules"]:,}' for r in inventories) + " completed modules; "
+                for pool in ("P", "E"):
+                    pair = [label_groups[(field, label, pool)] for label in labels]
+                    text += "/".join(tex_number(r["cpu_hours"], 3) for r in pair) + " " + pool + " CPUh" + (", " if pool == "P" else ".")
+                group_text.append(text)
         macros.append(r"\def\CensusGroupSummary{" + " ".join(group_text) + "}")
 
     if args.tectonic:

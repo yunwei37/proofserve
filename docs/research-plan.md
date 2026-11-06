@@ -1,56 +1,48 @@
 # ProofServe closure plan
 
 Deliver ProofServe and the six-page empirical + system paper by
-**6 November 2026, 20:00 UTC**. **The latest user decision withdraws the 01:30 early stop.
-The memory-admission phase continues until every runnable, non-deferred module is exhausted.
-There is no 01:30/03:00 publication cutoff; final N comes from W's terminal
-ledger. The deferred high-memory families and their dependents stay deferred.**
+**6 November 2026, 20:00 UTC**. **W's retired cc5bcc18 campaign completed 162,170/163,096 modules
+(99.43%), with 926 deferred by user, zero final native failures and zero
+failed-dependency blocks.** The configuration unit remains separate.
+No whole-corpus cost estimate is inferred.
 
-## Current execution and completion scope
+## Completed compilation and evaluation handoff
 
-Segment 1 is retained unchanged: 128,331 completed executable modules,
-134.651176 P CPUh / 256.667855 E CPUh and 24.624733 supervisor wall-hours.
-This is a baseline snapshot, not final N. The initial memory-admission interval
-used 05c91979. It retired at 03:06:21 UTC under its superseded finite deadline;
-b5035842 now continues the remaining eligible work in a third recorded interval.
-This retains the second admission rule, not a third policy. The earlier b781
-preparation had no native launches and contributes no measured interval.
+| Physical interval / admission | Completed | P CPUh | E CPUh | Wall h |
+|---|---:|---:|---:|---:|
+| 1 / fixed 22 slots with reserve drains and exclusive retries | 128,331 | 134.651 | 256.668 | 24.625 |
+| 2 / memory admission and explicit family deferral | 33,788 | 32.718 | 45.731 | 6.179 |
+| 3 / continuation of the second rule without deadlines | 51 | 1.587 | 0.000 | 0.726 |
 
-Segment 1 uses fixed 22-slot admission with reserve drains/exclusive retry.
-Segment 2 uses memory/headroom admission and limits exposure to interrupted
-families. The actual 05c implementation defers specified high-memory families
-and dependents instead of applying positive family concurrency caps.
-The explicit user deferral covers unfinished modules in resource-interrupted
-families, including Ramsey.CycleClique.Construction, the entire PadicHodge
-tree and BigCrystalline, plus their transitive dependents. Record
-deferred_by_user separately from native failure, failed-dependency blocking
-and ordinary unattempted work, retaining family, trigger, dependency and
-reason. Already completed segment-1 records in those families stay measured.
-The omitted high-memory tail biases the final set toward lower-memory work;
-neither coverage nor its cost distribution can be extrapolated to the corpus.
-Compiler argv, -j8, Lean settings and P/E pools stay fixed.
+Successful work totals 168.956 P / 302.399 E CPUh, unconverted.
+Interval wall sums to 31.529 h; calendar span is 33.086 h, including
+1.557 h of transition gaps. Wall includes preparation, unsuccessful attempts,
+hashing, publication and cleanup. Successful CPU excludes 66 unsuccessful
+attempts. Module-wall sums are not machine elapsed time.
 
-Report successful costs by segment and P/E, measured segment wall and its
-sum, with transition gaps and unsuccessful work separate. All successful completions in the retired campaign enter the report.
-This is dependency-ordered, selectively deferred coverage, not random
-sampling or a full-library cost estimate.
+The user-mode instruction total is 5,276,120,533,386,849. Root independently
+streamed all 163,097 module/configuration rows and matched counts and
+P/E/interval/marker/default-graph sums. Product existence/size/closure
+validation remains W's self-review, not a root product-byte audit.
+Actual source/measurement commits and qualifications are in
+data/openai-math-4eaee875/census/README.md.
 
-W's retained decision records that no early-stop signal was sent and that
-pending eligible work would resume if the old finite controller retired.
-The old interval ended at 03:06:21.491450 UTC with no hard drain signal.
-The continuation supervisor2997137/controller2997159 was launched at
-04:13:47.597395 UTC under b5035842 with no deadline flags. Future identity,
-native returns and terminal still need direct checks. The physical interval
-IDs 1/2/3 must remain in costs and clocks; report both transition gaps and
-keep the two admission rules explicit. Earlier approximate counts are not
-final N. M waits for actual P-core/lease release and a quiet machine.
+The 926 postponed high-memory modules/dependents remain unmeasured; earlier
+successful family members stay included. Dependency order and memory selection
+prevent extrapolation or sample/model filling. Only separate protocol-specific
+P/E work lower bounds are reported.
+
+The last interval retired at 04:57:20.104259 UTC; W records lease release at
+04:59:12.385526 UTC. Root observed the supervisor/controller absent.
+The coordinator reports M now running the final matrix. O timing follows,
+then optional checking of actually built artifacts. No returned final system
+values have yet been used in the paper.
 
 ## Measured source scope and scientific interpretation
 
-At final publication W reports N completed executable modules out of 163,096
+W reports 162,170 completed executable modules out of 163,096
 plus the distinct configuration unit, retaining failed, deferred, blocked,
-unattempted and actual terminal outcomes. The first-segment 128,331 observations
-and 34,765 then-unfinished modules are historical, not final campaign scope.
+unattempted and actual terminal outcomes. The first-segment scope is historical; final unmeasured scope is the 926 explicit deferrals.
 No missing unit receives a successful status or zero cost.
 
 This is a dependency-ordered observed subset, not a probability sample.
@@ -81,7 +73,7 @@ No admission-policy speedup follows from the nonrandom segment split.
 | 5 November, 06:00 | M froze native e000ed62; retain shared-checked/strict semantics and review limits. |
 | 5 November, 12:00 | Root prose and figure/table scripts prepared; update for the actual stopped scope and returned numbers. |
 | 5 November, 14:00 | O frozen-native installation functional qualification; test-time preview provenance remains explicit. |
-| After all runnable non-deferred work is exhausted | W publishes terminal N and the complete separate deferred/failure/blocked inventory over all executed intervals. |
+| Completed 6 November, 04:57 | W retired all runnable work; cc5bcc18 publishes 162,170 completed and 926 deferred modules. |
 | After W actually retires, at most 6 hours | M executes the final matrix after actual retirement, lease release and a quiet machine. |
 | Then, at most 2 hours | O executes final external-project timing. |
 | Last, stop by 6 November, 17:00 | M checks only actually built artifacts, reporting the reached scope; partial or not-started remains possible. |
@@ -129,11 +121,10 @@ Strict cost comes only from matching final matrix rows, never old e155
 isolation previews. Two read-only reviews have regression repairs; repaired
 source has no independent runtime review.
 
-Artifacts label the terminal completed observed subset and all deferred,
-unmeasured and late identities. The first segment stays a separate snapshot
-until actual retired artifacts return. No running snapshot becomes final N
-or complete census coverage. W's final CSVs feed
-distributions and P/E totals; no earlier sample/model supplies missing costs.
+Artifacts label the completed observed subset and all deferred identities.
+The original first-segment snapshot stays historical. The retired eligible
+campaign does not supply native costs for its 926 deferred modules.
+Final CSVs feed distributions and P/E totals; no sample/model fills gaps.
 Final system data comes only from checker/results/ and data/external-projects/
 with tool/input commits, policy and scope. Preview/fixture values cannot fill
 final tables. Official default trusts imports and is not equal full-closure

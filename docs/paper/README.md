@@ -6,10 +6,10 @@ explicit arguments, with no development-machine paths embedded.
 
 ## Retired compilation artifacts
 
-The latest user decision withdraws early stop. W runs segment 2 until all
-runnable, non-deferred modules are exhausted; the high-memory families and
-dependents already deferred by the user remain deferred. Final N comes from
-the terminal campaign, not an earlier count or UTC cutoff.
+The cc5bcc18 publication is retired: 162,170/163,096 modules completed,
+926 deferred by user, zero final failures or failed-dependency blocks.
+Three physical intervals use two admission rules. No time cutoff or
+whole-corpus estimate is applied.
 
     python3 docs/paper/generate_census.py --retired --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
 
@@ -114,7 +114,7 @@ are never inputs. Without final artifacts it prints explicit pending slots,
 not invented figures or missing-value macros. The census figure replaces
 the generic workflow diagram, keeping two figures and two tables.
 
-The closure target is 6 November 2026, 20:00 UTC. W completes all runnable,
+The closure target is 6 November 2026, 20:00 UTC. W has retired all runnable,
 non-deferred work without an early-stop cutoff. M runs the final matrix after actual
 retirement/quiet, then O external timing, then M checks built artifacts. The checking
 phase may be partial or unstarted and stops by 17:00; it is not a necessary
@@ -139,3 +139,10 @@ initial memory admission, and its deadline-free continuation after the old
 finite boundary. There are still two admission rules. Final mode reads the
 actual published interval count instead of assuming two; every cost row must
 belong to its reported interval, and all transition gaps remain visible.
+
+The current small summaries/figure and census-validation.json were independently
+reduced from cc5bcc18 on CPUs 8–9. Duplicate large generated inventories remain
+on PVC, not in Git. Deferred-family/trigger aliases match the published schema.
+Interval 3 has no E-core successful jobs: its zero E cost is an empty observed
+group, not imputation for an unmeasured module. System tables still await
+M/O's final approved results.

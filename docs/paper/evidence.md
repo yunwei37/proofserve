@@ -952,3 +952,75 @@ No new campaign N, strict cost or final system timing was inserted.
 At 04:20 UTC the continuation supervisor2997137/birth22114711 and
 controller2997159/birth22114715 were present; a retired final ledger and
 completed native return from that continuation were not yet observed.
+
+### 6 November 2026: retired compilation publication integrated
+
+Root read the complete formal README and summary at W publication
+cc5bcc18c87d7bf85afc5e71a6738f06da52c03d, its physical interval registry,
+lease release, record validation and artifact self-review. The retired
+eligible campaign completed 162,170/163,096 executable modules (99.43%);
+926 are deferred_by_user, with zero final native failures and zero
+failed-dependency blocks. The Lake configuration unit is separate.
+This is not successful native coverage of the deferred tail.
+
+Root independently streamed all 163,097 published module/configuration CSV
+rows on CPUs 8–9, checked unique identities and blank unmeasured costs,
+and recomputed successful P/E, physical-interval, marker and default-graph
+cost/instruction partitions. Counts and sums match W's summary/aggregates
+within floating-point accumulation precision. Every successful row has
+selected-user PMU coverage 1.0: P 82,201 and E 79,969 observations.
+The reduction record is generated/census/census-validation.json.
+This is independent arithmetic on the published table, not independent
+native execution or a repeat of all product-byte validation.
+W's product existence/size/internal-dependency checks remain its self-review.
+Root observed continuation supervisor2997137/controller2997159 absent;
+W records native retirement 04:57:20.104259 and lease release 04:59:12.385526 UTC.
+
+Successful costs are 168.955932305 P / 302.399244343 E CPUh.
+Physical intervals 1/2/3 contain 128,331/33,788/51 completed modules:
+P CPUh 134.651176009 / 32.717748677 / 1.587007619;
+E CPUh 256.667855090 / 45.731389253 / 0;
+wallh 24.624732950 / 6.178604211 / 0.725697047.
+Interval wall totals 31.529034208 h including preparation, all attempts,
+hashing/publication/cleanup; calendar span is 33.085971073 h including
+5,604.972714 seconds of gaps. Paper rounding is independent per quantity.
+All 66 unsuccessful attempts remain separate; their CPU is not successful
+cost. Native-module wall is not machine elapsed wall.
+
+Primary selected-pool user instructions total 5,276,120,533,386,849;
+median 12,583,053,924.5, linear P95 78,511,474,154.55.
+The figure now covers all 162,170 completed observations. This post-hoc
+user-mode metric does not repair the failed total-instruction gate or
+attribute time to Lean's trusted C++ kernel.
+
+Marked/unmarked observed modules: 5,848 / 156,322;
+P CPUh 30.225760369 / 138.730171936;
+E CPUh 55.476037356 / 246.923206987.
+Outside/inside-default observed modules: 32,261 / 129,909;
+P CPUh 30.881815210 / 138.074117094;
+E CPUh 56.237268054 / 246.161976289.
+These are two partitions of the same completed set, not quantities to add.
+Full-frame label coverage remains separate. Memory/dependency selection and
+the unknown cost of the 926 high-memory deferrals prevent extrapolation,
+inverse coverage or original42/model filling. Earlier successes within
+deferred-family namespaces remain included. P/E work is not converted.
+
+The adapter now recognizes actual deferred-family/trigger column aliases
+and records the data publication commit separately from measured controller
+commits. An empty, fully observed E group in interval 3 has zero cost,
+consistent with W's interval ledger; missing module costs stay blank.
+Small reproducible summaries/curves/figure and the independent reduction are
+committed under generated/census/. Duplicate large module/outcome/deferral
+inventories remain on the capture PVC. No new native measurement was run.
+
+The six-page manuscript's compilation section and abstract now contain the
+returned counts, three physical intervals / two admission rules, P/E CPU,
+wall/gap clocks, user-instruction statistics and observed group partitions.
+System performance remains explicitly pending M/O's final returned results.
+Root compressed repeated prose rather than changing measured values or
+reference scope; the failed gate and repaired-checker trust limits remain.
+Final CPU8–9 compilation returned 0 in 2.243 s: six pages / 304,611 bytes,
+two figures / two tables / 14 references, zero evidence-placeholder macros,
+no overfull or undefined warnings. All six pages were visually reviewed,
+then final pages 2–6 were rechecked after keeping interval costs together.
+This is root visual/self verification, not independent paper review.

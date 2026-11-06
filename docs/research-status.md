@@ -1,84 +1,64 @@
 # ProofServe: current status
 
 Deliverables: open-source ProofServe and a readable six-page empirical + system
-paper by **6 November 2026, 20:00 UTC**.
+paper; closure target **6 November 2026, 20:00 UTC**.
 
-## Current decision
+## Completed compilation
 
-**The user withdrew early stop: segment 2 continues until all runnable,
-non-deferred modules are exhausted.** The exact three new user quotations
-are recorded in [user-instruction.md](user-instruction.md). Neither the old
-01:30 boundary nor the previous 03:00/03:30 schedule limits the requested
-scope. The already deferred high-memory families/dependents remain deferred.
+W published **cc5bcc18**: **162,170/163,096 modules (99.43%)** completed,
+**926 deferred by user**, zero final native failures and zero
+failed-dependency blocks. The configuration unit is separate. All runnable,
+non-deferred work is exhausted, with the high-memory tail still unmeasured.
 
-Final N means completed modules in W's retired ledger across every executed interval.
-128,331 is segment 1 only: 134.651176 P / 256.667855 E CPUh,
-24.624733 wall-hours, 66 unsuccessful attempts and zero final failed modules.
-Segment 2 controller2583627/birth19485807 and real native returns were
-observed; future status still needs a fresh identity/terminal check.
+| Physical interval | Completed | P CPUh | E CPUh | Wall h |
+|---|---:|---:|---:|---:|
+| 1: fixed 22-slot admission | 128,331 | 134.651 | 256.668 | 24.625 |
+| 2: memory admission / deferral | 33,788 | 32.718 | 45.731 | 6.179 |
+| 3: continuation of the second rule | 51 | 1.587 | 0.000 | 0.726 |
 
-Segment 1 uses 22 slots with reserve drains/exclusive retry. Segment 2 uses
-memory/headroom admission. Unfinished Ramsey.CycleClique.Construction,
-all PadicHodge, BigCrystalline and other resource-interrupted families plus
-their dependents are deferred_by_user, separately from failure and
-failed-dependency blocking. Prior successes in those families stay measured.
-Compiler argv, -j8 and pools are unchanged. Explicit deferral skews the
-selected set toward lower-memory modules, further preventing extrapolation. The final set is
-dependency ordered and selectively deferred. All distributions and cost shares
-apply only to completed modules; P/E work is a lower bound,
-without extrapolation, inverse coverage or sample/model filling.
+Totals: **168.956 P / 302.399 E CPUh**, without conversion;
+**31.529 wallh** across intervals. Calendar span is 33.086 h including
+1.557 h of gaps. Failed/interrupted attempts (66) are separate from successful
+CPU, while interval wall includes their actual elapsed work.
 
-## Evaluation handoff and timing boundary
+Root independently reduced all 163,097 rows and matched status counts,
+P/E/interval/marker/default-graph sums and selected-user PMU coverage.
+Product existence/size/closure checks remain W's self-review, not root byte
+validation. The continuation supervisor/controller were observed absent;
+W records lease release 04:59:12 UTC after retirement 04:57:20 UTC.
 
-M final matrix waits for actual census retirement/P-core release, lease
-release and a quiet machine. O external timing follows, then M checks
-available built artifacts. Checking still stops by 17:00, numerical
-integration is due 18:00 and closure 20:00; those milestones do not authorize
-truncating the census. No PlanarPacking comparison or root replacement queue.
+## Paper and remaining evaluation
 
-W recorded the withdrawal without sending an early-stop signal. The old
-memory interval nevertheless reached its superseded finite boundary and
-retired at 03:06:21.491450 UTC, hard_drain_signal=false. Root read b5035842
-and the interval registry: the remaining eligible work is continued in
-segment-03-b5035842, supervisor2997137/controller2997159, start
-04:13:47.597395 UTC, with no deadline flags. This is a continuation of the
-same memory-admission rule, not a third policy. Its terminal and current
-PID-birth state must be read before claiming completion. Final publication
-keeps all actual interval costs and gaps; the old two-interval export is
-not final. M still waits for actual census release and quiet.
+The PDF is six pages / 304,611 bytes, two figures / two tables / 14 references;
+CPU8–9 compile returned 0 in 2.243 s, with no overfull/undefined warnings or
+evidence-placeholder macros. All six pages were visually reviewed.
 
-## Evidence boundaries
+The six-page paper now uses the returned distributions, interval/P-E costs,
+user-mode instruction total/median/P95 and marked/unmarked/default-graph
+partitions for the 162,170 measured modules. No earlier snapshot is presented
+as final scope. Small derived artifacts bind cc5bcc18 and the independent
+reduction; duplicate large inventories stay on PVC.
 
-- The total-instruction gate remains failed (1.3312% median / 3.1498% P95 versus
-  unchanged 1% / 3%). User-mode instruction comparison was selected afterwards.
-  P/E CPU remains separate and wall is specific to the actual machine/policy.
-- Segment 2 is real changed-admission execution; progress is not a final retired result or a causal policy benefit.
-- Shared-checked default has the documented crafted theorem-body-context
-  difference from official; --strict-theorem-bodies retains the stricter route.
-  Two read-only reviews have regressions, with no independent repaired-source
-  runtime review. New strict cost awaits matching final matrix rows.
-- The e000 archive/container/three-project functional preview is real and
-  committed in 420dc9d6, with dirty test-time packaging provenance. AI whole
-  CPU remains unknown after two interrupted windows and continuation.
-  This is not final timing or immutable published release acceptance.
-- The original42 and superseded precision7/12 are separate historical evidence,
-  neither filling nor extending the observed set. Prototype ratios do not fill
-  release tables. Source binding, editable checkpoints, noncrypto identities
-  and axiom-inventory limits remain explicit.
+Dependency order and memory selection prevent extrapolation. The missing
+high-memory tail may be more expensive; earlier successful family members
+remain included. Only separate protocol-specific P/E work lower bounds are
+reported. The total-instruction gate still failed; user-mode comparison was
+selected post hoc, not a replacement passing gate.
 
-The updated six-page manuscript now says “N completed in the retired campaign”, with
-two admission rules, all actual interval/P-E costs and non-extrapolating scope.
-Its current 128,331 figure/shares are explicitly first-segment references,
-not final N. The three-interval final-data branch was layout-checked only with
-synthetic validation metadata; no such values enter the delivered paper.
-Latest PDF: six pages / 302,681 bytes, two figures / two tables / 14 references,
-zero evidence-placeholder macros and no overfull/undefined warnings.
-Changed pages 1–3 and 6 were visually reviewed; pages 4–5 match their
-previously reviewed renders byte-for-byte. Deferred-by-user now has a separate inventory/count and
-preserves family/trigger/dependency/reason metadata. Final retired-scope and system evaluation numbers remain pending.
+The coordinator reports M running the final matrix; final matrix and external
+timing values have not yet been used in the system tables. O timing follows,
+then M may check actually built artifacts until 17:00. Partial/not-attempted
+checking remains supplementary. Root targets integration by 18:00 and closure
+by 20:00. No PlanarPacking comparison or root replacement measurement queue.
 
-All root Workspace operations use **CPU8–9**. Main-only owned-path commits
-preserve foreign work. No public release, replacement agent/native queue,
+Native e000ed62 shared-checked/strict policy and the crafted body-context
+difference remain explicit. Two read-only reviews have regression repairs,
+with no independent repaired-source runtime review. Existing O functionality
+is not immutable release acceptance or final timing. Prototype/fixture and
+old-version costs do not populate final system tables.
+
+All root Workspace reads/analysis/Git/PDF and children use **CPU8–9**.
+Main-only owned-path commits preserve foreign work. No public release,
 infrastructure change or host recovery is authorized here.
 
 [Plan](research-plan.md) · [Evidence](paper/evidence.md) · [Index](../research/README.md)

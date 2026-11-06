@@ -1,0 +1,7 @@
+segment,pool,completed_modules,cpu_observed_modules,cpu_hours,scope
+1,P,64040,64040,134.65117600888888,all observed successful completions in this retired segment
+1,E,64291,64291,256.6678550902778,all observed successful completions in this retired segment
+2,P,18110,18110,32.71774867722222,all observed successful completions in this retired segment
+2,E,15678,15678,45.73138925305555,all observed successful completions in this retired segment
+3,P,51,51,1.587007618611111,all observed successful completions in this retired segment
+3,E,0,0,0.0,all observed successful completions in this retired segment

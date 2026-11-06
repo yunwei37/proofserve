@@ -18,13 +18,10 @@ audit tool. Matched target windows retain 80.28--82.35\% of source-compilation
 wall time for two computational certificates, versus 0.46--6.54\% for two
 ordinary controls. Across 31 module-process pairs, the median checker/compiler
 CPU ratio is 0.451, with overlapping source-proxy classes.
-\ifnum\CensusFinal=1
-\CensusScopeSummary{} Observed P/E work supplies separate lower bounds,
-not a full-library estimate.
-\else
-A campaign with two admission rules will report all completed modules;
-final coverage awaits its terminal ledger.
-\fi
+\CensusNativeModules{} of \CensusExecutableModules{} modules
+(\CensusObservedPercent{}\%) completed, using \CensusPCPUHours{} P /
+\CensusECPUHours{} E CPU-hours; \CensusDeferredModules{} were deferred.
+These are separate observed-work lower bounds, not a full-library estimate.
 The missing tail is not imputed. The full-frame import graph omits 19.78\% of source files and 33.30\%
 of lexical kernel-decision sites. ProofServe combines dependency-aware
 parallel replay, restartable segments and receipts recording scope, axioms
@@ -91,8 +88,7 @@ drains/exclusive retry. Segment 2 uses memory/headroom admission and defers unfi
 \texttt{PadicHodge}, \path{Ramsey.CycleClique.Construction},
 \texttt{BigCrystalline} and other interrupted families plus dependents.
 These are \emph{deferred by user}, not failed or failure-blocked;
-earlier completed records are retained. A continuation keeps this rule after the obsolete deadline. All intervals
-and gaps are recorded until runnable, non-deferred work is exhausted.
+earlier completed records are retained. The second rule continues across a retired boundary; intervals and gaps stay distinct.
 The total-instruction gate failed: median 1.33\% and P95 3.15\% exceeded
 unchanged 1\%/3\% criteria. User-mode comparison was chosen afterwards;
 P/E CPU is unconverted.
@@ -160,36 +156,25 @@ pending. This denominator change illustrates why a single ratio cannot
 stand for every boundary.
 
 \subsection{Completed work and its limits}
-\ifnum\CensusFinal=1
-\CensusScopeSummary{} \CensusObservedSummary{}
-\CensusSegmentSummary{} \CensusDeferredSummary{}
-\else
-Final $N$ counts all completed modules across the executed intervals;
-the retired ledger has not returned.
-For reference, the retained first-segment snapshot covers 128,331 of
-163,096 modules (78.7\%), 134.7 P / 256.7 E CPU-hours and 24.62 wall-hours.
-These are not final campaign figures.
-\fi
+\CensusScopeSummary{} \CensusObservedSummary{} \CensusClockSummary{}
 
-The completed set is dependency-ordered and skips unfinished high-memory
-families/dependents, favoring less-memory-intensive remaining work.
-It is not random. Missing modules
-may be more expensive; neither the original 42 samples nor a model fills
-their costs. Work by segment and P/E is a lower bound, not a full-library
-answer. Transition gaps and summed module wall remain separate from the sum of
-complete retired segment intervals, which include actual drain.
-Deferred-by-user, failed, blocked and other unfinished modules retain
-their actual identities; unsuccessful attempts do not enter successful costs.
+\begin{samepage}
+\CensusSegmentSummary{} Intervals 2--3 share the memory-admission rule;
+cohort changes prevent a causal throughput comparison.
+\end{samepage}
 
-\ifnum\CensusFinal=1
-\CensusGroupSummary{}
-\else
-First-segment marked modules contribute 20.49\%/20.95\% of observed P/E CPU;
-observed modules outside the default graph contribute 20.16\%/19.59\%.
-These shares and Figure~\ref{fig:census} are first-segment references only.
-\fi
-Every distribution and cost share is conditional on its observed set;
-source proxies do not identify kernel CPU phases or whole-frame cost shares.
+\CensusInstructionSummary{} Figure~\ref{fig:census} shows their distribution;
+OS user-mode instructions do not attribute Lean-kernel work.
+
+\CensusGroupSummary{} These partitions cover the same observed set.
+Markers are source proxies, not kernel CPU phases; full-frame coverage
+has a separate denominator.
+
+Dependency order and exclusion of unfinished high-memory families bias
+these observations; earlier family successes remain included. Missing work
+may cost more. Neither coverage, the 42 samples nor a model fills it.
+P/E work is a separate lower-bound vector for this per-module protocol,
+not a converted whole-library estimate. Module-wall sums are not machine wall.
 
 \begin{figure}[t]
 \centering
@@ -200,28 +185,20 @@ source proxies do not identify kernel CPU phases or whole-frame cost shares.
 \centering Observed distribution awaits returned artifacts.
 \end{minipage}}
 }
-\caption{\ifnum\CensusFinal=1
-Distributions for completed modules in the retired campaign.
-\else
-First-segment reference: 128,331 modules; final campaign distribution pending.
-\fi
+\caption{Distributions for \CensusNativeModules{} completed modules.
 User-mode instructions were selected after the failed gate; CPU curves
-separate P/E. Dependency order and deferral prevent extrapolation.
-Unsuccessful attempts stay outside the reported successful costs.}
+separate P/E. Dependency order and user deferral prevent extrapolation.}
 \label{fig:census}
 \end{figure}
 
 \paragraph{External cost comparison.}
-The earlier tooling report builds 122,458 modules at \texttt{fd4aeeb2} on
-32 cloud vCPUs in 13.8 wall-hours \cite{openaiMathTooling2026}.
-Its approximate 410 CPU-hours comprise roughly 330 hours of compilation
-and 80 hours of Comparator checking. Compilation CPU is extrapolated
-from a quiet 26-module laptop sample, with estimated $\pm30\%$ uncertainty.
-That estimate is an external comparison, not an observed per-module CPU
-ledger on our revision. The report's 26-module kernel-skipping ablation
-and roughly 30,900 cloud profiles remain build-side phase precedents.
-Our observed prefix retains its different revision, incomplete scope,
-hardware and post-hoc criterion; no calibrated agreement is presumed.
+The earlier report builds 122,458 modules at \texttt{fd4aeeb2} on 32 cloud
+vCPUs in 13.8 wall-hours \cite{openaiMathTooling2026}.
+Its approximate 410 CPU-hours include 330 compilation hours extrapolated
+from 26 quiet laptop modules ($\pm30\%$), plus 80 Comparator hours.
+Different revisions, hardware, scopes and our post-hoc criterion prevent
+calibrated agreement. Its 26-module kernel-skipping ablation and roughly
+30,900 cloud profiles remain build-side phase precedents.
 
 \section{ProofServe design}\label{sec:design}
 ProofServe turns the cost and coverage findings into separate
@@ -327,15 +304,11 @@ The current receipt lacks a binding to the current source digest;
 audit exposes this gap. Thus acceptance, source coverage and reported axiom declarations remain separate answers.
 
 \section{Evaluation: performance and verification coverage}\label{sec:evaluation}
-The prepared evaluation separates final performance, common-scope acceptance
-and audit findings; final frozen-tool results are still awaiting return.
-Every admitted system result must name its executable and project commits,
-toolchain, actual module set and complete timing boundary.
-Historical prototypes explain causes but cannot populate the release tables.
+Final frozen-tool results are pending. Admitted results name executable/project
+commits, toolchain, module set and complete timing boundary; historical
+prototypes cannot fill release tables.
 
 \subsection{RQ3: original-kernel scaling and alternatives}
-Dependency-aware parallel replay targets elapsed time while preserving an
-explicit account of total CPU and additional trusted code.
 The release matrix uses 1, 2, 4 and 8 workers for Nat.Basic and Grid,
 and 1 and 8 for Barrier, with three fresh-checkpoint processes per point.
 Mathlib denotes the Nat.Basic closure.
@@ -499,7 +472,7 @@ Use \texttt{proofserve check /path/to/project} and
 build with \texttt{cd checker; lake build}.
 \path{docs/paper/generate_census.py} and
 \path{docs/paper/generate_system.py} consume committed CSVs.
-Stopped-subset generation retains unmeasured identities and unsuccessful attempts.
+Generation retains deferred identities and unsuccessful attempts.
 
 \section{Limitations and related work}
 Selected cost differences do not define a universal two-class law.

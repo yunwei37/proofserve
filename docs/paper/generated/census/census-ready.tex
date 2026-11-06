@@ -1,9 +1,17 @@
-\def\CensusNativeModules{128,331}
+\def\CensusFinal{1}
+\def\CensusScopeLabel{Retired campaign}
+\def\CensusNativeModules{162,170}
 \def\CensusExecutableModules{163,096}
-\def\CensusUnmeasuredModules{34,765}
-\def\CensusObservedPercent{78.7}
-\def\CensusPCPUHours{134.7}
-\def\CensusECPUHours{256.7}
-\def\CensusWallHours{24.62}
-\def\CensusScopeSummary{We measured \CensusNativeModules{} of \CensusExecutableModules{} executable modules (\CensusObservedPercent{}\%); \CensusUnmeasuredModules{} remain unmeasured.}
-\def\CensusObservedSummary{Observed successful work is \CensusPCPUHours{} P-core CPU-hours and \CensusECPUHours{} E-core CPU-hours, separate lower bounds rather than a full-library cost estimate. The executed interval is \CensusWallHours{} wall-hours, including drains and retries.}
+\def\CensusUnmeasuredModules{926}
+\def\CensusDeferredModules{926}
+\def\CensusObservedPercent{99.43}
+\def\CensusPCPUHours{168.956}
+\def\CensusECPUHours{302.399}
+\def\CensusWallHours{31.529}
+\def\CensusScopeSummary{\CensusNativeModules{} of \CensusExecutableModules{} modules completed (\CensusObservedPercent{}\%); \CensusDeferredModules{} were deferred.}
+\def\CensusObservedSummary{Successful work is \CensusPCPUHours{} P / \CensusECPUHours{} E CPU-hours. Retired intervals total \CensusWallHours{} wall-hours, including drain.}
+\def\CensusSegmentSummary{Interval 1 (128,331 modules): 134.651 P / 256.668 E CPUh, 24.625 wallh. Interval 2 (33,788 modules): 32.718 P / 45.731 E CPUh, 6.179 wallh. Interval 3 (51 modules): 1.587 P / 0.000 E CPUh, 0.726 wallh.}
+\def\CensusDeferredSummary{\CensusDeferredModules{} modules are deferred by user, separately from native failure and failed-dependency blocking.}
+\def\CensusInstructionSummary{User-mode instructions total $5.276\times10^{15}$; the per-module median and 95th percentile are $1.258\times10^{10}$ and $7.851\times10^{10}$, respectively.}
+\def\CensusClockSummary{The calendar span is 33.086 hours, including 1.557 hours of gaps. Final native failures / dependency blocks: 0/0; 66 unsuccessful attempts are excluded from successful CPU.}
+\def\CensusGroupSummary{Marked/unmarked: 5,848/156,322 completed modules; 30.226/138.730 P CPUh, 55.476/246.923 E CPUh. Outside/inside the default graph: 32,261/129,909 completed modules; 30.882/138.074 P CPUh, 56.237/246.162 E CPUh.}
