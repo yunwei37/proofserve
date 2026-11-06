@@ -1,0 +1,8 @@
+status,modules
+accepted_certified,968
+complete_segment_accept_pending_batch,271
+inflight_segment_accept_uncommitted,217
+attempted_without_final_verdict,1
+no_observed_module_verdict,160713
+user_deferred_unbuilt,926
+configuration_excluded,1

@@ -1,0 +1,8 @@
+[
+  {
+    "module": "OAI",
+    "status": "not_completed",
+    "reason": "deferred root has no compiled artifact; capacity not measurable",
+    "resource_failure": false
+  }
+]

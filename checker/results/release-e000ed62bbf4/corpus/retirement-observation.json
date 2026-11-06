@@ -1,0 +1,7 @@
+{
+  "utc": "2026-11-06T17:15:23.665310+00:00",
+  "lease_available": true,
+  "no_new_batch_after_admission_stop": true,
+  "controller_absent": true,
+  "native_cgroup_absent": true
+}

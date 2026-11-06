@@ -1,0 +1,59 @@
+{
+  "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "driver_commit": "616adf8590909d8f5186617b0e4cc225f262b6fc",
+  "native_binary_hash": "14707787067517532260",
+  "request_built_modules": 162170,
+  "source_frame_modules": 163096,
+  "deferred_unbuilt_modules": 926,
+  "configuration_units_excluded": 1,
+  "accepted_certified_requested_sources": 968,
+  "accepted_certified_closure_modules": 12756,
+  "confirmed_kernel_rejected_modules": 0,
+  "reported_rejection_diagnostics": 0,
+  "not_certified_requested_sources": 161202,
+  "source_status_counts": {
+    "accepted_certified": 968,
+    "complete_segment_accept_pending_batch": 271,
+    "inflight_segment_accept_uncommitted": 217,
+    "attempted_without_final_verdict": 1,
+    "no_observed_module_verdict": 160713
+  },
+  "certified_batches": 15,
+  "successful_native_segments": 146,
+  "complete_built_subset": false,
+  "whole_source_corpus_complete": false,
+  "axioms": [
+    "Classical.choice",
+    "Lean.ofReduceBool",
+    "Lean.ofReduceNat",
+    "Lean.trustCompiler",
+    "Quot.lcInv",
+    "Quot.sound",
+    "isScalarObj",
+    "lcAny",
+    "lcCast",
+    "lcErased",
+    "lcProof",
+    "lcUnreachable",
+    "lcVoid",
+    "propext",
+    "sorryAx"
+  ],
+  "axiom_scope": "declared inventory, not minimal used-axiom closure or sorry-free certificate",
+  "final_returncode": 124,
+  "stop_reasons": [],
+  "admission_events": [
+    {
+      "event": "coordinator_stopped",
+      "pid": 3031543,
+      "birth": "25148927",
+      "epoch": 1793984400.0012424
+    }
+  ],
+  "termination_classification": "operational_deadline_timeout",
+  "native_process_and_cgroup_retired": true,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus",
+  "per_module_status": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/module-status-detailed.csv.gz",
+  "statement": "Provisional segment events are not substituted for certified batch acceptance. No whole-corpus cost extrapolation.",
+  "reduced_utc": "2026-11-06T17:16:28.677234+00:00"
+}

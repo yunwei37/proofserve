@@ -1,0 +1,48 @@
+{
+  "status": "incomplete",
+  "requested_built_modules": 162170,
+  "accepted_built_source_modules": 968,
+  "accepted_closure_modules": 12756,
+  "certified_complete_batches": 15,
+  "reported_rejected_modules": [],
+  "kernel_rejections_confirmed": null,
+  "not_certified_built_source_modules": 161202,
+  "uncommitted_complete_child_receipts": [],
+  "deferred_source_modules": 926,
+  "configuration_units": [
+    "lakefile"
+  ],
+  "source_frame_modules": 163096,
+  "whole_source_corpus_complete": false,
+  "axioms": [
+    "Classical.choice",
+    "Lean.ofReduceBool",
+    "Lean.ofReduceNat",
+    "Lean.trustCompiler",
+    "Quot.lcInv",
+    "Quot.sound",
+    "isScalarObj",
+    "lcAny",
+    "lcCast",
+    "lcErased",
+    "lcProof",
+    "lcUnreachable",
+    "lcVoid",
+    "propext",
+    "sorryAx"
+  ],
+  "capacity_precheck": [
+    {
+      "module": "OAI",
+      "status": "not_completed",
+      "reason": "deferred root has no compiled artifact; capacity not measurable",
+      "resource_failure": false
+    }
+  ],
+  "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "source_data_commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+  "final_returncode": 124,
+  "stop_reasons": [],
+  "evidence": "fresh native certified batches; uncommitted child receipts excluded from certified acceptance",
+  "rejected_diagnostics": []
+}

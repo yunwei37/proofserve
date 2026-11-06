@@ -1,0 +1,16 @@
+batch,outer_certified,status,accepted_closure_modules,accepted_requested_sources,rejected_reports,receipt
+batch-0,True,complete,549,0,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-0/certified.json
+batch-1,True,complete,11825,37,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-1/certified.json
+batch-10,True,complete,4864,22,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-10/certified.json
+batch-11,True,complete,5586,106,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-11/certified.json
+batch-12,True,complete,6074,194,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-12/certified.json
+batch-13,True,complete,6711,373,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-13/certified.json
+batch-14,True,complete,4382,600,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-14/certified.json
+batch-2,True,complete,1569,2,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-2/certified.json
+batch-3,True,complete,2280,37,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-3/certified.json
+batch-4,True,complete,2359,2,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-4/certified.json
+batch-5,True,complete,3196,14,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-5/certified.json
+batch-6,True,complete,3005,5,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-6/certified.json
+batch-7,True,complete,3831,15,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-7/certified.json
+batch-8,True,complete,3453,2,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-8/certified.json
+batch-9,True,complete,4490,40,0,/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus/whole-state/batch-9/certified.json

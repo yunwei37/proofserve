@@ -1,0 +1,30 @@
+{
+  "native_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+  "checker_binary_hash": "14707787067517532260",
+  "native_source_blobs": {
+    "checker/Main.lean": "af948685026de5f2e7750b41af59a879099b52a8",
+    "checker/ProofServe/Stream.lean": "333afd303a5cb618dab3fb82819ffa46a6c6e7fc",
+    "checker/ProofServe/Core.lean": "0e8b84dbfa336448a592a32625273a23b7355f93",
+    "checker/ProofServe/ModulePlan.lean": "d735723e40881d7b6bbd34167f98d9f4fa43cc86",
+    "checker/c/runtime.c": "540b3d41597593dbdd63715a2d64cb5e10cd8ede",
+    "checker/lakefile.lean": "3337a6c21f34e0dd9b94cdb549f0f2a9ff4a0dfb",
+    "checker/lean-toolchain": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5"
+  },
+  "lean_version": "4.34.1",
+  "driver_commit": "616adf8590909d8f5186617b0e4cc225f262b6fc",
+  "driver_dirty": false,
+  "qualification": false,
+  "source_data_commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+  "project_source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "native_source_unchanged_after_run": true,
+  "workers": 22,
+  "cpu_set": "0-7,10-23",
+  "theorem_body_policy": "shared-checked",
+  "fresh_checkpoint": true,
+  "admission_stop_utc": "2026-11-06T17:00:00Z",
+  "last_batch_drain_limit_utc": "2026-11-06T17:15:00Z",
+  "result_written_utc": "2026-11-06T17:15:00.041297+00:00",
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/checker-final-e000ed62-20261106T050828/corpus",
+  "retirement_observation": "retirement-observation.json"
+}

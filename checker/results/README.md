@@ -37,7 +37,7 @@ Full Mathlib means all 8,529 Mathlib directory modules plus the umbrella module.
 Its loaded scale preview accepted 10,744 modules including dependencies; it is
 distinct from the 1,330-module Nat.Basic closure.
 
-The next corpus stage is restricted to W's actually built 162,170 source modules. The 926 deferred source modules and additional lakefile configuration unit are excluded. Inputs and a manual command are prepared in the final report; corpus checking has not been launched. O's external timings come first. A checked subset is not the full 163,096-source-module corpus; the frame contains 163,097 units only when the configuration file is included. The separate PlanarPacking comparison remains cancelled.
+The [bounded built-artifact check](release-e000ed62bbf4/corpus/README.md) ended at the authorized 17:15 UTC drain limit on 6 November. Fifteen complete batches certified 12,756 distinct closure modules, including 968 of W's 162,170 requested built sources. Another 488 source accept events remain provisional; 161,202 requested sources lack complete batch certification. No module rejection was reported. The 926 deferred sources and one lakefile configuration unit are separate. OAI has no compiled artifact, so its capacity is unmeasured. All processes retired and the lock was released. This is an incomplete prefix, with no whole-corpus parity or cost extrapolation. Earlier unexecuted corpus commands are historical preparation; the current report records the actual driver and terminal evidence. The separate PlanarPacking comparison remains cancelled.
 
 Final native timing uses no Lean -M, P cores 0-7 and the P-core lease. Preparation and analysis use CPUs 8-9. Raw binaries and large artifacts remain outside Git.
 
