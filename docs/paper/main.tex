@@ -58,7 +58,8 @@ We tested that answer on OpenAI's public library of AI-generated
 mathematics~\cite{openaiMathSource} and found that AI now writes Lean
 proofs faster than Lean can check them. A model can write a 450-line file
 in under a minute; Lean, on one processor core, took 2.6 hours to check it.
-Across the library's 162,170 files, a model writing 1,000 tokens per second
+Across the library's 162,170 files, a model writing 1,000 tokens per second,
+a speed fast inference services already reach for a single stream,
 finishes first on 95\% of them (Figure~\ref{fig:genvscheck}). Formal
 verification is supposed to be the cheap step that lets us trust
 AI-written mathematics. For AI-written proofs, it is becoming the expensive
@@ -145,11 +146,16 @@ workloads kept running on the machine.
 \paragraph{Writing time.}
 We count each module's tokens with the \texttt{o200k\_base} tokenizer
 (676.6 million tokens in all, 2.64 bytes per token) and divide by a model's
-output rate. We draw three reference rates: 100 tokens
-per second, roughly one interactive stream; 1,000; and 10,000, which one GPU
-serving a small model in batches already exceeds (Qwen2.5-0.5B on one RTX
-5090 served 11,645 tokens per second in our earlier
-measurement~\cite{bpfGpuServer2026}). Writing time counts the final file
+output rate. Three reference rates match what large models reach in
+2026. In May 2026 the fastest GPU-based provider served Kimi K2.6, a
+trillion-parameter model, at about 146 tokens per second per stream, and
+Cerebras served it at 981, as measured by Artificial
+Analysis~\cite{cerebrasKimi2026}; we use 100 and 1,000 tokens per second
+for these two settings. The third rate, 10,000 tokens per second, is the
+output of two GPUs in a batched server: each GPU of an NVIDIA GB300 NVL72
+rack serving DeepSeek-V4-Pro, a 1.6-trillion-parameter model, produced
+6,182 output tokens per second across its users~\cite{semianalysisDsv4Pro2026}.
+Writing time counts the final file
 alone; the reasoning and failed attempts that produced it lie outside it.
 
 \paragraph{Checking time.}
@@ -183,8 +189,8 @@ certificate files compile more tokens per second than small ones. A model
 writing 100 tokens per second already outpaces Lean on 8\% of the modules
 (3.5\% on P cores, 12.9\% on E cores). At 1,000 tokens per second it
 outpaces Lean on 95\% of them (91.8\% and 99.1\%), and at 10,000 on all of
-them. Keeping pace with one GPU that writes 10,000 tokens per second would
-take about 17 P cores of compilation at the library-wide rate, before any
+them. Keeping pace with one such GB300 GPU at 6,182 tokens per second would
+take about 11 P cores of compilation at the library-wide rate, before any
 re-check.
 
 \SampleRecheckSummary{}
@@ -372,8 +378,8 @@ measure different amounts of work.
 If models keep writing proofs faster than Lean checks them, verification
 needs the planning that model inference already receives. Give checking
 its own capacity next to generation and budget it in tokens per
-CPU-second: at the library-wide rate, keeping pace with one GPU that writes
-10,000 tokens per second takes about 17 P cores of compilation.
+CPU-second: at the library-wide rate, keeping pace with one GB300 GPU
+serving a frontier model takes about 11 P cores of compilation.
 Budget computational certificates individually, and count how much of a
 library relies on computation before sizing a check. Report which roots a
 build or check covered. Load imports once per worker and reuse them for
