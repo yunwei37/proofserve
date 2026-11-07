@@ -3,11 +3,12 @@
 **Independent checking and coverage audit for Lean projects.** Check compiled
 proofs with the original Lean kernel; audit what the project actually covers.
 
-The unpublished Linux bundle includes Lean 4.34.1, checker and audit tools.
-With the prepared archive, installer and Python 3.11+, run without cloning:
+The [published Linux bundle](https://github.com/yunwei37/proofserve/releases/tag/v0.1.0)
+includes Lean 4.34.1, checker and audit tools. With Python 3.11+, install without cloning:
 
 ~~~sh
-python3 install.py --archive proofserve-0.1.0-linux-x86_64.tar.gz
+curl -fsSL https://github.com/yunwei37/proofserve/releases/download/v0.1.0/install.py -o install.py
+python3 install.py --version v0.1.0
 ~/.local/bin/proofserve check /path/to/built-lake-project
 ~/.local/bin/proofserve audit /path/to/built-lake-project --json -
 ~~~
@@ -28,7 +29,7 @@ default at 8 workers; strict Grid timed out at 1,800 s. [Policy costs](checker/r
 Full-closure and official local-root costs are [reported separately](data/external-projects/e000ed62-final/README.md).
 [Trust and modes](packaging/INTERFACES.md).
 
-Version 0.1.0 is prepared, not published. Other toolchains use a matching
+Version 0.1.0 is available from GitHub Releases. Other toolchains use a matching
 official checker when available or fail explicitly; no silent migration occurs.
 
 ## Final measurements and coverage
@@ -49,33 +50,38 @@ The other 161,202 requests are uncertified; provisional events are not completed
 verification. There is no whole-library verdict or cost extrapolation.
 [Certified and unfinished scope](checker/results/release-e000ed62bbf4/corpus/README.md).
 
-The exact prepared archive is locally qualified on Debian13/glibc2.41;
+The published archive is locally qualified on Debian13/glibc2.41;
 the Ubuntu release workflow creates a different artifact.
 [Archive identity](packaging/RELEASE_ARCHIVE.json) ·
 [Operator release checklist](packaging/RELEASE_CHECKLIST.md).
 
 ## Install without cloning
 
-Use the prepared release archive and its installer:
+Download [ProofServe v0.1.0](https://github.com/yunwei37/proofserve/releases/tag/v0.1.0)
+with its installer; Python 3.11+ is required:
 
 ~~~sh
-python3 install.py --archive proofserve-0.1.0-linux-x86_64.tar.gz
-~/.local/bin/proofserve check /path/to/lake-project
+curl -fsSL https://github.com/yunwei37/proofserve/releases/download/v0.1.0/install.py -o install.py
+python3 install.py --version v0.1.0
+~/.local/bin/proofserve check /path/to/built-lake-project
 ~~~
 
-After the operator publishes the first release, the same installer can fetch
-the matching asset automatically:
+Public assets:
 
-~~~sh
-curl -fsSL https://raw.githubusercontent.com/yunwei37/proofserve/main/packaging/install.py | python3 -
-~~~
+- [proofserve-0.1.0-linux-x86_64.tar.gz](https://github.com/yunwei37/proofserve/releases/download/v0.1.0/proofserve-0.1.0-linux-x86_64.tar.gz)
+  (954,865,527 bytes), SHA-256:
+  `5c49603e3f8e34b72b89e7959b00a74fbcc910c534da90dcb342dae01381da61`.
+- [install.py](https://github.com/yunwei37/proofserve/releases/download/v0.1.0/install.py),
+  SHA-256: `e39354cfe9c1ad3647f4cedb7d33024e53f64e0868e62c8e483883ae52c33010`.
 
-That network command requires a published release and is not advertised as
-working before one exists. Local archives install offline. Installation keeps
-older versions and links only ProofServe commands; it does not replace a
-system Lean or Elan installation.
+For offline installation, download both assets and run
+`python3 install.py --archive proofserve-0.1.0-linux-x86_64.tar.gz`.
+Installation keeps older versions and links only ProofServe commands; it does
+not replace a system Lean or Elan installation. The four Rust crates are not
+yet on crates.io; publication awaits the repository's CARGO_REGISTRY_TOKEN secret.
+[Public download/install verification](packaging/releases/v0.1.0.md) ·
 [Bundle layout and build recipe](packaging/README.md) ·
-[Prepared release notes](packaging/RELEASE_NOTES.md).
+[Release notes](packaging/RELEASE_NOTES.md).
 
 ## Check a project
 
@@ -116,8 +122,8 @@ docker run --rm -v "$PWD":/project proofserve:0.1.0 check /project
 docker run --rm -v "$PWD":/project proofserve:0.1.0 audit /project --json -
 ~~~
 
-These commands use a locally loaded prepared image; no public registry image
-is claimed before publication. Builders can use docker build -t proofserve:0.1.0 .
+These commands require a locally built image; no container registry image
+was published for 0.1.0. Builders can use docker build -t proofserve:0.1.0 .
 The frozen e000ed62 preview passed a fresh image build and network-disabled
 installed-form controls, including two Mathlib service imports, three existing
 kernel-rejection cases, strict mode and version errors.
@@ -170,7 +176,8 @@ separates logical HEAD size, reachable history and .git disk allocation.
 | proofserve | Project CLI and existing HTTP/JSONL service |
 | proofserve-core / engine / lean | Existing service types, resources and backends |
 
-cargo install provides the Rust launcher/service, not the full Lean bundle.
+Once crates.io publication completes, cargo install will provide the Rust
+launcher/service, not the full Lean bundle.
 The previous candidate JSONL check command is now batch; measure/compare remain
 for retained captures. [CLI component contract](packaging/INTERFACES.md).
 

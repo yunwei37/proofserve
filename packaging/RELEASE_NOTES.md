@@ -1,10 +1,11 @@
-# ProofServe 0.1.0 — final materials, not published
+# ProofServe 0.1.0 — published GitHub Release
 
 Review: 自审. Frozen native checker **e000ed62bbf4b9c420bd99d0273a5d21829b4edc**,
 Lean **4.34.1**, ABI6 / independent-closures-v8. Measured archive runtime:
 **818f74229434b888702a2d72b370cb2e07c79b36**. Later documentation commits are not
 substituted as its build provenance. All finite campaigns ended; not every
-planned point or requested module completed. No public release action occurred.
+planned point or requested module completed. The [GitHub Release](https://github.com/yunwei37/proofserve/releases/tag/v0.1.0)
+is public with the qualified archive and install.py.
 
 ## Product and CLI migration
 
@@ -123,7 +124,7 @@ closures or sorry-free guarantees. [Boundary](INTERFACES.md#frozen-checker-bound
 provenance, not a new install/acceptance gate. Embedded documentation stays
 at 818f7422; these notes are its updated sidecar, not a mutated measured tarball.
 
-## Functional qualification and pending public decisions
+## Functional qualification and publication status
 
 Frozen archive/container preview passed relocation, check/audit, strict/default
 forwarding, version refusal and all 3 existing kernel-rejection classes.
@@ -136,6 +137,10 @@ dry-runs; CI separately ran 6 native tests. Ordinary push CI skips its manual-on
 container job; a green push alone does not qualify an image. Historical
 passes/failures retain their pins in qualification JSONs.
 
-Readiness: **conditional on the user's public release decisions**, including ABI
-scope and coupled tag/crates effects. [Release checklist](RELEASE_CHECKLIST.md).
-Research data/history stay in Git. Nothing has been tagged or published.
+The v0.1.0 annotated tag, GitHub Release and both assets are public; anonymous
+download, fresh installation, version, small-project check and audit passed.
+[Publication record and asset hashes](releases/v0.1.0.md).
+The four crates remain unpublished because the tag-triggered upload lacked
+CARGO_REGISTRY_TOKEN; no alternate credentials or workflow changes were used.
+No container image or announcement was published. [Release checklist](RELEASE_CHECKLIST.md).
+Research data/history stay in Git.

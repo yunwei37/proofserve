@@ -143,7 +143,9 @@ change or new measurement.
 
 The [retained archive](RELEASE_ARCHIVE.json) is Debian13/glibc2.41-qualified.
 The Ubuntu22.04 workflow build is a separate artifact, not the same bytes.
-The [release checklist](RELEASE_CHECKLIST.md) lists pending public actions.
-Pushing a v* tag triggers portable preparation and automatic crates publication:
-a tag-only approval does not authorize the latter. No public release, crate
-upload, image push or announcement has been executed.
+The [release checklist](RELEASE_CHECKLIST.md) records the publication procedure.
+The v0.1.0 tag and [GitHub Release](https://github.com/yunwei37/proofserve/releases/tag/v0.1.0)
+with archive and installer are public. The public-download installation smoke
+passed; [publication record](releases/v0.1.0.md). The four crates remain unpublished:
+the tag-triggered upload failed because CARGO_REGISTRY_TOKEN is missing.
+No container image or announcement was published.
