@@ -1,0 +1,26 @@
+{
+  "version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "upstream_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "release": "v4.34.1",
+  "release_url": "https://github.com/leanprover/lean4/releases/tag/v4.34.1",
+  "lean": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/lean",
+  "leanchecker": "/workspaces/.agent-state/gpu-smt-workloads/toolchains/lean-4.34.1-linux/bin/leanchecker",
+  "LD_PRELOAD": null,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/lean-observations-20261106T195829Z/attempt-2",
+  "initial_setup_failure": "/workspaces/.agent-state/gpu-smt-captures/lean-observations-20261106T195829Z",
+  "official_source_sdk_matches": [
+    "src/LeanChecker.lean",
+    "src/Lean/Environment.lean",
+    "src/Lean/Replay.lean",
+    "src/Lean/Util/Path.lean"
+  ],
+  "observed_utc": "2026-11-07T02:57:14.788544+00:00",
+  "timing_raw": "/workspaces/.agent-state/gpu-smt-captures/lean-observations-20261106T195829Z/attempt-2/timing-3",
+  "timing_completed_utc": "2026-11-06T20:14:44.993264+00:00",
+  "compact_module_count": 1330,
+  "compact_artifact_links": 6650,
+  "artifact_identity": "same device and inode, verified again after measurement",
+  "report_written_utc": "2026-11-07T03:00:32.125667+00:00",
+  "mathlib_source_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "measurement_method": "single paired observation; wait4 CPU; public Lean API discovery probe; no statistical speedup claim"
+}

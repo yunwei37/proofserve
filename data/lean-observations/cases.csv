@@ -1,0 +1,45 @@
+case,exit,stdout,stderr
+parts-complete-default,0,"replaying Parts
+",
+parts-complete-fresh,0,"replaying Parts with --fresh
+",
+parts-missing-private-default,0,"replaying Parts
+",
+parts-missing-private-fresh,1,"replaying Parts with --fresh
+","uncaught exception: failed to open file '/workspaces/.agent-state/gpu-smt-captures/lean-observations-20261106T195829Z/attempt-2/missing-private/Parts.olean.private': No such file or directory
+"
+evaluation-default,0,"replaying Eval
+",
+evaluation-fresh,1,"replaying Eval with --fresh
+","uncaught exception: while replaying declaration 'evaluated':
+(kernel) (interpreter) unknown declaration 'f'
+"
+duplicates-good-default,0,"replaying C
+",
+duplicates-good-fresh,0,"replaying C with --fresh
+",
+bad-B-alone-default,1,"replaying B
+","leanchecker found a problem in B
+uncaught exception: while replaying declaration 'same':
+(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it
+"
+bad-B-alone-fresh,1,"replaying B with --fresh
+","uncaught exception: while replaying declaration 'same':
+(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it
+"
+duplicates-good-then-bad-default,0,"replaying C
+",
+duplicates-good-then-bad-fresh,1,"replaying C with --fresh
+","uncaught exception: while replaying declaration 'same':
+(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it
+"
+duplicates-bad-then-good-default,0,"replaying Reverse
+",
+duplicates-bad-then-good-fresh,0,"replaying Reverse with --fresh
+",
+import-only-bad-default,0,"replaying OnlyBad
+",
+import-only-bad-fresh,1,"replaying OnlyBad with --fresh
+","uncaught exception: while replaying declaration 'same':
+(kernel) type checker does not support loose bound variables, replace them with free variables before invoking it
+"
