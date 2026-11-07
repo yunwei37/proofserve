@@ -1,0 +1,30 @@
+{
+  "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "python_version": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "source_data_commit": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+  "source_revision": "4eaee87548250b2682affda7d05d947c05554bae",
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "source_archive": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/openai-math-4eaee875.tar.gz",
+  "clock_binary": "/workspaces/.agent-state/gpu-smt-captures/chunked-kernel-check/declaration-distribution-v1/clock.so",
+  "measurement_entry_blob": "0e4f713b4c526ef3e15f81e896be1d745d6dc5d0",
+  "native_driver_blob": "10002199db9189d9726355a99e29be4e2f2db53c",
+  "tokenizer": "0.14.0",
+  "sampling_seed": 20261107,
+  "source_matches_compilation_records": 200,
+  "raw": "/workspaces/.agent-state/gpu-smt-captures/generation-vs-checking-20261107T072259Z",
+  "native_raw": "/workspaces/.agent-state/gpu-smt-captures/generation-vs-checking-20261107T072259Z/native-5-complete-window",
+  "cgroup_retired": true,
+  "native_controller": {
+    "pid": 3063347,
+    "birth": "32239670",
+    "started_utc": "2026-11-07T08:21:17.141884+00:00"
+  },
+  "plot_visually_reviewed": true,
+  "observation": "single pass with up to eight independent one-core processes; page cache not flushed; preprocessing/reduction restricted to E cores",
+  "model_cpu": "Intel(R) Core(TM) i9-14900K",
+  "corrected_boundary": "sum of own-module artifact read, map construction and replay; import excluded; pure replay separately",
+  "superseded_metric_capture": "/workspaces/.agent-state/gpu-smt-captures/generation-vs-checking-20261107T072259Z/native-4",
+  "correction": "same fixed 200 modules rerun; no pooled timings; first pass retained",
+  "acquisition_base_commit": "45d83f6533ddbe7da4f725ef30ed790c9869d36b",
+  "validation": "data-validation.json in raw capture; source/token counts, phase sums, process containment, exit status and cgroup retirement checked"
+}
