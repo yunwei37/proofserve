@@ -1,0 +1,964 @@
+{
+  "recorded_utc": "2026-11-07T02:57:35.064556+00:00",
+  "authorization": {
+    "operator_quote": "\u53bb\u505a, \u5bf9\u5916\u53d1\u5e03, \u8bba\u6587\u653e\u5728 eunomia.dev \u4e0a\u9762.",
+    "scope": "v0.1.0 annotated tag; GitHub Release/archive/install.py; four crate publication via existing workflow. No image push or announcement.",
+    "missing_crates_token": "User explicitly instructed to retain the expected failure; no alternate credentials or workflow changes."
+  },
+  "tag": {
+    "tag": "v0.1.0",
+    "commit": "ab02c7e6e2651bd4c963ada2adde030edfd9b5c3",
+    "object": "f14e79a57197640e9db7c3be53fdca112aa67f41",
+    "published_utc": "2026-11-06T19:56:25.932876+00:00"
+  },
+  "public_tag": {
+    "ref": {
+      "ref": "refs/tags/v0.1.0",
+      "node_id": "REF_kwDOUy3vaLByZWZzL3RhZ3MvdjAuMS4w",
+      "url": "https://api.github.com/repos/yunwei37/proofserve/git/refs/tags/v0.1.0",
+      "object": {
+        "sha": "f14e79a57197640e9db7c3be53fdca112aa67f41",
+        "type": "tag",
+        "url": "https://api.github.com/repos/yunwei37/proofserve/git/tags/f14e79a57197640e9db7c3be53fdca112aa67f41"
+      }
+    },
+    "annotated_tag": {
+      "node_id": "TA_kwDOUy3vaNoAKGYxNGU3OWE1NzE5NzY0MGU5ZGI3YzNiZTUzZmRjYTExMmFhNjdmNDE",
+      "sha": "f14e79a57197640e9db7c3be53fdca112aa67f41",
+      "url": "https://api.github.com/repos/yunwei37/proofserve/git/tags/f14e79a57197640e9db7c3be53fdca112aa67f41",
+      "tagger": {
+        "name": "Yunwei 123",
+        "email": "yunwei356@gmail.com",
+        "date": "2026-11-06T19:56:24Z"
+      },
+      "object": {
+        "sha": "ab02c7e6e2651bd4c963ada2adde030edfd9b5c3",
+        "type": "commit",
+        "url": "https://api.github.com/repos/yunwei37/proofserve/git/commits/ab02c7e6e2651bd4c963ada2adde030edfd9b5c3"
+      },
+      "tag": "v0.1.0",
+      "message": "ProofServe 0.1.0\n",
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    }
+  },
+  "release": {
+    "html_url": "https://github.com/yunwei37/proofserve/releases/tag/v0.1.0",
+    "tag_name": "v0.1.0",
+    "target_commitish": "main",
+    "draft": false,
+    "prerelease": false,
+    "published_at": "2026-11-06T19:57:32Z",
+    "id": 436942691,
+    "assets": [
+      {
+        "url": "https://api.github.com/repos/yunwei37/proofserve/releases/assets/718374191",
+        "id": 718374191,
+        "node_id": "RA_kwDOUy3vaM4q0YUv",
+        "name": "install.py",
+        "label": "",
+        "uploader": {
+          "login": "yunwei37",
+          "id": 34985212,
+          "node_id": "MDQ6VXNlcjM0OTg1MjEy",
+          "avatar_url": "https://avatars.githubusercontent.com/u/34985212?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/yunwei37",
+          "html_url": "https://github.com/yunwei37",
+          "followers_url": "https://api.github.com/users/yunwei37/followers",
+          "following_url": "https://api.github.com/users/yunwei37/following{/other_user}",
+          "gists_url": "https://api.github.com/users/yunwei37/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/yunwei37/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/yunwei37/subscriptions",
+          "organizations_url": "https://api.github.com/users/yunwei37/orgs",
+          "repos_url": "https://api.github.com/users/yunwei37/repos",
+          "events_url": "https://api.github.com/users/yunwei37/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/yunwei37/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "content_type": "text/x-python; charset=utf-8",
+        "state": "uploaded",
+        "size": 3930,
+        "digest": "sha256:e39354cfe9c1ad3647f4cedb7d33024e53f64e0868e62c8e483883ae52c33010",
+        "download_count": 0,
+        "created_at": "2026-11-06T19:56:33Z",
+        "updated_at": "2026-11-06T19:56:33Z",
+        "browser_download_url": "https://github.com/yunwei37/proofserve/releases/download/v0.1.0/install.py"
+      },
+      {
+        "url": "https://api.github.com/repos/yunwei37/proofserve/releases/assets/718374187",
+        "id": 718374187,
+        "node_id": "RA_kwDOUy3vaM4q0YUr",
+        "name": "proofserve-0.1.0-linux-x86_64.tar.gz",
+        "label": "",
+        "uploader": {
+          "login": "yunwei37",
+          "id": 34985212,
+          "node_id": "MDQ6VXNlcjM0OTg1MjEy",
+          "avatar_url": "https://avatars.githubusercontent.com/u/34985212?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/yunwei37",
+          "html_url": "https://github.com/yunwei37",
+          "followers_url": "https://api.github.com/users/yunwei37/followers",
+          "following_url": "https://api.github.com/users/yunwei37/following{/other_user}",
+          "gists_url": "https://api.github.com/users/yunwei37/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/yunwei37/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/yunwei37/subscriptions",
+          "organizations_url": "https://api.github.com/users/yunwei37/orgs",
+          "repos_url": "https://api.github.com/users/yunwei37/repos",
+          "events_url": "https://api.github.com/users/yunwei37/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/yunwei37/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "content_type": "application/x-gtar",
+        "state": "uploaded",
+        "size": 954865527,
+        "digest": "sha256:5c49603e3f8e34b72b89e7959b00a74fbcc910c534da90dcb342dae01381da61",
+        "download_count": 0,
+        "created_at": "2026-11-06T19:56:33Z",
+        "updated_at": "2026-11-06T19:57:31Z",
+        "browser_download_url": "https://github.com/yunwei37/proofserve/releases/download/v0.1.0/proofserve-0.1.0-linux-x86_64.tar.gz"
+      }
+    ]
+  },
+  "public_assets": [
+    {
+      "name": "proofserve-0.1.0-linux-x86_64.tar.gz",
+      "size": 954865527,
+      "sha256": "5c49603e3f8e34b72b89e7959b00a74fbcc910c534da90dcb342dae01381da61",
+      "url": "https://github.com/yunwei37/proofserve/releases/download/v0.1.0/proofserve-0.1.0-linux-x86_64.tar.gz",
+      "authentication": "none"
+    },
+    {
+      "name": "install.py",
+      "size": 3930,
+      "sha256": "e39354cfe9c1ad3647f4cedb7d33024e53f64e0868e62c8e483883ae52c33010",
+      "url": "https://github.com/yunwei37/proofserve/releases/download/v0.1.0/install.py",
+      "authentication": "none"
+    }
+  ],
+  "public_smoke": {
+    "complete": true,
+    "utc": "2026-11-06T20:02:40.426836+00:00",
+    "cpu_affinity": [
+      8,
+      9
+    ],
+    "assets": [
+      {
+        "name": "proofserve-0.1.0-linux-x86_64.tar.gz",
+        "size": 954865527,
+        "sha256": "5c49603e3f8e34b72b89e7959b00a74fbcc910c534da90dcb342dae01381da61",
+        "url": "https://github.com/yunwei37/proofserve/releases/download/v0.1.0/proofserve-0.1.0-linux-x86_64.tar.gz",
+        "authentication": "none"
+      },
+      {
+        "name": "install.py",
+        "size": 3930,
+        "sha256": "e39354cfe9c1ad3647f4cedb7d33024e53f64e0868e62c8e483883ae52c33010",
+        "url": "https://github.com/yunwei37/proofserve/releases/download/v0.1.0/install.py",
+        "authentication": "none"
+      }
+    ],
+    "release_url": "https://github.com/yunwei37/proofserve/releases/tag/v0.1.0",
+    "version": "proofserve 0.1.0",
+    "bundle": {
+      "version": "0.1.0",
+      "source_commit": "818f74229434b888702a2d72b370cb2e07c79b36",
+      "build_observed_head": "818f74229434b888702a2d72b370cb2e07c79b36",
+      "platform": "linux-x86_64",
+      "lean_toolchain": "leanprover/lean4:v4.34.1",
+      "checker_commit": "e000ed62bbf4b9c420bd99d0273a5d21829b4edc",
+      "source_worktree_dirty": false,
+      "python_requirement": "3.11+",
+      "build_libc": [
+        "glibc",
+        "2.41"
+      ],
+      "input": "compiled Lake project; no source checkout or build-host paths required"
+    },
+    "receipt": {
+      "accepted": [
+        "Init.Prelude",
+        "Base",
+        "Fixture"
+      ],
+      "axioms": [
+        "Classical.choice",
+        "Quot.lcInv",
+        "Quot.sound",
+        "isScalarObj",
+        "lcAny",
+        "lcCast",
+        "lcErased",
+        "lcProof",
+        "lcUnreachable",
+        "lcVoid",
+        "sorryAx"
+      ],
+      "certificate_reused_modules": [],
+      "checker_binary_hash": "14707787067517532260",
+      "checker_checkpoint_abi": 6,
+      "cpu_ns": "691638000",
+      "cumulative_segment_cpu_ns": "337472716",
+      "entry_count_meaning": "module replay entries, not declaration checks or kernel calls",
+      "execution_path": "proofserve-parallel",
+      "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)\n",
+      "mathlib_manifest": {
+        "fixedToolchain": false,
+        "lakeDir": ".lake",
+        "name": "release_smoke",
+        "packages": [],
+        "packagesDir": ".lake/packages",
+        "version": "1.2.0"
+      },
+      "missing_modules": [],
+      "module_set_hash": "16029835335999848394",
+      "module_set_hash_algorithm": "lean-hash64-toolchain-specific-noncryptographic",
+      "module_verifications": [
+        {
+          "action": "kernel_replay",
+          "context": "shared",
+          "frontier_insert_candidates": 2271,
+          "kernel_call_count": null,
+          "module": "Init.Prelude",
+          "safe_input_constants": 2271
+        },
+        {
+          "action": "kernel_replay",
+          "context": "shared",
+          "frontier_insert_candidates": 1,
+          "kernel_call_count": null,
+          "module": "Base",
+          "safe_input_constants": 1
+        },
+        {
+          "action": "kernel_replay",
+          "context": "shared",
+          "frontier_insert_candidates": 1,
+          "kernel_call_count": null,
+          "module": "Fixture",
+          "safe_input_constants": 1
+        }
+      ],
+      "new_module_check_entries": 3,
+      "operational_errors": [],
+      "parallel": true,
+      "project_dirty": null,
+      "project_revision": null,
+      "project_revision_binds_artifacts": false,
+      "rejected": [],
+      "roots": [
+        "Base",
+        "Fixture"
+      ],
+      "schema_version": 1,
+      "segments": [
+        {
+          "reused": false,
+          "segment": 0
+        }
+      ],
+      "status": "complete",
+      "theorem_body_policy": "shared-checked",
+      "trusted_import_basis": "trusted editable local certificates with current input identities; manual certificate edits can forge acceptance or axioms",
+      "trusted_local_checkpoints": true,
+      "wall_ns": 748706900,
+      "workers": 1
+    },
+    "commands": [
+      {
+        "label": "public-install",
+        "argv": [
+          "python3",
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-download/install.py",
+          "--archive",
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-download/proofserve-0.1.0-linux-x86_64.tar.gz",
+          "--prefix",
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-installed"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "public-version",
+        "argv": [
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-installed/bin/proofserve",
+          "--version"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "public-build",
+        "argv": [
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-installed/lib/proofserve/versions/0.1.0-818f74229434/bin/lake",
+          "build"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "public-check",
+        "argv": [
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-installed/bin/proofserve",
+          "check",
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-project",
+          "--workers",
+          "1",
+          "--checkpoint-dir",
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-checkpoint",
+          "--json"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "public-audit",
+        "argv": [
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-installed/bin/proofserve",
+          "audit",
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-project",
+          "--receipt",
+          "/workspaces/.agent-state/proofserve-o-line/publication-20261106/public-checkpoint/receipt.json",
+          "--json",
+          "-"
+        ],
+        "returncode": 0
+      }
+    ],
+    "scope": "Public unauthenticated Release bytes; fresh installation; small project build/check/audit. Functional smoke only, not a timing point."
+  },
+  "workflows": [
+    {
+      "conclusion": "success",
+      "headSha": "ab02c7e6e2651bd4c963ada2adde030edfd9b5c3",
+      "jobs": [
+        {
+          "completedAt": "2026-11-06T19:57:36Z",
+          "conclusion": "success",
+          "databaseId": 128120035407,
+          "name": "native-repl-contract",
+          "startedAt": "2026-11-06T19:56:30Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-11-06T19:56:31Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-11-06T19:56:30Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:33Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v4",
+              "number": 2,
+              "startedAt": "2026-11-06T19:56:31Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:41Z",
+              "conclusion": "success",
+              "name": "Run dtolnay/rust-toolchain@stable",
+              "number": 3,
+              "startedAt": "2026-11-06T19:56:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:52Z",
+              "conclusion": "success",
+              "name": "Prepare pinned native protocol dependency",
+              "number": 4,
+              "startedAt": "2026-11-06T19:56:41Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:56Z",
+              "conclusion": "success",
+              "name": "Build import-only native parent",
+              "number": 5,
+              "startedAt": "2026-11-06T19:56:52Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:11Z",
+              "conclusion": "success",
+              "name": "Differential check against raw native JSON",
+              "number": 6,
+              "startedAt": "2026-11-06T19:56:56Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:32Z",
+              "conclusion": "success",
+              "name": "Check native ordinary-failure transition controls",
+              "number": 7,
+              "startedAt": "2026-11-06T19:57:11Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:33Z",
+              "conclusion": "success",
+              "name": "Retain native candidate differential evidence",
+              "number": 8,
+              "startedAt": "2026-11-06T19:57:32Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:34Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v4",
+              "number": 16,
+              "startedAt": "2026-11-06T19:57:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:34Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 17,
+              "startedAt": "2026-11-06T19:57:34Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014303/job/128120035407"
+        },
+        {
+          "completedAt": "2026-11-06T20:02:17Z",
+          "conclusion": "success",
+          "databaseId": 128120035944,
+          "name": "checker-contract",
+          "startedAt": "2026-11-06T19:56:30Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-11-06T19:56:32Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-11-06T19:56:31Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:33Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v4",
+              "number": 2,
+              "startedAt": "2026-11-06T19:56:32Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:45Z",
+              "conclusion": "success",
+              "name": "Prepare the checker-declared original SDK",
+              "number": 3,
+              "startedAt": "2026-11-06T19:56:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T20:02:13Z",
+              "conclusion": "success",
+              "name": "Build and exercise original-kernel bad-proof and resume contracts",
+              "number": 4,
+              "startedAt": "2026-11-06T19:56:45Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T20:02:13Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v4",
+              "number": 8,
+              "startedAt": "2026-11-06T20:02:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T20:02:13Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 9,
+              "startedAt": "2026-11-06T20:02:13Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014303/job/128120035944"
+        },
+        {
+          "completedAt": "2026-11-06T19:58:06Z",
+          "conclusion": "success",
+          "databaseId": 128120036091,
+          "name": "rust",
+          "startedAt": "2026-11-06T19:56:30Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-11-06T19:56:31Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-11-06T19:56:30Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:34Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v4",
+              "number": 2,
+              "startedAt": "2026-11-06T19:56:31Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:42Z",
+              "conclusion": "success",
+              "name": "Run dtolnay/rust-toolchain@stable",
+              "number": 3,
+              "startedAt": "2026-11-06T19:56:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:44Z",
+              "conclusion": "success",
+              "name": "Run PYTHONPATH=clients/python python3 -m unittest discover -s clients/python/tests -v",
+              "number": 4,
+              "startedAt": "2026-11-06T19:56:42Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:03Z",
+              "conclusion": "success",
+              "name": "Run cargo publish --workspace --dry-run --locked",
+              "number": 5,
+              "startedAt": "2026-11-06T19:56:44Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:03Z",
+              "conclusion": "success",
+              "name": "Run cargo fmt --all -- --check",
+              "number": 6,
+              "startedAt": "2026-11-06T19:57:03Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:09Z",
+              "conclusion": "success",
+              "name": "Run cargo clippy --workspace --all-targets --locked -- -D warnings",
+              "number": 7,
+              "startedAt": "2026-11-06T19:57:03Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:32Z",
+              "conclusion": "success",
+              "name": "Run cargo test --workspace --all-targets --locked",
+              "number": 8,
+              "startedAt": "2026-11-06T19:57:09Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:32Z",
+              "conclusion": "success",
+              "name": "Run cargo test --workspace --doc --locked",
+              "number": 9,
+              "startedAt": "2026-11-06T19:57:32Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:57Z",
+              "conclusion": "success",
+              "name": "Build first-version Linux binary",
+              "number": 10,
+              "startedAt": "2026-11-06T19:57:32Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:59Z",
+              "conclusion": "success",
+              "name": "Run actions/upload-artifact@v4",
+              "number": 11,
+              "startedAt": "2026-11-06T19:57:57Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:58:00Z",
+              "conclusion": "success",
+              "name": "Run cargo run -p proofserve-engine --example failure_replay --locked",
+              "number": 12,
+              "startedAt": "2026-11-06T19:57:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:58:04Z",
+              "conclusion": "success",
+              "name": "Run cargo doc --workspace --no-deps --locked",
+              "number": 13,
+              "startedAt": "2026-11-06T19:58:00Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:58:04Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v4",
+              "number": 26,
+              "startedAt": "2026-11-06T19:58:04Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:58:04Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 27,
+              "startedAt": "2026-11-06T19:58:04Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014303/job/128120036091"
+        },
+        {
+          "completedAt": "2026-11-06T19:56:28Z",
+          "conclusion": "skipped",
+          "databaseId": 128120037709,
+          "name": "container-package",
+          "startedAt": "2026-11-06T19:56:28Z",
+          "status": "completed",
+          "steps": [],
+          "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014303/job/128120037709"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014303",
+      "workflowName": "engine"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "ab02c7e6e2651bd4c963ada2adde030edfd9b5c3",
+      "jobs": [
+        {
+          "completedAt": "2026-11-06T19:57:45Z",
+          "conclusion": "success",
+          "databaseId": 128120036222,
+          "name": "z3-smoke",
+          "startedAt": "2026-11-06T19:56:30Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-11-06T19:56:31Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-11-06T19:56:30Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:25Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v4",
+              "number": 2,
+              "startedAt": "2026-11-06T19:56:31Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:37Z",
+              "conclusion": "success",
+              "name": "Install Z3",
+              "number": 3,
+              "startedAt": "2026-11-06T19:57:25Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:38Z",
+              "conclusion": "success",
+              "name": "Syntax and unit tests",
+              "number": 4,
+              "startedAt": "2026-11-06T19:57:37Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:39Z",
+              "conclusion": "success",
+              "name": "Run synthetic cold-vs-incremental CLI benchmark",
+              "number": 5,
+              "startedAt": "2026-11-06T19:57:38Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:41Z",
+              "conclusion": "success",
+              "name": "Run direct libz3 state-reuse benchmark",
+              "number": 6,
+              "startedAt": "2026-11-06T19:57:39Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:42Z",
+              "conclusion": "success",
+              "name": "Decompose reuse levels",
+              "number": 7,
+              "startedAt": "2026-11-06T19:57:41Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:42Z",
+              "conclusion": "success",
+              "name": "Analyze cross-query prefix reuse",
+              "number": 8,
+              "startedAt": "2026-11-06T19:57:42Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:42Z",
+              "conclusion": "success",
+              "name": "Validate benchmark output",
+              "number": 9,
+              "startedAt": "2026-11-06T19:57:42Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:43Z",
+              "conclusion": "success",
+              "name": "Upload smoke benchmark artifacts",
+              "number": 10,
+              "startedAt": "2026-11-06T19:57:42Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:44Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v4",
+              "number": 20,
+              "startedAt": "2026-11-06T19:57:43Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:44Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 21,
+              "startedAt": "2026-11-06T19:57:44Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014375/job/128120036222"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014375",
+      "workflowName": "benchmark-smoke"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "ab02c7e6e2651bd4c963ada2adde030edfd9b5c3",
+      "jobs": [
+        {
+          "completedAt": "2026-11-06T20:06:48Z",
+          "conclusion": "success",
+          "databaseId": 128120035626,
+          "name": "linux-bundle",
+          "startedAt": "2026-11-06T19:56:30Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-11-06T19:56:32Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-11-06T19:56:31Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:33Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v4",
+              "number": 2,
+              "startedAt": "2026-11-06T19:56:32Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:34Z",
+              "conclusion": "success",
+              "name": "Run actions/setup-python@v5",
+              "number": 3,
+              "startedAt": "2026-11-06T19:56:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:43Z",
+              "conclusion": "success",
+              "name": "Run dtolnay/rust-toolchain@stable",
+              "number": 4,
+              "startedAt": "2026-11-06T19:56:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:51Z",
+              "conclusion": "success",
+              "name": "Select the exact original Lean SDK",
+              "number": 5,
+              "startedAt": "2026-11-06T19:56:43Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T20:04:38Z",
+              "conclusion": "success",
+              "name": "Build and qualify source components",
+              "number": 6,
+              "startedAt": "2026-11-06T19:56:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T20:06:14Z",
+              "conclusion": "success",
+              "name": "Assemble and install without a source checkout",
+              "number": 7,
+              "startedAt": "2026-11-06T20:04:38Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T20:06:45Z",
+              "conclusion": "success",
+              "name": "Run actions/upload-artifact@v4",
+              "number": 8,
+              "startedAt": "2026-11-06T20:06:14Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T20:06:45Z",
+              "conclusion": "success",
+              "name": "Post Run actions/setup-python@v5",
+              "number": 15,
+              "startedAt": "2026-11-06T20:06:45Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T20:06:45Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v4",
+              "number": 16,
+              "startedAt": "2026-11-06T20:06:45Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T20:06:45Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 17,
+              "startedAt": "2026-11-06T20:06:45Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014344/job/128120035626"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014344",
+      "workflowName": "prepare portable release"
+    },
+    {
+      "conclusion": "failure",
+      "headSha": "ab02c7e6e2651bd4c963ada2adde030edfd9b5c3",
+      "jobs": [
+        {
+          "completedAt": "2026-11-06T19:57:30Z",
+          "conclusion": "failure",
+          "databaseId": 128120035865,
+          "name": "crates",
+          "startedAt": "2026-11-06T19:56:30Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-11-06T19:56:31Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-11-06T19:56:30Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:33Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v4",
+              "number": 2,
+              "startedAt": "2026-11-06T19:56:31Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:41Z",
+              "conclusion": "success",
+              "name": "Run dtolnay/rust-toolchain@stable",
+              "number": 3,
+              "startedAt": "2026-11-06T19:56:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:56:41Z",
+              "conclusion": "success",
+              "name": "Verify tag matches all package versions",
+              "number": 4,
+              "startedAt": "2026-11-06T19:56:41Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:12Z",
+              "conclusion": "success",
+              "name": "Test source before publication",
+              "number": 5,
+              "startedAt": "2026-11-06T19:56:41Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:24Z",
+              "conclusion": "success",
+              "name": "Verify source packages in dependency order",
+              "number": 6,
+              "startedAt": "2026-11-06T19:57:12Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:28Z",
+              "conclusion": "failure",
+              "name": "Publish source packages in dependency order",
+              "number": 7,
+              "startedAt": "2026-11-06T19:57:24Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:28Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v4",
+              "number": 14,
+              "startedAt": "2026-11-06T19:57:28Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-06T19:57:28Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 15,
+              "startedAt": "2026-11-06T19:57:28Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014410/job/128120035865"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/yunwei37/proofserve/actions/runs/42284014410",
+      "workflowName": "publish crates"
+    }
+  ],
+  "raw_evidence_directory": "/workspaces/.agent-state/proofserve-o-line/publication-20261106",
+  "crate_publication_failure": {
+    "run": "https://github.com/yunwei37/proofserve/actions/runs/42284014410",
+    "failed_step": "Publish source packages in dependency order",
+    "error": "please provide a non-empty token",
+    "exit_code": 101,
+    "published_crates": [],
+    "raw_log": "/workspaces/.agent-state/proofserve-o-line/publication-20261106/publish-crates-failure.log"
+  }
+}
