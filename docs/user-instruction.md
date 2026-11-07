@@ -609,3 +609,21 @@ OAI 在推迟清单中且没有产物，容量预检应记为“缺少产物”�
 保持六页含参考文献、0missing、0warning，全文自读和逐页视觉检查；一次提交推送，
 报告commit、PDF SHA256及删减/新增观察。所有Workspace操作和子进程仍CPU8–9。
 遇到模型提供方内容过滤立即报告，不换说法重试或绕开。
+
+## 2026-11-07 (paper and blog storyline, said to Claude)
+
+- 「故事不应该是这样的吧? 你想想别人为啥会在意这个论文和 blog? 仔细思考, 是不是因为形式化越来越...AI 有能力做啥」
+- 「是不是有时 ai 吐 token 的速度都比验证来的快? 是不是要画这样的一张图, 并且做一些小实验?」
+- 「这里面有一些是 artifact 的小问题, 没人关心」（删去检查器模式差异一节）
+- 「大问题是啥? 有趣的到底是啥? 你仔细看看」「你先和我说, 不是先写」
+- 「不对, 开头就不对. 我刚刚和你说的是啥 重点是啥 正常好的吸引人的顶会论文和 blog 咋写的?」
+- 定稿标题与开头（论文和 blog 都用，「确保和这个一模一样, 不能缩减. 我的原话和写法都要记录下来, 论文和 blog 去重写」）：
+  Title: AI Now Writes Lean Proofs Faster Than Lean Can Check Them
+  Opening: A language model can write a 450-line Lean file in under a minute. Lean took 2.6 CPU-hours to check it. Across 162,170 modules of OpenAI's AI-generated Lean library, Lean processes about 400 tokens per CPU-second; a model emitting 1,000 tokens per second outpaces it on 95% of the modules. Formal verification is supposed to be the cheap step that lets us trust AI-written mathematics. For AI-written proofs, it is becoming the expensive one.
+  （初稿是 380 和 97%，真实分词后用户同意改成 400 和 95%；「这不是罕见的极端情况 这个不需要」删去 "This is not a rare corner case."）
+- 「任何情况下不允许带上不是之类的否定表达, 明确记住.」
+- 「我觉得这个 blog 还是很难读懂? 为啥? 你思考一下」「从头开始梳理和思考」「lean 是什么?」
+- 「语言风格是不是不对? 内容接近了」「逻辑是不是有点混乱?」
+- 「不对, 开头故事变了. 形式化验证与数学命题为啥要关心这两个东西? 你仔细想想?」
+- 「真正普通的技术人好奇的是啥? 随着 AI 进步...?」→ blog 开头改为：AI 越来越会写数学证明，它写的东西我们查得过来吗？
+- 「不需要发给我看, 你觉得可, 没有改变我的意思, 就直接 commit push 上线. 现在的版本也去先 commit push 上线. 论文也要改」
