@@ -595,3 +595,17 @@ OAI 在推迟清单中且没有产物，容量预检应记为“缺少产物”�
 实现者回归验证说明。Receipt/ABI/原driver等实现版本细节移至artifact；
 正文保留必要输入/工具commit。40分钟内完成，六页、0missing、编译零警告，
 逐页视觉检查，一次提交并给出commit和PDF路径。主线程仍只用CPU8–9。
+
+
+## 2026-11-07 UTC — verbatim request for a normal empirical + system paper
+
+- 「你这论文写的好像不像是人话? 里面有没有一些不太合适的, 或者有没有一些更有趣的 obsevation 没放进去? 包括细粒度的一些 profile info?」
+- 「正常的论文写法啥样的」
+- 「去改进」
+
+本轮按协调者给定的正常论文结构重写，先核对已有committed普查/profile/官方工具观察。
+两小时内完成；只分析已有结果，不跑新实验，不改署名，不发公告或上游issue/PR。
+正文保留必要概念与合理精度数字，将开发史、账本细节与版本/运行记录移至artifact。
+保持六页含参考文献、0missing、0warning，全文自读和逐页视觉检查；一次提交推送，
+报告commit、PDF SHA256及删减/新增观察。所有Workspace操作和子进程仍CPU8–9。
+遇到模型提供方内容过滤立即报告，不换说法重试或绕开。

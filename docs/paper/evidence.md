@@ -1476,3 +1476,110 @@ remain legible and the interval cost block stays together. This remains root
 writing/visual self-review, not independent paper or repaired-native review.
 Review copy:
 C:/Users/10678/AppData/Local/Temp/ProofServe-readability-final-20261106/main.pdf.
+
+
+## 7 November: normal paper rewrite and committed-observation selection
+
+Entry baseline20307ceb contains the named908d0702 author line plus the already
+committed a6a494c8 official-checker observations and public-release documentation.
+The user's three original sentences were recorded verbatim once before writing.
+The new request explicitly authorizes the profile findings below, while requiring
+no new experiments, six pages, zero missing/warnings, one commit and CPU8–9.
+
+The paper was reorganized into abstract/problem, motivating introduction/four
+contributions, Lean background, method, seven conclusion-titled findings,
+concise ProofServe design/evaluation, consolidated limitations, related work,
+conclusion and artifact. Terms root, dependency closure, replay and computation
+call site are defined at first use. Operator-language deferrals became our
+measurement choice. Raw status labels remain intact in the underlying data.
+All body commit hashes except corpus4eaee875, runtime version detail, directories,
+UTC chronology, exit codes and per-repeat bookkeeping were moved to the artifact.
+The signed author line is unchanged.
+
+Removed from the main narrative: review/development history and unconfirmed
+forgery route; the15-batch partial corpus ledger; the exact three-interval/gap
+accounting; the unrun-cell list and stopped official-repeat detail; old closure
+ratio digressions and numerical prototype/historical comparisons. Their evidence
+is retained in the artifact README and original committed files, not deleted.
+Whole-library checking remains explicitly incomplete in limitations.
+Post-hoc counter selection remains explicit, with the failed original criterion
+and raw mode-specific comparisons retained in the artifact.
+
+New offline reduction streamed the committed163097-row census, selecting
+162170 completed modules only. P/E populations82201/79969 have median CPU
+3.959777/7.541694s. Their most expensive ceil(1%) groups823/800 consume
+25.106316874%/25.689150667% of CPU. Marked counts3060/2788 sum5848 and consume
+17.889730154%/18.345296291% of their respective pool CPU. These are distinct
+hardware/population summaries, not P-equivalent conversions.
+The new Figure2 shows cumulative cost in descending per-pool CPU order;
+it replaces the earlier instruction/CPU CDF without removing its retained data.
+Source-size/CPU Spearman correlation, with average tied ranks, is
+.615179351/.604139857. The proposed phrase “unrelated to file size” was rejected:
+the paper states association plus a failure to identify extreme individual costs.
+UltraExpectationFull (15860bytes/no explicit marker/9313.899945 E CPU s) and
+CertificatesK17Part012 (5287058bytes/11114sites/2241.232406 E CPU s) were checked
+directly against the committed module table. User-instruction total, median
+and P95 match earlier reduction to float rounding:5276120533386849,
+12583053924.5 and78511474154.54988.
+
+Source-grounded profile selections:
+- startup-analysis.md:13 historically short modules, import medians1.355s and
+  3.113GiB RSS, median import/build .682; repaired-replay-analysis.md gives
+  checker/build median1.2805046 with its distinct process clock and observer limits.
+- perf-hotspots.csv:the separate perf-all-mathlib profile has9.29% persistent
+  marking and5.69% name comparison; hash-table and mimalloc symbols are also present.
+  The92.89% file-backed PSS observation is not described as mutable heap or a
+  per-worker RAM requirement.
+- systime/final/README.md and native-summary.csv:three-repeat plain guard/no-guard
+  wall/system medians are tabled. The15GiB outer limit remains. Kernel-mode
+  resource-accounting samples75%/59% and futex20%/34% have their actual sampled-cycle
+  denominator. No old75–94% Lean-kernel fraction or prototype2x release speedup
+  is restored. The baseline memory guard is explicitly a separate characterization.
+- profiler-overhead.csv:Grid no-M stat wall+7.25%/system+126.98% is used only as
+  the separate observer-cost control, not as plain kernel/CPU attribution.
+- census-gate module CSV:total spread median1.331198%/P953.149811% contrasts with
+  user spread .017559%/.144424%; OS-kernel median spread8.616206%. The original
+  total-counter criterion failed; choosing user-mode work was post hoc.
+- data/lean-observations (a6a494c8):same-inode small-path Nat.Basic .394341134s
+  versus large-path322.853078947s, with large system234.609247s. Separate discovery
+  stages are2.611183223s walk and271.426322779s resolve/filter, not additive portions
+  of the full checker clock. Mode differences retain the exact controlled-artifact
+  scope, including the native-evaluation bridge distinction and surviving/overwritten
+  theorem-body cases. No false ordinary-source theorem or universal malformed-input
+  claim is made.
+
+The installed-tool table is selected from the unchanged generated/system
+release summaries, which bind the actual matrix and external publications.
+Scaling medians, CPU changes, strict Nat cost, censored Grid bound, one restart
+control, external per-arm costs and unequal obligations are unchanged; only
+table arrangement and display precision change. All original matrix/external/
+census derivations and raw source tables are retained.
+
+generate_observations.py launches no Lean process. It produces small deterministic
+CPU-share CSVs, unrounded provenance/metrics, the profile table, consolidated
+installed-tool table and vector plot. Input publication commits are recorded.
+Its figure-only engine emits a /dev/null reproducibility notice; that notice is
+retained in observation-summary.json and is not concealed as a zero-warning
+figure build. The final main.tex compilation itself has zero warnings.
+No source dataset, checker, application implementation, agent, queue, session,
+resource policy, CronJob or infrastructure was changed.
+
+Writing self-review checked macro structure, paragraph roles, first-sentence
+readability, terminology/definition order, claim/number consistency, citation
+existence and meaning preservation against the entry baseline and new source
+records. This is root self-review, not delegated or independent review.
+Final PDF:6 pages /82288bytes, two figures/two tables/fourteen unique cited keys,
+0 evidence-placeholder macros. CPU8–9 Tectonic rc0 /1.856s; complete compiler output
+and final TeX log contain0 warnings, including unresolved references/glyph/font/
+overfull/underfull diagnostics. Final visual inspection is recorded after the
+last render; no hidden font reduction or warning-threshold increase was used.
+
+Final rendered pages1–6 of the82288-byte PDF were each inspected after the last
+source change. The related-work paragraph stays on page5 and conclusion begins
+page6; both plots, both tables, author, references and page edges are legible.
+The full paper was self-read for an unfamiliar research reader, including the
+abstract, introduction and first sentence of every findings subsection.
+PDF SHA256 (requested provenance):
+4eb9a3e1fef23eb1c90e761810c38722a42ce1e5fff73bc543e29b38013725c0.
+Review copy:
+C:/Users/10678/AppData/Local/Temp/ProofServe-empirical-rewrite-20261107/main.pdf.

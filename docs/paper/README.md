@@ -1,198 +1,198 @@
-# Rebuilding the six-page paper
+# Rebuilding and reading the ProofServe paper artifact
 
-All analysis and compilation in the shared research Workspace run on CPUs 8–9.
-The scripts also run with standard Python outside that Workspace; input data are
-explicit arguments, with no development-machine paths embedded.
+The manuscript is a six-page empirical + system paper. Its current revision
+uses the named author line and separates background, measurement, findings,
+ProofServe, limitations and related work. Detailed run bookkeeping belongs here.
 
-## Retired compilation artifacts
+All work in the shared research Workspace enters through taskset -c 8,9.
+No command below is needed to launch a new measurement for the paper.
 
-The cc5bcc18 publication is retired: 162,170/163,096 modules completed,
-926 deferred by user, zero final failures or failed-dependency blocks.
-Three physical intervals use two admission rules. No time cutoff or
-whole-corpus estimate is applied.
+## Rebuild from committed measurements
 
-    python3 docs/paper/generate_census.py --retired --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic tectonic
+From the repository root, with Tectonic available:
 
-Input is W's retired modules.csv[.gz], summary.json, segment-totals.csv and
-failed-attempts.csv[.gz]. Every executed interval ID, actual start/end and wall,
-source/measurement commits, native costs and instructions remain bound.
-All source identities remain in the inventory: successful, configuration,
-native failure, failed-dependency blocked and deferred_by_user. An ordinary
-not_attempted row cannot be published as exhausted runnable work. If the
-actual final schema differs, adapt its real fields without inventing counts,
-terminal clocks or scientific qualification criteria.
+    python3 docs/paper/generate_observations.py --root . --tectonic /path/to/tectonic
 
-Every successful completion is counted, including records after the
-withdrawn 01:30 and 03:00 boundaries. There is no final cutoff flag or time
-clipping. CPU summaries separate P/E; census-segment-costs.csv also splits
-segments. census-segments.csv retains complete retired operational intervals
-including actual drain. Their sum excludes the separately recorded
-transition gap; summed native-module wall is another clock. Unsuccessful
-attempt CPU remains separate from successful module costs.
+This performs offline reductions only. It reads the committed module ledger,
+profile summaries and release-tool summaries, and produces:
+- generated/observations/observation-summary.json: unrounded statistics and input commits;
+- cost-share-P.csv and cost-share-E.csv: cumulative CPU shares, sorted by cost within each pool;
+- cpu-concentration.tex/pdf: the cumulative-share plot;
+- memory-guard-table.tex: three-repeat plain-run guard controls;
+- release-evaluation-table.tex: installed-tool scaling and external costs.
 
-census-deferred-by-user.csv preserves the deferred rows;
-census-outcome-summary.csv counts actual statuses separately. Keep supplied
-reason, family prefix, trigger, dependency and timestamp, without inferring
-status from namespace. Deferral concerns unfinished risk-family modules
-and dependents; earlier successes in those namespaces remain measured.
+It also compiles figures/cost-regimes.tex from the retained pair/target CSVs.
+No Lean compiler, checker, profiler, collector, queue or agent is started.
+Figure-only engine notices about reading /dev/null are recorded in the summary;
+they are not suppressed or represented as main-manuscript layout warnings.
 
-Distributions and marker/default-graph cost shares concern successful
-observed modules only, with full-frame label coverage separate. Dependency
-order and memory deferral bias the subset toward less-memory-intensive
-remaining work. P/E observed work supplies separate lower bounds; never
-extrapolate from coverage, original42, strata or a model.
+Compile main.tex with Tectonic --keep-logs from docs/paper, or copy its source,
+references.bib, figures/ and generated/ into an external build directory first.
+Inspect the complete compiler stdout/stderr and main.log, not only overfull
+boxes. Use pdfinfo to check six pages, then render and inspect every page.
+The paper uses 10pt Times, two columns, ragged-right text/captions and ragged-bottom
+pages. No warning/badness threshold is raised.
 
-The old first-segment reference can still be reproduced independently:
+## Finding-to-evidence map
 
-    python3 docs/paper/generate_census.py --stopped --data /path/to/final-user-stopped --out /path/to/segment1 --tectonic tectonic
+| Paper observation | Committed input | Interpretation |
+|---|---|---|
+| Target checking retains 80–82% versus 0.5–7% of compilation wall time | figures/cost-regimes-target-wall.csv; data/openai-math-4eaee875/ and evidence.md retain raw provenance | Target read/map/replay after dependency preparation, divided by that module's compiler-process wall |
+| 31 whole-process checker/compiler CPU pairs | figures/cost-regimes-cpu.csv | A distinct process-level clock, not target-only or logical-kernel phase CPU |
+| Cost concentration, medians, examples, source-size association | data/openai-math-4eaee875/census/modules.csv.gz and top20-cpu.csv | Completed rows only, P/E separately; no extrapolation |
+| Default targets omit files/call sites | data/openai-math-4eaee875/ source inventory and generated/census summaries | Full static source frame, separate from completed-cost frame |
+| Import-only controls and short-module checker costs | research/profile-2026-10-31/startup-replay/startup-analysis.md, repaired-replay-analysis.md and CSVs | 13 modules selected by historical build time; material observer cost; build/checker runs not contemporaneous randomized pairs |
+| Import hotspots and resident memory | startup-replay/perf-hotspots.csv, import-memory.csv | 9.29%/5.69% are the separate perf-all-mathlib profile; file-backed PSS is not mutable heap or hard RSS |
+| Native memory guard | research/profile-2026-10-31/systime/final/README.md, native-summary.csv, operations-summary.csv, syscalls-summary.csv, artifacts.csv | Plain timing, sampled cycles, syscall traces and artifact equality have distinct clocks/denominators |
+| Module discovery and official-mode examples | data/lean-observations/README.md, timings.csv, discovery.csv, cases.csv, examples/ | Single large/small path contrast; controlled compiled/altered artifacts, not a false theorem from normal source |
+| Installed ProofServe evaluation | checker/results/release-e000ed62bbf4/matrix/; data/external-projects/e000ed62-final/ | Original release-tool data, not historical profiles or prototype timings |
 
-Only a retired campaign report emits CensusFinal=1. The historical
-snapshot emits 0; --preview creates no ready marker and the real five-module
-functional trial retains blank costs. Synthetic adapter fixtures exercise
-scope and sum handling only; their outputs are not paper measurements.
-The actual first-segment reduction and historical tests remain in evidence.md.
+Every number newly selected for the manuscript already existed in these committed
+inputs. The new CPU shares, Spearman ranks and curves are reductions of those
+measurements, not new experiments. The script records input-publication commits.
 
-## System evaluation artifacts
+## Compilation population, clocks and selection
 
-The scoped retired matrix is publication 818f7422, native e000ed62, driver
-cc5bcc18. It contains 61 returned attempts out of 71 planned, not a complete
-original plan. The matrix can be regenerated independently:
+Publication cc5bcc18 contains 162170 completed executable modules of163096.
+The926 deferred modules have no successful cost; one configuration unit is
+outside the executable frame. Completed rows in a family remain even when its
+unfinished remainder was deferred. There were no final native failures or
+failed-dependency blocks;66 unsuccessful/interrupted attempts are separate.
 
-    python3 docs/paper/generate_system.py --matrix checker/results/release-e000ed62bbf4/matrix/fixed-cells.csv --matrix-only --out docs/paper/generated/system
+Successful P/E CPU is168.955932305/302.399244343h, unconverted.
+The chronological execution intervals are:
+1. fixed22-slot admission plus draining/exclusive retry,128331 completed,
+   134.651176009P /256.667855090E CPUh,24.624732950wallh;
+2. memory/headroom admission plus family deferral,33788 completed,
+   32.717748677P /45.731389253E CPUh,6.178604211wallh;
+3. continuation of the second admission rule,51 completed,
+   1.587007619P /0E CPUh,.725697047wallh.
 
-Final matrix designation is either an explicit paper_eligible=true sidecar,
-or this publication's verified retired collection-terminal handoff plus its
-scoped acceptance assertions and exhaustive planned-status inventory.
-An explicit paper_eligible=false fixture is refused. Incomplete original-plan
-status remains false; no fictitious field is added to M's source.
+Measured execution walls sum to31.529034208h. Calendar span33.085971073h includes
+5604.972714s of pauses. Execution wall includes preparation, all attempts,
+hashing, publication and cleanup; successful CPU excludes failed attempts.
+Per-module wall sums are not makespan. No old withdrawn deadline clips successes.
+Source/measurement commits9389daff/05c91979/b5035842 and all UTC boundaries remain
+in the source README/segments registry, not in the manuscript narrative.
 
-Only three complete successful repetitions yield a final matrix median.
-Successful under-repeated official samples retain their observed ranges and
-counts but no three-repeat median. Strict Grid retains one censored timeout
-and two unattempted repeats; strict-bounds.csv describes the observed timeout
-relative to the matched default median, not a strict median or completed cost.
-The returned final groups never mix executable, input context, workers or
-policy. Archived failure rows already in the point table are not double-counted.
-Expected kernel rejections and deliberate interruption retain their distinct
-outcomes in retained-nonzero-attempts.csv; unattempted-cells.csv lists all ten
-unrun identities.
+The top1% means ceil(.01 * completed pool population):823 P /800 E modules,
+25.1063%/25.6892% CPU. P/E medians are3.959777/7.541694s.
+The source-size/CPU Spearman coefficients are0.615179/0.604140, with tied ranks
+averaged. File size is therefore associated with cost; it is not accurate to
+say the two are unrelated. The extreme examples are:
+- OAI.Analysis.FreeWords.UltraExpectationFull:15860bytes, no decide+kernel,
+  E CPU9313.899945s;
+- OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK17Part012:
+  5287058bytes,11114 call sites, E CPU2241.232406s.
 
-system-table.tex shows complete native medians, with CPU and wall separate.
-system-summary.csv retains counts and full ranges; scaling.csv, ablations.csv,
-strict-costs.csv and strict-bounds.csv retain their exact within-tool ratios.
-system-validation.json records independent arithmetic on all published points,
-not independent native/correctness execution. system-provenance.json binds
-publication, native/driver/input versions, acceptance, retired scope, actual
-background condition and interruption data. CPU is closed native cgroup
-whole-tree CPU, including the killed interruption leg.
+The5848 marked completed modules use17.8897% P /18.3453% E CPU.
+The full static frame has163097 source/configuration units,32263 outside the
+default graph; executable-only outside is32262. Omitted sites are451008/1354379.
+These are separate denominators. The observed outside-graph cost is
+30.881815210P /56.237268054E CPUh. No original42 calibration or model fills the tail.
 
-The matrix writes matrix-ready.tex and system-metrics.tex. Table 2 separately
-requires external-ready.tex. Final O publication 0516279d supplies six complete
-native/official command costs (one observation per arm, one worker):
+## Counter selection and profile interpretation
 
-    python3 docs/paper/generate_system.py --matrix checker/results/release-e000ed62bbf4/matrix/fixed-cells.csv --external data/external-projects/e000ed62-final/final-measurements.csv --external-status data/external-projects/e000ed62-final/final-acceptance.json --out docs/paper/generated/system
+The four-condition,20-module qualification compared P/E and quiet/loaded runs,
+three repeats each. Total-instruction spreads had median1.331198%/P953.149811%,
+above the original1%/3% criteria. That criterion failed and was not changed.
+User-only spreads were selected after observing the difference:
+median.017559%/P95.144424%. OS-kernel counts had median8.616206% spread.
+This is post-hoc metric selection, not a substitute passing gate or universal
+invariance proof. Process user-mode counts do not attribute Lean-kernel work.
+Full counters and failed-gate decisions remain in measurement/census-gate/.
 
-The curated tool_commit alias binds the installed bundle, and checked counts
-retain each arm's actual scope. The sidecar supplies closure/local-root counts,
-policy, conditions, retirement and exact common-root evidence. External grouping
-also separates workers and refuses duplicate repeats. external-validation.json
-independently checks all six costs, scope/pins, n=1 and 126 common local roots;
-M's existing numerical/table outputs remain byte-identical.
-No source/native/checking experiment is rerun by generation.
+The startup cohort used historical short-build times for selection, with three
+build/import pairs per module. Import-only per-module wall medians have median
+1.355s; their wait4 peak-RSS median is3.113GiB, and PSS file fraction92.89%.
+The stock checker ratio1.2805 includes discovery/import/replay/cleanup.
+Historical startup options and sampling differ from the main no-M campaign;
+they must not be relabelled new no-M measurements.
+The separate Mathlib profile, not a pooled short-cohort profile, supplies the
+9.29% lean_mark_persistent /5.69% lean_name_eq observations.
 
-O must designate final timing in rows or timing-status.json. Unknown full CPU
-remains blank. Its common local-root parity does not equal full-closure proof
-obligations, and no official whole-ledger speed ratio is computed.
-Native strict/default ratios require matching tool, input and worker settings;
-old e155 previews never substitute. --preview uses preview- output names,
-does not write ready markers, and cannot populate either final paper table.
-The old fixture remains usable only for adapter validation.
+Memory-guard controls retain an outer15GiB cgroup in every arm; baseline native
+guards are-M8192 for Grid and-M9216 for the others. Ninety passing outcomes
+and all produced baseline-comparable artifacts agree, as detailed in artifacts.csv.
+The baseline kernel-cycle percentages and syscall elapsed times are not
+fractions of plain wall time. There is no no-M perf-record arm.
+Grid no-M system CPU spans101.35–213.35s despite wall303.20–320.61s.
+Observer overhead is material: its stat control adds7.25%wall /126.98%systemCPU.
+Do not pool plain/stat/record/trace clocks or turn these three cases into a
+library-wide correction factor.
 
-## Manuscript wiring
+The large/small search paths resolve the same unchanged Nat.Basic artifacts
+using same-inode hardlinks. The full checks take322.853078947/.394341134s.
+The discovery probes are separate runs, not additive phases of that full check.
+The missing-private and mutated-proof tests are intentionally altered artifacts.
+The explicit ofReduceBool example uses a special native-evaluation bridge;
+its fresh-mode limitation is not a result about ordinary decide+kernel.
 
-Run both final generators, then compile docs/paper/main.tex with Tectonic.
-The manuscript includes only generated/census/census-ready.tex and
-generated/system/matrix-ready.tex and generated/system/external-ready.tex
-for their separate final tables. Preview-prefixed files
-are never inputs. Without final artifacts it prints explicit pending slots,
-not invented figures or missing-value macros. The census figure replaces
-the generic workflow diagram, keeping two figures and two tables.
+## Release-tool versions and incomplete configurations
 
-The closure target is 6 November 2026, 20:00 UTC. W has retired all runnable,
-non-deferred work without an early-stop cutoff. M returned the scoped six-hour matrix and O returned the six primary external costs;\nM's supplementary built-artifact scope is still pending. The checking
-phase may be partial or unstarted. New batches stop at 17:00; the running
-batch may drain until at most 17:15, then is forced to retire. It is not a necessary
-paper result. Report only reached scope. Deferred OAI has no compiled
-artifact; its capacity precheck is unavailable, not a proof/resource failure.
-Root integrates actual numbers by 18:00. No PlanarPacking
-comparison or missing-work estimate is added.
+The frozen checker is e000ed62; original matrix drivercc5bcc18 and publication818f7422.
+Receipt v1, child ABI6 and independent-closure statev8 bind compatible checkpoint
+state. Earlier e155 isolation costs do not replace current strict costs.
+The two read-only review reports (e0c92d51/2628d727), implementer regression
+results and absence of independent repaired-binary runtime review remain in
+packaging/checker-review-*.md and checker/results/theorem-body-policy/.
+The historical SubexponentialSAT repaired replays e0c92d51/3fe83c5a agree;
+module-local reference coverage is14401/14721, with320 unreferenced.
+These development records are not the main empirical narrative.
 
-Policy-adapter validation: real preview rows plus explicitly synthetic strict labels exercised separate default/strict repeat groups, same-configuration CPU/wall ratios, no pairing across commits, isolated external policy rows, preview-only markers and refusal in final mode. Both table fragments compiled. These copied costs test grouping only; they are not strict-mode measurements and are not included in the paper.
+The matrix's71 planned cells yielded61 returned attempts and10 unrun cells.
+Barrier two/four-worker configurations were in the initial plan and were
+removed to fit the six-hour collection budget.
+Unrun: Grid strict r2/r3; Grid/Barrier official default/fresh r2/r3.
+Nat.Basic official-fresh r3 was attempted and stopped by the overall window
+after77.703905s. It is not one of those10 unrun cells.
+Grid strict r1 timed out after1800.010274s; its CPU is not a completed strict cost,
+and no three-repeat Grid strict median exists.
+Only complete three-repeat points receive matrix medians.
+Official samples with fewer repeats retain their counts/ranges in the CSV.
+The one deliberate interrupt/resume includes killed work and gives16.94%extra
+wall /10.68%CPU, not a repeated population estimate.
 
-The current post-census fixture export was also adapted in preview mode: both strict-key groups are recognized and the archived launch-126 row remains separate from one-observation point summaries. Final mode refuses its paper_eligible=false acceptance sidecar before considering timing medians. No fixture value is used as a real workload result.
+For exact matrix/external tables, retained failures, controls and reproduction:
 
-Two-phase adapter validation uses twenty retained unreplicated gate records
-with explicitly synthetic phase labels, clocks and terminal/failure metadata.
-Independent per-phase/P-E CPU sums agree; two synthetic interrupted attempts
-are retained but excluded from successful costs. The four-curve figure
-compiles. Unassigned successful phases, overlapping wall intervals and early
-stops are refused; old five-module functional inputs retain blank costs and
-preview creates no ready marker. All adapter outputs stay outside Git and
-none of these clocks or phase labels is a census result.
+    python3 docs/paper/generate_system.py --help
 
-The latest physical execution registry has three interval IDs: fixed admission,
-initial memory admission, and its deadline-free continuation after the old
-finite boundary. There are still two admission rules. Final mode reads the
-actual published interval count instead of assuming two; every cost row must
-belong to its reported interval, and all transition gaps remain visible.
+Use the final matrix and e000ed62-final measurements/status paths described by
+their READMEs. Existing generated/system/ holds the full original tables,
+strict bound, ablations, failed-attempt ledger and unattempted-cell list;
+the readable paper table only selects their main installed-tool results.
+External publication0516279d uses tool818f7422, nativee000ed62 and Lean4.34.1,
+one uninterrupted fresh-checkpoint run per arm, one worker.
+Inputs Newspeak/Solar/AI are e2232d8f/f4f5c9a1/3042904c.
+Native closure versus official local-root duties differ, so no equal-obligation
+speedup is calculated. The AI corpus is an upstream collection-level attribution,
+with model/AI/human proportions undisclosed. The AI cgroup has888 memory.max
+events, zero OOM kills/resource stops; its cost is memory-bounded.
+The installed archive is Debian13/glibc2.41-qualified, not the separate Ubuntu
+workflow artifact. Fixed order, warm caches and observed background work remain
+part of the reported conditions.
 
-The current small summaries/figure and census-validation.json were independently
-reduced from cc5bcc18 on CPUs 8–9. Duplicate large generated inventories remain
-on PVC, not in Git. Deferred-family/trigger aliases match the published schema.
-Interval 3 has no E-core successful jobs: its zero E cost is an empty observed
-group, not imputation for an unmeasured module. The scoped M matrix is
-integrated, as are O final one-worker costs. Supplementary checking is reported at the final bounded scope below.
+## Supplementary library checking, not a whole-library verdict
 
+Publication5f491682 reports15 complete batch certificates:12756 distinct
+closure modules, including968/162170 requested compiled sources.
+161202 requests lack complete certification:271 accepted in completed segments
+pending a whole batch,217 in-flight uncommitted accepts,1 attempted without final
+verdict and160713 without an observed verdict. The488 uncertified accepts are
+not added to the certified set. The926 deferred sources and1 configuration unit
+are separate. OAI lacks a compiled artifact, so capacity is unmeasured.
 
-## Final supplementary library checking
+Admission stopped17:00 and the authorized drain ended17:15; exit124 is an
+operational deadline, with no reported kernel rejection or OOM.
+Closed-native-cgroup wall16530.349473379s /CPU16194.74918s includes interrupted work.
+Sampled own-tree RSS9532841984B (8.878GiB) is not a hard RSS bound or cgroup charge.
+No official-reference comparison on this prefix or whole-source verdict exists.
+Root's earlier independent identity/partition/certificate-union arithmetic is
+generated/system/library-check-validation.json, not an independent proof replay.
 
-The committed library-check-summary.tex is the scoped prose reduction of
-checker/results/release-e000ed62bbf4/corpus/ at publication5f491682.
-library-check-validation.json records root's independent source-ledger
-partition and the deduplicated union of the 15 complete batch certificates.
-It does not rerun native checking or establish editable-checkpoint integrity.
-968 requested sources are certified; 488 other acceptance events are
-uncertified and remain inside the 161,202 not fully certified requested sources.
-Whole-library checking is incomplete. The source report and CSVs are the
-authority; no unmeasured cost is filled and no official prefix parity is claimed.
+For the older compilation-derived CDFs and full interval/group summaries:
 
-The final manuscript uses 10pt Times text, two columns, ragged-right paragraphs
-and captions and ragged-bottom pages. These are actual line-layout changes to
-resolve underfull spacing; no badness/warning thresholds are raised.
-Compile main.tex with Tectonic --keep-logs. Check compiler stdout/stderr as
-well as main.log for warnings (including missing glyphs), pdfinfo for six
-pages, and render every page before delivery. The previous overfull/undefined
-check alone did not establish a completely warning-free build.
+    python3 docs/paper/generate_census.py --retired --data data/openai-math-4eaee875/census --out docs/paper/generated/census --tectonic /path/to/tectonic
 
-
-## Implementation versions and review provenance
-
-The manuscript uses the frozen native checker e000ed62. Its original collection
-driver is cc5bcc18 and the published matrix is818f7422. The local receipt format
-is v1; child ABI6 and independent-closure state v8 invalidate incompatible prior
-state. Historical e1557c77 isolation measurements describe a pre-freeze
-implementation and do not substitute for the final strict-mode costs.
-
-The two read-only code reviews concern e0c92d51 and2628d727, respectively;
-their source reports remain in packaging/checker-review-*.md. Implementer-run
-regressions and qualification boundaries are in
-checker/results/theorem-body-policy/README.md and qualification.json.
-They are not independent execution review of the repaired binary.
-The historical SubexponentialSAT repaired replays are e0c92d51 and3fe83c5a;
-they agree on acceptances and are not new frozen-tool performance data.
-
-Compilation has two admission phases and three chronological execution
-intervals: interval1 uses the fixed-slot phase; intervals2 and3 use the
-memory-admission phase. Execution pauses remain separate in the published
-wall-clock accounting. Checker checkpoint segments are internal replay units,
-distinct from these compilation phases and execution intervals.
+This also launches no Lean measurement. The new manuscript uses the CPU-share
+plot instead of the old CDF. Old data and qualified derivations are retained.

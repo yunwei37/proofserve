@@ -1,0 +1,101 @@
+{
+  "input": "data/openai-math-4eaee875/census/modules.csv.gz",
+  "complete_modules": 162170,
+  "core_conversion": null,
+  "rank_definition": "ceil(1% of completed modules within each pool)",
+  "source_size_correlation": "Spearman ranks, averaging ties; association, not causation",
+  "pools": {
+    "P": {
+      "modules": 82201,
+      "cpu_s": 608241.356297,
+      "median_cpu_s": 3.959777,
+      "top_one_percent_n": 823,
+      "top_one_percent_cpu_pct": 25.10631687422357,
+      "marked_n": 3060,
+      "marked_cpu_pct": 17.889730154236258,
+      "source_bytes_cpu_spearman": 0.6151793511926639
+    },
+    "E": {
+      "modules": 79969,
+      "cpu_s": 1088637.279636,
+      "median_cpu_s": 7.541694,
+      "top_one_percent_n": 800,
+      "top_one_percent_cpu_pct": 25.689150667475626,
+      "marked_n": 2788,
+      "marked_cpu_pct": 18.345296290769767,
+      "source_bytes_cpu_spearman": 0.6041398568592549
+    }
+  },
+  "user_instructions": {
+    "total": 5276120533386849,
+    "median": 12583053924.5,
+    "p95": 78511474154.54988
+  },
+  "examples": [
+    {
+      "module": "OAI.Analysis.FreeWords.UltraExpectationFull",
+      "pool": "E",
+      "source_bytes": "15860",
+      "decide_plus_kernel_occurrences": "0",
+      "cpu_s": "9313.899945"
+    },
+    {
+      "module": "OAI.Combinatorics.Ramsey.CycleClique.Construction.CertificatesK17Part012",
+      "pool": "E",
+      "source_bytes": "5287058",
+      "decide_plus_kernel_occurrences": "11114",
+      "cpu_s": "2241.232406"
+    }
+  ],
+  "counter_comparison": {
+    "user_instruction_spread": {
+      "median_pct": 0.017559362053398697,
+      "p95_pct": 0.14442374880634182
+    },
+    "kernel_instruction_spread": {
+      "median_pct": 8.616205651519426,
+      "p95_pct": 43.535245394744884
+    },
+    "cross_condition_spread": {
+      "median_pct": 1.3311982264996969,
+      "p95_pct": 3.1498106437325264
+    }
+  },
+  "memory_guard": {
+    "Grid": [
+      621.9356564255431,
+      305.69285228010267,
+      436.150621,
+      107.411798
+    ],
+    "UMoments9": [
+      141.73913850728422,
+      88.21128676179796,
+      100.596848,
+      42.305397
+    ],
+    "EnvelopePsiB": [
+      64.44653688184917,
+      63.51767855603248,
+      2.669411,
+      1.960351
+    ]
+  },
+  "input_publications": {
+    "data/openai-math-4eaee875/census/modules.csv.gz": "cc5bcc18c87d7bf85afc5e71a6738f06da52c03d",
+    "data/lean-observations/README.md": "a6a494c81c85b32afe891dd294d1e801c29f9509",
+    "research/profile-2026-10-31/startup-replay/repaired-replay-analysis.md": "3f52f97de2c210ef74d1bc8d37ac9d70809db43a",
+    "research/profile-2026-10-31/startup-replay/perf-hotspots.csv": "4f0e90e0844e7131ae6742ed5317b5a44f497f66",
+    "research/profile-2026-10-31/systime/final/native-summary.csv": "115018f4522fb8ef0f579f1e9814429b8203cbfc",
+    "docs/paper/generated/system/system-summary.csv": "5c79dd5983f4a53011158c3d2286d8fa968d1657",
+    "docs/paper/generated/system/external-summary.csv": "bc91c8c0458664a35d100b6787a70104441ca470"
+  },
+  "figure_build_notes": {
+    "cpu-concentration.tex": [
+      "warning: accessing absolute path `/dev/null`; build may not be reproducible in other environments"
+    ],
+    "cost-regimes.tex": [
+      "warning: accessing absolute path `/dev/null`; build may not be reproducible in other environments"
+    ]
+  }
+}

@@ -1,5 +1,11 @@
 # ProofServe evidence index
 
+The 7 November manuscript is organized as a normal empirical + system paper,
+with existing profile observations restored to the scientific narrative.
+See the [artifact map](../docs/paper/README.md) and
+[new cost-share reductions](../docs/paper/generated/observations/).
+No new native experiment was run for this revision.
+
 Active deliverables: open-source ProofServe and the six-page empirical +
 system paper. **W's cc5bcc18 campaign retired with 162,170/163,096 modules
 completed (99.43%) and 926 user-deferred modules unmeasured.**

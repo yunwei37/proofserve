@@ -1,5 +1,12 @@
 # ProofServe closure plan
 
+Current task (7 November): rewrite the six-page paper as a readable empirical +
+system paper within the requested two hours. Use committed measurements only,
+keep the signed author line, and make one validated owned-path commit/push.
+The original 6 November20:00 milestone below is historical; all native
+measurement has retired. The current work is writing and offline reduction,
+not a new experimental campaign. The new artifact map is docs/paper/README.md.
+
 Deliver ProofServe and the six-page empirical + system paper by
 **6 November 2026, 20:00 UTC**. **W's retired cc5bcc18 campaign completed 162,170/163,096 modules
 (99.43%), with 926 deferred by user, zero final native failures and zero
@@ -159,7 +166,7 @@ is started by root. Owners choose implementation; do not add research
 thresholds, approval loops or investigation limits. Freeze changes only for
 real bugs, with affected evidence rerun by its owner.
 
-Keep six pages including references, 10pt two columns, current scoped RQs and
+Keep six pages including references, 10pt two columns, the measured questions organized as result-led findings and
 at most four displays; no second long paper or step/audit directory.
 Evidence and historical dispositions stay in docs/paper/evidence.md.
 The tool delivers check/audit and the existing Kimina-compatible service;

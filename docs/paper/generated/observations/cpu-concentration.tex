@@ -1,0 +1,17 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{pgfplots}\pgfplotsset{compat=1.18}
+\begin{document}\begin{tikzpicture}
+\begin{axis}[width=8.4cm,height=5.1cm,xmin=0,xmax=100,ymin=0,ymax=100,
+xlabel={Modules, most expensive first (\%)},ylabel={Cumulative CPU time (\%)},
+label style={font=\small},tick label style={font=\footnotesize},
+legend style={font=\small,at={(0.98,0.04)},anchor=south east},
+grid=major,grid style={gray!20}]
+\addplot[gray,dashed,no marks] coordinates {(0,0)(100,100)};
+\addlegendentry{Equal cost}
+\addplot[blue,thick,no marks] table[x=modules_pct,y=cpu_pct,col sep=comma]{cost-share-P.csv};
+\addlegendentry{P cores}
+\addplot[red,dashed,thick,no marks] table[x=modules_pct,y=cpu_pct,col sep=comma]{cost-share-E.csv};
+\addlegendentry{E cores}
+\node[font=\small,anchor=west,fill=white] at (axis cs:7,27){Top 1\%: 25--26\% CPU};
+\draw[->] (axis cs:7,26) -- (axis cs:1,25.4);
+\end{axis}\end{tikzpicture}\end{document}
