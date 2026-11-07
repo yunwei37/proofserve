@@ -7,6 +7,20 @@ ProofServe, limitations and related work. Detailed run bookkeeping belongs here.
 All work in the shared research Workspace enters through taskset -c 8,9.
 No command below is needed to launch a new measurement for the paper.
 
+## Current manuscript
+
+main.tex was rewritten by Claude on 2026-11-07 at the user's request ("你来写论文").
+It replaces the 1fad5f99 text; the finding-to-evidence map below still applies.
+Its two figures are drawn directly from committed data:
+
+    python3 docs/paper/figures/plot-cost-regimes.py docs/paper/figures docs/paper/figures/check-vs-compile.pdf
+    python3 docs/paper/figures/plot-census-concentration.py data/openai-math-4eaee875/census/modules.csv.gz docs/paper/figures/census-concentration.pdf
+
+The Grid excerpt in Section 4.1 is abridged from lean/OAI/Analysis/PlanarPacking/Grid.lean
+at openai/math 4eaee875 (590 lemmas, 1,664 decide +kernel calls). Build main.tex with
+latexmk -pdf from docs/paper. generated/observations/ and figures/cost-regimes.* belong
+to earlier revisions and are not used by the current main.tex.
+
 ## Rebuild from committed measurements
 
 From the repository root, with Tectonic available:

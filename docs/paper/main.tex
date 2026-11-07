@@ -2,474 +2,507 @@
 \usepackage[letterpaper,margin=0.75in,columnsep=0.25in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{booktabs,amsmath,graphicx,microtype,hyperref,array,flushend,times}
-\usepackage[justification=raggedright,singlelinecheck=false]{caption}
+\usepackage[justification=raggedright,singlelinecheck=false,font=small]{caption}
 \hypersetup{colorlinks=true,allcolors=blue}
 \title{Checking or Recomputing? Two Cost Regimes in\\Verifying AI-Generated Formal Artifacts}
 \author{Yusheng Zheng\\UC Santa Cruz\\\texttt{yzhen165@ucsc.edu}}
 \date{}
+\newcommand{\dk}{\texttt{decide +kernel}}
+\emergencystretch=1.5em
 \begin{document}
-\raggedright
-\setlength{\parindent}{1em}
-\raggedbottom
 \maketitle
 \begin{abstract}
-A proof term lets a checker validate a result without repeating the search
-that found it. Proofs by computation retain a different cost: the checker
-must evaluate the decision procedure embedded in the term.
-We study this distinction in OpenAI's AI-generated Lean library.
-For two computational certificates, checking the target takes 80--82\%
-of compilation time, compared with 0.5--7\% for two ordinary proofs.
-The library contains 10,668 times more \texttt{decide +kernel} calls per
-source megabyte than Mathlib.
-Compiling 162,170 of its 163,096 modules used 169 P-core and 302 E-core
-CPU-hours. Default build targets omit a third of the computation call sites.
-Profiles show why checking time alone can also mislead: dependency imports,
-module discovery and Lean's memory guard can dominate an invocation.
-We present ProofServe, which rechecks projects in parallel with Lean's
-original kernel, supports restart, and reports the modules and axioms covered.
+Re-checking a formal proof is usually far cheaper than finding it, because
+a proof checker validates a stored proof term and never repeats the search
+that produced it. This assumption fails for proofs by computation, whose
+terms ask the kernel to evaluate a decision procedure: every check repeats
+the evaluation. We measure this effect on OpenAI's AI-generated Lean library
+of 163,096 modules. Re-checking two computational certificates takes
+80--82\% of their compilation time, against 0.5--7\% for ordinary proofs.
+Such certificates are common in AI-generated Lean: the library uses
+\dk{} 10,668 times more densely than Mathlib. Compiling 162,170 of its
+modules took at least 169 P-core and 302 E-core CPU-hours, a quarter of
+which went to 1\% of the modules, and a default build skips a fifth of the
+source files, which hold a third of the computational proofs. Lean's
+tooling adds fixed costs that can exceed proof checking itself: import
+loading, module discovery and the \texttt{-M} memory guard. We release
+ProofServe, a tool that re-checks Lean projects in parallel with Lean's own
+kernel and reports what each check covered; eight workers shorten wall time
+by 1.7--2.1$\times$.
 \end{abstract}
 
 \section{Introduction}
-AI systems can produce formal proofs at a scale that makes rechecking an operational concern. A successful compilation produces compiled module files,
-but a project owner may still want to recheck its proof terms, identify its
-axioms, or determine which files a default build actually covered.
-These tasks require knowing both what a checking command does and where
-its time goes.
+AI systems now write formal mathematics at the scale of whole libraries.
+OpenAI's public mathematics repository~\cite{openaiMathSource} backs its
+results with 163,096 Lean modules at the revision we study, about nineteen
+times as many files as the Mathlib snapshot it builds on. Before such a
+library is reused, cited or merged, someone has to re-check it
+independently of the system that produced it. The common expectation is
+that this step is cheap. Lean separates proof search from proof checking:
+tactics may search for minutes, but the kernel validates only the
+resulting proof term, and an independent checker replays stored terms
+without any search~\cite{lean4,leanCheckerDocs}.
 
-The usual reason to expect cheap checking is that a stored proof records
-the successful steps of a search. The checker validates those steps instead
-of trying unsuccessful alternatives again. This reasoning changes for a
-proof by computation. A small proof term may certify a finite calculation
-by asking the kernel to evaluate it. The term saves the answer's justification,
-not necessarily the work needed to validate that justification.
+This expectation holds for ordinary mathematical proofs and fails for
+proofs by computation. A proof produced by \texttt{decide} states that a
+decision procedure evaluates to \texttt{true}, and the kernel can accept it
+only by running that evaluation. Re-checking such a proof recomputes it.
+An independent report on the same library completed a full build and
+suggested kernel computation as the reason some checks are expensive,
+based on three source examples~\cite{openaiMathTooling2026}. We measure
+this explanation directly and ask what it means for anyone who has to
+re-check an AI-generated library. We make four contributions.
 
-We measure both cases in OpenAI's Lean mathematics library.
-Two computational certificates retain about four-fifths of their compilation
-time when we recheck their target proof terms. Two ordinary controls retain
-less than 7\%. Yet the presence of these calls does not divide modules into uniformly
-cheap and expensive classes. A 15.9 KB module without them is the most
-expensive module in our compilation campaign.
-We combine these case studies with per-module compilation measurements
-and profiles of Lean's tooling.
-
-The tooling matters because an invocation does more than check a proof.
-It locates compiled modules, imports dependencies, builds lookup tables and
-enforces resource limits. For short modules, these fixed costs can outweigh
-proof replay. For long computational proofs, repeatedly polling memory
-usage can itself become a major cost. A faster command may also be checking
-a different collection of declarations. We make these differences explicit
-before comparing timings.
-
-We make four contributions:
-\begin{itemize}
-\item We measure when proof checking repeats computation, and relate these
-cases to the prevalence of kernel-evaluated decisions in an AI-generated library.
-\item We characterize compilation across 162,170 completed modules, showing
-cost concentration and gaps in the default build's source coverage.
-\item We explain import, resource-accounting and module-discovery overheads
-with existing controls, profiles and small official-checker examples.
-\item We present ProofServe and evaluate its parallel checking, restart
-support and external-project coverage through the installed tool.
+\begin{itemize}\setlength{\itemsep}{1pt}
+\item \textbf{Two cost regimes.} Re-checking ordinary proofs costs
+0.5--7\% of their compilation time, while computational certificates
+cost 80--82\%. Across 31 modules the regimes blur into a spectrum, and
+project-wide averages hide the expensive certificates (\S\ref{sec:regimes}).
+\item \textbf{A per-module census of an AI-generated library.} We compiled
+162,170 of 163,096 modules and recorded the cost of each. The library
+relies on computation far more than Mathlib, its cost is concentrated in
+a small tail that file size does not predict well, and its default build
+skips a third of its computational proofs (\S\ref{sec:density}--\ref{sec:coverage}).
+\item \textbf{Costs in Lean's tooling.} Importing dependencies, discovering
+modules and Lean's \texttt{-M} memory guard can each cost more than the
+proof checking they surround. Minimal examples show what Lean's checker
+re-checks in its two modes (\S\ref{sec:tooling}).
+\item \textbf{ProofServe}, an open-source tool that re-checks a compiled
+Lean project with the original kernel in parallel and reports coverage
+and trust assumptions (\S\ref{sec:proofserve}).
 \end{itemize}
-The measurements motivate a practical rule: name the modules, proof terms
-and setup work included in a checking result, rather than treating every
-successful command as the same verification task.
 
-\section{Background}
+\section{Background}\label{sec:background}
 \paragraph{Elaboration and kernel checking.}
-Lean elaborates source text and tactics into typed terms.
-Tactics can search for a proof, while the trusted kernel checks the resulting
-term and its type \cite{lean4}.
-Compilation also loads imports and writes these files.
-Consequently, compiler time includes much more than the final proof check.
+Lean compiles a module in two stages. The elaborator runs tactics such as
+\texttt{simp}, \texttt{omega} and \texttt{linarith}, which may search,
+backtrack and call decision procedures, and produces a proof term that
+records only the successful steps. The kernel then type-checks the term,
+and Lean stores the checked declarations in an \texttt{.olean} file.
+Type checking includes unfolding definitions and reducing terms, so a short
+term can require an arbitrary amount of computation to check.
 
-The \texttt{decide} mechanism constructs proofs of decidable propositions.
-With \texttt{decide +kernel}, Lean's kernel performs the reduction needed to
-validate the decision \cite{leanDecide434}.
-We call such source occurrences \emph{computation call sites}.
-We count them after masking comments and strings.
-Their presence is a useful source label, not a measurement of runtime:
-ordinary \texttt{decide} can also require substantial computation.
+\paragraph{Proof by computation.}
+For a decidable proposition $p$, \texttt{decide} produces a proof whose
+validity requires the kernel to reduce \texttt{decide $p$} to
+\texttt{true}~\cite{leanDecide434}. Plain \texttt{decide} evaluates the
+instance twice during compilation, once in the elaborator and once in the
+kernel; \dk{} skips the elaborator's evaluation. In both forms the
+evaluation is part of the kernel check, so every re-check repeats it.
+\texttt{decide +native} instead runs compiled code and admits the result
+through an axiom, which enlarges the trusted base.
 
-\paragraph{What a project check covers.}
-A \emph{root} is a module requested for checking.
-Its \emph{dependency closure} is the module together with the imports
-it needs, recursively.
-We use \emph{replay} to mean checking a stored declaration again.
-The official \texttt{leanchecker} default mode loads dependencies and replays
-the target module's declarations, trusting imported declarations.
-Its \texttt{--fresh} mode imports the target, merges the imported declarations,
-and replays the resulting set into an empty kernel environment
-\cite{lean434CheckerSource2026}.
-Here, \emph{fresh} describes the checking environment, not an empty OS file cache.
-Both modes use Lean's original kernel and skip unsafe or partial declarations.
+\paragraph{Re-checking and coverage.}
+Lean ships \texttt{leanchecker}, which loads stored declarations and
+replays them through the kernel without running
+tactics~\cite{lean434CheckerSource2026,leanCheckerDocs}. Its default mode
+trusts imported modules and checks only the declarations that the target
+module adds; \texttt{--fresh} replays the whole imported environment into
+an empty kernel environment. Lean 4.35 adds \texttt{lake check}, which
+re-checks a package's default targets~\cite{lean435Check}. A normal build
+and \texttt{lake check} both start from the package's declared root
+targets, so files that no root imports are neither compiled nor checked.
 
-A default \texttt{lake build} starts from the project's configured default
-targets and follows their imports. Files outside that reachable set need
-not be built. Thus compilation coverage, checking a requested root, and
-rechecking every original proof body are three distinct questions.
-
-\section{Method}
+\section{Methodology}\label{sec:method}
 \paragraph{Corpus and machine.}
-We study the published OpenAI mathematics repository \cite{openaiMathSource},
-revision \texttt{4eaee875}, with Lean 4.34.1 and its pinned Mathlib dependency.
-It contains 163,096 executable source modules, plus a separate configuration
-unit. We run on an Intel i9-14900K. The compilation campaign uses eight
-performance (P) cores and fourteen efficiency (E) cores; selected-case timings and
-ProofServe evaluation use the eight P cores.
-We report P- and E-core CPU time separately.
+We pin the OpenAI repository at commit \texttt{4eaee875}: 163,096 Lean
+modules plus one build configuration, on Lean 4.34.1 and Mathlib
+\texttt{d13f23b7}~\cite{openaiMathSource,mathlibD13fSource2026}. All
+measurements run on one Intel Core i9-14900K with 8 performance (P) cores,
+16 efficiency (E) cores, no SMT, 64\,GB of memory and Linux 7.0. P and E
+cores do different amounts of work per second, so we report their CPU time
+separately and never convert one into the other. Workloads of other users
+kept running on the machine; our timings include that interference.
+Except for the import measurements in \S\ref{sec:import}, no run uses
+Lean's \texttt{-M} option; memory limits come from cgroups
+(\S\ref{sec:memguard} explains why).
 
-\paragraph{Compilation and coverage.}
-We compile modules in dependency order with eight Lean workers per module.
-Initially we allow 22 concurrent module jobs, waiting for running work to
-finish before retrying memory-limited jobs alone.
-We then admit jobs according to available memory and defer 926 unfinished
-modules in memory-heavy families and their dependents.
-We retain earlier successes from those families.
-A completed module's CPU cost includes imports, elaboration, checking and
-artifact emission, but excludes separate prerequisite builds and downstream
-compilation of generated C.
-The campaign consumes 31.5 hours of measured execution time.
-Its complete per-module outcomes and execution chronology are in the artifact.
+\paragraph{Checking versus compiling.}
+For four modules we time reading and kernel-checking one module after its
+dependencies are loaded, and divide by the wall time of compiling that
+module from source. For 31 further modules we compare the CPU time of
+complete checker and compiler processes. These runs use the eight P cores,
+one task at a time, with warm file caches.
 
-\paragraph{Clocks, counters and controls.}
-We measure wall time separately from user-plus-system CPU time.
-Across 20 modules on P/E cores with and without background compiler load,
-total instruction counts vary by a median 1.33\%, largely because OS-kernel
-counts vary. User-mode counts vary much less: median 0.018\%, P95 0.14\%.
-We chose user-mode instructions to compare module work across these conditions
-after seeing this difference. We keep CPU summaries separate by core type.
-The instruction counts describe process work, not time inside Lean's logical kernel.
+\paragraph{Library census.}
+We compiled the library in dependency order, one process per module with
+Lean's standard \texttt{-j8} setting, running up to 22 modules at once on
+the 8 P cores and 14 E cores. For every module we record CPU and wall time,
+peak resident memory, and hardware instruction counts. Families of modules
+that repeatedly exhausted memory were deferred together with their
+dependents instead of being retried indefinitely.
 
-We separate setup from target checking with complementary measurements.
-For 13 modules selected because historical builds took under five seconds,
-we compare compilation with an import-only control that loads the same
-dependencies. Separate profiles identify import hotspots.
-A second experiment compares native memory-guard settings on three modules,
-with three repetitions per configuration.
-The main compilation and ProofServe measurements omit \texttt{-M};
-the guard experiment deliberately varies it.
-All profiles, failed attempts and measurement overheads remain in the artifact.
+\paragraph{Comparing modules across cores.}
+Modules ran on different core types and under different load, so we compare
+them by instruction counts. In a calibration of 240 compilations under four
+conditions (P or E cores, quiet or loaded), the user-mode instruction count
+of the same module varied by a median of 0.018\% (95th percentile 0.14\%),
+while kernel-mode counts varied by a median of 8.6\% and repeated CPU time
+by up to 20\% (95th percentile). We therefore compare modules by user-mode instructions. We chose this
+metric after seeing the variation: total instruction counts missed our
+preset targets of 1\% median and 3\% 95th-percentile variation.
 
-\section{Findings}
-\subsection{Computational proofs retain most of their checking cost}
-The two computational certificates are expensive to recheck because their
-proof terms retain the computation.
-After preparing dependencies, we time reading, mapping and replaying the
-target module. This target-only wall time is 80\% of compilation for Grid
-and 82\% for Amplitudes, versus 6.5\% for Mathlib Nat.Basic and 0.5\% for NearPin.
-The computational targets spend about 255 and 110 seconds in replay;
-almost all of that target component is inside the kernel replay call.
+\paragraph{Lexical scan and profiles.}
+We count \dk{} calls after masking comments and strings; the count marks
+where computation is likely and does not measure its cost. To study Lean's
+tooling we use \texttt{perf}, system-call tracing, and minimal examples
+run with the official Lean 4.34.1 binaries.
+
+\section{Checking and compiling the library}\label{sec:costs}
+\subsection{Re-checking repeats the computation}\label{sec:regimes}
+Figure~\ref{fig:costs}(b) shows the central measurement. Two computational
+certificates from the AI library, \texttt{Grid} and \texttt{Amplitudes},
+re-check in 80.3\% and 82.4\% of their compilation wall time. Their
+re-checks take 255.5 and 110.0 seconds, almost all of it inside the
+kernel's replay call. Two ordinary modules, Mathlib's \texttt{Nat.Basic}
+and the AI library's \texttt{NearPin}, re-check in 6.5\% and 0.5\% of their
+compilation time.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/cost-regimes.pdf}
-\caption{Checking has two useful views. (a) Whole-process CPU for 31
-module pairs, grouped by whether source contains \texttt{decide +kernel}.
-(b) Target-only checking wall time after dependency preparation, divided
-by that target's compilation wall time. The two panels use different clocks.}
+\includegraphics[width=\columnwidth]{figures/check-vs-compile.pdf}
+\caption{Checking cost relative to compilation. (a) CPU time of complete
+checker and compiler processes for 31 modules, by whether the source
+contains \dk; the two groups overlap. (b) Time to re-check one module
+after its dependencies are loaded, as a share of the module's compilation
+wall time: ordinary proofs (blue) and computational certificates (orange).}
 \label{fig:costs}
 \end{figure}
 
-The difference follows from the proof representation.
-A tactic can emit a sequence of mathematical steps that avoids repeating
-its original search. A computational certificate instead uses a theorem
-such as \texttt{of\_decide\_eq\_true}, whose validation reduces a decision
-procedure over a finite object. A compact wrapper can therefore conceal
-substantial evaluation.
-This quantifies, in selected cases, the computational explanation proposed
-by an earlier report on the same library \cite{openaiMathTooling2026}.
+The difference follows from what each proof term stores. A tactic that
+searches for a derivation emits a term recording the steps that worked,
+and the kernel validates those steps without redoing the search. A
+certificate checked through \texttt{decide} stores a compact claim that a
+decision procedure returns \texttt{true} on a large finite object, and the
+kernel validates it by running the procedure. The compilation cost of a
+certificate is mostly that evaluation, so a re-check inherits it.
+\texttt{Grid} is a typical case. It certifies rational enclosures of
+quadrature points and their Fourier kernels in 590 lemmas with 1,664
+\dk{} calls, most of them shaped like this abridged excerpt:
+\begin{footnotesize}
+\begin{verbatim}
+def p0_0 : PointBox :=
+  <<166665097940216761888082528704,
+    166665097940216761888082539539>, ...>
+lemma p0_0_contains :
+    p0_0.Contains (quadraturePoint 0 0) := by
+  ...
+  have he : PointBox.calc p0_0.t = p0_0 := by
+    decide +kernel
+\end{verbatim}
+\end{footnotesize}
+\noindent The proof is one line, but checking it makes the kernel evaluate
+\texttt{PointBox.calc} on 30-digit rationals and compare the result with
+the stored box. Every re-check repeats that arithmetic.
 
-Whole-process timings show why the source label alone is insufficient.
-Across 31 complete checker/compiler pairs, the median CPU ratio is 0.45.
-The two source groups overlap: their medians are 0.39 without computation
-calls and 0.50 with them. A Ramsey certificate without such calls also
-requires expensive checking. Imports and cheap dependencies can dilute an expensive target
-in a whole-closure average.
+The two regimes are ends of a spectrum rather than two classes
+(Figure~\ref{fig:costs}(a)). Across 31 modules, the checker used a median
+45\% of the compiler's CPU time: 50\% for the 17 modules containing
+\dk{} and 39\% for the 14 without, with overlapping distributions. Plain
+\texttt{decide} and other tactics can also leave large evaluations in a
+term. A Ramsey $K_{10}$ certificate with no \dk{} in its source needed
+356 CPU-seconds to check against 1,725 to compile (21\%).
 
-\subsection{A small fraction of modules consumes a quarter of CPU time}
-Compilation cost is concentrated in a small fraction of modules
-(Figure~\ref{fig:concentration}). The median module uses 4.0 P-core or
-7.5 E-core CPU seconds. Within each core type, the most expensive 1\%
-consume 25.1\% and 25.7\% of total CPU time, respectively.
-The 162,170 successful compilations use 169 P-core and 302 E-core CPU-hours.
-Across completed modules, median user-mode work is 12.6 billion instructions
-and the 95th percentile is 78.5 billion.
+Averages over a project hide these modules. Checking the full dependency
+closure of the \texttt{Falconer} development cost 6.3\% of its compilation
+CPU, and a Mathlib closure 9.0\%, because many cheap dependencies dilute a
+few expensive certificates. Planning a re-check therefore needs per-module
+costs: a project-wide ratio says little about how long one certificate
+takes, and a short source file can be among the most expensive to check.
+
+\subsection{AI-generated Lean relies on computation}\label{sec:density}
+After masking comments and strings, the AI library contains 1,354,379
+\dk{} calls in 5,848 files. The Mathlib snapshot it builds on contains
+seven, in four of its 8,529 files. Normalized by source size, the AI
+library uses this construct 10,668 times more densely. We did not test
+why. A likely factor is that many AI-generated results concern specific
+finite objects, where exhaustive evaluation is a proof that search finds
+reliably, while Mathlib develops general theories.
+
+\subsection{Compiling the library}\label{sec:census}
+Of 163,096 modules, 162,170 (99.43\%) compiled and none ended in failure.
+We deferred the remaining 926 because a few families kept exhausting the
+memory available to their build jobs; we set those families aside together
+with every module that depends on them. They include \texttt{PadicHodge},
+\texttt{BigCrystalline} and \texttt{Ramsey.}\allowbreak\texttt{CycleClique.}\allowbreak\texttt{Construction}.
+The completed part took 31.5 hours of wall time, 169.0 P-core CPU-hours
+and 302.4 E-core CPU-hours. These are lower bounds for the whole library:
+the deferred modules are the most memory-hungry ones, and dependency order
+is not a random sample, so we do not extrapolate.
+
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{generated/observations/cpu-concentration.pdf}
-\caption{CPU cost accumulates quickly when modules are ordered from most
-to least expensive within each core type. The top 1\% consume about a
-quarter of CPU time. We keep P and E populations separate.}
-\label{fig:concentration}
+\includegraphics[width=\columnwidth]{figures/census-concentration.pdf}
+\caption{Compilation cost across 162,170 modules. (a) Cumulative share of
+CPU time against the share of modules, costliest first; P and E cores are
+shown separately. (b) Source size against E-core CPU time; modules that
+contain \dk{} are red.}
+\label{fig:census}
 \end{figure}
 
-Larger files tend to cost more, with Spearman rank correlations of 0.62 (P)
-and 0.60 (E). File size can still misidentify the most expensive cases.
-The most expensive module, \texttt{UltraExpectationFull}, is only 15,860 bytes
-and contains no computation call sites, yet uses 9,314 E-core CPU seconds.
-A 5.29 MB Ramsey certificate with 11,114 such sites uses 2,241 E-core CPU seconds.
-File size and call-site count alone do not identify this extreme cost.
+The cost is concentrated (Figure~\ref{fig:census}a). The median module
+needed 4.0 CPU-seconds on a P core and 7.5 on an E core, or $1.3\times10^{10}$
+user-mode instructions, while the costliest 1\% of modules used a quarter
+of the CPU time on each core type. The 5,848 files that contain \dk{} are
+3.6\% of the modules, account for 18\% of the CPU time and make up
+41--45\% of the costliest 1\%.
 
-Computation calls nevertheless identify a disproportionately costly subset.
-The 5,848 modules containing these calls are 3.6\% of completed modules and use about
-18\% of CPU time in each core type.
-Across the full source tree, we count 1,354,379 computation call sites,
-versus seven in the pinned Mathlib subtree.
-After normalizing by source megabytes, the density is 10,668 times higher.
-These call sites help locate workloads that deserve checking, even though
-their count is not a complete cost model.
+Source size is only a moderate predictor of cost (Figure~\ref{fig:census}b;
+Spearman rank correlation 0.60--0.62). Files under 1\,KiB still took a
+median of 5.8 E-core seconds, partly the fixed cost of loading imports
+(\S\ref{sec:import}). At the other end, the single costliest module,
+\texttt{OAI.Analysis.FreeWords.}\allowbreak\texttt{UltraExpectationFull}, is a 15.5\,KiB file
+with no \dk; it took 9,314 E-core CPU-seconds, while a 5.0\,MiB Ramsey
+certificate file with 11,114 \dk{} calls took 2,241. Among the costliest
+1\% of modules, 10--17\% are smaller than the median file.
 
-\subsection{Default builds omit a third of computation call sites}
-A successful default build leaves a large part of this library outside
-its import graph. About 20\% of source files are unreachable from the default
-targets. They contain 451,008 computation call sites, or 33\% of the total.
-The completed modules outside that graph alone consume about 31 P-core and
-56 E-core CPU-hours.
+Memory also limited parallelism. The median compile process
+reached a peak resident size of 6.2--6.4\,GiB and the largest 25\,GiB. Resident
+size counts memory-mapped \texttt{.olean} pages that concurrent processes
+can share, so it overstates exclusive use, yet 65 compile attempts were
+still stopped by memory limits; their modules succeeded on retry or belong
+to the deferred families.
 
-This omission changes the interpretation of a build result.
-Building all default targets establishes neither that every source file
-compiles nor that every computational certificate has been checked.
-The omitted set is not a negligible collection of empty files.
-An audit should therefore enumerate the source inventory and default-target
-coverage separately from the modules listed in a checking receipt.
+The earlier report on this library built 122,458 modules of an older
+revision in 13.8 hours on 32 cloud vCPUs, and estimated about 410
+CPU-hours, including roughly 330 hours of compilation extrapolated from
+26 timed modules~\cite{openaiMathTooling2026}. Different revisions,
+hardware and scope prevent a direct comparison; the census replaces that
+extrapolation with a measured cost for each module.
 
-\subsection{Imports can dominate compilation of short modules}
-Dependency loading imposes a cost even when a module adds no proof work.
-In the 13-module short-build cohort, the import-only wall median is 1.36 seconds
-and median peak RSS is 3.1 GiB.
-The import-only control takes a median 68\% of the original compilation wall time.
-The official checker's whole-process wall time is a median 1.28 times
-compilation time on these modules: checking is sometimes slower than building.
+\subsection{A default build covers four fifths of the library}\label{sec:coverage}
+A successful default build is the usual evidence that a Lean project
+checks. In this library, the declared roots reach 130,834 of 163,097
+source units. The other 32,263 files (19.8\%) are never compiled by a
+default build, and they contain 451,008 of the 1,354,379 \dk{} calls
+(33.3\%). The earlier report found 30,697 files outside the default graph
+at its revision, about a quarter of its inventory~\cite{openaiMathTooling2026}.
+A claim that such a library ``checks'' should state which roots were built
+and how many files they reach.
 
-A separate Mathlib import profile explains part of this fixed work.
-Persistent-object marking, \texttt{lean\_mark\_persistent}, accounts for 9.3\%
-of sampled cycles, and name comparison, \texttt{lean\_name\_eq}, for 5.7\%.
-Import finalization also inserts constants into hash tables and allocates
-objects through mimalloc.
-These operations prepare the environment before a target proof can be replayed.
-
-The imports primarily map existing library data: about 93\% of proportionally
-accounted resident memory is file-backed. The 3.1 GiB peak is therefore not
-3.1 GiB of newly constructed mutable heap.
-
-\subsection{Lean's memory guard can double compilation time}
-The native \texttt{-M} guard is inexpensive on one ordinary module and
-expensive on two computational workloads.
-With eight Lean workers, removing it reduces Grid wall time from 622 to
-306 seconds and UMoments9 from 142 to 88 seconds.
-EnvelopePsiB changes only from 64.4 to 63.5 seconds
-(Table~\ref{tab:guard}). All produced output artifacts agree byte for byte.
-
-\begin{table}[t]
-\centering
-\small
-\setlength{\tabcolsep}{3.5pt}
-\input{generated/observations/memory-guard-table.tex}
-\caption{Native memory guard on/off: medians of three runs, seconds.
-An external 15 GiB memory limit remains in both configurations. Wall and
-system CPU are different measurements.}
-\label{tab:guard}
-\end{table}
-
-Lean polls this guard while reducing and checking terms.
-With the guard enabled, the pinned executable calls \texttt{getrusage}
-after every 200 memory checks to ask Linux for process resource usage
-\cite{getrusage}.
-The Grid baseline records about four million such calls.
-Its system CPU falls from 436 to 107 seconds without the native guard.
-Among baseline OS-kernel cycle samples, resource accounting contributes
-75\% for Grid and 59\% for UMoments9; futex synchronization contributes
-another 20\% and 34\%.
-These percentages describe kernel-mode samples, not fractions of wall time.
-The result explains our choice to omit the native guard in the main campaign
-while retaining external memory protection.
-
-\subsection{Module discovery can dominate an official checker invocation}
-Even locating a single requested module can be expensive in a large project.
-We check the same Mathlib Nat.Basic root once with the AI library's large
-search path and once with a small directory containing hardlinks to the same
-compiled dependency files. We change the search path, not the proof or its
-dependencies. Default checking takes 322.9 seconds on the large path, including 234.6 seconds
-of system CPU, versus 0.394 seconds on the small path.
-
-The official CLI first enumerates candidate artifacts, resolves their module
-names and then filters for the requested target
-\cite{lean434CheckerSource2026}.
-A separate discovery-only probe spends 2.6 seconds enumerating the large path
-and 271.4 seconds resolving names and filtering prefixes.
-It finds the same one target as the small-path probe.
-Thus the main observed bottleneck is not merely directory enumeration:
-per-candidate path resolution can dominate the command before proof replay.
-This is a search-path-dependent cost, not an intrinsic cost of checking Nat.Basic.
-
-\subsection{Checking a merged environment does not check every original body}
-Official checking modes differ in the artifacts and contexts they inspect.
-We confirm this with small controlled examples.
-Removing a compiled module's private fragment leaves default checking successful,
-while \texttt{--fresh} refuses the incomplete input.
-A separate example explicitly uses \texttt{Lean.ofReduceBool}, a native
-evaluation bridge: default checking succeeds, but fresh replay lacks the
-required imported code. This bridge is distinct from ordinary
-\texttt{decide +kernel} reduction.
-
-Import merging creates a second boundary.
-Two modules can define the same theorem interface---name, type and universe
-parameters---with different proof bodies.
-The later imported body replaces the earlier one in the merged declaration set.
-If a deliberately malformed body is overwritten by a good body,
-\texttt{--fresh} checks the surviving body and can succeed.
-If the malformed body survives, it is rejected.
-Default checking of an import-only root does not recursively recheck either body.
-
-These examples distinguish checking objectives, not the truth of ordinary
-source theorems. The missing-fragment and bad-body inputs are deliberately
-altered serialized artifacts; the explicit native-evaluation example exercises
-a different supported-context boundary.
-They do not demonstrate that normal Lean source compilation proves false
-statements. They do show why \emph{all proofs checked} needs an explicit object:
-the requested module, the merged environment, or every original module body.
-
-\section{ProofServe: design and evaluation}
-We build ProofServe to make repeated checking usable without replacing
-Lean's kernel. The \texttt{check} command discovers compiled project roots
-and their dependency closures. It schedules ready declarations against a
-checked environment, joins worker results, and records completed work
-for restart. A persistent checked prefix avoids repeatedly preparing the
-same dependencies. Modules requiring a separate context use a conservative
-replay path. The \texttt{audit} command reports source files, default-target
-coverage, checked modules and declared axioms.
-
-\paragraph{Proof-body context.}
-By default, ProofServe shares already kernel-checked theorem bodies when their
-interfaces match. This saves work, but a crafted artifact can depend on the
-shared body and pass even when official checking in its original import
-context rejects it.
-The proposition is still checked using proofs and axioms in the shared closure.
-The \texttt{--strict-theorem-bodies} option isolates differing bodies.
-On Nat.Basic at eight workers, this costs 4.2 times the default wall time
-and 2.5 times its CPU time. The corresponding Grid run does not finish within its time budget,
-giving only a wall-cost lower bound of 5.1 times default.
-
-\paragraph{Parallel replay.}
-We evaluate the installed tool with fresh checkpoint state and three complete
-repetitions at each reported scaling point (Table~\ref{tab:system}).
-One to eight workers reduces wall time by 1.70, 2.14 and 1.73 times on
-Nat.Basic, Grid and Barrier. CPU rises by 2.9\%, 11.3\% and 4.6\%.
-The speedups are useful but modest; more workers do not remove sequential
-preparation or all coordination costs.
-Disabling persistent state adds 3--5\% wall time on Nat.Basic/Grid;
-disabling split fallback adds 20\%/12\%.
-One deliberate interruption and restart preserves the result and adds about
-17\% wall time relative to an uninterrupted four-worker run.
-Three malformed-proof controls are rejected.
+\section{What Lean's tooling costs}\label{sec:tooling}
+Re-checking a library involves more than kernel checking. Lean's tooling
+adds fixed costs around it, and each of the three below can exceed the
+cost of checking an ordinary proof (Table~\ref{tab:tooling}).
 
 \begin{table}[t]
 \centering
 \small
 \setlength{\tabcolsep}{3pt}
-\input{generated/observations/release-evaluation-table.tex}
-\caption{Installed ProofServe results, CPU/wall seconds.
-Top: medians of three complete runs; Nat.Basic/Grid/Barrier closures have
-1,330/3,793/4,449 modules.
-Bottom: one run per arm, one worker; N/O counts are native closure modules /
-official local roots. Some other configurations have only one run; see artifact.
-Unequal native/official obligations do not define a speedup comparison.}
-\label{tab:system}
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Operation & Setting compared & Fast & Slow\\
+\midrule
+Check \texttt{Nat.Basic} & search path & 0.39 & 322.9\\
+Compile \texttt{Grid} & memory limit & 306 & 622\\
+Compile \texttt{UMoments9} & memory limit & 88 & 142\\
+Compile \texttt{EnvelopePsiB} & memory limit & 63.5 & 64.4\\
+\bottomrule
+\end{tabular}
+\caption{Tooling costs, wall seconds. Search path: only the root's 1,330
+imported modules versus the full 90-entry build path (one run each).
+Memory limit: a cgroup versus Lean's \texttt{-M} (medians of three).
+Verdicts and outputs are identical in each pair.}
+\label{tab:tooling}
 \end{table}
 
-\paragraph{External projects.}
-We check Newspeak, Solar and an upstream-described AI-generated proof collection
-through a relocated installation.
-All 126 common local roots pass both ProofServe and official default checking.
-ProofServe checks the full dependency closures; official default checks local
-roots while trusting imports.
-Table~\ref{tab:system} reports their costs separately.
-The AI collection's model and proportions of generated or manually edited
-proofs are undisclosed.
-We also run audit on these projects; Solar has a separate EVM checking flow
-that is outside this experiment.
+\subsection{Loading imports}\label{sec:import}
+Every Lean process starts by loading the modules it imports. For 13 short
+modules whose builds took under five seconds, importing their dependencies
+and doing nothing else took a median of 1.36 seconds (0.71--3.20) and 68\%
+of their build time, and peaked at 3.1\,GiB resident, 93\% of it
+file-backed \texttt{.olean} mappings. On these modules the official checker
+took a median 1.28 times as long as the build: re-checking a short module
+costs more than compiling it, because both pay for imports and the checker
+adds module discovery. A profile of a process that only imports Mathlib
+attributes the time to marking imported objects persistent
+(\texttt{lean\_mark\_persistent}, 9.3\% of samples), name comparison
+(\texttt{lean\_name\_eq}, 5.7\%), environment finalization and hash-table
+insertion, memory allocation (about 6\%) and file-path lookup in the
+kernel. These runs used \texttt{-M}, so their system time may include the
+accounting cost described in \S\ref{sec:memguard}. For a library checked
+one module per process, this fixed cost
+dominates the ordinary proofs, and sharing it across modules is the first
+thing a library-scale checker needs. Verification servers for AI provers
+face the same cost per request, which is why Kimina's Lean server keeps
+imported environments loaded between requests~\cite{kiminaPaper}.
 
-\section{Discussion and limitations}
-\paragraph{What the measurements establish.}
-The computational examples demonstrate retained evaluation, not a universal
-law separating two classes of proof.
-Compilation follows dependency order, and memory-based deferral biases the
-completed subset. Missing modules may be more expensive.
-Our P/E totals are separate hardware-specific lower bounds on the measured
-per-module protocol; we do not convert cores or extrapolate the tail.
-Call-site counts are source labels, not proof counts or dynamic kernel CPU.
-Whole-library rechecking did not complete within the time budget.
+\subsection{Discovering modules}\label{sec:discovery}
+Before it checks anything, \texttt{leanchecker} enumerates every
+\texttt{.olean} file on the search path, resolves each file name to a
+module name, and only then selects the requested
+root~\cite{lean434CheckerSource2026}. In the AI library's build
+environment, whose search path has 90 entries and yields 203,273
+\texttt{.olean} path entries, checking Mathlib's
+\texttt{Mathlib.Data.Nat.Basic} in the default mode took 322.9 seconds,
+234.6 of them in system CPU. With a search path containing only the 1,330
+modules that this root imports, the same check took 0.39 seconds. A probe
+that runs only the discovery steps spent 2.6 seconds enumerating
+directories and 271.4 seconds resolving module names. These are single
+observations in an unusually large environment; the practical remedy is
+a search path limited to the closure being checked.
 
-The short-module cohort is selected using historical build times, and its
-build/replay measurements are not contemporaneous randomized pairs.
-Observation itself can change the measured system CPU substantially:
-in a separate Grid no-guard control, counter profiling adds 7\% wall time
-but 127\% system CPU. We therefore keep plain timing runs separate from
-profiles and syscall traces;
-sampled cycle shares are not additive phases of those timings
-\cite{perfReport}.
-The memory-guard comparison keeps an outer limit but changes enforcement
-policy; equal outputs on passing examples do not establish identical behavior
-under memory exhaustion.
-The large/small search-path contrast has one observation per condition.
-We use these results to explain mechanisms, not to predict every project.
+\subsection{The \texttt{-M} memory guard}\label{sec:memguard}
+Lean's \texttt{-M} option sets a memory budget~\cite{leanMemoryGuard2026}.
+With it, every 200th call to Lean's memory check invokes
+\texttt{getrusage}, which sums resource use over all threads of the
+process~\cite{linuxGetrusage2026}, and the kernel runs this check
+throughout reduction. Compiling \texttt{Grid} with eight threads made
+4.0 million \texttt{getrusage} calls; resource accounting took 75\% of the
+sampled kernel-mode cycles and futex synchronization another 20\%.
+Removing \texttt{-M} while enforcing the same 15\,GiB limit through a
+cgroup~\cite{cgroupV2Memory2026} cut \texttt{Grid}'s compile time from
+622 to 306 seconds and its system time from 436 to 107 seconds (medians of
+three runs). Another certificate, \texttt{UMoments9}, went from 142 to 88
+seconds, while an ordinary module, \texttt{EnvelopePsiB}, barely changed
+(64.4 to 63.5 seconds). All 210 output files were byte-identical. For
+computation-heavy proofs, a limit enforced outside the Lean process gives
+the same protection without the accounting cost.
 
-\paragraph{Performance and trust.}
-We retain warm file caches and fixed run order.
-During release evaluation, an unrelated resident workload uses about one
-core on the same machine.
-The external-project results each have one observation, and the AI run uses
-bounded memory.
-These conditions limit generalization; the reported costs describe the actual
-experiments rather than an exclusively idle machine.
+\subsection{What the two checker modes re-check}\label{sec:modes}
+Minimal examples run through the official \texttt{leanchecker} show that
+its two modes can give different verdicts on the same artifact. After we
+removed a
+module's \texttt{.olean.private} part, the default mode accepted the module
+and \texttt{--fresh} failed to load it. A proof using the deprecated
+native-evaluation bridge \texttt{Lean.ofReduceBool} passed the default
+mode and failed under \texttt{--fresh}, which replays declarations into an
+empty environment without the compiled code that the evaluation needs.
 
-In addition to the logical kernel, we trust artifact loading, our interface
-between Lean and native code, worker coordination and locally saved results.
-The saved state is editable, and its noncryptographic file identities are
-not remote attestation.
-A source revision does not establish that every compiled artifact came from
-that source.
-Declared axiom inventories are not minimal per-theorem dependencies or
-certificates of freedom from axioms such as \texttt{sorryAx}.
-Strict body isolation narrows one context difference; it does not promise
-official parity for every malformed artifact or unsupported native evaluation.
+Checking the merged environment also differs from checking every module.
+When two modules prove a theorem with the same name and statement,
+importing both keeps one body, the one imported last. We corrupted that
+body in one module by editing its serialized file. Checked as its own root,
+the corrupted module was rejected by both modes. A root importing the good
+module first and the corrupted one second was rejected by \texttt{--fresh}
+and accepted by the default mode, which does not re-check imports. With
+the import order reversed, the good body replaced the corrupted one and
+both modes accepted. None of these cases involves normally compiled source
+proving a false statement; they show that verifying every module's proofs
+requires checking each module in its own declared import context.
 
-\section{Related work}
-Independent kernel checking and parallel proof processing precede this work.
-Isabelle and Coq support parallel or asynchronous checking
-\cite{wenzelParallel2009,coqAsync2015}.
-Lean provides standalone checking and a shipped \texttt{lake check} workflow
-\cite{leanCheckerDocs,lean435Check}; Nanoda supplies a separate checker
-\cite{nanoda2026}.
-ProofServe contributes an original-kernel project workflow informed by measured
-cost and coverage, rather than a new logical kernel.
+\section{ProofServe}\label{sec:proofserve}
+ProofServe turns these measurements into a re-checking workflow with two
+commands. \texttt{proofserve check} takes a compiled project, finds its
+roots and import closure, and reports missing artifacts. Within the
+closure it builds a graph of declarations from the constants they reference
+and checks ready declarations in parallel waves, each through Lean's
+original kernel against the already-checked frontier. Between waves it
+marks newly checked objects persistent so workers can share them.
+Declarations other than ordinary definitions and theorems, such as
+inductive types, go through Lean's own replay path first. Work is divided into checkpointed segments, so an
+interrupted check resumes from the last completed segment. A receipt
+records the Lean and dependency versions, the module set, accepted and
+rejected modules, the axioms they declare, and CPU and wall time.
+\texttt{proofserve audit} compares the source inventory, the default
+import graph and a receipt: it reports which files and \dk{} calls the
+default roots miss and what the receipt actually covered.
 
-An earlier report builds and extensively rechecks the same corpus
-\cite{openaiMathTooling2026}. Its 13.8-hour cloud build uses another
-revision and machine; its CPU estimate extrapolates a small laptop sample.
-We instead measure module costs and profile checking overheads.
-Kimina and AXLE amortize Lean preparation for verification services
-\cite{kiminaPaper,axle}.
+\paragraph{Trust.}
+ProofServe trusts Lean's kernel, its artifact reader, the coordinator and
+local checkpoints. By default it reuses a kernel-checked theorem body when
+another module declares a theorem with the same interface. This saves
+repeated work but, as in \S\ref{sec:modes}, it can accept a crafted
+artifact that official checking rejects in its declared import context.
+\texttt{--strict-theorem-bodies} checks each body in its own context.
 
-\newpage
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+Closure & Clock & 1 & 2 & 4 & 8\\
+\midrule
+\texttt{Nat.Basic} & CPU & 110.3 & 111.3 & 112.1 & 113.5\\
+\quad 1,330 modules & Wall & 110.8 & 82.7 & 69.7 & 65.3\\
+\texttt{Grid} & CPU & 751.2 & 778.6 & 799.1 & 835.8\\
+\quad 3,793 modules & Wall & 754.0 & 517.3 & 398.4 & 352.4\\
+\texttt{Barrier} & CPU & 732.6 & -- & -- & 766.3\\
+\quad 4,449 modules & Wall & 735.6 & -- & -- & 425.9\\
+\bottomrule
+\end{tabular}
+\caption{ProofServe check time in seconds by number of workers (median of
+three fresh runs, default mode). Barrier was run at one and eight workers
+only.}
+\label{tab:scaling}
+\end{table}
+
+\paragraph{Evaluation.}
+Table~\ref{tab:scaling} reports the release build on three closures. Eight
+workers shorten wall time by 1.70, 2.14 and 1.73 times for
+\texttt{Nat.Basic}, \texttt{Grid} and \texttt{Barrier}, while total CPU
+rises by 2.9, 11.3 and 4.6\%. Strict mode costs 4.23 times the wall time
+and 2.50 times the CPU on \texttt{Nat.Basic} at eight workers; on
+\texttt{Grid} it timed out at 1,800 seconds, at least 5.1 times the
+default. Turning off persistent marking adds 12--17\% CPU. A deliberately
+interrupted check resumed with 17\% extra wall time and the same result.
+
+We also checked three external projects: Newspeak, Solar, and
+\texttt{samuelburbulla/proofs}, a collection its authors describe as
+AI-generated. ProofServe and the official checker accepted all 126 roots
+they have in common. The two did different amounts of work: ProofServe
+checked the full closures of 754, 2,368 and 10,753 modules in 109, 167 and
+2,481 CPU-seconds, while the official default mode checked only the
+projects' own 105, 12 and 9 root modules, trusting their imports, in 38.6,
+5.5 and 37.4 CPU-seconds. The numbers are therefore not a speedup comparison.
+
+\section{Implications}\label{sec:implications}
+Our measurements suggest five practices for re-checking AI-generated
+libraries. First, budget per certificate: a computational proof costs
+close to its compilation time, and project averages understate it.
+Second, measure how much of a library relies on computation before
+sizing the job; a lexical scan for \dk{} found the 3.6\% of modules that
+used 18\% of the compilation CPU. Third, report coverage: name the roots
+that were built or checked and how many source files they reach, since a
+default build missed a fifth of this library. Fourth, amortize fixed
+costs: load imports once per worker rather than once per module, and give
+the checker a search path limited to the closure it checks. Fifth,
+enforce memory limits outside Lean, with cgroups or resource limits,
+rather than with \texttt{-M}.
+
+\section{Limitations}\label{sec:limits}
+All results come from one machine, one revision of one library and Lean
+4.34.1. The checking-versus-compiling comparison uses a few selected
+modules, and the 31-module panel shows a spectrum rather than two clean
+classes. \dk{} counts are lexical proxies. The census is a lower bound over
+a dependency-ordered subset that excludes the most memory-hungry families,
+and we chose its comparison metric after observing measurement variation.
+The tooling measurements in \S\ref{sec:discovery} are single observations.
+A complete re-check of the library with ProofServe did not finish within
+our time budget: it certified 968 of the 162,170 compiled modules. The
+coordinator has not been formally verified or independently audited,
+receipts are not bound to a source digest, and checkpoints are trusted
+local state rather than attested evidence.
+
+\section{Related work}\label{sec:related}
+Independent re-checking has a long history in Lean: \texttt{lean4checker},
+the bundled \texttt{leanchecker}, external kernels such as
+nanoda~\cite{nanoda2026} and Lean4Lean~\cite{lean4lean2025}, and
+\texttt{lake check}~\cite{leanCheckerDocs,lean435Check}, following the
+Lean FRO's agenda for external checking~\cite{leanFroY4}. Parallel and
+asynchronous proof checking appears in Isabelle~\cite{wenzelParallel2009},
+Coq~\cite{coqAsync2015} and Lean's parallel elaboration and
+kernel~\cite{leanParallelRelease2025,leanKernelParallel2025}. Kimina and
+AXLE provide verification services for AI provers~\cite{kiminaPaper,axle}.
+The closest work is the report on the same library, which built it in
+the cloud, ran extensive independent checking, measured nanoda with four threads at
+a median 0.21 of Lean's single-threaded replay time, and proposed kernel computation as the cause of
+expensive checks~\cite{openaiMathTooling2026}. We contribute matched
+measurements of that cause, a per-module census, measurements of Lean's
+tooling costs, and a usable original-kernel tool, rather than new
+parallelism or serving mechanisms.
+
 \section{Conclusion}
-Proof checking avoids proof search, but computational certificates can
-retain expensive evaluation. Our measurements show concentrated compilation
-costs, incomplete default-build coverage and substantial tooling overheads.
-ProofServe combines parallel original-kernel checking with explicit coverage
-reports. Together, these results show why checking cost and checking scope
-must be measured separately.\par
-
-
-\paragraph{Artifact.}
-Source, committed measurements and reproduction instructions are at
-\url{https://github.com/yunwei37/proofserve}.
-The paper's artifact guide maps every figure and observation to its input CSVs,
-tool revisions, exact commands, missing configurations and timing boundaries.
-It also retains the detailed compilation chronology and supplementary
-library-checking ledger.
+Checking a proof is cheap only when the proof is a record of search. When
+the proof is a computation, checking repeats it, and AI-generated Lean
+uses such proofs far more than human-written Mathlib. At library scale,
+the fixed costs of Lean's tooling and the coverage of a default build
+matter as much as the kernel itself. ProofServe, the
+census data and every script behind these numbers are available at
+\url{https://github.com/yunwei37/proofserve} (release v0.1.0; checker
+\texttt{e000ed62}).
 
 \bibliographystyle{plain}
-{\raggedright\bibliography{references}}
+{\small\raggedright\bibliography{references}}
 \end{document}
